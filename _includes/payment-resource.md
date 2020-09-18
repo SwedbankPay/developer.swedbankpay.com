@@ -176,7 +176,7 @@ for the given operation.
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               | 
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
-| `view-sales`             | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
+| `view-sale`             | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
 
 {% when "invoice" %}
 
