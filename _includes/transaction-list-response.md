@@ -91,4 +91,4 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                                |
 
-[operations]: /payments/{{ include.documentation_section }}/other-features#operations 
+[operations]: /payment-instruments/{{ include.documentation_section }}/other-features#operations 

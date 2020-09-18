@@ -62,7 +62,7 @@ Events to subscribe to for full control over the payment flow are can be found
 in {% if api_resource == "paymentorders" %}
 [Payment Menu Events](/{{ documentation_section }}/other-features#payment-menu-events).
 {% else %}
-[Seamless View Events](/payments/{{ documentation_section }}/other-features#seamless-view-events).
+[Seamless View Events](/payment-instruments/{{ documentation_section }}/other-features#seamless-view-events).
 {% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
