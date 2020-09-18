@@ -1,5 +1,6 @@
 ---
 title: Swish Payments
+redirect_from: /payments/swish/
 estimated_read: 30
 description: |
   Swish is Sweden's main payment app and the

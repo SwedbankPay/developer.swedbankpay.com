@@ -1,5 +1,6 @@
 ---
 title: Seamless View
+redirect_from: /payments/vipps/seamless-view
 estimated_read: 30
 description: |
   **Seamless View** scenario gives your

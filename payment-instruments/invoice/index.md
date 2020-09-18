@@ -1,5 +1,6 @@
 ---
 title: Invoice Payments
+redirect_from: /payments/invoice/
 estimated_read: 30
 description: |
   **Invoice Payments** is one of the easiest

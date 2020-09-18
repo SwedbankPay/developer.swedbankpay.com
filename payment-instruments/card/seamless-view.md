@@ -1,5 +1,6 @@
 ---
 title: Card Payments – Seamless View
+redirect_from: /payments/card/seamless-view
 estimated_read: 30
 description: |
   The Seamless View purchase scenario

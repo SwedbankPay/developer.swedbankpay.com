@@ -1,5 +1,6 @@
 ---
 title: MobilePay Online Payments
+redirect_from: /payments/mobile-pay/
 estimated_read: 30
 description: |
   MobilePay is the fast and simple way of

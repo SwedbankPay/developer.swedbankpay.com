@@ -1,5 +1,6 @@
 ---
 title: Trustly Payments
+redirect_from: /payments/trustly/
 estimated_read: 30
 description: |
   **Trustly Payments** is the simplest way to

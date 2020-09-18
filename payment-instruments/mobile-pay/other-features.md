@@ -1,5 +1,6 @@
 ---
 title: MobilePay Online Payments – Other Features
+redirect_from: /payments/mobile-pay/other-features
 estimated_read: 30
 menu_order: 800
 ---

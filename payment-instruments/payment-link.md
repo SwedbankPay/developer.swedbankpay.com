@@ -1,5 +1,6 @@
 ---
 title: Payment Link
+redirect_from: /payments/payment-link/
 estimated_read: 30
 description: |
   The implementation sequence for this scenario is a variant of the purchase

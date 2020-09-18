@@ -1,5 +1,6 @@
 ---
 title: MobilePay Online Payments – Redirect
+redirect_from: /payments/mobile-pay/redirect
 estimated_read: 30
 description: |
   **MobilePay Online Payments** is a two-phase payment instrument which can be

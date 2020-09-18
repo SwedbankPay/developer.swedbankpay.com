@@ -1,5 +1,6 @@
 ---
 title: Card Payments – Direct
+redirect_from: /payments/card/direct
 estimated_read: 30
 description: |
   The Direct Card Payment scenario is used by
