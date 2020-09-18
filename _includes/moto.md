@@ -1,8 +1,9 @@
-{% include api_resource=include.api_resource %}
+{% assign api_resource=include.api_resource %}
 {% if include.api_resource == "creditcard" %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
     {% assign api_resource_field_name = "paymentorder" %}
+{% endif %}
 
 ## MOTO (Mail Order / Telephone Order)
 
