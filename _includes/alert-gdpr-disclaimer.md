@@ -1,5 +1,5 @@
-{% include alert.html type="warning" icon="warning" body="GDPR sensitive data
-such as email, phone numbers and social security numbers must **not** be used as
-input in external parameters, such as `payerReference`. If it is necessary to
-use this kind of data, you must create a hash containing the information
-before using it as input." %}
+{% include alert.html type="warning" icon="warning" header="GDPR" body="GDPR
+sensitive data such as email, phone numbers and social security numbers must
+**not be used directly** in request fields such as `payerReference`. If it is
+necessary to use GDPR sensitive data, it must be hashed and then the hash can be
+used in requests towards Swedbank Pay." %}
