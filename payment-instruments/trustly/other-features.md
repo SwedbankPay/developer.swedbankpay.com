@@ -131,7 +131,7 @@ Payment" %}
 [financing-consumer]: #financing-consumer
 [trustly-payment]: /assets/img/checkout/trustly-seamless-view.png
 [recur]: #recur
-[redirect]: /payments/trustly/redirect
-[seamless-view]: /payments/trustly/seamless-view
+[redirect]: /payment-instruments/trustly/redirect
+[seamless-view]: /payment-instruments/trustly/seamless-view
 [verification-flow]: #verification-flow
 [verify]: #verify

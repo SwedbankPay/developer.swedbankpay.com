@@ -80,11 +80,11 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 
 {% include iterator.html next_href="redirect" next_title="Next: Redirect" %}
 
-[after-payment]: /payments/trustly/after-payment
-[callback-api]: /payments/trustly/other-features#callback
-[optional-features]: /payments/trustly/optional-features
-[payment-resource]: /payments/swish/other-features#payment-resource
-[recur]: /payments/trustly/other-features#recur
-[redirect]: /payments/trustly/redirect
-[purchase]: /payments/trustly/other-features#create-payment
+[after-payment]: /payment-instruments/trustly/after-payment
+[callback-api]: /payment-instruments/trustly/other-features#callback
+[optional-features]: /payment-instruments/trustly/optional-features
+[payment-resource]: /payment-instruments/swish/other-features#payment-resource
+[recur]: /payment-instruments/trustly/other-features#recur
+[redirect]: /payment-instruments/trustly/redirect
+[purchase]: /payment-instruments/trustly/other-features#create-payment
 [trustly-guidelines]: https://trustly.com/en/developer/documents

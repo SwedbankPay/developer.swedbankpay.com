@@ -229,10 +229,10 @@ Here you will also find info on `Abort` and `Reversal`.
 next_href="after-payment" next_title="Next: After Payment" %}
 
 [deposit]: https://trustly.com/en/developer/api#/deposit
-[after-payment]: /payments/trustly/after-payment
-[callback]: /payments/trustly/other-features#callback
-[reversal]: /payments/trustly/after-payment#reversals
-[payee-reference]: /payments/trustly/other-features#payeeinfo
-[recur]: /payments/trustly/other-features#recur
+[after-payment]: /payment-instruments/trustly/after-payment
+[callback]: /payment-instruments/trustly/other-features#callback
+[reversal]: /payment-instruments/trustly/after-payment#reversals
+[payee-reference]: /payment-instruments/trustly/other-features#payeeinfo
+[recur]: /payment-instruments/trustly/other-features#recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payments/trustly/other-features#verify
+[verify]: /payment-instruments/trustly/other-features#verify
