@@ -156,6 +156,6 @@ sequenceDiagram
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="after-payment" next_title="Next: After Payment" %}
 
-[direct]: /payments/invoice/direct
-[redirect]: /payments/invoice/redirect
-[seamless-view]: /payments/invoice/seamless-view
+[direct]: /payment-instruments/invoice/direct
+[redirect]: /payment-instruments/invoice/redirect
+[seamless-view]: /payment-instruments/invoice/seamless-view

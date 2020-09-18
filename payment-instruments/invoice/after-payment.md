@@ -183,8 +183,8 @@ next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------
 [abort-description]: #abort
-[callback-request]: /payments/invoice/other-features#callback
+[callback-request]: /payment-instruments/invoice/other-features#callback
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations
 [invoice-reversals]: #reversals
-[other-features-transaction]: /payments/invoice/other-features#transactions
+[other-features-transaction]: /payment-instruments/invoice/other-features#transactions
