@@ -206,21 +206,21 @@ card payment:
 next_href="capture" next_title="Next: Capture" %}
 
 [payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
-[abort]: /payments/card/other-features#abort
-[after-payment]: /payments/card/after-payment
-[callback]: /payments/card/other-features#callback
-[cancel]: /payments/card/after-payment#cancellations
-[capture]: /payments/card/capture
-[create-payment]: /payments/card/other-features#create-payment
+[abort]: /payment-instruments/card/other-features#abort
+[after-payment]: /payment-instruments/card/after-payment
+[callback]: /payment-instruments/card/other-features#callback
+[cancel]: /payment-instruments/card/after-payment#cancellations
+[capture]: /payment-instruments/card/capture
+[create-payment]: /payment-instruments/card/other-features#create-payment
 [expansion]: /home/technical-information#expansion
-[payee-reference]: /payments/card/other-features#payee-reference
-[payout]: /payments/card/other-features#payout
-[purchase]: /payments/card/other-features#purchase
-[price-resource]: /payments/card/other-features#prices
-[recur]: /payments/card/other-features#recur
-[reversal]: /payments/card/after-payment#reversals
-[verify]: /payments/card/other-features#verify
-[create-payment]: /payments/card/other-features#create-payment
+[payee-reference]: /payment-instruments/card/other-features#payee-reference
+[payout]: /payment-instruments/card/other-features#payout
+[purchase]: /payment-instruments/card/other-features#purchase
+[price-resource]: /payment-instruments/card/other-features#prices
+[recur]: /payment-instruments/card/other-features#recur
+[reversal]: /payment-instruments/card/after-payment#reversals
+[verify]: /payment-instruments/card/other-features#verify
+[create-payment]: /payment-instruments/card/other-features#create-payment
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [hosted-view-card]: /assets/img/payments/hosted-view-card.png
 [swedish-hosted-view-card]: /assets/img/payments/swedish-hosted-view-card.png

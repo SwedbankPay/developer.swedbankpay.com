@@ -308,8 +308,8 @@ Content-Type: application/json
 {% include iterator.html prev_href="mobile-card-payments" prev_title="Back: Mobile Card Payments"
 next_href="other-features" next_title="Next: Other Features" %}
 
-[abort]: /payments/card/after-payment#abort
-[callback]: /payments/card/other-features#callback
-[operations]: /payments/card/other-features#operations
-[reversal]: /payments/card/after-payment#reversals
-[transaction-resource]: /payments/card/other-features#transactions
+[abort]: /payment-instruments/card/after-payment#abort
+[callback]: /payment-instruments/card/other-features#callback
+[operations]: /payment-instruments/card/other-features#operations
+[reversal]: /payment-instruments/card/after-payment#reversals
+[transaction-resource]: /payment-instruments/card/other-features#transactions

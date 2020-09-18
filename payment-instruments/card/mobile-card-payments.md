@@ -141,10 +141,10 @@ sequenceDiagram
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="after-payment" next_title="Next: After Payment" %}
 
-[create-payment]: /payments/card/other-features#create-payment
-[payout]: /payments/card/other-features#payout
-[purchase]: /payments/card/other-features#purchase
+[create-payment]: /payment-instruments/card/other-features#create-payment
+[payout]: /payment-instruments/card/other-features#payout
+[purchase]: /payment-instruments/card/other-features#purchase
 [mobile-redirect-page]: /assets/img/payments/mobile-card-page.png
 [swedish-mobile-redirect-page]: /assets/img/payments/swedish-mobile-card-page.png
-[recur]: /payments/card/other-features#recur
-[verify]: /payments/card/other-features#verify
+[recur]: /payment-instruments/card/other-features#recur
+[verify]: /payment-instruments/card/other-features#verify
