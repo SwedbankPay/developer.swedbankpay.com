@@ -339,13 +339,13 @@ documentation_section="vipps" transaction="reversal" %}
         next_href="other-features"
         next_title="Next: Other Features" %}
 
-[abort]: /payments/vipps/after-payment#abort
+[abort]: /payment-instruments/vipps/after-payment#abort
 [expand-parameter]: /home/technical-information#expansion
-[callback]: /payments/vipps/other-features#callback
+[callback]: /payment-instruments/vipps/other-features#callback
 [cancel]: #cancellations
 [capture]: #captures
-[payee-reference]: /payments/vipps/other-features#payee-reference
-[prices]: /payments/vipps/other-features#prices
+[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
+[prices]: /payment-instruments/vipps/other-features#prices
 [reverse]: #reversals
-[transaction]: /payments/vipps/other-features#transactions
+[transaction]: /payment-instruments/vipps/other-features#transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

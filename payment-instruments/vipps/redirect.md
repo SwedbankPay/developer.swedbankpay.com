@@ -412,13 +412,13 @@ purchased products) have to make a [Capture][capture] or
                          next_href="seamless-view"
                          next_title="Next: Implement Seamless view" %}
 
-[callback]: /payments/vipps/other-features#callback
-[cancel]: /payments/vipps/after-payment#cancellations
-[capture]: /payments/vipps/after-payment#captures
-[payee-reference]: /payments/vipps/other-features#payee-reference
-[purchase]: /payments/vipps/other-features#purchase
-[reference-redirect]: /payments/vipps/redirect
-[seamless-view]: /payments/vipps/seamless-view
+[callback]: /payment-instruments/vipps/other-features#callback
+[cancel]: /payment-instruments/vipps/after-payment#cancellations
+[capture]: /payment-instruments/vipps/after-payment#captures
+[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
+[purchase]: /payment-instruments/vipps/other-features#purchase
+[reference-redirect]: /payment-instruments/vipps/redirect
+[seamless-view]: /payment-instruments/vipps/seamless-view
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[vipps-payments]: /payments/vipps/other-features
+[vipps-payments]: /payment-instruments/vipps/other-features
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

@@ -313,18 +313,18 @@ sequenceDiagram
         next_href="after-payment"
         next_title="Next: After payments" %}
 
-[abort]: /payments/vipps/after-payment#abort
-[callback]: /payments/vipps/other-features#callback
-[callbackurl]: /payments/vipps/other-features#callback
-[cancellations]: /payments/vipps/after-payment#cancellations
-[captures]: /payments/vipps/after-payment#captures
-[create-payment]: /payments/vipps/other-features#create-payment
-[hosted-view]: /payments/vipps/seamless-view
-[payee-reference]: /payments/vipps/other-features#payee-reference
-[price-resource]: /payments/vipps/other-features#prices
-[purchase]: /payments/vipps/other-features#purchase
-[reference-redirect]: /payments/vipps/redirect
-[reversal]: /payments/vipps/after-payment#reversals
+[abort]: /payment-instruments/vipps/after-payment#abort
+[callback]: /payment-instruments/vipps/other-features#callback
+[callbackurl]: /payment-instruments/vipps/other-features#callback
+[cancellations]: /payment-instruments/vipps/after-payment#cancellations
+[captures]: /payment-instruments/vipps/after-payment#captures
+[create-payment]: /payment-instruments/vipps/other-features#create-payment
+[hosted-view]: /payment-instruments/vipps/seamless-view
+[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
+[price-resource]: /payment-instruments/vipps/other-features#prices
+[purchase]: /payment-instruments/vipps/other-features#purchase
+[reference-redirect]: /payment-instruments/vipps/redirect
+[reversal]: /payment-instruments/vipps/after-payment#reversals
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
