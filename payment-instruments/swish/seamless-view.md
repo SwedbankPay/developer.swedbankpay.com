@@ -303,12 +303,12 @@ sequenceDiagram
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
 next_href="after-payment" next_title="Next: After Payment" %}
 
-[callback]: /payments/swish/other-features#callback
-[create-payment]: /payments/swish/other-features#create-payment
-[payee-reference]: /payments/swish/other-features#payee-reference
-[price-resource]: /payments/swish/other-features#prices
-[purchase]: /payments/swish/other-features#create-payment
-[sales-transaction]: /payments/swish/after-payment#sales
+[callback]: /payment-instruments/swish/other-features#callback
+[create-payment]: /payment-instruments/swish/other-features#create-payment
+[payee-reference]: /payment-instruments/swish/other-features#payee-reference
+[price-resource]: /payment-instruments/swish/other-features#prices
+[purchase]: /payment-instruments/swish/other-features#create-payment
+[sales-transaction]: /payment-instruments/swish/after-payment#sales
 [seamless-view-img]: /assets/img/checkout/swish-seamless-view.png
-[swish-payments]: /payments/swish/after-payment#payment-resource
+[swish-payments]: /payment-instruments/swish/after-payment#payment-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

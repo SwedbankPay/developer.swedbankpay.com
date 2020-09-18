@@ -85,12 +85,12 @@ Swish App.
 
 {% include iterator.html next_href="direct" next_title="Next: Direct" %}
 
-[after-payment]: /payments/swish/after-payment
+[after-payment]: /payment-instruments/swish/after-payment
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
 [Länsförsäkringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
 [nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
-[payment-resource]: /payments/swish/other-features#payment-resource
+[payment-resource]: /payment-instruments/swish/other-features#payment-resource
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-handel.html
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
