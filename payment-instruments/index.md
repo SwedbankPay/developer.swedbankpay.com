@@ -1,5 +1,5 @@
 ---
-title: Payments
+title: Payment Instruments
 redirect_from: /payments/
 estimated_read: 30
 description: |
