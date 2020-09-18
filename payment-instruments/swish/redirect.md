@@ -245,11 +245,11 @@ sequenceDiagram
 {% include iterator.html prev_href="direct" prev_title="Back: Direct"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
-[callback-url]: /payments/swish/other-features#callback
-[payee-reference]: /payments/swish/other-features#payee-reference
-[purchase]: /payments/swish/other-features#purchase-flow
-[redirect]: /payments/swish/redirect
-[seamless-view]: /payments/swish/seamless-view
+[callback-url]: /payment-instruments/swish/other-features#callback
+[payee-reference]: /payment-instruments/swish/other-features#payee-reference
+[purchase]: /payment-instruments/swish/other-features#purchase-flow
+[redirect]: /payment-instruments/swish/redirect
+[seamless-view]: /payment-instruments/swish/seamless-view
 [swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png
-[technical-reference-callback]: /payments/swish/other-features#callback
+[technical-reference-callback]: /payment-instruments/swish/other-features#callback
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

@@ -421,9 +421,9 @@ sequenceDiagram
 next_href="redirect" next_title="Next: Redirect" %}
 
 [swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
-[callback-url]: /payments/swish/other-features#callback
-[redirect]: /payments/swish/redirect
+[callback-url]: /payment-instruments/swish/other-features#callback
+[redirect]: /payment-instruments/swish/redirect
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payee-reference]: /payments/swish/other-features#payee-reference
-[purchase]: /payments/swish/direct#m-commerce-purchase-flow
-[sales-transaction]: /payments/swish/other-features#sales
+[payee-reference]: /payment-instruments/swish/other-features#payee-reference
+[purchase]: /payment-instruments/swish/direct#m-commerce-purchase-flow
+[sales-transaction]: /payment-instruments/swish/other-features#sales
