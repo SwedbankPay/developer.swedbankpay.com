@@ -243,16 +243,16 @@ Here you will also find info on `Cancel`, and `Reversal`.
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
-[abort]: /payments/invoice/after-payment#abort
-[after-payment]: /payments/invoice/after-payment
-[callback]: /payments/invoice/other-features#callback
+[abort]: /payment-instruments/invoice/after-payment#abort
+[after-payment]: /payment-instruments/invoice/after-payment
+[callback]: /payment-instruments/invoice/other-features#callback
 [paymenturl]: /checkout/other-features#payment-url-1
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/capture
-[financing-consumer]: /payments/invoice/other-features#financing-consumer
-[payee-reference]: /payments/invoice/other-features#payeeinfo
-[recur]: /payments/invoice/other-features#recur
+[cancel]: /payment-instruments/invoice/after-payment#cancellations
+[capture]: /payment-instruments/invoice/capture
+[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[payee-reference]: /payment-instruments/invoice/other-features#payeeinfo
+[recur]: /payment-instruments/invoice/other-features#recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/other-features#verify
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [fincon-invoice-approve]: /assets/img/payments/fincon-invoice-redirect-second-en.png

@@ -282,17 +282,17 @@ made a `capture` request." %}
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
 next_href="direct" next_title="Next: Direct" %}
 
-[after-payment]: /payments/invoice/after-payment
-[authorize]: /payments/invoice/other-features#authorizations
-[callback]: /payments/invoice/other-features#callback
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/capture
-[create-payment]: /payments/invoice/other-features#create-payment
-[financing-consumer]: /payments/invoice/other-features#financing-consumer
+[after-payment]: /payment-instruments/invoice/after-payment
+[authorize]: /payment-instruments/invoice/other-features#authorizations
+[callback]: /payment-instruments/invoice/other-features#callback
+[cancel]: /payment-instruments/invoice/after-payment#cancellations
+[capture]: /payment-instruments/invoice/capture
+[create-payment]: /payment-instruments/invoice/other-features#create-payment
+[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
-[payee-reference]: /payments/invoice/other-features#payee-reference
-[price-resource]: /payments/invoice/other-features#prices
-[recur]: /payments/invoice/other-features#recur
+[payee-reference]: /payment-instruments/invoice/other-features#payee-reference
+[price-resource]: /payment-instruments/invoice/other-features#prices
+[recur]: /payment-instruments/invoice/other-features#recur
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/other-features#verify

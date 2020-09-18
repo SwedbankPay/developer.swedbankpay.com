@@ -383,17 +383,17 @@ Head over to [Capture][capture] to complete the Invoice Direct integration.
 {% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="capture" next_title="Next: Capture" %}
 
-[abort]: /payments/invoice/other-features#abort
-[callback]: /payments/invoice/other-features#callback
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/capture
-[financing-consumer]: /payments/invoice/other-features#financing-consumer
+[abort]: /payment-instruments/invoice/other-features#abort
+[callback]: /payment-instruments/invoice/other-features#callback
+[cancel]: /payment-instruments/invoice/after-payment#cancellations
+[capture]: /payment-instruments/invoice/capture
+[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [financing-invoice-1-png]: /assets/img/checkout/disabled-payment-menu.png
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
-[other-features]: /payments/invoice/other-features
-[payee-reference]: /payments/invoice/other-features#payeeinfo
-[recur]: /payments/invoice/other-features#recur
-[redirect]: /payments/invoice/redirect
+[other-features]: /payment-instruments/invoice/other-features
+[payee-reference]: /payment-instruments/invoice/other-features#payeeinfo
+[recur]: /payment-instruments/invoice/other-features#recur
+[redirect]: /payment-instruments/invoice/redirect
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/other-features#verify

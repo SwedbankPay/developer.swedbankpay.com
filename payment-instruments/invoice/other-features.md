@@ -540,13 +540,13 @@ transaction made towards a payment, as previously described.
 Payment" %}
 
 [callback]: #callback
-[cancel]: /payments/invoice/after-payment#cancellations
-[capture]: /payments/invoice/capture
+[cancel]: /payment-instruments/invoice/after-payment#cancellations
+[capture]: /payment-instruments/invoice/capture
 [financing-consumer]: #financing-consumer
-[invoice-flow]: /payments/invoice#invoice-flow
+[invoice-flow]: /payment-instruments/invoice#invoice-flow
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
 [recur]: #recur
-[redirect]: /payments/invoice/redirect
-[seamless-view]: /payments/invoice/seamless-view
+[redirect]: /payment-instruments/invoice/redirect
+[seamless-view]: /payment-instruments/invoice/seamless-view
 [verification-flow]: #verification-flow
 [verify]: #verify

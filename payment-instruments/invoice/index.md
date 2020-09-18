@@ -99,15 +99,15 @@ sequenceDiagram
 
 {% include iterator.html next_href="redirect" next_title="Next: Redirect" %}
 
-[after-payment]: /payments/invoice/after-payment
-[callback-api]: /payments/invoice/other-features#callback
-[financing-consumer]: /payments/invoice/other-features#financing-consumer
-[optional-features]: /payments/invoice/optional-features
+[after-payment]: /payment-instruments/invoice/after-payment
+[callback-api]: /payment-instruments/invoice/other-features#callback
+[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[optional-features]: /payment-instruments/invoice/optional-features
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
-[recur]: /payments/invoice/other-features#recur
-[redirect]: /payments/invoice/redirect
-[purchase]: /payments/invoice/other-features#create-payment
+[recur]: /payment-instruments/invoice/other-features#recur
+[redirect]: /payment-instruments/invoice/redirect
+[purchase]: /payment-instruments/invoice/other-features#create-payment
 [setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
-[verify]: /payments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/other-features#verify
