@@ -377,11 +377,11 @@ sequenceDiagram
                          next_href="after-payment"
                          next_title="Next: After Payment" %}
 
-[callback-reference]: /payments/mobile-pay/other-features#callback
+[callback-reference]: /payment-instruments/mobile-pay/other-features#callback
 [mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
-[mobilepay-cancel]: /payments/mobile-pay/after-payment#cancellations
-[mobilepay-capture]: /payments/mobile-pay/after-payment#capture
-[payee-reference]: /payments/mobile-pay/other-features#payee-reference
+[mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations
+[mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
+[payee-reference]: /payment-instruments/mobile-pay/other-features#payee-reference
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent
-[technical-reference-callback]: /payments/mobile-pay/other-features#callback
+[technical-reference-callback]: /payment-instruments/mobile-pay/other-features#callback

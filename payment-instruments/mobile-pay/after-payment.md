@@ -139,5 +139,5 @@ documentation_section="mobile-pay" %}
                          next_href="other-features"
                          next_title="Next: Other Features" %}
 
-[abort]: /payments/mobile-pay/after-payment#abort
-[technical-reference-callback]: /payments/mobile-pay/other-features#callback
+[abort]: /payment-instruments/mobile-pay/after-payment#abort
+[technical-reference-callback]: /payment-instruments/mobile-pay/other-features#callback
