@@ -3,7 +3,7 @@ title: Payment Instruments
 redirect_from: /payments/
 estimated_read: 30
 description: |
-  Payments is our off-the-rack assortment of payment instruments.
+  Payment Instruments is our off-the-rack assortment of possibilities. Pick the one(s) you like.
   You can pick and choose among them to tailor the instrument package best
   suited for your business.
 menu_order: 300
