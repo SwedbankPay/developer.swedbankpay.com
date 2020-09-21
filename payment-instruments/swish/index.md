@@ -1,5 +1,5 @@
 ---
-title: Swish Payments
+title: Swish 
 redirect_from: /payments/swish/
 estimated_read: 30
 description: |
