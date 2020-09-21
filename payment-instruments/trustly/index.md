@@ -3,7 +3,7 @@ title: Trustly Payments
 redirect_from: /payments/trustly/
 estimated_read: 30
 description: |
-  **Trustly Payments** is the simplest way to
+  **Trustly** is the simplest way to
   provide **Direct Bank** payments on your website. Choose between our
   **Redirect** and **Seamless View** integration options.
 menu_order: 800
