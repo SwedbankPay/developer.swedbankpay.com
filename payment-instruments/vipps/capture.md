@@ -1,5 +1,5 @@
 ---
-title: Vipps Payments – Capture
+title: Capture
 redirect_from: /payments/vipps/capture
 estimated_read: 30
 ---

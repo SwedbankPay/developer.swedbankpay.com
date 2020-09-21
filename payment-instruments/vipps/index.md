@@ -1,5 +1,5 @@
 ---
-title: Vipps Payments
+title: Vipps 
 redirect_from: /payments/vipps/
 estimated_read: 30
 description: |
