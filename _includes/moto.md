@@ -12,7 +12,7 @@ MOTO (Mail Order / Telephone Order) is a purchase where you as a merchant enter
 the payer's card details in order to make a payment. The card details are given
 over telephone or in writing, and then entered into the payment interface by the
 sales representative. Common use-cases are travel or hotel bookings, where the 
-customer calls the sales representative to make a booking. This feature is only 
+payer calls the sales representative to make a booking. This feature is only 
 supported in the `Purchase` operation. See the abbreviated example below on how to
 implement MOTO by setting the `generateMotoPayment` to `true`.
  
