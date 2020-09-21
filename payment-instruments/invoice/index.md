@@ -3,7 +3,7 @@ title: Invoice Payments
 redirect_from: /payments/invoice/
 estimated_read: 30
 description: |
-  **Invoice Payments** is one of the easiest
+  **Invoice** is one of the easiest
   payment service where Swedbank Pay helps improve cashflow by purchasing
   merchant invoices. Choose between our **Direct**, **Redirect** and
   **Seamless view** integration options.
