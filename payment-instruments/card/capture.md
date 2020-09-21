@@ -1,5 +1,5 @@
 ---
-title: Card Payments – Capture
+title: Card – Capture
 redirect_from: /payments/card/capture
 estimated_read: 30
 menu_order: 700
