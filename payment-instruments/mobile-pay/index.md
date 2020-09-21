@@ -3,7 +3,7 @@ title: MobilePay Online
 redirect_from: /payments/mobile-pay/
 estimated_read: 30
 description: |
-  MobilePay is the fast and simple way of
+  MobilePay Online is the fast and simple way of
   paying with your mobile phone, reaching more than 4 million Danish end-users.
 menu_order: 700
 ---
