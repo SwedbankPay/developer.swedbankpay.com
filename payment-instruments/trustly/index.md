@@ -1,5 +1,5 @@
 ---
-title: Trustly Payments
+title: Trustly 
 redirect_from: /payments/trustly/
 estimated_read: 30
 description: |

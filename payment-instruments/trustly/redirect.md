@@ -1,5 +1,5 @@
 ---
-title: Trustly Payments – Redirect
+title: Redirect
 redirect_from: /payments/trustly/redirect
 estimated_read: 30
 menu_order: 700
