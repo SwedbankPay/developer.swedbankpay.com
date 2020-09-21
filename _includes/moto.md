@@ -14,7 +14,7 @@ over telephone or in writing, and then entered into the payment interface by the
 sales representative. Common use-cases are travel or hotel bookings, where the 
 customer calls the sales representative to make a booking. This feature is only 
 supported in the `Purchase` operation. See the abbreviated example below on how to
-implement MOTO by setting the `generatedMotoPayment` to `true`.
+implement MOTO by setting the `generateMotoPayment` to `true`.
  
 
 {:.code-view-header}
