@@ -1,4 +1,3 @@
-{% assign api_resource=include.api_resource %}
 {% if include.api_resource == "creditcard" %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
