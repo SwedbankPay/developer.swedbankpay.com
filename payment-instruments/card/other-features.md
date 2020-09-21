@@ -1,5 +1,5 @@
 ---
-title: Card – Other Features
+title: Other Features
 redirect_from: /payments/card/other-features
 estimated_read: 30
 description: |

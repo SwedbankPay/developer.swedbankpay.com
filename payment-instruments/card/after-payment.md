@@ -1,5 +1,5 @@
 ---
-title: Card – After Payment
+title: After Payment
 redirect_from: /payments/card/after-payment
 estimated_read: 30
 menu_order: 900

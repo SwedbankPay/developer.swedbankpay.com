@@ -1,5 +1,5 @@
 ---
-title: Card – Mobile
+title: Mobile
 redirect_from: /payments/card/mobile-card-payments
 estimated_read: 30
 menu_order: 800
