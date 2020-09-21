@@ -1,5 +1,5 @@
 ---
-title: Card – Seamless View
+title: Seamless View
 redirect_from: /payments/card/seamless-view
 estimated_read: 30
 description: |

@@ -1,5 +1,5 @@
 ---
-title: Card – Direct
+title: Direct
 redirect_from: /payments/card/direct
 estimated_read: 30
 description: |
