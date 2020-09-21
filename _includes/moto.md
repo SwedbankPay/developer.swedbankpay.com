@@ -4,7 +4,7 @@
     {% assign api_resource_field_name = "paymentorder" %}
 {% endif %}
 
-## MOTO (Mail Order / Telephone Order)
+## MOTO
 
 {% include alert-agreement-required.md %}
 
