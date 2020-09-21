@@ -14,8 +14,7 @@ the customer card details in order to make a payment. The card details are given
 over telephone or in writing, and then entered into the payment interface by the
 sales representative. Common use-cases are travel or hotel bookings, where the 
 customer calls the sales representative to make a booking. This feature is only 
-supported in the `Purchase` operation and is only valid if you have 3-D Secure 2
-authentication of the cardholder. See the abbreviated example below on how to
+supported in the `Purchase` operation. See the abbreviated example below on how to
 implement MOTO by setting the `generatedMotoPayment` to `true`.
  
 
