@@ -22,7 +22,7 @@ implement MOTO by setting the `generatedMotoPayment` to `true`.
 **Request**
 
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/{{ include.api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
