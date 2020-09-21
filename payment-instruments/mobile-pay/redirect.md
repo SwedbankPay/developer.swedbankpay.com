@@ -1,5 +1,5 @@
 ---
-title: MobilePay Online Payments – Redirect
+title: Redirect
 redirect_from: /payments/mobile-pay/redirect
 estimated_read: 30
 description: |
