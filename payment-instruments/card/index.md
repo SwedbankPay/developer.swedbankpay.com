@@ -3,7 +3,7 @@ title: Card
 redirect_from: /payments/card/
 estimated_read: 30
 description: |
-  **Card Payments** is the most popular, versatile
+  **Card** is the most popular, versatile
   and global way to initate a transaction with a customer. Choose between our
   **Seamless View**, **Redirect**, or **Direct** integration options.
 menu_order: 300
