@@ -27,7 +27,7 @@ also be able to see the available `operations` after posting a payment.
 ### Create reversal transaction
 
 The `create-reversal` operation will reverse a payment and
-refund the amount to the consumer. To reverse a payment, perform the
+refund the amount to the payer. To reverse a payment, perform the
 `create-reversal` operation. The HTTP body of the request should look as
 follows:
 

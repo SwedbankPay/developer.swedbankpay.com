@@ -18,7 +18,7 @@ checkin process described above. This information will appear prefilled in the
 Payment Menu.
 
 If you are sending a guest user `POST` request, simply leave out the 
-`consumerProfileRef` from the input, and your end user will be sent to an empty 
+`consumerProfileRef` from the input, and the payer will be sent to an empty 
 Payment Menu. Information like `email`, `address` and `msisdn` can still be 
 added manually in the payer node. If added, it will appear prefilled in the 
 Payment Menu.
@@ -187,15 +187,13 @@ or credit card.
 {:.text-center}
 ![Payment Menu with swedish guest payer and card payment opened][swedish-guest-payment-menu-image]{:width="475" height="965"}
 
-When the consumer completes the payment, the Payment Menu script will be
-signaled and a full redirect to the `completeUrl` sent in with the
-Payment Order will be performed. When the `completeUrl` on your server is hit,
-you can inspect the status on the stored `paymentorder.id` on the server, and
-then perform `capture`.
-If the payment is a `Sale` or one-phase purchase, it will be automatically
-captured. A third scenario is if the goods are sent
-physically to the payer; then you should await capture until after the
-goods have been sent.
+When the the payment is completed, the Payment Menu script will be signaled and
+a full redirect to the `completeUrl` sent in with the Payment Order will be
+performed. When the `completeUrl` on your server is hit, you can inspect the
+status on the stored `paymentorder.id` on the server, and then perform
+`capture`. If the payment is a `Sale` or one-phase purchase, it will be
+automatically captured. A third scenario is if the goods are sent physically to
+the payer; then you should await capture until after the goods have been sent.
 
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to

@@ -6,7 +6,7 @@ description: |
   Swish is a one-phase payment instrument supported by the
   major Swedish banks. **Swish Payments Redirect** is where Swedbank
   Pay performs a payment that the payer confirms in the Swish mobile app.
-  The consumer initiates the payment by supplying the Swish registered mobile
+  The payer initiates the payment by supplying the Swish registered mobile
   number (msisdn), connected to the Swish app.
 menu_order: 500
 ---
@@ -20,7 +20,7 @@ menu_order: 500
 *   You need to redirect the payer to the payment page to enter the Swish
     registered mobile number.
     This triggers the initiation of a sales transaction.
-*   Swedbank Pay handles the dialogue with Swish and the consumer confirms the
+*   Swedbank Pay handles the dialogue with Swish and the payer confirms the
     purchase in the Swish app.
 *   Swedbank Pay will redirect the payer's browser to - or display directly in
     the iFrame - one of two specified URLs, depending on whether the payment
@@ -28,14 +28,14 @@ menu_order: 500
     Please note that both a successful and rejected payment reach completion,
     in contrast to a cancelled payment.
 
-The consumer/end-user is redirected to Swedbank Pay hosted pages and prompted
+The payer is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
 
 Swish is a one-phase payment instrument that is based on sales transactions
 **not** involving `capture` or `cancellation` operations.
 
 {:.text-center}
-![Consumer paying with Swish using Swedbank Pay][swish-redirect-image]{:width="475px" height="400px"}
+![Paying with Swish using Swedbank Pay][swish-redirect-image]{:width="475px" height="400px"}
 
 {% include alert-callback-url.md api_resource="swish" %}
 
@@ -110,8 +110,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                                                                       |
 |                  | └─➔&nbsp;`paymentAgeLimit`   | `integer`     | Positive number sets required age limit to fulfill the payment.                                                                                                                                                                                                                                    |
-|                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer (consumer/end user) from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
-| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                               |
+|                  | └➔&nbsp;`payerReference`     | `string`      | The reference to the payer from the merchant system. E.g mobile number, customer number etc.                                                                                                                                                                                   |
+| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
@@ -122,7 +122,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`payeeInfo`          | `object`      | The `payeeInfo` contains information about the payee.                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(50*)` | {% include field-description-payee-reference.md documentation_section="swish" %}                                                                                                                                                                                                                   |
-|                  | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                            |
+|                  | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`subsite`           | `string(40)`  | {% include field-description-subsite.md %}                                                                                                                                        |

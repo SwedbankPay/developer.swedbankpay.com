@@ -44,7 +44,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
 | {% icon check %}︎ | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin].                                                                                                                                                                                                          |
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
-|                  | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
+|                  | **`Forwarded`**     | The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the `for` parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
 
 ## URI Usage
 

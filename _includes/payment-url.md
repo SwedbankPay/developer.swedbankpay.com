@@ -12,7 +12,7 @@
 ## Payment Url
 
 For our Seamless Views, the field called `paymentUrl` will be used when the
-consumer is redirected out of the Seamless View (the `iframe`). The consumer is
+payer is redirected out of the Seamless View (the `iframe`). The payer is
 redirected out of frame when {{ when }}.
 
 The URL should represent the page of where the {{ entity }} Seamless View was
@@ -45,15 +45,15 @@ requires this, for example.
 For mobile flows, some payment instruments work best when app-to-app switching
 is enabled and handled automatically (Swish, Vipps etc). To solve this, it is
 important that the third party app or site understand where to redirect the
-consumer back to after the flow on their end is completed.
+payer back to after the flow on their end is completed.
 
 The `paymentUrl` is the URL Swedbank Pay will provide to the third party for
-handling the redirect back to your site or app. When receiving the consumer back
-on the `paymentUrl` either in an app or web page it is important to restore the
+handling the redirect back to your site or app. When receiving the payer back
+on the `paymentUrl` either in an app or web page, it is important to restore the
 Seamless View to let the payment finalize the flow. For in-app it is important
 that you either implement the `onPaymentCompleted` event or let the Seamless
 View redirect to the `completeUrl` before intercepting the WebView. If you
-intercept the WebView when the consumer device is redirected to the `paymentUrl`
+intercept the WebView when the payer's device is redirected to the `paymentUrl`
 it can lead to issues. If you want to handle payment errors in your own code,
 you should also subscribe to other events provided by the Seamless View
 JavaScript and shut down the Seamless View if any of these events occur.

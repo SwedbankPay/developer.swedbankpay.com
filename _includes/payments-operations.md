@@ -203,7 +203,7 @@ Content-Type: application/json
 ### Operation `aborted-payment`
 
 The `aborted-payment` operation means that the merchant has aborted the payment
-before the end user has fulfilled the payment process. You can see this under
+before the payer has fulfilled the payment process. You can see this under
 `abortReason` in the response.
 
 An `aborted-payment` operation looks like the following:

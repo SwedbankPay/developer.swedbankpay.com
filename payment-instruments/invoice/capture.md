@@ -12,9 +12,9 @@ menu_order: 600
 The final step in the integration process for Invoice [Redirect][redirect],
 [Seamless View][seamless-view] and [Direct][direct] is to complete a Capture.
 
-An invoice capture will generate the invoice and distribute it to the consumer.
+An invoice capture will generate the invoice and distribute it to the payer.
 This differs from i.e. Card Payments, where a capture operation will fully or
-partially charge the consumer's authorized amount.
+partially charge the payer's authorized amount.
 
 ## Step 1: Create `FinancingConsumer` Capture
 
