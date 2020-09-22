@@ -96,7 +96,7 @@ Content-Type: application/json
     "payeeInfo" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo" }
   },
   "operations": [
-              {
+        {
             "rel": "redirect-{{ api_redirect_rel }}",
             "href": "{{ page.front_end_url }}/{{ api_redirect_link }}/{{ page.payment_token }}",
             "method": "GET",
