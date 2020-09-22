@@ -5,21 +5,21 @@ estimated_read: 30
 description: |
   **MobilePay Online** is a two-phase payment instrument which can be
   implemented by the supported redirect scenario.
-  Swedbank Pay receives the MobilePay details from the payer through Swedbank
-  Pay Payments.
+  Swedbank Pay receives the MobilePay Online's details from the payer through 
+  Swedbank Pay Payments.
   The payment will then be performed by Swedbank Pay and confirmed by the payer
-  through the MobilePay app.
+  through the MobilePay Online app.
 menu_order: 600
 ---
 
-## MobilePay redirect integration flow
+## MobilePay Online redirect integration flow
 
 *   When you have prepared your merchant/webshop site, you make a `POST` request
     towards Swedbank Pay with your Purchase information.
 *   You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
     environment, in response.
 *   You need to redirect the browser of the end-user/consumer to that URL so
-    that the user may enter their MobilePay details.
+    that the user may enter their MobilePay Online details.
 *   When the payment is completed, Swedbank Pay will redirect the browser back
     to your merchant/webshop site.
 *   Finally you need to make a `GET` request towards Swedbank Pay with the
@@ -130,7 +130,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
-| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay. For it to display correctly in MobilePay's app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in MobilePay Online's app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                                                                                                                                                                                                              |
 
 {:.code-view-header}
 **Response**

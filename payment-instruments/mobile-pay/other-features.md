@@ -106,7 +106,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay reconciliation before being used.                                                                                               |
-| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay. For it to display correctly in MobilePay's app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and publicly available                                                                                                                                                                                                              |                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in MobilePay Online's app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and publicly available                                                                                                                                                                                                              |                                                                                                                                                                                                           |
 
 {:.code-view-header}
 **Response**
@@ -296,9 +296,9 @@ documentation_section="mobile-pay" transaction="capture" %}
 
 ### Create capture transaction
 
-A `capture` transaction - to withdraw money from the payer's MobilePay - can be
-created after a completed authorization by performing the `create-capture`
-operation.
+A `capture` transaction - to withdraw money from the payer's 
+MobilePay Online - can be created after a completed authorization by performing 
+the `create-capture` operation.
 
 {:.code-view-header}
 **Request**
