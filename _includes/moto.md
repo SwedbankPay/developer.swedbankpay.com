@@ -58,10 +58,10 @@ Content-Type: application/json
 }
 ```
 
-You should be able to find the `operation` with `rel` equal to 
-`redirect-{{ api_redirect_rel }}` in the response. This is the link to the 
-payment page. The merchant employee needs to visit this page and enter the card 
-details provided by the payer. 
+To authorize the payment, find the operation with `rel` equal to
+`redirect-{{ api_redirect_rel }}` in the response and redirect the merchant
+employee to the provided `href` to fill out the payer’s card details. You will
+find an abbreviated example of the response provided below.
 
 {:.code-view-header}
 **Response**
