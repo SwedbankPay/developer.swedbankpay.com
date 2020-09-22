@@ -1,7 +1,11 @@
 {% if include.api_resource == "creditcard" %}
     {% assign api_resource_field_name = "payment" %}
+    {% assign api_redirect_rel = "authorization" %}
+    {% assign api_redirect_link = "creditcard/payments/authorize" %}
 {% else %}
     {% assign api_resource_field_name = "paymentorder" %}
+    {% assign api_redirect_rel = "paymentorder" %}
+    {% assign api_redirect_link = "paymentmenu" %}
 {% endif %}
 
 ## MOTO
@@ -85,6 +89,14 @@ Content-Type: application/json
     "cancellations": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations" },
     "urls" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls" },
     "payeeInfo" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo" }
-  }
+  },
+  "operations": [
+              {
+            "rel": "redirect-{{api_redirect_rel}}",
+            "href": "{{ page.front_end_url }}/{{api_redirect_link}}/{{ page.payment_token }}",
+            "method": "GET",
+            "contentType": "text/html"
+        },
+  ]
 }
 ```
