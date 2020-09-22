@@ -1,14 +1,14 @@
 ## Payout
 
-{% include jumbotron.html body="**Payout to Card** is an add-on service that
-enable you to deposit winnings directly to your end-users' credit cards. This
-without  the need to collect card details from the end-user a second time." %}
+{% include jumbotron.html body="**Payout to Card** is an add-on service which
+enables you to deposit winnings directly to the winner's card. This without
+having to collect card details a second time." %}
 
 ### Introduction
 
-*   Acquirer for this service is Swedbank. You require a separate Swedbank
-    acquiring number to ensure that payout transactions and regular card
-    transactions are kept separate.
+*   The only acquirer for this service is Swedbank. You require a separate
+    Swedbank acquiring number to ensure that payout transactions and regular
+    card transactions are kept separate.
 *   You need to have the 3-D Secure protocol enabled.
 *   The service is available through a Swedbank Pay hosted payment page.
 *   The current implementation is only available for gaming transactions (

@@ -4,7 +4,7 @@ redirect_from: /payments/mobile-pay/
 estimated_read: 30
 description: |
   MobilePay Online is the fast and simple way of
-  paying with your mobile phone, reaching more than 4 million Danish end-users.
+  paying with your mobile phone, reaching more than 4 million Danes.
 menu_order: 700
 ---
 
@@ -15,7 +15,7 @@ accepting payments. We offer it on our redirect and seamless view platforms.
 
 ## Purchase flow
 
-After the payment is created, the consumer is redirected to MobilePay Online's
+After the payment is created, the payer is redirected to MobilePay's
 own payment page where the phone number is entered, and a push message is sent
 to the phone.
 
@@ -23,8 +23,8 @@ to the phone.
 ![screenshot of the MobilePay Online number input page][mobilepay-number-input]{:height="690px" width="475px"}
 
 A countdown is shown in the browser and the payment request will appear in the
-app, waiting to be confirmed by the consumer. If you are using the redirect
-option, the consumer will be redirected back to the merchant's site.
+app, waiting to be confirmed by the payer. If you are using the redirect
+option, the payer will be redirected back to the merchant's site.
 
 ## Good To Know
 
@@ -39,7 +39,7 @@ products) have to make a [`Capture`][mobilepay-capture] or
 ### Payment Type
 
 MobilePay Online is one of the instruments using two-phase payments. The
-`authorization` is done when the consumer successfully confirms in the app, and
+`authorization` is done when the payer successfully confirms in the app, and
 the `abort`, `cancel`, `capture` or `reversal` is done by the merchant at a
 later time. Read more about the [different operations][other-features] and the
 [payment resource][payment-resource].
@@ -75,7 +75,7 @@ MobilePay app.
 ## Payment availability
 
 Even though MobilePay Online supports several currencies, the payment instrument
-itself is only available for consumers in Denmark and Finland. This allows a 
+itself is only available for payers in Denmark and Finland. This allows a 
 shop in Norway to take payments in NOK from a Danish payer if the shop supports
 shipping to Denmark, for instance.
 

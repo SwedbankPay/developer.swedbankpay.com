@@ -49,7 +49,7 @@ The Swish app will be launched automatically when you push the pay button.
 ### Payment Type
 
 Swish is one of the instruments using one-phase payments. The `sale` is done
-when the consumer successfully confirms in the app, capturing the funds
+when the payer successfully confirms in the app, capturing the funds
 instantly. The `abort` operation is still available, but the `cancel` and
 `capture` operations are not. The `reversal`, if needed, is done by the
 merchant at a later time. Read more about the [different

@@ -46,15 +46,14 @@ integration process by visiting the sections for each payment instrument.
 ### Seamless View
 
 With [Seamless Views][seamless-view] you can initiate the payment process
-directly in an `iframe` on your site. If you prefer that the consumer isn't
+directly in an `iframe` on your site. If you prefer that the payer isn't
 redirected away from you, this option enables you to embed our payment page
 seamlessly into your shopping experience.
 
 ### Redirect
 
-The [Redirect][redirect] platform redirects the consumers to a Swedbank Pay
-hosted payment page. The consumer will be redirected back to your page when the
-payment is completed.
+The [Redirect][redirect] platform redirects the payer to a Swedbank Pay hosted
+payment page, and back to your page when the payment is completed.
 
 ### Direct
 
@@ -73,19 +72,19 @@ compliant.
                       enabling a more straightforward integration." %}
 
 There are two main payment types, **two-phase** and **one-phase** payments. The
-two seem very similar from a consumer's point of view, but there are key
+two seem very similar from a payer's point of view, but there are key
 differences you should know about.
 
 ### Two-Phase Payments
 
 A two-phase payment is performed in two steps – an `authorization` which
-reserves the consumer's funds, and a `capture` of the funds at a later time,
+reserves the payer's funds, and a `capture` of the funds at a later time,
 usually when the goods are shipped.
 
 This is the most common payment type, and it is used by Card Payments, Vipps
 Payments, MobilePay payments and Invoice Payments. A
 capture of an invoice will *not* capture any funds, but trigger the invoice
-distribution and send it to the consumer.
+distribution and send it to the payer.
 
 The payment instruments that support two-phase payments are:
 
@@ -100,7 +99,7 @@ There are two types of one-phase payments – `sale` and `autoCapture`.
 
 `sale` is used by payment instruments such as [Swish][swish].
 These payments will have a `sale` transaction instead of the `authorization` and
-`capture`. The funds will be captured from the consumer straight away.
+`capture`. The funds will be captured from the payer straight away.
 
 `autoCapture` is only available for Card Payments. The mechanics work the same
 way as a two-phase payment, with two separate transactions – one for the
@@ -131,17 +130,18 @@ the URIs and operations for further actions, given the state of the payment.
 After creating a payment, you can:
 
 *   `Authorize` funds. An authorization transaction reserves the funds. It is
-    possible to `abort` a payment before the end user has completed the payment
+    possible to `abort` a payment before the payer has completed the payment
     process. And either:
-*   `Capture` funds. Before delivering the merchandise you need to create a capture
-    transaction to ensure that the money is charged from the consumer credit card
-    or properly billed by invoice. One-phase payments will combine these two in a
-    `sale` or `autoCapture` transaction as described in the section above.
+*   `Capture` funds. Before delivering the merchandise you need to create a
+    capture transaction to ensure that the money is charged from the payer's
+    card or properly billed by invoice. One-phase payments will combine these
+    two in a `sale` or `autoCapture` transaction as described in the section
+    above.
 
 Or:
 
 *   `Cancel` the authorized amount. Funds that are authorized but not yet captured,
-    can be released back to the consumer. This is done by creating a cancel
+    can be released back to the payer. This is done by creating a cancel
     transaction. This is not available for one-phase payments.
 *   `Reverse` captured funds. In some cases you may need to make a reversal of
     captured funds. This is achieved by creating a reversal transaction.

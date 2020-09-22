@@ -71,14 +71,14 @@ users of Dankort to be able to choose their preferred payment application on the
 Swedbank Pay payment page. If you are a Dankort user, read more about this
 feature at [Dankort][dankort-eu].
 
-As a merchant you are able to set a priority selection of payment application by
-contacting [Swedbank Pay Support][swedbankpay-support]. The end user will always
+As a merchant you can set a priority selection of payment application by
+contacting [Swedbank Pay Support][swedbankpay-support]. The payer will always
 be able to override this priority selection on the payment page.
 
-If you want more information about Co-badge Card Choice for Dankort users please
-contact [Swedbank Pay Support][swedbankpay-support]. The example below shows the
-payment window where there payer can choose between Dankort or Visa before
-completing the payment.
+If you want more information about Co-badge Card Choice for Dankort users,
+please contact [Swedbank Pay Support][swedbankpay-support]. The example below
+shows the payment window where the payer can choose between Dankort or Visa
+before completing the payment.
 
 ![Co-badge Dankort cards with option to choose between Dankort and Visa before paying][card-badge]{:height="620px" width="475px"}
 

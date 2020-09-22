@@ -46,7 +46,7 @@ how it tastes.
 **Modules, extensions and plugins** are typically used as a way to extend
 webshop platforms such as [WooCommerce][woocommerce] and [Magento][magento] with
 functionality that isn't provided in the core platform. Such functionality may
-be to allow consumers of your website to pay with a payment provider such as
+be to allow visitors of your website to pay with a payment provider such as
 Swedbank Pay.
 
 {% include repository-table.md type='Module' %}

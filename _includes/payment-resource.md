@@ -125,8 +125,8 @@ Content-Type: application/json
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
 | └➔&nbsp;`description`    | `string` | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`payerReference`    | `string(40)` | The reference to the payer (consumer/end user) from the merchant system. Can be mobile number, e-mail address, account number, a UUID, etc.                                                                                                                                                                                                         |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the consumer's browser.                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`payerReference`    | `string(40)` | The reference to the payer from the merchant system. Can be mobile number, e-mail address, account number, a UUID, etc.                                                                                                                                                                                                         |
+| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource=api_resource %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
@@ -153,9 +153,9 @@ for the given operation.
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| `redirect-authorization` | Contains the URI that is used to redirect the payer to the Swedbank Pay payment page containing the card authorization UI. |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
+| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured, payment.                                |
 
 {% when "swish" %}
 
@@ -164,9 +164,9 @@ for the given operation.
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                                                                                               |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page.                                                                                                      |
-| `redirect-sale`        | Contains the redirect-URI that redirects the consumer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
-| `view-sales`           | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the consumer to a separate payment page. |
-| `view-payment`         | Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the consumer to separate payment page.                                |
+| `redirect-sale`        | Contains the redirect-URI that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
+| `view-sales`           | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
+| `view-payment`         | Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.                                |
 
 {% when "trustly" %}
 
@@ -184,9 +184,9 @@ for the given operation.
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
+| `redirect-authorization` | Contains the URI that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
+| `view-authorization`     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
@@ -197,10 +197,10 @@ for the given operation.
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the consumer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed  the card authorization UI directly on the webshop/merchant site     |
-| `view-payment`           | Contains the URI of the JavaScript to create a Seamless view iframe directly without redirecting the consumer to separate payment page.     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the consumer.                                  |
+| `redirect-authorization` | Contains the URI that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
+| `view-authorization`     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
+| `view-payment`           | Contains the URI of the JavaScript to create a Seamless view iframe directly without redirecting the payer to a separate payment page.     |
+| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
