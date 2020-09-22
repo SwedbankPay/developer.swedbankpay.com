@@ -91,7 +91,7 @@ The payment instruments that support two-phase payments are:
 
 *   [Card][card]
 *   [Invoice][invoice]
-*   [MobilePay Online][invoice]
+*   [MobilePay Online][mobile-pay]
 *   [Vipps][vipps]
 
 ### One-Phase Payments
