@@ -95,7 +95,7 @@ All valid options when posting in a payment with operation `Purchase`,
 are described in each payment instrument's respective API reference.
 Please see the general sequence diagrams for more information about payments
 in one-phase (e.g. [Swish][swish] and credit card with autocapture) and
-two-phase (e.g. [Credit card][credit-card], [MobilePay Online][mobile-pay],
+two-phase (e.g. [Card][card], [MobilePay Online][mobile-pay],
 [Vipps][vipps]).
 
 {% if show_authorization %}
