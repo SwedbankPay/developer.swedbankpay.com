@@ -57,9 +57,10 @@ Content-Type: application/json
 }
 ```
 
-To fill out the card information, find the operation with 
-`rel` equal to `redirect-{{ api_redirect_rel }}` and redirect to the
-page where the merchant employee fills out the payer’s card details. 
+You should be able to find the `operation` with `rel` equal to 
+`redirect-{{ api_redirect_rel }}` in the response. This is the link to the 
+payment page. The merchant employee needs to visit this page and enter the card 
+details provided by the payer. 
 
 {:.code-view-header}
 **Response**
