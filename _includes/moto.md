@@ -15,9 +15,7 @@
 MOTO (Mail Order / Telephone Order) is a purchase where you as a merchant enter 
 the payer's card details in order to make a payment. The card details are given
 over telephone or in writing, and then filled out to the payment interface by the
-sales representative. To fill out the card information, find the operation with 
-`rel` equal to `redirect-{{ api_redirect_rel }}` and redirect to the
-page where the merchant employee fills out the payer’s card details. 
+sales representative. 
 Common use-cases are travel or hotel bookings, where the 
 payer calls the sales representative to make a booking. This feature is only 
 supported in the `Purchase` operation. See the abbreviated example below on how to
@@ -58,6 +56,10 @@ Content-Type: application/json
     }
 }
 ```
+
+To fill out the card information, find the operation with 
+`rel` equal to `redirect-{{ api_redirect_rel }}` and redirect to the
+page where the merchant employee fills out the payer’s card details. 
 
 {:.code-view-header}
 **Response**
