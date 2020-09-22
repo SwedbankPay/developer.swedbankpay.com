@@ -97,7 +97,7 @@ Content-Type: application/json
   },
   "operations": [
               {
-            "rel": "redirect-{{api_redirect_rel}}",
+            "rel": "redirect-{{ api_redirect_rel }}",
             "href": "{{ page.front_end_url }}/{{ api_redirect_link }}/{{ page.payment_token }}",
             "method": "GET",
             "contentType": "text/html"
