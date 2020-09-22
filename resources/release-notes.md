@@ -17,7 +17,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Added documentation on deprecated operations in [Checkout][checkout-payment-order-purchase].
 *   Updated `instrument` description in [Checkout][checkout].
 *   Updated `payeeReference` description.
-*   Clarified `msisdn` and `shoplogoUrl` in [MobilePay Payments][mobile-pay].
+*   Clarified `msisdn` and `shoplogoUrl` in [MobilePay Online Payments][mobile-pay].
 *   Updated [Test data][test-data] in [Resources][resources].
 *   Documented problems in [Trustly Payments][trustly-payments].
 *   Added an alert for two-phase payments in Capture pages.
@@ -289,7 +289,7 @@ All sections have been released. :trophy:
     from the Swedbank Pay Developer Portal.
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
     updates and are now ready for another round of review.
-*   [MobilePay Payments][mobile-pay] is now ready for review.
+*   [MobilePay Online Payments][mobile-pay] is now ready for review.
 *   `paymentAgeLimit` is now added in [Swish Payments][swish].
 *   The [Terminology page][terminology] is updated and _3-D Secure 2.0 (3DS2)_   ,
     _PSD2_   and _SCA_   explanations are added.
@@ -306,7 +306,7 @@ All sections have been released. :trophy:
     to release.
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
     review.
-*   The Direct Debit, [MobilePay Payments][mobile-pay] and
+*   The Direct Debit, [MobilePay Online Payments][mobile-pay] and
     [Credit Payments][credit] (née "Credit Account") sections have received a few
     updates, inching them all closer to review.
 

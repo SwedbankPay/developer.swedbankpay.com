@@ -13,7 +13,7 @@ menu_order: 900
 
 ### Introduction
 
-*   The Payment Link can be implemented for Card, MobilePay, Vipps and Swish
+*   The Payment Link can be implemented for Card, MobilePay Online, Vipps and Swish
     payments, using the Redirect platform and seamless view.  
 
 *   When the consumer starts the purchase process in your merchant/webshop

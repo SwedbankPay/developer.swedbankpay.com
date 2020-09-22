@@ -8,19 +8,19 @@ description: |
 menu_order: 700
 ---
 
-MobilePay is the main Danish payment app for mobile phones, making it one of the
-essential payment instruments for merchants operating in Denmark. More than 4
-million Danes are users of the app, and more than 100,000 merchants are
+MobilePay Online is the main Danish payment app for mobile phones, making it one
+of the essential payment instruments for merchants operating in Denmark. More 
+than 4 million Danes are users of the app, and more than 100,000 merchants are
 accepting payments. We offer it on our redirect and seamless view platforms.
 
 ## Purchase flow
 
-After the payment is created, the consumer is redirected to MobilePay's
+After the payment is created, the consumer is redirected to MobilePay Online's
 own payment page where the phone number is entered, and a push message is sent
 to the phone.
 
 {:.text-center}
-![screenshot of the MobilePay number input page][mobilepay-number-input]{:height="690px" width="475px"}
+![screenshot of the MobilePay Online number input page][mobilepay-number-input]{:height="690px" width="475px"}
 
 A countdown is shown in the browser and the payment request will appear in the
 app, waiting to be confirmed by the consumer. If you are using the redirect
@@ -68,15 +68,15 @@ from you as a merchant in this regard.
 MobilePay Online is unfortunately not available in our demoshop at the moment,
 but it will be in the future. The demoshop in the test environments will use a
 fakeservice which enables you to test a successful purchase without using the
-MobilePay app.
+MobilePay Online app.
 
 {% include languages.md api_resource="mobilepay" %}
 
 ## Payment availability
 
-Even though MobilePay supports several currencies, the payment instrument itself
-is only available for consumers in Denmark and Finland. This allows a shop in
-Norway to take payments in NOK from a Danish payer if the shop supports
+Even though MobilePay Online supports several currencies, the payment instrument
+itself is only available for consumers in Denmark and Finland. This allows a 
+shop in Norway to take payments in NOK from a Danish payer if the shop supports
 shipping to Denmark, for instance.
 
 {% include iterator.html

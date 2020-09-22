@@ -14,7 +14,7 @@ The Payment Link can be implemented for payment instruments listed below, using
 the Redirect platform and Swedbank Pay hosted payment page.
 
 * [Credit card][payment-instruments-card-payment-pages]
-* [MobilePay][payment-instruments-mobilepay-payment-pages]
+* [MobilePay Online][payment-instruments-mobilepay-payment-pages]
 * [Swish][swish]
 * [Vipps][vipps]
 
@@ -95,7 +95,7 @@ All valid options when posting in a payment with operation `Purchase`,
 are described in each payment instrument's respective API reference.
 Please see the general sequence diagrams for more information about payments
 in one-phase (e.g. [Swish][swish] and credit card with autocapture) and
-two-phase (e.g. [Credit card][credit-card], [MobilePay][mobile-pay],
+two-phase (e.g. [Credit card][credit-card], [MobilePay Online][mobile-pay],
 [Vipps][vipps]).
 
 {% if show_authorization %}
