@@ -18,6 +18,14 @@ menu_order: 800
                       to your website after the completion of the payment." %}
 
 
+
+{% include alert.html type="informative" icon="branding_watermark"	
+                      body="**Seamless View** is our solution for a payment	
+                      experience that is integrated directly on your website.	
+                      The payment process will be executed in an `iframe` on	
+                      your page." %}
+
+
 ### Important steps before you launch Swedbank Pay Trustly Payments at your website
 
 Prior to launching Trustly Payments at your site, make sure that
