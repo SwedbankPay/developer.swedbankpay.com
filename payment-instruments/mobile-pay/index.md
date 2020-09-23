@@ -8,7 +8,7 @@ description: |
 menu_order: 700
 ---
 
-MobilePay Online is the main Danish payment app for mobile phones, making it one
+MobilePay is the main Danish payment app for mobile phones, making it one
 of the essential payment instruments for merchants operating in Denmark. More 
 than 4 million Danes are users of the app, and more than 100,000 merchants are
 accepting payments. We offer it on our redirect and seamless view platforms.
