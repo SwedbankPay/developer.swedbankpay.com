@@ -53,5 +53,5 @@ If you want to inspect the transactional status of a payment, read about the
 *   `awaitingActivity` is in use for a selection of payment instruments. A
     transaction reaches this state when a payer is sent away from Swedbank Pay
     to do a confirmation or verification. Examples of this can be payment apps
-    like Swish, Vipps or MobilePay Online, or 3-D Secure verifications for card
+    like Swish, Vipps or MobilePay, or 3-D Secure verifications for card
     payments.
