@@ -293,6 +293,6 @@ next_href="direct" next_title="Next: Direct" %}
 [payee-reference]: /payment-instruments/invoice/other-features#payee-reference
 [price-resource]: /payment-instruments/invoice/other-features#prices
 [recur]: /payment-instruments/invoice/other-features#recur
-[setup-mail]: mailto:setup.ecom@PayEx.com
+[setup-mail]: mailto:setup.ecom@payex.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payment-instruments/invoice/other-features#verify
