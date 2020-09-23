@@ -179,7 +179,7 @@ TODO: Remove pipes from the above code example and add a field table
 
 -----------------------------
 [card]: /payment-instruments/card
-[invoice]: //payment-instruments/invoice
+[invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
 [create-card-payment]: /payment-instruments/card/other-features#create-payment
