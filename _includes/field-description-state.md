@@ -1,7 +1,9 @@
+{%- capture text -%}
 Indicates the state of the transaction, usually `initialized`, `completed` or
 `failed`. If a partial {{ transaction }} has been done and further transactions
 are possible, the state will be `awaitingActivity`.
-{{- id_text | strip_newlines -}}
+{%- endcapture -%}
+{{- text | strip_newlines -}}
 {%- comment -%}
 The dashes in the Liquid code tags remove output whitespace. More on that here:
 
