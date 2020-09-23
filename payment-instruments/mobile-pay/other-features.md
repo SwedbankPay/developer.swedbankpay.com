@@ -296,7 +296,7 @@ documentation_section="mobile-pay" transaction="capture" %}
 
 ### Create capture transaction
 
-A `capture` transaction - to withdraw money from the payer's 
+A `capture` transaction - to withdraw money from the card connected to the payer's 
 MobilePay Online - can be created after a completed authorization by performing 
 the `create-capture` operation.
 
