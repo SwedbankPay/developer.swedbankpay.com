@@ -296,7 +296,7 @@ sequenceDiagram
    towards Swedbank Pay with the collected Purchase information.
 2.  `rel: view-payment` is a value in one of the operations, sent as a response
    from Swedbank Pay to the Merchant.
-3.  `Open iframe` creates the Swedbank Pay hosted iframe.
+3.  `Open iframe` creates the Swedbank Pay Seamless View.
      The Seamless View displays the payment page as content inside of the
    `iframe`. The payer can enter their mobile phone number for authorization.
 4.  A `POST` request is sent to the Vipps API with the mobile number for
