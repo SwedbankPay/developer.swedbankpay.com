@@ -8,7 +8,7 @@ description: |
   Swedbank Pay receives the MobilePay Online's details from the payer through 
   Swedbank Pay Payments.
   The payment will then be performed by Swedbank Pay and confirmed by the payer
-  through the MobilePay Online app.
+  through the MobilePay app.
 menu_order: 600
 ---
 
