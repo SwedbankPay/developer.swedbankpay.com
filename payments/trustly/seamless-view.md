@@ -1,7 +1,7 @@
 ---
-title: Trustly Payments – Seamless View
+title: Seamless View
 estimated_read: 30
-menu_order: 900
+menu_order: 1000
 ---
 
 {% include jumbotron.html body="The Seamless View scenario represents the	

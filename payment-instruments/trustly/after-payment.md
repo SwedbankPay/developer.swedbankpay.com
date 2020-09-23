@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/trustly/after-payment
 estimated_read: 30
-menu_order: 800
+menu_order: 1100
 ---
 
 ## Options after posting a payment
