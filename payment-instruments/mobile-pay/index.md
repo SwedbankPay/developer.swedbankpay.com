@@ -68,7 +68,7 @@ from you as a merchant in this regard.
 MobilePay Online is unfortunately not available in our demoshop at the moment,
 but it will be in the future. The demoshop in the test environments will use a
 fakeservice which enables you to test a successful purchase without using the
-MobilePay Online app.
+MobilePay app.
 
 {% include languages.md api_resource="mobilepay" %}
 
