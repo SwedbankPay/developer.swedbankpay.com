@@ -394,6 +394,6 @@ next_href="capture" next_title="Next: Capture" %}
 [payee-reference]: /payment-instruments/invoice/other-features#payeeinfo
 [recur]: /payment-instruments/invoice/other-features#recur
 [redirect]: /payment-instruments/invoice/redirect
-[setup-mail]: mailto:setup.ecom@PayEx.com
+[setup-mail]: mailto:setup.ecom@payex.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payment-instruments/invoice/other-features#verify
