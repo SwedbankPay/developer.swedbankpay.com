@@ -297,8 +297,8 @@ sequenceDiagram
 2.  `rel: view-payment` is a value in one of the operations, sent as a response
    from Swedbank Pay to the Merchant.
 3.  `Open iframe` creates the Swedbank Pay hosted iframe.
-     The payer UI page displays the payment window as content inside of the
-   `iframe`. The payer can insert mobile information for authorization.
+     The Seamless View displays the payment page as content inside of the
+   `iframe`. The payer can enter their mobile phone number for authorization.
 4.  A `POST` request is sent to the Vipps API with the mobile number for
    authorization.
 5.  The response will contain the state of the transaction. It will normally be
