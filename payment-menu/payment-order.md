@@ -169,7 +169,7 @@ order.
 Below, you will see a complete overview of the payment menu process.
 Notice that there are two ways of performing the payment:
 
-*   Payer perform payment **out** of `iframe`.
+*   Payer performs payment **out** of `iframe`.
 *   Payer perform payment **within** `iframe`.
 
 {% include alert.html type="informative" icon="info" body="
