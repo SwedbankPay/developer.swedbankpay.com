@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/trustly/after-payment
 estimated_read: 30
-menu_order: 800
+menu_order: 1100
 ---
 
 ## Options after posting a payment
@@ -103,7 +103,7 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
+{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
 next_href="other-features" next_title="Next: Other Features" %}
 
 ----------------------------------------------------------

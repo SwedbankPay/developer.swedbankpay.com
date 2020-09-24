@@ -2,7 +2,7 @@
 title: Other Features
 redirect_from: /payments/trustly/other-features
 estimated_read: 30
-menu_order: 900
+menu_order: 1200
 ---
 
 {% include payment-resource.md api_resource="trustly"
