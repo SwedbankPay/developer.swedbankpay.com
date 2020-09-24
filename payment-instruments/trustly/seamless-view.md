@@ -268,14 +268,14 @@ sequenceDiagram
 {% include iterator.html prev_href="redirect" prev_title="Back: Redirect"	
 next_href="after-payment" next_title="Next: After Payment" %}	
 
-[after-payment]: /payments/trustly/after-payment	
-[callback]: /payments/trustly/other-features#callback	
-[create-payment]: /payments/trustly/other-features#create-payment	
-[financing-consumer]: /payments/trustly/other-features#financing-consumer	
+[after-payment]: /payment-instruments/trustly/after-payment	
+[callback]: /payment-instruments/trustly/other-features#callback	
+[create-payment]: /payment-instruments/trustly/other-features#create-payment	
+[financing-consumer]: /payment-instruments/trustly/other-features#financing-consumer	
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png	
-[payee-reference]: /payments/trustly/other-features#payee-reference	
-[payment-resource]: /payments/trustly/other-features#payment-resource	
-[recur]: /payments/trustly/other-features#recur	
+[payee-reference]: /payment-instruments/trustly/other-features#payee-reference	
+[payment-resource]: /payment-instruments/trustly/other-features#payment-resource	
+[recur]: /payment-instruments/trustly/other-features#recur	
 [setup-mail]: mailto:setup.ecom@PayEx.com	
 [user-agent]: https://en.wikipedia.org/wiki/User_agent	
-[verify]: /payments/trustly/other-features#verify
+[verify]: /payment-instruments/trustly/other-features#verify
