@@ -34,51 +34,51 @@ payment process, you need to make a `POST` request towards Swedbank Pay with you
 payment information. This will generate a `payment` resource with a unique	
 `id` URI. You will receive a **JavaScript source** in response.	
 
-{:.code-header}	
-**Request**	
+{:.code-view-header}
+**Request**
 
-```http	
-POST /psp/trustly/payments HTTP/1.1	
-Authorization: Bearer <AccessToken>	
-Content-Type: application/json	
-{	
-    "payment": {	
-        "operation": "Purchase",	
-        "intent": "Sale",	
-        "currency": "SEK",	
-        "prices": [	
-            {	
-                "type": "Trustly",	
-                "amount": 1500,	
-                "vatAmount": 0	
-            }	
-        ],	
-        "description": "Test Purchase",	
-        "payerReference": "SomeReference",	
-        "userAgent": "Mozilla/5.0...",	
-        "language": "sv-SE",	
-        "urls": {	
-            "hostUrls": "https://example.com",	
-            "completeUrl": "https://example.com/payment-completed",	
-            "callbackUrl": "https://example.com/payment-callback",	
-            "logoUrl": "https://example.com/logo.png",	
-            "termsOfServiceUrl": "https://example.com/terms.pdf",	
-            "paymentUrl": "https://example.com/perform-payment"	
-        },	
-        "payeeInfo": {	
-            "payeeId": "{{ page.merchant_id }}",	
-            "payeeReference": "PR123",	
-            "payeeName": "Merchant1",	
-            "productCategory": "PC1234",	
-            "subsite": "MySubsite"	
-        },	
-        "prefillInfo": {	
-            "firstName": "Ola",	
-            "lastName": "Nordmann"	
-        }	
-    }	
-}	
-```	
+```http
+POST /psp/trustly/payments HTTP/1.1
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Sale",
+        "currency": "SEK",
+        "prices": [
+            {
+                "type": "Trustly",
+                "amount": 1500,
+                "vatAmount": 0
+            }
+        ],
+        "description": "Test Purchase",
+        "payerReference": "SomeReference",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "urls": {
+            "completeUrl": "https://example.com/payment-completed",
+            "callbackUrl": "https://example.com/payment-callback",
+            "logoUrl": "https://example.com/logo.png",
+            "termsOfServiceUrl": "https://example.com/terms.pdf"
+        },
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}",
+            "payeeReference": "PR123",
+            "payeeName": "Merchant1",
+            "productCategory": "PC1234",
+            "subsite": "MySubsite"
+        },
+        "prefillInfo": {
+            "firstName": "Ola",
+            "lastName": "Nordmann"
+        }
+    }
+}
+```
+
 
 {:.table .table-striped}	
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |	
@@ -113,7 +113,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |	
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |	
 
-{:.code-header}	
+{:.code-view-header}	
 **Response**	
 
 ```http	
@@ -196,7 +196,7 @@ hosted environment. A simplified integration has these following steps:
 
 The previous two steps gives this HTML:	
 
-{:.code-header}	
+{:.code-view-header}	
 **HTML**	
 
 ```html	
@@ -218,10 +218,10 @@ The previous two steps gives this HTML:
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`	
 embedded on your website.	
 
-{:.code-header}	
-**JavaScript**	
+{:.code-view-header}	
+**HTML**	
 
-```js	
+```html
 <script language="javascript">	
     payex.hostedView.trustly({	
         // The container specifies which id the script will look for to host the	
