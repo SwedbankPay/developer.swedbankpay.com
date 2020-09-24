@@ -91,7 +91,7 @@ contract.
 
 {% when "mobilepay" %}
 
-#### MobilePay Payments
+#### MobilePay Online Payments
 
 {:.table .table-striped}
 | Type        | Description      |

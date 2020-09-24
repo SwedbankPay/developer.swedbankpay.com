@@ -322,7 +322,7 @@ specified in the response by finding the appropriate operation based on its
 [rfc-7239]: https://tools.ietf.org/html/rfc7239
 [rfc-7329]: https://tools.ietf.org/html/rfc7329
 [ruby-tls]: https://stackoverflow.com/a/11059873/61818
-[settlement]: /payments/invoice/other-features#settlement-and-reconciliation
+[settlement]: /payment-instruments/invoice/other-features#settlement-and-reconciliation
 [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
 [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
 [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier

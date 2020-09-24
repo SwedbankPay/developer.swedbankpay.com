@@ -1,9 +1,9 @@
 {% assign api_resource = include.api_resource %}
 {% if api_resource == "creditcard" %}
-    {% assign callback_href = "/payments/card" | append: "/other-features#callback" %}
+    {% assign callback_href = "/payment-instruments/card" | append: "/other-features#callback" %}
 
 {% else %}
-    {% assign callback_href = "/payments/" | append: api_resource | append: "/other-features#callback" %}
+    {% assign callback_href = "/payment-instruments/" | append: api_resource | append: "/other-features#callback" %}
 {% endif %}
 
 {% capture body %}

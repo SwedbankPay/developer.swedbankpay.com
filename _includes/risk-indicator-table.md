@@ -1,7 +1,7 @@
 {%- assign documentation_section = include.documentation_section -%}
 {%- capture 3ds2link -%}
     {%- if documentation_section == "card" -%}
-        /payments/{{ documentation_section }}/other-features#3-d-secure-2
+        /payment-instruments/{{ documentation_section }}/other-features#3-d-secure-2
     {%- else -%}
         /{{ documentation_section }}/other-features#3-d-secure-2
     {%- endif -%}
