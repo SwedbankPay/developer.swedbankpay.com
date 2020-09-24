@@ -293,7 +293,7 @@ charities.
 *   Since the sub merchants are connected to Swedbank Pay through the super
     merchant instead of having separate setups, this means that you:
 *   Only need one agreement for credit card, Vipps, Swish,
-    MobilePay, invoice and payment gateway.
+    MobilePay Online, invoice and payment gateway.
 *   Only need one acquiring agreement.
 *   Only need one Vipps/Swish certificate.
 *   Can add more payment instruments easily, as it only has to be done once.

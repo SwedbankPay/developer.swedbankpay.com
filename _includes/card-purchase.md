@@ -302,7 +302,7 @@ documentation_section="card" token_field_name="paymentToken" %}
 
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [split-settlement]: /checkout/other-features#split-settlement
-[settlement-and-reconciliation]: /payments/card/other-features#settlement-and-reconciliation
-[price-resource]: /payments/card/other-features#prices
-[payee-reference]: /payments/card/other-features#payee-reference
-[3ds2]: /payments/card/other-features#3-d-secure-2
+[settlement-and-reconciliation]: /payment-instruments/card/other-features#settlement-and-reconciliation
+[price-resource]: /payment-instruments/card/other-features#prices
+[payee-reference]: /payment-instruments/card/other-features#payee-reference
+[3ds2]: /payment-instruments/card/other-features#3-d-secure-2

@@ -178,10 +178,10 @@ TODO: Remove pipes from the above code example and add a field table
 {% endcomment %}
 
 -----------------------------
-[card]: /payments/card
-[invoice]: /payments/invoice
+[card]: /payment-instruments/card
+[invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
-[create-card-payment]: /payments/card/other-features#create-payment
-[create-invoice-payment]: /payments/invoice/other-features#create-payment
+[create-card-payment]: /payment-instruments/card/other-features#create-payment
+[create-invoice-payment]: /payment-instruments/invoice/other-features#create-payment
 [verify]: ./other-features#verify

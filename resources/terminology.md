@@ -88,17 +88,17 @@ menu_order: 400
 {:.table .table-striped}
 | **3-D Secure 2.0 (3DS2)**       | The new authentication protocol for online card payments. The protocol is XML-based and designed to be an additional security layer for online credit and debit card transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-[auto-capture]: /payments/card/other-features#capture
+[auto-capture]: /payment-instruments/card/other-features#capture
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS
-[invoice-url]: /payments/invoice/
-[two-phase-payments]: /payments#the-fundamentals
-[callback-url]:/payments/card/other-features#callback
-[cancel-url]: /payments/card/after-payment#cancellations
+[invoice-url]: /payment-instruments/invoice/
+[two-phase-payments]: //payment-instruments#the-fundamentals
+[callback-url]:/payment-instruments/card/other-features#callback
+[cancel-url]: /payment-instruments/card/after-payment#cancellations
 [checkout-url]: /checkout
 [common-headers]: /home/technical-information#headers
 [restful-api]: /home/technical-information#connection-and-protocol
-[verify-url]: /payments/card/other-features#verify
+[verify-url]: /payment-instruments/card/other-features#verify
 [one-phase-url]: /payments#the-fundamentals
-[payout]: /payments/card/other-features#payout
-[recur]: /payments/card/other-features#recur
+[payout]: /payment-instruments/card/other-features#payout
+[recur]: /payment-instruments/card/other-features#recur
 [sale-authorization-url]: /payments#the-fundamentals
