@@ -846,14 +846,14 @@ Content-Type: application/json
         "vatPercent": 2500,
         "amount": 1000,
         "vatAmount": 250
-      },
-    "metadata": {                                                  
-      "key1": "value1",
-      "key2": 2,
-      "key3": 3.1,
-      "key4": false
-    }
+      }
     ]
+    "metadata": {                                                  
+        "key1": "value1",
+        "key2": 2,
+        "key3": 3.1,
+        "key4": false
+    }
   }
 }
 ```
