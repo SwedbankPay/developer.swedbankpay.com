@@ -26,19 +26,19 @@ the following URI structure:
 | Type                           | Status | Description                                                                                   |
 | :----------------------------- | :----: | :-------------------------------------------------------------------------------------------- |
 | `3dsecureerror`                | `400`  | 3D Secure not working, try again some time later                                              |
-| `cardblacklisted`              | `400`  | Card blacklisted, Consumer need to contact their Card-issuing bank                            |
+| `cardblacklisted`              | `400`  | Card blacklisted, the payer needs to contact their Card-issuing bank                            |
 | `paymenttokenerror`            | `403`  | There was an error with the payment token.                                                    |
 | `carddeclined`                 | `403`  | The card was declined.                                                                        |
 | `acquirererror`                | `403`  | The acquirer responded with a generic error.                                                  |
-| `acquirercardblacklisted`      | `403`  | Card blacklisted, Consumer need to contact their Card-issuing bank                            |
-| `acquirercardexpired`          | `403`  | Wrong expire date or Card has expired and consumer need to contact their Card-issuing bank    |
-| `acquirercardstolen`           | `403`  | Card blacklisted, Consumer need to contact their Card-issuing bank                            |
-| `acquirerinsufficientfunds`    | `403`  | Card does not have sufficient funds, consumer need to contact their Card-issuing bank.        |
+| `acquirercardblacklisted`      | `403`  | Card blacklisted, the payer needs to contact their Card-issuing bank                            |
+| `acquirercardexpired`          | `403`  | Wrong expire date or Card has expired and payer needs to contact their Card-issuing bank    |
+| `acquirercardstolen`           | `403`  | Card blacklisted, the payer needs to contact their Card-issuing bank                            |
+| `acquirerinsufficientfunds`    | `403`  | Card does not have sufficient funds, the payer needs to contact their Card-issuing bank.        |
 | `acquirerinvalidamount`        | `403`  | Amount not valid by aquirer, contact support.ecom@payex.com                                   |
-| `acquirerpossiblefraud`        | `403`  | Transaction declined due to possible fraud, consumer need to contact their Card-issuing bank. |
+| `acquirerpossiblefraud`        | `403`  | Transaction declined due to possible fraud, the payer needs to contact their Card-issuing bank. |
 | `3dsecureusercanceled`         | `403`  | Transaction was Cancelled during 3DSecure verification                                        |
 | `3dsecuredeclined`             | `403`  | Transaction was declined during 3DSecure verification                                         |
-| `frauddetected`                | `403`  | Fraud detected. Consumer need to contact their Card-issuing bank.                             |
+| `frauddetected`                | `403`  | Fraud detected, the payer needs to contact their Card-issuing bank.                             |
 | `badrequest`                   | `500`  | Bad request, try again after some time                                                        |
 | `internalservererror`          | `500`  | Server error, try again after some time                                                       |
 | `3dsecureacquirergatewayerror` | `502`  | Problems reaching 3DSecure verification, try again after some time.                           |

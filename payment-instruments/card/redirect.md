@@ -5,9 +5,9 @@ estimated_read: 30
 description: |
   Redirect is the simplest integration that lets Swedbank Pay handle the
   payments, while you handle your core activities.
-  When ready to pay, the consumer will be redirected to a secure Swedbank Pay
+  When ready to pay, the payer will be redirected to a secure Swedbank Pay
   hosted site.
-  Finally, the consumer will be redirected back to your website after the
+  Finally, the payer will be redirected back to your website after the
   payment process.
 menu_order: 400
 ---
@@ -128,14 +128,14 @@ sequenceDiagram
 
 ### Explanations
 
-*   ① `rel: redirect-authorization` is the name of one of the operations, sent as
-  a response from Swedbank Pay to the Merchant. The href in this operation is
-  the **redirect URL** to a Swedbank Pay payment page.
-*   ② The consumer is being redirected to a secure Swedbank Pay hosted page
-*   ③ The payment window is presented and the consumer can insert card information
-  for authorization.
-*   ④ If needed the consumer must go through an authorization challenge to verify
-  the identity.
+*   ① `rel: redirect-authorization` is the name of one of the operations, sent
+    as a response from Swedbank Pay to the Merchant. The `href` in this
+    operation is the **redirect URL** to a Swedbank Pay payment page.
+*   ② The payer is redirected to a secure Swedbank Pay hosted page
+*   ③ The payment window is presented and the payer can enter card information
+    for authorization.
+*   ④ If needed, the payer must go through an authorization challenge to verify
+  his or hers identity.
 *   ⑤ The Payer reaches the CompleteUrl which you defined in the initial POST
   request. Please note that both a successful and rejected payment reach
   completion, in contrast to a cancelled payment.

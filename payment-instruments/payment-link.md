@@ -5,9 +5,9 @@ estimated_read: 30
 description: |
   The implementation sequence for this scenario is a variant of the purchase
   sequence in a Hosted Payment Pages redirect scenario.
-  The consumer is not redirected to the payment pages directly but will instead
+  The payer is not redirected to the payment pages directly but will instead
   receive a payment link via mail/SMS.
-  When the consumer clicks on the link a payment window opens.
+  When the payer clicks on the link a payment window opens.
 menu_order: 900
 ---
 
@@ -16,7 +16,7 @@ menu_order: 900
 *   The Payment Link can be implemented for Card, MobilePay Online, Vipps and Swish
     payments, using the Redirect platform and seamless view.  
 
-*   When the consumer starts the purchase process in your merchant/webshop
+*   When the payer starts the purchase process in your merchant/webshop
     site, you need to make a POST request towards Swedbank Pay with your
     purchase information. You receive a Payment Link (same as redirect URL) in
     response.
@@ -28,10 +28,10 @@ menu_order: 900
         including purchase information and price. **See recommendations in the
         next paragraph.**
 
-*   When the consumer clicks on the Payment Link, the Swedbank Pay payment page
-    will open, letting the consumer enter the payment details (varying depending
+*   When the payer clicks on the Payment Link, the Swedbank Pay payment page
+    will open, letting the payer enter the payment details (varying depending
     on payment instrument) in a secure Swedbank Pay hosted environment. When
-    paying with credit card and if required, Swedbank Pay will handle 3D-secure
+    paying with a card and if required, Swedbank Pay will handle 3D-secure
     verification.
 
 *   After completion, Swedbank Pay will redirect the browser back to your
@@ -44,28 +44,28 @@ menu_order: 900
 
 ### Recommendations regarding Payment Link in E-mail/SMS
 
-When you as a merchant sends an e-mail or SMS to the consumer about the Payment
-Link, it is recommended to include contextual information that help the consumer
+When you as a merchant sends an e-mail or SMS to the payer about the Payment
+Link, it is recommended to include contextual information that helps the payer
 understand what will happen when clicking on the Payment Link. We recommend that
 you include following information:
 
 *   The name of the merchant/shop that initiates the payment
 *   An understandable product description, describing what kind of service the
-    consumer will pay for.
-*   Some order-id (or similar) that exists in the merchant order system.
+    payer will pay for.
+*   Some order-id (or similar) that exists in the merchant's order system.
 *   The price and currency.
 *   Details about shipping method and expected delivery (if physical goods will
-    be sent  to the consumer).
+    be sent  to the payer).
 *   Directions to (a link to a page) the merchant's terms and conditions (such
-    as return policy) and information of how the consumer can contact the
+    as return policy) and information of how the payer can contact the
     merchant.
-*   Details informing the consumer that Terms & Conditions are concidered to be
+*   Details informing the payer that Terms & Conditions are considered as
     accepted and signed when clicking on the Payment Link.
 
 ### Recommendations about receipts
 
 We recommend that you send an e-mail or SMS confirmation with a receipt to the
-consumer when the payment has been fulfilled.
+payer when the payment has been fulfilled.
 
 ### API requests
 
@@ -77,5 +77,5 @@ general REST based API model is described WHEREEEEE?
 
 ### Screenshots
 
-When clicking the payment link, the consumer will be directed to a payment page,
+When clicking the payment link, the payer will be directed to a payment page
 similar to the examples below, where payment information can be entered.

@@ -39,7 +39,7 @@ Swedbank Pay Checkout.
 
 While Checkin is a necessary component to store personal information and access 
 features like storing cards, it is not a mandatory step for the Checkout process
-to work. If the end user is from a country where we currently don't support 
+to work. If the payer is from a country where we currently don't support 
 Checkin, or if he or she opts not to store their data, that's fine. The Payment 
 Menu can still be used as a **guest**.
 

@@ -18,9 +18,9 @@ menu_order: 300
 
 {% include alert.html type="informative"
                       icon="cached"
-                      body="**Redirect** will take the consumer to a Swedbank
+                      body="**Redirect** will take the payer to a Swedbank
                       Pay hosted payment page where they can perform a safe
-                      transaction. The consumer will be redirected back to your
+                      transaction. The payer will be redirected back to your
                       website after the completion of the payment." %}
 
 {% include alert.html type="informative"

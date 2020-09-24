@@ -195,8 +195,8 @@ card payment:
 *   ① `rel: view-authorization` is a value in one of the operations, sent as a
   response from Swedbank Pay to the Merchant.
 *   ② `Open iframe` creates the Swedbank Pay hosted iframe.
-*   ③ `Show Consumer UI page in iframe` displays the payment window as content
-  inside of the iframe. The consumer can insert card information for
+*   ③ `Show Payer UI page in iframe` displays the payment window as content
+  inside of the iframe. The payer can enter card information for
   authorization.
 *   ④ `Event: OnPaymentComplete` is when a payment is complete. Please note 
   that both successful and rejected payments reach completion, in contrast to a

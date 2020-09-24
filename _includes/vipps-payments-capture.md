@@ -1,7 +1,7 @@
 ## Capture
 
 The capture transaction is where you ensure that the funds are charged from
-the consumer. This step usually takes place when the product has exchanged
+the payer. This step usually takes place when the product has exchanged
 possession. You must first do a `GET` request on the payment to find the
 `create-capture` operation.
 

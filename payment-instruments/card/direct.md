@@ -17,7 +17,7 @@ menu_order: 500
 
 {% include alert.html type="informative" icon="info" header="Note on 3-D Secure
 Authentication" body="Although there is no need to redirect to a Swedbank Pay
-hosted payment page in the Direct Card Payment scenario, consumers will need to
+hosted payment page in the Direct Card Payment scenario, payers will need to
 be **redirected to a 3-D Secure page hosted by the issuing bank if the bank
 requires it**. Whether 3-D Secure authentication is required for every payment
 is up to each issuing bank and out of Swedbank Pay's control." %}

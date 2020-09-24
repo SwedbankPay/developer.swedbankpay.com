@@ -17,14 +17,14 @@ menu_order: 400
                       information and personal information before sending them
                       to us. Swedbank Pay receives invoice data, which is used
                       to produce and distribute invoices to the
-                      consumer/end-user." %}
+                      payer." %}
 
 {% include alert.html type="informative"
                       icon="cached"
                       body="**Redirect** is the easiest way to implement Invoice
-                      Payments. Redirect will take your consumer to a Swedbank
+                      Payments. Redirect will take your payer to a Swedbank
                       Pay hosted payment page where they can perform a secure
-                      transaction. The consumer will be redirected back to your
+                      transaction. The payer will be redirected back to your
                       website after the completion of the payment." %}
 
 {% include alert.html type="informative"
