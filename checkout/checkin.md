@@ -18,7 +18,7 @@ persisted to streamline future Payment Menu processes. Payer identification
 is done through the `initiate-consumer-session` operation.
 
 {% include alert.html type="informative" icon="info" header="Guest Checkout"
-body="Note: If the end user is using the Payment Menu as a guest, you can go
+body="Note: If the payer is using the Payment Menu as a guest, you can go
 directly to step 3, which you will find on the next page." %}
 
 {:.code-view-header}
@@ -44,7 +44,7 @@ Content-Type: application/json
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
 | {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md api_resource="paymentorders" %} |
 | {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
-|                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we wil not collect a shipping address from the consumer.                                                            |
+|                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we will not collect a shipping address from the consumer.                                                            |
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -243,7 +243,7 @@ events][checkin-events] section.
 
 ### Note on consumer data
 
-During this stage some consumer data is stored. Read more about our [Data
+During this stage, some consumer data is stored. Read more about our [Data
 Protection Policy][data-protection] for details on which information we store
 and its duration.
 

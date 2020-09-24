@@ -5,11 +5,11 @@ estimated_read: 30
 menu_order: 800
 ---
 
-After the payment is confirmed, the consumer will be redirected from the Swish
+After the payment is confirmed, the payer will be redirected from the Swish
 app to the `completeUrl` set in the [create payment request][create-payment].
 You need to retrieve payment status with `GET` [Sales
 transaction][sales-transaction] before presenting a confirmation page to the
-consumer.
+payer.
 
 ## Options after posting a payment
 
@@ -50,8 +50,8 @@ Content-Type: application/json
 
 In browser based solutions the payers `msisdn` (mobile number) is required. This
 is managed either by sending a `POST` request as seen below, or by redirecting
-the end-user to the hosted payment page. The `msisdn` is only required for
-browser based solutions. With mobile app based solutions, the consumer uses the
+the payer to the hosted payment page. The `msisdn` is only required for
+browser based solutions. With mobile app based solutions, the payer uses the
 device that hosts the Swish app to manage the purchase, making `msisdn`
 optional.
 
@@ -158,7 +158,7 @@ The `operation` `redirect-app-swish` is only returned when using in-app flows.
 
 The payment now contains a sale transaction with the status (state)
 `AwaitingActivity`, meaning we are awaiting a response from Swish.
-When the consumer confirms the payment a callback request will follow
+When the payer confirms the payment a callback request will follow
 from Swedbank Pay.
 
 ## Reversals

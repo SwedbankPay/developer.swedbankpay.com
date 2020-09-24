@@ -339,14 +339,14 @@ specify supported countries for shipment in a new input parameter,
 Updated API specification can be found [here][initiate-consumer-session].
 The parameters `language` and `shippingAddressRestrictedToCountryCodes` have replaced the former `consumerCountryCode`.
 
-The parameters `msisdn` and `email` have been made obsolete due to GDPR rules. This information cannot be sent in without an explicit consent from the consumer.
+The parameters `msisdn` and `email` have been made obsolete due to GDPR rules. This information cannot be sent in without the explicit consent of the payer.
 
 {% comment %}
 TODO: Release this when the Swish Redirect section is released with the correct screenshot. Change the link below when this is ready.
 
 ### Improved purchase experience in Swish
 
-We now show the flag connected to the origin of the phone number the consumer
+We now show the flag connected to the origin of the phone number the payer
 uses in Swish during payment. See updated screenshot of payment pages in [[Swish
 ecom
 redirect>>doc:Main.ecommerce.payex-payment-instruments.swish-payments.swish-e-commerce-redirect.WebHome]]
@@ -385,7 +385,7 @@ CreditCard>>doc:Main.ecommerce.release-information.WebHome||anchor="HPaymentUrlC
 
 We have added support for sending in international phone numbers in the request.
 Check our Swish documentation [here][swish-other-features].
-This is supported in API, and when consumer enters their phone number on the
+This is supported in API, and when payer's enter their phone number on the
 payment page.
 
 ### Order Items
@@ -420,7 +420,7 @@ must be able to invoke the same JavaScript URL from the same Payment as the one
 that initiated the payment originally, so it should include some sort of state
 identifier in the URL. The state identifier is the ID of the order, shopping
 cart or similar that has the URL of the Payment stored. When the JavaScript is
-invoked after return of the consumer, the consumer will either be redirected to
+invoked after return of the payer, he or she will either be redirected to
 the `completeUrl` (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.
 
@@ -437,22 +437,21 @@ removed from all requests as the two cannot be used simultaneously.
 
 ### Payment Url
 
-For our Seamless Views (currently
-[Vipps][vipps-payment-url]
-or in [Checkout][checkout-payment-url]),
-we have added a new URL field called `paymentUrl` that will be used when
-user is returned from 3rd party. The URL should represent the page of where the
-payment hosted view was hosted originally, such as the checkout page, shopping
-cart page, or similar. Basically, `paymentUrl` should be set to the same URL
-as that of the page where the JavaScript for the hosted payment view was added
-to in order to initiate the payment. Please note that the `paymentUrl` must be
-able to invoke the same JavaScript URL from the same Payment or Payment Order as
-the one that initiated the payment originally, so it should include some sort of
-state identifier in the URL. The state identifier is the ID of the order,
-shopping cart or similar that has the URL of the Payment or Payment Order
-stored. When the JavaScript is invoked after return of the consumer, the
-consumer will either be redirected to the `completeUrl`, or, if payment failed,
-see an error-message, and get the option to retry the payment.
+For our Seamless Views (currently [Vipps][vipps-payment-url] or in
+[Checkout][checkout-payment-url]), we have added a new URL field called
+`paymentUrl` that will be used when user is returned from 3rd party. The URL
+should represent the page of where the payment hosted view was hosted
+originally, such as the checkout page, shopping cart page, or similar.
+Basically, `paymentUrl` should be set to the same URL as that of the page where
+the JavaScript for the hosted payment view was added to in order to initiate the
+payment. Please note that the `paymentUrl` must be able to invoke the same
+JavaScript URL from the same Payment or Payment Order as the one that initiated
+the payment originally, so it should include some sort of state identifier in
+the URL. The state identifier is the ID of the order, shopping cart or similar
+that has the URL of the Payment or Payment Order stored. When the JavaScript is
+invoked after return of the payer, he or she will either be redirected to the
+`completeUrl`, or, if payment failed, see an error message and get the option
+to retry the payment.
 
 If `paymentUrl` is not implemented, retry of payments will not be possible in
 either individual payment instruments such as

@@ -14,8 +14,8 @@ platforms.
 
 ## Purchase flow
 
-After the payment is created, the consumer pushes the payment button on Swedbank Pay's
-payment page (redirect) or in the `iframe` (seamless view).
+After the payment is created, the payer pushes the payment button on Swedbank
+Pay's payment page (redirect) or in the `iframe` (seamless view).
 
 {:.text-center}
 ![screenshot of the first Vipps redirect page][vipps-redirect]{:height="375px" width="475px"}
@@ -26,8 +26,8 @@ page where the phone number is entered, and a push message is sent to the phone.
 {:.text-center}
 ![screenshot of the Vipps number input page][vipps-number-input]{:height="500px" width="475px"}
 
-The payment request will appear in the app and can be confirmed by the consumer.
-If you are using the redirect option, the consumer will be redirected back to
+The payment request will appear in the app and can be confirmed by the payer.
+If you are using the redirect option, the payer will be redirected back to
 the merchant's site.
 
 ## Good To Know
@@ -35,7 +35,7 @@ the merchant's site.
 ### Payment Type
 
 Vipps is one of the instruments using two-phase payments. The `authorization` is
-done when the consumer successfully confirms in the app, and the `abort`,
+done when the payer successfully confirms in the app, and the `abort`,
 `cancel`, `capture` or `reversal` is done by the merchant at a later time. Read
 more about the [different operations][after-payment] and the [payment
 resource][payment-resource].

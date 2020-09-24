@@ -31,10 +31,10 @@ operation to [`Verify`][verify].
 
 ### Finding paymentToken value
 
-When the initial purchase is followed through, a `paymentToken` will linked to
-the payment.  You can return the value by making a `GET` request towards payment
+When the initial purchase is successful, a `paymentToken` is linked to
+the payment.  You can return the value by sending a `GET` request towards the payment
 resource (expanding either the authorizations or verifications sub-resource),
-after the consumer successfully has completed the purchase. The two examples are
+after the payer successfully has completed the purchase. The two examples are
 provided below.
 
 {:.code-view-header}
@@ -60,13 +60,13 @@ track of the corresponding consumer-ID in your system.
 
 ### Returning Purchases
 
-When a known consumer (where you have attained a consumer-ID or similar) returns
-to your system, you can use the payment token, using already stored payment
-data, to initiate one-click payments. You will need to make a standard
-purchase, following the sequence as specified in the Redirect or Seamless View
-scenarios for [credit card][card] and [financing invoice][invoice]. When making
-the first `POST` request you insert the `paymentToken` field. This must be
-the `paymentToken` you received in the initial purchase, where you specified the
+When a known payer (where you have attained a consumer-ID or similar) returns to
+your system, you can use the `paymentToken`, using already stored payment data,
+to initiate one-click payments. You will need to make a standard purchase,
+following the sequence as specified in the Redirect or Seamless View scenarios
+for [credit card][card] and [financing invoice][invoice]. When creating the
+first `POST` request you insert the `paymentToken` field. This must be the
+`paymentToken` you received in the initial purchase, where you specified the
 `generatePaymentToken` to `true`.
 
 See the Other Feature sections for how to create a [card][create-card-payment]

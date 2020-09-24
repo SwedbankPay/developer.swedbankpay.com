@@ -14,7 +14,7 @@ redirect in mobile apps or in mobile web pages.
 
 ### Screenshots for Payments
 
-You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
+You will redirect the payer to Swedbank Pay hosted pages to collect
 the card information.
 
 {:.text-center}

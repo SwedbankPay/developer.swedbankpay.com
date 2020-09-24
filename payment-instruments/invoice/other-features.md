@@ -174,7 +174,7 @@ information without reserving or charging any amount." %}
 
 This option is commonly used when initiating a subsequent
 [recurring invoice payment][recur] flow - where you do not want
-to charge the consumer right away.
+to charge the payer right away.
 
 ### Verification through Swedbank Pay Payments
 
@@ -201,7 +201,7 @@ to charge the consumer right away.
 
 ### Screenshots
 
-You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
+You will redirect the payer to Swedbank Pay hosted pages to collect
 the payment information.
 
 ![screenshot of the redirect invoice payment page][invoice-payment]{:height="500px" width="425px"}
@@ -379,8 +379,8 @@ sequenceDiagram
 
 ### Create authorization transaction
 
-The `redirect-authorization` operation redirects the consumer to
-Swedbank Pay Payments where the payment is authorized.
+The `redirect-authorization` operation redirects the payer to Swedbank Pay
+Payments where the payment is authorized.
 
 {:.code-view-header}
 **Request**
@@ -423,12 +423,12 @@ Content-Type: application/json
 | :--------------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
 | {% icon check %} | `transaction`                  | `object` | The transaction object.                                                |
 |                  | └➔&nbsp;`activity`             | `string` | Only the value `"FinancingConsumer"` or `"AccountsReceivableConsumer"` |
-|                  | `consumer`                     | `object` | The consumer object.                                                   |
-|                  | └➔&nbsp;`socialSecurityNumber` | `string` | The social security number of the consumer.                            |
-|                  | └➔&nbsp;`customerNumber`       | `string` | Customer number of the consumer.                                       |
+|                  | `consumer`                     | `object` | The payer object.                                                   |
+|                  | └➔&nbsp;`socialSecurityNumber` | `string` | The social security number of the payer.                            |
+|                  | └➔&nbsp;`customerNumber`       | `string` | Customer number of the payer.                                       |
 |                  | └➔&nbsp;`email`                | `string` | The customer email address.                                            |
-|                  | └➔&nbsp;`msisdn`               | `string` | The MSISDN of the consumer.                                            |
-|                  | └➔&nbsp;`ip`                   | `string` | The IP address of the consumer.                                        |
+|                  | └➔&nbsp;`msisdn`               | `string` | The MSISDN of the payer.                                            |
+|                  | └➔&nbsp;`ip`                   | `string` | The IP address of the payer.                                        |
 |                  | `legalAddress`                 | `object` | The Address object.                                                    |
 |                  | └➔&nbsp;`addressee`            | `string` | The full name of the addressee of this invoice                         |
 |                  | └➔&nbsp;`coAddress`            | `string` | The co Address of the addressee.                                       |

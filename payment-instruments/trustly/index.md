@@ -14,7 +14,7 @@ menu_order: 800
                       body="**Redirect** is the easiest way to do **Direct
                       Bank** payments. Redirect will take the payer to a
                       Swedbank Pay hosted payment page where they can perform a
-                      secure transaction. The consumer will be redirected back
+                      secure transaction. The payer will be redirected back
                       to your website after the completion of the payment." %}
 
 
@@ -35,7 +35,7 @@ to [Trustly's guidelines][trustly-guidelines].
 ## Payment Type
 
 Trustly is one of the instruments using one-phase payments. The `sale` is done
-when the consumer successfully confirms in the app, capturing the funds
+when the payer successfully confirms in the app, capturing the funds
 instantly. The `abort` operation is still available, but the `cancel` and
 `capture` operations are not. The `reversal`, if needed, is done by the
 merchant at a later time. Read more about the [different

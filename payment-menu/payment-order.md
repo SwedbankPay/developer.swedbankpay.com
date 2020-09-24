@@ -169,8 +169,8 @@ order.
 Below, you will see a complete overview of the payment menu process.
 Notice that there are two ways of performing the payment:
 
-*   Consumer perform payment **out** of `iframe`.
-*   Consumer perform payment **within** `iframe`.
+*   Payer performs payment **out** of `iframe`.
+*   Payer performs payment **within** `iframe`.
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end

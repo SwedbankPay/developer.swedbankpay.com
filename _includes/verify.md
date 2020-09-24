@@ -9,7 +9,7 @@ amount.
 This option is commonly used when initiating a subsequent
 [One-click card payment][one-click-payments] or a
 [recurring card payment][recurrence] flow - where you do not want
-to charge the consumer right away.
+to charge the payer right away.
 
 {% include alert.html type="informative" icon="info" body="
 Please note that all boolean credit card attributes involving the rejection of
@@ -43,7 +43,7 @@ Swedbank Pay." %}
 
 ### Screenshots
 
-You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
+You will redirect the payer to Swedbank Pay hosted pages to collect
 the credit card information.
 
 {:.text-center}
