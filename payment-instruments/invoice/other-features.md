@@ -157,6 +157,12 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+        "metadata": {          
+            "key1": "value1",
+            "key2": 2,
+            "key3": 3.1,
+            "key4": false
         }
     }
 }
