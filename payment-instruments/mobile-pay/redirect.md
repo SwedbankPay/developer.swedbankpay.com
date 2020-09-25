@@ -59,18 +59,6 @@ Content-Type: application/json
         "currency": "DKK",
         "prices": [
             {
-                "type": "Visa",
-                "amount": 1500,
-                "vatAmount": 0,
-                "FeeAmount": 5
-            },
-            {
-                "type": "MasterCard",
-                "amount": 1500,
-                "vatAmount": 0,
-                "FeeAmount": 10
-            },
-            {
                 "type": "MobilePay",
                 "amount": 1500,
                 "vatAmount": 0
@@ -110,7 +98,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`intent`                | `string`     | `Authorization`                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`currency`              | `string`     | `NOK`, `SEK`, `DKK`, `USD` or `EUR`.                                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`prices`                | `object`     | The prices object.                                                                                                                                                                                                                                        |
-| {% icon check %} | └─➔&nbsp;`type`                 | `string`     | `Visa` (for card type Visa), `MC` (for card type Mastercard), `MobilePay` (for all card types).                                                                                                                                                           |
+| {% icon check %} | └─➔&nbsp;`type`                 | `string`     | `MobilePay` (for supporting all card types configured at Swedbank Pay). If you need to specify what card brands you want to support you may specify this by sending in the card brand, e.g `Dankort` (for card type Dankort), `Visa` (for card type Visa), `MasterCard` (for card type Mastercard),                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
