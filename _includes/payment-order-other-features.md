@@ -319,7 +319,7 @@ deprecated in the operation list below." %}
 {
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-    }
+    },
     "operations": [
         {
             "method": "PATCH",
