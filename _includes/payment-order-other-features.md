@@ -319,7 +319,7 @@ deprecated in the operation list below." %}
 {
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-    }
+    },
     "operations": [
         {
             "method": "PATCH",
@@ -374,7 +374,7 @@ deprecated in the operation list below." %}
             "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/failed",
             "rel": "failed-paymentorder",
             "contentType": "application/problem+json"
-        }
+        },
         {
             // Deprecated operation. Do not use!
             "method": "POST",
