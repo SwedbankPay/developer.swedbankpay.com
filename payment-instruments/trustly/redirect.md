@@ -92,10 +92,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`      | `string`     | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`           | `object`     | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`   | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |
-
-| {% icon check %} | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios.|
-
+| {% icon check %} | └─➔&nbsp;`completeUrl`   | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][completeurl] for details.  |
+|                  | └─➔&nbsp;`cancelUrl`           | `array`       | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                  |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |
@@ -228,6 +226,7 @@ Here you will also find info on `Abort` and `Reversal`.
 {% include iterator.html prev_href="./" prev_title="Back: Introduction"
 next_href="seamless-view" next_title="Next: Seamless View" %}
 
+[completeurl]: /payment-instrument/trustly/other-features#completeurl
 [deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /payment-instruments/trustly/after-payment
 [callback]: /payment-instruments/trustly/other-features#callback

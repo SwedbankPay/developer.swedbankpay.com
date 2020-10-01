@@ -97,7 +97,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |	
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |	
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |	
-| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. |	
+| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][completeurl] for details.  |	
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |	
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | The URL that will be used for showing the customer logo. Must be a picture with maximum 50px height and 400px width. Require https.                                                                                                                                                                |	
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |	
@@ -269,7 +269,8 @@ sequenceDiagram
 next_href="after-payment" next_title="Next: After Payment" %}	
 
 [after-payment]: /payment-instruments/trustly/after-payment	
-[callback]: /payment-instruments/trustly/other-features#callback	
+[callback]: /payment-instruments/trustly/other-features#callback
+[completeurl]: /payment-instruments/trustly/other-features#completeurl 	
 [create-payment]: /payment-instruments/trustly/other-features#create-payment	
 [financing-consumer]: /payment-instruments/trustly/other-features#financing-consumer	
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png	
