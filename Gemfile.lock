@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/NullableInt/searchyll.git
-  revision: 2a88c31371933e611a558782c685314495e1da1d
-  branch: feature/production_switch
+  revision: 30686f7dcfc899cf8d969b29685b28176abec7a7
+  branch: feature/api_key
   specs:
     searchyll (0.10.2)
       jekyll (>= 3.0)

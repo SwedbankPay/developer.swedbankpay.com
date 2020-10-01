@@ -45,8 +45,8 @@ services:
       - elasticsearch
   portal:
     container_name: developer_portal
-    image: swedbankpay/jekyll-plantuml:2.0.5
-    command: serve
+    image: swedbankpay/jekyll-plantuml:2.1.0
+    command: build
     environment:
       - DEBUG=true
     ports:
