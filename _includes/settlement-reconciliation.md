@@ -169,7 +169,7 @@ In the input data for making a capture, you will set the `payeeReference`. The
 unique value of this field is the same as the field called `OrderID` in the
 reconciliation file.
 
-```js
+```json
 {
     "transaction": {
         "amount": 1500,
@@ -184,7 +184,7 @@ When you receive the response from Swedbank Pay, the response will include
 `transaction.number`. This is the same as the field called `TransactionNo` in
 the reconciliation file.
 
-```js
+```json
 {
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {

@@ -105,7 +105,7 @@ When a user actively attempts to perform a payment, the `onPaymentCreated` event
 is raised with the following event argument object:
 
 {:.code-view-header}
-**`onPaymentCreated` event object**
+**onPaymentCreated event object**
 
 ```js
 {

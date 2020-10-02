@@ -18,7 +18,7 @@ The structure of a problem message will look like this:
 {:.code-view-header}
 **Problem Example**
 
-```js
+```json
 {
     "type": "https://api.payex.com/psp/errordetail/<resource>/inputerror",
     "title": "There was an input error",

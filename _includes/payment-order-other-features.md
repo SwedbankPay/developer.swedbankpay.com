@@ -176,6 +176,7 @@ to reflect what the payer has chosen in your menu.
 
 The Payment Menu is switched to "Instrument Mode" by providing the request field
 `instrument` as described in the abbreviated example below.
+
 {:.code-view-header}
 **Request**
 
