@@ -119,6 +119,7 @@ Content-Type: application/json
 ```http	
 HTTP/1.1 200 OK	
 Content-Type: application/json	
+
 {	
     "payment": {	
         "id": "/psp/trustly/payments/{{ page.payment_id }}",	
