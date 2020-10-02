@@ -248,9 +248,9 @@ Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
 {:.code-view-header}
-**JavaScript**
+**HTML**
 
-```js
+```html
 <script language="javascript">
     payex.hostedView.swish({
         // The container specifies which id the script will look for to host the
