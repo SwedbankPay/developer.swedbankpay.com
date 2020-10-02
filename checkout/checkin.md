@@ -51,15 +51,11 @@ When the request has been sent, a response containing an array of operations tha
 {:.code-view-header}
 **Response**
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
+```jsonc
 {
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
-        // Deprecated operation. Do not use!
-        {
+        {   // Deprecated operation. Do not use!
             "method": "GET",
             "rel": "redirect-consumer-identification",
             "href": "{{ page.front_end_url }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
