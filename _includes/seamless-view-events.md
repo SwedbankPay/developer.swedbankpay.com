@@ -29,7 +29,7 @@ will be followed by either `onPaymentCompleted`, `onPaymentFailed` or
 these events below.
 
 {:.code-view-header}
-**`onPaymentPending` event object**
+**onPaymentPending event object**
 
 ```js
 {
@@ -49,7 +49,7 @@ The `onPaymentCompleted` event is raised with the following event argument
 object:
 
 {:.code-view-header}
-**`onPaymentCompleted` event object**
+**onPaymentCompleted event object**
 
 ```js
 {
@@ -71,7 +71,7 @@ The `onPaymentCanceled` event is raised with the following event argument
 object:
 
 {:.code-view-header}
-**`onPaymentCanceled` event object**
+**onPaymentCanceled event object**
 
 ```js
 {
@@ -93,7 +93,7 @@ perform a payment. The `onPaymentFailed` event is raised with the following
 event argument object:
 
 {:.code-view-header}
-**`onPaymentFailed` event object**
+**onPaymentFailed event object**
 
 ```js
 {
@@ -115,7 +115,7 @@ link. The `onPaymentTermsOfService` event is raised with the following event
 argument object:
 
 {:.code-view-header}
-**`onPaymentTermsOfService` event object**
+**onPaymentTermsOfService event object**
 
 ```js
 {
@@ -137,7 +137,7 @@ validation. The `onError` event will be raised with the following event argument
 object:
 
 {:.code-view-header}
-**`onError` event object**
+**onError event object**
 
 ```js
 {
@@ -164,7 +164,7 @@ Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
 following event argument object:
 
 {:.code-view-header}
-**`onPaymentMenuInstrumentSelected` event object**
+**onPaymentMenuInstrumentSelected event object**
 
 ```js
 {
@@ -186,7 +186,7 @@ attempts to perform a payment. The `onPaymentCreated` event is raised with the
 following event argument object:
 
 {:.code-view-header}
-**`onPaymentCreated` event object**
+**onPaymentCreated event object**
 
 ```js
 {
@@ -210,7 +210,7 @@ payer will be able to try again or choose another payment instrument. The
 object:
 
 {:.code-view-header}
-**`onPaymentTransactionFailed` event object**
+**onPaymentTransactionFailed event object**
 
 ```js
 {
@@ -232,7 +232,7 @@ example 3-D Secure or Bank ID signing. The `onExternalRedirect` event is raised
 with the following event argument object:
 
 {:.code-view-header}
-**`onExternalRedirect` event object**
+**onExternalRedirect event object**
 
 ```js
 {
