@@ -164,7 +164,7 @@ payment altogether or creating an authorization transaction through the
 {:.code-view-header}
 **Request**
 
-```js
+```json
 {
     "payment": {
         "operation": "Purchase"

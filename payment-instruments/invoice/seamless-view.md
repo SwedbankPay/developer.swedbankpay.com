@@ -230,16 +230,16 @@ Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
 {:.code-view-header}
-**JavaScript**
+**HTML**
 
-```js
-<script language="javascript">
+```html
+<html language="javascript">
     payex.hostedView.invoice({
         // The container specifies which id the script will look for to host the
         // iframe component.
         container: "swedbank-pay-seamless-view-page"
     }).open();
-</script>
+</html>
 ```
 
 ## Purchase Flow
