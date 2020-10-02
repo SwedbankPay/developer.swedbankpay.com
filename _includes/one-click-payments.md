@@ -21,7 +21,7 @@ You can do this either by by setting the `generatePaymentToken` field to
 operation to [`Verify`][verify].
 
 {:.code-view-header}
-**`generatePaymentToken` field**
+**generatePaymentToken field**
 
 ```js
 {

@@ -31,7 +31,7 @@ these events below.
 {:.code-view-header}
 **onPaymentPending event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}"
 }
@@ -51,7 +51,7 @@ object:
 {:.code-view-header}
 **onPaymentCompleted event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/complete"
@@ -73,7 +73,7 @@ object:
 {:.code-view-header}
 **onPaymentCanceled event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/canceled"
@@ -95,7 +95,7 @@ event argument object:
 {:.code-view-header}
 **onPaymentFailed event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/failed"
@@ -117,7 +117,7 @@ argument object:
 {:.code-view-header}
 **onPaymentTermsOfService event object**
 
-```js
+```json
 {
     "origin": "owner",
     "openUrl": "https://example.com/terms-of-service"
@@ -139,7 +139,7 @@ object:
 {:.code-view-header}
 **onError event object**
 
-```js
+```json
 {
     "origin": "{{ api_resource }}",
     "messageId": "{{ page.transaction_id }}",
@@ -166,7 +166,7 @@ following event argument object:
 {:.code-view-header}
 **onPaymentMenuInstrumentSelected event object**
 
-```js
+```json
 {
     "name": "menu identifier",
     "instrument": "creditcard | vipps | swish | invoice",
@@ -188,7 +188,7 @@ following event argument object:
 {:.code-view-header}
 **onPaymentCreated event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
@@ -212,7 +212,7 @@ object:
 {:.code-view-header}
 **onPaymentTransactionFailed event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "details": "[HttpCode ProblemTitle]"
@@ -234,7 +234,7 @@ with the following event argument object:
 {:.code-view-header}
 **onExternalRedirect event object**
 
-```js
+```json
 {
     "redirectUrl": "https://external.example.com/"
 }
