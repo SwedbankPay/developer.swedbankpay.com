@@ -86,7 +86,6 @@ Solutions AB) that the merchant has the contract with, and the balance report
 number. The header fields contain a summary of the transactions displayed in the
 body.
 
-{:.code-view-header}
 **Header fields**
 
 {:.table .table-striped}
@@ -102,7 +101,6 @@ body.
 | `FromDate`    | `ISO 8601` | The earlistest transaction date, `YYYY-MM-DD`.                             |
 | `ToDate`      | `ISO 8601` | The latest transaction date, `YYYY-MM-DD`.                                 |
 
-{:.code-view-header}
 **Body fields**
 
 {:.table .table-striped}
