@@ -996,7 +996,7 @@ operation.
 {:.code-view-header}
 **Verify**
 
-```js
+```json
 {
     "paymentorder": {
         "operation": "Verify"
