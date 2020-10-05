@@ -24,10 +24,7 @@ paste it from below and save it to a file called `SwedbankPay.key`.
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBF46XsgBEACh1Yz2neopGj1UdGC+jDW+Cspq126X58EK1tWdo6mv3wpzN5GB
-nb9iQ
-
-Vg68oyUSUWiGiezmqVkkoUmPNLsJo6K95eurte+zoKGhM4b2iWeuZj/4V/Q
-
+nb9iQVg68oyUSUWiGiezmqVkkoUmPNLsJo6K95eurte+zoKGhM4b2iWeuZj/4V/Q
 EgnRLYWgiZKNJvZ6wONw3oRayuHAqb38RkfEv6oVG8+Xj2ZmkV7azI34WjCvf8Ba
 G1SzTUNXnYWUc2cYJ+gQrggfliL2w3HkevuLBtXfthFobVqhI/0WUn6mBPLWJt3Z
 4ydGTu+xUDcdAVYJHJblQ4wRhjoVtHgsd8gZerpO2Ol8MDvnfc1HRqzFg2bYkg1X
