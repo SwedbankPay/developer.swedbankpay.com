@@ -27,6 +27,9 @@ menu_order: 600
     result.
 
 {:.text-center}
+![screenshot of the Swedbank Pay landing page][swedbankpay-landing-page]{:height="425px" width="475px"}
+
+{:.text-center}
 ![mobilepay enter number][mobilepay-screenshot-1]{:height="690px" width="475px"}
 
 {:.text-center}
@@ -373,4 +376,5 @@ sequenceDiagram
 [mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
 [payee-reference]: /payment-instruments/mobile-pay/other-features#payee-reference
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent
+[swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png
 [technical-reference-callback]: /payment-instruments/mobile-pay/other-features#callback
