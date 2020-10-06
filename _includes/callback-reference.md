@@ -12,8 +12,8 @@ three example scenarios of why this is important:
 1.  If the payer closes the payment window, the merchant will never know what
     happened to the payment if `callbackUrl` is not implemented.
 2.  If the payer stops up in a payment app such as Vipps or Swish, the payer
-    will never come back to the merchant. This means that the merchant won't know what
-    happened to the payment unless `callbackUrl` is implemented.
+    will never come back to the merchant. This means that the merchant won't
+    know what happened to the payment unless `callbackUrl` is implemented.
 3.  If a payer experiences a network error or something else happens that
     prevents the payer from being redirected from Swedbank Pay back to the
     merchant website, the `callbackUrl` is what ensures that you receive the
@@ -22,12 +22,17 @@ three example scenarios of why this is important:
 *   When a change or update from the back-end system are made on a payment or
     transaction, Swedbank Pay will perform an asynchronous server-to-server
     callback to inform the payee (merchant) about this update.
-*   Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was specified
-    when the payee (merchant) created the payment.
-*   When the `callbackUrl` receives such a callback, an `HTTP` `GET` request must
-    be made on the payment or on the transaction. The retrieved payment or
-    transaction resource will give you the necessary information about the recent
-    change/update.
+*   It is important to know that the callback is async, and not real-time. As we
+    can’t guarantee when you get the callback, there could be a delay between
+    when the payer is returned back to the merchant and when the callback
+    arrives. If the merchant chooses to wait for the callback, the payer might
+    be left at the merchant’s page until the response comes.
+*   Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was
+    specified when the payee (merchant) created the payment.
+*   When the `callbackUrl` receives such a callback, an `HTTP` `GET` request
+    must be made on the payment or on the transaction. The retrieved payment or
+    transaction resource will give you the necessary information about the
+    recent change/update.
 *   The callback will be retried if it fails. Below are the retry timings, in
     seconds from the initial transaction time:
     *   30 seconds
