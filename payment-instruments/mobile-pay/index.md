@@ -10,14 +10,19 @@ menu_order: 700
 
 MobilePay is the main Danish payment app for mobile phones, making it one
 of the essential payment instruments for merchants operating in Denmark. More 
-than 4 million Danes are users of the app, and more than 100,000 merchants are
+than 4 million Danes use the app, and more than 100,000 merchants are
 accepting payments. We offer it on our redirect and seamless view platforms.
 
 ## Purchase flow
 
-After the payment is created, the payer is redirected to MobilePay's
-own payment page where the phone number is entered, and a push message is sent
-to the phone.
+When the payment is created, the payer is redirected to a Swedbank Pay landing
+page where he or she can proceed with the payment by pressing the pay button.
+
+{:.text-center}
+![screenshot of the Swedbank Pay landing page][swedbankpay-landing-page]{:height="425px" width="475px"}
+
+This takes the payer to MobilePay's own payment page where the phone number is
+entered, and a push message is sent to the phone.
 
 {:.text-center}
 ![screenshot of the MobilePay Online number input page][mobilepay-number-input]{:height="690px" width="475px"}
@@ -75,8 +80,8 @@ MobilePay app.
 ## Payment availability
 
 Even though MobilePay Online supports several currencies, the payment instrument
-itself is only available for payers in Denmark and Finland. This allows a 
-shop in Norway to take payments in NOK from a Danish payer if the shop supports
+itself is only available for payers in Denmark and Finland. This allows a shop
+in Norway to receive payments in NOK from a Danish payer if the shop supports
 shipping to Denmark, for instance.
 
 {% include iterator.html
@@ -88,3 +93,4 @@ shipping to Denmark, for instance.
 [mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
 [payment-resource]: /payment-instruments/mobile-pay/other-features#payment-resource
 [other-features]: /payment-instruments/mobile-pay/other-features#operations
+[swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png
