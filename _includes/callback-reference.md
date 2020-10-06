@@ -22,7 +22,7 @@ three example scenarios of why this is important:
 *   When a change or update from the back-end system are made on a payment or
     transaction, Swedbank Pay will perform an asynchronous server-to-server
     callback to inform the payee (merchant) about this update.
-*   It is important to know that the callback is async, and not real-time. As we
+*   It is important to know that the callback is asynchronous, and not real-time. As we
     can’t guarantee when you get the callback, there could be a delay between
     when the payer is returned back to the merchant and when the callback
     arrives. If the merchant chooses to wait for the callback, the payer might
