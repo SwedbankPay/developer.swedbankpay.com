@@ -29,7 +29,7 @@ three example scenarios of why this is important:
     be left at the merchant’s page until the response comes.
 *   Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was
     specified when the payee (merchant) created the payment.
-*   When the `callbackUrl` receives such a callback, an `HTTP` `GET` request
+*   When the `callbackUrl` receives such a callback, an HTTP `GET` request
     must be made on the payment or on the transaction. The retrieved payment or
     transaction resource will give you the necessary information about the
     recent change/update.
