@@ -8,7 +8,7 @@ description: |
   In the Seamless View scenario, Swedbank Pay receives a mobile number (MSISDN)
   from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
   that the payer must confirm through the Vipps mobile app.
-menu_order: 500
+menu_order: 800
 ---
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
