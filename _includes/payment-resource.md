@@ -34,7 +34,7 @@ Content-Type: application/json
 {:.code-view-header}
 **Response**
 
-```http
+```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
