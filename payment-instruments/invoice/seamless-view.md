@@ -239,7 +239,7 @@ embedded on your website.
         // iframe component.
         container: "swedbank-pay-seamless-view-page"
     }).open();
-</html>
+</script>
 ```
 
 ## Purchase Flow
