@@ -30,10 +30,10 @@ menu_order: 600
 ![screenshot of the Swedbank Pay landing page][swedbankpay-landing-page]{:height="425px" width="475px"}
 
 {:.text-center}
-![mobilepay enter number][mobilepay-screenshot-1]{:height="690px" width="475px"}
+![mobilepay enter number][mobilepay-screenshot-1]{:height="700px" width="475px"}
 
 {:.text-center}
-![mobilepay approve payment][mobilepay-screenshot-2]{:height="700px" width="475px"}
+![mobilepay approve payment][mobilepay-screenshot-2]{:height="600px" width="600px"}
 
 {% include alert.html type="success" icon="link" body="**Defining
 `callbackUrl`**: When implementing a scenario, it is strongly recommended to set
