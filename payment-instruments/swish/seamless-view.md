@@ -8,7 +8,7 @@ description: |
   within your webshop. This gives the payer a
   frictionless experience as we are handling the
   payment in the implemented `iframe` on your page.
-menu_order: 700
+menu_order: 800
 ---
 
 ## Swish Seamless View integration flow

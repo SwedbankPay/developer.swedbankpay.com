@@ -2,7 +2,7 @@
 title: Capture
 redirect_from: /payments/invoice/capture
 estimated_read: 30
-menu_order: 600
+menu_order: 800
 ---
 
 {% include alert-two-phase-payments.md %}

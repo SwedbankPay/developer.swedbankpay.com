@@ -310,8 +310,8 @@ sequenceDiagram
 {% include iterator.html
         prev_href="redirect"
         prev_title="Back: Redirect"
-        next_href="after-payment"
-        next_title="Next: After payments" %}
+        next_href="capture"
+        next_title="Next: Capture" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
 [callback]: /payment-instruments/vipps/other-features#callback
