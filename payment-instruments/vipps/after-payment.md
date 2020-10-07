@@ -334,8 +334,8 @@ documentation_section="vipps" transaction="reversal" %}
 {% include abort-reference.md api_resource="vipps" %}
 
 {% include iterator.html
-        prev_href="seamless-view"
-        prev_title="Back: Seamless View"
+        prev_href="capture"
+        prev_title="Back: Capture"
         next_href="other-features"
         next_title="Next: Other Features" %}
 

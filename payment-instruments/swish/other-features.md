@@ -2,7 +2,7 @@
 title: Other Features
 redirect_from: /payments/swish/other-features
 estimated_read: 30
-menu_order: 900
+menu_order: 1000
 ---
 
 {% include payment-resource.md api_resource="swish"
