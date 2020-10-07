@@ -233,7 +233,7 @@ embedded on your website.
 **HTML**
 
 ```html
-<html language="javascript">
+<script language="javascript">
     payex.hostedView.invoice({
         // The container specifies which id the script will look for to host the
         // iframe component.
