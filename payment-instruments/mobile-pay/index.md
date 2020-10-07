@@ -25,7 +25,7 @@ This takes the payer to MobilePay's own payment page where the phone number is
 entered, and a push message is sent to the phone.
 
 {:.text-center}
-![screenshot of the MobilePay Online number input page][mobilepay-number-input]{:height="690px" width="475px"}
+![screenshot of the MobilePay Online number input page][mobilepay-number-input]{:height="700px" width="475px"}
 
 A countdown is shown in the browser and the payment request will appear in the
 app, waiting to be confirmed by the payer. If you are using the redirect
