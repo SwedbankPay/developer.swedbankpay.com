@@ -31,6 +31,7 @@ POST /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payment
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
 {
   "payment": {
     "operation": "Purchase",
@@ -82,6 +83,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "payment": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}",
   "metadata": {

@@ -37,9 +37,9 @@ The `onConsumerIdentified` event is raised with the following event argument
 object:
 
 {:.code-view-header}
-**`onConsumerIdentified` event object**
+**onConsumerIdentified event object**
 
-```js
+```json
 {
   "actionType": "OnConsumerIdentified",
   "consumerProfileRef": "{{ page.payment_token }}"
@@ -55,9 +55,9 @@ completed before any shipping details are finalized, as the Checkin component
 provides shipping address via the `onShippingDetailsAvailable` event." %}
 
 {:.code-view-header}
-**`onShippingDetailsAvailable` event object**
+**onShippingDetailsAvailable event object**
 
-```js
+```json
 {
   "actionType": "OnBillingDetailsAvailable",
   "url": "/psp/consumers/{{ page.payment_token }}/shipping-details"
@@ -69,9 +69,9 @@ provides shipping address via the `onShippingDetailsAvailable` event." %}
 Triggered when a consumer has been identified
 
 {:.code-view-header}
-**`onBillingDetailsAvailable` event object**
+**onBillingDetailsAvailable event object**
 
-```js
+```json
 {
   "actionType": "OnBillingDetailsAvailable",
   "url":"/psp/consumers/{{ page.payment_token }}/billing-details"

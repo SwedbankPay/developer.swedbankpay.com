@@ -3,8 +3,7 @@
 
 {%- assign operation_title_field_name = operation_title | capitalize -%}
 
-{:.code-view-header}
-**{{ operation_title_field_name }}**
+### **{{ operation_title_field_name }}**
 
 {:.table .table-striped}
 | API                                                                                               | XLSX                            | XML                     |

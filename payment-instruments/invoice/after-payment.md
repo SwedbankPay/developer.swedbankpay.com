@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/invoice/after-payment
 estimated_read: 30
-menu_order: 700
+menu_order: 900
 ---
 
 ## Options after posting a payment
