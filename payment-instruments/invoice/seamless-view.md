@@ -5,7 +5,7 @@ estimated_read: 30
 description: |
   The Seamless View scenario represents the opportunity to implement Invoice
   directly in your webshop.
-menu_order: 500
+menu_order: 600
 ---
 
 ## Introduction
@@ -230,9 +230,9 @@ Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
 {:.code-view-header}
-**JavaScript**
+**HTML**
 
-```js
+```html
 <script language="javascript">
     payex.hostedView.invoice({
         // The container specifies which id the script will look for to host the

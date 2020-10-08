@@ -29,9 +29,9 @@ will be followed by either `onPaymentCompleted`, `onPaymentFailed` or
 these events below.
 
 {:.code-view-header}
-**`onPaymentPending` event object**
+**onPaymentPending event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}"
 }
@@ -49,9 +49,9 @@ The `onPaymentCompleted` event is raised with the following event argument
 object:
 
 {:.code-view-header}
-**`onPaymentCompleted` event object**
+**onPaymentCompleted event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/complete"
@@ -71,9 +71,9 @@ The `onPaymentCanceled` event is raised with the following event argument
 object:
 
 {:.code-view-header}
-**`onPaymentCanceled` event object**
+**onPaymentCanceled event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/canceled"
@@ -93,9 +93,9 @@ perform a payment. The `onPaymentFailed` event is raised with the following
 event argument object:
 
 {:.code-view-header}
-**`onPaymentFailed` event object**
+**onPaymentFailed event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/failed"
@@ -115,9 +115,9 @@ link. The `onPaymentTermsOfService` event is raised with the following event
 argument object:
 
 {:.code-view-header}
-**`onPaymentTermsOfService` event object**
+**onPaymentTermsOfService event object**
 
-```js
+```json
 {
     "origin": "owner",
     "openUrl": "https://example.com/terms-of-service"
@@ -137,9 +137,9 @@ validation. The `onError` event will be raised with the following event argument
 object:
 
 {:.code-view-header}
-**`onError` event object**
+**onError event object**
 
-```js
+```json
 {
     "origin": "{{ api_resource }}",
     "messageId": "{{ page.transaction_id }}",
@@ -164,9 +164,9 @@ Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
 following event argument object:
 
 {:.code-view-header}
-**`onPaymentMenuInstrumentSelected` event object**
+**onPaymentMenuInstrumentSelected event object**
 
-```js
+```json
 {
     "name": "menu identifier",
     "instrument": "creditcard | vipps | swish | invoice",
@@ -186,9 +186,9 @@ attempts to perform a payment. The `onPaymentCreated` event is raised with the
 following event argument object:
 
 {:.code-view-header}
-**`onPaymentCreated` event object**
+**onPaymentCreated event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
@@ -210,9 +210,9 @@ payer will be able to try again or choose another payment instrument. The
 object:
 
 {:.code-view-header}
-**`onPaymentTransactionFailed` event object**
+**onPaymentTransactionFailed event object**
 
-```js
+```json
 {
     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "details": "[HttpCode ProblemTitle]"
@@ -232,9 +232,9 @@ example 3-D Secure or Bank ID signing. The `onExternalRedirect` event is raised
 with the following event argument object:
 
 {:.code-view-header}
-**`onExternalRedirect` event object**
+**onExternalRedirect event object**
 
-```js
+```json
 {
     "redirectUrl": "https://external.example.com/"
 }

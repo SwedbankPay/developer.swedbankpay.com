@@ -6,7 +6,7 @@ description: |
   The Seamless View purchase scenario
   represents the opportunity to implement card payments
   directly in your webshop.
-menu_order: 600
+menu_order: 500
 ---
 
 ## Introduction
@@ -105,7 +105,7 @@ When a user actively attempts to perform a payment, the `onPaymentCreated` event
 is raised with the following event argument object:
 
 {:.code-view-header}
-**`onPaymentCreated` event object**
+**onPaymentCreated event object**
 
 ```js
 {

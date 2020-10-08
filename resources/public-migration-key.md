@@ -21,7 +21,7 @@ paste it from below and save it to a file called `SwedbankPay.key`.
 {:.code-view-header}
 **Public Key**
 
-```pgp
+```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBF9kf58BEADlsQpmtsDwieUC/Zw0Vrfsc5/wT3BpIwJoMEK5YkjwrX4vx3yC
@@ -72,6 +72,7 @@ A3IrhvMv++B5QhtUgPkc9AviShBb/GIkctH9SL/JhOQCHaNgGwQjDaMku5bt9A5S
 3rEYz2sYb76Z9YPSH6hQfn7o6p5YOyPCxViXQVYMOYD7wi+TG593ME7gslvkvDqu
 mhehY+P6ozgVKhPQOIXmV+449jvBnL7Wn4wKIaRK55jGo0J1RfW9oZR7CrYWGyxv
 =U4Wq
+
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 

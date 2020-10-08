@@ -48,7 +48,7 @@ three example scenarios of why this is important:
 {:.code-view-header}
 **Payment Order Callback**
 
-```js
+```json
 {
     "paymentorder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
@@ -69,7 +69,7 @@ three example scenarios of why this is important:
 {:.code-view-header}
 **Payment Instrument Callback**
 
-```js
+```json
 {
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",

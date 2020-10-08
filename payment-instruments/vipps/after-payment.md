@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/vipps/after-payment
 estimated_read: 30
-menu_order: 600
+menu_order: 1000
 ---
 
 ### Create Payment
@@ -334,8 +334,8 @@ documentation_section="vipps" transaction="reversal" %}
 {% include abort-reference.md api_resource="vipps" %}
 
 {% include iterator.html
-        prev_href="seamless-view"
-        prev_title="Back: Seamless View"
+        prev_href="capture"
+        prev_title="Back: Capture"
         next_href="other-features"
         next_title="Next: Other Features" %}
 

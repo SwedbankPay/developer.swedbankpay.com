@@ -8,7 +8,7 @@ description: |
   within your webshop. This gives the payer a
   frictionless experience as we are handling the
   payment in the implemented `iframe` on your page.
-menu_order: 700
+menu_order: 800
 ---
 
 ## Swish Seamless View integration flow
@@ -248,9 +248,9 @@ Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
 {:.code-view-header}
-**JavaScript**
+**HTML**
 
-```js
+```html
 <script language="javascript">
     payex.hostedView.swish({
         // The container specifies which id the script will look for to host the

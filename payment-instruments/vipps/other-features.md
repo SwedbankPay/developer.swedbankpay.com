@@ -2,7 +2,7 @@
 title: Other Features
 redirect_from: /payments/vipps/other-features
 estimated_read: 30
-menu_order: 700
+menu_order: 1100
 ---
 
 {% include payment-resource.md  api_resource="vipps"
@@ -164,7 +164,7 @@ payment altogether or creating an authorization transaction through the
 {:.code-view-header}
 **Request**
 
-```js
+```json
 {
     "payment": {
         "operation": "Purchase"

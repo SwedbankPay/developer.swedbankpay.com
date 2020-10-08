@@ -8,7 +8,7 @@ description: |
   Pay performs a payment that the payer confirms in the Swish mobile app.
   The payer initiates the payment by supplying the Swish registered mobile
   number (msisdn), connected to the Swish app.
-menu_order: 500
+menu_order: 700
 ---
 
 ## Introduction
