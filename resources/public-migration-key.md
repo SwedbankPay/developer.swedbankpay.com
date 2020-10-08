@@ -21,6 +21,7 @@ paste it from below and save it to a file called `SwedbankPay.key`.
 {:.code-view-header}
 **Public Key**
 
+```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBF9kf58BEADlsQpmtsDwieUC/Zw0Vrfsc5/wT3BpIwJoMEK5YkjwrX4vx3yC
@@ -73,6 +74,7 @@ mhehY+P6ozgVKhPQOIXmV+449jvBnL7Wn4wKIaRK55jGo0J1RfW9oZR7CrYWGyxv
 =U4Wq
 
 -----END PGP PUBLIC KEY BLOCK-----
+```
 
 To encrypt files with Swedbank Pay's Public Migration Key, you must import it
 with the following command:
