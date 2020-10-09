@@ -9,7 +9,7 @@ menu_order: 300
 
 ## Step 3: Create Payment Order
 
-Once consumer has been identified, the next step is to initiate the payment
+Once the consumer has been identified, the next step is to initiate the payment
 using `consumerProfileRef` retrieved in the previous step.
 
 We start by performing a `POST` request towards the `paymentorder` resource

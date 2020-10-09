@@ -201,31 +201,31 @@ is illustrated in the sequence diagram below.
 
 ```mermaid
 sequenceDiagram
-    participant Payer
+    participant Consumer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
         rect rgba(238, 112, 35, 0.05)
-            note left of Payer: Checkin
+            note left of Consumer: Checkin
 
-    Payer ->>+ Merchant: Start Checkin
+    Consumer ->>+ Merchant: Start Checkin
     Merchant ->>+ SwedbankPay: POST /psp/consumers
     deactivate Merchant
     SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
     deactivate SwedbankPay
-    Merchant -->>- Payer: Show Checkin on Merchant Page
+    Merchant -->>- Consumer: Show Checkin on Merchant Page
 
-    Payer ->>+ Payer: Initiate Consumer Hosted View (open iframe) ②
-    Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
-    deactivate Payer
-    SwedbankPay ->>- Payer: Consumer identification process
-    activate Payer
-    Payer ->>+ SwedbankPay: Consumer identification process
-    deactivate Payer
-    SwedbankPay -->>- Payer: show consumer completed iframe
-    activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified (consumerProfileRef) ④
-    deactivate Payer
+    Consumer ->>+ Consumer: Initiate Consumer Hosted View (open iframe) ②
+    Consumer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
+    deactivate Consumer
+    SwedbankPay ->>- Consumer: Consumer identification process
+    activate Consumer
+    Consumer ->>+ SwedbankPay: Consumer identification process
+    deactivate Consumer
+    SwedbankPay -->>- Consumer: show consumer completed iframe
+    activate Consumer
+    Consumer ->> Consumer: EVENT: onConsumerIdentified (consumerProfileRef) ④
+    deactivate Consumer
     end
 ```
 
