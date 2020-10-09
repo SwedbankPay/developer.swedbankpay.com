@@ -1009,16 +1009,16 @@ documentation_section="payment-menu" token_field_name="recurrenceToken" %}
 
 ```mermaid
 sequenceDiagram
-    participant Payer
+    participant Consumer
     participant ConsumerSubscription
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
     rect rgba(81,43,43,0.1)
-        note left of Payer: Checkin
-        activate Payer
-        Payer ->>+ SwedbankPay: Checkin procedure
-        deactivate Payer
+        note left of Consumer: Checkin
+        activate Consumer
+        Consumer ->>+ SwedbankPay: Checkin procedure
+        deactivate Consumer
     end
     rect rgba(55, 91, 134,0.1)
         activate Payer
