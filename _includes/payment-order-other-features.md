@@ -306,7 +306,14 @@ Content-Type: application/json
         "generateRecurrenceToken": true,
         "generatePaymentToken": true,
         "disableStoredPaymentDetails": true,
-            "hostUrls": [ "https://example.com", "https://example.net" ]
+        "urls": {
+            "hostUrls": [ "https://example.com", "https://example.net" ],
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-canceled",
+            "paymentUrl": "https://example.com/perform-payment",
+            "callbackUrl": "https://api.example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
