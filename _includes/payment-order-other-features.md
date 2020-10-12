@@ -37,7 +37,6 @@ underlying payments or transaction.
 |                   | `callbackUrl`       | `string` | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 |                   | `logoUrl`           | `string` | The URI to the logo that will be displayed on redirect pages. **HTTPS is a requirement**.                                                                                                                                                                                                                |
 
-
 {% include payment-url.md
     api_resource="paymentorders"
     documentation_section=include.documentation_section
@@ -283,7 +282,43 @@ menu and want to show stored payment details, you will need to set the
 `disableStoredPaymentDetails` to `true`. It is important that you then store the
 `paymentToken` in your system or call Swedbank Pay with the `payerReference` to
 get all active payment tokens registered on that payer when building your
-menu.
+menu. See the abbreviated `Purchase` example below.
+
+{:.code-view-header}
+**Request**
+
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "description": "Test Purchase",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "instrument": "CreditCard"
+        "generateRecurrenceToken": true,
+        "generatePaymentToken": true,
+        "disableStoredPaymentDetails": true,
+            "hostUrls": [ "https://example.com", "https://example.net" ]
+        },
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}",
+            "payeeReference": "AB832",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-123456",
+            "subsite": "MySubsite"
+        }
+   }
+}
+```
 
 ### GDPR
 
@@ -848,7 +883,7 @@ Content-Type: application/json
         "vatAmount": 250
       }
     ]
-    "metadata": {                                                  
+    "metadata": {
         "key1": "value1",
         "key2": 2,
         "key3": 3.1,
@@ -1062,7 +1097,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`. If set to `true`, only payment instruments which support recurring payments will be visible in the payment menu.                                                         |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details. 
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details.
 |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`](#payment-url) for details.                                                                                                                                                       |
@@ -1505,4 +1540,3 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [transaction]: #transaction
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-
