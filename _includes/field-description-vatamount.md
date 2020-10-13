@@ -10,7 +10,7 @@ unit of the selected currency. E.g.:&nbsp;
 
 The `vatAmount` entered will not affect the `amount` shown on the payment page, 
 which only shows the total `amount`. This field is used to specify how much of
-the total `amount` the VAT will be. Set to `0` (zero) if there is no VAT
+the total `amount` the VAT will be. Set to `0` (zero) if there is no VAT 
 `amount` charged.
 {%- endcapture -%}
 {{- vatamount_text | strip_newlines | replace: "&nbsp;", " " -}}
