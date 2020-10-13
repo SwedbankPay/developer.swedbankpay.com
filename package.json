@@ -45,7 +45,7 @@
     "remark-lint-no-file-name-mixed-case": "^1.0.0",
     "remark-lint-no-file-name-outer-dashes": "^1.0.1",
     "remark-lint-no-heading-content-indent": "^2.0.0",
-    "remark-lint-no-heading-indent": "^2.0.0",
+    "remark-lint-no-heading-indent": "^3.0.0",
     "remark-lint-no-heading-like-paragraph": "^2.0.0",
     "remark-lint-no-inline-padding": "^2.0.0",
     "remark-lint-no-literal-urls": "^2.0.0",
