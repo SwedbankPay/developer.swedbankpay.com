@@ -5,7 +5,7 @@
   "dependencies": {
     "braces": ">=2.3.1",
     "dictionary-en-us": "^3.0.0",
-    "remark": "^12.0.1",
+    "remark": "^13.0.0",
     "remark-cli": "^8.0.1",
     "remark-frontmatter": "^3.0.0",
     "remark-heading-gap": "^4.0.0",
