@@ -6,7 +6,7 @@
         /payment-instruments/{{ documentation_section }}/other-features#metadata
     {%- endif -%}
 {%- endcapture -%}
-%- capture metadata -%}
+{%- capture metadata -%}
     The keys and values that should be associated with the payment. Can be 
     additional identifiers and data you want to associate with the payment. 
     Read more about this in the [`metadata`]({{ metadata_url }}) section.
@@ -21,6 +21,5 @@ It's essential to have control over newlines in this file. If unintentional
 newlines sneak into what's rendered by this include, it will break all tables
 it is included in, so please beware.
 {%- endcomment -%}
-
 
 
