@@ -10,6 +10,8 @@ documentation_section="mobile-pay" %}
 
 {% include payments-operations.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
+{% include payment-state.md %}
+
 ### Create Payment
 
 To create a MobilePay Online payment, you perform an HTTP `POST` against the

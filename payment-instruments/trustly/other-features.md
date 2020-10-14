@@ -12,6 +12,8 @@ documentation_section="trustly" %}
 
 {% include payment-transaction-states.md %}
 
+{% include payment-state.md %}
+
 {% include payments-operations.md api_resource="trustly" documentation_section="trustly" %}
 
 ## Create Payment
