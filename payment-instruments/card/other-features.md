@@ -16,6 +16,8 @@ documentation_section="card" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
+{% include payment-state.md %}
+
 {% include create-payment.md %}
 
 ## Purchase

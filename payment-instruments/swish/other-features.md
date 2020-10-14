@@ -10,6 +10,8 @@ documentation_section="swish" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
+{% include payment-state.md %}
+
 {% include payments-operations.md api_resource="swish" documentation_section="swish" %}
 
 ## Create Payment
