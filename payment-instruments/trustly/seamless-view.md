@@ -34,6 +34,8 @@ payment process, you need to make a `POST` request towards Swedbank Pay with you
 payment information. This will generate a `payment` resource with a unique	
 `id` URI. You will receive a **JavaScript source** in response.	
 
+{% include alert-gdpr-disclaimer.md %}
+
 {:.code-view-header}
 **Request**
 

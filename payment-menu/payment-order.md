@@ -15,6 +15,8 @@ order to create a Payment Order.
 
 {% include alert-risk-indicator.md %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 {% include payment-url.md payment_order=true
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments" %}

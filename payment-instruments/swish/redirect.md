@@ -44,6 +44,8 @@ Swish is a one-phase payment instrument that is based on sales transactions
 All valid options when posting in a payment with operation equal to `Purchase`.
 The `Purchase` example shown below.
 
+{% include alert-gdpr-disclaimer.md %}
+
 {:.code-view-header}
 **Request**
 

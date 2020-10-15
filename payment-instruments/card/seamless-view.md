@@ -43,6 +43,8 @@ purchase process, you need to make a POST request towards Swedbank Pay with your
 Purchase information. This will generate a payment object with a unique
 `paymentID`. You will receive a **JavaScript source** in response.
 
+{% include alert-gdpr-disclaimer.md %}
+
 {% include card-purchase.md seamless_view=true %}
 
 The key information in the response is the `view-authorization` operation. You

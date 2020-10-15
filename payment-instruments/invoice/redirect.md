@@ -30,6 +30,8 @@ menu_order: 500
 
 {% include alert-callback-url.md api_resource="invoice" %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
 Our `payment` example below uses the [`FinancingConsumer`]
 [financing-consumer] value. All valid options when posting a payment with

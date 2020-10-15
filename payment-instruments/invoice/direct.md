@@ -46,6 +46,8 @@ The 3 most important steps in the Invoice Direct flow are shown below.
 
 Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] value.
 
+{% include alert-gdpr-disclaimer.md %}
+
 ### Financing Consumer
 
 {:.code-view-header}
