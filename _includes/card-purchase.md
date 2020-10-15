@@ -296,8 +296,6 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-{% include delete-token.md api_resource="creditcard"
-documentation_section="card" token_field_name="paymentToken" %}
 
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [split-settlement]: /checkout/other-features#split-settlement
