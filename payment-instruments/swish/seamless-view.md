@@ -42,6 +42,8 @@ a purchase. An example of an expanded `POST` request is available in the
 
 {% include payment-url.md  when="selecting Swish as payment instrument" %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 {:.code-view-header}
 **Request**
 

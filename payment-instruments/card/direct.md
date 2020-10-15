@@ -60,6 +60,8 @@ expanded `POST` request is available in the [other features section][purchase].
 
 {% include alert-risk-indicator.md %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 {% include card-purchase.md %}
 
 {% include alert-callback-url.md api_resource="creditcard" %}
