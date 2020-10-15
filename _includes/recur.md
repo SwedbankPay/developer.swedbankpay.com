@@ -68,5 +68,3 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`subsite`             | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                      |
 |                  | └➔&nbsp;`metadata`             | `object`      | {% include field-description-metadata.md documentation_section=include.documentation_section %}                                                                                                                                                 |
 
-{% include delete-token.md api_resource="creditcard"
-documentation_section="card" token_field_name="recurrenceToken" %}
