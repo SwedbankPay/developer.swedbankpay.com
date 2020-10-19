@@ -46,8 +46,8 @@ three example scenarios of why this is important:
 
 To understand the nature of the callback, the type of transaction, its status, etc., 
 you need to perform a GET request on the received URI and inspect the response. 
-The transaction type used in the example below is `authorizations`.
-Other types of `transaction` can be `captures`, `cancellations`,`reversals`.
+The transaction type or any other information can not be inferred from the URI.
+See [URI usage][uri-usage] for more information.
 
 {% if api_resource == "paymentorders" %}
 {:.code-view-header}
