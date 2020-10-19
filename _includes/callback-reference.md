@@ -44,6 +44,11 @@ three example scenarios of why this is important:
 *   The callback is sent from the following IP address: `82.115.146.1`
 *   A callback should return a `200 OK` response.
 
+To understand the nature of the callback, the type of transaction, its status, etc., 
+you need to perform a GET request on the received URI and inspect the response. 
+The transaction type used in the example below is `authorizations`.
+Other types of `transaction` can be `captures`, `cancellations`,`reversals`.
+
 {% if api_resource == "paymentorders" %}
 {:.code-view-header}
 **Payment Order Callback**
@@ -59,7 +64,7 @@ three example scenarios of why this is important:
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -76,19 +81,13 @@ three example scenarios of why this is important:
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
 ```
 
 {% endif %}
-
-{:.table .table-striped}
-| Parameter            | Description                                                |
-| :------------------- | :--------------------------------------------------------- |
-| `<transaction type>` | `authorizations`, `captures`, `cancellations`,`reversals` |
-| `<payment instrument>` | `creditcard`, `invoice`, `swish`, `vipps`,`mobilepay`, `callback` |
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
