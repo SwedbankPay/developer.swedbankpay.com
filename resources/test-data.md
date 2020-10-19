@@ -93,40 +93,40 @@ institutions.
 ### Maestro
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `6764429999947470` | 03/17  | `066` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `6764429999947470` | After the current month  | `066` |
 
 ### Dankort
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `5019994016316467` | 10/23  | `375` |
-| `5019994001307083` | 05/21  | `615` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `5019994016316467` | After the current month  | `375` |
+| `5019994001307083` | After the current month  | `615` |
 
 ### Visa/DanKort
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `4571994016401817` | 10/17  | `212` |
-| `4571994016471869` | 01/19  | `829` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `4571994016401817` | After the current month  | `212` |
+| `4571994016471869` | After the current month  | `829` |
 
 ### Forbrugsforeningen
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `6007220000000004` | 12/22  | `123` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `6007220000000004` | After the current month  | `123` |
 
 # 3-D Secure
 
 {:.table .table-striped}
-| Card type  | Card number        | Expiry | CVC   | Type of test data   |
-| :--------- | :----------------- | :----- | :---- | :------------------ |
-| Visa       | `4761739001010416` | 12/22  | `268` | 3-D Secure enrolled |
-| MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled |
+| Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
+| :--------- | :----------------- | :----------------------- | :-----| :------------------ |
+| Visa       | `4761739001010416` | After the current month  | `268` | 3-D Secure enrolled |
+| MasterCard | `5226612199533406` | After the current month  | `602` | 3-D Secure enrolled |
 
 ## Failure Testing
 
