@@ -120,7 +120,7 @@ institutions.
 | :----------------- | :----------------------- | :---- |
 | `6007220000000004` | After the current month  | `123` |
 
-# 3-D Secure
+### 3-D Secure
 
 {:.table .table-striped}
 | Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
