@@ -1517,8 +1517,6 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
     {%- include merchant-authenticated-consumer.md -%}
 {% endif %}
 
-{% include merchant-identified-payer.md documentation_section="checkout"%}
-
 {% include metadata.md api_resource="paymentorders" %}
 
 {% if include.documentation_section == "payment-menu" %}
