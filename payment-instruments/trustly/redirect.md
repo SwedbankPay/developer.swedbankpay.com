@@ -27,6 +27,8 @@ menu_order: 900
 
 {% include alert-callback-url.md api_resource="trustly" %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
 
 {:.code-view-header}

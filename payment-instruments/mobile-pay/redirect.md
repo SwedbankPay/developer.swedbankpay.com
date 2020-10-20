@@ -47,6 +47,8 @@ When the payer starts the purchase process, you make a `POST` request towards
 Swedbank Pay with the collected Purchase information. This will generate a
 payment with a unique `id`. See the `POST`request example below.
 
+{% include alert-gdpr-disclaimer.md %}
+
 {:.code-view-header}
 **Request**
 

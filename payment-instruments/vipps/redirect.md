@@ -35,6 +35,8 @@ You redirect the payer to collect the payer's mobile number.
 {% include alert-callback-url.md api_resource="vipps"
 callback_href="/payments/vipps/other-features#callback" %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 A `Purchase` payment is a straightforward way to charge the the payer. Below
 you will see the `POST` request you will need to send to collect the purchase
 information.

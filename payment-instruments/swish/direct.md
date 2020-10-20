@@ -33,6 +33,8 @@ transactions not involving `capture` or `cancellation` operations." %}
 
 A `Purchase` payment is created by performing the following request.
 
+{% include alert-gdpr-disclaimer.md %}
+
 {:.code-view-header}
 **Request**
 

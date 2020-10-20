@@ -27,6 +27,8 @@ in the [other features section][purchase].
 
 {% include alert-risk-indicator.md %}
 
+{% include alert-gdpr-disclaimer.md %}
+
 {:.code-view-header}
 **Request**
 
