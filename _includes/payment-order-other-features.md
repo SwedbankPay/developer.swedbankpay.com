@@ -231,6 +231,37 @@ Content-Type: application/json
 }
 ```
 
+It is possible to switch instrument after the `paymentOrder` has been created.
+You can do this with the following `PATCH` request, using Swish as an example.
+
+```http
+PATCH /psp/{{ api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+  "paymentorder": {
+    "operation": "SetInstrument",
+    "instrument": "Swish"
+  }
+}
+```
+
+The valid instruments for the `paymentOrder` can be retrieved from the
+`availableInstruments` parameter in the `paymentOrder` response. Using a
+merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
+`availableInstruments` will look like this.
+
+```
+        "availableInstruments": [
+            "CreditCard",
+            "Invoice-PayExFinancingSe",
+            "Swish"
+        ],
+```
+
+
 ## Payer Aware Payment Menu
 
 To maximize the experience of your payers, you should implement the Payer
