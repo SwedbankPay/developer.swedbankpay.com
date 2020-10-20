@@ -23,13 +23,16 @@ does not need to leave your webpage, since we are handling the payment in the
 
 ## Step 1: Create the payment
 
+{% include alert-gdpr-disclaimer.md %}
+
 A `FinancingConsumer` payment is a straightforward way to invoice a
 payer. It is followed up by posting a capture, cancellation or reversal
 transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual field of the JSON document is described in the following section.
-An example of an expanded `POST` request is available in the
-[other features section][financing-consumer].
+An example of an abbreviated `POST` request is provided below. Each individual
+field of the JSON document is described in the following section. An example of
+an expanded `POST` request is available in the [other features
+section][financing-consumer].
 
 When properly set up in your merchant/webshop site and the payer starts the
 invoice process, you need to make a POST request towards Swedbank Pay with your
