@@ -44,8 +44,8 @@ three example scenarios of why this is important:
 *   The callback is sent from the following IP address: `82.115.146.1`
 *   A callback should return a `200 OK` response.
 
-To understand the nature of the callback, the type of transaction, its status, etc., 
-you need to perform a GET request on the received URI and inspect the response. 
+To understand the nature of the callback, the type of transaction, its status, etc.,
+you need to perform a GET request on the received URI and inspect the response.
 The transaction type or any other information can not be inferred from the URI.
 See [URI usage][uri-usage] for more information.
 
@@ -88,6 +88,10 @@ See [URI usage][uri-usage] for more information.
 ```
 
 {% endif %}
+
+{% include transaction-response.md api_resource=include.api_resource
+documentation_section=include.documentation_section
+transaction="authorization" %}
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
