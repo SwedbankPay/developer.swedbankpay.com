@@ -8,7 +8,7 @@
     [Custom Logo](/{{ documentation_section }}/other-features#custom-logo). 
     {%- else -%}
     The URL that will be used for showing the customer logo. Must be a picture 
-    with maximum 50px height and 400px width. Require https. 
+    with maximum 50px height and 400px width. Requires HTTPS. 
      {%- endif -%}
 {%- endcapture -%}
 {{- logo_description | strip_newlines -}}
