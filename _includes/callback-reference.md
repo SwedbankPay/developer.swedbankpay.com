@@ -112,3 +112,5 @@ sequenceDiagram
     SwedbankPay-->>+Merchant: payment resource
     deactivate SwedbankPay
 ```
+
+[uri-usage]: /home/technical-information#uri-usage
