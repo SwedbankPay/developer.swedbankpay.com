@@ -89,6 +89,9 @@ See [URI usage][uri-usage] for more information.
 
 {% endif %}
 
+To acquire the transaction response example shown below, you can do a
+HTTP request towards the `transaction.id` found in the callback resource.
+
 {% include transaction-response.md api_resource=include.api_resource
 documentation_section=include.documentation_section
 transaction="authorization" %}
