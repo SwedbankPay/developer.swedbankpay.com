@@ -45,9 +45,9 @@ three example scenarios of why this is important:
 *   A callback should return a `200 OK` response.
 
 To understand the nature of the callback, the type of transaction, its status, etc.,
-you need to perform a GET request on the received URI and inspect the response.
-The transaction type or any other information can not be inferred from the URI.
-See [URI usage][uri-usage] for more information.
+you need to perform a `GET` request on the received URI and inspect the response.
+The transaction type or any other information can not and should not be inferred
+from the URI. See [URI usage][uri-usage] for more information.
 
 {% if api_resource == "paymentorders" %}
 {:.code-view-header}
