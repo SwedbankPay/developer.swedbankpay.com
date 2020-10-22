@@ -1,6 +1,6 @@
 ---
 title: Checkout – Introduction
-estimated_read: 30
+estimated_read: 3
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website

@@ -1,6 +1,6 @@
 ---
 title: Checkout – Capture
-estimated_read: 30
+estimated_read: 5
 menu_order: 400
 ---
 
