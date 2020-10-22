@@ -44,6 +44,11 @@ three example scenarios of why this is important:
 *   The callback is sent from the following IP address: `82.115.146.1`
 *   A callback should return a `200 OK` response.
 
+To understand the nature of the callback, the type of transaction, its status, etc.,
+you need to perform a `GET` request on the received URI and inspect the response.
+The transaction type or any other information can not and should not be inferred
+from the URI. See [URI usage][uri-usage] for more information.
+
 {% if api_resource == "paymentorders" %}
 {:.code-view-header}
 **Payment Order Callback**
@@ -59,7 +64,7 @@ three example scenarios of why this is important:
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -76,7 +81,7 @@ three example scenarios of why this is important:
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/<transaction type>/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -84,11 +89,13 @@ three example scenarios of why this is important:
 
 {% endif %}
 
-{:.table .table-striped}
-| Parameter            | Description                                                |
-| :------------------- | :--------------------------------------------------------- |
-| `<transaction type>` | `authorizations`, `captures`, `cancellations`,`reversals` |
-| `<payment instrument>` | `creditcard`, `invoice`, `swish`, `vipps`,`mobilepay`, `callback` |
+When performing an HTTP `GET` request towards the URI found in the
+`transaction.id` field of the callback, the response is going to look 
+something like the abbreviated example provided below.
+
+{% include transaction-response.md api_resource=include.api_resource
+documentation_section=include.documentation_section
+transaction="authorization" %}
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
@@ -109,3 +116,5 @@ sequenceDiagram
     SwedbankPay-->>+Merchant: payment resource
     deactivate SwedbankPay
 ```
+
+[uri-usage]: /home/technical-information#uri-usage
