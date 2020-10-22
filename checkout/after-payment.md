@@ -1,6 +1,6 @@
 ---
 title: Checkout – After Payment
-estimated_read: 30
+estimated_read: 8
 description: |
   When the consumer has **completed** the entire
   [Checkin](checkin) and [Payment Menu](payment-menu), you need to implement the
