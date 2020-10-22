@@ -1,9 +1,11 @@
+{% assign api_resource = include.api_resource default: "Authorization" %} 
+
 ## Payment State
 
 The `state` field on the `payment` does not indicate whether a
 given transaction was successful or not, it only tells whether the
 `payment` resource itself is operational or not. To figure out
-the `state` of i.e. an authorization transaction, you have two options:
+the `state` of i.e. {{ api_resource }} transactions, you have two options:
 
 ### Paid or Failed Operations
 
@@ -16,14 +18,13 @@ but the payer still has attempts left to complete the `payment`, you
 won't see the `Failed` operation. It will only appear when all attempts have
 been made.
 
-### Authorization or Sale Transaction
+### {{ api_resource }} Transaction
 
 Find the `payment`’s list of `transactions` either by expanding
 it when retrieving the `payment`, or by performing a `GET`
 request towards the `transactions.id` URI.
 
-If you find a `transaction` with `type` equal to `Authorization` (for two-phase
-payments) or `Sale` (for one-phase payments), with its `state` equal to
-`Completed`, you can be sure that the amount of the `payment` has
-been reserved or withdrawn and that the `payment` can be
-considered successful.
+If you find a `transaction` with `type` equal to {{ api_resource }}, with its
+`state` equal to `Completed`, you can be sure that the amount of the `payment`
+has been reserved or withdrawn and that the `payment` can be considered
+successful.
