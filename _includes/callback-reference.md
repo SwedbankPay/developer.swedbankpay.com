@@ -89,8 +89,9 @@ from the URI. See [URI usage][uri-usage] for more information.
 
 {% endif %}
 
-To acquire the transaction response example shown below, you can do a
-HTTP request towards the `transaction.id` found in the callback resource.
+When performing an HTTP `GET` request towards the URI found in the
+`transaction.id` field of the callback, the response is going to look 
+something like the abbreviated example provided below.
 
 {% include transaction-response.md api_resource=include.api_resource
 documentation_section=include.documentation_section
