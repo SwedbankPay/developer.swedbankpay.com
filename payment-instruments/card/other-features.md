@@ -16,7 +16,7 @@ documentation_section="card" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md api_resource="creditcard" %}
+{% include payment-state.md api_resource="creditcard" transaction="payment" %}
 
 {% include create-payment.md %}
 
