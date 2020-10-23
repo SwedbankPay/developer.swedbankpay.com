@@ -1,5 +1,5 @@
 {% assign api_resource = include.api_resource | default: "`paymentorder`" %}
-{% assign transaction = include.transaction | default: "`authorization`" %}
+{% assign transaction = include.transaction | default: "authorization" %}
 
 ## Payment State
 
