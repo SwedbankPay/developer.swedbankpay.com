@@ -10,7 +10,7 @@ documentation_section="vipps" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md api_resource="vipps" transaction="payment" %}
+{% include payment-state.md api_resource="vipps" %}
 
 {% include payments-operations.md api_resource="vipps" documentation_section="vipps" %}
 

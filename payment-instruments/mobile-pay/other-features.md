@@ -10,7 +10,7 @@ documentation_section="mobile-pay" %}
 
 {% include payments-operations.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
-{% include payment-state.md api_resource="mobilepay" transaction="payment" %}
+{% include payment-state.md api_resource="mobilepay" %}
 
 ### Create Payment
 
