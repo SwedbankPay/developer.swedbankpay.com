@@ -12,7 +12,7 @@ documentation_section="trustly" %}
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md %}
+{% include payment-state.md api_resource="trustly" %}
 
 {% include payments-operations.md api_resource="trustly" documentation_section="trustly" %}
 
