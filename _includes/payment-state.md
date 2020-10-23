@@ -8,7 +8,7 @@
 
 ## {{ resource_title }} State
 
-The `state` field on the {{ transaction }} does not indicate whether a given
+The `state` field on the `{{ transaction }}` does not indicate whether a given
 `transaction` was successful or not, it only tells whether the {{ transaction }}
 resource itself is operational or not. To figure out the `state` of i.e. {{
 transaction }} `transactions`, you have two options:
