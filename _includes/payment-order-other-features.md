@@ -535,7 +535,7 @@ for the given operation.
 | `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 | `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 
-{% include payment-order-state.md %}
+{% include payment-state.md %}
 
 {% include complete-url.md %}
 
