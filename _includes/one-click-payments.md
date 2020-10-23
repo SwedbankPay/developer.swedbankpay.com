@@ -23,7 +23,7 @@ operation to [`Verify`][verify].
 {:.code-view-header}
 **generatePaymentToken field**
 
-```js
+```json
 {
     "generatePaymentToken": true
 }

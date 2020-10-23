@@ -109,7 +109,7 @@ is raised with the following event argument object:
 {:.code-view-header}
 **onPaymentCreated event object**
 
-```js
+```json
 {
     "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
