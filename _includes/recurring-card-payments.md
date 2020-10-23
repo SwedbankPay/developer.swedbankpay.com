@@ -29,7 +29,7 @@ depending on if you want to make an initial charge or not:
 {:.code-view-header}
 **Field**
 
-```js
+```json
 "generateRecurrenceToken": true
 ```
 

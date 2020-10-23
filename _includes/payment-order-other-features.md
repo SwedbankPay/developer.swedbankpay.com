@@ -1077,7 +1077,7 @@ The `Purchase` operation is used in all common purchase scenarios.
 {:.code-view-header}
 **Purchase**
 
-```js
+```json
 {
     "paymentorder": {
         "operation": "Purchase"
