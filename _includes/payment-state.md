@@ -1,7 +1,12 @@
 {% assign api_resource = include.api_resource | default: "paymentorders" %}
 {% assign transaction = include.transaction | default: "authorization" %}
+{% if api_resource == "paymentorders" %}
+  {% assign resource_title="Payment Order" %}
+{% else %}
+  {% assign resource_title="Payment" %}
+{% endif %}
 
-## Payment State
+## {{ resource_title }} State
 
 The `state` field on the {{ transaction }} does not indicate whether a given
 `transaction` was successful or not, it only tells whether the {{ transaction }}
