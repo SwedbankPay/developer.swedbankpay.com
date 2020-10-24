@@ -5,6 +5,11 @@
 {% else %}
   {% assign resource_title="Payment" %}
 {% endif %}
+{% if api_resource == "swish" || api_resource == "trustly" %}
+  {% assign transaction="sale" %}
+{% else %}
+  {% assign transaction="authorization" %}
+{% endif %}
 
 ## {{ resource_title }} State
 
