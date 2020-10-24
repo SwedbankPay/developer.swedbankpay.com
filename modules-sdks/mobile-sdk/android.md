@@ -1,6 +1,6 @@
 ---
 title: Android
-estimated_read: 30
+estimated_read: 10
 description: |
   With a Merchant Backend in place, we can start developing a mobile application
   with Swedbank Pay payments.

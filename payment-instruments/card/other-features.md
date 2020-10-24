@@ -1,7 +1,7 @@
 ---
 title: Other Features
 redirect_from: /payments/card/other-features
-estimated_read: 30
+estimated_read: 90
 description: |
   Welcome to Other Features - a subsection of Credit Card.
   This section has extented code examples and features that were not

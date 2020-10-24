@@ -1,6 +1,6 @@
 ---
 title: Test Client
-estimated_read: 30
+estimated_read: 2
 ---
 
 ## Prerequisites

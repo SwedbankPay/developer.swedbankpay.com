@@ -1,6 +1,6 @@
 ---
 title: License
-estimated_read: 30
+estimated_read: 10
 ---
 
 ## Licensing

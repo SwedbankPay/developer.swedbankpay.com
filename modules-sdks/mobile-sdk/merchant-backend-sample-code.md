@@ -1,6 +1,6 @@
 ---
 title: Merchant Backend Sample Code
-estimated_read: 30
+estimated_read: 1
 description: |
   You can use Swedbank Pay provided sample code to jump-start your
   **Swedbank Pay Mobile SDK** application.

@@ -1,7 +1,7 @@
 ---
 title: Other Features
 redirect_from: /payments/swish/other-features
-estimated_read: 30
+estimated_read: 65
 menu_order: 1000
 ---
 

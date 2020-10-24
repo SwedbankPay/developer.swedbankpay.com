@@ -1,6 +1,6 @@
 ---
 title: Terminology
-estimated_read: 30
+estimated_read: 6
 menu_order: 400
 ---
 

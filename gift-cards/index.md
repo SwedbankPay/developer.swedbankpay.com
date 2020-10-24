@@ -1,6 +1,6 @@
 ---
 title: Gift Cards – Introduction
-estimated_read: 30
+estimated_read: 1
 menu_order: 500
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Redirect
 redirect_from: /payments/card/redirect
-estimated_read: 30
+estimated_read: 10
 description: |
   Redirect is the simplest integration that lets Swedbank Pay handle the
   payments, while you handle your core activities.
