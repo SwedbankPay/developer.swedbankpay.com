@@ -1,7 +1,7 @@
 ---
 title: Invoice 
 redirect_from: /payments/invoice/
-estimated_read: 30
+estimated_read: 2
 description: |
   **Invoice** is one of the easiest
   payment services where Swedbank Pay helps improve cashflow by purchasing

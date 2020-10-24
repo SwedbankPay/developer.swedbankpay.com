@@ -1,7 +1,7 @@
 ---
 title: Seamless View
 redirect_from: /payments/invoice/seamless-view
-estimated_read: 30
+estimated_read: 7
 description: |
   The Seamless View scenario represents the opportunity to implement Invoice
   directly in your webshop.

@@ -1,7 +1,7 @@
 ---
 title: Direct
 redirect_from: /payments/invoice/direct
-estimated_read: 30
+estimated_read: 12
 description: |
   **Direct** is a payment service where Swedbank
   Pay helps improve cashflow by purchasing merchant invoices. Swedbank Pay

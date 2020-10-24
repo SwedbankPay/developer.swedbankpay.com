@@ -1,6 +1,6 @@
 ---
 title: Mobile SDK
-estimated_read: 30
+estimated_read: 4
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
   Checkout to your Android and iOS applications.

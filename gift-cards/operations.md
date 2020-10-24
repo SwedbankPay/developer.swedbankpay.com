@@ -1,6 +1,6 @@
 ---
 title: Gift Cards – Operations
-estimated_read: 30
+estimated_read: 2
 ---
 
 ## Gift card resource

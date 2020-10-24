@@ -1,6 +1,6 @@
 ---
 title: Good Commit Practice
-estimated_read: 30
+estimated_read: 15
 ---
 
 The following document is a fork of

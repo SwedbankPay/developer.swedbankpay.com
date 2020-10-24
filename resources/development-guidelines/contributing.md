@@ -1,6 +1,6 @@
 ---
 title: Contributing
-estimated_read: 30
+estimated_read: 2
 ---
 
 To make it clear exactly how outside contributors should provide their

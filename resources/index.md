@@ -1,6 +1,6 @@
 ---
 title: Resources – Introduction
-estimated_read: 30
+estimated_read: 1
 description: |
   In this section you find various **resources** for Swedbank Pay's API
   Platform.

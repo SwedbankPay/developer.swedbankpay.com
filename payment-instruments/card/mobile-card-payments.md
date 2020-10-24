@@ -1,7 +1,7 @@
 ---
 title: Mobile
 redirect_from: /payments/card/mobile-card-payments
-estimated_read: 30
+estimated_read: 3
 menu_order: 800
 ---
 
