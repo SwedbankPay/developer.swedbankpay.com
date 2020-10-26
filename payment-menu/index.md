@@ -1,6 +1,6 @@
 ---
 title: Payment Menu – Introduction
-estimated_read: 30
+estimated_read: 3
 description: |
   The **Swedbank Pay Payment Menu** integrates
   seamlessly into the merchant website, allowing the payer to choose between the
