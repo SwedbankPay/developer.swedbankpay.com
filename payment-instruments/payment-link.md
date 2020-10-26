@@ -1,7 +1,7 @@
 ---
 title: Payment Link
 redirect_from: /payments/payment-link/
-estimated_read: 30
+estimated_read: 5
 description: |
   The implementation sequence for this scenario is a variant of the purchase
   sequence in a Hosted Payment Pages redirect scenario.

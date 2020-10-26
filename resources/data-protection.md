@@ -1,6 +1,6 @@
 ---
 title: Data Protection
-estimated_read: 30
+estimated_read: 1
 ---
 
 ## Paymentorder consumer data

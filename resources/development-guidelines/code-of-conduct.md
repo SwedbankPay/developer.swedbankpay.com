@@ -1,6 +1,6 @@
 ---
 title: Code Of Conduct
-estimated_read: 30
+estimated_read: 2
 ---
 
 It is important that the projects governed by Swedbank Pay foster a

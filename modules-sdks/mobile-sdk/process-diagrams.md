@@ -1,6 +1,6 @@
 ---
 title: Process Diagrams
-estimated_read: 30
+estimated_read: 15
 description: |
   The previous pages have dealt with each component. This page contains
   flowcharts that illustrate the entire process, taking into account all the

@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-estimated_read: 30
+estimated_read: 10
 description: |
   The latest updates about our releases will be
   published on this page.

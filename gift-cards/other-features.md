@@ -1,6 +1,6 @@
 ---
 title: Gift Cards – Other Features
-estimated_read: 30
+estimated_read: 10
 ---
 
 ## Purchase

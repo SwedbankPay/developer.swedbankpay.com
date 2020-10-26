@@ -1,7 +1,7 @@
 ---
 title: Direct
 redirect_from: /payments/card/direct
-estimated_read: 30
+estimated_read: 10
 description: |
   The Direct Card Payment scenario is used by
   customers that are **compliant with PCI-DSS regulations**, and is a way to

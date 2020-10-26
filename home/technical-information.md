@@ -1,6 +1,6 @@
 ---
 title: Developer Portal
-estimated_read: 60
+estimated_read: 15
 description: |
   General technical information that is good to know
 ---

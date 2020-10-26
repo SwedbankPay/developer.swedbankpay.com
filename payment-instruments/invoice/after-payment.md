@@ -1,7 +1,7 @@
 ---
 title: After Payment
 redirect_from: /payments/invoice/after-payment
-estimated_read: 30
+estimated_read: 11
 menu_order: 900
 ---
 

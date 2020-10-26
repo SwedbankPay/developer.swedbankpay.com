@@ -1,7 +1,7 @@
 ---
 title: Capture
 redirect_from: /payments/card/capture
-estimated_read: 30
+estimated_read: 5
 menu_order: 700
 ---
 

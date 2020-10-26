@@ -1,7 +1,7 @@
 ---
 title: Other Features
 redirect_from: /payments/vipps/other-features
-estimated_read: 30
+estimated_read: 60
 menu_order: 1100
 ---
 

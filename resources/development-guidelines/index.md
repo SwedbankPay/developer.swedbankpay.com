@@ -1,6 +1,6 @@
 ---
 title: Open Source Development Guidelines
-estimated_read: 30
+estimated_read: 8
 ---
 
 ## Introduction

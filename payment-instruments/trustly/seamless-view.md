@@ -1,6 +1,6 @@
 ---
 title: Seamless View
-estimated_read: 30
+estimated_read: 10
 menu_order: 1000
 ---
 

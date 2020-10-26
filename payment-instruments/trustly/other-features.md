@@ -1,7 +1,7 @@
 ---
 title: Other Features
 redirect_from: /payments/trustly/other-features
-estimated_read: 30
+estimated_read: 50
 menu_order: 1200
 ---
 
