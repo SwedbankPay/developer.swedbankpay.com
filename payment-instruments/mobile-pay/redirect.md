@@ -315,13 +315,13 @@ complete purchase.
 
 ```mermaid
 sequenceDiagram
-  participant Consumer
+  participant Payer
   participant Merchant
   participant SwedbankPay as Swedbank Pay
   participant MobilePay_API as MobilePay API
   participant MobilePay_App as MobilePay App
 
-  Consumer->>Merchant: start purchase (pay with MobilePay)
+  Payer->>Merchant: start purchase (pay with MobilePay)
   activate Merchant
 
   Merchant->>SwedbankPay: POST <Create MobilePay Online payment>
@@ -330,16 +330,16 @@ sequenceDiagram
   SwedbankPay-->>Merchant: payment resource
   deactivate SwedbankPay
   SwedbankPay -->> SwedbankPay: Create payment
-  Merchant-->>Consumer: Redirect to payment page
-  note left of Consumer: redirect to MobilePay
-  Consumer-->>SwedbankPay: enter mobile number
+  Merchant-->>Payer: Redirect to payment page
+  note left of Payer: redirect to MobilePay
+  Payer-->>SwedbankPay: enter mobile number
   activate SwedbankPay
 
   SwedbankPay-->>MobilePay_API: Initialize MobilePay Online payment
   activate MobilePay_API
   MobilePay_API-->>SwedbankPay: response
-  SwedbankPay-->>Consumer: Authorization response (State=Pending)
-  note left of Consumer: check your phone
+  SwedbankPay-->>Payer: Authorization response (State=Pending)
+  note left of Payer: check your phone
   deactivate Merchant
 
   MobilePay_API-->>MobilePay_App: Confirm Payment UI
@@ -352,16 +352,16 @@ sequenceDiagram
   deactivate SwedbankPay
   deactivate MobilePay_API
   SwedbankPay-->>SwedbankPay: authorize result
-  SwedbankPay-->>Consumer: authorize result
-  Consumer-->>Merchant: Redirect to merchant
-  note left of Consumer: Redirect to merchant
+  SwedbankPay-->>Payer: authorize result
+  Payer-->>Merchant: Redirect to merchant
+  note left of Payer: Redirect to merchant
   activate Merchant
   SwedbankPay-->>Merchant: Payment Callback
   Merchant-->>SwedbankPay: GET <MobilePay payments>
   note left of Merchant: Second API request
   SwedbankPay-->>Merchant: Payment resource
   deactivate SwedbankPay
-  Merchant-->>Consumer: Display authorize result
+  Merchant-->>Payer: Display authorize result
   deactivate Merchant
 ```
 

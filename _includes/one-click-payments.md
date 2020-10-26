@@ -56,11 +56,11 @@ Authorization: Bearer <AccessToken>
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
-track of the corresponding consumer-ID in your system.
+track of the corresponding `payerReference` in your system.
 
 ### Returning Purchases
 
-When a known payer (where you have attained a consumer-ID or similar) returns to
+When a known payer (where you have attained a `payerReference` or similar) returns to
 your system, you can use the `paymentToken`, using already stored payment data,
 to initiate one-click payments. You will need to make a standard purchase,
 following the sequence as specified in the Redirect or Seamless View scenarios

@@ -171,8 +171,8 @@ There are three alternative outcomes of a card payment:
 
 ```mermaid
 sequenceDiagram
-    activate Consumer
-    Consumer->>-MerchantOrderSystem: consumer starts purchase
+    activate Payer
+    Payer->>-MerchantOrderSystem: payer starts purchase
     activate MerchantOrderSystem
     MerchantOrderSystem->>-Merchant: start purchase process
     activate Merchant
@@ -183,33 +183,33 @@ sequenceDiagram
     activate Merchant
     Merchant-->>-MerchantOrderSystem: Payment URL sent to order system
     activate MerchantOrderSystem
-    MerchantOrderSystem-->>-Consumer: Distribute Payment URL through e-mail/SMS
-    activate Consumer
-    note left of Consumer: Payment Link in e-mail/SMS
-    Consumer->>-SwedbankPay: Open link and enter payment information
+    MerchantOrderSystem-->>-Payer: Distribute Payment URL through e-mail/SMS
+    activate Payer
+    note left of Payer: Payment Link in e-mail/SMS
+    Payer->>-SwedbankPay: Open link and enter payment information
     activate SwedbankPay
 
     {% if show_3d_secure %}
         opt Card supports 3-D Secure
-        SwedbankPay-->>-Consumer: redirect to IssuingBank
-        activate Consumer
-        Consumer->>IssuingBank: 3-D Secure authentication process
-        Consumer->>-SwedbankPay: access authentication page
+        SwedbankPay-->>-Payer: redirect to IssuingBank
+        activate Payer
+        Payer->>IssuingBank: 3-D Secure authentication process
+        Payer->>-SwedbankPay: access authentication page
         activate SwedbankPay
         end
     {% endif %}
 
-    SwedbankPay-->>-Consumer: redirect to merchant site
-    activate Consumer
+    SwedbankPay-->>-Payer: redirect to merchant site
+    activate Payer
     note left of SwedbankPay: redirect back to merchant
-    Consumer->>-Merchant: access merchant page
+    Payer->>-Merchant: access merchant page
     activate Merchant
     Merchant->>-SwedbankPay: GET [payment]
     activate SwedbankPay
     note left of Merchant: Second API request
     SwedbankPay-->>-Merchant: payment resource
     activate Merchant
-    Merchant-->>-Consumer: display purchase result
+    Merchant-->>-Payer: display purchase result
 ```
 
 #### Options after posting a payment
