@@ -12,7 +12,7 @@ menu_order: 600
 
 Seamless View provides an integration of the payment process directly on your
 website. This solution offers a smooth shopping experience with Swedbank Pay
-payment pages seamlessly integrated in an `iframe` on your website. The costumer
+payment pages seamlessly integrated in an `iframe` on your website. The payer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
@@ -252,18 +252,18 @@ invoice process.
 
 ```mermaid
 sequenceDiagram
-    Consumer->>Merchant: Start purchase
+    Payer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request
     Merchant->>-SwedbankPay: POST /psp/invoice/payments ①
     activate SwedbankPay
     SwedbankPay-->>-Merchant: rel: view-authorization ②
     activate Merchant
-    Merchant-->>-Consumer: Display all details and final price
-    activate Consumer
-    note left of Consumer: Open iframe ③
-    Consumer->>Consumer: Input email and mobile number
-    Consumer->>-Merchant: Confirm purchase
+    Merchant-->>-Payer: Display all details and final price
+    activate Payer
+    note left of Payer: Open iframe ③
+    Payer->>Payer: Input email and mobile number
+    Payer->>-Merchant: Confirm purchase
     activate Merchant
     note left of Merchant: Second API request
     Merchant->>-SwedbankPay: Post psp/invoice/authorization ④
@@ -275,7 +275,7 @@ sequenceDiagram
     activate SwedbankPay
     SwedbankPay-->>-Merchant: payment resource
     activate Merchant
-    Merchant-->>-Consumer: Display result
+    Merchant-->>-Payer: Display result
 ```
 
 {% include alert.html type="informative" icon="info" body="

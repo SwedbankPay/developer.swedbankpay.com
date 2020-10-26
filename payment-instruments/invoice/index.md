@@ -73,28 +73,28 @@ shows the steps in a [purchase][purchase] process.
 
 ```mermaid
 sequenceDiagram
-    Consumer->>Merchant: Start purchase
+    Payer->>Merchant: Start purchase
     activate Merchant
     note left of Merchant: First API request
     Merchant->>-Swedbank Pay: POST <Invoice Payment> (operation=FinancingConsumer)
     activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
     activate Merchant
-    Merchant-->>-Consumer: authorization page
-    activate Consumer
-    note left of Consumer: redirect to Swedbank Pay
-    Consumer->>-Swedbank Pay: enter consumer details
+    Merchant-->>-Payer: authorization page
+    activate Payer
+    note left of Payer: redirect to Swedbank Pay
+    Payer->>-Swedbank Pay: enter payer details
     activate Swedbank Pay
-    Swedbank Pay-->>-Consumer: redirect to merchant
-    activate Consumer
-    note left of Consumer: redirect back to Merchant
-    Consumer->>Merchant: access merchant page
+    Swedbank Pay-->>-Payer: redirect to merchant
+    activate Payer
+    note left of Payer: redirect back to Merchant
+    Payer->>Merchant: access merchant page
     activate Merchant
     note left of Merchant: Second API request
     Merchant->>+Swedbank Pay: GET <Invoice payment>
     Swedbank Pay-->>-Merchant: payment resource
     activate Merchant
-    Merchant-->>-Consumer: display purchase result
+    Merchant-->>-Payer: display purchase result
 ```
 
 {% include iterator.html next_href="redirect" next_title="Next: Redirect" %}

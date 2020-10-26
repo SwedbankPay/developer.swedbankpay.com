@@ -283,10 +283,10 @@ sequenceDiagram
     activate SwedbankPay
     SwedbankPay->>-SwedbankPay: Enter mobile number
     activate SwedbankPay
-    SwedbankPay->>-Merchant: Tell consumer to open Swish app
+    SwedbankPay->>-Merchant: Tell payer to open Swish app
     Swish_API->>Swish_App: Ask for payment confirmation
     activate Swish_App
-    Swish_App-->>-Swish_API: Consumer confirms payment
+    Swish_App-->>-Swish_API: Payer confirms payment
 
         alt Callback
         activate SwedbankPay

@@ -225,10 +225,10 @@ sequenceDiagram
     SwedbankPay-->>-Merchant: Transactions resource
     activate Merchant
     note left of Merchant: POST containing MSISDN
-    Merchant->>-Browser: Tell consumer to open Swish app
+    Merchant->>-Browser: Tell payer to open Swish app
     Swish_API->>Swish_App: Ask for payment confirmation
     activate Swish_App
-    Swish_App-->>-Swish_API: Consumer confirms payment
+    Swish_App-->>-Swish_API: Payer confirms payment
 
         alt Callback
         activate SwedbankPay
@@ -395,10 +395,10 @@ sequenceDiagram
     SwedbankPay-->>-Merchant: Transaction resource
     activate Merchant
     note left of Merchant: POST containing MSISDN
-    Merchant-->>-Browser: Tell consumer to open Swish app
+    Merchant-->>-Browser: Tell payer to open Swish app
     Swish_API->>Swish_App: Ask for payment confirmation
     activate Swish_App
-    Swish_App-->>-Swish_API: Consumer confirms payment
+    Swish_App-->>-Swish_API: Payer confirms payment
     activate Swish_API
     Swish_API->>-Swish_App: Start redirect
     activate Swish_App

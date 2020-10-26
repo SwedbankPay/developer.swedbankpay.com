@@ -1021,20 +1021,20 @@ sequenceDiagram
         deactivate Consumer
     end
     rect rgba(55, 91, 134,0.1)
-        activate Payer
-        note left of Payer: Payment Menu
-        Payer ->>+ Merchant: Initiate Purchase
-        deactivate Payer
+        activate Consumer
+        note left of Consumer: Payment Menu
+        Consumer ->>+ Merchant: Initiate Purchase
+        deactivate Consumer
         Merchant ->>+ SwedbankPay: POST/psp/paymentorders (generateRecurrenceToken = True)
         deactivate Merchant
         SwedbankPay -->>+ Merchant: rel:view-paymentorder
         deactivate SwedbankPay
-        Merchant -->>- Payer: Display Payment Menu on Merchant Page
-        activate Payer
-        Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
-        Payer -->>+ SwedbankPay: Show Payment UI page in iframe
-        deactivate Payer
-        SwedbankPay ->>+ Payer: Do payment logic
+        Merchant -->>- Consumer: Display Payment Menu on Merchant Page
+        activate Consumer
+        Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+        Consumer -->>+ SwedbankPay: Show Payment UI page in iframe
+        deactivate Consumer
+        SwedbankPay ->>+ Consumer: Do payment logic
         deactivate SwedbankPay
         SwedbankPay -->>+ Merchant: POST Payment Callback
         SwedbankPay -->>- Payer: Payment Status
