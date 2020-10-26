@@ -8,6 +8,7 @@ description: |
   It is recommended to read through the earlier pages first.
   This page can them help you keep a picture of the whole system in mind,
   and serve as a quick reference to the different steps and components.
+menu_order: 1300
 ---
 
 {% capture disclaimer %}

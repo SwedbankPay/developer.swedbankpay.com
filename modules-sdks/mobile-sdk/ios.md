@@ -1,6 +1,7 @@
 ---
 title: iOS
-estimated_read: 16
+estimated_read: 30
+menu_order: 1100
 ---
 
 {% capture disclaimer %}

@@ -5,6 +5,7 @@ description: |
   With a Merchant Backend in place, we can start developing a mobile application
   with Swedbank Pay payments.
   Let us begin with Android.
+menu_order: 1000
 ---
 {% capture disclaimer %}
 The SDK is at an early stage of development

@@ -24,6 +24,9 @@ All Open Source Software that is developed in Swedbank Pay's name, and under our
 control, including this very Developer Portal, must adhere to a set of
 [guidelines][guidelines].
 
+{% include iterator.html next_href="demoshop"
+                         next_title="Next: Demoshop" %}
+
 [test-data]: test-data
 [demoshop]: demoshop
 [guidelines]: development-guidelines
