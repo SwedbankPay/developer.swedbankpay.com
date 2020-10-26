@@ -1,7 +1,7 @@
 ---
 title: After Payment
 redirect_from: /payments/trustly/after-payment
-estimated_read: 30
+estimated_read: 9
 menu_order: 1100
 ---
 

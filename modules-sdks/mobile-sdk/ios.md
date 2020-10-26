@@ -1,6 +1,6 @@
 ---
 title: iOS
-estimated_read: 30
+estimated_read: 16
 ---
 
 {% capture disclaimer %}

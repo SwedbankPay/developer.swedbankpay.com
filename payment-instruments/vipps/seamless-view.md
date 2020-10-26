@@ -1,7 +1,7 @@
 ---
 title: Seamless View
 redirect_from: /payments/vipps/seamless-view
-estimated_read: 30
+estimated_read: 10
 description: |
   **Seamless View** scenario gives your
   customers the opportunity to pay with Vipps directly within your webshop.

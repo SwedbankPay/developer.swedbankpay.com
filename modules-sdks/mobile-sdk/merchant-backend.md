@@ -1,6 +1,6 @@
 ---
 title: Merchant Backend
-estimated_read: 30
+estimated_read: 20
 description: |
   To use the **Swedbank Pay Mobile SDK**, you must have a backend server
   hosting the Mobile SDK API.

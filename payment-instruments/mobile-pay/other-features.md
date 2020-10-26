@@ -1,7 +1,7 @@
 ---
 title: Other Features
 redirect_from: /payments/mobile-pay/other-features
-estimated_read: 30
+estimated_read: 70
 menu_order: 800
 ---
 

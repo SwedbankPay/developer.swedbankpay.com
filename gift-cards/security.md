@@ -1,6 +1,6 @@
 ---
 title: Gift Cards – Security
-estimated_read: 30
+estimated_read: 3
 ---
 
 ## OAuth2

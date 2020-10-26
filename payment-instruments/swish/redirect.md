@@ -1,7 +1,7 @@
 ---
 title: Redirect
 redirect_from: /payments/swish/redirect
-estimated_read: 30
+estimated_read: 7
 description: |
   Swish is a one-phase payment instrument supported by the
   major Swedish banks. **Swish Payments Redirect** is where Swedbank
