@@ -201,7 +201,7 @@ rect rgba(138, 205, 195, 0.1)
             SwedbankPay ->>+ Payer: Do payment logic
             deactivate SwedbankPay
 
-                opt Consumer perform payment out of iFrame
+                opt Payer perform payment out of iFrame
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
                     deactivate Payer

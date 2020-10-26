@@ -346,7 +346,7 @@ an authorized transaction.
 
 ```mermaid
 sequenceDiagram
-    Consumer->>Merchant: Start purchase (collect SSN and postal number)
+    Payer->>Merchant: Start purchase (collect SSN and postal number)
     activate Merchant
     note left of Merchant: First API request
     Merchant->>-Swedbank Pay: POST <Invoice Payments> (operation=FinancingConsumer)
@@ -356,13 +356,13 @@ sequenceDiagram
     note left of Merchant: Second API request
     Merchant-->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
     activate Swedbank Pay
-    Swedbank Pay-->>Swedbank Pay: Update payment with consumer delivery address
+    Swedbank Pay-->>Swedbank Pay: Update payment with payer's delivery address
     Swedbank Pay-->>-Merchant: Approved legaladdress information
     activate Merchant
-    Merchant-->>-Consumer: Display all details and final price
-    activate Consumer
-    Consumer->>Consumer: Input email and mobile number
-    Consumer->>-Merchant: Confirm purchase
+    Merchant-->>-Payer: Display all details and final price
+    activate Payer
+    Payer->>Payer: Input email and mobile number
+    Payer->>-Merchant: Confirm purchase
     activate Merchant
 
     note left of Merchant: Third API request
@@ -375,7 +375,7 @@ sequenceDiagram
     activate Swedbank Pay
     Swedbank Pay-->>-Merchant: payment resource
     activate Merchant
-    Merchant-->>-Consumer: Display result
+    Merchant-->>-Payer: Display result
 ```
 
 ## Options after posting a purchase payment

@@ -100,12 +100,12 @@ You must set `Operation` to `Payout` in the initial `POST` request.
 
 ```mermaid
 sequenceDiagram
-  activate Consumer
-  Consumer->>-Merchant: Start payout
+  activate Payer
+  Payer->>-Merchant: Start payout
   activate Merchant
   Merchant->>-SwedbankPay: POST [Credit Card Payout]
   activate SwedbankPay
   SwedbankPay-->>-Merchant: Payment resource
   activate Merchant
-  Merchant-->>-Consumer: Display Payout result
+  Merchant-->>-Payer: Display Payout result
 ```
