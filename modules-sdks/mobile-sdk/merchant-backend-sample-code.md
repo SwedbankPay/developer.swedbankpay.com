@@ -4,6 +4,7 @@ estimated_read: 1
 description: |
   You can use Swedbank Pay provided sample code to jump-start your
   **Swedbank Pay Mobile SDK** application.
+menu_order: 900
 ---
 
 {% capture disclaimer %}
