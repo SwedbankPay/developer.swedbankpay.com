@@ -97,7 +97,7 @@ sequenceDiagram
     Merchant-->>-Payer: display purchase result
 ```
 
-{% include iterator.html next_href="redirect" next_title="Next: Redirect" %}
+{% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [after-payment]: /payment-instruments/invoice/after-payment
 [callback-api]: /payment-instruments/invoice/other-features#callback

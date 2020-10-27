@@ -153,8 +153,8 @@ sequenceDiagram
   deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="direct" prev_title="Back: Direct"
-next_href="after-payment" next_title="Next: After Payment" %}
+{% include iterator.html prev_href="direct" prev_title="Direct"
+next_href="after-payment" next_title="After Payment" %}
 
 [direct]: /payment-instruments/invoice/direct
 [redirect]: /payment-instruments/invoice/redirect
