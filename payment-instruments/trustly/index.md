@@ -86,7 +86,7 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 *Danske Bank in Sweden offers instant credit notifications up to SEK 2500.
 
 
-{% include iterator.html next_href="redirect" next_title="Next: Redirect" %}
+{% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [after-payment]: /payment-instruments/trustly/after-payment
 [callback-api]: /payment-instruments/trustly/other-features#callback
