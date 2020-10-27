@@ -366,9 +366,9 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="index"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="after-payment"
-                         next_title="Next: After Payment" %}
+                         next_title="After Payment" %}
 
 [callback-reference]: /payment-instruments/mobile-pay/other-features#callback
 [completeurl]: /payment-instruments/mobile-pay/other-features#completeurl 
