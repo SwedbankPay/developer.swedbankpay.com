@@ -32,6 +32,8 @@ documentation_section="invoice" show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
+{% include payment-state.md api_resource="invoice" %}
+
 {% include payments-operations.md api_resource="invoice" documentation_section="invoice" %}
 
 ## Create Payment
