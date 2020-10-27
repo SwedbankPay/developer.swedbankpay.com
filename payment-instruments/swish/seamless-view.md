@@ -302,8 +302,8 @@ sequenceDiagram
     Merchant->>-Browser: Payment Status
 ```
 
-{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"
-next_href="after-payment" next_title="Next: After Payment" %}
+{% include iterator.html prev_href="redirect" prev_title="Redirect"
+next_href="after-payment" next_title="After Payment" %}
 
 [completeurl]: /payment-instruments/swish/other-features#completeurl 
 [callback]: /payment-instruments/swish/other-features#callback
