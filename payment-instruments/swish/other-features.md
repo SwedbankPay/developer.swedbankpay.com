@@ -190,7 +190,7 @@ be connected to a Swish account.
 
 {% include seamless-view-events.md api_resource="swish" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
+{% include iterator.html prev_href="after-payment" prev_title="After
 Payment" %}
 
 [expand]: /home/technical-information#expansion
