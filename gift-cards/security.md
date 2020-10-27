@@ -220,7 +220,7 @@ function guid() {
 
 {% include iterator.html prev_href="operations"
                          prev_title="Operations"
-                         next_href="payment-client"
+                         next_href="test-client"
                          next_title="Test Client" %}
 
 [application-yml]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
