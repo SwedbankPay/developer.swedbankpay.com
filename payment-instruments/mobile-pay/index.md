@@ -86,7 +86,7 @@ shipping to Denmark, for instance.
 
 {% include iterator.html
                          next_href="redirect"
-                         next_title="Next: Redirect" %}
+                         next_title="Redirect" %}
 
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations
