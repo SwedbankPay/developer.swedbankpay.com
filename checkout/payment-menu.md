@@ -297,9 +297,9 @@ Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].
 
 {% include iterator.html prev_href="checkin"
-                         prev_title="Back: Checkin"
+                         prev_title="Checkin"
                          next_href="capture"
-                         next_title="Next: Capture" %}
+                         next_title="Capture" %}
 
 [after-payment]: after-payment
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
