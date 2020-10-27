@@ -92,7 +92,7 @@ before completing the payment.
 
 {% include seamless-view-events.md api_resource="creditcard" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
+{% include iterator.html prev_href="after-payment" prev_title="After
 payment"  %}
 
 [purchase]: #purchase

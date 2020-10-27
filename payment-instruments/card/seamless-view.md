@@ -205,7 +205,7 @@ card payment:
   cancelled payment.
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="capture" next_title="Next: Capture" %}
+next_href="capture" next_title="Capture" %}
 
 [payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
 [abort]: /payment-instruments/card/other-features#abort
