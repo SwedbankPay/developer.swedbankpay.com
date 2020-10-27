@@ -9,7 +9,3 @@ menu_order: 200
 In the meantime, knock yourself out with our existing
 [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)" %}
 
-{% include iterator.html prev_href="index"
-                         prev_title="Back: Introduction"
-                         next_href="public-migration-key"
-                         next_title="Next: Public Migration Key" %}
