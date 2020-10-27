@@ -1,6 +1,7 @@
 ---
 title: Test Client
 estimated_read: 2
+menu_order: 800
 ---
 
 ## Prerequisites
@@ -66,6 +67,11 @@ mvn --projects backend clean compile jib:dockerBuild
 ```bash
 docker-compose up -d
 ```
+
+{% include iterator.html prev_href="security"
+                         prev_title="Security"
+                         next_href="other-features"
+                         next_title="Other Features" %}
 
 [docker-compose]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/docker-compose.yml
 [payment-client]: https://github.com/SwedbankPay/vas-payment-api-client
