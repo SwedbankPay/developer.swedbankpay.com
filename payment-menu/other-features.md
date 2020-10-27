@@ -12,5 +12,5 @@ menu_order: 600
 {% include payment-order-other-features.md documentation_section="payment-menu"
 operation_status_bool="true" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
+{% include iterator.html prev_href="after-payment" prev_title="After
 Payment" %}
