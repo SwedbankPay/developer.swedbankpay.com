@@ -163,8 +163,8 @@ card payment:
    decided by the issuing bank. Normally this will be done using BankID or
    Mobile BankID.
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="seamless-view" next_title="Next: Seamless View" %}
+{% include iterator.html prev_href="./" prev_title="Introduction"
+next_href="seamless-view" next_title="Seamless View" %}
 
 [abort]: /payment-instruments/card/other-features#abort
 [callback]: /payment-instruments/card/other-features#callback

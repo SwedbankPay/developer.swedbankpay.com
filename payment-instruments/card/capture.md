@@ -17,6 +17,6 @@ everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described in After Payment.
 
 {% include iterator.html prev_href="direct"
-                         prev_title="Back: Direct"
+                         prev_title="Direct"
                          next_href="after-payment"
-                         next_title="Next: After Payment" %}
+                         next_title="After Payment" %}
