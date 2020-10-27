@@ -448,9 +448,9 @@ All these Merchant Backend problem types will have a URI in the format `https://
 Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.
 
 {% include iterator.html prev_href="./"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="merchant-backend-sample-code"
-                         next_title="Next: Merchant Backend Sample Code" %}
+                         next_title="Merchant Backend Sample Code" %}
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml

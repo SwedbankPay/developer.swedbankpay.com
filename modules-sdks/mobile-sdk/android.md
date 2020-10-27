@@ -262,9 +262,9 @@ If a third party application is launched, it will signal the return to the payme
 Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugging purposes that cause third-party web pages to be opened in an external application. In that case the process continues analogously to the external application case. Using this argument should not be necessary, however. If you do find a case that does not work inside the PaymentFragment, but does work when using the browser for third-party sites, please file a bug on the Android SDK.
 
 {% include iterator.html prev_href="merchant-backend-sample-code"
-                         prev_title="Back: Merchant Backend Sample Code"
+                         prev_title="Merchant Backend Sample Code"
                          next_href="ios"
-                         next_title="Next: iOS" %}
+                         next_title="iOS" %}
 
 [dokka-pkg]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md
 [dokka-payfrag]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md

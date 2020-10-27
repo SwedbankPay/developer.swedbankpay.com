@@ -426,9 +426,9 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="android"
-                         prev_title="Back: Android"
+                         prev_title="Android"
                          next_href="process-diagrams"
-                         next_title="Next: Process Diagrams" %}
+                         next_title="Process Diagrams" %}
 
 [cocoapods]: https://cocoapods.org/
 [cocoapods-gettingstarted]: https://guides.cocoapods.org/using/getting-started.html
