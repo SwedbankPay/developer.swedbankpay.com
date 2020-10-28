@@ -9,9 +9,6 @@ description: |
 menu_order: 1000
 ---
 
-{% include payment-resource.md api_resource="creditcard"
-documentation_section="card" show_status_operations=true %}
-
 {% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
 
 {% include payment-transaction-states.md %}
@@ -61,8 +58,6 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include moto.md api_resource="creditcard" %}
 
-{% include 3d-secure-2.md api_resource="creditcard" documentation_section="card" %}
-
 ## Co-badge Card Choice for Dankort
 
 Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that 
@@ -83,8 +78,6 @@ before completing the payment.
 ![Co-badge Dankort cards with option to choose between Dankort and Visa before paying][card-badge]{:height="620px" width="475px"}
 
 {% include metadata.md api_resource="creditcard" %}
-
-{% include settlement-reconciliation.md documentation_section="card" %}
 
 {% include problems/problems.md documentation_section="card" %}
 
