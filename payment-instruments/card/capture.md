@@ -2,6 +2,9 @@
 title: Capture
 redirect_from: /payments/card/capture
 estimated_read: 5
+description: |
+When the authorization is completed, it is time to capture the funds. How you go
+about doing that is explained in this section.
 menu_order: 700
 ---
 
