@@ -31,22 +31,10 @@ document is described in the following section.
 
 {% include description.md api_resource="creditcard" %}
 
-{% include recur.md documentation_section="card" %}
-
-{% include unscheduled-purchase.md %}
-
-{% include payout.md %}
-
-{% include verify.md %}
-
-{% include one-click-payments.md %}
-
 {% include payment-url.md api_resource="card" documentation_section="card"
 when="at the 3-D Secure verification for credit card payments" full_reference=true %}
 
 {% include callback-reference.md api_resource="creditcard" %}
-
-{% include payment-link.md %}
 
 {% include transactions.md api_resource="creditcard" documentation_section="card" %}
 
@@ -57,25 +45,6 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 {% include prices.md %}
 
 {% include moto.md api_resource="creditcard" %}
-
-## Co-badge Card Choice for Dankort
-
-Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that 
-have more than one payment application, we have developed support for the end 
-users of Dankort to be able to choose their preferred payment application on the
-Swedbank Pay payment page. If you are a Dankort user, read more about this
-feature at [Dankort][dankort-eu].
-
-As a merchant you can set a priority selection of payment application by
-contacting [Swedbank Pay Support][swedbankpay-support]. The payer will always
-be able to override this priority selection on the payment page.
-
-If you want more information about Co-badge Card Choice for Dankort users,
-please contact [Swedbank Pay Support][swedbankpay-support]. The example below
-shows the payment window where the payer can choose between Dankort or Visa
-before completing the payment.
-
-![Co-badge Dankort cards with option to choose between Dankort and Visa before paying][card-badge]{:height="620px" width="475px"}
 
 {% include metadata.md api_resource="creditcard" %}
 
