@@ -129,20 +129,17 @@ card_list_3:
 ## Core Features
 
 {% include card-list.html card_list=page.card_list
-    col_class="col-lg-4"
-%}
+    col_class="col-lg-4" %}
 
 ## Technical Features
 
 {% include card-list.html card_list=page.card_list_2
-    col_class="col-lg-4"
-%}
+    col_class="col-lg-4" %}
 
 ## Optional Features
 
 {% include card-list.html card_list=page.card_list_3
-    col_class="col-lg-4"
-%}
+    col_class="col-lg-4" %}
 
 [purchase]: #purchase
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
