@@ -15,3 +15,6 @@ documentation_section="card" show_status_operations=true %}
 {% include 3d-secure-2.md api_resource="creditcard" documentation_section="card" %}
 
 {% include settlement-reconciliation.md documentation_section="card" %}
+
+{% include iterator.html prev_href="index" prev_title="Introduction"
+next_href="optional-features" next_title="Optional Features" %}

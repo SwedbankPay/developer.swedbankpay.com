@@ -21,4 +21,9 @@ menu_order: 1000
 
 {% include payment-link.md %}
 
-{% cobadge-dankort.md %}
+{% include cobadge-dankort.md %}
+
+{% include moto.md api_resource="creditcard" %}
+
+{% include iterator.html prev_href="core-features" prev_title="Core Features"
+next_href="Technical Features" next_title="Technical Features" %}

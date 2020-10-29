@@ -9,52 +9,6 @@ description: |
 menu_order: 1000
 ---
 
-{% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
-
-{% include payment-transaction-states.md %}
-
-{% include create-payment.md %}
-
-## Purchase
-
-A `Purchase` payment is a straightforward way to charge the card of the payer.
-It is followed up by posting a `capture`, `cancellation` or `reversal` transaction.
-
-An example of a request is provided below. Each individual field of the JSON
-document is described in the following section.
-
-{% include alert-risk-indicator.md %}
-
-{% include card-purchase.md full_reference=true %}
-
-{% include complete-url.md %}
-
-{% include description.md api_resource="creditcard" %}
-
-{% include payment-url.md api_resource="card" documentation_section="card"
-when="at the 3-D Secure verification for credit card payments" full_reference=true %}
-
-{% include callback-reference.md api_resource="creditcard" %}
-
-{% include transactions.md api_resource="creditcard" documentation_section="card" %}
-
-{% include card-authorization-transaction.md %}
-
-{% include payee-info.md api_resource="creditcard" documentation_section="card" %}
-
-{% include prices.md %}
-
-{% include moto.md api_resource="creditcard" %}
-
-{% include metadata.md api_resource="creditcard" %}
-
-{% include problems/problems.md documentation_section="card" %}
-
-{% include seamless-view-events.md api_resource="creditcard" %}
-
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
-payment"  %}
-
 [purchase]: #purchase
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [cancel]: /payment-instruments/card/after-payment#cancellations
