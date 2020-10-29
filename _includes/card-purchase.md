@@ -1,6 +1,13 @@
 {% assign seamless_view = include.seamless_view | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 
+## Purchase
+
+A `Purchase` payment is a straightforward way to charge the card of the payer.
+It is followed up by posting a `capture`, `cancellation` or `reversal` transaction.
+An example of a request is provided below. Each individual field of the JSON
+document is described in the following section.
+
 {:.code-view-header}
 **Request**
 
