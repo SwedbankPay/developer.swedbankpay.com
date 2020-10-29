@@ -26,4 +26,4 @@ menu_order: 1000
 {% include moto.md api_resource="creditcard" %}
 
 {% include iterator.html prev_href="core-features" prev_title="Core Features"
-next_href="Technical Features" next_title="Technical Features" %}
+next_href="technical-reference" next_title="Technical Reference" %}
