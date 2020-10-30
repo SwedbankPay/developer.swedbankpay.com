@@ -11,115 +11,139 @@ menu_order: 5
 card_list: 
 - title: Payment resource
   description: When initiating a payment process
-  url: /checkout/features/payment-orders
+  url: /features/core-features#payment-resouce
   icon:
     content: view_list
     outlined: true
 - title: 3D Secure 2
   description: Initialize payment process containing the order
-  url:  /checkout/features/recurring-payments
+  url:  /features/core-features#3-d-secure-2
   icon:
     content: autorenew
 - title: Settlement & Reconciliation
   description: Initialize payment process containing the order
+  url:  /features/core-features#settlement-and-reconciliation
   icon:
     content: description
     outlined: true
 card_list_2:
 - title: Purchase
   description: Initialize payment process containing the order
+  url:  /features/technical-references#purchase
   icon:
     content: settings
     outlined: true
 - title: Payment & Transactions States
   description: Initialize payment process containing the order
+  url:  /features/technical-references#payment-and-transaction-states
   icon:
     content: http
 - title: Create Payment
   description: Initialize payment process containing the order
+  url:  /features/technical-references#create-payment
   icon:
     content: shopping_basket
     outlined: true
 - title: CompleteUrl
   description: Initialize payment process containing the order
+    url:  /features/technical-references#completeurl
   icon:
     content: attach_money
     outlined: true
 - title: Description
   description: Initialize payment process containing the order
+    url:  /features/technical-references#description
   icon:
     content: construction
 - title: PaymentUrl
   description: Initialize payment process containing the order
+    url:  /features/technical-references#payment-url
   icon:
     content: undo
 - title: Callback
   description: Initialize payment process containing the order
+    url:  /features/technical-references#callback
   icon:
     content: construction
 - title: Transactions
   description: Initialize payment process containing the order
+    url:  /features/technical-references#transactions
   icon:
     content: construction
 - title: Card authorization transaction
   description: Initialize payment process containing the order
+    url:  /features/technical-references#card-authorization-transaction
   icon:
     content: construction
 - title: PayeeInfo
   description: Initialize payment process containing the order
+    url:  /features/technical-references#payeeinfo
   icon:
     content: construction
 - title: PayeeReference
   description: Initialize payment process containing the order
+    url:  /features/technical-references#payee-reference
   icon:
     content: construction
 - title: Prices
   description: Initialize payment process containing the order
+    url:  /features/technical-references#prices
   icon:
     content: construction
 - title: Metadata
   description: Initialize payment process containing the order
+    url:  /features/technical-references#metadata
   icon:
     content: construction
 - title: Problems
   description: Initialize payment process containing the order
+    url:  /features/technical-references#problems
   icon:
     content: construction
 - title: Seamless View Events
   description: Initialize payment process containing the order
+    url:  /features/technical-references#seamless-view-events
   icon:
     content: construction
 card_list_3: 
 - title: Recur
   description: Initialize payment process containing the order
+    url:  /features/optional-features#recur
   icon:
     content: construction
 - title: Unscheduled Purchase
   description: Initialize payment process containing the order
+    url:  /features/optional-features#unscheduled-purchase
   icon:
     content: construction
 - title: Payout
   description: Initialize payment process containing the order
+    url:  /features/optional-features#payout
   icon:
     content: construction
 - title: Verify
   description: Initialize payment process containing the order
+    url:  /features/optional-features#verify
   icon:
     content: construction
 - title: One-Click Payments
   description: Initialize payment process containing the order
+    url:  /features/optional-features#one-click-payments
   icon:
     content: construction
 - title: Payment Link
   description: Initialize payment process containing the order
+    url:  /features/optional-features#payment-link
   icon:
     content: construction
 - title: Co-badge Card Choice for Dankort
   description: Initialize payment process containing the order
+    url:  /features/optional-features#co-badge-card-choice-for-dankort
   icon:
     content: construction
 - title: MOTO
   description: Initialize payment process containing the order
+   url:  /features/optional-features#moto
   icon:
     content: construction
 ---
