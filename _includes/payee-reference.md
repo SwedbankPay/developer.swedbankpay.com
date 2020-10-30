@@ -19,7 +19,6 @@ to pay with Invoice Payments. The specific processing rules are described below.
 
 {% endif %}
 
-{% else %}
 
 The `payeeReference` given when creating transactions and payments has some
 specific processing rules depending on specifications in the contract.
