@@ -1,5 +1,5 @@
 ---
-title: Technical Features
+title: Technical Reference
 redirect_from:
 estimated_read: 30
 description: |
