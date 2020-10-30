@@ -1,5 +1,5 @@
 ---
-title: Introduction - Features
+title: Introduction
 estimated_read: 10
 card_overview: true
 description: |
@@ -9,17 +9,17 @@ icon:
 additional: true
 menu_order: 5
 card_list: 
+- title: 3D Secure 2
+  description: Initialize payment process containing the order
+  url:  /features/core-features#3-d-secure-2
+  icon:
+    content: autorenew
 - title: Payment resource
   description: When initiating a payment process
   url: /features/core-features#payment-resouce
   icon:
     content: view_list
     outlined: true
-- title: 3D Secure 2
-  description: Initialize payment process containing the order
-  url:  /features/core-features#3-d-secure-2
-  icon:
-    content: autorenew
 - title: Settlement & Reconciliation
   description: Initialize payment process containing the order
   url:  /features/core-features#settlement-and-reconciliation
@@ -27,22 +27,17 @@ card_list:
     content: description
     outlined: true
 card_list_2:
-- title: Purchase
+- title: Callback
   description: Initialize payment process containing the order
-  url:  /features/technical-references#purchase
+  url:  /features/technical-references#callback
   icon:
-    content: settings
+    content: construction
     outlined: true
-- title: Payment & Transactions States
+- title: Card authorization transaction
   description: Initialize payment process containing the order
-  url:  /features/technical-references#payment-and-transaction-states
+  url:  /features/technical-references#card-authorization-transaction
   icon:
-    content: http
-- title: Create Payment
-  description: Initialize payment process containing the order
-  url:  /features/technical-references#create-payment
-  icon:
-    content: shopping_basket
+    content: construction
     outlined: true
 - title: CompleteUrl
   description: Initialize payment process containing the order
@@ -50,33 +45,21 @@ card_list_2:
   icon:
     content: attach_money
     outlined: true
+- title: Create Payment
+  description: Initialize payment process containing the order
+  url:  /features/technical-references#create-payment
+  icon:
+    content: shopping_basket
+    outlined: true
 - title: Description
   description: Initialize payment process containing the order
   url:  /features/technical-references#description
   icon:
     content: construction
     outlined: true
-- title: PaymentUrl
+- title: Metadata
   description: Initialize payment process containing the order
-  url:  /features/technical-references#payment-url
-  icon:
-    content: undo
-    outlined: true
-- title: Callback
-  description: Initialize payment process containing the order
-  url:  /features/technical-references#callback
-  icon:
-    content: construction
-    outlined: true
-- title: Transactions
-  description: Initialize payment process containing the order
-  url:  /features/technical-references#transactions
-  icon:
-    content: construction
-    outlined: true
-- title: Card authorization transaction
-  description: Initialize payment process containing the order
-  url:  /features/technical-references#card-authorization-transaction
+  url:  /features/technical-references#metadata
   icon:
     content: construction
     outlined: true
@@ -92,15 +75,20 @@ card_list_2:
   icon:
     content: construction
     outlined: true
+- title: Payment & Transactions States
+  description: Initialize payment process containing the order
+  url:  /features/technical-references#payment-and-transaction-states
+  icon:
+    content: http
+- title: PaymentUrl
+  description: Initialize payment process containing the order
+  url:  /features/technical-references#payment-url
+  icon:
+    content: undo
+    outlined: true
 - title: Prices
   description: Initialize payment process containing the order
   url:  /features/technical-references#prices
-  icon:
-    content: construction
-    outlined: true
-- title: Metadata
-  description: Initialize payment process containing the order
-  url:  /features/technical-references#metadata
   icon:
     content: construction
     outlined: true
@@ -110,34 +98,34 @@ card_list_2:
   icon:
     content: construction
     outlined: true
+- title: Purchase
+  description: Initialize payment process containing the order
+  url:  /features/technical-references#purchase
+  icon:
+    content: settings
+    outlined: true
 - title: Seamless View Events
   description: Initialize payment process containing the order
   url:  /features/technical-references#seamless-view-events
   icon:
     content: construction
     outlined: true
+- title: Transactions
+  description: Initialize payment process containing the order
+  url:  /features/technical-references#transactions
+  icon:
+    content: construction
+    outlined: true
 card_list_3: 
-- title: Recur
+- title: Co-badge Card Choice for Dankort
   description: Initialize payment process containing the order
-  url:  /features/optional-features#recur
+  url:  /features/optional-features#co-badge-card-choice-for-dankort
   icon:
     content: construction
     outlined: true
-- title: Unscheduled Purchase
+- title: MOTO
   description: Initialize payment process containing the order
-  url:  /features/optional-features#unscheduled-purchase
-  icon:
-    content: construction
-    outlined: true
-- title: Payout
-  description: Initialize payment process containing the order
-  url:  /features/optional-features#payout
-  icon:
-    content: construction
-    outlined: true
-- title: Verify
-  description: Initialize payment process containing the order
-  url:  /features/optional-features#verify
+  url:  /features/optional-features#moto
   icon:
     content: construction
     outlined: true
@@ -153,15 +141,27 @@ card_list_3:
   icon:
     content: construction
     outlined: true
-- title: Co-badge Card Choice for Dankort
+- title: Payout
   description: Initialize payment process containing the order
-  url:  /features/optional-features#co-badge-card-choice-for-dankort
+  url:  /features/optional-features#payout
   icon:
     content: construction
     outlined: true
-- title: MOTO
+- title: Recur
   description: Initialize payment process containing the order
-  url:  /features/optional-features#moto
+  url:  /features/optional-features#recur
+  icon:
+    content: construction
+    outlined: true
+- title: Unscheduled Purchase
+  description: Initialize payment process containing the order
+  url:  /features/optional-features#unscheduled-purchase
+  icon:
+    content: construction
+    outlined: true
+- title: Verify
+  description: Initialize payment process containing the order
+  url:  /features/optional-features#verify
   icon:
     content: construction
     outlined: true
