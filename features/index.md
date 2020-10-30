@@ -46,106 +46,125 @@ card_list_2:
     outlined: true
 - title: CompleteUrl
   description: Initialize payment process containing the order
-    url:  /features/technical-references#completeurl
+  url:  /features/technical-references#completeurl
   icon:
     content: attach_money
     outlined: true
 - title: Description
   description: Initialize payment process containing the order
-    url:  /features/technical-references#description
+  url:  /features/technical-references#description
   icon:
     content: construction
+    outlined: true
 - title: PaymentUrl
   description: Initialize payment process containing the order
-    url:  /features/technical-references#payment-url
+  url:  /features/technical-references#payment-url
   icon:
     content: undo
+    outlined: true
 - title: Callback
   description: Initialize payment process containing the order
-    url:  /features/technical-references#callback
+  url:  /features/technical-references#callback
   icon:
     content: construction
+    outlined: true
 - title: Transactions
   description: Initialize payment process containing the order
-    url:  /features/technical-references#transactions
+  url:  /features/technical-references#transactions
   icon:
     content: construction
+    outlined: true
 - title: Card authorization transaction
   description: Initialize payment process containing the order
-    url:  /features/technical-references#card-authorization-transaction
+  url:  /features/technical-references#card-authorization-transaction
   icon:
     content: construction
+    outlined: true
 - title: PayeeInfo
   description: Initialize payment process containing the order
-    url:  /features/technical-references#payeeinfo
+  url:  /features/technical-references#payeeinfo
   icon:
     content: construction
+    outlined: true
 - title: PayeeReference
   description: Initialize payment process containing the order
-    url:  /features/technical-references#payee-reference
+  url:  /features/technical-references#payee-reference
   icon:
     content: construction
+    outlined: true
 - title: Prices
   description: Initialize payment process containing the order
-    url:  /features/technical-references#prices
+  url:  /features/technical-references#prices
   icon:
     content: construction
+    outlined: true
 - title: Metadata
   description: Initialize payment process containing the order
-    url:  /features/technical-references#metadata
+  url:  /features/technical-references#metadata
   icon:
     content: construction
+    outlined: true
 - title: Problems
   description: Initialize payment process containing the order
-    url:  /features/technical-references#problems
+  url:  /features/technical-references#problems
   icon:
     content: construction
+    outlined: true
 - title: Seamless View Events
   description: Initialize payment process containing the order
-    url:  /features/technical-references#seamless-view-events
+  url:  /features/technical-references#seamless-view-events
   icon:
     content: construction
+    outlined: true
 card_list_3: 
 - title: Recur
   description: Initialize payment process containing the order
-    url:  /features/optional-features#recur
+  url:  /features/optional-features#recur
   icon:
     content: construction
+    outlined: true
 - title: Unscheduled Purchase
   description: Initialize payment process containing the order
-    url:  /features/optional-features#unscheduled-purchase
+  url:  /features/optional-features#unscheduled-purchase
   icon:
     content: construction
+    outlined: true
 - title: Payout
   description: Initialize payment process containing the order
-    url:  /features/optional-features#payout
+  url:  /features/optional-features#payout
   icon:
     content: construction
+    outlined: true
 - title: Verify
   description: Initialize payment process containing the order
-    url:  /features/optional-features#verify
+  url:  /features/optional-features#verify
   icon:
     content: construction
+    outlined: true
 - title: One-Click Payments
   description: Initialize payment process containing the order
-    url:  /features/optional-features#one-click-payments
+  url:  /features/optional-features#one-click-payments
   icon:
     content: construction
+    outlined: true
 - title: Payment Link
   description: Initialize payment process containing the order
-    url:  /features/optional-features#payment-link
+  url:  /features/optional-features#payment-link
   icon:
     content: construction
+    outlined: true
 - title: Co-badge Card Choice for Dankort
   description: Initialize payment process containing the order
-    url:  /features/optional-features#co-badge-card-choice-for-dankort
+  url:  /features/optional-features#co-badge-card-choice-for-dankort
   icon:
     content: construction
+    outlined: true
 - title: MOTO
   description: Initialize payment process containing the order
-   url:  /features/optional-features#moto
+  url:  /features/optional-features#moto
   icon:
     content: construction
+    outlined: true
 ---
 
 {:.heading-line}
@@ -155,7 +174,7 @@ card_list_3:
 {% include card-list.html card_list=page.card_list
     col_class="col-lg-4" %}
 
-## Technical Features
+## Technical Reference
 
 {% include card-list.html card_list=page.card_list_2
     col_class="col-lg-4" %}
