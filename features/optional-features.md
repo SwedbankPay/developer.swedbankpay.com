@@ -9,21 +9,25 @@ description: |
 menu_order: 1000
 ---
 
-{% include recur.md documentation_section="card" %}
+{% include cobadge-dankort.md %}
 
-{% include unscheduled-purchase.md %}
+{% include custom-logo.md %}
 
-{% include payout.md %}
+{% include instrument-mode.md %}
 
-{% include verify.md %}
+{% include moto.md api_resource="creditcard" %}
 
 {% include one-click-payments.md %}
 
 {% include payment-link.md %}
 
-{% include cobadge-dankort.md %}
+{% include payout.md %}
 
-{% include moto.md api_resource="creditcard" %}
+{% include recur.md documentation_section="card" %}
+
+{% include unscheduled-purchase.md %}
+
+{% include verify.md %}
 
 {% include iterator.html prev_href="core-features" prev_title="Core Features"
 next_href="technical-reference" next_title="Technical Reference" %}
