@@ -31,7 +31,7 @@ card_list_2:
   description: Initialize payment process containing the order
   url:  /features/technical-references#callback
   icon:
-    content: construction
+    content: undo
     outlined: true
 - title: Card authorization transaction
   description: Initialize payment process containing the order
@@ -43,7 +43,7 @@ card_list_2:
   description: Initialize payment process containing the order
   url:  /features/technical-references#completeurl
   icon:
-    content: attach_money
+    content: 
     outlined: true
 - title: Create Payment
   description: Initialize payment process containing the order
@@ -55,7 +55,7 @@ card_list_2:
   description: Initialize payment process containing the order
   url:  /features/technical-references#description
   icon:
-    content: construction
+    content: description
     outlined: true
 - title: Metadata
   description: Initialize payment process containing the order
@@ -67,7 +67,7 @@ card_list_2:
   description: Initialize payment process containing the order
   url:  /features/technical-references#payeeinfo
   icon:
-    content: construction
+    content: account_box
     outlined: true
 - title: PayeeReference
   description: Initialize payment process containing the order
@@ -84,25 +84,25 @@ card_list_2:
   description: Initialize payment process containing the order
   url:  /features/technical-references#payment-url
   icon:
-    content: undo
+    content: 
     outlined: true
 - title: Prices
   description: Initialize payment process containing the order
   url:  /features/technical-references#prices
-  icon:
-    content: construction
+  icon: 
+    content: attach_money
     outlined: true
 - title: Problems
   description: Initialize payment process containing the order
   url:  /features/technical-references#problems
   icon:
-    content: construction
+    content: report_problems
     outlined: true
 - title: Purchase
   description: Initialize payment process containing the order
   url:  /features/technical-references#purchase
   icon:
-    content: settings
+    content: shopping_basket
     outlined: true
 - title: Seamless View Events
   description: Initialize payment process containing the order
