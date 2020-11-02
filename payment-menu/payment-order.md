@@ -4,6 +4,7 @@ estimated_read: 15
 description: |
   **Payment Order** lets the payer complete their purchase.
 menu_order: 300
+hide_from_sidebar: true
 ---
 
 {% assign view_payment_order_javascript_url = "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE"%}
