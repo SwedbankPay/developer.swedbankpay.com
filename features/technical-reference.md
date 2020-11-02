@@ -15,6 +15,8 @@ menu_order: 1000
 
 {% include card-authorization-transaction.md %}
 
+{% include checkin-events.md %}
+
 {% include complete-url.md %}
 
 {% include create-payment.md %}
@@ -37,6 +39,8 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 {% include card-purchase.md full_reference=true %}
 
 {% include seamless-view-events.md api_resource="creditcard" %}
+
+{% include seamless-view-events.md api_resource="paymentorders" %}
 
 {% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
 

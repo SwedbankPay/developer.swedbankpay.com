@@ -15,6 +15,8 @@ menu_order: 1000
 
 {% include instrument-mode.md %}
 
+{% include merchant-authenticated-consumer.md %}
+
 {% include moto.md api_resource="creditcard" %}
 
 {% include one-click-payments.md %}
