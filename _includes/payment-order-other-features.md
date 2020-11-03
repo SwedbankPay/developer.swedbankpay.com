@@ -1301,10 +1301,6 @@ Content-Type: application/json
 
 {% include prices.md %}
 
-| └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md api_resource="paymentorders" %}                                                                                                                         |
-
-{% include prices.md  %}
-
 {% include custom-logo.md %}
 
 ### Payer Resource
