@@ -25,7 +25,7 @@ menu_order: 1000
 
 {% include metadata.md api_resource="creditcard" %}
 
-{% payment-order-operations.md %}
+{% include payment-order-operations.md %}
 
 {% include payee-info.md api_resource="creditcard" documentation_section="card" %}
 
