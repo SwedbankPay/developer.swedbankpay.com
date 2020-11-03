@@ -42,6 +42,8 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 {% include seamless-view-events.md api_resource="creditcard" %}
 
+{% include seamless-view-events.md api_resource="paymentorders" %}
+
 {% include transactions.md api_resource="creditcard" documentation_section="card" %}
 
 {% include iterator.html prev_href="optional-features" prev_title="Optional Features" %}
