@@ -39,10 +39,10 @@ operation equal to `FinancingConsumer`, are described in
 [other features][financing-consumer].
 
 {:.text-center}
-![screenshot of the first Invoice redirect page][fincon-invoice-redirect]height="725px" width="475px"}
+![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
 {:.text-center}
-![screenshot of the second Invoice redirect page][fincon-invoice-approve]height="500px" width="475px"}
+![screenshot of the second Invoice redirect page][fincon-invoice-approve]{:height="500px" width="475px"}
 
 ### Financing Consumer
 
