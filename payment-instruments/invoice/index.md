@@ -60,7 +60,7 @@ Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
 operation.
 
 {:.text-center}
-![screenshot of the first Invoice redirect page][fincon-invoice-redirect]height="725px" width="475px"}
+![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
 {% include languages.md api_resource="invoice" %}
 
