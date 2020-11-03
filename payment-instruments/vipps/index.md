@@ -1,5 +1,6 @@
 ---
-title: Vipps 
+section: Vipps
+title: Introduction
 redirect_from: /payments/vipps/
 estimated_read: 2
 description: |

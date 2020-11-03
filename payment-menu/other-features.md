@@ -1,5 +1,5 @@
 ---
-title: Payment Menu – Other Features
+title: Other Features
 estimated_read: 90
 description: |
   After a successful integration, it may be worth

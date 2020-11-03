@@ -1,5 +1,6 @@
 ---
-title: Payment Instruments
+section: Payment Instruments
+title: Introduction
 redirect_from: /payments/
 estimated_read: 5
 description: |

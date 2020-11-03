@@ -1,5 +1,6 @@
 ---
-title: Resources – Introduction
+section: Resources
+title: Introduction
 estimated_read: 1
 description: |
   In this section you find various **resources** for Swedbank Pay's API

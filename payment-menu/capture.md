@@ -1,5 +1,5 @@
 ---
-title: Payment Menu – Capture
+title: Capture
 estimated_read: 5
 menu_order: 400
 hide_from_sidebar: true

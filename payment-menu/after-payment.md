@@ -1,5 +1,5 @@
 ---
-title: Payment Menu – After Payment
+title: After Payment
 estimated_read: 11
 description: |
   When the payer is **done** interacting

@@ -1,5 +1,6 @@
 ---
-title: Gift Cards – Introduction
+section: Gift Cards
+title: Introduction
 estimated_read: 1
 menu_order: 500
 ---

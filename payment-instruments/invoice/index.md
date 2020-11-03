@@ -1,5 +1,6 @@
 ---
-title: Invoice 
+section: Invoice
+title: Introduction
 redirect_from: /payments/invoice/
 estimated_read: 2
 description: |

@@ -1,5 +1,6 @@
 ---
-title: Trustly 
+section: Trustly
+title: Introduction
 redirect_from: /payments/trustly/
 estimated_read: 2
 description: |
@@ -19,10 +20,10 @@ menu_order: 800
 
 
 
-{% include alert.html type="informative" icon="branding_watermark"	
-                      body="**Seamless View** is our solution for a payment	
-                      experience that is integrated directly on your website.	
-                      The payment process will be executed in an `iframe` on	
+{% include alert.html type="informative" icon="branding_watermark"
+                      body="**Seamless View** is our solution for a payment
+                      experience that is integrated directly on your website.
+                      The payment process will be executed in an `iframe` on
                       your page." %}
 
 
