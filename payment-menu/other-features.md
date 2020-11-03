@@ -1,6 +1,6 @@
 ---
 title: Payment Menu – Other Features
-estimated_read: 30
+estimated_read: 90
 description: |
   After a successful integration, it may be worth
   investigating which **other features** are available in the Swedbank Pay 

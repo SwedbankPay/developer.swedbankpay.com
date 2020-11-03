@@ -271,6 +271,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
     "payment": {
         "id": "/psp/invoice/payments/{{ page.payment_id }}",
@@ -399,6 +400,7 @@ POST /psp/invoice/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
 {
     "transaction": {
         "activity": "FinancingConsumer"
