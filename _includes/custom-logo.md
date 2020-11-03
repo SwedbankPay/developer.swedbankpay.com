@@ -1,5 +1,4 @@
 {% include documentation_section=include.documentation_section %}
-{% include api_resource=include.api_resource %}
 
 ## Custom Logo
 

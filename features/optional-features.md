@@ -13,7 +13,7 @@ menu_order: 1000
 
 {% include custom-logo.md %}
 
-{% include instrument-mode.md %}
+{% include instrument-mode.md api_resource="paymentorders" documentation_section=include.documentation_section %}
 
 {% include merchant-authenticated-consumer.md %}
 
