@@ -93,7 +93,7 @@ Content-Type: application/json
 
 {
     "payment": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
-    "reversals": {
+    "reversal": {
         "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
             "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
