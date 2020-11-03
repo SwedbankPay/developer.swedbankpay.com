@@ -295,11 +295,4 @@ sequenceDiagram
 [purchase]: /payment-instruments/mobile-pay/other-features#purchase
 [callback-reference]: /payment-instruments/mobile-pay/other-features#callback
 [completeurl]: /payment-instruments/mobile-pay/other-features#completeurl
-[mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
-[mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
-[mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations
-[mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
-[payee-reference]: /payment-instruments/mobile-pay/other-features#payee-reference
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent
-[swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png
-[technical-reference-callback]: /payment-instruments/mobile-pay/other-features#callback
