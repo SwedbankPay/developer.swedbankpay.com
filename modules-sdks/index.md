@@ -1,5 +1,6 @@
 ---
-title: Modules & SDKs Introduction
+section: Modules & SDKs
+title: Introduction
 redirect_from: /resources/sdk-modules
 estimated_read: 4
 description: |
@@ -9,8 +10,6 @@ menu_order: 600
 ---
 
 {% assign active_repositories = site.github.public_repositories | where: 'archived', false %}
-
-## Introduction
 
 Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
 different ways to integrate and use our products and services. It might not

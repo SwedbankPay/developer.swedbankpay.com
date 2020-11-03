@@ -1,5 +1,5 @@
 ---
-title: Payment Menu – Introduction
+section: Payment Menu
 estimated_read: 3
 description: |
   The **Swedbank Pay Payment Menu** integrates
