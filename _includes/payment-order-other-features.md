@@ -1236,9 +1236,9 @@ Content-Type: application/json
 | └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                      |
 | └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                         |
 
-{% if documentation_section == "checkout" %}
-    {%- include checkin-events.md %}
-{% endif %}
+{% if include.documentation_section == "checkout" %}
+    {%- include checkin-events.md -%}
+{% endif  %}
 
 {% include seamless-view-events.md %}
 
