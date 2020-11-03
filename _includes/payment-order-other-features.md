@@ -419,7 +419,7 @@ deprecated in the operation list below." %}
 {:.code-view-header}
 **Operations**
 
-```js
+```jsonc
 {
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
@@ -1079,7 +1079,7 @@ The `Purchase` operation is used in all common purchase scenarios.
 {:.code-view-header}
 **Purchase**
 
-```js
+```json
 {
     "paymentorder": {
         "operation": "Purchase"

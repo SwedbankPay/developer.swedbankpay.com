@@ -1,6 +1,6 @@
 ---
 title: Checkout – Checkin
-estimated_read: 30
+estimated_read: 8
 description: |
   Swedbank Pay Checkout consists of two parts:
   **Checkin** and **Payment Menu**. In the sections that follow you'll find
