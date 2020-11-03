@@ -11,41 +11,35 @@ menu_order: 1000
 
 {% include alert-risk-indicator.md %}
 
-{% include callback-reference.md api_resource="creditcard" %}
+{% include card-purchase.md full_reference=true %}
 
-{% include card-authorization-transaction.md %}
+{% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
 
-{% include checkin-events.md %}
-
-{% include complete-url.md %}
+{% include payment-transaction-states.md %}
 
 {% include create-payment.md %}
 
+{% include complete-url.md %}
+
 {% include description.md api_resource="creditcard" %}
-
-{% include metadata.md api_resource="creditcard" %}
-
-{% include payment-order-operations.md %}
-
-{% include payee-info.md api_resource="creditcard" documentation_section="card" %}
-
-{% include payment-transaction-states.md %}
 
 {% include payment-url.md api_resource="card" documentation_section="card"
 when="at the 3-D Secure verification for credit card payments" full_reference=true %}
 
+{% include callback-reference.md api_resource="creditcard" %}
+
+{% include transactions.md api_resource="creditcard" documentation_section="card" %}
+
+{% include card-authorization-transaction.md %}
+
+{% include payee-info.md api_resource="creditcard" documentation_section="card" %}
+
 {% include prices.md %}
+
+{% include metadata.md api_resource="creditcard" %}
 
 {% include problems/problems.md documentation_section="card" %}
 
-{% include card-purchase.md full_reference=true %}
-
 {% include seamless-view-events.md api_resource="creditcard" %}
-
-{% include seamless-view-events.md api_resource="paymentorders" %}
-
-{% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
-
-{% include transactions.md api_resource="creditcard" documentation_section="card" %}
 
 {% include iterator.html prev_href="optional-features" prev_title="Optional Features" %}
