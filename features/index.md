@@ -196,7 +196,7 @@ card_list_3:
     content: construction
     outlined: true
 - title: MOTO
-  description: Mail Order / Telephone Orde
+  description: Mail Order / Telephone Order
   url:  /features/optional-features#moto
   icon:
     content: construction
