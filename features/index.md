@@ -10,7 +10,7 @@ additional: true
 menu_order: 1000
 card_list: 
 - title: 3D Secure 2
-  description: Initialize payment process containing the order
+  description: Authenticating the cardholder
   url:  /features/core-features#3-d-secure-2
   icon:
     content: autorenew
@@ -21,97 +21,97 @@ card_list:
     content: view_list
     outlined: true
 - title: Settlement & Reconciliation
-  description: Initialize payment process containing the order
+  description: Balancing the books
   url:  /features/core-features#settlement-and-reconciliation
   icon:
     content: description
     outlined: true
 card_list_2:
 - title: Callback
-  description: Initialize payment process containing the order
+  description: Getting updates about payment or transaction changes
   url:  /features/technical-references#callback
   icon:
     content: construction
     outlined: true
 - title: Card authorization transaction
-  description: Initialize payment process containing the order
+  description: Information about the payment's authorization(s)
   url:  /features/technical-references#card-authorization-transaction
   icon:
     content: construction
     outlined: true
 - title: CompleteUrl
-  description: Initialize payment process containing the order
+  description: Where you go when the payment is completed
   url:  /features/technical-references#completeurl
   icon:
     content: attach_money
     outlined: true
 - title: Create Payment
-  description: Initialize payment process containing the order
+  description: Creating the payment
   url:  /features/technical-references#create-payment
   icon:
     content: shopping_basket
     outlined: true
 - title: Description
-  description: Initialize payment process containing the order
+  description: The purchase summed up in a few words
   url:  /features/technical-references#description
   icon:
     content: construction
     outlined: true
 - title: Metadata
-  description: Initialize payment process containing the order
+  description: Store payment associated data for later use
   url:  /features/technical-references#metadata
   icon:
     content: construction
     outlined: true
 - title: PayeeInfo
-  description: Initialize payment process containing the order
+  description: Payment specific merchant information
   url:  /features/technical-references#payeeinfo
   icon:
     content: construction
     outlined: true
 - title: PayeeReference
-  description: Initialize payment process containing the order
+  description: The merchant's reference for a specific payment
   url:  /features/technical-references#payee-reference
   icon:
     content: construction
     outlined: true
 - title: Payment & Transactions States
-  description: Initialize payment process containing the order
+  description: Possible states of the payments and transactions
   url:  /features/technical-references#payment-and-transaction-states
   icon:
     content: http
 - title: PaymentUrl
-  description: Initialize payment process containing the order
+  description: Redirecting the payer back to your site
   url:  /features/technical-references#payment-url
   icon:
     content: undo
     outlined: true
 - title: Prices
-  description: Initialize payment process containing the order
+  description: The payment's prices resource
   url:  /features/technical-references#prices
   icon:
     content: construction
     outlined: true
 - title: Problems
-  description: Initialize payment process containing the order
+  description: Information when something goes wrong
   url:  /features/technical-references#problems
   icon:
     content: construction
     outlined: true
 - title: Purchase
-  description: Initialize payment process containing the order
+  description: The bread and butter of the payments
   url:  /features/technical-references#purchase
   icon:
     content: settings
     outlined: true
 - title: Seamless View Events
-  description: Initialize payment process containing the order
+  description: Possible events during Seamless View payments
   url:  /features/technical-references#seamless-view-events
   icon:
     content: construction
     outlined: true
 - title: Transactions
-  description: Initialize payment process containing the order
+  description: The transactions making up a specific payment
   url:  /features/technical-references#transactions
   icon:
     content: construction
@@ -130,37 +130,37 @@ card_list_3:
     content: construction
     outlined: true
 - title: One-Click Payments
-  description: Initialize payment process containing the order
+  description: Prefilling the payment details using payment tokens
   url:  /features/optional-features#one-click-payments
   icon:
     content: construction
     outlined: true
 - title: Payment Link
-  description: Initialize payment process containing the order
+  description: Sending the payment via mail or SMS
   url:  /features/optional-features#payment-link
   icon:
     content: construction
     outlined: true
 - title: Payout
-  description: Initialize payment process containing the order
+  description: Making deposits to payers' cards
   url:  /features/optional-features#payout
   icon:
     content: construction
     outlined: true
 - title: Recur
-  description: Initialize payment process containing the order
+  description: Setting up subscriptions and recurring payments
   url:  /features/optional-features#recur
   icon:
     content: construction
     outlined: true
 - title: Unscheduled Purchase
-  description: Initialize payment process containing the order
+  description: Merchant initiated transactions with absent cardholders
   url:  /features/optional-features#unscheduled-purchase
   icon:
     content: construction
     outlined: true
 - title: Verify
-  description: Initialize payment process containing the order
+  description: Validating the payer's payment details
   url:  /features/optional-features#verify
   icon:
     content: construction
