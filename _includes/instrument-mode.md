@@ -1,5 +1,3 @@
-{% include api_rersource = include.api_resouce %}
-{% include documentation_section =include.documentation_section %}
 
 ## Instrument Mode
 
