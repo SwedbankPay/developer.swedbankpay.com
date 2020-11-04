@@ -14,9 +14,33 @@ card_list:
   url:  /features/core-features#3-d-secure-2
   icon:
     content: autorenew
+- title: Abort
+  description: Aborting a created payment
+  url: 
+  icon:
+    content: view_list
+    outlined: true
+- title: Cancel
+  description: Cancelling the authorization and releasing the funds
+  url: 
+  icon:
+    content: view_list
+    outlined: true
+- title: Capture
+  description: Capturing the authorized funds
+  url: 
+  icon:
+    content: view_list
+    outlined: true
 - title: Payment resource
   description: When initiating a payment process
   url: /features/core-features#payment-resouce
+  icon:
+    content: view_list
+    outlined: true
+- title: Reversal
+  description: How to reverse a payment
+  url: 
   icon:
     content: view_list
     outlined: true
@@ -27,6 +51,12 @@ card_list:
     content: description
     outlined: true
 card_list_2:
+- title: Authorizations
+  description: Information about the transaction's authorization(s)
+  url: 
+  icon:
+    content: construction
+    outlined: true
 - title: Callback
   description: Getting updates about payment or transaction changes
   url:  /features/technical-references#callback
@@ -36,6 +66,12 @@ card_list_2:
 - title: Card authorization transaction
   description: Information about the payment's authorization(s)
   url:  /features/technical-references#card-authorization-transaction
+  icon:
+    content: construction
+    outlined: true
+- title: Checkin Events
+  description: Possible events during Checkin
+  url: 
   icon:
     content: construction
     outlined: true
@@ -63,6 +99,18 @@ card_list_2:
   icon:
     content: construction
     outlined: true
+- title: MobilePay Online Transactions
+  description: The MPO specific transactions
+  url: 
+  icon:
+    content: construction
+    outlined: true
+- title: Operations
+  description: Possible operations for a payment order
+  url:  
+  icon:
+    content: construction
+    outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
   url:  /features/technical-references#payeeinfo
@@ -72,6 +120,12 @@ card_list_2:
 - title: PayeeReference
   description: The merchant's reference for a specific payment
   url:  /features/technical-references#payee-reference
+  icon:
+    content: construction
+    outlined: true
+- title: Payment Menu Events
+  description: Possible events during Payment Menu payments
+  url:  
   icon:
     content: construction
     outlined: true
@@ -123,8 +177,26 @@ card_list_3:
   icon:
     content: construction
     outlined: true
+- title: Custom Logo
+  description: How to add your own logo
+  url:  
+  icon:
+    content: construction
+    outlined: true
+- title: Instrument Mode
+  description: A Payment Menu displaying one instrument
+  url:
+  icon:
+    content: construction
+    outlined: true
+- title: Merchant Authenticated Consumer
+  description: The Checkin alternative
+  url:  
+  icon:
+    content: construction
+    outlined: true
 - title: MOTO
-  description: Initialize payment process containing the order
+  description: Mail Order / Telephone Orde
   url:  /features/optional-features#moto
   icon:
     content: construction
@@ -132,6 +204,12 @@ card_list_3:
 - title: One-Click Payments
   description: Prefilling the payment details using payment tokens
   url:  /features/optional-features#one-click-payments
+  icon:
+    content: construction
+    outlined: true
+- title: Payer Aware Payment Menu
+  description: Sending the payment via mail or SMS
+  url:  
   icon:
     content: construction
     outlined: true
