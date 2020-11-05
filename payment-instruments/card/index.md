@@ -1,5 +1,6 @@
 ---
-title: Card 
+section: Card
+title: Introduction
 redirect_from: /payments/card/
 estimated_read: 8
 description: |

@@ -1,5 +1,5 @@
 ---
-title: Gift Cards – Security
+title: Security
 estimated_read: 3
 menu_order: 700
 ---

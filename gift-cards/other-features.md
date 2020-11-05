@@ -1,5 +1,5 @@
 ---
-title: Gift Cards – Other Features
+title: Other Features
 estimated_read: 10
 menu_order: 900
 ---
