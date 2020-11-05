@@ -11,8 +11,8 @@ menu_order: 1000
 
 {% include cobadge-dankort.md %}
 
-{% include instrument-mode.md api_resource=“paymentorders”
-documentation_section=“payment-menu” %}
+{% include instrument-mode.md api_resource="paymentorders"
+documentation_section="payment-menu" %}
 
 {% include merchant-authenticated-consumer.md %}
 
