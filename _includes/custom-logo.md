@@ -1,4 +1,3 @@
-{% include documentation_section=include.documentation_section %}
 
 ## Custom Logo
 
@@ -31,7 +30,7 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
+        "language": "sv-SE",{% if include.documentation_section == "payment-menu" %}
         "instrument": "CreditCard"{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},{% if include.documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
