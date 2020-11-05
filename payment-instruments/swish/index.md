@@ -1,5 +1,6 @@
 ---
-title: Swish 
+section: Swish
+title: Introduction
 redirect_from: /payments/swish/
 estimated_read: 4
 description: |

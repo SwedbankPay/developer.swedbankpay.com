@@ -1,5 +1,5 @@
 ---
-title: Payment Menu – Introduction
+section: Payment Menu
 estimated_read: 3
 description: |
   The **Swedbank Pay Payment Menu** integrates
@@ -7,6 +7,7 @@ description: |
   increasing number of payment instrument Swedbank Pay has on offer and
   remembering which instrument they prefer and have paid with previously.
 menu_order: 200
+hide_from_sidebar: true
 ---
 
 Swedbank Pay Payment Menu allows your customers to pay with their favorite payment

@@ -1,9 +1,8 @@
 ---
-title: Open Source Development Guidelines
+section: Open Source Development Guidelines
+title: Introduction
 estimated_read: 8
 ---
-
-## Introduction
 
 Swedbank Pay is committed to creating a vibrant community around its open
 source initiative on GitHub and will alongside its partners expose the Swedbank

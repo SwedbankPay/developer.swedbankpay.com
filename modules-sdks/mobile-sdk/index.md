@@ -1,5 +1,6 @@
 ---
-title: Mobile SDK
+section: Mobile SDK
+title: Introduction
 estimated_read: 4
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
