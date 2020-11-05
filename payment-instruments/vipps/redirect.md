@@ -410,9 +410,9 @@ purchased products) have to make a [Capture][capture] or
 [Cancel][cancel] request.
 
 {% include iterator.html prev_href="./"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="seamless-view"
-                         next_title="Next: Implement Seamless view" %}
+                         next_title="Seamless view" %}
 
 [callback]: /payment-instruments/vipps/other-features#callback
 [cancel]: /payment-instruments/vipps/after-payment#cancellations

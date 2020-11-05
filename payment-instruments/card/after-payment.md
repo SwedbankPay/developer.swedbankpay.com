@@ -309,8 +309,8 @@ Content-Type: application/json
 }
 ```
 
-{% include iterator.html prev_href="mobile-card-payments" prev_title="Back: Mobile Card Payments"
-next_href="other-features" next_title="Next: Other Features" %}
+{% include iterator.html prev_href="mobile-card-payments" prev_title="Mobile Card Payments"
+next_href="other-features" next_title="Other Features" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
 [callback]: /payment-instruments/card/other-features#callback

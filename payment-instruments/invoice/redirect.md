@@ -242,8 +242,8 @@ Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.
 Here you will also find info on `Cancel`, and `Reversal`.
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="seamless-view" next_title="Next: Seamless View" %}
+{% include iterator.html prev_href="./" prev_title="Introduction"
+next_href="seamless-view" next_title="Seamless View" %}
 
 [abort]: /payment-instruments/invoice/after-payment#abort
 [after-payment]: /payment-instruments/invoice/after-payment

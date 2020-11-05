@@ -10,4 +10,4 @@ menu_order: 600
 
 {% include payment-order-other-features.md documentation_section="checkout" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After Payment" %}
+{% include iterator.html prev_href="after-payment" prev_title="After Payment" %}

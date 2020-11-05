@@ -191,7 +191,7 @@ diagram.
 {% include languages.md api_resource="paymentorders" %}
 
 {% include iterator.html next_href="checkin"
-                         next_title="Next: Implement Checkin" %}
+                         next_title="Implement Checkin" %}
 
 [after-payment-capture]: /checkout/capture
 [https]: /home/technical-information#connection-and-protocol

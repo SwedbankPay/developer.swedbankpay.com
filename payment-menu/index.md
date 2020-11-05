@@ -31,7 +31,7 @@ under [After Payment][after-payment-capture]). Connect these steps and you have
 Swedbank Pay Payment Menu.
 
 {% include iterator.html next_href="payment-order"
-                         next_title="Next: Payment Order" %}
+                         next_title="Payment Order" %}
 
 [after-payment-capture]: /payment-menu/capture
 [https]: /home/technical-information#connection-and-protocol

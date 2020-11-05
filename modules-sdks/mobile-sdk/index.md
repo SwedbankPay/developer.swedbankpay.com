@@ -7,6 +7,7 @@ description: |
   The Mobile SDK consists of three components: An Android library, an iOS
   library, and a backend component with example implementations in Node.js
   and Java.
+menu_order: 700
 ---
 
 {% capture disclaimer %}
@@ -108,7 +109,7 @@ sequenceDiagram
 Internally, the SDK uses the same [Checkin][checkin] flow as would be used on a web page. The flow described on the Checkin page reflects closely what happens inside the SDK. From the perspective of the app using the SDK, that is an implementation detail, and is therefore not reflected in the above diagram. You should, nevertheless, read up on the Checkin documentation before continuing with the SDK documentation.
 
 {% include iterator.html next_href="merchant-backend"
-                         next_title="Next: Merchant Backend" %}
+                         next_title="Merchant Backend" %}
 
 [plain-webview]: plain-webview
 [checkout]: /checkout
