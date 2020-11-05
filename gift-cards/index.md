@@ -24,5 +24,8 @@ documentation:
 *   [Test Client][test-client]
 *   [Operations][operations]
 
+{% include iterator.html next_href="operations"
+                         next_title="Operations" %}
+
 [operations]: /gift-cards/operations
 [test-client]: /gift-cards/payment-client

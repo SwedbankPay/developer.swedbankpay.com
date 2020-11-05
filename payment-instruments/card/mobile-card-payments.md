@@ -138,8 +138,8 @@ sequenceDiagram
         end
 ```
 
-{% include iterator.html prev_href="direct" prev_title="Back: Direct"
-next_href="after-payment" next_title="Next: After Payment" %}
+{% include iterator.html prev_href="direct" prev_title="Direct"
+next_href="after-payment" next_title="After Payment" %}
 
 [create-payment]: /payment-instruments/card/other-features#create-payment
 [payout]: /payment-instruments/card/other-features#payout

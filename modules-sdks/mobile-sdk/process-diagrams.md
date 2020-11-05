@@ -8,6 +8,7 @@ description: |
   It is recommended to read through the earlier pages first.
   This page can them help you keep a picture of the whole system in mind,
   and serve as a quick reference to the different steps and components.
+menu_order: 1300
 ---
 
 {% capture disclaimer %}
@@ -301,9 +302,9 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="ios"
-                         prev_title="Back: iOS"
+                         prev_title="iOS"
                          next_href="plain-webview"
-                         next_title="Next: Using a Web View Instead" %}
+                         next_title="Using a Web View Instead" %}
 
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

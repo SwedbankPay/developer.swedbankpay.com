@@ -382,8 +382,8 @@ sequenceDiagram
 
 Head over to [Capture][capture] to complete the Invoice Direct integration.
 
-{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
-next_href="capture" next_title="Next: Capture" %}
+{% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
+next_href="capture" next_title="Capture" %}
 
 [abort]: /payment-instruments/invoice/other-features#abort
 [callback]: /payment-instruments/invoice/other-features#callback

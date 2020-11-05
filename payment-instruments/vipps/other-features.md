@@ -202,7 +202,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include iterator.html
         prev_href="after-payment"
-        prev_title="Back: After Payment" %}
+        prev_title="After Payment" %}
 
 [callbackreference]: #callback
 [prices]: #prices

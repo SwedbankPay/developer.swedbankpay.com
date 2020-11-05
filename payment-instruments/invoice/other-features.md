@@ -547,7 +547,7 @@ transaction made towards a payment, as previously described.
 
 {% include seamless-view-events.md api_resource="invoice" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
+{% include iterator.html prev_href="after-payment" prev_title="After
 Payment" %}
 
 [callback]: #callback

@@ -335,9 +335,9 @@ documentation_section="vipps" transaction="reversal" %}
 
 {% include iterator.html
         prev_href="capture"
-        prev_title="Back: Capture"
+        prev_title="Capture"
         next_href="other-features"
-        next_title="Next: Other Features" %}
+        next_title="Other Features" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
 [expand-parameter]: /home/technical-information#expansion

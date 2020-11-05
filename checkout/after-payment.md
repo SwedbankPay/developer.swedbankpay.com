@@ -12,6 +12,6 @@ menu_order: 500
 {% include payment-order-after-payment.md documentation_section="checkout" %}
 
 {% include iterator.html prev_href="capture"
-                         prev_title="Back: Capture"
+                         prev_title="Capture"
                          next_href="other-features"
-                         next_title="Next: Other Features" %}
+                         next_title="Other Features" %}

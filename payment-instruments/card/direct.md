@@ -386,8 +386,8 @@ sequenceDiagram
   [Callback request][callback] will be posted to the `callbackUrl`, generated
   when the payment was created.
 
-{% include iterator.html prev_href="seamless-view" prev_title="Back: Seamless View"
-next_href="mobile-card-payments" next_title="Next: Mobile Card Payments" %}
+{% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
+next_href="mobile-card-payments" next_title="Mobile Card Payments" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
 [expansion]: /home/technical-information#expansion
