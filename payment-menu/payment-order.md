@@ -1,9 +1,10 @@
 ---
-title: Payment Menu – Payment Order
-estimated_read: 30
+title: Payment Order
+estimated_read: 15
 description: |
   **Payment Order** lets the payer complete their purchase.
 menu_order: 300
+hide_from_sidebar: true
 ---
 
 {% assign view_payment_order_javascript_url = "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE"%}
@@ -264,9 +265,9 @@ rect rgba(138, 205, 195, 0.1)
 ```
 
 {% include iterator.html prev_href="index"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="capture"
-                         next_title="Next: Capture" %}
+                         next_title="Capture" %}
 
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png

@@ -178,8 +178,8 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="capture" prev_title="Back: Capture"
-next_href="other-features" next_title="Next: Other Features" %}
+{% include iterator.html prev_href="capture" prev_title="Capture"
+next_href="other-features" next_title="Other Features" %}
 
 ----------------------------------------------------------
 [abort-description]: #abort

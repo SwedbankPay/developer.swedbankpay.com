@@ -110,3 +110,4 @@ gpg2 --armor --encrypt -r SwedbankPay CARDDATA.csv
 
 When the above command has executed, the `gpg` tool will have created a file
 named `CARDDATA.csv.asc`, which contains the encrypted data.
+

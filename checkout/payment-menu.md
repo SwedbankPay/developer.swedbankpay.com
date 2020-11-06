@@ -1,6 +1,6 @@
 ---
-title: Checkout – Payment Menu
-estimated_read: 30
+title: Payment Menu
+estimated_read: 15
 description: |
   **Payment Menu** begins where **Checkin** left off,
   letting the payer complete their purchase.
@@ -17,10 +17,10 @@ with the payer information (such as `consumerProfileRef`) we obtained in the
 checkin process described above. This information will appear prefilled in the
 Payment Menu.
 
-If you are sending a guest user `POST` request, simply leave out the 
-`consumerProfileRef` from the input, and the payer will be sent to an empty 
-Payment Menu. Information like `email`, `address` and `msisdn` can still be 
-added manually in the payer node. If added, it will appear prefilled in the 
+If you are sending a guest user `POST` request, simply leave out the
+`consumerProfileRef` from the input, and the payer will be sent to an empty
+Payment Menu. Information like `email`, `address` and `msisdn` can still be
+added manually in the payer node. If added, it will appear prefilled in the
 Payment Menu.
 
 Remember to read up on our [URL resource][urls].
@@ -93,7 +93,7 @@ create the script element with JavaScript, all inside the event handler for
 [`onConsumerIdentified`][technical-reference-onconsumer-identified].
 The HTML code will be unchanged in this example.
 
-For the guest Payment Menu, lines 23-44 in the JavaScript should be your main 
+For the guest Payment Menu, lines 23-44 in the JavaScript should be your main
 focus. They contain what you need to display the Payment Menu without Checkin.
 
 {:.code-view-header}
@@ -173,9 +173,9 @@ request.send(JSON.stringify({
 ```
 
 This should bring up the Payment Menu in a Seamless View looking like
-this, depending on whether the payer is logged in (top two) or a guest user 
+this, depending on whether the payer is logged in (top two) or a guest user
 (bottom two). Payments done in SEK will have radio buttons for choosing debit
-or credit card. 
+or credit card.
 
 {:.text-center}
 ![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="475" height="760"}
@@ -297,9 +297,9 @@ Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].
 
 {% include iterator.html prev_href="checkin"
-                         prev_title="Back: Checkin"
+                         prev_title="Checkin"
                          next_href="capture"
-                         next_title="Next: Capture" %}
+                         next_title="Capture" %}
 
 [after-payment]: after-payment
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png

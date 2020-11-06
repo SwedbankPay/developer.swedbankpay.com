@@ -1,5 +1,6 @@
 ---
-title: Card 
+section: Card
+title: Introduction
 redirect_from: /payments/card/
 estimated_read: 8
 description: |
@@ -182,7 +183,7 @@ sequenceDiagram
         end
 ```
 
-{% include iterator.html  next_href="redirect" next_title="Next: Redirect" %}
+{% include iterator.html  next_href="redirect" next_title="Redirect" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png

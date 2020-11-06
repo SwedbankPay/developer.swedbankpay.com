@@ -4,35 +4,35 @@ estimated_read: 10
 menu_order: 1000
 ---
 
-{% include jumbotron.html body="The Seamless View scenario represents the	
-                                opportunity to implement Trustly directly in	
-                                your webshop." %}	
+{% include jumbotron.html body="The Seamless View scenario represents the
+                                opportunity to implement Trustly directly in
+                                your webshop." %}
 
-## Introduction	
+## Introduction
 
-Seamless View provides an integration of the payment process directly on your	
-website. This solution offers a smooth shopping experience with Swedbank Pay	
-Payments seamlessly integrated in an `iframe` on your website. The payer	
-does not need to leave your webpage, since we are handling the payment in the	
-`iframe` on your website.	
+Seamless View provides an integration of the payment process directly on your
+website. This solution offers a smooth shopping experience with Swedbank Pay
+Payments seamlessly integrated in an `iframe` on your website. The payer
+does not need to leave your webpage, since we are handling the payment in the
+`iframe` on your website.
 
-![screenshot of the Trustly payment window][trustly-payment-embedded-view]{:height="425px" width="700px"}	
+![screenshot of the Trustly payment window][trustly-payment-embedded-view]{:height="425px" width="700px"}
 
-{% include alert-callback-url.md api_resource="trustly" %}	
+{% include alert-callback-url.md api_resource="trustly" %}
 
-## Step 1: Create the payment	
+## Step 1: Create the payment
 
-A Trustly payment is a straightforward way to perform a direct-bank payment. 	
+A Trustly payment is a straightforward way to perform a direct-bank payment.  
 
-An example of an abbreviated `POST` request is provided below.	
-Each individual field of the JSON document is described in the following section.	
-An example of an expanded `POST` request is available in [Payment resource]	
-[payment-resource].	
+An example of an abbreviated `POST` request is provided below.
+Each individual field of the JSON document is described in the following section.
+An example of an expanded `POST` request is available in [Payment resource]
+[payment-resource].
 
-When properly set up in your merchant/webshop site and the payer starts the	
-payment process, you need to make a `POST` request towards Swedbank Pay with your	
-payment information. This will generate a `payment` resource with a unique	
-`id` URI. You will receive a **JavaScript source** in response.	
+When properly set up in your merchant/webshop site and the payer starts the
+payment process, you need to make a `POST` request towards Swedbank Pay with your
+payment information. This will generate a `payment` resource with a unique
+`id` URI. You will receive a **JavaScript source** in response.
 
 {% include alert-gdpr-disclaimer.md %}
 
@@ -225,61 +225,83 @@ embedded on your website.
 **HTML**	
 
 ```html
-<script language="javascript">	
-    payex.hostedView.trustly({	
-        // The container specifies which id the script will look for to host the	
-        // iframe component.	
-        container: "swedbank-pay-seamless-view-page"	
-    }).open();	
-</script>	
-```	
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Seamless View is Awesome!</title>
+        <!-- Here you can specify your own javascript file -->
+        <script src=<YourJavaScriptFileHere>></script>
+    </head>
+    <body>
+        <div id="swedbank-pay-seamless-view-page">
+          <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/trustly/core/scripts/client/px.trustly.client.js"></script>
+        </div>
+    </body>
+</html>
+```
 
-## Purchase Flow	
+Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
+embedded on your website.
 
-The sequence diagram below shows a high level description of the	
-Trustly payment process.	
+{:.code-view-header}
+**HTML**
 
-```mermaid	
-sequenceDiagram	
-    participant SwedbankPay as Swedbank Pay	
-    participant Merchant	
-    participant Consumer	
-    participant Trustly	
-    Consumer->>Merchant: Start purchase	
-    activate Merchant	
-    note left of Merchant: First API request	
-    Merchant->>-SwedbankPay: POST /psp/trustly/payments	
-    activate Merchant	
-    Merchant-->>-Consumer: Display all details and final price	
-    activate Consumer	
-    note left of Consumer: Open iframe ③	
-    Consumer->>Consumer: Input first name and last name	
-    Consumer->>-SwedbankPay: Confirm purchase	
-    activate SwedbankPay	
-    SwedbankPay->>-Trustly: Perform payment	
-    activate Trustly	
-    Trustly-->>-Merchant: Transaction result	
-    activate Merchant	
-    note left of Merchant: Second API request	
-    Merchant->>-SwedbankPay: GET <payment.id>	
-    activate SwedbankPay	
-    SwedbankPay-->>-Merchant: payment resource	
-    activate Merchant	
-    Merchant-->>-Consumer: Display result	
-```	
+```html
+<script language="javascript">
+    payex.hostedView.trustly({
+        // The container specifies which id the script will look for to host the
+        // iframe component.
+        container: "swedbank-pay-seamless-view-page"
+    }).open();
+</script>
+```
 
-{% include iterator.html prev_href="redirect" prev_title="Back: Redirect"	
-next_href="after-payment" next_title="Next: After Payment" %}	
+## Purchase Flow
 
-[after-payment]: /payment-instruments/trustly/after-payment	
+The sequence diagram below shows a high level description of the
+Trustly payment process.
+
+```mermaid
+sequenceDiagram
+    participant SwedbankPay as Swedbank Pay
+    participant Merchant
+    participant Consumer
+    participant Trustly
+    Consumer->>Merchant: Start purchase
+    activate Merchant
+    note left of Merchant: First API request
+    Merchant->>-SwedbankPay: POST /psp/trustly/payments
+    activate Merchant
+    Merchant-->>-Consumer: Display all details and final price
+    activate Consumer
+    note left of Consumer: Open iframe ③
+    Consumer->>Consumer: Input first name and last name
+    Consumer->>-SwedbankPay: Confirm purchase
+    activate SwedbankPay
+    SwedbankPay->>-Trustly: Perform payment
+    activate Trustly
+    Trustly-->>-Merchant: Transaction result
+    activate Merchant
+    note left of Merchant: Second API request
+    Merchant->>-SwedbankPay: GET <payment.id>
+    activate SwedbankPay
+    SwedbankPay-->>-Merchant: payment resource
+    activate Merchant
+    Merchant-->>-Consumer: Display result
+```
+
+{% include iterator.html prev_href="redirect" prev_title="Redirect"
+next_href="after-payment" next_title="After Payment" %}
+
+[after-payment]: /payment-instruments/trustly/after-payment
 [callback]: /payment-instruments/trustly/other-features#callback
-[completeurl]: /payment-instruments/trustly/other-features#completeurl 	
-[create-payment]: /payment-instruments/trustly/other-features#create-payment	
-[financing-consumer]: /payment-instruments/trustly/other-features#financing-consumer	
-[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png	
-[payee-reference]: /payment-instruments/trustly/other-features#payee-reference	
-[payment-resource]: /payment-instruments/trustly/other-features#payment-resource	
-[recur]: /payment-instruments/trustly/other-features#recur	
-[setup-mail]: mailto:setup.ecom@PayEx.com	
-[user-agent]: https://en.wikipedia.org/wiki/User_agent	
+[completeurl]: /payment-instruments/trustly/other-features#completeurl  
+[create-payment]: /payment-instruments/trustly/other-features#create-payment
+[financing-consumer]: /payment-instruments/trustly/other-features#financing-consumer
+[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
+[payee-reference]: /payment-instruments/trustly/other-features#payee-reference
+[payment-resource]: /payment-instruments/trustly/other-features#payment-resource
+[recur]: /payment-instruments/trustly/other-features#recur
+[setup-mail]: mailto:setup.ecom@PayEx.com
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payment-instruments/trustly/other-features#verify

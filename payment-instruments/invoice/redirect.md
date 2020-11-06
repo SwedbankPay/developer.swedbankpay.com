@@ -39,10 +39,10 @@ operation equal to `FinancingConsumer`, are described in
 [other features][financing-consumer].
 
 {:.text-center}
-![screenshot of the first Invoice redirect page][fincon-invoice-redirect]height="725px" width="475px"}
+![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
 {:.text-center}
-![screenshot of the second Invoice redirect page][fincon-invoice-approve]height="500px" width="475px"}
+![screenshot of the second Invoice redirect page][fincon-invoice-approve]{:height="500px" width="475px"}
 
 ### Financing Consumer
 
@@ -242,8 +242,8 @@ Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.
 Here you will also find info on `Cancel`, and `Reversal`.
 
-{% include iterator.html prev_href="./" prev_title="Back: Introduction"
-next_href="seamless-view" next_title="Next: Seamless View" %}
+{% include iterator.html prev_href="./" prev_title="Introduction"
+next_href="seamless-view" next_title="Seamless View" %}
 
 [abort]: /payment-instruments/invoice/after-payment#abort
 [after-payment]: /payment-instruments/invoice/after-payment

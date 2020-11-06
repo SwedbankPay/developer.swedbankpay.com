@@ -371,9 +371,9 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="index"
-                         prev_title="Back: Introduction"
-                         next_href="seamless-view"
-                         next_title="Seamless View" %}
+                         prev_title="Introduction"
+                         next_href="after-payment"
+                         next_title="After Payment" %}
 
 [callback-reference]: /payment-instruments/mobile-pay/other-features#callback
 [completeurl]: /payment-instruments/mobile-pay/other-features#completeurl

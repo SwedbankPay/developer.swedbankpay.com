@@ -244,8 +244,8 @@ sequenceDiagram
     Merchant-->>-Browser: Payment Status
 ```
 
-{% include iterator.html prev_href="direct" prev_title="Back: Direct"
-next_href="seamless-view" next_title="Next: Seamless View" %}
+{% include iterator.html prev_href="direct" prev_title="Direct"
+next_href="seamless-view" next_title="Seamless View" %}
 
 [completeurl]: /payment-instruments/swish/other-features#completeurl
 [callback-url]: /payment-instruments/swish/other-features#callback

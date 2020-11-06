@@ -134,8 +134,8 @@ sequenceDiagram
 {% include abort-reference.md api_resource="mobilepay"
 documentation_section="mobile-pay" %}
 
-{% include iterator.html prev_href="seamless-view"
-                         prev_title="Seamless View"
+{% include iterator.html prev_href="redirect"
+                         prev_title="Redirect"
                          next_href="other-features"
                          next_title="Other Features" %}
 

@@ -1,5 +1,6 @@
 ---
-title: Gift Cards – Introduction
+section: Gift Cards
+title: Introduction
 estimated_read: 1
 menu_order: 500
 ---
@@ -23,6 +24,9 @@ documentation:
 
 *   [Test Client][test-client]
 *   [Operations][operations]
+
+{% include iterator.html next_href="operations"
+                         next_title="Operations" %}
 
 [operations]: /gift-cards/operations
 [test-client]: /gift-cards/payment-client

@@ -14,6 +14,6 @@ everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described in After Payment.
 
 {% include iterator.html prev_href="seamless-view"
-                         prev_title="Back: Seamless View"
+                         prev_title="Seamless View"
                          next_href="after-payment"
-                         next_title="Next: After Payment" %}
+                         next_title="After Payment" %}

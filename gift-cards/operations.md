@@ -1,6 +1,7 @@
 ---
-title: Gift Cards – Operations
+title: Operations
 estimated_read: 2
+menu_order: 600
 ---
 
 ## Gift card resource
@@ -123,6 +124,11 @@ Content-Type: application/json
     "paymentId": 4526987
 }
 ```
+
+{% include iterator.html prev_href="index"
+                         prev_title="Introduction"
+                         next_href="security"
+                         next_title="Security" %}
 
 [auth]: /gift-cards/other-features#authentication
 [balance]: /gift-cards/other-features#balance

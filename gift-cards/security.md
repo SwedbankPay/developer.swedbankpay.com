@@ -1,6 +1,7 @@
 ---
-title: Gift Cards – Security
+title: Security
 estimated_read: 3
+menu_order: 700
 ---
 
 ## OAuth2
@@ -216,6 +217,11 @@ function guid() {
 
 *   For more information how to implement the api, see
     [Test Client][test-client].
+
+{% include iterator.html prev_href="operations"
+                         prev_title="Operations"
+                         next_href="test-client"
+                         next_title="Test Client" %}
 
 [application-yml]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
 [client-credentials]: https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/

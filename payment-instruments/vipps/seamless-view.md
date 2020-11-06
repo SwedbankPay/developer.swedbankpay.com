@@ -223,7 +223,7 @@ embedded on your website.
 {:.code-view-header}
 **JavaScript**
 
-```js
+```html
 <script language="javascript">
     payex.hostedView.vipps({
         // The container specifies which id the script will look for to host the
@@ -311,9 +311,9 @@ sequenceDiagram
 
 {% include iterator.html
         prev_href="redirect"
-        prev_title="Back: Redirect"
+        prev_title="Redirect"
         next_href="capture"
-        next_title="Next: Capture" %}
+        next_title="Capture" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
 [callback]: /payment-instruments/vipps/other-features#callback

@@ -271,6 +271,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
     "payment": {
         "id": "/psp/invoice/payments/{{ page.payment_id }}",
@@ -399,6 +400,7 @@ POST /psp/invoice/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
 {
     "transaction": {
         "activity": "FinancingConsumer"
@@ -545,7 +547,7 @@ transaction made towards a payment, as previously described.
 
 {% include seamless-view-events.md api_resource="invoice" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
+{% include iterator.html prev_href="after-payment" prev_title="After
 Payment" %}
 
 [callback]: #callback
