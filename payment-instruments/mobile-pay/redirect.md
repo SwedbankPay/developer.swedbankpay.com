@@ -127,7 +127,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | {% include field-description-subsite.md %}                                                                                               |
 |                  | └➔&nbsp;`prefillInfo`           | `object`     | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                        |
-|                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePays page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectivly.                                                                                          |
+|                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePay's page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectivly.                                                                                          |
 | {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                                                                                                                                                                                                              |
 
 {:.code-view-header}
@@ -373,7 +373,7 @@ sequenceDiagram
 {% include iterator.html prev_href="index"
                          prev_title="Back: Introduction"
                          next_href="seamless-view"
-                         next_title="Next: Seamless View" %}
+                         next_title="Seamless View" %}
 
 [callback-reference]: /payment-instruments/mobile-pay/other-features#callback
 [completeurl]: /payment-instruments/mobile-pay/other-features#completeurl

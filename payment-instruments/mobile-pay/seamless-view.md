@@ -3,7 +3,7 @@ title: Seamless
 redirect_from: /payments/mobile-pay/seamless-view
 estimated_read: 10
 description: |
-  **Seamless View** scenario gives your customers the opportunity to pay with
+  **Seamless View** scenario gives your payers the opportunity to pay with
   MobilePay directly from within your webshop. In the Seamless view scenario,
   Swedbank Pay receives a mobile number (MSISDN) from the payer through
   Swedbank Pay Payments. Swedbank Pay performs a payment that the payer then
@@ -220,7 +220,7 @@ embedded on your website.
 </script>
 ```
 
-## MobilePay Online Seamless flow
+## MobilePay Online Seamless View flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.
@@ -288,9 +288,9 @@ sequenceDiagram
 
 {% include iterator.html
         prev_href="redirect"
-        prev_title="Back: Redirect"
+        prev_title="Redirect"
         next_href="after-payment"
-        next_title="Next: After Payment" %}
+        next_title="After Payment" %}
 
 [purchase]: /payment-instruments/mobile-pay/other-features#purchase
 [callback-reference]: /payment-instruments/mobile-pay/other-features#callback
