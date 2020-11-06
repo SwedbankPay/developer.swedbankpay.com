@@ -9,14 +9,17 @@ description: |
 menu_order: 1000
 ---
 
+{% include 3d-secure-2.md api_resource="creditcard" documentation_section="card"
+%}
+
 {% include abort-reference.md documentation_section="card" %}
 
 {% include cancel.md documentation_section="card" %}
 
+{% include capture.md documentation_section="card" %}
+
 {% include payment-resource.md api_resource="creditcard"
 documentation_section="card" show_status_operations=true %}
-
-{% include 3d-secure-2.md api_resource="creditcard" documentation_section="card" %}
 
 {% include settlement-reconciliation.md documentation_section="card" %}
 
