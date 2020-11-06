@@ -135,9 +135,9 @@ sequenceDiagram
 documentation_section="mobile-pay" %}
 
 {% include iterator.html prev_href="seamless-view"
-                         prev_title="Back: Seamless View"
+                         prev_title="Seamless View"
                          next_href="other-features"
-                         next_title="Next: Other Features" %}
+                         next_title="Other Features" %}
 
 [abort]: /payment-instruments/mobile-pay/after-payment#abort
 [technical-reference-callback]: /payment-instruments/mobile-pay/other-features#callback
