@@ -16,31 +16,31 @@ card_list:
     content: autorenew
 - title: Abort
   description: Aborting a created payment
-  url: 
+  url: /features/core-features#abort
   icon:
     content: view_list
     outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: 
+  url: /features/core-features#cancel
   icon:
     content: view_list
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: 
+  url: /features/core-features#capture
   icon:
     content: view_list
     outlined: true
 - title: Payment resource
   description: When initiating a payment process
-  url: /features/core-features#payment-resouce
+  url: /features/core-features#payment-resource
   icon:
     content: view_list
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: 
+  url: /features/core-features#reversal
   icon:
     content: view_list
     outlined: true
@@ -53,7 +53,7 @@ card_list:
 card_list_2:
 - title: Authorizations
   description: Information about the transaction's authorization(s)
-  url: 
+  url: /features/technical-reference#authorizations
   icon:
     content: construction
     outlined: true
@@ -183,15 +183,15 @@ card_list_3:
   icon:
     content: construction
     outlined: true
-- title: Instrument Mode
-  description: A Payment Menu displaying one instrument
-  url:
+- title: Delegated Strong Consumer Authentication
+  description: The Checkin alternative
+  url:  
   icon:
     content: construction
     outlined: true
-- title: Merchant Authenticated Consumer
-  description: The Checkin alternative
-  url:  
+- title: Instrument Mode
+  description: A Payment Menu displaying one instrument
+  url:
   icon:
     content: construction
     outlined: true
