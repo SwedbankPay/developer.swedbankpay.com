@@ -21,6 +21,8 @@ menu_order: 1000
 {% include payment-resource.md api_resource="creditcard"
 documentation_section="card" show_status_operations=true %}
 
+{% include reversal.md %}
+
 {% include settlement-reconciliation.md documentation_section="card" %}
 
 {% include iterator.html prev_href="index" prev_title="Introduction"
