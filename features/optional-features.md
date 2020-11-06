@@ -22,6 +22,8 @@ documentation_section="payment-menu" %}
 
 {% include one-click-payments.md %}
 
+{% include payer-aware-payment-menu.md %}
+
 {% include payment-link.md %}
 
 {% include payout.md %}
