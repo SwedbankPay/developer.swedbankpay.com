@@ -126,7 +126,7 @@ Content-Type: application/json
 
 {% include seamless-view-events.md api_resource="trustly" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After
+{% include iterator.html prev_href="after-payment" prev_title="After
 Payment" %}
 
 [callback]: #callback

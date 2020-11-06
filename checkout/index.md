@@ -1,6 +1,7 @@
 ---
-title: Checkout – Introduction
-estimated_read: 30
+section: Checkout
+title: Introduction
+estimated_read: 3
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
@@ -32,15 +33,15 @@ related, but disconnected concepts: **Checkin** and **Payment Menu**. Checkin
 identifies the consumer in our Consumer API and Payment Menu authorizes the
 payment with our Payment Menu API.
 
-The next step is to **Capture** the payment. You can either capture the total 
-amount, or do a part-capture (as described under 
+The next step is to **Capture** the payment. You can either capture the total
+amount, or do a part-capture (as described under
 [After Payment][after-payment-capture]). Connect these steps and you have
 Swedbank Pay Checkout.
 
-While Checkin is a necessary component to store personal information and access 
+While Checkin is a necessary component to store personal information and access
 features like storing cards, it is not a mandatory step for the Checkout process
-to work. If the payer is from a country where we currently don't support 
-Checkin, or if he or she opts not to store their data, that's fine. The Payment 
+to work. If the payer is from a country where we currently don't support
+Checkin, or if he or she opts not to store their data, that's fine. The Payment
 Menu can still be used as a **guest**.
 
 Below, you will see a sequence diagram showing the sequence of a Swedbank Pay
@@ -191,7 +192,7 @@ diagram.
 {% include languages.md api_resource="paymentorders" %}
 
 {% include iterator.html next_href="checkin"
-                         next_title="Next: Implement Checkin" %}
+                         next_title="Implement Checkin" %}
 
 [after-payment-capture]: /checkout/capture
 [https]: /home/technical-information#connection-and-protocol

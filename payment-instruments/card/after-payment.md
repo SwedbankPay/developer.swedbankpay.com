@@ -3,9 +3,9 @@ title: After Payment
 redirect_from: /payments/card/after-payment
 estimated_read: 13
 description: |
-Apart from capturing the authorized funds, there are still a couple of options
-available to you after a payment. Authorizations can cancelled, captures can
-be both partially and fully reversed. Read more about the options here.
+  Apart from capturing the authorized funds, there are still a couple of options
+  available to you after a payment. Authorizations can cancelled, captures can
+  be both partially and fully reversed. Read more about the options here.
 menu_order: 900
 ---
 
@@ -309,8 +309,8 @@ Content-Type: application/json
 }
 ```
 
-{% include iterator.html prev_href="mobile-card-payments" prev_title="Back: Mobile Card Payments"
-next_href="other-features" next_title="Next: Other Features" %}
+{% include iterator.html prev_href="mobile-card-payments" prev_title="Mobile Card Payments"
+next_href="other-features" next_title="Other Features" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
 [callback]: /payment-instruments/card/other-features#callback

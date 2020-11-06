@@ -1,6 +1,6 @@
 ---
 title: Checkout – Checkin
-estimated_read: 30
+estimated_read: 8
 description: |
   Swedbank Pay Checkout consists of two parts:
   **Checkin** and **Payment Menu**. In the sections that follow you'll find
@@ -244,9 +244,9 @@ Protection Policy][data-protection] for details on which information we store
 and its duration.
 
 {% include iterator.html prev_href="./"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="payment-menu"
-                         next_title="Next: Payment Menu" %}
+                         next_title="Payment Menu" %}
 
 [checkin-image]: /assets/img/checkout/your-information.png
 [checkin-events]: /checkout/other-features#checkin-events

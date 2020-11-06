@@ -1,5 +1,6 @@
 ---
-title: Invoice 
+section: Invoice
+title: Introduction
 redirect_from: /payments/invoice/
 estimated_read: 2
 description: |
@@ -60,7 +61,7 @@ Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
 operation.
 
 {:.text-center}
-![screenshot of the first Invoice redirect page][fincon-invoice-redirect]height="725px" width="475px"}
+![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
 {% include languages.md api_resource="invoice" %}
 
@@ -97,7 +98,7 @@ sequenceDiagram
     Merchant-->>-Payer: display purchase result
 ```
 
-{% include iterator.html next_href="redirect" next_title="Next: Redirect" %}
+{% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [after-payment]: /payment-instruments/invoice/after-payment
 [callback-api]: /payment-instruments/invoice/other-features#callback

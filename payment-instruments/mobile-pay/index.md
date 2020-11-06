@@ -1,5 +1,6 @@
 ---
-title: MobilePay Online 
+section: MobilePay Online
+title: Introduction
 redirect_from: /payments/mobile-pay/
 estimated_read: 3
 description: |
@@ -9,7 +10,7 @@ menu_order: 700
 ---
 
 MobilePay is the main Danish payment app for mobile phones, making it one
-of the essential payment instruments for merchants operating in Denmark. More 
+of the essential payment instruments for merchants operating in Denmark. More
 than 4 million Danes use the app, and more than 100,000 merchants are
 accepting payments. We offer it on our redirect and seamless view platforms.
 
@@ -86,7 +87,7 @@ shipping to Denmark, for instance.
 
 {% include iterator.html
                          next_href="redirect"
-                         next_title="Next: Redirect" %}
+                         next_title="Redirect" %}
 
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations

@@ -1,6 +1,6 @@
 ---
-title: Checkout – After Payment
-estimated_read: 30
+title: After Payment
+estimated_read: 11
 description: |
   When the consumer has **completed** the entire
   [Checkin](checkin) and [Payment Menu](payment-menu), you need to implement the
@@ -12,6 +12,6 @@ menu_order: 500
 {% include payment-order-after-payment.md documentation_section="checkout" %}
 
 {% include iterator.html prev_href="capture"
-                         prev_title="Back: Capture"
+                         prev_title="Capture"
                          next_href="other-features"
-                         next_title="Next: Other Features" %}
+                         next_title="Other Features" %}

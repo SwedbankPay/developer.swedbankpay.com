@@ -1,6 +1,6 @@
 ---
-title: Checkout – Other Features
-estimated_read: 30
+title: Other Features
+estimated_read: 90
 description: |
   After a successful integration, it may be worth investigating which
   **other features** are available in Swedbank Pay Checkout.
@@ -10,4 +10,4 @@ menu_order: 600
 
 {% include payment-order-other-features.md documentation_section="checkout" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="Back: After Payment" %}
+{% include iterator.html prev_href="after-payment" prev_title="After Payment" %}

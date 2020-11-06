@@ -257,7 +257,7 @@ instrument specific operations.
 {:.code-view-header}
 **JSON with Operations**
 
-```js
+```json
 {
     "payment": {},
     "operations": [

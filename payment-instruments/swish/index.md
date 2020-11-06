@@ -1,5 +1,6 @@
 ---
-title: Swish 
+section: Swish
+title: Introduction
 redirect_from: /payments/swish/
 estimated_read: 4
 description: |
@@ -83,7 +84,7 @@ Swish App.
 
 {% include languages.md api_resource="swish" %}
 
-{% include iterator.html next_href="direct" next_title="Next: Direct" %}
+{% include iterator.html next_href="direct" next_title="Direct" %}
 
 [after-payment]: /payment-instruments/swish/after-payment
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx

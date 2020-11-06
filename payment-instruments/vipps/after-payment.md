@@ -157,7 +157,7 @@ payment altogether or creating an authorization transaction through the
 {:.code-view-header}
 **Request**
 
-```js
+```json
 {
     "payment": {
         "operation": "Purchase"
@@ -335,15 +335,15 @@ documentation_section="vipps" transaction="reversal" %}
 
 {% include iterator.html
         prev_href="capture"
-        prev_title="Back: Capture"
+        prev_title="Capture"
         next_href="other-features"
-        next_title="Next: Other Features" %}
+        next_title="Other Features" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
 [expand-parameter]: /home/technical-information#expansion
 [callback]: /payment-instruments/vipps/other-features#callback
 [cancel]: #cancellations
-[completeurl]: /payment-instruments/vipps/other-features#completeurl 
+[completeurl]: /payment-instruments/vipps/other-features#completeurl
 [capture]: #captures
 [payee-reference]: /payment-instruments/vipps/other-features#payee-reference
 [paymenturl]: /payment-instruments/vipps/other-features#payment-url
