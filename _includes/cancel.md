@@ -1,4 +1,4 @@
-## Cancellations
+## Cancel
 
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
@@ -35,7 +35,7 @@ Content-Type: application/json
 {% include transaction-response.md api_resource=include.api_resource
 documentation_section=include.documentation_section transaction="cancel" %}
 
-## Cancel Sequence
+### Cancel Sequence
 
 Cancel can only be done on a authorized transaction.
 If you do cancel after doing a part-capture you will cancel the different
