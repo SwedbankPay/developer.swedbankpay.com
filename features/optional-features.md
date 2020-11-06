@@ -13,6 +13,8 @@ menu_order: 1000
 
 {% include custom-logo.md documentation_section="payment-menu" %}
 
+{% include delegated-strong-consumer-authentication.md %}
+
 {% include instrument-mode.md api_resource="paymentorders"
 documentation_section="payment-menu" %}
 

@@ -139,167 +139,8 @@ Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
-{% if documentation_section == "payment-menu" %}
-
-{% include intrument-mode.md %}
-
-## Payer Aware Payment Menu
-
-{% include alert.html type="informative" icon="info" body="Please note that not
-all payment instruments provided by Swedbank Pay support Payer Awareness today."
-%}
-
-To maximize the experience of your payers, you should implement the Payer
-Aware Payment Menu by identifying each payer with a unique identifier. It is
-important that you enforce a good SCA (Strong Consumer Authentication) strategy
-when authenticating the payer. The payer identifier must then be sent with
-the creation of the payment order to Swedbank Pay. This will enable Swedbank Pay
-to render a unique payment menu experience for each payer. It will also
-increase the chance for a frictionless payment.
-
-By identifying your payers, they are able to store payment information for
-future payments by setting the `generatePaymentToken` value to `true`. This will
-enable the Swedbank Pay Payment Menu to show stored payment instrument details
-for future purchases. The payer is, by default, asked if they want to store
-their payment details, so even with `generatePaymentToken` set to `true`, it is
-still up to the payer if they want the details stored or not.
-
-{% include alert.html type="informative" icon="info" header="GDPR
-Responsibility" body="Remember that the responsibility to enforce the GDPR
-requirements lies on you as a merchant."
-%}
-
-As a part of these requirements, you have to facilitate that the payer can
-remove active payment tokens when they want. It is up to you how to implement
-this functionality on your side, but Swedbank Pay has the API you need to ensure
-that cleaning up old data is easy. It is possible to query for all active
-payment tokens registered on a specific `payerReference`. This query will also
-list the operations used for deleting tokens. You can choose to remove all
-tokens for that payer or only a subset of all tokens connected to that
-`payerReference`.
-
-### BYO Payment Menu
-
-Payment Menu is versatile and can be configured in such a way that it functions
-like a single payment instrument. In such configuration, it is easy to Bring
-Your Own Payment Menu, i.e. building a customized payment menu in our own user
-interface. For in-app integrations, the payers' shopping experience will be
-better if you choose the BYO Payment Menu option. For web integrations, we
-highly recommend the Swedbank Pay Payment Menu.
-
-The `payerReference` can be used to list all active tokens here as well. This
-will also list the payment instruments enumerated in the `availableInstruments`,
-as instrument-mode is mandatory when you are using BYO Payment Menu.
-
-The alternative to the `payerReference` option is to store `paymentToken`s found
-in the `paymentOrder`s after the payment is completed. This requires that the
-merchant makes sure the list of `paymentToken`s is up to date at their end.
-
-
-#### Add Stored Payment Instrument Details
-
-When building a custom payment menu, features like adding new stored payment
-instrument details (i.e. "Add new card") is something that needs to be provided
-in your UI.
-
-This can be achieved by forcing the creation of a `paymentToken` by setting
-`disableStoredPaymentDetails` to `true` in a Purchase payment (if you want
-to withdraw money and create the token in the same operation), or by performing
-a [Verify payment](#verify-payments) (without withdrawing any money).
-
-Setting `disableStoredPaymentDetails` to `true` will turn off all stored payment
-details for the current purchase. The payer will also not be asked if they
-want to store the payment detail that will be part of the purchase. When you use
-this feature it is important that you have asked the payer in advance if it
-is ok to store their payment details for later use.
-
-Most often you will use the `disableStoredPaymentDetails` feature in combination
-with the [Instrument Mode](#instrument-mode) capability. If you build your own
-menu and want to show stored payment details, you will need to set the
-`disableStoredPaymentDetails` to `true`. It is important that you then store the
-`paymentToken` in your system or call Swedbank Pay with the `payerReference` to
-get all active payment tokens registered on that payer when building your
-menu. See the abbreviated `Purchase` example below.
-
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "operation": "Purchase",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "instrument": "CreditCard"
-        "generateRecurrenceToken": true,
-        "generatePaymentToken": true,
-        "disableStoredPaymentDetails": true,
-        "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ],
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "https://example.com/perform-payment",
-            "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
-            "logoUrl": "https://example.com/logo.png"
-        },
-        "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}",
-            "payeeReference": "AB832",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or-123456",
-            "subsite": "MySubsite"
-        },
-        "payer": {  
-            "payerReference": "AB1234",
-        }
-   }
-}
-```
-
-{:.table .table-striped}
-|     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `paymentorder`                    | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`currency`                | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if documentation_section == "payment-menu" %}
-| {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ other_features_url }}#instrument-mode).                                                                                                                                                                                          | {% endif %}                                              |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ other_features_url }}#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                     | {% if documentation_section == "payment-menu" %} |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                  | {% endif %}                                              |
-|                  | └➔&nbsp;`disableStoredPaymentDetails` | `bool` | Setting to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
-| {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details.  |
-|                  | └─➔&nbsp;`cancelUrl`              | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-|                  | └─➔&nbsp;`paymentUrl`             | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ other_features_url }}#payment-url) for details.                                                                                                                                                        |
-| {% icon check %} | └─➔&nbsp;`callbackUrl`            | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`      | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
-| {% icon check %} | └─➔&nbsp;`logoUrl`                | `string`     | {% include field-description-logourl.md %}         |
-| {% icon check %} | └➔&nbsp;`payeeInfo`               | `string`     | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                          |
-| {% icon check %} | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                             |
-|                  | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
-|                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
-|                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                         |
-|                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
-
+{% if include.documentation_section == "payment-menu" %}
+    {% include payer-aware-payment-menu.md %}
 {% endif %}
 
 ## Operations
@@ -1400,15 +1241,30 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 
 {% include payee-info.md %}
 
-{% if documentation_section == "checkout" %}
-    {%- include merchant-authenticated-consumer.md -%}
+{% if include.documentation_section == "checkout" %}
+    {%- include delegated-strong-consumer-authentication.md -%}
 {% endif %}
 
 {% include metadata.md %}
 
+{% if include.documentation_section == "payment-menu" %}
+
+## One-Click Payments
+
+One-Click Payments should be used if you want to present your own Payment Menu
+in all channels you want to support. This means that if you are both on the
+web and in-app you will need to build your own payment menu to be able to use
+the One-Click Payment functionality. You will need to ask the system to generate
+a `paymentToken` (with `generatePaymentToken` in a `Purchase` or `Verify`
+request) to be able to use this feature. You will also need to turn the
+`Payment Order` into instrument mode (only show one instrument)
+with the request parameter `instrument`.
+
+{% endif %}
+
 {% include settlement-reconciliation.md %}
 
-{% if documentation_section == "payment-menu" %}
+{% if include.documentation_section == "payment-menu" %}
     {% include transaction-on-file.md %}
 {% endif %}
 
