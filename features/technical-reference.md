@@ -6,7 +6,7 @@ description: |
   Welcome to Technical Features.
   This section has extented code examples and features that were not
   covered by the other subsections.
-menu_order: 1000
+menu_order: 1200
 ---
 
 {% include alert-risk-indicator.md %}
@@ -29,7 +29,10 @@ menu_order: 1000
 
 {% include payee-info.md api_resource="creditcard" documentation_section="card" %}
 
-{% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
+{% include payments-operations.md api_resource="creditcard"
+documentation_section="card" %}
+
+{% include payment-order-operations.md %}
 
 {% include payment-transaction-states.md %}
 

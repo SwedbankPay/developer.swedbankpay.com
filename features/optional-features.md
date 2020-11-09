@@ -6,7 +6,7 @@ description: |
   Welcome to Optional Features.
   This section has extented code examples and features that were not
   covered by the other subsections.
-menu_order: 1000
+menu_order: 1300
 ---
 
 {% include cobadge-dankort.md %}
