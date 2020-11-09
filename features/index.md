@@ -59,49 +59,43 @@ card_list_2:
     outlined: true
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /features/technical-references#callback
+  url:  /features/technical-reference#callback
   icon:
     content: construction
     outlined: true
 - title: Card authorization transaction
   description: Information about the payment's authorization(s)
-  url:  /features/technical-references#card-authorization-transaction
+  url:  /features/technical-reference#card-authorization-transaction
   icon:
     content: construction
     outlined: true
 - title: Checkin Events
   description: Possible events during Checkin
-  url: 
+  url: /features/technical-reference#checkin-events
   icon:
     content: construction
     outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
-  url:  /features/technical-references#completeurl
+  url:  /features/technical-reference#completeurl
   icon:
     content: attach_money
     outlined: true
 - title: Create Payment
   description: Creating the payment
-  url:  /features/technical-references#create-payment
+  url:  /features/technical-reference#create-payment
   icon:
     content: shopping_basket
     outlined: true
 - title: Description
   description: The purchase summed up in a few words
-  url:  /features/technical-references#description
+  url:  /features/technical-reference#description
   icon:
     content: construction
     outlined: true
 - title: Metadata
   description: Store payment associated data for later use
-  url:  /features/technical-references#metadata
-  icon:
-    content: construction
-    outlined: true
-- title: MobilePay Online Transactions
-  description: The MPO specific transactions
-  url: 
+  url:  /features/technical-reference#metadata
   icon:
     content: construction
     outlined: true
@@ -113,60 +107,60 @@ card_list_2:
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
-  url:  /features/technical-references#payeeinfo
+  url:  /features/technical-reference#payeeinfo
   icon:
     content: construction
     outlined: true
 - title: PayeeReference
   description: The merchant's reference for a specific payment
-  url:  /features/technical-references#payee-reference
+  url:  /features/technical-reference#payee-reference
   icon:
     content: construction
     outlined: true
 - title: Payment Menu Events
   description: Possible events during Payment Menu payments
-  url:  
+  url: /features/technical-reference#payment-menu-events
   icon:
     content: construction
     outlined: true
 - title: Payment & Transactions States
   description: Possible states of the payments and transactions
-  url:  /features/technical-references#payment-and-transaction-states
+  url:  /features/technical-reference#payment-and-transaction-states
   icon:
     content: http
 - title: PaymentUrl
   description: Redirecting the payer back to your site
-  url:  /features/technical-references#payment-url
+  url:  /features/technical-reference#payment-url
   icon:
     content: undo
     outlined: true
 - title: Prices
   description: The payment's prices resource
-  url:  /features/technical-references#prices
+  url:  /features/technical-reference#prices
   icon:
     content: construction
     outlined: true
 - title: Problems
   description: Information when something goes wrong
-  url:  /features/technical-references#problems
+  url:  /features/technical-reference#problems
   icon:
     content: construction
     outlined: true
 - title: Purchase
   description: The bread and butter of the payments
-  url:  /features/technical-references#purchase
+  url:  /features/technical-reference#purchase
   icon:
     content: settings
     outlined: true
 - title: Seamless View Events
   description: Possible events during Seamless View payments
-  url:  /features/technical-references#seamless-view-events
+  url:  /features/technical-reference#seamless-view-events
   icon:
     content: construction
     outlined: true
 - title: Transactions
   description: The transactions making up a specific payment
-  url:  /features/technical-references#transactions
+  url:  /features/technical-reference#transactions
   icon:
     content: construction
     outlined: true
@@ -179,19 +173,19 @@ card_list_3:
     outlined: true
 - title: Custom Logo
   description: How to add your own logo
-  url:  
+  url: /features/optional-features#custom-logo
   icon:
     content: construction
     outlined: true
 - title: Delegated Strong Consumer Authentication
   description: The Checkin alternative
-  url:  
+  url: /features/optional-features#delegated-strong-consumer-authentication 
   icon:
     content: construction
     outlined: true
 - title: Instrument Mode
   description: A Payment Menu displaying one instrument
-  url:
+  url: /features/optional-features#instrument-mode
   icon:
     content: construction
     outlined: true
@@ -209,7 +203,7 @@ card_list_3:
     outlined: true
 - title: Payer Aware Payment Menu
   description: Sending the payment via mail or SMS
-  url:  
+  url: /features/optional-features#payer-aware-payment-menu
   icon:
     content: construction
     outlined: true
