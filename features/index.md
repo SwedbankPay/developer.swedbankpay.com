@@ -99,12 +99,6 @@ card_list_2:
   icon:
     content: construction
     outlined: true
-- title: Operations
-  description: Possible operations for a payment order
-  url:  
-  icon:
-    content: construction
-    outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
   url:  /features/technical-reference#payeeinfo
@@ -120,6 +114,12 @@ card_list_2:
 - title: Payment Menu Events
   description: Possible events during Payment Menu payments
   url: /features/technical-reference#payment-menu-events
+  icon:
+    content: construction
+    outlined: true
+- title: Payment Order Operations
+  description: Possible operations for a payment order
+  url: /features/technical-reference#payment-order-operations
   icon:
     content: construction
     outlined: true
