@@ -1613,6 +1613,6 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [split-settlement]: #split-settlement
 [transaction]: #transaction
-[transactionOnFile]: #transactiononfile
+[transaction-on-file]: #transactiononfile
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
