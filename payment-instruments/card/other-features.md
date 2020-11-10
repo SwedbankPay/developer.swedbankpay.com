@@ -117,5 +117,5 @@ payment"  %}
 [recurrence]: #recur
 [verify]: #verify
 [payout]: #payout
-[transactionOnFile]: #transactiononfile
+[transaction-on-file]: #transactiononfile
 [card-payment]: /assets/img/payments/card-payment.png
