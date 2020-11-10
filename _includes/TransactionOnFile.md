@@ -1,5 +1,6 @@
 ## Transaction on file
 
+{% include alert-agreement-required.md %}
 In rare use cases it can be useful for Merchants that operate with payment tokens (recurring, one-click, etc) to be able to submit subsequent transactions 
 via file transfer rather than using the regular operations in our API. 
 Reasons for this could be that the subsequent transactions are triggered from an older system that do not support real-time API communication. 
@@ -114,4 +115,3 @@ Content-Type: application/json
     ]
 }
 ```
-
