@@ -1,11 +1,16 @@
 ## Transaction on file
 
 {% include alert-agreement-required.md %}
-In rare use cases it can be useful for Merchants that operate with payment tokens (recurring, one-click, etc) to be able to submit subsequent transactions 
-via file transfer rather than using the regular operations in our API. 
-Reasons for this could be that the subsequent transactions are triggered from an older system that do not support real-time API communication. 
-For those use cases Swedbank Pay offer a service called Transaction on File. As this is a somewhat unmodern way to complete transactions we strongly recommend 
-to consider usage of regular API operations and only use transactions on file where it is the only option.
+
+In rare use cases it can be useful for Merchants that operate with payment
+tokens (recurring, one-click, etc) to be able to submit subsequent transactions
+via file transfer rather than using the regular operations in our API. Reasons
+for this could be that the subsequent transactions are triggered from an older
+system that do not support real-time API communication. For those use cases
+Swedbank Pay offer a service called Transaction on File. As this is a somewhat
+unmodern way to complete transactions we strongly recommend to consider usage of
+regular API operations and only use transactions on file where it is the only
+option.
 
 For further information on this service, please contact our integration support.
 
@@ -19,8 +24,9 @@ the credit card information.
 
 ### API Requests
 
-The API requests are displayed in the flow below. The token generated will be returned in parameter 'transactionOnFileToken'.
-For more information regarding the flow, see Verify.
+The API requests are displayed in the flow below. The token generated will be
+returned in parameter 'transactionOnFileToken'. For more information regarding
+the flow, see Verify.
 
 {:.code-view-header}
 **Request**
