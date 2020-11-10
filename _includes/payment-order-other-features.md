@@ -1571,6 +1571,12 @@ with the request parameter `instrument`.
     api_resource="paymentorders"
     documentation_section=include.documentation_section %}
 
+{% if include.documentation_section == "payment-menu" %}
+
+{% include transaction-on-file.md %}
+
+{% endif %}
+
 {% include 3d-secure-2.md
     api_resource="paymentorders"
     documentation_section=include.documentation_section %}
@@ -1607,5 +1613,6 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [split-settlement]: #split-settlement
 [transaction]: #transaction
+[transaction-on-file]: #transactiononfile
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
