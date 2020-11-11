@@ -23,7 +23,7 @@ this very documentation, not to a version of any APIs described by it." %}
 Other changes:
 *   Added GDPR disclaimer.
 *   Added custom 404 page.
-*   Added Transaction on File section.
+*   Added section about [Transaction on File][transaction-on-file]
 *   Added Seamless View for [Trustly][trustly-payments].
 *   Added documentation about payment states in
     [Card Other Features][card-transaction-states]
@@ -543,6 +543,7 @@ integration and the payer.
 [swish-abort]: /payment-instruments/swish/after-payment#abort
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
+[transaction-on-file]: /payment-instruments/card/other-features#transaction-on-file
 [trustly-payments]: /payment-instruments/trustly
 [trustly-other-features]: /payment-instruments/trustly/other-features
 [vipps-payment-resource]: /payment-instruments/vipps/other-features#payment-resource
