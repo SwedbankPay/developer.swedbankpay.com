@@ -49,7 +49,7 @@ hide_from_sidebar: true
     <div class="{{ card_col_class }}">
       {% include card.html
           title='iOS SDK'
-          text='Learn more about how to integrate our Swift SDK'
+          text='Learn more about how to integrate our iOS SDK'
           icon_content='img/sdks/logo-swift.svg'
           icon_svg=true
           type='sdk'
