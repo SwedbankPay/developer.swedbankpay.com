@@ -89,7 +89,7 @@ hide_from_sidebar: true
           icon_content='img/modules/logo-episerver.svg'
           icon_svg=true
           type='module'
-          to='/modules-sdks/#official-sdks'
+          to='/modules-sdks/#official-modules'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -99,7 +99,7 @@ hide_from_sidebar: true
           icon_content='img/modules/logo-magento2.svg'
           icon_svg=true
           type='module'
-          to='/modules-sdks/#official-sdks'
+          to='/modules-sdks/#official-modules'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -109,7 +109,7 @@ hide_from_sidebar: true
           icon_content='img/modules/logo-woocommerce.svg'
           icon_svg=true
           type='module'
-          to='/modules-sdks/#official-sdks'
+          to='/modules-sdks/#official-modules'
       %}
     </div>
   </div>
