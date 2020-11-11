@@ -25,8 +25,7 @@ Other changes:
 *   Added custom 404 page.
 *   Added section about [Transaction on File][transaction-on-file]
 *   Added Seamless View for [Trustly][trustly-payments].
-*   Added documentation about payment states in
-    [Card Other Features][card-transaction-states]
+*   Added documentation about payment and transaction states.
 *   Added event overrides warning for [Card Seamless View Events][card-seamless-view]
 *   Added section regarding [MOTO][moto-payments-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
