@@ -27,7 +27,7 @@ Other changes:
 *   Added Seamless View for [Trustly][trustly-payments].
 *   Added documentation about payment and transaction states. See [Card Other Features][card-transaction-states] for example.
 *   Added event override warning for Seamless View Events, see [Card Seamless View Events][card-seamless-view] for example.
-*   Added section regarding [MOTO][moto-payments-card] in Card Other Features.
+*   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
 *   Renamed Merchant Authenticated Consumer to 
     [Delegated Strong Consumer Authentication][dsca]. 
@@ -512,7 +512,7 @@ integration and the payer.
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
-[dsca]: other-features#delegated-strong-consumer-authentication
+[dsca]: /checkout/other-features#delegated-strong-consumer-authentication
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
 [home-technical-information]: /home/technical-information
@@ -522,7 +522,7 @@ integration and the payer.
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
 [mobile-pay]: /payment-instruments/mobile-pay
 [modules-sdks]: /modules-sdks
-[moto-payment-card]: /payment-instruments/card/other-features#MOTO
+[moto-payment-card]: /payment-instruments/card/other-features#moto
 [one-click]: /payment-instruments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
