@@ -26,7 +26,7 @@ Other changes:
 *   Added section about [Transaction on File][transaction-on-file]
 *   Added Seamless View for [Trustly][trustly-payments].
 *   Added documentation about payment and transaction states.
-*   Added event overrides warning for [Card Seamless View Events][card-seamless-view]
+*   Added event override warning for Seamless View Events, see [Card Seamless View Events][card-seamless-view] for example.
 *   Added section regarding [MOTO][moto-payments-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
 *   Renamed Merchant Authenticated Consumer to 
