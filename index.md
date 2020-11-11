@@ -48,12 +48,12 @@ hide_from_sidebar: true
     </div>
     <div class="{{ card_col_class }}">
       {% include card.html
-          title='Swift SDK'
+          title='iOS SDK'
           text='Learn more about how to integrate our Swift SDK'
           icon_content='img/sdks/logo-swift.svg'
           icon_svg=true
           type='sdk'
-          to='/modules-sdks/mobile-sdk'
+          to='/modules-sdks/mobile-sdk/ios'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -63,7 +63,7 @@ hide_from_sidebar: true
           icon_content='img/sdks/logo-net.svg'
           icon_svg=true
           type='sdk'
-          to='/modules-sdks/mobile-sdk'
+          to='/modules-sdks/#official-sdks'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -73,7 +73,7 @@ hide_from_sidebar: true
           icon_content='img/sdks/logo-php.svg'
           icon_svg=true
           type='sdk'
-          to='/modules-sdks/mobile-sdk'
+          to='/modules-sdks/#official-sdks'
       %}
     </div>
   </div>
@@ -89,7 +89,7 @@ hide_from_sidebar: true
           icon_content='img/modules/logo-episerver.svg'
           icon_svg=true
           type='module'
-          to='/modules-sdks/mobile-sdk'
+          to='/modules-sdks/#official-sdks'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -99,7 +99,7 @@ hide_from_sidebar: true
           icon_content='img/modules/logo-magento2.svg'
           icon_svg=true
           type='module'
-          to='/modules-sdks/mobile-sdk'
+          to='/modules-sdks/#official-sdks'
       %}
     </div>
     <div class="{{ card_col_class }}">
@@ -109,7 +109,7 @@ hide_from_sidebar: true
           icon_content='img/modules/logo-woocommerce.svg'
           icon_svg=true
           type='module'
-          to='/modules-sdks/mobile-sdk'
+          to='/modules-sdks/#official-sdks'
       %}
     </div>
   </div>
