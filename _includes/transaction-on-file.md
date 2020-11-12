@@ -1,8 +1,8 @@
 {% assign token_url_without_psp = include.api_resource %}
 
-{% if include.api_resource != "paymentorders" %}
+{% unless include.api_resource == "paymentorders" %}
     {% assign token_url_without_psp = token_url_without_psp | append: '/payments' %}
-{% endif %}
+{% endunless %}
 
 {% assign token_url = token_url_without_psp | prepend: '/psp/' %}
 
@@ -119,7 +119,7 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/{{ include.api_resource }}/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "rel": "view-verification",
             "contentType": "application/javascript"
-        }{% unless api_resource=="paymentorders" %},
+        }{% unless include.api_resource=="paymentorders" %},
         {
             "method": "POST",
             "href": "{{ page.front_end_url }}/psp/{{ include.api_resource }}/confined/payments/{{ page.payment_id }}/verifications",
