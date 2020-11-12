@@ -1,5 +1,5 @@
 ---
-title: Seamless
+title: Seamless View
 redirect_from: /payments/mobile-pay/seamless-view
 estimated_read: 8
 description: |
