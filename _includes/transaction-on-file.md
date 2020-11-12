@@ -1,5 +1,4 @@
 
-{% assign api_resource=include.api_resource %}
 {% capture url_token %}
     /psp/{{ api_resource }}
     {%- if api_resource == "creditcard" -%}
