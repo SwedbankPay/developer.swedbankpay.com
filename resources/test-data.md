@@ -1,37 +1,18 @@
 ---
 title: Test Data
-sidebar:
-  navigation:
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+estimated_read: 5
+description: |
+  Testing, are we? Good! Here's some data you can
+  use to test and verify your integration!
 ---
-
-{% include jumbotron.html body="Testing, are we? Good! Here's some data you can
-   use to test and verify your integration!" %}
 
 ## Swedbank Pay Checkout Test Data
 
-During a Swedbank Pay Checkout implementation you can use the test data related
+During a Swedbank Pay Checkout implementation, you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout
 in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
 
-To test a checked in user in the Demo Shop, please use the following test data:
+To test a checked-in user in the Demo Shop, please use the following test data:
 
 ### Checkout test data for Norway
 
@@ -62,6 +43,13 @@ To test a checked in user in the Demo Shop, please use the following test data:
 
 ## Credit Card Test Data
 
+With regards to card payments, our external integration test environment is
+connected to our POS system instead of a fake service. It is set up with an
+internal acquirer. This gives us a production-like test environment, while also
+giving us sandbox testing opportunities, such as 3-D Secure card enrollment and
+error scenarios. No payment information will be sent to other acquiring
+institutions. 
+
 ### Visa
 
 {:.table .table-striped}
@@ -84,9 +72,9 @@ To test a checked in user in the Demo Shop, please use the following test data:
 ### American Express
 
 {:.table .table-striped}
-| Card number       | Expiry                  | CVC    |
-| :---------------- | :---------------------- | :----- |
-| `377601000000000` | After the current month | `5252` |
+| Card number       | Expiry                  | CVC    | Type of test data |
+| :---------------- | :---------------------- | :----- | :---------------- |
+| `377601000000000` | After the current month | `5252` | Amex & loopback   |
 
 ### JCB
 
@@ -105,51 +93,53 @@ To test a checked in user in the Demo Shop, please use the following test data:
 ### Maestro
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `6764429999947470` | 03/17  | `066` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `6764429999947470` | After the current month  | `066` |
 
 ### Dankort
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `5019994016316467` | 10/23  | `375` |
-| `5019994001307083` | 05/21  | `615` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `5019994016316467` | After the current month  | `375` |
+| `5019994001307083` | After the current month  | `615` |
 
 ### Visa/DanKort
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `4571994016401817` | 10/17  | `212` |
-| `4571994016471869` | 01/19  | `829` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `4571994016401817` | After the current month  | `212` |
+| `4571994016471869` | After the current month  | `829` |
 
 ### Forbrugsforeningen
 
 {:.table .table-striped}
-| Card number        | Expiry | CVC   |
-| :----------------- | :----- | :---- |
-| `6007220000000004` | 12/22  | `123` |
+| Card number        | Expiry                   | CVC   |
+| :----------------- | :----------------------- | :---- |
+| `6007220000000004` | After the current month  | `123` |
 
+### 3-D Secure
+
+{:.table .table-striped}
+| Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
+| :--------- | :----------------- | :----------------------- | :-----| :------------------ |
+| Visa       | `4761739001010416` | After the current month  | `268` | 3-D Secure enrolled |
+| MasterCard | `5226612199533406` | After the current month  | `602` | 3-D Secure enrolled |
 
 ## Failure Testing
 
 There are two different ways of testing Card Payments error scenarios. You can
-test 3-D Secure errors using our 3-D Secure emulator, or you can use specific 
+test 3-D Secure errors using our 3-D Secure emulator, or you can use specific
 amounts set to trigger errors in our test environment.
 
 ### 3-D Secure Method
 
 First, [create a Card Payment][create-card-purchase] (operation `Purchase`) and
 visit the URL of the returned `redirect-authorization` operation in a web
-browser. Use either the Visa or MasterCard shown below.
-
-{:.table .table-striped}
-| Card type  | Card number        | Expiry | CVC   | Type of test data   |
-| :--------- | :----------------- | :----- | :---- | :------------------ |
-| Visa       | `4761739001010416` | 12/22  | `268` | 3-D Secure enrolled |
-| MasterCard | `5226612199533406` | 09/28  | `602` | 3-D Secure enrolled |
+browser. Use either the Visa or MasterCard listed under 3-D Secure right above 
+this section.
 
 After pressing the purchase button you will then be taken to a menu where you
 can select Authentication status.
@@ -158,16 +148,16 @@ can select Authentication status.
 
 ![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
 
-In this menu there are a few different options to choose from, choose the status
-you want to test. When selected, simply press the Continue button and the
+In this menu, there are a few different options to choose from. Choose the 
+status you want to test, click the Continue button and the
 status you selected will be sent with the payment.
 
 ### Amount Error Testing Method
 
-We have some preset amounts that will trigger error codes. When creating a 
-payment (operation `purchase`), enter one of the amounts from the list below in 
-the prices object (`"amount": <number>`) before submitting a payment. The error 
-message displayed behind the amounts will be sent with your payment in the test 
+We have some preset amounts that will trigger error codes. While creating a
+payment (operation `purchase`), enter one of the amounts from the list below in
+the prices object (`"amount": <number>`) before submitting a payment. The error
+message displayed behind the amounts will be sent with your payment in the test
 environment.
 
 The amounts that can be used to trigger error codes
@@ -227,11 +217,11 @@ Use any name, address etc.
 
 ## Vipps Test Data
 
-Testing a successful Vipps purchase (in our external integration test 
-environment) can be done using any valid Norwegian mobile number, E.g: 
-`+47 99999999` except within the range: `9999991` - `99999998`, as these will 
-trigger errors according to the table below. Please note that the external 
-integration test environment is usinga fake service, which means that no app 
+Testing a successful Vipps purchase (in our external integration test
+environment) can be done using any valid Norwegian mobile number, E.g:
+`+47 99999999` except within the range: `9999991` - `99999998`, as these will
+trigger errors according to the table below. Please note that the external
+integration test environment is using a fake service, which means that no app
 will be involved.
 
 {:.table .table-striped}
@@ -246,13 +236,12 @@ will be involved.
 | 99999997      | User not Registered with Vipps                                  |
 | 99999998      | Merchant not available or active                                |
 
-
 ## Swish Test Data
 
-Testing a successful Swish purchase (in our external integration test 
-environment) can be done by using any valid Swedish mobile number. E.g: 
-`+46 739000001`. As with Vipps, the external integration test environment uses a 
-fake service with no app involved. To trigger an error message, set the 
+Testing a successful Swish purchase (in our external integration test
+environment) can be done by using any valid Swedish mobile number. E.g:
+`+46 739000001`. As with Vipps, the external integration test environment uses a
+fake service with no app involved. To trigger an error message, set the
 `description` value in `POST` Create Payment or `Create` Payment Order to one of
 the following values:
 
@@ -263,6 +252,6 @@ the following values:
 | TM01        | Swish timed out before the payment was started |
 | BANKIDCL    | Payer cancelled BankId signing                 |
 
-[create-card-purchase]: /payments/card/redirect#step-1-create-a-purchase
+[create-card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
 [3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png

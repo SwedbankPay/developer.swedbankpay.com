@@ -1,24 +1,12 @@
 ---
-title: Gift Cards – Other Features
-sidebar:
-  navigation:
-  - title: Gift Cards
-    items:
-    - url: /gift-cards/
-      title: Introduction
-    - url: /gift-cards/operations
-      title: Operations
-    - url: /gift-cards/security
-      title: Security
-    - url: /gift-cards/payment-client
-      title: Test Client
-    - url: /gift-cards/other-features
-      title: Other Features
+title: Other Features
+estimated_read: 10
+menu_order: 900
 ---
 
 ## Purchase
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -67,7 +55,7 @@ Content-Type: application/json
 |     Required     | Field                   | Type      | Description                                                                                                                                                                             |
 | :--------------: | :---------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `accountIdentifier`     | `Object`  |                                                                                                                                                                                         |
-|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                                                                                     |
+|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                                                                              |
 | {% icon check %} | `accountKey`            | `string`  | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                                                                            |
 |                  | `cvc`                   | `string`  | Card Verification Code.                                                                                                                                                                 |
 |                  | `encryptedPin`          | `string`  | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                                                                                    |
@@ -94,7 +82,7 @@ Content-Type: application/json
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                                                                                      |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                                                                             |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```json
@@ -158,7 +146,7 @@ Content-Type: application/json
 
 ## Deposit
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -196,7 +184,7 @@ Content-Type: application/json
 |     Required     | Field                   | Type      | Description                                                                                                                     |
 | :--------------: | :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `accountIdentifier`     | `Object`  |                                                                                                                                 |
-|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                             |
+|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                      |
 | {% icon check %} | `accountKey`            | `string`  | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                    |
 |                  | `cvc`                   | `string`  | Card Verification Code.                                                                                                         |
 |                  | `encryptedPin`          | `string`  | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                            |
@@ -215,7 +203,7 @@ Content-Type: application/json
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                              |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                     |
 
-{:.code-header}
+{:.code-view-header}
 **Response:**
 
 ```json
@@ -279,7 +267,7 @@ Content-Type: application/json
 
 ## Balance
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -305,7 +293,7 @@ Content-Type: application/json
 |     Required     | Field               | Type     | Description                                                                                                                     |
 | :--------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `accountIdentifier` | `Object` |                                                                                                                                 |
-|                  | `accountId`         | `string` | Swedbank Pay internal id for card/account.                                                                                             |
+|                  | `accountId`         | `string` | Swedbank Pay internal id for card/account.                                                                                      |
 | {% icon check %} | `accountKey`        | `string` | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                    |
 |                  | `cvc`               | `string` | Card Verification Code.                                                                                                         |
 |                  | `encryptedPin`      | `string` | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                            |
@@ -313,7 +301,7 @@ Content-Type: application/json
 |                  | `securityCode`      | `string` | Card Security Code.                                                                                                             |
 |                  | `track2`            | `string` | Track 2 excluding start and end sentinel.                                                                                       |
 
-{:.code-header}
+{:.code-view-header}
 **Response:**
 
 ```json
@@ -351,7 +339,7 @@ Content-Type: application/json
 
 ## Authentication
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -389,7 +377,7 @@ Content-Type: application/json
 |     Required     | Field                   | Type      | Description                                                                                                                     |
 | :--------------: | :---------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `accountIdentifier`     | `Object`  |                                                                                                                                 |
-|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                             |
+|                  | `accountId`             | `string`  | Swedbank Pay internal id for card/account.                                                                                      |
 | {% icon check %} | `accountKey`            | `string`  | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                    |
 |                  | `cvc`                   | `string`  | Card Verification Code.                                                                                                         |
 |                  | `encryptedPin`          | `string`  | If ‘000’ is set on authorization request, encrypted PIN block will be returned here.                                            |
@@ -408,7 +396,7 @@ Content-Type: application/json
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                              |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                     |
 
-{:.code-header}
+{:.code-view-header}
 **Response:**
 
 ```json
@@ -469,3 +457,6 @@ Content-Type: application/json
 | Field   | Type   | Description                                                              |
 | :------ | :----- | :----------------------------------------------------------------------- |
 | `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE`. The state of the transaction. |
+
+{% include iterator.html prev_href="test-client"
+                         prev_title="Test Client" %}

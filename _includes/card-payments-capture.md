@@ -1,7 +1,7 @@
 ## Capture
 
 The capture transaction is where you ensure that the funds are charged from
-the consumer. This step usually takes place when the product has exchanged
+the payer. This step usually takes place when the product has exchanged
 possession. You must first do a `GET` request on the payment to find the
 `create-capture` operation.
 
@@ -10,7 +10,7 @@ possession. You must first do a `GET` request on the payment to find the
 To create a `capture` transaction to withdraw money from the payer's card, you
 need to perform the `create-capture` operation.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -38,7 +38,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %}                               |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -78,8 +78,8 @@ Content-Type: application/json
 | └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
-| └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
+| └─➔&nbsp;`state`          | `string`  | {% include field-description-state.md %} |
+| └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                                         |
 | └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
@@ -91,7 +91,7 @@ Content-Type: application/json
 The `captures` resource list the capture transactions (one or more) on a
 specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -117,5 +117,5 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-[operations]: /payments/card/other-features#operations
-[transaction-resource]: /payments/card/other-features#transactions
+[operations]: /payment-instruments/card/other-features#operations
+[transaction-resource]: /payment-instruments/card/other-features#transactions

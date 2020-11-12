@@ -12,7 +12,7 @@ There are four different kinds of payment that can be created. These are
 identified with the value of the `operation` field. Each kind are documented
 in their own section below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**"
 
 ```http

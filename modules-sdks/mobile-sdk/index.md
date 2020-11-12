@@ -1,23 +1,14 @@
 ---
-title: Mobile SDK
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk/
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+section: Mobile SDK
+title: Introduction
+estimated_read: 4
+description: |
+  **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
+  Checkout to your Android and iOS applications.
+  The Mobile SDK consists of three components: An Android library, an iOS
+  library, and a backend component with example implementations in Node.js
+  and Java.
+menu_order: 700
 ---
 
 {% capture disclaimer %}
@@ -29,10 +20,6 @@ However, if you need support, please wait for a future, stable release.
 
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
-
-{% include jumbotron.html body="**Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay Checkout to your Android and iOS applications.
-
-The Mobile SDK consists of three components: An Android library, an iOS library, and a backend component with example implementations in Node.js and Java." %}
 
 The mobile libraries provide standard UI components (a Fragment on Android, a UIViewController on iOS) that you can integrate in your mobile application in the usual fashion. The backend component has an API designed to transparently reflect the Swedbank Pay API, and the data types used to configure the mobile libraries allow you to organically discover the capabilities of the system.
 
@@ -123,7 +110,7 @@ sequenceDiagram
 Internally, the SDK uses the same [Checkin][checkin] flow as would be used on a web page. The flow described on the Checkin page reflects closely what happens inside the SDK. From the perspective of the app using the SDK, that is an implementation detail, and is therefore not reflected in the above diagram. You should, nevertheless, read up on the Checkin documentation before continuing with the SDK documentation.
 
 {% include iterator.html next_href="merchant-backend"
-                         next_title="Next: Merchant Backend" %}
+                         next_title="Merchant Backend" %}
 
 [plain-webview]: plain-webview
 [checkout]: /checkout

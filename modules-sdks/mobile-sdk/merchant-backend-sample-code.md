@@ -1,23 +1,10 @@
 ---
 title: Merchant Backend Sample Code
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk
-      title: Mobile SDK
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 1
+description: |
+  You can use Swedbank Pay provided sample code to jump-start your
+  **Swedbank Pay Mobile SDK** application.
+menu_order: 900
 ---
 
 {% capture disclaimer %}
@@ -30,8 +17,6 @@ However, if you need support, please wait for a future, stable release.
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
 
-{% include jumbotron.html body="You can use Swedbank Pay provided sample code to jump-start your **Swedbank Pay Mobile SDK** application." %}
-
 You can find sample implementations of the Merchant Backend at [this Github repository][backend-samples]. Currently there are available the following:
 
 *   [node.js][node-sample]
@@ -42,9 +27,9 @@ Please refer to the sample code documentation for instructions for running a loc
 The samples provide a fully functioning API for the SDK, but the implementations are, of course, devoid of any business logic. They should, nevertheless, provide a good starting point toward integration with your business systems.
 
 {% include iterator.html prev_href="merchant-backend"
-                         prev_title="Back: Merchant Backend"
+                         prev_title="Merchant Backend"
                          next_href="android"
-                         next_title="Next: Android" %}
+                         next_title="Android" %}
 
 [backend-samples]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant
 [node-sample]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/master/examples/node.js

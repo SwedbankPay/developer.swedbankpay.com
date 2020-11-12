@@ -19,7 +19,7 @@ capture or cancel. For a full list of the available operations, see the
 To identify the operations that are available we need to do a `GET` request
 against the URI of `paymentorder.id`:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -31,7 +31,7 @@ The (abbreviated) response containing an `updateorder`, `capture`,
 `cancellation`, and `reversal` operation should look similar to the response
 below:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -39,7 +39,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentOrder": {
+    "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [

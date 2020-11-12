@@ -1,73 +1,157 @@
 ---
-title: Swedbank Pay Developer Portal
-sidebar:
-  navigation:
-  - title: Home
-    items:
-    - url: /home/technical-information
-      title: Technical Information
-    - url: /modules-sdks
-      title: Modules & SDKs
+title: Developer Portal
+layout: front-page
+hide_from_sidebar: true
 ---
 
-Hi! Welcome to the **Swedbank Pay Developer Portal**.
+{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
 
-### New to our API Platform?
-
-Are you new to Swedbank Pay's API Platform? That's okay, go ahead and look at
-the fundamental [technical information][technical-information]. It will help you
-further on.
-
-### Know what product to integrate?
-
-Nice, let's dive in. Click on the product below to get started.
-
-<div class="row">
-  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
-    <div class="doc-card card card-plain">
-      <div class="card-body text-center d-flex flex-column">
-        {% icon shopping_cart %}
-        <h3>Checkout</h3>
-        <p>Speed up checkout by allowing your customers to check-in with Swedbank Pay, and pay with their favorite payment instruments through our payment menu.</p>
-        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">{% icon shopping_cart %}&nbsp; Checkout</a>
+{% contentfor start %}
+  <div class="row mt-4">
+      <div class="{{ card_col_class }}">
+        {% include card.html
+            title='Checkout'
+            title_type="h2"
+            text='With our Checkout you get the pre-built all-in-one payment solution,
+                  complete with a checkin interface and payment menu.'
+            icon_content='shopping_cart'
+            icon_outlined=true
+            to='/checkout'
+        %}
       </div>
+      <div class="{{ card_col_class }}">
+        {% include card.html
+            title='Payment Instruments'
+            title_type="h2"
+            text='Payment Instruments gives you a one-by-one integration with more
+            customization for each payment method to build your own
+            payment menu.'
+            icon_content='credit_card'
+            to='/payments'
+        %}
+      </div>
+  </div>
+{% endcontentfor %}
+
+{% contentfor sdks %}
+  <h2 id="front-page-sdk" class="heading-line heading-line-sdk">Looking for SDKs?</h2>
+  <div class="row mt-4">
+    <div class="{{ card_col_class }}">
+      {% include card.html
+          title='Android SDK'
+          text='Learn more about how to integrate our Android SDK'
+          icon_content='img/sdks/logo-android.svg'
+          icon_svg=true
+          type='sdk'
+          to='/modules-sdks/mobile-sdk/android'
+      %}
+    </div>
+    <div class="{{ card_col_class }}">
+      {% include card.html
+          title='iOS SDK'
+          text='Learn more about how to integrate our iOS SDK'
+          icon_content='img/sdks/logo-swift.svg'
+          icon_svg=true
+          type='sdk'
+          to='/modules-sdks/mobile-sdk/ios'
+      %}
+    </div>
+    <div class="{{ card_col_class }}">
+      {% include card.html
+          title='.NET SDK'
+          text='Learn more about how to integrate our .NET SDK'
+          icon_content='img/sdks/logo-net.svg'
+          icon_svg=true
+          type='sdk'
+          to='/modules-sdks/#official-sdks'
+      %}
+    </div>
+    <div class="{{ card_col_class }}">
+      {% include card.html
+          title='PHP SDK'
+          text='Learn more about how to integrate our PHP SDK'
+          icon_content='img/sdks/logo-php.svg'
+          icon_svg=true
+          type='sdk'
+          to='/modules-sdks/#official-sdks'
+      %}
     </div>
   </div>
-  {% comment %}
-  <div class="row">
-  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
-    <div class="doc-card card card-plain">
-      <div class="card-body text-center d-flex flex-column">
-        {% icon featured_play_list %}
-        <h3>Payment Menu</h3>
-        <p>Allow your customers to pay with their favorite payment instruments through our Swedbank Pay Payment Menu.</p>
-        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/checkout/">{% icon shopping_cart %}&nbsp; Checkout</a>
-      </div>
-    </div>
-  </div>
-  {% endcomment %}
-  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
-    <div class="doc-card card card-plain">
-      <div class="card-body text-center d-flex flex-column">
-        {% icon credit_card %}
-        <h3>Payments</h3>
-        <p>Identify your customer, while we take care of the payment. Choose from our uniform and wide selection of payment instruments.</p>
-        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/payments/">{% icon credit_card %}&nbsp; Payments</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-md-4 pt-3 pt-md-0 d-flex">
-    <div class="doc-card card card-plain">
-      <div class="card-body text-center d-flex flex-column">
-        {% icon card_giftcard %}
-        <h3>Gift Cards</h3>
-        <p>Our Gift Cards API allows you to perform payments with Swedbank Pay issued gift cards.</p>
-        <a class="btn btn-guiding btn-outline btn-block mt-auto" href="/gift-cards/">{% icon card_giftcard %}&nbsp; Gift Cards</a>
-      </div>
-    </div>
-  </div>
-</div>
+{% endcontentfor %}
 
-{% include jumbotron.html body="**Swedbank Pay's API Platform** is built using the [REST architectural style](https://en.wikipedia.org/wiki/Representational_state_transfer) and the request and responses come in the [JSON](https://www.json.org/) format. The API has predictable, resource-oriented URIs and use default HTTP features, like HTTP authentication (using OAuth 2), HTTP methods and headers. These techniques are widely used and understood by most HTTP client libraries." %}
+{% contentfor modules %}
+  <h2 id="front-page-module" class="heading-line heading-line-module">Or perhaps modules?</h2>
+  <div class="row mt-4">
+    <div class="{{ card_col_class }}">
+      {% include card.html
+          title='Episerver'
+          text='See how you can integrate the Episerver module'
+          icon_content='img/modules/logo-episerver.svg'
+          icon_svg=true
+          type='module'
+          to='/modules-sdks/#official-modules'
+      %}
+    </div>
+    <div class="{{ card_col_class }}">
+      {% include card.html
+          title='Magento 2'
+          text='See how you can integrate the Magento 2 module'
+          icon_content='img/modules/logo-magento2.svg'
+          icon_svg=true
+          type='module'
+          to='/modules-sdks/#official-modules'
+      %}
+    </div>
+    <div class="{{ card_col_class }}">
+      {% include card.html
+          title='WooCommerce'
+          text='See how you can integrate the WooCommerce module'
+          icon_content='img/modules/logo-woocommerce.svg'
+          icon_svg=true
+          type='module'
+          to='/modules-sdks/#official-modules'
+      %}
+    </div>
+  </div>
+{% endcontentfor %}
 
-[technical-information]: /home/technical-information
+{% contentfor release_notes %}
+  <h2 id="front-page-release-notes" class="heading-line heading-line-green">What's new in the documentation</h2>
+  {% include release_notes.html num_dates=3 %}
+  <a href="/resources/release-notes">See full release notes</a>
+{% endcontentfor %}
+
+{% contentfor extras %}
+  <h2 id="front-page-extra-resources" class="heading-line">Extra resources</h2>
+  <div class="row mt-4">
+      <div class="{{ card_col_class }}">
+          {% include card.html title='OS development guidelines'
+              text='This is how we create an inclusive environment'
+              icon_content='account_circle'
+              icon_outlined=true
+              to='/resources/development-guidelines'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Test data'
+              text='Get the required data for testing in our interfaces'
+              icon_content='content_paste'
+              to='/resources/test-data'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Terminology'
+          text='Get a better understanding of the terms we use'
+          icon_content='menu_book'
+          to='/resources/terminology'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='See all resources (7)'
+              text='Data protection, public migration key etc'
+              no_icon=true
+              to='/resources'
+          %}
+      </div>
+  </div>
+{% endcontentfor %}

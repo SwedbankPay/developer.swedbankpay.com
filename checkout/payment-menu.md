@@ -1,29 +1,15 @@
 ---
-title: Swedbank Pay Checkout – Payment Menu
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/capture
-      title: Capture
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/other-features
-      title: Other Features
+title: Payment Menu
+estimated_read: 15
+description: |
+  **Payment Menu** begins where **Checkin** left off,
+  letting the payer complete their purchase.
+menu_order: 300
 ---
-
-{% include jumbotron.html body="**Payment Menu** begins where **Checkin** left
-off, letting the payer complete their purchase." %}
 
 ## Step 3: Create Payment Order
 
-Once consumer has been identified, the next step is to initiate the payment
+Once the consumer has been identified, the next step is to initiate the payment
 using `consumerProfileRef` retrieved in the previous step.
 
 We start by performing a `POST` request towards the `paymentorder` resource
@@ -31,15 +17,17 @@ with the payer information (such as `consumerProfileRef`) we obtained in the
 checkin process described above. This information will appear prefilled in the
 Payment Menu.
 
-If you are sending a guest user `POST` request, simply leave out the 
-`consumerProfileRef` from the input, and your end user will be sent to an empty 
-Payment Menu. Information like `email`, `address` and `msisdn` can still be 
-added manually in the payer node. If added, it will appear prefilled in the 
+If you are sending a guest user `POST` request, simply leave out the
+`consumerProfileRef` from the input, and the payer will be sent to an empty
+Payment Menu. Information like `email`, `address` and `msisdn` can still be
+added manually in the payer node. If added, it will appear prefilled in the
 Payment Menu.
 
 Remember to read up on our [URL resource][urls].
 
 {% include alert-risk-indicator.md %}
+
+{% include alert-gdpr-disclaimer.md %}
 
 {% include payment-url.md api_resource="paymentorders" documentation_section="checkout"
 when="selecting the payment instrument Vipps or in the 3-D Secure verification
@@ -53,7 +41,7 @@ for Credit Card Payments" %}
 
 The response back should look something like this (abbreviated for brevity):
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -105,10 +93,10 @@ create the script element with JavaScript, all inside the event handler for
 [`onConsumerIdentified`][technical-reference-onconsumer-identified].
 The HTML code will be unchanged in this example.
 
-For the guest Payment Menu, lines 23-44 in the JavaScript should be your main 
+For the guest Payment Menu, lines 23-44 in the JavaScript should be your main
 focus. They contain what you need to display the Payment Menu without Checkin.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```js
@@ -185,31 +173,29 @@ request.send(JSON.stringify({
 ```
 
 This should bring up the Payment Menu in a Seamless View looking like
-this, depending on whether the payer is logged in (top two) or a guest user 
+this, depending on whether the payer is logged in (top two) or a guest user
 (bottom two). Payments done in SEK will have radio buttons for choosing debit
-or credit card. 
+or credit card.
 
 {:.text-center}
-![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="460" height="770"}
+![Payment Menu with payer logged in and card payment opened][login-payment-menu-image]{:width="475" height="760"}
 
 {:.text-center}
-![Payment Menu with swedish payer logged in and card payment opened][swedish-login-payment-menu-image]{:width="460" height="1150"}
+![Payment Menu with swedish payer logged in and card payment opened][swedish-login-payment-menu-image]{:width="475" height="800"}
 
 {:.text-center}
-![Payment Menu with guest payer and card payment opened][guest-payment-menu-image]{:width="535" height="815"}
+![Payment Menu with guest payer and card payment opened][guest-payment-menu-image]{:width="475" height="710"}
 
 {:.text-center}
-![Payment Menu with swedish guest payer and card payment opened][swedish-guest-payment-menu-image]{:width="535" height="930"}
+![Payment Menu with swedish guest payer and card payment opened][swedish-guest-payment-menu-image]{:width="475" height="965"}
 
-When the consumer completes the payment, the Payment Menu script will be
-signaled and a full redirect to the `completeUrl` sent in with the
-Payment Order will be performed. When the `completeUrl` on your server is hit,
-you can inspect the status on the stored `paymentorder.id` on the server, and
-then perform `capture`.
-If the payment is a `Sale` or one-phase purchase, it will be automatically
-captured. A third scenario is if the goods are sent
-physically to the payer; then you should await capture until after the
-goods have been sent.
+When the the payment is completed, the Payment Menu script will be signaled and
+a full redirect to the `completeUrl` sent in with the Payment Order will be
+performed. When the `completeUrl` on your server is hit, you can inspect the
+status on the stored `paymentorder.id` on the server, and then perform
+`capture`. If the payment is a `Sale` or one-phase purchase, it will be
+automatically captured. A third scenario is if the goods are sent physically to
+the payer; then you should await capture until after the goods have been sent.
 
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to
@@ -224,54 +210,54 @@ Notice that there are two ways of performing the payment:
 
 ```mermaid
 sequenceDiagram
-    participant Payer
+    participant Consumer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
 
 rect rgba(138, 205, 195, 0.1)
-            activate Payer
-            note left of Payer: Payment Menu
-            Payer ->>+ Merchant: Initiate Purchase
-            deactivate Payer
+            activate Consumer
+            note left of Consumer: Payment Menu
+            Consumer ->>+ Merchant: Initiate Purchase
+            deactivate Consumer
             Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, payer)
             deactivate Merchant
             SwedbankPay -->>+ Merchant: rel:view-paymentorder
             deactivate SwedbankPay
-            Merchant -->>- Payer: Display Payment Menu on Merchant Page
-            activate Payer
-            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
-            Payer -->>+ SwedbankPay: Show Payment UI page in iframe
-            deactivate Payer
-            SwedbankPay ->>+ Payer: Do payment logic
+            Merchant -->>- Consumer: Display Payment Menu on Merchant Page
+            activate Consumer
+            Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+            Consumer -->>+ SwedbankPay: Show Payment UI page in iframe
+            deactivate Consumer
+            SwedbankPay ->>+ Consumer: Do payment logic
             deactivate SwedbankPay
 
                 opt Consumer perform payment out of iFrame
-                    Payer ->> Payer: Redirect to 3rd party
-                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
+                    Consumer ->> Consumer: Redirect to 3rd party
+                    Consumer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    deactivate Consumer
+                    3rdParty -->>+ Consumer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
-                    deactivate Payer
-                    SwedbankPay ->> Payer: Do payment logic
+                    Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+                    Consumer ->>+ SwedbankPay: Show Payment UI page in iframe
+                    deactivate Consumer
+                    SwedbankPay ->> Consumer: Do payment logic
                 end
 
-        SwedbankPay -->> Payer: Payment status
+        SwedbankPay -->> Consumer: Payment status
         deactivate SwedbankPay
 
             alt If payment is completed
-            activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted
-            Payer ->>+ Merchant: Check payment status
-            deactivate Payer
+            activate Consumer
+            Consumer ->> Consumer: Event: onPaymentCompleted
+            Consumer ->>+ Merchant: Check payment status
+            deactivate Consumer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
             SwedbankPay ->>+ Merchant: rel: paid-paymentorder
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Payer
-            deactivate Payer
+            activate Consumer
+            deactivate Consumer
             Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
             deactivate Merchant
             SwedbankPay -->> Merchant: Payment Details
@@ -280,17 +266,17 @@ rect rgba(138, 205, 195, 0.1)
             end
 
                 opt If payment is failed
-                activate Payer
-                Payer ->> Payer: Event: OnPaymentFailed
-                Payer ->>+ Merchant: Check payment status
-                deactivate Payer
+                activate Consumer
+                Consumer ->> Consumer: Event: OnPaymentFailed
+                Consumer ->>+ Merchant: Check payment status
+                deactivate Consumer
                 Merchant ->>+ SwedbankPay: GET {paymentorder.id}
                 deactivate Merchant
                 SwedbankPay -->>+ Merchant: rel: failed-paymentorder
                 deactivate SwedbankPay
                 opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-                activate Payer
-                deactivate Payer
+                activate Consumer
+                deactivate Consumer
                 Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
                 deactivate Merchant
                 SwedbankPay -->> Merchant: Payment Details
@@ -298,10 +284,10 @@ rect rgba(138, 205, 195, 0.1)
                 end
                 end
         activate Merchant
-        Merchant -->>- Payer: Show Purchase complete
+        Merchant -->>- Consumer: Show Purchase complete
             opt PaymentOrder Callback (if callbackUrls is set)
-            activate Payer
-            deactivate Payer
+            activate Consumer
+            deactivate Consumer
                 SwedbankPay ->> Merchant: POST Payment Callback
             end
             end
@@ -311,9 +297,9 @@ Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].
 
 {% include iterator.html prev_href="checkin"
-                         prev_title="Back: Checkin"
+                         prev_title="Checkin"
                          next_href="capture"
-                         next_title="Next: Capture" %}
+                         next_title="Capture" %}
 
 [after-payment]: after-payment
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png

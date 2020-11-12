@@ -1,43 +1,25 @@
 ---
-title: Swedbank Pay Resources
-sidebar:
-  navigation:
-  - title: Resources
-    items:
-    - url: /resources/
-      title: Introduction
-    - url: /resources/test-data
-      title: Test Data
-    - url: /resources/demoshop
-      title: Demoshop
-    - url: /resources/development-guidelines
-      title: Open Source Development Guidelines
-    - url: /resources/release-notes
-      title: Release Notes
-    - url: /resources/terminology
-      title: Terminology
-    - url: /resources/data-protection
-      title: Data Protection
-    - url: /resources/public-migration-key
-      title: Public Migration Key
+title: Terminology
+estimated_read: 6
+menu_order: 400
 ---
 
 ### A
 
 {:.table .table-striped}
-| **Access Token**                | The OAauth 2 Access token needed to access Swedbank Pay eCom APIs. Tokens are generated in Swedbank Pay Admin. Learn how to getting started in the Admin Manual. Note that it must follow the regex pattern `[\w]* (a-zA-Z0-9_)`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| **Account Receivable Consumer** | The [`AccountReceivableConsumer`][invoice-url] API is the fundament for Swedbank Pay [Invoice Payments][invoice-url] service. It is a service where Swedbank Pay helps produce and distribute invoices to consumers/end-users.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| **Authorization**               | The first part of a [two-phase][two-phase-payments] transaction where a certain amount is blocked on the payer's account. The authorized amount is unavailable for the consumer, ensuring that the merchant receive the money during the subsequent capture phase.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Access Token**                | The OAauth 2 Access token needed to access Swedbank Pay eCom APIs. Tokens are generated in Swedbank Pay Admin. Learn how to get started in the Admin Manual. Note that it must follow the regex pattern `[\w-]*`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Account Receivable Consumer** | The [`AccountReceivableConsumer`][invoice-url] API is the fundament for Swedbank Pay [Invoice Payments][invoice-url] service. It is a service where Swedbank Pay helps produce and distribute invoices to payers.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Authorization**               | The first part of a [two-phase][two-phase-payments] transaction where a certain amount is blocked on the payer's account. The authorized amount is unavailable for the payer, ensuring that the merchant receives the money during the subsequent capture phase.                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 ### C
 
 {:.table .table-striped}
-| **Callback**                    | If `callbackURL` is set, a [Callback][callback-url] is triggered when a change or update from the back-end system are made on a payment or transaction. Swedbank Pay performs a callback to inform the payee/merchant about this kind of update.                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Callback**                    | If `callbackURL` is set, a [Callback][callback-url] is triggered when a change or update from the back-end system is made on a payment or transaction. Swedbank Pay performs an async callback to inform the payee/merchant about this kind of update.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Cancellation**                | Used to [cancel][cancel-url] authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | **Capture**                     | The second part of a [two-phase][two-phase-payments] transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.                                                                                                                                                                                                                                                                                                                                                                        |
 | **Checkin**                     | Checkin is the first part of the Swedbank Pay [Checkout][checkout-url] flow (prior to displaying the Payment Menu), where the payer is identified by email and mobile phone number.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | **Consumer**                    | The person doing the purchase, equivalent to Payer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| **Consumers**                   | The Consumers resource stores information about the consumer/payer of the sold services or goods. It is the fundament of Checkin in Swedbank Pay [Checkout][checkout-url].                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Consumers**                   | The Consumers resource stores information about the consumer of the sold services or goods. It is the fundament of Checkin in Swedbank Pay [Checkout][checkout-url].                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### F
 
@@ -88,8 +70,8 @@ sidebar:
 | **SCA**                         | Strong Customer Authentication, which is a requirement from EU Revised Directive on Payment Services (PSD2). This implements the multi-factor authentication, for stronger security of electronic payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **Swedbank Pay Admin**          | The eCommerce Admin interface where you perform day to day operations on payments processed by Swedbank Pay. The Admin manual consists of two parts,[Getting Started and Interface and Search.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **Swedbank Pay Direct API**     | A payment flow where the implementer (Swedbank Pay customer) handles all user intreraction and make direct API calls to Swedbank Pay (server-to-server).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| **Swedbank Pay Seamless View**  | A payment flow were the consumer interact with pages developed by Swedbank Pay directly through an iframe, directly embedded in the webshop/merchant site.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| **Swedbank Pay Payment Pages**  | A payment flow where the consumer get redirected to a payment page developed and hosted by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| **Swedbank Pay Seamless View**  | A payment flow were the payer interacts with pages developed by Swedbank Pay directly through an iframe, directly embedded in the webshop/merchant site.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Swedbank Pay Payment Pages**  | A payment flow where the payer is redirected to a payment page developed and hosted by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ### T
 
@@ -106,17 +88,17 @@ sidebar:
 {:.table .table-striped}
 | **3-D Secure 2.0 (3DS2)**       | The new authentication protocol for online card payments. The protocol is XML-based and designed to be an additional security layer for online credit and debit card transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-[auto-capture]: /payments/card/other-features#capture
+[auto-capture]: /payment-instruments/card/other-features#capture
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS
-[invoice-url]: /payments/invoice/
-[two-phase-payments]: /payments#the-fundamentals
-[callback-url]:/payments/card/other-features#callback
-[cancel-url]: /payments/card/after-payment#cancellations
+[invoice-url]: /payment-instruments/invoice/
+[two-phase-payments]: //payment-instruments#the-fundamentals
+[callback-url]:/payment-instruments/card/other-features#callback
+[cancel-url]: /payment-instruments/card/after-payment#cancellations
 [checkout-url]: /checkout
 [common-headers]: /home/technical-information#headers
 [restful-api]: /home/technical-information#connection-and-protocol
-[verify-url]: /payments/card/other-features#verify
+[verify-url]: /payment-instruments/card/other-features#verify
 [one-phase-url]: /payments#the-fundamentals
-[payout]: /payments/card/other-features#payout
-[recur]: /payments/card/other-features#recur
+[payout]: /payment-instruments/card/other-features#payout
+[recur]: /payment-instruments/card/other-features#recur
 [sale-authorization-url]: /payments#the-fundamentals

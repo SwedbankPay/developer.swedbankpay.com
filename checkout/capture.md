@@ -1,21 +1,7 @@
 ---
-title: Swedbank Pay Checkout – Capture
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/capture
-      title: Capture 
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/other-features
-      title: Other Features
+title: Capture
+estimated_read: 5
+menu_order: 400
 ---
 
 {% include alert-two-phase-payments.md %}
@@ -27,6 +13,6 @@ everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described below.
 
 {% include iterator.html prev_href="payment-menu"
-                         prev_title="Back: Payment Menu"
+                         prev_title="Payment Menu"
                          next_href="after-payment"
-                         next_title="Next: After Payment" %}
+                         next_title="After Payment" %}

@@ -13,7 +13,7 @@ The `{{ transaction }}` resource contains information about the
 return a specific `{{ transaction }}` transaction by performing a `GET` request
 towards the specific transaction's `id`.
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -81,12 +81,14 @@ Content-Type: application/json
 | └─➔&nbsp;`created`                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | └─➔&nbsp;`type`                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`                  | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`state`                  | `string`  | {% include field-description-state.md %}   |
+| └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                   |
-| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %} |
-| └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}                        |
+| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %}
+| └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+| └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                                |
+
+[operations]: /payment-instruments/{{ include.documentation_section }}/other-features#operations 

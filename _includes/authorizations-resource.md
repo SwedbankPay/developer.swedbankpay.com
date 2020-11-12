@@ -6,7 +6,7 @@
 The `authorizations` resource will list the authorization transactions
 made on a specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -23,7 +23,7 @@ Content-Type: application/json
 To create an `authorization` transaction, perform the `create-authorization`
 operation as returned in a previously created invoice payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -66,34 +66,34 @@ Content-Type: application/json
 | Required          | Field                          | Data type | Description                                                                                                                                                      |
 | :---------------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}  | `transaction.activity`         | `string`  | `FinancingConsumer`                                                                                                                                              |
-| {% icon check %}  | `consumer`                     | `object`  | The consumer object.                                                                                                                                             |
-| {% icon check %}  | └➔&nbsp;`socialSecurityNumber` | `string`  | The social security number (national identity number) of the consumer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
+| {% icon check %}  | `consumer`                     | `object`  | The payer object.                                                                                                                                             |
+| {% icon check %}  | └➔&nbsp;`socialSecurityNumber` | `string`  | The social security number (national identity number) of the payer. Format Sweden: `YYMMDD-NNNN`. Format Norway: `DDMMYYNNNNN`. Format Finland: `DDMMYYNNNNN` |
 |                   | └➔&nbsp;`customerNumber`       | `string`  | The customer number in the merchant system.                                                                                                                      |
-|                   | └➔&nbsp;`email`                | `string`  | The e-mail address of the consumer.                                                                                                                              |
-| {% icon check %}  | └➔&nbsp;`msisdn`               | `string`  | The mobile phone number of the consumer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
-| {% icon check %}  | └➔&nbsp;`ip`                   | `string`  | The IP address of the consumer.                                                                                                                                  |
-| {% icon check %}  | `legalAddress`                 | `object`  | The legal address object containing information about the consumers legal addres.                                                                                |
-| {% icon check %}  | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
+|                   | └➔&nbsp;`email`                | `string`  | The e-mail address of the payer.                                                                                                                              |
+| {% icon check %}  | └➔&nbsp;`msisdn`               | `string`  | The mobile phone number of the payer. Format Sweden: `+46707777777`. Format Norway: `+4799999999`. Format Finland: `+358501234567`                            |
+| {% icon check %}  | └➔&nbsp;`ip`                   | `string`  | The IP address of the payer.                                                                                                                                  |
+| {% icon check %}  | `legalAddress`                 | `object`  | The legal address object containing information about the payer's legal address.                                                                                |
+| {% icon check %}  | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
 |                   | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
-|                   | └➔&nbsp;`streetAddress`        | `string`  | The street address of the consumer.                                                                                                                              |
-| {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal code (ZIP code) of the consumer.                                                                                                                      |
-| {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city to the consumer.                                                                                                                                        |
-| {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`. The country code of the consumer.                                                                                                           |
-| {% icon check %}  | `billingAddress`               | `object`  | The billing address object containing information about the consumers billing addres.                                                                            |
-| {% icon check %}  | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the consumer.                                                                                                                  |
+|                   | └➔&nbsp;`streetAddress`        | `string`  | The street address of the payer.                                                                                                                              |
+| {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal code (ZIP code) of the payer.                                                                                                                      |
+| {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
+| {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`. The country code of the payer.                                                                                                           |
+| {% icon check %}  | `billingAddress`               | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
+| {% icon check %}  | └➔&nbsp;`addressee`            | `string`  | The full (first and last) name of the payer.                                                                                                                  |
 |                   | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
-| {% icon check %}︎︎︎︎ ︎ | └➔&nbsp;`streetAddress`        | `string`  | The street address to the consumer.                                                                                                                              |
-| {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) to the consumer.                                                                                                                    |
-| {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city to the consumer.                                                                                                                                        |
+| {% icon check %}︎︎︎︎ ︎ | └➔&nbsp;`streetAddress`        | `string`  | The street address of the payer.                                                                                                                              |
+| {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
+| {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
 | {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
 {% include alert.html type="informative" icon="info" body="
-Note: The legal address must be the registered address of the consumer." %}
+Note: The legal address must be the registered address of the payer." %}
 
 The `authorization` resource will be returned, containing information about
 the newly created authorization transaction.
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

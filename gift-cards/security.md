@@ -1,19 +1,7 @@
 ---
-title: Gift Cards – Security
-sidebar:
-  navigation:
-  - title: Gift Cards
-    items:
-    - url: /gift-cards/
-      title: Introduction
-    - url: /gift-cards/operations
-      title: Operations
-    - url: /gift-cards/security
-      title: Security
-    - url: /gift-cards/payment-client
-      title: Test Client
-    - url: /gift-cards/other-features
-      title: Other Features
+title: Security
+estimated_read: 3
+menu_order: 700
 ---
 
 ## OAuth2
@@ -153,7 +141,7 @@ HmacSHA512 user:21a0213e-30eb-85ab-b355-a310d31af30e:oY5Q5Rf1anCz7DRm3GyWR0dvJDn
 
 In pre-request script copy/paste the following snippet.
 
-{:.code-header}
+{:.code-view-header}
 **JavaScript**
 
 ```javascript
@@ -220,15 +208,20 @@ function guid() {
 
 ## Security Documentation
 
-* [OAuth2][oauth2]
-* [Client Credentials][client-credentials]
-* [The RESTful CookBook: HMAC][restful-cookbook-hmac]
-* [HMAC - Wikipedia][hmac]
+*   [OAuth2][oauth2]
+*   [Client Credentials][client-credentials]
+*   [The RESTful CookBook: HMAC][restful-cookbook-hmac]
+*   [HMAC - Wikipedia][hmac]
 
 ## Test client
 
 *   For more information how to implement the api, see
     [Test Client][test-client].
+
+{% include iterator.html prev_href="operations"
+                         prev_title="Operations"
+                         next_href="test-client"
+                         next_title="Test Client" %}
 
 [application-yml]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/resources/application.yml
 [client-credentials]: https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/
