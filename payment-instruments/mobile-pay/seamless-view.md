@@ -229,6 +229,11 @@ request.
 
 ```mermaid
 sequenceDiagram
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant MobilePayApp as MobilePay App
+    participant MobilePayApi as MobilePay API
+
     activate Merchant
     Merchant->>-SwedbankPay: POST /psp/mobilepay/payments
     activate SwedbankPay
@@ -243,25 +248,25 @@ sequenceDiagram
     Merchant->>-SwedbankPay: Init request
 
     activate SwedbankPay
-    SwedbankPay->>+MobilePay_API: POST <rel:create-authorization>
-    activate MobilePay_API
-    MobilePay_API-->>+SwedbankPay: Response
+    SwedbankPay->>+MobilePayApi: POST <rel:create-authorization>
+    activate MobilePayApi
+    MobilePayApi-->>+SwedbankPay: Response
     activate SwedbankPay
     SwedbankPay-->>-Merchant: Display instructions page
 
-    MobilePay_API-->>-MobilePay_App: Confirm Payment UI
-    activate MobilePay_App
-    MobilePay_App-->>MobilePay_App: Confirmation Dialogue
-    MobilePay_App-->>-MobilePay_App: Confirmation
+    MobilePayApi-->>-MobilePayApp: Confirm Payment UI
+    activate MobilePayApp
+    MobilePayApp-->>MobilePayApp: Confirmation Dialogue
+    MobilePayApp-->>-MobilePayApi: Confirmation
 
-    activate MobilePay_API
-    MobilePay_API->>-SwedbankPay: Make Payment
+    activate MobilePayApi
+    MobilePayApi->>-SwedbankPay: Authorize Payment
     activate SwedbankPay
     SwedbankPay-->>-SwedbankPay: Process Payment
     activate SwedbankPay
-    SwedbankPay-->>-MobilePay_API: Process Payment Response
-    activate MobilePay_API
-    MobilePay_API-->>-MobilePay_App: Transaction Status
+    SwedbankPay-->>-MobilePayApi: Process Payment Response
+    activate MobilePayApi
+    MobilePayApi-->>-MobilePayApp: Transaction Status
 
     activate Merchant
     Merchant->>- SwedbankPay: GET <MobilePay payment>
