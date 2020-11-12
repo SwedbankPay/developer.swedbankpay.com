@@ -1,195 +1,1231 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
         <meta name="application-name" content="Release Notes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="Release Notes">
         <meta name="msapplication-TileColor" content="#000">
-        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
-        <meta property="og:type" value="website" />
-        <meta property="og:url" value="https://developer.swedbankpay.com/resources/release-notes.html" />
-        <meta property="og:title" value="Release Notes" />
-        <meta name="title" content="Release Notes" />
-        <meta property="og:description" value="Swedbank Pay Developer Portal" />
-        <meta name="description" content="Swedbank Pay Developer Portal" />
-        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
-        <title>Release Notes</title>
-        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
-        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
-        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
-        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon.ico">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
+        <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+        <meta property="og:type" value="website">
+        <meta property="og:url" value="https://developer.swedbankpay.com/resources/release-notes.html">
+        <meta property="og:title" value="Resources – Release Notes">
+        <meta name="title" content="Resources – Release Notes">
+        <meta property="og:description" value="Swedbank Pay Developer Portal">
+        <meta name="description" content="Swedbank Pay Developer Portal">
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
+        <title>Resources – Release Notes</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.7.0/styles/dg-style.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.7.0/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.7.0/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.7.0/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.7.0/icons/coast-228x228.png">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Release Notes">
-<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-167x167.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-1024x1024.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-320x460.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x920.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x1096.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-750x1294.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1182x2208.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1242x2148.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-748x1024.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-768x1004.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1496x2048.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1536x2008.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-1024x1024.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1182x2208.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1242x2148.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-748x1024.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-768x1004.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1496x2048.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1536x2008.png">
 <script src="/assets/js/mermaid.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
         <div id="designguide">
-            <header class="topbar topbar-md-wide designguide-header">
-                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
-                <a href="https://developer.swedbankpay.com" class="topbar-logo"><img src="https://design.swedbankpay.com/v/4.6.1/img/swedbankpay-logo.svg" alt="logo"></a>
-                <nav class="topbar-nav">
-                    <div class="topbar-link-container">
-                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
-
-                        
-                        
-
-                        
-
-                        <a href="/"><span>Home</span></a>
-
-                        
-                        
-                        <a href="/checkout/"><span>Checkout</span></a>
-                        
-                        
-                        <a href="/payments/"><span>Payments</span></a>
-                        
-                        
-                        <a href="/gift-cards/"><span>Gift Cards</span></a>
-                        
-                        
-                        <a href="/resources/"><span>Resources</span></a>
-                        
-
-                        <div class="topbar-info topbar-link-right">
-                            <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/resources/release-notes.md" target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub">
-                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
-                                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </header>
-
             <div class="documentation">
                 <div class="row">
-                    <div class="col-xxl-2 col-md-3">
-                        <div class="doc-sidebar">
-                            
-                            <form class="doc-search" action="/search">
-                                <input type="text" class="form-control" name="q" id="tipue_search_input" placeholder="Search..." autocomplete="off" pattern=".{3,}" title="At least 3 characters">
-                            </form>
-                            
-                            
-                            <nav class="documentation-nav">
-                                
-                                
-                                <div class="nav-group active">
-                                    <div class="nav-heading">
-                                        <i class="material-icons">keyboard_arrow_right</i>
-                                        <span>Resources</span>
+                    <div class="col-xxl-2 col-lg-3 pr-0">
+                        <div class="sidebar dg-sidebar">
+                            <nav class="sidebar-nav">
+                                <a href="/" class="sidebar-header">
+                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo">
+                                    <div class="sidebar-header-text">
+                                        <span>{</span>developer portal<span>}</span>
                                     </div>
+                                </a>
 
-                                    
-                                    <ul>
-                                        
-                                        
-                                        <li><a href="/resources/"><span>Introduction</span></a></li>
-                                        
-                                        
-                                        <li><a href="/resources/test-data"><span>Test Data</span></a></li>
-                                        
-                                        
-                                        <li><a href="/resources/demoshop"><span>Demoshop</span></a></li>
-                                        
-                                        
-                                        <li><a href="/resources/development-guidelines"><span>Open Source Development Guidelines</span></a></li>
-                                        
-                                        
-                                        <li><a aria-current="page" class="active" href="/resources/release-notes"><span>Release Notes</span></a></li>
-                                        
-                                        
-                                        <li><a href="/resources/terminology"><span>Terminology</span></a></li>
-                                        
-                                        
-                                        <li><a href="/resources/data-protection"><span>Data Protection</span></a></li>
-                                        
-                                        
-                                        <li><a href="/resources/public-migration-key"><span>Public Migration Key</span></a></li>
-                                        
-                                    </ul>
-                                    
-                                </div>
-                                
+                                <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Checkout</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/checkout/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/checkout/#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/checkout/#languages">Languages</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/checkin">Checkin</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">Step 1: Initiate session for consumer identification</a></li>
+<li class="nav-leaf"><a href="/checkout/checkin#step-2-display-swedbank-pay-checkin-module">Step 2: Display Swedbank Pay Checkin module</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/payment-menu">Payment Menu</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/payment-menu#step-3-create-payment-order">Step 3: Create Payment Order</a></li>
+<li class="nav-leaf"><a href="/checkout/payment-menu#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout/payment-menu#step-4-display-the-payment-menu">Step 4: Display the Payment Menu</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/after-payment#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/checkout/after-payment#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout/after-payment#reversal">Reversal</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/other-features#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payment-order-state">Payment Order State</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#recurring-payments">Recurring Payments</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#purchase-payments">Purchase Payments</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#verify-payments">Verify Payments</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payments-resource">Payments Resource</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#custom-logo">Custom Logo</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#checkin-events">Checkin Events</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payment-menu-events">Payment Menu Events</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delegated-strong-consumer-authentication">Delegated Strong Consumer Authentication</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#updating-payment-menu">Updating Payment Menu</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Payment Instruments</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/#platform-options">Platform options</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/#the-fundamentals">The Fundamentals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/#the-payment-object">The Payment Object</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/">Card</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/card/#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#intent">Intent</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#purchase-flow">Purchase Flow</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#step-1-create-payment">Step 1: Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#purchase-flow">Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/direct">Direct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/direct#payment-flow">Payment flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#step-2a-create-authorization-without-3-d-secure-authentication">Step 2a: Create authorization without 3-D Secure authentication</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#step-2b-create-authorization-with-3-d-secure-authentication">Step 2b: Create authorization with 3-D Secure authentication</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#options-after-posting-a-purchase-payment">Options after posting a purchase payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/capture#capture">Capture</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/mobile-card-payments">Mobile</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#card-payments-in-mobile-apps">Card Payments in Mobile Apps</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#api-requests-for-payments">API Requests for Payments</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#purchase-flow-mobile">Purchase flow mobile</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#remove-payment-token">Remove payment token</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#purchase">Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payout">Payout</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#verify">Verify</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#one-click-payments">One-Click Payments</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#card-authorization-transaction">Card authorization transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#moto">MOTO</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#transaction-on-file">Transaction on file</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/">Invoice</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#api-requests">API Requests</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#invoice-flow">Invoice flow</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#step-1-create-a-payment">Step 1: Create a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#invoice-flow">Invoice flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#options-after-posting-a-payment">Options after posting a payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-1-create-the-payment">Step 1: Create the payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#purchase-flow">Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/direct">Direct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-direct-implementation-flow">Invoice Direct implementation flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-2-get-approvedlegaladdress-confirmation">Step 2: Get approvedLegalAddress confirmation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-3-complete-a-payment">Step 3: Complete a Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-flow">Invoice flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#options-after-posting-a-purchase-payment">Options after posting a purchase payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversals">Reversals</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#api-requests">API requests</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#financing-consumer">Financing Consumer</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/">Swish</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/swish/#payment-flow">Payment Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#good-to-know">Good To Know</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#languages">Languages</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/direct">Direct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/direct#payment-flow">Payment Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-2a-create-e-commerce-sale-transaction">Step 2a: Create E-Commerce Sale Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#e-commerce-purchase-flow">E-Commerce Purchase Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction">Step 2b: Create M-Commerce Sale Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-3-get-the-payment-status">Step 3: Get the payment status</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#m-commerce-purchase-flow">M-Commerce Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#redirect-purchase-flow">Redirect Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#swish-seamless-view-integration-flow">Swish Seamless View integration flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-2-display-the-payment-window">Step 2: Display the Payment Window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#seamless-view-purchase-flow">Seamless View Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#swish-transactions">Swish transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#sales">Sales</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#recurring">Recurring</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/">Vipps</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#purchase-flow">Purchase flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#good-to-know">Good To Know</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#languages">Languages</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-2-authorization">Step 2: Authorization</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-3-get-the-transaction-state">Step 3: Get the transaction state</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#vipps-redirect-integration-flow">Vipps Redirect integration flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-2-display-the-payment-window">Step 2: Display the payment window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#vipps-seamless-view-integration-flow">Vipps Seamless View integration flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/capture#capture">Capture</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#vipps-transactions">Vipps transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#authorizations">Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#create-cancellation-transaction">Create cancellation transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort">Abort</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference-1">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#seamless-view-events">Seamless View Events</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/">MobilePay Online</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#purchase-flow">Purchase flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#good-to-know">Good To Know</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#payment-availability">Payment availability</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#mobilepay-online-redirect-integration-flow">MobilePay Online redirect integration flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get the transaction status</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#purchase-flow">Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-sequence">Cancel Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#create-reversal-transaction">Create reversal transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#abort">Abort</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#purchase">Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#operations-1">Operations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#mobilepay-online-transactions">MobilePay Online transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#authorizations">Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#captures">Captures</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#capture-sequence">Capture Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancel-sequence">Cancel Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#problems">Problems</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/">Trustly</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#payment-type">Payment Type</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#banks">Banks</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#step-1-create-a-payment">Step 1: Create a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#trustly-flow">Trustly flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#options-after-posting-a-payment">Options after posting a payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-1-create-the-payment">Step 1: Create the payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#purchase-flow">Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversals">Reversals</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/payment-link">Payment Link</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/payment-link">Payment Link</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Gift Cards</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/gift-cards/#overview">Overview</a></li>
+<li class="nav-leaf"><a href="/gift-cards/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/gift-cards/#implementation">Implementation</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/operations">Operations</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/operations#gift-card-resource">Gift card resource</a></li>
+<li class="nav-leaf"><a href="/gift-cards/operations#get-new-gift-card">Get New Gift Card</a></li>
+<li class="nav-leaf"><a href="/gift-cards/operations#pre-deposit">Pre Deposit</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/security">Security</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/security#oauth2">OAuth2</a></li>
+<li class="nav-leaf"><a href="/gift-cards/security#hmac">HMAC</a></li>
+<li class="nav-leaf"><a href="/gift-cards/security#security-documentation">Security Documentation</a></li>
+<li class="nav-leaf"><a href="/gift-cards/security#test-client">Test client</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/test-client">Test Client</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/test-client#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#project-setup">Project setup</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#first-app-run">First App run</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#testing-application">Testing application</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#build-docker-image">Build docker image</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#deploy-to-local-docker">Deploy to local docker</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/other-features#purchase">Purchase</a></li>
+<li class="nav-leaf"><a href="/gift-cards/other-features#deposit">Deposit</a></li>
+<li class="nav-leaf"><a href="/gift-cards/other-features#balance">Balance</a></li>
+<li class="nav-leaf"><a href="/gift-cards/other-features#authentication">Authentication</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Modules &amp; SDKs</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/modules-sdks/#official-modules">Official Modules</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/#official-sdks">Official SDKs</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/#official-libraries">Official Libraries</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/">Mobile SDK</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/#introduction">Introduction</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/merchant-backend-sample-code">Merchant Backend Sample Code</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-sample-code">Merchant Backend Sample Code</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/android">Android</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/ios">iOS</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/process-diagrams">Process Diagrams</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#initialization">Initialization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#discover-endpoints">Discover Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group active">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Resources</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/resources/#test-data">Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/#demoshop">Demoshop</a></li>
+<li class="nav-leaf"><a href="/resources/#open-source-development-guidelines">Open Source Development Guidelines</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/demoshop">Demoshop</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/resources/demoshop">Demoshop</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/public-migration-key">Public Migration Key</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/resources/public-migration-key">Public Migration Key</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/terminology">Terminology</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/resources/terminology">Terminology</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/data-protection">Data Protection</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/data-protection#paymentorder-consumer-data">Paymentorder consumer data</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/">Open Source Development Guidelines</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/resources/development-guidelines/#principles">Principles</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#licensing">Licensing</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#copyright">Copyright</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#how-to-contribute">How to Contribute</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#code-of-conduct">Code of Conduct</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#release-management">Release Management</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/code-of-conduct">Code Of Conduct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/code-of-conduct#contributor-code-of-conduct">Contributor Code of Conduct</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/contributing">Contributing</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/contributing#how-to-contribute">How to contribute</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/contributing#getting-started">Getting Started</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/contributing#making-changes">Making Changes</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/good-commit-practice">Good Commit Practice</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#executive-summary">Executive Summary</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#structural-split-of-changes">Structural split of changes</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#things-to-avoid-when-creating-commits">Things to avoid when creating commits</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#information-in-commit-messages">Information in commit messages</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/license">License</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/license#licensing">Licensing</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup active">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/release-notes">Release Notes</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#21-aug-2020">21 Aug 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#17-jul-2020">17 Jul 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#10-jul-2020">10 Jul 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#07-jul-2020">07 Jul 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#04-jun-2020">04 Jun 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#29-may-2020">29 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-may-2020">22 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#14-may-2020">14 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#07-may-2020">07 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-apr-2020">22 Apr 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#15-apr-2020">15 Apr 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#31-mar-2020">31 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#18-mar-2020">18 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#04-mar-2020">04 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-mar-2020">03 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#27-feb-2020">27 Feb 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#7-feb-2020">7 Feb 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#6-feb-2020">6 Feb 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#29-jan-2020">29 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#27-jan-2020">27 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#16-jan-2020">16 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#09-jan-2020">09 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-dec-2019">22 Dec 2019</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-nov-2019">01 Nov 2019</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-oct-2019">01 Oct 2019</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-aug-2019">01 Aug 2019</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/test-data">Test Data</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/test-data#swedbank-pay-checkout-test-data">Swedbank Pay Checkout Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#credit-card-test-data">Credit Card Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#failure-testing">Failure Testing</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#invoice-test-data">Invoice Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#invoice-service-test-data">Invoice Service Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#vipps-test-data">Vipps Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#swish-test-data">Swish Test Data</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+</ul>
                             </nav>
-                            
                         </div>
                     </div>
 
-                    <main class="doc-view col-xxl-10 col-md-9">
-                        <div class="doc-container">
-                            <h1>Release Notes</h1>
-                            <div class="row">
-                                <div class="doc-body col-lg-10">
-                                    
-                                    <div class="jumbotron">
-    <p>The latest updates about our releases will be
+                    <main class="doc-view col-xxl-10 col-lg-9">
+                        
+                            
+
+
+
+
+
+<div class="title-header">
+    <div class="title-header-container max-width">
+        
+            <h4>Resources</h4>
+        
+
+        <h1>Release Notes</h1>
+
+        
+            <div class="title-header-estimated-read">
+                <i class="material-icons">schedule</i>
+                10 min read
+            </div>
+        
+
+        
+            <p></p>
+<p>The latest updates about our releases will be
 published on this page.</p>
 
+        
+    </div>
 </div>
 
-<div class="alert alert-complex alert-informative">
+                        
+                        <div class="doc-container normal-padding max-width
+                            ">
+                            <article>
+                                <div class="alert alert-complex alert-informative">
 <header class="alert-header">
-            
-                <i class="material-icons alert-icon">info</i>
+        
+        <i class="material-icons alert-icon">info</i>
       <h3>
         
         
@@ -200,14 +1236,59 @@ published on this page.</p>
     
 
     
-        
-            <div class="alert-body">
-                <p>The version numbers used in headers on this page refers to the version of
+    
+    <div class="alert-body">
+        <p>The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it.</p>
-            </div>
-        
+    </div>
+    
     
 </div>
+    
+      <h2 id="11-nov-2020">
+        
+        
+          11 Nov 2020 <a href="#11-nov-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-200">
+        
+        
+          Version 2.0.0 <a href="#version-200" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p><img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"> Launched new developer portal theme: <img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"></p>
+<ul>
+  <li>New design <img class="emoji" title=":sparkles:" alt=":sparkles:" src="https://github.githubassets.com/images/icons/emoji/unicode/2728.png" height="20" width="20">
+</li>
+  <li>New menu structure <img class="emoji" title=":orange_book:" alt=":orange_book:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d9.png" height="20" width="20">
+</li>
+  <li>Reading time <img class="emoji" title=":hourglass:" alt=":hourglass:" src="https://github.githubassets.com/images/icons/emoji/unicode/231b.png" height="20" width="20">
+</li>
+</ul>
+
+<p>Other changes:</p>
+<ul>
+  <li>Added GDPR disclaimer.</li>
+  <li>Added custom 404 page.</li>
+  <li>Added section about <a href="/payment-instruments/card/other-features#transaction-on-file">Transaction on File</a>
+</li>
+  <li>Added Seamless View for <a href="/payment-instruments/trustly">Trustly</a>.</li>
+  <li>Added documentation about payment and transaction states. See <a href="/payment-instruments/card/other-features#payment-and-transaction-states">Card Other Features</a> for example.</li>
+  <li>Added event override warning for Seamless View Events, see <a href="/payment-instruments/card/seamless-view">Card Seamless View Events</a> for example.</li>
+  <li>Added section regarding <a href="/payment-instruments/card/other-features#moto">MOTO</a> in Card Other Features.</li>
+  <li>Deleted Merchant Identified Payer in <a href="/checkout">Checkout</a>.</li>
+  <li>Renamed Merchant Authenticated Consumer to 
+<a href="/checkout/other-features#delegated-strong-consumer-authentication">Delegated Strong Consumer Authentication</a>.</li>
+  <li>Updated <code class="language-html highlighter-rouge">payer</code>/<code class="language-html highlighter-rouge">consumer</code>/<code class="language-html highlighter-rouge">end-user</code> naming for most sections.</li>
+  <li>Updated expiry date for test cards in <a href="/resources/test-data">test data</a>.</li>
+  <li>Updated <a href="/checkout/other-features#callback">callback</a> documentation.</li>
+  <li>Updated regex pattern for <code class="language-html highlighter-rouge">orderItems.class</code>.</li>
+</ul>
     
       <h2 id="04-sep-2020">
         
@@ -229,9 +1310,9 @@ this very documentation, not to a version of any APIs described by it.</p>
   <li>Added documentation on deprecated operations in <a href="/checkout/payment-menu#request">Checkout</a>.</li>
   <li>Updated <code class="language-html highlighter-rouge">instrument</code> description in <a href="/checkout">Checkout</a>.</li>
   <li>Updated <code class="language-html highlighter-rouge">payeeReference</code> description.</li>
-  <li>Clarified <code class="language-html highlighter-rouge">msisdn</code> and <code class="language-html highlighter-rouge">shoplogoUrl</code> in <a href="/payments/mobile-pay">MobilePay Payments</a>.</li>
+  <li>Clarified <code class="language-html highlighter-rouge">msisdn</code> and <code class="language-html highlighter-rouge">shoplogoUrl</code> in <a href="/payment-instruments/mobile-pay">MobilePay Online Payments</a>.</li>
   <li>Updated <a href="/resources/test-data">Test data</a> in <a href="/resources/">Resources</a>.</li>
-  <li>Documented problems in <a href="/payments/trustly">Trustly Payments</a>.</li>
+  <li>Documented problems in <a href="/payment-instruments/trustly">Trustly Payments</a>.</li>
   <li>Added an alert for two-phase payments in Capture pages.</li>
 </ul>
     
@@ -253,13 +1334,13 @@ this very documentation, not to a version of any APIs described by it.</p>
 
 <ul>
   <li>Added description on <code class="language-html highlighter-rouge">metadata</code> for all payment instruments.</li>
-  <li>Updated files in <a href="/payments/card/other-features#settlement-and-reconciliation">Settlement &amp; Reconciliation</a>.</li>
-  <li>Added information on token deletion in <a href="/payments/card">Card Payments</a> and <a href="/payments/invoice">Invoice Payments</a>.</li>
+  <li>Updated files in <a href="/payment-instruments/card/other-features#settlement-and-reconciliation">Settlement &amp; Reconciliation</a>.</li>
+  <li>Added information on token deletion in <a href="/payment-instruments/card">Card Payments</a> and <a href="/payment-instruments/invoice">Invoice Payments</a>.</li>
   <li>Updated the documentation on <code class="language-html highlighter-rouge">paymentRestrictedToAgeLimit</code> and
-<code class="language-html highlighter-rouge">paymentRestrictedToSocialSecurityNumber</code> in <a href="/payments/swish">Swish Payments</a>.</li>
+<code class="language-html highlighter-rouge">paymentRestrictedToSocialSecurityNumber</code> in <a href="/payment-instruments/swish">Swish Payments</a>.</li>
   <li>Added documentation on guest checkout in <a href="/checkout">Checkout</a>.</li>
   <li>Updated information about <code class="language-html highlighter-rouge">logourl</code> in <a href="/checkout">Checkout</a>.</li>
-  <li>Added a list of accepted banks in <a href="/payments/trustly">Trustly Payments</a>.</li>
+  <li>Added a list of accepted banks in <a href="/payment-instruments/trustly">Trustly Payments</a>.</li>
   <li>Updated the <code class="language-html highlighter-rouge">UpdateOrder</code> description in <a href="/checkout">Checkout</a>.</li>
 </ul>
     
@@ -280,17 +1361,17 @@ this very documentation, not to a version of any APIs described by it.</p>
       </h3>
 
 <ul>
-  <li>Removed documentation for <a href="/payments/trustly">Trustly Payments</a> Seamless View.</li>
+  <li>Removed documentation for <a href="/payment-instruments/trustly">Trustly Payments</a> Seamless View.</li>
   <li>Updated <code class="language-html highlighter-rouge">reOrderPurchaseIndicator</code> description.</li>
-  <li>Updated <a href="/payments/trustly/other-features">Other Features</a> in <a href="/payments/trustly">Trustly Payments</a>.</li>
+  <li>Updated <a href="/payment-instruments/trustly/other-features">Other Features</a> in <a href="/payment-instruments/trustly">Trustly Payments</a>.</li>
   <li>Updated <a href="/resources/test-data">Test Data</a> for Vipps Payments.</li>
   <li>Added updated documentation on the <code class="language-html highlighter-rouge">transaction</code> operation.</li>
 </ul>
     
-      <h2 id="17-july-2020">
+      <h2 id="17-jul-2020">
         
         
-          17 July 2020 <a href="#17-july-2020" class="header-anchor"></a>
+          17 Jul 2020 <a href="#17-jul-2020" class="header-anchor"></a>
         
         
       </h2>
@@ -306,13 +1387,13 @@ this very documentation, not to a version of any APIs described by it.</p>
 <ul>
   <li>Added documentation on Mobile SDK in <a href="/modules-sdks">Modules &amp; SDKs</a> section.</li>
   <li>Added tables for mapping API fields to settlement files in
-<a href="/payments/card/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a>.</li>
+<a href="/payment-instruments/card/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a>.</li>
 </ul>
     
-      <h2 id="10-july-2020">
+      <h2 id="10-jul-2020">
         
         
-          10 July 2020 <a href="#10-july-2020" class="header-anchor"></a>
+          10 Jul 2020 <a href="#10-jul-2020" class="header-anchor"></a>
         
         
       </h2>
@@ -330,10 +1411,10 @@ this very documentation, not to a version of any APIs described by it.</p>
 <code class="language-html highlighter-rouge">paymentToken</code> from <a href="/checkout">Checkout</a>.</li>
 </ul>
     
-      <h2 id="07-july-2020">
+      <h2 id="07-jul-2020">
         
         
-          07 July 2020 <a href="#07-july-2020" class="header-anchor"></a>
+          07 Jul 2020 <a href="#07-jul-2020" class="header-anchor"></a>
         
         
       </h2>
@@ -348,8 +1429,8 @@ this very documentation, not to a version of any APIs described by it.</p>
 
 <ul>
   <li>Added information on 3-D Secure 2 for <a href="/checkout/other-features#3-d-secure-2">Checkout</a> and
-<a href="/payments/card/other-features#3-d-secure-2">Card Payments</a>.</li>
-  <li>Updated reconciliation files in <a href="/payments/card/other-features#settlement-and-reconciliation">Settlement &amp;
+<a href="/payment-instruments/card/other-features#3-d-secure-2">Card Payments</a>.</li>
+  <li>Updated reconciliation files in <a href="/payment-instruments/card/other-features#settlement-and-reconciliation">Settlement &amp;
 Reconciliation</a>.</li>
   <li>Added test card for Forbrugsforeningen in <a href="/resources/test-data">Test data</a>.</li>
   <li>Documented <code class="language-html highlighter-rouge">paid</code>, <code class="language-html highlighter-rouge">failed</code> and <code class="language-html highlighter-rouge">aborted</code> across all resources.</li>
@@ -357,17 +1438,17 @@ Reconciliation</a>.</li>
 <code class="language-html highlighter-rouge">paymentToken</code>, <code class="language-html highlighter-rouge">generatePaymentToken</code>, <code class="language-html highlighter-rouge">recurrenceToken</code> and
 <code class="language-html highlighter-rouge">instrument</code> for the <code class="language-html highlighter-rouge">paymentorder</code> resource in <a href="/checkout">Checkout</a>.</li>
   <li>Corrected and updated <code class="language-html highlighter-rouge">view-</code> operations for all resources.</li>
-  <li>Updated <a href="/payments/card/other-features#seamless-view-events">Seamless View Events</a> for all resources.</li>
+  <li>Updated <a href="/payment-instruments/card/other-features#seamless-view-events">Seamless View Events</a> for all resources.</li>
   <li>Described <code class="language-html highlighter-rouge">nonPaymentToken</code> and <code class="language-html highlighter-rouge">externalNonPaymentToken</code> in
-<a href="/payments/card">Card Payments</a>.</li>
-  <li>Small corrections to <a href="/payments/swish">Swish Payments</a> documentation.</li>
+<a href="/payment-instruments/card">Card Payments</a>.</li>
+  <li>Small corrections to <a href="/payment-instruments/swish">Swish Payments</a> documentation.</li>
   <li>Clarified the <a href="/checkout/other-features#update-order"><code class="language-html highlighter-rouge">updateOrder</code></a> documentation.</li>
 </ul>
     
-      <h2 id="04-june-2020">
+      <h2 id="04-jun-2020">
         
         
-          04 June 2020 <a href="#04-june-2020" class="header-anchor"></a>
+          04 Jun 2020 <a href="#04-jun-2020" class="header-anchor"></a>
         
         
       </h2>
@@ -381,11 +1462,11 @@ Reconciliation</a>.</li>
       </h3>
 
 <ul>
-  <li>Added additional information on the settlement files in <a href="/payments/card/other-features#settlement-and-reconciliation">Settlement &amp;
+  <li>Added additional information on the settlement files in <a href="/payment-instruments/card/other-features#settlement-and-reconciliation">Settlement &amp;
 Reconciliation</a> for all Payments.</li>
-  <li>Corrected <a href="/payments/card/redirect">Card Payments Redirect</a> and <a href="/payments/card/seamless-view">Card Payments
+  <li>Corrected <a href="/payment-instruments/card/redirect">Card Payments Redirect</a> and <a href="/payment-instruments/card/seamless-view">Card Payments
 Seamless View</a> sequence diagrams.</li>
-  <li>Added <a href="/payments/swish/after-payment#abort">Abort</a> in <a href="/payments/swish">Swish Payments</a>.</li>
+  <li>Added <a href="/payment-instruments/swish/after-payment#abort">Abort</a> in <a href="/payment-instruments/swish">Swish Payments</a>.</li>
 </ul>
     
       <h2 id="29-may-2020">
@@ -405,7 +1486,7 @@ Seamless View</a> sequence diagrams.</li>
       </h3>
 
 <ul>
-  <li>Added a new <a href="/payments/trustly">Trustly Payments</a> section.</li>
+  <li>Added a new <a href="/payment-instruments/trustly">Trustly Payments</a> section.</li>
   <li>Added information about <a href="/home/technical-information#storing-uris">Storing URIs</a> in the <a href="/home/technical-information">Technical
 Information</a> section.</li>
 </ul>
@@ -427,7 +1508,7 @@ Information</a> section.</li>
       </h3>
 
 <ul>
-  <li>Updated <a href="/payments/swish/redirect">Swish Redirect</a> requests.</li>
+  <li>Updated <a href="/payment-instruments/swish/redirect">Swish Redirect</a> requests.</li>
   <li>Added <code class="language-html highlighter-rouge">orderReference</code> information in Payment Order Callback in <a href="/checkout/other-features#callback">Checkout Other features</a>.</li>
 </ul>
     
@@ -449,8 +1530,8 @@ Information</a> section.</li>
 
 <ul>
   <li>Added a new <a href="/gift-cards">Gift Cards</a> section with descriptions of our Gift Cards API.</li>
-  <li>Added a new section <a href="/payments/card/other-features#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a> in
-<a href="/payments/card/other-features#payment-url">Card Payments</a>.</li>
+  <li>Added a new section <a href="/payment-instruments/card/other-features#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a> in
+<a href="/payment-instruments/card/other-features#payment-url">Card Payments</a>.</li>
 </ul>
     
       <h2 id="07-may-2020">
@@ -470,8 +1551,7 @@ Information</a> section.</li>
       </h3>
 
 <ul>
-  <li>Corrected table in <a href="/payments">payments page</a>
-</li>
+  <li>Corrected table in <a href="/payments">payments page</a>.</li>
 </ul>
     
       <h3 id="version-191">
@@ -483,18 +1563,18 @@ Information</a> section.</li>
       </h3>
 
 <ul>
-  <li>Corrected sequence diagrams in <a href="/payments/swish">Swish Payments</a> and
-<a href="/payments/vipps">Vipps Payments</a>.</li>
+  <li>Corrected sequence diagrams in <a href="/payment-instruments/swish">Swish Payments</a> and
+<a href="/payment-instruments/vipps">Vipps Payments</a>.</li>
   <li>The <code class="language-html highlighter-rouge">description</code> field is now more thoroughly described for all requests it’s
 present in.</li>
   <li>The <code class="language-html highlighter-rouge">language</code> field is now better described for all requests it’s present in.</li>
   <li>All broken links should now be unbroken.</li>
 </ul>
     
-      <h2 id="april-2020">
+      <h2 id="22-apr-2020">
         
         
-          April 2020 <a href="#april-2020" class="header-anchor"></a>
+          22 Apr 2020 <a href="#22-apr-2020" class="header-anchor"></a>
         
         
       </h2>
@@ -509,14 +1589,22 @@ present in.</li>
 
 <ul>
   <li>Added a new section <a href="/modules-sdks">SDKs and Modules</a> in Resources.</li>
-  <li>Corrected problem <code class="language-html highlighter-rouge">type</code> URIs for <a href="/payments/card">Card Payments</a>, <a href="/checkout">Checkout</a>
-and <a href="/payments/swish">Swish Payments</a>.</li>
+  <li>Corrected problem <code class="language-html highlighter-rouge">type</code> URIs for <a href="/payment-instruments/card">Card Payments</a>, <a href="/checkout">Checkout</a>
+and <a href="/payment-instruments/swish">Swish Payments</a>.</li>
   <li>Required checkmarks have a new, fresh look: <i class="material-icons">check</i>
 </li>
   <li>Flags now also sport a new look: <i class="flag-icon flag-icon-no "></i> <i class="flag-icon flag-icon-se "></i> <i class="flag-icon flag-icon-dk "></i>
 <i class="flag-icon flag-icon-fi "></i> <i class="flag-icon flag-icon-lt "></i> <i class="flag-icon flag-icon-lv "></i> <i class="flag-icon flag-icon-ee "></i>
 </li>
 </ul>
+    
+      <h2 id="15-apr-2020">
+        
+        
+          15 Apr 2020 <a href="#15-apr-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-183">
         
@@ -546,19 +1634,19 @@ Consumer</a>.</li>
   <li>Added a more thorough description on <code class="language-html highlighter-rouge">paymentUrl</code> and <code class="language-html highlighter-rouge">completeUrl</code> in all
 relevant payments.</li>
   <li>Updated <code class="language-html highlighter-rouge">orderItems</code> to be required in all requests and responses.</li>
-  <li>Clean up of <a href="/payments/swish">Swish Payments</a>
+  <li>Clean up of <a href="/payment-instruments/swish">Swish Payments</a>
 </li>
-  <li>Removed <code class="language-html highlighter-rouge">pageStripDown</code> in <a href="/payments/vipps">Vipps Redirect</a>.</li>
-  <li>Updated <a href="/payments/card/direct">Card Payments Direct</a> to have a correct integration
+  <li>Removed <code class="language-html highlighter-rouge">pageStripDown</code> in <a href="/payment-instruments/vipps">Vipps Redirect</a>.</li>
+  <li>Updated <a href="/payment-instruments/card/direct">Card Payments Direct</a> to have a correct integration
 flow.</li>
   <li>Updated the <a href="https://developer.swedbankpay.com/">main page</a> to be more welcoming.</li>
   <li>Updated information on <a href="/checkout/other-features#merchant-authenticated-consumer">Merchant Authenticated Consumer</a>.</li>
 </ul>
     
-      <h2 id="march-2020">
+      <h2 id="31-mar-2020">
         
         
-          March 2020 <a href="#march-2020" class="header-anchor"></a>
+          31 Mar 2020 <a href="#31-mar-2020" class="header-anchor"></a>
         
         
       </h2>
@@ -573,16 +1661,24 @@ flow.</li>
 
 <ul>
   <li>Documented allowed characters in <code class="language-html highlighter-rouge">orderItem.class</code>.</li>
-  <li>Added <code class="language-html highlighter-rouge">receiptReference</code> in <a href="/payments/invoice">Invoice Payments</a> and
+  <li>Added <code class="language-html highlighter-rouge">receiptReference</code> in <a href="/payment-instruments/invoice">Invoice Payments</a> and
 <a href="/checkout/other-features#payment-orders">Payment Order</a> in capture and reversal.</li>
   <li>Callback is now moved to Other features in all payments intruments.</li>
-  <li>Clean up of <a href="/payments/mobile-pay">MobilePay</a>.</li>
+  <li>Clean up of <a href="/payment-instruments/mobile-pay">MobilePay</a>.</li>
   <li>Corrected the address of Leia Ahlström in <a href="/resources/test-data">Test Data</a>.</li>
-  <li>Updated the documentation in <a href="/payments/card/other-features#payment-url">Card Payments</a>
+  <li>Updated the documentation in <a href="/payment-instruments/card/other-features#payment-url">Card Payments</a>
 to recommend using <code class="language-html highlighter-rouge">shippingAddress</code>.</li>
   <li>Updated <code class="language-html highlighter-rouge">payeeReference</code> to have an unique description for Payment Order and
 every Payment Instrument.</li>
 </ul>
+    
+      <h2 id="18-mar-2020">
+        
+        
+          18 Mar 2020 <a href="#18-mar-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-180">
         
@@ -593,10 +1689,10 @@ every Payment Instrument.</li>
       </h3>
 
 <ul>
-  <li>Updated <a href="/payments/invoice/direct">Invoice Payments Direct</a> where
+  <li>Updated <a href="/payment-instruments/invoice/direct">Invoice Payments Direct</a> where
 <code class="language-html highlighter-rouge">approvedLegalAddress</code> should now be use for all countries.</li>
   <li>Small text changes and clarifications.</li>
-  <li>Restructured <a href="/payments/invoice">Invoice Payments</a> and <a href="/payments/card">Card Payments</a>.</li>
+  <li>Restructured <a href="/payment-instruments/invoice">Invoice Payments</a> and <a href="/payment-instruments/card">Card Payments</a>.</li>
 </ul>
     
       <h3 id="version-177">
@@ -608,6 +1704,14 @@ every Payment Instrument.</li>
       </h3>
 
 <p>This change contains build updates for the page. <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"></p>
+    
+      <h2 id="04-mar-2020">
+        
+        
+          04 Mar 2020 <a href="#04-mar-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-176">
         
@@ -622,6 +1726,14 @@ every Payment Instrument.</li>
   <li>Other small text changes and clarifications.</li>
 </ul>
     
+      <h2 id="03-mar-2020">
+        
+        
+          03 Mar 2020 <a href="#03-mar-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
       <h3 id="version-175">
         
         
@@ -635,18 +1747,10 @@ every Payment Instrument.</li>
 to <a href="/home/technical-information">technical information</a>.</li>
   <li>Front page got a slimmer look. <img class="emoji" title=":swimmer:" alt=":swimmer:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3ca.png" height="20" width="20">
 </li>
-  <li>Abort reference is back in <a href="/payments/card/after-payment#abort">credit card reference</a>.</li>
+  <li>Abort reference is back in <a href="/payment-instruments/card/after-payment#abort">credit card reference</a>.</li>
   <li>Swish error code reference got a face lift, check it out
-<a href="/payments/swish/other-features#problems">here</a> <img class="emoji" title=":candy:" alt=":candy:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36c.png" height="20" width="20">.</li>
+<a href="/payment-instruments/swish/other-features#problems">here</a> <img class="emoji" title=":candy:" alt=":candy:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f36c.png" height="20" width="20">.</li>
 </ul>
-    
-      <h2 id="february-2020">
-        
-        
-          February 2020 <a href="#february-2020" class="header-anchor"></a>
-        
-        
-      </h2>
     
       <h3 id="version-174">
         
@@ -657,9 +1761,17 @@ to <a href="/home/technical-information">technical information</a>.</li>
       </h3>
 
 <ul>
-  <li>Described the M-Commerce flow for <a href="/payments/swish/direct#step-2b-create-m-commerce-sale-transaction">Swish Direct</a>.</li>
+  <li>Described the M-Commerce flow for <a href="/payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction">Swish Direct</a>.</li>
   <li>Alphabetize the terms in <a href="/resources/terminology">Terminology</a>.</li>
 </ul>
+    
+      <h2 id="27-feb-2020">
+        
+        
+          27 Feb 2020 <a href="#27-feb-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-173">
         
@@ -672,13 +1784,21 @@ to <a href="/home/technical-information">technical information</a>.</li>
 <ul>
   <li>Expanded information about the field <code class="language-html highlighter-rouge">restrictedToInstruments</code>.</li>
   <li>Added information about the field <code class="language-html highlighter-rouge">receiptReference</code>.</li>
-  <li>Added information about <a href="/payments/card/direct">direct integration in Credit card</a>.</li>
+  <li>Added information about <a href="/payment-instruments/card/direct">direct integration in Credit card</a>.</li>
   <li>Added and fixed several missing headings in template files.</li>
   <li>Expanded information about <code class="language-html highlighter-rouge">verify</code>.</li>
   <li>Created new page for <a href="/checkout/capture">Checkout Capture</a>.</li>
   <li>Mobile Pay Online was previously only refered to as Mobile Pay, this has been
 corrected.</li>
 </ul>
+    
+      <h2 id="7-feb-2020">
+        
+        
+          7 Feb 2020 <a href="#7-feb-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-172">
         
@@ -691,10 +1811,18 @@ corrected.</li>
 <ul>
   <li>Removed several duplicate headers in other-features pages.</li>
   <li>Added unscheduled purchase information in
-<a href="/payments/card/other-features#unscheduled-purchase">card payments</a>.</li>
+<a href="/payment-instruments/card/other-features#unscheduled-purchase">card payments</a>.</li>
   <li>We have added card logos when selecting card in payment menu.
 See <a href="/checkout/checkin#step-2-display-swedbank-pay-checkin-module">updated screenshot of payment menu</a>.</li>
 </ul>
+    
+      <h2 id="6-feb-2020">
+        
+        
+          6 Feb 2020 <a href="#6-feb-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-171">
         
@@ -706,10 +1834,10 @@ See <a href="/checkout/checkin#step-2-display-swedbank-pay-checkin-module">updat
 
 <p>All sections have been released. <img class="emoji" title=":trophy:" alt=":trophy:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c6.png" height="20" width="20"></p>
     
-      <h3 id="version-17">
+      <h3 id="version-170">
         
         
-          Version 1.7 <a href="#version-17" class="header-anchor"></a>
+          Version 1.7.0 <a href="#version-170" class="header-anchor"></a>
         
         
       </h3>
@@ -726,16 +1854,16 @@ See <a href="/checkout/checkin#step-2-display-swedbank-pay-checkin-module">updat
   <li>Cleanup in <code class="language-html highlighter-rouge">Vipps</code> Other Features.</li>
   <li>
 <code class="language-html highlighter-rouge">paymentRestrictedToAgeLimit</code> and <code class="language-html highlighter-rouge">paymentRestrictedToSocialSecurityNumber</code>
-added to <code class="language-html highlighter-rouge">swish</code> object in <a href="/payments/swish/redirect">Swish Redirect</a>. <code class="language-html highlighter-rouge">paymentAgeLimit</code>
+added to <code class="language-html highlighter-rouge">swish</code> object in <a href="/payment-instruments/swish/redirect">Swish Redirect</a>. <code class="language-html highlighter-rouge">paymentAgeLimit</code>
 , <code class="language-html highlighter-rouge">socialSecurityNumber</code> added to the new <code class="language-html highlighter-rouge">payerInfo</code> object in
-<a href="/payments/swish/seamless-view">Swish Seamless View</a>. Properties added in <code class="language-html highlighter-rouge">Swish</code>.</li>
+<a href="/payment-instruments/swish/seamless-view">Swish Seamless View</a>. Properties added in <code class="language-html highlighter-rouge">Swish</code>.</li>
   <li>Added section about migration key in Resources section.</li>
 </ul>
     
-      <h2 id="january-2020">
+      <h2 id="29-jan-2020">
         
         
-          January 2020 <a href="#january-2020" class="header-anchor"></a>
+          29 Jan 2020 <a href="#29-jan-2020" class="header-anchor"></a>
         
         
       </h2>
@@ -766,7 +1894,7 @@ requests</a>.</li>
       </h3>
 
 <ul>
-  <li>The <a href="/payments">Payments</a> and <a href="/payments/card">Card Payments</a> sections are reviewed and
+  <li>The <a href="/payments">Payments</a> and <a href="/payment-instruments/card">Card Payments</a> sections are reviewed and
 released.</li>
 </ul>
     
@@ -783,33 +1911,49 @@ released.</li>
 <code class="language-html highlighter-rouge">email</code>, <code class="language-html highlighter-rouge">msisdn</code>, <code class="language-html highlighter-rouge">workPhoneNumber</code> and <code class="language-html highlighter-rouge">homePhoneNumber</code> added to the
 <code class="language-html highlighter-rouge">payer</code> object in <a href="/checkout/other-features#payment-orders">Payment Order requests</a>.</li>
   <li>
-<code class="language-html highlighter-rouge">cardholder</code> added to <a href="/payments/card/redirect#step-1-create-a-purchase">Card Payments Purchase requests</a>.</li>
+<code class="language-html highlighter-rouge">cardholder</code> added to <a href="/payment-instruments/card/redirect#step-1-create-a-purchase">Card Payments Purchase requests</a>.</li>
   <li>Various improvements and fixes.</li>
 </ul>
     
-      <h3 id="version-16">
+      <h2 id="27-jan-2020">
         
         
-          Version 1.6 <a href="#version-16" class="header-anchor"></a>
+          27 Jan 2020 <a href="#27-jan-2020" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-160">
+        
+        
+          Version 1.6.0 <a href="#version-160" class="header-anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>
-<a href="/payments/card">Credit Payments</a> (née “Credit Account”) sections have been deleted
+<a href="/payment-instruments/card">Credit Payments</a> (née “Credit Account”) sections have been deleted
 from the Swedbank Pay Developer Portal.</li>
-  <li>The <a href="/payments/swish">Swish Payments</a> and <a href="/payments/vipps">Vipps Payments</a> have received a few
+  <li>The <a href="/payment-instruments/swish">Swish Payments</a> and <a href="/payment-instruments/vipps">Vipps Payments</a> have received a few
 updates and are now ready for another round of review.</li>
   <li>
-<a href="/payments/mobile-pay">MobilePay Payments</a> is now ready for review.</li>
+<a href="/payment-instruments/mobile-pay">MobilePay Online Payments</a> is now ready for review.</li>
   <li>
-<code class="language-html highlighter-rouge">paymentAgeLimit</code> is now added in <a href="/payments/swish">Swish Payments</a>.</li>
+<code class="language-html highlighter-rouge">paymentAgeLimit</code> is now added in <a href="/payment-instruments/swish">Swish Payments</a>.</li>
   <li>The <a href="/resources/terminology">Terminology page</a> is updated and <em>3-D Secure 2.0 (3DS2)</em>   ,
 <em>PSD2</em>   and <em>SCA</em>   explanations are added.</li>
   <li>Added descriptions for Payment States And Transaction States everywhere appropriate.</li>
   <li>Google Analytics has been added to Developer Portal.</li>
 </ul>
+    
+      <h2 id="16-jan-2020">
+        
+        
+          16 Jan 2020 <a href="#16-jan-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-15">
         
@@ -820,16 +1964,24 @@ updates and are now ready for another round of review.</li>
       </h3>
 
 <ul>
-  <li>The review of <a href="/payments/invoice">Invoice Payments</a> is complete and as such the section
+  <li>The review of <a href="/payment-instruments/invoice">Invoice Payments</a> is complete and as such the section
 is now released and ready for use.</li>
-  <li>The <a href="/payments/card">Card Payments</a> section has received an overhaul, inching it closer
+  <li>The <a href="/payment-instruments/card">Card Payments</a> section has received an overhaul, inching it closer
 to release.</li>
-  <li>The <a href="/payments/swish">Swish Payments</a> and <a href="/payments/vipps">Vipps Payments</a> sections are ready for
+  <li>The <a href="/payment-instruments/swish">Swish Payments</a> and <a href="/payment-instruments/vipps">Vipps Payments</a> sections are ready for
 review.</li>
-  <li>The Direct Debit, <a href="/payments/mobile-pay">MobilePay Payments</a> and
-<a href="/payments/card">Credit Payments</a> (née “Credit Account”) sections have received a few
+  <li>The Direct Debit, <a href="/payment-instruments/mobile-pay">MobilePay Online Payments</a> and
+<a href="/payment-instruments/card">Credit Payments</a> (née “Credit Account”) sections have received a few
 updates, inching them all closer to review.</li>
 </ul>
+    
+      <h2 id="09-jan-2020">
+        
+        
+          09 Jan 2020 <a href="#09-jan-2020" class="header-anchor"></a>
+        
+        
+      </h2>
     
       <h3 id="version-14">
         
@@ -840,7 +1992,7 @@ updates, inching them all closer to review.</li>
       </h3>
 
 <ul>
-  <li>Updated <a href="/payments/swish/direct">Swish Redirect</a> and <a href="/payments/swish/direct">Swish Direct</a>
+  <li>Updated <a href="/payment-instruments/swish/direct">Swish Redirect</a> and <a href="/payment-instruments/swish/direct">Swish Direct</a>
 sections in preparations for review and the transition from PayEx Developer
 Portal.</li>
   <li>Added <a href="/resources/data-protection">Data Protection</a> section.</li>
@@ -848,16 +2000,16 @@ Portal.</li>
   <li>Added <a href="/resources/terminology">Terminology page</a>.</li>
   <li>Clarified what the <code class="language-html highlighter-rouge">awaitingActivity</code> state means for different payment
 instruments.</li>
-  <li>Removed erroneous <code class="language-html highlighter-rouge">noCVC</code> in examples for <a href="/payments/card/other-features#one-click-payments">One-Click Card Payments</a>
+  <li>Removed erroneous <code class="language-html highlighter-rouge">noCVC</code> in examples for <a href="/payment-instruments/card/other-features#one-click-payments">One-Click Card Payments</a>
 section.</li>
   <li>Added description for the <code class="language-html highlighter-rouge">onBillingDetailsAvailable</code> event in the
 <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">Checkin Front End section</a>.</li>
 </ul>
     
-      <h2 id="december-2019">
+      <h2 id="22-dec-2019">
         
         
-          December 2019 <a href="#december-2019" class="header-anchor"></a>
+          22 Dec 2019 <a href="#22-dec-2019" class="header-anchor"></a>
         
         
       </h2>
@@ -878,12 +2030,12 @@ specify supported countries for shipment in a new input parameter,
 Updated API specification can be found <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">here</a>.
 The parameters <code class="language-html highlighter-rouge">language</code> and <code class="language-html highlighter-rouge">shippingAddressRestrictedToCountryCodes</code> have replaced the former <code class="language-html highlighter-rouge">consumerCountryCode</code>.</p>
 
-<p>The parameters <code class="language-html highlighter-rouge">msisdn</code> and <code class="language-html highlighter-rouge">email</code> have been made obsolete due to GDPR rules. This information cannot be sent in without an explicit consent from the consumer.</p>
+<p>The parameters <code class="language-html highlighter-rouge">msisdn</code> and <code class="language-html highlighter-rouge">email</code> have been made obsolete due to GDPR rules. This information cannot be sent in without the explicit consent of the payer.</p>
     
-      <h2 id="november-2019">
+      <h2 id="01-nov-2019">
         
         
-          November 2019 <a href="#november-2019" class="header-anchor"></a>
+          01 Nov 2019 <a href="#01-nov-2019" class="header-anchor"></a>
         
         
       </h2>
@@ -909,8 +2061,8 @@ and its documentation can be found on <a href="/checkout">here</a>.</p>
       </h3>
 
 <p>We have added support for sending in international phone numbers in the request.
-Check our Swish documentation <a href="/payments/swish/other-features">here</a>.
-This is supported in API, and when consumer enters their phone number on the
+Check our Swish documentation <a href="/payment-instruments/swish/other-features">here</a>.
+This is supported in API, and when payer’s enter their phone number on the
 payment page.</p>
     
       <h3 id="order-items">
@@ -925,10 +2077,10 @@ payment page.</p>
 You may send up to 4 decimals. See updated documentation
 <a href="/checkout/other-features#creating-a-payment-order">here</a></p>
     
-      <h2 id="october-2019">
+      <h2 id="01-oct-2019">
         
         
-          October 2019 <a href="#october-2019" class="header-anchor"></a>
+          01 Oct 2019 <a href="#01-oct-2019" class="header-anchor"></a>
         
         
       </h2>
@@ -941,7 +2093,7 @@ You may send up to 4 decimals. See updated documentation
         
       </h3>
 
-<p>We have added the URL field called <code class="language-html highlighter-rouge">paymentUrl</code> for <a href="/payments/card/other-features#payment-url">Card
+<p>We have added the URL field called <code class="language-html highlighter-rouge">paymentUrl</code> for <a href="/payment-instruments/card/other-features#payment-url">Card
 Seamless View</a> (previously added for Vipps and Checkout), that will be used
 when the user is returned from 3rd party. The URL should represent the page in
 where the payment Seamless View was hosted originally, such as the checkout page,
@@ -952,14 +2104,14 @@ must be able to invoke the same JavaScript URL from the same Payment as the one
 that initiated the payment originally, so it should include some sort of state
 identifier in the URL. The state identifier is the ID of the order, shopping
 cart or similar that has the URL of the Payment stored. When the JavaScript is
-invoked after return of the consumer, the consumer will either be redirected to
+invoked after return of the payer, he or she will either be redirected to
 the <code class="language-html highlighter-rouge">completeUrl</code> (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.</p>
     
-      <h2 id="august-2019">
+      <h2 id="01-aug-2019">
         
         
-          August 2019 <a href="#august-2019" class="header-anchor"></a>
+          01 Aug 2019 <a href="#01-aug-2019" class="header-anchor"></a>
         
         
       </h2>
@@ -987,60 +2139,31 @@ removed from all requests as the two cannot be used simultaneously.</p>
         
       </h3>
 
-<p>For our Seamless Views (currently
-<a href="/payments/vipps/other-features#payment-url">Vipps</a>
-or in <a href="/checkout/other-features#payment-url">Checkout</a>),
-we have added a new URL field called <code class="language-html highlighter-rouge">paymentUrl</code> that will be used when
-user is returned from 3rd party. The URL should represent the page of where the
-payment hosted view was hosted originally, such as the checkout page, shopping
-cart page, or similar. Basically, <code class="language-html highlighter-rouge">paymentUrl</code> should be set to the same URL
-as that of the page where the JavaScript for the hosted payment view was added
-to in order to initiate the payment. Please note that the <code class="language-html highlighter-rouge">paymentUrl</code> must be
-able to invoke the same JavaScript URL from the same Payment or Payment Order as
-the one that initiated the payment originally, so it should include some sort of
-state identifier in the URL. The state identifier is the ID of the order,
-shopping cart or similar that has the URL of the Payment or Payment Order
-stored. When the JavaScript is invoked after return of the consumer, the
-consumer will either be redirected to the <code class="language-html highlighter-rouge">completeUrl</code>, or, if payment failed,
-see an error-message, and get the option to retry the payment.</p>
+<p>For our Seamless Views (currently <a href="/payment-instruments/vipps/other-features#payment-url">Vipps</a> or in
+<a href="/checkout/other-features#payment-url">Checkout</a>), we have added a new URL field called
+<code class="language-html highlighter-rouge">paymentUrl</code> that will be used when user is returned from 3rd party. The URL
+should represent the page of where the payment hosted view was hosted
+originally, such as the checkout page, shopping cart page, or similar.
+Basically, <code class="language-html highlighter-rouge">paymentUrl</code> should be set to the same URL as that of the page where
+the JavaScript for the hosted payment view was added to in order to initiate the
+payment. Please note that the <code class="language-html highlighter-rouge">paymentUrl</code> must be able to invoke the same
+JavaScript URL from the same Payment or Payment Order as the one that initiated
+the payment originally, so it should include some sort of state identifier in
+the URL. The state identifier is the ID of the order, shopping cart or similar
+that has the URL of the Payment or Payment Order stored. When the JavaScript is
+invoked after return of the payer, he or she will either be redirected to the
+<code class="language-html highlighter-rouge">completeUrl</code>, or, if payment failed, see an error message and get the option
+to retry the payment.</p>
 
 <p>If <code class="language-html highlighter-rouge">paymentUrl</code> is not implemented, retry of payments will not be possible in
 either individual payment instruments such as
-<a href="/payments/vipps/other-features#payment-resource">Vipps</a>
+<a href="/payment-instruments/vipps/other-features#payment-resource">Vipps</a>
 or in <a href="/checkout/other-features#payment-orders">Checkout</a>.
 It makes it more tedious to retry payment as the whole process including the
 creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.</p>
-                                    
-                                </div>
-
-                                <div class="col-2 d-none d-lg-block">
-                                    <nav class="doc-toc">
-                                        <ul>
-  <li class="toc-2"><a href="#04-sep-2020">04 Sep 2020</a></li>
-  <li class="toc-2"><a href="#28-aug-2020">28 Aug 2020</a></li>
-  <li class="toc-2"><a href="#21-aug-2020">21 Aug 2020</a></li>
-  <li class="toc-2"><a href="#17-july-2020">17 July 2020</a></li>
-  <li class="toc-2"><a href="#10-july-2020">10 July 2020</a></li>
-  <li class="toc-2"><a href="#07-july-2020">07 July 2020</a></li>
-  <li class="toc-2"><a href="#04-june-2020">04 June 2020</a></li>
-  <li class="toc-2"><a href="#29-may-2020">29 May 2020</a></li>
-  <li class="toc-2"><a href="#22-may-2020">22 May 2020</a></li>
-  <li class="toc-2"><a href="#14-may-2020">14 May 2020</a></li>
-  <li class="toc-2"><a href="#07-may-2020">07 May 2020</a></li>
-  <li class="toc-2"><a href="#april-2020">April 2020</a></li>
-  <li class="toc-2"><a href="#march-2020">March 2020</a></li>
-  <li class="toc-2"><a href="#february-2020">February 2020</a></li>
-  <li class="toc-2"><a href="#january-2020">January 2020</a></li>
-  <li class="toc-2"><a href="#december-2019">December 2019</a></li>
-  <li class="toc-2"><a href="#november-2019">November 2019</a></li>
-  <li class="toc-2"><a href="#october-2019">October 2019</a></li>
-  <li class="toc-2"><a href="#august-2019">August 2019</a></li>
-</ul>
-                                    </nav>
-                                </div>
-                            </div>
+                            </article>
                         </div>
                     </main>
                 </div>
@@ -1051,9 +2174,9 @@ integration and the payer.</p>
             </footer>
         </div>
 
-        <script src="https://design.swedbankpay.com/v/4.6.1/scripts/dg.js"></script>
+        <script src="https://design.swedbankpay.com/v/4.7.0/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
-            <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -1064,4 +2187,5 @@ integration and the payer.</p>
 </script>
 
     </body>
+
 </html>

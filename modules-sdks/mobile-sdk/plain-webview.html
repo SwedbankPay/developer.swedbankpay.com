@@ -1,219 +1,1253 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
         <meta name="application-name" content="Plain Webview">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="Plain Webview">
         <meta name="msapplication-TileColor" content="#000">
-        <meta name="msapplication-TileImage" content="https://design.swedbankpay.com/v/4.6.1/icons/mstile-144x144.png">
-        <meta property="og:type" value="website" />
-        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/plain-webview.html" />
-        <meta property="og:title" value="Plain Webview" />
-        <meta name="title" content="Plain Webview" />
-        <meta property="og:description" value="Swedbank Pay Developer Portal" />
-        <meta name="description" content="Swedbank Pay Developer Portal" />
-        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
-        <title>Plain Webview</title>
-        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.6.1/styles/dg-style.css" />
-        <link rel="stylesheet" href="/assets/css/swedbank-pay-design-guide-theme.css" />
-        <link rel="stylesheet" href="/assets/css/pygments-autumn.css" />
-        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon.ico">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.6.1/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.6.1/icons/coast-228x228.png">
+        <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+        <meta property="og:type" value="website">
+        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/plain-webview.html">
+        <meta property="og:title" value="Mobile-sdk – Plain Webview">
+        <meta name="title" content="Mobile-sdk – Plain Webview">
+        <meta property="og:description" value="Swedbank Pay Developer Portal">
+        <meta name="description" content="Swedbank Pay Developer Portal">
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
+        <title>Mobile-sdk – Plain Webview</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.7.0/styles/dg-style.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/4.7.0/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/4.7.0/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/4.7.0/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="https://design.swedbankpay.com/v/4.7.0/icons/coast-228x228.png">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Plain Webview">
-<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-167x167.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-icon-1024x1024.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-320x460.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x920.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-640x1096.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-750x1294.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1182x2208.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1242x2148.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-748x1024.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-768x1004.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1496x2048.png">
-<link rel="apple-touch-startup-image"
-    media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
-    href="https://design.swedbankpay.com/v/4.6.1/icons/apple-touch-startup-image-1536x2008.png">
+<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-1024x1024.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1182x2208.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1242x2148.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-748x1024.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-768x1004.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1496x2048.png">
+<link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1536x2008.png">
 <script src="/assets/js/mermaid.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
         <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
         <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
     </head>
 
     <body>
         <div id="designguide">
-            <header class="topbar topbar-md-wide designguide-header">
-                <button type="button" class="topbar-btn"><i class="material-icons topbar-btn-icon">menu</i></button>
-                <a href="https://developer.swedbankpay.com" class="topbar-logo"><img
-                        src="https://design.swedbankpay.com/v/4.6.1/img/swedbankpay-logo.svg" alt="logo"></a>
-                <nav class="topbar-nav">
-                    <div class="topbar-link-container">
-                        <button type="button" class="topbar-close"><i class="material-icons">close</i></button>
-
-                        
-                        
-
-                        
-
-                        <a 
-                            href="/"><span>Home</span></a>
-
-                        
-                        
-                        <a 
-                            href="/checkout/"><span>Checkout</span></a>
-                        
-                        
-                        <a 
-                            href="/payments/"><span>Payments</span></a>
-                        
-                        
-                        <a 
-                            href="/gift-cards/"><span>Gift Cards</span></a>
-                        
-                        
-                        <a 
-                            href="/resources/"><span>Resources</span></a>
-                        
-
-                        <div class="topbar-info topbar-link-right">
-                            <div class="topbar-info-contact">
-                                <a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/plain-webview.md" target="_blank"
-                                    rel="noopener noreferrer" title="Edit this page on GitHub">
-                                    <svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <title id="simpleicons-github-icon">Edit this page on GitHub</title>
-                                        <path
-                                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </header>
-
             <div class="documentation">
                 <div class="row">
-                    <div class="col-xxl-2 col-md-3">
-                        <div class="doc-sidebar">
-                            
-                            <form class="doc-search" action="/search">
-                                <input type="text" class="form-control" name="q" id="tipue_search_input"
-                                    placeholder="Search..." autocomplete="off" pattern=".{3,}"
-                                    title="At least 3 characters">
-                            </form>
-                            
-                            
-                            <nav class="documentation-nav">
-                                
-                                
-                                <div class="nav-group active">
-                                    <div class="nav-heading">
-                                        <i class="material-icons">keyboard_arrow_right</i>
-                                        <span>Mobile SDK</span>
+                    <div class="col-xxl-2 col-lg-3 pr-0">
+                        <div class="sidebar dg-sidebar">
+                            <nav class="sidebar-nav">
+                                <a href="/" class="sidebar-header">
+                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo">
+                                    <div class="sidebar-header-text">
+                                        <span>{</span>developer portal<span>}</span>
                                     </div>
+                                </a>
 
-                                    
-                                    <ul>
-                                        
-                                        
-                                        <li><a  href="/modules-sdks/mobile-sdk/"><span>Introduction</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend"><span>Merchant Backend</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/modules-sdks/mobile-sdk/merchant-backend-sample-code"><span>Merchant Backend Sample Code</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/modules-sdks/mobile-sdk/android"><span>Android</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/modules-sdks/mobile-sdk/ios"><span>iOS</span></a></li>
-                                        
-                                        
-                                        <li><a  href="/modules-sdks/mobile-sdk/process-diagrams"><span>Process Diagrams</span></a></li>
-                                        
-                                        
-                                        <li><a  aria-current="page" class="active"
-                                                 href="/modules-sdks/mobile-sdk/plain-webview"><span>Plain Webview</span></a></li>
-                                        
-                                    </ul>
-                                    
-                                </div>
-                                
+                                <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Checkout</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/checkout/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/checkout/#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/checkout/#languages">Languages</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/checkin">Checkin</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">Step 1: Initiate session for consumer identification</a></li>
+<li class="nav-leaf"><a href="/checkout/checkin#step-2-display-swedbank-pay-checkin-module">Step 2: Display Swedbank Pay Checkin module</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/payment-menu">Payment Menu</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/payment-menu#step-3-create-payment-order">Step 3: Create Payment Order</a></li>
+<li class="nav-leaf"><a href="/checkout/payment-menu#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout/payment-menu#step-4-display-the-payment-menu">Step 4: Display the Payment Menu</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/after-payment#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/checkout/after-payment#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout/after-payment#reversal">Reversal</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout/other-features#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payment-order-state">Payment Order State</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#recurring-payments">Recurring Payments</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#purchase-payments">Purchase Payments</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#verify-payments">Verify Payments</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payments-resource">Payments Resource</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#custom-logo">Custom Logo</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#checkin-events">Checkin Events</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payment-menu-events">Payment Menu Events</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delegated-strong-consumer-authentication">Delegated Strong Consumer Authentication</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#updating-payment-menu">Updating Payment Menu</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Payment Instruments</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/#platform-options">Platform options</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/#the-fundamentals">The Fundamentals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/#the-payment-object">The Payment Object</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/">Card</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/card/#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#intent">Intent</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#purchase-flow">Purchase Flow</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#step-1-create-payment">Step 1: Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#purchase-flow">Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/direct">Direct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/direct#payment-flow">Payment flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#step-2a-create-authorization-without-3-d-secure-authentication">Step 2a: Create authorization without 3-D Secure authentication</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#step-2b-create-authorization-with-3-d-secure-authentication">Step 2b: Create authorization with 3-D Secure authentication</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/direct#options-after-posting-a-purchase-payment">Options after posting a purchase payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/capture#capture">Capture</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/mobile-card-payments">Mobile</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#card-payments-in-mobile-apps">Card Payments in Mobile Apps</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#api-requests-for-payments">API Requests for Payments</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#purchase-flow-mobile">Purchase flow mobile</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#remove-payment-token">Remove payment token</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#purchase">Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payout">Payout</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#verify">Verify</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#one-click-payments">One-Click Payments</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#card-authorization-transaction">Card authorization transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#moto">MOTO</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#transaction-on-file">Transaction on file</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/">Invoice</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#api-requests">API Requests</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#invoice-flow">Invoice flow</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#step-1-create-a-payment">Step 1: Create a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#invoice-flow">Invoice flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#options-after-posting-a-payment">Options after posting a payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-1-create-the-payment">Step 1: Create the payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#purchase-flow">Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/direct">Direct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-direct-implementation-flow">Invoice Direct implementation flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-2-get-approvedlegaladdress-confirmation">Step 2: Get approvedLegalAddress confirmation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-3-complete-a-payment">Step 3: Complete a Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-flow">Invoice flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#options-after-posting-a-purchase-payment">Options after posting a purchase payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversals">Reversals</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#api-requests">API requests</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#financing-consumer">Financing Consumer</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/">Swish</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/swish/#payment-flow">Payment Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#good-to-know">Good To Know</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#languages">Languages</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/direct">Direct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/direct#payment-flow">Payment Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-2a-create-e-commerce-sale-transaction">Step 2a: Create E-Commerce Sale Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#e-commerce-purchase-flow">E-Commerce Purchase Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction">Step 2b: Create M-Commerce Sale Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-3-get-the-payment-status">Step 3: Get the payment status</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#m-commerce-purchase-flow">M-Commerce Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#redirect-purchase-flow">Redirect Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#swish-seamless-view-integration-flow">Swish Seamless View integration flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-2-display-the-payment-window">Step 2: Display the Payment Window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#seamless-view-purchase-flow">Seamless View Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#swish-transactions">Swish transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#sales">Sales</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#recurring">Recurring</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/swish/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/">Vipps</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#purchase-flow">Purchase flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#good-to-know">Good To Know</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#languages">Languages</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-2-authorization">Step 2: Authorization</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-3-get-the-transaction-state">Step 3: Get the transaction state</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#vipps-redirect-integration-flow">Vipps Redirect integration flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-2-display-the-payment-window">Step 2: Display the payment window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#vipps-seamless-view-integration-flow">Vipps Seamless View integration flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/capture#capture">Capture</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#vipps-transactions">Vipps transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#authorizations">Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#create-cancellation-transaction">Create cancellation transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort">Abort</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/vipps/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference-1">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#seamless-view-events">Seamless View Events</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/">MobilePay Online</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#purchase-flow">Purchase flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#good-to-know">Good To Know</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#payment-availability">Payment availability</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#mobilepay-online-redirect-integration-flow">MobilePay Online redirect integration flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get the transaction status</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#purchase-flow">Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-sequence">Cancel Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#create-reversal-transaction">Create reversal transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#abort">Abort</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#purchase">Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#operations-1">Operations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#mobilepay-online-transactions">MobilePay Online transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#authorizations">Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#captures">Captures</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#capture-sequence">Capture Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancel-sequence">Cancel Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-link">Payment Link</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#prices">Prices</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#problems">Problems</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/">Trustly</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#payment-type">Payment Type</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#languages">Languages</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#banks">Banks</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/redirect">Redirect</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#step-1-create-a-payment">Step 1: Create a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#trustly-flow">Trustly flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#options-after-posting-a-payment">Options after posting a payment</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-1-create-the-payment">Step 1: Create the payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#purchase-flow">Purchase Flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/after-payment">After Payment</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversals">Reversals</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/trustly/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payment-resource">Payment Resource</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payment-and-transaction-states">Payment And Transaction States</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payment-state">Payment State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#completeurl">CompleteUrl</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#description">Description</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/other-features#seamless-view-events">Seamless View Events</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/payment-link">Payment Link</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/payment-link">Payment Link</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Gift Cards</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/gift-cards/#overview">Overview</a></li>
+<li class="nav-leaf"><a href="/gift-cards/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/gift-cards/#implementation">Implementation</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/operations">Operations</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/operations#gift-card-resource">Gift card resource</a></li>
+<li class="nav-leaf"><a href="/gift-cards/operations#get-new-gift-card">Get New Gift Card</a></li>
+<li class="nav-leaf"><a href="/gift-cards/operations#pre-deposit">Pre Deposit</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/security">Security</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/security#oauth2">OAuth2</a></li>
+<li class="nav-leaf"><a href="/gift-cards/security#hmac">HMAC</a></li>
+<li class="nav-leaf"><a href="/gift-cards/security#security-documentation">Security Documentation</a></li>
+<li class="nav-leaf"><a href="/gift-cards/security#test-client">Test client</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/test-client">Test Client</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/test-client#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#project-setup">Project setup</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#first-app-run">First App run</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#testing-application">Testing application</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#build-docker-image">Build docker image</a></li>
+<li class="nav-leaf"><a href="/gift-cards/test-client#deploy-to-local-docker">Deploy to local docker</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/gift-cards/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/gift-cards/other-features#purchase">Purchase</a></li>
+<li class="nav-leaf"><a href="/gift-cards/other-features#deposit">Deposit</a></li>
+<li class="nav-leaf"><a href="/gift-cards/other-features#balance">Balance</a></li>
+<li class="nav-leaf"><a href="/gift-cards/other-features#authentication">Authentication</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group active">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Modules &amp; SDKs</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/modules-sdks/#official-modules">Official Modules</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/#official-sdks">Official SDKs</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/#official-libraries">Official Libraries</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup active">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/">Mobile SDK</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/#prerequisites">Prerequisites</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/#introduction">Introduction</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/merchant-backend-sample-code">Merchant Backend Sample Code</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-sample-code">Merchant Backend Sample Code</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/android">Android</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/ios">iOS</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup active">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/process-diagrams">Process Diagrams</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#initialization">Initialization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#discover-endpoints">Discover Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Resources</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/resources/#test-data">Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/#demoshop">Demoshop</a></li>
+<li class="nav-leaf"><a href="/resources/#open-source-development-guidelines">Open Source Development Guidelines</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/demoshop">Demoshop</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/resources/demoshop">Demoshop</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/public-migration-key">Public Migration Key</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/resources/public-migration-key">Public Migration Key</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/terminology">Terminology</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/resources/terminology">Terminology</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/data-protection">Data Protection</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/data-protection#paymentorder-consumer-data">Paymentorder consumer data</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/">Open Source Development Guidelines</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/">Introduction</a>
+        </div>
+        <ul class="nav-ul">
+<li class="nav-leaf"><a href="/resources/development-guidelines/#principles">Principles</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#licensing">Licensing</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#copyright">Copyright</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#how-to-contribute">How to Contribute</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#code-of-conduct">Code of Conduct</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/#release-management">Release Management</a></li>
+</ul>
+      </li>
+        <li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/code-of-conduct">Code Of Conduct</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/code-of-conduct#contributor-code-of-conduct">Contributor Code of Conduct</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/contributing">Contributing</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/contributing#how-to-contribute">How to contribute</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/contributing#getting-started">Getting Started</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/contributing#making-changes">Making Changes</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/good-commit-practice">Good Commit Practice</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#executive-summary">Executive Summary</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#structural-split-of-changes">Structural split of changes</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#things-to-avoid-when-creating-commits">Things to avoid when creating commits</a></li>
+<li class="nav-leaf"><a href="/resources/development-guidelines/good-commit-practice#information-in-commit-messages">Information in commit messages</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/development-guidelines/license">License</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/development-guidelines/license#licensing">Licensing</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/release-notes">Release Notes</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#21-aug-2020">21 Aug 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#17-jul-2020">17 Jul 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#10-jul-2020">10 Jul 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#07-jul-2020">07 Jul 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#04-jun-2020">04 Jun 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#29-may-2020">29 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-may-2020">22 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#14-may-2020">14 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#07-may-2020">07 May 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-apr-2020">22 Apr 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#15-apr-2020">15 Apr 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#31-mar-2020">31 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#18-mar-2020">18 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#04-mar-2020">04 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-mar-2020">03 Mar 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#27-feb-2020">27 Feb 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#7-feb-2020">7 Feb 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#6-feb-2020">6 Feb 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#29-jan-2020">29 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#27-jan-2020">27 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#16-jan-2020">16 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#09-jan-2020">09 Jan 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-dec-2019">22 Dec 2019</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-nov-2019">01 Nov 2019</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-oct-2019">01 Oct 2019</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-aug-2019">01 Aug 2019</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/resources/test-data">Test Data</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/resources/test-data#swedbank-pay-checkout-test-data">Swedbank Pay Checkout Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#credit-card-test-data">Credit Card Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#failure-testing">Failure Testing</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#invoice-test-data">Invoice Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#invoice-service-test-data">Invoice Service Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#vipps-test-data">Vipps Test Data</a></li>
+<li class="nav-leaf"><a href="/resources/test-data#swish-test-data">Swish Test Data</a></li>
+        
+      </ul>
+      </li>
+      </ul>
+      </li>
+</ul>
                             </nav>
-                            
                         </div>
                     </div>
 
-                    <main class="doc-view col-xxl-10 col-md-9">
-                        <div class="doc-container">
-                            <h1>Plain Webview</h1>
-                            <div class="row">
-                                <div class="doc-body col-lg-10">
-                                    
-                                    <div class="alert alert-complex alert-warning"><header class="alert-header">
-            
-                <i class="material-icons alert-icon">warning</i>
+                    <main class="doc-view col-xxl-10 col-lg-9">
+                        
+                            
+
+
+
+
+
+<div class="title-header">
+    <div class="title-header-container max-width">
+        
+            <h4>Mobile SDK</h4>
+        
+
+        <h1>Plain Webview</h1>
+
+        
+            <div class="title-header-estimated-read">
+                <i class="material-icons">schedule</i>
+                30 min read
+            </div>
+        
+
+        
+            <p></p>
+<p>The <strong>Swedbank Pay Mobile SDK</strong> aims to provide an easy way of integrating
+Swedbank Pay Checkout into a mobile application.
+It is, however, an opinionated library, and in particular is has no support
+for Swedbank Pay Payments at this point.
+Experience from developing the SDK may still be valuable for integrators
+wishing to show Payments pages in a Web View inside a mobile application.
+This page serves as a repository of that experience.</p>
+
+        
+    </div>
+</div>
+
+                        
+                        <div class="doc-container normal-padding max-width
+                            ">
+                            <article>
+                                <div class="alert alert-complex alert-warning">
+<header class="alert-header">
+        
+        <i class="material-icons alert-icon">warning</i>
       <h3>
         
         
           Unsupported
         
         
-      </header>
+      </h3></header>
     
 
     
-        
-            <div class="alert-body">
-                <p>This page is prodived for informational purposes only,
+    
+    <div class="alert-body">
+        <p>This page is prodived for informational purposes only,
 and is not part of the Mobile SDK documentation proper.</p>
-            </div>
-        
+    </div>
     
-</div>
-
-<div class="jumbotron">
-    <p>The <strong>Swedbank Pay Mobile SDK</strong> aims to provide an easy way of integrating Swedbank Pay Checkout into a mobile application. It is, however, an opinionated library, and in particular is has no support for Swedbank Pay Payments at this point. Experience from developing the SDK may still be valuable for integrators wishing to show Payments pages in a Web View inside a mobile application. This page serves as a repository of that experience.</p>
-
+    
 </div>
     
       <h2 id="the-mobile-sdk-and-you">
@@ -241,15 +1275,23 @@ and is not part of the Mobile SDK documentation proper.</p>
 <p>Let us assume that the urls of the payment are as follows:</p>
 
 <ul>
-  <li><code class="language-html highlighter-rouge">https://example.com/perform-payment</code> is the page containing the Payment Menu or Payment Seamless View, i.e. the <code class="language-html highlighter-rouge">paymentUrl</code></li>
-  <li><code class="language-html highlighter-rouge">https://example.com/payment-completed</code> is the <code class="language-html highlighter-rouge">completeUrl</code></li>
-  <li><code class="language-html highlighter-rouge">https://example.com/payment-canceled</code> is the <code class="language-html highlighter-rouge">cancelUrl</code></li>
+  <li>
+<code class="language-html highlighter-rouge">https://example.com/perform-payment</code> is the page containing the Payment Menu or Payment Seamless View, i.e. the <code class="language-html highlighter-rouge">paymentUrl</code>
+</li>
+  <li>
+<code class="language-html highlighter-rouge">https://example.com/payment-completed</code> is the <code class="language-html highlighter-rouge">completeUrl</code>
+</li>
+  <li>
+<code class="language-html highlighter-rouge">https://example.com/payment-canceled</code> is the <code class="language-html highlighter-rouge">cancelUrl</code>
+</li>
 </ul>
 
 <p>Swedbank Pay payments use JavaScript, so that needs to be enabled:</p>
 
-<p class="code-header"><strong>iOS</strong></p>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>iOS</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -260,7 +1302,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 9
 10
 11
-</pre></td><td class="rouge-code"><pre>    <span class="c1">// WKPreferences.javaScriptEnabled is true by default,</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="c1">// WKPreferences.javaScriptEnabled is true by default,</span>
     <span class="c1">// so usually there is no need to to do this.</span>
     <span class="c1">// Other properties of WKWebViewConfiguration will be</span>
     <span class="c1">// needed for later steps, though, so it is good to have</span>
@@ -271,45 +1314,62 @@ and is not part of the Mobile SDK documentation proper.</p>
     <span class="c1">// Note: You can only set a configuration by using this initializer.</span>
     <span class="c1">// You cannot set a configuration in Interface Builder.</span>
     <span class="k">let</span> <span class="nv">webView</span> <span class="o">=</span> <span class="kt">WKWebView</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="o">.</span><span class="n">zero</span><span class="p">,</span> <span class="nv">configuration</span><span class="p">:</span> <span class="n">configuration</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
-<p class="code-header"><strong>Android</strong></p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>Android</strong></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-</pre></td><td class="rouge-code"><pre>    <span class="kd">val</span> <span class="py">webView</span> <span class="p">=</span> <span class="nc">WebView</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="c1">// or get it from a layout</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="kd">val</span> <span class="py">webView</span> <span class="p">=</span> <span class="nc">WebView</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="c1">// or get it from a layout</span>
 
     <span class="c1">// WebSettings.javaScriptEnabled is false by default,</span>
     <span class="c1">// so failing to do this will result in the payment page not working.</span>
     <span class="c1">// Setting javaScriptEnabled to true causes a linter warning,</span>
     <span class="c1">// which can be suppressed with an annotation.</span>
     <span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">javaScriptEnabled</span> <span class="p">=</span> <span class="k">true</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
 <p>Some pages use the DOM Storage API, which must be enabled separately on Android:</p>
 
-<p class="code-header"><strong>Android</strong></p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">domStorageEnabled</span> <span class="p">=</span> <span class="k">true</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<p class="code-view-header"><strong>Android</strong></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="n">settings</span><span class="p">.</span><span class="n">domStorageEnabled</span> <span class="p">=</span> <span class="k">true</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
 <p>With this setup, you can load to the web view the page that shows the Payment Menu or the Payment Seamless View, and see what happens. You should be able to see the Swedbank Pay payment interface, and in many cases also complete a payment. It is not unlikely, though, that some payment methods will not work as expected. Also, you will be more or less stuck after the payment is complete.</p>
 
-<p class="code-header"><strong>iOS</strong></p>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre>    <span class="k">let</span> <span class="nv">paymentUrl</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/perform-payment"</span><span class="p">)</span><span class="o">!</span>
-    <span class="n">webView</span><span class="o">.</span><span class="nf">load</span><span class="p">(</span><span class="kt">URLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">paymentUrl</span><span class="p">))</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<p class="code-view-header"><strong>iOS</strong></p>
 
-<p class="code-header"><strong>Android</strong></p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="nf">loadUrl</span><span class="p">(</span><span class="s">"https://example.com/perform-payment"</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre>    <span class="k">let</span> <span class="nv">paymentUrl</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://example.com/perform-payment"</span><span class="p">)</span><span class="o">!</span>
+    <span class="n">webView</span><span class="o">.</span><span class="nf">load</span><span class="p">(</span><span class="kt">URLRequest</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">paymentUrl</span><span class="p">))</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p class="code-view-header"><strong>Android</strong></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="nf">loadUrl</span><span class="p">(</span><span class="s">"https://example.com/perform-payment"</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
     
       <h2 id="completion">
         
@@ -331,35 +1391,49 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <p>The iOS <code class="language-html highlighter-rouge">WKNavigationDelegate</code> protocol and Android <code class="language-html highlighter-rouge">WebViewClient</code> class can be used to listen for navigations, and change their behaviour.</p>
 
-<p class="code-header"><strong>iOS</strong></p>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>iOS</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre>    <span class="c1">// This example uses Self as the delegate.</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="c1">// This example uses Self as the delegate.</span>
     <span class="c1">// It could be a separate object also.</span>
     <span class="n">webView</span><span class="o">.</span><span class="n">navigationDelegate</span> <span class="o">=</span> <span class="k">self</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre>    <span class="kd">extension</span> <span class="kt">MyClass</span> <span class="p">:</span> <span class="kt">WKNavigationDelegate</span> <span class="p">{</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="kd">extension</span> <span class="kt">MyClass</span> <span class="p">:</span> <span class="kt">WKNavigationDelegate</span> <span class="p">{</span>
         <span class="c1">// WKNavigationDelegate methods</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
-<p class="code-header"><strong>Android</strong></p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>Android</strong></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
-</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="n">webViewClient</span> <span class="p">=</span> <span class="kd">object</span> <span class="err">: </span><span class="nc">WebViewClient</span><span class="p">()</span> <span class="p">{</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="n">webViewClient</span> <span class="p">=</span> <span class="kd">object</span> <span class="err">: </span><span class="nc">WebViewClient</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// WebViewClient methods</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
 <p>In the simplest case you could listen for a navigation to the <code class="language-html highlighter-rouge">completeUrl</code> or <code class="language-html highlighter-rouge">cancelUrl</code>, and intercept it.</p>
 
-<p class="code-header"><strong>iOS</strong></p>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>iOS</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -377,7 +1451,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 16
 17
 18
-</pre></td><td class="rouge-code"><pre>    <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
         <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span>
         <span class="n">decidePolicyFor</span> <span class="nv">navigationAction</span><span class="p">:</span> <span class="kt">WKNavigationAction</span><span class="p">,</span>
         <span class="nv">decisionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">WKNavigationActionPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
@@ -395,10 +1470,13 @@ and is not part of the Mobile SDK documentation proper.</p>
             <span class="nf">decisionHandler</span><span class="p">(</span><span class="o">.</span><span class="n">allow</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
-<p class="code-header"><strong>Android</strong></p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>Android</strong></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -416,7 +1494,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 16
 17
 18
-</pre></td><td class="rouge-code"><pre>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOverrideUrlLoading</span><span class="p">(</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOverrideUrlLoading</span><span class="p">(</span>
         <span class="n">view</span><span class="p">:</span> <span class="nc">WebView</span><span class="p">?,</span>
         <span class="n">url</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span>
     <span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
@@ -434,7 +1513,8 @@ and is not part of the Mobile SDK documentation proper.</p>
             <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">false</span>
         <span class="p">}</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
 <p>If your <code class="language-html highlighter-rouge">completeUrl</code>, or <code class="language-html highlighter-rouge">cancelUrl</code> for that matter, do some processing and redirect further, you can adapt these patterns to listen to your custom urls instead.</p>
     
@@ -458,8 +1538,10 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <p>On iOS, JavaScript interfaces are added through the <code class="language-html highlighter-rouge">WKUserContentController</code> of the <code class="language-html highlighter-rouge">WKWebView</code>. The <code class="language-html highlighter-rouge">WKUserContentController</code> is set by the <code class="language-html highlighter-rouge">WKWebViewConfiguration</code> used when creating the <code class="language-html highlighter-rouge">WKWebView</code>; you cannot change the <code class="language-html highlighter-rouge">WKUserContentController</code> of a <code class="language-html highlighter-rouge">WKWebView</code>. You can, however, modify the <code class="language-html highlighter-rouge">WKUserContentController</code> of a live <code class="language-html highlighter-rouge">WKWebView</code>, if you want more fine-grained control on which interfaces are exposed at what time.</p>
 
-<p class="code-header"><strong>iOS</strong></p>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>iOS</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -470,7 +1552,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 9
 10
 11
-</pre></td><td class="rouge-code"><pre>    <span class="k">let</span> <span class="nv">userContentController</span> <span class="o">=</span> <span class="n">webView</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="k">let</span> <span class="nv">userContentController</span> <span class="o">=</span> <span class="n">webView</span>
         <span class="o">.</span><span class="n">configuration</span>
         <span class="o">.</span><span class="n">userContentController</span>
     <span class="c1">// Alternatively, add the script message handler(s)</span>
@@ -481,8 +1564,11 @@ and is not part of the Mobile SDK documentation proper.</p>
     <span class="c1">// It could be a separate object also.</span>
     <span class="n">userContentController</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"completed"</span><span class="p">)</span>
     <span class="n">userContentController</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"canceled"</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -498,7 +1584,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 14
 15
 16
-</pre></td><td class="rouge-code"><pre>    <span class="kd">extension</span> <span class="kt">MyClass</span> <span class="p">:</span> <span class="kt">WKScriptMessageHandler</span> <span class="p">{</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="kd">extension</span> <span class="kt">MyClass</span> <span class="p">:</span> <span class="kt">WKScriptMessageHandler</span> <span class="p">{</span>
         <span class="kd">func</span> <span class="nf">userContentController</span><span class="p">(</span>
             <span class="n">_</span> <span class="nv">userContentController</span><span class="p">:</span> <span class="kt">WKUserContentController</span><span class="p">,</span>
             <span class="n">didReceive</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">WKScriptMessage</span>
@@ -514,16 +1601,24 @@ and is not part of the Mobile SDK documentation proper.</p>
             <span class="c1">// the argument of the call is available at message.body</span>
         <span class="p">}</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
 <p>On iOS, the interfaces added by <code class="language-html highlighter-rouge">WKUserContentController.add(_:name:)</code> are exposed in JavaScript as <code class="language-html highlighter-rouge">window.webkit.messageHandlers.<span class="nt">&lt;name&gt;</span>.postMessage(body)</code>, so your <code class="language-html highlighter-rouge">completeUrl</code> and <code class="language-html highlighter-rouge">cancelUrl</code> pages would need to eventually execute code like</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>    <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">completed</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>    <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">canceled</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">()</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre>    <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">completed</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre>    <span class="nb">window</span><span class="p">.</span><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">canceled</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">()</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
     
       <h4 id="javascript-hooks-android">
         
@@ -535,39 +1630,45 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <div class="alert alert-complex alert-warning">
     <header class="alert-header">
-            
-                <i class="material-icons alert-icon">warning</i>
+        
+        <i class="material-icons alert-icon">warning</i>
       <h3>
         
         
           Security Warning
         
         
-      </header>
+      </h3></header>
     
 
     
-        
-            <div class="alert-body">
-                <p>Never use <code class="language-html highlighter-rouge">WebView.addJavascriptInterface</code> on Android versions earlier than 4.2 (<code class="language-html highlighter-rouge">Build.VERSION_CODES.JELLY_BEAN_MR1</code>)!</p>
-            </div>
-        
+    
+    <div class="alert-body">
+        <p>Never use <code class="language-html highlighter-rouge">WebView.addJavascriptInterface</code> on Android versions earlier than 4.2 (<code class="language-html highlighter-rouge">Build.VERSION_CODES.JELLY_BEAN_MR1</code>)!</p>
+    </div>
+    
     
 </div>
 
 <p>On Android, JavaScript interfaces are added by the <code class="language-html highlighter-rouge">WebView.addJavascriptInterface</code> method. Any public methods with the <code class="language-html highlighter-rouge">@JavascriptInterface</code> annotation of the passed-in object are exposed in JavaScript.</p>
 
-<p class="code-header"><strong>Android</strong></p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>Android</strong></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
-</pre></td><td class="rouge-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="nf">addJavascriptInterface</span><span class="p">(</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="n">webView</span><span class="p">.</span><span class="nf">addJavascriptInterface</span><span class="p">(</span>
         <span class="nc">MyJsInterface</span><span class="p">(),</span>
         <span class="s">"callbacks"</span>
     <span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -588,7 +1689,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 19
 20
 21
-</pre></td><td class="rouge-code"><pre>    <span class="kd">class</span> <span class="nc">MyJsInterface</span> <span class="p">{</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="kd">class</span> <span class="nc">MyJsInterface</span> <span class="p">{</span>
         <span class="c1">// IMPORTANT!</span>
         <span class="c1">// Methods annotated with @JavascriptInterface are</span>
         <span class="c1">// NOT called on the main thread. They are called on</span>
@@ -609,16 +1711,24 @@ and is not part of the Mobile SDK documentation proper.</p>
             <span class="c1">// Handle payment cancellation</span>
         <span class="p">}</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
 <p>On Android, the objects added by <code class="language-html highlighter-rouge">WebView.addJavascriptInterface</code> are exposed as globals with the specified name, and their <code class="language-html highlighter-rouge">@JavascriptInterface public</code> methods with their JVM names (N.B! Be careful not to break the JVM names with Proguard or similar). Thus, your <code class="language-html highlighter-rouge">completeUrl</code> and <code class="language-html highlighter-rouge">cancelUrl</code> pages would need to eventually execute code like</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>    <span class="nx">callbacks</span><span class="p">.</span><span class="nx">completed</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>    <span class="nx">callbacks</span><span class="p">.</span><span class="nx">canceled</span><span class="p">()</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre>    <span class="nx">callbacks</span><span class="p">.</span><span class="nx">completed</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre>    <span class="nx">callbacks</span><span class="p">.</span><span class="nx">canceled</span><span class="p">()</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
     
       <h2 id="external-applications">
         
@@ -644,8 +1754,10 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <p>You cannot query the system for an arbitrary url to see if it can be opened – this is a deliberate privacy measure. What can be done, and what also happens to be exactly what we want to do, is to attempt to open a url and receive a callback telling us whether it succeeded. Nowadays, the recommended way of opening external applications is to use Universal Links, anyway, which are, on the surface, indistiguishable from web links.</p>
 
-<p class="code-header"><strong>iOS</strong></p>
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>iOS</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -691,7 +1803,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 44
 45
 46
-</pre></td><td class="rouge-code"><pre>    <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span>
         <span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span>
         <span class="n">decidePolicyFor</span> <span class="nv">navigationAction</span><span class="p">:</span> <span class="kt">WKNavigationAction</span><span class="p">,</span>
         <span class="nv">decisionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">WKNavigationActionPolicy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
@@ -737,7 +1850,8 @@ and is not part of the Mobile SDK documentation proper.</p>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
     
       <h3 id="external-applications-android">
         
@@ -759,8 +1873,10 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <p>On Android we can, and indeed should, query the system whether it can launch Activities from arbitrary Intents. We should note, however, that an Android system is likely to have an app that accepts all http(s) url, namely the browser. Hence, we should exercise a bit of discretion when choosing to launch activities in place of web view navigations.</p>
 
-<p class="code-header"><strong>Android</strong></p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<p class="code-view-header"><strong>Android</strong></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
 3
 4
@@ -876,7 +1992,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 114
 115
 116
-</pre></td><td class="rouge-code"><pre>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOverrideUrlLoading</span><span class="p">(</span>
+</pre></td>
+<td class="code-view-code"><pre>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOverrideUrlLoading</span><span class="p">(</span>
         <span class="n">view</span><span class="p">:</span> <span class="nc">WebView</span><span class="p">?,</span>
         <span class="n">url</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span>
     <span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
@@ -992,7 +2109,8 @@ and is not part of the Mobile SDK documentation proper.</p>
         <span class="kd">val</span> <span class="py">matchCategory</span> <span class="p">=</span> <span class="n">resolveInfo</span><span class="p">.</span><span class="n">match</span> <span class="n">and</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_MASK</span>
         <span class="k">return</span> <span class="n">matchCategory</span> <span class="p">&gt;=</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_HOST</span>
     <span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
     
       <h2 id="getting-back-from-external-applications">
         
@@ -1017,7 +2135,8 @@ and is not part of the Mobile SDK documentation proper.</p>
 <ul>
   <li>On iOS, the system will show a confirmation popup, which cannot be customized, before opening a custom-scheme url</li>
   <li>Related to the above, there is no way of making sure your application is the only one installed that handles the scheme</li>
-  <li><code class="language-html highlighter-rouge">paymentUrl</code> is passed to systems outside Swedbank Pay; systems that may only be compatible with http(s) urls</li>
+  <li>
+<code class="language-html highlighter-rouge">paymentUrl</code> is passed to systems outside Swedbank Pay; systems that may only be compatible with http(s) urls</li>
 </ul>
 
 <p>It is somewhat of a Quick and Dirty solution. We do not recommend this approach.</p>
@@ -1056,8 +2175,10 @@ and is not part of the Mobile SDK documentation proper.</p>
 <p>Because of the latter, when an external application opens <code class="language-html highlighter-rouge">paymentUrl</code>, there are three things that can happen:</p>
 
 <ul>
-  <li><code class="language-html highlighter-rouge">paymentUrl</code> is opened in your app</li>
-  <li><code class="language-html highlighter-rouge">paymentUrl</code> is opened in another app, e.g. Chrome</li>
+  <li>
+<code class="language-html highlighter-rouge">paymentUrl</code> is opened in your app</li>
+  <li>
+<code class="language-html highlighter-rouge">paymentUrl</code> is opened in another app, e.g. Chrome</li>
   <li>an app chooser is shown</li>
 </ul>
 
@@ -1094,19 +2215,27 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <p>For reference, the way the SDK handles <code class="language-html highlighter-rouge">paymentUrl</code>s on Android looks like this from the perspective of the backend:</p>
 
-<p class="code-header"><strong>Request</strong></p>
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="err">    GET /perform-payment
-    Host: example.com
-</span></pre></td></tr></tbody></table></code></pre></div></div>
+<p class="code-view-header"><strong>Request</strong></p>
 
-<p class="code-header"><strong>Response</strong></p>
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="err">    </span><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently</span>
+</pre></td>
+<td class="code-view-code"><pre><span class="err">    GET /perform-payment
+    Host: example.com
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p class="code-view-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="err">    </span><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently</span>
 <span class="s">    Location: intent://example.com/perform-payment#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=com.example.app;end;`;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
 
 <p>It uses an action defined by the SDK, and the package name of the containing application, making sure the intent is routed to the correct application, and to the correct SDK component. Note that the uri of the resulting intent is the <code class="language-html highlighter-rouge">paymentUrl</code>.</p>
     
@@ -1126,29 +2255,14 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <nav class="iterator d-flex">
     
-        <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="process-diagrams">
-            Back: Process Diagrams
-        </a>
+    <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="process-diagrams">
+        Process Diagrams
+    </a>
     
 
     
 </nav>
-                                    
-                                </div>
-
-                                <div class="col-2 d-none d-lg-block">
-                                    <nav class="doc-toc">
-                                        <ul>
-  <li class="toc-2"><a href="#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
-  <li class="toc-2"><a href="#basics">Basics</a></li>
-  <li class="toc-2"><a href="#completion">Completion</a></li>
-  <li class="toc-2"><a href="#external-applications">External Applications</a></li>
-  <li class="toc-2"><a href="#getting-back-from-external-applications">Getting Back from External Applications</a></li>
-  <li class="toc-2"><a href="#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
-</ul>
-                                    </nav>
-                                </div>
-                            </div>
+                            </article>
                         </div>
                     </main>
                 </div>
@@ -1159,9 +2273,9 @@ and is not part of the Mobile SDK documentation proper.</p>
             </footer>
         </div>
 
-        <script src="https://design.swedbankpay.com/v/4.6.1/scripts/dg.js"></script>
+        <script src="https://design.swedbankpay.com/v/4.7.0/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
-            <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -1172,4 +2286,5 @@ and is not part of the Mobile SDK documentation proper.</p>
 </script>
 
     </body>
+
 </html>
