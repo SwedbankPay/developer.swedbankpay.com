@@ -1,29 +1,15 @@
 ---
-title: Swedbank Pay Checkout – Introduction
-sidebar:
-  navigation:
-  - title: Checkout
-    items:
-    - url: /checkout/
-      title: Introduction
-    - url: /checkout/checkin
-      title: Checkin
-    - url: /checkout/payment-menu
-      title: Payment Menu
-    - url: /checkout/capture
-      title: Capture
-    - url: /checkout/after-payment
-      title: After Payment
-    - url: /checkout/other-features
-      title: Other Features
+section: Checkout
+title: Introduction
+estimated_read: 3
+description: |
+  **Swedbank Pay Checkout** is a complete reimagination
+  of the checkout experience, integrating seamlessly into the merchant website
+  through highly customizable and flexible components.
+  Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
+  and try out Swedbank Pay Checkout for yourself!
+menu_order: 100
 ---
-
-{% include jumbotron.html body="**Swedbank Pay Checkout** is a complete reimagination
-of the checkout experience, integrating seamlessly into the merchant website
-through highly customizable and flexible components.
-
-Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-and try out Swedbank Pay Checkout for yourself!" %}
 
 Swedbank Pay Checkout allows your customers to be identified with Swedbank Pay,
 enabling existing Swedbank Pay Checkout users to pay with their favorite payment
@@ -47,15 +33,15 @@ related, but disconnected concepts: **Checkin** and **Payment Menu**. Checkin
 identifies the consumer in our Consumer API and Payment Menu authorizes the
 payment with our Payment Menu API.
 
-The next step is to **Capture** the payment. You can either capture the total 
-amount, or do a part-capture (as described under 
+The next step is to **Capture** the payment. You can either capture the total
+amount, or do a part-capture (as described under
 [After Payment][after-payment-capture]). Connect these steps and you have
 Swedbank Pay Checkout.
 
-While Checkin is a necessary component to store personal information and access 
+While Checkin is a necessary component to store personal information and access
 features like storing cards, it is not a mandatory step for the Checkout process
-to work. If the end user is from a country where we currently don't support 
-Checkin, or if he or she opts not to store their data, that's fine. The Payment 
+to work. If the payer is from a country where we currently don't support
+Checkin, or if he or she opts not to store their data, that's fine. The Payment
 Menu can still be used as a **guest**.
 
 Below, you will see a sequence diagram showing the sequence of a Swedbank Pay
@@ -67,78 +53,78 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 ```mermaid
 sequenceDiagram
-    participant Payer
+    participant Consumer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
     participant 3rdParty
 
         rect rgba(238, 112, 35, 0.05)
-            note left of Payer: Checkin
+            note left of Consumer: Checkin
 
-    Payer ->>+ Merchant: Start Checkin
+    Consumer ->>+ Merchant: Start Checkin
     Merchant ->>+ SwedbankPay: POST /psp/consumers
     deactivate Merchant
     SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
     deactivate SwedbankPay
-    Merchant -->>- Payer: Show Checkin on Merchant Page
+    Merchant -->>- Consumer: Show Checkin on Merchant Page
 
-    Payer ->>+ Payer: Initiate Consumer Hosted View (open iframe) ②
-    Payer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
-    deactivate Payer
-    SwedbankPay ->>- Payer: Consumer identification process
-    activate Payer
-    Payer ->>+ SwedbankPay: Consumer identification process
-    deactivate Payer
-    SwedbankPay -->>- Payer: show consumer completed iframe
-    activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified (consumerProfileRef) ④
-    deactivate Payer
+    Consumer ->>+ Consumer: Initiate Consumer Hosted View (open iframe) ②
+    Consumer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
+    deactivate Consumer
+    SwedbankPay ->>- Consumer: Consumer identification process
+    activate Consumer
+    Consumer ->>+ SwedbankPay: Consumer identification process
+    deactivate Consumer
+    SwedbankPay -->>- Consumer: show consumer completed iframe
+    activate Consumer
+    Consumer ->> Consumer: EVENT: onConsumerIdentified (consumerProfileRef) ④
+    deactivate Consumer
     end
         rect rgba(138, 205, 195, 0.1)
-            activate Payer
-            note left of Payer: Payment Menu
-            Payer ->>+ Merchant: Initiate Purchase
-            deactivate Payer
+            activate Consumer
+            note left of Consumer: Payment Menu
+            Consumer ->>+ Merchant: Initiate Purchase
+            deactivate Consumer
             Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, consumerProfileRef)
             deactivate Merchant
             SwedbankPay -->>+ Merchant: rel:view-paymentorder
             deactivate SwedbankPay
-            Merchant -->>- Payer: Display Payment Menu on Merchant Page
-            activate Payer
-            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
-            Payer -->>+ SwedbankPay: Show Payment UI page in iframe
-            deactivate Payer
-            SwedbankPay ->>+ Payer: Do payment logic
+            Merchant -->>- Consumer: Display Payment Menu on Merchant Page
+            activate Consumer
+            Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+            Consumer -->>+ SwedbankPay: Show Payment UI page in iframe
+            deactivate Consumer
+            SwedbankPay ->>+ Consumer: Do payment logic
             deactivate SwedbankPay
-            Payer ->> SwedbankPay: Do payment logic
-            deactivate Payer
+            Consumer ->> SwedbankPay: Do payment logic
+            deactivate Consumer
 
                 opt Consumer perform payment out of iFrame
-                    activate Payer
-                    Payer ->> Payer: Redirect to 3rd party
-                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
+                    activate Consumer
+                    Consumer ->> Consumer: Redirect to 3rd party
+                    Consumer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    deactivate Consumer
+                    3rdParty -->>+ Consumer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
-                    deactivate Payer
+                    Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+                    Consumer ->>+ SwedbankPay: Show Payment UI page in iframe
+                    deactivate Consumer
                 end
 
         SwedbankPay -->> Payer: Payment status
 
             alt If payment is completed
-            activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted
-            Payer ->>+ Merchant: Check payment status
-            deactivate Payer
+            activate Consumer
+            Consumer ->> Consumer: Event: onPaymentCompleted
+            Consumer ->>+ Merchant: Check payment status
+            deactivate Consumer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
             SwedbankPay ->>+ Merchant: rel: paid-paymentorder
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Payer
-            deactivate Payer
+            activate Consumer
+            deactivate Consumer
             Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
             deactivate Merchant
             SwedbankPay -->> Merchant: Payment Details
@@ -147,17 +133,17 @@ sequenceDiagram
             end
 
                 opt If payment is failed
-                activate Payer
-                Payer ->> Payer: Event: OnPaymentFailed
-                Payer ->>+ Merchant: Check payment status
-                deactivate Payer
+                activate Consumer
+                Consumer ->> Consumer: Event: OnPaymentFailed
+                Consumer ->>+ Merchant: Check payment status
+                deactivate Consumer
                 Merchant ->>+ SwedbankPay: GET {paymentorder.id}
                 deactivate Merchant
                 SwedbankPay -->>+ Merchant: rel: failed-paymentorder
                 deactivate SwedbankPay
                 opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-                activate Payer
-                deactivate Payer
+                activate Consumer
+                deactivate Consumer
                 Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
                 deactivate Merchant
                 SwedbankPay -->> Merchant: Payment Details
@@ -165,17 +151,17 @@ sequenceDiagram
                 end
                 end
         activate Merchant
-        Merchant -->>- Payer: Show Purchase complete
+        Merchant -->>- Consumer: Show Purchase complete
             opt PaymentOrder Callback (if callbackUrls is set)
-            activate Payer
-            deactivate Payer
+            activate Consumer
+            deactivate Consumer
                 SwedbankPay ->> Merchant: POST Payment Callback
             end
             end
 
     rect rgba(81,43,43,0.1)
         activate Merchant
-        note left of Payer: Capture
+        note left of Consumer: Capture
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
@@ -206,7 +192,7 @@ diagram.
 {% include languages.md api_resource="paymentorders" %}
 
 {% include iterator.html next_href="checkin"
-                         next_title="Next: Implement Checkin" %}
+                         next_title="Implement Checkin" %}
 
 [after-payment-capture]: /checkout/capture
 [https]: /home/technical-information#connection-and-protocol

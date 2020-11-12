@@ -1,18 +1,19 @@
 ## Verify
 
 The `Verify` operation lets you post verification payments, which are used to
-confirm validity of card information without reserving or charging any amount.
+confirm the validity of card information without reserving or charging any
+amount.
 
 ### Introduction to Verify
 
 This option is commonly used when initiating a subsequent
 [One-click card payment][one-click-payments] or a
 [recurring card payment][recurrence] flow - where you do not want
-to charge the consumer right away.
+to charge the payer right away.
 
 {% include alert.html type="informative" icon="info" body="
-Please note that all boolean credit card attributes involving rejection of
-certain card types are optional and requires enabling on the contract with
+Please note that all boolean credit card attributes involving the rejection of
+certain card types are optional and require enabling on the contract with
 Swedbank Pay." %}
 
 ### Verification through Swedbank Pay Payments
@@ -25,14 +26,14 @@ Swedbank Pay." %}
 *   You need to [redirect][redirect] the payer's browser to that specified URL,
     or embed the script source on your site to create a
     [Hosted View][hosted-view] in an `iframe`; so that the payer can enter the
-    credit card details in a secure Swedbank Pay hosted environment.
+    card details in a secure Swedbank Pay hosted environment.
 *   Swedbank Pay will handle 3-D Secure authentication when this is required.
 *   Swedbank Pay will redirect the payer's browser to - or display directly in
     the `iframe` - one of two specified URLs, depending on whether the payment
     session is followed through completely or cancelled beforehand.
     Please note that both a successful and rejected payment reach completion,
     in contrast to a cancelled payment.
-*   When you detect that the payer reach your completeUrl , you need to do a
+*   When you detect that the payer reach your completeUrl, you need to do a
     `GET` request to receive the state of the transaction.
 *   Finally you will make a `GET` request towards Swedbank Pay with the
     `paymentID` received in the first step, which will return the payment result
@@ -42,10 +43,11 @@ Swedbank Pay." %}
 
 ### Screenshots
 
-You will redirect the consumer/end-user to Swedbank Pay hosted pages to collect
+You will redirect the payer to Swedbank Pay hosted pages to collect
 the credit card information.
 
-![screenshot of the redirect card payment page][card-payment]{:height="500px" width="425px"}
+{:.text-center}
+![screenshot of the swedish card verification page][swedish-verify]{:height="600px" width="475px"}
 
 ### API Requests
 
@@ -59,7 +61,7 @@ Redirect flow. Adding `paymentUrl` input will generate the response meant for
 Seamless View, which does not include the `redirect-verification`. The request
 below is the Redirect option.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -103,7 +105,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -233,3 +235,4 @@ sequenceDiagram
     deactivate SwedbankPay
   end
 ```
+[swedish-verify]: /assets/img/payments/swedish-verify.png

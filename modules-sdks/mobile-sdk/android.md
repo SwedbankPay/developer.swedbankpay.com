@@ -1,23 +1,11 @@
 ---
 title: Android
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk/
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 10
+description: |
+  With a Merchant Backend in place, we can start developing a mobile application
+  with Swedbank Pay payments.
+  Let us begin with Android.
+menu_order: 1000
 ---
 {% capture disclaimer %}
 The SDK is at an early stage of development
@@ -28,8 +16,6 @@ However, if you need support, please wait for a future, stable release.
 
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
-
-{% include jumbotron.html body="With a Merchant Backend in place, we can start developing a mobile application with Swedbank Pay payments. Let us begin with Android." %}
 
 ## Installation
 
@@ -276,9 +262,9 @@ If a third party application is launched, it will signal the return to the payme
 Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugging purposes that cause third-party web pages to be opened in an external application. In that case the process continues analogously to the external application case. Using this argument should not be necessary, however. If you do find a case that does not work inside the PaymentFragment, but does work when using the browser for third-party sites, please file a bug on the Android SDK.
 
 {% include iterator.html prev_href="merchant-backend-sample-code"
-                         prev_title="Back: Merchant Backend Sample Code"
+                         prev_title="Merchant Backend Sample Code"
                          next_href="ios"
-                         next_title="Next: iOS" %}
+                         next_title="iOS" %}
 
 [dokka-pkg]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md
 [dokka-payfrag]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md

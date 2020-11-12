@@ -23,7 +23,7 @@ not need to communicate with each other directly.
 The usage of `metadata` field is shown in the abbreviated `Purchase` request
 below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -31,6 +31,7 @@ POST /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payment
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+
 {
   "payment": {
     "operation": "Purchase",
@@ -66,7 +67,7 @@ Content-Type: application/json
 | :------------------- | :-------------------------------------------------- |
 | `metadata`           | `string`, `boolean`, `integer`,`decimal`            |
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -76,12 +77,13 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
   "payment": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}",
   "metadata": {

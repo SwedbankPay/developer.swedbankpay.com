@@ -13,7 +13,7 @@ Caused By:
 -   MSISDN is invalid.
 -   Payer's MSISDN is not enrolled at Swish.
 
-{:.code-header}
+{:.code-view-header}
 Example response inputerror
 
 ```http
@@ -45,7 +45,7 @@ Caused By:
 -   Counterpart is not activated.
 -   Payee not enrolled.
 
-{:.code-header}
+{:.code-view-header}
 Example response configerror
 
 ```http
@@ -72,7 +72,7 @@ Caused By:
 -   Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
 -   Payment request not cancellable.
 
-{:.code-header}
+{:.code-view-header}
 Example response swishdeclined
 
 ```http
@@ -96,7 +96,7 @@ Caused By:
 -   Bank system processing error.
 -   Swish timed out waiting for an answer from the banks after payment was started.
 
-{:.code-header}
+{:.code-view-header}
 Example response swisherror
 
 ```http
@@ -119,7 +119,7 @@ Caused By:
 
 -   The payer's Swish is already in use.
 
-{:.code-header}
+{:.code-view-header}
 Example response swishalreadyinuse
 
 ```http
@@ -142,7 +142,7 @@ Caused By:
 
 -   Swish timed out before the payment was started.
 
-{:.code-header}
+{:.code-view-header}
 Example response swishtimeout
 
 ```http
@@ -165,7 +165,7 @@ Caused By:
 
 -   The payer cancelled BankID authorization.
 
-{:.code-header}
+{:.code-view-header}
 Example response bankidcancelled
 
 ```http
@@ -188,7 +188,7 @@ Caused By:
 
 -   The payer's BankID is already in use
 
-{:.code-header}
+{:.code-view-header}
 Example response bankidalreadyinuse
 
 ```http
@@ -211,7 +211,7 @@ Caused By:
 
 -   Something went wrong with the payer's BankID authorization.
 
-{:.code-header}
+{:.code-view-header}
 Example response bankiderror
 
 ```http
@@ -234,7 +234,7 @@ Caused By:
 
 -   The payer's social security number does not match with the one required by this payment.
 
-{:.code-header}
+{:.code-view-header}
 Example response socialsecuritynumbermismatch
 
 ```http
@@ -257,7 +257,7 @@ Caused By:
 
 -   The payer does not meet the payment's age limit.
 
-{:.code-header}
+{:.code-view-header}
 Example response paymentagelimitnotmet
 
 ```http
@@ -280,7 +280,7 @@ Caused By:
 
 -   The payer cancelled the payment in the Swish app.
 
-{:.code-header}
+{:.code-view-header}
 Example response usercancelled
 
 ```http
@@ -303,7 +303,7 @@ Caused By:
 
 -   During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
 
-{:.code-header}
+{:.code-view-header}
 Example response swishgatewaytimeout
 
 ```http
@@ -322,7 +322,7 @@ Content-Type: application/json
 
 #### `systemerror`
 
-{:.code-header}
+{:.code-view-header}
 Example response systemerror
 
 ```http

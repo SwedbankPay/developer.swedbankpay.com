@@ -26,11 +26,11 @@ When a transaction is created it will have one of three states:
 *   `Completed` - if everything went ok the transaction will follow through to
     completion.
 *   `Failed` - if the transaction has failed (i.e. a denial from the acquiring
-    bank) it is possible to retry (i.e the consumer tries using another credit
+    bank) it is possible to retry (i.e the payer tries using another
     card) up to a maximum amount of retries (in that case which the payment
     order gets the state `failed` as well).
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -40,7 +40,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -20,10 +20,10 @@ You can do this either by by setting the `generatePaymentToken` field to
 `true` (see example below) when doing a card purchase, or set the initial
 operation to [`Verify`][verify].
 
-{:.code-header}
-**`generatePaymentToken` field**
+{:.code-view-header}
+**generatePaymentToken field**
 
-```js
+```json
 {
     "generatePaymentToken": true
 }
@@ -31,13 +31,13 @@ operation to [`Verify`][verify].
 
 ### Finding paymentToken value
 
-When the initial purchase is followed through, a `paymentToken` will linked to
-the payment.  You can return the value by making a `GET` request towards payment
+When the initial purchase is successful, a `paymentToken` is linked to
+the payment.  You can return the value by sending a `GET` request towards the payment
 resource (expanding either the authorizations or verifications sub-resource),
-after the consumer successfully has completed the purchase. The two examples are
+after the payer successfully has completed the purchase. The two examples are
 provided below.
 
-{:.code-header}
+{:.code-view-header}
 **Request Towards Authorizations Resource**
 
 ```http
@@ -46,7 +46,7 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Request Towards Verifications Resource**
 
 ```http
@@ -56,17 +56,17 @@ Authorization: Bearer <AccessToken>
 ```
 
 You need to store the `paymentToken` from the response in your system and keep
-track of the corresponding consumer-ID in your system.
+track of the corresponding `payerReference` in your system.
 
 ### Returning Purchases
 
-When a known consumer (where you have attained a consumer-ID or similar) returns
-to your system, you can use the payment token, using already stored payment
-data, to initiate one-click payments. You will need to make a standard
-purchase, following the sequence as specified in the Redirect or Seamless View
-scenarios for [credit card][card] and [financing invoice][invoice]. When making
-the first `POST` request you insert the `paymentToken` field. This must be
-the `paymentToken` you received in the initial purchase, where you specified the
+When a known payer (where you have attained a `payerReference` or similar) returns to
+your system, you can use the `paymentToken`, using already stored payment data,
+to initiate one-click payments. You will need to make a standard purchase,
+following the sequence as specified in the Redirect or Seamless View scenarios
+for [credit card][card] and [financing invoice][invoice]. When creating the
+first `POST` request you insert the `paymentToken` field. This must be the
+`paymentToken` you received in the initial purchase, where you specified the
 `generatePaymentToken` to `true`.
 
 See the Other Feature sections for how to create a [card][create-card-payment]
@@ -74,7 +74,7 @@ and [invoice][create-invoice-payment] payment.
 
 Abbreviated code example:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -109,7 +109,8 @@ Content-Type: application/json
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 
-![One click payment page][one-click-image]{:height="450px" width="425px"}
+{:.text-center}
+![One click payment page][one-click-image]{:height="510px" width="475px"}
 
 ### Delete payment token
 
@@ -129,7 +130,7 @@ you use the `Delete payment token` request.
   [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se);
   and supply them with the relevant transaction reference or payment token." %}
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -150,7 +151,7 @@ TODO: Remove pipes from the above code example and add a field table
       explaining each field here.
 {% endcomment %}
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -177,10 +178,10 @@ TODO: Remove pipes from the above code example and add a field table
 {% endcomment %}
 
 -----------------------------
-[card]: /payments/card
-[invoice]: /payments/invoice
+[card]: /payment-instruments/card
+[invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
-[create-card-payment]: /payments/card/other-features#create-payment
-[create-invoice-payment]: /payments/invoice/other-features#create-payment
+[create-card-payment]: /payment-instruments/card/other-features#create-payment
+[create-invoice-payment]: /payment-instruments/invoice/other-features#create-payment
 [verify]: ./other-features#verify

@@ -4,7 +4,7 @@ If we want to reverse a previously captured amount, we need to perform
 `create-paymentorder-reversal` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -69,7 +69,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`name`                | `string`     | The name of the order item.                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`type`                | `enum`       | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `PAYMENT_FEE`, `DISCOUNT`, `VALUE_CODE` or `OTHER`. The type of the order item.                                                                                                                                                                 |
-| {% icon check %} | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w]* (a-zA-Z0-9_)`. Swedbank Pay may use this field for statistics. |
+| {% icon check %} | └─➔&nbsp;`class`               | `string`     | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w-]*`. Swedbank Pay may use this field for statistics. |
 |                  | └─➔&nbsp;`itemUrl`             | `string`     | The URL to a page that can display the purchased item, product or similar.                                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`imageUrl`            | `string`     | The URL to an image of the order item.                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`description`         | `string`     | The human readable description of the order item.                                                                                                                                                                                                                                     |
@@ -84,7 +84,7 @@ Content-Type: application/json
 
 If the reversal request succeeds, the response should be similar to the example below:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -93,7 +93,7 @@ Content-Type: application/json
 
 {
     "payment": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
-    "reversals": {
+    "reversal": {
         "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
             "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
@@ -120,8 +120,8 @@ Content-Type: application/json
 | └─➔&nbsp;`created`         | `string`     | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`         | `string`     | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | └─➔&nbsp;`type`            | `string`     | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`           | `string`     | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| └─➔&nbsp;`number`          | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| └─➔&nbsp;`state`           | `string`     | {% include field-description-state.md %}        |
+| └─➔&nbsp;`number`          | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead. |
 | └─➔&nbsp;`amount`          | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`       | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`     | `string`     | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |

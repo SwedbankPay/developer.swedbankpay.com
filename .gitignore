@@ -11,3 +11,5 @@ node_modules/
 vendor/
 commit-msg.txt
 *.generated*
+.gemrc
+.gem/credentials

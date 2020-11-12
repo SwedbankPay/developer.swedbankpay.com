@@ -4,7 +4,7 @@
    {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
         /{{ documentation_section }}/other-features#payee-reference
     {%- else -%}
-        /payments/{{ documentation_section }}/other-features#payee-reference
+        /payment-instruments/{{ documentation_section }}/other-features#payee-reference
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payee_reference -%}

@@ -15,7 +15,7 @@
 The `payeeinfo` resource contains information about the payee (i.e. a merchant,
 a corporation etc) related to a specific payment.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -25,7 +25,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -36,7 +36,7 @@ Content-Type: application/json
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo",
-        "payeeId": "{{ page.merchant_id }}"
+        "payeeId": "{{ page.merchant_id }}",
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",
         "productCategory": "EF1234",
@@ -52,7 +52,7 @@ Content-Type: application/json
 | └➔&nbsp;`id`              | `string`             | {% include field-description-id.md resource="payeeInfo" %}                                                                                                                                                                                                                        |
 | └➔&nbsp;`payeeId`         | `string`             | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay                                                                                                                                                                                              |
 | └➔&nbsp;`payeeReference`  | `string({{length}})` | {% include field-description-payee-reference.md documentation_section=documentation_section %}                                                                                                                                                                                    |
-| └➔&nbsp;`payeeName`       | `string`             | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                           |
+| └➔&nbsp;`payeeName`       | `string`             | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                           |
 | └➔&nbsp;`productCategory` | `string`             | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process. You therefore need to ensure that the value given here is valid in the settlement. |
 | └➔&nbsp;`orderReference`  | `string(50)`         | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                           |
 

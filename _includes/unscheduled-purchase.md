@@ -12,7 +12,7 @@ recurring, but occur as singular transactions. Examples of this can be car
 rental companies charging the payer's card for toll road expenses after the
 rental period.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -47,7 +47,7 @@ Content-Type: application/json
 }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

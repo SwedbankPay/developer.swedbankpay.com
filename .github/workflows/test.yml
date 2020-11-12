@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: docker login
+        run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
+
       - name: build
         run: |
           docker-compose run \
@@ -23,14 +27,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Verify build
+
+      - name: docker login
+        run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
         run: |
           docker-compose run \
             -e PAGES_REPO_NWO=${{ github.repository }} \
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
             portal build \
             --env=production \
-            --verify \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
             --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
 

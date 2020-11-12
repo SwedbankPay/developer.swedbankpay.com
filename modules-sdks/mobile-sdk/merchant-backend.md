@@ -1,23 +1,10 @@
 ---
 title: Merchant Backend
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk/
-      title: Introduction
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 20
+description: |
+  To use the **Swedbank Pay Mobile SDK**, you must have a backend server
+  hosting the Mobile SDK API.
+menu_order: 800
 ---
 
 {% capture disclaimer %}
@@ -29,8 +16,6 @@ However, if you need support, please wait for a future, stable release.
 
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
-
-{% include jumbotron.html body="To use the **Swedbank Pay Mobile SDK**, you must have a backend server hosting the Mobile SDK API." %}
 
 The Mobile SDK Merchant Backend API contains a total of five endpoints, three of which have statically defined paths. An OpenAPI specification is [available][swagger]. (It may be easier to view it in the [Swagger Editor][swagger-editor].)
 
@@ -46,15 +31,16 @@ The mobile component of the SDK allows adding your own headers to the requests i
 
 The root endpoint is used to discover the main API endpoints. The URL of the root endpoint is what is configured as the "Backend URL" in the mobile SDK component. The point of this is to not bind your service to any particular path or even domain. In most cases, however, you can serve a static response for the root endpoint, with the other endpoint urls being relative to the root endpoint. The sample implementations do this.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
+
 ```http
 GET /swedbank-pay-mobile/ HTTP/1.1
 Host: example.com
 Your-Api-Key: secretish
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -68,10 +54,10 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                 | Type     | Description                                                                  |
-| :-------------------- | :------- | :--------------------------------------------------------------------------- |
-| `consumers`           | `string` | URL of the "consumers" endpoint. Resolved against the root endpoint URL.     |
-| `paymentorders`       | `string` | URL of the "paymentorders" endpoint. Resolved against the root endpoint URL. |
+| Field           | Type     | Description                                                                  |
+| :-------------- | :------- | :--------------------------------------------------------------------------- |
+| `consumers`     | `string` | URL of the "consumers" endpoint. Resolved against the root endpoint URL.     |
+| `paymentorders` | `string` | URL of the "paymentorders" endpoint. Resolved against the root endpoint URL. |
 
 N.B! The API as specified allows assigning endpoints to hosts other that the root endpoint host. However, as this seen to be an uncommon use case, the mobile component of the SDK is, by default, configured to only accept links to the domain of the root endpoint, or its subdomains. If your configuration uses other hosts, you must manually allow them in your mobile app's configuration.
 
@@ -79,7 +65,7 @@ N.B! The API as specified allows assigning endpoints to hosts other that the roo
 
 The `consumers` endpoint is used to start a consumer identification session. It is specified as a transparent wrapper around the corresponding [Swedbank Pay API][initiate-consumer-session]. The sample implementations do superficial input validation, and forward the request to the Swedbank Pay API without further processing. You are free to override this default behaviour as you see fit in your implementation, but the default should be fine for most use-cases. The expected response is the same as the expected response to the Swedbank Pay API. The default is to pass the response from Swedbank as-is; you should probably not modify this behaviour. Specifically, the response must contain the `view-consumer-identification` operation.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -104,7 +90,7 @@ Content-Type: application/json
 
 At this point, the Merchant Backend will make a corresponding request to the Swedbank Pay API, using its secret access token.
 
-{:.code-header}
+{:.code-view-header}
 **Forwarded Request**
 
 ```http
@@ -122,7 +108,7 @@ Content-Type: application/json
 
 The Merchant Backend will then forward the response it received back to the calling app.
 
-{:.code-header}
+{:.code-view-header}
 **Response &amp; Forwarded Response**
 
 ```http
@@ -164,7 +150,7 @@ The `paymentorders` endpoint is used to create a new Payment Order. It is specif
 
 A production implementation should validate the payment order also from a business logic perspective. This is, naturally, outside the scope of the SDK, as is any other processing you may wish to perform with the payment order. The SDK expects the same form of response as returned from the Swedbank Pay API. Specifically, the response must contain the `view-paymentorder` operation.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -179,15 +165,15 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field          | Type     | Description                                                  |
-| :--------------: | :------------- | :------- | :----------------------------------------------------------- |
-| {% icon check %} | `paymentorder` | `object` | The payment order to create                                  |
+|     Required     | Field          | Type     | Description                 |
+| :--------------: | :------------- | :------- | :-------------------------- |
+| {% icon check %} | `paymentorder` | `object` | The payment order to create |
 
 *   ① The contents of `paymentorder` are omitted here. See [Checkout Documentation][create-payment-order] for details.
 
 At this point, the Merchant Backend will preform necessary processing, and make a corresponding request to the Swedbank Pay API, using its secret access token.
 
-{:.code-header}
+{:.code-view-header}
 **Forwarded Request**
 
 ```http
@@ -203,7 +189,7 @@ Content-Type: application/json
 
 The Merchant Backend will then forward the response it received back to the calling app.
 
-{:.code-header}
+{:.code-view-header}
 **Response &amp; Forwarded Response**
 
 ```http
@@ -249,7 +235,7 @@ The specified path for the Android payment url helper endpoint is `sdk-callback/
 
 The endpoint responds to a correct request with a redirect response, the redirect location being an [Intent-scheme Url][android-intent-scheme]. That url is constructed such that it uses the value of the `package` query parameter as the target package of the intent. The action of the intent shall be `com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER`; the SDK has an intent filter for this action. The uri (data) of the intent shall be the full url used in the request: if the endpoint was requested with the url.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -262,7 +248,7 @@ Host: example.com
 | :--------------: | :-------- | :------- | :--------------------------------------------------------- |
 | {% icon check %} | `package` | `string` | The package name of the Android application to redirect to |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -316,7 +302,7 @@ Let us consider the cases above, when a third-party page wants to navigate back 
 
 Case 2 causes the payment url to be opened in Safari. In this case we want to show a web page with a link back to the payment url, so the user can tap the link and it will be opened in the application, as provided by the conditions outlined above. Since this page must be served from a different domain, the payment url itself must respond with a redirect response.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -332,7 +318,7 @@ Host: example.com
 |                  | `app`      | `string`  | The application name to display in the back-link page               |
 |                  | `fallback` | `boolean` | If `true`, redirect to custom scheme rather than back-link page     |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -344,7 +330,7 @@ Location: https://payment.url.trampoline.host/payment/url/trampoline/path?target
 
 Safari will immediately follow the redirect:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -353,13 +339,13 @@ Host: payment.url.trampoline.host
 ```
 
 {:.table .table-striped}
-|     Required     | Field      | Type      | Description                                            |
-| :--------------: | :--------- | :-------- | :----------------------------------------------------- |
-| {% icon check %} | `target`   | `string`  | The link to open when the button on the page is tapped |
-| {% icon check %} | `language` | `string`  | The language to use in the page                        |
-|                  | `app`      | `string`  | The application name to display in the page            |
+|     Required     | Field      | Type     | Description                                            |
+| :--------------: | :--------- | :------- | :----------------------------------------------------- |
+| {% icon check %} | `target`   | `string` | The link to open when the button on the page is tapped |
+| {% icon check %} | `language` | `string` | The language to use in the page                        |
+|                  | `app`      | `string` | The application name to display in the page            |
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -387,7 +373,7 @@ You may note that in case 2a the application was not opened with the original pa
 
 Case 2b continues by making a request to the payment url with the added `fallback=true` parameter. The endpoint responds with a redirect similar to the Android one: the scheme is replaced with the custom scheme, and the rest of the request url is unmodified.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -395,7 +381,7 @@ GET /swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&lang
 Host: example.com
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -413,7 +399,7 @@ The iOS payment url helper endpoint must be configured as a universal link to th
 
 The example implementations assume they are rooted at host root, and serve an Apple app site association using a configurable application ID.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -421,7 +407,7 @@ GET /.well-known/apple-app-site-association HTTP/1.1
 Host: example.com
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -462,9 +448,9 @@ All these Merchant Backend problem types will have a URI in the format `https://
 Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.
 
 {% include iterator.html prev_href="./"
-                         prev_title="Back: Introduction"
+                         prev_title="Introduction"
                          next_href="merchant-backend-sample-code"
-                         next_title="Next: Merchant Backend Sample Code" %}
+                         next_title="Merchant Backend Sample Code" %}
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml

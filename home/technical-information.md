@@ -1,11 +1,8 @@
 ---
-title: Swedbank Pay Developer Portal
-sidebar:
-  navigation:
-  - title: Home
-    items:
-    - url: /home/technical-information
-      title: Technical Information
+title: Developer Portal
+estimated_read: 15
+description: |
+  General technical information that is good to know
 ---
 
 ## Connection and Protocol
@@ -28,7 +25,7 @@ SSL Labs. Support for HTTP/2 in our APIs is being investigated.
 
 All requests against the API Platform should have a few common headers:
 
-{:.code-header}
+{:.code-view-header}
 **HTTP request**
 
 ```http
@@ -47,7 +44,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
 | {% icon check %}︎ | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin].                                                                                                                                                                                                          |
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
-|                  | **`Forwarded`**     | The IP address of the consumer as well as the host and protocol of the consumer-facing web page. When the header is present, only the `for` parameter containing the consumer IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
+|                  | **`Forwarded`**     | The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the `for` parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
 
 ## URI Usage
 
@@ -110,7 +107,7 @@ In order to find which operations you can perform on a resource and the URI of
 the operation to perform, you need to retrieve the resource with an HTTP `GET`
 request first and then find the operation in question within the `operations`
 field.
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -138,7 +135,7 @@ Content-Type: application/json
  }
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -202,7 +199,7 @@ target resource including expanded properties.
 This example below add the `urls` and `authorizations` field inlines to the
 response, enabling you to access information from these sub-resources.
 
-{:.code-header}
+{:.code-view-header}
 **HTTP request with expansion**
 
 ```http
@@ -257,10 +254,10 @@ token is authorized to do, etc. A subset of possible operations are described
 below. Visit the technical reference page of a payment instrument for
 instrument specific operations.
 
-{:.code-header}
+{:.code-view-header}
 **JSON with Operations**
 
-```js
+```json
 {
     "payment": {},
     "operations": [
@@ -325,7 +322,7 @@ specified in the response by finding the appropriate operation based on its
 [rfc-7239]: https://tools.ietf.org/html/rfc7239
 [rfc-7329]: https://tools.ietf.org/html/rfc7329
 [ruby-tls]: https://stackoverflow.com/a/11059873/61818
-[settlement]: /payments/invoice/other-features#settlement-and-reconciliation
+[settlement]: /payment-instruments/invoice/other-features#settlement-and-reconciliation
 [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
 [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
 [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier

@@ -17,7 +17,7 @@ resource including expanded properties." %}
 This example below add the `urls` and `authorizations` field inlines to the
 response, enabling you to access information from these sub-resources.
 
-{:.code-header}
+{:.code-view-header}
 **Expansion**
 
 ```http

@@ -1,23 +1,7 @@
 ---
 title: iOS
-sidebar:
-  navigation:
-  - title: Mobile SDK
-    items:
-    - url: /modules-sdks/mobile-sdk
-      title: Mobile SDK
-    - url: /modules-sdks/mobile-sdk/merchant-backend
-      title: Merchant Backend
-    - url: /modules-sdks/mobile-sdk/merchant-backend-sample-code
-      title: Merchant Backend Sample Code
-    - url: /modules-sdks/mobile-sdk/android
-      title: Android
-    - url: /modules-sdks/mobile-sdk/ios
-      title: iOS
-    - url: /modules-sdks/mobile-sdk/process-diagrams
-      title: Process Diagrams
-    - url: /modules-sdks/mobile-sdk/plain-webview
-      title: Plain Webview
+estimated_read: 30
+menu_order: 1100
 ---
 
 {% capture disclaimer %}
@@ -442,9 +426,9 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="android"
-                         prev_title="Back: Android"
+                         prev_title="Android"
                          next_href="process-diagrams"
-                         next_title="Next: Process Diagrams" %}
+                         next_title="Process Diagrams" %}
 
 [cocoapods]: https://cocoapods.org/
 [cocoapods-gettingstarted]: https://guides.cocoapods.org/using/getting-started.html

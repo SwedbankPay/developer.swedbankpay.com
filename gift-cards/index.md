@@ -1,19 +1,8 @@
 ---
-title: Gift Cards – Introduction
-sidebar:
-  navigation:
-  - title: Gift Cards
-    items:
-    - url: /gift-cards/
-      title: Introduction
-    - url: /gift-cards/operations
-      title: Operations
-    - url: /gift-cards/security
-      title: Security
-    - url: /gift-cards/payment-client
-      title: Test Client
-    - url: /gift-cards/other-features
-      title: Other Features
+section: Gift Cards
+title: Introduction
+estimated_read: 1
+menu_order: 500
 ---
 
 ## Overview
@@ -35,6 +24,9 @@ documentation:
 
 *   [Test Client][test-client]
 *   [Operations][operations]
+
+{% include iterator.html next_href="operations"
+                         next_title="Operations" %}
 
 [operations]: /gift-cards/operations
 [test-client]: /gift-cards/payment-client

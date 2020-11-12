@@ -4,7 +4,7 @@ If we want to cancel up to the total authorized (not captured) amount, we need
 to perform `create-paymentorder-cancel` against the accompanying `href` returned
 in the `operations` list. See the abbreviated request and response below:
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -31,7 +31,7 @@ Content-Type: application/json
 If the cancellation request succeeds, the response should be similar to the
 example below:
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -86,7 +86,6 @@ Solutions AB) that the merchant has the contract with, and the balance report
 number. The header fields contain a summary of the transactions displayed in the
 body.
 
-{:.code-header}
 **Header fields**
 
 {:.table .table-striped}
@@ -102,7 +101,6 @@ body.
 | `FromDate`    | `ISO 8601` | The earlistest transaction date, `YYYY-MM-DD`.                             |
 | `ToDate`      | `ISO 8601` | The latest transaction date, `YYYY-MM-DD`.                                 |
 
-{:.code-header}
 **Body fields**
 
 {:.table .table-striped}
@@ -169,7 +167,7 @@ In the input data for making a capture, you will set the `payeeReference`. The
 unique value of this field is the same as the field called `OrderID` in the
 reconciliation file.
 
-```js
+```json
 {
     "transaction": {
         "amount": 1500,
@@ -184,7 +182,7 @@ When you receive the response from Swedbank Pay, the response will include
 `transaction.number`. This is the same as the field called `TransactionNo` in
 the reconciliation file.
 
-```js
+```json
 {
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
@@ -293,7 +291,7 @@ charities.
 *   Since the sub merchants are connected to Swedbank Pay through the super
     merchant instead of having separate setups, this means that you:
 *   Only need one agreement for credit card, Vipps, Swish,
-    MobilePay, invoice and payment gateway.
+    MobilePay Online, invoice and payment gateway.
 *   Only need one acquiring agreement.
 *   Only need one Vipps/Swish certificate.
 *   Can add more payment instruments easily, as it only has to be done once.

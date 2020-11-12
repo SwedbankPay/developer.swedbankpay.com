@@ -16,7 +16,7 @@ completed without input from the cardholder. Therefore, there are certain fields
 that should be included when implementing 3-D Secure 2. These are listed below
 and can be seen in the abbreviated request example below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http

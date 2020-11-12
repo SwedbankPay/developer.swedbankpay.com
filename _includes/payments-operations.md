@@ -21,7 +21,7 @@ To inspect the paid payment, you need to perform an HTTP `GET` request
 towards the operation's `href` field. An example of how the request and
 response look like is given below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -30,9 +30,10 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
 {% if documentation_section == "card" %}
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -91,7 +92,7 @@ Content-Type: application/json
 ```
 {% else %}
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -165,7 +166,7 @@ error code.
 
 An example of how the request and response look like is given below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -175,7 +176,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http
@@ -202,7 +203,7 @@ Content-Type: application/json
 ### Operation `aborted-payment`
 
 The `aborted-payment` operation means that the merchant has aborted the payment
-before the end user has fulfilled the payment process. You can see this under
+before the payer has fulfilled the payment process. You can see this under
 `abortReason` in the response.
 
 An `aborted-payment` operation looks like the following:
@@ -220,7 +221,7 @@ To inspect why the payment was aborted, you need to perform an HTTP `GET`
 request towards the operation's `href` field. An example of how the request and
 response looks like is given below.
 
-{:.code-header}
+{:.code-view-header}
 **Request**
 
 ```http
@@ -230,7 +231,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{:.code-header}
+{:.code-view-header}
 **Response**
 
 ```http

@@ -15,10 +15,10 @@ usually to the field in the request that was missing or contained invalid data.
 
 The structure of a problem message will look like this:
 
-{:.code-header}
+{:.code-view-header}
 **Problem Example**
 
-```js
+```json
 {
     "type": "https://api.payex.com/psp/errordetail/<resource>/inputerror",
     "title": "There was an input error",
