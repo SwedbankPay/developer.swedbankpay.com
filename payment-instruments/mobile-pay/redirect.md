@@ -87,6 +87,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+        "prefillInfo": {
+            "msisdn": "+4598765432"
         }
     },
     "mobilepay": {
@@ -123,6 +126,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | {% include field-description-subsite.md %}                                                                                               |
+|                  | └➔&nbsp;`prefillInfo`           | `object`     | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                        |
+|                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePay's page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectivly.                                                                                          |
 | {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                                                                                                                                                                                                              |
 
 {:.code-view-header}
@@ -366,12 +371,12 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="index"
-                         prev_title="Introduction"
-                         next_href="after-payment"
-                         next_title="After Payment" %}
+                         prev_title="Back: Introduction"
+                         next_href="seamless-view"
+                         next_title="Seamless View" %}
 
 [callback-reference]: /payment-instruments/mobile-pay/other-features#callback
-[completeurl]: /payment-instruments/mobile-pay/other-features#completeurl 
+[completeurl]: /payment-instruments/mobile-pay/other-features#completeurl
 [mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations
