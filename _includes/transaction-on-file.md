@@ -1,4 +1,3 @@
-
 {% assign token_url_without_psp = include.api_resource %}
 
 {% if include.api_resource != "paymentorders" %}
