@@ -1572,7 +1572,7 @@ with the request parameter `instrument`.
     documentation_section=include.documentation_section %}
 
 {% if include.documentation_section == "payment-menu" %}
-    {%- include transaction-on-file.md -%}
+    {% include transaction-on-file.md api_resource="paymentorders" %}
 {% endif %}
 
 {% include 3d-secure-2.md

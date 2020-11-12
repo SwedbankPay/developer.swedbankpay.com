@@ -1,3 +1,11 @@
+{% assign token_url_without_psp = include.api_resource %}
+
+{% unless include.api_resource == "paymentorders" %}
+    {% assign token_url_without_psp = token_url_without_psp | append: '/payments' %}
+{% endunless %}
+
+{% assign token_url = token_url_without_psp | prepend: '/psp/' %}
+
 ## Transaction on file
 
 {% include alert-agreement-required.md %}
@@ -8,7 +16,7 @@ via file transfer rather than using the regular operations in our API. Reasons
 for this could be that the subsequent transactions are triggered from an older
 system that do not support real-time API communication. For those use cases
 Swedbank Pay offer a service called Transaction on File. As this is a somewhat
-unmodern way to complete transactions we strongly recommend to consider usage of
+unmodern way to complete transactions, we strongly recommend to consider usage of
 regular API operations and only use transactions on file where it is the only
 option.
 
@@ -32,7 +40,7 @@ the flow, see Verify.
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST {{ token_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -74,7 +82,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+        "id": "{{ token_url }}/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -87,37 +95,39 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
+        "transactions": { "id": "{{ token_url }}/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "{{ token_url }}/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "{{ token_url }}/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "{{ token_url }}/{{ page.payment_id }}/payeeInfo" },
+        "settings": { "id": "{{ token_url }}/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
-            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}{{ token_url }}/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
         },
         {
-            "href": "{{ page.front_end_url }}/creditcard/payments/verification/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/{{ token_url_without_psp }}/verification/{{ page.payment_token }}",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/{{ include.api_resource }}/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "rel": "view-verification",
             "contentType": "application/javascript"
-        },
+        }{% if include.api_resource == "creditcard" %},
         {
             "method": "POST",
-            "href": "{{ page.front_end_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/verifications",
+            "href": "{{ page.front_end_url }}/psp/{{ include.api_resource }}/confined/payments/{{ page.payment_id }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
-        }
+        }{% endif %}
     ]
 }
 ```
+
+[swedish-verify]: /assets/img/payments/swedish-verify.png
