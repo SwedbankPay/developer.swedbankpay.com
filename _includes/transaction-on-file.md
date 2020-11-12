@@ -1,12 +1,11 @@
 
-{% capture url_token %}
-    /psp/{{ api_resource }}
-    {%- if api_resource == "creditcard" -%}
-        /payments
-    {%- endif -%}
-{% endcapture %}
-{% assign url_token = url_token | strip %}
-{% assign url_without_psp = url_token | remove: "/psp/" %}
+{% assign token_url_without_psp = include.api_resource %}
+
+{% if include.api_resource != "paymentorders" %}
+    {% assign token_url_without_psp = token_url_without_psp | append: '/payments' %}
+{% endif %}
+
+{% assign token_url = token_url_without_psp | prepend: '/psp/' %}
 
 ## Transaction on file
 
