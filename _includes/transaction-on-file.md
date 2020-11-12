@@ -41,7 +41,7 @@ the flow, see Verify.
 **Request**
 
 ```http
-POST {{ url_token }} HTTP/1.1
+POST {{ token_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -83,7 +83,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "{{ url_token }}/{{ page.payment_id }}",
+        "id": "{{ token_url }}/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -96,21 +96,21 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "{{ url_token }}/{{ page.payment_id }}/transactions" },
-        "verifications": { "id": "{{ url_token }}/{{ page.payment_id }}/verifications" },
-        "urls" : { "id": "{{ url_token }}/{{ page.payment_id }}/urls" },
-        "payeeInfo" : { "id": "{{ url_token }}/{{ page.payment_id }}/payeeInfo" },
-        "settings": { "id": "{{ url_token }}/{{ page.payment_id }}/settings" }
+        "transactions": { "id": "{{ token_url }}/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "{{ token_url }}/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "{{ token_url }}/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "{{ token_url }}/{{ page.payment_id }}/payeeInfo" },
+        "settings": { "id": "{{ token_url }}/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
-            "href": "{{ page.api_url }}{{ url_token }}/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}{{ token_url }}/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
         },
         {
-            "href": "{{ page.front_end_url }}/{{ url_without_psp }}/verification/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/{{ token_url_without_psp }}/verification/{{ page.payment_token }}",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"
