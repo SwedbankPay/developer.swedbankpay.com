@@ -119,13 +119,13 @@ Content-Type: application/json
             "href": "{{ page.front_end_url }}/{{ include.api_resource }}/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "rel": "view-verification",
             "contentType": "application/javascript"
-        }{% unless include.api_resource == "paymentorders" %},
+        }{% if include.api_resource == "creditcard" %},
         {
             "method": "POST",
             "href": "{{ page.front_end_url }}/psp/{{ include.api_resource }}/confined/payments/{{ page.payment_id }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
-        }{% endunless %}
+        }{% endif %}
     ]
 }
 ```
