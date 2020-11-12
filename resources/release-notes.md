@@ -10,6 +10,33 @@ description: |
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+
+## 11 Nov 2020
+
+### Version 2.0.0
+
+:tada: Launched new developer portal theme: :tada:
+*   New design :sparkles:
+*   New menu structure :orange_book:
+*   Reading time :hourglass:
+
+Other changes:
+*   Added GDPR disclaimer.
+*   Added custom 404 page.
+*   Added section about [Transaction on File][transaction-on-file]
+*   Added Seamless View for [Trustly][trustly-payments].
+*   Added documentation about payment and transaction states. See [Card Other Features][card-transaction-states] for example.
+*   Added event override warning for Seamless View Events, see [Card Seamless View Events][card-seamless-view] for example.
+*   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
+*   Deleted Merchant Identified Payer in [Checkout][checkout].
+*   Renamed Merchant Authenticated Consumer to 
+    [Delegated Strong Consumer Authentication][dsca]. 
+*   Updated `payer`/`consumer`/`end-user` naming for most sections.
+*   Updated expiry date for test cards in [test data][test-data].
+*   Updated [callback][checkout-callback] documentation.
+*   Updated regex pattern for `orderItems.class`.
+
+
 ## 04 Sep 2020
 
 ### Version 1.13.3
@@ -466,6 +493,7 @@ integration and the payer.
 [card-payment-url]: /payment-instruments/card/other-features#payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
+[card-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
 [card]: /payment-instruments/card
 [card-3ds2]: /payment-instruments/card/other-features#3-d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
@@ -484,6 +512,7 @@ integration and the payer.
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
+[dsca]: /checkout/other-features#delegated-strong-consumer-authentication
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
 [home-technical-information]: /home/technical-information
@@ -493,6 +522,7 @@ integration and the payer.
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
 [mobile-pay]: /payment-instruments/mobile-pay
 [modules-sdks]: /modules-sdks
+[moto-payment-card]: /payment-instruments/card/other-features#moto
 [one-click]: /payment-instruments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payments
@@ -512,6 +542,7 @@ integration and the payer.
 [swish-abort]: /payment-instruments/swish/after-payment#abort
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
+[transaction-on-file]: /payment-instruments/card/other-features#transaction-on-file
 [trustly-payments]: /payment-instruments/trustly
 [trustly-other-features]: /payment-instruments/trustly/other-features
 [vipps-payment-resource]: /payment-instruments/vipps/other-features#payment-resource
