@@ -10,6 +10,13 @@ description: |
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 12 Nov 2020
+
+### Version 2.0.1
+
+* Added section for [MobilePay Seamless View][mobilepay-seamless-view]
+* Split [MobilePay Capture][mobilepay-capture] to a separate page
+* Code examples for digital products added in [Checkin][Checkin]
 
 ## 11 Nov 2020
 
@@ -498,6 +505,7 @@ integration and the payer.
 [card-3ds2]: /payment-instruments/card/other-features#3-d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
 [card-seamless-view]: /payment-instruments/card/seamless-view
+[checkin]: /checkout/checkin
 [checkout-capture]: /checkout/capture
 [checkout-checkin-front-end]:/checkout/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
@@ -521,6 +529,8 @@ integration and the payer.
 [invoice]: /payment-instruments/invoice
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
 [mobile-pay]: /payment-instruments/mobile-pay
+[mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
+[mobilepay-capture]: /payment-instruments/mobile-pay/capture
 [modules-sdks]: /modules-sdks
 [moto-payment-card]: /payment-instruments/card/other-features#moto
 [one-click]: /payment-instruments/card/other-features#one-click-payments
