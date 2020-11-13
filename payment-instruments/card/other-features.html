@@ -307,7 +307,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payee-reference">Payee Reference</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#prices">Prices</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/other-features#moto">MOTO</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#transaction-on-file">Transaction on file</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#3-d-secure-2">3-D Secure 2</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a></li>
@@ -666,6 +665,30 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get the transaction status</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#purchase-flow">Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#step-1-create-a-purchase">Step 1: Create a purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#step-2-display--the-payment-window">Step 2: Display  the payment window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#mobilepay-online-seamless-view-flow">MobilePay Online Seamless View flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#create-capture-transaction">Create capture transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
       </li>
@@ -1131,7 +1154,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#21-aug-2020">21 Aug 2020</a></li>
@@ -7235,194 +7259,6 @@ contract.</p>
   </tbody>
 </table>
     
-      <h2 id="moto">
-        
-        
-          MOTO <a href="#moto" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<div class="alert  alert-warning">
-    
-    
-    <i class="material-icons alert-icon">warning</i>
-    
-    
-
-    
-    
-    <p>This feature is only
-available for merchants who have a specific agreement with Swedbank Pay.</p>
-    
-    
-</div>
-
-<p>MOTO (Mail Order / Telephone Order) is a purchase where you as a merchant enter 
-the payer’s card details in order to make a payment. The card details are given
-over telephone or in writing, and then filled out to the payment interface by the
-sales representative.</p>
-
-<p>Common use-cases are travel or hotel bookings, where the payer calls the sales
-representative to make a booking. This feature is only supported in the
-<code class="language-html highlighter-rouge">Purchase</code> operation. See the abbreviated example below on how to implement MOTO
-by setting the <code class="language-html highlighter-rouge">generateMotoPayment</code> to <code class="language-html highlighter-rouge">true</code>.</p>
-
-<p class="code-view-header"><strong>Request</strong></p>
-
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
-<td class="code-view-numbers gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-</pre></td>
-<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/creditcard/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generateMotoPayment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Moto"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"callbackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-callback"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cabf558-5283-482f-b252-4d58e06f6f3b"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payeeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merchant1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A123"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"orderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or-12456"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td>
-</tr></tbody></table></code></pre></div></div>
-
-<p>To authorize the payment, find the operation with <code class="language-html highlighter-rouge">rel</code> equal to
-<code class="language-html highlighter-rouge">redirect-authorization</code> in the response and redirect the merchant
-employee to the provided <code class="language-html highlighter-rouge">href</code> to fill out the payer’s card details. You will
-find an abbreviated example of the response provided below.</p>
-
-<p class="code-view-header"><strong>Response</strong></p>
-
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
-<td class="code-view-numbers gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-</pre></td>
-<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:29.3182115Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:57.6627579Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ready"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NOK"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"remainingCaptureAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"remainingCancellationAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"remainingReversalAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Moto"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/3.0.1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"authorizations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"cancellations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"urls"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"payeeInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redirect-authorization"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/creditcard/payments/authorize/5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/html"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre></td>
-</tr></tbody></table></code></pre></div></div>
-    
       <h2 id="transaction-on-file">
         
         
@@ -7452,7 +7288,7 @@ via file transfer rather than using the regular operations in our API. Reasons
 for this could be that the subsequent transactions are triggered from an older
 system that do not support real-time API communication. For those use cases
 Swedbank Pay offer a service called Transaction on File. As this is a somewhat
-unmodern way to complete transactions we strongly recommend to consider usage of
+unmodern way to complete transactions, we strongly recommend to consider usage of
 regular API operations and only use transactions on file where it is the only
 option.</p>
 

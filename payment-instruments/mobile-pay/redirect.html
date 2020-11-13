@@ -307,7 +307,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payee-reference">Payee Reference</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#prices">Prices</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/other-features#moto">MOTO</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#transaction-on-file">Transaction on file</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#3-d-secure-2">3-D Secure 2</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a></li>
@@ -666,6 +665,30 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get the transaction status</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#purchase-flow">Purchase flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/seamless-view">Seamless View</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#step-1-create-a-purchase">Step 1: Create a purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#step-2-display--the-payment-window">Step 2: Display  the payment window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#mobilepay-online-seamless-view-flow">MobilePay Online Seamless View flow</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/mobile-pay/capture">Capture</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#create-capture-transaction">Create capture transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
       </li>
@@ -1131,7 +1154,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#21-aug-2020">21 Aug 2020</a></li>
@@ -1353,6 +1377,9 @@ used in requests towards Swedbank Pay.</p>
 38
 39
 40
+41
+42
+43
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/mobilepay/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -1388,6 +1415,9 @@ used in requests towards Swedbank Pay.</p>
             </span><span class="nl">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A123"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or-12456"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"prefillInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"msisdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4598765432"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"mobilepay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1583,6 +1613,20 @@ used in requests towards Swedbank Pay.</p>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">subsite</code> field can be used to perform split settlement on the payment. The <code class="language-html highlighter-rouge">subsite</code>s must be resolved with Swedbank Pay reconciliation before being used.If you send in an unknown <code class="language-html highlighter-rouge">subsite</code> value, it will be ignored and the paymentwill be settled using the merchant’s default settlement account.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">prefillInfo</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">An object that holds prefill information that can be inserted on the payment page.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">msisdn</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Number will be prefilled on MobilePay’s page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectivly.</td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
@@ -2085,13 +2129,13 @@ complete purchase.</p>
 <nav class="iterator d-flex">
     
     <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="index">
-        Introduction
+        Back: Introduction
     </a>
     
 
     
-    <a class="ml-auto btn btn-executive" role="button" rel="next" href="after-payment">
-        After Payment
+    <a class="ml-auto btn btn-executive" role="button" rel="next" href="seamless-view">
+        Seamless View
     </a>
     
 </nav>
