@@ -7,7 +7,7 @@ through a previous payment in order to charge the same card.
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/{{ include.api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

@@ -45,7 +45,7 @@ between the capture amount and the authorization amount.
 sequenceDiagram
     participant SwedbankPay as Swedbank Pay
 
-    Merchant->>SwedbankPay: POST <mobilepay cancellation>
+    Merchant->>SwedbankPay: POST < {{ include.api_resource }} cancellation>
     activate Merchant
     activate SwedbankPay
     SwedbankPay-->>Merchant: transaction resource
