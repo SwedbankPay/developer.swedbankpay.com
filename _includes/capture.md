@@ -112,7 +112,7 @@ do more captures on the same payment up to the total authorization amount later.
 ```mermaid
 sequenceDiagram
   activate Merchant
-  Merchant->>-SwedbankPay: POST [Credit card captures]
+  Merchant->>-SwedbankPay: POST [{{ include.api_resource }} captures]
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
 ```
