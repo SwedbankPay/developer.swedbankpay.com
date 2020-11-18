@@ -279,6 +279,15 @@ for future purchases. The payer is, by default, asked if they want to store
 their payment details, so even with `generatePaymentToken` set to `true`, it is
 still up to the payer if they want the details stored or not.
 
+Remember that you will have the responsibility to enforce GDPR requirements and
+let the payer remove active payment tokens when they want. It is up to you how
+to implement this functionality on your side but Swedbank Pay has the API you
+need to ensure that cleaning up old data is easy. It is possible to query for
+all active payment tokens registered on a specific `payerReference`. This query
+will also list the operations used for deleting tokens. You can choose to remove
+all tokens for that payer or only a subset of all tokens connected to that
+`payerReference`.
+
 {% include alert.html type="informative" icon="info" body="Please note that not
 all payment instruments provided by Swedbank Pay support Payer Awareness today."
 %}
@@ -288,7 +297,18 @@ all payment instruments provided by Swedbank Pay support Payer Awareness today."
 Payment Menu is versatile and can be configured in such a way that it functions
 like a single payment instrument. In such configuration, it is easy to Bring
 Your Own Payment Menu, i.e. building a customized payment menu in our own user
-interface.
+interface. For InApp integrations, the payers' shopping experience will be
+better if you choose the BYO Payment Menu option. For web integrations, we
+highly recommend the Swedbank Pay Payment Menu.
+
+The `payerReference` can be used to list all active tokens here as well.This
+will also list the payment instruments listed in the `availableInstruments`, as
+instrument-mode is mandatory when you are using BYO Payment Menu.
+
+The alternative to the `payerReference` option is to store `paymentToken`s found
+in the `paymentOrder`s after the payment is completed. This requires that the
+merchant makes sure this list is up to date at their end.
+
 
 #### Add Stored Payment Instrument Details
 
@@ -368,8 +388,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if include.documentation_section == "payment-menu" %}
 | {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ other_features_url }}#instrument-mode).                                                                                                                                                                                          | {% endif %}                                              |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ other_features_url }}#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                     | {% if include.documentation_section == "payment-menu" %} |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                  | {% endif %}                                              |
+| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ other_features_url }}#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                     |
 |                  | └➔&nbsp;`disableStoredPaymentDetails` | `bool` | Setting to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
@@ -388,16 +407,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                         |
-
-### GDPR
-
-Remember that you will have the responsibility to enforce GDPR requirements and
-let the payer remove active payment tokens when they want. It is up to you
-how to implement this functionality on your side but Swedbank Pay has the
-API you need to ensure that cleaning up old data is easy. It is possible
-to query for all active payment tokens registered on a specific
-`payerReference`. Then you can either remove all tokens for that payer or
-only a subset of all tokens.
 
 {% endif %}
 
@@ -898,6 +907,9 @@ GET /psp/paymentorders/{{ page.payment_order_id }}?$expand=currentpayment HTTP/1
 Host: {{ page.api_host }}
 ```
 
+{% include delete-token.md api_resource="paymentorders"
+documentation_section="payment-menu" token_field_name="recurrenceToken" %}
+
 ### Creating Recurring Payments
 
 When you have a `recurrenceToken` token safely tucked away, you can use this
@@ -1003,9 +1015,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
 |                  | └➔&nbsp;`metadata`             | `object`      | {% include field-description-metadata.md documentation_section=include.documentation_section %}
 |
-
-{% include delete-token.md api_resource="paymentorders"
-documentation_section="payment-menu" token_field_name="recurrenceToken" %}
 
 ### Purchase Flow
 
@@ -1161,8 +1170,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`currency`                | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    | {% if include.documentation_section == "payment-menu" %} |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a payment token for future use as [One Click Payments][one-click-payments]. All payment instruments will still be availabe in the payment menu, but the payment token will only be generated if the instrument chosen by the payer supports one click.                                                                                                                                       | {% endif %}                                              |
+| {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`. If set to `true`, only payment instruments which support recurring payments will be visible in the payment menu.                                                         |
@@ -1244,8 +1252,7 @@ Content-Type: application/json
 | Field                               | Data type    | Description                                                                                                                                                                                      |
 | :---------------------------------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                           | `object`     | The payment object contains information about the retrieved payment.                                                                                                                             |
-| └➔&nbsp;`id`                        | `string`     | {% include field-description-id.md %}                                                                                                                                                            | {% if include.documentation_section == "payment-menu" %} |
-| └➔&nbsp;`paymentToken`              | `string`     | The payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                         | {% endif %}                                              |
+| └➔&nbsp;`id`                        | `string`     | {% include field-description-id.md %}                                                                                                                                                            |
 | └➔&nbsp;`number`                    | `integer`    | The payment `number`, useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that `id` should be used instead. |
 | └➔&nbsp;`created`                   | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                               |
 | └➔&nbsp;`updated`                   | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                               |
@@ -1554,19 +1561,6 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 
 {% if include.documentation_section == "payment-menu" %}
 
-## One-Click Payments
-
-One-Click Payments should be used if you want to present your own Payment Menu
-in all channels you want to support. This means that if you are both on the
-web and in-app you will need to build your own payment menu to be able to use
-the One-Click Payment functionality. You will need to ask the system to generate
-a `paymentToken` (with `generatePaymentToken` in a `Purchase` or `Verify`
-request) to be able to use this feature. You will also need to turn the
-`Payment Order` into instrument mode (only show one instrument)
-with the request parameter `instrument`.
-
-{% endif %}
-
 {% include settlement-reconciliation.md
     api_resource="paymentorders"
     documentation_section=include.documentation_section %}
@@ -1600,7 +1594,6 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [expanding]: /home/technical-information#expansion
 [image-disabled-payment-menu]: /assets/img/checkout/disabled-payment-menu.png
 [image-enabled-payment-menu]: /assets/img/checkout/guest-payment-menu-450x850.png
-[one-click-payments]: #one-click-payments
 [operations]: #operations
 [payee-reference]: #payee-reference
 [payment-order-capture]: ./capture
