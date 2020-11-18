@@ -14,15 +14,17 @@ However, if you need support, please wait for a future, stable release.
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
 
+This guide assumes that you are using the Merchant Backend Configuration and your backend implements the Merchant Backend API. If you are using a custom backend instead, the meaning of `SwedbankPaySDKController` arguments will be different, as well as any errors reported, but the basic process is the same. The differences will be highlighted in the chapter on custom backends.
+
 ## Installation
 
 The iOS component of the Swedbank Pay Mobile SDK is distributed through [CocoaPods][cocoapods]. If you do not have CocoaPods installed on your development machine, please install it first according to the [instructions][cocoapods-gettingstarted] at the CocoaPods web page.
 
 [Add CocoaPods][cocoapods-using] to your project, if needed. Then, add the dependency:
 
-`pod 'SwedbankPaySDK', '0.1.23'`
+`pod 'SwedbankPaySDK', '0.3.3'`
 
-\[Development note: There is not yet a stable release of the SDK. Be prepared for potential API changes before the first stable release.\]
+\[Development note: There is not yet a stable release of the SDK.\]
 
 Do not forget to run `pod install` after editing the `Podfile`.
 
@@ -54,7 +56,7 @@ sequenceDiagram
 
     rect rgba(238, 112, 35, 0.05)
         note left of App: Configuration
-        App ->> SDK: SwedbankPaySDK.Configuration(backendUrl: "https://example.com/swedbank-pay-mobile/", headers: [:])
+        App ->> SDK: SwedbankPaySDK.MerchantBackendConfiguration(backendUrl: "https://example.com/swedbank-pay-mobile/", headers: [:])
         SDK -->> App: configuration
     end
 
@@ -133,12 +135,12 @@ The iOS SDK is contained in the module `SwedbankPaySDK`.
 import SwedbankPaySDK
 ```
 
-The main component of the SDK is `SwedbankPaySDKController`, a `UIViewController` that handles a single payment order. When initializing a `SwedbankPaySDKController`, you must provide a `SwedbankPaySDK.Configuration` that describes the server environment the `SwedbankPaySDKController` is working with, along with a `SwedbankPaySDK.PaymentOrder`, and, unless making a guest payment, a `SwedbankPaySDK.Consumer`. Providing a `SwedbankPaySDK.Consumer` makes future payments by the same payer easier.
+The main component of the SDK is `SwedbankPaySDKController`, a `UIViewController` that handles a single payment order. When initializing a `SwedbankPaySDKController`, you must provide a `SwedbankPaySDKConfiguration` that describes the server environment the `SwedbankPaySDKController` is working with, along with a `SwedbankPaySDK.PaymentOrder`, and, unless making a guest payment, a `SwedbankPaySDK.Consumer`. Providing a `SwedbankPaySDK.Consumer` makes future payments by the same payer easier.
 
-The `SwedbankPaySDK.Configuration` is, in most cases, static for a given server environment. Therefore, it makes sense to keep it in a convenient constant. The `SwedbankPaySDK.Configuration` constructor can determine your application's custom scheme for payment urls automatically, if you have set it up as described above.
+The `SwedbankPaySDKConfiguration` is, in most cases, static for a given server environment. Therefore, it makes sense to keep it in a convenient constant. The `SwedbankPaySDK.MerchantBackendConfiguration` initializer can determine your application's custom scheme for payment urls automatically, if you have set it up as described above.
 
 ```swift
-let swedbankPayConfig = SwedbankPaySDK.Configuration(
+let swedbankPayConfig = SwedbankPaySDK.MerchantBackendConfiguration(
     backendUrl: "https://example.com/swedbank-pay-mobile/",
     headers: [:]
 )
@@ -153,7 +155,7 @@ let consumer = SwedbankPaySDK.Consumer(
 )
 ```
 
-Similarly, the semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the `urls` property, there are convenience constructors for the `SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/ios-universal-link`), then using one of the `SwedbankPaySDK.Configuration` taking convenience constructors variants will set the `paymentUrl` correctly.
+Similarly, the semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the `urls` property, there are convenience constructors for the `SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/ios-universal-link`), then using one of the convenience constructors taking a `SwedbankPaySDK.MerchantBackendConfiguration` argument will set the `paymentUrl` correctly.
 
 ```swift
 let paymentOrder = SwedbankPaySDK.PaymentOrder(
@@ -208,7 +210,7 @@ val paymentController = SwedbankPaySDKController(
 )
 
 present(paymentController, animated: true, completion: nil)
-// There are, of course many other ways of displaying a view controller
+// There are, of course, many other ways of displaying a view controller
 ```
 
 To observe the payment process, set a `delegate` to the `SwedbankPaySDKController`. When the delegate is informed that the payment process is finished, you should remove the `SwedbankPaySDKController` and inform the user of the result.
@@ -229,7 +231,7 @@ func paymentCanceled() {
     // Notify user
 }
 
-func paymentFailed(failureReason: SwedbankPaySDKController.FailureReason) {
+func paymentFailed(error: Error) {
     dismiss(animated: true, completion: nil)
     // Notify user
 }
@@ -239,9 +241,9 @@ Note that checking the payment status after completion is outside the scope of t
 
 ## Problems
 
-If errors are encountered in the payment process, the Merchant Backend is expected to respond with a [Problem Details for HTTP APIs (RFC 7807)][rfc-7807] message. If the payment fails because of a problem, the `failureReason` argument of the `paymentFailed` delegate call will have a value of `.Problem`, the associated value being the problem as parsed from the response. The iOS SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the [Common Problems][swedbankpay-problems] and the [Merchand Backend Problems][backend-problems].
+If the payment fails for any reason, the cause will be made available as the argument of the `paymentFailed(error:)` delegate method. The error will be of any type thrown by your `SwedbankPaySDKConfiguration`. In the case of `SwedbankPaySDK.MerchantBackendConfiguration` this means `SwedbankPaySDK.MerchantBackendError`.
 
-\[Development note: the problem parsing is broken as of version 0.1.23, and will not create the correct values for unexpected responses.\]
+If errors are encountered in the payment process, the Merchant Backend is expected to respond with a [Problem Details for HTTP APIs (RFC 7807)][rfc-7807] message. If the payment fails because of a problem, the `SwedbankPaySDK.MerchantBackendError` will be `.problem`, the associated value being the problem as parsed from the response. The iOS SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the [Common Problems][swedbankpay-problems] and the [Merchand Backend Problems][backend-problems].
 
 Problems are expressed in Swift as `enum`s with associated values, representing a hierarchy of problem types. At the root of the hierarchy is `enum SwedbankPaySDK.Problem`, with two cases: `.Client` and `.Server`. A `.Client` problem is one caused by client behaviour, and is to be fixed by changing the request made to the server. Generally, a `.Client` problem is a programming error, with the possible exception of `.Client(.MobileSDK(.Unauthorized))`. A `.Server` problem is one caused by a malfunction or lack of service in the server evironment. A `.Server` problem is fixed by correcting the behaviour of the malfunctioning server, or simply trying again later.
 
@@ -426,9 +428,9 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="android"
-                         prev_title="Android"
-                         next_href="process-diagrams"
-                         next_title="Process Diagrams" %}
+                         prev_title="Back: Android"
+                         next_href="custom-backend"
+                         next_title="Next: Custom Backend" %}
 
 [cocoapods]: https://cocoapods.org/
 [cocoapods-gettingstarted]: https://guides.cocoapods.org/using/getting-started.html
