@@ -301,7 +301,7 @@ interface. For InApp integrations, the payers' shopping experience will be
 better if you choose the BYO Payment Menu option. For web integrations, we
 highly recommend the Swedbank Pay Payment Menu.
 
-The `payerReference` can be used to list all active tokens here as well.This
+The `payerReference` can be used to list all active tokens here as well. This
 will also list the payment instruments enumerated in the `availableInstruments`, as
 instrument-mode is mandatory when you are using BYO Payment Menu.
 
