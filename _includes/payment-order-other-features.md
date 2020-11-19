@@ -302,7 +302,7 @@ better if you choose the BYO Payment Menu option. For web integrations, we
 highly recommend the Swedbank Pay Payment Menu.
 
 The `payerReference` can be used to list all active tokens here as well.This
-will also list the payment instruments listed in the `availableInstruments`, as
+will also list the payment instruments enumerated in the `availableInstruments`, as
 instrument-mode is mandatory when you are using BYO Payment Menu.
 
 The alternative to the `payerReference` option is to store `paymentToken`s found
