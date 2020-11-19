@@ -307,7 +307,7 @@ instrument-mode is mandatory when you are using BYO Payment Menu.
 
 The alternative to the `payerReference` option is to store `paymentToken`s found
 in the `paymentOrder`s after the payment is completed. This requires that the
-merchant makes sure this list is up to date at their end.
+merchant makes sure the list of `paymentToken`s is up to date at their end.
 
 
 #### Add Stored Payment Instrument Details
