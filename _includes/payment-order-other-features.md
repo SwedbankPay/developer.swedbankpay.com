@@ -297,7 +297,7 @@ all payment instruments provided by Swedbank Pay support Payer Awareness today."
 Payment Menu is versatile and can be configured in such a way that it functions
 like a single payment instrument. In such configuration, it is easy to Bring
 Your Own Payment Menu, i.e. building a customized payment menu in our own user
-interface. For InApp integrations, the payers' shopping experience will be
+interface. For in-app integrations, the payers' shopping experience will be
 better if you choose the BYO Payment Menu option. For web integrations, we
 highly recommend the Swedbank Pay Payment Menu.
 
