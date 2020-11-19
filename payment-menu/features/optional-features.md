@@ -9,11 +9,11 @@ description: |
 menu_order: 1300
 ---
 
-{% include custom-logo.md documentation_section="checkout" %}
+{% include custom-logo.md documentation_section="payment-menu" %}
 
 {% include delegated-strong-consumer-authentication.md %}
 
-{% include recur.md documentation_section="checkout" %}
+{% include recur.md api_resource="paymentorders" documentation_section="payment-menu" %}
 
 {% include verify.md api_resource="paymentorders" %}
 

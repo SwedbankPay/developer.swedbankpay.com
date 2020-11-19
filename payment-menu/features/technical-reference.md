@@ -22,14 +22,12 @@ menu_order: 1200
 {% include metadata.md api_resource="paymentorders" %}
 
 {% include payee-info.md api_resource="paymentorders"
-documentation_section="checkout" %}
+documentation_section="payment-menu" %}
 
 {% include payment-order-operations.md %}
 
-{% include payment-url.md api_resource="paymentorders" documentation_section="checkout" full_reference=true %}
+{% include payment-url.md api_resource="paymentorders" documentation_section="payment-menu" full_reference=true %}
 
-{% include prices.md %}
-
-{% include seamless-view-events.md api_resource="paymentorders" %}
+{% include prices.md api_resource="paymentorders" %}
 
 {% include iterator.html prev_href="optional-features" prev_title="Optional Features" %}
