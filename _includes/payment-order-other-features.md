@@ -264,6 +264,10 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
 
 ## Payer Aware Payment Menu
 
+{% include alert.html type="informative" icon="info" body="Please note that not
+all payment instruments provided by Swedbank Pay support Payer Awareness today."
+%}
+
 To maximize the experience of your payers, you should implement the Payer
 Aware Payment Menu by identifying each payer with a unique identifier. It is
 important that you enforce a good SCA (Strong Consumer Authentication) strategy
@@ -279,18 +283,18 @@ for future purchases. The payer is, by default, asked if they want to store
 their payment details, so even with `generatePaymentToken` set to `true`, it is
 still up to the payer if they want the details stored or not.
 
-Remember that you will have the responsibility to enforce GDPR requirements and
-let the payer remove active payment tokens when they want. It is up to you how
-to implement this functionality on your side but Swedbank Pay has the API you
-need to ensure that cleaning up old data is easy. It is possible to query for
-all active payment tokens registered on a specific `payerReference`. This query
-will also list the operations used for deleting tokens. You can choose to remove
-all tokens for that payer or only a subset of all tokens connected to that
-`payerReference`.
-
-{% include alert.html type="informative" icon="info" body="Please note that not
-all payment instruments provided by Swedbank Pay support Payer Awareness today."
+{% include alert.html type="informative" icon="info" body="Remember that the
+responsibility to enforce the GDPR requirements lies on you as a merchant."
 %}
+
+As a part of these requirements, you have to facilitate that the payer can 
+remove active payment tokens when they want. It is up to you how to implement 
+this functionality on your side, but Swedbank Pay has the API you need to 
+ensure that cleaning up old data is easy. It is possible to query for all 
+active payment tokens registered on a specific `payerReference`. This query 
+will also list the operations used for deleting tokens. You can choose to 
+remove all tokens for that payer or only a subset of all tokens connected to 
+that `payerReference`.
 
 ### BYO Payment Menu
 
