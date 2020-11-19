@@ -65,7 +65,7 @@ below is the Redirect option.
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/{{ include.api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -116,7 +116,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/creditcard/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -137,26 +137,26 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}",
+            "href": "{{ page.api_url }}/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort",
             "method": "PATCH",
             "contentType": "application/json"
         },
         {
-            "href": "{{ page.front_end_url }}/creditcard/payments/verification/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/{{ include.api_resource }}payments/verification/{{ page.payment_token }}",
             "rel": "redirect-verification",
             "method": "GET",
             "contentType": "application/json"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/creditcard/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/{{ include.api_resource }}core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "rel": "view-verification",
             "contentType": "application/javascript"
         },
         {
             "method": "POST",
-            "href": "{{ page.front_end_url }}/psp/creditcard/confined/payments/{{ page.payment_id }}/verifications",
+            "href": "{{ page.front_end_url }}/psp/{{ include.api_resource }}/confined/payments/{{ page.payment_id }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
         }
@@ -193,7 +193,7 @@ sequenceDiagram
   activate Payer
   Payer->>+Merchant: start verification
   deactivate Payer
-  Merchant->>+SwedbankPay: POST /psp/creditcard/payments(operation=VERIFY)
+  Merchant->>+SwedbankPay: POST /psp/{{ include.api_resource }}/payments(operation=VERIFY)
   deactivate Merchant
   note left of Payer: First API request
   SwedbankPay-->+Merchant: payment resource
@@ -206,8 +206,8 @@ sequenceDiagram
   SwedbankPay-->>+Payer: display purchase information
   deactivate SwedbankPay
 
-  Payer->>Payer: input creditcard information
-  Payer->>+SwedbankPay: submit creditcard information
+  Payer->>Payer: input {{ include.api_resource }} information
+  Payer->>+SwedbankPay: submit {{ include.api_resource }}information
   deactivate Payer
   opt Card supports 3-D Secure
     SwedbankPay-->>Payer: redirect to IssuingBank

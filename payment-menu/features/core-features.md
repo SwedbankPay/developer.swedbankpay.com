@@ -9,16 +9,16 @@ description: |
 menu_order: 1100
 ---
 
-{% include 3d-secure-2.md api_resource="paymentorders" documentation_section="checkout"
+{% include 3d-secure-2.md api_resource="paymentorders" documentation_section="payment-menu"
 %}
 
-{% include cancel.md api_resource="paymentorders" documentation_section="checkout" %}
+{% include cancel.md api_resource="paymentorders" documentation_section="payment-menu" %}
 
-{% include payment-order-capture.md documentation_section="checkout" %}
+{% include payment-order-capture.md documentation_section="payment-menu" %}
 
 {% include reversal.md api_resource="paymentorders" %}
 
-{% include settlement-reconciliation.md documentation_section="checkout" %}
+{% include settlement-reconciliation.md documentation_section="payment-menu" %}
 
 {% include iterator.html prev_href="index" prev_title="Introduction"
 next_href="optional-features" next_title="Optional Features" %}
