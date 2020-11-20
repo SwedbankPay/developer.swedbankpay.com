@@ -283,18 +283,19 @@ for future purchases. The payer is, by default, asked if they want to store
 their payment details, so even with `generatePaymentToken` set to `true`, it is
 still up to the payer if they want the details stored or not.
 
-{% include alert.html type="informative" icon="info" body="Remember that the
-responsibility to enforce the GDPR requirements lies on you as a merchant."
+{% include alert.html type="informative" icon="info" header="GDPR
+Responsibility" body="Remember that the responsibility to enforce the GDPR
+requirements lies on you as a merchant."
 %}
 
-As a part of these requirements, you have to facilitate that the payer can 
-remove active payment tokens when they want. It is up to you how to implement 
-this functionality on your side, but Swedbank Pay has the API you need to 
-ensure that cleaning up old data is easy. It is possible to query for all 
-active payment tokens registered on a specific `payerReference`. This query 
-will also list the operations used for deleting tokens. You can choose to 
-remove all tokens for that payer or only a subset of all tokens connected to 
-that `payerReference`.
+As a part of these requirements, you have to facilitate that the payer can
+remove active payment tokens when they want. It is up to you how to implement
+this functionality on your side, but Swedbank Pay has the API you need to ensure
+that cleaning up old data is easy. It is possible to query for all active
+payment tokens registered on a specific `payerReference`. This query will also
+list the operations used for deleting tokens. You can choose to remove all
+tokens for that payer or only a subset of all tokens connected to that
+`payerReference`.
 
 ### BYO Payment Menu
 
@@ -306,8 +307,8 @@ better if you choose the BYO Payment Menu option. For web integrations, we
 highly recommend the Swedbank Pay Payment Menu.
 
 The `payerReference` can be used to list all active tokens here as well. This
-will also list the payment instruments enumerated in the `availableInstruments`, as
-instrument-mode is mandatory when you are using BYO Payment Menu.
+will also list the payment instruments enumerated in the `availableInstruments`,
+as instrument-mode is mandatory when you are using BYO Payment Menu.
 
 The alternative to the `payerReference` option is to store `paymentToken`s found
 in the `paymentOrder`s after the payment is completed. This requires that the
@@ -377,6 +378,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-123456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
    }
 }
@@ -411,6 +415,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                         |
+| {% icon check %} | └➔&nbsp;`payer`               | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payerReference`                | `string`     | {% include field-description-payer-reference.md documentation_section="payment-menu" %}                                                                                                                                                                                                                                                           |
 
 {% endif %}
 
