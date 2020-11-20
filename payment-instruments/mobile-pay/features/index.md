@@ -11,93 +11,93 @@ menu_order: 1000
 card_list: 
 - title: Abort
   description: Aborting a created payment
-  url: /features/core-features#abort
+  url: /payment-instruments/mobile-pay/features/core-features#abort
   icon:
     content: highlight_off
     outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /features/core-features#cancel
+  url: /payment-instruments/mobile-pay/features/core-features#cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /features/core-features#capture
+  url: /payment-instruments/mobile-pay/features/core-features#capture
   icon:
     content: compare_arrows
     outlined: true
 - title: Payment resource
   description: When initiating a payment process
-  url: /features/core-features#payment-resource
+  url: /payment-instruments/mobile-pay/features/core-features#payment-resource
   icon:
     content: credit_card
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /features/core-features#reversal
+  url: /payment-instruments/mobile-pay/features/core-features#reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /features/core-features#settlement-and-reconciliation
+  url:  /payment-instruments/mobile-pay/features/core-features#settlement-and-reconciliation
   icon:
     content: description
     outlined: true
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /features/technical-reference#callback
+  url:  /payment-instruments/mobile-pay/features/technical-reference#callback
   icon:
     content: low_priority
     outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
-  url:  /features/technical-reference#completeurl
+  url:  /payment-instruments/mobile-pay/features/technical-reference#completeurl
   icon:
     content: link
     outlined: true
 - title: Description
   description: The purchase summed up in a few words
-  url:  /features/technical-reference#description
+  url:  /payment-instruments/mobile-pay/features/technical-reference#description
   icon:
     content: assignment
     outlined: true
 - title: Metadata
   description: Store payment associated data for later use
-  url:  /features/technical-reference#metadata
+  url:  /payment-instruments/mobile-pay/features/technical-reference#metadata
   icon:
     content: code
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
-  url:  /features/technical-reference#payeeinfo
+  url:  /payment-instruments/mobile-pay/features/technical-reference#payeeinfo
   icon:
     content: account_box
     outlined: true
 - title: PayeeReference
   description: The merchant's reference for a specific payment
-  url:  /features/technical-reference#payee-reference
+  url:  /payment-instruments/mobile-pay/features/technical-reference#payee-reference
   icon:
     content: assignment_ind
     outlined: true
 - title: Prices
   description: The payment's prices resource
-  url:  /features/technical-reference#prices
+  url:  /payment-instruments/mobile-pay/features/technical-reference#prices
   icon:
     content: attach_money
     outlined: true
 - title: Problems
   description: Information when something goes wrong
-  url:  /features/technical-reference#problems
+  url:  /payment-instruments/mobile-pay/features/technical-reference#problems
   icon:
     content: report
     outlined: true
 card_list_3: 
 - title: Payment Link
   description: Sending the payment via mail or SMS
-  url:  /features/optional-features#payment-link
+  url:  /payment-instruments/mobile-pay/features/optional-features#payment-link
   icon:
     content: link
     outlined: true
