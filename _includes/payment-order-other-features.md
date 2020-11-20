@@ -1563,7 +1563,6 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 
 {% include metadata.md api_resource="paymentorders" %}
 
-{% if include.documentation_section == "payment-menu" %}
 
 {% include settlement-reconciliation.md
     api_resource="paymentorders"
