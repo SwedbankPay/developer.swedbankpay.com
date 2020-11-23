@@ -61,6 +61,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
+            "hostUrls": ["https://example.com"],
             "completeUrl": "https://example.com/payment-completed",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
@@ -98,7 +99,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`           | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                              |	
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |	
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |	
-|                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |	
+| {% icon check %} | └─➔&nbsp;`hostUrls`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |	
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][completeurl] for details.  |	
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |	
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md documentation_section="trustly" %}                                                                                                                                                                |	
