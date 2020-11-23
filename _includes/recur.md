@@ -1,3 +1,10 @@
+{% assign documentation_section_url = include.documentation_section %}
+
+{% unless include.documentation_section == "checkout" %}
+    {% assign documentation_section_url = documentation_section | append:
+'/payment-instruments' %}
+{% endunless %}
+
 ## Recur
 
 A `recur` payment is a payment that references a `recurrenceToken` created

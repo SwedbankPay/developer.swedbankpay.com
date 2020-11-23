@@ -13,7 +13,7 @@ menu_order: 1300
 
 {% include delegated-strong-consumer-authentication.md %}
 
-{% include recur.md documentation_section="checkout" %}
+{% include recur.md api_resource="paymentorders" documentation_section="checkout" %}
 
 {% include verify.md api_resource="paymentorders" %}
 
