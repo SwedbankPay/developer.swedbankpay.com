@@ -107,6 +107,7 @@ In order to find which operations you can perform on a resource and the URI of
 the operation to perform, you need to retrieve the resource with an HTTP `GET`
 request first and then find the operation in question within the `operations`
 field.
+
 {:.code-view-header}
 **Request**
 
