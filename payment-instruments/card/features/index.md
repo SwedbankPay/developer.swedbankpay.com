@@ -11,181 +11,140 @@ menu_order: 1000
 card_list: 
 - title: 3D Secure 2
   description: Authenticating the cardholder
-  url:  /payment-instruments/card/features/core-features#3-d-secure-2
+  url:  /checkout/features/core-features#3-d-secure-2
   icon:
     content: 3d_rotation
-- title: Abort
-  description: Aborting a created payment
-  url: /payment-instruments/card/features/core-features#abort
-  icon:
-    content: highlight_off
-    outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /payment-instruments/card/features/core-features#cancel
+  url: /checkout/features/core-features#cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /payment-instruments/card/features/core-features#capture
+  url: /checkout/features/core-features#capture
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment resource
-  description: When initiating a payment process
-  url: /payment-instruments/card/features/core-features#payment-resource
-  icon:
-    content: credit_card
-    outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /payment-instruments/card/features/core-features#reversal
+  url: /checkout/features/core-features#reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /payment-instruments/card/features/core-features#settlement-and-reconciliation
+  url:  /checkout/features/core-features#settlement-and-reconciliation
   icon:
     content: description
     outlined: true
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /payment-instruments/card/features/technical-reference#callback
+  url:  /checkout/features/technical-reference#callback
   icon:
     content: low_priority
     outlined: true
-- title: Card authorization transaction
-  description: Information about the payment's authorization(s)
-  url:  /payment-instruments/card/features/technical-reference#card-authorization-transaction
+- title: Checkin Events
+  description: Possible events during Checkin
+  url: /checkout/features/technical-reference#checkin-events
   icon:
-    content: check_circle_outline
+    content: event
     outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
-  url:  /payment-instruments/card/features/technical-reference#completeurl
+  url:  /checkout/features/technical-reference#completeurl
   icon:
     content: link
     outlined: true
-- title: Create Payment
-  description: Creating the payment
-  url:  /payment-instruments/card/features/technical-reference#create-payment
-  icon:
-    content: note_add
-    outlined: true
 - title: Description
   description: The purchase summed up in a few words
-  url:  /payment-instruments/card/features/technical-reference#description
+  url:  /checkout/features/technical-reference#description
   icon:
     content: assignment
     outlined: true
 - title: Metadata
   description: Store payment associated data for later use
-  url:  /payment-instruments/card/features/technical-reference#metadata
+  url:  /checkout/features/technical-reference#metadata
   icon:
     content: code
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
-  url:  /payment-instruments/card/features/technical-reference#payeeinfo
+  url:  /checkout/features/technical-reference#payeeinfo
   icon:
     content: account_box
     outlined: true
 - title: PayeeReference
   description: The merchant's reference for a specific payment
-  url:  /payment-instruments/card/features/technical-reference#payee-reference
+  url:  /checkout/features/technical-reference#payee-reference
   icon:
     content: assignment_ind
     outlined: true
-- title: Payment & Transactions States
-  description: Possible states of the payments and transactions
-  url:  /payment-instruments/card/features/technical-reference#payment-and-transaction-states
+- title: Payment Menu Events
+  description: Possible events during Payment Menu payments
+  url: /checkout/features/technical-reference#payment-menu-events
   icon:
-    content: hdr_weak
+    content: event
+    outlined: true
+- title: Payment Order Operations
+  description: Possible operations for a payment order
+  url: /checkout/features/technical-reference#payment-order-operations
+  icon:
+    content: settings
+    outlined: true
 - title: PaymentUrl
   description: Redirecting the payer back to your site
-  url:  /payment-instruments/card/features/technical-reference#payment-url
+  url:  /checkout/features/technical-reference#payment-url
   icon:
     content: link
     outlined: true
 - title: Prices
   description: The payment's prices resource
-  url:  /payment-instruments/card/features/technical-reference#prices
+  url:  /checkout/features/technical-reference#prices
   icon:
     content: attach_money
     outlined: true
 - title: Problems
   description: Information when something goes wrong
-  url:  /payment-instruments/card/features/technical-reference#problems
+  url:  /checkout/features/technical-reference#problems
   icon:
     content: report
     outlined: true
 - title: Purchase
   description: The bread and butter of the payments
-  url:  /payment-instruments/card/features/technical-reference#purchase
+  url:  /checkout/features/technical-reference#purchase
   icon:
     content: shopping_basket
     outlined: true
 - title: Seamless View Events
   description: Possible events during Seamless View payments
-  url:  /payment-instruments/card/features/technical-reference#seamless-view-events
+  url:  /checkout/features/technical-reference#seamless-view-events
   icon:
     content: event
     outlined: true
-- title: Transactions
-  description: The transactions making up a specific payment
-  url:  /payment-instruments/card/features/technical-reference#transactions
-  icon:
-    content: done_all
-    outlined: true
 card_list_3: 
-- title: Co-badge Card Choice for Dankort
-  description: Initialize payment process containing the order
-  url:  /payment-instruments/card/features/optional-features#co-badge-card-choice-for-dankort
-  icon: 
-    content: credit_card
-    outlined: true
-- title: One-Click Payments
-  description: Prefilling the payment details using payment tokens
-  url:  /payment-instruments/card/features/optional-features#one-click-payments
+- title: Custom Logo
+  description: How to add your own logo
+  url: /checkout/features/optional-features#custom-logo
   icon:
-    content: touch_app
+    content: copyright
     outlined: true
-- title: Payer Aware Payment Menu
-  description: Sending the payment via mail or SMS
-  url: /payment-instruments/card/features/optional-features#payer-aware-payment-menu
+- title: Delegated Strong Consumer Authentication
+  description: The Checkin alternative
+  url: /checkout/features/optional-features#delegated-strong-consumer-authentication 
   icon:
-    content: horizontal_split
-    outlined: true
-- title: Payment Link
-  description: Sending the payment via mail or SMS
-  url:  /payment-instruments/card/features/optional-features#payment-link
-  icon:
-    content: link
-    outlined: true
-- title: Payout
-  description: Making deposits to payers' cards
-  url:  /payment-instruments/card/features/optional-features#payout
-  icon:
-    content: monetization_on
+    content: verified
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
-  url:  /payment-instruments/card/features/optional-features#recur
+  url:  /checkout/features/optional-features#recur
   icon:
     content: cached
     outlined: true
-- title: Unscheduled Purchase
-  description: Merchant initiated transactions with absent cardholders
-  url:  /payment-instruments/card/features/optional-features#unscheduled-purchase
-  icon:
-    content: report_problem
-    outlined: true
 - title: Verify
   description: Validating the payer's payment details
-  url:  /payment-instruments/card/features/optional-features#verify
+  url:  /checkout/features/optional-features#verify
   icon:
     content: verified_user
     outlined: true
