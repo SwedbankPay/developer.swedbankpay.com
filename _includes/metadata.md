@@ -38,7 +38,6 @@ Content-Type: application/json
     "intent": {% if api_resource == "swish" or api_resource == "trustly" %} "Sale", {% else %} "Authorization", {% endif %}
     "currency": "SEK",
     "description": "Test Purchase",
-    "payerReference": "AB1234",
     "userAgent": "Mozilla/5.0...",
     "language": "sv-SE",
     "urls": {
@@ -48,6 +47,9 @@ Content-Type: application/json
     "payeeInfo": {
       "payeeId": "{{ page.merchant_id }}",
       "payeeReference": "CD1234",
+    },
+    "payer": {  
+      "payerReference": "AB1234",
     },
     "metadata": {
         "key1": "value1",

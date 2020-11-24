@@ -79,7 +79,10 @@ Content-Type: application/json
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"
-        }
+        },
+        "payer": {  
+            "payerReference": "AB1234",
+        },
     },
     "invoice": {
         "invoiceType": "PayExFinancingSe"
@@ -99,7 +102,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                      |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                                                                                                                                                                 |
-|                  | └➔&nbsp;`payerReference`          | `string`      | {% include field-description-payer-reference.md documentation_section="invoce" %}                                                                                                                                                                                                                               |
 |                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                        |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                                                                           |
@@ -116,6 +118,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payeeName`              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                                        |
 |                  | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                 |
 |                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |
+| {% icon check %} | └➔&nbsp;`payer`               | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payerReference`                | `string`     | {% include field-description-payer-reference.md documentation_section="invoice" %}                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`invoiceType`            | `String`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
 
 {:.code-view-header}
@@ -149,6 +153,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeinfo"
+        },
+        "payers": {
+           "id": "/psp/invoice/payments/{{ page.payment_id }}/payers"
         },
         "metadata": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/metadata"

@@ -53,7 +53,6 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "{{ language }}",
@@ -62,6 +61,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "payers": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers"
         },
         "urls": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
@@ -125,11 +127,11 @@ Content-Type: application/json
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
 | └➔&nbsp;`description`    | `string` | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`payerReference`    | `string(40)` | {% include field-description-payer-reference.md documentation_section=include.documentation_section %}                                                                                                                                                                                                         |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource=api_resource %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md documentation_section=include.documentation_section %}                                                                                                                                                                                                                                                 |
+| └➔&nbsp;`payers`               | `string`           | The URI to the `payer` resource where the information about the payer can be retrieved.                                                        |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |

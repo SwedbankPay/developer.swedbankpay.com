@@ -38,7 +38,6 @@ Content-Type: application/json
             }
         ],
         "description": "Vipps Test",
-        "payerReference": "ABtimestamp",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "urls": {
@@ -57,6 +56,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         },
         "prefillInfo": {
             "msisdn": "+4793000001"
@@ -94,8 +96,11 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
-|                  | └─➔&nbsp;`prefillInfo`       | `string`     | The mobile number that will be pre-filled in the Swedbank Pay Payments. The payer may change this number in the UI.                                                                                                                                    |
 |                  | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                                                                           |
+| {% icon check %} | └➔&nbsp;`payer`               | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payerReference`                | `string`     | {% include field-description-payer-reference.md documentation_section="vipps" %}                                                                                                                                                                                                                                                           |
+|                  | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
+|                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
 
 {:.code-view-header}
 **Response**
@@ -119,7 +124,6 @@ Content-Type: application/json
         },
         "amount": 0,
         "description": "Vipps Test",
-        "payerReference": "AB1536157124",
         "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
         "userAgent": "Mozilla/5.0 weeeeee",
         "language": "nb-NO",
@@ -128,6 +132,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo"
+        },
+        "payers": {
+           "id": "/psp/vipps/payments/{{ page.payment_id }}/payers"
         },
         "metadata": {
             "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata"
