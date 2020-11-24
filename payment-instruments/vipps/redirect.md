@@ -62,7 +62,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {
@@ -79,6 +78,9 @@ Content-Type: application/json
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         },
         "prefillInfo": {
             "msisdn": "+4792345678"
@@ -110,7 +112,6 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
@@ -134,6 +135,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "payers": {
+           "id": "/psp/vipps/payments/{{ page.payment_id }}/payers"
         },
         "settings": {
             "id": "/psp/vipps/payments/{{ page.payment_id }}/settings"
@@ -165,8 +169,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`            | `string`      |                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └─➔&nbsp;`amount`          | `integer`     | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`vatAmount`       | `integer`     | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`description`      | `string(40)`  | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                                                                       |
-|                  | └➔&nbsp;`payerReference`   | `string`      | {% include field-description-payer-reference.md documentation_section="vipps" %}                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`userAgent`        | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`         | `string`      | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
@@ -180,6 +182,10 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory` | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`  | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`subsite`         | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                        |
+| {% icon check %} | └➔&nbsp;`payer`               | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payerReference`                | `string`     | {% include field-description-payer-reference.md documentation_section="vipps" %}                                                                                                                                                                                                                                                           |
+|                  | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
+|                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
 
 ## Step 2: Authorization
 

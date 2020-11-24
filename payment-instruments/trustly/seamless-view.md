@@ -57,7 +57,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "SomeReference",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -72,6 +71,9 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         },
         "prefillInfo": {
             "firstName": "Ola",
@@ -93,8 +95,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | Use the `Trustly` type here                                                                                                                                                                                                                                                                        |	
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |	
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |	
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="trustly" %}                                                                                                                                                                                                                     |	
-|                  | └➔&nbsp;`payerReference`     | `string`      | {% include field-description-payer-reference.md documentation_section="trustly" %}                                                                                                                                                                                 |	
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="trustly" %}                                                                                                                                                                                                                     |		
 | {% icon check %} | └➔&nbsp;`userAgent`           | `string`      | The [`User-Agent` string][user-agent] of the consumer's web browser.                                                                                                                                                                                                                              |	
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |	
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |	
@@ -110,7 +111,9 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed to consumer when redirected to Swedbank Pay.                                                                                                                                                                                            |	
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |	
 |                  | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |	
-|                  | └─➔&nbsp;`subsite`           | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                        |	
+|                  | └─➔&nbsp;`subsite`           | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                        |
+| {% icon check %} | └➔&nbsp;`payer`               | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payerReference`                | `string`     | {% include field-description-payer-reference.md documentation_section="trustly" %}                                                                                                                                                                                                                                                           |
 |                  | └─➔&nbsp;`prefillInfo`       | `object`      | Object representing information of what the UI text fields should be populated with                                                                                                                                                                                                                |	
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |	
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |	
@@ -138,7 +141,6 @@ Content-Type: application/json
         },	
         "amount": 0,	
         "description": "Test Purchase",	
-        "payerReference": "SomeReference",	
         "initiatingSystemUserAgent": "PostmanRuntime/7.25.0",	
         "userAgent": "Mozilla/5.0...",	
         "language": "sv-SE",	
@@ -148,6 +150,9 @@ Content-Type: application/json
         "payeeInfo": {	
             "id": "/psp/trustly/payments/{{ page.payment_id }}/payeeinfo"	
         },	
+        "payers": {
+           "id": "/psp/trustly/payments/{{ page.payment_id }}/payers"
+        },
         "metadata": {	
             "id": "/psp/trustly/payments/{{ page.payment_id }}/metadata"	
         }	

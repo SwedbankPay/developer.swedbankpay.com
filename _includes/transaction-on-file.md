@@ -50,7 +50,6 @@ Content-Type: application/json
         "operation": "Verify",
         "currency": "NOK",
         "description": "Create TransactionOnFileToken",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "generateTransactionOnFileToken": true,
@@ -68,6 +67,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+                "payer": {  
+            "payerReference": "AB1234",
         }
     }
 }
@@ -91,7 +93,6 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Test Verification",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
@@ -99,6 +100,7 @@ Content-Type: application/json
         "verifications": { "id": "{{ token_url }}/{{ page.payment_id }}/verifications" },
         "urls" : { "id": "{{ token_url }}/{{ page.payment_id }}/urls" },
         "payeeInfo" : { "id": "{{ token_url }}/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": ""{{ token_url }}/{{ page.payment_id }}/payers" },
         "settings": { "id": "{{ token_url }}/{{ page.payment_id }}/settings" }
     },
     "operations": [

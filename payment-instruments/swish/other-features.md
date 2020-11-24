@@ -44,7 +44,6 @@ Content-Type: application/json
             "vatAmount": 0
         }],
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -62,6 +61,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-123456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         },
         "prefillInfo": {
             "msisdn": "+46739000001"
@@ -87,7 +89,6 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`amount`              | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                 |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`           | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`description`          | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                              |
-|                  | └➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md documentation_section="swish" %}                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`            | `string`     | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                      |
 | {% icon check %}︎ | └➔&nbsp;`language`             | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`                 | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
@@ -104,6 +105,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └➔&nbsp;`orderReference`       | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └➔&nbsp;`subsite`              | `string(40)` | {% include field-description-subsite.md %}                                                                                               |
+| {% icon check %} | └➔&nbsp;`payer`               | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payerReference`                | `string`     | {% include field-description-payer-reference.md documentation_section="swish" %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo.msisdn`   | `string`     | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                    |
 |                  | └➔&nbsp;`swish.enableEcomOnly` | `boolean`    | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                        |
 |                  | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
@@ -128,7 +131,6 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -137,6 +139,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
+        },
+        "payers": 
+            {"id": "/psp/swish/payments/{{ page.payment_id }}/payers"
         }
     },
     "operations": [
