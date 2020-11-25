@@ -3,7 +3,7 @@
 {% assign currency = "SEK" %}
 {% endif %}
 {%- capture amount_text -%}
-The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.:&nbsp;
+The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.:&nbsp;
 **`10000`** = `100.00` {{ currency }},&nbsp;
 **`5000`** = `50.00` {{ currency }}.
 {%- endcapture -%}
