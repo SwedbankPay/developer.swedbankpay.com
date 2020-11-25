@@ -72,7 +72,6 @@ Content-Type: application/json
             "callbackUrl": "https://example.net/payment-callback",
             "logoUrl": "https://example.net/payment-logo.png",
             "termsOfServiceUrl": "https://example.net/payment-terms.pdf",
-            "paymentUrl": "https://example.net/payment-cart"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
