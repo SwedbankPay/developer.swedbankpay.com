@@ -9,6 +9,4 @@ description: |
 menu_order: 1300
 ---
 
-
-
 {% include unscheduled-purchase.md %}
