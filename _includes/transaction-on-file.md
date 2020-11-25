@@ -68,7 +68,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-                "payer": {  
+        "payer": {  
             "payerReference": "AB1234",
         }
     }
