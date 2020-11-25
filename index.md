@@ -30,6 +30,15 @@ hide_from_sidebar: true
             to='/payments'
         %}
       </div>
+      <div class="{{ card_col_class }}">
+        {% include card.html
+            title='Gift Cards'
+            title_type="h2"
+            text='Our Gift Cards API allows your customers to pay with prepaid gift cards issued by Swedbank Pay in your Checkout.'
+            icon_content='card_giftcard'
+            to='/gift-cards'
+        %}
+      </div>
   </div>
 {% endcontentfor %}
 
