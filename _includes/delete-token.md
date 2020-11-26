@@ -42,7 +42,10 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
+{   {% if documentation_section == "payment-menu" %}
+    "token": "{{ page.payment_token }}",
+    "isDeleted": true
+    {% else %}
     "instrumentData": {
         "id": "{{ token_url }}",
         "paymentToken": "{{ page.payment_token }}",
@@ -54,5 +57,6 @@ Content-Type: application/json
         "expiryDate": "MM/YYYY",
         "tokenType" : "{{ token_field_name }}" {% endif %}
     }
+    {% endif %}
 }
 ```
