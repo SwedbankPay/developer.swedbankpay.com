@@ -105,17 +105,17 @@ card_list_3:
 
 {:.heading-line}
 
-// Core Features
+## Core Features
 
 {% include card-list.html card_list=page.card_list
     col_class="col-lg-4" %}
 
-// Technical Reference
+## Technical Reference
 
 {% include card-list.html card_list=page.card_list_2
     col_class="col-lg-4" %}
 
-// Optional Features
+## Optional Features
 
 {% include card-list.html card_list=page.card_list_3
     col_class="col-lg-4" %}
