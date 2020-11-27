@@ -9,5 +9,5 @@ description: |
 menu_order: 1100
 ---
 
-{% include cancel.md api_resource="paymentorders" documentation_section="checkout" %}
+{% include cancel.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 

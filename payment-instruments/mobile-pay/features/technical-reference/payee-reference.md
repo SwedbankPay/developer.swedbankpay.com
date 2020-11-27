@@ -1,12 +1,13 @@
 ---
-title: Transactions states
+title: PayeeReference
 redirect_from:
 estimated_read: 30
 description: |
-  Welcome to Transaction States.
+  Welcome to PayeeReference.
   This section has extented code examples and features that were not
   covered by the other subsections.
 menu_order: 1200
 ---
 
-{% include payment-transaction-states.md %}
+{% include payee-reference.md api_resource="mobilepay" documentation_section="mobile-pay"
+%}

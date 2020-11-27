@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include problems/problems.md documentation_section="card" %}
+{% include problems/problems.md documentation_section="mobile-pay" %}

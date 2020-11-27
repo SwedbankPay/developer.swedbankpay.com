@@ -9,6 +9,12 @@ icon:
 additional: true
 menu_order: 1000
 card_list:
+- title: Abort
+  description: Aborting a created payment
+  url: /payment-instruments/mobile-pay/features/core-features/abort-reference
+  icon:
+    content: pan_tool
+    outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
   url: /payment-instruments/mobile-pay/features/core-features/cancel
@@ -20,6 +26,12 @@ card_list:
   url: /payment-instruments/mobile-pay/features/core-features/capture
   icon:
     content: compare_arrows
+    outlined: true
+- title: Payment resource
+  description: When initiating a payment process
+  url: /payment-instruments/mobile-pay/features/core-features/payment-resource
+  icon:
+    content: credit_card
     outlined: true
 - title: Reversal
   description: How to reverse a payment
@@ -94,6 +106,12 @@ card_list_2:
   icon:
     content: event
     outlined: true
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-instruments/mobile-pay/features/technical-reference/transactions
+  icon:
+    content: done_all
+    outlined: true
 card_list_3:  
 - title: Payment Link
   description: Sending the payment via mail or SMS
@@ -105,17 +123,17 @@ card_list_3:
 
 {:.heading-line}
 
-// Core Features
+## Core Features
 
 {% include card-list.html card_list=page.card_list
     col_class="col-lg-4" %}
 
-// Technical Reference
+## Technical Reference
 
 {% include card-list.html card_list=page.card_list_2
     col_class="col-lg-4" %}
 
-// Optional Features
+## Optional Features
 
 {% include card-list.html card_list=page.card_list_3
     col_class="col-lg-4" %}
