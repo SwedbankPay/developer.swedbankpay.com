@@ -9,6 +9,12 @@ icon:
 additional: true
 menu_order: 1000
 card_list: 
+- title: Abort
+  description: Aborting a created payment
+  url: /payment-instruments/invoice/features/core-features/abort-reference
+  icon:
+    content: pan_tool
+    outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
   url: /payment-instruments/invoice/features/core-features/cancel
@@ -21,6 +27,12 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
+- title: Payment resource
+  description: When initiating a payment process
+  url: /payment-instruments/invoice/features/core-features/payment-resource
+  icon:
+    content: credit_card
+    outlined: true
 - title: Reversal
   description: How to reverse a payment
   url: /payment-instruments/invoice/features/core-features/reversal
@@ -29,7 +41,7 @@ card_list:
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /payment-instruments/invoice/features/core-features/settlement-and-reconciliation
+  url:  /payment-instruments/invoice/features/core-features/settlement-reconciliation
   icon:
     content: description
     outlined: true
@@ -40,15 +52,9 @@ card_list_2:
   icon:
     content: low_priority
     outlined: true
-- title: Checkin Events
-  description: Possible events during Checkin
-  url: /payment-instruments/invoice/features/technical-reference/checkin-events
-  icon:
-    content: event
-    outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
-  url:  /payment-instruments/invoice/features/technical-reference/completeurl
+  url:  /payment-instruments/invoice/features/technical-reference/complete-url
   icon:
     content: link
     outlined: true
@@ -66,7 +72,7 @@ card_list_2:
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
-  url:  /payment-instruments/invoice/features/technical-reference/payeeinfo
+  url:  /payment-instruments/invoice/features/technical-reference/payee-info
   icon:
     content: account_box
     outlined: true
@@ -76,18 +82,11 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
-- title: Payment Menu Events
-  description: Possible events during Payment Menu payments
-  url: /payment-instruments/invoice/features/technical-reference/payment-menu-events
+- title: Payment & Transactions States
+  description: Possible states of the payments and transactions
+  url:  /payment-instruments/invoice/features/technical-reference/payment-transaction-states
   icon:
-    content: event
-    outlined: true
-- title: Payment Order Operations
-  description: Possible operations for a payment order
-  url: /payment-instruments/invoice/features/technical-reference/payment-order-operations
-  icon:
-    content: settings
-    outlined: true
+    content: hdr_weak
 - title: PaymentUrl
   description: Redirecting the payer back to your site
   url:  /payment-instruments/invoice/features/technical-reference/payment-url
@@ -119,17 +118,17 @@ card_list_2:
     content: event
     outlined: true
 card_list_3: 
-- title: Custom Logo
-  description: How to add your own logo
-  url: /payment-instruments/invoice/features/optional-features/custom-logo
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-instruments/invoice/features/technical-reference/transactions
   icon:
-    content: copyright
+    content: done_all
     outlined: true
-- title: Delegated Strong Consumer Authentication
-  description: The Checkin alternative
-  url: /payment-instruments/invoice/features/optional-features/delegated-strong-consumer-authentication 
+- title: Payment Link
+  description: Sending the payment via mail or SMS
+  url:  /payment-instruments/invoice/features/optional-features/payment-link
   icon:
-    content: verified
+    content: link
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
@@ -143,21 +142,22 @@ card_list_3:
   icon:
     content: verified_user
     outlined: true
+card_list_3: 
 ---
 
 {:.heading-line}
 
-// Core Features
+## Core Features
 
 {% include card-list.html card_list=page.card_list
     col_class="col-lg-4" %}
 
-// Technical Reference
+## Technical Reference
 
 {% include card-list.html card_list=page.card_list_2
     col_class="col-lg-4" %}
 
-// Optional Features
+## Optional Features
 
 {% include card-list.html card_list=page.card_list_3
     col_class="col-lg-4" %}

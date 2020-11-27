@@ -9,4 +9,4 @@ description: |
 menu_order: 1300
 ---
 
-{% include verify.md api_resource="paymentorders" %}
+{% include verify.md api_resource="invoice" %}

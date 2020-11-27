@@ -9,5 +9,5 @@ description: |
 menu_order: 1200
 ---
 
-{% include payments-operations.md api_resource="creditcard"
-documentation_section="card" %}
+{% include payments-operations.md api_resource="invoice"
+documentation_section="invoice" %}
