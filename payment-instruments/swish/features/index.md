@@ -9,17 +9,11 @@ icon:
 additional: true
 menu_order: 1000
 card_list: 
-- title: Cancel
-  description: Cancelling the authorization and releasing the funds
-  url: /payment-instruments/swish/features/core-features/cancel
+- title: Abort
+  description: Aborting a created payment
+  url: /payment-instruments/swish/features/core-features/abort-reference
   icon:
-    content: pan_tool
-    outlined: true
-- title: Capture
-  description: Capturing the authorized funds
-  url: /payment-instruments/swish/features/core-features/capture
-  icon:
-    content: compare_arrows
+    content: highlight_off
     outlined: true
 - title: Reversal
   description: How to reverse a payment
