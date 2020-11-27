@@ -9,4 +9,4 @@ description: |
 menu_order: 1100
 ---
 
-{% include reversal.md api_resource="paymentorders" %}
+{% include reversal.md api_resource="trustly" %}
