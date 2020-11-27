@@ -15,6 +15,12 @@ card_list:
   icon:
     content: highlight_off
     outlined: true
+- title: Payment resource
+  description: When initiating a payment process
+  url: /payment-instruments/swish/features/core-features/payment-resource
+  icon:
+    content: credit_card
+    outlined: true
 - title: Reversal
   description: How to reverse a payment
   url: /payment-instruments/swish/features/core-features/reversal
@@ -70,6 +76,11 @@ card_list_2:
   icon:
     content: link
     outlined: true
+- title: Payment & Transactions States
+  description: Possible states of the payments and transactions
+  url:  /payment-instruments/swish/features/technical-reference/payment-transaction-states
+  icon:
+    content: hdr_weak
 - title: Prices
   description: The payment's prices resource
   url:  /payment-instruments/swish/features/technical-reference/prices
@@ -88,12 +99,18 @@ card_list_2:
   icon:
     content: event
     outlined: true
-card_list_3: 
-- title: Recur
-  description: Setting up subscriptions and recurring payments
-  url:  /payment-instruments/swish/features/optional-features/recur
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-instruments/swish/features/technical-reference/transactions
   icon:
-    content: cached
+    content: done_all
+    outlined: true
+card_list_3: 
+- title: Payment Link
+  description: Sending the payment via mail or SMS
+  url:  /payment-instruments/swish/features/optional-features/payment-link
+  icon:
+    content: link
     outlined: true
 ---
 
