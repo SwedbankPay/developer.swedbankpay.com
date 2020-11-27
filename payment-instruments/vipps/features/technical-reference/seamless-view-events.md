@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include seamless-view-events.md api_resource="creditcard" %}
+{% include seamless-view-events.md api_resource="vipps" %}
