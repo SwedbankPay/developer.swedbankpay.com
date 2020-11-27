@@ -9,6 +9,18 @@ icon:
 additional: true
 menu_order: 1000
 card_list: 
+- title: Abort
+  description: Aborting a created payment
+  url: /payment-instruments/trustly/features/core-features/abort-reference
+  icon:
+    content: highlight_off
+    outlined: true
+- title: Payment resource
+  description: When initiating a payment process
+  url: /payment-instruments/trustly/features/core-features/payment-resource
+  icon:
+    content: credit_card
+    outlined: true
 - title: Reversal
   description: How to reverse a payment
   url: /payment-instruments/trustly/features/core-features/reversal
@@ -58,18 +70,6 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
-- title: PaymentUrl
-  description: Redirecting the payer back to your site
-  url:  /payment-instruments/trustly/features/technical-reference/payment-url
-  icon:
-    content: link
-    outlined: true
-- title: Prices
-  description: The payment's prices resource
-  url:  /payment-instruments/trustly/features/technical-reference/prices
-  icon:
-    content: attach_money
-    outlined: true
 - title: Problems
   description: Information when something goes wrong
   url:  /payment-instruments/trustly/features/technical-reference/problems
@@ -81,13 +81,6 @@ card_list_2:
   url:  /payment-instruments/trustly/features/technical-reference/seamless-view-events
   icon:
     content: event
-    outlined: true
-card_list_3: 
-- title: Recur
-  description: Setting up subscriptions and recurring payments
-  url:  /payment-instruments/trustly/features/optional-features/recur
-  icon:
-    content: cached
     outlined: true
 ---
 
