@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include metadata.md api_resource="paymentorders" %}
+{% include metadata.md api_resource="swish" %}

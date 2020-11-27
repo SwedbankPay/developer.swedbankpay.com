@@ -9,4 +9,4 @@ description: |
 menu_order: 1300
 ---
 
-{% include recur.md api_resource="paymentorders" documentation_section="checkout" %}
+{% include recur.md api_resource="swish" documentation_section="swish" %}
