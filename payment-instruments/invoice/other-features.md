@@ -162,6 +162,10 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
+        "payer": {  
+            "payerReference": "AB1234",
+        }
+    },
         "metadata": {
             "key1": "value1",
             "key2": 2,
