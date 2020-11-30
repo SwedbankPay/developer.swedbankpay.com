@@ -1,7 +1,4 @@
-{% assign api_resource = include.api_resource %}
-{% assign documentation_section = include.documentation_section %}
-
-{% if api_resource == "paymentorders" %}
+{% if include.api_resource  == "paymentorders" %}
   {% assign api_resource_title="payment order" %}
 {% else %}
   {% assign api_resource_title="payment" %}
@@ -27,7 +24,7 @@ below.
 **Request**
 
 ```http
-POST /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/ HTTP/1.1
+POST /psp/{{ include.api_resource  }}/{% unless include.api_resource  == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -35,7 +32,7 @@ Content-Type: application/json
 {
   "payment": {
     "operation": "Purchase",
-    "intent": {% if api_resource == "swish" or api_resource == "trustly" %} "Sale", {% else %} "Authorization", {% endif %}
+    "intent": {% if include.api_resource  == "swish" or include.api_resource  == "trustly" %} "Sale", {% else %} "Authorization", {% endif %}
     "currency": "SEK",
     "description": "Test Purchase",
     "payerReference": "AB1234",
@@ -71,7 +68,7 @@ Content-Type: application/json
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/ HTTP/1.1
+GET /psp/{{ include.api_resource  }}/{% unless include.api_resource  == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -85,9 +82,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}",
+  "payment": "/psp/{{ include.api_resource  }}/{% unless include.api_resource  == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}",
   "metadata": {
-    "id": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/metadata",
+    "id": "/psp/{{ include.api_resource  }}/{% unless include.api_resource  == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/metadata",
     "key1": "value1",
     "key2": 2,
     "key3": 3.1,

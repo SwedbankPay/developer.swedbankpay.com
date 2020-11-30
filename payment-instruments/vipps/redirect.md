@@ -169,7 +169,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`        | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`         | `string`      | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][completeurl] for details. |
+| {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 |                  | └─➔&nbsp;`cancelUrl`       | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`     | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`payeeInfo`        | `object`      | {% include field-description-payeeinfo.md documentation_section="vipps" %}                                                                                                                                                                                                                                              |
@@ -415,8 +415,8 @@ purchased products) have to make a [Capture][capture] or
 
 [callback]: /payment-instruments/vipps/other-features#callback
 [cancel]: /payment-instruments/vipps/after-payment#cancellations
-[completeurl]: /payment-instruments/vipps/other-features#completeurl
 [capture]: /payment-instruments/vipps/after-payment#captures
+[complete-url]: /payment-instruments/vipps/other-features#completeurl
 [payee-reference]: /payment-instruments/vipps/other-features#payee-reference
 [purchase]: /payment-instruments/vipps/other-features#purchase
 [reference-redirect]: /payment-instruments/vipps/redirect

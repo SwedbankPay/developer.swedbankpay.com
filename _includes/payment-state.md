@@ -1,11 +1,10 @@
-{% assign api_resource = include.api_resource | default: "paymentorders" %}
 {% assign transaction = include.transaction | default: "authorization" %}
-{% if api_resource == "paymentorders" %}
-  {% assign resource_title="Payment Order" %}
+{% if include.api_resource  == "paymentorders" %}
+  {% assign resource_title = "Payment Order" %}
 {% else %}
-  {% assign resource_title="Payment" %}
+  {% assign resource_title = "Payment" %}
 {% endif %}
-{% if api_resource == "swish" || api_resource == "trustly" %}
+{% if include.api_resource == "swish" || include.api_resource == "trustly" %}
   {% assign transaction="sale" %}
 {% else %}
   {% assign transaction="authorization" %}
@@ -22,7 +21,7 @@ transaction }} `transactions`, you have two options:
 
 You can perform a `GET` request on the {{ transaction }}. As long as the
 {{ transaction }} has been completed, successful or not, you will find the
-`Paid` or `Failed` operation among the operations in the response. 
+`Paid` or `Failed` operation among the operations in the response.
 
 Please note that a {{ transaction }} where a `Failed` attempt has been made,
 but the payer still has attempts left to complete the {{ transaction }}, you

@@ -93,7 +93,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md api_resource="mobilepay" %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
-| {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][completeurl] for details. |
+| {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`           | `string`     | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
 |                  | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                         |
@@ -298,7 +298,7 @@ sequenceDiagram
         next_href="after-payment"
         next_title="After Payment" %}
 
-[purchase]: /payment-instruments/mobile-pay/other-features#purchase
 [callback-reference]: /payment-instruments/mobile-pay/other-features#callback
-[completeurl]: /payment-instruments/mobile-pay/other-features#completeurl
+[complete-url]: /payment-instruments/mobile-pay/other-features#completeurl
+[purchase]: /payment-instruments/mobile-pay/other-features#purchase
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent

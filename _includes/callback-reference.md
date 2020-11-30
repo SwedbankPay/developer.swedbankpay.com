@@ -1,5 +1,3 @@
-{% assign api_resource = include.api_resource | default: "creditcard" %}
-
 ## Callback
 
 When a change or update from the back-end system are made on a payment or
@@ -49,22 +47,22 @@ you need to perform a `GET` request on the received URI and inspect the response
 The transaction type or any other information can not and should not be inferred
 from the URI. See [URI usage][uri-usage] for more information.
 
-{% if api_resource == "paymentorders" %}
+{% if include.api_resource  == "paymentorders" %}
 {:.code-view-header}
 **Payment Order Callback**
 
 ```json
 {
     "paymentorder": {
-        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
-        "instrument": "{{ api_resource }}"
+        "id": "/psp/{{ include.api_resource  }}/{{ page.payment_id }}",
+        "instrument": "{{ include.api_resource  }}"
     },
     "payment": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -77,11 +75,11 @@ from the URI. See [URI usage][uri-usage] for more information.
 ```json
 {
     "payment": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -90,12 +88,13 @@ from the URI. See [URI usage][uri-usage] for more information.
 {% endif %}
 
 When performing an HTTP `GET` request towards the URI found in the
-`transaction.id` field of the callback, the response is going to look 
+`transaction.id` field of the callback, the response is going to look
 something like the abbreviated example provided below.
 
-{% include transaction-response.md api_resource=include.api_resource
-documentation_section=include.documentation_section
-transaction="authorization" %}
+{% include transaction-response.md
+    api_resource=include.api_resource
+    documentation_section=include.documentation_section
+    transaction="authorization" %}
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
@@ -110,7 +109,7 @@ sequenceDiagram
     deactivate SwedbankPay
     note left of Merchant: Callback by Swedbank Pay
     Merchant-->>+SwedbankPay: HTTP response
-    Merchant->>+SwedbankPay: GET {{ api_resource }} payment
+    Merchant->>+SwedbankPay: GET {{ include.api_resource  }} payment
     deactivate Merchant
     note left of Merchant: First API request
     SwedbankPay-->>+Merchant: payment resource

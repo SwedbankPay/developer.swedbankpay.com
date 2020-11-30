@@ -36,8 +36,8 @@ Other changes:
 *   Added event override warning for Seamless View Events, see [Card Seamless View Events][card-seamless-view] for example.
 *   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
-*   Renamed Merchant Authenticated Consumer to 
-    [Delegated Strong Consumer Authentication][dsca]. 
+*   Renamed Merchant Authenticated Consumer to
+    [Delegated Strong Consumer Authentication][dsca].
 *   Updated `payer`/`consumer`/`end-user` naming for most sections.
 *   Updated expiry date for test cards in [test data][test-data].
 *   Updated [callback][checkout-callback] documentation.
@@ -535,7 +535,7 @@ integration and the payer.
 [moto-payment-card]: /payment-instruments/card/other-features#moto
 [one-click]: /payment-instruments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
-[payments]: /payments
+[payments]: /payment-instruments
 [update-order-checkout]: /checkout/other-features#update-order
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/other-features#settlement-and-reconciliation

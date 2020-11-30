@@ -1,7 +1,7 @@
 {% assign other_features_url = include.documentation_section | prepend: '/' | append: '/other-features' %}
 
 {% if include.api_resource == "creditcard" %}
-    {% assign other_features_url = other_features_url | prepend: '/payments' %}
+    {% assign other_features_url = other_features_url | prepend: '/payment-instruments' %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
     {% assign api_resource_field_name = "paymentorder" %}

@@ -1,5 +1,3 @@
-{% assign api_resource = include.api_resource | default: 'creditcard' %}
-
 ## Prices
 
 The `prices` resource lists the prices related to a specific payment.
@@ -8,7 +6,7 @@ The `prices` resource lists the prices related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices/ HTTP/1.1
+GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/prices/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -22,9 +20,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
     "prices": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices",
+        "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/prices",
         "priceList": [
             {
                 "type": "VISA",
@@ -58,7 +56,7 @@ Each payment instrument have one or more prices object types. This is most
 relevant when using card based payments as each type correspond
 to a card brand or bank respectively.
 
-{% case api_resource %}
+{% case include.api_resource %}
 
 {% when "creditcard" %}
 

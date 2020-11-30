@@ -1,10 +1,9 @@
-{%- assign documentation_section = include.documentation_section -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture payee_reference_url -%}
-   {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
-        /{{ documentation_section }}/other-features#payee-reference
+   {%- if include.documentation_section == "checkout" or include.documentation_section == "payment-menu" -%}
+        /{{ include.documentation_section }}/other-features#payee-reference
     {%- else -%}
-        /payment-instruments/{{ documentation_section }}/other-features#payee-reference
+        /payment-instruments/{{ include.documentation_section }}/other-features#payee-reference
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payee_reference -%}

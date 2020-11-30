@@ -394,6 +394,7 @@ next_href="mobile-card-payments" next_title="Mobile Card Payments" %}
 [callback]: /payment-instruments/card/other-features#callback
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture
+[complete-url]: /payment-instruments/card/other-features#completeurl
 [reversal]: /payment-instruments/card/after-payment#reversals
 [authorization]: /payment-instruments/card/other-features#card-authorization-transaction
 [other features]: /payment-instruments/card/other-features#purchase

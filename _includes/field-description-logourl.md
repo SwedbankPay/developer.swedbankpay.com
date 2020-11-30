@@ -1,14 +1,13 @@
-{%- assign documentation_section = include.documentation_section -%}
 {%- capture logo_description -%}
-    {%- if documentation_section == "payment-menu" or documentation_section == "checkout" -%}
+    {%- if include.documentation_section == "payment-menu" or include.documentation_section == "checkout" -%}
     With permission and activation on your contract, sending in a `logoUrl` will
     replace the Swedbank Pay logo with the logo sent in. If you do not send in a
     `logoUrl`, then no logo and no text is shown. Without permission or activation
     on your contract, sending in a `logoUrl` has no effect. Read more about this in
-    [Custom Logo](/{{ documentation_section }}/other-features#custom-logo). 
+    [Custom Logo](/{{ include.documentation_section }}/other-features#custom-logo).
     {%- else -%}
-    The URL that will be used for showing the customer logo. Must be a picture 
-    with maximum 50px height and 400px width. Requires HTTPS. 
+    The URL that will be used for showing the customer logo. Must be a picture
+    with maximum 50px height and 400px width. Requires HTTPS.
      {%- endif -%}
 {%- endcapture -%}
 {{- logo_description | strip_newlines -}}

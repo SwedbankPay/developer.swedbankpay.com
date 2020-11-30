@@ -1,14 +1,12 @@
-{% assign api_resource = include.api_resource | default: 'creditcard' %}
-{% assign documentation_section = include.documentation_section %}
 {% assign header_level = include.header_level | default: 3 %}
 {% assign next_header_level = header_level | plus: 1 %}
 {% capture top_h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
 {% capture sub_h %}{% for i in (1..next_header_level) %}#{% endfor %}{% endcapture %}
 
-{% if documentation_section == "checkout" or documentation_section == "payment-menu" %}
-{% assign this_documentation_url = documentation_section %}
+{% if include.documentation_section == "checkout" or include.documentation_section == "payment-menu" %}
+    {% assign this_documentation_url = include.documentation_section %}
 {% else %}
-{% assign this_documentation_url = "payments/" | append: documentation_section %}
+    {% assign this_documentation_url = "payments/" | append: include.documentation_section %}
 {% endif %}
 
 {{ top_h }} Transaction
@@ -34,7 +32,7 @@ When a transaction is created it will have one of three states:
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -48,12 +46,12 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
     "transaction": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+        "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
         "created": "2016-09-14T01:01:01.01Z",
         "updated": "2016-09-14T01:01:01.03Z",
-        "type": {% if documentation_section == "trustly" %} "Sale", {% else %} "Capture", {% endif %}
+        "type": {% if include.documentation_section == "trustly" %} "Sale", {% else %} "Capture", {% endif %}
         "state": "Initialized",
         "number": 1234567890,
         "amount": 1000,
@@ -75,6 +73,6 @@ problems that can occur due to an unsuccesful transaction, head over to the
 [problems section](/{{ this_documentation_url }}/other-features#problems).
 
 {% include transaction-response.md
-    documentation_section=documentation_section
-    api_resource=api_resource
+    documentation_section=include.documentation_section
+    api_resource=include.api_resource
     transaction="transaction" %}

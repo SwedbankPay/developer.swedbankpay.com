@@ -1,5 +1,4 @@
-{% assign api_resource = include.api_resource | default: "api-resource-not-set" %}
-{% case api_resource %}
+{% case include.api_resource %}
 {% when "vipps" %}
   {% assign language = "nb-NO" %}
   {% assign currency = "NOK" %}
@@ -21,7 +20,7 @@ You need to include the following HTTP body:
 **Request**
 
 ```http
-PATCH /psp/{{ api_resource }}/payments/{{ page.payment_id }} HTTP/1.1
+PATCH /psp/{{ include.api_resource }}/payments/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -43,32 +42,32 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
         "number": 70100130293,
         "created": "2019-01-09T13:11:28.371179Z",
         "updated": "2019-01-09T13:11:46.5949967Z",
-        "instrument": "{{ api_resource | capitalize }}",
+        "instrument": "{{ include.api_resource | capitalize }}",
         "operation": "Purchase",
         "intent": "Authorization",
         "state": "Aborted",
         "currency": "{{ currency }}",
         "prices": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/prices"
         },
         "amount": 0,
-        "description": "{{ api_resource }} Test",
+        "description": "{{ include.api_resource }} Test",
         "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
         "language": "{{ language }}",
         "urls": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/urls"
         },
         "payeeInfo": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeinfo"
+            "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/payeeinfo"
         },
         "metadata": {
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/metadata"
+            "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/metadata"
         }
     },
     "operations": []

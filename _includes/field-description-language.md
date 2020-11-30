@@ -1,5 +1,4 @@
-{%- assign api_resource = include.api_resource -%}
-{% case api_resource %}
+{% case include.api_resource  %}
 {% when "creditcard" %}
 {%- capture language -%}
 `sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`, `lv-LV`,
