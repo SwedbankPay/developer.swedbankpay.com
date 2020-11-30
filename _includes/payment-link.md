@@ -1,13 +1,6 @@
 {% assign show_3d_secure = include.show_3d_secure | default: true %}
 {% assign show_authorization = include.show_authorization | default: true %}
 
-## Payment Link
-
-{% include jumbotron.html body="The implementation sequence for this scenario
-is a variant of the purchase sequence. The payer is not redirected to the
-Payments directly but will instead receive a payment link via mail/SMS.
-When the payer clicks on the link, a payment window opens." %}
-
 ### Introduction
 
 The Payment Link can be implemented for payment instruments listed below, using
@@ -101,10 +94,11 @@ two-phase (e.g. [Card][card], [MobilePay Online][mobile-pay],
 
 #### Authorization
 
-When using two-phase payment instruments you reserve the amount with an authorization, and you
-will have to specify that the _intent_ of the _purchase_ is `Authorize`. The
-amount will be reserved but not charged. You have to make a `Capture` or `Cancel` request later (i.e. when you are ready
-to ship the purchased products).
+When using two-phase payment instruments you reserve the amount with an
+authorization, and you will have to specify that the _intent_ of the _purchase_
+is `Authorize`. The amount will be reserved but not charged. You have to make a
+`Capture` or `Cancel` request later (i.e. when you are ready to ship the
+purchased products).
 
 {% endif %}
 
