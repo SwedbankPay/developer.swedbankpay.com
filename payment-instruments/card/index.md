@@ -90,18 +90,17 @@ The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will
 take you directly to the corresponding API description.
 
-When dealing with card payments, 3-D Secure authentication of the
-cardholder is an essential topic. There are three alternative outcome of a
-card payment:
+When dealing with card payments, 3-D Secure authentication of the cardholder is
+an essential topic. By default, 3-D Secure should be enabled. Depending on
+the card issuer, Swedbank Pay will check if the card is enrolled with 3-D
+Secure. This process has two alternative outcomes:
 
-*   3-D Secure enabled - by default, 3-D Secure should be enabled, and Swedbank
-    Pay will check if the card is enrolled with 3-D Secure. This depends on the
-    issuer of the card. If the card is not enrolled with 3-D Secure, no
-    authentication of the cardholder is done.
-*   Card supports 3-D Secure - if the card is enrolled with 3-D Secure, Swedbank
-    Pay will redirect the cardholder to the autentication mechanism that is
-    decided by the issuing bank. Normally this will be done using BankID or
-    Mobile BankID.
+*   If the card is enrolled with 3-D Secure, Swedbank Pay will redirect the
+    cardholder to the authentication mechanism that is decided by the issuing
+    bank. Normally this will be done using BankID or Mobile BankID.
+
+*   If the card is not enrolled with 3-D Secure, no authentication of the
+    cardholder is done.
 
 ```mermaid
 sequenceDiagram
