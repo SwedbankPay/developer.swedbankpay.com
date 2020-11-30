@@ -9,5 +9,5 @@ description: |
 menu_order: 1100
 ---
 
-{% include 3d-secure-2.md api_resource="paymentorders" documentation_section="checkout"
+{% include 3d-secure-2.md api_resource="creditcard" documentation_section="card"
 %}

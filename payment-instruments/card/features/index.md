@@ -9,6 +9,12 @@ icon:
 additional: true
 menu_order: 1000
 card_list: 
+- title: Abort
+  description: Aborting a created payment
+  url: /payment-instruments/card/features/core-features/abort-reference
+  icon:
+    content: pan_tool
+    outlined: true
 - title: 3D Secure 2
   description: Authenticating the cardholder
   url:  /payment-instruments/card/features/core-features/3d-secure-2
@@ -26,6 +32,12 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
+- title: Payment resource
+  description: When initiating a payment process
+  url: /payment-instruments/card/features/core-features/payment-resource
+  icon:
+    content: credit_card
+    outlined: true
 - title: Reversal
   description: How to reverse a payment
   url: /payment-instruments/card/features/core-features/reversal
@@ -34,26 +46,26 @@ card_list:
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /payment-instruments/card/features/core-features/settlement-and-reconciliation
+  url:  /payment-instruments/card/features/core-features/settlement-reconciliation
   icon:
     content: description
     outlined: true
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /payment-instruments/card/features/technical-reference/callback
+  url:  /payment-instruments/card/features/technical-reference/callback-reference
   icon:
     content: low_priority
     outlined: true
-- title: Checkin Events
-  description: Possible events during Checkin
-  url: /payment-instruments/card/features/technical-reference/checkin-events
+- title: Card authorization transaction
+  description: Information about the payment's authorization(s)
+  url:  /payment-instruments/card/features/technical-reference/card-authorization-transaction
   icon:
-    content: event
+    content: check_circle_outline
     outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
-  url:  /payment-instruments/card/features/technical-reference/completeurl
+  url:  /payment-instruments/card/features/technical-reference/complete-url
   icon:
     content: link
     outlined: true
@@ -71,7 +83,7 @@ card_list_2:
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
-  url:  /payment-instruments/card/features/technical-reference/payeeinfo
+  url:  /payment-instruments/card/features/technical-reference/payee-info
   icon:
     content: account_box
     outlined: true
@@ -81,18 +93,11 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
-- title: Payment Menu Events
-  description: Possible events during Payment Menu payments
-  url: /payment-instruments/card/features/technical-reference/payment-menu-events
+- title: Payment & Transactions States
+  description: Possible states of the payments and transactions
+  url:  /payment-instruments/card/features/technical-reference/payment-transaction-states
   icon:
-    content: event
-    outlined: true
-- title: Payment Order Operations
-  description: Possible operations for a payment order
-  url: /payment-instruments/card/features/technical-reference/payment-order-operations
-  icon:
-    content: settings
-    outlined: true
+    content: hdr_weak
 - title: PaymentUrl
   description: Redirecting the payer back to your site
   url:  /payment-instruments/card/features/technical-reference/payment-url
@@ -123,24 +128,48 @@ card_list_2:
   icon:
     content: event
     outlined: true
-card_list_3: 
-- title: Custom Logo
-  description: How to add your own logo
-  url: /payment-instruments/card/features/optional-features/custom-logo
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-instruments/card/features/technical-reference/transactions
   icon:
-    content: copyright
+    content: done_all
     outlined: true
-- title: Delegated Strong Consumer Authentication
-  description: The Checkin alternative
-  url: /payment-instruments/card/features/optional-features/delegated-strong-consumer-authentication 
+card_list_3: 
+- title: Co-badge Card Choice for Dankort
+  description: Initialize payment process containing the order
+  url:  /payment-instruments/card/features/optional-features/cobadge-dankort
+  icon: 
+    content: credit_card
+    outlined: true
+- title: One-Click Payments
+  description: Prefilling the payment details using payment tokens
+  url:  /payment-instruments/card/features/optional-features/one-click-payments
   icon:
-    content: verified
+    content: touch_app
+    outlined: true
+- title: Payment Link
+  description: Sending the payment via mail or SMS
+  url:  /payment-instruments/card/features/optional-features/payment-link
+  icon:
+    content: link
+    outlined: true
+- title: Payout
+  description: Making deposits to payers' cards
+  url:  /payment-instruments/card/features/optional-features/payout
+  icon:
+    content: monetization_on
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
   url:  /payment-instruments/card/features/optional-features/recur
   icon:
     content: cached
+    outlined: true
+- title: Unscheduled Purchase
+  description: Merchant initiated transactions with absent cardholders
+  url:  /payment-instruments/card/features/optional-features/unscheduled-purchase
+  icon:
+    content: report_problem
     outlined: true
 - title: Verify
   description: Validating the payer's payment details
@@ -152,17 +181,17 @@ card_list_3:
 
 {:.heading-line}
 
-// Core Features
+## Core Features
 
 {% include card-list.html card_list=page.card_list
     col_class="col-lg-4" %}
 
-// Technical Reference
+## Technical Reference
 
 {% include card-list.html card_list=page.card_list_2
     col_class="col-lg-4" %}
 
-// Optional Features
+## Optional Features
 
 {% include card-list.html card_list=page.card_list_3
     col_class="col-lg-4" %}

@@ -1,14 +1,12 @@
 ---
-title: Callback Reference
+title: Purchase
 redirect_from:
 estimated_read: 30
 description: |
-  Welcome to Callback reference.
+  Welcome to Purchase.
   This section has extented code examples and features that were not
   covered by the other subsections.
 menu_order: 1200
 ---
 
-{% include alert-risk-indicator.md %}
-
-{% include callback-reference.md api_resource="creditcard" %}
+{% include card-purchase.md full_reference=true %}
