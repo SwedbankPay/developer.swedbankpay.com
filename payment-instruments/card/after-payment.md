@@ -126,7 +126,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md   transaction="cancellation" %}
+{% include transaction-list-response.md transaction="cancellation" %}
 
 #### Cancel Sequence
 
@@ -241,7 +241,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md   transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ### Reversal Sequence
 

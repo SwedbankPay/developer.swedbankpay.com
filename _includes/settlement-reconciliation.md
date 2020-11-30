@@ -215,11 +215,11 @@ Below you will see the API mapping tables to the fields in the settlement
 report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
 
 {% if documentation_section == "swish" %}
-{% include pba-tables.md  operation_title="sale" %}
+{% include pba-tables.md operation_title="sale" %}
 {% else %}
-{% include pba-tables.md  operation_title="capture" %}
+{% include pba-tables.md operation_title="capture" %}
 {% endif %}
-{% include pba-tables.md  operation_title="reversal" %}
+{% include pba-tables.md operation_title="reversal" %}
 
 ### Samples
 

@@ -101,7 +101,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md   transaction="capture" %}
+{% include transaction-list-response.md transaction="capture" %}
 
 ### Capture Sequence
 

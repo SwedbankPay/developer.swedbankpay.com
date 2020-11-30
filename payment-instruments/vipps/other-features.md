@@ -175,7 +175,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include complete-url.md %}
 
-{% include payment-url.md   full_reference=true %}
+{% include payment-url.md full_reference=true %}
 
 {% include prices.md %}
 
@@ -199,8 +199,7 @@ payment altogether or creating an authorization transaction through the
 
 {% include settlement-reconciliation.md %}
 
-{% include iterator.html
-        prev_href="after-payment"
+{% include iterator.html prev_href="after-payment"
         prev_title="After Payment" %}
 
 [callbackreference]: #callback

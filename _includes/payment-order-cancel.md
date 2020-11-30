@@ -69,6 +69,6 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md  describe_receipt=true %}                                                                                         |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 
 [payee-reference]: /checkout/other-features#payee-reference

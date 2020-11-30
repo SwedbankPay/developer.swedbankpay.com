@@ -25,7 +25,7 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{ api_resource  }}/payments/{{ page.payment_id }}/ HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -40,7 +40,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -61,54 +61,54 @@ Content-Type: application/json
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/payeeInfo"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/transactions"
-        }{% unless api_resource  == "swish" or api_resource  == "trustly" %},
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions"
+        }{% unless api_resource == "swish" or api_resource == "trustly" %},
         "authorizations": {
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/authorizations"
-        }{% endunless %},{% unless api_resource  == "trustly" %}
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations"
+        }{% endunless %},{% unless api_resource == "trustly" %}
         "captures": {
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/captures"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures"
         },{% endunless %}
         "reversals": {
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/reversals"
-        },{% unless api_resource  == "trustly" %}
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/reversals"
+        },{% unless api_resource == "trustly" %}
         "cancellations": {
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/cancellations"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/cancellations"
         }{% endunless %}
     },
-    "operations": [ {%- case api_resource  -%}
+    "operations": [ {%- case api_resource -%}
     {%- when "swish" -%}
-        {% include api-operation.md  operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md  operation="redirect-sale" %},
-        {% include api-operation.md  operation="view-sales" %},
-        {% include api-operation.md  operation="view-payment" %},
-        {%- when "trustly" -%}
-        {% include api-operation.md  operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md  operation="redirect-sale" %},
-        {% include api-operation.md  operation="view-sales" %},
-        {% include api-operation.md  operation="update-payment-abort" %},
-        {% include api-operation.md  operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md  operation="failed-payment" href_tail="failed" %}
-        {%- when "invoice" -%}
-        {% include api-operation.md  operation="create-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md  operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md  operation="redirect-authorization" %},
+        {% include api-operation.md operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md operation="redirect-sale" %},
+        {% include api-operation.md operation="view-sales" %},
+        {% include api-operation.md operation="view-payment" %},
+    {%- when "trustly" -%}
+        {% include api-operation.md operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md operation="redirect-sale" %},
+        {% include api-operation.md operation="view-sales" %},
+        {% include api-operation.md operation="update-payment-abort" %},
+        {% include api-operation.md operation="paid-payment" href_tail="paid" %},
+        {% include api-operation.md operation="failed-payment" href_tail="failed" %}
+    {%- when "invoice" -%}
+        {% include api-operation.md operation="create-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md operation="redirect-authorization" %},
         {% else %},
-        {% include api-operation.md  operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md  operation="redirect-authorization" %},
-        {%- endcase -%}
-        {% if show_status_operations %}
-        {% include api-operation.md  operation="update-payment-abort" %},
-        {% include api-operation.md  operation="create-capture" href_tail="captures" %},
-        {% include api-operation.md  operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md  operation="failed-payment" href_tail="failed" %}
-        {% endif %}
+        {% include api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md operation="redirect-authorization" %},
+    {%- endcase -%}
+    {% if show_status_operations %}
+        {% include api-operation.md operation="update-payment-abort" %},
+        {% include api-operation.md operation="create-capture" href_tail="captures" %},
+        {% include api-operation.md operation="paid-payment" href_tail="paid" %},
+        {% include api-operation.md operation="failed-payment" href_tail="failed" %}
+    {% endif %}
     ]
 }
 ```

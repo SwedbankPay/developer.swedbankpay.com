@@ -24,12 +24,12 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}",
-    "{{ plural }}": { {% if api_resource  == "invoice" %}
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "{{ plural }}": { {% if api_resource == "invoice" %}
         "receiptReference": "AH12355", {% endif %}
-        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/{{ plural }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/{{ plural }}",
         "{{ transaction }}List": [{
-            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if api_resource == "swish" %}
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if api_resource == "swish" %}
             "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
             "swishStatus": "PAID",{% endif %}{% if transaction == "authorization" %}
             "consumer": {
@@ -42,7 +42,7 @@ Content-Type: application/json
                     "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/billingaddress"
                 },{% endif %}
             "transaction": {
-                "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+                "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
                 "created": "2016-09-14T01:01:01.01Z",
                 "updated": "2016-09-14T01:01:01.03Z",
                 "type": "{{ transaction | capitalize }}",
@@ -89,7 +89,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md %}                                                                                                                   |
-| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md  describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %}
+| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %}
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                                |

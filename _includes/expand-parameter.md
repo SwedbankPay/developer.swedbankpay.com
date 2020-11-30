@@ -21,7 +21,7 @@ response, enabling you to access information from these sub-resources.
 **Expansion**
 
 ```http
-GET /psp/{{ api_resource  }}/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
 Host: {{ page.api_host }}
 ```
 

@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% assign transaction = include.transaction | default: "authorization" %}
-{% if api_resource  == "paymentorders" %}
+{% if api_resource == "paymentorders" %}
   {% assign resource_title = "Payment Order" %}
 {% else %}
   {% assign resource_title = "Payment" %}
