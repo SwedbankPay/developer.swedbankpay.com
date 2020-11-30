@@ -180,11 +180,11 @@ payment altogether or creating an authorization transaction through the
 
 {% include prices.md api_resource="vipps" %}
 
-{% include description.md api_resource = "vipps" %}
+{% include description.md api_resource="vipps" documentation_section="vipps" %}
 
 {% include payee-info.md api_resource="vipps" documentation_section="vipps" %}
 
-{% include payee-reference.md %}
+{% include payee-reference.md api_resource="vipps" %}
 
 {% include transactions.md api_resource="vipps" documentation_section="vipps" %}
 

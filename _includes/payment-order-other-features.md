@@ -16,7 +16,9 @@ To create a payment order, you perform a `POST` request towards the
     documentation_section=include.documentation_section
     operation_status_bool="true" %}
 
-{% include description.md api_resource="paymentorders" %}
+{% include description.md
+    documentation_section=include.documentation_section
+    api_resource="paymentorders"  %}
 
 ### URLs
 
@@ -144,7 +146,7 @@ Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
-{% if documentation_section == "payment-menu" %}
+{% if include.documentation_section == "payment-menu" %}
 
 ## Instrument Mode
 
@@ -375,7 +377,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][completeurl] for details.  |
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details.  |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ other_features_url }}#payment-url) for details.                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`            | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
@@ -535,13 +537,15 @@ for the given operation.
 | `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 | `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 
-{% include payment-state.md %}
+{% include payment-state.md api_resource="paymentorders" %}
 
 {% include complete-url.md %}
 
 ### View Payment Order
 
-The `view-paymentorder` operation contains the URI of the JavaScript that needs to be set as a `script` element's `src` attribute, either client-side through JavaScript or server-side in HTML as shown below.
+The `view-paymentorder` operation contains the URI of the JavaScript that needs
+to be set as a `script` element's `src` attribute, either client-side through
+JavaScript or server-side in HTML as shown below.
 
 ```html
 <!DOCTYPE html>
@@ -589,9 +593,9 @@ amount or there are added or removed order items in the payment order.
 `UpdateOrder` you need to `refresh()` the Payment Menu frontend after you have
 called the `UpdateOrder` API from the backend." %}
 
-In case the shopping cart is changed in another browser tab, that should also lead to an
-`UpdateOrder`. On `window.onfocus` in the tab that had Payment Menu initialized,
-`refresh()` should be invoked so the correct amount is authorized.
+In case the shopping cart is changed in another browser tab, that should also
+lead to an `UpdateOrder`. On `window.onfocus` in the tab that had Payment Menu
+initialized, `refresh()` should be invoked so the correct amount is authorized.
 
 If the page is refreshed by a full page reload, `refresh()` is not necessary.
 
@@ -1176,7 +1180,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`      | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`payeeInfo`               | `string`     | {% include field-description-payeeinfo.md documentation_section=include.documentation_section %}                                                                                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                                                                                                                     |
+| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | {% include field-description-payee-reference.md documentation_section=include.documentation_section describe_receipt=true %}                                                                                                                                                                                     |
 |                  | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
@@ -1430,7 +1434,7 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
+        "language": "sv-SE",{% if include.documentation_section == "payment-menu" %}
         "instrument": "CreditCard"{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},{% if include.documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
@@ -1610,7 +1614,7 @@ principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 [payment-resource]: #payments-resource
 [settlement-and-reconciliation]: #settlement-and-reconciliation
 [split-settlement]: #split-settlement
-[transaction]: #transaction
 [transaction-on-file]: #transactiononfile
+[transaction]: #transaction
 [urls]: #urls-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

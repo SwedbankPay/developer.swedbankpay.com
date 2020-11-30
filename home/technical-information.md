@@ -299,7 +299,7 @@ described here in the documentation**. Always use the `href` and `method` as
 specified in the response by finding the appropriate operation based on its
 `rel` value.
 
-{% include payee-reference.md %}
+{% include payee-reference.md api_resource="creditcard" %}
 
 [Read more about the settlement process here][settlement].
 

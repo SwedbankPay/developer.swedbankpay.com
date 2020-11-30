@@ -533,7 +533,7 @@ transaction made towards a payment, as previously described.
 
 {% include complete-url.md %}
 
-{% include description.md api_resource = "invoice" %}
+{% include description.md api_resource="invoice" documentation_section="invoice" %}
 
 {% include payee-info.md api_resource="invoice" documentation_section="invoice" %}
 
@@ -547,8 +547,9 @@ transaction made towards a payment, as previously described.
 
 {% include seamless-view-events.md api_resource="invoice" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="After
-Payment" %}
+{% include iterator.html
+    prev_href="after-payment"
+    prev_title="After Payment" %}
 
 [callback]: #callback
 [cancel]: /payment-instruments/invoice/after-payment#cancellations

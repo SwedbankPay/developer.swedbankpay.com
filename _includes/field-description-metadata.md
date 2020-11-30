@@ -1,14 +1,13 @@
-{%- assign documentation_section = include.documentation_section -%}
 {%- capture metadata_url -%}
-   {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
-        /{{ documentation_section }}/other-features#metadata
+   {%- if include.documentation_section == "checkout" or include.documentation_section == "payment-menu" -%}
+        /{{include.documentation_section}}/other-features#metadata
     {%- else -%}
-        /payment-instruments/{{ documentation_section }}/other-features#metadata
+        /payment-instruments/{{include.documentation_section}}/other-features#metadata
     {%- endif -%}
 {%- endcapture -%}
 {%- capture metadata -%}
-    The keys and values that should be associated with the payment. Can be 
-    additional identifiers and data you want to associate with the payment. 
+    The keys and values that should be associated with the payment. Can be
+    additional identifiers and data you want to associate with the payment.
     Read more about this in the [`metadata`]({{ metadata_url }}) section.
 {%- endcapture -%}
 {{- payee_reference | strip_newlines -}}
@@ -21,5 +20,3 @@ It's essential to have control over newlines in this file. If unintentional
 newlines sneak into what's rendered by this include, it will break all tables
 it is included in, so please beware.
 {%- endcomment -%}
-
-

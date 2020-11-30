@@ -18,7 +18,7 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
+        "language": "sv-SE",{% if include.documentation_section == "payment-menu" %}
         "instrument": "CreditCard"{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},{% if include.documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
@@ -201,7 +201,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][completeurl] for details.  |
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][complete-url] for details.  |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ other_features_url }}#payment-url) for details.                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`            | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
@@ -243,7 +243,7 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |{% if include.documentation_section == "payment-menu" %}
-| └➔&nbsp;`instrument`     | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ other_features_url }}#instrument-mode).                                                                                                           |  
+| └➔&nbsp;`instrument`     | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ other_features_url }}#instrument-mode).                                                                                                           |
 | └➔&nbsp;`paymentToken`   | `string`     | The payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                                                  | {% endif %}                                              |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
@@ -264,7 +264,7 @@ Content-Type: application/json
 | └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 
-[completeurl]: /checkout/other-features#completeurl
+[complete-url]: /checkout/other-features#completeurl
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [one-click-payments]: /payment-menu/other-features#one-click-payments
 [operations]: /checkout/other-features#operations

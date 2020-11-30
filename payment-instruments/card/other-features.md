@@ -34,7 +34,7 @@ document is described in the following section.
 
 {% include complete-url.md %}
 
-{% include description.md api_resource="creditcard" %}
+{% include description.md api_resource="creditcard" documentation_section="card" %}
 
 {% include recur.md documentation_section="card" %}
 
@@ -67,8 +67,8 @@ when="at the 3-D Secure verification for credit card payments" full_reference=tr
 
 ## Co-badge Card Choice for Dankort
 
-Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that 
-have more than one payment application, we have developed support for the end 
+Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that
+have more than one payment application, we have developed support for the end
 users of Dankort to be able to choose their preferred payment application on the
 Swedbank Pay payment page. If you are a Dankort user, read more about this
 feature at [Dankort][dankort-eu].

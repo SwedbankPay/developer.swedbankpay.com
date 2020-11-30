@@ -168,7 +168,7 @@ be connected to a Swish account.
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
 
-{% include description.md api_resource = "swish" %}
+{% include description.md api_resource="swish" documentation_section="swish" %}
 
 {% include complete-url.md %}
 

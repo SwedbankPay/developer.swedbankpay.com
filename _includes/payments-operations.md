@@ -1,16 +1,14 @@
-{% assign documentation_section = include.documentation_section %}
-{% assign api_resource = include.api_resource %}
 
 ### Operation `paid-payment`
 
 The `paid-payment` operation confirms that the transaction has been successful
-and that the payment is completed. 
+and that the payment is completed.
 
 A `paid-payment` operation looks like the following:
 
 ```json
 {
-   "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
+   "href": "{{ page.api_url }}/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/paid",
    "rel": "paid-payment",
    "method": "GET",
    "contentType": "application/json"
@@ -25,13 +23,13 @@ response look like is given below.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid HTTP/1.1
+GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% if documentation_section == "card" %}
+{% if include.documentation_section == "card" %}
 
 {:.code-view-header}
 **Response**
@@ -41,12 +39,12 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+  "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
   "paid": {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
+    "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/paid",
     "number": 1234567890,
     "transaction": {
-      "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
+      "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
       "number" : 1234567891
     },
     "payeeReference": "CD123",
@@ -100,12 +98,12 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+  "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
   "paid": {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
+    "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/paid",
     "number": 1234567890,
     "transaction": {
-      "id": "/psp{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
+      "id": "/psp{{ include.api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
       "number" : 1234567891
     },
     "payeeReference": "CD123",
@@ -123,7 +121,7 @@ Content-Type: application/json
 | └➔&nbsp;`transaction`              | `string`     | The transaction object, containing information about the current transaction.                                                                                                                                                                                                                        |
 | └─➔&nbsp;`id`                      | `string`     | {% include field-description-id.md resource="transaction" %}                                                                                                                                                                                                                                         |
 | └─➔&nbsp;`number`                  | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.                                                                                         |
-| └➔&nbsp;`payeeReference`           | `string`     | {% include field-description-payee-reference.md documentation_section=documentation_section %}                                                                                                                                                                                                       |
+| └➔&nbsp;`payeeReference`           | `string`     | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}                                                                                                                                                                                                       |
 | └➔&nbsp;`orderReference`           | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                              |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                            |
 | └➔&nbsp;`tokens`                   | `integer`    | List of tokens generated.                                                                                                                                                                                                                                                                            |
@@ -150,7 +148,7 @@ A `failed-payment` operation looks like the following:
 
 ```json
 {
-   "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/failed",
+   "href": "{{ page.api_url }}/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/failed",
    "rel": "failed-payment",
    "method": "GET",
    "contentType": "application/problem+json"
@@ -170,7 +168,7 @@ An example of how the request and response look like is given below.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/failed HTTP/1.1
+GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/failed HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -185,10 +183,10 @@ Content-Type: application/json
 
 {
    "problem": {
-       "type": "{{ page.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
+       "type": "{{ page.api_url }}/psp/errordetail/{{ include.api_resource }}/acquirererror",
        "title": "Operation failed",
        "status": 403,
-       "detail": {% if documentation_section == "trustly" %} "Unable to complete operation, error calling 3rd party", {% else %} "Unable to complete Authorization transaction, look at problem node!", {% endif %}
+       "detail": {% if include.documentation_section == "trustly" %} "Unable to complete operation, error calling 3rd party", {% else %} "Unable to complete Authorization transaction, look at problem node!", {% endif %}
        "problems": [
         {
           "name": "ExternalResponse",
@@ -225,7 +223,7 @@ response looks like is given below.
 **Request**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/aborted HTTP/1.1
+GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/aborted HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -239,7 +237,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+  "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
   "aborted": {
     "abortReason": "Aborted by consumer"
   }

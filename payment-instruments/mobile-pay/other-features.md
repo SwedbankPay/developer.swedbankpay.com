@@ -298,8 +298,8 @@ documentation_section="mobile-pay" transaction="capture" %}
 
 ### Create capture transaction
 
-A `capture` transaction - to withdraw money from the card connected to the payer's 
-MobilePay account - can be created after a completed authorization by performing 
+A `capture` transaction - to withdraw money from the card connected to the payer's
+MobilePay account - can be created after a completed authorization by performing
 the `create-capture` operation.
 
 {:.code-view-header}
@@ -473,7 +473,7 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 
 {% include payment-link.md %}
 
-{% include description.md api_resource="mobilepay" %}
+{% include description.md api_resource="mobilepay" documentation_section="mobile-pay" %}
 
 {% include callback-reference.md api_resource="mobilepay" %}
 

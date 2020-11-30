@@ -1,11 +1,9 @@
-{%- assign api_resource = include.api_resource -%}
-{%- assign product = api_resource | capitalize -%}
+{%- assign product = include.api_resource  | capitalize -%}
 {%- assign language_codes = "en-US, nb-NO, sv-SE" -%}
 
 ## Languages
-
 ​
-{%- case api_resource -%}
+{%- case include.api_resource  -%}
     {%- when "paymentorders" -%}
         {%- assign product = "Checkout" -%}
         {%- assign language_codes = "en-US, nb-NO, sv-SE" -%}

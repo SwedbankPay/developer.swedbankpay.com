@@ -114,7 +114,7 @@ Content-Type: application/json
 
 {% include complete-url.md %}
 
-{% include description.md api_resource = "trustly" %}
+{% include description.md api_resource="trustly" documentation_section="trustly" %}
 
 {% include payee-info.md api_resource="trustly" documentation_section="trustly" %}
 

@@ -1,10 +1,9 @@
-{% assign api_resource = include.api_resource | default: "creditcard" %}
-{% assign documentation_section_title = documentation_section | capitalize %}
-{% unless api_resource == "paymentorder" %}
+{% assign documentation_section_title = include.documentation_section | capitalize %}
+{% unless include.api_resource  == "paymentorder" %}
   {% assign documentation_section_title = documentation_section_title | append: " Payments" %}
 {% endunless %}
 
-{% case api_resource %}
+{% case include.api_resource  %}
 {% when "vipps" %}
   {% assign language = "nb-NO" %}
   {% assign currency = "NOK" %}
@@ -16,7 +15,7 @@
   {% assign currency = "SEK" %}
 {% endcase %}
 
-{% if api_resource == "creditcard" %}
+{% if include.api_resource  == "creditcard" %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
     {% assign api_resource_field_name = "paymentorder" %}
@@ -41,15 +40,15 @@ shown in the payment window, but it is still required in the initial request."
 **Request**
 
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/{{ include.api_resource  }}/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
       "{{ api_resource_field_name }}": {
         "operation": "Purchase",
-        "intent": {% if api_resource == "trustly" or api_resource == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
-        "currency": "{{ currency }}",{% if api_resource == "creditcard" %}
+        "intent": {% if include.api_resource  == "trustly" or include.api_resource  == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
+        "currency": "{{ currency }}",{% if include.api_resource  == "creditcard" %}
         "prices": [{
                 "type": "CreditCard",
                 "amount": 1500,
@@ -67,7 +66,7 @@ Content-Type: application/json
 }
 ```
 
-{% if api_resource == "paymentorders" %}
+{% if include.api_resource  == "paymentorders" %}
 {:.text-center}
 ![The description field as presented in the Payment Menu][description-paymentorders]{:width="475px"
 :height="625px"}

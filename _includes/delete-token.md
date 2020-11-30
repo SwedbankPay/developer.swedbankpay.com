@@ -1,9 +1,7 @@
-{% assign documentation_section = include.documentation_section %}
-{% assign api_resource = include.api_resource %}
 {% assign token_field_name = include.token_field_name %}
 {% capture token_url %}
-    /psp/{{ api_resource }}/
-    {%- if api_resource == "paymentorders" -%}
+    /psp/{{ include.api_resource  }}/
+    {%- if include.api_resource  == "paymentorders" -%}
         recurrenceTokens
     {%- else -%}
         payments/instrumentData
@@ -30,7 +28,7 @@ Content-Type: application/json
 
 {
     "state": "Deleted",
-    "comment": "Comment on why the deletion is happening"{% if documentation_section == "card" %},
+    "comment": "Comment on why the deletion is happening"{% if include.documentation_section == "card" %},
     "tokenType" : "{{ token_field_name }}"{% endif %}
 }
 ```
@@ -42,7 +40,7 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{   {% if documentation_section == "payment-menu" %}
+{   {% if include.documentation_section == "payment-menu" %}
     "token": "{{ page.payment_token }}",
     "isDeleted": true
     {% else %}
@@ -50,7 +48,7 @@ Content-Type: application/json
         "id": "{{ token_url }}",
         "paymentToken": "{{ page.payment_token }}",
         "payeeId": "{{ page.merchant_id }}",
-        "isDeleted": true {% if documentation_section == "card" %}
+        "isDeleted": true {% if include.documentation_section == "card" %}
         "isPayeeToken": false,
         "cardBrand": "Visa",
         "maskedPan": "123456xxxxxx1111",
