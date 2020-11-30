@@ -48,7 +48,7 @@ card_list:
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /payment-instruments/invoice/features/technical-reference/callback
+  url:  /payment-instruments/invoice/features/technical-reference/callback-reference
   icon:
     content: low_priority
     outlined: true
@@ -105,12 +105,6 @@ card_list_2:
   icon:
     content: report
     outlined: true
-- title: Purchase
-  description: The bread and butter of the payments
-  url:  /payment-instruments/invoice/features/technical-reference/purchase
-  icon:
-    content: shopping_basket
-    outlined: true
 - title: Seamless View Events
   description: Possible events during Seamless View payments
   url:  /payment-instruments/invoice/features/technical-reference/seamless-view-events
@@ -142,7 +136,6 @@ card_list_3:
   icon:
     content: verified_user
     outlined: true
-card_list_3: 
 ---
 
 {:.heading-line}
