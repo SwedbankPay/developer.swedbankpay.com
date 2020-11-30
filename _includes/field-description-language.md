@@ -1,6 +1,6 @@
 {%- capture api_resource -%}{%- include api-resource.md -%}{%- endcapture -%}
 {%- capture language -%}
-    {%- case api_resource  -%}
+    {%- case api_resource -%}
         {% when "creditcard" %}
             `sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`,
             `lv-LV`, `lt-LT`, `ru-RU` or `fi-FI`.

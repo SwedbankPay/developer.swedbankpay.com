@@ -86,9 +86,7 @@ itself is only available for payers in Denmark and Finland. This allows a shop
 in Norway to receive payments in NOK from a Danish payer if the shop supports
 shipping to Denmark, for instance.
 
-{% include iterator.html
-                         next_href="redirect"
-                         next_title="Redirect" %}
+{% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations

@@ -2,8 +2,8 @@
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign token_field_name = include.token_field_name %}
 {% capture token_url %}
-    /psp/{{ api_resource  }}/
-    {%- if api_resource  == "paymentorders" -%}
+    /psp/{{ api_resource }}/
+    {%- if api_resource == "paymentorders" -%}
         recurrenceTokens
     {%- else -%}
         payments/instrumentData

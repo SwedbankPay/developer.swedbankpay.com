@@ -17,7 +17,7 @@ hide_from_sidebar: true
             icon_content='shopping_cart'
             icon_outlined=true
             to='/checkout'
- %}
+        %}
       </div>
       <div class="{{ card_col_class }}">
         {% include card.html
@@ -28,7 +28,7 @@ hide_from_sidebar: true
             payment menu.'
             icon_content='credit_card'
             to='/payments'
- %}
+        %}
       </div>
       <div class="{{ card_col_class }}">
         {% include card.html
@@ -37,7 +37,7 @@ hide_from_sidebar: true
             text='Our Gift Cards API allows your customers to pay with prepaid gift cards issued by Swedbank Pay in your Checkout.'
             icon_content='card_giftcard'
             to='/gift-cards'
- %}
+        %}
       </div>
   </div>
 {% endcontentfor %}
@@ -53,7 +53,7 @@ hide_from_sidebar: true
           icon_svg=true
           type='sdk'
           to='/modules-sdks/mobile-sdk/android'
- %}
+      %}
     </div>
     <div class="{{ card_col_class }}">
       {% include card.html
@@ -63,7 +63,7 @@ hide_from_sidebar: true
           icon_svg=true
           type='sdk'
           to='/modules-sdks/mobile-sdk/ios'
- %}
+      %}
     </div>
     <div class="{{ card_col_class }}">
       {% include card.html
@@ -73,7 +73,7 @@ hide_from_sidebar: true
           icon_svg=true
           type='sdk'
           to='/modules-sdks/#official-sdks'
- %}
+      %}
     </div>
     <div class="{{ card_col_class }}">
       {% include card.html
@@ -83,7 +83,7 @@ hide_from_sidebar: true
           icon_svg=true
           type='sdk'
           to='/modules-sdks/#official-sdks'
- %}
+      %}
     </div>
   </div>
 {% endcontentfor %}
@@ -99,7 +99,7 @@ hide_from_sidebar: true
           icon_svg=true
           type='module'
           to='/modules-sdks/#official-modules'
- %}
+      %}
     </div>
     <div class="{{ card_col_class }}">
       {% include card.html
@@ -109,7 +109,7 @@ hide_from_sidebar: true
           icon_svg=true
           type='module'
           to='/modules-sdks/#official-modules'
- %}
+      %}
     </div>
     <div class="{{ card_col_class }}">
       {% include card.html
@@ -119,7 +119,7 @@ hide_from_sidebar: true
           icon_svg=true
           type='module'
           to='/modules-sdks/#official-modules'
- %}
+      %}
     </div>
   </div>
 {% endcontentfor %}
@@ -139,28 +139,28 @@ hide_from_sidebar: true
               icon_content='account_circle'
               icon_outlined=true
               to='/resources/development-guidelines'
- %}
+          %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Test data'
               text='Get the required data for testing in our interfaces'
               icon_content='content_paste'
               to='/resources/test-data'
- %}
+          %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Terminology'
-          text='Get a better understanding of the terms we use'
-          icon_content='menu_book'
-          to='/resources/terminology'
- %}
+            text='Get a better understanding of the terms we use'
+            icon_content='menu_book'
+            to='/resources/terminology'
+          %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='See all resources (7)'
               text='Data protection, public migration key etc'
               no_icon=true
               to='/resources'
- %}
+          %}
       </div>
   </div>
 {% endcontentfor %}

@@ -221,7 +221,6 @@ sequenceDiagram
 
 [abort]: /payment-instruments/card/after-payment#abort
 [card-payment]: /assets/img/payments/card-payment.png
-[card-payment]: /assets/img/payments/card-payment.png
 [card]: /payment-instruments/card
 [mobile-pay]: /payment-instruments/mobile-pay
 [payment-instruments-card-payment-pages]: /payment-instruments/card/

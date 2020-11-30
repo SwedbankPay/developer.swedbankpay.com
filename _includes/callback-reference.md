@@ -49,22 +49,22 @@ you need to perform a `GET` request on the received URI and inspect the response
 The transaction type or any other information can not and should not be inferred
 from the URI. See [URI usage][uri-usage] for more information.
 
-{% if api_resource  == "paymentorders" %}
+{% if api_resource == "paymentorders" %}
 {:.code-view-header}
 **Payment Order Callback**
 
 ```json
 {
     "paymentorder": {
-        "id": "/psp/{{ api_resource  }}/{{ page.payment_id }}",
-        "instrument": "{{ api_resource  }}"
+        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
+        "instrument": "{{ api_resource }}"
     },
     "payment": {
-        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -77,11 +77,11 @@ from the URI. See [URI usage][uri-usage] for more information.
 ```json
 {
     "payment": {
-        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
     },
     "transaction": {
-        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
 }
@@ -108,7 +108,7 @@ sequenceDiagram
     deactivate SwedbankPay
     note left of Merchant: Callback by Swedbank Pay
     Merchant-->>+SwedbankPay: HTTP response
-    Merchant->>+SwedbankPay: GET {{ api_resource  }} payment
+    Merchant->>+SwedbankPay: GET {{ api_resource }} payment
     deactivate Merchant
     note left of Merchant: First API request
     SwedbankPay-->>+Merchant: payment resource

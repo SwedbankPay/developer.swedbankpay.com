@@ -7,7 +7,7 @@ menu_order: 1200
 
 {% include payment-resource.md %}
 
-{% include alert-callback-url.md %}s
+{% include alert-callback-url.md %}
 
 {% include payment-transaction-states.md %}
 

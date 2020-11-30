@@ -19,7 +19,7 @@ a corporation etc) related to a specific payment.
 **Request**
 
 ```http
-GET /psp/{{ api_resource  }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -33,9 +33,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
-        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/payeeInfo",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo",
         "payeeId": "{{ page.merchant_id }}",
         "payeeReference": "EN1234",
         "payeeName": "TestMerchant1",

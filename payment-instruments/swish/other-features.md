@@ -171,7 +171,7 @@ be connected to a Swish account.
 
 {% include complete-url.md %}
 
-{% include payment-url.md   full_reference=true %}
+{% include payment-url.md full_reference=true %}
 
 {% include prices.md %}
 

@@ -7,7 +7,7 @@
 {%- capture payer_reference -%}
     {%- if documentation_section == "payment-menu" -%}
         The reference to the payer from the merchant system, like e-mail address,
-        mobile number, customer number etc. Also used in [Payer Aware Payment Menu]({{payer_aware_payment_menu_url}}).
+        mobile number, customer number etc. Also used in [Payer Aware Payment Menu]({{ payer_aware_payment_menu_url }}).
     {%- else -%}
         The reference to the payer from the merchant system, like e-mail address,
         mobile number, customer number etc.

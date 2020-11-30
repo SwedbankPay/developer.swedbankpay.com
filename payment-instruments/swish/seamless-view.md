@@ -40,7 +40,7 @@ a purchase. An example of an expanded `POST` request is available in the
 [other features section][purchase]. This will generate a payment object with a unique
 `paymentID`. You will receive a **JavaScript source** in response.
 
-{% include payment-url.md  when="selecting Swish as payment instrument" %}
+{% include payment-url.md when="selecting Swish as payment instrument" %}
 
 {% include alert-gdpr-disclaimer.md %}
 
