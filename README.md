@@ -166,11 +166,18 @@ Example showing how to use a simple include:
 {% include payee-info.md %}
 ```
 
-This assigns `"paymentOrder"` to the variable `api_resource` by default if it
+Some includes can also take variables, if they do this is defined at the
+beginning of the file using the following syntax.
+
+```markdown
+{% assign transaction = include.transaction | default: "authorization" %}
+```
+
+This assigns `"authorization"` to the variable `transaction` by default if it
 isn't passed in via the include.
 
 ```markdown
-{% include payee-info.md %}
+{% include transaction-response.md transaction="example" %}
 ```
 
 Read more about passing arguments and how includes work [here][liquid-includes].
