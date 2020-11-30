@@ -31,9 +31,9 @@ card will appear.
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual 
-field of the JSON document is described in the following section. An example of 
-an expanded `POST` request is available in the 
+An example of an abbreviated `POST` request is provided below. Each individual
+field of the JSON document is described in the following section. An example of
+an expanded `POST` request is available in the
 [other features section][purchase].
 
 {% include alert-risk-indicator.md %}
@@ -200,7 +200,7 @@ card payment:
 *   ③ `Show Payer UI page in iframe` displays the payment window as content
   inside of the iframe. The payer can enter card information for
   authorization.
-*   ④ `Event: OnPaymentComplete` is when a payment is complete. Please note 
+*   ④ `Event: OnPaymentComplete` is when a payment is complete. Please note
   that both successful and rejected payments reach completion, in contrast to a
   cancelled payment.
 

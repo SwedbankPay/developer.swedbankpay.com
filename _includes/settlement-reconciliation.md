@@ -1,3 +1,5 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign operation_title = include.operation_title %}
 
 ## Settlement and Reconciliation
@@ -182,11 +184,11 @@ the reconciliation file.
 
 ```json
 {
-    "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "Capture",
@@ -210,14 +212,14 @@ the reconciliation file.
     `TransactionNo` in reconciliation file.
 
 Below you will see the API mapping tables to the fields in the settlement
-report for {% if include.documentation_section == "swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
+report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
 
-{% if include.documentation_section == "swish" %}
-{% include pba-tables.md documentation_section=include.documentation_section operation_title="sale" %}
+{% if documentation_section == "swish" %}
+{% include pba-tables.md  operation_title="sale" %}
 {% else %}
-{% include pba-tables.md documentation_section=include.documentation_section operation_title="capture" %}
+{% include pba-tables.md  operation_title="capture" %}
 {% endif %}
-{% include pba-tables.md documentation_section=include.documentation_section operation_title="reversal" %}
+{% include pba-tables.md  operation_title="reversal" %}
 
 ### Samples
 

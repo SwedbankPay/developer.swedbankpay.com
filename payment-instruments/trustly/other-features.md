@@ -5,16 +5,15 @@ estimated_read: 50
 menu_order: 1200
 ---
 
-{% include payment-resource.md api_resource="trustly"
-documentation_section="trustly" %}
+{% include payment-resource.md %}
 
-{% include alert-callback-url.md api_resource="trustly" %}s
+{% include alert-callback-url.md %}s
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md api_resource="trustly" %}
+{% include payment-state.md %}
 
-{% include payments-operations.md api_resource="trustly" documentation_section="trustly" %}
+{% include payments-operations.md %}
 
 ## Create Payment
 
@@ -83,10 +82,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`type`              | `string`      | Use the `Trustly` type here                                                                                                                                                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`amount`            | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
-| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md documentation_section="trustly" %}                                                                                                                                                                                                                     |
-|                  | └➔&nbsp;`payerReference`     | `string`      | {% include field-description-payer-reference.md documentation_section="trustly" %}                                                                                                                                                                                   |
+| {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md %}                                                                                                                                                                                                                     |
+|                  | └➔&nbsp;`payerReference`     | `string`      | {% include field-description-payer-reference.md %}                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md api_resource="trustly" %}                                                                                                                                                                                                                                 |
+| {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`](#completeurl) for details. |
 |                  |
@@ -94,12 +93,12 @@ Content-Type: application/json
 |                  |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
-|                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md documentation_section="trustly" %}                                                                                                                                                                |
+|                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`paymentUrl`        | `string`      | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                 |
-| {% icon check %} | └➔&nbsp;`payeeInfo`          | `object`      | {% include field-description-payeeinfo.md documentation_section="trustly" %}                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`payeeInfo`          | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(30*)` | {% include field-description-payee-reference.md documentation_section="trustly" %}                                                                                                                                                                                                                 |
+| {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(30*)` | {% include field-description-payee-reference.md %}                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
@@ -108,26 +107,27 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
 
-{% include transactions.md api_resource="trustly" documentation_section="trustly" %}
+{% include transactions.md %}
 
-{% include callback-reference.md api_resource="trustly" %}
+{% include callback-reference.md %}
 
 {% include complete-url.md %}
 
-{% include description.md api_resource="trustly" documentation_section="trustly" %}
+{% include description.md %}
 
-{% include payee-info.md api_resource="trustly" documentation_section="trustly" %}
+{% include payee-info.md %}
 
-{% include settlement-reconciliation.md documentation_section="trustly" %}
+{% include settlement-reconciliation.md %}
 
-{% include metadata.md api_resource="trustly" %}
+{% include metadata.md %}
 
-{% include problems/problems.md documentation_section="trustly" %}
+{% include problems/problems.md %}
 
-{% include seamless-view-events.md api_resource="trustly" %}
+{% include seamless-view-events.md %}
 
-{% include iterator.html prev_href="after-payment" prev_title="After
-Payment" %}
+{% include iterator.html
+    prev_href="after-payment"
+    prev_title="After Payment" %}
 
 [callback]: #callback
 [financing-consumer]: #financing-consumer

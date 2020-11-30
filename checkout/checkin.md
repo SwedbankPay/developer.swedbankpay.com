@@ -42,7 +42,7 @@ Content-Type: application/json
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md api_resource="paymentorders" %} |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
 | {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
 |                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we will not collect a shipping address from the consumer.                                                            |
 
@@ -193,7 +193,7 @@ After that has all loaded, you should see something like this:
 ![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`. 
+initial `POST`.
 
 From here, there are a three ways forward, depending on the consumer. If he or
 she is already registered with a profile at Swedbank Pay, the information

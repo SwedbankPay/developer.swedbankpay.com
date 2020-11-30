@@ -1,4 +1,6 @@
-{% if include.api_resource  == "card" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+
+{% if api_resource  == "card" %}
   {% assign payee_reference_max_length = 50 %}
 {% else %}
   {% assign payee_reference_max_length = 30 %}
@@ -6,7 +8,7 @@
 
 ## Payee Reference
 
-{% if include.api_resource  == "invoice" %}
+{% if api_resource  == "invoice" %}
 The `payeeReference` is used as a receipt/invoice number when the payer chooses
 to pay with Invoice Payments. The specific processing rules are described below.
 

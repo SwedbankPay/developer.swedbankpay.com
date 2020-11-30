@@ -1,8 +1,9 @@
+{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture metadata_url -%}
-   {%- if include.documentation_section == "checkout" or include.documentation_section == "payment-menu" -%}
-        /{{include.documentation_section}}/other-features#metadata
+   {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+        /{{documentation_section}}/other-features#metadata
     {%- else -%}
-        /payment-instruments/{{include.documentation_section}}/other-features#metadata
+        /payment-instruments/{{documentation_section}}/other-features#metadata
     {%- endif -%}
 {%- endcapture -%}
 {%- capture metadata -%}

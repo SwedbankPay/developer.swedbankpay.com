@@ -1,9 +1,13 @@
+{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{% if documentation_section == "home" %}
+    {% assign documentation_section = "card" %}
+{% endif %}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture payee_reference_url -%}
-   {%- if include.documentation_section == "checkout" or include.documentation_section == "payment-menu" -%}
-        /{{ include.documentation_section }}/other-features#payee-reference
+   {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+        /{{ documentation_section }}/other-features#payee-reference
     {%- else -%}
-        /payment-instruments/{{ include.documentation_section }}/other-features#payee-reference
+        /payment-instruments/{{ documentation_section }}/other-features#payee-reference
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payee_reference -%}

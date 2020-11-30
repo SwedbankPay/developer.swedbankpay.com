@@ -170,7 +170,7 @@ This assigns `"paymentOrder"` to the variable `api_resource` by default if it
 isn't passed in via the include.
 
 ```markdown
-{% include payee-info.md api_resource="example" %}
+{% include payee-info.md %}
 ```
 
 Read more about passing arguments and how includes work [here][liquid-includes].
