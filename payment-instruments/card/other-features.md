@@ -9,14 +9,13 @@ description: |
 menu_order: 1000
 ---
 
-{% include payment-resource.md api_resource="creditcard"
-documentation_section="card" show_status_operations=true %}
+{% include payment-resource.md show_status_operations=true %}
 
-{% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
+{% include payments-operations.md %}
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md api_resource="creditcard" %}
+{% include payment-state.md %}
 
 {% include create-payment.md %}
 
@@ -34,9 +33,9 @@ document is described in the following section.
 
 {% include complete-url.md %}
 
-{% include description.md api_resource="creditcard" documentation_section="card" %}
+{% include description.md %}
 
-{% include recur.md documentation_section="card" %}
+{% include recur.md %}
 
 {% include unscheduled-purchase.md %}
 
@@ -46,24 +45,24 @@ document is described in the following section.
 
 {% include one-click-payments.md %}
 
-{% include payment-url.md api_resource="card" documentation_section="card"
-when="at the 3-D Secure verification for credit card payments" full_reference=true %}
+{% include payment-url.md full_reference=true when="at the 3-D Secure
+verification for credit card payments" %}
 
-{% include callback-reference.md api_resource="creditcard" %}
+{% include callback-reference.md %}
 
 {% include payment-link.md %}
 
-{% include transactions.md api_resource="creditcard" documentation_section="card" %}
+{% include transactions.md %}
 
 {% include card-authorization-transaction.md %}
 
-{% include payee-info.md api_resource="creditcard" documentation_section="card" %}
+{% include payee-info.md %}
 
 {% include prices.md %}
 
-{% include transaction-on-file.md api_resource="creditcard" %}
+{% include transaction-on-file.md %}
 
-{% include 3d-secure-2.md api_resource="creditcard" documentation_section="card" %}
+{% include 3d-secure-2.md %}
 
 ## Co-badge Card Choice for Dankort
 
@@ -84,16 +83,16 @@ before completing the payment.
 
 ![Co-badge Dankort cards with option to choose between Dankort and Visa before paying][card-badge]{:height="620px" width="475px"}
 
-{% include metadata.md api_resource="creditcard" %}
+{% include metadata.md %}
 
-{% include settlement-reconciliation.md documentation_section="card" %}
+{% include settlement-reconciliation.md %}
 
-{% include problems/problems.md documentation_section="card" %}
+{% include problems/problems.md %}
 
-{% include seamless-view-events.md api_resource="creditcard" %}
+{% include seamless-view-events.md %}
 
 {% include iterator.html prev_href="after-payment" prev_title="After
-payment"  %}
+payment" %}
 
 [purchase]: #purchase
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

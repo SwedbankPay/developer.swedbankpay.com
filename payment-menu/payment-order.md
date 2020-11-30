@@ -24,7 +24,7 @@ for Credit Card Payments" %}
 
 ### Request
 
-{% include payment-order-purchase.md documentation_section="payment-menu" %}
+{% include payment-order-purchase.md %}
 
 ### Response
 

@@ -1,8 +1,9 @@
+{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture payee_info_url -%}
-   {%- if include.documentation_section == "checkout" or include.documentation_section == "payment-menu" -%}
-        /{{include.documentation_section}}/other-features#payeeinfo
+   {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+        /{{documentation_section}}/other-features#payeeinfo
     {%- else -%}
-        /payment-instruments/{{include.documentation_section}}/other-features#payeeinfo
+        /payment-instruments/{{documentation_section}}/other-features#payeeinfo
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payee_info -%}

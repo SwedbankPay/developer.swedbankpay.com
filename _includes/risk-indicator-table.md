@@ -1,8 +1,9 @@
+{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture 3ds2link -%}
-    {%- if include.documentation_section == "card" -%}
-        /payment-instruments/{{ include.documentation_section }}/other-features#3-d-secure-2
+    {%- if documentation_section == "card" -%}
+        /payment-instruments/{{ documentation_section }}/other-features#3-d-secure-2
     {%- else -%}
-        /{{ include.documentation_section }}/other-features#3-d-secure-2
+        /{{ documentation_section }}/other-features#3-d-secure-2
     {%- endif -%}
 {%- endcapture -%}
 

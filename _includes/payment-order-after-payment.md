@@ -78,11 +78,11 @@ Content-Type: application/json
 
 ## Cancel
 
-{% include payment-order-cancel.md documentation_section=include.documentation_section %}
+{% include payment-order-cancel.md %}
 
 ## Reversal
 
-{% include payment-order-reversal.md documentation_section=include.documentation_section %}
+{% include payment-order-reversal.md %}
 
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}

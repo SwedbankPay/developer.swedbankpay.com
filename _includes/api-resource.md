@@ -1,6 +1,8 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture api_resource -%}
     {%- case documentation_section -%}
+    {%- when "home" -%}
+        creditcard
     {%- when "card" -%}
         creditcard
     {%- when "mobile-pay" -%}

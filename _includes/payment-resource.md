@@ -1,6 +1,8 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign show_status_operations = include.show_status_operations | default:
 false %}
-{% case include.api_resource  %}
+{% case api_resource %}
 {% when "vipps" %}
   {% assign language = "nb-NO" %}
   {% assign currency = "NOK" %}
@@ -23,7 +25,7 @@ possible to perform in the current state of the payment.
 **Request**
 
 ```http
-GET /psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/ HTTP/1.1
+GET /psp/{{ api_resource  }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -38,13 +40,13 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
         "state": "Ready",
         "operation": "Purchase",
-        "intent": {% if include.documentation_section == "trustly" %}"Sale",{% else %}"Authorization", {% endif %}
+        "intent": {% if documentation_section == "trustly" %}"Sale",{% else %}"Authorization", {% endif %}
         "currency": "{{ currency }}",
         "amount": 1500,
         "remainingCaptureAmount": 1500,
@@ -56,56 +58,56 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "{{ language }}",
         "prices": {
-            "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/prices"
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices"
         },
         "payeeInfo": {
-            "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/payeeInfo"
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/payeeInfo"
         },
         "urls": {
-            "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/urls"
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/urls"
         },
         "transactions": {
-            "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/transactions"
-        }{% unless include.api_resource  == "swish" or include.api_resource  == "trustly" %},
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/transactions"
+        }{% unless api_resource  == "swish" or api_resource  == "trustly" %},
         "authorizations": {
-            "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/authorizations"
-        }{% endunless %},{% unless include.api_resource  == "trustly" %}
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/authorizations"
+        }{% endunless %},{% unless api_resource  == "trustly" %}
         "captures": {
-            "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/captures"
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/captures"
         },{% endunless %}
         "reversals": {
-            "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/reversals"
-        },{% unless include.api_resource  == "trustly" %}
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/reversals"
+        },{% unless api_resource  == "trustly" %}
         "cancellations": {
-            "id": "/psp/{{ include.api_resource  }}/payments/{{ page.payment_id }}/cancellations"
+            "id": "/psp/{{ api_resource  }}/payments/{{ page.payment_id }}/cancellations"
         }{% endunless %}
     },
-    "operations": [ {%- case include.api_resource  -%}
+    "operations": [ {%- case api_resource  -%}
     {%- when "swish" -%}
-        {% include api-operation.md api_resource=include.api_resource operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md api_resource=include.api_resource operation="redirect-sale" %},
-        {% include api-operation.md api_resource=include.api_resource operation="view-sales" %},
-        {% include api-operation.md api_resource=include.api_resource operation="view-payment" %},
+        {% include api-operation.md  operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md  operation="redirect-sale" %},
+        {% include api-operation.md  operation="view-sales" %},
+        {% include api-operation.md  operation="view-payment" %},
         {%- when "trustly" -%}
-        {% include api-operation.md api_resource=include.api_resource operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md api_resource=include.api_resource operation="redirect-sale" %},
-        {% include api-operation.md api_resource=include.api_resource operation="view-sales" %},
-        {% include api-operation.md api_resource=include.api_resource operation="update-payment-abort" %},
-        {% include api-operation.md api_resource=include.api_resource operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md api_resource=include.api_resource operation="failed-payment" href_tail="failed" %}
+        {% include api-operation.md  operation="create-sale" href_tail="sales" %},
+        {% include api-operation.md  operation="redirect-sale" %},
+        {% include api-operation.md  operation="view-sales" %},
+        {% include api-operation.md  operation="update-payment-abort" %},
+        {% include api-operation.md  operation="paid-payment" href_tail="paid" %},
+        {% include api-operation.md  operation="failed-payment" href_tail="failed" %}
         {%- when "invoice" -%}
-        {% include api-operation.md api_resource=include.api_resource operation="create-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md api_resource=include.api_resource operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md api_resource=include.api_resource operation="redirect-authorization" %},
+        {% include api-operation.md  operation="create-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md  operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md  operation="redirect-authorization" %},
         {% else %},
-        {% include api-operation.md api_resource=include.api_resource operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md api_resource=include.api_resource operation="redirect-authorization" %},
+        {% include api-operation.md  operation="view-authorization" href_tail="operation=authorize" %},
+        {% include api-operation.md  operation="redirect-authorization" %},
         {%- endcase -%}
         {% if show_status_operations %}
-        {% include api-operation.md api_resource=include.api_resource operation="update-payment-abort" %},
-        {% include api-operation.md api_resource=include.api_resource operation="create-capture" href_tail="captures" %},
-        {% include api-operation.md api_resource=include.api_resource operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md api_resource=include.api_resource operation="failed-payment" href_tail="failed" %}
+        {% include api-operation.md  operation="update-payment-abort" %},
+        {% include api-operation.md  operation="create-capture" href_tail="captures" %},
+        {% include api-operation.md  operation="paid-payment" href_tail="paid" %},
+        {% include api-operation.md  operation="failed-payment" href_tail="failed" %}
         {% endif %}
     ]
 }
@@ -122,12 +124,12 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string` | {% include field-description-description.md documentation_section=include.documentation_section %}                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`payerReference`    | `string(40)` | {% include field-description-payer-reference.md documentation_section=include.documentation_section %}                                                                                                                                                                                                         |
+| └➔&nbsp;`description`    | `string` | {% include field-description-description.md %}                                                                                                                                                                                                                                                                     |
+| └➔&nbsp;`payerReference`    | `string(40)` | {% include field-description-payer-reference.md %}                                                                                                                                                                                                         |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource=include.api_resource  %}                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md documentation_section=include.documentation_section %}                                                                                                                                                                                                                                                 |
+| └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                 |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
@@ -143,7 +145,7 @@ The only thing that should be hard coded in the client is the value of
 the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
-{% case include.api_resource  %}
+{% case api_resource %}
 
 {% when "creditaccount" %}
 

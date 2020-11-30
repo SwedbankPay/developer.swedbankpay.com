@@ -1,4 +1,6 @@
-{% if include.api_resource == "paymentorders" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+
+{% if api_resource == "paymentorders" %}
     {% assign product="Payment Menu" %}
 {% else %}
     {% assign product="Seamless View" %}
@@ -31,7 +33,7 @@ these events below.
 
 ```json
 {
-    "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}"
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}"
 }
 ```
 
@@ -51,7 +53,7 @@ object:
 
 ```json
 {
-    "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/complete"
 }
 ```
@@ -73,7 +75,7 @@ object:
 
 ```json
 {
-    "id": "/psp/{{ include.api_resource }}payments/{{ page.payment_id }}",
+    "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/canceled"
 }
 ```
@@ -95,7 +97,7 @@ event argument object:
 
 ```json
 {
-    "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/failed"
 }
 ```
@@ -139,7 +141,7 @@ object:
 
 ```json
 {
-    "origin": "{{ include.api_resource }}",
+    "origin": "{{ api_resource }}",
     "messageId": "{{ page.transaction_id }}",
     "details": "Descriptive text of the error"
 }
@@ -148,12 +150,12 @@ object:
 {:.table .table-striped}
 | Field       | Type     | Description                                                    |
 | :---------- | :------- | :------------------------------------------------------------- |
-| `origin`    | `string` | `{{ include.api_resource }}`, identifies the system that originated the error. |
+| `origin`    | `string` | `{{ api_resource }}`, identifies the system that originated the error. |
 | `messageId` | `string` | A unique identifier for the message.                           |
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
-{% if include.api_resource == "paymentorders" %}
+{% if api_resource == "paymentorders" %}
 
 ### `onPaymentMenuInstrumentSelected`
 
@@ -188,7 +190,7 @@ following event argument object:
 
 ```json
 {
-    "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
 }
 ```
@@ -212,7 +214,7 @@ object:
 
 ```json
 {
-    "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "details": "[HttpCode ProblemTitle]"
 }
 ```

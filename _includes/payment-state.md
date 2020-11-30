@@ -1,10 +1,11 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% assign transaction = include.transaction | default: "authorization" %}
-{% if include.api_resource  == "paymentorders" %}
+{% if api_resource  == "paymentorders" %}
   {% assign resource_title = "Payment Order" %}
 {% else %}
   {% assign resource_title = "Payment" %}
 {% endif %}
-{% if include.api_resource == "swish" || include.api_resource == "trustly" %}
+{% if api_resource == "swish" or api_resource == "trustly" %}
   {% assign transaction="sale" %}
 {% else %}
   {% assign transaction="authorization" %}

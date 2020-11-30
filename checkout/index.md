@@ -189,7 +189,7 @@ diagram.
 
 *   ⑤ `Authorize Payment` is when the payer has accepted the payment.
 
-{% include languages.md api_resource="paymentorders" %}
+{% include languages.md %}
 
 {% include iterator.html next_href="checkin"
                          next_title="Implement Checkin" %}

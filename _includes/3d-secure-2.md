@@ -1,6 +1,8 @@
-{% assign other_features_url = include.documentation_section | prepend: '/' | append: '/other-features' %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% assign other_features_url = documentation_section | prepend: '/' | append: '/other-features' %}
 
-{% if include.api_resource == "creditcard" %}
+{% if api_resource == "creditcard" %}
     {% assign other_features_url = other_features_url | prepend: '/payment-instruments' %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
@@ -20,7 +22,7 @@ and can be seen in the abbreviated request example below.
 **Request**
 
 ```http
-POST /psp/{{ include.api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }}/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -32,7 +34,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "urls": {
             "hostUrls": ["https://example.com"]
-        }, {% if include.api_resource == "creditcard" %}
+        }, {% if api_resource == "creditcard" %}
         "cardholder": {
             "firstName": "Olivia",
             "lastName": "Nyhuus",
@@ -87,7 +89,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Field | Type | Description |
-| :---- | :--- | :---------- |{% if include.api_resource == "creditcard" %}
+| :---- | :--- | :---------- |{% if api_resource == "creditcard" %}
 | `payment`                             | `object` | The payment object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | └➔&nbsp;`cardholder`                  | `object` | Cardholder object that can hold information about a buyer (private or company). The information added increases the chance for [frictionless 3-D Secure 2 flow]({{ other_features_url }}#3-d-secure-2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | └➔&nbsp;`firstname`                   | `string` | Payer's first name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

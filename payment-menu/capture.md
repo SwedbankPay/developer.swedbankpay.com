@@ -7,7 +7,7 @@ hide_from_sidebar: true
 
 {% include alert-two-phase-payments.md %}
 
-{% include payment-order-capture.md documentation_section="payment-menu"%}
+{% include payment-order-capture.md %}
 
 **Et voilà!** The payment should now be complete and
 everyone should be happy. But, sometimes you also need to implement the

@@ -1,10 +1,11 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% assign header_level = include.header_level | default: 2 %}
 {% assign next_header_level = header_level | plus: 1 %}
 {% capture h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
 
 {{ h }} Transactions
 
-{% if include.api_resource == "paymentorders" -%}
+{% if api_resource == "paymentorders" -%}
 A payment order contains one or more `payment` sub-resources, which in turn
 contains sub-resources in the form of `transactions`.
 {% else -%}
@@ -22,18 +23,11 @@ specific payment.
 **Request**
 
 ```http
-GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md
-    api_resource=include.api_resource
-    documentation_section=include.documentation_section
-    transaction="transaction" %}
-
-{% include transaction.md
-    api_resource=include.api_resource
-    documentation_section=include.documentation_section
-    header_level=next_header_level %}
+{% include transaction-list-response.md transaction="transaction" %}
+{% include transaction.md header_level=next_header_level %}

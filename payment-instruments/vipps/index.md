@@ -64,7 +64,7 @@ Vipps is unfortunately not available in our demoshop at the moment, but it will
 be shortly. The demoshop will use a fakeservice which enables you to test a
 successful purchase without using the Vipps app.
 
-{% include languages.md api_resource="vipps" %}
+{% include languages.md %}
 
 {% include iterator.html  next_href="redirect" next_title="Redirect" %}
 
