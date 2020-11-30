@@ -98,7 +98,6 @@ Secure. This process has two alternative outcomes:
 *   If the card is enrolled with 3-D Secure, Swedbank Pay will redirect the
     cardholder to the authentication mechanism that is decided by the issuing
     bank. Normally this will be done using BankID or Mobile BankID.
-
 *   If the card is not enrolled with 3-D Secure, no authentication of the
     cardholder is done.
 
