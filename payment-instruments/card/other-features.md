@@ -9,14 +9,13 @@ description: |
 menu_order: 1000
 ---
 
-{% include payment-resource.md api_resource="creditcard"
-documentation_section="card" show_status_operations=true %}
+{% include payment-resource.md show_status_operations=true %}
 
-{% include payments-operations.md api_resource="creditcard" documentation_section="card" %}
+{% include payments-operations.md %}
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md api_resource="creditcard" %}
+{% include payment-state.md %}
 
 {% include create-payment.md %}
 
@@ -34,9 +33,9 @@ document is described in the following section.
 
 {% include complete-url.md %}
 
-{% include description.md api_resource="creditcard" %}
+{% include description.md %}
 
-{% include recur.md documentation_section="card" %}
+{% include recur.md %}
 
 {% include unscheduled-purchase.md %}
 
@@ -46,29 +45,29 @@ document is described in the following section.
 
 {% include one-click-payments.md %}
 
-{% include payment-url.md api_resource="card" documentation_section="card"
-when="at the 3-D Secure verification for credit card payments" full_reference=true %}
+{% include payment-url.md full_reference=true when="at the 3-D Secure
+verification for credit card payments" %}
 
-{% include callback-reference.md api_resource="creditcard" %}
+{% include callback-reference.md %}
 
 {% include payment-link.md %}
 
-{% include transactions.md api_resource="creditcard" documentation_section="card" %}
+{% include transactions.md %}
 
 {% include card-authorization-transaction.md %}
 
-{% include payee-info.md api_resource="creditcard" documentation_section="card" %}
+{% include payee-info.md %}
 
 {% include prices.md %}
 
-{% include transaction-on-file.md api_resource="creditcard" %}
+{% include transaction-on-file.md %}
 
-{% include 3d-secure-2.md api_resource="creditcard" documentation_section="card" %}
+{% include 3d-secure-2.md %}
 
 ## Co-badge Card Choice for Dankort
 
-Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that 
-have more than one payment application, we have developed support for the end 
+Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that
+have more than one payment application, we have developed support for the end
 users of Dankort to be able to choose their preferred payment application on the
 Swedbank Pay payment page. If you are a Dankort user, read more about this
 feature at [Dankort][dankort-eu].
@@ -84,35 +83,35 @@ before completing the payment.
 
 ![Co-badge Dankort cards with option to choose between Dankort and Visa before paying][card-badge]{:height="620px" width="475px"}
 
-{% include metadata.md api_resource="creditcard" %}
+{% include metadata.md %}
 
-{% include settlement-reconciliation.md documentation_section="card" %}
+{% include settlement-reconciliation.md %}
 
-{% include problems/problems.md documentation_section="card" %}
+{% include problems/problems.md %}
 
-{% include seamless-view-events.md api_resource="creditcard" %}
+{% include seamless-view-events.md %}
 
 {% include iterator.html prev_href="after-payment" prev_title="After
-payment"  %}
+payment" %}
 
-[purchase]: #purchase
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[callback]: /payment-instruments/card/other-features#callback
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture
-[callback]: /payment-instruments/card/other-features#callback
 [card-badge]: /assets/img/card-badge.png
+[card-payment]: /assets/img/payments/card-payment.png
 [dankort-eu]: https://www.dankort.dk/Pages/Dankort-eller-Visa.aspx
 [eu-regulation]: https://ec.europa.eu/commission/presscorner/detail/en/MEMO_16_2162
-[mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
-[price-resource]: /payment-instruments/card/other-features#prices
-[redirect]: /payment-instruments/card/redirect
 [hosted-view]: /payment-instruments/card/seamless-view
+[mcc]: https://en.wikipedia.org/wiki/Merchant_category_code
 [one-click-payments]: #one-click-payments
 [payee-reference]: #payee-reference
-[split-settlement]: #split-settlement
-[settlement-and-reconciliation]: #settlement-and-reconciliation
-[swedbankpay-support]: https://www.swedbankpay.se/support
-[recurrence]: #recur
-[verify]: #verify
 [payout]: #payout
-[card-payment]: /assets/img/payments/card-payment.png
+[price-resource]: /payment-instruments/card/other-features#prices
+[purchase]: #purchase
+[recurrence]: #recur
+[redirect]: /payment-instruments/card/redirect
+[settlement-and-reconciliation]: #settlement-and-reconciliation
+[split-settlement]: #split-settlement
+[swedbankpay-support]: https://www.swedbankpay.se/support
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
+[verify]: #verify

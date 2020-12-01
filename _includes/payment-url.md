@@ -1,6 +1,6 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign when = include.when | default: "selecting the payment instrument" %}
-{% assign api_resource = include.api_resource %}
-{% assign documentation_section = include.documentation_section %}
 {% assign full_reference = include.full_reference | default: false %}
 
 {% if api_resource == "paymentorders" %}

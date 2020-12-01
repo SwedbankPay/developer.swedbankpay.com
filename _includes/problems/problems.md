@@ -1,4 +1,9 @@
-{% assign problem_include_file = include.documentation_section | default: 'generic' | prepend: 'problems/' | append: '.md' %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% assign problem_include_file = "problems/generic.md" %}
+{% if documentation_section != "checkout" and documentation_section != "payment-menu" and documentation_section != "home" %}
+    {% assign problem_include_file = documentation_section | prepend: 'problems/' | append: '.md' %}
+{% endif %}
 
 ## Problems
 

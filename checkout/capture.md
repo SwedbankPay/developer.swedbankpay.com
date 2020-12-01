@@ -6,7 +6,7 @@ menu_order: 400
 
 {% include alert-two-phase-payments.md %}
 
-{% include payment-order-capture.md documentation_section="checkout"%}
+{% include payment-order-capture.md %}
 
 **Et voilà!** Checkout should now be complete, the payment should be secure and
 everyone should be happy. But, sometimes you also need to implement the

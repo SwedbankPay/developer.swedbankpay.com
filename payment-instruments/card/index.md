@@ -82,7 +82,7 @@ Our `payment` example below uses the [`Purchase`][purchase] operation.
 
 {% include intent.md autocapture=true %}
 
-{% include languages.md api_resource="creditcard" %}
+{% include languages.md %}
 
 ## Purchase Flow
 
@@ -181,16 +181,16 @@ sequenceDiagram
         end
 ```
 
-{% include iterator.html  next_href="redirect" next_title="Redirect" %}
+{% include iterator.html next_href="redirect" next_title="Redirect" %}
 
-[card-payment]: /assets/img/payments/card-payment.png
-[swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture
-[redirect]: /payment-instruments/card/redirect
+[card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /payment-instruments/card/other-features#create-payment
+[payout]: /payment-instruments/card/other-features#payout
 [purchase]: /payment-instruments/card/other-features#purchase
 [recur]: /payment-instruments/card/other-features#recur
-[payout]: /payment-instruments/card/other-features#payout
-[verify]: /payment-instruments/card/other-features#verify
+[redirect]: /payment-instruments/card/redirect
+[swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
 [unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
+[verify]: /payment-instruments/card/other-features#verify

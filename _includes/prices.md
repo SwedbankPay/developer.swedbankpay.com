@@ -1,4 +1,4 @@
-{% assign api_resource = include.api_resource | default: 'creditcard' %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 ## Prices
 

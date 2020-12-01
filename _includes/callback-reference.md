@@ -1,4 +1,4 @@
-{% assign api_resource = include.api_resource | default: "creditcard" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 ## Callback
 
@@ -90,12 +90,10 @@ from the URI. See [URI usage][uri-usage] for more information.
 {% endif %}
 
 When performing an HTTP `GET` request towards the URI found in the
-`transaction.id` field of the callback, the response is going to look 
+`transaction.id` field of the callback, the response is going to look
 something like the abbreviated example provided below.
 
-{% include transaction-response.md api_resource=include.api_resource
-documentation_section=include.documentation_section
-transaction="authorization" %}
+{% include transaction-response.md transaction="authorization" %}
 
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.

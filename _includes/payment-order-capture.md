@@ -1,4 +1,4 @@
-{% assign documentation_section = include.documentation_section %}
+{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 
 {% if documentation_section == "checkout" %}
 ## Step 5: Capture the funds
@@ -99,7 +99,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`          | `string`     | The description of the capture transaction.                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
 |                  | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`orderItems`           | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
@@ -175,8 +175,8 @@ Content-Type: application/json
 | └─➔&nbsp;`number`           | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
 | └─➔&nbsp;`amount`           | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                         |
 | └─➔&nbsp;`vatAmount`        | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                      |
-| └─➔&nbsp;`description`      | `string`     | {% include field-description-description.md documentation_section="checkout" %}                                                                                                                                   |
-| └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                              |
+| └─➔&nbsp;`description`      | `string`     | {% include field-description-description.md %}                                                                                                                                   |
+| └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                              |
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 
 [card]: /payment-instruments/card

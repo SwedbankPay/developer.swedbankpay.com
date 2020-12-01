@@ -1,5 +1,5 @@
-{% assign documentation_section = include.documentation_section %}
-{% assign api_resource = include.api_resource %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign token_field_name = include.token_field_name %}
 {% capture token_url %}
     /psp/{{ api_resource }}/

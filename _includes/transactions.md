@@ -1,5 +1,4 @@
-{% assign api_resource = include.api_resource | default: 'creditcard' %}
-{% assign documentation_section = include.documentation_section %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% assign header_level = include.header_level | default: 2 %}
 {% assign next_header_level = header_level | plus: 1 %}
 {% capture h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
@@ -30,12 +29,5 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md
-    api_resource=api_resource
-    documentation_section=documentation_section
-    transaction="transaction" %}
-
-{% include transaction.md
-    api_resource=api_resource
-    documentation_section=documentation_section
-    header_level=next_header_level %}
+{% include transaction-list-response.md transaction="transaction" %}
+{% include transaction.md header_level=next_header_level %}
