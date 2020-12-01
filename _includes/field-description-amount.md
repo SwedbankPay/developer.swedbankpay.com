@@ -3,11 +3,17 @@
 {% assign currency = "SEK" %}
 {% endif %}
 {%- capture amount_text -%}
-The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.:&nbsp;
-**`10000`** = `100.00` {{ currency }},&nbsp;
+The transaction amount (including VAT, if any) entered in the lowest monetary
+unit of the selected currency. E.g.:
+**`10000`** = `100.00` {{ currency }},
 **`5000`** = `50.00` {{ currency }}.
 {%- endcapture -%}
-{{- amount_text | strip_newlines | replace: "&nbsp;", " " -}}
+{%- comment -%}
+First convert newlines to '<br />', strip all newlines, split into an array
+on '<br />' as a separator, then join the array back into a string separated
+by ' ' (a space) and then strip extraneous whitespace.
+{%- endcomment -%}
+{{- amount_text | newline_to_br | strip_newlines | split: '<br />' | join: ' ' | strip -}}
 {%- comment -%}
 The dashes in the Liquid code tags remove output whitespace. More on that here:
 
