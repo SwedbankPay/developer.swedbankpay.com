@@ -1,9 +1,20 @@
 ---
-title: Developer Portal
+title: Introduction
 estimated_read: 15
+menu_order: 1
 description: |
-  General technical information that is good to know
+    Read on to learn about the fundamentals and common architectural principles
+    of the Swedbank Pay API Platform.
 ---
+
+## Foundation
+
+The **Swedbank Pay API Platform** is built using the [REST architectural
+style](https://en.wikipedia.org/wiki/Representational_state_transfer) and the
+request and responses come in the [JSON](http://json.org/) format. The API has
+predictable, resource-oriented URIs and use default HTTP features, like HTTP
+authentication (using OAuth 2), HTTP methods and headers. These techniques are
+widely used and understood by most HTTP client libraries.
 
 ## Connection and Protocol
 
@@ -228,9 +239,8 @@ combine dates, time and timezone data into a string, e.g. `2018-09-14T13:21:57.6
 
 ### Locale
 
-When defining locale, we use the combination of language
-([ISO 639-1][iso-639-1]) and country codes ([ISO 3166][iso-3166]), e.g.
-`nb-NO`, `sv-SE`, `en-US`.
+When defining locale, we use the combination of [language][iso-639-1]
+and [country codes][iso-3166], e.g. `nb-NO`, `sv-SE`, `en-US`.
 
 ### Monetary Amounts
 

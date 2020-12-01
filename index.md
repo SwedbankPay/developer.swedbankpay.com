@@ -1,6 +1,11 @@
 ---
 title: Developer Portal
 layout: front-page
+front_page:
+  ingress: |
+    Our developer portal is a full tool box for getting started with easy,
+    flexible and safe payments on your e-commerce website. Read the
+    <a href="/introduction">introduction</a> or make your selection below.
 hide_from_sidebar: true
 ---
 
@@ -150,9 +155,9 @@ hide_from_sidebar: true
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Terminology'
-            text='Get a better understanding of the terms we use'
-            icon_content='menu_book'
-            to='/resources/terminology'
+              text='Get a better understanding of the terms we use'
+              icon_content='menu_book'
+              to='/resources/terminology'
           %}
       </div>
       <div class="{{ card_col_class }}">
