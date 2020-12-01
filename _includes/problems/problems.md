@@ -1,9 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% assign problem_include_file = "problems/generic.md" %}
-{% if documentation_section != "checkout" and documentation_section != "payment-menu" and documentation_section != empty %}
-    {% assign problem_include_file = documentation_section | prepend: 'problems/' | append: '.md' %}
-{% endif %}
+{% capture documentation_section %}{% include documentation-section.md fallback="generic" %}{% endcapture %}
+{% assign problem_include_file = documentation_section | prepend: "problems/" | append: ".md" %}
 
 ## Problems
 

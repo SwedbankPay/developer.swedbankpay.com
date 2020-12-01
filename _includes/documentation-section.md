@@ -1,10 +1,31 @@
-{%- assign sections = page.dir | split: '/' -%}
+{%- assign sections = page.dir | split: "/" -%}
 {%- assign section_count = sections | size -%}
-{%- capture documentation_section -%}
-    {%- if section_count > 2 -%}
-        {{- sections[2] -}}
-    {%- else -%}
-        {{- sections[1] -}}
+{% assign section_index = 1 %}
+{%- if section_count > 2 -%}
+    {% assign section_index = 2 %}
+{%- endif -%}
+{%- assign current_section = sections[section_index] | strip_newlines | strip -%}
+{%- if include.fallback == empty -%}
+    {% assign documentation_section = current_section %}
+{%- else -%}
+    {% comment %}
+    If 'fallback' is provided, weird documentation sections (such as 'home',
+    'payment-instruments', etc.) will be discarded and 'fallback' will be used
+    instead.
+    {% endcomment %}
+    {%- capture known_sections %}
+        checkout, payment-menu, gift-cards, card, invoice, mobile-pay, swish,
+        trustly, vipps
+    {%- endcapture -%}
+    {%- assign known_sections = known_sections | strip_newlines | split: "," -%}
+    {%- for known_section in known_sections -%}
+        {%- assign known_section = known_section | strip_newlines | strip -%}
+        {%- if known_section == current_section -%}
+            {%- assign documentation_section = current_section -%}
+        {%- endif -%}
+    {%- endfor -%}
+    {%- if documentation_section == undefined or documentation_section == nil or documentation_section == empty -%}
+        {%- assign documentation_section = include.fallback -%}
     {%- endif -%}
-{%- endcapture -%}
-{{- documentation_section | strip_newlines | strip  -}}
+{%- endif -%}
+{{- documentation_section -}}
