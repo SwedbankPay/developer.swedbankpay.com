@@ -303,7 +303,7 @@ specified in the response by finding the appropriate operation based on its
 
 [Read more about the settlement process here][settlement].
 
-{% include callback-reference.md api_resource="creditcard" %}
+{% include callback-reference.md %}
 
 {% include problems/problems.md %}
 

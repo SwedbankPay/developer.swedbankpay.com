@@ -150,9 +150,9 @@ hide_from_sidebar: true
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Terminology'
-          text='Get a better understanding of the terms we use'
-          icon_content='menu_book'
-          to='/resources/terminology'
+            text='Get a better understanding of the terms we use'
+            icon_content='menu_book'
+            to='/resources/terminology'
           %}
       </div>
       <div class="{{ card_col_class }}">

@@ -41,10 +41,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md
-    api_resource="swish"
-    documentation_section="swish"
-    transaction="sale" %}
+{% include transaction-list-response.md transaction="sale" %}
 
 ### Create Sales transaction
 
@@ -189,10 +186,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md
-    api_resource="swish"
-    documentation_section="swish"
-    transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ### Create Reversal transaction
 
@@ -227,14 +221,11 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                        |
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                     |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of this reversal.                                            |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | {% include field-description-payee-reference.md documentation_section="swish" %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md
-    api_resource="swish"
-    documentation_section="swish"
-    transaction="reversal" %}
+{% include transaction-response.md transaction="reversal" %}
 
-{% include abort-reference.md api_resource="swish" %}
+{% include abort-reference.md %}
 
 ## Capture
 

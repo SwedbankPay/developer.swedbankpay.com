@@ -1,9 +1,8 @@
-{%- assign api_resource = include.api_resource -%}
-{%- assign product = api_resource | capitalize -%}
+{%- capture api_resource -%}{%- include api-resource.md -%}{%- endcapture -%}
+{%- assign product = api_resource  | capitalize -%}
 {%- assign language_codes = "en-US, nb-NO, sv-SE" -%}
 
 ## Languages
-
 ​
 {%- case api_resource -%}
     {%- when "paymentorders" -%}
@@ -11,10 +10,10 @@
         {%- assign language_codes = "en-US, nb-NO, sv-SE" -%}
     {%- when "creditcard" -%}
         {%- assign product = "Card" -%}
-        {%- assign language_codes="da-DK, de-DE, ee-EE, en-US, es-ES, fi-FI, fr-FR, lt-LT, lv-LV, nb-NO, ru-RU, sv-SE" -%}
+        {%- assign language_codes = "da-DK, de-DE, ee-EE, en-US, es-ES, fi-FI, fr-FR, lt-LT, lv-LV, nb-NO, ru-RU, sv-SE" -%}
     {%- when "mobilepay" -%}
         {%- assign product = "MobilePay" -%}
-        {%- assign language_codes="da-DK, en-US, fi-FI" -%}
+        {%- assign language_codes = "da-DK, en-US, fi-FI" -%}
 {%- endcase -%}
 
 {%- assign language_codes = language_codes | split: ',' -%}

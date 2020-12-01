@@ -77,7 +77,7 @@ but it will be in the future. The demoshop in the test environments will use a
 fakeservice which enables you to test a successful purchase without using the
 MobilePay app.
 
-{% include languages.md api_resource="mobilepay" %}
+{% include languages.md %}
 
 ## Payment availability
 
@@ -86,9 +86,7 @@ itself is only available for payers in Denmark and Finland. This allows a shop
 in Norway to receive payments in NOK from a Danish payer if the shop supports
 shipping to Denmark, for instance.
 
-{% include iterator.html
-                         next_href="redirect"
-                         next_title="Redirect" %}
+{% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations

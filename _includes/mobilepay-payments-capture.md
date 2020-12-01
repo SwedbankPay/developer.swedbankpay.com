@@ -1,8 +1,6 @@
 ## Capture
 
-{% include transaction-list-response.md
-    api_resource="mobilepay"
-    documentation_section="mobile-pay" %}
+{% include transaction-list-response.md %}
 
 ## Create capture transaction
 
@@ -36,11 +34,9 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                             |
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                     |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md
-    api_resource="mobilepay"
-    documentation_section="mobile-pay" %}
+{% include transaction-response.md %}
 
 ## Capture Sequence
 

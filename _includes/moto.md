@@ -1,4 +1,6 @@
-{% if include.api_resource == "creditcard" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+
+{% if api_resource == "creditcard" %}
     {% assign api_resource_field_name = "payment" %}
     {% assign api_redirect_rel = "authorization" %}
     {% assign api_redirect_link = "creditcard/payments/authorize" %}
@@ -12,22 +14,22 @@
 
 {% include alert-agreement-required.md %}
 
-MOTO (Mail Order / Telephone Order) is a purchase where you as a merchant enter 
+MOTO (Mail Order / Telephone Order) is a purchase where you as a merchant enter
 the payer's card details in order to make a payment. The card details are given
 over telephone or in writing, and then filled out to the payment interface by the
-sales representative. 
+sales representative.
 
 Common use-cases are travel or hotel bookings, where the payer calls the sales
 representative to make a booking. This feature is only supported in the
 `Purchase` operation. See the abbreviated example below on how to implement MOTO
-by setting the `generateMotoPayment` to `true`. 
- 
+by setting the `generateMotoPayment` to `true`.
+
 
 {:.code-view-header}
 **Request**
 
 ```http
-POST /psp/{{ include.api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
