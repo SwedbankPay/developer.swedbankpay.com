@@ -1,5 +1,5 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
-{%- if documentation_section == "home" -%}
+{% if documentation_section == nil || documentation_section == empty %}
     {%- assign documentation_section = "card" -%}
 {%- endif -%}
 {%- assign description_url = documentation_section | prepend: "/" | append: "/other-features#description" -%}

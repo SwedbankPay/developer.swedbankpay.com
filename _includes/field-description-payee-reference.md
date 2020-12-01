@@ -1,5 +1,5 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
-{% if documentation_section == "home" %}
+{% if documentation_section == nil || documentation_section == empty %}
     {% assign documentation_section = "card" %}
 {% endif %}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}

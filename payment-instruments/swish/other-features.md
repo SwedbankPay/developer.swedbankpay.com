@@ -192,6 +192,6 @@ be connected to a Swish account.
 {% include iterator.html prev_href="after-payment" prev_title="After
 Payment" %}
 
-[expand]: /home/technical-information#expansion
+[expand]: /introduction#expansion
 [payee-reference]: #payee-reference
 [transaction-resource]: #Transactions

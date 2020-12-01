@@ -390,7 +390,7 @@ sequenceDiagram
 next_href="mobile-card-payments" next_title="Mobile Card Payments" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
-[expansion]: /home/technical-information#expansion
+[expansion]: /introduction#expansion
 [callback]: /payment-instruments/card/other-features#callback
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture

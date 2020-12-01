@@ -115,4 +115,4 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-[uri-usage]: /home/technical-information#uri-usage
+[uri-usage]: /introduction#uri-usage
