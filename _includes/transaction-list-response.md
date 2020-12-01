@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% if documentation_section == nil || documentation_section == empty %}
+{% if documentation_section == nil or documentation_section == empty %}
     {% assign documentation_section = "card" %}
 {% endif %}
 {% assign transaction = include.transaction | default: "capture" %}

@@ -1,5 +1,17 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% if documentation_section == nil or documentation_section == empty %}
+    {% assign operations_href = "/introduction#operations" %}
+{% else %}
+    {%- capture operations_href -%}
+        {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+            /{{ documentation_section }}/other-features#operations
+        {%- else -%}
+            /payment-instruments/{{ documentation_section }}/other-features#operations
+        {%- endif -%}
+    {%- endcapture -%}
+{%- endif -%}
+
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign mcom = include.mcom | default: false %}
 
@@ -112,6 +124,4 @@ Content-Type: application/json
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
-
-[operations]: /payment-instruments/{{ documentation_section }}/other-features#operations
+| └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |
