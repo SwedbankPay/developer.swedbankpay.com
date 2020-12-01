@@ -1,3 +1,4 @@
+{%- capture documentation_section -%}{%- include documentation-section.md fallback="card" -%}{%- endcapture -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {% if documentation_section == nil or documentation_section == empty %}

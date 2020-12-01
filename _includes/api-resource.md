@@ -1,7 +1,7 @@
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture docsec -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture api_resource -%}
-    {%- case documentation_section -%}
-    {%- when empty -%}
+    {%- case docsec -%}
+    {%- when "payment-instruments" -%}
         creditcard
     {%- when "card" -%}
         creditcard
