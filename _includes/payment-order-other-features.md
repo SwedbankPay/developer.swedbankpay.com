@@ -139,7 +139,7 @@ Common sub-resources like [payeeinfo][payee-reference], that are
 structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
-{% if include.documentation_section == "payment-menu" %}
+{% if documentation_section == "payment-menu" %}
     {% include payer-aware-payment-menu.md %}
 {% endif %}
 
@@ -1073,7 +1073,7 @@ Content-Type: application/json
 | └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                      |
 | └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                         |
 
-{% if include.documentation_section == "checkout" %}
+{% if documentation_section == "checkout" %}
     {%- include checkin-events.md %}
 {% endif  %}
 
@@ -1109,13 +1109,13 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 
 {% include payee-info.md %}
 
-{% if include.documentation_section == "checkout" %}
+{% if documentation_section == "checkout" %}
     {%- include delegated-strong-consumer-authentication.md -%}
 {% endif %}
 
 {% include metadata.md %}
 
-{% if include.documentation_section == "payment-menu" %}
+{% if documentation_section == "payment-menu" %}
 
 ## One-Click Payments
 
@@ -1132,7 +1132,7 @@ with the request parameter `instrument`.
 
 {% include settlement-reconciliation.md %}
 
-{% if include.documentation_section == "payment-menu" %}
+{% if documentation_section == "payment-menu" %}
     {% include transaction-on-file.md %}
 {% endif %}
 
