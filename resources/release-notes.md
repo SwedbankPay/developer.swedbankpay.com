@@ -10,6 +10,16 @@ description: |
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+
+## 01 Dec 2020
+
+### Version 2.0.2
+
+* Various bug fixes
+* Various typo fixes
+* Corrected information about [3D-Secure][card]
+* Added sections to [Checkin][Checkin]
+
 ## 12 Nov 2020
 
 ### Version 2.0.1
