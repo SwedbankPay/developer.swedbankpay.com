@@ -463,4 +463,4 @@ Your implementation is encouraged to define its own problem types for any domain
 [ios-universal-links-routing]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
-[swedbankpay-problems]: /home/technical-information#problems
+[swedbankpay-problems]: /introduction#problems

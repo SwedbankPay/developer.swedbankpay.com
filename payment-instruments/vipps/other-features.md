@@ -204,5 +204,5 @@ payment altogether or creating an authorization transaction through the
 
 [callbackreference]: #callback
 [prices]: #prices
-[technical-reference-expansion]: /home/technical-information#expansion
+[technical-reference-expansion]: /introduction#expansion
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

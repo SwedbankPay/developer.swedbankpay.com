@@ -1582,7 +1582,7 @@ elements. When in doubt, please follow the [robustness
 principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
 
 [current-payment]: #current-payment-resource
-[expanding]: /home/technical-information#expansion
+[expanding]: /introduction#expansion
 [image-disabled-payment-menu]: /assets/img/checkout/disabled-payment-menu.png
 [image-enabled-payment-menu]: /assets/img/checkout/guest-payment-menu-450x850.png
 [one-click-payments]: #one-click-payments
