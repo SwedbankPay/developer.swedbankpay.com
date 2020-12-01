@@ -195,5 +195,5 @@ diagram.
                          next_title="Implement Checkin" %}
 
 [after-payment-capture]: /checkout/capture
-[https]: /home/technical-information#connection-and-protocol
+[https]: /introduction#connection-and-protocol
 [payment-order]: /checkout/other-features#payment-orders

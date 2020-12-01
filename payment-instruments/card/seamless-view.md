@@ -214,7 +214,7 @@ next_href="capture" next_title="Capture" %}
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture
 [create-payment]: /payment-instruments/card/other-features#create-payment
-[expansion]: /home/technical-information#expansion
+[expansion]: /introduction#expansion
 [payee-reference]: /payment-instruments/card/other-features#payee-reference
 [payout]: /payment-instruments/card/other-features#payout
 [purchase]: /payment-instruments/card/other-features#purchase

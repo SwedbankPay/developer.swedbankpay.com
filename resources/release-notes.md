@@ -523,7 +523,7 @@ integration and the payer.
 [dsca]: /checkout/other-features#delegated-strong-consumer-authentication
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
-[home-technical-information]: /home/technical-information
+[home-technical-information]: /introduction
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
@@ -540,7 +540,7 @@ integration and the payer.
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /modules-sdks
-[storing-uri]: /home/technical-information#storing-uris
+[storing-uri]: /introduction#storing-uris
 [swish-api-errors]: /payment-instruments/swish/other-features#problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payment-instruments/swish/direct
