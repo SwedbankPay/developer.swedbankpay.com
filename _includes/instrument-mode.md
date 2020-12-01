@@ -1,4 +1,8 @@
 
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{%
+endcapture %}
+
 ## Instrument Mode
 
 In "Instrument Mode" the Payment Menu will display only one specific payment
