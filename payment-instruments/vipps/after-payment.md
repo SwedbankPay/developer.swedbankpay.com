@@ -338,7 +338,7 @@ Content-Type: application/json
 [cancel]: #cancellations
 [capture]: #captures
 [complete-url]: /payment-instruments/vipps/other-features#completeurl
-[expand-parameter]: /home/technical-information#expansion
+[expand-parameter]: /introduction#expansion
 [payee-reference]: /payment-instruments/vipps/other-features#payee-reference
 [paymenturl]: /payment-instruments/vipps/other-features#payment-url
 [prices]: /payment-instruments/vipps/other-features#prices

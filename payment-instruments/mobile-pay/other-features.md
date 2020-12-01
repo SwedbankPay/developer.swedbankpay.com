@@ -488,8 +488,8 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 [cancellation-transaction]: #cancellations
 [capture-transaction]: #captures
 [capture]: #captures
-[expand]: /home/technical-information#expansion
-[general-http-info]: /home/technical-information
+[expand]: /introduction#expansion
+[general-http-info]: /introduction
 [payee-reference]: #payee-reference
 [reversal-transaction]: #reversals
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

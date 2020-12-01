@@ -172,7 +172,7 @@ next_href="seamless-view" next_title="Seamless View" %}
 [capture]: /payment-instruments/card/capture
 [card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /payment-instruments/card/other-features#create-payment
-[expansion]: /home/technical-information#expansion
+[expansion]: /introduction#expansion
 [payee-reference]: /payment-instruments/card/other-features#payee-reference
 [payment-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
 [payout]: /payment-instruments/card/other-features#payout
