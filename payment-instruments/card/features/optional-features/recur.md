@@ -9,4 +9,4 @@ description: |
 menu_order: 1300
 ---
 
-{% include recur.md api_resource="creditcard" documentation_section="card" %}
+{% include recur.md %}

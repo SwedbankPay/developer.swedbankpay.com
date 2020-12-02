@@ -9,5 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include payee-reference.md api_resource="vipps" documentation_section="vipps"
-%}
+{% include payee-reference.md %}

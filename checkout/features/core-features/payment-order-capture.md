@@ -9,4 +9,4 @@ description: |
 menu_order: 1100
 ---
 
-{% include payment-order-capture.md documentation_section="checkout" %}
+{% include payment-order-capture.md %}

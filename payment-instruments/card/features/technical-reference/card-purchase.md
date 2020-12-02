@@ -8,3 +8,5 @@ description: |
   covered by the other subsections.
 menu_order: 1200
 ---
+
+{% include card-purchase.md %}

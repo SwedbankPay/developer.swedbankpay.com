@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include transactions.md api_resource="trustly" documentation_section="trustly" %}
+{% include transactions.md %}

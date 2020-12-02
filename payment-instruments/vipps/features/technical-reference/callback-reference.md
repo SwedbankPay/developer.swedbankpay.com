@@ -11,4 +11,4 @@ menu_order: 1200
 
 {% include alert-risk-indicator.md %}
 
-{% include callback-reference.md api_resource="vipps" %}
+{% include callback-reference.md %}

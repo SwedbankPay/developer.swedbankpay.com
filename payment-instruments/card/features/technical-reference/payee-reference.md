@@ -9,5 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include payee-reference.md api_resource="creditcard" documentation_section="card"
-%}
+{% include payee-reference.md %}

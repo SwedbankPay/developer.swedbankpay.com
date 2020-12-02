@@ -9,5 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include payee-reference.md api_resource="paymentorders" documentation_section="checkout"
-%}
+{% include payee-reference.md %}

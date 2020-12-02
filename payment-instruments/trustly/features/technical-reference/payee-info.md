@@ -9,5 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include payee-info.md api_resource="trustly"
-documentation_section="trustly" %}
+{% include payee-info.md %}

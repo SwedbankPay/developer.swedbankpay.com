@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include transactions.md api_resource="mobilepay" documentation_section="mobile-pay" %}
+{% include transactions.md %}

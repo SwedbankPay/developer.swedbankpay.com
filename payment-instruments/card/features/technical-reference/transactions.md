@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include transactions.md api_resource="creditcard" documentation_section="card" %}
+{% include transactions.md %}

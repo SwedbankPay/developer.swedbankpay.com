@@ -9,4 +9,4 @@ description: |
 menu_order: 1100
 ---
 
-{% include capture.md documentation_section="mobile-pay" %}
+{% include capture.md %}

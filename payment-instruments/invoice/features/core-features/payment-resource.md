@@ -9,5 +9,4 @@ description: |
 menu_order: 1100
 ---
 
-{% include payment-resource.md api_resource="invoice"
-documentation_section="invoice" show_status_operations=true %}
+{% include payment-resource.md show_status_operations=true %}

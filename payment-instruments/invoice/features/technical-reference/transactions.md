@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include transactions.md api_resource="invoice" documentation_section="invoice" %}
+{% include transactions.md %}

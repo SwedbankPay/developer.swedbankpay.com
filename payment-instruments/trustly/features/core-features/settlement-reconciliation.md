@@ -9,4 +9,4 @@ description: |
 menu_order: 1100
 ---
 
-{% include settlement-reconciliation.md documentation_section="trustly" %}
+{% include settlement-reconciliation.md %}

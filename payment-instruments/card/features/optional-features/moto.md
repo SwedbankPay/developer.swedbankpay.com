@@ -9,4 +9,4 @@ description: |
 menu_order: 1300
 ---
 
-{% include moto.md api_resource="creditcard" %}
+{% include moto.md %}
