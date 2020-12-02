@@ -10,6 +10,17 @@ description: |
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+
+## 01 Dec 2020
+
+### Version 2.0.2
+
+* Various bug fixes
+* Various corrections and typo fixes
+* Corrected information about [3D-Secure][card-3ds-info]
+* Added paragraphs about different consumer flows in [Checkin][Checkin]
+* Added link to gift card on the [front page][frontpage]
+
 ## 12 Nov 2020
 
 ### Version 2.0.1
@@ -22,10 +33,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 2.0.0
 
-:tada: Launched new developer portal theme: :tada:
-*   New design :sparkles:
-*   New menu structure :orange_book:
-*   Reading time :hourglass:
+Launched new developer portal theme:
+*   New design
+*   New menu structure
+*   Reading time
 
 Other changes:
 *   Added GDPR disclaimer.
@@ -502,6 +513,7 @@ integration and the payer.
 [card-unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
 [card-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
 [card]: /payment-instruments/card
+[card-3ds-info]: /payment-instruments/card#purchase-flow
 [card-3ds2]: /payment-instruments/card/other-features#3-d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
 [card-seamless-view]: /payment-instruments/card/seamless-view
