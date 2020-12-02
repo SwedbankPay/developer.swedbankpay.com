@@ -233,5 +233,5 @@ function guid() {
 [oauth2]: https://oauth.net/2/
 [restful-cookbook-hmac]: http://restcookbook.com/Basics/loggingin/
 [spring-security]: https://spring.io/projects/spring-security-oauth
-[test-client]: /gift-cards/payment-client
+[test-client]: /gift-cards/test-client
 [uuid]: https://tools.ietf.org/rfc/rfc4122.txt

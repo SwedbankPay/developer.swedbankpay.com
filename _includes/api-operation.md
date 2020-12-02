@@ -1,11 +1,11 @@
-{%- assign api_resource = include.api_resource  | default: "UNKNOWN_RESOURCE" -%}
+{%- capture api_resource -%}{%- include api-resource.md -%}{%- endcapture -%}
 {%- assign operation = include.operation -%}
 {%- assign content_type = include.content_type | default: "application/json" -%}
 {%- assign href_tail = include.href_tail -%}
 {%- capture href -%}
 {{- page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}
 {%- endcapture -%}
-{%- if href_tail != nil && href_tail != empty -%}
+{%- if href_tail != nil and href_tail != empty -%}
     {%- assign href = href | append: '/' | append: href_tail -%}
 {%- endif -%}
 {%- assign operation_begins_with = operation | split: "-" | first -%}

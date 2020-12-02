@@ -64,7 +64,7 @@ expanded `POST` request is available in the [other features section][purchase].
 
 {% include card-purchase.md %}
 
-{% include alert-callback-url.md api_resource="creditcard" %}
+{% include alert-callback-url.md %}
 
 {% include alert.html type="informative" icon="report_problem" body="**Step 2** is
 to create an authorization transaction. Implement only Step 2a if **3-D Secure
@@ -184,8 +184,8 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md %}                                                                                                                                  |
+| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
@@ -309,8 +309,8 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. `10000` = 100.00 NOK, `5000` = 50.00 SEK.                                                                                     |
 | └─➔&nbsp;`vatAmount`              | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md %}                                                                                                                                  |
+| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
@@ -390,10 +390,11 @@ sequenceDiagram
 next_href="mobile-card-payments" next_title="Mobile Card Payments" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
-[expansion]: /home/technical-information#expansion
+[expansion]: /introduction#expansion
 [callback]: /payment-instruments/card/other-features#callback
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture
+[complete-url]: /payment-instruments/card/other-features#completeurl
 [reversal]: /payment-instruments/card/after-payment#reversals
 [authorization]: /payment-instruments/card/other-features#card-authorization-transaction
 [other features]: /payment-instruments/card/other-features#purchase

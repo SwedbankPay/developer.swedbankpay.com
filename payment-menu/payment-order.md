@@ -24,7 +24,7 @@ for Credit Card Payments" %}
 
 ### Request
 
-{% include payment-order-purchase.md documentation_section="payment-menu" %}
+{% include payment-order-purchase.md %}
 
 ### Response
 
@@ -65,7 +65,7 @@ in your system to look up status on the completed payment later.
 
 {% include alert.html type="informative" icon="info" header="URL Storage"
 body="The `id` of the Payment Order should be stored for later retrieval. [Read
-more about URL usage](/home/technical-information#uri-usage)." %}
+more about URL usage](/introduction#uri-usage)." %}
 
 Then find the `view-paymentorder` operation and embed its `href` in a `<script>`
 element. That script will then load the Seamless View for the Payment Menu. We

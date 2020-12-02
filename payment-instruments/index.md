@@ -155,7 +155,7 @@ implementation in action.
 
 [demoshop]: {{ page.front_end_url }}/pspdemoshop
 [card-icon]: /assets/img/icon-card-simple.svg
-[https]: /home/technical-information#connection-and-protocol
+[https]: /introduction#connection-and-protocol
 [invoice-icon]: /assets/img/icon-invoice-simple.svg
 [envelope-icon]: /assets/img/envelope-icon.png
 [keypad-icon]: /assets/img/keypad-icon.png

@@ -1,5 +1,5 @@
 ---
 title: Search
-type: search
+layout: search
 hide_from_sidebar: true
 ---

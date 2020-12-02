@@ -1,23 +1,17 @@
-{%- assign api_resource = include.api_resource -%}
-{% case api_resource %}
-{% when "creditcard" %}
+{%- capture api_resource -%}{%- include api-resource.md -%}{%- endcapture -%}
 {%- capture language -%}
-`sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`, `lv-LV`,
-`lt-LT`, `ru-RU` or `fi-FI`.
+    {%- case api_resource -%}
+        {% when "creditcard" %}
+            `sv-SE`, `nb-NO`, `da-DK`, `de-DE`, `ee-EE`, `en-US`, `es-ES`, `fr-FR`,
+            `lv-LV`, `lt-LT`, `ru-RU` or `fi-FI`.
+        {% when "mobilepay" %}
+            `da-DK`, `fi-FI` or `en-US`.
+        {% else %}
+            `sv-SE`, `nb-NO` or `en-US`.
+    {%- endcase -%}
 {%- endcapture -%}
 
-{% when "mobilepay" %}
-{%- capture language -%}
-`da-DK`, `fi-FI` or `en-US`.
-{%- endcapture -%}
-
-{% else %}
-{%- capture language -%}
-`sv-SE`, `nb-NO` or `en-US`.
-{%- endcapture -%}
-{% endcase %}
-
-{{- language | strip_newlines -}}
+{{- language | strip_newlines | strip -}}
 {%- comment -%}
 The dashes in the Liquid code tags remove output whitespace. More on that here:
 

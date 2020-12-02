@@ -4,15 +4,16 @@ title: Introduction
 redirect_from: /payments/mobile-pay/
 estimated_read: 3
 description: |
-  MobilePay Online is the fast and simple way of
-  paying with your mobile phone, reaching more than 4 million Danes.
+  MobilePay Online is the fast and simple way of paying with your mobile phone,
+  reaching more than 4 million users in Denmark and Finland.
 menu_order: 700
 ---
 
-MobilePay is the main Danish payment app for mobile phones, making it one
-of the essential payment instruments for merchants operating in Denmark. More
-than 4 million Danes use the app, and more than 100,000 merchants are
-accepting payments. We offer it on our redirect and seamless view platforms.
+MobilePay is the main payment app in Denmark and one of the leading apps in
+Finland, making it one of the essential payment instruments for merchants
+operating in these Nordic countries. More than 4.2 million Danes and Finns use
+the app and 140,000 stores are accepting payments. We offer it on
+our redirect and seamless view platforms.
 
 ## Purchase flow
 
@@ -76,7 +77,7 @@ but it will be in the future. The demoshop in the test environments will use a
 fakeservice which enables you to test a successful purchase without using the
 MobilePay app.
 
-{% include languages.md api_resource="mobilepay" %}
+{% include languages.md %}
 
 ## Payment availability
 
@@ -85,9 +86,7 @@ itself is only available for payers in Denmark and Finland. This allows a shop
 in Norway to receive payments in NOK from a Danish payer if the shop supports
 shipping to Denmark, for instance.
 
-{% include iterator.html
-                         next_href="redirect"
-                         next_title="Redirect" %}
+{% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations

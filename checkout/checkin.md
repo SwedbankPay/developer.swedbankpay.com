@@ -42,7 +42,7 @@ Content-Type: application/json
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md api_resource="paymentorders" %} |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
 | {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
 |                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we will not collect a shipping address from the consumer.                                                            |
 
@@ -190,10 +190,41 @@ With the scripts loading in after the entire page is loaded, we can access the
 After that has all loaded, you should see something like this:
 
 {:.text-center}
-![Consumer UI][checkin-image]{:width="475" height="250"}
+![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
 
 As you can see, the payer's information is pre-filled as provided by the
-initial `POST`. With a `consumerProfileRef` safely tucked into our pocket,
+initial `POST`.
+
+From here, there are a three ways forward, depending on the consumer. If he or
+she is already registered with a profile at Swedbank Pay, the information
+already provided will be sufficient. The consumer can simply click proceed, and
+the profile will appear on the page (with sensitive data masked).
+
+If Swedbank Pay detects that the consumer hasn't registered any personal
+details, two options are provided: Store details for future purchases or proceed
+without storing details.
+
+{:.text-center}
+![Consumer UI New Consumer Options][checkin-options]{:width="425" height="475"}
+
+If he or she chooses to store details, the next step is to enter their SSN.
+
+{:.text-center}
+![Consumer UI SSN][checkin-ssn]{:width="425" height="250"}
+
+Once a valid SSN has been provided, a page for address details appears. When the
+consumer has entered their address, the profile box shown above will be
+displayed.
+
+{:.text-center}
+![Consumer UI Address][checkin-address]{:width="425" height="675"}
+
+If the consumer opts out of storing their details, they will be sent directly to
+the page for address details to enter their shipping address. This info is not
+stored for future purchases. Please note that this is **not** the same as
+shopping as a guest.
+
+With a `consumerProfileRef` safely tucked into our pocket,
 the Checkin is complete and we can move on to [Payment Menu][payment-menu].
 
 A complete overview of how the process of identifying the payer through Checkin
@@ -248,7 +279,10 @@ and its duration.
                          next_href="payment-menu"
                          next_title="Payment Menu" %}
 
-[checkin-image]: /assets/img/checkout/your-information.png
+[checkin-address]: /assets/img/checkout/checkin-address.png
+[checkin-start]: /assets/img/checkout/checkin-email-msisdn.png
+[checkin-options]: /assets/img/checkout/checkin-options.png
+[checkin-ssn]: /assets/img/checkout/checkin-ssn.png
 [checkin-events]: /checkout/other-features#checkin-events
 [data-protection]: /resources/data-protection#paymentorder-consumer-data
 [payment-menu]: payment-menu

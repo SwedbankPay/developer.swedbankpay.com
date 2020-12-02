@@ -28,7 +28,7 @@ Each individual field of the JSON document is described in the following section
 An example of an expanded `POST` request is available in the
 [other features section][purchase].
 
-{% include alert-callback-url.md api_resource="creditcard" %}
+{% include alert-callback-url.md %}
 
 {% include alert-risk-indicator.md %}
 
@@ -170,16 +170,16 @@ next_href="seamless-view" next_title="Seamless View" %}
 [callback]: /payment-instruments/card/other-features#callback
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture
+[card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /payment-instruments/card/other-features#create-payment
-[expansion]: /home/technical-information#expansion
+[expansion]: /introduction#expansion
 [payee-reference]: /payment-instruments/card/other-features#payee-reference
+[payment-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
 [payout]: /payment-instruments/card/other-features#payout
-[purchase]: /payment-instruments/card/other-features#purchase
 [price-resource]: /payment-instruments/card/other-features#prices
+[purchase]: /payment-instruments/card/other-features#purchase
 [recur]: /payment-instruments/card/other-features#recur
 [reversal]: /payment-instruments/card/after-payment#reversals
-[card-payment]: /assets/img/payments/card-payment.png
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
-[verify]: /payment-instruments/card/other-features#verify
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payment-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
+[verify]: /payment-instruments/card/other-features#verify
