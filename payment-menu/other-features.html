@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Other Features">
+        <meta name="application-name" content="Payment Menu – Other Features">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Other Features">
+        <meta name="apple-mobile-web-app-title" content="Payment Menu – Other Features">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/payment-menu/other-features.html">
-        <meta property="og:title" value="Payment-menu – Other Features">
-        <meta name="title" content="Payment-menu – Other Features">
+        <meta property="og:title" value="Payment Menu – Other Features">
+        <meta name="title" content="Payment Menu – Other Features">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Payment-menu – Other Features</title>
+        <title>Payment Menu – Other Features</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.7.0/styles/dg-style.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
@@ -43,10 +42,10 @@
 <link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-167x167.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-180x180.png">
 <link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-1024x1024.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1182x2208.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1242x2148.png">
 <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-748x1024.png">
@@ -68,13 +67,40 @@
                         <div class="sidebar dg-sidebar">
                             <nav class="sidebar-nav">
                                 <a href="/" class="sidebar-header">
-                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo">
+                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo" class="logotype-vertical logotype-lg">
                                     <div class="sidebar-header-text">
                                         <span>{</span>developer portal<span>}</span>
                                     </div>
                                 </a>
-
+                                
+                                <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
+                                    <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
+                                    <label for="search-input" class="mb-0">
+                                        <i class="material-icons m-0" aria-hidden="true">search</i>
+                                    </label>
+                                </form>
+                                
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Introduction</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
+<li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
+<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
+<li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
+<li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/introduction#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/introduction#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/introduction#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/introduction#problems">Problems</a></li>
+        
+      </ul>
+      </li>
 <li class="nav-group">
         <div class="nav-group-heading">
           <i class="material-icons">arrow_right</i>
@@ -354,7 +380,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#one-click-payments">One-Click Payments</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-url">Payment Url</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#card-authorization-transaction">Card authorization transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
@@ -473,7 +498,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payeeinfo">PayeeInfo</a></li>
@@ -575,7 +599,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-state">Payment State</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-url">Payment Url</a></li>
@@ -680,7 +703,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference-1">Payee Reference</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#metadata">Metadata</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#seamless-view-events">Seamless View Events</a></li>
@@ -781,7 +803,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancel-sequence">Cancel Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#callback">Callback</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#transactions">Transactions</a></li>
@@ -1207,7 +1228,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
@@ -1295,6 +1317,16 @@ They are listed on this very page.</p>
 
         
     </div>
+
+    
+
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-menu/other-features.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Other Features' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title id="simpleicons-github-icon">Edit "Other Features" on GitHub</title>
+        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+    </svg>
+</a>
+
 </div>
 
                         
@@ -1457,7 +1489,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">created</code>
@@ -1494,13 +1526,13 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code>
@@ -1978,7 +2010,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1986,7 +2018,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2123,7 +2155,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2316,7 +2348,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2324,7 +2356,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2472,7 +2504,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2529,14 +2561,14 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2593,7 +2625,7 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">metadata</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.            In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2678,7 +2710,7 @@ shown in the payment window, but it is still required in the initial request.</p
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-      </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
@@ -2688,7 +2720,7 @@ shown in the payment window, but it is still required in the initial request.</p
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w">
             </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"https://example.com"</span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -2775,8 +2807,8 @@ underlying payments or transaction.</p>
 
 <p>For our Seamless Views, the field called <code class="language-html highlighter-rouge">paymentUrl</code> will be used when the
 payer is redirected out of the Seamless View (the <code class="language-html highlighter-rouge">iframe</code>). The payer is
-redirected out of frame when selecting the payment instrument Vipps or in the 3-D Secure
-verification for Credit Card Payments.</p>
+redirected out of frame when selecting the payment
+instrument Vipps or in the 3-D Secure verification for Credit Card Payments.</p>
 
 <p>The URL should represent the page of where the Payment Order Seamless View was
 hosted originally, such as the checkout page, shopping cart page, or similar.
@@ -2913,7 +2945,7 @@ contents.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">urls</code></td>
@@ -2924,7 +2956,7 @@ contents.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">urls</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">urls</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">hostsUrl</code>
@@ -3074,13 +3106,13 @@ contents.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">amount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">vatAmount</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
   </tbody>
 </table>
@@ -3578,7 +3610,7 @@ menu. See the abbreviated <code class="language-html highlighter-rouge">Purchase
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -3586,7 +3618,7 @@ menu. See the abbreviated <code class="language-html highlighter-rouge">Purchase
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -3667,7 +3699,7 @@ menu. See the abbreviated <code class="language-html highlighter-rouge">Purchase
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment order to inspect it further. See <a href="/checkout/other-features#completeurl"><code class="language-html highlighter-rouge">completeUrl</code></a> for details.</td>
+      <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment order to inspect it further. See <a href="#completeurl"><code class="language-html highlighter-rouge">completeUrl</code></a> for details.</td>
       <td> </td>
     </tr>
     <tr>
@@ -3731,7 +3763,7 @@ menu. See the abbreviated <code class="language-html highlighter-rouge">Purchase
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4167,7 +4199,9 @@ payment resource to find the final status (<code class="language-html highlighte
         
       </h3>
 
-<p>The <code class="language-html highlighter-rouge">view-paymentorder</code> operation contains the URI of the JavaScript that needs to be set as a <code class="language-html highlighter-rouge">script</code> element’s <code class="language-html highlighter-rouge">src</code> attribute, either client-side through JavaScript or server-side in HTML as shown below.</p>
+<p>The <code class="language-html highlighter-rouge">view-paymentorder</code> operation contains the URI of the JavaScript that needs
+to be set as a <code class="language-html highlighter-rouge">script</code> element’s <code class="language-html highlighter-rouge">src</code> attribute, either client-side through
+JavaScript or server-side in HTML as shown below.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -4269,9 +4303,9 @@ called the <code class="language-html highlighter-rouge">UpdateOrder</code> API 
     
 </div>
 
-<p>In case the shopping cart is changed in another browser tab, that should also lead to an
-<code class="language-html highlighter-rouge">UpdateOrder</code>. On <code class="language-html highlighter-rouge">window.onfocus</code> in the tab that had Payment Menu initialized,
-<code class="language-html highlighter-rouge">refresh()</code> should be invoked so the correct amount is authorized.</p>
+<p>In case the shopping cart is changed in another browser tab, that should also
+lead to an <code class="language-html highlighter-rouge">UpdateOrder</code>. On <code class="language-html highlighter-rouge">window.onfocus</code> in the tab that had Payment Menu
+initialized, <code class="language-html highlighter-rouge">refresh()</code> should be invoked so the correct amount is authorized.</p>
 
 <p>If the page is refreshed by a full page reload, <code class="language-html highlighter-rouge">refresh()</code> is not necessary.</p>
 
@@ -4396,14 +4430,14 @@ called the <code class="language-html highlighter-rouge">UpdateOrder</code> API 
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -4677,7 +4711,7 @@ called the <code class="language-html highlighter-rouge">UpdateOrder</code> API 
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">number</code>
@@ -4714,13 +4748,13 @@ called the <code class="language-html highlighter-rouge">UpdateOrder</code> API 
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">remainingCaptureAmount</code>
@@ -4750,7 +4784,7 @@ called the <code class="language-html highlighter-rouge">UpdateOrder</code> API 
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,         mobile number, customer number etc. Also used in <a href="/payment-menu/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a>.</td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc. Also used in <a href="/payment-menu/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code>
@@ -4763,7 +4797,7 @@ called the <code class="language-html highlighter-rouge">UpdateOrder</code> API 
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">
-<code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">de-DE</code>, <code class="language-html highlighter-rouge">ee-EE</code>, <code class="language-html highlighter-rouge">en-US</code>, <code class="language-html highlighter-rouge">es-ES</code>, <code class="language-html highlighter-rouge">fr-FR</code>, <code class="language-html highlighter-rouge">lv-LV</code>,<code class="language-html highlighter-rouge">lt-LT</code>, <code class="language-html highlighter-rouge">ru-RU</code> or <code class="language-html highlighter-rouge">fi-FI</code>.</td>
+<code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code>
@@ -5023,7 +5057,7 @@ in the <code class="language-html highlighter-rouge">operations</code> list. See
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -5153,13 +5187,13 @@ example below:</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code>
@@ -5171,7 +5205,7 @@ example below:</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
   </tbody>
 </table>
@@ -5308,21 +5342,21 @@ example below:</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -5572,13 +5606,13 @@ example below:</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code>
@@ -5590,7 +5624,7 @@ example below:</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">receiptReference</code>
@@ -5709,7 +5743,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transactions</code></td>
@@ -5720,7 +5754,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transactions</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transactions</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transactionList</code>
@@ -5738,7 +5772,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code>
@@ -5774,13 +5808,13 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code>
@@ -5792,7 +5826,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">isOperational</code>
@@ -6006,7 +6040,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6019,7 +6053,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6033,7 +6067,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6047,7 +6081,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6089,14 +6123,14 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6110,7 +6144,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6139,7 +6173,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of <a href="#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
+      <td style="text-align: left">The array of <a href="/payment-menu/other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -6178,7 +6212,7 @@ payment resource.</li>
 </ul>
 
 <p>You can view the current payment resource, containg the recurrence token and
-other payment instrument properties, by <a href="/home/technical-information#expansion">expanding the sub-resource</a>
+other payment instrument properties, by <a href="/introduction#expansion">expanding the sub-resource</a>
 <a href="#current-payment-resource"><code class="language-html highlighter-rouge">currentpayment</code></a> when doing a <code class="language-html highlighter-rouge">GET</code> request on the
 <code class="language-html highlighter-rouge">paymentorders</code> resource.</p>
 
@@ -6361,14 +6395,14 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -6397,7 +6431,7 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">urls</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">{he URI to the <code class="language-html highlighter-rouge">urls</code> resource where all URIs related to the payment order can be retrieved.</td>
+      <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">urls</code> resource where all URIs related to the payment order can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -6425,7 +6459,7 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -6573,7 +6607,7 @@ recurrence token during the initial payment order.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">metadata</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.            In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -6633,20 +6667,14 @@ No other states are supported.</p>
 6
 7
 8
-9
-10
-11
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
-<span class="p">{</span><span class="w">
-    </span><span class="nl">"instrumentData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/recurrenceTokens/5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"paymentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cabf558-5283-482f-b252-4d58e06f6f3b"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isDeleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> 
-    </span><span class="p">}</span><span class="w">
+<span class="p">{</span><span class="w">   
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isDeleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -6904,7 +6932,7 @@ operation.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6912,7 +6940,7 @@ operation.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -7040,7 +7068,7 @@ operation.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -7209,7 +7237,7 @@ operation.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -7273,7 +7301,7 @@ operation.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,         mobile number, customer number etc. Also used in <a href="/payment-menu/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a>.</td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc. Also used in <a href="/payment-menu/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a>.</td>
       <td> </td>
     </tr>
     <tr>
@@ -7295,7 +7323,7 @@ operation.</p>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">
-<code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">fi-FI</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+<code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
       <td> </td>
     </tr>
     <tr>
@@ -7414,7 +7442,7 @@ successfully should finish the purchase with a card payment instead.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payments</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payments</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentList</code>
@@ -7426,7 +7454,7 @@ successfully should finish the purchase with a card payment instead.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">instrument</code>
@@ -7566,7 +7594,7 @@ payment order container.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource this <code class="language-html highlighter-rouge">payment</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource this <code class="language-html highlighter-rouge">payment</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">menuElementName</code></td>
@@ -7589,7 +7617,7 @@ payment order container.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payment</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payment</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">number</code>
@@ -7651,7 +7679,7 @@ payment order container.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">remainingCaptureAmount</code>
@@ -7681,7 +7709,7 @@ payment order container.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,         mobile number, customer number etc. Also used in <a href="/payment-menu/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a>.</td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc. Also used in <a href="/payment-menu/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code>
@@ -7785,7 +7813,7 @@ payment order container.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">prices</code></td>
@@ -7796,7 +7824,7 @@ payment order container.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">priceList</code>
@@ -7814,13 +7842,13 @@ payment order container.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
   </tbody>
 </table>
@@ -8010,7 +8038,7 @@ no logo and no text is shown.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payer</code></td>
@@ -8021,7 +8049,7 @@ no logo and no text is shown.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payer</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payer</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">email</code>
@@ -8158,7 +8186,7 @@ these events below.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
   </tbody>
 </table>
@@ -8202,7 +8230,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -8251,7 +8279,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -8300,7 +8328,7 @@ event argument object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -8511,7 +8539,7 @@ following event argument object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">instrument</code></td>
@@ -8563,7 +8591,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">details</code></td>
@@ -8686,7 +8714,7 @@ seconds from the initial transaction time:
 <p>To understand the nature of the callback, the type of transaction, its status, etc.,
 you need to perform a <code class="language-html highlighter-rouge">GET</code> request on the received URI and inspect the response.
 The transaction type or any other information can not and should not be inferred
-from the URI. See <a href="/home/technical-information#uri-usage">URI usage</a> for more information.</p>
+from the URI. See <a href="/introduction#uri-usage">URI usage</a> for more information.</p>
 
 <p class="code-view-header"><strong>Payment Order Callback</strong></p>
 
@@ -8724,7 +8752,7 @@ from the URI. See <a href="/home/technical-information#uri-usage">URI usage</a> 
 </tr></tbody></table></code></pre></div></div>
 
 <p>When performing an HTTP <code class="language-html highlighter-rouge">GET</code> request towards the URI found in the
-<code class="language-html highlighter-rouge">transaction.id</code> field of the callback, the response is going to look 
+<code class="language-html highlighter-rouge">transaction.id</code> field of the callback, the response is going to look
 something like the abbreviated example provided below.</p>
 
 <p>The created <code class="language-html highlighter-rouge">authorization</code> resource contains information about the
@@ -8830,7 +8858,7 @@ something like the abbreviated example provided below.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -8843,7 +8871,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">authorization</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">authorization</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -8857,7 +8885,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -8871,7 +8899,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -8913,28 +8941,28 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments//other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-menu/other-features#description">description</a> of the purchase.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-instruments//other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -8963,7 +8991,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of <a href="#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
+      <td style="text-align: left">The array of <a href="/payment-menu/other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -9291,13 +9319,13 @@ a corporation etc) related to a specific payment.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payeeInfo</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payeeInfo</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeId</code>
@@ -9309,7 +9337,7 @@ a corporation etc) related to a specific payment.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeName</code>
@@ -9352,7 +9380,7 @@ delivery of a transactional operation from the merchant system.</li>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
 handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
 to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
-characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and
 <code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
@@ -10744,6 +10772,14 @@ and can be seen in the abbreviated request example below.</p>
 36
 37
 38
+39
+40
+41
+42
+43
+44
+45
+46
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -10780,6 +10816,14 @@ and can be seen in the abbreviated request example below.</p>
             </span><span class="nl">"shipIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"giftCardPurchase"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"reOrderPurchaseIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="w">
+            </span><span class="nl">"pickUpAddress"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Company Megashop Sarpsborg"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"streetAddress"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hundskinnveien 92"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"coAddress"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Sarpsborg"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"zipCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1711"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"countryCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"NO"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -10799,7 +10843,7 @@ and can be seen in the abbreviated request example below.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentorder</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource this <code class="language-html highlighter-rouge">payer</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payer</code>
@@ -10832,7 +10876,7 @@ and can be seen in the abbreviated request example below.</p>
       <td style="text-align: left">Payer’s registered work phone number. The field is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
     </tr>
     <tr>
-      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">shippingAddress</code>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">shippingAddress</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The shipping address object related to the <code class="language-html highlighter-rouge">payer</code>. The field is related to <a href="/payment-menu/other-features#3-d-secure-2">3-D Secure 2</a>.</td>
@@ -10907,7 +10951,7 @@ and can be seen in the abbreviated request example below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">shipIndicator</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">Indicates shipping method chosen for the transaction. <br><code class="language-html highlighter-rouge">01</code> (Ship to cardholder’s billing address) <br><code class="language-html highlighter-rouge">02</code> (Ship to another verified address on file with merchant)<br><code class="language-html highlighter-rouge">03</code> (Ship to address that is different than cardholder’s billing address)<br><code class="language-html highlighter-rouge">04</code> (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br><code class="language-html highlighter-rouge">05</code> (Digital goods, includes online services, electronic giftcards and redemption codes) <br><code class="language-html highlighter-rouge">06</code> (Travel and Event tickets, not shipped) <br><code class="language-html highlighter-rouge">07</code> (Other, e.g. gaming, digital service)</td>
+      <td style="text-align: left">Indicates shipping method chosen for the transaction. <br><code class="language-html highlighter-rouge">01</code> (Ship to cardholder’s billing address) <br><code class="language-html highlighter-rouge">02</code> (Ship to another verified address on file with merchant)<br><code class="language-html highlighter-rouge">03</code> (Ship to address that is different than cardholder’s billing address)<br><code class="language-html highlighter-rouge">04</code> (Ship to Store / Pick-up at local store. Store address shall be populated in the <code class="language-html highlighter-rouge">riskIndicator.pickUpAddress</code> and <code class="language-html highlighter-rouge">payer.shippingAddress</code> fields)<br><code class="language-html highlighter-rouge">05</code> (Digital goods, includes online services, electronic giftcards and redemption codes) <br><code class="language-html highlighter-rouge">06</code> (Travel and Event tickets, not shipped) <br><code class="language-html highlighter-rouge">07</code> (Other, e.g. gaming, digital service)</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">giftCardPurchase</code>
@@ -10974,9 +11018,8 @@ principle</a>.</p>
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="after-payment">
-        After
-Payment
+    <a class="mr-auto btn btn-primary" role="button" rel="prev" href="after-payment">
+        After Payment
     </a>
     
 
@@ -10987,12 +11030,7 @@ Payment
                     </main>
                 </div>
             </div>
-
-            <footer class="page-footer">
-                <p class="page-footer-rights">© Swedbank Pay</p>
-            </footer>
         </div>
-
         <script src="https://design.swedbankpay.com/v/4.7.0/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->

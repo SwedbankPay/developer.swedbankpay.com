@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Other Features">
+        <meta name="application-name" content="Swish – Other Features">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Other Features">
+        <meta name="apple-mobile-web-app-title" content="Swish – Other Features">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
@@ -43,10 +42,10 @@
 <link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-167x167.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-180x180.png">
 <link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-1024x1024.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1182x2208.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1242x2148.png">
 <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-748x1024.png">
@@ -68,13 +67,40 @@
                         <div class="sidebar dg-sidebar">
                             <nav class="sidebar-nav">
                                 <a href="/" class="sidebar-header">
-                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo">
+                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo" class="logotype-vertical logotype-lg">
                                     <div class="sidebar-header-text">
                                         <span>{</span>developer portal<span>}</span>
                                     </div>
                                 </a>
-
+                                
+                                <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
+                                    <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
+                                    <label for="search-input" class="mb-0">
+                                        <i class="material-icons m-0" aria-hidden="true">search</i>
+                                    </label>
+                                </form>
+                                
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Introduction</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
+<li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
+<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
+<li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
+<li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/introduction#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/introduction#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/introduction#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/introduction#problems">Problems</a></li>
+        
+      </ul>
+      </li>
 <li class="nav-group">
         <div class="nav-group-heading">
           <i class="material-icons">arrow_right</i>
@@ -301,7 +327,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#one-click-payments">One-Click Payments</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-url">Payment Url</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#card-authorization-transaction">Card authorization transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
@@ -420,7 +445,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payeeinfo">PayeeInfo</a></li>
@@ -522,7 +546,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-state">Payment State</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-url">Payment Url</a></li>
@@ -627,7 +650,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference-1">Payee Reference</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#metadata">Metadata</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#seamless-view-events">Seamless View Events</a></li>
@@ -728,7 +750,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancel-sequence">Cancel Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#callback">Callback</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#transactions">Transactions</a></li>
@@ -1154,7 +1175,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
@@ -1235,6 +1257,16 @@
 
         
     </div>
+
+    
+
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-instruments/swish/other-features.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Other Features' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title id="simpleicons-github-icon">Edit "Other Features" on GitHub</title>
+        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+    </svg>
+</a>
+
 </div>
 
                         
@@ -1262,7 +1294,7 @@ possible to perform in the current state of the payment.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1359,21 +1391,13 @@ possible to perform in the current state of the payment.</p>
 85
 86
 87
-88
-89
-90
-91
-92
-93
-94
-95
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:29.3182115Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T13:21:57.6627579Z"</span><span class="p">,</span><span class="w">
@@ -1391,76 +1415,68 @@ possible to perform in the current state of the payment.</p>
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"authorizations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"captures"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"cancellations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/cancellations"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sales"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-sale"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[,</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/operation=authorize"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-authorization"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redirect-sale"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redirect-authorization"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/html"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-sales"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-payment"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATCH"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update-payment-abort"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create-capture"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid-payment"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed-payment"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-        
+    
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
@@ -1484,7 +1500,7 @@ possible to perform in the current state of the payment.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">number</code>
@@ -1521,19 +1537,19 @@ possible to perform in the current state of the payment.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">prices.id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/swish/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/swish/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,         mobile number, customer number etc.</td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code>
@@ -1616,20 +1632,32 @@ for the given operation.</p>
 <code class="language-html highlighter-rouge">abort</code>s the payment order before any financial transactions are performed.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">create-sale</code></td>
-      <td style="text-align: left">Creates a <code class="language-html highlighter-rouge">sales</code> transaction without redirection to a payment page.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">redirect-authorization</code></td>
+      <td style="text-align: left">Contains the URI that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">redirect-sale</code></td>
-      <td style="text-align: left">Contains the redirect-URI that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">view-sales</code></td>
-      <td style="text-align: left">Contains the URI of the JavaScript used to create a Seamless View iframe directly for the <code class="language-html highlighter-rouge">sale</code> transaction without redirecting the payer to a separate payment page.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">view-authorization</code></td>
+      <td style="text-align: left">Contains the JavaScript <code class="language-html highlighter-rouge">href</code> that is used to embed the card authorization UI directly on the webshop/merchant site</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">view-payment</code></td>
-      <td style="text-align: left">Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.</td>
+      <td style="text-align: left">Contains the URI of the JavaScript to create a Seamless view iframe directly without redirecting the payer to a separate payment page.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">create-capture</code></td>
+      <td style="text-align: left">Creates a <code class="language-html highlighter-rouge">capture</code> transaction in order to charge the reserved funds from the payer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">create-cancellation</code></td>
+      <td style="text-align: left">Creates a <code class="language-html highlighter-rouge">cancellation</code> transaction that cancels a created, but not yet captured payment.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">paid-payment</code></td>
+      <td style="text-align: left">Returns the information about a payment that has the status <code class="language-html highlighter-rouge">paid</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">failed-payment</code></td>
+      <td style="text-align: left">Returns the information about a payment that has the status <code class="language-html highlighter-rouge">failed</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -1740,9 +1768,9 @@ payments.</p>
         
       </h2>
 
-<p>The <code class="language-html highlighter-rouge">state</code> field on the <code class="language-html highlighter-rouge">sale</code> does not indicate whether a given
-<code class="language-html highlighter-rouge">transaction</code> was successful or not, it only tells whether the sale
-resource itself is operational or not. To figure out the <code class="language-html highlighter-rouge">state</code> of i.e. sale <code class="language-html highlighter-rouge">transactions</code>, you have two options:</p>
+<p>The <code class="language-html highlighter-rouge">state</code> field on the <code class="language-html highlighter-rouge">authorization</code> does not indicate whether a given
+<code class="language-html highlighter-rouge">transaction</code> was successful or not, it only tells whether the authorization
+resource itself is operational or not. To figure out the <code class="language-html highlighter-rouge">state</code> of i.e. authorization <code class="language-html highlighter-rouge">transactions</code>, you have two options:</p>
     
       <h3 id="paid-or-failed-operations">
         
@@ -1752,12 +1780,12 @@ resource itself is operational or not. To figure out the <code class="language-h
         
       </h3>
 
-<p>You can perform a <code class="language-html highlighter-rouge">GET</code> request on the sale. As long as the
-sale has been completed, successful or not, you will find the
+<p>You can perform a <code class="language-html highlighter-rouge">GET</code> request on the authorization. As long as the
+authorization has been completed, successful or not, you will find the
 <code class="language-html highlighter-rouge">Paid</code> or <code class="language-html highlighter-rouge">Failed</code> operation among the operations in the response.</p>
 
-<p>Please note that a sale where a <code class="language-html highlighter-rouge">Failed</code> attempt has been made,
-but the payer still has attempts left to complete the sale, you
+<p>Please note that a authorization where a <code class="language-html highlighter-rouge">Failed</code> attempt has been made,
+but the payer still has attempts left to complete the authorization, you
 won’t see the <code class="language-html highlighter-rouge">Failed</code> operation. It will only appear when all attempts have
 been made.</p>
     
@@ -1769,13 +1797,13 @@ been made.</p>
         
       </h3>
 
-<p>Find the sale’s list of <code class="language-html highlighter-rouge">transactions</code> either by expanding it when
-retrieving the sale, or by performing a <code class="language-html highlighter-rouge">GET</code> request towards the
+<p>Find the authorization’s list of <code class="language-html highlighter-rouge">transactions</code> either by expanding it when
+retrieving the authorization, or by performing a <code class="language-html highlighter-rouge">GET</code> request towards the
 <code class="language-html highlighter-rouge">transactions.id</code> URI.</p>
 
-<p>If you find a <code class="language-html highlighter-rouge">transaction</code> with <code class="language-html highlighter-rouge">type</code> equal to sale, with its
+<p>If you find a <code class="language-html highlighter-rouge">transaction</code> with <code class="language-html highlighter-rouge">type</code> equal to authorization, with its
 <code class="language-html highlighter-rouge">state</code> equal to <code class="language-html highlighter-rouge">Completed</code>, you can be sure that the amount of the
-sale has been reserved or withdrawn and that the sale
+authorization has been reserved or withdrawn and that the authorization
 can be considered successful.</p>
     
       <h3 id="operation-paid-payment">
@@ -1800,7 +1828,7 @@ and that the payment is completed.</p>
 6
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid-payment"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
@@ -1820,7 +1848,7 @@ response look like is given below.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1852,12 +1880,12 @@ response look like is given below.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/paid"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pspswish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1234567891</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD123"</span><span class="p">,</span><span class="w">
@@ -1880,7 +1908,7 @@ response look like is given below.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code>
@@ -1892,7 +1920,7 @@ response look like is given below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">number</code>
@@ -1904,7 +1932,7 @@ response look like is given below.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">orderReference</code>
@@ -1916,7 +1944,7 @@ response look like is given below.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">tokens</code>
@@ -2025,7 +2053,7 @@ can be created if the payment is in this state.</p>
 6
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed-payment"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/problem+json"</span><span class="w">
@@ -2050,7 +2078,7 @@ error code.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/failed</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -2084,7 +2112,7 @@ error code.</p>
 
 <span class="p">{</span><span class="w">
    </span><span class="nl">"problem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/errordetail/swish/acquirererror"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.externalintegration.payex.com/psp/errordetail//acquirererror"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Operation failed"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
        </span><span class="nl">"detail"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Unable to complete Authorization transaction, look at problem node!"</span><span class="p">,</span><span class="w"> 
@@ -2143,7 +2171,7 @@ response looks like is given below.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/aborted</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/aborted</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -2167,7 +2195,7 @@ response looks like is given below.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"aborted"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"abortReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aborted by consumer"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -2188,7 +2216,7 @@ response looks like is given below.</p>
 
 <p>An example of a payment creation request is provided below. Each individual
 field of the JSON document is described in the following section. Use the
-<a href="/home/technical-information#expansion">expand</a> request parameter to get a response that includes one or more
+<a href="/introduction#expansion">expand</a> request parameter to get a response that includes one or more
 expanded sub-resources inlined.</p>
 
 <p class="code-view-header"><strong>Request</strong></p>
@@ -2351,7 +2379,7 @@ expanded sub-resources inlined.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: center">
@@ -2359,7 +2387,7 @@ expanded sub-resources inlined.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: center">
@@ -2367,14 +2395,14 @@ expanded sub-resources inlined.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">description</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/swish/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/swish/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,         mobile number, customer number etc.</td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc.</td>
     </tr>
     <tr>
       <td style="text-align: center">
@@ -2437,7 +2465,7 @@ expanded sub-resources inlined.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">logoUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that will be used for showing the customer logo. Must be a picture     with maximum 50px height and 400px width. Requires HTTPS.</td>
+      <td style="text-align: left">The URL that will be used for showing the customer logo. Must be a picture    with maximum 50px height and 400px width. Requires HTTPS.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -2468,7 +2496,7 @@ expanded sub-resources inlined.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(35)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -2496,7 +2524,7 @@ expanded sub-resources inlined.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">subsite</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">The <code class="language-html highlighter-rouge">subsite</code> field can be used to perform split settlement on the payment. The <code class="language-html highlighter-rouge">subsite</code>s must be resolved with Swedbank Pay reconciliation before being used.If you send in an unknown <code class="language-html highlighter-rouge">subsite</code> value, it will be ignored and the paymentwill be settled using the merchant’s default settlement account.</td>
+      <td style="text-align: left">The <code class="language-html highlighter-rouge">subsite</code> field can be used to perform split settlement on the payment. The<code class="language-html highlighter-rouge">subsite</code>s must be resolved with Swedbank Pay reconciliation before being used.If you send in an unknown <code class="language-html highlighter-rouge">subsite</code> value, it will be ignored and the paymentwill be settled using the merchant’s default settlement account.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -3056,11 +3084,11 @@ the reconciliation file.</p>
 21
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"capture"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">
@@ -3557,22 +3585,6 @@ merchant. The reversal amount will be charged from the sub merchants prefix. If
 the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
 super merchant will in turn have to invoice this amount to the sub merchant.</p>
     
-      <h2 id="payment-link">
-        
-        
-          Payment Link <a href="#payment-link" class="header-anchor"></a>
-        
-        
-      </h2>
-
-<div class="jumbotron">
-    <p>The implementation sequence for this scenario
-is a variant of the purchase sequence. The payer is not redirected to the
-Payments directly but will instead receive a payment link via mail/SMS.
-When the payer clicks on the link, a payment window opens.</p>
-
-</div>
-    
       <h3 id="introduction">
         
         
@@ -3709,7 +3721,7 @@ page similar to the examples below, where payment information can be entered.</p
 are described in each payment instrument’s respective API reference.
 Please see the general sequence diagrams for more information about payments
 in one-phase (e.g. <a href="/payment-instruments/swish">Swish</a> and credit card with autocapture) and
-two-phase (e.g. [Card][card], <a href="/payment-instruments/mobile-pay">MobilePay Online</a>,
+two-phase (e.g. <a href="/payment-instruments/card">Card</a>, <a href="/payment-instruments/mobile-pay">MobilePay Online</a>,
 <a href="/payment-instruments/vipps">Vipps</a>).</p>
     
       <h4 id="authorization">
@@ -3720,10 +3732,11 @@ two-phase (e.g. [Card][card], <a href="/payment-instruments/mobile-pay">MobilePa
         
       </h4>
 
-<p>When using two-phase payment instruments you reserve the amount with an authorization, and you
-will have to specify that the <em>intent</em> of the <em>purchase</em> is <code class="language-html highlighter-rouge">Authorize</code>. The
-amount will be reserved but not charged. You have to make a <code class="language-html highlighter-rouge">Capture</code> or <code class="language-html highlighter-rouge">Cancel</code> request later (i.e. when you are ready
-to ship the purchased products).</p>
+<p>When using two-phase payment instruments you reserve the amount with an
+authorization, and you will have to specify that the <em>intent</em> of the <em>purchase</em>
+is <code class="language-html highlighter-rouge">Authorize</code>. The amount will be reserved but not charged. You have to make a
+<code class="language-html highlighter-rouge">Capture</code> or <code class="language-html highlighter-rouge">Cancel</code> request later (i.e. when you are ready to ship the
+purchased products).</p>
     
       <h4 id="capture">
         
@@ -3942,14 +3955,14 @@ shown in the payment window, but it is still required in the initial request.</p
 16
 17
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/swish/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp//payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-      </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Sale"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Description"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -3957,7 +3970,7 @@ shown in the payment window, but it is still required in the initial request.</p
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w">
             </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"https://example.com"</span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -4068,7 +4081,7 @@ payment app on the mobile device.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -4104,9 +4117,9 @@ payment app on the mobile device.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"prices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/prices"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"priceList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISA"</span><span class="p">,</span><span class="w">
@@ -4136,7 +4149,7 @@ payment app on the mobile device.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">prices</code></td>
@@ -4147,7 +4160,7 @@ payment app on the mobile device.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">prices</code> resource this <code class="language-html highlighter-rouge">prices</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">priceList</code>
@@ -4165,13 +4178,13 @@ payment app on the mobile device.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
   </tbody>
 </table>
@@ -4187,29 +4200,6 @@ payment app on the mobile device.</p>
 <p>Each payment instrument have one or more prices object types. This is most
 relevant when using card based payments as each type correspond
 to a card brand or bank respectively.</p>
-    
-      <h4 id="swish-payments">
-        
-        
-          Swish Payments <a href="#swish-payments" class="header-anchor"></a>
-        
-        
-      </h4>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th style="text-align: left">Type</th>
-      <th style="text-align: left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">Swish</code></td>
-      <td style="text-align: left">Always Swish</td>
-    </tr>
-  </tbody>
-</table>
     
       <h2 id="payeeinfo">
         
@@ -4230,7 +4220,7 @@ a corporation etc) related to a specific payment.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -4259,9 +4249,9 @@ a corporation etc) related to a specific payment.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cabf558-5283-482f-b252-4d58e06f6f3b"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EN1234"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payeeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TestMerchant1"</span><span class="p">,</span><span class="w">
@@ -4284,13 +4274,13 @@ a corporation etc) related to a specific payment.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payeeInfo</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payeeInfo</code> resource this <code class="language-html highlighter-rouge">payeeInfo</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeId</code>
@@ -4301,8 +4291,8 @@ a corporation etc) related to a specific payment.</p>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string(35)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(50)</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payeeName</code>
@@ -4345,7 +4335,7 @@ delivery of a transactional operation from the merchant system.</li>
       <li>If you select <em>Option A</em> in the settlement process (Swedbank Pay will
 handle the settlement), Swedbank Pay will send the <code class="language-html highlighter-rouge">transaction.number</code>
 to the acquirer and the <code class="language-html highlighter-rouge">payeeReference</code> must be in the format of
-characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and 
+characters <code class="language-html highlighter-rouge">A-Za-z0-9</code> (including <code class="language-html highlighter-rouge">-</code>) and
 <code class="language-html highlighter-rouge">string(30)</code>.</li>
       <li>If you select <em>Option B</em> in the settlement process (you will handle the
 settlement yourself), Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> to the
@@ -4395,7 +4385,7 @@ response, enabling you to access information from these sub-resources.</p>
 <td class="code-view-numbers gl"><pre class="lineno">1
 2
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1?$expand=urls,authorizations</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1?$expand=urls,authorizations</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -4427,7 +4417,7 @@ specific payment.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -4435,7 +4425,7 @@ specific payment.</p>
 </tr></tbody></table></code></pre></div></div>
 
 <p>The <code class="language-html highlighter-rouge">transaction</code> resource contains information about the
-<code class="language-html highlighter-rouge">transaction</code> transaction made against a swish payment. You can
+<code class="language-html highlighter-rouge">transaction</code> transaction made against a  payment. You can
 return a specific <code class="language-html highlighter-rouge">transaction</code> transaction by performing a <code class="language-html highlighter-rouge">GET</code> request
 towards the specific transaction’s <code class="language-html highlighter-rouge">id</code>.</p>
 
@@ -4468,22 +4458,18 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 24
 25
 26
-27
-28
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"transactionList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"swishPaymentReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8D0A30A7804E40479F88FFBA26111F04"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"swishStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAID"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
@@ -4514,7 +4500,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">transactions</code></td>
@@ -4525,7 +4511,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transactions</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transactions</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transactionList</code>
@@ -4543,7 +4529,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transactions</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code>
@@ -4579,25 +4565,25 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/swish/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/swish/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">isOperational</code>
@@ -4610,7 +4596,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of <a href="/payment-instruments//other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
+      <td style="text-align: left">The array of <a href="/payment-instruments/swish/other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
     </tr>
   </tbody>
 </table>
@@ -4653,7 +4639,7 @@ order gets the state <code class="language-html highlighter-rouge">failed</code>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -4689,9 +4675,9 @@ order gets the state <code class="language-html highlighter-rouge">failed</code>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w"> 
@@ -4723,7 +4709,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
 <a href="/payments/swish/other-features#problems">problems section</a>.</p>
 
 <p>The created <code class="language-html highlighter-rouge">transaction</code> resource contains information about the
-<code class="language-html highlighter-rouge">transaction</code> transaction made against a <code class="language-html highlighter-rouge">swish</code> payment.</p>
+<code class="language-html highlighter-rouge">transaction</code> transaction made against a `` payment.</p>
 
 <p class="code-view-header"><strong>Response</strong></p>
 
@@ -4766,14 +4752,14 @@ problems that can occur due to an unsuccesful transaction, head over to the
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
@@ -4785,7 +4771,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
             </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"problem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail/swish/3DSECUREERROR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail//3DSECUREERROR"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error when complete authorization"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to complete 3DSecure verification!"</span><span class="p">,</span><span class="w">
@@ -4811,7 +4797,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4824,7 +4810,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4838,7 +4824,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4852,7 +4838,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">transaction</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4894,28 +4880,28 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments/swish/other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/swish/other-features#description">description</a> of the purchase.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4944,7 +4930,7 @@ problems that can occur due to an unsuccesful transaction, head over to the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of <a href="/payment-instruments//other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
+      <td style="text-align: left">The array of <a href="/payment-instruments/swish/other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -5011,7 +4997,7 @@ seconds from the initial transaction time:
 <p>To understand the nature of the callback, the type of transaction, its status, etc.,
 you need to perform a <code class="language-html highlighter-rouge">GET</code> request on the received URI and inspect the response.
 The transaction type or any other information can not and should not be inferred
-from the URI. See <a href="/home/technical-information#uri-usage">URI usage</a> for more information.</p>
+from the URI. See <a href="/introduction#uri-usage">URI usage</a> for more information.</p>
 
 <p class="code-view-header"><strong>Payment Instrument Callback</strong></p>
 
@@ -5029,11 +5015,11 @@ from the URI. See <a href="/home/technical-information#uri-usage">URI usage</a> 
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
     </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">222222222</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">333333333</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5041,11 +5027,11 @@ from the URI. See <a href="/home/technical-information#uri-usage">URI usage</a> 
 </tr></tbody></table></code></pre></div></div>
 
 <p>When performing an HTTP <code class="language-html highlighter-rouge">GET</code> request towards the URI found in the
-<code class="language-html highlighter-rouge">transaction.id</code> field of the callback, the response is going to look 
+<code class="language-html highlighter-rouge">transaction.id</code> field of the callback, the response is going to look
 something like the abbreviated example provided below.</p>
 
 <p>The created <code class="language-html highlighter-rouge">authorization</code> resource contains information about the
-<code class="language-html highlighter-rouge">authorization</code> transaction made against a <code class="language-html highlighter-rouge">swish</code> payment.</p>
+<code class="language-html highlighter-rouge">authorization</code> transaction made against a `` payment.</p>
 
 <p class="code-view-header"><strong>Response</strong></p>
 
@@ -5095,14 +5081,14 @@ something like the abbreviated example provided below.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"authorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/authorizations/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"itemDescriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177/itemDescriptions"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w">
@@ -5114,7 +5100,7 @@ something like the abbreviated example provided below.</p>
             </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH123456"</span><span class="p">,</span><span class="w"> 
             </span><span class="nl">"isOperational"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"problem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail/swish/3DSECUREERROR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail//3DSECUREERROR"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error when complete authorization"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to complete 3DSecure verification!"</span><span class="p">,</span><span class="w">
@@ -5122,7 +5108,7 @@ something like the abbreviated example provided below.</p>
                 </span><span class="p">]</span><span class="w"> 
             </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"edit-authorization"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATCH"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
@@ -5147,7 +5133,7 @@ something like the abbreviated example provided below.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -5160,7 +5146,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">authorization</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">authorization</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -5174,7 +5160,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -5188,7 +5174,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -5230,28 +5216,28 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">description</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A 40 character length textual <a href="/payments//other-features#description">description</a> of the purchase.</td>
+      <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/swish/other-features#description">description</a> of the purchase.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-instruments//other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-instruments/swish/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -5280,7 +5266,7 @@ something like the abbreviated example provided below.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">operations</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of <a href="/payment-instruments//other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
+      <td style="text-align: left">The array of <a href="/payment-instruments/swish/other-features#operations">operations</a> that are possible to perform on the transaction in its current state.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -5298,7 +5284,7 @@ Pay, and the two <code class="language-html highlighter-rouge">GET</code> reques
     deactivate SwedbankPay
     note left of Merchant: Callback by Swedbank Pay
     Merchant--&gt;&gt;+SwedbankPay: HTTP response
-    Merchant-&gt;&gt;+SwedbankPay: GET swish payment
+    Merchant-&gt;&gt;+SwedbankPay: GET  payment
     deactivate Merchant
     note left of Merchant: First API request
     SwedbankPay--&gt;&gt;+Merchant: payment resource
@@ -5364,7 +5350,7 @@ below.</p>
 32
 33
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -5372,7 +5358,7 @@ below.</p>
 <span class="p">{</span><span class="w">
   </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Sale"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
@@ -5425,7 +5411,7 @@ below.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -5453,9 +5439,9 @@ below.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/metadata"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/metadata"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"key2"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"key3"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.1</span><span class="p">,</span><span class="w">
@@ -6313,7 +6299,7 @@ these events below.</p>
 3
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -6330,7 +6316,7 @@ these events below.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
   </tbody>
 </table>
@@ -6356,7 +6342,7 @@ object:</p>
 4
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"redirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/complete"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
@@ -6374,7 +6360,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -6405,7 +6391,7 @@ object:</p>
 4
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swishpayments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"redirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/canceled"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
@@ -6423,7 +6409,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -6454,7 +6440,7 @@ event argument object:</p>
 4
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"redirectUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/failed"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
@@ -6472,7 +6458,7 @@ event argument object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">authorization</code> belongs to..    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
@@ -6554,7 +6540,7 @@ object:</p>
 5
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swish"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"messageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Descriptive text of the error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6573,8 +6559,7 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">origin</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">
-<code class="language-html highlighter-rouge">swish</code>, identifies the system that originated the error.</td>
+      <td style="text-align: left">``, identifies the system that originated the error.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">messageId</code></td>
@@ -6596,7 +6581,7 @@ object:</p>
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="after-payment">
+    <a class="mr-auto btn btn-primary" role="button" rel="prev" href="after-payment">
         After
 Payment
     </a>
@@ -6609,12 +6594,7 @@ Payment
                     </main>
                 </div>
             </div>
-
-            <footer class="page-footer">
-                <p class="page-footer-rights">© Swedbank Pay</p>
-            </footer>
         </div>
-
         <script src="https://design.swedbankpay.com/v/4.7.0/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->

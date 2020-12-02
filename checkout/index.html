@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Introduction">
+        <meta name="application-name" content="Checkout – Introduction">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Introduction">
+        <meta name="apple-mobile-web-app-title" content="Checkout – Introduction">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/checkout/">
-        <meta property="og:title" value="Introduction">
-        <meta name="title" content="Introduction">
+        <meta property="og:title" value="Checkout – Introduction">
+        <meta name="title" content="Checkout – Introduction">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Introduction</title>
+        <title>Checkout – Introduction</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.7.0/styles/dg-style.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
@@ -43,10 +42,10 @@
 <link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-167x167.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-180x180.png">
 <link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-1024x1024.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1182x2208.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1242x2148.png">
 <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-748x1024.png">
@@ -68,13 +67,40 @@
                         <div class="sidebar dg-sidebar">
                             <nav class="sidebar-nav">
                                 <a href="/" class="sidebar-header">
-                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo">
+                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo" class="logotype-vertical logotype-lg">
                                     <div class="sidebar-header-text">
                                         <span>{</span>developer portal<span>}</span>
                                     </div>
                                 </a>
-
+                                
+                                <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
+                                    <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
+                                    <label for="search-input" class="mb-0">
+                                        <i class="material-icons m-0" aria-hidden="true">search</i>
+                                    </label>
+                                </form>
+                                
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Introduction</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
+<li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
+<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
+<li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
+<li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/introduction#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/introduction#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/introduction#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/introduction#problems">Problems</a></li>
+        
+      </ul>
+      </li>
 <li class="nav-group active">
         <div class="nav-group-heading">
           <i class="material-icons">arrow_right</i>
@@ -301,7 +327,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#one-click-payments">One-Click Payments</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-url">Payment Url</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#card-authorization-transaction">Card authorization transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
@@ -420,7 +445,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payeeinfo">PayeeInfo</a></li>
@@ -522,7 +546,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-state">Payment State</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-url">Payment Url</a></li>
@@ -627,7 +650,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference-1">Payee Reference</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#metadata">Metadata</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#seamless-view-events">Seamless View Events</a></li>
@@ -728,7 +750,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancel-sequence">Cancel Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#callback">Callback</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#transactions">Transactions</a></li>
@@ -1154,7 +1175,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
@@ -1243,6 +1265,16 @@ and try out Swedbank Pay Checkout for yourself!</p>
 
         
     </div>
+
+    
+
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout/index.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Introduction' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title id="simpleicons-github-icon">Edit "Introduction" on GitHub</title>
+        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+    </svg>
+</a>
+
 </div>
 
                         
@@ -1264,7 +1296,7 @@ methods in just a few simple steps.</p>
 
 <ul>
   <li>
-<a href="/home/technical-information#connection-and-protocol">HTTPS</a> enabled web server.</li>
+<a href="/introduction#connection-and-protocol">HTTPS</a> enabled web server.</li>
   <li>Agreement that includes Swedbank Pay Checkout.</li>
   <li>Obtained credentials (merchant Access Token) from Swedbank Pay through
 Swedbank Pay Admin. Please observe that Swedbank Pay Checkout encompass
@@ -1480,7 +1512,6 @@ the consumer has been identified, and delivers a field
         
         
       </h2>
-
 <p>​Checkout supports the following languages:
 English (US) <code class="language-html highlighter-rouge">en-US</code>, Norwegian <code class="language-html highlighter-rouge">nb-NO</code>
  and Swedish
@@ -1490,7 +1521,7 @@ English (US) <code class="language-html highlighter-rouge">en-US</code>, Norwegi
     
 
     
-    <a class="ml-auto btn btn-executive" role="button" rel="next" href="checkin">
+    <a class="ml-auto btn btn-primary" role="button" rel="next" href="checkin">
         Implement Checkin
     </a>
     
@@ -1500,12 +1531,7 @@ English (US) <code class="language-html highlighter-rouge">en-US</code>, Norwegi
                     </main>
                 </div>
             </div>
-
-            <footer class="page-footer">
-                <p class="page-footer-rights">© Swedbank Pay</p>
-            </footer>
         </div>
-
         <script src="https://design.swedbankpay.com/v/4.7.0/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->

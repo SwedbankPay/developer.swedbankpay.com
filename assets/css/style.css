@@ -61,6 +61,8 @@
 
 .front-page .front-page-top .front-page-hero p { color: #fff; font-size: 1.125rem; }
 
+.front-page .front-page-top .front-page-hero a { color: #43d0dd; }
+
 .front-page .front-page-top .front-page-hero .front-page-hero-name { font-family: "Akkurat Mono", monospace; font-weight: bold; font-size: 2rem; color: #fdc129; margin-bottom: 1rem; }
 
 .front-page .front-page-top .front-page-hero .front-page-hero-name span { color: #fff; }
@@ -71,7 +73,7 @@
 
 .front-page .front-page-top .front-page-intro-cards .row > [class*='col-'] { display: flex; }
 
-@media screen and (min-width: 1600px) { .front-page .front-page-top { margin-bottom: 9rem; } .front-page .front-page-top .front-page-intro-cards { position: absolute; bottom: -7rem; left: 0; width: 100%; padding: 0 4rem; } }
+@media screen and (min-width: 1600px) { .front-page .front-page-top { margin-bottom: 10rem; } .front-page .front-page-top .front-page-intro-cards { position: absolute; left: 0; width: 100%; padding: 0 4rem; } }
 
 .front-page .front-page-container { max-width: 1312px; margin: 0 4rem; position: relative; }
 
@@ -131,10 +133,6 @@
 
 .front-page .front-page-demoshop { display: flex; flex-direction: column; align-items: center; padding: 0 4rem; padding-top: 4rem; margin-bottom: 4rem; width: 100%; height: 22.5rem; background-color: #493c3b; text-decoration: none; border-radius: 1rem; }
 
-.front-page .front-page-demoshop:hover .front-page-demoshop-link, .front-page .front-page-demoshop:focus .front-page-demoshop-link { background-color: #fff; color: #512b2b; }
-
-.front-page .front-page-demoshop:hover .front-page-demoshop-link .h3, .front-page .front-page-demoshop:focus .front-page-demoshop-link .h3 { color: #512b2b; }
-
 .front-page .front-page-demoshop:after { display: none; content: none; }
 
 .front-page .front-page-demoshop .front-page-demoshop-text { display: flex; flex-direction: column; margin-bottom: 2rem; max-width: 1312px; width: 100%; }
@@ -145,9 +143,15 @@
 
 @media screen and (max-width: 768px) { .front-page .front-page-demoshop { padding-top: 3rem; height: 18rem; } .front-page .front-page-demoshop .front-page-demoshop-text .demoshop-text-description { width: 100%; min-height: 2.25rem; } }
 
-.front-page .front-page-demoshop .front-page-demoshop-link { display: flex; position: relative; color: #fff; text-decoration: none; background-color: #72605e; align-items: center; height: 4.625rem; border-radius: 2px; box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.15); max-width: 1312px; width: 100%; }
+.front-page .front-page-demoshop .front-page-demoshop-link { display: flex; position: relative; color: #fff; text-decoration: none; background-color: #72605e; align-items: center; height: 4.625rem; border-radius: 2px; box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.15); max-width: 1312px; width: 100%; cursor: pointer; }
 
-.front-page .front-page-demoshop .front-page-demoshop-link .demoshop-link-img { display: flex; align-items: center; position: absolute; bottom: -1rem; right: 3%; }
+.front-page .front-page-demoshop .front-page-demoshop-link a::after { content: ''; }
+
+.front-page .front-page-demoshop .front-page-demoshop-link:hover, .front-page .front-page-demoshop .front-page-demoshop-link:focus { background-color: #fff; color: #512b2b; }
+
+.front-page .front-page-demoshop .front-page-demoshop-link:hover .h3, .front-page .front-page-demoshop .front-page-demoshop-link:focus .h3 { color: #512b2b; }
+
+.front-page .front-page-demoshop .front-page-demoshop-link .demoshop-link-img { display: flex; align-items: center; position: absolute; bottom: -1rem; right: 3%; pointer-events: none; }
 
 .front-page .front-page-demoshop .front-page-demoshop-link .demoshop-link-img .demoshop-link-img-web { width: 26.5rem; height: 15.125rem; border-radius: 2px; box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.15); }
 
@@ -179,15 +183,65 @@ h1 > a.header-anchor:hover, h2 > a.header-anchor:hover, h3 > a.header-anchor:hov
 
 a.header-anchor::before { content: '#'; }
 
+.accordion { align-items: center; }
+
+.accordion.accordion-table { border: none; }
+
+.accordion.accordion-table .show { display: block; }
+
+.accordion.accordion-table .hide { display: none; }
+
+.accordion.accordion-table.accordion-open { border: none; }
+
+.accordion.accordion-table.accordion-open .show { display: none; }
+
+.accordion.accordion-table.accordion-open .hide { display: block; }
+
+.accordion.accordion-table .accordion-header:before { bottom: 1rem; margin: auto; transition: .3s; color: #512b2b; }
+
+.accordion.accordion-table .accordion-header span { font-weight: normal; }
+
+.accordion.accordion-table .accordion-header:hover span { font-weight: bold; }
+
+@media (min-width: 1250px) { .accordion.accordion-table .accordion-body { width: 70vw; max-width: 80rem; } }
+
+.accordion.accordion-table table { border: 1px solid rgba(153, 153, 153, 0.5); border-radius: 0.25rem; }
+
+.accordion.accordion-table table th { font-size: 0.875rem; }
+
+.accordion.accordion-table table tbody { font-size: 0.875rem; }
+
+.accordion.accordion-table table tbody tr:nth-child(odd) { background-color: #F9F8F6; }
+
+.accordion.accordion-table table tbody tr td:not(:last-child) { font-family: "Akkurat Mono", monospace; }
+
+.accordion.accordion-table table tbody tr td:not(:last-child) code { border: none; background-color: transparent; padding: 0; }
+
+.accordion.accordion-table table tbody tr td:not(:last-child):not(:nth-last-child(2)) code { font-weight: 700; }
+
+.accordion.accordion-table table tbody tr:hover { background-color: #fbf2ea; transition: .5s; }
+
 .paragraph-highlight { margin: 2rem 0; padding: 0.25rem 0; padding-left: 1.5rem; border-left: 2px solid #fdc129; }
 
-.sidebar .sidebar-nav .sidebar-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 2.5rem; margin-top: 2rem; text-decoration: none; color: #512b2b; }
+.sidebar .sidebar-nav .sidebar-header { display: flex; flex-direction: column; align-items: center; margin-top: 2rem; text-decoration: none; color: #512b2b; }
 
-.sidebar .sidebar-nav .sidebar-header img { width: 120px; margin-top: -1rem; }
+.sidebar .sidebar-nav .sidebar-header img { margin-top: 1.5rem; margin-bottom: 1.25rem; }
 
 .sidebar .sidebar-nav .sidebar-header span { color: #fdc129; }
 
 .sidebar .sidebar-nav .sidebar-header .sidebar-header-text { margin-top: -0.5rem; font-size: 1.125rem; line-height: 1.5rem; color: #222; font-family: "Akkurat Mono", monospace; white-space: nowrap; }
+
+.sidebar .sidebar-nav .search-container { box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.15); border-radius: 0.125rem; }
+
+.sidebar .sidebar-nav .search-container:focus-within { outline: -webkit-focus-ring-color auto 0.5px; }
+
+.sidebar .sidebar-nav .search-container .search-input { color: #72605e; font-size: 0.875rem; border: none; padding: 0.375rem; }
+
+.sidebar .sidebar-nav .search-container .search-input:focus { color: #512b2b; outline: none; }
+
+.sidebar .sidebar-nav .search-container i { display: block; color: #512b2b; }
+
+.sidebar .sidebar-nav .search-container i:hover { color: #257886; }
 
 .sidebar .sidebar-nav .main-nav-ul .nav-group .nav-ul .nav-subgroup.active > .nav-subgroup-heading a { color: #257886; font-weight: 700; }
 
@@ -212,6 +266,8 @@ a.header-anchor::before { content: '#'; }
 .title-header .title-header-container .title-header-estimated-read { color: #fdc129; display: flex; margin-bottom: 0.75rem; }
 
 .title-header .title-header-container .title-header-estimated-read i { margin-right: 0.5rem; }
+
+.title-header .title-header-container a { color: #43d0dd; }
 
 img { max-width: 100%; }
 
@@ -304,5 +360,11 @@ a.front-page-demoshop[href^='//']:not([href*='{{ site.url }}']):after, a.front-p
 .documentation .language-mermaid .note { stroke: #97b7e4 !important; fill: #e8eff9 !important; }
 
 .documentation .language-mermaid .noteText { fill: #222 !important; stroke: none; font-family: Arial, sans-serif !important; font-size: 1rem !important; }
+
+.documentation .github { opacity: .5; position: absolute; right: 4rem; top: 4rem; transition: opacity .3s; }
+
+.documentation a.github:after { display: none; }
+
+.documentation a.github:hover { opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */

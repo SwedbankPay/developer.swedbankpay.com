@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Terminology">
+        <meta name="application-name" content="Resources – Terminology">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Terminology">
+        <meta name="apple-mobile-web-app-title" content="Resources – Terminology">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
@@ -43,10 +42,10 @@
 <link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-167x167.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-180x180.png">
 <link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-1024x1024.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1182x2208.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1242x2148.png">
 <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-748x1024.png">
@@ -68,13 +67,40 @@
                         <div class="sidebar dg-sidebar">
                             <nav class="sidebar-nav">
                                 <a href="/" class="sidebar-header">
-                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo">
+                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo" class="logotype-vertical logotype-lg">
                                     <div class="sidebar-header-text">
                                         <span>{</span>developer portal<span>}</span>
                                     </div>
                                 </a>
-
+                                
+                                <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
+                                    <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
+                                    <label for="search-input" class="mb-0">
+                                        <i class="material-icons m-0" aria-hidden="true">search</i>
+                                    </label>
+                                </form>
+                                
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Introduction</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
+<li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
+<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
+<li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
+<li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/introduction#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/introduction#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/introduction#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/introduction#problems">Problems</a></li>
+        
+      </ul>
+      </li>
 <li class="nav-group">
         <div class="nav-group-heading">
           <i class="material-icons">arrow_right</i>
@@ -301,7 +327,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#one-click-payments">One-Click Payments</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-url">Payment Url</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#card-authorization-transaction">Card authorization transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
@@ -420,7 +445,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payeeinfo">PayeeInfo</a></li>
@@ -522,7 +546,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-state">Payment State</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-url">Payment Url</a></li>
@@ -627,7 +650,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference-1">Payee Reference</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#metadata">Metadata</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#seamless-view-events">Seamless View Events</a></li>
@@ -728,7 +750,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancel-sequence">Cancel Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#callback">Callback</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#transactions">Transactions</a></li>
@@ -1154,7 +1175,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
@@ -1235,6 +1257,16 @@
 
         
     </div>
+
+    
+
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/resources/terminology.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Terminology' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title id="simpleicons-github-icon">Edit "Terminology" on GitHub</title>
+        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+    </svg>
+</a>
+
 </div>
 
                         
@@ -1261,7 +1293,7 @@
     </tr>
     <tr>
       <td><strong>Authorization</strong></td>
-      <td>The first part of a <a href="//payment-instruments#the-fundamentals">two-phase</a> transaction where a certain amount is blocked on the payer’s account. The authorized amount is unavailable for the payer, ensuring that the merchant receives the money during the subsequent capture phase.</td>
+      <td>The first part of a <a href="/payment-instruments#the-fundamentals">two-phase</a> transaction where a certain amount is blocked on the payer’s account. The authorized amount is unavailable for the payer, ensuring that the merchant receives the money during the subsequent capture phase.</td>
     </tr>
   </tbody>
 </table>
@@ -1286,7 +1318,7 @@
     </tr>
     <tr>
       <td><strong>Capture</strong></td>
-      <td>The second part of a <a href="//payment-instruments#the-fundamentals">two-phase</a> transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.</td>
+      <td>The second part of a <a href="/payment-instruments#the-fundamentals">two-phase</a> transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount.</td>
     </tr>
     <tr>
       <td><strong>Checkin</strong></td>
@@ -1332,7 +1364,7 @@
   <tbody>
     <tr>
       <td><strong>Header</strong></td>
-      <td>An <code class="language-html highlighter-rouge">HTTP</code> header used to carry information when doing an API Request. All API requests share some <a href="/home/technical-information#headers">common headers</a>.</td>
+      <td>An <code class="language-html highlighter-rouge">HTTP</code> header used to carry information when doing an API Request. All API requests share some <a href="/introduction#headers">common headers</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -1349,7 +1381,7 @@
   <tbody>
     <tr>
       <td><strong>Intent</strong></td>
-      <td>An <code class="language-html highlighter-rouge">intent</code> is a payment parameter that determine the possible activity states available for a payment option (e.g. Purchase). Intents differ depening on payment instrument. Creating a payment within a <a href="/payments#the-fundamentals">one-phase</a> payment flow (Swish, Direct debit) must have the intent to create a <a href="/payments#the-fundamentals">Sale</a>. This is in contrast to a <a href="//payment-instruments#the-fundamentals">two-phase</a> payment flow that have the intent to create an <a href="/payments#the-fundamentals">Authorization</a>. Card payments also have specific intents that determine whether an <a href="/payment-instruments/card/other-features#capture"><code class="language-html highlighter-rouge">AutoCapture</code></a> is implemented (the credit card is charged directly like one-phase transaction).</td>
+      <td>An <code class="language-html highlighter-rouge">intent</code> is a payment parameter that determine the possible activity states available for a payment option (e.g. Purchase). Intents differ depening on payment instrument. Creating a payment within a <a href="/payment-instruments#the-fundamentals">one-phase</a> payment flow (Swish, Direct debit) must have the intent to create a <a href="/payment-instruments#the-fundamentals">Sale</a>. This is in contrast to a <a href="/payment-instruments#the-fundamentals">two-phase</a> payment flow that have the intent to create an <a href="/payment-instruments#the-fundamentals">Authorization</a>. Card payments also have specific intents that determine whether an <a href="/payment-instruments/card/other-features#capture"><code class="language-html highlighter-rouge">AutoCapture</code></a> is implemented (the credit card is charged directly like one-phase transaction).</td>
     </tr>
   </tbody>
 </table>
@@ -1366,7 +1398,7 @@
   <tbody>
     <tr>
       <td><strong>One-phase payment flow</strong></td>
-      <td>A <a href="/payments#the-fundamentals">one-phase</a> payment is a payment done in one step. The amount is settled in one transactional step.</td>
+      <td>A <a href="/payment-instruments#the-fundamentals">one-phase</a> payment is a payment done in one step. The amount is settled in one transactional step.</td>
     </tr>
     <tr>
       <td><strong>Operation</strong></td>
@@ -1403,7 +1435,7 @@
     </tr>
     <tr>
       <td><strong>Payment</strong></td>
-      <td>A payment is the main resource in all of Swedbank Pay <a href="/home/technical-information#connection-and-protocol">RESTful APIs</a>, and a fundamental building block for each payment instrument during the payment process. The payment resource of each payment instrument is architectually similar, although it is tailor-made to manage the specifics of each instrument. It can be in different states and contain several different types of transactions. The state of the payment decides the operations that are available.</td>
+      <td>A payment is the main resource in all of Swedbank Pay <a href="/introduction#connection-and-protocol">RESTful APIs</a>, and a fundamental building block for each payment instrument during the payment process. The payment resource of each payment instrument is architectually similar, although it is tailor-made to manage the specifics of each instrument. It can be in different states and contain several different types of transactions. The state of the payment decides the operations that are available.</td>
     </tr>
     <tr>
       <td><strong>Payment Menu</strong></td>
@@ -1465,7 +1497,7 @@
   <tbody>
     <tr>
       <td><strong>Sale</strong></td>
-      <td>A <a href="/payments#the-fundamentals">one-phase</a> transaction where the amount is settled when the transaction has succeded. Payment instruments using sales transactions are Swish and Direct Bank Debit.</td>
+      <td>A <a href="/payment-instruments#the-fundamentals">one-phase</a> transaction where the amount is settled when the transaction has succeded. Payment instruments using sales transactions are Swish and Direct Bank Debit.</td>
     </tr>
     <tr>
       <td><strong>SCA</strong></td>
@@ -1502,7 +1534,7 @@
   <tbody>
     <tr>
       <td><strong>Two-phase payment flow</strong></td>
-      <td>A payment done in <a href="//payment-instruments#the-fundamentals">two steps</a>. Authorization and capture. The most common payment instrument using two-phase payments is card payments.</td>
+      <td>A payment done in <a href="/payment-instruments#the-fundamentals">two steps</a>. Authorization and capture. The most common payment instrument using two-phase payments is card payments.</td>
     </tr>
   </tbody>
 </table>
@@ -1545,12 +1577,7 @@
                     </main>
                 </div>
             </div>
-
-            <footer class="page-footer">
-                <p class="page-footer-rights">© Swedbank Pay</p>
-            </footer>
         </div>
-
         <script src="https://design.swedbankpay.com/v/4.7.0/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->

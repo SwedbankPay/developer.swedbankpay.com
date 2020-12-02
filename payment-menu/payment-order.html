@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Payment Order">
+        <meta name="application-name" content="Payment Menu – Payment Order">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Payment Order">
+        <meta name="apple-mobile-web-app-title" content="Payment Menu – Payment Order">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/payment-menu/payment-order.html">
-        <meta property="og:title" value="Payment-menu – Payment Order">
-        <meta name="title" content="Payment-menu – Payment Order">
+        <meta property="og:title" value="Payment Menu – Payment Order">
+        <meta name="title" content="Payment Menu – Payment Order">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Payment-menu – Payment Order</title>
+        <title>Payment Menu – Payment Order</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/4.7.0/styles/dg-style.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
@@ -43,10 +42,10 @@
 <link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-167x167.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-180x180.png">
 <link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-icon-1024x1024.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
-<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
-<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (orientation: ) and (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-320x460.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x920.png">
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-640x1096.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and  (-webkit-device-pixel-ratio: 2)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-750x1294.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1182x2208.png">
 <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-1242x2148.png">
 <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="https://design.swedbankpay.com/v/4.7.0/icons/apple-touch-startup-image-748x1024.png">
@@ -68,13 +67,40 @@
                         <div class="sidebar dg-sidebar">
                             <nav class="sidebar-nav">
                                 <a href="/" class="sidebar-header">
-                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo">
+                                    <img src="https://design.swedbankpay.com/v/4.7.0/img/swedbankpay-logo-v.svg" alt="Swedbank Pay vertical logo" class="logotype-vertical logotype-lg">
                                     <div class="sidebar-header-text">
                                         <span>{</span>developer portal<span>}</span>
                                     </div>
                                 </a>
-
+                                
+                                <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
+                                    <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
+                                    <label for="search-input" class="mb-0">
+                                        <i class="material-icons m-0" aria-hidden="true">search</i>
+                                    </label>
+                                </form>
+                                
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+<li class="nav-group">
+        <div class="nav-group-heading">
+          <i class="material-icons">arrow_right</i>
+          <span>Introduction</span>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
+<li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
+<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
+<li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
+<li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
+<li class="nav-leaf"><a href="/introduction#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/introduction#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/introduction#callback">Callback</a></li>
+<li class="nav-leaf"><a href="/introduction#problems">Problems</a></li>
+        
+      </ul>
+      </li>
 <li class="nav-group">
         <div class="nav-group-heading">
           <i class="material-icons">arrow_right</i>
@@ -331,7 +357,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#one-click-payments">One-Click Payments</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-url">Payment Url</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#card-authorization-transaction">Card authorization transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/other-features#payeeinfo">PayeeInfo</a></li>
@@ -450,7 +475,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#payeeinfo">PayeeInfo</a></li>
@@ -552,7 +576,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-state">Payment State</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/other-features#payment-url">Payment Url</a></li>
@@ -657,7 +680,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payee-reference-1">Payee Reference</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#callback">Callback</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#metadata">Metadata</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/other-features#seamless-view-events">Seamless View Events</a></li>
@@ -758,7 +780,6 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#cancel-sequence">Cancel Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#settlement-and-reconciliation">Settlement and Reconciliation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#payment-link">Payment Link</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#description">Description</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#callback">Callback</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/other-features#transactions">Transactions</a></li>
@@ -1184,7 +1205,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-aug-2020">28 Aug 2020</a></li>
@@ -1269,6 +1291,16 @@
 
         
     </div>
+
+    
+
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-menu/payment-order.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Payment Order' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <title id="simpleicons-github-icon">Edit "Payment Order" on GitHub</title>
+        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+    </svg>
+</a>
+
 </div>
 
                         
@@ -1342,7 +1374,7 @@ payer is redirected out of the Seamless View (the <code class="language-html hig
 redirected out of frame when selecting the payment instrument Vipps or in the 3-D Secure verification
 for Credit Card Payments.</p>
 
-<p>The URL should represent the page of where the Payment Seamless View was
+<p>The URL should represent the page of where the Payment Order Seamless View was
 hosted originally, such as the checkout page, shopping cart page, or similar.
 Basically, <code class="language-html highlighter-rouge">paymentUrl</code> should be set to the same URL as that of the page where
 the JavaScript for the Seamless View was added to in order to initiate the
@@ -1358,7 +1390,7 @@ payment process.</p>
     
     
     <p>Please note that the <code class="language-html highlighter-rouge">paymentUrl</code> must be able to invoke the same JavaScript URL
-from the same Payment as the one that initiated the payment process
+from the same Payment Order as the one that initiated the payment process
 originally, so it should include some sort of state identifier in the URL. The
 state identifier is the ID of the order, shopping cart or similar that has the
 URL of the Payment stored.</p>
@@ -1470,6 +1502,7 @@ both the integration and the payer.</p>
 88
 89
 90
+91
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
@@ -1485,6 +1518,7 @@ both the integration and the payer.</p>
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
         </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"generatePaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1770,7 +1804,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1778,7 +1812,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1915,7 +1949,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payeeReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to     ensure an exactly-once delivery of a transactional operation. See     <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2108,7 +2142,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2116,7 +2150,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2264,7 +2298,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2321,14 +2355,14 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">amount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The amount (including VAT, if any) to charge the payer, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.</td>
       <td> </td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">vatAmount</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
-      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK. The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much ofthe total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2385,7 +2419,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">metadata</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to    ensure an exactly-once delivery of a transactional operation. See    <a href="/payment-menu/other-features#payee-reference"><code class="language-html highlighter-rouge">payeeReference</code></a> for details.            In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt        number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2479,7 +2513,7 @@ both the integration and the payer.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/home/technical-information#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">paymentorder</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">operations</code></td>
@@ -2509,7 +2543,7 @@ in your system to look up status on the completed payment later.</p>
     
     
     <div class="alert-body">
-        <p>The <code class="language-html highlighter-rouge">id</code> of the Payment Order should be stored for later retrieval. <a href="/home/technical-information#uri-usage">Read
+        <p>The <code class="language-html highlighter-rouge">id</code> of the Payment Order should be stored for later retrieval. <a href="/introduction#uri-usage">Read
 more about URL usage</a>.</p>
     </div>
     
@@ -2786,13 +2820,13 @@ rect rgba(138, 205, 195, 0.1)
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-guiding" role="button" rel="prev" href="index">
+    <a class="mr-auto btn btn-primary" role="button" rel="prev" href="index">
         Introduction
     </a>
     
 
     
-    <a class="ml-auto btn btn-executive" role="button" rel="next" href="capture">
+    <a class="ml-auto btn btn-primary" role="button" rel="next" href="capture">
         Capture
     </a>
     
@@ -2802,12 +2836,7 @@ rect rgba(138, 205, 195, 0.1)
                     </main>
                 </div>
             </div>
-
-            <footer class="page-footer">
-                <p class="page-footer-rights">© Swedbank Pay</p>
-            </footer>
         </div>
-
         <script src="https://design.swedbankpay.com/v/4.7.0/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
