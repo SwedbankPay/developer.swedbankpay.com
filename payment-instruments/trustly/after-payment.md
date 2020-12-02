@@ -20,7 +20,7 @@ also be able to see the available `operations` after posting a payment.
     [Callback request][callback-request] will be posted to the `callbackUrl`,
     which was set when the payment was created.
 
-{% include abort-reference.md api_resource="trustly" %}
+{% include abort-reference.md %}
 
 ## Reversals
 
@@ -65,8 +65,7 @@ Content-Type: application/json
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
-{% include transaction-response.md api_resource="trustly"
-documentation_section="trustly" transaction="reversal" %}
+{% include transaction-response.md transaction="reversal" %}
 
 ### Inspecting the Reversal
 
@@ -84,7 +83,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="trustly" documentation_section="trustly" transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ### Reversal Sequence
 

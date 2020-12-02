@@ -1,9 +1,19 @@
 ---
-title: Developer Portal
+title: Introduction
 estimated_read: 15
+menu_order: 1
 description: |
-  General technical information that is good to know
+    Read on to learn about the fundamentals and common architectural principles
+    of the Swedbank Pay API Platform.
 ---
+
+## Foundation
+
+The **Swedbank Pay API Platform** is built using the [REST architectural
+style][rest] and the request and responses come in the [JSON] format. The API
+has predictable, resource-oriented URIs and use default HTTP features, like HTTP
+authentication (using OAuth 2), HTTP methods and headers. These techniques are
+widely used and understood by most HTTP client libraries.
 
 ## Connection and Protocol
 
@@ -107,6 +117,7 @@ In order to find which operations you can perform on a resource and the URI of
 the operation to perform, you need to retrieve the resource with an HTTP `GET`
 request first and then find the operation in question within the `operations`
 field.
+
 {:.code-view-header}
 **Request**
 
@@ -227,9 +238,8 @@ combine dates, time and timezone data into a string, e.g. `2018-09-14T13:21:57.6
 
 ### Locale
 
-When defining locale, we use the combination of language
-([ISO 639-1][iso-639-1]) and country codes ([ISO 3166][iso-3166]), e.g.
-`nb-NO`, `sv-SE`, `en-US`.
+When defining locale, we use the combination of [language][iso-639-1]
+and [country codes][iso-3166], e.g. `nb-NO`, `sv-SE`, `en-US`.
 
 ### Monetary Amounts
 
@@ -302,7 +312,7 @@ specified in the response by finding the appropriate operation based on its
 
 [Read more about the settlement process here][settlement].
 
-{% include callback-reference.md api_resource="creditcard" %}
+{% include callback-reference.md %}
 
 {% include problems/problems.md %}
 
@@ -314,11 +324,13 @@ specified in the response by finding the appropriate operation based on its
 [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
 [java-tls]: https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
+[json]: https://www.json.org/
 [node-tls]: https://stackoverflow.com/a/44635449/61818
 [php-curl-tls]: https://stackoverflow.com/a/32926813/61818
 [php-zend-tls]: https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
 [production]: https://api.payex.com/
 [python-tls]: https://docs.python.org/2/library/ssl.html#ssl.PROTOCOL_TLSv1_2
+[rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rfc-7239]: https://tools.ietf.org/html/rfc7239
 [rfc-7329]: https://tools.ietf.org/html/rfc7329
 [ruby-tls]: https://stackoverflow.com/a/11059873/61818

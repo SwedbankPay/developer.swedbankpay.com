@@ -170,14 +170,14 @@ Some includes can also take variables, if they do this is defined at the
 beginning of the file using the following syntax.
 
 ```markdown
-{% assign api_resource = include.api_resource | default: "paymentorders" %}
+{% assign transaction = include.transaction | default: "authorization" %}
 ```
 
-This assigns `"paymentOrder"` to the variable `api_resource` by default if it
+This assigns `"authorization"` to the variable `transaction` by default if it
 isn't passed in via the include.
 
 ```markdown
-{% include payee-info.md api_resource="example" %}
+{% include transaction-response.md transaction="example" %}
 ```
 
 Read more about passing arguments and how includes work [here][liquid-includes].

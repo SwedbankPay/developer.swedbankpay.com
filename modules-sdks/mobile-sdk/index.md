@@ -114,7 +114,7 @@ Internally, the SDK uses the same [Checkin][checkin] flow as would be used on a 
 
 [plain-webview]: plain-webview
 [checkout]: /checkout
-[https]: /home/technical-information#connection-and-protocol
+[https]: /introduction#connection-and-protocol
 [checkin]: /checkout/checkin
 [payment-menu]: /checkout/payment-menu
 [after-payment-capture]: /checkout/capture
