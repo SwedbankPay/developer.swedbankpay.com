@@ -9,4 +9,4 @@ description: |
 menu_order: 1300
 ---
 
-{% include recur.md api_resource="invoice" documentation_section="invoice" %}
+{% include recur.md %}

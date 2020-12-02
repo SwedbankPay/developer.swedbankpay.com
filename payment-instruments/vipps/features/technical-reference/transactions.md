@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include transactions.md api_resource="vipps" documentation_section="vipps" %}
+{% include transactions.md %}

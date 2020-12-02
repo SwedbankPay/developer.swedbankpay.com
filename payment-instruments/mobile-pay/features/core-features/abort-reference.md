@@ -9,4 +9,4 @@ description: |
 menu_order: 1100
 ---
 
-{% include abort-reference.md documentation_section="mobile-pay" %}
+{% include abort-reference.md %}

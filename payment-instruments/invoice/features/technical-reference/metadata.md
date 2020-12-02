@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include metadata.md api_resource="invoice" %}
+{% include metadata.md %}

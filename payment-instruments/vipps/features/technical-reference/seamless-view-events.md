@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include seamless-view-events.md api_resource="vipps" %}
+{% include seamless-view-events.md %}

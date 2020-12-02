@@ -10,4 +10,4 @@ menu_order: 1200
 ---
 
 
-{% include payment-url.md api_resource="paymentorders" documentation_section="checkout" full_reference=true %}
+{% include payment-url.md full_reference=true %}

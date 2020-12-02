@@ -9,5 +9,5 @@ description: |
 menu_order: 1300
 ---
 
-{% include custom-logo.md documentation_section="checkout" %}
+{% include custom-logo.md %}
 

@@ -9,4 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include description.md api_resource="vipps" %}
+{% include description.md %}

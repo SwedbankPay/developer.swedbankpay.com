@@ -9,5 +9,5 @@ description: |
 menu_order: 1100
 ---
 
-{% include cancel.md api_resource="invoice" documentation_section="invoice" %}
+{% include cancel.md %}
 

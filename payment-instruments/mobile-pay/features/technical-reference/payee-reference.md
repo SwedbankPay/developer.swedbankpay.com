@@ -9,5 +9,4 @@ description: |
 menu_order: 1200
 ---
 
-{% include payee-reference.md api_resource="mobilepay" documentation_section="mobile-pay"
-%}
+{% include payee-reference.md %}
