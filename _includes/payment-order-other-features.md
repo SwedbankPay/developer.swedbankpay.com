@@ -1575,12 +1575,6 @@ not described in the previous sections must not be used, although they are
 available in the API. Flags that can be turned to `true` must be kept `false` as
 described in this standard setup documentation." %}
 
-{% include alert.html type="informative" icon="info" body= "Your integration
-must be resilient to change. Properties, operations, headers, etc., that aren't
-understood in any response **must be ignored**. Don't expect a specific order of
-elements. When in doubt, please follow the [robustness
-principle](https://en.wikipedia.org/wiki/Robustness_principle)." %}
-
 [current-payment]: #current-payment-resource
 [expanding]: /introduction#expansion
 [image-disabled-payment-menu]: /assets/img/checkout/disabled-payment-menu.png
