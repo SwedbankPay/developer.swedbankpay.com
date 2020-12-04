@@ -40,7 +40,7 @@ could be a `URI` in the future. The day our `transactionNumber` ticks past
 1,000,000, make sure your integration can handle number 1,000,001. If some
 `properties`, `operations` or `headers` can't be understood, you must be able to
 ignore them. We have built our requests in a way which allows the `payeeInfo`
-node to be placed before `metadata`, or vice versa if you want. We don't expect
+field to be placed before `metadata`, or vice versa if you want. We don't expect
 a specific order of elements, so we ask that you shouldn't either." %}
 
 ## Headers
