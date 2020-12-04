@@ -31,6 +31,18 @@ and environments ([Java][java-tls], [PHP Curl][php-curl-tls],
 You can inspect [Swedbank Pay's TLS and cipher suite][ssllabs] support at
 SSL Labs. Support for HTTP/2 in our APIs is being investigated.
 
+{% include alert.html type="informative" icon="info" body= "We encourage you to
+keep [Postel's robustness principle][robustness-principle] in mind. Build your
+integration in a way that is resilient to change, wherever it may come. Don't
+confine yourself to the limits of our current documentation examples. A `string`
+looking like a `guid` must still be parsed as a `string`, not as a guid, as it
+could be a `URI` in the future. The day our `transactionNumber` ticks past
+1,000,000, make sure your integration can handle number 1,000,001. If some
+`properties`, `operations` or `headers` can't be understood, you must be able to
+ignore them. We have built our requests in a way which allows the `payeeInfo`
+node to be placed before `metadata`, or vice versa if you want. We don't expect
+a specific order of elements, so we ask that you shouldn't either." %}
+
 ## Headers
 
 All requests against the API Platform should have a few common headers:
@@ -68,24 +80,24 @@ The base URIs of the API Platform are:
 
 An important part of REST is its use of **hypermedia**. Instead of having to
 perform complex state management and hard coding URIs and the availability of
-different operations in the client, this task is moved to the server. The
-client simply follows links and performs operations provided by the API, given
-the current state of the resource. The server controls the state and lets the
-client know through hypermedia what's possible in the current state of the
-resource. To get an [introduction to **hypermedia**, please watch this 20 minute video][the-rest-and-then-some].
+different operations in the client, this task is moved to the server. The client
+simply follows links and performs operations provided by the API, given the
+current state of the resource. The server controls the state and lets the client
+know through hypermedia what's possible in the current state of the resource. To
+get an [introduction to **hypermedia**, please watch this 20 minute
+video][the-rest-and-then-some].
 
-{% include alert.html type="warning" icon="warning" header="Don't build URIs" body="
-It is very important that only the base URIs of Swedbank Pay's APIs are stored
-in your system. All other URIs are returned dynamically in the response.
+{% include alert.html type="warning" icon="warning" header="Don't build URIs"
+body=" It is very important that only the base URIs of Swedbank Pay's APIs are
+stored in your system. All other URIs are returned dynamically in the response.
 Swedbank Pay cannot guarantee that your implementation will remain working if
 you store any other URIs in your system. When performing requests, please make
-sure to use the complete URIs that are returned in the response.
-**Do not attempt to parse or build** upon the returned data – you should not
-put any special significance to the information you might glean from an URI.
-URIs should be treated as opaque identifiers you can use to retrieve the
-identified resource – nothing more, nothing less. If you don't follow this
-advice, your integration most assuredly will break when Swedbank Pay makes
-updates in the future.
+sure to use the complete URIs that are returned in the response. **Do not
+attempt to parse or build** upon the returned data – you should not put any
+special significance to the information you might glean from an URI. URIs should
+be treated as opaque identifiers you can use to retrieve the identified resource
+– nothing more, nothing less. If you don't follow this advice, your integration
+most assuredly will break when Swedbank Pay makes updates in the future.
 " %}
 
 ### Storing URIs
@@ -95,8 +107,8 @@ general, URIs should be **discovered** in responses to previous requets, **not
 stored**." %}
 
 However, URIs that are used to create new resources can be stored or hard coded.
-Also, the URI of the generated resource can be stored on your end to `GET` it at a
-later point. Note that the URIs should be stored as opaque identifiers and
+Also, the URI of the generated resource can be stored on your end to `GET` it at
+a later point. Note that the URIs should be stored as opaque identifiers and
 should not be parsed or interpreted in any way.
 
 {% include alert.html type="warning" icon="warning" header="Operation URIs"
@@ -234,7 +246,8 @@ e.g `SEK`, `EUR`, `NOK`.
 ### Dates
 
 All dates are expressed according to the [ISO 8601][iso-8601] standard that
-combine dates, time and timezone data into a string, e.g. `2018-09-14T13:21:57.6627579Z`.
+combine dates, time and timezone data into a string, e.g.
+`2018-09-14T13:21:57.6627579Z`.
 
 ### Locale
 
@@ -333,6 +346,7 @@ specified in the response by finding the appropriate operation based on its
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rfc-7239]: https://tools.ietf.org/html/rfc7239
 [rfc-7329]: https://tools.ietf.org/html/rfc7329
+[robustness-principle]: https://en.wikipedia.org/wiki/Robustness_principle
 [ruby-tls]: https://stackoverflow.com/a/11059873/61818
 [settlement]: /payment-instruments/invoice/other-features#settlement-and-reconciliation
 [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
