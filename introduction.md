@@ -35,7 +35,7 @@ SSL Labs. Support for HTTP/2 in our APIs is being investigated.
 keep [Postel's robustness principle][robustness-principle] in mind. Build your
 integration in a way that is resilient to change, wherever it may come. Don't
 confine yourself to the limits of our current documentation examples. A `string`
-looking like a `guid` must still be parsed as a `string`, not as a guid, as it
+looking like a `guid` must still be handled and stored like a `string`, not as a guid, as it
 could be a `URI` in the future. The day our `transactionNumber` ticks past
 1,000,000, make sure your integration can handle number 1,000,001. If some
 `properties`, `operations` or `headers` can't be understood, you must be able to
