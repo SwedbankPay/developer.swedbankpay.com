@@ -307,11 +307,11 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-[complete-url]: /payment-instruments/card/other-features#completeurl
-[3ds2]: /payment-instruments/card/other-features#3-d-secure-2
-[payee-reference]: /payment-instruments/card/other-features#payee-reference
-[paymenturl]: /payment-instruments/card/other-features#payment-url
-[price-resource]: /payment-instruments/card/other-features#prices
-[settlement-and-reconciliation]: /payment-instruments/card/other-features#settlement-and-reconciliation
-[split-settlement]: /checkout/other-features#split-settlement
+[complete-url]: /payment-instruments/card/features/technical-reference/complete-url
+[3ds2]: /payment-instruments/card/features/core-features/3d-secure-2
+[payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
+[paymenturl]: /payment-instruments/card/features/technical-reference/payment-url
+[price-resource]: /payment-instruments/card/features/technical-reference/prices
+[settlement-and-reconciliation]: /payment-instruments/card/features/core-features/settlement-reconciliation
+[split-settlement]: /checkout/features/core-features/settlement-reconciliation#split-settlement
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
