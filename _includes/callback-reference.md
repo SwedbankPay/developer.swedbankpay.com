@@ -2,6 +2,11 @@
 
 ## Callback
 
+{% include alert.html type="warning" icon="warning" body="While the callback
+feature is mandatory, we would like to emphasize that it is mainly a fail-safe
+feature. We strongly advice that it is not your primary mean of checking for
+payment updates." %}
+
 When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 about this update.
@@ -22,19 +27,21 @@ three example scenarios of why this is important:
 *   When a change or update from the back-end system are made on a payment or
     transaction, Swedbank Pay will perform an asynchronous server-to-server
     callback to inform the payee (merchant) about this update.
-*   It is important to know that the callback is asynchronous, and not real-time. As we
-    can’t guarantee when you get the callback, there could be a delay between
-    when the payer is returned back to the merchant and when the callback
-    arrives. If the merchant chooses to wait for the callback, the payer might
-    be left at the merchant’s page until the response comes.
+*   It is important to know that the callback is asynchronous, and not
+    real-time. As we can’t guarantee when you get the callback, there could be a
+    delay between when the payer is returned back to the merchant and when the
+    callback arrives. If the merchant chooses to wait for the callback, the
+    payer might be left at the merchant’s page until the response comes.
 *   Swedbank Pay will make an HTTP `POST` to the `callbackUrl` that was
     specified when the payee (merchant) created the payment.
 *   When the `callbackUrl` receives such a callback, an HTTP `GET` request
     must be made on the payment or on the transaction. The retrieved payment or
     transaction resource will give you the necessary information about the
     recent change/update.
-*   The callback will be retried if it fails. Below are the retry timings, in
-    seconds from the initial transaction time:
+*   As it isn't scaled to be a primary source of updates, no given response time
+    can be guaranteed, and a callback might fail. It will be retried if that
+    should happen. Below are the retry timings, in seconds from the initial
+    transaction time:
     *   30 seconds
     *   60 seconds
     *   360 seconds
@@ -44,10 +51,10 @@ three example scenarios of why this is important:
 *   The callback is sent from the following IP address: `82.115.146.1`
 *   A callback should return a `200 OK` response.
 
-To understand the nature of the callback, the type of transaction, its status, etc.,
-you need to perform a `GET` request on the received URI and inspect the response.
-The transaction type or any other information can not and should not be inferred
-from the URI. See [URI usage][uri-usage] for more information.
+To understand the nature of the callback, the type of transaction, its status,
+etc., you need to perform a `GET` request on the received URI and inspect the
+response. The transaction type or any other information can not and should not
+be inferred from the URI. See [URI usage][uri-usage] for more information.
 
 {% if api_resource == "paymentorders" %}
 {:.code-view-header}
