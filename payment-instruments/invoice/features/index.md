@@ -27,6 +27,12 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
+- title: Create Payment
+  description: When initiating a payment process
+  url: /payment-instruments/invoice/features/core-features/create-payment
+  icon:
+    content: credit_card
+    outlined: true
 - title: Payment resource
   description: When initiating a payment process
   url: /payment-instruments/invoice/features/core-features/payment-resource

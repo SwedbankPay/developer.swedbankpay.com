@@ -182,6 +182,6 @@ TODO: Remove pipes from the above code example and add a field table
 [invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
-[create-card-payment]: /payment-instruments/card/other-features#create-payment
-[create-invoice-payment]: /payment-instruments/invoice/other-features#create-payment
-[verify]: ./other-features#verify
+[create-card-payment]: /payment-instruments/card/features/core-features/create-payment
+[create-invoice-payment]: /payment-instruments/invoice/features/core-features/create-payment
+[verify]: /features/optional-features/verify
