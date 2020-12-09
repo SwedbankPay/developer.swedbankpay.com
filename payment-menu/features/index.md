@@ -57,6 +57,12 @@ card_list_2:
   icon:
     content: link
     outlined: true
+- title: Delete Token
+  description: How to delete tokens
+  url:  /payment-menu/features/technical-reference/delete-token
+  icon:
+    content: assignment
+    outlined: true
 - title: Description
   description: The purchase summed up in a few words
   url:  /payment-menu/features/technical-reference/description
@@ -95,7 +101,7 @@ card_list_2:
     outlined: true
 - title: Payment State
   description: Different states in the payment process
-  url: /payment-instruments/payment-menu/features/core-features/payment-state
+  url: /payment-menu/features/core-features/payment-state
   icon:
     content: credit_card
     outlined: true
@@ -144,7 +150,7 @@ card_list_3:
     outlined: true
 - title: TransactionOnFile
   description: Submitting subsequent transactions via file
-  url:  /payment-instruments/payment-menu/features/optional-features/transaction-on-file
+  url:  /payment-menu/features/optional-features/transaction-on-file
   icon:
     content: cached
     outlined: true
