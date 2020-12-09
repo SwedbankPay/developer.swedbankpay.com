@@ -57,6 +57,12 @@ card_list_2:
   icon:
     content: link
     outlined: true
+- title: Delete Token
+  description: How to delete tokens
+  url:  /checkout/features/technical-reference/delete-token
+  icon:
+    content: assignment
+    outlined: true
 - title: Description
   description: The purchase summed up in a few words
   url:  /checkout/features/technical-reference/description
@@ -95,7 +101,7 @@ card_list_2:
     outlined: true
 - title: Payment State
   description: Different states in the payment process
-  url: /payment-instruments/checkout/features/core-features/payment-state
+  url: /checkout/features/core-features/payment-state
   icon:
     content: credit_card
     outlined: true

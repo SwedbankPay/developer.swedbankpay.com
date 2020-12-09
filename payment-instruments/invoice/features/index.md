@@ -64,6 +64,12 @@ card_list_2:
   icon:
     content: link
     outlined: true
+- title: Delete Token
+  description: How to delete tokens
+  url:  /payment-instruments/invoice/features/technical-reference/delete-token
+  icon:
+    content: assignment
+    outlined: true
 - title: Description
   description: The purchase summed up in a few words
   url:  /payment-instruments/invoice/features/technical-reference/description
