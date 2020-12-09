@@ -96,7 +96,7 @@ card_list_2:
     outlined: true
 - title: Payment State
   description: Different states in the payment process
-  url: /payment-instruments/invoice/features/core-features/payment-state
+  url: /payment-instruments/invoice/features/technical-reference/payment-state
   icon:
     content: credit_card
     outlined: true
