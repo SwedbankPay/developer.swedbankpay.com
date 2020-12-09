@@ -136,12 +136,6 @@ card_list_3:
   icon:
     content: copyright
     outlined: true
-- title: Delegated Strong Consumer Authentication
-  description: The Checkin alternative
-  url: /payment-menu/features/optional-features/dsca
-  icon:
-    content: verified
-    outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
   url:  /payment-menu/features/optional-features/recur
