@@ -11,85 +11,85 @@ menu_order: 1000
 card_list: 
 - title: 3D Secure 2
   description: Authenticating the cardholder
-  url:  /checkout/features/core-features/3d-secure-2
+  url:  /payment-menu/features/core-features/3d-secure-2
   icon:
     content: 3d_rotation
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /checkout/features/core-features/cancel
+  url: /payment-menu/features/core-features/cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /checkout/features/core-features/payment-order-capture
+  url: /payment-menu/features/core-features/payment-order-capture
   icon:
     content: compare_arrows
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /checkout/features/core-features/reversal
+  url: /payment-menu/features/core-features/reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /checkout/features/core-features/settlement-reconciliation
+  url:  /payment-menu/features/core-features/settlement-reconciliation
   icon:
     content: description
     outlined: true
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /checkout/features/technical-reference/callback-reference
+  url:  /payment-menu/features/technical-reference/callback-reference
   icon:
     content: low_priority
     outlined: true
 - title: Checkin Events
   description: Possible events during Checkin
-  url: /checkout/features/technical-reference/checkin-events
+  url: /payment-menu/features/technical-reference/checkin-events
   icon:
     content: event
     outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
-  url:  /checkout/features/technical-reference/complete-url
+  url:  /payment-menu/features/technical-reference/complete-url
   icon:
     content: link
     outlined: true
 - title: Description
   description: The purchase summed up in a few words
-  url:  /checkout/features/technical-reference/description
+  url:  /payment-menu/features/technical-reference/description
   icon:
     content: assignment
     outlined: true
 - title: Metadata
   description: Store payment associated data for later use
-  url:  /checkout/features/technical-reference/metadata
+  url:  /payment-menu/features/technical-reference/metadata
   icon:
     content: code
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
-  url:  /checkout/features/technical-reference/payee-info
+  url:  /payment-menu/features/technical-reference/payee-info
   icon:
     content: account_box
     outlined: true
 - title: PayeeReference
   description: The merchant's reference for a specific payment
-  url:  /checkout/features/technical-reference/payee-reference
+  url:  /payment-menu/features/technical-reference/payee-reference
   icon:
     content: assignment_ind
     outlined: true
 - title: Payment Menu Events
   description: Possible events during Payment Menu payments
-  url: /checkout/features/technical-reference/payment-menu-events
+  url: /payment-menu/features/technical-reference/payment-menu-events
   icon:
     content: event
     outlined: true
 - title: Payment Order Operations
   description: Possible operations for a payment order
-  url: /checkout/features/technical-reference/payment-order-operations
+  url: /payment-menu/features/technical-reference/payment-order-operations
   icon:
     content: settings
     outlined: true
@@ -101,50 +101,56 @@ card_list_2:
     outlined: true
 - title: PaymentUrl
   description: Redirecting the payer back to your site
-  url:  /checkout/features/technical-reference/payment-url
+  url:  /payment-menu/features/technical-reference/payment-url
   icon:
     content: link
     outlined: true
 - title: Prices
   description: The payment's prices resource
-  url:  /checkout/features/technical-reference/prices
+  url:  /payment-menu/features/technical-reference/prices
   icon:
     content: attach_money
     outlined: true
 - title: Problems
   description: Information when something goes wrong
-  url:  /checkout/features/technical-reference/problems
+  url:  /payment-menu/features/technical-reference/problems
   icon:
     content: report
     outlined: true
 - title: Seamless View Events
   description: Possible events during Seamless View payments
-  url:  /checkout/features/technical-reference/seamless-view-events
+  url:  /payment-menu/features/technical-reference/seamless-view-events
   icon:
     content: event
     outlined: true
 card_list_3: 
 - title: Custom Logo
   description: How to add your own logo
-  url: /checkout/features/optional-features/custom-logo
+  url: /payment-menu/features/optional-features/custom-logo
   icon:
     content: copyright
     outlined: true
 - title: Delegated Strong Consumer Authentication
   description: The Checkin alternative
-  url: /checkout/features/optional-features/dsca
+  url: /payment-menu/features/optional-features/dsca
   icon:
     content: verified
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
-  url:  /checkout/features/optional-features/recur
+  url:  /payment-menu/features/optional-features/recur
+  icon:
+    content: cached
+    outlined: true
+- title: TransactionOnFile
+  description: Submitting subsequent transactions via file
+  url:  /payment-instruments/payment-menu/features/optional-features/transaction-on-file
   icon:
     content: cached
     outlined: true
 - title: Verify
   description: Validating the payer's payment details
-  url:  /checkout/features/optional-features/verify
+  url:  /payment-menu/features/optional-features/verify
   icon:
     content: verified_user
     outlined: true
