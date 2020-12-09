@@ -244,37 +244,37 @@ downloaded below.
 ### Split Settlement
 
 The split settlement feature is the easy way of doing settlements for companies
-with multiple sub merchants. With only a few easy steps, you can make the
-settlement process more efficient with regards to invoicing, payouts and setup
-for both your sub merchants and yourself.
+with multiple sub merchants. With a few easy steps, the settlement process
+becomes more efficient with regards to invoicing, payouts and setup for both
+your sub merchants and yourself.
 
 In short, it is a settlement feature where a company with a website or an app
 can attach specific subsite numbers to sub merchants selling their goods or
 services through the company. The subsite number is used to match the
-transactions and the merchant, so the settlement is automatically split between
-the sub merchants. If you run a site selling tickets to concerts, theatres,
+transactions with the correct sub merchant, so the settlement is automatically
+split between them. If you run a site selling tickets to concerts, theatres,
 sporting events etc., each venue gets its own subsite number. If you run a
 funeral home, the sub merchants can be everything from flower shops to
 charities.
 
 #### What we need from you as a company
 
-*   Send us a KYC form for each sub merchant you want to include. We will also
-    do a KYC check on your sub merchants, providing extra security for you.
-*   Give every sub merchant who sells goods/services at your website or in your
-    app a unique subsite number. This needs to be included in the KYC form you
-    send to us. We recommend using the same customer number they have in your
-    system.
+*   Submit a KYC (Know Your Costumer) form for each sub merchant you want to
+    include. We will also do a KYC check on your sub merchants, providing extra
+    security for you.
+*   Give every sub merchant who sells goods/services through your website or in
+    your app a unique subsite number. This must be included in the KYC form. We
+    recommend using the same customer number they have in your system.
 *   Attach the subsite number to all the goods/services the sub merchant
     sells through your website or app, so the goods/services can be matched
     to the correct merchant in our back office system.
-*   A partner agreement is needed for the automatic deduction of revenue cuts
+*   A partner agreement is needed for automatic deduction of revenue cuts
     and fees.
 
 #### How it works
 
 1.  We set up the sub merchant subsite number in our systems.
-2.  That number is added in the subsite field in the API call when you
+2.  That number is added in the requests subsite field in when you
     create the payment for the goods or service.
 3.  The customer selects payment instrument and completes the payment.
 4.  The payment goes into the client funds account.
@@ -287,8 +287,8 @@ charities.
 
 #### The upsides
 
-Since the sub merchants are connected to Swedbank Pay through the super merchant
-instead of having separate setups, meaning that:
+Sub merchants being connected to Swedbank Pay through the super merchant
+instead of having separate setups has a lot of pros:
 
 *   You only need one agreement for each payment instrument (credit card, Vipps,
     Swish, MobilePay Online, invoice) and payment gateway.
@@ -301,7 +301,7 @@ instead of having separate setups, meaning that:
 *   The automatic settlement split and deduction of fees and revenue cuts
     minimizes the work for your accounting department, as you do not have to
     invoice your sub merchants.
-*   The subsite split is available with all the payment instruments we offer on
+*   The subsite split is available for all the payment instruments we offer on
     our eCom platform.
 
 #### Good to know
@@ -318,9 +318,10 @@ normal flow.
 ##### Reversals
 
 In cases where you need to do reversals, this will be performed by the super
-merchant. The reversal amount will be charged from the sub merchants prefix. If
-the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
-super merchant will in turn have to invoice this amount to the sub merchant.
+merchant. The reversal amount will be charged from the sub merchants subsite
+number. If the sub merchants balance is 0 (zero), the super merchant will be
+invoiced. The super merchant will in turn have to invoice this amount to the sub
+merchant.
 
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
