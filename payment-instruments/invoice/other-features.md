@@ -23,18 +23,17 @@ set to value `FinancingConsumer` are listed below.
 *   An invoice payment is always two-phased based -  you create an Authorize
   transaction, that is followed by a Capture or Cancel request.
 
-{% include alert-callback-url.md api_resource="invoice" %}
+{% include alert-callback-url.md %}
 
-{% include authorizations-resource.md documentation_section="invoice" api_resource="invoice" %}
+{% include authorizations-resource.md %}
 
-{% include payment-resource.md api_resource="invoice"
-documentation_section="invoice" show_status_operations=true %}
+{% include payment-resource.md show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md api_resource="invoice" %}
+{% include payment-state.md %}
 
-{% include payments-operations.md api_resource="invoice" documentation_section="invoice" %}
+{% include payments-operations.md %}
 
 ## Create Payment
 
@@ -176,8 +175,7 @@ Content-Type: application/json
 }
 ```
 
-{% include delete-token.md api_resource="invoice"
-documentation_section="invoice" token_field_name="recurrenceToken" %}
+{% include delete-token.md token_field_name="recurrenceToken" %}
 
 ## Verify
 
@@ -526,8 +524,8 @@ Content-Type: application/json
 | └➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
 | └➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="invoice" %}                                                                                                                               |
-| └➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section="invoice" describe_receipt=true %}                                                                                                     |
+| └➔&nbsp;`description`    | `string`  | {% include field-description-description.md %}                                                                                                                               |
+| └➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                     |
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
@@ -535,30 +533,31 @@ Content-Type: application/json
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.
 
-{% include transactions.md api_resource="invoice" documentation_section="invoice" %}
+{% include transactions.md %}
 
-{% include callback-reference.md api_resource="invoice" %}
+{% include callback-reference.md %}
 
 {% include payment-link.md show_3d_secure=false %}
 
 {% include complete-url.md %}
 
-{% include description.md api_resource = "invoice" %}
+{% include description.md %}
 
-{% include payee-info.md api_resource="invoice" documentation_section="invoice" %}
+{% include payee-info.md %}
 
-{% include prices.md api_resource="invoice" %}
+{% include prices.md %}
 
-{% include metadata.md api_resource="invoice" %}
+{% include metadata.md %}
 
-{% include settlement-reconciliation.md documentation_section="invoice" %}
+{% include settlement-reconciliation.md %}
 
-{% include problems/problems.md documentation_section="invoice" %}
+{% include problems/problems.md %}
 
-{% include seamless-view-events.md api_resource="invoice" %}
+{% include seamless-view-events.md %}
 
-{% include iterator.html prev_href="after-payment" prev_title="After
-Payment" %}
+{% include iterator.html
+    prev_href="after-payment"
+    prev_title="After Payment" %}
 
 [callback]: #callback
 [cancel]: /payment-instruments/invoice/after-payment#cancellations

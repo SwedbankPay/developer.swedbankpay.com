@@ -10,8 +10,8 @@ menu_order: 600
 hide_from_sidebar: true
 ---
 
-{% include payment-order-other-features.md documentation_section="payment-menu"
-operation_status_bool="true" %}
+{% include payment-order-other-features.md operation_status_bool="true" %}
 
-{% include iterator.html prev_href="after-payment" prev_title="After
-Payment" %}
+{% include iterator.html
+  prev_href="after-payment"
+  prev_title="After Payment" %}

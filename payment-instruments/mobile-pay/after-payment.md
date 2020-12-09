@@ -48,10 +48,9 @@ Content-Type: application/json
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                             |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="cancel" %}
+{% include transaction-response.md transaction="cancel" %}
 
 ## Cancel Sequence
 
@@ -73,10 +72,7 @@ sequenceDiagram
 
 ## Reversals
 
-{% include transaction-list-response.md
-    api_resource="mobilepay"
-    documentation_section="mobile-pay"
-    transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ## Create reversal transaction
 
@@ -109,10 +105,9 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                             |
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                  |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="reversal"%}
+{% include transaction-response.md transaction="reversal"%}
 
 ## Reversal Sequence
 
@@ -131,8 +126,7 @@ sequenceDiagram
   deactivate Merchant
 ```
 
-{% include abort-reference.md api_resource="mobilepay"
-documentation_section="mobile-pay" %}
+{% include abort-reference.md %}
 
 {% include iterator.html prev_href="seamless-view"
                          prev_title="Seamless View"

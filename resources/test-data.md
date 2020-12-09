@@ -48,7 +48,7 @@ connected to our POS system instead of a fake service. It is set up with an
 internal acquirer. This gives us a production-like test environment, while also
 giving us sandbox testing opportunities, such as 3-D Secure card enrollment and
 error scenarios. No payment information will be sent to other acquiring
-institutions. 
+institutions.
 
 ### Visa
 
@@ -138,7 +138,7 @@ amounts set to trigger errors in our test environment.
 
 First, [create a Card Payment][create-card-purchase] (operation `Purchase`) and
 visit the URL of the returned `redirect-authorization` operation in a web
-browser. Use either the Visa or MasterCard listed under 3-D Secure right above 
+browser. Use either the Visa or MasterCard listed under 3-D Secure right above
 this section.
 
 After pressing the purchase button you will then be taken to a menu where you
@@ -148,7 +148,7 @@ can select Authentication status.
 
 ![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
 
-In this menu, there are a few different options to choose from. Choose the 
+In this menu, there are a few different options to choose from. Choose the
 status you want to test, click the Continue button and the
 status you selected will be sent with the payment.
 

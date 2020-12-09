@@ -58,7 +58,7 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                              |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %}          |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}          |
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -108,8 +108,8 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
+| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md %}                                                                                                                                  |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md %}                                                                                                                              |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
@@ -126,7 +126,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="card" documentation_section="card" transaction="cancellation" %}
+{% include transaction-list-response.md transaction="cancellation" %}
 
 #### Cancel Sequence
 
@@ -172,7 +172,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="card" %}          |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}          |
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -222,8 +222,8 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
 | └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md documentation_section="card" %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section="card" %}                                                                                                                              |
+| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md %}                                                                                                                                  |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
@@ -241,7 +241,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="card" documentation_section="card" transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ### Reversal Sequence
 
@@ -253,7 +253,7 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-{% include abort-reference.md api_resource="creditcard" %}
+{% include abort-reference.md %}
 
 ## Remove payment token
 

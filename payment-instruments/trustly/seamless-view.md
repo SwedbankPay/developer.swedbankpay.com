@@ -18,11 +18,11 @@ does not need to leave your webpage, since we are handling the payment in the
 
 ![screenshot of the Trustly payment window][trustly-payment-embedded-view]{:height="425px" width="700px"}
 
-{% include alert-callback-url.md api_resource="trustly" %}
+{% include alert-callback-url.md %}
 
 ## Step 1: Create the payment
 
-A Trustly payment is a straightforward way to perform a direct-bank payment.  
+A Trustly payment is a straightforward way to perform a direct-bank payment.
 
 An example of an abbreviated `POST` request is provided below.
 Each individual field of the JSON document is described in the following section.
@@ -60,6 +60,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
+            "hostUrls": ["https://example.com"],
             "completeUrl": "https://example.com/payment-completed",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
@@ -113,7 +114,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |	
 |                  | └─➔&nbsp;`subsite`           | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                        |
 |                  | └➔&nbsp;`payer`              | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md documentation_section="trustly" %}                                                                                                                                                                                                                                                           |
+|                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └─➔&nbsp;`prefillInfo`       | `object`      | Object representing information of what the UI text fields should be populated with                                                                                                                                                                                                                |	
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |	
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |	
@@ -226,28 +227,6 @@ The previous two steps gives this HTML:
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`	
 embedded on your website.	
 
-{:.code-view-header}	
-**HTML**	
-
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Swedbank Pay Seamless View is Awesome!</title>
-        <!-- Here you can specify your own javascript file -->
-        <script src=<YourJavaScriptFileHere>></script>
-    </head>
-    <body>
-        <div id="swedbank-pay-seamless-view-page">
-          <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/trustly/core/scripts/client/px.trustly.client.js"></script>
-        </div>
-    </body>
-</html>
-```
-
-Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
-embedded on your website.
-
 {:.code-view-header}
 **HTML**
 
@@ -300,13 +279,13 @@ next_href="after-payment" next_title="After Payment" %}
 
 [after-payment]: /payment-instruments/trustly/after-payment
 [callback]: /payment-instruments/trustly/other-features#callback
-[completeurl]: /payment-instruments/trustly/other-features#completeurl  
+[complete-url]: /payment-instruments/trustly/other-features#completeurl
 [create-payment]: /payment-instruments/trustly/other-features#create-payment
 [financing-consumer]: /payment-instruments/trustly/other-features#financing-consumer
-[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
 [payee-reference]: /payment-instruments/trustly/other-features#payee-reference
 [payment-resource]: /payment-instruments/trustly/other-features#payment-resource
 [recur]: /payment-instruments/trustly/other-features#recur
 [setup-mail]: mailto:setup.ecom@PayEx.com
+[trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payment-instruments/trustly/other-features#verify

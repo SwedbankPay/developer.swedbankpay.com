@@ -29,4 +29,4 @@ documentation:
                          next_title="Operations" %}
 
 [operations]: /gift-cards/operations
-[test-client]: /gift-cards/payment-client
+[test-client]: /gift-cards/test-client

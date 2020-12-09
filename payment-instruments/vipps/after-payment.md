@@ -78,26 +78,26 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`              | `string`     | `vipps`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md documentation_section="vipps" %}                                                                                                                                                                              |
+| {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the payer's browser - [see user agent][user-agent]                                                                                                                                                                         |
-| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md api_resource="vipps" %}                                                                                                                                                                                          |
+| {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
-| {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][completeurl] for details. |
+| {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment`.                                                                                                           |
 |                  | └─➔&nbsp;`paymentUrl`        | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the `payment`. See [`paymentUrl`][paymenturl] for details.                                                                                                      |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` request against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                           |
-|                  | └─➔&nbsp;`logoUrl`           | `string`     | {% include field-description-logourl.md documentation_section="trustly" %}                                                                                                                       |
+|                  | └─➔&nbsp;`logoUrl`           | `string`     | {% include field-description-logourl.md %}                                                                                                                       |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
-| {% icon check %}︎ | └➔&nbsp;`payeeInfo`          | `object`     | {% include field-description-payeeinfo.md documentation_section="vipps" %}                                                                                                                                                                                                        |
+| {% icon check %}︎ | └➔&nbsp;`payeeInfo`          | `object`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                        |
 | {% icon check %}︎ | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | {% include field-description-payee-reference.md documentation_section="vipps" %}                                                                                                                                                                          |
+| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | {% include field-description-payee-reference.md %}                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`           | `string(40)` | The `subsite` field can be used to perform split settlement on the payment. The `subsites` must be resolved with Swedbank Pay reconciliation before being used.                                                                                           |
 |                  | └➔&nbsp;`payer`              | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md documentation_section="vipps" %}                                                                                                                                                                                                                                                           |
+|                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
 
@@ -221,8 +221,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-response.md api_resource="vipps"
-documentation_section="vipps" transaction="authorization" %}
+{% include transaction-response.md transaction="authorization" %}
 
 {:.code-view-header}
 **Request**
@@ -234,8 +233,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-response.md api_resource="vipps"
-documentation_section="vipps" transaction="authorization" %}
+{% include transaction-response.md transaction="authorization" %}
 
 ## Cancellations
 
@@ -252,8 +250,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="vipps"
-documentation_section="vipps" transaction="cancel" %}
+{% include transaction-list-response.md transaction="cancel" %}
 
 ## Create cancellation transaction
 
@@ -280,8 +277,7 @@ Content-Type: application/json
 }
 ```
 
-{% include transaction-response.md api_resource="vipps"
-documentation_section="vipps" transaction="cancel" %}
+{% include transaction-response.md transaction="cancel" %}
 
 ## Reversals
 
@@ -298,8 +294,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="vipps"
-documentation_section="vipps" transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ### Create reversal transaction
 
@@ -332,12 +327,11 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md currency="NOK" %}                         |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                      |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="vipps" %} |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md api_resource="vipps"
-documentation_section="vipps" transaction="reversal" %}
+{% include transaction-response.md transaction="reversal" %}
 
-{% include abort-reference.md api_resource="vipps" %}
+{% include abort-reference.md %}
 
 {% include iterator.html
         prev_href="capture"
@@ -346,11 +340,11 @@ documentation_section="vipps" transaction="reversal" %}
         next_title="Other Features" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
-[expand-parameter]: /home/technical-information#expansion
 [callback]: /payment-instruments/vipps/other-features#callback
 [cancel]: #cancellations
-[completeurl]: /payment-instruments/vipps/other-features#completeurl
 [capture]: #captures
+[complete-url]: /payment-instruments/vipps/other-features#completeurl
+[expand-parameter]: /introduction#expansion
 [payee-reference]: /payment-instruments/vipps/other-features#payee-reference
 [paymenturl]: /payment-instruments/vipps/other-features#payment-url
 [prices]: /payment-instruments/vipps/other-features#prices

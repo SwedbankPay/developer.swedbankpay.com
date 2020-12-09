@@ -85,7 +85,7 @@ Content-Type: application/json
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md api_resource="paymentorders" %} |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
 | {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
 
 At this point, the Merchant Backend will make a corresponding request to the Swedbank Pay API, using its secret access token.
@@ -463,4 +463,4 @@ Your implementation is encouraged to define its own problem types for any domain
 [ios-universal-links-routing]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
-[swedbankpay-problems]: /home/technical-information#problems
+[swedbankpay-problems]: /introduction#problems

@@ -1,5 +1,4 @@
-{% assign api_resource = include.api_resource %}
-{% assign documentation_section = include.documentation_section %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 {% if api_resource == "paymentorders" %}
   {% assign api_resource_title="payment order" %}

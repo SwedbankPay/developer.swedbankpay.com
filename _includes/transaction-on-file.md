@@ -1,6 +1,8 @@
-{% assign token_url_without_psp = include.api_resource %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% assign token_url_without_psp = api_resource %}
 
-{% unless include.api_resource == "paymentorders" %}
+{% unless api_resource == "paymentorders" %}
     {% assign token_url_without_psp = token_url_without_psp | append: '/payments' %}
 {% endunless %}
 
@@ -118,13 +120,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ include.api_resource }}/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/{{ api_resource }}/core/scripts/client/px.creditcard.client.js?token={{ page.payment_token }}",
             "rel": "view-verification",
             "contentType": "application/javascript"
-        }{% if include.api_resource == "creditcard" %},
+        }{% if api_resource == "creditcard" %},
         {
             "method": "POST",
-            "href": "{{ page.front_end_url }}/psp/{{ include.api_resource }}/confined/payments/{{ page.payment_id }}/verifications",
+            "href": "{{ page.front_end_url }}/psp/{{ api_resource }}/confined/payments/{{ page.payment_id }}/verifications",
             "rel": "direct-verification",
             "contentType": "application/json"
         }{% endif %}

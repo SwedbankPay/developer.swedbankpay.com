@@ -1,5 +1,5 @@
-{% assign documentation_section = include.documentation_section %}
-{% assign api_resource = include.api_resource %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign token_field_name = include.token_field_name %}
 {% capture token_url %}
     /psp/{{ api_resource }}/
@@ -42,7 +42,10 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
+{   {% if documentation_section == "payment-menu" %}
+    "token": "{{ page.payment_token }}",
+    "isDeleted": true
+    {% else %}
     "instrumentData": {
         "id": "{{ token_url }}",
         "paymentToken": "{{ page.payment_token }}",
@@ -54,5 +57,6 @@ Content-Type: application/json
         "expiryDate": "MM/YYYY",
         "tokenType" : "{{ token_field_name }}" {% endif %}
     }
+    {% endif %}
 }
 ```

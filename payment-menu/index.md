@@ -35,4 +35,4 @@ Swedbank Pay Payment Menu.
                          next_title="Payment Order" %}
 
 [after-payment-capture]: /payment-menu/capture
-[https]: /home/technical-information#connection-and-protocol
+[https]: /introduction#connection-and-protocol

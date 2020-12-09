@@ -5,12 +5,11 @@ estimated_read: 70
 menu_order: 800
 ---
 
-{% include payment-resource.md api_resource="mobilepay"
-documentation_section="mobile-pay" %}
+{% include payment-resource.md %}
 
-{% include payments-operations.md api_resource="mobilepay" documentation_section="mobile-pay" %}
+{% include payments-operations.md %}
 
-{% include payment-state.md api_resource="mobilepay" %}
+{% include payment-state.md %}
 
 ### Create Payment
 
@@ -95,22 +94,22 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md currency="DKK" %}                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
-| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                                                                         |
+| {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                      |
-| {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md api_resource="mobilepay" %}                                                                                                                                                                                      |
+| {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`](#completeurl) for details. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                         |
-| {% icon check %} | └➔&nbsp;`payeeInfo`             | `object`     | {% include field-description-payeeinfo.md documentation_section="mobile-pay" %}                                                                                                                                                                                     |
+| {% icon check %} | └➔&nbsp;`payeeInfo`             | `object`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %} | └─➔&nbsp;`payeeReference`       | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %}                                                                                                                                                                     |
+| {% icon check %} | └─➔&nbsp;`payeeReference`       | `string(50)` | {% include field-description-payee-reference.md %}                                                                                                                                                                     |
 |                  | └─➔&nbsp;`payeeName`            | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | {% include field-description-subsite.md %}                                                                                               |
 |                  | └➔&nbsp;`payer`                 | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | └─➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md documentation_section="mobile-pay" %}                                                                                                                                                                                                                                                           |
+|                  | └─➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and publicly available                                                                                                                                                                                                              |                                                                                                                                                                                                           |
 
 {:.code-view-header}
@@ -180,10 +179,10 @@ Content-Type: application/json
 | └➔&nbsp;`intent`                    | `string`     | The intent sent in on request                                                                                                                                                                    |
 | └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
-| └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md documentation_section="mobile-pay" %}                                                                                                                |
+| └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md %}                                                                                                                |
 | └➔&nbsp;`initiatingSystemUserAgent` | `string`     | The system user agent used                                                                                                                                                                       |
 | └➔&nbsp;`userAgent`                 | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                   |
-| └➔&nbsp;`language`                  | `string`     | {% include field-description-language.md api_resource="mobilepay" %}                                                                                                                             |
+| └➔&nbsp;`language`                  | `string`     | {% include field-description-language.md %}                                                                                                                             |
 | └➔&nbsp;`urls`                      | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`                 | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment can be retrieved.                                                                                       |
 | └➔&nbsp;`payers`                    | `string`     | The URI to the `payer` resource where the information about the payer can be retrieved.                                                        |
@@ -288,8 +287,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="mobilepay" documentation_section="mobile-pay"
-transaction="authorization" %}
+{% include transaction-list-response.md transaction="authorization" %}
 
 ### Create authorization transaction
 
@@ -298,13 +296,12 @@ to the hyperlink returned in the `redirect-authorization` request.
 
 ## Captures
 
-{% include transaction-list-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="capture" %}
+{% include transaction-list-response.md transaction="capture" %}
 
 ### Create capture transaction
 
-A `capture` transaction - to withdraw money from the card connected to the payer's 
-MobilePay account - can be created after a completed authorization by performing 
+A `capture` transaction - to withdraw money from the card connected to the payer's
+MobilePay account - can be created after a completed authorization by performing
 the `create-capture` operation.
 
 {:.code-view-header}
@@ -333,15 +330,13 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                     |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %} |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="capture"%}
+{% include transaction-response.md transaction="capture"%}
 
 ## Cancellations
 
-{% include transaction-list-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="cancellation" %}
+{% include transaction-list-response.md transaction="cancellation" %}
 
 ### Create cancellation transaction
 
@@ -370,15 +365,13 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %} | `transaction`            | `object`     | The current cancellation.                                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %} |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="cancellation"%}
+{% include transaction-response.md transaction="cancellation"%}
 
 ## Reversals
 
-{% include transaction-list-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ### Create reversal transaction
 
@@ -411,10 +404,9 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                             |
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                  |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md documentation_section="mobile-pay" %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-{% include transaction-response.md api_resource="mobilepay"
-documentation_section="mobile-pay" transaction="reversal"%}
+{% include transaction-response.md transaction="reversal"%}
 
 ## Capture Sequence
 
@@ -474,23 +466,23 @@ sequenceDiagram
 
 The response will be the `payment` resource with its `state` set to `Aborted`.
 
-{% include settlement-reconciliation.md api_resource="mobilepay" documentation_section="mobile-pay" %}
+{% include settlement-reconciliation.md %}
 
 {% include payment-link.md %}
 
-{% include description.md api_resource="mobilepay" %}
+{% include description.md %}
 
-{% include callback-reference.md api_resource="mobilepay" %}
+{% include callback-reference.md %}
 
-{% include transactions.md api_resource="mobilepay" documentation_section="mobile-pay" %}
+{% include transactions.md %}
 
-{% include prices.md api_resource="mobilepay" %}
+{% include prices.md %}
 
-{% include metadata.md api_resource="mobilepay" %}
+{% include metadata.md %}
 
-{% include payee-info.md api_resource="mobilepay" documentation_section="mobile-pay" %}
+{% include payee-info.md %}
 
-{% include problems/problems.md documentation_section="mobile-pay" %}
+{% include problems/problems.md %}
 
 {% include iterator.html prev_href="after-payment"
                          prev_title="After Payment" %}
@@ -501,8 +493,8 @@ The response will be the `payment` resource with its `state` set to `Aborted`.
 [cancellation-transaction]: #cancellations
 [capture-transaction]: #captures
 [capture]: #captures
-[expand]: /home/technical-information#expansion
-[general-http-info]: /home/technical-information
+[expand]: /introduction#expansion
+[general-http-info]: /introduction
 [payee-reference]: #payee-reference
 [reversal-transaction]: #reversals
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

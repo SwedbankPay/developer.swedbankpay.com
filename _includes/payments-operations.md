@@ -1,10 +1,10 @@
-{% assign documentation_section = include.documentation_section %}
-{% assign api_resource = include.api_resource %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 
 ### Operation `paid-payment`
 
 The `paid-payment` operation confirms that the transaction has been successful
-and that the payment is completed. 
+and that the payment is completed.
 
 A `paid-payment` operation looks like the following:
 
@@ -123,7 +123,7 @@ Content-Type: application/json
 | └➔&nbsp;`transaction`              | `string`     | The transaction object, containing information about the current transaction.                                                                                                                                                                                                                        |
 | └─➔&nbsp;`id`                      | `string`     | {% include field-description-id.md resource="transaction" %}                                                                                                                                                                                                                                         |
 | └─➔&nbsp;`number`                  | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.                                                                                         |
-| └➔&nbsp;`payeeReference`           | `string`     | {% include field-description-payee-reference.md documentation_section=documentation_section %}                                                                                                                                                                                                       |
+| └➔&nbsp;`payeeReference`           | `string`     | {% include field-description-payee-reference.md %}                                                                                                                                                                                                       |
 | └➔&nbsp;`orderReference`           | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                              |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                            |
 | └➔&nbsp;`tokens`                   | `integer`    | List of tokens generated.                                                                                                                                                                                                                                                                            |

@@ -1,7 +1,7 @@
-{%- assign documentation_section = include.documentation_section -%}
+{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture payer_aware_payment_menu_url -%}
    {%- if documentation_section == "payment-menu" -%}
-        /{{ documentation_section }}/other-features#payer-aware-payment-menu
+        /{{ documentation_section }}/other-features#payer-aware-payment-menu
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payer_reference -%}
@@ -29,5 +29,3 @@ It's essential to have control over newlines in this file. If unintentional
 newlines sneak into what's rendered by this include, it will break all tables
 it is included in, so please beware.
 {%- endcomment -%}
-
-   

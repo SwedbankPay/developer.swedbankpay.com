@@ -9,7 +9,7 @@ description: |
 menu_order: 500
 ---
 
-{% include payment-order-after-payment.md documentation_section="checkout" %}
+{% include payment-order-after-payment.md %}
 
 {% include iterator.html prev_href="capture"
                          prev_title="Capture"

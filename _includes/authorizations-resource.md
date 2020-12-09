@@ -1,5 +1,4 @@
-{% assign api_resource = include.api_resource | default: creditcard %}
-{% assign documentation_section = include.documentation_section | default: creditcard %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 ### Authorizations
 
@@ -16,7 +15,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource=api_resouce documentation_section=documentation_section transaction="authorization" %}
+{% include transaction-list-response.md transaction="authorization" %}
 
 #### Create Authorization transaction
 

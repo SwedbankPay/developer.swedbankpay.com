@@ -10,6 +10,17 @@ description: |
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+
+## 01 Dec 2020
+
+### Version 2.0.2
+
+* Various bug fixes
+* Various corrections and typo fixes
+* Corrected information about [3D-Secure][card-3ds-info]
+* Added paragraphs about different consumer flows in [Checkin][Checkin]
+* Added link to gift card on the [front page][frontpage]
+
 ## 12 Nov 2020
 
 ### Version 2.0.1
@@ -22,10 +33,10 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ### Version 2.0.0
 
-:tada: Launched new developer portal theme: :tada:
-*   New design :sparkles:
-*   New menu structure :orange_book:
-*   Reading time :hourglass:
+Launched new developer portal theme:
+*   New design
+*   New menu structure
+*   Reading time
 
 Other changes:
 *   Added GDPR disclaimer.
@@ -36,8 +47,8 @@ Other changes:
 *   Added event override warning for Seamless View Events, see [Card Seamless View Events][card-seamless-view] for example.
 *   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
-*   Renamed Merchant Authenticated Consumer to 
-    [Delegated Strong Consumer Authentication][dsca]. 
+*   Renamed Merchant Authenticated Consumer to
+    [Delegated Strong Consumer Authentication][dsca].
 *   Updated `payer`/`consumer`/`end-user` naming for most sections.
 *   Updated expiry date for test cards in [test data][test-data].
 *   Updated [callback][checkout-callback] documentation.
@@ -502,6 +513,7 @@ integration and the payer.
 [card-unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
 [card-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
 [card]: /payment-instruments/card
+[card-3ds-info]: /payment-instruments/card#purchase-flow
 [card-3ds2]: /payment-instruments/card/other-features#3-d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
 [card-seamless-view]: /payment-instruments/card/seamless-view
@@ -523,7 +535,7 @@ integration and the payer.
 [dsca]: /checkout/other-features#delegated-strong-consumer-authentication
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
-[home-technical-information]: /home/technical-information
+[home-technical-information]: /introduction
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
@@ -535,12 +547,12 @@ integration and the payer.
 [moto-payment-card]: /payment-instruments/card/other-features#moto
 [one-click]: /payment-instruments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
-[payments]: /payments
+[payments]: /payment-instruments
 [update-order-checkout]: /checkout/other-features#update-order
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /modules-sdks
-[storing-uri]: /home/technical-information#storing-uris
+[storing-uri]: /introduction#storing-uris
 [swish-api-errors]: /payment-instruments/swish/other-features#problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payment-instruments/swish/direct

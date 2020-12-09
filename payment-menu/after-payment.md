@@ -10,7 +10,7 @@ menu_order: 500
 hide_from_sidebar: true
 ---
 
-{% include payment-order-after-payment.md documentation_section="payment-menu" %}
+{% include payment-order-after-payment.md %}
 
 {% include iterator.html prev_href="capture"
                          prev_title="Capture"

@@ -1,4 +1,5 @@
-{% assign api_resource = include.api_resource | default: "creditcard" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign documentation_section_title = documentation_section | capitalize %}
 {% unless api_resource == "paymentorder" %}
   {% assign documentation_section_title = documentation_section_title | append: " Payments" %}
@@ -46,7 +47,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-      "{{ api_resource_field_name }}": {
+    "{{ api_resource_field_name }}": {
         "operation": "Purchase",
         "intent": {% if api_resource == "trustly" or api_resource == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
         "currency": "{{ currency }}",{% if api_resource == "creditcard" %}
@@ -56,14 +57,14 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],{% endif %}
-        "description": "Test Description",{% if include.documentation_section == "payment_menu" %}
+        "description": "Test Description",{% if documentation_section == "payment_menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
         "language": "{{ language }}",
         "urls":
             "hostUrls": ["https://example.com"]
-        }
+    }
 }
 ```
 

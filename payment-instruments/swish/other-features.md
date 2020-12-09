@@ -5,14 +5,13 @@ estimated_read: 65
 menu_order: 1000
 ---
 
-{% include payment-resource.md api_resource="swish"
-documentation_section="swish" show_status_operations=true %}
+{% include payment-resource.md show_status_operations=true %}
 
 {% include payment-transaction-states.md %}
 
-{% include payment-state.md api_resource="swish" %}
+{% include payment-state.md %}
 
-{% include payments-operations.md api_resource="swish" documentation_section="swish" %}
+{% include payments-operations.md %}
 
 ## Create Payment
 
@@ -88,25 +87,25 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`type`                | `string`     | `Swish`                                                                                                                                                                                                                                                   |
 | {% icon check %}︎ | └─➔&nbsp;`amount`              | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                 |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`           | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                              |
-| {% icon check %}︎ | └➔&nbsp;`description`          | `string(40)` | {% include field-description-description.md documentation_section="swish" %}                                                                                                                                                                              |
+| {% icon check %}︎ | └➔&nbsp;`description`          | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                              |
 | {% icon check %}︎ | └➔&nbsp;`userAgent`            | `string`     | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                      |
-| {% icon check %}︎ | └➔&nbsp;`language`             | `string`     | {% include field-description-language.md api_resource="swish" %}                                                                                                                                                                                          |
+| {% icon check %}︎ | └➔&nbsp;`language`             | `string`     | {% include field-description-language.md %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`                 | `object`     | The URLS object contains information about what urls this payment should use.                                                                                                                                                                             |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`            | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`         | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`](#completeurl) for details.  |
 | {% icon check %}︎ | └─➔&nbsp;`cancelUrl`           | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`         | `string`     | The URI that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                                 |
-|                  | └─➔&nbsp;`logoUrl`             | `string`     | {% include field-description-logourl.md documentation_section="swish" %}                                                                                                                       |
+|                  | └─➔&nbsp;`logoUrl`             | `string`     | {% include field-description-logourl.md %}                                                                                                                       |
 |                  | └─➔&nbsp;`termsOfServiceUrl`   | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
-| {% icon check %}︎ | └➔&nbsp;`payeeInfo`            | `object`     | {% include field-description-payeeinfo.md documentation_section="swish" %}                                                                                                                                                                                                                 |
+| {% icon check %}︎ | └➔&nbsp;`payeeInfo`            | `object`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                 |
 | {% icon check %}︎ | └─➔&nbsp;`payeeId`             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | └─➔&nbsp;`payeeReference`      | `string(35)` | {% include field-description-payee-reference.md documentation_section="swish" %}                                                                                                                                                                          |
+| {% icon check %}︎ | └─➔&nbsp;`payeeReference`      | `string(35)` | {% include field-description-payee-reference.md %}                                                                                                                                                                          |
 |                  | └➔&nbsp;`payeeName`            | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └➔&nbsp;`orderReference`       | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └➔&nbsp;`subsite`              | `string(40)` | {% include field-description-subsite.md %}                                                                                               |
 | {% icon check %} | └➔&nbsp;`payer`                | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | └─➔&nbsp;`payerReference`      | `string`     | {% include field-description-payer-reference.md documentation_section="swish" %}                                                                                                                                                                                                                                                           |
+|                  | └─➔&nbsp;`payerReference`      | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo.msisdn`   | `string`     | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                    |
 |                  | └➔&nbsp;`swish.enableEcomOnly` | `boolean`    | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via mobile app.                                                                                                                        |
 |                  | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
@@ -169,35 +168,35 @@ would be `+4792345678`.
 No number input is needed in the mCommerce flow. The payer's mobile number must
 be connected to a Swish account.
 
-{% include settlement-reconciliation.md documentation_section="swish" %}
+{% include settlement-reconciliation.md %}
 
 {% include payment-link.md show_3d_secure=false show_authorization=false %}
 
-{% include description.md api_resource = "swish" %}
+{% include description.md %}
 
 {% include complete-url.md %}
 
-{% include payment-url.md api_resource="swish" documentation_section="swish" full_reference=true %}
+{% include payment-url.md full_reference=true %}
 
-{% include prices.md api_resource="swish" %}
+{% include prices.md %}
 
-{% include payee-info.md api_resource="swish" documentation_section="swish" %}
+{% include payee-info.md %}
 
 {% include expand-parameter.md %}
 
-{% include transactions.md api_resource="swish" documentation_section="swish" %}
+{% include transactions.md %}
 
-{% include callback-reference.md api_resource="swish" %}
+{% include callback-reference.md %}
 
-{% include metadata.md api_resource="swish" %}
+{% include metadata.md %}
 
-{% include problems/problems.md documentation_section="swish" %}
+{% include problems/problems.md %}
 
-{% include seamless-view-events.md api_resource="swish" %}
+{% include seamless-view-events.md %}
 
 {% include iterator.html prev_href="after-payment" prev_title="After
 Payment" %}
 
-[expand]: /home/technical-information#expansion
+[expand]: /introduction#expansion
 [payee-reference]: #payee-reference
 [transaction-resource]: #Transactions
