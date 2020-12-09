@@ -7,7 +7,7 @@ possession. You must first do a `GET` request on the payment to find the
 
 ### Create capture transaction
 
-To create a `capture` transaction to withdraw money from the payer's Vipps 
+To create a `capture` transaction to withdraw money from the payer's Vipps
 account, you need to perform the `create-capture` operation.
 
 {:.code-header}
@@ -36,10 +36,9 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section="vipps" %}                               |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}                               |
 
-{% include transaction-response.md api_resource="vipps"
-documentation_section="vipps" transaction="capture" %}
+{% include transaction-response.md transaction="capture" %}
 
 The `captures` resource lists the capture transactions (one or more) on a
 specific payment.
@@ -54,8 +53,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="vipps"
-documentation_section="vipps" transaction="capture" %}
+{% include transaction-list-response.md transaction="capture" %}
 
 ### Capture Sequence
 

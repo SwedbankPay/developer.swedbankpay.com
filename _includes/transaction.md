@@ -1,14 +1,14 @@
-{% assign api_resource = include.api_resource | default: 'creditcard' %}
-{% assign documentation_section = include.documentation_section %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign header_level = include.header_level | default: 3 %}
 {% assign next_header_level = header_level | plus: 1 %}
 {% capture top_h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
 {% capture sub_h %}{% for i in (1..next_header_level) %}#{% endfor %}{% endcapture %}
 
 {% if documentation_section == "checkout" or documentation_section == "payment-menu" %}
-{% assign this_documentation_url = documentation_section %}
+    {% assign this_documentation_url = documentation_section %}
 {% else %}
-{% assign this_documentation_url = "payments/" | append: documentation_section %}
+    {% assign this_documentation_url = "payments/" | append: documentation_section %}
 {% endif %}
 
 {{ top_h }} Transaction
@@ -74,7 +74,4 @@ contain a `problem` property as seen in the example below. To view all the
 problems that can occur due to an unsuccesful transaction, head over to the
 [problems section](/{{ this_documentation_url }}/other-features#problems).
 
-{% include transaction-response.md
-    documentation_section=documentation_section
-    api_resource=api_resource
-    transaction="transaction" %}
+{% include transaction-response.md transaction="transaction" %}

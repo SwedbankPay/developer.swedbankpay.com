@@ -22,7 +22,7 @@ to see the available operations after posting a payment.
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
 
-{% include abort-reference.md api_resource="invoice" %}
+{% include abort-reference.md %}
 
 ## Cancellations
 
@@ -59,8 +59,7 @@ Content-Type: application/json
 The `cancel` resource will be returned, containing information about the
 newly created `cancel` transaction.
 
-{% include transaction-response.md api_resource="invoice"
-documentation_section="invoice" transaction="cancel" %}
+{% include transaction-response.md transaction="cancel" %}
 
 ### Inspecting the Cancellation
 
@@ -77,8 +76,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="invoice"
-documentation_section="invoice" transaction="cancel" %}
+{% include transaction-list-response.md transaction="cancel" %}
 
 ### Cancel Sequence
 
@@ -141,8 +139,7 @@ Content-Type: application/json
 
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
-{% include transaction-response.md api_resource="invoice"
-documentation_section="invoice" transaction="reversal" %}
+{% include transaction-response.md transaction="reversal" %}
 
 ### Inspecting the Reversal
 
@@ -159,7 +156,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-list-response.md api_resource="invoice" documentation_section="invoice" transaction="reversal" %}
+{% include transaction-list-response.md transaction="reversal" %}
 
 ### Reversal Sequence
 

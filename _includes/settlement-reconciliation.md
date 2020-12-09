@@ -1,5 +1,5 @@
-{% assign api_resource = include.api_resource | default: "creditcard" %}
-{% assign documentation_section = include.documentation_section %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign operation_title = include.operation_title %}
 
 ## Settlement and Reconciliation
@@ -212,14 +212,14 @@ the reconciliation file.
     `TransactionNo` in reconciliation file.
 
 Below you will see the API mapping tables to the fields in the settlement
-report for {% if documentation_section =="swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
+report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
 
-{% if documentation_section =="swish" %}
-{% include pba-tables.md documentation_section=documentation_section operation_title="sale" %}
+{% if documentation_section == "swish" %}
+{% include pba-tables.md operation_title="sale" %}
 {% else %}
-{% include pba-tables.md documentation_section=documentation_section operation_title="capture" %}
+{% include pba-tables.md operation_title="capture" %}
 {% endif %}
-{% include pba-tables.md documentation_section=documentation_section operation_title="reversal" %}
+{% include pba-tables.md operation_title="reversal" %}
 
 ### Samples
 

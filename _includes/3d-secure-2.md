@@ -1,7 +1,9 @@
-{% assign other_features_url = include.documentation_section | prepend: '/' | append: '/other-features' %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% assign other_features_url = documentation_section | prepend: '/' | append: '/other-features' %}
 
-{% if include.api_resource == "creditcard" %}
-    {% assign other_features_url = other_features_url | prepend: '/payments' %}
+{% if api_resource == "creditcard" %}
+    {% assign other_features_url = other_features_url | prepend: '/payment-instruments' %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
     {% assign api_resource_field_name = "paymentorder" %}
@@ -20,7 +22,7 @@ and can be seen in the abbreviated request example below.
 **Request**
 
 ```http
-POST /psp/{{ include.api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }}/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
@@ -32,7 +34,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "urls": {
             "hostUrls": ["https://example.com"]
-        }, {% if include.api_resource == "creditcard" %}
+        }, {% if api_resource == "creditcard" %}
         "cardholder": {
             "firstName": "Olivia",
             "lastName": "Nyhuus",
@@ -72,6 +74,14 @@ Content-Type: application/json
             "shipIndicator": "01",
             "giftCardPurchase": false,
             "reOrderPurchaseIndicator": "01"
+            "pickUpAddress" : {
+                "name" : "Company Megashop Sarpsborg",
+                "streetAddress" : "Hundskinnveien 92",
+                "coAddress" : "",
+                "city" : "Sarpsborg",
+                "zipCode" : "1711",
+                "countryCode" : "NO"
+            }
         }
     }
 }
@@ -79,7 +89,7 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Field | Type | Description |
-| :---- | :--- | :---------- |{% if include.api_resource == "creditcard" %}
+| :---- | :--- | :---------- |{% if api_resource == "creditcard" %}
 | `payment`                             | `object` | The payment object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | └➔&nbsp;`cardholder`                  | `object` | Cardholder object that can hold information about a buyer (private or company). The information added increases the chance for [frictionless 3-D Secure 2 flow]({{ other_features_url }}#3-d-secure-2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | └➔&nbsp;`firstname`                   | `string` | Payer's first name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -90,7 +100,7 @@ Content-Type: application/json
 | └➔&nbsp;`msisdn`                      | `string` | Payer's registered mobile phone number. The field is related to [3-D Secure 2]({{ other_features_url }}#3-d-secure-2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | └➔&nbsp;`homePhoneNumber`             | `string` | Payer's registered home phone number. The field is related to [3-D Secure 2]({{ other_features_url }}#3-d-secure-2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | └➔&nbsp;`workPhoneNumber`             | `string` | Payer's registered work phone number. The field is related to [3-D Secure 2]({{ other_features_url }}#3-d-secure-2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| └─➔&nbsp;`shippingAddress`            | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2]({{ other_features_url }}#3-d-secure-2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`shippingAddress`            | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2]({{ other_features_url }}#3-d-secure-2).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | └─➔&nbsp;`addresse`                   | `string` | The name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | └─➔&nbsp;`coAddress`                  | `string` | Payer' s c/o address, if applicable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | └─➔&nbsp;`streetAddress`              | `string` | Payer's street address                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -102,6 +112,6 @@ Content-Type: application/json
 | └─➔&nbsp;`deliveryTimeFrameIndicator` | `string` | ndicates the merchandise delivery timeframe. <br>`01` (Electronic Delivery) <br>`02` (Same day shipping) <br>`03` (Overnight shipping) <br>`04` (Two-day or more shipping).                                                                                                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`preOrderDate`               | `string` | For a pre-ordered purchase. The expected date that the merchandise will be available. Format: `YYYYMMDD`.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | └─➔&nbsp;`preOrderPurchaseIndicator`  | `string` | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability).                                                                                                                                                                                                                                                                                                                                                                                     |
-| └─➔&nbsp;`shipIndicator`              | `string` | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in shipping address fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service) |
+| └─➔&nbsp;`shipIndicator`              | `string` | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in the `riskIndicator.pickUpAddress` and `payer.shippingAddress` fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service) |
 | └─➔&nbsp;`giftCardPurchase`           | `bool`   | `true` if this is a purchase of a gift card.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | └─➔&nbsp;`reOrderPurchaseIndicator`   | `string` | Indicates whether the cardholder is reordering previously purchased merchandise. <br>`01` (First time ordered) <br>`02` (Reordered).                                                                                                                                                                                                                                                                                                                                                                                     |

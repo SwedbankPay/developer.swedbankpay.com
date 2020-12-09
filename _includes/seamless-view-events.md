@@ -1,4 +1,4 @@
-{% assign api_resource = include.api_resource %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 {% if api_resource == "paymentorders" %}
     {% assign product="Payment Menu" %}

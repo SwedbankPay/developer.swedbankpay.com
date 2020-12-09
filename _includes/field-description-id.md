@@ -8,7 +8,7 @@
 {%- capture id_text -%}
     The relative URI and unique identifier of the
     `{{ resource }}` resource {{ sub_resource_text }}.
-    Please read about [URI Usage](/home/technical-information#uri-usage) to
+    Please read about [URI Usage](/introduction#uri-usage) to
     understand how this and other URIs should be used in your solution.
 {%- endcapture -%}
 {{- id_text | strip_newlines -}}

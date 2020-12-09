@@ -1,5 +1,17 @@
-{% assign documentation_section = include.documentation_section %}
-{% assign api_resource = include.api_resource | default: "test two here" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% if documentation_section == nil or documentation_section == empty %}
+    {% assign operations_href = "/introduction#operations" %}
+{% else %}
+    {%- capture operations_href -%}
+        {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+            /{{ documentation_section }}/other-features#operations
+        {%- else -%}
+            /payment-instruments/{{ documentation_section }}/other-features#operations
+        {%- endif -%}
+    {%- endcapture -%}
+{%- endif -%}
+
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign mcom = include.mcom | default: false %}
 
@@ -44,7 +56,7 @@ Content-Type: application/json
             "created": "2016-09-14T01:01:01.01Z",
             "updated": "2016-09-14T01:01:01.03Z",
             "type": "{{ transaction | capitalize }}",
-            "state": {% if transaction=="transaction" %}"Failed"{% else %}"Completed"{% endif %},
+            "state": {% if transaction == "transaction" %}"Failed"{% else %}"Completed"{% endif %},
             "number": 1234567890,
             "amount": 1000,
             "vatAmount": 250,
@@ -58,7 +70,7 @@ Content-Type: application/json
                 "status": 400,
                 "detail": "Unable to complete 3DSecure verification!",
                 "problems": [
-                ] {% unless transaction=="transaction" %}
+                ] {% unless transaction == "transaction" %}
             "operations": [{% if api_resource == "swish" and mcom == true %}
                 {
                     "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
@@ -107,11 +119,9 @@ Content-Type: application/json
 | └─➔&nbsp;`number`                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead. |
 | └─➔&nbsp;`amount`                 | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
 | └─➔&nbsp;`vatAmount`              | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md documentation_section=documentation_section %}                                                                                                                   |
-| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md documentation_section=documentation_section describe_receipt=true %}                                                                                         |
+| └─➔&nbsp;`description`            | `string`  | {% include field-description-description.md %}                                                                                                                   |
+| └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 |
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
-
-[operations]: /payment-instruments/{{ include.documentation_section }}/other-features#operations
+| └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |

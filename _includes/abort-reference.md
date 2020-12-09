@@ -1,4 +1,5 @@
-{% assign api_resource = include.api_resource | default: "api-resource-not-set" %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+
 {% case api_resource %}
 {% when "vipps" %}
   {% assign language = "nb-NO" %}
