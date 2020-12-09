@@ -177,6 +177,12 @@ card_list_3:
   icon:
     content: cached
     outlined: true
+- title: TransactionOnFile
+  description: Submitting subsequent transactions via file
+  url:  /payment-instruments/card/features/optional-features/transaction-on-file
+  icon:
+    content: cached
+    outlined: true
 - title: Unscheduled Purchase
   description: Merchant initiated transactions with absent cardholders
   url:  /payment-instruments/card/features/optional-features/unscheduled-purchase
