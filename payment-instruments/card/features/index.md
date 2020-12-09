@@ -99,6 +99,12 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
+- title: Payment State
+  description: Different states in the payment process
+  url: /payment-instruments/card/features/core-features/payment-state
+  icon:
+    content: credit_card
+    outlined: true
 - title: Payment & Transactions States
   description: Possible states of the payments and transactions
   url:  /payment-instruments/card/features/technical-reference/payment-transaction-states

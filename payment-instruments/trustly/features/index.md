@@ -70,6 +70,12 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
+- title: Payment State
+  description: Different states in the payment process
+  url: /payment-instruments/trustly/features/core-features/payment-state
+  icon:
+    content: credit_card
+    outlined: true
 - title: Problems
   description: Information when something goes wrong
   url:  /payment-instruments/trustly/features/technical-reference/problems

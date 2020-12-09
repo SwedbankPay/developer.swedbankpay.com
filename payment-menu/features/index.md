@@ -93,6 +93,12 @@ card_list_2:
   icon:
     content: settings
     outlined: true
+- title: Payment State
+  description: Different states in the payment process
+  url: /payment-instruments/payment-menu/features/core-features/payment-state
+  icon:
+    content: credit_card
+    outlined: true
 - title: PaymentUrl
   description: Redirecting the payer back to your site
   url:  /checkout/features/technical-reference/payment-url

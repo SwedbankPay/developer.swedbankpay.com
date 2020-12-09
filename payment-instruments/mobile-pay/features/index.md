@@ -82,6 +82,12 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
+- title: Payment State
+  description: Different states in the payment process
+  url: /payment-instruments/mobile-pay/features/core-features/payment-state
+  icon:
+    content: credit_card
+    outlined: true
 - title: Prices
   description: The payment's prices resource
   url:  /payment-instruments/mobile-pay/features/technical-reference/prices
