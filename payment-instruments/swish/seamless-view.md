@@ -66,7 +66,6 @@ Content-Type: application/json
         "description": "Test Purchase",
         "generatePaymentToken": false,
         "generateRecurrenceToken": false,
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -85,6 +84,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or123",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         },
         "prefillInfo": {
             "msisdn": "+46987654321"
@@ -111,7 +113,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |                  | └➔&nbsp;`paymentAgeLimit`    | `integer`     | Positive number sets requried age limit to fulfill the payment.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|                  | └➔&nbsp;`payerReference`     | `string`      | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -128,6 +129,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                                                                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|                  | └➔&nbsp;`payer`              | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`        | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |                  | └─➔&nbsp;`msisdn`            | `string`      | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`subsite`           | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -159,7 +162,6 @@ Content-Type: application/json
       "remainingCancellationAmount": 1500,
       "remainingReversalAmount": 0,
       "description": "Test Purchase",
-      "payerReference": "AB1234",
       "initiatingSystemUserAgent": "PostmanRuntime/7.20.1",
       "userAgent": "Mozilla/5.0...",
       "language": "sv-SE",
@@ -170,6 +172,7 @@ Content-Type: application/json
       "cancellations": { "id": "/psp/swish/payments/{{ page.payment_id }}/cancellations" },
       "urls" : { "id": "/psp/swish/payments/{{ page.payment_id }}/urls" },
       "payeeInfo" : { "id": "/psp/swish/payments/{{ page.payment_id }}/payeeInfo" },
+      "payers": { "id": "/psp/trustly/payments/{{ page.payment_id }}/payers" },
       "settings": { "id": "/psp/swish/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [

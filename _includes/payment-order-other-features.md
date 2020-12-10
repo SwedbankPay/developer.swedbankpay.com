@@ -259,6 +259,10 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
 
 ## Payer Aware Payment Menu
 
+{% include alert.html type="informative" icon="info" body="Please note that not
+all payment instruments provided by Swedbank Pay support Payer Awareness today."
+%}
+
 To maximize the experience of your payers, you should implement the Payer
 Aware Payment Menu by identifying each payer with a unique identifier. It is
 important that you enforce a good SCA (Strong Consumer Authentication) strategy
@@ -274,16 +278,37 @@ for future purchases. The payer is, by default, asked if they want to store
 their payment details, so even with `generatePaymentToken` set to `true`, it is
 still up to the payer if they want the details stored or not.
 
-{% include alert.html type="informative" icon="info" body="Please note that not
-all payment instruments provided by Swedbank Pay support Payer Awareness today."
+{% include alert.html type="informative" icon="info" header="GDPR
+Responsibility" body="Remember that the responsibility to enforce the GDPR
+requirements lies on you as a merchant."
 %}
+
+As a part of these requirements, you have to facilitate that the payer can
+remove active payment tokens when they want. It is up to you how to implement
+this functionality on your side, but Swedbank Pay has the API you need to ensure
+that cleaning up old data is easy. It is possible to query for all active
+payment tokens registered on a specific `payerReference`. This query will also
+list the operations used for deleting tokens. You can choose to remove all
+tokens for that payer or only a subset of all tokens connected to that
+`payerReference`.
 
 ### BYO Payment Menu
 
 Payment Menu is versatile and can be configured in such a way that it functions
 like a single payment instrument. In such configuration, it is easy to Bring
 Your Own Payment Menu, i.e. building a customized payment menu in our own user
-interface.
+interface. For in-app integrations, the payers' shopping experience will be
+better if you choose the BYO Payment Menu option. For web integrations, we
+highly recommend the Swedbank Pay Payment Menu.
+
+The `payerReference` can be used to list all active tokens here as well. This
+will also list the payment instruments enumerated in the `availableInstruments`,
+as instrument-mode is mandatory when you are using BYO Payment Menu.
+
+The alternative to the `payerReference` option is to store `paymentToken`s found
+in the `paymentOrder`s after the payment is completed. This requires that the
+merchant makes sure the list of `paymentToken`s is up to date at their end.
+
 
 #### Add Stored Payment Instrument Details
 
@@ -348,6 +373,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-123456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
    }
 }
@@ -383,16 +411,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                         |
-
-### GDPR
-
-Remember that you will have the responsibility to enforce GDPR requirements and
-let the payer remove active payment tokens when they want. It is up to you
-how to implement this functionality on your side but Swedbank Pay has the
-API you need to ensure that cleaning up old data is easy. It is possible
-to query for all active payment tokens registered on a specific
-`payerReference`. Then you can either remove all tokens for that payer or
-only a subset of all tokens.
+|                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 
 {% endif %}
 
@@ -693,7 +713,7 @@ Content-Type: application/json
         "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
         "payeeInfo" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo" },
         "settings": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/settings" },
-        "payers": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers" },
+        "payers": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers"
         "orderItems" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderItems" },
         "metadata": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata" },
         "payments": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments" },
@@ -739,7 +759,7 @@ Content-Type: application/json
 | :-------------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`id`                      | `string`     | {% include field-description-id.md %}                                                                                                                                                                                                                                                                                                                      |
-| └➔&nbsp;`number`                  | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
+| └➔&nbsp;`number`                  | `integer`    | The payment number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
 | └➔&nbsp;`created`                 | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
 | └➔&nbsp;`updated`                 | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                                                                                                                                                                                         |
 | └➔&nbsp;`state`                   | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
@@ -750,11 +770,11 @@ Content-Type: application/json
 | └➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                                                                                                                                                                            |
 | └➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                                                                                                                                                                           |
 | └➔&nbsp;`description`             | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                                                                                                         |
-| └➔&nbsp;`payerReference`          | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                          |
 | └➔&nbsp;`userAgent`               | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`                | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                      |
-| └➔&nbsp;`urls`                    | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
+| └➔&nbsp;`urls`                    | `string`     | The URI to the urls resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`               | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                 |
+| └➔&nbsp;`payers`                  | `string`     | The URI to the `payer` resource where the information about the payer can be retrieved.                                                        |
 | `operations`                      | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`                 | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
@@ -890,6 +910,9 @@ GET /psp/paymentorders/{{ page.payment_order_id }}?$expand=currentpayment HTTP/1
 Host: {{ page.api_host }}
 ```
 
+{% include delete-token.md api_resource="paymentorders"
+documentation_section="payment-menu" token_field_name="recurrenceToken" %}
+
 ### Creating Recurring Payments
 
 When you have a `recurrenceToken` token safely tucked away, you can use this
@@ -995,8 +1018,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
 |                  | └➔&nbsp;`metadata`             | `object`      | {% include field-description-metadata.md %}
 |
-
-{% include delete-token.md token_field_name="recurrenceToken" %}
 
 ### Purchase Flow
 
@@ -1114,7 +1135,6 @@ Content-Type: application/json
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",{% if documentation_section == "payment-menu" %}
         "generatePaymentToken": true,{% endif %}
@@ -1133,6 +1153,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
     },
     "creditCard": {
@@ -1151,7 +1174,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`currency`                | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
+| {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    | {% if documentation_section == "payment-menu" %} |
 | {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a payment token for future use as [One Click Payments][one-click-payments]. All payment instruments will still be availabe in the payment menu, but the payment token will only be generated if the instrument chosen by the payer supports one click.                                                                                                                                       | {% endif %}                                              |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
@@ -1172,6 +1195,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                         |
+|                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                               |
 
 {:.code-view-header}
 **Response**
@@ -1192,7 +1217,6 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Test Verification",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
@@ -1200,6 +1224,7 @@ Content-Type: application/json
         "verifications": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications" },
         "urls" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls" },
         "payeeInfo" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/payers" },
         "settings": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
@@ -1244,12 +1269,12 @@ Content-Type: application/json
 | └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
 | └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md %}                                                                                               |
-| └➔&nbsp;`payerReference`            | `string`     | {% include field-description-payer-reference.md %}                                                                                |
 | └➔&nbsp;`initiatingSystemUserAgent` | `string`     | The system user agent used                                                                                                                                                                       |
 | └➔&nbsp;`userAgent`                 | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                  | `string`     | {% include field-description-language.md %}                                                                                                                             |
 | └➔&nbsp;`urls`                      | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`                 | `string`     | {% include field-description-payeeinfo.md %}                                                                                       |
+| └➔&nbsp;`payers`                    | `string`     | The URI to the `payer` resource where the information about the payer can be retrieved.                                                        |
 | └➔&nbsp;`operations`                | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                     |
 
 ## Payments Resource
@@ -1343,7 +1368,6 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/prices" },
@@ -1355,6 +1379,7 @@ Content-Type: application/json
         "verifications": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/verifications" },
         "urls" : { "id": "/psp/paymentorderspayments/{{ page.payment_order_id }}/urls" },
         "payeeInfo" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/payeeInfo" },
+        "payers" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/payers" },
         "metadata" : { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/metadata" },
         "settings": { "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/settings" }
     },
@@ -1384,7 +1409,6 @@ Content-Type: application/json
 | └─➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                  |
 | └─➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                 |
 | └➔&nbsp;`description`              | `string(40)` | {% include field-description-description.md %}                                                                                               |
-| └➔&nbsp;`payerReference`           | `string`     | {% include field-description-payer-reference.md %}                                |
 | └➔&nbsp;`userAgent`                | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                 | `string`     | {% include field-description-language.md %}                                                                                                                         |
 
@@ -1541,21 +1565,6 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 
 {% include metadata.md %}
 
-{% if documentation_section == "payment-menu" %}
-
-## One-Click Payments
-
-One-Click Payments should be used if you want to present your own Payment Menu
-in all channels you want to support. This means that if you are both on the
-web and in-app you will need to build your own payment menu to be able to use
-the One-Click Payment functionality. You will need to ask the system to generate
-a `paymentToken` (with `generatePaymentToken` in a `Purchase` or `Verify`
-request) to be able to use this feature. You will also need to turn the
-`Payment Order` into instrument mode (only show one instrument)
-with the request parameter `instrument`.
-
-{% endif %}
-
 {% include settlement-reconciliation.md %}
 
 {% if documentation_section == "payment-menu" %}
@@ -1579,7 +1588,6 @@ described in this standard setup documentation." %}
 [expanding]: /introduction#expansion
 [image-disabled-payment-menu]: /assets/img/checkout/disabled-payment-menu.png
 [image-enabled-payment-menu]: /assets/img/checkout/guest-payment-menu-450x850.png
-[one-click-payments]: #one-click-payments
 [operations]: #operations
 [payee-reference]: #payee-reference
 [payment-order-capture]: ./capture

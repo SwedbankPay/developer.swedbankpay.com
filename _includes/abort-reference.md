@@ -58,7 +58,6 @@ Content-Type: application/json
         },
         "amount": 0,
         "description": "{{ api_resource }} Test",
-        "payerReference": "100500",
         "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
         "userAgent": "Mozilla/5.0",
         "language": "{{ language }}",
@@ -67,6 +66,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeinfo"
+        },
+        "payers": {
+           "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers"
         },
         "metadata": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/metadata"

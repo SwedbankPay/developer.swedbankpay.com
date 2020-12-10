@@ -98,7 +98,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "SomeReference",
         "generateRecurrenceToken": "false",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
@@ -115,6 +114,9 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
     },
     "invoice": {
@@ -159,6 +161,10 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
+        "payer": {  
+            "payerReference": "AB1234",
+        }
+    },
         "metadata": {
             "key1": "value1",
             "key2": 2,
@@ -233,7 +239,6 @@ Content-Type: application/json
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "generatePaymentToken": true,
@@ -255,6 +260,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
     },
     "invoice": {
@@ -281,7 +289,6 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Test Verification",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
@@ -296,6 +303,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "payers": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payers"
         },
         "settings": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/settings"
