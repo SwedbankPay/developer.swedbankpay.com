@@ -58,7 +58,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -77,6 +76,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-123456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         },
         "prefillInfo": {
             "msisdn": "+46739000001"
@@ -120,6 +122,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`subsite`           | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                        |
+|                  | └➔&nbsp;`payer`              | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md documentation_section="swish" %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`        | `object`      | An object holding information which, when available, will be prefilled on the payment page.                                                                                                                                                                                                        |
 |                  | └─➔&nbsp;`msisdn`            | `String`      | Number will be prefilled on payment page, if valid. The mobile number must have a country code prefix and be 8 to 15 digits in length.                                                                                                                                                             |
 |                  | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
@@ -147,7 +151,6 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "Mozilla/5.0",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -156,7 +159,10 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/swish/payments/{{ page.payment_id }}/payeeinfo"
-        }
+        },
+        "payers": {
+           "id": "/psp/swish/payments/{{ page.payment_id }}/payers"
+        },
     },
     "operations": [
         {
@@ -309,7 +315,6 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
@@ -318,6 +323,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "payers": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers"
         },
         "urls": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
@@ -369,6 +377,7 @@ Content-Type: application/json
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                           |
 | └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URI to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
+| └➔&nbsp;`payers`               | `string`           | The URI to the `payer` resource where the information about the payer can be retrieved.                                                        |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |

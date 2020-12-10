@@ -42,6 +42,9 @@ Content-Type: application/json
             "orderReference": "or123",
             "subsite": "mySubsite"
         },
+        "payer": {  
+            "payerReference": "AB1234",
+        },
         "cardholder": {
             "firstName": "Olivia",
             "lastName": "Nyhuus",
@@ -221,7 +224,6 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -233,6 +235,7 @@ Content-Type: application/json
         "cancellations": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations" },
         "urls": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
         "payeeInfo": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" },
         "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [

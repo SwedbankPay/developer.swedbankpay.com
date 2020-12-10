@@ -44,7 +44,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "SomeReference",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -62,6 +61,9 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         },
         "prefillInfo": {
             "firstName": "Ola",
@@ -103,6 +105,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`subsite`           | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                        |
+|                  | └➔&nbsp;`payer`              | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md documentation_section="trustly" %}                                                                                                                                                                                                                                                           |
 |                  | └─➔&nbsp;`prefillInfo`       | `object`      | Object representing information of what the UI text fields should be populated with                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |

@@ -72,7 +72,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "SomeReference",
         "generateReccurenceToken": false,
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -89,6 +88,9 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
     },
     "invoice": {
@@ -127,6 +129,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                         |
 |                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                                            |
+|                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md documentation_section="invoice" %}                                                                                                                                                                                                                                                           |
 
 {:.code-view-header}
 **Response**
@@ -150,7 +154,6 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -174,6 +177,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "payers": {
+           "id": "/psp/trustly/payments/{{ page.payment_id }}/payers"
         },
         "urls": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/urls"
