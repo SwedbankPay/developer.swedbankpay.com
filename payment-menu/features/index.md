@@ -136,6 +136,12 @@ card_list_3:
   icon:
     content: copyright
     outlined: true
+- title: Payer Aware Payment Menu
+  description: Possible events during Seamless View payments
+  url:  /payment-menu/features/optional-features/payer-aware-payment-menu
+  icon:
+    content: event
+    outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
   url:  /payment-menu/features/optional-features/recur
