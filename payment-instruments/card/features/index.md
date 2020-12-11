@@ -32,12 +32,6 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Create Payment
-  description: When initiating a payment process
-  url: /payment-instruments/card/features/core-features/create-payment
-  icon:
-    content: credit_card
-    outlined: true
 - title: Payment resource
   description: The overall payment process
   url: /payment-instruments/card/features/core-features/payment-resource
@@ -74,6 +68,12 @@ card_list_2:
   url:  /payment-instruments/card/features/technical-reference/complete-url
   icon:
     content: link
+    outlined: true
+- title: Create Payment
+  description: When initiating a payment process
+  url: /payment-instruments/card/features/techinical-reference/create-payment
+  icon:
+    content: credit_card
     outlined: true
 - title: Description
   description: The purchase summed up in a few words

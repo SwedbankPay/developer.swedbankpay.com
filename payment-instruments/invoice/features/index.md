@@ -27,12 +27,6 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Create Payment
-  description: When initiating a payment process
-  url: /payment-instruments/invoice/features/core-features/create-payment
-  icon:
-    content: credit_card
-    outlined: true
 - title: Payment resource
   description: When initiating a payment process
   url: /payment-instruments/invoice/features/core-features/payment-resource
@@ -63,6 +57,12 @@ card_list_2:
   url:  /payment-instruments/invoice/features/technical-reference/complete-url
   icon:
     content: link
+    outlined: true
+- title: Create Payment
+  description: When initiating a payment process
+  url: /payment-instruments/invoice/features/technical-reference/create-payment
+  icon:
+    content: credit_card
     outlined: true
 - title: Delete Token
   description: How to delete tokens
