@@ -17,8 +17,8 @@ hide_from_sidebar: true
         {% include card.html
             title='Checkout'
             title_type="h2"
-            text='With our Checkout you get the pre-built all-in-one payment solution,
-                  complete with a checkin interface and payment menu.'
+            text='With our Checkout you get the pre-built all-in-one payment 
+            solution, complete with a checkin interface and payment menu.'
             icon_content='shopping_cart'
             icon_outlined=true
             to='/checkout'
@@ -28,8 +28,8 @@ hide_from_sidebar: true
         {% include card.html
             title='Payment Instruments'
             title_type="h2"
-            text='Payment Instruments gives you a one-by-one integration with more
-            customization for each payment method to build your own
+            text='Payment Instruments gives you a one-by-one integration with 
+            more customization for each payment method to build your own
             payment menu.'
             icon_content='credit_card'
             to='/payments'
@@ -39,7 +39,8 @@ hide_from_sidebar: true
         {% include card.html
             title='Gift Cards'
             title_type="h2"
-            text='Our Gift Cards API allows your customers to pay with prepaid gift cards issued by Swedbank Pay in your Checkout.'
+            text='Our Gift Cards API allows your customers to pay with prepaid 
+            gift cards issued by Swedbank Pay.'
             icon_content='card_giftcard'
             to='/gift-cards'
         %}
