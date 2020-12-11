@@ -23,7 +23,7 @@ This guide assumes that you are using the Merchant Backend Configuration and you
 
 The Android component of the Swedbank Pay Mobile SDK is distributed through JCenter, which is a default repository in Android Studio projects. Therefore, most applications can integrate the SDK by simply adding the dependency:
 
-`implementation 'com.swedbankpay.mobilesdk:mobilesdk:1.0.0-beta25'`
+`implementation 'com.swedbankpay.mobilesdk:mobilesdk:1.0.0-beta26'`
 
 \[Development note: There is not yet a stable release of the SDK.\]
 
