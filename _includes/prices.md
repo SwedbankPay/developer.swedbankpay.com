@@ -2,7 +2,15 @@
 
 ## Prices
 
-The `prices` resource lists the prices related to a specific payment.
+The `prices` resource lists the prices related to a specific payment. In short,
+ it is where you enter the payment's amount. It consists of the payment's `id`
+ and the `priceList`, which again contains the payment's `type`, `amount` and
+ `vatAmount`. 
+ 
+ The `type` refers to the payment instrument, like `Swish`, `Trustly` or
+ `Creditcard`. Read more about the types below the code example and table. The
+ `amount` refers to the **full** amount (incl. VAT) for the payment, and
+ `vatAmount` indicates how much of the full amount which is VAT.
 
 {:.code-view-header}
 **Request**
@@ -54,9 +62,16 @@ Content-Type: application/json
 
 ### Prices Object Types
 
-Each payment instrument have one or more prices object types. This is most
-relevant when using card based payments as each type correspond
-to a card brand or bank respectively.
+Each payment instrument have one or more prices object types. Usually there is
+only one, whichs corresponds with the name of the payment instrument, like
+`Vipps`, `Swish` or `Mobilepay`. 
+
+The most common occurence of several object types is for card payments. While it
+is possible to group them all as `Creditcard`, you can also differentiate on
+card types as shown in the example above. This is useful if certain card brands
+have additional fees, others have discounts or something similar. If you do
+differentiate, you need to add all accepted card brand as a separate object
+types.
 
 {% case api_resource %}
 
@@ -64,16 +79,14 @@ to a card brand or bank respectively.
 
 #### Card Payments
 
-The generic type `CreditCard` enables all card brands, supported by merchant
-contract.
-
 {:.table .table-striped}
 | Type            | Description                                |
 | :-------------- | :----------------------------------------- |
+| `Creditcard`    | Enables all brands activated for merchant  |
 | `Visa`          | Visa                                       |
 | `MasterCard`    | MasterCard                                 |
 | `Amex`          | American Express                           |
-| `Dankort`       | Dankort can only be used with DKK currency |
+| `Dankort`       | Dankort (only available with currency DKK) |
 | `Diners`        | Diners Club                                |
 | `Finax`         | Finax                                      |
 | `Jcb`           | JCB                                        |
