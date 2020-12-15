@@ -136,6 +136,12 @@ card_list_3:
   icon:
     content: copyright
     outlined: true
+- title: Instrument Mode
+  description: Validating the payer's payment details
+  url:  /payment-menu/features/optional-features/instrument-mode
+  icon:
+    content: verified_user
+    outlined: true
 - title: Payer Aware Payment Menu
   description: Possible events during Seamless View payments
   url:  /payment-menu/features/optional-features/payer-aware-payment-menu
