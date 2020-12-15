@@ -70,7 +70,7 @@ The most common occurence of several object types is for card payments. While it
 is possible to group them all as `Creditcard`, you can also differentiate on
 card types as shown in the example above. This is useful if certain card brands
 have additional fees, others have discounts or something similar. If you do
-differentiate, you need to add all accepted card brand as a separate object
+differentiate, you need to add all accepted card brands as a separate object
 types.
 
 {% case api_resource %}
