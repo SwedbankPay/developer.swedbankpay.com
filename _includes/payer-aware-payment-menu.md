@@ -35,7 +35,7 @@ in your UI.
 This can be achieved by forcing the creation of a `paymentToken` by setting
 `disableStoredPaymentDetails` to `true` in a Purchase payment (if you want
 to withdraw money and create the token in the same operation), or by performing
-a [Verify payment](#verify-payments) (without withdrawing any money).
+a [Verify payment][verify] (without withdrawing any money).
 
 Setting `disableStoredPaymentDetails` to `true` will turn off all stored payment
 details for the current purchase. The payer will also not be asked if they
@@ -44,7 +44,7 @@ this feature it is important that you have asked the payer in advance if it
 is ok to store their payment details for later use.
 
 Most often you will use the `disableStoredPaymentDetails` feature in combination
-with the [Instrument Mode](#instrument-mode) capability. If you build your own
+with the [Instrument Mode][instrument-mode]] capability. If you build your own
 menu and want to show stored payment details, you will need to set the
 `disableStoredPaymentDetails` to `true`. It is important that you then store the
 `paymentToken` in your system or call Swedbank Pay with the `payerReference` to
