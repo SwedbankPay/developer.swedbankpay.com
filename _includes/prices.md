@@ -3,9 +3,9 @@
 ## Prices
 
 The `prices` resource lists the prices related to a specific payment. In short,
- it is where you enter the payment's amount. It consists of the payment's `id`
- and the `priceList`, which again contains the payment's `type`, `amount` and
- `vatAmount`. 
+it is where you enter the payment's amount. It consists of the payment's `id`
+and the `priceList`, which again contains the payment's `type`, `amount` and
+`vatAmount`. 
  
  The `type` refers to the payment instrument, like `Swish`, `Trustly` or
  `Creditcard`. Read more about the types below the code example and table. The
