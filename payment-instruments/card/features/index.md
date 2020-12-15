@@ -71,7 +71,7 @@ card_list_2:
     outlined: true
 - title: Create Payment
   description: When initiating a payment process
-  url: /payment-instruments/card/features/techinical-reference/create-payment
+  url: /payment-instruments/card/features/technical-reference/create-payment
   icon:
     content: credit_card
     outlined: true

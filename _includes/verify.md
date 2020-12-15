@@ -238,3 +238,4 @@ sequenceDiagram
   end
 ```
 [swedish-verify]: /assets/img/payments/swedish-verify.png
+
