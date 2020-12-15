@@ -1,3 +1,6 @@
+{% capture documentation_section %}{% include documentation-section.md %}{%
+endcapture %}
+{% assign features_url = documentation_section | prepend: '/payment-instruments/features/core-features/' %}
 {% assign autocapture = include.autocapture | default: false %}
 {% assign show_authorization = include.show_authorization %}
 {% assign sale = include.sale | default: false %}
@@ -14,7 +17,7 @@ process.
     amount, you will have to specify that the `intent` of the `Purchase` is
     Authorization. The amount will be reserved but not charged.
     You will (i.e. when you are ready to ship the purchased products) have to
-    make a [Capture][capture] or [Cancel][cancel] request later on to fulfill
+    make a [Capture]({{ features_url }}/capture) or [Cancel]({{ features_url }}/cancel) request later on to fulfill
     the transaction.
 {% endif %}
 {% if autocapture %}
@@ -34,6 +37,3 @@ process.
     fulfill the transaction. The only available after payment operation is
     `reversal`.
 {% endif %}
-
-[capture]: ./after-payment#capture
-[cancel]: ./after-payment#cancel
