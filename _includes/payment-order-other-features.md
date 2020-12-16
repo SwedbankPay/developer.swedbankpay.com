@@ -1519,7 +1519,7 @@ Content-Type: application/json
 | └➔&nbsp;`shippingAddress` | `object` | The shipping address object related to the `payer`.                                            |
 | └─➔&nbsp;`addresse`       | `string` | The name of the addressee – the receiver of the shipped goods.                                 |
 | └─➔&nbsp;`coAddress`      | `string` | Payer' s c/o address, if applicable.                                                           |
-| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address                                                                         |
+| └─➔&nbsp;`streetAddress`  | `string` | Payer's street address. Maximum 50 characters long.                                            |
 | └─➔&nbsp;`zipCode`        | `string` | Payer's zip code                                                                               |
 | └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                      |
 | └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                         |
