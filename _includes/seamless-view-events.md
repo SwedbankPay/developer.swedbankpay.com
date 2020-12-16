@@ -108,14 +108,14 @@ event argument object:
 | `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
 
-### `onPaymentTermsOfService`
+### `onPaymentToS`
 
 This event triggers when the user clicks on the "Display terms and conditions"
-link. The `onPaymentTermsOfService` event is raised with the following event
+link. The `onPaymentToS` event is raised with the following event
 argument object:
 
 {:.code-view-header}
-**onPaymentTermsOfService event object**
+**onPaymentToS event object**
 
 ```json
 {
