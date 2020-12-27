@@ -451,14 +451,14 @@ Content-Type: application/json
 |                  | `legalAddress`                 | `object` | The Address object.                                                    |
 |                  | └➔&nbsp;`addressee`            | `string` | The full name of the addressee of this invoice                         |
 |                  | └➔&nbsp;`coAddress`            | `string` | The co Address of the addressee.                                       |
-|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the addresse.                                    |
+|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the addresse. Maximum 50 characters long.        |
 |                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the addresse.                                          |
 |                  | └➔&nbsp;`city`                 | `string` | The city name  of the addresse.                                        |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the addresse.                                      |
 |                  | `billingAddress`               | `object` | The BillingAddress object for the billing address of the addresse.     |
 |                  | └➔&nbsp;`addressee`            | `string` | The full name of the billing address adressee.                         |
 |                  | └➔&nbsp;`coAddress`            | `string` | The co address of the billing address adressee.                        |
-|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the billing address adressee.                    |
+|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the billing address adressee. Maximum 50 characters long.|
 |                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the billing address adressee.                          |
 |                  | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
