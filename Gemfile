@@ -7,7 +7,7 @@ gem 'jekyll-remote-theme'
 gem 'jemoji'
 
 # Neccessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
-gem 'faraday', '~> 1.2.0'
+gem 'faraday', '~> 1.3.0'
 gem 'jekyll-material-icon-tag'
 gem 'kramdown-plantuml'
 gem 'rake', '~> 13.0.3'
