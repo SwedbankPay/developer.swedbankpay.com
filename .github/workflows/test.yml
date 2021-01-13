@@ -41,6 +41,7 @@ jobs:
             -e ELASTICSEARCH_URL=${{ secrets.ELASTICSEARCH_API_URL}} \
             portal build \
             --env=production \
+            --verify \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
             --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
             --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
