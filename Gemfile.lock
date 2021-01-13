@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/NullableInt/searchyll.git
-  revision: 30686f7dcfc899cf8d969b29685b28176abec7a7
+  revision: 3afb0a0e2749bd518fab845d07f4b479d32aef93
   branch: feature/api_key
   specs:
     searchyll (0.10.2)
@@ -82,6 +82,8 @@ GEM
       jekyll (>= 3.4, < 5.0)
       octokit (~> 4.0, != 4.4.0)
     jekyll-material-icon-tag (1.1.1)
+    jekyll-redirect-from (0.16.0)
+      jekyll (>= 3.3, < 5.0)
     jekyll-remote-theme (0.4.2)
       addressable (~> 2.0)
       jekyll (>= 3.5, < 5.0)
@@ -127,7 +129,8 @@ GEM
     parallel (1.20.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
+    racc (1.5.2)
     rack (2.1.4)
     rainbow (3.0.0)
     rake (13.0.3)
@@ -163,9 +166,10 @@ GEM
       faraday (>= 1.0.1)
       html-proofer
       jekyll (>= 3.7, < 5.0)
-      jekyll-assets
+      jekyll-contentblocks
       jekyll-github-metadata
       jekyll-material-icon-tag
+      jekyll-redirect-from
       jemoji
       kramdown-plantuml
       nokogiri (~> 1.10)
@@ -197,7 +201,7 @@ DEPENDENCIES
   jekyll_asset_pipeline
   jemoji
   kramdown-plantuml
-  rake (~> 13.0.1)
+  rake (~> 13.0.3)
   searchyll!
   swedbank-pay-design-guide-jekyll-theme
 
