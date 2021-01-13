@@ -16,6 +16,7 @@ jobs:
           docker-compose run \
             -e PAGES_REPO_NWO=${{ github.repository }} \
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            -e ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
             portal build
       - name: Upload site
         uses: actions/upload-artifact@v2
@@ -36,6 +37,7 @@ jobs:
           docker-compose run \
             -e PAGES_REPO_NWO=${{ github.repository }} \
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            -e ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
             portal build \
             --env=production \
             --verify \
