@@ -37,10 +37,10 @@ jobs:
           docker-compose run \
             -e PAGES_REPO_NWO=${{ github.repository }} \
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
-            -e ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
-            -e ELASTICSEARCH_URL=${{ secrets.ELASTICSEARCH_API_URL}} \
             portal build \
             --env=production \
+            --ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
+            --ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
             --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
             --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
