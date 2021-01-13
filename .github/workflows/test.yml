@@ -38,6 +38,7 @@ jobs:
             -e PAGES_REPO_NWO=${{ github.repository }} \
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
             -e ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
+            -e ELASTICSEARCH_URL=${{ secrets.ELASTICSEARCH_API_URL}} \
             portal build \
             --env=production \
             --verify \
