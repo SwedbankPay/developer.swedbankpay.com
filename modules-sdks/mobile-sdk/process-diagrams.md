@@ -8,7 +8,7 @@ description: |
   It is recommended to read through the earlier pages first.
   This page can them help you keep a picture of the whole system in mind,
   and serve as a quick reference to the different steps and components.
-menu_order: 1300
+menu_order: 1400
 ---
 
 {% capture disclaimer %}
@@ -340,8 +340,8 @@ sequenceDiagram
     App ->> User: Report payment result
 ```
 
-{% include iterator.html prev_href="custom-backend"
-                         prev_title="Back: Custom Backend"
+{% include iterator.html prev_href="other-features"
+                         prev_title="Back: Other Features"
                          next_href="plain-webview"
                          next_title="Using a Web View Instead" %}
 
