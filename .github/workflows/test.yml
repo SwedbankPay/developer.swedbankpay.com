@@ -39,6 +39,7 @@ jobs:
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
             portal build \
             --env=production \
+            --build
             --ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
             --ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
