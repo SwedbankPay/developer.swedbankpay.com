@@ -22,7 +22,7 @@ The iOS component of the Swedbank Pay Mobile SDK is distributed through [CocoaPo
 
 [Add CocoaPods][cocoapods-using] to your project, if needed. Then, add the dependency:
 
-`pod 'SwedbankPaySDK', '0.3.6'`
+`pod 'SwedbankPaySDK', '0.3.7'`
 
 \[Development note: There is not yet a stable release of the SDK.\]
 
