@@ -9,7 +9,7 @@ description: |
   Experience from developing the SDK may still be valuable for integrators
   wishing to show Payments pages in a Web View inside a mobile application.
   This page serves as a repository of that experience.
-menu_order: 1400
+menu_order: 1500
 ---
 
 {% capture disclaimer %}

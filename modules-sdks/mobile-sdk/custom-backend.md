@@ -544,8 +544,8 @@ The iOS `paymentUrl` universal-link/custom-scheme contraption makes it so that y
 
 {% include iterator.html prev_href="ios"
                          prev_title="Back: iOS"
-                         next_href="process-diagrams"
-                         next_title="Next: Process Diagrams" %}
+                         next_href="other-features"
+                         next_title="Next: Other Features" %}
 
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [create-payment-order]: /checkout/payment-menu#step-3-create-payment-order
