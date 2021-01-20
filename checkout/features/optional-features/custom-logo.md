@@ -1,7 +1,7 @@
 ---
 title: Custom Logo
 redirect_from:
-estimated_read: 30
+estimated_read: 2
 description: |
   Welcome to Custom Logo.
   This section has extented code examples and features that were not

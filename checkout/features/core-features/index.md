@@ -1,7 +1,7 @@
 ---
 title: Core Features
 redirect_from:
-estimated_read: 30
+estimated_read: -
 description: |
   Welcome to Core Feature - a subsection of Features.
   This section has extented code examples and features that were not

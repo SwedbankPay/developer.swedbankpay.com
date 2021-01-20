@@ -1,6 +1,6 @@
 ---
 title: Features
-estimated_read: 10
+estimated_read: -
 card_overview: true
 description: |
     In this section you find various resources for Swedbank Pay’s API Platform.
@@ -15,7 +15,7 @@ card_list:
   icon:
     content: highlight_off
     outlined: true
-- title: Payment resource
+- title: Payment Resource
   description: When initiating a payment process
   url: /payment-instruments/trustly/features/core-features/payment-resource
   icon:
@@ -45,6 +45,12 @@ card_list_2:
   url:  /payment-instruments/trustly/features/technical-reference/complete-url
   icon:
     content: link
+    outlined: true
+- title: Create Payment
+  description: When initiating a payment process
+  url: /payment-instruments/trustly/features/technical-reference/create-payment
+  icon:
+    content: credit_card
     outlined: true
 - title: Description
   description: The purchase summed up in a few words
@@ -76,6 +82,17 @@ card_list_2:
   icon:
     content: credit_card
     outlined: true
+- title: Payment & Transactions States
+  description: Possible states of the payments and transactions
+  url:  /payment-instruments/trustly/features/technical-reference/payment-transaction-states
+  icon:
+    content: hdr_weak
+- title: PaymentUrl
+  description: Redirecting the payer back to your site
+  url:  /payment-instruments/trustly/features/technical-reference/payment-url
+  icon:
+    content: link
+    outlined: true
 - title: Problems
   description: Information when something goes wrong
   url:  /payment-instruments/trustly/features/technical-reference/problems
@@ -87,6 +104,12 @@ card_list_2:
   url:  /payment-instruments/trustly/features/technical-reference/seamless-view-events
   icon:
     content: event
+    outlined: true
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-instruments/trustly/features/technical-reference/transactions
+  icon:
+    content: done_all
     outlined: true
 ---
 

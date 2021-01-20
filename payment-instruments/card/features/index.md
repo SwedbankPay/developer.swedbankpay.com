@@ -1,6 +1,6 @@
 ---
 title: Features
-estimated_read: 10
+estimated_read: -
 card_overview: true
 description: |
     In this section you find various resources for Swedbank Pay’s API Platform.
@@ -9,17 +9,17 @@ icon:
 additional: true
 menu_order: 1000
 card_list: 
+- title: 3D Secure 2
+  description: Authenticating the cardholder
+  url:  /payment-instruments/card/features/core-features/3d-secure-2
+  icon:
+    content: 3d_rotation
 - title: Abort
   description: Aborting a created payment
   url: /payment-instruments/card/features/core-features/abort-reference
   icon:
     content: pan_tool
     outlined: true
-- title: 3D Secure 2
-  description: Authenticating the cardholder
-  url:  /payment-instruments/card/features/core-features/3d-secure-2
-  icon:
-    content: 3d_rotation
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
   url: /payment-instruments/card/features/core-features/cancel
@@ -32,7 +32,7 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment resource
+- title: Payment Resource
   description: The overall payment process
   url: /payment-instruments/card/features/core-features/payment-resource
   icon:
@@ -57,7 +57,7 @@ card_list_2:
   icon:
     content: low_priority
     outlined: true
-- title: Card authorization transaction
+- title: Card Authorization Transaction
   description: Information about the payment's authorization(s)
   url:  /payment-instruments/card/features/technical-reference/card-authorization-transaction
   icon:
@@ -86,6 +86,12 @@ card_list_2:
   url:  /payment-instruments/card/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: The operations of the payments
+  url:  /payment-instruments/card/features/technical-reference/operations
+  icon:
+    content: shopping_basket
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
@@ -152,6 +158,12 @@ card_list_3:
   url:  /payment-instruments/card/features/optional-features/cobadge-dankort
   icon: 
     content: credit_card
+    outlined: true
+- title: MOTO
+  description: Mail Order / Telephone Order
+  url:  /payment-instruments/card/features/optional-features/moto
+  icon:
+    content: dns
     outlined: true
 - title: One-Click Payments
   description: Prefilling the payment details using payment tokens

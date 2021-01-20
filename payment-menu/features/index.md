@@ -1,6 +1,6 @@
 ---
 title: Features
-estimated_read: 10
+estimated_read: -
 card_overview: true
 description: |
     In this section you find various resources for Swedbank Pay’s API Platform.

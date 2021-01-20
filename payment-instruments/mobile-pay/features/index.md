@@ -1,6 +1,6 @@
 ---
 title: Features
-estimated_read: 10
+estimated_read: -
 card_overview: true
 description: |
     In this section you find various resources for Swedbank Pay’s API Platform.
@@ -27,7 +27,7 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment resource
+- title: Payment Resource
   description: When initiating a payment process
   url: /payment-instruments/mobile-pay/features/core-features/payment-resource
   icon:
@@ -57,6 +57,12 @@ card_list_2:
   url:  /payment-instruments/mobile-pay/features/technical-reference/complete-url
   icon:
     content: link
+    outlined: true
+- title: Create Payment
+  description: When initiating a payment process
+  url: /payment-instruments/mobile-pay/features/technical-reference/create-payment
+  icon:
+    content: credit_card
     outlined: true
 - title: Description
   description: The purchase summed up in a few words
@@ -105,12 +111,6 @@ card_list_2:
   url:  /payment-instruments/mobile-pay/features/technical-reference/problems
   icon:
     content: report
-    outlined: true
-- title: Purchase
-  description: The bread and butter of the payments
-  url:  /payment-instruments/mobile-pay/features/technical-reference/purchase
-  icon:
-    content: shopping_basket
     outlined: true
 - title: Seamless View Events
   description: Possible events during Seamless View payments

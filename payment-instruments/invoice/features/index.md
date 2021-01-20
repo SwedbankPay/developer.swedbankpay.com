@@ -1,6 +1,6 @@
 ---
 title: Features
-estimated_read: 10
+estimated_read: -
 card_overview: true
 description: |
     In this section you find various resources for Swedbank Pay’s API Platform.
@@ -27,7 +27,7 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment resource
+- title: Payment Resource
   description: When initiating a payment process
   url: /payment-instruments/invoice/features/core-features/payment-resource
   icon:
@@ -81,6 +81,12 @@ card_list_2:
   url:  /payment-instruments/invoice/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: The operations of the payments
+  url:  /payment-instruments/invoice/features/technical-reference/operations
+  icon:
+    content: shopping_basket
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
