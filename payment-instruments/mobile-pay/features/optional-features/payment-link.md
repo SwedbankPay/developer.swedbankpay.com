@@ -1,7 +1,7 @@
 ---
 title: Payment Link
 redirect_from:
-estimated_read: 30
+estimated_read: 5
 description: |
   Welcome to Payment Link.
   This section has extented code examples and features that were not

@@ -1,6 +1,6 @@
 ---
 title: Features
-estimated_read: 10
+estimated_read: -
 card_overview: true
 description: |
     In this section you find various resources for Swedbank Pay’s API Platform.
@@ -15,7 +15,7 @@ card_list:
   icon:
     content: highlight_off
     outlined: true
-- title: Payment resource
+- title: Payment Resource
   description: When initiating a payment process
   url: /payment-instruments/swish/features/core-features/payment-resource
   icon:
@@ -45,6 +45,12 @@ card_list_2:
   url:  /payment-instruments/swish/features/technical-reference/complete-url
   icon:
     content: link
+    outlined: true
+- title: Create Payment
+  description: When initiating a payment process
+  url: /payment-instruments/swish/features/technical-reference/create-payment
+  icon:
+    content: credit_card
     outlined: true
 - title: Description
   description: The purchase summed up in a few words

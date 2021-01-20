@@ -6,7 +6,7 @@ description: |
   Welcome to Instrument Mode.
   This section has extented code examples and features that were not
   covered by the other subsections.
-menu_order: 1200
+menu_order: 1400
 ---
 
 
