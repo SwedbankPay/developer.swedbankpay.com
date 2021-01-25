@@ -277,7 +277,7 @@ Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugg
 [dokka-pkg]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md
 [dokka-pkg-merch]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/index.md
 [dokka-payfrag]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md
-[dokka-payfrag-argbuilder]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-configuration/-builder/index.md
+[dokka-payfrag-argbuilder]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/index.md
 [dokka-payfrag-argbuilder-consumer]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/consumer.md
 [dokka-payfrag-argbuilder-paymentorder]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/payment-order.md
 [dokka-payfrag-argbuilder-usebrowser]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/use-browser.md
