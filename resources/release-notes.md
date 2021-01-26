@@ -11,6 +11,21 @@ body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
 
+## 26 Jan 2021
+
+### Version 2.0.1
+
+* Updated theme with visual fixes
+* Search icon is now clickable
+* Various bug fixes
+* Various corrections and typo fixes
+* Re-worded [split settlement][split-settlement]
+* Clarified that [callback][callback] is a fail-safe
+* Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
+* Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
+* Updated GitHub references for Mobile SDK
+* Re-wrote [Prices][prices] section
+
 ## 01 Dec 2020
 
 ### Version 2.0.2
@@ -507,6 +522,8 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[android-configuration]: /modules-sdks/mobile-sdk/configuration#android
+[callback]: /payment-instruments/card/other-features#callback
 [card-direct]: /payment-instruments/card/direct
 [card-payment-url]: /payment-instruments/card/other-features#payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
@@ -539,6 +556,7 @@ integration and the payer.
 [initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
+[ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
 [mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
@@ -548,10 +566,12 @@ integration and the payer.
 [one-click]: /payment-instruments/card/other-features#one-click-payments
 [payment-orders]: /checkout/other-features#creating-a-payment-order
 [payments]: /payment-instruments
+[prices]: /checkout/other-features#prices
 [update-order-checkout]: /checkout/other-features#update-order
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /modules-sdks
+[split-settlement]: /payment-instruments/card/other-features#split-settlement
 [storing-uri]: /introduction#storing-uris
 [swish-api-errors]: /payment-instruments/swish/other-features#problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
