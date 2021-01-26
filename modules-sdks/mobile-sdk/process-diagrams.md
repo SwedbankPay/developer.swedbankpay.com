@@ -8,7 +8,7 @@ description: |
   It is recommended to read through the earlier pages first.
   This page can them help you keep a picture of the whole system in mind,
   and serve as a quick reference to the different steps and components.
-menu_order: 1300
+menu_order: 1400
 ---
 
 {% capture disclaimer %}
@@ -25,21 +25,36 @@ body=disclaimer %}
 
 To use the SDK, you must have a valid `Configuration` for it. The API for this is a bit different in Android and iOS, but generally you will only need one `Configuration` for your app. On Android set it to `PaymentFragment.defaultConfiguration`; on iOS store it in a convenient variable.
 
+If you are using a backend implementing the Merchant Backend API, there is a Configuration ready for you in the SDK. If you are designing your own backend API, you will need to create the Configuration yourself.
+
 ```mermaid
 sequenceDiagram
-    alt Android
-        App ->> SDK: Configuration.Builder(backendUrl)...build()
-        SDK -->> App: configuration
-        App ->> SDK: PaymentFragment.defaultConfiguration = configuration
-    else iOS
-        App ->> SDK: SwedbankPaySDK.Configuration.init(backendUrl: backendUrl)
-        SDK -->> App: configuration
+    alt Using Merchant Backend
+        alt Android
+            App ->> SDK: MerchantBackendConfiguration.Builder(backendUrl)...build()
+            SDK -->> App: configuration
+            App ->> SDK: PaymentFragment.defaultConfiguration = configuration
+        else iOS
+            App ->> SDK: SwedbankPaySDK.MerchantBackendConfiguration.init(backendUrl: backendUrl)
+            SDK -->> App: configuration
+        end
+    else Using Custom Backend
+        alt Android
+            App ->> App: class MyConfiguration : Configuration()
+            App ->> SDK: PaymentFragment.defaultConfiguration = configuration
+        else iOS
+            App ->> App: struct/class MyConfiguration : SwedbankPaySDK.Configuration
+        end
     end
 ```
 
-When you want to make a payment, you construct a `PaymentOrder` with the correct content. A very important part of the `PaymentOrder` is the `urls` field. The SDK has convenience methods for creating one; unless your use-case is advanced, you should use these. On Android use the `PaymentOrderUrls(context, backendUrl, [callbackUrl], [termsOfServiceUrl])` constructor; on iOS use the `PaymentOrderUrls.init(configuration:language:[callbackUrl:][termsOfServiceUrl:])` initializer. In both cases the convenience method depends on your `Configuration` (`backendUrl`is part of the `Configuration`), so be careful if you have multiple Configurations in your app.
+When you want to make a payment, create a `PaymentFrament` or `SwedbankPaySDKController`. `SwedbankPaySDKController`'s designated initializer takes all the required arguments; for `PaymentFrament` you should use `PaymentFragment.ArgumentsBuilder` to create the arguments bundle.
+
+The meaning of the arguments depends on your Configuration. If you are using `MerchantBackendConfiguration`, you will always need a `PaymentOrder` argument. A very important part of the `PaymentOrder` is the `urls` field. The SDK has convenience methods for creating one; unless your use-case is advanced, you should use these. On Android use the `PaymentOrderUrls(context, backendUrl, [callbackUrl], [termsOfServiceUrl])` constructor; on iOS use the `PaymentOrderUrls.init(configuration:language:[callbackUrl:][termsOfServiceUrl:])` initializer. In both cases the convenience method depends on your `MerchantBackendConfiguration` (`backendUrl`is part of the `MerchantBackendConfiguration`), so be careful if you have multiple MerchantBackendConfigurations in your app.
 
 Additionally, you may construct a `Consumer` if you wish to identify the payer. This enables saving payment details for further payments.
+
+If you are using a custom Configuration, you may use the `PaymentOrder` or `Consumer` arguments if you wish. Additionally you can use a generic data argument (of type `Any`, though on Android it must implement either `Parcelable` or `Serializable`). By default, the existence of the `Consumer` argument controls whether the consumer identfication happens, but you can also specify it explicitly.
 
 ```mermaid
 sequenceDiagram
@@ -85,42 +100,55 @@ sequenceDiagram
     App ->> App : Show payment UI component
 ```
 
-## Discover Endpoints
+## Merchant Backend: Discover Endpoints
+
+This is an implementation detail of the Merchant Backend configuration; it is not necessary to replicate this step in a your own systems.
 
 The Merchant Backend is specified with a single static entry point; other interfaces are accessed by following links from previous responses. A request to the static entry point currently returns links to the `consumers` and `paymentorders` endpoints. In most cases the response to this request can be cached, and thus only needs to be made once per App session.
 
 ```mermaid
 sequenceDiagram
     participant SDK
-    participant Merchant
+    participant Backend
 
-    SDK ->> Merchant: GET /
-    Merchant -->> SDK: { "consumers": "[consumers]", "paymentorders": "[paymentorders]" }
+    SDK ->> Backend: GET /
+    Backend -->> SDK: { "consumers": "[consumers]", "paymentorders": "[paymentorders]" }
 ```
 
 ## Optional Checkin
 
-If `Consumer` was provided, the payment beings with a "checkin" flow, where the payer is identified. This allows for saving payment details for later payments.
+Optionally, the payment beings with a "checkin" flow, where the payer is identified. This allows for saving payment details for later payments.
 
-The checkin flow is simple: first a request is made to begin a checkin session, then an html page is constructed using the script link received from that request, and when that page successfully identifies the payer, a javascript callback is received. The `consumerProfileRef` received from that callback is then set to the Payment Order to be processed.
+The checkin flow is simple: first a request is made to begin a checkin session, then an html page is constructed using the script link received from that request, and when that page successfully identifies the payer, a javascript callback is received. The `consumerProfileRef` received from that callback is then used when creating the payment order in the next step.
 
 ```mermaid
 sequenceDiagram
+    participant Conf as Configuration
     participant SDK
-    participant Merchant
+    participant Backend
     participant SwedbankPay as Swedbank Pay
     participant WebView
     participant User
 
-    SDK ->> Merchant: POST [consumers] { "operation": "initiate-consumer-session", ... }
-    Merchant ->> SwedbankPay: POST /psp/consumers/ { "operation": "initiate-consumer-session", ... }
-    SwedbankPay -->> Merchant: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
-    Merchant -->> SDK: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
+    SDK ->> Conf: postConsumers
+    alt Merchant Backend
+        Conf ->> Backend: POST [consumers] { "operation": "initiate-consumer-session", ... }
+    else Custom Backend
+        Conf ->> Backend: Custom protocol
+    end
+    Backend ->> SwedbankPay: POST /psp/consumers/ { "operation": "initiate-consumer-session", ... }
+    SwedbankPay -->> Backend: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
+    alt Merchant Backend
+        Backend -->> Conf: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
+    else Custom Backend
+        Backend -->> Conf: Custom protocol
+    end
+    Conf --> SDK: ViewConsumerIdentificationInfo
     SDK ->> WebView: <html>...<script src="[consumer-script]">...payex.hostedView.consumer(...)...</html>
     WebView ->> User: Show checkin UI
     User ->> WebView: Enter personal details
     WebView ->> SDK: onConsumerIdentified({ "consumerProfileRef" : "..." })
-    SDK ->> SDK: paymentOrder.payer = { "consumerProfileRef" : "..." }
+    SDK ->> SDK: store consumerProfileRef for checkout
 ```
 
 ## Begin Checkout
@@ -132,18 +160,29 @@ At this point the user is interacting with the payment menu; the next step depen
 
 ```mermaid
 sequenceDiagram
+    participant Conf as Configuration
     participant SDK
-    participant Merchant
+    participant Backend
     participant SwedbankPay as Swedbank Pay
     participant WebView
     participant User
 
-    SDK ->> Merchant: POST [paymentorders] { paymentorder: {...} }
-    Merchant ->> Merchant: Preprocess payment order (e.g. create payeeReference)
-    Merchant ->> SwedbankPay: POST /psp/paymentorders/ { paymentorder: {...} }
-    SwedbankPay -->> Merchant: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
-    Merchant ->> Merchant: Postprocess payment order (e.g. store id)
-    Merchant -->> SDK: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
+    SDK ->> Conf: postPaymentorders
+    alt Merchant Backend
+        Conf ->> Backend: POST [paymentorders] { paymentorder: {...} }
+    else Custom Backend
+        Conf ->> Backend: Custom protocol
+    end
+    Backend ->> Backend: Preprocess payment order (e.g. create payeeReference)
+    Backend ->> SwedbankPay: POST /psp/paymentorders/ { paymentorder: {...} }
+    SwedbankPay -->> Backend: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
+    Backend ->> Backend: Postprocess payment order (e.g. store id)
+    alt Merchant Backend
+        Backend -->> Conf: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
+    else Custom Backend
+        Backend ->> Conf: Custom protocol
+    end
+    Conf -->> SDK: ViewPaymentOrderInfo
     SDK ->> WebView: <html>...<script src="[paymentorder-script]">...payex.hostedView.paymentMenu(...)...</html>
     WebView ->> User: Show checkout UI
     User ->> WebView: Choose payment method and enter details
@@ -201,11 +240,11 @@ sequenceDiagram
 *   ① The same check is repeated for any further navigation inside the WebView
 *   ② All properly configured authentication flows must end up here
 *   ③ On Android, paymentUrl is an https URL that redirects to an Android Intent URL.
-*   ④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to\nanother app, it should be routed to that app instead of the Browser. However, Univeral Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with "paymentUrl opened in Browser" below instead.
+*   ④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to another app, it should be routed to that app instead of the Browser. However, Univeral Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with "paymentUrl opened in Browser" below instead.
 
 ### Return from Browser
 
-If the external flow ended with `paymentUrl` opened in the browser, we need a way to get back to the app. On Android, this is simple to accomplish by redirecting to an [Android Intent Uri][android-intent-scheme]; the SDK and backend work together to construct the Intent Uri to point to the correct app. This Intent will cause the app to be brought back into focus, and the PaymentFragment will recognize the `paymentUrl` and reload the payment menu.
+If the external flow ended with `paymentUrl` opened in the browser, we need a way to get back to the app. On Android, this is simple to accomplish by redirecting to an [Android Intent Uri][android-intent-scheme]; the SDK and backend work together to construct the Intent Uri to point to the correct app. This Intent will cause the app to be brought back into focus, and the PaymentFragment will recognize the `paymentUrl` and reload the payment menu. We still need to have an actual html page served at `paymentUrl`, though, as the redirect may be blocked in some scenarios. If that happens, the page will also contain a link the user can tap on, which opens the same Intent Uri.
 
 On iOS, the situation is more complicated. As mentioned above, `paymentUrl` is a Universal Link, and navigation to it should be routed to the app. However, Universal Links are a bit unreliable, in that they require certain conditions to be fulfilled; otherwise, they are opened in the browser like regular links. Unfortunately, one of the conditions, namely that the navigation originated from the user pressing on a link, is often not fulfilled in the external pages used by payment methods. Therefore, we must have a system that works correctly, even if `paymentUrl` is opened in the browser.
 
@@ -228,7 +267,7 @@ Please see this diagram for an illustration of the different steps in the proces
 sequenceDiagram
     participant User
     participant Browser
-    participant Merchant
+    participant Backend
     participant Trampoline as Universal Link Trampoline
     participant System
     participant SDK
@@ -236,7 +275,7 @@ sequenceDiagram
 
     alt Android
         Browser ->> Merchant: Load paymentUrl
-        Merchant -->> Browser: 301 Moved Permanently ⑤
+        Merchant -->> Browser: Html document that redirects to an Intent URL ⑤
         Browser ->> Browser: Parse Android Intent URL
         Browser ->> System: Start activity with the parsed Intent, where the Intent Uri is paymentUrl
         System ->> SDK: Start callback activity
@@ -269,9 +308,9 @@ sequenceDiagram
     end
 ```
 
-*   ⑤ Location: `intent://[paymentUrl-without-scheme]/#Intent;scheme=[paymentUrl-scheme];action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=[app-package];end;`
+*   ⑤ `intent://[paymentUrl-without-scheme]/#Intent;scheme=[paymentUrl-scheme];action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=[app-package];end;`
 *   ⑥ Universal Links have certain conditions for them to be activated. One of these is that the navigation must have started from a user interaction. As many 3D-Secure pages have an automatic redirect, this can cause the link to be opened in the Browser instead. Therefore the chance for this path to be taken is low. (N.B. It does seem than iOS 13.4 has made some change to the logic, causing this happiest path to be hit more often.)
-*   ⑦ Location: `https://trampoline.page.host/trampoline/page/path?target=paymentUrl%26fallback=true`
+*   ⑦ Location: `https://ecom.stage.payex.com/externalresourcehost/trampoline?target=paymentUrl%26fallback=true`
 *   ⑧  The "Trampoline Page" has a button, which links back to paymentUrl, but with an additional query parameter (actually this extra parameter is added by the backend when generating the redirect to the trampoline page). Importantly, the Trampoline is on a different domain than paymentUrl, as Universal Links are only forwarded to the app if they are opened from a different domain than the link's domain.
 *   ⑨ All cases should be caught by one of these two flows. However, Universal Links remain finicky, and therefore it is good to provide one final fallback.
 *   ⑩ Location: `customscheme://[paymentUrl-without-scheme]&fallback=true`. `customscheme` is a URL scheme unique to the App.
@@ -301,8 +340,8 @@ sequenceDiagram
     App ->> User: Report payment result
 ```
 
-{% include iterator.html prev_href="ios"
-                         prev_title="iOS"
+{% include iterator.html prev_href="other-features"
+                         prev_title="Back: Other Features"
                          next_href="plain-webview"
                          next_title="Using a Web View Instead" %}
 

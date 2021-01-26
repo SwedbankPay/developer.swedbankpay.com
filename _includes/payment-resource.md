@@ -53,7 +53,6 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "{{ language }}",
@@ -62,6 +61,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "payers": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers"
         },
         "urls": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls"
