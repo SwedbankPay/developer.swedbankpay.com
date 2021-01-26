@@ -1,9 +1,10 @@
 ---
 title: Features
+redirect_from: /invoice/other-features
 estimated_read: -
 card_overview: true
 description: |
-    In this section you find various resources for Swedbank Pay’s API Platform.
+    In this section you will find various resources for Invoice.
 icon:
   content: remove_red_eye
 additional: true
@@ -11,37 +12,37 @@ menu_order: 1000
 card_list: 
 - title: Abort
   description: Aborting a created payment
-  url: /payment-instruments/invoice/features/core-features/abort-reference
+  url: /payment-instruments/invoice/features/core/abort-reference
   icon:
     content: pan_tool
     outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /payment-instruments/invoice/features/core-features/cancel
+  url: /payment-instruments/invoice/features/core/cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /payment-instruments/invoice/features/core-features/capture
+  url: /payment-instruments/invoice/features/core/capture
   icon:
     content: compare_arrows
     outlined: true
 - title: Payment Resource
   description: When initiating a payment process
-  url: /payment-instruments/invoice/features/core-features/payment-resource
+  url: /payment-instruments/invoice/features/core/payment-resource
   icon:
     content: credit_card
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /payment-instruments/invoice/features/core-features/reversal
+  url: /payment-instruments/invoice/features/core/reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /payment-instruments/invoice/features/core-features/settlement-reconciliation
+  url:  /payment-instruments/invoice/features/core/settlement-reconciliation
   icon:
     content: description
     outlined: true
@@ -135,28 +136,28 @@ card_list_2:
   icon:
     content: event
     outlined: true
-card_list_3: 
 - title: Transactions
   description: The transactions making up a specific payment
   url:  /payment-instruments/invoice/features/technical-reference/transactions
   icon:
     content: done_all
     outlined: true
+card_list_3: 
 - title: Payment Link
   description: Sending the payment via mail or SMS
-  url:  /payment-instruments/invoice/features/optional-features/payment-link
+  url:  /payment-instruments/invoice/features/optional/payment-link
   icon:
     content: link
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
-  url:  /payment-instruments/invoice/features/optional-features/recur
+  url:  /payment-instruments/invoice/features/optional/recur
   icon:
     content: cached
     outlined: true
 - title: Verify
   description: Validating the payer's payment details
-  url:  /payment-instruments/invoice/features/optional-features/verify
+  url:  /payment-instruments/invoice/features/optional/verify
   icon:
     content: verified_user
     outlined: true

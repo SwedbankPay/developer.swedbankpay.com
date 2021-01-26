@@ -1,6 +1,6 @@
 {% capture documentation_section %}{% include documentation-section.md %}{%
 endcapture %}
-{% assign features_url = documentation_section | prepend: '/payment-instruments/features/core-features/' %}
+{% assign features_url = documentation_section | prepend: '/payment-instruments/features/core/' %}
 {% assign autocapture = include.autocapture | default: false %}
 {% assign show_authorization = include.show_authorization %}
 {% assign sale = include.sale | default: false %}

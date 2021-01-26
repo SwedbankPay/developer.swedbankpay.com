@@ -1,40 +1,42 @@
 ---
 title: Features
+redirect_from: /payment-menu/other-features
 estimated_read: -
 card_overview: true
 description: |
-    In this section you find various resources for Swedbank Pay’s API Platform.
-icon:
+  In this section you will find various resources for Swedbank Pay’s Payment 
+  Menu.
+icon: 
   content: remove_red_eye
 additional: true
 menu_order: 1000
 card_list: 
 - title: 3D Secure 2
   description: Authenticating the cardholder
-  url:  /payment-menu/features/core-features/3d-secure-2
+  url:  /payment-menu/features/core/3d-secure-2
   icon:
     content: 3d_rotation
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /payment-menu/features/core-features/cancel
+  url: /payment-menu/features/core/cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /payment-menu/features/core-features/payment-order-capture
+  url: /payment-menu/features/core/payment-order-capture
   icon:
     content: compare_arrows
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /payment-menu/features/core-features/reversal
+  url: /payment-menu/features/core/reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /payment-menu/features/core-features/settlement-reconciliation
+  url:  /payment-menu/features/core/settlement-reconciliation
   icon:
     content: description
     outlined: true
@@ -132,37 +134,37 @@ card_list_2:
 card_list_3: 
 - title: Custom Logo
   description: How to add your own logo
-  url: /payment-menu/features/optional-features/custom-logo
+  url: /payment-menu/features/optional/custom-logo
   icon:
     content: copyright
     outlined: true
 - title: Instrument Mode
-  description: Validating the payer's payment details
-  url:  /payment-menu/features/optional-features/instrument-mode
+  description: The Payment Menu with one payment instrument
+  url:  /payment-menu/features/optional/instrument-mode
   icon:
     content: verified_user
     outlined: true
 - title: Payer Aware Payment Menu
-  description: Possible events during Seamless View payments
-  url:  /payment-menu/features/optional-features/payer-aware-payment-menu
+  description: A payment menu tailored to the payer
+  url:  /payment-menu/features/optional/payer-aware-payment-menu
   icon:
     content: event
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
-  url:  /payment-menu/features/optional-features/recur
+  url:  /payment-menu/features/optional/recur
   icon:
     content: cached
     outlined: true
 - title: TransactionOnFile
   description: Submitting subsequent transactions via file
-  url:  /payment-menu/features/optional-features/transaction-on-file
+  url:  /payment-menu/features/optional/transaction-on-file
   icon:
     content: cached
     outlined: true
 - title: Verify
   description: Validating the payer's payment details
-  url:  /payment-menu/features/optional-features/verify
+  url:  /payment-menu/features/optional/verify
   icon:
     content: verified_user
     outlined: true

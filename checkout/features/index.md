@@ -1,9 +1,10 @@
 ---
 title: Features
+redirect_from: /checkout/other-features
 estimated_read: -
 card_overview: true
 description: |
-    In this section you find various resources for Swedbank Pay’s API Platform.
+    In this section you will find various resources for Swedbank Pay’s Checkout.
 icon:
   content: remove_red_eye
 additional: true
@@ -11,30 +12,30 @@ menu_order: 1000
 card_list: 
 - title: 3D Secure 2
   description: Authenticating the cardholder
-  url:  /checkout/features/core-features/3d-secure-2
+  url:  /checkout/features/core/3d-secure-2
   icon:
     content: 3d_rotation
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /checkout/features/core-features/cancel
+  url: /checkout/features/core/cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /checkout/features/core-features/payment-order-capture
+  url: /checkout/features/core/payment-order-capture
   icon:
     content: compare_arrows
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /checkout/features/core-features/reversal
+  url: /checkout/features/core/reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /checkout/features/core-features/settlement-reconciliation
+  url:  /checkout/features/core/settlement-reconciliation
   icon:
     content: description
     outlined: true
@@ -132,25 +133,25 @@ card_list_2:
 card_list_3: 
 - title: Custom Logo
   description: How to add your own logo
-  url: /checkout/features/optional-features/custom-logo
+  url: /checkout/features/optional/custom-logo
   icon:
     content: copyright
     outlined: true
 - title: Delegated Strong Consumer Authentication
   description: The Checkin alternative
-  url: /checkout/features/optional-features/dsca
+  url: /checkout/features/optional/dsca
   icon:
     content: verified
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
-  url:  /checkout/features/optional-features/recur
+  url:  /checkout/features/optional/recur
   icon:
     content: cached
     outlined: true
 - title: Verify
   description: Validating the payer's payment details
-  url:  /checkout/features/optional-features/verify
+  url:  /checkout/features/optional/verify
   icon:
     content: verified_user
     outlined: true

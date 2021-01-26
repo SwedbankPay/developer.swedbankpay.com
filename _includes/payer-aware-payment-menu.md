@@ -135,10 +135,10 @@ to query for all active payment tokens registered on a specific
 `payerReference`. Then you can either remove all tokens for that payer or
 only a subset of all tokens.
 
-[split-settlement]: /payment-menu/features/core-features/settlement-reconciliation#split-settlement
-[settlement-and-reconciliation]: /payment-menu/features/core-features/settlement-reconciliation
+[split-settlement]: /payment-menu/features/core/settlement-reconciliation#split-settlement
+[settlement-and-reconciliation]: /payment-menu/features/core/settlement-reconciliation
 [completeurl]: /payment-menu/features/technical-reference/complete-url
 [payment-url]: /payment-menu/features/technical-reference/payment-url
-[one-click-payments]: /payment-instruments/card/features/optional-features/one-click-payments
-[recur]: /payment-menu/features/optional-features/recur
-[instrument-mode]: /payment-menu/features/optional-features/instrument-mode
+[one-click-payments]: /payment-instruments/card/features/optional/one-click-payments
+[recur]: /payment-menu/features/optional/recur
+[instrument-mode]: /payment-menu/features/optional/instrument-mode

@@ -308,10 +308,10 @@ Content-Type: application/json
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
 [complete-url]: /payment-instruments/card/features/technical-reference/complete-url
-[3ds2]: /payment-instruments/card/features/core-features/3d-secure-2
+[3ds2]: /payment-instruments/card/features/core/3d-secure-2
 [payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
 [paymenturl]: /payment-instruments/card/features/technical-reference/payment-url
 [price-resource]: /payment-instruments/card/features/technical-reference/prices
-[settlement-and-reconciliation]: /payment-instruments/card/features/core-features/settlement-reconciliation
-[split-settlement]: /checkout/features/core-features/settlement-reconciliation#split-settlement
+[settlement-and-reconciliation]: /payment-instruments/card/features/core/settlement-reconciliation
+[split-settlement]: /checkout/features/core/settlement-reconciliation#split-settlement
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

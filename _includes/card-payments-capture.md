@@ -117,5 +117,5 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-[operations]: /payment-instruments/card/features/core-features#operations
+[operations]: /payment-instruments/card/features/core#operations
 [transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

@@ -25,7 +25,7 @@ inquiries regarding this.
 ### Settlement
 
 There are two main alternatives for settlement - either we handle the settlement
-process for you, or you handle the process yourself :
+process for you, or you handle the process yourself:
 
 #### Swedbank Pay handles the settlement process
 
