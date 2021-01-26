@@ -19,6 +19,8 @@ this very documentation, not to a version of any APIs described by it." %}
 * Search icon is now clickable
 * Various bug fixes
 * Various corrections and typo fixes
+* Re-worded [split settlement][split-settlement]
+* Clarified that [callback][callback] is a fail-safe
 * Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
 * Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
 * Updated Mobile SDK to newest versions
@@ -521,6 +523,7 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
+[callback]: /payment-instruments/card/other-features#callback
 [card-direct]: /payment-instruments/card/direct
 [card-payment-url]: /payment-instruments/card/other-features#payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
@@ -568,6 +571,7 @@ integration and the payer.
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/other-features#settlement-and-reconciliation
 [sdk-modules]: /modules-sdks
+[split-settlement]: /payment-instruments/card/other-features#split-settlement
 [storing-uri]: /introduction#storing-uris
 [swish-api-errors]: /payment-instruments/swish/other-features#problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
