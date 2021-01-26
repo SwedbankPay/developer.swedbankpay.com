@@ -75,9 +75,9 @@
                                 
                                 <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
                                     <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
-                                    <label for="search-input" class="mb-0">
+                                    <button class="mb-0">
                                         <i class="material-icons m-0" aria-hidden="true">search</i>
-                                    </label>
+                                    </button>
                                 </form>
                                 
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
@@ -89,6 +89,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
 <li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
@@ -176,7 +177,7 @@
 <li class="nav-leaf"><a href="/checkout/other-features#payment-order-state">Payment Order State</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#recurring-payments">Recurring Payments</a></li>
-<li class="nav-leaf"><a href="/checkout/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#purchase-payments">Purchase Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#verify-payments">Verify Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#payments-resource">Payments Resource</a></li>
@@ -441,7 +442,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#financing-consumer">Financing Consumer</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#recur">Recur</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
@@ -963,13 +964,27 @@
         <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/configuration">Configuration</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#backend">Backend</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#set-instrument-endpoint">Set Instrument Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
         
@@ -993,6 +1008,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
         
@@ -1014,15 +1030,35 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+          <a href="/modules-sdks/mobile-sdk/custom-backend">Custom Backend</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#basic-backend-requirements">Basic Backend Requirements</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android-configuration">Android Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-configuration">iOS Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#backend">Backend</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#updating-a-payment-order">Updating a Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#errors">Errors</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#other-features">Other Features</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#purchase-payments">Purchase Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#verify-payments">Verify Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#observing-the-payment-process">Observing the Payment Process</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-view-model-provider-key">Android: View Model Provider Key</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-default-ui">Android: Default UI</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#debugging-features">Debugging Features</a></li>
         
       </ul>
       </li>
@@ -1033,11 +1069,27 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#initialization">Initialization</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#discover-endpoints">Discover Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#merchant-backend-discover-endpoints">Merchant Backend: Discover Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#quick-fix-list">Quick Fix List</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
         
       </ul>
       </li>
@@ -1175,7 +1227,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#26-jan-2021">26 Jan 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
@@ -1260,8 +1313,8 @@
 
     
 
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-instruments/trustly/other-features.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Other Features' on GitHub">
-    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/master/payment-instruments/trustly/other-features.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Other Features' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title id="simpleicons-github-icon">Edit "Other Features" on GitHub</title>
         <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
     </svg>
@@ -1366,6 +1419,8 @@ possible to perform in the current state of the payment.</p>
 60
 61
 62
+63
+64
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1385,7 +1440,6 @@ possible to perform in the current state of the payment.</p>
         </span><span class="nl">"remainingCancellationAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"remainingReversalAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/3.0.1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
@@ -1394,6 +1448,9 @@ possible to perform in the current state of the payment.</p>
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeInfo"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"payers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payers"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/urls"</span><span class="w">
@@ -1496,12 +1553,6 @@ possible to perform in the current state of the payment.</p>
       <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/trustly/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
-</td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc.</td>
-    </tr>
-    <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
@@ -1525,6 +1576,12 @@ possible to perform in the current state of the payment.</p>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">payeeInfo</code> object, containing information about the payee (the recipient of the money).    See <a href="/payment-instruments/trustly/other-features#payeeinfo"><code class="language-html highlighter-rouge">payeeInfo</code></a> for details.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payers</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URI to the <code class="language-html highlighter-rouge">payer</code> resource where the information about the payer can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">operations</code></td>
@@ -2239,6 +2296,8 @@ resource. Trustly payments does currently only support the <code class="language
 40
 41
 42
+43
+44
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/trustly/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
@@ -2257,7 +2316,6 @@ resource. Trustly payments does currently only support the <code class="language
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SomeReference"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2275,6 +2333,9 @@ resource. Trustly payments does currently only support the <code class="language
             </span><span class="nl">"payeeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merchant1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PC1234"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+            </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"prefillInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ola"</span><span class="p">,</span><span class="w">
@@ -2358,13 +2419,6 @@ resource. Trustly payments does currently only support the <code class="language
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string(40)</code></td>
       <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/trustly/other-features#description">description</a> of the purchase.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
-</td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -2497,6 +2551,20 @@ resource. Trustly payments does currently only support the <code class="language
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">String(40)</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">subsite</code> field can be used to perform split settlement on the payment. The<code class="language-html highlighter-rouge">subsite</code>s must be resolved with Swedbank Pay reconciliation before being used.If you send in an unknown <code class="language-html highlighter-rouge">subsite</code> value, it will be ignored and the paymentwill be settled using the merchant’s default settlement account.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payer</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The <code class="language-html highlighter-rouge">payer</code> object, containing information about the payer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payerReference</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail         address, mobile number, customer number etc. Mandatory if         <code class="language-html highlighter-rouge">generateReccurenceToken</code>, <code class="language-html highlighter-rouge">RecurrenceToken</code>,         <code class="language-html highlighter-rouge">generatePaymentToken</code> or <code class="language-html highlighter-rouge">paymentToken</code> is <code class="language-html highlighter-rouge">true</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -3073,6 +3141,23 @@ problems that can occur due to an unsuccesful transaction, head over to the
         
       </h2>
 
+<div class="alert  alert-warning">
+    
+    
+    <i class="material-icons alert-icon">warning</i>
+    
+    
+
+    
+    
+    <p>While the callback
+feature is mandatory, we would like to emphasize that it is mainly a fail-safe
+feature. We strongly advice that it is not your primary mean of checking for
+payment updates.</p>
+    
+    
+</div>
+
 <p>When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform a callback to inform the payee (merchant)
 about this update.</p>
@@ -3096,19 +3181,21 @@ information about what happened with the payment.</li>
   <li>When a change or update from the back-end system are made on a payment or
 transaction, Swedbank Pay will perform an asynchronous server-to-server
 callback to inform the payee (merchant) about this update.</li>
-  <li>It is important to know that the callback is asynchronous, and not real-time. As we
-can’t guarantee when you get the callback, there could be a delay between
-when the payer is returned back to the merchant and when the callback
-arrives. If the merchant chooses to wait for the callback, the payer might
-be left at the merchant’s page until the response comes.</li>
+  <li>It is important to know that the callback is asynchronous, and not
+real-time. As we can’t guarantee when you get the callback, there could be a
+delay between when the payer is returned back to the merchant and when the
+callback arrives. If the merchant chooses to wait for the callback, the
+payer might be left at the merchant’s page until the response comes.</li>
   <li>Swedbank Pay will make an HTTP <code class="language-html highlighter-rouge">POST</code> to the <code class="language-html highlighter-rouge">callbackUrl</code> that was
 specified when the payee (merchant) created the payment.</li>
   <li>When the <code class="language-html highlighter-rouge">callbackUrl</code> receives such a callback, an HTTP <code class="language-html highlighter-rouge">GET</code> request
 must be made on the payment or on the transaction. The retrieved payment or
 transaction resource will give you the necessary information about the
 recent change/update.</li>
-  <li>The callback will be retried if it fails. Below are the retry timings, in
-seconds from the initial transaction time:
+  <li>As it isn’t scaled to be a primary source of updates, no given response time
+can be guaranteed, and a callback might fail. It will be retried if that
+should happen. Below are the retry timings, in seconds from the initial
+transaction time:
     <ul>
       <li>30 seconds</li>
       <li>60 seconds</li>
@@ -3123,10 +3210,10 @@ seconds from the initial transaction time:
   <li>A callback should return a <code class="language-html highlighter-rouge">200 OK</code> response.</li>
 </ul>
 
-<p>To understand the nature of the callback, the type of transaction, its status, etc.,
-you need to perform a <code class="language-html highlighter-rouge">GET</code> request on the received URI and inspect the response.
-The transaction type or any other information can not and should not be inferred
-from the URI. See <a href="/introduction#uri-usage">URI usage</a> for more information.</p>
+<p>To understand the nature of the callback, the type of transaction, its status,
+etc., you need to perform a <code class="language-html highlighter-rouge">GET</code> request on the received URI and inspect the
+response. The transaction type or any other information can not and should not
+be inferred from the URI. See <a href="/introduction#uri-usage">URI usage</a> for more information.</p>
 
 <p class="code-view-header"><strong>Payment Instrument Callback</strong></p>
 
@@ -4453,18 +4540,18 @@ downloaded below.</p>
         
       </h3>
 
-<p>The prefix split is the easy way of doing settlements for companies with
-multiple sub merchants. With only a few easy steps, you can make the settlement
-process more efficient with regards to invoicing, payouts and setup for both
+<p>The split settlement feature is the easy way of doing settlements for companies
+with multiple sub merchants. With a few easy steps, the settlement process
+becomes more efficient with regards to invoicing, payouts and setup for both
 your sub merchants and yourself.</p>
 
 <p>In short, it is a settlement feature where a company with a website or an app
-can attach specific prefix numbers to sub merchants selling their goods or
-services through the company. The prefix number is used to match the
-transactions and the merchant, so the settlement is automatically split between
-the sub merchants. If you run a site selling tickets to concerts, theatres,
-sporting events etc., each venue gets its own prefix number. If you run a
-funeral home, the sub merchants can be everything from flower delivery to
+can attach specific subsite numbers to sub merchants selling their goods or
+services through the company. The subsite number is used to match the
+transactions with the correct sub merchant, so the settlement is automatically
+split between them. If you run a site selling tickets to concerts, theatres,
+sporting events etc., each venue gets its own subsite number. If you run a
+funeral home, the sub merchants can be everything from flower shops to
 charities.</p>
     
       <h4 id="what-we-need-from-you-as-a-company">
@@ -4476,17 +4563,16 @@ charities.</p>
       </h4>
 
 <ul>
-  <li>Send us a KYC form for each sub merchant you want to include.
-We will also do a KYC check on your sub merchants, providing extra security
-for you.</li>
-  <li>Give every sub merchant who sells goods/services at your website or in your
-app a unique prefix number. This needs to be included in the KYC form you
-send to us.
-We recommend using the same customer number they have in your system.</li>
-  <li>Attach the prefix number to all the goods/services the sub merchant
+  <li>Submit a KYC (Know Your Costumer) form for each sub merchant you want to
+include. We will also do a KYC check on your sub merchants, providing extra
+security for you.</li>
+  <li>Give every sub merchant who sells goods/services through your website or in
+your app a unique subsite number. This must be included in the KYC form. We
+recommend using the same customer number they have in your system.</li>
+  <li>Attach the subsite number to all the goods/services the sub merchant
 sells through your website or app, so the goods/services can be matched
 to the correct merchant in our back office system.</li>
-  <li>A partner agreement is needed for the automatic deduction of revenue cuts
+  <li>A partner agreement is needed for automatic deduction of revenue cuts
 and fees.</li>
 </ul>
     
@@ -4499,12 +4585,12 @@ and fees.</li>
       </h4>
 
 <ol>
-  <li>We set up the sub merchant prefix in our systems.</li>
-  <li>The prefix number is added in the subsite field in the API call when you
+  <li>We set up the sub merchant subsite number in our systems.</li>
+  <li>That number is added in the requests subsite field in when you
 create the payment for the goods or service.</li>
   <li>The customer selects payment instrument and completes the payment.</li>
   <li>The payment goes into the client funds account.</li>
-  <li>Swedbank Pay matches the transaction and the merchant using the prefix
+  <li>Swedbank Pay matches the transaction and the merchant using the subsite
 number.</li>
   <li>The settlement is split and connected to the correct merchant.</li>
   <li>Revenue cuts for the super merchant and fees from Swedbank Pay are deducted
@@ -4520,22 +4606,23 @@ automatically.</li>
         
       </h4>
 
+<p>Sub merchants being connected to Swedbank Pay through the super merchant
+instead of having separate setups has a lot of pros:</p>
+
 <ul>
-  <li>Since the sub merchants are connected to Swedbank Pay through the super
-merchant instead of having separate setups, this means that you:</li>
-  <li>Only need one agreement for credit card, Vipps, Swish,
-MobilePay Online, invoice and payment gateway.</li>
-  <li>Only need one acquiring agreement.</li>
-  <li>Only need one Vipps/Swish certificate.</li>
-  <li>Can add more payment instruments easily, as it only has to be done once.</li>
-  <li>Can set up new sub merchants quickly, as the only thing needed is a KYC
-form and a prefix number. This shortens the setup time for both you and us
+  <li>You only need one agreement for each payment instrument (credit card, Vipps,
+Swish, MobilePay Online, invoice) and payment gateway.</li>
+  <li>You only need one acquiring agreement.</li>
+  <li>You only one Vipps or Swish certificate.</li>
+  <li>You can add more payment instruments easily, as it only has to be done once.</li>
+  <li>New sub merchants can be set up quickly, as the only thing needed is a KYC
+form and a subsite number. This shortens the setup time for both you and us
 to a matter of hours.</li>
   <li>The automatic settlement split and deduction of fees and revenue cuts
 minimizes the work for your accounting department, as you do not have to
 invoice your sub merchants.</li>
-  <li>The prefix split is available with all the payment instruments we offer on our
-eCom platform.</li>
+  <li>The subsite split is available for all the payment instruments we offer on
+our eCom platform.</li>
 </ul>
     
       <h4 id="good-to-know">
@@ -4570,9 +4657,10 @@ normal flow.</p>
       </h5>
 
 <p>In cases where you need to do reversals, this will be performed by the super
-merchant. The reversal amount will be charged from the sub merchants prefix. If
-the sub merchants balance is 0 (zero), the super merchant will be invoiced. The
-super merchant will in turn have to invoice this amount to the sub merchant.</p>
+merchant. The reversal amount will be charged from the sub merchants subsite
+number. If the sub merchants balance is 0 (zero), the super merchant will be
+invoiced. The super merchant will in turn have to invoice this amount to the sub
+merchant.</p>
     
       <h2 id="metadata">
         
@@ -4632,6 +4720,8 @@ below.</p>
 31
 32
 33
+34
+35
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp//payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
@@ -4644,7 +4734,6 @@ below.</p>
     </span><span class="nl">"intent"</span><span class="p">:</span><span class="w">  </span><span class="s2">"Authorization"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4654,6 +4743,9 @@ below.</p>
     </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cabf558-5283-482f-b252-4d58e06f6f3b"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CD1234"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+      </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value1"</span><span class="p">,</span><span class="w">
@@ -5157,19 +5249,19 @@ event argument object:</p>
   </tbody>
 </table>
     
-      <h3 id="onpaymenttermsofservice">
+      <h3 id="onpaymenttos">
         
         
-          <code class="language-html highlighter-rouge">onPaymentTermsOfService</code> <a href="#onpaymenttermsofservice" class="header-anchor"></a>
+          <code class="language-html highlighter-rouge">onPaymentToS</code> <a href="#onpaymenttos" class="header-anchor"></a>
         
         
       </h3>
 
 <p>This event triggers when the user clicks on the “Display terms and conditions”
-link. The <code class="language-html highlighter-rouge">onPaymentTermsOfService</code> event is raised with the following event
+link. The <code class="language-html highlighter-rouge">onPaymentToS</code> event is raised with the following event
 argument object:</p>
 
-<p class="code-view-header"><strong>onPaymentTermsOfService event object</strong></p>
+<p class="code-view-header"><strong>onPaymentToS event object</strong></p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -5270,7 +5362,7 @@ object:</p>
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-primary" role="button" rel="prev" href="after-payment">
+    <a class="mr-auto btn btn-secondary" role="button" rel="prev" href="after-payment">
         After Payment
     </a>
     

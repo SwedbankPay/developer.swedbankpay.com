@@ -75,9 +75,9 @@
                                 
                                 <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
                                     <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
-                                    <label for="search-input" class="mb-0">
+                                    <button class="mb-0">
                                         <i class="material-icons m-0" aria-hidden="true">search</i>
-                                    </label>
+                                    </button>
                                 </form>
                                 
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
@@ -89,6 +89,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
 <li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
@@ -176,7 +177,7 @@
 <li class="nav-leaf"><a href="/checkout/other-features#payment-order-state">Payment Order State</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#recurring-payments">Recurring Payments</a></li>
-<li class="nav-leaf"><a href="/checkout/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#purchase-payments">Purchase Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#verify-payments">Verify Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#payments-resource">Payments Resource</a></li>
@@ -441,7 +442,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#financing-consumer">Financing Consumer</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#recur">Recur</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
@@ -963,13 +964,27 @@
         <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/configuration">Configuration</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#backend">Backend</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#set-instrument-endpoint">Set Instrument Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
         
@@ -993,6 +1008,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
         
@@ -1014,15 +1030,35 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+          <a href="/modules-sdks/mobile-sdk/custom-backend">Custom Backend</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#basic-backend-requirements">Basic Backend Requirements</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android-configuration">Android Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-configuration">iOS Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#backend">Backend</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#updating-a-payment-order">Updating a Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#errors">Errors</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#other-features">Other Features</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#purchase-payments">Purchase Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#verify-payments">Verify Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#observing-the-payment-process">Observing the Payment Process</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-view-model-provider-key">Android: View Model Provider Key</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-default-ui">Android: Default UI</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#debugging-features">Debugging Features</a></li>
         
       </ul>
       </li>
@@ -1033,11 +1069,27 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#initialization">Initialization</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#discover-endpoints">Discover Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#merchant-backend-discover-endpoints">Merchant Backend: Discover Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#quick-fix-list">Quick Fix List</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
         
       </ul>
       </li>
@@ -1175,7 +1227,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#26-jan-2021">26 Jan 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
@@ -1266,8 +1319,8 @@ Let us begin with Android.</p>
 
     
 
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/android.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Android' on GitHub">
-    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/master/modules-sdks/mobile-sdk/android.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Android' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title id="simpleicons-github-icon">Edit "Android" on GitHub</title>
         <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
     </svg>
@@ -1303,6 +1356,8 @@ However, if you need support, please wait for a future, stable release.</p>
     
     
 </div>
+
+<p>This guide assumes that you are using the Merchant Backend Configuration and your backend implements the Merchant Backend API. If you are using a custom backend instead, the meaning of <code class="language-html highlighter-rouge">PaymentFragment</code> arguments will be different, as well as any errors reported, but the basic process is the same. The differences will be highlighted in the chapter on custom backends.</p>
     
       <h2 id="installation">
         
@@ -1312,11 +1367,7 @@ However, if you need support, please wait for a future, stable release.</p>
         
       </h2>
 
-<p>The Android component of the Swedbank Pay Mobile SDK is distributed through JCenter, which is a default repository in Android Studio projects. Therefore, most applications can integrate the SDK by simply adding the dependency:</p>
-
-<p><code class="language-html highlighter-rouge">implementation 'com.swedbankpay.mobilesdk:mobilesdk:1.0.0-beta17'</code></p>
-
-<p>[Development note: There is not yet a stable release of the SDK. In particular, be prepared for potential API changes before the first stable release. That said, the beta17 version of the Android SDK component is fairly stable, and we do not foresee any major changes to it at this point.]</p>
+<p>The Android component of the Swedbank Pay Mobile SDK is distributed through JCenter, which is a default repository in Android Studio projects. Therefore, most applications can integrate the SDK by simply adding the dependency. Please refer to the <a href="https://bintray.com/swedbankpay/swedbank-pay-sdk-android/swedbank-pay-sdk-android">Bintray page</a> for the latest version of the SDK.</p>
     
       <h2 id="usage">
         
@@ -1335,7 +1386,7 @@ However, if you need support, please wait for a future, stable release.</p>
 
     rect rgba(238, 112, 35, 0.05)
         note left of App: Configuration
-        App -&gt;&gt; SDK: Configuration.Builder("https://example.com/swedbank-pay-mobile/").build()
+        App -&gt;&gt; SDK: MerchantBackendConfiguration.Builder("https://example.com/swedbank-pay-mobile/").build()
         SDK --&gt;&gt; App: configuration
         App -&gt;&gt; SDK: PaymentFragment.defaultConfiguration = configuration
     end
@@ -1396,7 +1447,7 @@ However, if you need support, please wait for a future, stable release.</p>
         opt Launch External Application
             SDK -&gt;&gt; Ext: Start external application
             Ext -&gt;&gt; Merchant: Open paymentUrl
-            Merchant -&gt;&gt; Ext: 301 Moved Permanently\nLocation: intent://&lt;...&gt;action=;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER
+            Merchant -&gt;&gt; Ext: Redirect intent://&lt;...&gt;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER
             Ext -&gt;&gt; SDK: Start activity\naction=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER
             SDK -&gt;&gt; SDK: Reload html page with view-paymentorder
         end
@@ -1410,6 +1461,8 @@ However, if you need support, please wait for a future, stable release.</p>
 
 <p>The public API of the Android SDK is in the package <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md"><code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk</code></a>. The main component is <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md"><code class="language-html highlighter-rouge">PaymentFragment</code></a>, a <code class="language-html highlighter-rouge">Fragment</code> that handles a single payment order. To use a <code class="language-html highlighter-rouge">PaymentFragment</code>, it must have a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-configuration/index.md"><code class="language-html highlighter-rouge">Configuration</code></a>. In most cases it is enough to construct a single <code class="language-html highlighter-rouge">Configuration</code> and set it as the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/default-configuration.md">default</a>. In more advanced cases you will need to subclass <code class="language-html highlighter-rouge">PaymentFragment</code> and override <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/get-configuration.md"><code class="language-html highlighter-rouge">getConfiguration</code></a>.</p>
 
+<p>For using a backend implementing the Merchant Backend API, the SDK also provides utility classes in the package <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/index.md"><code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk.merchantbackend</code></a>. The examples on this page make use of these, including the <code class="language-html highlighter-rouge">Configuration</code> implementation <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-configuration/index.md"><code class="language-html highlighter-rouge">MerchantBackendConfiguration</code></a>.</p>
+
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
 2
@@ -1419,7 +1472,7 @@ However, if you need support, please wait for a future, stable release.</p>
 </pre></td>
 <td class="code-view-code"><pre><span class="kd">val</span> <span class="py">backendUrl</span> <span class="p">=</span> <span class="s">"https://example.com/swedbank-pay-mobile/"</span>
 
-<span class="kd">val</span> <span class="py">configuration</span> <span class="p">=</span> <span class="nc">Configuration</span><span class="p">.</span><span class="nc">Builder</span><span class="p">(</span><span class="n">backendUrl</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">configuration</span> <span class="p">=</span> <span class="nc">MerchantBackendConfiguration</span><span class="p">.</span><span class="nc">Builder</span><span class="p">(</span><span class="n">backendUrl</span><span class="p">)</span>
     <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
 <span class="nc">PaymentFragment</span><span class="p">.</span><span class="n">defaultConfiguration</span> <span class="p">=</span> <span class="n">configuration</span>
 </pre></td>
@@ -1427,7 +1480,7 @@ However, if you need support, please wait for a future, stable release.</p>
 
 <p>To start a payment, you need a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order/index.md"><code class="language-html highlighter-rouge">PaymentOrder</code></a>, and, unless making a guest payment, a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-consumer/index.md"><code class="language-html highlighter-rouge">Consumer</code></a>. Using a <code class="language-html highlighter-rouge">Consumer</code> makes future payments by the same payer easier.</p>
 
-<p>The semantics of <code class="language-html highlighter-rouge">Consumer</code> properties are the same as the fields of the <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification">POST /psp/consumers</a>. There are default values for the <code class="language-html highlighter-rouge">operation</code> and <code class="language-html highlighter-rouge">language</code> properties (<code class="language-html highlighter-rouge">ConsumerOperation.INITIATE_CONSUMER_SESSION</code> and <code class="language-html highlighter-rouge">Language.ENGLISH</code>, respectively).</p>
+<p>The semantics of <code class="language-html highlighter-rouge">Consumer</code> properties are the same as the fields of the <a href="/checkout/checkin#step-1-initiate-session-for-consumer-identification"><code class="language-html highlighter-rouge">POST /psp/consumers</code></a> request. There are default values for the <code class="language-html highlighter-rouge">operation</code> and <code class="language-html highlighter-rouge">language</code> properties (<code class="language-html highlighter-rouge">ConsumerOperation.INITIATE_CONSUMER_SESSION</code> and <code class="language-html highlighter-rouge">Language.ENGLISH</code>, respectively).</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -1442,7 +1495,7 @@ However, if you need support, please wait for a future, stable release.</p>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<p>Similarly, the semantics of <code class="language-html highlighter-rouge">PaymentOrder</code> properties are the same as the fields of the <a href="/checkout/payment-menu#step-3-create-payment-order">POST /psp/paymentorders</a> request. Sensible default values are provided for many of the properties. The <code class="language-html highlighter-rouge">urls</code> property has no default per se, but there are <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order-urls/-init-.md">convenience constructors</a> available for it, and it is recommended that you use them. Assuming you have the Android Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. <code class="language-html highlighter-rouge">sdk-callback/android-intent</code>), then using the one of the <code class="language-html highlighter-rouge">PaymentOrderUrls(context: Context, backendUrl: String)</code> variants will set the <code class="language-html highlighter-rouge">paymentUrl</code> correctly.</p>
+<p>Similarly, the semantics of <code class="language-html highlighter-rouge">PaymentOrder</code> properties are the same as the fields of the <a href="/checkout/payment-menu#step-3-create-payment-order"><code class="language-html highlighter-rouge">POST /psp/paymentorders</code></a> request. Sensible default values are provided for many of the properties. The <code class="language-html highlighter-rouge">urls</code> property has no default per se, but there are <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order-urls/-init-.md">convenience constructors</a> available for it, and it is recommended that you use them. Assuming you have the Android Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. <code class="language-html highlighter-rouge">sdk-callback/android-intent</code>), then using the one of the <code class="language-html highlighter-rouge">PaymentOrderUrls(context: Context, backendUrl: String)</code> variants will set the <code class="language-html highlighter-rouge">paymentUrl</code> correctly.</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -1523,7 +1576,7 @@ However, if you need support, please wait for a future, stable release.</p>
   <li>① payeeId and payeeReference are required fields, but default to the empty string. The assumption here is that your Merchant Backend will override the values set here. If your system works better with the Mobile Client setting them instead, they are available here also.</li>
 </ul>
 
-<p>To start a payment, create a <code class="language-html highlighter-rouge">PaymentFragment</code> and set its arguments according to the payment. The <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-configuration/-builder/index.md"><code class="language-html highlighter-rouge">PaymentFragment.ArgumentsBuilder</code></a> class is provided to help with creating the argument bundle. In most cases you only need to worry about the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/consumer.md"><code class="language-html highlighter-rouge">consumer</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/payment-order.md"><code class="language-html highlighter-rouge">paymentOrder</code></a> properties. The payment process starts as soon as the <code class="language-html highlighter-rouge">PaymentFragment</code> is visible.</p>
+<p>To start a payment, create a <code class="language-html highlighter-rouge">PaymentFragment</code> and set its arguments according to the payment. The <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/index.md"><code class="language-html highlighter-rouge">PaymentFragment.ArgumentsBuilder</code></a> class is provided to help with creating the argument bundle. In most cases you only need to worry about the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/consumer.md"><code class="language-html highlighter-rouge">consumer</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/payment-order.md"><code class="language-html highlighter-rouge">paymentOrder</code></a> properties. The payment process starts as soon as the <code class="language-html highlighter-rouge">PaymentFragment</code> is visible.</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -1577,6 +1630,18 @@ However, if you need support, please wait for a future, stable release.</p>
 
 <p>Note that checking the payment status after completion is outside the scope of the Mobile SDK. Your backend should collect any information it needs to perform this check when it services the request to the <a href="merchant-backend#payment-orders-endpoint">Payment Orders endpoint</a> made by the <code class="language-html highlighter-rouge">PaymentFragment</code>.</p>
     
+      <h2 id="errors">
+        
+        
+          Errors <a href="#errors" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>If any errors happen in the payment, the <code class="language-html highlighter-rouge">PaymentViewModel</code> will report a state of either <code class="language-html highlighter-rouge">FAILURE</code> or <code class="language-html highlighter-rouge">RETRYABLE_ERROR</code>. If the error is retryable, the <code class="language-html highlighter-rouge">PaymentFragment</code> will show an error message and a retry control (this is configurable), but you can also trigger a retry by calling retryPreviousAction on the <code class="language-html highlighter-rouge">PaymentViewModel</code>.</p>
+
+<p>When the state is <code class="language-html highlighter-rouge">FAILURE</code> or <code class="language-html highlighter-rouge">RETRYABLE_ERROR</code>, and the error condition was caused by an exception thrown from the <code class="language-html highlighter-rouge">Configuration</code>, that exception is available in <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/exception.md"><code class="language-html highlighter-rouge">PaymentViewModel.richState.exception</code></a>. The exception will be of any type throw by your <code class="language-html highlighter-rouge">Configuration</code>. When using <code class="language-html highlighter-rouge">MerchantBackendConfiguration</code>, this means it will be an <code class="language-html highlighter-rouge">IOException</code> if there was a problem communicating with the backend, and an <code class="language-html highlighter-rouge">IllegalStateException</code> if you have made a programming error (consult the exception message). A particular <code class="language-html highlighter-rouge">IOException</code> to check for is <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/"><code class="language-html highlighter-rouge">RequestProblemException</code></a>, which signals that the backend responded with a Problem message. Another one is <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/"><code class="language-html highlighter-rouge">UnexpectedResponseException</code></a>, which signals that the SDK did not understand the backend response.</p>
+    
       <h2 id="problems">
         
         
@@ -1585,13 +1650,11 @@ However, if you need support, please wait for a future, stable release.</p>
         
       </h2>
 
-<p>If errors are encountered in the payment process, the Merchant Backend is expected to respond with a <a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> message. If a problem occurs, the application can receive it by observing the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/rich-state.md"><code class="language-html highlighter-rouge">richState</code></a> of the <code class="language-html highlighter-rouge">PaymentViewModel</code>. If a problem has occurred, it will be in the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/problem.md"><code class="language-html highlighter-rouge">problem</code></a> property of the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/index.md"><code class="language-html highlighter-rouge">RichState</code></a>. The Android SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the <a href="/introduction#problems">Common Problems</a> and the <a href="merchant-backend#problems">Merchand Backend Problems</a>.</p>
+<p>If errors are encountered in the payment process, the Merchant Backend is expected to respond with a <a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> message. If a problem occurs, the application can receive it by observing the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/rich-state.md"><code class="language-html highlighter-rouge">richState</code></a> of the <code class="language-html highlighter-rouge">PaymentViewModel</code>. If a problem has occurred, the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/exception.md"><code class="language-html highlighter-rouge">exception</code></a> property of the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/index.md"><code class="language-html highlighter-rouge">RichState</code></a> will contain a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/"><code class="language-html highlighter-rouge">RequestProblemException</code></a>. The problem is then accessible as <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/"><code class="language-html highlighter-rouge">exception.problem</code></a>. The Android SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the <a href="/introduction#problems">Common Problems</a> and the <a href="merchant-backend#problems">Merchand Backend Problems</a>.</p>
 
-<p>Problems are presented as a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/index.md">class hierarchy</a> representing different problem categories. All problems parsed from RFC 7807 messages are classified as either <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/index.md"><code class="language-html highlighter-rouge">Client</code></a> or <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/index.md"><code class="language-html highlighter-rouge">Server</code></a> problems. A <code class="language-html highlighter-rouge">Client</code> problem is one caused by client behaviour, and is to be fixed by changing the request made to the server. Generally, a <code class="language-html highlighter-rouge">Client</code> problem is a programming error, with the possible exception of <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-mobile-s-d-k/-unauthorized/index.md"><code class="language-html highlighter-rouge">Problem.Client.MobileSDK.Unauthorized</code></a>. A <code class="language-html highlighter-rouge">Server</code> problem is one caused by a malfunction or lack of service in the server evironment. A <code class="language-html highlighter-rouge">Server</code> problem is fixed by correcting the behaviour of the malfunctioning server, or simply trying again later.</p>
+<p>Problems are presented as a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/index.md">class hierarchy</a> representing different problem categories. All problems parsed from RFC 7807 messages are classified as either <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/index.md"><code class="language-html highlighter-rouge">Client</code></a> or <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/index.md"><code class="language-html highlighter-rouge">Server</code></a> problems. A <code class="language-html highlighter-rouge">Client</code> problem is one caused by client behaviour, and is to be fixed by changing the request made to the server. Generally, a <code class="language-html highlighter-rouge">Client</code> problem is a programming error, with the possible exception of <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/-mobile-s-d-k/-unauthorized.md"><code class="language-html highlighter-rouge">Problem.Client.MobileSDK.Unauthorized</code></a>. A <code class="language-html highlighter-rouge">Server</code> problem is one caused by a malfunction or lack of service in the server evironment. A <code class="language-html highlighter-rouge">Server</code> problem is fixed by correcting the behaviour of the malfunctioning server, or simply trying again later.</p>
 
-<p>Further, both <code class="language-html highlighter-rouge">Client</code> and <code class="language-html highlighter-rouge">Server</code> problems are categorized as <code class="language-html highlighter-rouge">MobileSDK</code>, <code class="language-html highlighter-rouge">SwedbankPay</code>, or <code class="language-html highlighter-rouge">Unknown</code>. <code class="language-html highlighter-rouge">MobileSDK</code> problems are ones with <a href="merchant-backend#problems">Merchant Backend problem types</a>, while <code class="language-html highlighter-rouge">SwedbankPay</code> problems have <a href="/introduction#problems">Swedbank Pay API problem types</a>. <code class="language-html highlighter-rouge">Unknown</code> problems are of types that the SDK has no knowledge of. There are also the interfaces <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-swedbank-pay-problem/index.md"><code class="language-html highlighter-rouge">SwedbankPayProblem</code></a>, which encompasses both <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-swedbank-pay/index.md"><code class="language-html highlighter-rouge">Client</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/-swedbank-pay/index.md"><code class="language-html highlighter-rouge">Server</code></a> type <code class="language-html highlighter-rouge">SwedbankPay</code> problems, and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-unknown-problem/index.md"><code class="language-html highlighter-rouge">UnknownProblem</code></a>, which contains both <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-unknown/index.md"><code class="language-html highlighter-rouge">Client</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/-unknown/index.md"><code class="language-html highlighter-rouge">Server</code></a> type <code class="language-html highlighter-rouge">Unknown</code> problems.</p>
-
-<p>Lastly, there are the <code class="language-html highlighter-rouge">UnexpectedContent</code> problems, which again exist in both <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-client/-unexpected-content/index.md"><code class="language-html highlighter-rouge">Client</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-problem/-server/-unexpected-content/index.md"><code class="language-html highlighter-rouge">Server</code></a> variants. These are not proper RFC 7807 problems, but they represent a situtation where the Android SDK was unable to parse a response it received. They can be considered problem types of the Android SDK itself. There is also the <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-unexpected-content-problem/index.md"><code class="language-html highlighter-rouge">UnexpectedContentProblem</code></a> interface, containing both kinds of <code class="language-html highlighter-rouge">UnexpectedContent</code> problems. To complement this, there is also a <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-proper-problem/index.md"><code class="language-html highlighter-rouge">ProperProblem</code></a> interface, which contains all problems parsed from RFC 7807 messages. Be careful when using <code class="language-html highlighter-rouge">ProperProblem</code> in a <code class="language-html highlighter-rouge">when</code> clause, however, as it will match everything except <code class="language-html highlighter-rouge">UnexpectedContent</code> problems, so unless the condition for <code class="language-html highlighter-rouge">is ProperProblem</code> is the last one, your code may not do what you intend it to.</p>
+<p>Further, both <code class="language-html highlighter-rouge">Client</code> and <code class="language-html highlighter-rouge">Server</code> problems are categorized as <code class="language-html highlighter-rouge">MobileSDK</code>, <code class="language-html highlighter-rouge">SwedbankPay</code>, or <code class="language-html highlighter-rouge">Unknown</code>. <code class="language-html highlighter-rouge">MobileSDK</code> problems are ones with <a href="merchant-backend#problems">Merchant Backend problem types</a>, while <code class="language-html highlighter-rouge">SwedbankPay</code> problems have <a href="/introduction#problems">Swedbank Pay API problem types</a>. <code class="language-html highlighter-rouge">Unknown</code> problems are of types that the SDK has no knowledge of. There is also the interface <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md"><code class="language-html highlighter-rouge">SwedbankPayProblem</code></a>, which encompasses both <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/-swedbank-pay/index.md"><code class="language-html highlighter-rouge">Client</code></a> and <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md"><code class="language-html highlighter-rouge">Server</code></a> type <code class="language-html highlighter-rouge">SwedbankPay</code> problems.</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -1633,37 +1696,37 @@ However, if you need support, please wait for a future, stable release.</p>
 </pre></td>
 <td class="code-view-code"><pre><span class="n">paymentViewModel</span><span class="p">.</span><span class="n">richState</span><span class="p">.</span><span class="nf">observe</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nc">Observer</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">isFinal</span> <span class="p">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">when</span> <span class="p">(</span><span class="kd">val</span> <span class="py">problem</span> <span class="p">=</span> <span class="n">it</span><span class="p">.</span><span class="n">problem</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">MobileSDK</span><span class="p">.</span><span class="nc">Unauthorized</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Credentials invalidated: ${problem.message}"</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">exeption</span> <span class="p">=</span> <span class="n">it</span><span class="p">.</span><span class="n">exception</span> <span class="k">as</span><span class="p">?</span> <span class="nc">RequestProblemException</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">exception</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">(</span>
+            <span class="k">when</span> <span class="p">(</span><span class="kd">val</span> <span class="py">problem</span> <span class="p">=</span> <span class="n">exception</span><span class="p">.</span><span class="n">problem</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">is</span> <span class="nc">MerchantBackendProblem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">MobileSDK</span><span class="p">.</span><span class="nc">Unauthorized</span> <span class="p">-&gt;</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Credentials invalidated: ${problem.message}"</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">MobileSDK</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Other client error at Merchant Backend: ${problem.raw}"</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nc">MerchantBackendProblem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">MobileSDK</span> <span class="p">-&gt;</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Other client error at Merchant Backend: ${problem.raw}"</span><span class="p">)</span>
 
-            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">SwedbankPay</span><span class="p">.</span><span class="nc">InputError</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Payment rejected by Swedbank Pay: ${problem.detail}; Fix: ${problem.action}"</span><span class="p">)</span>
+                <span class="k">is</span> <span class="nc">MerchantBackendProblem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">SwedbankPay</span><span class="p">.</span><span class="nc">InputError</span> <span class="p">-&gt;</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Payment rejected by Swedbank Pay: ${problem.detail}; Fix: ${problem.action}"</span><span class="p">)</span>
 
-            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">Unknown</span> <span class="p">-&gt;</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">problem</span><span class="p">.</span><span class="n">type</span> <span class="p">==</span> <span class="s">"https://example.com/problems/special-problem"</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Special problem occurred: ${problem.detail}"</span><span class="p">)</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">is</span> <span class="nc">MerchantBackendProblem</span><span class="p">.</span><span class="nc">Client</span><span class="p">.</span><span class="nc">Unknown</span> <span class="p">-&gt;</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">problem</span><span class="p">.</span><span class="n">type</span> <span class="p">==</span> <span class="s">"https://example.com/problems/special-problem"</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Special problem occurred: ${problem.detail}"</span><span class="p">)</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Unexpected problem: ${problem.raw}"</span><span class="p">)</span>
+                    <span class="p">}</span>
+
+                <span class="k">is</span> <span class="nc">MerchantBackendProblem</span><span class="p">.</span><span class="nc">Server</span><span class="p">.</span><span class="nc">MobileSDK</span><span class="p">.</span><span class="nc">BackendConnectionTimeout</span> <span class="p">-&gt;</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Swedbank Pay timeout: ${problem.message}"</span><span class="p">)</span>
+
+                <span class="k">is</span> <span class="nc">MerchantBackendProblem</span><span class="p">.</span><span class="nc">Server</span><span class="p">.</span><span class="nc">SwedbankPay</span><span class="p">.</span><span class="nc">SystemError</span> <span class="p">-&gt;</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Generic server error at Swedbank Pay: ${problem.detail}"</span><span class="p">)</span>
+
+                <span class="k">is</span> <span class="nc">SwedbankPayProblem</span> <span class="p">-&gt;</span>
+                    <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Other problem at Swedbank Pay: ${problem.detail}; Fix: ${problem.action}"</span><span class="p">)</span>
+
+                <span class="k">else</span> <span class="p">-&gt;</span>
                     <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Unexpected problem: ${problem.raw}"</span><span class="p">)</span>
-                <span class="p">}</span>
-
-            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Server</span><span class="p">.</span><span class="nc">MobileSDK</span><span class="p">.</span><span class="nc">BackendConnectionTimeout</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Swedbank Pay timeout: ${problem.message}"</span><span class="p">)</span>
-
-            <span class="k">is</span> <span class="nc">Problem</span><span class="p">.</span><span class="nc">Server</span><span class="p">.</span><span class="nc">SwedbankPay</span><span class="p">.</span><span class="nc">SystemError</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Generic server error at Swedbank Pay: ${problem.detail}"</span><span class="p">)</span>
-
-            <span class="k">is</span> <span class="nc">SwedbankPayProblem</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Other problem at Swedbank Pay: ${problem.detail}; Fix: ${problem.action}"</span><span class="p">)</span>
-
-            <span class="k">is</span> <span class="nc">UnknownProblem</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Unexpected problem: ${problem.raw}"</span><span class="p">)</span>
-
-            <span class="k">is</span> <span class="nc">UnexpectedContentProblem</span> <span class="p">-&gt;</span>
-                <span class="nc">Log</span><span class="p">.</span><span class="nf">d</span><span class="p">(</span><span class="nc">TAG</span><span class="p">,</span> <span class="s">"Unexpected response from Merchant Backend: ${problem.body}"</span><span class="p">)</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">})</span>
@@ -1680,19 +1743,19 @@ However, if you need support, please wait for a future, stable release.</p>
 
 <p>The payment process may involve navigating to third-party web pages, or even launching external applications. To resume processing the payment in the payment menu, each payment order must have a <a href="/checkout/payment-menu#payment-url">Payment Url</a>. As mentioned above, the SDK has convenience constructors to set up a payment url for you, and as the SDK handles showing third-party web pages inside the <code class="language-html highlighter-rouge">PaymentFragment</code>, it automatically intercepts any navigation to the payment url, and reloads the payment menu. This requires no additional setup.</p>
 
-<p>If a third party application is launched, it will signal the return to the payment menu by opening the payment url, using a standard <code class="language-html highlighter-rouge">ACTION_VIEW</code> <code class="language-html highlighter-rouge">Intent</code>. The payment url is built such that it uses the <a href="merchant-backend#android-payment-url-helper">Android Payment Url Helper</a>, which converts the url to an <a href="https://developer.chrome.com/multidevice/android/intents">intent url</a>. The SDK has an intent filter for that intent, so the SDK will receive it, bringing the containing application to the foreground, and reloading the payment menu. If your Merchant Backend serves the Android Payment Url Helper endpoint at the specified path, no further setup is needed.</p>
+<p>If a third party application is launched, it will signal the return to the payment menu by opening the payment url, using a standard <code class="language-html highlighter-rouge">ACTION_VIEW</code> <code class="language-html highlighter-rouge">Intent</code>. The payment url is built such that it uses the <a href="merchant-backend#android-payment-url-helper">Android Payment Url Helper</a>, which serves an html page that converts the url to an <a href="https://developer.chrome.com/multidevice/android/intents">intent url</a> and redirects to it. The SDK has an intent filter for that intent, so the SDK will receive it, bringing the containing application to the foreground, and reloading the payment menu. If your Merchant Backend serves the Android Payment Url Helper endpoint at the specified path, no further setup is needed.</p>
 
 <p>Note that there is an <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/-arguments-builder/use-browser.md">argument</a> for debugging purposes that cause third-party web pages to be opened in an external application. In that case the process continues analogously to the external application case. Using this argument should not be necessary, however. If you do find a case that does not work inside the PaymentFragment, but does work when using the browser for third-party sites, please file a bug on the Android SDK.</p>
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-primary" role="button" rel="prev" href="merchant-backend-sample-code">
+    <a class="mr-auto btn btn-secondary" role="button" rel="prev" href="merchant-backend-sample-code">
         Merchant Backend Sample Code
     </a>
     
 
     
-    <a class="ml-auto btn btn-primary" role="button" rel="next" href="ios">
+    <a class="ml-auto btn btn-secondary" role="button" rel="next" href="ios">
         iOS
     </a>
     

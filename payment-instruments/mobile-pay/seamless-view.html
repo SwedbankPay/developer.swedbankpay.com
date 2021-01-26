@@ -75,9 +75,9 @@
                                 
                                 <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
                                     <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
-                                    <label for="search-input" class="mb-0">
+                                    <button class="mb-0">
                                         <i class="material-icons m-0" aria-hidden="true">search</i>
-                                    </label>
+                                    </button>
                                 </form>
                                 
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
@@ -89,6 +89,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
 <li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
@@ -176,7 +177,7 @@
 <li class="nav-leaf"><a href="/checkout/other-features#payment-order-state">Payment Order State</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#recurring-payments">Recurring Payments</a></li>
-<li class="nav-leaf"><a href="/checkout/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#purchase-payments">Purchase Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#verify-payments">Verify Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#payments-resource">Payments Resource</a></li>
@@ -441,7 +442,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#financing-consumer">Financing Consumer</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#recur">Recur</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
@@ -963,13 +964,27 @@
         <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/configuration">Configuration</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#backend">Backend</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#set-instrument-endpoint">Set Instrument Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
         
@@ -993,6 +1008,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
         
@@ -1014,15 +1030,35 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+          <a href="/modules-sdks/mobile-sdk/custom-backend">Custom Backend</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#basic-backend-requirements">Basic Backend Requirements</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android-configuration">Android Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-configuration">iOS Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#backend">Backend</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#updating-a-payment-order">Updating a Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#errors">Errors</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#other-features">Other Features</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#purchase-payments">Purchase Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#verify-payments">Verify Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#observing-the-payment-process">Observing the Payment Process</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-view-model-provider-key">Android: View Model Provider Key</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-default-ui">Android: Default UI</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#debugging-features">Debugging Features</a></li>
         
       </ul>
       </li>
@@ -1033,11 +1069,27 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#initialization">Initialization</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#discover-endpoints">Discover Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#merchant-backend-discover-endpoints">Merchant Backend: Discover Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#quick-fix-list">Quick Fix List</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
         
       </ul>
       </li>
@@ -1175,7 +1227,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#26-jan-2021">26 Jan 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
@@ -1268,8 +1321,8 @@ must confirm through the MobilePay mobile app.</p>
 
     
 
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/payment-instruments/mobile-pay/seamless-view.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Seamless View' on GitHub">
-    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/master/payment-instruments/mobile-pay/seamless-view.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Seamless View' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title id="simpleicons-github-icon">Edit "Seamless View" on GitHub</title>
         <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
     </svg>
@@ -1373,6 +1426,8 @@ used in requests towards Swedbank Pay.</p>
 45
 46
 47
+48
+49
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/mobilepay/payments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
@@ -1392,7 +1447,6 @@ used in requests towards Swedbank Pay.</p>
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MobilePay Test"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABTimestamp"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da-DK"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1411,6 +1465,9 @@ used in requests towards Swedbank Pay.</p>
             </span><span class="nl">"productCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A123"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"orderReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or-12456"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+            </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1234"</span><span class="p">,</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"prefillInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"msisdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4598765432"</span><span class="w">
@@ -1506,18 +1563,11 @@ used in requests towards Swedbank Pay.</p>
       <td style="text-align: left">A 40 character length textual <a href="/payment-instruments/mobile-pay/other-features#description">description</a> of the purchase.</td>
     </tr>
     <tr>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payerReference</code>
-</td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail address,        mobile number, customer number etc.</td>
-    </tr>
-    <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code> string</a> of the payer’s web browser.</td>
+      <td style="text-align: left">The <a href="https://en.wikipedia.org/wiki/User_agent"><code class="language-html highlighter-rouge">User-Agent</code>string</a> of the payer’s web browser.</td>
     </tr>
     <tr>
       <td style="text-align: left"><i class="material-icons">check</i></td>
@@ -1627,6 +1677,20 @@ used in requests towards Swedbank Pay.</p>
     </tr>
     <tr>
       <td style="text-align: left"> </td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">payer</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The <code class="language-html highlighter-rouge">payer</code> object, containing information about the payer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payerReference</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail         address, mobile number, customer number etc. Mandatory if         <code class="language-html highlighter-rouge">generateReccurenceToken</code>, <code class="language-html highlighter-rouge">RecurrenceToken</code>,         <code class="language-html highlighter-rouge">generatePaymentToken</code> or <code class="language-html highlighter-rouge">paymentToken</code> is <code class="language-html highlighter-rouge">true</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">prefillInfo</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
@@ -1701,6 +1765,8 @@ used in requests towards Swedbank Pay.</p>
 47
 48
 49
+50
+51
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1720,7 +1786,6 @@ used in requests towards Swedbank Pay.</p>
         </span><span class="p">},</span><span class="w">
        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MobilePay Test"</span><span class="p">,</span><span class="w">
-       </span><span class="nl">"payerReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1536157124"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/7.2.0"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0"</span><span class="p">,</span><span class="w">
        </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da-DK"</span><span class="p">,</span><span class="w">
@@ -1729,6 +1794,9 @@ used in requests towards Swedbank Pay.</p>
         </span><span class="p">},</span><span class="w">
        </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payeeinfo"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"payers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/mobilepay/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/payers"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1926,13 +1994,13 @@ successful.</li>
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-primary" role="button" rel="prev" href="redirect">
+    <a class="mr-auto btn btn-secondary" role="button" rel="prev" href="redirect">
         Redirect
     </a>
     
 
     
-    <a class="ml-auto btn btn-primary" role="button" rel="next" href="after-payment">
+    <a class="ml-auto btn btn-secondary" role="button" rel="next" href="after-payment">
         After Payment
     </a>
     

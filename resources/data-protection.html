@@ -75,9 +75,9 @@
                                 
                                 <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
                                     <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
-                                    <label for="search-input" class="mb-0">
+                                    <button class="mb-0">
                                         <i class="material-icons m-0" aria-hidden="true">search</i>
-                                    </label>
+                                    </button>
                                 </form>
                                 
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
@@ -89,6 +89,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
 <li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
@@ -176,7 +177,7 @@
 <li class="nav-leaf"><a href="/checkout/other-features#payment-order-state">Payment Order State</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#recurring-payments">Recurring Payments</a></li>
-<li class="nav-leaf"><a href="/checkout/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#purchase-payments">Purchase Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#verify-payments">Verify Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#payments-resource">Payments Resource</a></li>
@@ -441,7 +442,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#financing-consumer">Financing Consumer</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#recur">Recur</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
@@ -963,13 +964,27 @@
         <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/configuration">Configuration</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#backend">Backend</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#set-instrument-endpoint">Set Instrument Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
         
@@ -993,6 +1008,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
         
@@ -1014,15 +1030,35 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+          <a href="/modules-sdks/mobile-sdk/custom-backend">Custom Backend</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#basic-backend-requirements">Basic Backend Requirements</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android-configuration">Android Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-configuration">iOS Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#backend">Backend</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#updating-a-payment-order">Updating a Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#errors">Errors</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#other-features">Other Features</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#purchase-payments">Purchase Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#verify-payments">Verify Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#observing-the-payment-process">Observing the Payment Process</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-view-model-provider-key">Android: View Model Provider Key</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-default-ui">Android: Default UI</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#debugging-features">Debugging Features</a></li>
         
       </ul>
       </li>
@@ -1033,11 +1069,27 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#initialization">Initialization</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#discover-endpoints">Discover Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#merchant-backend-discover-endpoints">Merchant Backend: Discover Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#quick-fix-list">Quick Fix List</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
         
       </ul>
       </li>
@@ -1175,7 +1227,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#26-jan-2021">26 Jan 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
@@ -1260,8 +1313,8 @@
 
     
 
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/resources/data-protection.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Data Protection' on GitHub">
-    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/master/resources/data-protection.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Data Protection' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title id="simpleicons-github-icon">Edit "Data Protection" on GitHub</title>
         <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
     </svg>

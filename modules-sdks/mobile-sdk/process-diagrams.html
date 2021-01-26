@@ -75,9 +75,9 @@
                                 
                                 <form class="search-container mx-2 my-4 px-3 py-2 d-flex" method="get" action="/search">
                                     <input name="q" type="text" id="tipue_search_input" class="search-input w-100 " placeholder="Search in documentation" onfocus="this.placeholder=''" onblur="this.placeholder='Search in documentation'" pattern=".{3,}" title="At least 3 characters">
-                                    <label for="search-input" class="mb-0">
+                                    <button class="mb-0">
                                         <i class="material-icons m-0" aria-hidden="true">search</i>
-                                    </label>
+                                    </button>
                                 </form>
                                 
                                 <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
@@ -89,6 +89,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/introduction#foundation">Foundation</a></li>
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
+<li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
 <li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
@@ -176,7 +177,7 @@
 <li class="nav-leaf"><a href="/checkout/other-features#payment-order-state">Payment Order State</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#completeurl">CompleteUrl</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#recurring-payments">Recurring Payments</a></li>
-<li class="nav-leaf"><a href="/checkout/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/checkout/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#purchase-payments">Purchase Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#verify-payments">Verify Payments</a></li>
 <li class="nav-leaf"><a href="/checkout/other-features#payments-resource">Payments Resource</a></li>
@@ -441,7 +442,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#create-payment">Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#financing-consumer">Financing Consumer</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#recur">Recur</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-token">Delete Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#verify">Verify</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#transactions">Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/other-features#callback">Callback</a></li>
@@ -963,13 +964,27 @@
         <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/configuration">Configuration</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/configuration#backend">Backend</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#set-instrument-endpoint">Set Instrument Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
         
@@ -993,6 +1008,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#installation">Installation</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
         
@@ -1014,15 +1030,35 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+          <a href="/modules-sdks/mobile-sdk/custom-backend">Custom Backend</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#basic-backend-requirements">Basic Backend Requirements</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android-configuration">Android Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-configuration">iOS Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#backend">Backend</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#updating-a-payment-order">Updating a Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#errors">Errors</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#other-features">Other Features</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/other-features">Other Features</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#purchase-payments">Purchase Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#verify-payments">Verify Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#observing-the-payment-process">Observing the Payment Process</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-view-model-provider-key">Android: View Model Provider Key</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#android-default-ui">Android: Default UI</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/other-features#debugging-features">Debugging Features</a></li>
         
       </ul>
       </li>
@@ -1033,11 +1069,27 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#initialization">Initialization</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#discover-endpoints">Discover Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#merchant-backend-discover-endpoints">Merchant Backend: Discover Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/plain-webview">Plain Webview</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#quick-fix-list">Quick Fix List</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
         
       </ul>
       </li>
@@ -1175,7 +1227,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#26-jan-2021">26 Jan 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-dec-2020">01 Dec 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#12-nov-2020">12 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#11-nov-2020">11 Nov 2020</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-sep-2020">04 Sep 2020</a></li>
@@ -1269,8 +1322,8 @@ and serve as a quick reference to the different steps and components.</p>
 
     
 
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/process-diagrams.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Process Diagrams' on GitHub">
-    <svg aria-labelledby="simpleicons-github-icon" role="img" width="50" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/master/modules-sdks/mobile-sdk/process-diagrams.md" class="github" target="_blank" rel="noopener noreferrer" title="Edit 'Process Diagrams' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <title id="simpleicons-github-icon">Edit "Process Diagrams" on GitHub</title>
         <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
     </svg>
@@ -1317,20 +1370,35 @@ However, if you need support, please wait for a future, stable release.</p>
 
 <p>To use the SDK, you must have a valid <code class="language-html highlighter-rouge">Configuration</code> for it. The API for this is a bit different in Android and iOS, but generally you will only need one <code class="language-html highlighter-rouge">Configuration</code> for your app. On Android set it to <code class="language-html highlighter-rouge">PaymentFragment.defaultConfiguration</code>; on iOS store it in a convenient variable.</p>
 
+<p>If you are using a backend implementing the Merchant Backend API, there is a Configuration ready for you in the SDK. If you are designing your own backend API, you will need to create the Configuration yourself.</p>
+
 <pre><code class="language-mermaid">sequenceDiagram
-    alt Android
-        App -&gt;&gt; SDK: Configuration.Builder(backendUrl)...build()
-        SDK --&gt;&gt; App: configuration
-        App -&gt;&gt; SDK: PaymentFragment.defaultConfiguration = configuration
-    else iOS
-        App -&gt;&gt; SDK: SwedbankPaySDK.Configuration.init(backendUrl: backendUrl)
-        SDK --&gt;&gt; App: configuration
+    alt Using Merchant Backend
+        alt Android
+            App -&gt;&gt; SDK: MerchantBackendConfiguration.Builder(backendUrl)...build()
+            SDK --&gt;&gt; App: configuration
+            App -&gt;&gt; SDK: PaymentFragment.defaultConfiguration = configuration
+        else iOS
+            App -&gt;&gt; SDK: SwedbankPaySDK.MerchantBackendConfiguration.init(backendUrl: backendUrl)
+            SDK --&gt;&gt; App: configuration
+        end
+    else Using Custom Backend
+        alt Android
+            App -&gt;&gt; App: class MyConfiguration : Configuration()
+            App -&gt;&gt; SDK: PaymentFragment.defaultConfiguration = configuration
+        else iOS
+            App -&gt;&gt; App: struct/class MyConfiguration : SwedbankPaySDK.Configuration
+        end
     end
 </code></pre>
 
-<p>When you want to make a payment, you construct a <code class="language-html highlighter-rouge">PaymentOrder</code> with the correct content. A very important part of the <code class="language-html highlighter-rouge">PaymentOrder</code> is the <code class="language-html highlighter-rouge">urls</code> field. The SDK has convenience methods for creating one; unless your use-case is advanced, you should use these. On Android use the <code class="language-html highlighter-rouge">PaymentOrderUrls(context, backendUrl, [callbackUrl], [termsOfServiceUrl])</code> constructor; on iOS use the <code class="language-html highlighter-rouge">PaymentOrderUrls.init(configuration:language:[callbackUrl:][termsOfServiceUrl:])</code> initializer. In both cases the convenience method depends on your <code class="language-html highlighter-rouge">Configuration</code> (<code class="language-html highlighter-rouge">backendUrl</code>is part of the <code class="language-html highlighter-rouge">Configuration</code>), so be careful if you have multiple Configurations in your app.</p>
+<p>When you want to make a payment, create a <code class="language-html highlighter-rouge">PaymentFrament</code> or <code class="language-html highlighter-rouge">SwedbankPaySDKController</code>. <code class="language-html highlighter-rouge">SwedbankPaySDKController</code>’s designated initializer takes all the required arguments; for <code class="language-html highlighter-rouge">PaymentFrament</code> you should use <code class="language-html highlighter-rouge">PaymentFragment.ArgumentsBuilder</code> to create the arguments bundle.</p>
+
+<p>The meaning of the arguments depends on your Configuration. If you are using <code class="language-html highlighter-rouge">MerchantBackendConfiguration</code>, you will always need a <code class="language-html highlighter-rouge">PaymentOrder</code> argument. A very important part of the <code class="language-html highlighter-rouge">PaymentOrder</code> is the <code class="language-html highlighter-rouge">urls</code> field. The SDK has convenience methods for creating one; unless your use-case is advanced, you should use these. On Android use the <code class="language-html highlighter-rouge">PaymentOrderUrls(context, backendUrl, [callbackUrl], [termsOfServiceUrl])</code> constructor; on iOS use the <code class="language-html highlighter-rouge">PaymentOrderUrls.init(configuration:language:[callbackUrl:][termsOfServiceUrl:])</code> initializer. In both cases the convenience method depends on your <code class="language-html highlighter-rouge">MerchantBackendConfiguration</code> (<code class="language-html highlighter-rouge">backendUrl</code>is part of the <code class="language-html highlighter-rouge">MerchantBackendConfiguration</code>), so be careful if you have multiple MerchantBackendConfigurations in your app.</p>
 
 <p>Additionally, you may construct a <code class="language-html highlighter-rouge">Consumer</code> if you wish to identify the payer. This enables saving payment details for further payments.</p>
+
+<p>If you are using a custom Configuration, you may use the <code class="language-html highlighter-rouge">PaymentOrder</code> or <code class="language-html highlighter-rouge">Consumer</code> arguments if you wish. Additionally you can use a generic data argument (of type <code class="language-html highlighter-rouge">Any</code>, though on Android it must implement either <code class="language-html highlighter-rouge">Parcelable</code> or <code class="language-html highlighter-rouge">Serializable</code>). By default, the existence of the <code class="language-html highlighter-rouge">Consumer</code> argument controls whether the consumer identfication happens, but you can also specify it explicitly.</p>
 
 <pre><code class="language-mermaid">sequenceDiagram
     participant User
@@ -1375,22 +1443,24 @@ However, if you need support, please wait for a future, stable release.</p>
     App -&gt;&gt; App : Show payment UI component
 </code></pre>
     
-      <h2 id="discover-endpoints">
+      <h2 id="merchant-backend-discover-endpoints">
         
         
-          Discover Endpoints <a href="#discover-endpoints" class="header-anchor"></a>
+          Merchant Backend: Discover Endpoints <a href="#merchant-backend-discover-endpoints" class="header-anchor"></a>
         
         
       </h2>
+
+<p>This is an implementation detail of the Merchant Backend configuration; it is not necessary to replicate this step in a your own systems.</p>
 
 <p>The Merchant Backend is specified with a single static entry point; other interfaces are accessed by following links from previous responses. A request to the static entry point currently returns links to the <code class="language-html highlighter-rouge">consumers</code> and <code class="language-html highlighter-rouge">paymentorders</code> endpoints. In most cases the response to this request can be cached, and thus only needs to be made once per App session.</p>
 
 <pre><code class="language-mermaid">sequenceDiagram
     participant SDK
-    participant Merchant
+    participant Backend
 
-    SDK -&gt;&gt; Merchant: GET /
-    Merchant --&gt;&gt; SDK: { "consumers": "[consumers]", "paymentorders": "[paymentorders]" }
+    SDK -&gt;&gt; Backend: GET /
+    Backend --&gt;&gt; SDK: { "consumers": "[consumers]", "paymentorders": "[paymentorders]" }
 </code></pre>
     
       <h2 id="optional-checkin">
@@ -1401,26 +1471,37 @@ However, if you need support, please wait for a future, stable release.</p>
         
       </h2>
 
-<p>If <code class="language-html highlighter-rouge">Consumer</code> was provided, the payment beings with a “checkin” flow, where the payer is identified. This allows for saving payment details for later payments.</p>
+<p>Optionally, the payment beings with a “checkin” flow, where the payer is identified. This allows for saving payment details for later payments.</p>
 
-<p>The checkin flow is simple: first a request is made to begin a checkin session, then an html page is constructed using the script link received from that request, and when that page successfully identifies the payer, a javascript callback is received. The <code class="language-html highlighter-rouge">consumerProfileRef</code> received from that callback is then set to the Payment Order to be processed.</p>
+<p>The checkin flow is simple: first a request is made to begin a checkin session, then an html page is constructed using the script link received from that request, and when that page successfully identifies the payer, a javascript callback is received. The <code class="language-html highlighter-rouge">consumerProfileRef</code> received from that callback is then used when creating the payment order in the next step.</p>
 
 <pre><code class="language-mermaid">sequenceDiagram
+    participant Conf as Configuration
     participant SDK
-    participant Merchant
+    participant Backend
     participant SwedbankPay as Swedbank Pay
     participant WebView
     participant User
 
-    SDK -&gt;&gt; Merchant: POST [consumers] { "operation": "initiate-consumer-session", ... }
-    Merchant -&gt;&gt; SwedbankPay: POST /psp/consumers/ { "operation": "initiate-consumer-session", ... }
-    SwedbankPay --&gt;&gt; Merchant: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
-    Merchant --&gt;&gt; SDK: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
+    SDK -&gt;&gt; Conf: postConsumers
+    alt Merchant Backend
+        Conf -&gt;&gt; Backend: POST [consumers] { "operation": "initiate-consumer-session", ... }
+    else Custom Backend
+        Conf -&gt;&gt; Backend: Custom protocol
+    end
+    Backend -&gt;&gt; SwedbankPay: POST /psp/consumers/ { "operation": "initiate-consumer-session", ... }
+    SwedbankPay --&gt;&gt; Backend: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
+    alt Merchant Backend
+        Backend --&gt;&gt; Conf: { "operations": [{ "rel": "view-consumer-identification", "href": "[consumer-script]" }] }
+    else Custom Backend
+        Backend --&gt;&gt; Conf: Custom protocol
+    end
+    Conf --&gt; SDK: ViewConsumerIdentificationInfo
     SDK -&gt;&gt; WebView: &lt;html&gt;...&lt;script src="[consumer-script]"&gt;...payex.hostedView.consumer(...)...&lt;/html&gt;
     WebView -&gt;&gt; User: Show checkin UI
     User -&gt;&gt; WebView: Enter personal details
     WebView -&gt;&gt; SDK: onConsumerIdentified({ "consumerProfileRef" : "..." })
-    SDK -&gt;&gt; SDK: paymentOrder.payer = { "consumerProfileRef" : "..." }
+    SDK -&gt;&gt; SDK: store consumerProfileRef for checkout
 </code></pre>
     
       <h2 id="begin-checkout">
@@ -1437,18 +1518,29 @@ the request and response: Setting of <code class="language-html highlighter-roug
 <p>At this point the user is interacting with the payment menu; the next step depends on the exact payment method chosen.</p>
 
 <pre><code class="language-mermaid">sequenceDiagram
+    participant Conf as Configuration
     participant SDK
-    participant Merchant
+    participant Backend
     participant SwedbankPay as Swedbank Pay
     participant WebView
     participant User
 
-    SDK -&gt;&gt; Merchant: POST [paymentorders] { paymentorder: {...} }
-    Merchant -&gt;&gt; Merchant: Preprocess payment order (e.g. create payeeReference)
-    Merchant -&gt;&gt; SwedbankPay: POST /psp/paymentorders/ { paymentorder: {...} }
-    SwedbankPay --&gt;&gt; Merchant: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
-    Merchant -&gt;&gt; Merchant: Postprocess payment order (e.g. store id)
-    Merchant --&gt;&gt; SDK: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
+    SDK -&gt;&gt; Conf: postPaymentorders
+    alt Merchant Backend
+        Conf -&gt;&gt; Backend: POST [paymentorders] { paymentorder: {...} }
+    else Custom Backend
+        Conf -&gt;&gt; Backend: Custom protocol
+    end
+    Backend -&gt;&gt; Backend: Preprocess payment order (e.g. create payeeReference)
+    Backend -&gt;&gt; SwedbankPay: POST /psp/paymentorders/ { paymentorder: {...} }
+    SwedbankPay --&gt;&gt; Backend: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
+    Backend -&gt;&gt; Backend: Postprocess payment order (e.g. store id)
+    alt Merchant Backend
+        Backend --&gt;&gt; Conf: { "id": "...", "operations": [{ "rel": "view-paymentorder", "href": "[paymentorder-script]" }], ... }
+    else Custom Backend
+        Backend -&gt;&gt; Conf: Custom protocol
+    end
+    Conf --&gt;&gt; SDK: ViewPaymentOrderInfo
     SDK -&gt;&gt; WebView: &lt;html&gt;...&lt;script src="[paymentorder-script]"&gt;...payex.hostedView.paymentMenu(...)...&lt;/html&gt;
     WebView -&gt;&gt; User: Show checkout UI
     User -&gt;&gt; WebView: Choose payment method and enter details
@@ -1512,7 +1604,7 @@ the request and response: Setting of <code class="language-html highlighter-roug
   <li>① The same check is repeated for any further navigation inside the WebView</li>
   <li>② All properly configured authentication flows must end up here</li>
   <li>③ On Android, paymentUrl is an https URL that redirects to an Android Intent URL.</li>
-  <li>④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to\nanother app, it should be routed to that app instead of the Browser. However, Univeral Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with “paymentUrl opened in Browser” below instead.</li>
+  <li>④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to another app, it should be routed to that app instead of the Browser. However, Univeral Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with “paymentUrl opened in Browser” below instead.</li>
 </ul>
     
       <h3 id="return-from-browser">
@@ -1523,7 +1615,7 @@ the request and response: Setting of <code class="language-html highlighter-roug
         
       </h3>
 
-<p>If the external flow ended with <code class="language-html highlighter-rouge">paymentUrl</code> opened in the browser, we need a way to get back to the app. On Android, this is simple to accomplish by redirecting to an <a href="https://developer.chrome.com/multidevice/android/intents">Android Intent Uri</a>; the SDK and backend work together to construct the Intent Uri to point to the correct app. This Intent will cause the app to be brought back into focus, and the PaymentFragment will recognize the <code class="language-html highlighter-rouge">paymentUrl</code> and reload the payment menu.</p>
+<p>If the external flow ended with <code class="language-html highlighter-rouge">paymentUrl</code> opened in the browser, we need a way to get back to the app. On Android, this is simple to accomplish by redirecting to an <a href="https://developer.chrome.com/multidevice/android/intents">Android Intent Uri</a>; the SDK and backend work together to construct the Intent Uri to point to the correct app. This Intent will cause the app to be brought back into focus, and the PaymentFragment will recognize the <code class="language-html highlighter-rouge">paymentUrl</code> and reload the payment menu. We still need to have an actual html page served at <code class="language-html highlighter-rouge">paymentUrl</code>, though, as the redirect may be blocked in some scenarios. If that happens, the page will also contain a link the user can tap on, which opens the same Intent Uri.</p>
 
 <p>On iOS, the situation is more complicated. As mentioned above, <code class="language-html highlighter-rouge">paymentUrl</code> is a Universal Link, and navigation to it should be routed to the app. However, Universal Links are a bit unreliable, in that they require certain conditions to be fulfilled; otherwise, they are opened in the browser like regular links. Unfortunately, one of the conditions, namely that the navigation originated from the user pressing on a link, is often not fulfilled in the external pages used by payment methods. Therefore, we must have a system that works correctly, even if <code class="language-html highlighter-rouge">paymentUrl</code> is opened in the browser.</p>
 
@@ -1549,7 +1641,7 @@ the request and response: Setting of <code class="language-html highlighter-roug
 <pre><code class="language-mermaid">sequenceDiagram
     participant User
     participant Browser
-    participant Merchant
+    participant Backend
     participant Trampoline as Universal Link Trampoline
     participant System
     participant SDK
@@ -1557,7 +1649,7 @@ the request and response: Setting of <code class="language-html highlighter-roug
 
     alt Android
         Browser -&gt;&gt; Merchant: Load paymentUrl
-        Merchant --&gt;&gt; Browser: 301 Moved Permanently ⑤
+        Merchant --&gt;&gt; Browser: Html document that redirects to an Intent URL ⑤
         Browser -&gt;&gt; Browser: Parse Android Intent URL
         Browser -&gt;&gt; System: Start activity with the parsed Intent, where the Intent Uri is paymentUrl
         System -&gt;&gt; SDK: Start callback activity
@@ -1591,10 +1683,10 @@ the request and response: Setting of <code class="language-html highlighter-roug
 </code></pre>
 
 <ul>
-  <li>⑤ Location: <code class="language-html highlighter-rouge">intent://[paymentUrl-without-scheme]/#Intent;scheme=[paymentUrl-scheme];action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=[app-package];end;</code>
+  <li>⑤ <code class="language-html highlighter-rouge">intent://[paymentUrl-without-scheme]/#Intent;scheme=[paymentUrl-scheme];action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=[app-package];end;</code>
 </li>
   <li>⑥ Universal Links have certain conditions for them to be activated. One of these is that the navigation must have started from a user interaction. As many 3D-Secure pages have an automatic redirect, this can cause the link to be opened in the Browser instead. Therefore the chance for this path to be taken is low. (N.B. It does seem than iOS 13.4 has made some change to the logic, causing this happiest path to be hit more often.)</li>
-  <li>⑦ Location: <code class="language-html highlighter-rouge">https://trampoline.page.host/trampoline/page/path?target=paymentUrl%26fallback=true</code>
+  <li>⑦ Location: <code class="language-html highlighter-rouge">https://ecom.stage.payex.com/externalresourcehost/trampoline?target=paymentUrl%26fallback=true</code>
 </li>
   <li>⑧  The “Trampoline Page” has a button, which links back to paymentUrl, but with an additional query parameter (actually this extra parameter is added by the backend when generating the redirect to the trampoline page). Importantly, the Trampoline is on a different domain than paymentUrl, as Universal Links are only forwarded to the app if they are opened from a different domain than the link’s domain.</li>
   <li>⑨ All cases should be caught by one of these two flows. However, Universal Links remain finicky, and therefore it is good to provide one final fallback.</li>
@@ -1633,13 +1725,13 @@ the request and response: Setting of <code class="language-html highlighter-roug
 
 <nav class="iterator d-flex">
     
-    <a class="mr-auto btn btn-primary" role="button" rel="prev" href="ios">
-        iOS
+    <a class="mr-auto btn btn-secondary" role="button" rel="prev" href="other-features">
+        Back: Other Features
     </a>
     
 
     
-    <a class="ml-auto btn btn-primary" role="button" rel="next" href="plain-webview">
+    <a class="ml-auto btn btn-secondary" role="button" rel="next" href="plain-webview">
         Using a Web View Instead
     </a>
     
