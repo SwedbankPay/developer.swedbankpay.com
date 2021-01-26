@@ -162,7 +162,7 @@ Content-Type: application/json
         },
         "payers": {
            "id": "/psp/swish/payments/{{ page.payment_id }}/payers"
-        },
+        }
     },
     "operations": [
         {
