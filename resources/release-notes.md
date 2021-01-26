@@ -23,7 +23,7 @@ this very documentation, not to a version of any APIs described by it." %}
 * Clarified that [callback][callback] is a fail-safe
 * Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
 * Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
-* Updated Mobile SDK to newest versions
+* Updated GitHub references for Mobile SDK
 * Re-wrote [Prices][prices] section
 
 ## 01 Dec 2020
