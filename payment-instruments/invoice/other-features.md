@@ -164,7 +164,6 @@ Content-Type: application/json
         "payer": {  
             "payerReference": "AB1234",
         }
-    },
         "metadata": {
             "key1": "value1",
             "key2": 2,
