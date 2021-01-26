@@ -21,11 +21,7 @@ This guide assumes that you are using the Merchant Backend Configuration and you
 
 ## Installation
 
-The Android component of the Swedbank Pay Mobile SDK is distributed through JCenter, which is a default repository in Android Studio projects. Therefore, most applications can integrate the SDK by simply adding the dependency:
-
-`implementation 'com.swedbankpay.mobilesdk:mobilesdk:1.0.0-beta27'`
-
-\[Development note: There is not yet a stable release of the SDK.\]
+The Android component of the Swedbank Pay Mobile SDK is distributed through JCenter, which is a default repository in Android Studio projects. Therefore, most applications can integrate the SDK by simply adding the dependency. Please refer to the [Bintray page][sdk-bintray] for the latest version of the SDK.
 
 ## Usage
 
@@ -274,6 +270,7 @@ Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugg
                          next_href="ios"
                          next_title="iOS" %}
 
+[sdk-bintray]: https://bintray.com/swedbankpay/swedbank-pay-sdk-android/swedbank-pay-sdk-android
 [dokka-pkg]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md
 [dokka-pkg-merch]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/index.md
 [dokka-payfrag]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md

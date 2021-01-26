@@ -20,11 +20,7 @@ This guide assumes that you are using the Merchant Backend Configuration and you
 
 The iOS component of the Swedbank Pay Mobile SDK is distributed through [CocoaPods][cocoapods]. If you do not have CocoaPods installed on your development machine, please install it first according to the [instructions][cocoapods-gettingstarted] at the CocoaPods web page.
 
-[Add CocoaPods][cocoapods-using] to your project, if needed. Then, add the dependency:
-
-`pod 'SwedbankPaySDK', '0.3.7'`
-
-\[Development note: There is not yet a stable release of the SDK.\]
+[Add CocoaPods][cocoapods-using] to your project, if needed. Then, add the [SDK pod][sdk-pod].
 
 Do not forget to run `pod install` after editing the `Podfile`.
 
@@ -432,6 +428,7 @@ sequenceDiagram
                          next_href="custom-backend"
                          next_title="Next: Custom Backend" %}
 
+[sdk-pod]: https://cocoapods.org/pods/SwedbankPaySDK
 [cocoapods]: https://cocoapods.org/
 [cocoapods-gettingstarted]: https://guides.cocoapods.org/using/getting-started.html
 [cocoapods-using]: https://guides.cocoapods.org/using/using-cocoapods.html
