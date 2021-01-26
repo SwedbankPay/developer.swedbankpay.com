@@ -13,7 +13,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## 26 Jan 2021
 
-### Version 2.0.1
+### Version 2.1.0
 
 * Updated theme with visual fixes
 * Search icon is now clickable
