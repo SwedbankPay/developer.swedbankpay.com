@@ -3,9 +3,7 @@ title: CompleteUrl
 redirect_from:
 estimated_read: 1
 description: |
-  Welcome to CompleteUrl.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  Where you go when the payment is completed.
 menu_order: 1600
 ---
 

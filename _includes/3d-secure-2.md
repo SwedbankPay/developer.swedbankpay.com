@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% assign features_url = documentation_section | prepend: '/' | append: '/features/core-features' %}
+{% assign features_url = documentation_section | prepend: '/' | append: '/features/core' %}
 
 {% if api_resource == "creditcard" %}
     {% assign features_url = features | prepend: '/payment-instruments' %}
