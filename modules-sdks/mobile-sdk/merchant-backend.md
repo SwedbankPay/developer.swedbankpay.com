@@ -3,7 +3,8 @@ title: Merchant Backend
 estimated_read: 20
 description: |
   To use the **Swedbank Pay Mobile SDK**, you must have a backend server
-  hosting the Mobile SDK API.
+  that communicates with your Configuration. The fastest way to start
+  developing is to use the Merchant Backend API.
 menu_order: 800
 ---
 
@@ -17,7 +18,11 @@ However, if you need support, please wait for a future, stable release.
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
 
-The Mobile SDK Merchant Backend API contains a total of five endpoints, three of which have statically defined paths. An OpenAPI specification is [available][swagger]. (It may be easier to view it in the [Swagger Editor][swagger-editor].)
+The Merchant Backend API serves as a simple starting point, and an illustrative example of how to integrate the SDK to your backend systems. The SDK has a Configuration implementation for a backend implementing this API; in addition, there is both a Node.js and a Java sample implementation of this API available.
+
+Even if you plan to integrate the SDK using your own backend API, it is recommended to read through this chapter; especially the section Payment Url Helper Endpoints, which will illustrate how any `paymentUrl` created for the SDK should behave.
+
+The Mobile SDK Merchant Backend API contains a total of six endpoints, three of which have statically defined paths. An OpenAPI specification is [available][swagger]. (It may be easier to view it in the [Swagger Editor][swagger-editor].)
 
 The main part of the API is designed as a transparent wrapper around the Swedbank Pay API, which is the same one used in Checkout. Additionally, two "helper" endpoints are specified, which facilitate the proper routing of the [Payment Url][payment-url] back to the originating app.
 
@@ -26,6 +31,12 @@ The main part of the API is designed as a transparent wrapper around the Swedban
 You should have some authorization and authentication measures in place to prevent misuse of your Merchant Backend API. The sample implementations have a very rudimentary API key header check. This may or may not be sufficient to your purposes. You should adapt the sample implementation or create your own according to your security needs.
 
 The mobile component of the SDK allows adding your own headers to the requests it makes. Therefore you can build your own authentication and authorization measures by adding custom headers in the app, and checking that they have the correct content in the backend.
+
+## The Merchant Backend Configuration
+
+To use a backend implementing the Merchant Backend API, you can use the Merchant Backend Configuration provided with the SDK. This implementation is available as `SwedbankPaySDK.MerchantBackendConfiguration` on iOS and `com.swedbankpay.mobilesdk.merchantbackend.MerchantBackendConfiguration` on Android; on Android you create the `MerchantBackendConfiguration` object via a `MerchantBackendConfiguration.Builder`.
+
+At a minimum, you must supply the url of the Merchant Backend, i.e. the url of the Root Endpoint. On iOS, you must also have registered a URL type for the SDK: that URL type must have a single scheme, and an additional property with name `com.swedbank.SwedbankPaySDK.callback`, type `Boolean`, and value `YES`. Alternatively you may set the url scheme explicitly in the initializer. Refer to the class documentation for more options.
 
 ## Root Endpoint
 
@@ -148,6 +159,8 @@ Content-Type: application/json
 
 The `paymentorders` endpoint is used to create a new Payment Order. It is specified as a transparent wrapper around the corresponding [Swedbank Pay API][create-payment-order]. However, it is to be expected that your backend will need to process the payment order both before making the Swedbank Pay API call, and after receiving the response from Swedbank Pay. The sample implementations validate the input, then create an internal unique identitifer for the payment order, and set that as `paymentorder.payeeInfo.payeeReference`, before making the Swedbank Pay call. After receiving the response, the backend stores the `id` of the Payment Order for future use, and forwards the response to the SDK.
 
+Optionally, if your implementation uses [instrument mode payments][instrument-mode], your backend can return the list of valid instruments, along with an endpoint to change the instrument. If you do this, you must also implement the Change Instrument endpoint. The Merchant Backend Configuration on the client side can then use this endpoint to change the instrument of an ongoing payment order.
+
 A production implementation should validate the payment order also from a business logic perspective. This is, naturally, outside the scope of the SDK, as is any other processing you may wish to perform with the payment order. The SDK expects the same form of response as returned from the Swedbank Pay API. Specifically, the response must contain the `view-paymentorder` operation.
 
 {:.code-view-header}
@@ -187,7 +200,109 @@ Content-Type: application/json
 }
 ```
 
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+    "paymentorder": {
+      "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
+    },
+    "operations": [
+        {
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE",
+            "rel": "view-paymentorder",
+            "method": "GET",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
 The Merchant Backend will then forward the response it received back to the calling app.
+
+If instrument mode is used, an you wish to be able to change the instrument, you can provide the list of valid instruments, and an endpoint for changing the instrument. This additional data is placed in an object under the key "mobileSDK".
+
+{:.code-view-header}
+**Forwarded Response**
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+    "paymentorder": {
+      "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
+    },
+    "operations": [
+        {
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE",
+            "rel": "view-paymentorder",
+            "method": "GET",
+            "contentType": "application/javascript"
+        }
+    ]
+    "mobileSDK": {
+        "validInstruments": ["CreditCard", "Invoice-PayExFinancingSe"],
+        "setInstrument": "/paymentorders/1234/setInstrument"
+    }
+}
+```
+
+## Set Instrument Endpoint
+
+You only need to implement this endpoint if you are using instrument mode payments. This endpoint is invoked when making a request to the `mobileSDK.setInstrument` url of a payment order created with the Payment Orders endpoint.
+
+This endpoint forwards the PATCH request made to it to the corresponding Swedbank Pay endpoint, as identified by the `update-paymentorder-setinstrument` operation of the payment order. It passes the response to that request back to the SDK. The sample implementation verifies the request body to contain exactly the operation `SetInstrument` and a string `instrument`.
+
+{:.code-view-header}
+**Request**
+
+```http
+POST /swedbank-pay-mobile/paymentorders HTTP/1.1
+Host: example.com
+Your-Api-Key: secretish
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "SetInstrument",
+        "intrument": "CreditCard"
+    }
+}
+```
+
+{:.table .table-striped}
+|     Required     | Field                | Type     | Description                               |
+| :--------------: | :------------------- | :------- | :---------------------------------------- |
+| {% icon check %} | `paymentorder`       | `object` | The changes to make to the payment order  |
+| {% icon check %} | └➔&nbsp;`operation`  | `string` | The operation to perform: "SetInstrument" |
+| {% icon check %} | └➔&nbsp;`instrument` | `string` | The instrument to set                     |
+
+
+Merchant Backend will then make a corresponding request to the Swedbank Pay API.
+
+{:.code-view-header}
+**Forwarded Request**
+
+```http
+PATCH /psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "SetInstrument",
+        "intrument": "CreditCard"
+    }
+}
+```
+
+The Merchant Backend will then forward the response it received back to the calling app. If needed, you can append the `mobileSDK` object to this response as well. If it is missing, the SDK will assume the original values are still valid.
 
 {:.code-view-header}
 **Response &amp; Forwarded Response**
@@ -233,7 +348,7 @@ The Android payment url helper endpoint expects a query parameter named `package
 
 The specified path for the Android payment url helper endpoint is `sdk-callback/android-intent`. The default constructors of the Android SDK form payment urls by appending `sdk-callback/android-intent` to the backend url, i.e. the root endpoint, and adding the `package` query parameter with the containing application's package name, and an `id` query parameter with a random value.
 
-The endpoint responds to a correct request with a redirect response, the redirect location being an [Intent-scheme Url][android-intent-scheme]. That url is constructed such that it uses the value of the `package` query parameter as the target package of the intent. The action of the intent shall be `com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER`; the SDK has an intent filter for this action. The uri (data) of the intent shall be the full url used in the request: if the endpoint was requested with the url.
+The endpoint responds with an html document that attempts to immediately redirect to an [Intent-scheme Url][android-intent-scheme]. That url is constructed such that it uses the value of the `package` query parameter as the target package of the intent. The action of the intent shall be `com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER`; the SDK has an intent filter for this action. The uri (data) of the intent shall be the full url used in the request. The html document shall also contain a link to that same url. This is needed because in some cases the browser will block the redirect to an Intent-scheme url, and will instead require that the navigation to that url happen from a user interaction.
 
 {:.code-view-header}
 **Request**
@@ -252,12 +367,26 @@ Host: example.com
 **Response**
 
 ```http
-HTTP/1.1 301 Moved Permanently ①
-Location: intent://example.com/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&id=abb50c53-53c1-4138-923f-59fcf0acd08d#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=your.ecom.app;end; ②
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>
+<head>
+<title>Swedbank Pay Payment</title>
+<link rel="stylesheet" href="https://design.swedbankpay.com/v/4.3.0/styles/dg-style.css">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="refresh" content="0;url=intent://example.com/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&id=abb50c53-53c1-4138-923f-59fcf0acd08d#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=your.ecom.app;end; ①">
+</head>
+<body>
+<div class="text-center">
+<img src="https://design.swedbankpay.com/v/4.3.0/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
+<p><a class="btn btn-executive" href="intent://example.com/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&id=abb50c53-53c1-4138-923f-59fcf0acd08d#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=your.ecom.app;end;">Back to app</a></p>
+</div>
+</body>
+</html>
 ```
 
-*   ① 302 Found is perhaps a more appropriate status. This may be changed in the future, after testing that the routing works correctly with that status.
-*   ② The `intent` url is transformed to an Android Intent using the data after the `#Intent;` token. The uri of that intent is the intent url up to that token, with the `intent` scheme replaced according to the `scheme=` parameter – in this case `https`.
+*   ① The `intent` url is transformed to an Android Intent using the data after the `#Intent;` token. The uri of that intent is the intent url up to that token, with the `intent` scheme replaced according to the `scheme=` parameter – in this case `https`.
 
 Using a payment url crafted this way causes an intent with the payment url to be delivered to the application when a third-party page navigates to the payment url. The SDK receives this intent, recognizes the payment url, and reloads the payment menu.
 
@@ -280,7 +409,7 @@ In order to have a foolproof system with optimal user experience, we must theref
     *   2a: The second navigation to the payment url is opened in the application: no further requirements for the payment url
     *   2b: The second navigation to the payment url is also opened in Safari: out of nice-UX options; need to redirect to a custom scheme url
 
-This state of matters necessitates an unintuitive and cumbersome system involving two hosts and a custom url scheme. The usage of two hosts is unavoidable if maximum compatibility combined with optimum user experience is desired. The custom url scheme is unavoidable if an escape hatch in badly behaving scenarios is desired. However, universal links need be configured only to one of the involved hosts, namely the one hosting the payment url. Thus, the page with a link back to the payment url can be on a generic server hosted by Swedbank Pay. \[Development note: the Swedbank Pay server for this purpose is not yet publicly available.\]
+This state of matters necessitates an unintuitive and cumbersome system involving two hosts and a custom url scheme. The usage of two hosts is unavoidable if maximum compatibility combined with optimum user experience is desired. The custom url scheme is unavoidable if an escape hatch in badly behaving scenarios is desired. However, universal links need be configured only to one of the involved hosts, namely the one hosting the payment url. Thus, the page with a link back to the payment url can be on a generic server hosted by Swedbank Pay. \[Development note: the Swedbank Pay server for this purpose is not yet available in the production environment.\]
 
 #### iOS Payment Url System
 
@@ -323,10 +452,10 @@ Host: example.com
 
 ```http
 HTTP/1.1 301 Moved Permanently ①
-Location: https://payment.url.trampoline.host/payment/url/trampoline/path?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&language=en-US&app=Your%20Ecom%20App
+Location: https://ecom.stage.payex.com/externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&language=en-US&app=Your%20Ecom%20App
 ```
 
-~~This example uses the public server hosted by Swedbank Pay~~ \[Development note: The public server is not yet available. The authority and path of url will be updated reflect the correct values for the public server when available.\], but you can also host the back-link page yourself if desired.
+This example uses the public server hosted by Swedbank Pay \[Development note: The public server is not yet available in the production environment. The url will be updated when it is released.\], but you can also host the back-link page yourself if desired.
 
 Safari will immediately follow the redirect:
 
@@ -334,8 +463,8 @@ Safari will immediately follow the redirect:
 **Request**
 
 ```http
-GET /payment/url/trampoline/path?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&language=en-US&app=Your%20Ecom%20App HTTP/1.1
-Host: payment.url.trampoline.host
+GET /externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&language=en-US&app=Your%20Ecom%20App HTTP/1.1
+Host: ecom.stage.payex.com
 ```
 
 {:.table .table-striped}
@@ -352,17 +481,27 @@ Host: payment.url.trampoline.host
 HTTP/1.1 200 OK
 Content-Type: text/html
 
+<!DOCTYPE html>
 <html>
 <head>
-<title>Your Ecom App Payment by Swedbank Pay</title>
-<link rel="stylesheet" href="https://design.swedbankpay.com/v/4.3.0/styles/dg-style.css">
-<meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swedbank Pay Redirect</title>
+    <link rel="icon" type="image/png" href="/externalresourcehost/content/images/favicon.png">
+    <link rel="stylesheet" href="/externalresourcehost/content/css/style.css">
 </head>
 <body>
-<div class="text-center">
-<img src="https://design.swedbankpay.com/v/4.3.0/img/swedbankpay-logo.svg" alt="Swedbank Pay" height="120">
-<p><a class="btn btn-executive" href="https://example.com/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&language=en-US&id=abb50c53-53c1-4138-923f-59fcf0acd08d&app=Your%20Ecom%20App&fallback=true">Back to Your Ecom App</a></p>
+    <div class="trampoline-container" onclick="redirect()">
+    <img alt="Swedbank Pay Logo" src="/externalresourcehost/content/images/swedbank-pay-logo-vertical.png" />
+    <span class="trampoline-text">
+            <a>Back to Your Ecom App</a>
+    </span>
 </div>
+
+<script>
+    function redirect() { window.location.href = decodeURIComponent("https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue"); };
+</script>
+
 </body>
 </html>
 ```
@@ -391,7 +530,7 @@ Location: yourecomapp://example.com/swedbank-pay-mobile/sdk-callback/ios-univers
 
 Note that this custom-scheme link is otherwise equal to the universal link opened in case 2a; accordingly, the SDK handles this by allowing the scheme of the payment url to be either the original scheme, or the custom scheme registered to the application.
 
-*   ① 302 Found is again a more appropriate status. This may be changed in the future.
+*   ① 302 Found is perhaps a more appropriate status. This may be changed in the future, after testing that the routing works correctly with that status.
 
 #### Apple App Site Association
 
@@ -464,3 +603,4 @@ Your implementation is encouraged to define its own problem types for any domain
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /introduction#problems
+[instrument-mode]: /checkout/payment-menu#payment-url

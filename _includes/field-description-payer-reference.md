@@ -6,11 +6,17 @@
 {%- endcapture -%}
 {%- capture payer_reference -%}
     {%- if documentation_section == "payment-menu" -%}
-        The reference to the payer from the merchant system, like e-mail address,
-        mobile number, customer number etc. Also used in [Payer Aware Payment Menu]({{ payer_aware_payment_menu_url }}).
+        The reference to the payer from the merchant system, like e-mail 
+        address, mobile number, customer number etc. Also used in 
+        [Payer Aware Payment Menu]({{payer_aware_payment_menu_url}}). 
+         Mandatory if `generateReccurenceToken`, `RecurrenceToken`, 
+         `generatePaymentToken` or `paymentToken` is `true`.
+
     {%- else -%}
-        The reference to the payer from the merchant system, like e-mail address,
-        mobile number, customer number etc.
+        The reference to the payer from the merchant system, like e-mail 
+        address, mobile number, customer number etc. Mandatory if 
+        `generateReccurenceToken`, `RecurrenceToken`, 
+        `generatePaymentToken` or `paymentToken` is `true`.
     {%- endif -%}
 {%- endcapture -%}
 {{- payer_reference | strip_newlines -}}

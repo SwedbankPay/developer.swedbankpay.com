@@ -12,7 +12,7 @@
 {% endcapture %}
 {% assign token_url=token_url | strip %}
 
-## Delete Token
+## Delete {{ token_field_name }}
 
 Payers should be able to delete payment tokens that are associated to
 them. How to delete a `{{ token_field_name }}` is described in the example below.

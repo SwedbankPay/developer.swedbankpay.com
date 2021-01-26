@@ -9,7 +9,7 @@ description: |
   Experience from developing the SDK may still be valuable for integrators
   wishing to show Payments pages in a Web View inside a mobile application.
   This page serves as a repository of that experience.
-menu_order: 1200
+menu_order: 1500
 ---
 
 {% capture disclaimer %}
@@ -20,9 +20,22 @@ and is not part of the Mobile SDK documentation proper.
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
 
+## Quick Fix List
+
+Here is a list of common gotchas. Please read through the whole document, though.
+
+*   On Android, you need to set `webView.settings.javaScriptEnabled = true`
+*   On Android, you need to set `webView.settings.domStorageEnabled = true` (used by some 3D-Secure pages)
+*   Web Views will not launch apps by themselves. You _must_ intercept navigations and launch apps yourself. See [External Applications](#external-applications) for details.
+*   On Android, `@JavascriptInterface` methods only take primitive arguments. You will need to `JSON.stringify` any complex arguments.
+*   Some 3D-Secure pages will not work if you open them in a Web View. This appears to be related to them launching an external application, which, in turn, opens a url in the browser app. See [Dealing with Picky Web Pages](#dealing-with-picky-web-pages) for strategies.
+*   Some pages make use of Javascript dialogs. Web Views do not display these on their own; you must add support by your `WebCromeClient` or `WKUIDelegate`.
+*   On Android, remember to call `webView.onResume()` and `webView.onPause()`.
+*   Remember that you can debug Web View contents!
+
 ## The Mobile SDK And You
 
-A major goal for the Mobile SDK is to provide a platform where you can start developing your mobile e-commerce application rapidly, in a regular, native mobile application development workflow. Hence, it is designed to be a fairly self-contained whole, with a prescribed interface between the mobile client side and the backend server side. This, of course, means that to use the SDK, your backend must implement the API used by the SDK. If you already have a working solution for web pages, this may not be ideal; indeed, you may wish to reuse your existing web page using Checkout or Payments, and expect to embed it inside your mobile application using a web view.
+A major goal for the Mobile SDK is to provide a platform where you can start developing your mobile e-commerce application rapidly, in a regular, native mobile application development workflow. Hence, it is designed to be a fairly self-contained whole, with a prescribed interface between the mobile client side and the backend server side. This, of course, means that to use the SDK, your backend must integrate with the SDK architecture. If you already have a working solution for web pages, this may not be ideal; indeed, you may wish to reuse your existing web page using Checkout or Payments, and expect to embed it inside your mobile application using a web view.
 
 Indeed, on a high level this is what the SDK mobile client components do, in addition to providing native Swift and Kotlin APIs to the servie. The SDK internally generates a web page that shows the Checkout payment menu, so the developer need not concern themselves with html or other web-specific technologies. An exisiting web implementation would not really benefit from the extra discoverability and quality-of-life improvements of a mobile-native API, so the SDK's value proposition seems to be little benefit for substantial reimplementation work.
 
@@ -532,7 +545,7 @@ The SDK does not use this method.
 
 Another option on Android is to allow the https `paymentUrl` to be opened in Chrome normally, but have that url redirect to an [intent url][android-intent-scheme]. That intent url can be made specific to your application, making it so that unless the user has installed an application with the same package id (from a non-Google-Play source, presumably), it will always be opened in your app. This is what the SDK does.
 
-The SDK does this by having `paymentUrl` return an http redirect response. This appears to work in all cases, though the documentation is not explicit on this. Now, as here we seem to want to have `paymentUrl` be the url loaded in the WebView, this does not work out-of-the-box. One option is to override `shouldInterceptRequest` in your `WebViewClient`, and special-case the loading of `paymentUrl`. Another solution could be loading `paymentUrl` normally, but adding a script to the page that checks for a JavaScript interface you provide in the WebView, and it is not there, then it would issue the redirect to the intent url. The documentation does state that Chrome will not launch an app "When the Intent URI is initiated without user gesture." As this is not what has been done in the SDK, we have not first-hand knowledge on best practices here. A redirect that happens during the page load may be allowed here. If it is not, then a button or some other way of issuing the redirect from user interaction is needed.
+The SDK does this by having `paymentUrl` return an html page that immediately redirects. In some cases the redirect will be blocked, so the page also contains a link to the same url, so the user can manually follow the redirect. Now, as here we seem to want to have `paymentUrl` be the url loaded in the WebView, this does not work out-of-the-box. One option is to override `shouldInterceptRequest` in your `WebViewClient`, and special-case the loading of `paymentUrl`. Another solution could be loading `paymentUrl` normally, but adding a script to the page that checks for a JavaScript interface you provide in the WebView, and it is not there, then it would issue the redirect to the intent url.
 
 For reference, the way the SDK handles `paymentUrl`s on Android looks like this from the perspective of the backend:
 
@@ -540,16 +553,26 @@ For reference, the way the SDK handles `paymentUrl`s on Android looks like this 
 **Request**
 
 ```http
-    GET /perform-payment
-    Host: example.com
+GET /perform-payment HTTP/1.1
+Host: example.com
 ```
 
 {:.code-view-header}
 **Response**
 
 ```http
-    HTTP/1.1 301 Moved Permanently
-    Location: intent://example.com/perform-payment#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=com.example.app;end;`;
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>
+    <head>
+        <title>Swedbank Pay Payment</title>
+        <meta http-equiv="refresh" content="0;url=intent://example.com/perform-payment#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=com.example.app;end;">
+    </head>
+    <body>
+        <a href="intent://example.com/perform-payment#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=com.example.app;end;">Back to app</a>
+    </body>
+</html>
 ```
 
 It uses an action defined by the SDK, and the package name of the containing application, making sure the intent is routed to the correct application, and to the correct SDK component. Note that the uri of the resulting intent is the `paymentUrl`.
@@ -558,7 +581,9 @@ It uses an action defined by the SDK, and the package name of the containing app
 
 Testing has shown, that on iOS some 3D-Secure pages do not like being opened in a web view. It does seem that this is mostly related to BankID integrations. We believe the problem stems from a configuration that sets a cookie in the browser, launches BankID, then BankID opens a different web page (not the `paymentUrl`), which expects to find that cookie. Now, if the first page was opened in a web view, the cookie is in that web view, but as the second page will be opened in Safari, the cookie will be nowhere to be found. Furthermore, at least in one instance, the original page in the web view will not receive any notification on the BankID process, despite being launched from there. We have not encountered this on Android, but it is quite possible for a similar situation to happen there also.
 
-Now, all of the above is speculation, and not really worth getting too deep into. The end result, however, is that some 3DS pages must be opened in Safari on iOS. The jury is still out if the same is true on Android. Fortunately, with the `paymentUrl` handling in place, this is straightforward to do: simply treat any urls not known to be working as "external app urls", i.e. open them with `UIApplication.shared.open(url)` and call the `decisionHandler` with `.cancel`. The payment will eventually navigate to `paymentUrl` in Safari, and should return to the app. It should be noted, though, that in many cases the initial navigation to `paymentUrl` will be opened in Safari instead of the app in these cases. This acerbates the need for fallback mechanisms.
+Now, all of the above is speculation, and not really worth getting too deep into. The end result, however, is that some 3DS pages must be opened in Safari on iOS. The jury is still out if the same is true on Android. As we already have a way of getting back to the app (ref. `paymentUrl`), the simple thing to do would be to open any url not tested to work in Safari. Unfortunately, matters are further complicated by some pages not working if we do _that_. The two pages found in testing are now added to the list of known good pages (as the do work in the web view), but others may be out there. The current best solution is therefore to open the _current_ page in Safari if it tries to navigate to an unknown page. This is what the SDK does: if it encounters a navigation that does not match the goodlist, it will take the current page url of the web view, and open that with `UIApplication.shared.open(url)` and call the `decisionHandler` with `.cancel`. (It will never happen in practice, but if the payment menu would be the current page in this situation, it will load the new url instead).
+
+The payment will eventually navigate to `paymentUrl` in Safari, and should return to the app. It should be noted, though, that in many cases the initial navigation to `paymentUrl` will be opened in Safari instead of the app in these cases. This acerbates the need for fallback mechanisms.
 
 The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages. Feel free to use this as a resource in your own implementation.
 

@@ -98,7 +98,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "SomeReference",
         "generateRecurrenceToken": "false",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
@@ -115,6 +114,9 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "PC1234",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
     },
     "invoice": {
@@ -159,6 +161,9 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
+        "payer": {  
+            "payerReference": "AB1234",
+        }
         "metadata": {
             "key1": "value1",
             "key2": 2,
@@ -233,7 +238,6 @@ Content-Type: application/json
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "generatePaymentToken": true,
@@ -255,6 +259,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
     },
     "invoice": {
@@ -281,7 +288,6 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Test Verification",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
@@ -296,6 +302,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/payeeInfo"
+        },
+        "payers": {
+            "id": "/psp/invoice/payments/{{ page.payment_id }}/payers"
         },
         "settings": {
             "id": "/psp/invoice/payments/{{ page.payment_id }}/settings"
@@ -441,14 +450,14 @@ Content-Type: application/json
 |                  | `legalAddress`                 | `object` | The Address object.                                                    |
 |                  | └➔&nbsp;`addressee`            | `string` | The full name of the addressee of this invoice                         |
 |                  | └➔&nbsp;`coAddress`            | `string` | The co Address of the addressee.                                       |
-|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the addresse.                                    |
+|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the addresse. Maximum 50 characters long.        |
 |                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the addresse.                                          |
 |                  | └➔&nbsp;`city`                 | `string` | The city name  of the addresse.                                        |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the addresse.                                      |
 |                  | `billingAddress`               | `object` | The BillingAddress object for the billing address of the addresse.     |
 |                  | └➔&nbsp;`addressee`            | `string` | The full name of the billing address adressee.                         |
 |                  | └➔&nbsp;`coAddress`            | `string` | The co address of the billing address adressee.                        |
-|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the billing address adressee.                    |
+|                  | └➔&nbsp;`streetAddress`        | `string` | The street address of the billing address adressee. Maximum 50 characters long.|
 |                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the billing address adressee.                          |
 |                  | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |

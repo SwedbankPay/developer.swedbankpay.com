@@ -56,7 +56,6 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "userAgent": "Mozilla/5.0...",
         "language": "da-DK",
         "urls": {
@@ -72,6 +71,9 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-12456",
             "subsite": "MySubsite"
+        },
+        "payer": {  
+            "payerReference": "AB1234",
         }
     },
     "mobilepay": {
@@ -93,7 +95,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                         |
-|                  | └➔&nbsp;`payerReference`        | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
@@ -107,6 +108,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
 |                  | └─➔&nbsp;`subsite`              | `String(40)` | {% include field-description-subsite.md %}                                                                                               |
+|                  | └➔&nbsp;`payer`                 | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and publicly available                                                                                                                                                                                                              |                                                                                                                                                                                                           |
 
 {:.code-view-header}
@@ -132,7 +135,6 @@ Content-Type: application/json
         "currency": "DKK",
         "amount": 0,
         "description": "Test Purchase",
-        "payerReference": "AB1234",
         "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
         "userAgent": "Mozilla/5.0",
         "language": "da-DK",
@@ -144,6 +146,9 @@ Content-Type: application/json
         },
         "payeeInfo": {
             "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
+        },
+        "payers": {
+           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payers"
         }
     },
     "operations": [
@@ -175,12 +180,12 @@ Content-Type: application/json
 | └➔&nbsp;`state`                     | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment. This field is only for status display purposes.                                                                   |
 | └➔&nbsp;`currency`                  | `string`     | The currency used                                                                                                                                                                                |
 | └➔&nbsp;`description`               | `string(40)` | {% include field-description-description.md %}                                                                                                                |
-| └➔&nbsp;`payerReference`            | `string`     | {% include field-description-payer-reference.md %}                                                                                |
 | └➔&nbsp;`initiatingSystemUserAgent` | `string`     | The system user agent used                                                                                                                                                                       |
 | └➔&nbsp;`userAgent`                 | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                   |
 | └➔&nbsp;`language`                  | `string`     | {% include field-description-language.md %}                                                                                                                             |
 | └➔&nbsp;`urls`                      | `string`     | The URI to the `urls` resource where all URIs related to the payment can be retrieved.                                                                                                           |
 | └➔&nbsp;`payeeInfo`                 | `string`     | The URI to the `payeeinfo` resource where the information about the payee of the payment can be retrieved.                                                                                       |
+| └➔&nbsp;`payers`                    | `string`     | The URI to the `payer` resource where the information about the payer can be retrieved.                                                        |
 
 ## Purchase
 
