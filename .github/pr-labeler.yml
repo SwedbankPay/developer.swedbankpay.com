@@ -1,0 +1,3 @@
+# Configuration file for https://github.com/TimonVS/pr-labeler-action
+
+fix: ['fix/*', 'hotfix/*']
