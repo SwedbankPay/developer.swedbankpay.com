@@ -3,10 +3,8 @@ title: Seamless View Events
 redirect_from:
 estimated_read: 11
 description: |
-  Welcome to Seamless View Events.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
-menu_order: 3000
+  Possible events during Seamless View payments.
+menu_order: 2900
 ---
 
 {% include seamless-view-events.md %}

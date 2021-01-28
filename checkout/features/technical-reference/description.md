@@ -3,9 +3,7 @@ title: Description
 redirect_from:
 estimated_read: 1
 description: |
-  Welcome to Description.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  The purchase summed up in a few words.
 menu_order: 1800
 ---
 

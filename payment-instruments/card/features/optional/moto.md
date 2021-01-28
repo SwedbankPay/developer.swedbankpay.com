@@ -3,9 +3,7 @@ title: MOTO
 redirect_from:
 estimated_read: 3
 description: |
-  Welcome to MOTO.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  Mail Order / Telephone Order transactions.
 menu_order: 1400
 ---
 

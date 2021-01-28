@@ -155,7 +155,7 @@ card_list_2:
     outlined: true
 card_list_3: 
 - title: Co-badge Card Choice for Dankort
-  description: Initialize payment process containing the order
+  description: Choose between the brands when using Visa/Dankort
   url:  /payment-instruments/card/features/optional/cobadge-dankort
   icon: 
     content: credit_card

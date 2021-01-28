@@ -77,12 +77,6 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
-- title: PaymentUrl
-  description: Redirecting the payer back to your site
-  url:  /payment-instruments/swish/features/technical-reference/payment-url
-  icon:
-    content: link
-    outlined: true
 - title: Payment State
   description: Different states in the payment process
   url: /payment-instruments/swish/features/technical-reference/payment-state
@@ -94,6 +88,13 @@ card_list_2:
   url:  /payment-instruments/swish/features/technical-reference/payment-transaction-states
   icon:
     content: hdr_weak
+    outlined: true
+- title: PaymentUrl
+  description: Redirecting the payer back to your site
+  url:  /payment-instruments/swish/features/technical-reference/payment-url
+  icon:
+    content: link
+    outlined: true
 - title: Prices
   description: The payment's prices resource
   url:  /payment-instruments/swish/features/technical-reference/prices

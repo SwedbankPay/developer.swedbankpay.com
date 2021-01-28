@@ -3,9 +3,7 @@ title: Checkin Events
 redirect_from:
 estimated_read: 2
 description: |
-  Welcome to Checkin Events.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  Possible events during Checkin.
 menu_order: 1500
 ---
 

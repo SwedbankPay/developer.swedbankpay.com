@@ -5,7 +5,7 @@ estimated_read: -
 card_overview: true
 description: |
     In this section you will find various resources for Swedbank Pay’s Checkout.
-icon:
+icon: 
   content: remove_red_eye
 additional: true
 menu_order: 1000

@@ -3,9 +3,7 @@ title: Custom Logo
 redirect_from:
 estimated_read: 2
 description: |
-  Welcome to Custom Logo.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  How to add your own logo.
 menu_order: 1300
 ---
 

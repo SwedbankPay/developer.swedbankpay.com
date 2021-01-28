@@ -3,9 +3,7 @@ title: Callback Reference
 redirect_from:
 estimated_read: 7
 description: |
-  Welcome to Callback reference.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  Getting updates about payment or transaction changes.
 menu_order: 1400
 ---
 

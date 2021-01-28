@@ -1,11 +1,9 @@
 ---
-title: Cobadge Dankort
+title: Co-badge Dankort
 redirect_from:
 estimated_read: 1
 description: |
-  Welcome to Cobadge Dankort.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  Choose between the brands when using Visa/Dankort.
 menu_order: 1300
 ---
 
