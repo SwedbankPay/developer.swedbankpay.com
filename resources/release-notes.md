@@ -11,6 +11,13 @@ body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
 
+## 28 Jan 2021
+
+### Version 2.1.2
+
+* Updated Theme version to 1.9.9
+* Updated Design Guide Version to 5.0.1
+
 ## 26 Jan 2021
 
 ### Version 2.1.0
