@@ -59,14 +59,13 @@ defaults:
       consumer_ssn_no: 26026708248
 
 elasticsearch:
-  url: "http://localhost:9200/"     # Required. Supports auth and SSL: https://user:pass@someurl.com
+  #url: "http://localhost"          # Required. Supports auth and SSL: https://user:pass@someurl.com
                                     # Can also read URLs stored in environment variable named
                                     # BONSAI_URL and ELASTICSEARCH_URL.
   number_of_shards: 1               # Optional. Default is 1 primary shard.
   number_of_replicas: 1             # Optional. Default is 1 replica.
-  index_name: "developer"           # Optional. Default is "jekyll".
+  index_name: "test-psp-developer"  # Optional. Default is "jekyll".
   default_type: "post"              # Optional. Default type is "post".
   environments:                     # Optional. Set environments where Searchyll should run
     - "production"                  # Default runs on all environment if empty
-  #  - 'development'                 # If set will only run in speccified environments
-  #api_key: "super-secret-key"
+  #  - 'development'                # If set will only run in speccified environments
