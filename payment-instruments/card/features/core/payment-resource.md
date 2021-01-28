@@ -3,9 +3,7 @@ title: Payment Resource
 redirect_from:
 estimated_read: 15
 description: |
-  Welcome to Payment Resource - a subsection of Core Features.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  The overall payment process.
 menu_order: 1600
 ---
 

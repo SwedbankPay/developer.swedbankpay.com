@@ -3,9 +3,7 @@ title: Prices
 redirect_from:
 estimated_read: 10
 description: |
-  Welcome to Prices.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  The payment's prices resource.
 menu_order: 2400
 ---
 

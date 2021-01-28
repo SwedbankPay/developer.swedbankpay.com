@@ -80,3 +80,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`      | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`metadata`             | `object`     | {% include field-description-metadata.md %}                                                                                                                                                 |
 
+[split-settlement]: /checkout/features/core/settlement-reconciliation#split-settlement
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
+
