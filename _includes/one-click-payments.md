@@ -184,6 +184,6 @@ TODO: Remove pipes from the above code example and add a field table
 [delete-payment-token]: #delete-payment-token
 [cancel]: /payment-instruments/card/features/core/cancel
 [capture]: /payment-instruments/card/features/core/capture
-[create-card-payment]: /payment-instruments/card/features/core/create-payment
-[create-invoice-payment]: /payment-instruments/invoice/features/core/create-payment
+[create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
+[create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
 [verify]: /payment-instruments/card/features/optional/verify

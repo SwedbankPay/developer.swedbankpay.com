@@ -307,8 +307,12 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
+[callback]: /payment-instruments/card/features/technical-reference/callback-reference
+[cancel]: /payment-instruments/card/features/core/capture
+[capture]: /payment-instruments/card/features/core/capture
 [complete-url]: /payment-instruments/card/features/technical-reference/complete-url
 [3ds2]: /payment-instruments/card/features/core/3d-secure-2
+[one-click-payments]: /payment-instruments/card/features/optional/one-click-payments
 [payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
 [paymenturl]: /payment-instruments/card/features/technical-reference/payment-url
 [price-resource]: /payment-instruments/card/features/technical-reference/prices

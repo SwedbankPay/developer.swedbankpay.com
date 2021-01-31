@@ -112,3 +112,5 @@ sequenceDiagram
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
 ```
+
+[transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

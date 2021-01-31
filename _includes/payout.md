@@ -11,8 +11,8 @@ having to collect card details a second time." %}
     card transactions are kept separate.
 *   You need to have the 3-D Secure protocol enabled.
 *   The service is available through a Swedbank Pay hosted payment page.
-*   The current implementation is only available for gaming transactions (
-    [MCC][mcc]: 7995).
+*   The current implementation is only available for gaming transactions
+    (Merchant Category Code 7995).
 *   The payout service is not a part of Swedbank Pay Settlement Service.
 
 ### API requests
