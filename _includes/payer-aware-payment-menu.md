@@ -35,7 +35,7 @@ in your UI.
 This can be achieved by forcing the creation of a `paymentToken` by setting
 `disableStoredPaymentDetails` to `true` in a Purchase payment (if you want
 to withdraw money and create the token in the same operation), or by performing
-a [Verify payment][verify] (without withdrawing any money).
+a [verification][verify] (without withdrawing any money).
 
 Setting `disableStoredPaymentDetails` to `true` will turn off all stored payment
 details for the current purchase. The payer will also not be asked if they
@@ -141,4 +141,5 @@ only a subset of all tokens.
 [payment-url]: /payment-menu/features/technical-reference/payment-url
 [one-click-payments]: /payment-instruments/card/features/optional/one-click-payments
 [recur]: /payment-menu/features/optional/recur
+[verify]: /payment-menu/features/optional/verify
 [instrument-mode]: /payment-menu/features/optional/instrument-mode

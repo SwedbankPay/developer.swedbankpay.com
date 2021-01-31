@@ -3,7 +3,7 @@
 {% assign features_url = documentation_section | prepend: '/' | append: '/features/core' %}
 
 {% if api_resource == "creditcard" %}
-    {% assign features_url = features | prepend: '/payment-instruments' %}
+    {% assign features_url = features | prepend: '/payment-instruments/card/features/core' %}
     {% assign api_resource_field_name = "payment" %}
 {% else %}
     {% assign api_resource_field_name = "paymentorder" %}
