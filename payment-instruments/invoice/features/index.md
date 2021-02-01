@@ -4,7 +4,7 @@ redirect_from: /payment-instruments/invoice/other-features
 estimated_read: '-'
 card_overview: true
 description: |
-    In this section you will find various resources for Invoice.
+  In this section you can read more about the different features of Invoice.
 icon:
   content: remove_red_eye
 additional: true

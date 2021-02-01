@@ -4,7 +4,7 @@ redirect_from: /payment-instruments/card/other-features
 estimated_read: '-'
 card_overview: true
 description: |
-    In this section you will find various resources for Card.
+  In this section you can read more about the different features of Card.
 icon:
   content: remove_red_eye
 additional: true

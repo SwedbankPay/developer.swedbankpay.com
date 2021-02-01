@@ -4,8 +4,8 @@ redirect_from: /payment-menu/other-features
 estimated_read: '-'
 card_overview: true
 description: |
-  In this section you will find various resources for Swedbank Pay Payment
-  Menu.
+  In this section you can read more about the different features of the
+  Swedbank Pay Payment Menu.
 icon:
   content: remove_red_eye
 additional: true

@@ -4,7 +4,8 @@ redirect_from: /checkout/other-features
 estimated_read: '-'
 card_overview: true
 description: |
-    In this section you will find various resources for Swedbank Pay Checkout.
+  In this section you can read more about the different features of
+  Swedbank Pay Checkout.
 icon:
   content: remove_red_eye
 additional: true
