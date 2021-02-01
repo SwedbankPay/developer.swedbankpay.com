@@ -11,37 +11,37 @@ menu_order: 1100
 card_list:
 - title: Abort
   description: Aborting a created payment
-  url: /payment-instruments/invoice/features/core-features/abort-reference
+  url: /payment-instruments/invoice/features/core/abort-reference
   icon:
     content: pan_tool
     outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /payment-instruments/invoice/features/core-features/cancel
+  url: /payment-instruments/invoice/features/core/cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /payment-instruments/invoice/features/core-features/capture
+  url: /payment-instruments/invoice/features/core/capture
   icon:
     content: compare_arrows
     outlined: true
 - title: Payment Resource
   description: When initiating a payment process
-  url: /payment-instruments/invoice/features/core-features/payment-resource
+  url: /payment-instruments/invoice/features/core/payment-resource
   icon:
     content: credit_card
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /payment-instruments/invoice/features/core-features/reversal
+  url: /payment-instruments/invoice/features/core/reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /payment-instruments/invoice/features/core-features/settlement-reconciliation
+  url:  /payment-instruments/invoice/features/core/settlement-reconciliation
   icon:
     content: description
     outlined: true
