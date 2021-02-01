@@ -64,7 +64,7 @@ card_list:
     outlined: true
 - title: Payment State
   description: Different states in the payment process
-  url: /payment-instruments/card/features/techincal-reference/payment-state
+  url: /payment-instruments/card/features/technical-reference/payment-state
   icon:
     content: credit_card
     outlined: true
