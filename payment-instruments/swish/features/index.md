@@ -1,7 +1,7 @@
 ---
 title: Features
 redirect_from: /swish/other-features
-estimated_read: -
+estimated_read: '-'
 card_overview: true
 description: |
     In this section you will find various resources for Swish.
@@ -9,7 +9,7 @@ icon:
   content: remove_red_eye
 additional: true
 menu_order: 1000
-card_list: 
+card_list:
 - title: Abort
   description: Aborting a created payment
   url: /payment-instruments/swish/features/core/abort-reference
@@ -119,7 +119,7 @@ card_list_2:
   icon:
     content: done_all
     outlined: true
-card_list_3: 
+card_list_3:
 - title: Payment Link
   description: Sending the payment via mail or SMS
   url:  /payment-instruments/swish/features/optional/payment-link

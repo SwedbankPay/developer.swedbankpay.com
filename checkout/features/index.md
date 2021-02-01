@@ -1,15 +1,15 @@
 ---
 title: Features
 redirect_from: /checkout/other-features
-estimated_read: -
+estimated_read: '-'
 card_overview: true
 description: |
     In this section you will find various resources for Swedbank Pay Checkout.
-icon: 
+icon:
   content: remove_red_eye
 additional: true
 menu_order: 1000
-card_list: 
+card_list:
 - title: 3D Secure 2
   description: Authenticating the cardholder
   url:  /checkout/features/core/3d-secure-2
@@ -130,7 +130,7 @@ card_list_2:
   icon:
     content: event
     outlined: true
-card_list_3: 
+card_list_3:
 - title: Custom Logo
   description: How to add your own logo
   url: /checkout/features/optional/custom-logo

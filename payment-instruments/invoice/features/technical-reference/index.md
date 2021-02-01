@@ -1,7 +1,7 @@
 ---
 title: Technical Reference
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
   This section is a technical reference for the requests and responses
   you will encounter when integrating against Invoice.

@@ -1,18 +1,18 @@
 ---
 title: Optional Features
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
-This section details the features of Card that are optional. 
+This section details the features of Card that are optional.
 icon:
   content: remove_red_eye
 additional: true
 menu_order: 1200
-card_list: 
+card_list:
 - title: Co-badge Card Choice for Dankort
   description: Initialize payment process containing the order
   url:  /payment-instruments/card/features/optional/cobadge-dankort
-  icon: 
+  icon:
     content: credit_card
     outlined: true
 - title: MOTO

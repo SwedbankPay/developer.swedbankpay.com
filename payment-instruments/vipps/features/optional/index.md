@@ -1,14 +1,14 @@
 ---
 title: Optional Features
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
   This section details the features of Vipps that are optional.
 icon:
   content: remove_red_eye
 additional: true
 menu_order: 1200
-card_list_3: 
+card_list_3:
 - title: Payment Link
   description: Sending the payment via mail or SMS
   url:  /payment-instruments/vipps/features/optional/payment-link
