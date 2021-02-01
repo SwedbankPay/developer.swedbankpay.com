@@ -1,6 +1,5 @@
 ---
 title: Optional Features
-estimated_read: '-'
 description: |
   This section details the features of Trustly that are optional.
 icon:

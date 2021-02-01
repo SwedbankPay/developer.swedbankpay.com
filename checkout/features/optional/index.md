@@ -1,6 +1,5 @@
 ---
 title: Optional Features
-estimated_read: '-'
 description: |
   This section details the Checkout features that are optional.
 icon:

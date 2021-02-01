@@ -1,6 +1,5 @@
 ---
 title: Optional Features
-estimated_read: '-'
 description: |
   This section details the features of Vipps that are optional.
 icon:

@@ -1,6 +1,5 @@
 ---
 title: Core Features
-estimated_read: '-'
 description: |
   This section details the Payment Menu features that are essential for the
   payment process.

@@ -1,7 +1,6 @@
 ---
 title: Features
 redirect_from: /payment-instruments/mobile-pay/other-features
-estimated_read: '-'
 card_overview: true
 description: |
     In this section you will find various resources for MobilePay Online.

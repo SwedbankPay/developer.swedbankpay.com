@@ -1,6 +1,5 @@
 ---
 title: Optional Features
-estimated_read: '-'
 description: |
   This section details the features of MobilePay Online that are optional.
 icon:

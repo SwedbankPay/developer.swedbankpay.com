@@ -1,7 +1,6 @@
 ---
 title: Features
 redirect_from: /payment-menu/other-features
-estimated_read: '-'
 card_overview: true
 description: |
   In this section you can read more about the different features of the
