@@ -11,25 +11,25 @@ menu_order: 1100
 card_list:
 - title: Abort
   description: Aborting a created payment
-  url: /payment-instruments/swish/features/core-features/abort-reference
+  url: /payment-instruments/swish/features/core/abort-reference
   icon:
     content: highlight_off
     outlined: true
 - title: Payment Resource
   description: When initiating a payment process
-  url: /payment-instruments/swish/features/core-features/payment-resource
+  url: /payment-instruments/swish/features/core/payment-resource
   icon:
     content: credit_card
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /payment-instruments/swish/features/core-features/reversal
+  url: /payment-instruments/swish/features/core/reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /payment-instruments/swish/features/core-features/settlement-reconciliation
+  url:  /payment-instruments/swish/features/core/settlement-reconciliation
   icon:
     content: description
     outlined: true
