@@ -1,6 +1,5 @@
 ---
 title: PayeeReference
-redirect_from:
 estimated_read: 1
 description: |
   The merchant's reference for a specific payment.

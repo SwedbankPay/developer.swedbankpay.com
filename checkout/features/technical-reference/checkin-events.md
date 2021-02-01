@@ -1,6 +1,5 @@
 ---
 title: Checkin Events
-redirect_from:
 estimated_read: 2
 description: |
   Possible events during Checkin.

@@ -1,6 +1,5 @@
 ---
 title: Optional Features
-redirect_from:
 estimated_read: '-'
 description: |
   This section details the Payment Menu features that are optional.

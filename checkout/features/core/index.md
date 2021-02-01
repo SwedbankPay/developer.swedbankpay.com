@@ -1,6 +1,5 @@
 ---
 title: Core Features
-redirect_from:
 estimated_read: '-'
 description: |
   This section details the Checkout features that are essential for the payment

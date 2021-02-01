@@ -1,6 +1,5 @@
 ---
 title: Payout
-redirect_from:
 estimated_read: 3
 description: |
   Making deposits to payers' cards.

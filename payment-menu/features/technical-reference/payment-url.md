@@ -1,6 +1,5 @@
 ---
 title: PaymentUrl
-redirect_from:
 estimated_read: 4
 description: |
   Redirecting the payer back to your site.

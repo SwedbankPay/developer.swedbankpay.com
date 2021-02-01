@@ -1,6 +1,5 @@
 ---
 title: Callback Reference
-redirect_from:
 estimated_read: 7
 description: |
   Getting updates about payment or transaction changes

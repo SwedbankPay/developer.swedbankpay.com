@@ -1,6 +1,5 @@
 ---
 title: Payer Aware Payment Menu
-redirect_from:
 estimated_read: 4
 description: |
   A payment menu tailored to the payer.

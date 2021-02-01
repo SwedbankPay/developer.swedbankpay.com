@@ -1,6 +1,5 @@
 ---
 title: Payment Menu Events
-redirect_from:
 estimated_read: 5
 description: |
   Possible events during Payment Menu payments

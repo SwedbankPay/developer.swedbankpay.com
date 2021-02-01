@@ -1,6 +1,5 @@
 ---
 title: Delete Token
-redirect_from:
 estimated_read: 1
 description: |
   How to delete tokens.

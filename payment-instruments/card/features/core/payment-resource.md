@@ -1,6 +1,5 @@
 ---
 title: Payment Resource
-redirect_from:
 estimated_read: 15
 description: |
   The overall payment process.
