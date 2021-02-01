@@ -1,7 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-## Callback
-
 {% include alert.html type="warning" icon="warning" body="While the callback
 feature is mandatory, we would like to emphasize that it is mainly a fail-safe
 feature. We strongly advice that it is not your primary mean of checking for
