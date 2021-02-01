@@ -1,6 +1,6 @@
 ---
 title: Features
-redirect_from: /trustly/other-features
+redirect_from: /payment-instruments/trustly/other-features
 estimated_read: '-'
 card_overview: true
 description: |

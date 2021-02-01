@@ -1,6 +1,6 @@
 ---
 title: Features
-redirect_from: /mobile-pay/other-features
+redirect_from: /payment-instruments/mobile-pay/other-features
 estimated_read: '-'
 card_overview: true
 description: |
