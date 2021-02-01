@@ -1,6 +1,5 @@
 ---
 title: Core Features
-estimated_read: '-'
 description: |
   This section details the features of Swish that are essential for the
   payment process.

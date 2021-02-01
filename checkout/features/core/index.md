@@ -1,6 +1,5 @@
 ---
 title: Core Features
-estimated_read: '-'
 description: |
   This section details the Checkout features that are essential for the payment
   process.
