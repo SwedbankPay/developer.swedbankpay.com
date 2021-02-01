@@ -327,7 +327,7 @@ specified in the response by finding the appropriate operation based on its
 
 [Read more about the settlement process here][settlement].
 
-{% include callback-reference.md %}
+{% include callback.md %}
 
 {% include problems/problems.md %}
 

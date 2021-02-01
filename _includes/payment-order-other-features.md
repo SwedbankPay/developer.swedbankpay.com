@@ -750,7 +750,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         }
     },
@@ -1083,7 +1083,7 @@ Content-Type: application/json
 
 Triggered on terminal errors, and when the configuration fails validation.
 
-{% include callback-reference.md %}
+{% include callback.md %}
 
 {% comment %}
 include parameters aren't scoped to the inside of the include, they are just

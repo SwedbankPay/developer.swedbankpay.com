@@ -49,7 +49,7 @@ Content-Type: application/json
             "orderReference": "or123",
             "subsite": "mySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "cardholder": {
@@ -307,7 +307,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-[callback]: /payment-instruments/card/features/technical-reference/callback-reference
+[callback]: /payment-instruments/card/features/technical-reference/callback
 [cancel]: /payment-instruments/card/features/core/capture
 [capture]: /payment-instruments/card/features/core/capture
 [complete-url]: /payment-instruments/card/features/technical-reference/complete-url
