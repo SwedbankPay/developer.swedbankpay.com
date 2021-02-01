@@ -1,6 +1,6 @@
 ---
 title: Features
-redirect_from: /card/other-features
+redirect_from: /payment-instruments/card/other-features
 estimated_read: '-'
 card_overview: true
 description: |

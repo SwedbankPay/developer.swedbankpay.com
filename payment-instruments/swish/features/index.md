@@ -1,6 +1,6 @@
 ---
 title: Features
-redirect_from: /swish/other-features
+redirect_from: /payment-instruments/swish/other-features
 estimated_read: '-'
 card_overview: true
 description: |

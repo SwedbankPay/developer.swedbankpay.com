@@ -1,6 +1,6 @@
 ---
 title: Features
-redirect_from: /vipps/other-features
+redirect_from: /payment-instruments/vipps/other-features
 estimated_read: 10
 card_overview: true
 description: |
@@ -9,7 +9,7 @@ icon:
   content: remove_red_eye
 additional: true
 menu_order: 1000
-card_list: 
+card_list:
 - title: Abort
   description: Aborting a created payment
   url: /payment-instruments/vipps/features/core/abort-reference
@@ -130,7 +130,7 @@ card_list_2:
   icon:
     content: done_all
     outlined: true
-card_list_3: 
+card_list_3:
 - title: Payment Link
   description: Sending the payment via mail or SMS
   url:  /payment-instruments/vipps/features/optional/payment-link
