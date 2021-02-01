@@ -1,6 +1,5 @@
 ---
 title: Prices
-redirect_from:
 estimated_read: 10
 description: |
   The payment's prices resource.

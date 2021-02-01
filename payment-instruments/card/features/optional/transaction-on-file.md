@@ -1,6 +1,5 @@
 ---
 title: TransactionOnFile
-redirect_from:
 estimated_read: 4
 description: |
   Submitting subsequent transactions via file.

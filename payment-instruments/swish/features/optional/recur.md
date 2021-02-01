@@ -1,6 +1,5 @@
 ---
 title: Recur
-redirect_from:
 estimated_read: 4
 description: |
   Welcome to Recur.

@@ -1,6 +1,5 @@
 ---
 title: One Click Payments
-redirect_from:
 estimated_read:  5
 description: |
   Prefilling the payment details using payment tokens.

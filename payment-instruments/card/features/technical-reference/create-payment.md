@@ -1,6 +1,5 @@
 ---
 title: Create Payment
-redirect_from:
 estimated_read: 8
 description: |
   When initiating a payment process.

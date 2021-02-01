@@ -1,6 +1,5 @@
 ---
 title: Abort
-redirect_from:
 estimated_read: 3
 description: |
   Aborting a created payment.

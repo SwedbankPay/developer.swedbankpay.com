@@ -1,6 +1,5 @@
 ---
 title: Purchase
-redirect_from:
 estimated_read: 8
 description: |
   The bread and butter of the payments.

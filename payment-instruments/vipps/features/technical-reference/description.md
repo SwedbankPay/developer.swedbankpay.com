@@ -1,6 +1,5 @@
 ---
 title: Description
-redirect_from:
 estimated_read: 1
 description: |
   The purchase summed up in a few words.

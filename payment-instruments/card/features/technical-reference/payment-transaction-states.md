@@ -1,6 +1,5 @@
 ---
 title: Transactions states
-redirect_from:
 estimated_read: 3
 description: |
   Possible states of the payments and transactions.

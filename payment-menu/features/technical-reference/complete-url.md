@@ -1,6 +1,5 @@
 ---
 title: CompleteUrl
-redirect_from:
 estimated_read: 1
 description: |
   Where you go when the payment is completed.

@@ -1,6 +1,5 @@
 ---
 title: Verify
-redirect_from:
 estimated_read: 4
 description: |
   Validating the payer's payment details.

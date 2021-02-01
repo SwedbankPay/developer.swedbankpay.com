@@ -1,6 +1,5 @@
 ---
 title: PayeeInfo
-redirect_from:
 estimated_read: 1
 description: |
   Payment specific merchant information.
