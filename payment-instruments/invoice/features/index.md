@@ -48,7 +48,7 @@ card_list:
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /payment-instruments/invoice/features/technical-reference/callback-reference
+  url:  /payment-instruments/invoice/features/technical-reference/callback
   icon:
     content: low_priority
     outlined: true

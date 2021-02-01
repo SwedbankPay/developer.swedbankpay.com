@@ -10,7 +10,7 @@ menu_order: 1300
 card_list:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /payment-menu/features/technical-reference/callback-reference
+  url:  /payment-menu/features/technical-reference/callback
   icon:
     content: low_priority
     outlined: true
