@@ -219,7 +219,7 @@ sequenceDiagram
     URL when the payer has completed the payment.
     [See the Callback API description here][technical-reference-callback].
 
-[abort]: /payment-instruments/card/features/core/abort
+[abort]: /payment-instruments/card/features/core/abort-reference
 [card-payment]: /assets/img/payments/card-payment.png
 [card]: /payment-instruments/card
 [mobile-pay]: /payment-instruments/mobile-pay

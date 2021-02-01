@@ -240,7 +240,7 @@ sequenceDiagram
 
 [hosted-view]: /payment-instruments/card/seamless-view
 [one-click-payments]: /payment-instruments/card/features/optional/one-click-payments
-[recurrence]: /card/features/optional/recur
+[recurrence]: payment-instruments/card/features/optional/recur
 [redirect]: /payment-instruments/card/redirect
 [swedish-verify]: /assets/img/payments/swedish-verify.png
 
