@@ -4,7 +4,7 @@ redirect_from: /payment-instruments/trustly/other-features
 estimated_read: '-'
 card_overview: true
 description: |
-    In this section you will find various resources for Trustly.
+  In this section you can read more about the different features of Trustly.
 icon:
   content: remove_red_eye
 additional: true

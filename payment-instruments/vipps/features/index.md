@@ -4,7 +4,7 @@ redirect_from: /payment-instruments/vipps/other-features
 estimated_read: 10
 card_overview: true
 description: |
-    In this section you will find various resources for Vipps.
+  In this section you can read more about the features of Vipps.
 icon:
   content: remove_red_eye
 additional: true
