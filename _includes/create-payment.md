@@ -1,12 +1,4 @@
-{% capture documentation_section %}{% include documentation-section.md %}{%
-endcapture %}
-{% assign features_url = documentation_section | prepend: '/' %}
-{% if documentation_section == "payment-menu" or documentation_section ==
-"checkout" %}
-    {% assign features_url = documentation_section | prepend: '/' %} 
-{% else %}
-    {% assign features_url = documentation_section | prepend: '/payment-instruments/' %} 
-{% endif %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Create Payment
 
@@ -46,9 +38,9 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`operation` | `string` | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
 | {% icon check %} | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                                                                                                                                                                                         |
 
-[cancel]: payment-instruments/card/features/core/cancel
-[capture]: payment-instruments/card/features/core/capture
-[purchase]: payment-instruments/card/features/technical-reference/purchase
-[payout]: payment-instruments/card/features/optional/payout
-[recur]: payment-instruments/card/features/optional/recur
-[verify]: payment-instruments/card/features/optional/verify
+[cancel]: {{ features_url }}/core/cancel
+[capture]: {{ features_url }}/core/capture
+[purchase]: {{ features_url }}/technical-reference/purchase
+[payout]: {{ features_url }}/optional/payout
+[recur]: {{ features_url }}/optional/recur
+[verify]: {{ features_url }}/optional/verify
