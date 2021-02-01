@@ -1,7 +1,7 @@
 ---
 title: Features
 redirect_from: /card/other-features
-estimated_read: -
+estimated_read: '-'
 card_overview: true
 description: |
     In this section you will find various resources for Card.
@@ -9,7 +9,7 @@ icon:
   content: remove_red_eye
 additional: true
 menu_order: 1000
-card_list: 
+card_list:
 - title: 3D Secure 2
   description: Authenticating the cardholder
   url:  /payment-instruments/card/features/core/3d-secure-2
@@ -153,11 +153,11 @@ card_list_2:
   icon:
     content: done_all
     outlined: true
-card_list_3: 
+card_list_3:
 - title: Co-badge Card Choice for Dankort
   description: Choose between the brands when using Visa/Dankort
   url:  /payment-instruments/card/features/optional/cobadge-dankort
-  icon: 
+  icon:
     content: credit_card
     outlined: true
 - title: MOTO

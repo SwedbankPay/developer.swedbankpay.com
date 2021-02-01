@@ -1,14 +1,14 @@
 ---
 title: Optional Features
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
-  This section details the features of Invoice that are optional. 
+  This section details the features of Invoice that are optional.
 icon:
   content: remove_red_eye
 additional: true
 menu_order: 1200
-card_list: 
+card_list:
 - title: Payment Link
   description: Sending the payment via mail or SMS
   url:  /payment-instruments/invoice/features/optional/payment-link

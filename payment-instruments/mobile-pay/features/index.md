@@ -1,7 +1,7 @@
 ---
 title: Features
 redirect_from: /mobile-pay/other-features
-estimated_read: -
+estimated_read: '-'
 card_overview: true
 description: |
     In this section you will find various resources for MobilePay Online.
@@ -125,7 +125,7 @@ card_list_2:
   icon:
     content: done_all
     outlined: true
-card_list_3:  
+card_list_3:
 - title: Payment Link
   description: Sending the payment via mail or SMS
   url:  /payment-instruments/mobile-pay/features/optional/payment-link

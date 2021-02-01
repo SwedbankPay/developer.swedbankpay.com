@@ -1,7 +1,7 @@
 ---
 title: Features
 redirect_from: /trustly/other-features
-estimated_read: -
+estimated_read: '-'
 card_overview: true
 description: |
     In this section you will find various resources for Trustly.
@@ -9,7 +9,7 @@ icon:
   content: remove_red_eye
 additional: true
 menu_order: 1000
-card_list: 
+card_list:
 - title: Abort
   description: Aborting a created payment
   url: /payment-instruments/trustly/features/core/abort-reference

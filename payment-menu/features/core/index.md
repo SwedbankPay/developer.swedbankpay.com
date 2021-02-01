@@ -1,15 +1,15 @@
 ---
 title: Core Features
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
-This section details the Payment Menu features that are essential for the 
+This section details the Payment Menu features that are essential for the
 payment process.
 icon:
   content: remove_red_eye
 additional: true
 menu_order: 1100
-card_list: 
+card_list:
 - title: 3D Secure 2
   description: Authenticating the cardholder
   url:  /payment-menu/features/core-features/3d-secure-2

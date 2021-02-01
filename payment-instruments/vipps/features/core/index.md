@@ -1,15 +1,15 @@
 ---
 title: Core Features
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
-  This section details the features of Vipps that are essential for the 
+  This section details the features of Vipps that are essential for the
   payment process.
 icon:
   content: remove_red_eye
 additional: true
 menu_order: 1100
-card_list: 
+card_list:
 - title: Abort
   description: Aborting a created payment
   url: /payment-instruments/vipps/features/core-features/abort-reference
@@ -54,4 +54,3 @@ card_list:
 
 {% include card-list.html card_list=page.card_list
     col_class="col-lg-4" %}
-    

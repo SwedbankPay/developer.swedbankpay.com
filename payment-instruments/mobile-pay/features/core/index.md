@@ -1,7 +1,7 @@
 ---
 title: Core Features
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
   This section details the features of MobilePay Online that are essential for
   the payment process.

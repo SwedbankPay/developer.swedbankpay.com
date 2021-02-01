@@ -1,14 +1,14 @@
 ---
 title: Optional Features
 redirect_from:
-estimated_read: -
+estimated_read: '-'
 description: |
-  This section details the Checkout features that are optional. 
+  This section details the Checkout features that are optional.
 icon:
   content: remove_red_eye
 additional: true
 menu_order: 1200
-card_list: 
+card_list:
 - title: Custom Logo
   description: How to add your own logo
   url: /checkout/features/optional/custom-logo
