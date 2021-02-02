@@ -1,8 +1,5 @@
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% capture documentation_section_url %}/{{ documentation_section }}{% endcapture %}
-{% if documentation_section != 'checkout' and documentation_section != 'payment-menu' %}
-    {% assign documentation_section_url = documentation_section_url | prepend: '/payment-instruments' %}
-{% endif %}
+{% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
 
 The `Verify` operation lets you post verification payments, which are used to
 confirm the validity of card information without reserving or charging any
