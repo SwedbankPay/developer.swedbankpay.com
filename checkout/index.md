@@ -68,7 +68,7 @@ sequenceDiagram
     deactivate SwedbankPay
     Merchant -->>- Consumer: Show Checkin on Merchant Page
 
-    Consumer ->>+ Consumer: Initiate Consumer Hosted View (open iframe) ②
+    Consumer ->>+ Consumer: Initiate Consumer Seamless View (open iframe) ②
     Consumer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
     deactivate Consumer
     SwedbankPay ->>- Consumer: Consumer identification process
@@ -91,7 +91,7 @@ sequenceDiagram
             deactivate SwedbankPay
             Merchant -->>- Consumer: Display Payment Menu on Merchant Page
             activate Consumer
-            Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+            Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
             Consumer -->>+ SwedbankPay: Show Payment UI page in iframe
             deactivate Consumer
             SwedbankPay ->>+ Consumer: Do payment logic
@@ -106,7 +106,7 @@ sequenceDiagram
                     deactivate Consumer
                     3rdParty -->>+ Consumer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
-                    Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+                    Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
                     Consumer ->>+ SwedbankPay: Show Payment UI page in iframe
                     deactivate Consumer
                 end
@@ -178,7 +178,7 @@ diagram.
 
 *   ① `rel: view-consumer-identification` is a value in one of the operations,
     sent as a response from Swedbank Pay to the Merchant.
-*   ② `Initiate Consumer Hosted View (open iframe)` creates the iframe.
+*   ② `Initiate Consumer Seamless View (open iframe)` creates the iframe.
 *   ③ `Show Consumer UI page in iframe` displays the checkin form as content inside
     of the iframe.
 *   ④ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when

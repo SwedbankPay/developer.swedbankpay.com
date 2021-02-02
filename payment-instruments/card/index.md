@@ -39,7 +39,7 @@ menu_order: 300
   page (Redirect integration) or a JavaScript source in response (Seamless View
   integration).
 *   You need to [redirect][redirect] the payer's browser to that specified URL,
-    or embed the script source on your site to create a Hosted View in an
+    or embed the script source on your site to create a Seamless View in an
     `iframe`; so that the payer can enter the credit card details in a secure
     Swedbank Pay hosted environment.
 *   Swedbank Pay will handle 3-D Secure authentication when this is required.

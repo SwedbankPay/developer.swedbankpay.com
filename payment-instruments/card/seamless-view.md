@@ -18,13 +18,13 @@ does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
 {:.text-center}
-![screenshot of the hosted view card payment page][hosted-view-card]{:height="255px" width="475px"}
+![screenshot of the seamless view card payment page][seamless-view-card]{:height="255px" width="475px"}
 
 For payments in the currency SEK, radio buttons for selecting debit or credit
 card will appear.
 
 {:.text-center}
-![screenshot of the swedish hosted view card payment page][swedish-hosted-view-card]{:height="305px" width="475px"}
+![screenshot of the swedish seamless view card payment page][swedish-seamless-view-card]{:height="305px" width="475px"}
 
 ## Step 1: Create Payment
 
@@ -53,7 +53,7 @@ loading the payment page in an `iframe` in our next step.
 
 ## Step 2: Display the Payment
 
-You need to embed the script source on your site to create a hosted-view in an
+You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the credit card details in a secure Swedbank Pay
 hosted environment. A simplified integration has these following steps:
 
@@ -207,7 +207,7 @@ card payment:
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="capture" next_title="Capture" %}
 
-[payment-page_hosted-view.png]: /assets/screenshots/card/hosted-view/view/macos.png
+[payment-page_seamless-view.png]: /assets/screenshots/card/seamless-view/view/macos.png
 [abort]: /payment-instruments/card/other-features#abort
 [after-payment]: /payment-instruments/card/after-payment
 [callback]: /payment-instruments/card/other-features#callback
@@ -224,5 +224,5 @@ next_href="capture" next_title="Capture" %}
 [verify]: /payment-instruments/card/other-features#verify
 [create-payment]: /payment-instruments/card/other-features#create-payment
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[hosted-view-card]: /assets/img/payments/hosted-view-card.png
-[swedish-hosted-view-card]: /assets/img/payments/swedish-hosted-view-card.png
+[seamless-view-card]: /assets/img/payments/seamless-view-card.png
+[swedish-seamless-view-card]: /assets/img/payments/swedish-seamless-view-card.png

@@ -93,7 +93,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The [`User-Agent`string][user-agent] of the payer's web browser.                                                                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
+| {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URIs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`           | `string`     | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
@@ -175,7 +175,7 @@ loading the payment page in an `iframe` in our next step.
 
 ## Step 2: Display  the payment window
 
-You need to embed the script source on your site to create a hosted-view in an
+You need to embed the script source on your site to create a Seamless View in an
 `iframe` so that the payer can enter the required information in a secure
 Swedbank Pay hosted environment. A simplified integration has these following
 steps:
