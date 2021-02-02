@@ -1,5 +1,6 @@
 ---
 section: Payment Menu
+redirect_from: /payment-menu/other-features
 estimated_read: 3
 description: |
   The **Swedbank Pay Payment Menu** integrates

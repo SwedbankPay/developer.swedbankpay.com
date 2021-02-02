@@ -34,7 +34,7 @@ An example of an expanded `POST` request is available in the
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include card-purchase.md %}
+{% include purchase.md %}
 
 When you receive the redirect url from Swedbank Pay, you redirect the
 payer there to complete the payment. This ensures that card details and other
