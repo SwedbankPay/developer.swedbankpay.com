@@ -1,10 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% if documentation_section == nil or documentation_section == empty %}
-    {% assign documentation_section = "card" %}
-{% endif %}
+{% capture documentation_section %}{% include documentation-section.md fallback="card" %}{% endcapture %}
 {% assign transaction = include.transaction | default: "capture" %}
-
 {% if transaction == "cancel" %}
     {% assign plural = "cancellations" %}
 {% else %}

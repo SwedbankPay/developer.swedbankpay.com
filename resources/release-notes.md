@@ -214,8 +214,8 @@ Other changes:
 *   Bug fixes to Mermaid diagram and alert styling, plus improvements to code
     block styling after the update to [Swedbank Pay Design Guide][design-guide]
     4.5.0.
-*   Added examples with screenshots of the effects of [Merchant Authenticated
-    Consumer][mac-checkout].
+*   Added examples with screenshots of the effects of [Delegated Strong Consumer
+    Authentication][dsca-checkout].
 
 ### Version 1.8.2
 
@@ -227,7 +227,7 @@ Other changes:
 *   Updated [Card Payments Direct][card-direct] to have a correct integration
     flow.
 *   Updated the [main page][frontpage] to be more welcoming.
-*   Updated information on [Merchant Authenticated Consumer][mac-checkout].
+*   Updated information on [Delegated Strong Consumer Authentication][dsca-checkout].
 
 ## 31 Mar 2020
 
@@ -441,7 +441,7 @@ In redirect flow this is supported without any changes in your integration. But
 a configuration on your swish agreement needs to be updated. Contact our support
 in order to activate this.
 
-If you use our hosted view-solution we have added the URL field called
+If you use our seamless view-solution we have added the URL field called
 paymentUrl (previously added for CreditCard, Vipps and Payment Order), that will
 be used when the user is returned from the Swish application. See further
 information regarding paymentUrl at: [[PaymentUrl in
@@ -507,7 +507,7 @@ removed from all requests as the two cannot be used simultaneously.
 For our Seamless Views (currently [Vipps][vipps-payment-url] or in
 [Checkout][checkout-payment-url]), we have added a new URL field called
 `paymentUrl` that will be used when user is returned from 3rd party. The URL
-should represent the page of where the payment hosted view was hosted
+should represent the page of where the payment seamless view was hosted
 originally, such as the checkout page, shopping cart page, or similar.
 Basically, `paymentUrl` should be set to the same URL as that of the page where
 the JavaScript for the hosted payment view was added to in order to initiate the
@@ -564,7 +564,7 @@ integration and the payer.
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
-[mac-checkout]: /checkout/other-features#merchant-authenticated-consumer
+[dsca-checkout]: /checkout/other-features#delegated-strong-consumer-authentication
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
 [mobilepay-capture]: /payment-instruments/mobile-pay/capture

@@ -28,7 +28,7 @@ underlying payments or transaction.
 {:.table .table-striped}
 |     Required      | Field               | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :---------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
+| {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of URIs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                      |
 | {% icon check %}  | `completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details.  |
 | {% icon check %}  | `termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
 |                   | `cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
@@ -82,7 +82,7 @@ Content-Type: application/json
 | `paymentorder`              | `string` | {% include field-description-id.md sub_resource="urls" %}                                                                                                                                                                                                                                                |
 | `urls`                      | `object` | The URLs object.                                                                                                                                                                                                                                                                                         |
 | └➔&nbsp;`id`                | `string` | {% include field-description-id.md resource="urls" %}                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.                                                                                                                                     |
+| └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URIs that are allowed as parents to a Seamless View, typically the URI of the web shop or similar that will embed a Seamless View within it.                                                                                                                                     |
 | └➔&nbsp;`completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details. |
 | └➔&nbsp;`cancelUrl`         | `string` | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 | └➔&nbsp;`paymentUrl`        | `string` | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`](#payment-url) for details.                                                                                                          |
@@ -140,415 +140,10 @@ structurally identical for both payments and payments orders, are described in
 the [Payment Resources][payment-resource] section.
 
 {% if documentation_section == "payment-menu" %}
-
-## Instrument Mode
-
-In "Instrument Mode" the Payment Menu will display only one specific payment
-instrument instead of all configured on your merchant account. The Payment Order
-resource works just like it otherwise would, allowing you to remain largely
-indifferent to the payment instrument in use.
-
-If you do not want to use Swedbank Pay Payment Menu or do have multiple payment
-providers on your site we strongly recommend that you implement the "Instrument
-Mode" functionality. To use this feature you will need to add the `instrument`
-field to the request. This will make the  Swedbank Pay Payment Menu only render
-a single payment instrument. So even if Swedbank Pay is set up to provide more
-than one instrument you will be able to let it only show one at a time.
-
-It is important to use this feature if you want to build your own payment menu.
-In this case you should use the `instrument` field to enforce which payment
-instrument to show. If you have an agreement with Swedbank Pay for both Card and
-Swish/Vipps processing, and the payer chooses either of these instruments, you
-should add the `instrument` parameter with the specific payment instrument. If
-the payer later changes their mind and chooses the other instrument, you can
-make a call to Swedbank Pay to change the instrument on the active payment. This
-is important because we do not allow creating multiple payments with the same
-`orderReference`. To ensure that you can still use the same `orderReference`,
-you should only make one payment for each purchase and change the `instrument`
-to reflect what the payer has chosen in your menu.
-
-The Payment Menu is switched to "Instrument Mode" by providing the request field
-`instrument` as described in the abbreviated example below.
-
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "operation": "Purchase",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "instrument": "CreditCard"
-        "generateRecurrenceToken": true,{% if documentation_section == "payment-menu" %}
-        "generatePaymentToken": true,{% endif %}
-        "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ],
-        }
-    }
-}
-```
-
-{:.code-view-header}
-**Response**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "CreditCard"{% if documentation_section == "payment-menu" %}
-        "paymentToken" : "{{ page.payment_token }}",{% endif %}
-        "created": "2020-06-22T10:56:56.2927632Z",
-        "updated": "2020-06-22T10:56:56.4035291Z",
-        "operation": "Purchase",
-        "state": "Ready",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "orderItems": {
-            "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
-        }
-    }
-}
-```
-
-It is possible to switch instrument after the `paymentOrder` has been created.
-You can do this with the following `PATCH` request, using Swish as an example.
-
-```http
-PATCH /psp/{{ api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-  "paymentorder": {
-    "operation": "SetInstrument",
-    "instrument": "Swish"
-  }
-}
-```
-
-The valid instruments for the `paymentOrder` can be retrieved from the
-`availableInstruments` parameter in the `paymentOrder` response. Using a
-merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
-`availableInstruments` will look like this:
-
-```
-        "availableInstruments": [
-            "CreditCard",
-            "Invoice-PayExFinancingSe",
-            "Swish"
-        ],
-```
-
-
-## Payer Aware Payment Menu
-
-{% include alert.html type="informative" icon="info" body="Please note that not
-all payment instruments provided by Swedbank Pay support Payer Awareness today."
-%}
-
-To maximize the experience of your payers, you should implement the Payer
-Aware Payment Menu by identifying each payer with a unique identifier. It is
-important that you enforce a good SCA (Strong Consumer Authentication) strategy
-when authenticating the payer. The payer identifier must then be sent with
-the creation of the payment order to Swedbank Pay. This will enable Swedbank Pay
-to render a unique payment menu experience for each payer. It will also
-increase the chance for a frictionless payment.
-
-By identifying your payers, they are able to store payment information for
-future payments by setting the `generatePaymentToken` value to `true`. This will
-enable the Swedbank Pay Payment Menu to show stored payment instrument details
-for future purchases. The payer is, by default, asked if they want to store
-their payment details, so even with `generatePaymentToken` set to `true`, it is
-still up to the payer if they want the details stored or not.
-
-{% include alert.html type="informative" icon="info" header="GDPR
-Responsibility" body="Remember that the responsibility to enforce the GDPR
-requirements lies on you as a merchant."
-%}
-
-As a part of these requirements, you have to facilitate that the payer can
-remove active payment tokens when they want. It is up to you how to implement
-this functionality on your side, but Swedbank Pay has the API you need to ensure
-that cleaning up old data is easy. It is possible to query for all active
-payment tokens registered on a specific `payerReference`. This query will also
-list the operations used for deleting tokens. You can choose to remove all
-tokens for that payer or only a subset of all tokens connected to that
-`payerReference`.
-
-### BYO Payment Menu
-
-Payment Menu is versatile and can be configured in such a way that it functions
-like a single payment instrument. In such configuration, it is easy to Bring
-Your Own Payment Menu, i.e. building a customized payment menu in our own user
-interface. For in-app integrations, the payers' shopping experience will be
-better if you choose the BYO Payment Menu option. For web integrations, we
-highly recommend the Swedbank Pay Payment Menu.
-
-The `payerReference` can be used to list all active tokens here as well. This
-will also list the payment instruments enumerated in the `availableInstruments`,
-as instrument-mode is mandatory when you are using BYO Payment Menu.
-
-The alternative to the `payerReference` option is to store `paymentToken`s found
-in the `paymentOrder`s after the payment is completed. This requires that the
-merchant makes sure the list of `paymentToken`s is up to date at their end.
-
-
-#### Add Stored Payment Instrument Details
-
-When building a custom payment menu, features like adding new stored payment
-instrument details (i.e. "Add new card") is something that needs to be provided
-in your UI.
-
-This can be achieved by forcing the creation of a `paymentToken` by setting
-`disableStoredPaymentDetails` to `true` in a Purchase payment (if you want
-to withdraw money and create the token in the same operation), or by performing
-a [Verify payment](#verify-payments) (without withdrawing any money).
-
-Setting `disableStoredPaymentDetails` to `true` will turn off all stored payment
-details for the current purchase. The payer will also not be asked if they
-want to store the payment detail that will be part of the purchase. When you use
-this feature it is important that you have asked the payer in advance if it
-is ok to store their payment details for later use.
-
-Most often you will use the `disableStoredPaymentDetails` feature in combination
-with the [Instrument Mode](#instrument-mode) capability. If you build your own
-menu and want to show stored payment details, you will need to set the
-`disableStoredPaymentDetails` to `true`. It is important that you then store the
-`paymentToken` in your system or call Swedbank Pay with the `payerReference` to
-get all active payment tokens registered on that payer when building your
-menu. See the abbreviated `Purchase` example below.
-
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "operation": "Purchase",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "instrument": "CreditCard"
-        "generateRecurrenceToken": true,
-        "generatePaymentToken": true,
-        "disableStoredPaymentDetails": true,
-        "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ],
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "https://example.com/perform-payment",
-            "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
-            "logoUrl": "https://example.com/logo.png"
-        },
-        "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}",
-            "payeeReference": "AB832",
-            "payeeName": "Merchant1",
-            "productCategory": "A123",
-            "orderReference": "or-123456",
-            "subsite": "MySubsite"
-        },
-        "payer": {  
-            "payerReference": "AB1234",
-        }
-   }
-}
-```
-
-{:.table .table-striped}
-|     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `paymentorder`                    | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`operation`               | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`currency`                | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if documentation_section == "payment-menu" %}
-| {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ other_features_url }}#instrument-mode).                                                                                                                                                                                          | {% endif %}                                              |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ other_features_url }}#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`.                                     | {% if documentation_section == "payment-menu" %} |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                  | {% endif %}                                              |
-|                  | └➔&nbsp;`disableStoredPaymentDetails` | `bool` | Setting to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
-| {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details.  |
-|                  | └─➔&nbsp;`cancelUrl`              | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-|                  | └─➔&nbsp;`paymentUrl`             | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ other_features_url }}#payment-url) for details.                                                                                                                                                        |
-| {% icon check %} | └─➔&nbsp;`callbackUrl`            | `string`     | The URI to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`      | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
-| {% icon check %} | └─➔&nbsp;`logoUrl`                | `string`     | {% include field-description-logourl.md %}         |
-| {% icon check %} | └➔&nbsp;`payeeInfo`               | `string`     | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                          |
-| {% icon check %} | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                             |
-|                  | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
-|                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
-|                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-and-reconciliation] before being used.                                                                                         |
-|                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
-|                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
-
+    {% include payer-aware-payment-menu.md %}
 {% endif %}
 
-## Operations
-
-When a payment order resource is created and during its lifetime, it will have
-a set of operations that can be performed on it.
-The state of the payment order resource, what the access token is authorized
-to do, the chosen payment instrument and its transactional states, etc.
-determine the available operations before the initial purchase.
-A list of possible operations and their explanation is given below.
-
-{% include alert.html type="informative" icon="info" header="Deprecated
-Operations." body="Payment instrument-specific operations are passed
-through Payment Order. These can be recognized by not having
-`paymentorder` in the `rel` value. They will be described and marked as
-deprecated in the operation list below." %}
-
-{:.code-view-header}
-**Operations**
-
-```jsonc
-{
-    "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-    },
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
-            "rel": "update-paymentorder-abort",
-            "contentType": "application/json"
-        },
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}",
-            "rel": "update-paymentorder-updateorder",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
-            "rel": "redirect-paymentorder",
-            "contentType": "text/html"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
-            "rel": "view-paymentorder",
-            "contentType": "application/javascript"
-        },
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/captures",
-            "rel": "create-paymentorder-capture",
-            "contentType": "application/json"
-        },
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/cancellations",
-            "rel": "create-paymentorder-cancel",
-            "contentType": "application/json"
-        },
-        {
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/reversals",
-            "rel": "create-paymentorder-reversal",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/paid",
-            "rel": "paid-paymentorder",
-            "contentType": "application/json"
-        },
-        {
-            "method": "GET",
-            "href": "{{ page.api_url }}/psp/paymentorders/{{ page.payment_order_id }}/failed",
-            "rel": "failed-paymentorder",
-            "contentType": "application/problem+json"
-        },
-        {
-            // Deprecated operation. Do not use!
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/captures",
-            "rel": "create-capture",
-            "contentType": "application/json"
-        },
-        {
-            // Deprecated operation. Do not use!
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/cancellations",
-            "rel": "create-cancel",
-            "contentType": "application/json"
-        },
-        {
-            // Deprecated operation. Do not use!
-            "method": "POST",
-            "href": "{{ page.api_url }}/psp/creditcard/{{ page.payment_id }}/reversals",
-            "rel": "create-reversal",
-            "contentType": "application/json"
-        }
-    ]
-}
-```
-
-{:.table .table-striped}
-| Field         | Type     | Description                                                                        |
-| :------------ | :------- | :--------------------------------------------------------------------------------- |
-| `href`        | `string` | The target URI to perform the operation against.                                   |
-| `rel`         | `string` | The name of the relation the operation has to the current resource.                |
-| `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
-| `contentType` | `string` | The HTTP content type of the resource referenced in the `href` field.              |
-
-The operations should be performed as described in each response and not as
-described here in the documentation. Always use the `href` and `method` as
-specified in the response by finding the appropriate operation based on its
-`rel` value. The only thing that should be hard coded in the client is the value
-of the `rel` and the request that will be sent in the HTTP body of the request
-for the given operation.
-
-{:.table .table-striped}
-| Operation                         | Description                                                                                                                                                                                                                                                                    |
-| :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `update-paymentorder-abort`       | [Aborts][operations] the payment order before any financial transactions are performed.                                                                                                                                                                                        |
-| `update-paymentorder-updateorder` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                                            |
-| `redirect-paymentorder`           | Contains the URI that is used to redirect the payer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
-| `view-paymentorder`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
-| `create-paymentorder-capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
-| `create-paymentorder-cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
-| `create-paymentorder-reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
-| `paid-paymentorder`               | Returns the information about a paymentorder that has the status `paid`.                                                                                                                                                                                                       |
-| `failed-paymentorder`             | Returns the information about a paymentorder that has the status `failed`.                                                                                                                                                                                                     |
-| `create-capture`                  | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
-| `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
-| `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
+{% include payment-order-operations.md %}
 
 {% include payment-state.md %}
 
@@ -1046,7 +641,7 @@ sequenceDiagram
         deactivate SwedbankPay
         Merchant -->>- Consumer: Display Payment Menu on Merchant Page
         activate Consumer
-        Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+        Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
         Consumer -->>+ SwedbankPay: Show Payment UI page in iframe
         deactivate Consumer
         SwedbankPay ->>+ Consumer: Do payment logic
@@ -1155,7 +750,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         }
     },
@@ -1182,7 +777,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments](#recurring-payments) – with the same token – through server-to-server calls. Default value is `false`. If set to `true`, only payment instruments which support recurring payments will be visible in the payment menu.                                                         |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
+| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`      | The array of URIs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                      |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`](#completeurl) for details.
 |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
@@ -1415,58 +1010,12 @@ Content-Type: application/json
 
 {% include prices.md %}
 
-## Custom Logo
-
-With permission and activation on your contract, it is possible to replace the
-Swedbank Pay logo in the Payment Menu. See the abbreviated example
-below with the added `logoUrl` in the Payment Order Purchase request.
-
-*   If the configuration is activated and you send in a `logoUrl`, then the
-    SwedbankPay logo is replaced with the logo sent in and the text is changed accordingly.
-
-*   If the configuration is activated and you do not send in a `logoUrl`, then
-    no logo and no text is shown.
-
-*   If the configuration is deactivated, sending in a `logoUrl` has no effect.
-
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "paymentorder": {
-        "operation": "Purchase",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
-        "instrument": "CreditCard"{% endif %}
-        "generateRecurrenceToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
-        "generatePaymentToken": {{ operation_status_bool }},{% endif %}
-        "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ],
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
-            "paymentUrl": "https://example.com/perform-payment",
-            "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
-            "logoUrl": "https://example.com/logo.png"
-        }
-    }
-}
-```
+{% include custom-logo.md %}
 
 ### Payer Resource
 
 The `payer` resource contains payer information related to the payment order.
-{% if documentation_section == "checkout" %}
+{% if include.documentation_section == "checkout" %}
 The information is retrieved via a consumer profile token
 (`consumerProfileRef`), from the [Consumers resource][payee-reference]
 during login/checkin.
@@ -1526,7 +1075,7 @@ Content-Type: application/json
 
 {% if documentation_section == "checkout" %}
     {%- include checkin-events.md %}
-{% endif %}
+{% endif  %}
 
 {% include seamless-view-events.md %}
 
@@ -1534,7 +1083,7 @@ Content-Type: application/json
 
 Triggered on terminal errors, and when the configuration fails validation.
 
-{% include callback-reference.md %}
+{% include callback.md %}
 
 {% comment %}
 include parameters aren't scoped to the inside of the include, they are just
@@ -1561,10 +1110,25 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 {% include payee-info.md %}
 
 {% if documentation_section == "checkout" %}
-    {%- include merchant-authenticated-consumer.md -%}
+    {%- include delegated-strong-consumer-authentication.md -%}
 {% endif %}
 
 {% include metadata.md %}
+
+{% if documentation_section == "payment-menu" %}
+
+## One-Click Payments
+
+One-Click Payments should be used if you want to present your own Payment Menu
+in all channels you want to support. This means that if you are both on the
+web and in-app you will need to build your own payment menu to be able to use
+the One-Click Payment functionality. You will need to ask the system to generate
+a `paymentToken` (with `generatePaymentToken` in a `Purchase` or `Verify`
+request) to be able to use this feature. You will also need to turn the
+`Payment Order` into instrument mode (only show one instrument)
+with the request parameter `instrument`.
+
+{% endif %}
 
 {% include settlement-reconciliation.md %}
 

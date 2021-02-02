@@ -1,8 +1,5 @@
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
-{% if documentation_section == nil or documentation_section == empty %}
-    {%- assign documentation_section = "card" -%}
-{%- endif -%}
-{%- assign description_url = documentation_section | prepend: "/" | append: "/other-features#description" -%}
+{%- capture documentation_section -%}{%- include documentation-section.md fallback="card" -%}{%- endcapture -%}
+{%- assign description_url = documentation_section | prepend: "/" | append: "/features/technical-reference/description" -%}
 {%- if documentation_section != "checkout" and documentation_section != "payment-menu" -%}
     {%- assign description_url = description_url | prepend: "/payment-instruments" -%}
 {%- endif -%}

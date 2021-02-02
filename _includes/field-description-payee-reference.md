@@ -1,3 +1,4 @@
+{%- capture documentation_section -%}{%- include documentation-section.md fallback="card" -%}{%- endcapture -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {% if documentation_section == nil or documentation_section == empty %}
@@ -5,9 +6,9 @@
 {% else %}
     {%- capture payee_reference_url -%}
     {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
-            /{{ documentation_section }}/other-features#payee-reference
+            /{{ documentation_section }}/features/technical-reference/payee-reference
         {%- else -%}
-            /payment-instruments/{{ documentation_section }}/other-features#payee-reference
+            /payment-instruments/{{ documentation_section }}/features/technical-reference/payee-reference
         {%- endif -%}
     {%- endcapture -%}
 {%- endif -%}
