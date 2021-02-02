@@ -10,7 +10,7 @@ icon:
 additional: true
 menu_order: 1000
 card_list:
-- title: 3D Secure 2
+- title: 3-D Secure 2
   description: Authenticating the cardholder
   url:  /checkout/features/core/3d-secure-2
   icon:

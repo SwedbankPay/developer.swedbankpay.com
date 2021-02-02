@@ -1,5 +1,5 @@
 ---
-title: 3D Secure 2
+title: 3-D Secure 2
 estimated_read: 5
 description: |
   Authenticating the cardholder.
