@@ -45,7 +45,7 @@ Purchase information. This will generate a payment object with a unique
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include card-purchase.md seamless_view=true %}
+{% include purchase.md seamless_view=true %}
 
 The key information in the response is the `view-authorization` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable

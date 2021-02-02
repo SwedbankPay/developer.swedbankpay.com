@@ -62,7 +62,7 @@ expanded `POST` request is available in the [other features section][purchase].
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include card-purchase.md %}
+{% include purchase.md %}
 
 {% include alert-callback-url.md %}
 
