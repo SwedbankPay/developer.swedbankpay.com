@@ -1,5 +1,8 @@
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
+{%- if documentation_section != 'checkout' and documentation_section != 'payment-menu' and documentation_section != 'invoice' %}
+    {% assign has_one_click = true %}
+{%- endif %}
 
 The `Verify` operation lets you post verification payments, which are used to
 confirm the validity of card information without reserving or charging any
@@ -8,7 +11,7 @@ amount.
 ## Introduction to Verify
 
 This option is commonly used when initiating a subsequent
-{%- if documentation_section != 'checkout' and documentation_section != 'payment-menu' %}
+{%- if has_one_click %}
 [One-click card payment][one-click-payments] or a
 {%- endif %}
 [recurring card payment][recurrence] flow - where you do not want
@@ -31,7 +34,12 @@ Swedbank Pay." %}
     [redirect][redirect] the payer's browser to that specified URL, or
     {%- endif %}
     embed the script source on your site to create a
-    [Hosted View][hosted-view] in an `iframe`; so that the payer can enter the
+    {%- if documentation_section != 'checkout' and documentation_section != 'payment-menu' %}
+    [Seamless View][seamless-view]
+    {%- else -%}
+    Seamless View
+    {%- endif %}
+    in an `iframe`; so that the payer can enter the
     card details in a secure Swedbank Pay hosted environment.
 *   Swedbank Pay will handle 3-D Secure authentication when this is required.
 *   Swedbank Pay will redirect the payer's browser to - or display directly in
@@ -44,7 +52,7 @@ Swedbank Pay." %}
 *   Finally you will make a `GET` request towards Swedbank Pay with the
     `id` of the payment received in the first step, which will return the
     payment result and
-    {%- if documentation_section != 'checkout' and documentation_section != 'payment-menu' %}
+    {%- if has_one_click %}
     a `paymentToken` that can be used for subsequent
     [One-Click Payments][one-click-payments] or
     {%- endif %}
@@ -248,7 +256,7 @@ sequenceDiagram
   end
 ```
 
-[hosted-view]: {{ documentation_section_url }}/seamless-view
+[seamless-view]: {{ documentation_section_url }}/seamless-view
 [one-click-payments]: {{ documentation_section_url }}/features/optional/one-click-payments
 [recurrence]: {{ documentation_section_url }}/features/optional/recur
 [redirect]: {{ documentation_section_url }}/redirect
