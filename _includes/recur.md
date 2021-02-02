@@ -1,9 +1,4 @@
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
-
-{% unless documentation_section == 'checkout' or documentation_section == 'payment-menu' %}
-    {% assign features_url = features_url | prepend: '/payment-instruments' %}
-{% endunless %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Recur
 
