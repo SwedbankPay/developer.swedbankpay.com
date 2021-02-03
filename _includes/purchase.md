@@ -1,3 +1,4 @@
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign seamless_view = include.seamless_view | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 
@@ -307,15 +308,15 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-[callback]: /payment-instruments/card/features/technical-reference/callback
-[cancel]: /payment-instruments/card/features/core/capture
-[capture]: /payment-instruments/card/features/core/capture
-[complete-url]: /payment-instruments/card/features/technical-reference/complete-url
-[3ds2]: /payment-instruments/card/features/core/3d-secure-2
-[one-click-payments]: /payment-instruments/card/features/optional/one-click-payments
-[payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
-[paymenturl]: /payment-instruments/card/features/technical-reference/payment-url
-[price-resource]: /payment-instruments/card/features/technical-reference/prices
-[settlement-and-reconciliation]: /payment-instruments/card/features/core/settlement-reconciliation
-[split-settlement]: /checkout/features/core/settlement-reconciliation#split-settlement
+[callback]: {{ features_url }}/technical-reference/callback
+[cancel]: {{ features_url }}/core/capture
+[capture]: {{ features_url }}/core/capture
+[complete-url]: {{ features_url }}/technical-reference/complete-url
+[3ds2]: {{ features_url }}/core/3d-secure-2
+[one-click-payments]: {{ features_url }}/optional/one-click-payments
+[payee-reference]: {{ features_url }}/technical-reference/payee-reference
+[paymenturl]: {{ features_url }}/technical-reference/payment-url
+[price-resource]: {{ features_url }}/technical-reference/prices
+[settlement-and-reconciliation]: {{ features_url }}/core/settlement-reconciliation
+[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

@@ -12,146 +12,146 @@ menu_order: 1000
 card_list:
 - title: 3-D Secure 2
   description: Authenticating the cardholder
-  url:  /checkout/features/core/3d-secure-2
+  url:  /checkout/3.0/standard/features/core/3d-secure-2
   icon:
     content: 3d_rotation
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
-  url: /checkout/features/core/cancel
+  url: /checkout/3.0/standard/features/core/cancel
   icon:
     content: pan_tool
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /checkout/features/core/payment-order-capture
+  url: /checkout/3.0/standard/features/core/payment-order-capture
   icon:
     content: compare_arrows
     outlined: true
 - title: Reversal
   description: How to reverse a payment
-  url: /checkout/features/core/reversal
+  url: /checkout/3.0/standard/features/core/reversal
   icon:
     content: keyboard_return
     outlined: true
 - title: Settlement & Reconciliation
   description: Balancing the books
-  url:  /checkout/features/core/settlement-reconciliation
+  url:  /checkout/3.0/standard/features/core/settlement-reconciliation
   icon:
     content: description
     outlined: true
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
-  url:  /checkout/features/technical-reference/callback
+  url:  /checkout/3.0/standard/features/technical-reference/callback
   icon:
     content: low_priority
     outlined: true
 - title: Checkin Events
   description: Possible events during Checkin
-  url: /checkout/features/technical-reference/checkin-events
+  url: /checkout/3.0/standard/features/technical-reference/checkin-events
   icon:
     content: event
     outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
-  url:  /checkout/features/technical-reference/complete-url
+  url:  /checkout/3.0/standard/features/technical-reference/complete-url
   icon:
     content: link
     outlined: true
 - title: Delete Token
   description: How to delete tokens
-  url:  /checkout/features/technical-reference/delete-token
+  url:  /checkout/3.0/standard/features/technical-reference/delete-token
   icon:
     content: assignment
     outlined: true
 - title: Description
   description: The purchase summed up in a few words
-  url:  /checkout/features/technical-reference/description
+  url:  /checkout/3.0/standard/features/technical-reference/description
   icon:
     content: assignment
     outlined: true
 - title: Metadata
   description: Store payment associated data for later use
-  url:  /checkout/features/technical-reference/metadata
+  url:  /checkout/3.0/standard/features/technical-reference/metadata
   icon:
     content: code
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
-  url:  /checkout/features/technical-reference/payee-info
+  url:  /checkout/3.0/standard/features/technical-reference/payee-info
   icon:
     content: account_box
     outlined: true
 - title: PayeeReference
   description: The merchant's reference for a specific payment
-  url:  /checkout/features/technical-reference/payee-reference
+  url:  /checkout/3.0/standard/features/technical-reference/payee-reference
   icon:
     content: assignment_ind
     outlined: true
 - title: Payment Menu Events
   description: Possible events during Payment Menu payments
-  url: /checkout/features/technical-reference/payment-menu-events
+  url: /checkout/3.0/standard/features/technical-reference/payment-menu-events
   icon:
     content: event
     outlined: true
 - title: Payment Order Operations
   description: Possible operations for a payment order
-  url: /checkout/features/technical-reference/payment-order-operations
+  url: /checkout/3.0/standard/features/technical-reference/payment-order-operations
   icon:
     content: settings
     outlined: true
 - title: Payment State
   description: Different states in the payment process
-  url: /checkout/features/technical-reference/payment-state
+  url: /checkout/3.0/standard/features/technical-reference/payment-state
   icon:
     content: credit_card
     outlined: true
 - title: PaymentUrl
   description: Redirecting the payer back to your site
-  url:  /checkout/features/technical-reference/payment-url
+  url:  /checkout/3.0/standard/features/technical-reference/payment-url
   icon:
     content: link
     outlined: true
 - title: Prices
   description: The payment's prices resource
-  url:  /checkout/features/technical-reference/prices
+  url:  /checkout/3.0/standard/features/technical-reference/prices
   icon:
     content: attach_money
     outlined: true
 - title: Problems
   description: Information when something goes wrong
-  url:  /checkout/features/technical-reference/problems
+  url:  /checkout/3.0/standard/features/technical-reference/problems
   icon:
     content: report
     outlined: true
 - title: Seamless View Events
   description: Possible events during Seamless View payments
-  url:  /checkout/features/technical-reference/seamless-view-events
+  url:  /checkout/3.0/standard/features/technical-reference/seamless-view-events
   icon:
     content: event
     outlined: true
 card_list_3:
 - title: Custom Logo
   description: How to add your own logo
-  url: /checkout/features/optional/custom-logo
+  url: /checkout/3.0/standard/features/optional/custom-logo
   icon:
     content: copyright
     outlined: true
 - title: Delegated Strong Consumer Authentication
   description: The Checkin alternative
-  url: /checkout/features/optional/dsca
+  url: /checkout/3.0/standard/features/optional/dsca
   icon:
     content: verified
     outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
-  url:  /checkout/features/optional/recur
+  url:  /checkout/3.0/standard/features/optional/recur
   icon:
     content: cached
     outlined: true
 - title: Verify
   description: Validating the payer's payment details
-  url:  /checkout/features/optional/verify
+  url:  /checkout/3.0/standard/features/optional/verify
   icon:
     content: verified_user
     outlined: true

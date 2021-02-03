@@ -1,4 +1,5 @@
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
 {% if documentation_section contains "checkout" %}
 ## Step 5: Capture the funds
@@ -181,6 +182,6 @@ Content-Type: application/json
 
 [card]: /payment-instruments/card
 [vipps]: /payment-instruments/vipps
-[payee-reference]: /checkout/features/technical-reference/payee-reference
+[payee-reference]: {{ features_url }}/technical-reference/payee-reference
 [swish]: /payment-instruments/swish/
 [trustly]: /payment-instruments/trustly/

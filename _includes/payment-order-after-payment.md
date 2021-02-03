@@ -1,3 +1,5 @@
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## Operations
 
 Most payment instruments are two-phase payments –
@@ -87,4 +89,4 @@ Content-Type: application/json
 {% include alert.html type="informative" icon="info" body=" Note that all of the
 operations `Cancel`, `Capture` and `Reversal` must be implemented." %}
 
-[payment-order-operations]: /checkout/features/technical-reference/payment-order-operations
+[payment-order-operations]: {{ features_url }}/technical-reference/payment-order-operations
