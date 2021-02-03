@@ -1077,7 +1077,7 @@ Content-Type: application/json
 | └─➔&nbsp;`city`           | `string` | Payer's city of residence                                                                      |
 | └─➔&nbsp;`countryCode`    | `string` | Country Code for country of residence.                                                         |
 
-{% if documentation_section == "checkout" %}
+{% if documentation_section contains "checkout" %}
     {%- include checkin-events.md %}
 {% endif  %}
 
@@ -1113,7 +1113,7 @@ and Jekyll upgrades to it, we should also upgrade and replace all `include` with
 
 {% include payee-info.md %}
 
-{% if documentation_section == "checkout" %}
+{% if documentation_section contains "checkout" %}
     {%- include delegated-strong-consumer-authentication.md -%}
 {% endif %}
 

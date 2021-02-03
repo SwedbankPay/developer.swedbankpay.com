@@ -1,6 +1,6 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 
-{% if documentation_section == "checkout" %}
+{% if documentation_section contains "checkout" %}
 ## Step 5: Capture the funds
 {% else %}
 ## Step 3: Capture the funds

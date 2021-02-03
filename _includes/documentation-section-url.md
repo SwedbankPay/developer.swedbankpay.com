@@ -1,8 +1,8 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture documentation_section_url -%}
-    {%- if documentation_section != 'payment-menu' and documentation_section != 'checkout' -%}
+    {%- unless documentation_section == 'payment-menu' or documentation_section contains 'checkout' -%}
         /payment-instruments
-    {%- endif -%}
+    {%- endunless -%}
 
     /{{- documentation_section -}}
 

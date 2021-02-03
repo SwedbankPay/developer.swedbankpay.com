@@ -5,7 +5,7 @@
     {% assign payee_reference_url = "/introduction#payee-reference" %}
 {% else %}
     {%- capture payee_reference_url -%}
-    {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+    {%- if documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
             /{{ documentation_section }}/features/technical-reference/payee-reference
         {%- else -%}
             /payment-instruments/{{ documentation_section }}/features/technical-reference/payee-reference

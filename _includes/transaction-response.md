@@ -4,7 +4,7 @@
     {% assign operations_href = "/introduction#operations" %}
 {% else %}
     {%- capture operations_href -%}
-        {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+        {%- if documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
             /{{ documentation_section }}/other-features#operations
         {%- else -%}
             /payment-instruments/{{ documentation_section }}/other-features#operations
