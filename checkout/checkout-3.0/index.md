@@ -12,20 +12,33 @@ description: |
 icon:
   content: remove_red_eye
 additional: true
-menu_order: 100
+menu_order: 200
 card_list:
-- title: Checkout 2.0
-  description: A 2.0 Description
-  url:  /checkout/checkout-2.0
+- title: Checkout Basic
+  description: A Basic Description
+  url:  /checkout/checkout-3.0/checkout-basic
   icon:
     content: ??????
-- title: Checkout 3.0
-  description: A 3.0 description
-  url: /checkout/checkout-3.0
+- title: Checkout Delegated SCA
+  description: A Delegated SCA description
+  url: /checkout/checkout-3.0/checkout-dsca
   icon:
     content: ???????
     outlined: true
+- title: Checkout Standard
+  description: A Standard Description
+  url: /checkout/checkout-3.0/checkout-standard
+  icon:
+    content: ??????
+    outlined: true
+- title: Checkout Tailored
+  description: A Tailored Description
+  url: /checkout/checkout-3.0/checkout-tailored
+  icon:
+    content: ?????
+    outlined: true
 ---
+
 
 {:.heading-line}
 
