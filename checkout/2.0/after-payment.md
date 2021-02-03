@@ -1,5 +1,6 @@
 ---
 title: After Payment
+redirect_from: /checkout/after-payment
 estimated_read: 11
 description: |
   When the consumer has **completed** the entire

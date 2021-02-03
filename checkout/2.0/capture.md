@@ -1,5 +1,6 @@
 ---
 title: Capture
+redirect_from: /checkout/capture
 estimated_read: 5
 menu_order: 500
 ---

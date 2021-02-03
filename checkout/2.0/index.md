@@ -1,5 +1,5 @@
 ---
-section: Checkout
+section: Checkout 2.0
 title: Introduction
 estimated_read: 3
 description: |
