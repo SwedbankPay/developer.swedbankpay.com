@@ -19,6 +19,12 @@ card_list:
   icon:
     content: verified
     outlined: true
+- title: MOTO
+  description: Mail Order / Telephone Order
+  url:  /checkout/features/optional/moto
+  icon:
+    content: dns
+    outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
   url:  /checkout/features/optional/recur
