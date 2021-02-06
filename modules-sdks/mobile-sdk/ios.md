@@ -122,8 +122,8 @@ sequenceDiagram
 ```
 
 *   ① Only pages tested to work with WKWebView are opened inside SwedbankPaySDKController. This list is updated as new pages are verified.
-*   ② Other pages are opened in Safari. See [the section on external applications](#payment-url-and-external-applications) for details on how the process returns to the SDK afterwards.
-*   ③ See [the section on external applications](#payment-url-and-external-applications) for details.
+*   ② Other pages are opened in Safari. See [the section on external applications](/technical-reference/payment-url-and-external-applications) for details on how the process returns to the SDK afterwards.
+*   ③ See [the section on external applications](/technical-reference/payment-url-and-external-applications) for details.
 
 The iOS SDK is contained in the module `SwedbankPaySDK`.
 
@@ -432,7 +432,7 @@ sequenceDiagram
 [cocoapods]: https://cocoapods.org/
 [cocoapods-gettingstarted]: https://guides.cocoapods.org/using/getting-started.html
 [cocoapods-using]: https://guides.cocoapods.org/using/using-cocoapods.html
-[payment-url]: /checkout/payment-menu#payment-url
+[payment-url]: /checkout/2.0/payment-menu/technical-reference/payment-url
 [custom-scheme-1]: /assets/img/mobile-sdk/ios-custom-scheme-1.png
 [custom-scheme-2]: /assets/img/mobile-sdk/ios-custom-scheme-2.png
 [assoc-domains-entitlement]: /assets/img/mobile-sdk/ios-assoc-domain.png
@@ -448,7 +448,7 @@ sequenceDiagram
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /introduction#problems
 [backend-problems]: merchant-backend#problems
-[checkin-consumer]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
-[checkin-paymentorder]: /checkout/payment-menu#step-3-create-payment-order
-[paymenturl]: /checkout/payment-menu#payment-url
+[checkin-consumer]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
+[checkin-paymentorder]: /checkout/2.0/payment-menu#step-3-create-payment-order
+[paymenturl]: /checkout/2.0/payment-menu/technical-reference/payment-url
 [backend-payment-orders]: merchant-backend#payment-orders-endpoint

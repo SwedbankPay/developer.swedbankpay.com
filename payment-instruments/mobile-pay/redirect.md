@@ -382,13 +382,13 @@ sequenceDiagram
                          next_href="seamless-view"
                          next_title="Seamless View" %}
 
-[callback]: /payment-instruments/mobile-pay/other-features#callback
-[complete-url]: /payment-instruments/mobile-pay/other-features#completeurl
+[callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
+[complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
 [mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
-[mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations
+[mobilepay-cancel]: /payment-instruments/mobile-pay/features/core/cancel
 [mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
-[payee-reference]: /payment-instruments/mobile-pay/other-features#payee-reference
+[payee-reference]: /payment-instruments/mobile-pay/features/technical-reference/payee-reference
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent
 [swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png
-[technical-reference-callback]: /payment-instruments/mobile-pay/other-features#callback
+[technical-reference-callback]: /payment-instruments/mobile-pay/features/technical-reference/callback

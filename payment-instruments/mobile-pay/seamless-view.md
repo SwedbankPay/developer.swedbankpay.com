@@ -303,7 +303,7 @@ sequenceDiagram
         next_href="after-payment"
         next_title="After Payment" %}
 
-[callback]: /payment-instruments/mobile-pay/other-features#callback
-[complete-url]: /payment-instruments/mobile-pay/other-features#completeurl
-[purchase]: /payment-instruments/mobile-pay/other-features#purchase
+[callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
+[complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
+[purchase]: /payment-instruments/mobile-pay/features/technical-reference/purchase
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent

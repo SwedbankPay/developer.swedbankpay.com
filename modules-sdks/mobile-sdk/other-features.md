@@ -832,15 +832,15 @@ After you have verified that a domain works with WKWebView, please file an
 
 [checkout]: /checkout/
 [payment-menu]: /payment-menu/
-[checkout-features]: /checkout/other-features
-[checkout-urls]: /checkout/other-features#urls
-[checkout-orderitems]: /checkout/other-features#order-items
-[instrument-mode]: /payment-menu/other-features#instrument-mode
-[add-stored-details]: /payment-menu/other-features#add-stored-payment-instrument-details
-[terminal-failure]: /checkout/other-features#onerror
-[problems]: /payment-menu/other-features#problems
-[3ds2]: /checkout/other-features#3-d-secure-2
-[ios-payment-url]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
+[checkout-features]: /checkout/2.0/features
+[checkout-urls]: /checkout/2.0/features/technical-reference/urls
+[checkout-orderitems]: /checkout/2.0/features/technical-reference/order-items
+[instrument-mode]: /payment-menu/2.0/features/technical-reference/instrument-mode
+[add-stored-details]: /payment-menu/2.0/features/technical-reference/add-stored-payment-instrument-details
+[terminal-failure]: /checkout/2.0/features/technical-reference/onerror
+[problems]: /payment-menu/2.0/features/technical-reference/problems
+[3ds2]: /checkout/2.0/features/technical-reference/3-d-secure-2
+[ios-payment-url]: /modules-sdks/mobile-sdk/ios/technical-reference/payment-url-and-external-applications
 [ios-issues]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios/issues
 
 

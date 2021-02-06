@@ -544,12 +544,12 @@ The iOS `paymentUrl` universal-link/custom-scheme contraption makes it so that y
 
 {% include iterator.html prev_href="ios"
                          prev_title="Back: iOS"
-                         next_href="other-features"
+                         next_href="features"
                          next_title="Next: Other Features" %}
 
-[initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /checkout/payment-menu#step-3-create-payment-order
-[payment-url]: /checkout/payment-menu#payment-url
+[initiate-consumer-session]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
+[create-payment-order]: /checkout/2.0/payment-menu#step-3-create-payment-order
+[payment-url]: /checkout/2.0/payment-menu/technical-reference/payment-url
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [rfc-7807]: https://tools.ietf.org/html/rfc7807

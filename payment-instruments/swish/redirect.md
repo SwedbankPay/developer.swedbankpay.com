@@ -86,7 +86,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -250,12 +250,12 @@ sequenceDiagram
 {% include iterator.html prev_href="direct" prev_title="Direct"
 next_href="seamless-view" next_title="Seamless View" %}
 
-[callback-url]: /payment-instruments/swish/other-features#callback
-[complete-url]: /payment-instruments/swish/other-features#completeurl
-[payee-reference]: /payment-instruments/swish/other-features#payee-reference
-[purchase]: /payment-instruments/swish/other-features#purchase-flow
+[callback-url]: /payment-instruments/swish/features/technical-reference/callback
+[complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
+[payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
+[purchase]: /payment-instruments/swish/features/technical-reference/purchase-flow
 [redirect]: /payment-instruments/swish/redirect
 [seamless-view]: /payment-instruments/swish/seamless-view
 [swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png
-[technical-reference-callback]: /payment-instruments/swish/other-features#callback
+[technical-reference-callback]: /payment-instruments/swish/features/technical-reference/callback
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

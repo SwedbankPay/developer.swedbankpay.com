@@ -1,4 +1,4 @@
-## Payment Order Operations
+## Operations
 
 When a payment order resource is created and during its lifetime, it will have
 a set of operations that can be performed on it.

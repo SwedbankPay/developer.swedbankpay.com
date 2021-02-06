@@ -1,17 +1,13 @@
 {%- capture documentation_section -%}{%- include documentation-section.md fallback="card" -%}{%- endcapture -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
-{% if documentation_section == nil or documentation_section == empty %}
-    {% assign payee_reference_url = "/introduction#payee-reference" %}
-{% else %}
-    {%- capture payee_reference_url -%}
-    {%- if documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
-            /{{ documentation_section }}/features/technical-reference/payee-reference
-        {%- else -%}
-            /payment-instruments/{{ documentation_section }}/features/technical-reference/payee-reference
-        {%- endif -%}
-    {%- endcapture -%}
-{%- endif -%}
+{%- capture payee_reference_url -%}
+    {%- if documentation_section == nil or documentation_section == empty -%}
+        {%- assign payee_reference_url = "/introduction#payee-reference" -%}
+    {%- else -%}
+        {%- include documentation-section-url.md href="/features/technical-reference/payee-reference" -%}
+    {%- endif -%}
+{%- endcapture -%}
 {%- capture payee_reference -%}
     A unique reference from the merchant system. It is set per operation to
     ensure an exactly-once delivery of a transactional operation. See

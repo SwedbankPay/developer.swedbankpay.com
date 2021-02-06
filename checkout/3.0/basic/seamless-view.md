@@ -208,21 +208,21 @@ card payment:
 next_href="capture" next_title="Capture" %}
 
 [payment-page_seamless-view.png]: /assets/screenshots/card/seamless-view/view/macos.png
-[abort]: /payment-instruments/card/other-features#abort
+[abort]: /payment-instruments/card/features/core/abort
 [after-payment]: /payment-instruments/card/after-payment
-[callback]: /payment-instruments/card/other-features#callback
+[callback]: /payment-instruments/card/features/technical-reference/callback
 [cancel]: /payment-instruments/card/after-payment#cancellations
 [capture]: /payment-instruments/card/capture
-[create-payment]: /payment-instruments/card/other-features#create-payment
+[create-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [expansion]: /introduction#expansion
-[payee-reference]: /payment-instruments/card/other-features#payee-reference
-[payout]: /payment-instruments/card/other-features#payout
-[purchase]: /payment-instruments/card/other-features#purchase
-[price-resource]: /payment-instruments/card/other-features#prices
-[recur]: /payment-instruments/card/other-features#recur
-[reversal]: /payment-instruments/card/after-payment#reversals
-[verify]: /payment-instruments/card/other-features#verify
-[create-payment]: /payment-instruments/card/other-features#create-payment
+[payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
+[payout]: /payment-instruments/card/features/optional/payout
+[purchase]: /payment-instruments/card/features/technical-reference/purchase
+[price-resource]: /payment-instruments/card/features/technical-reference/prices
+[recur]: /payment-instruments/card/features/optional/recur
+[reversal]: /payment-instruments/card/features/core/reversal
+[verify]: /payment-instruments/card/features/optional/verify
+[create-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [seamless-view-card]: /assets/img/payments/seamless-view-card.png
 [swedish-seamless-view-card]: /assets/img/payments/swedish-seamless-view-card.png

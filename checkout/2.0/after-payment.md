@@ -14,5 +14,5 @@ menu_order: 500
 
 {% include iterator.html prev_href="capture"
                          prev_title="Capture"
-                         next_href="other-features"
-                         next_title="Other Features" %}
+                         next_href="features"
+                         next_title="Features" %}

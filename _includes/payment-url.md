@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture technical_reference_url %}{% include documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
 {% assign when = include.when | default: "selecting the payment instrument" %}
 {% assign full_reference = include.full_reference | default: false %}
 
@@ -60,9 +60,9 @@ JavaScript and shut down the Seamless View if any of these events occur.
 
 Events to subscribe to for full control over the payment flow are can be found
 in {% if api_resource == "paymentorders" %}
-[Payment Menu Events](/{{ documentation_section }}/other-features#payment-menu-events).
+[Payment Menu Events](/{{ technical_reference_url }}/payment-menu-events).
 {% else %}
-[Seamless View Events](/payment-instruments/{{ documentation_section }}/other-features#seamless-view-events).
+[Seamless View Events]({{ technical_reference_url }}/seamless-view-events).
 {% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you

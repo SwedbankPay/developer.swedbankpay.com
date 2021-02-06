@@ -63,9 +63,9 @@ card_list:
   icon:
     content: event
     outlined: true
-- title: Payment Order Operations
+- title: Operations
   description: Possible operations for a payment order
-  url: /payment-menu/features/technical-reference/payment-order-operations
+  url: /payment-menu/features/technical-reference/operations
   icon:
     content: settings
     outlined: true

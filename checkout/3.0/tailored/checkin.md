@@ -283,7 +283,7 @@ and its duration.
 [checkin-start]: /assets/img/checkout/checkin-email-msisdn.png
 [checkin-options]: /assets/img/checkout/checkin-options.png
 [checkin-ssn]: /assets/img/checkout/checkin-ssn.png
-[checkin-events]: /checkout/other-features#checkin-events
+[checkin-events]: /checkout/3.0/tailored/features/technical-reference/checkin-events
 [data-protection]: /resources/data-protection#paymentorder-consumer-data
 [payment-menu]: payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html

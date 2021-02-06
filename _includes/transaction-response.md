@@ -1,17 +1,12 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% if documentation_section == nil or documentation_section == empty %}
-    {% assign operations_href = "/introduction#operations" %}
-{% else %}
-    {%- capture operations_href -%}
-        {%- if documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
-            /{{ documentation_section }}/other-features#operations
-        {%- else -%}
-            /payment-instruments/{{ documentation_section }}/other-features#operations
-        {%- endif -%}
-    {%- endcapture -%}
-{%- endif -%}
-
+{%- capture operations_href -%}
+    {%- if documentation_section == nil or documentation_section == empty -%}
+        /introduction#operations
+    {%- else -%}
+        {%- include documentation-section-url.md href='/features/technical-reference/operations' -%}
+    {%- endif -%}
+{%- endcapture -%}
 {% assign transaction = include.transaction | default: "capture" %}
 {% assign mcom = include.mcom | default: false %}
 

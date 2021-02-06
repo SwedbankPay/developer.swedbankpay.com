@@ -109,7 +109,7 @@ Other changes:
 
 *   Removed documentation for [Trustly Payments][trustly-payments] Seamless View.
 *   Updated `reOrderPurchaseIndicator` description.
-*   Updated [Other Features][trustly-other-features] in [Trustly Payments][trustly-payments].
+*   Updated [Other Features][trustly-features] in [Trustly Payments][trustly-payments].
 *   Updated [Test Data][test-data] for Vipps Payments.
 *   Added updated documentation on the `transaction` operation.
 
@@ -298,7 +298,7 @@ This change contains build updates for the page. :octocat:
 
 ### Version 1.7.2
 
-*   Removed several duplicate headers in other-features pages.
+*   Removed several duplicate headers in features pages.
 *   Added unscheduled purchase information in
     [card payments][card-unscheduled-purchase].
 *   We have added card logos when selecting card in payment menu.
@@ -451,7 +451,7 @@ CreditCard>>doc:Main.ecommerce.release-information.WebHome||anchor="HPaymentUrlC
 ### Support international phone numbers in Swish
 
 We have added support for sending in international phone numbers in the request.
-Check our Swish documentation [here][swish-other-features].
+Check our Swish documentation [here][swish-features].
 This is supported in API, and when payer's enter their phone number on the
 payment page.
 
@@ -530,70 +530,70 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
-[callback]: /payment-instruments/card/other-features#callback
+[callback]: /payment-instruments/card/features/technical-reference/callback
 [card-direct]: /payment-instruments/card/direct
-[card-payment-url]: /payment-instruments/card/other-features#payment-url
+[card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
-[card-unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
-[card-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
+[card-unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled-purchase
+[card-transaction-states]: /payment-instruments/card/features/technical-reference/payment-transaction-states
 [card]: /payment-instruments/card
 [card-3ds-info]: /payment-instruments/card#purchase-flow
-[card-3ds2]: /payment-instruments/card/other-features#3-d-secure-2
+[card-3ds2]: /payment-instruments/card/features/core/3d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
 [card-seamless-view]: /payment-instruments/card/seamless-view
-[checkin]: /checkout/checkin
-[checkout-capture]: /checkout/capture
-[checkout-checkin-front-end]:/checkout/checkin#step-1-initiate-session-for-consumer-identification
-[checkout-payment-menu-frontend]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
-[checkout-payment-order-purchase]: /checkout/payment-menu#request
-[checkout-payment-orders]: /checkout/other-features#payment-orders
-[checkout-payment-url]: /checkout/other-features#payment-url
+[checkin]: /checkout/2.0/checkin
+[checkout-capture]: /checkout/2.0/capture
+[checkout-checkin-front-end]:/checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
+[checkout-payment-menu-frontend]: /checkout/2.0/checkin#step-2-display-swedbank-pay-checkin-module
+[checkout-payment-order-purchase]: /checkout/2.0/payment-menu#request
+[checkout-payment-orders]: /checkout/2.0/features/technical-reference/payment-orders
+[checkout-payment-url]: /checkout/2.0/features/technical-reference/payment-url
 [checkout]: /checkout
-[checkout-3ds2]: /checkout/other-features#3-d-secure-2
-[checkout-callback]: /checkout/other-features#callback
-[co-badge-card]: /payment-instruments/card/other-features#co-badge-card-choice-for-dankort
+[checkout-3ds2]: /checkout/2.0/features/core/3d-secure-2
+[checkout-callback]: /checkout/2.0/features/technical-reference/callback
+[co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
-[dsca]: /checkout/other-features#delegated-strong-consumer-authentication
+[dsca]: /checkout/features/optional/delegated-strong-consumer-authentication
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
 [home-technical-information]: /introduction
-[initiate-consumer-session]: /checkout/checkin#step-1-initiate-session-for-consumer-identification
+[initiate-consumer-session]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
-[dsca-checkout]: /checkout/other-features#delegated-strong-consumer-authentication
+[dsca-checkout]: /checkout/2.0/features/optional/delegated-strong-consumer-authentication
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
 [mobilepay-capture]: /payment-instruments/mobile-pay/capture
 [modules-sdks]: /modules-sdks
-[moto-payment-card]: /payment-instruments/card/other-features#moto
-[one-click]: /payment-instruments/card/other-features#one-click-payments
-[payment-orders]: /checkout/other-features#creating-a-payment-order
+[moto-payment-card]: /payment-instruments/card/features/optional/moto
+[one-click]: /payment-instruments/card/features/optional/one-click-payments
+[payment-orders]: /checkout/2.0/payment-menu#step-3-create-payment-order
 [payments]: /payment-instruments
-[prices]: /checkout/other-features#prices
-[update-order-checkout]: /checkout/other-features#update-order
+[prices]: /checkout/features/technical-reference/prices
+[update-order-checkout]: /checkout/2.0/features#update-order
 [resources]: /resources/
-[settlement-reconcilitation]: /payment-instruments/card/other-features#settlement-and-reconciliation
+[settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
-[split-settlement]: /payment-instruments/card/other-features#split-settlement
+[split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
 [storing-uri]: /introduction#storing-uris
-[swish-api-errors]: /payment-instruments/swish/other-features#problems
+[swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payment-instruments/swish/direct
-[swish-other-features]: /payment-instruments/swish/other-features
+[swish-features]: /payment-instruments/swish/features
 [swish-redirect]: /payment-instruments/swish/redirect
 [swish-seamless-view]: /payment-instruments/swish/seamless-view
-[seamless-view-events-card]: /payment-instruments/card/other-features#seamless-view-events
+[seamless-view-events-card]: /payment-instruments/card/features/technical-reference/seamless-view-events
 [swish]: /payment-instruments/swish
 [swish-abort]: /payment-instruments/swish/after-payment#abort
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
-[transaction-on-file]: /payment-instruments/card/other-features#transaction-on-file
+[transaction-on-file]: /payment-instruments/card/features/optional/transaction-on-file
 [trustly-payments]: /payment-instruments/trustly
-[trustly-other-features]: /payment-instruments/trustly/other-features
-[vipps-payment-resource]: /payment-instruments/vipps/other-features#payment-resource
-[vipps-payment-url]: /payment-instruments/vipps/other-features#payment-url
+[trustly-features]: /payment-instruments/trustly/features
+[vipps-payment-resource]: /payment-instruments/vipps/features/core/payment-resource
+[vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps

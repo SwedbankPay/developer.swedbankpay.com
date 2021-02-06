@@ -130,8 +130,8 @@ sequenceDiagram
 
 {% include iterator.html prev_href="seamless-view"
                          prev_title="Seamless View"
-                         next_href="other-features"
-                         next_title="Other Features" %}
+                         next_href="features"
+                         next_title="Features" %}
 
 [abort]: /payment-instruments/mobile-pay/after-payment#abort
-[technical-reference-callback]: /payment-instruments/mobile-pay/other-features#callback
+[technical-reference-callback]: /payment-instruments/mobile-pay/features/technical-reference/callback

@@ -1,11 +1,5 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
-{%- capture 3ds2link -%}
-    {%- if documentation_section == "card" -%}
-        /payment-instruments/{{ documentation_section }}/other-features#3-d-secure-2
-    {%- else -%}
-        /{{ documentation_section }}/other-features#3-d-secure-2
-    {%- endif -%}
-{%- endcapture -%}
+{%- capture 3ds2link -%}{%- include documentation-section-url.md href="/features/core/3d-secure-2" -%}{%- endcapture -%}
 
 |          | └➔&nbsp;`riskIndicator`               | `array`      | This **optional** object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to promt for [3-D Secure authentication]({{ 3ds2link }}) of the payer when they are authenticating the purchase.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |          | └─➔&nbsp;`deliveryEmailAdress`        | `string`     | For electronic delivery, the email address to which the merchandise was delivered. Providing this field when appropriate decreases the likelyhood of a 3-D Secure authentication for the payer.                                                                                                                                                                                                                                                                                                                                                                  |

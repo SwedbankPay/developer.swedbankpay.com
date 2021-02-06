@@ -198,7 +198,7 @@ the payer; then you should await capture until after the goods have been sent.
 
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to
-[update the Payment Menu][payment-order-operations] after any changes to the
+[update the Payment Menu][operations] after any changes to the
 order.
 
 Below, you will see a complete overview of the payment menu process.
@@ -305,6 +305,6 @@ finalizing the payment in the [After Payment section][after-payment].
 [login-payment-menu-image]: /assets/img/checkout/loggedin-payment-menu.png
 [swedish-guest-payment-menu-image]: /assets/img/checkout/swedish-guest-payment-menu.png
 [swedish-login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
-[payment-order-operations]: /checkout/after-payment#operations
-[technical-reference-onconsumer-identified]: /checkout/checkin#step-2-display-swedbank-pay-checkin-module
-[urls]: /checkout/other-features#urls-resource
+[operations]: /checkout/3.0/dsca/features/technical-reference/operations
+[technical-reference-onconsumer-identified]: /checkout/3.0/dsca/checkin#step-2-display-swedbank-pay-checkin-module
+[urls]: /checkout/3.0/dsca/features/technical-reference/urls-resource

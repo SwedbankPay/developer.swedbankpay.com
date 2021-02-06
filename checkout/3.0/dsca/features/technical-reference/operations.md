@@ -1,5 +1,5 @@
 ---
-title: PaymentOrder Operations
+title: Operations
 estimated_read: 10
 description: |
   Possible operations for a payment order.

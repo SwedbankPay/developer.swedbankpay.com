@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md fallback="card" %}{% endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% if transaction == "cancel" %}
     {% assign plural = "cancellations" %}
@@ -90,4 +90,4 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                                |
 
-[operations]: /payment-instruments/{{ documentation_section }}/other-features#operations
+[operations]: {{ features_url }}/technical-reference/operations

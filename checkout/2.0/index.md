@@ -194,6 +194,6 @@ diagram.
 {% include iterator.html next_href="checkin"
                          next_title="Implement Checkin" %}
 
-[after-payment-capture]: /checkout/capture
+[after-payment-capture]: /checkout/2.0/capture
 [https]: /introduction#connection-and-protocol
-[payment-order]: /checkout/other-features#payment-orders
+[payment-order]: /checkout/2.0/features/technical-reference/payment-orders

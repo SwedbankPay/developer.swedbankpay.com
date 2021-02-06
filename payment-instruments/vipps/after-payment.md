@@ -336,18 +336,18 @@ Content-Type: application/json
 {% include iterator.html
         prev_href="capture"
         prev_title="Capture"
-        next_href="other-features"
-        next_title="Other Features" %}
+        next_href="features"
+        next_title="Features" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
-[callback]: /payment-instruments/vipps/other-features#callback
+[callback]: /payment-instruments/vipps/features/technical-reference/callback
 [cancel]: #cancellations
 [capture]: #captures
-[complete-url]: /payment-instruments/vipps/other-features#completeurl
+[complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [expand-parameter]: /introduction#expansion
-[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
-[paymenturl]: /payment-instruments/vipps/other-features#payment-url
-[prices]: /payment-instruments/vipps/other-features#prices
+[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
+[paymenturl]: /payment-instruments/vipps/other-features/technical-reference/payment-url
+[prices]: /payment-instruments/vipps/features/technical-reference/prices
 [reverse]: #reversals
-[transaction]: /payment-instruments/vipps/other-features#transactions
+[transaction]: /payment-instruments/vipps/features/technical-reference/transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

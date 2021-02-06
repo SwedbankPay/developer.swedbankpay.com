@@ -1,3 +1,5 @@
+{% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
+
 ## Delegated Strong Consumer Authentication
 
 {% include jumbotron.html body="When the payer is identified and
@@ -66,7 +68,7 @@ SSN are required as usual.
 {:.text-center}
 ![Payments with SSN][mac-with-ssn]{:width="475" height="460"}
 
-[checkin]: /checkout/checkin
-[payment-menu]: /checkout/payment-menu
+[checkin]: {{ documentation_section_url }}/checkin
+[payment-menu]: {{ documentation_section_url }}/payment-menu
 [mac-no-ssn]: /assets/img/checkout/mac-no-ssn.png
 [mac-with-ssn]: /assets/img/checkout/mac-with-ssn.png
