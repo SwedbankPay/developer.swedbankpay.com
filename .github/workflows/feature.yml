@@ -1,7 +1,7 @@
 name: Deploy to stage
 on: 
   push:
-    branches: ['*']
+    branches: ['develop', 'feature/*']
 
 jobs:
   build:
