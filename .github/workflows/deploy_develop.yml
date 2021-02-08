@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker compose up
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: payex-dev
+          GITHUB_ACTOR_EMAIL: dev@payex.com
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          docker-compose run \
+            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            -e ELASTICSEARCH_API_KEY_STAGE=${{ secrets.ELASTICSEARCH_API_KEY}} \
+            -e ELASTICSEARCH_URL_STAGE=${{ secrets.ELASTICSEARCH_API_URL}} \
+            portal build \
+            --env=production
