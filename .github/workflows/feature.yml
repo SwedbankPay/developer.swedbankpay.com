@@ -31,4 +31,4 @@ jobs:
         with:
           inlineScript: |
             az storage account show -n spaydevportalstoragedev --query networkRuleSet
-            az storage blob upload-batch -s _site -d ${{ github.ref }} --account-name spaydevportalstoragedev --debug
+            az storage blob upload-batch -s _site -d \$web --account-name ${{ steps.variables.outputs.AZURE_ACCOUNT }}
