@@ -9,8 +9,7 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v2
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Fetch tags and master for GitVersion
         run: |
           git fetch --tags
