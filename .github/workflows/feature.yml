@@ -30,4 +30,4 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -s _site -d "\$web\${{GITHUB_HEAD_REF}}" --account-name blobdevportalstage
+            az storage blob upload-batch -s _site -d "\$web\${{ github.ref}}" --account-name blobdevportalstage
