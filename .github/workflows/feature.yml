@@ -1,9 +1,7 @@
-name: Feature
+name: Deploy to stage
 on: 
   push:
-    branches:
-      - "feature/**"
-      - "develop"
+    branches: [develop]
 
 jobs:
   build:

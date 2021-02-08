@@ -1,4 +1,4 @@
-name: Master
+name: Deploy to production
 on: 
   push:
     branches:
