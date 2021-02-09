@@ -45,6 +45,8 @@ document is described in the following section.
 
 {% include one-click-payments.md %}
 
+{% include moto.md %}
+
 {% include payment-url.md full_reference=true when="at the 3-D Secure
 verification for credit card payments" %}
 
