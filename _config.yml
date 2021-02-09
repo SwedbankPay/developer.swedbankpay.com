@@ -1,5 +1,5 @@
 repository: SwedbankPay/developer.swedbankpay.com
-remote_theme: SwedbankPay/swedbank-pay-design-guide-jekyll-theme@1.5
+theme: 'swedbank-pay-design-guide-jekyll-theme'
 exclude: ["Gemfile*", "Rakefile", ".elasticsearch-data"]
 plugins:
   - "jekyll-github-metadata"
@@ -7,6 +7,7 @@ plugins:
   - jekyll-material-icon-tag
   - "kramdown-plantuml"
   - searchyll
+  - swedbank-pay-design-guide-jekyll-theme
   - jekyll-redirect-from
 kramdown:
   input: GFM
