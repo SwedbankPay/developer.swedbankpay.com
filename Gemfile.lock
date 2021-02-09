@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/NullableInt/searchyll.git
+  remote: https://github.com/SwedbankPay/searchyll.git
   revision: 1b226961c92fe630acd9d19e93887b49f7529b17
   branch: feature/api_key
   specs:

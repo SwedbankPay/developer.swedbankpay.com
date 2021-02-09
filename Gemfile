@@ -13,6 +13,6 @@ gem 'kramdown-plantuml'
 gem 'rake', '~> 13.0.3'
 gem 'html-proofer'
 gem 'html-proofer-unrendered-markdown'
-gem 'searchyll', git: 'https://github.com/NullableInt/searchyll.git', branch: 'feature/api_key'
+gem 'searchyll', git: 'https://github.com/SwedbankPay/searchyll.git', branch: 'feature/api_key'
 gem "jekyll_asset_pipeline"
 gem "swedbank-pay-design-guide-jekyll-theme"
