@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [master]
+    branches: [master, develop]
 
 jobs:
   deploy:
@@ -10,7 +10,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Docker compose up stage
+        if: github.ref == 'refs/heads/develop'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: payex-dev
+          GITHUB_ACTOR_EMAIL: dev@payex.com
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          docker-compose run \
+            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            -e ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY_STAGE}} \
+            -e ELASTICSEARCH_URL=${{ secrets.ELASTICSEARCH_API_URL_STAGE}} \
+            portal build \
+            --env=production
+
       - name: Docker compose up
+        if: github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: payex-dev
