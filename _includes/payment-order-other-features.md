@@ -1020,8 +1020,6 @@ is used for your own book keeping.                                              
 |                  | └➔&nbsp;`metadata`             | `object`      | {% include field-description-metadata.md %}
 |
 
-{% include moto.md %}
-
 ### Purchase Flow
 
 ```mermaid
