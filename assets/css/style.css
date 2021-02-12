@@ -309,6 +309,8 @@ a.front-page-demoshop[href^='//']:not([href*='{{ site.url }}']):after, a.front-p
 
 #designguide .dg-sidebar .main-nav-ul { border-bottom: 1px solid #ebE7E2; }
 
+.documentation > div.row { margin-right: 0; }
+
 .documentation .doc-container { max-width: 100%; }
 
 .documentation code.language-mermaid[data-processed='true'] { background: none; border: none; padding: 0px; }
