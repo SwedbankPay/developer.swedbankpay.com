@@ -1,6 +1,5 @@
 ---
 section: MobilePay Online
-permalink: /:path/
 title: Introduction
 redirect_from: /payments/mobile-pay/
 estimated_read: 3

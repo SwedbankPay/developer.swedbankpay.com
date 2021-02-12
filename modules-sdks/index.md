@@ -1,7 +1,6 @@
 ---
 section: Modules & SDKs
 title: Introduction
-permalink: /:path/
 redirect_from: /resources/sdk-modules
 estimated_read: 4
 description: |

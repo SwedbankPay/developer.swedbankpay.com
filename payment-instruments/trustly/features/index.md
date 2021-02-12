@@ -1,6 +1,5 @@
 ---
 title: Features
-permalink: /:path/
 redirect_from: /payment-instruments/trustly/other-features
 card_overview: true
 description: |

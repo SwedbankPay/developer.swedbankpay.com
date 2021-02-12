@@ -1,6 +1,5 @@
 ---
 section: Payment Instruments
-permalink: /:path/
 title: Introduction
 redirect_from: /payments/
 estimated_read: 5

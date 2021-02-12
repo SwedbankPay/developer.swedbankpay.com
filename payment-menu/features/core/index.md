@@ -1,6 +1,5 @@
 ---
 title: Core Features
-permalink: /:path/
 description: |
   This section details the Payment Menu features that are essential for the
   payment process.

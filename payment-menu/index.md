@@ -1,6 +1,5 @@
 ---
 section: Payment Menu
-permalink: /:path/
 redirect_from: /payment-menu/other-features
 estimated_read: 3
 description: |

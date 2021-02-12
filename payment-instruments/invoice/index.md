@@ -1,6 +1,5 @@
 ---
 section: Invoice
-permalink: /:path/
 title: Introduction
 redirect_from: /payments/invoice/
 estimated_read: 2

@@ -1,6 +1,5 @@
 ---
 section: Resources
-permalink: /:path/
 title: Introduction
 estimated_read: 1
 description: |

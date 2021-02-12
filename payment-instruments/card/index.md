@@ -1,6 +1,5 @@
 ---
 section: Card
-permalink: /:path/
 title: Introduction
 redirect_from: /payments/card/
 estimated_read: 8
@@ -63,6 +62,7 @@ When shopping in SEK, the page will look like this.
 
 {:.text-center}
 ![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="605px" width="475px"}
+
 
 ## Operations
 
