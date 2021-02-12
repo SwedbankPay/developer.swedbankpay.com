@@ -1,5 +1,6 @@
 ---
 title: Optional Features
+permalink: /:path/
 description: |
   This section details the features of Trustly that are optional.
 icon:

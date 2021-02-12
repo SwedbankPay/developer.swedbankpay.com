@@ -1,5 +1,6 @@
 ---
 title: Features
+permalink: /:path/
 redirect_from: /payment-instruments/card/other-features
 card_overview: true
 description: |

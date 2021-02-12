@@ -1,5 +1,6 @@
 ---
 title: Core Features
+permalink: /:path/
 description: |
   This section details the features of MobilePay Online that are essential for
   the payment process.

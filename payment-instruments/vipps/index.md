@@ -1,5 +1,6 @@
 ---
 section: Vipps
+permalink: /:path/
 title: Introduction
 redirect_from: /payments/vipps/
 estimated_read: 2

@@ -1,5 +1,6 @@
 ---
 title: Technical Reference
+permalink: /:path/
 description: |
   This section is a technical reference for the requests and responses
   you will encounter when integrating against the Checkout.

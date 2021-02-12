@@ -1,5 +1,6 @@
 ---
 section: Swish
+permalink: /:path/
 title: Introduction
 redirect_from: /payments/swish/
 estimated_read: 4
