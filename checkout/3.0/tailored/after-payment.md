@@ -9,8 +9,6 @@ description: |
 menu_order: 700
 ---
 
-{% include payment-order-after-payment.md %}
-
 {% include iterator.html prev_href="capture"
                          prev_title="Capture"
                          next_href="features"
