@@ -6,6 +6,7 @@
 authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
+{%- if documentation_section != 'checkout/3.0/basic' %}
 **Delegated Strong Consumer Authentication** (hereby abbreviated as "Delegated
 SCA") is performed as an alternative to [Checkin][checkin] when creating the
 Payment Order upon the initialization of the [Payment Menu][payment-menu]. You
@@ -13,6 +14,16 @@ can only use Delegated SCA if you have an agreement with Swedbank Pay. The
 additional `nationalIdentifier` field described below should be added to the
 `paymentorder.payer` object already in the Payment Order creation request, as an
 alternative to `consumerProfileRef`.
+{%- else %}
+**Delegated Strong Consumer Authentication** (hereby abbreviated as "Delegated
+SCA") is performed as an alternative to `Checkin` when creating the
+Payment Order upon the initialization of the `Payment Menu`. You
+can only use Delegated SCA if you have an agreement with Swedbank Pay. The
+additional `nationalIdentifier` field described below should be added to the
+`paymentorder.payer` object already in the Payment Order creation request, as an
+alternative to `consumerProfileRef`.
+{%- endif %}
+
 
 {% include alert.html type="warning" icon="warning" header="Bank ID
 authentication required" body="In order to use the Delegated SCA feature, you
@@ -52,6 +63,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. Must be part of what you get from your authentication process. |
 |                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
+
 
 When the payer is authenticated by the Merchant, some payment instruments
 will allow a more frictionless payment process. Invoice One-Click Payments does
