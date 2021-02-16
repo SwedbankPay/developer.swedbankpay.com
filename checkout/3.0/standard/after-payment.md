@@ -9,10 +9,5 @@ description: |
 menu_order: 700
 ---
 
-{% include iterator.html prev_href="capture"
-                         prev_title="Capture"
-                         next_href="features"
-                         next_title="Features" %}
-
 [checkin]: /checkin
 [payment-menu]: /payment-menu
