@@ -17,5 +17,5 @@ menu_order: 500
                          next_href="features"
                          next_title="Features" %}
 
-[checkin]: /checkin
-[payment-menu]: /payment-menu
+[checkin]: /checkin/
+[payment-menu]: /payment-menu/
