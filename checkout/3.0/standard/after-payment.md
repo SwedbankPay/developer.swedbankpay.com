@@ -9,5 +9,5 @@ description: |
 menu_order: 700
 ---
 
-[checkin]: checkout/3.0/standard/checkin/
-[payment-menu]: checkout/3.0/standard/payment-menu/
+[checkin]: /checkout/3.0/standard/checkin/
+[payment-menu]: /checkout/3.0/standard/payment-menu/
