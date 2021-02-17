@@ -39,6 +39,12 @@ card_list:
   icon:
     content: code
     outlined: true
+- title: Operations
+  description: The operations of the payments
+  url:  /payment-instruments/card/features/technical-reference/operations
+  icon:
+    content: shopping_basket
+    outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
   url:  /payment-instruments/swish/features/technical-reference/payee-info
