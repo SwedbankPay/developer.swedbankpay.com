@@ -556,7 +556,7 @@ integration and the payer.
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
-[dsca]: /checkout/features/optional/delegated-strong-consumer-authentication
+[dsca]: /checkout/features/optional/dsca
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
 [home-technical-information]: /introduction
@@ -564,7 +564,7 @@ integration and the payer.
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
-[dsca-checkout]: /checkout/2.0/features/optional/delegated-strong-consumer-authentication
+[dsca-checkout]: /checkout/2.0/features/optional/dsca
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
 [mobilepay-capture]: /payment-instruments/mobile-pay/capture
