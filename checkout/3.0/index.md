@@ -16,24 +16,24 @@ menu_order: 200
 card_list:
 - title: Checkout Basic
   description: A Basic Description
-  url:  /checkout/3.0/checkout-basic
+  url:  /checkout/3.0/basic
   icon:
     content: ??????
 - title: Checkout Delegated SCA
   description: A Delegated SCA description
-  url: /checkout/3.0/checkout-dsca
+  url: /checkout/3.0/dsca
   icon:
     content: ???????
     outlined: true
 - title: Checkout Standard
   description: A Standard Description
-  url: /checkout/3.0/checkout-standard
+  url: /checkout/3.0/standard
   icon:
     content: ??????
     outlined: true
 - title: Checkout Tailored
   description: A Tailored Description
-  url: /checkout/3.0/checkout-tailored
+  url: /checkout/3.0/tailored
   icon:
     content: ?????
     outlined: true

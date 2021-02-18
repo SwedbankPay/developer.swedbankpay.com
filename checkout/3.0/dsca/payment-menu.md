@@ -9,6 +9,4 @@ menu_order: 500
 
 
 {% include iterator.html prev_href="checkin"
-                         prev_title="Checkin"
-                         next_href="capture"
-                         next_title="Capture" %}
+                         prev_title="Checkin" %}
