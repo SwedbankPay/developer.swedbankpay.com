@@ -591,6 +591,6 @@ The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages.
                          prev_title="Process Diagrams" %}
 
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
-[sdk-paymenturl]: /modules-sdks/mobile-sdk/ios/technical-reference/payment-url-and-external-applications
+[sdk-paymenturl]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
 [android-autoverify]: https://developer.android.com/training/app-links/verify-site-associations
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
