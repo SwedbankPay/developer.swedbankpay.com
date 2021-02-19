@@ -1,4 +1,4 @@
-{%- capture sections %}
+{%- capture sections -%}
     checkout/2.0, checkout/3.0/basic, checkout/3.0/tailored, checkout/3.0/dsca,
     checkout/3.0/standard, payment-menu, gift-cards, card, invoice, mobile-pay,
     swish, trustly, vipps
