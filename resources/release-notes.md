@@ -556,7 +556,7 @@ integration and the payer.
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
-[dsca]: /checkout/features/optional/dsca
+[dsca]: /checkout/2.0/features/optional/dsca
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
 [home-technical-information]: /introduction
@@ -573,7 +573,7 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [payment-orders]: /checkout/2.0/payment-menu#step-3-create-payment-order
 [payments]: /payment-instruments
-[prices]: /checkout/features/technical-reference/prices
+[prices]: /checkout/2.0/features/technical-reference/prices
 [update-order-checkout]: /checkout/2.0/features#update-order
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
