@@ -2,12 +2,10 @@
 title: After Payment
 estimated_read: 11
 description: |
-  When the consumer has **completed** the entire [Checkin][checkin] and
-  [Payment Menu][payment-menu], you need to implement the relevant
+  When the consumer has **completed** the entire
+  [Checkin](/checkout/2.0/checkin) and
+  [Payment Menu](/checkout/2.0/payment-menu) you need to implement the relevant
   **after-payment operations** in your order system. Which these operations are
   and how they are executed is described below.
 menu_order: 700
 ---
-
-[checkin]: /checkout/3.0/tailored/checkin/
-[payment-menu]: /checkout/3.0/tailored/payment-menu/

@@ -10,9 +10,3 @@ description: |
   to be identified.
 menu_order: 400
 ---
-
-
-{% include iterator.html prev_href="./"
-                         prev_title="Introduction"
-                         next_href="payment-menu"
-                         next_title="Payment Menu" %}

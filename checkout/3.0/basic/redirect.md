@@ -10,6 +10,3 @@ description: |
   payment process.
 menu_order: 200
 ---
-
-{% include iterator.html prev_href="./" prev_title="Introduction"
-next_href="seamless-view" next_title="Seamless View" %}

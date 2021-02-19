@@ -10,6 +10,3 @@ description: |
   and try out Swedbank Pay Checkout for yourself!
 menu_order: 300
 ---
-
-{% include iterator.html next_href="checkin"
-                         next_title="Implement Checkin" %}
