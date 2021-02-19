@@ -71,7 +71,7 @@ The `reversal` resource will be returned, containing information about the newly
 
 The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment. The URI will be found on a `payment` that has a
-succesful `sale` operation.
+successful `sale` operation.
 
 {:.code-view-header}
 ***Request***

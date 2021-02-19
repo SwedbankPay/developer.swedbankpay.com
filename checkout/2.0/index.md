@@ -196,4 +196,3 @@ diagram.
 
 [after-payment-capture]: /checkout/2.0/capture
 [https]: /introduction#connection-and-protocol
-[payment-order]: /checkout/2.0/features/technical-reference/payment-orders
