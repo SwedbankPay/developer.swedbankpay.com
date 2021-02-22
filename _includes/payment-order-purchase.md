@@ -269,10 +269,12 @@ Content-Type: application/json
 | └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 
-[complete-url]: {{ documentation_section }}/features/technical-reference/completeurl
+{{ documentation_section }}
+
+[complete-url]: /{{ documentation_section }}/features/technical-reference/completeurl
 [initiate-consumer-session]: {{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification
 [one-click-payments]: {{ documentation_section }}/features/#one-click-payments
 [operations]: {{ documentation_section }}/features/technical-reference/operations
-[settlement-reconciliation]: {{ documentation_section }}/features/core/settlement-reconciliation
+[settlement-reconciliation]: /{{ documentation_section }}/features/core/settlement-reconciliation
 [split-settlement]: {{ documentation_section }}/features/core/settlement-reconciliation#split-settlement
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
