@@ -1,6 +1,7 @@
 ---
 section: Checkout
 title: Introduction
+permalink: /:path/
 estimated_read: 3
 description: |
   **Swedbank Pay Checkout** is a complete reimagination

@@ -8,6 +8,7 @@ description: |
   The Mobile SDK consists of three components: An Android library, an iOS
   library, and a backend component with example implementations in Node.js
   and Java.
+permalink: /:path/
 menu_order: 600
 ---
 
