@@ -786,9 +786,9 @@ manualArguments.putBoolean(
 As explained in the [iOS documentation][ios-payment-url], the iOS SDK will,
 in some cases, open navigations out of the payment menu in Safari rather than
 the WKWebView. The SDK contains a list of redirects that we have tested to be
-working, but, of course, this list can be neither complete not correct for all
-time. If you enounter a payment flow that opens in the WKWebView (i.e. does not
-open in Safari), but that does not work correctly, you can make all navigations
+working, but, of course, this list can be neither complete nor correct for all
+time. If you encounter a payment flow that opens in the WKWebView (i.e. does not
+open in Safari), but does not work correctly, you can make all navigations
 go to Safari to check if the flow has become incompatible with WKWebView. On
 the other hand, if you encounter a payment flow that opens in Safari and wish
 to investigate if it would work in the web view instead, you can make all
