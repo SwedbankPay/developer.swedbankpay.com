@@ -22,10 +22,10 @@ jobs:
       - name: Azure Login
         uses: azure/login@v1.1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
+          creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
 
       - name: Azure Deploy
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -s _site -d \$web --account-name blobdevportalstage
+            az storage blob upload-batch -s _site -d \$web --account-name blobdevportalprod
