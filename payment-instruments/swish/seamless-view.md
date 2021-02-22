@@ -312,7 +312,7 @@ next_href="after-payment" next_title="After Payment" %}
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
 [payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
-[paymenturl]: /payment-instruments/swish/other-features/technical-reference/payment-url
+[paymenturl]: /payment-instruments/swish/features/technical-reference/payment-url
 [price-resource]: /payment-instruments/swish/features/technical-reference/prices
 [purchase]: /payment-instruments/swish/features/technical-reference/create-payment
 [sales-transaction]: /payment-instruments/swish/after-payment#sales

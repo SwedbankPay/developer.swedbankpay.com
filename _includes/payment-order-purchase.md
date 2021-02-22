@@ -271,7 +271,7 @@ Content-Type: application/json
 
 {{ documentation_section }}
 
-[complete-url]: /{{ documentation_section }}/features/technical-reference/completeurl
+[complete-url]: /{{ documentation_section }}/features/technical-reference/complete-url
 [initiate-consumer-session]: {{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification
 [one-click-payments]: {{ documentation_section }}/features/#one-click-payments
 [operations]: {{ documentation_section }}/features/technical-reference/operations
