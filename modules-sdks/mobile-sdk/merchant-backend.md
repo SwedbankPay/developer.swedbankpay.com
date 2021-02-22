@@ -593,7 +593,7 @@ Your implementation is encouraged to define its own problem types for any domain
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml
-[payment-url]: /checkout/2.0/payment-menu/technical-reference/payment-url
+[payment-url]: payment-menu/features/technical-reference/payment-url
 [initiate-consumer-session]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
 [create-payment-order]: /checkout/2.0/payment-menu#step-3-create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
@@ -603,4 +603,4 @@ Your implementation is encouraged to define its own problem types for any domain
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /introduction#problems
-[instrument-mode]: /checkout/2.0/payment-menu/technical-reference/payment-url
+[instrument-mode]: /payment-menu/features/optional/instrument-mode
