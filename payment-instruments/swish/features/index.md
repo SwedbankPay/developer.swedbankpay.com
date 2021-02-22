@@ -67,7 +67,7 @@ card_list_2:
     outlined: true
 - title: Operations
   description: The operations of the payments
-  url:  /payment-instruments/card/features/technical-reference/operations
+  url:  /payment-instruments/swish/features/technical-reference/operations
   icon:
     content: shopping_basket
     outlined: true
