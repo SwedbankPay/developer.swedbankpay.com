@@ -7,6 +7,7 @@ description: |
   **Card** is the most popular, versatile
   and global way to initate a transaction with a customer. Choose between our
   **Seamless View**, **Redirect**, or **Direct** integration options.
+permalink: /:path/
 menu_order: 300
 ---
 
@@ -62,7 +63,6 @@ When shopping in SEK, the page will look like this.
 
 {:.text-center}
 ![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="605px" width="475px"}
-
 
 ## Operations
 
