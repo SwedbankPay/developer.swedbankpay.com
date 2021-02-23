@@ -235,7 +235,7 @@ Other changes:
 
 *   Documented allowed characters in `orderItem.class`.
 *   Added `receiptReference` in [Invoice Payments][invoice] and
-    [Payment Order][checkout-payment-orders] in capture and reversal.
+    [Payment Order][payment-orders] in capture and reversal.
 *   Callback is now moved to Other features in all payments intruments.
 *   Clean up of [MobilePay][mobile-pay].
 *   Corrected the address of Leia Ahlström in [Test Data][test-data].
@@ -344,7 +344,7 @@ All sections have been released. :trophy:
 ### Version 1.6.1
 
 *   `email`, `msisdn`, `workPhoneNumber` and `homePhoneNumber` added to the
-    `payer` object in [Payment Order requests][checkout-payment-orders].
+    `payer` object in [Payment Order requests][payment-orders].
 *   `cardholder` added to [Card Payments Purchase requests][card-purchase].
 *   Various improvements and fixes.
 
@@ -523,7 +523,7 @@ to retry the payment.
 If `paymentUrl` is not implemented, retry of payments will not be possible in
 either individual payment instruments such as
 [Vipps][vipps-payment-resource]
-or in [Checkout][checkout-payment-orders].
+or in [Checkout][payment-orders].
 It makes it more tedious to retry payment as the whole process including the
 creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
@@ -546,7 +546,6 @@ integration and the payer.
 [checkout-checkin-front-end]:/checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout/2.0/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout/2.0/payment-menu#request
-[checkout-payment-orders]: /checkout/2.0/features/technical-reference/payment-menu
 [checkout-payment-url]: /checkout/2.0/features/technical-reference/payment-url
 [checkout]: /checkout
 [checkout-3ds2]: /checkout/2.0/features/core/3d-secure-2
