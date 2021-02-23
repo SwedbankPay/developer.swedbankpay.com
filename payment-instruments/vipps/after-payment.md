@@ -346,7 +346,7 @@ Content-Type: application/json
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [expand-parameter]: /introduction#expansion
 [payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
-[paymenturl]: /payment-instruments/vipps/other-features/technical-reference/payment-url
+[paymenturl]: /payment-instruments/vipps/features/technical-reference/payment-url
 [prices]: /payment-instruments/vipps/features/technical-reference/prices
 [reverse]: #reversals
 [transaction]: /payment-instruments/vipps/features/technical-reference/transactions

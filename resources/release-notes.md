@@ -546,7 +546,7 @@ integration and the payer.
 [checkout-checkin-front-end]:/checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout/2.0/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout/2.0/payment-menu#request
-[checkout-payment-orders]: /checkout/2.0/features/technical-reference/payment-orders
+[checkout-payment-orders]: /checkout/2.0/features/technical-reference/payment-menu
 [checkout-payment-url]: /checkout/2.0/features/technical-reference/payment-url
 [checkout]: /checkout
 [checkout-3ds2]: /checkout/2.0/features/core/3d-secure-2
