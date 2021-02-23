@@ -835,7 +835,7 @@ After you have verified that a domain works with WKWebView, please file an
 [checkout-features]: /checkout/2.0/features
 [checkout-urls]: /checkout/2.0/features/technical-reference/urls
 [checkout-orderitems]: /checkout/2.0/features/technical-reference/order-items
-[instrument-mode]: /payment-menu/features/technical-reference/instrument-mode
+[instrument-mode]: /payment-menu/features/optional/instrument-mode
 [add-stored-details]: /payment-menu/features/technical-reference/add-stored-payment-instrument-details
 [terminal-failure]: /checkout/2.0/features/technical-reference/payment-menu-events#onerror
 [problems]: /payment-menu/features/technical-reference/problems

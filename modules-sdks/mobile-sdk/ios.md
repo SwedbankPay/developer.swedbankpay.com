@@ -122,8 +122,8 @@ sequenceDiagram
 ```
 
 *   ① Only pages tested to work with WKWebView are opened inside SwedbankPaySDKController. This list is updated as new pages are verified.
-*   ② Other pages are opened in Safari. See [the section on external applications](/technical-reference/payment-url-and-external-applications) for details on how the process returns to the SDK afterwards.
-*   ③ See [the section on external applications](/technical-reference/payment-url-and-external-applications) for details.
+*   ② Other pages are opened in Safari. See [the section on external applications][ios-payment-url] for details on how the process returns to the SDK afterwards.
+*   ③ See [the section on external applications][ios-payment-url] for details.
 
 The iOS SDK is contained in the module `SwedbankPaySDK`.
 
@@ -432,7 +432,7 @@ sequenceDiagram
 [cocoapods]: https://cocoapods.org/
 [cocoapods-gettingstarted]: https://guides.cocoapods.org/using/getting-started.html
 [cocoapods-using]: https://guides.cocoapods.org/using/using-cocoapods.html
-[payment-url]: /payment-menu/features/technical-reference/payment-url
+[payment-url]: /checkout/2.0/features/technical-reference/payment-url
 [custom-scheme-1]: /assets/img/mobile-sdk/ios-custom-scheme-1.png
 [custom-scheme-2]: /assets/img/mobile-sdk/ios-custom-scheme-2.png
 [assoc-domains-entitlement]: /assets/img/mobile-sdk/ios-assoc-domain.png
@@ -451,3 +451,4 @@ sequenceDiagram
 [checkin-consumer]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
 [checkin-paymentorder]: /checkout/2.0/payment-menu#step-3-create-payment-order
 [backend-payment-orders]: merchant-backend#payment-orders-endpoint
+[ios-payment-url]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications

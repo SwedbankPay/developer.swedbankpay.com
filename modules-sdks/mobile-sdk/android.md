@@ -310,6 +310,6 @@ Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugg
 [dokka-problem-server-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md
 [dokka-problem-server-unknown]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-unknown/index.md
 [dokka-swedbankpayproblem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md
-[paymenturl]: /checkout/2.0/payment-menu/technical-reference/payment-url
+[paymenturl]: /checkout/2.0/features/technical-reference/payment-url
 [android-helper]: merchant-backend#android-payment-url-helper
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
