@@ -549,7 +549,7 @@ The iOS `paymentUrl` universal-link/custom-scheme contraption makes it so that y
 
 [initiate-consumer-session]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
 [create-payment-order]: /checkout/2.0/payment-menu#step-3-create-payment-order
-[payment-url]: /checkout/2.0/payment-menu/technical-reference/payment-url
+[payment-url]: /checkout/2.0/features/technical-reference/payment-url
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
