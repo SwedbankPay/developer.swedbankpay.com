@@ -99,6 +99,12 @@ card_list_2:
   icon:
     content: event
     outlined: true
+- title: Urls
+  description: The urls associated with the payment
+  url:  /checkout/2.0/features/technical-reference/urls
+  icon:
+    content: public
+    outlined: true
 ---
 
 

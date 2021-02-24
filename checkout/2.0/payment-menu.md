@@ -308,4 +308,4 @@ finalizing the payment in the [After Payment section][after-payment].
 [swedish-login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
 [operations]: /checkout/2.0/features/technical-reference/operations
 [technical-reference-onconsumer-identified]: /checkout/2.0/checkin#step-2-display-swedbank-pay-checkin-module
-[urls]: /checkout/2.0/features/technical-reference/urls-resource
+[urls]: /checkout/2.0/features/technical-reference/urls#urls-resource
