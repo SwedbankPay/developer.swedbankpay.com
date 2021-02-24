@@ -74,6 +74,12 @@ card_list_2:
   icon:
     content: link
     outlined: true
+- title: Prices
+  description: The payment's prices resource
+  url:  /payment-instruments/mobile-pay/features/technical-reference/prices
+  icon:
+    content: attach_money
+    outlined: true
 - title: Problems
   description: Information when something goes wrong
   url:  /payment-instruments/trustly/features/technical-reference/problems
