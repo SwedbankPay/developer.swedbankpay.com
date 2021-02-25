@@ -7,7 +7,6 @@ description: |
   Payment Menu.
   They are listed on this very page.
 menu_order: 600
-hide_from_sidebar: true
 ---
 
 {% include payment-order-other-features.md operation_status_bool="true" %}
