@@ -69,6 +69,12 @@ card_list_2:
   icon:
     content: settings
     outlined: true
+- title: Order Items
+  description: Information about the order items
+  url: /checkout/2.0/features/technical-reference/order-items
+  icon:
+    content: article
+    outlined: true
 - title: Payment State
   description: Different states in the payment process
   url: /checkout/2.0/features/technical-reference/payment-state

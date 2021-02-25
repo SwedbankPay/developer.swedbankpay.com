@@ -95,6 +95,12 @@ card_list_2:
   icon:
     content: event
     outlined: true
+- title: Order Items
+  description: Information about the order items
+  url: /checkout/2.0/features/technical-reference/order-items
+  icon:
+    content: article
+    outlined: true
 - title: Operations
   description: Possible operations for a payment order
   url: /checkout/2.0/features/technical-reference/operations
