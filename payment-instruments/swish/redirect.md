@@ -253,7 +253,7 @@ next_href="seamless-view" next_title="Seamless View" %}
 [callback-url]: /payment-instruments/swish/features/technical-reference/callback
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
-[purchase]: /payment-instruments/swish/features/technical-reference/purchase-flow
+[purchase]: /payment-instruments/swish/features/technical-reference/purchase
 [redirect]: /payment-instruments/swish/redirect
 [seamless-view]: /payment-instruments/swish/seamless-view
 [swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png
