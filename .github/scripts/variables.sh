@@ -21,7 +21,14 @@ initialize() {
     fi
 
     repository=$(echo "$github_context_json" | jq --raw-output .repository)
+    fork_repository=$(echo "$github_context_json" | jq --raw-output .event.pull_request.head.repo.full_name)
     ref=$(echo "$github_context_json" | jq --raw-output .ref)
+
+    if [[ -n "$fork_repository" ]]; then
+        # If $fork_repository is set (as it should be in pull requests), use that
+        # as our $repository value instead of the main repository.
+        repository="$fork_repository"
+    fi
 
     if [[ -z "$repository" ]]; then
         echo "No 'repository' found in the GitHub context." >&2
