@@ -3,6 +3,19 @@ name: Test
 on: [push, pull_request]
 
 jobs:
+  variables:
+    runs-on: ubuntu-latest
+    outputs:
+      branch: ${{ steps.variables.outputs.branch }}
+      repository: ${{ steps.variables.outputs.repository }}
+
+    steps:
+      - name: Generate variables
+        id: variables
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: ./.github/scripts/variables.sh
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +38,7 @@ jobs:
 
   verify:
     runs-on: ubuntu-latest
+    needs: variables
     steps:
       - uses: actions/checkout@v2
 
@@ -34,8 +48,9 @@ jobs:
       - name: Verify build
         run: |
           docker-compose run \
-            -e PAGES_REPO_NWO=${{ github.repository }} \
+            -e PAGES_REPO_NWO=${{ needs.variables.outputs.repository }} \
             -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            -e GITHUB_BRANCH=${{ needs.variables.outputs.branch }} \
             portal build \
             --env=production \
             --verify \

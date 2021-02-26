@@ -1,21 +1,55 @@
 #!/bin/bash
+set -o errexit #abort if any command fails
+me=$(basename "$0")
 
-if [[ "$EVENT_NAME" == "pull_request" && "$PULL_REPO_NAME" != "$REPO_NAME" ]]; then
-    # We have a pull-request from a forked repository. Not sure this actually works.
-    GITHUB_BRANCH="${HEAD_REF}"
-    GITHUB_REPOSITORY_URL="$PULL_REPO_URL"
-elif [[ -n "$HEAD_REF" ]]; then
-    # Use the head_ref on merge commits
-    GITHUB_BRANCH="${HEAD_REF}"
-else
-    # Use the branch head reference on regular commits
-    GITHUB_BRANCH="${REF#refs/heads/}"
-fi
+help_message="\
+Usage: echo $me <version>
 
-if [[ $GITHUB_BRANCH == refs/tags* ]]; then
-    # Default to the master branch on tags
-    GITHUB_BRANCH="master"
-fi
+Generates variables based on the provided environment variable GITHUB_CONTEXT
+and <version> argument.
 
-echo "::set-output name=branch::${GITHUB_BRANCH}"
-echo "::set-output name=url::${GITHUB_REPOSITORY_URL}"
+GITHUB_CONTEXT: An environment variable containing a JSON string of the GitHub
+                context object. Typically generated with \${{ toJson(github) }}."
+
+initialize() {
+    github_context_json="$GITHUB_CONTEXT"
+
+    if [[ -z "$github_context_json" ]]; then
+        echo "Missing or empty GITHUB_CONTEXT environment variable." >&2
+        echo "$help_message"
+        exit 1
+    fi
+
+    repository=$(echo "$github_context_json" | jq --raw-output .repository)
+    ref=$(echo "$github_context_json" | jq --raw-output .ref)
+
+    if [[ -z "$repository" ]]; then
+        echo "No 'repository' found in the GitHub context." >&2
+        echo "$help_message"
+        exit 1
+    fi
+
+    if [[ -z "$ref" ]]; then
+        echo "No 'ref' found in the GitHub context." >&2
+        echo "$help_message"
+        exit 1
+    fi
+}
+
+generate_variables() {
+    # Remove the 'refs/*/' prefix from $ref to get the bare branch name.
+    branch="${ref#refs/tags/}"
+    branch="${branch#refs/heads/}"
+
+    echo "Branch:     $branch"
+    echo "Repository: $repository"
+    echo "::set-output name=branch::$branch"
+    echo "::set-output name=repository::$repository"
+}
+
+main() {
+    initialize "$@"
+    generate_variables
+}
+
+main "$@"
