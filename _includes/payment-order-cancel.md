@@ -71,4 +71,4 @@ Content-Type: application/json
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 
-[payee-reference]: /checkout/other-features#payee-reference
+[payee-reference]: /checkout/features/technical-reference/payee-reference

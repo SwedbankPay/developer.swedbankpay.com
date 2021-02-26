@@ -1,6 +1,7 @@
 ---
 section: Open Source Development Guidelines
 title: Introduction
+permalink: /:path/
 estimated_read: 8
 ---
 

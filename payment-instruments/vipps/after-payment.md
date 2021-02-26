@@ -57,7 +57,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -82,7 +82,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the payer's browser - [see user agent][user-agent]                                                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
-| {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
+| {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment`.                                                                                                           |
 |                  | └─➔&nbsp;`paymentUrl`        | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the `payment`. See [`paymentUrl`][paymenturl] for details.                                                                                                      |

@@ -5,6 +5,7 @@ redirect_from: /payments/vipps/
 estimated_read: 2
 description: |
   Vipps is the Norwegian way of paying with your mobile phone, fast and simple.
+permalink: /:path/
 menu_order: 600
 ---
 

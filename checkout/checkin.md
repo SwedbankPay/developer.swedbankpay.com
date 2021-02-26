@@ -246,7 +246,7 @@ sequenceDiagram
     deactivate SwedbankPay
     Merchant -->>- Consumer: Show Checkin on Merchant Page
 
-    Consumer ->>+ Consumer: Initiate Consumer Hosted View (open iframe) ②
+    Consumer ->>+ Consumer: Initiate Consumer Seamless View (open iframe) ②
     Consumer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
     deactivate Consumer
     SwedbankPay ->>- Consumer: Consumer identification process

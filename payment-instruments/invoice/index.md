@@ -8,6 +8,7 @@ description: |
   payment services where Swedbank Pay helps improve cashflow by purchasing
   merchant invoices. Choose between our **Direct**, **Redirect** and
   **Seamless view** integration options.
+permalink: /:path/
 menu_order: 400
 ---
 
@@ -103,7 +104,7 @@ sequenceDiagram
 [after-payment]: /payment-instruments/invoice/after-payment
 [callback-api]: /payment-instruments/invoice/other-features#callback
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
-[optional-features]: /payment-instruments/invoice/optional-features
+[optional]: /payment-instruments/invoice/optional
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [recur]: /payment-instruments/invoice/other-features#recur
 [redirect]: /payment-instruments/invoice/redirect

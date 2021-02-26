@@ -224,7 +224,7 @@ rect rgba(138, 205, 195, 0.1)
             deactivate SwedbankPay
             Merchant -->>- Consumer: Display Payment Menu on Merchant Page
             activate Consumer
-            Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+            Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
             Consumer -->>+ SwedbankPay: Show Payment UI page in iframe
             deactivate Consumer
             SwedbankPay ->>+ Consumer: Do payment logic
@@ -236,7 +236,7 @@ rect rgba(138, 205, 195, 0.1)
                     deactivate Consumer
                     3rdParty -->>+ Consumer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
-                    Consumer ->> Consumer: Initiate Payment Menu Hosted View (open iframe)
+                    Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
                     Consumer ->>+ SwedbankPay: Show Payment UI page in iframe
                     deactivate Consumer
                     SwedbankPay ->> Consumer: Do payment logic

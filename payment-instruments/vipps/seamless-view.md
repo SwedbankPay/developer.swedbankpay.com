@@ -98,7 +98,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
+| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
@@ -188,7 +188,7 @@ loading the payment page in an `iframe` in our next step.
 
 ## Step 2: Display the payment window
 
-You need to embed the script source on your site to create a hosted-view in an
+You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the required information in a secure
 Swedbank Pay hosted environment. A simplified integration has these following
 steps:
@@ -328,7 +328,7 @@ sequenceDiagram
 [captures]: /payment-instruments/vipps/after-payment#captures
 [complete-url]: /payment-instruments/vipps/other-features#completeurl
 [create-payment]: /payment-instruments/vipps/other-features#create-payment
-[hosted-view]: /payment-instruments/vipps/seamless-view
+[seamless-view]: /payment-instruments/vipps/seamless-view
 [payee-reference]: /payment-instruments/vipps/other-features#payee-reference
 [price-resource]: /payment-instruments/vipps/other-features#prices
 [purchase]: /payment-instruments/vipps/other-features#purchase

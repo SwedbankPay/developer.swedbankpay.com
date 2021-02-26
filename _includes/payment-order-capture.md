@@ -181,6 +181,6 @@ Content-Type: application/json
 
 [card]: /payment-instruments/card
 [vipps]: /payment-instruments/vipps
-[payee-reference]: /checkout/other-features#payee-reference
+[payee-reference]: /checkout/features/technical-reference/payee-reference
 [swish]: /payment-instruments/swish/
 [trustly]: /payment-instruments/trustly/

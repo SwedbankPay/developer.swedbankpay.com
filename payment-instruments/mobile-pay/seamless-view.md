@@ -63,7 +63,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -93,11 +93,11 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The [`User-Agent`string][user-agent] of the payer's web browser.                                                                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
+| {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URIs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`           | `string`     | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
-|                  | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                         |
+|                  | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                         |
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`    | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`payeeInfo`             | `object`     | This object contains the identificators of the payee of this payment.                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
@@ -175,7 +175,7 @@ loading the payment page in an `iframe` in our next step.
 
 ## Step 2: Display  the payment window
 
-You need to embed the script source on your site to create a hosted-view in an
+You need to embed the script source on your site to create a Seamless View in an
 `iframe` so that the payer can enter the required information in a secure
 Swedbank Pay hosted environment. A simplified integration has these following
 steps:
@@ -303,7 +303,7 @@ sequenceDiagram
         next_href="after-payment"
         next_title="After Payment" %}
 
-[callback-reference]: /payment-instruments/mobile-pay/other-features#callback
+[callback]: /payment-instruments/mobile-pay/other-features#callback
 [complete-url]: /payment-instruments/mobile-pay/other-features#completeurl
 [purchase]: /payment-instruments/mobile-pay/other-features#purchase
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent
