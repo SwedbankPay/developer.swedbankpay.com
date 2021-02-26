@@ -615,6 +615,10 @@ is used for your own book keeping.                                              
 |                  | └➔&nbsp;`metadata`             | `object`      | {% include field-description-metadata.md %}
 |
 
+{% if documentation_section == "payment-menu" %}
+{% include moto.md %}
+{% endif %}
+
 ### Purchase Flow
 
 ```mermaid

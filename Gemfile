@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'jekyll', '~> 4.2.0', group: :jekyll_plugins
-gem 'jekyll-assets'
 gem 'jekyll-github-metadata', "~> 2.13"
 gem 'jekyll-remote-theme'
 gem 'jemoji'

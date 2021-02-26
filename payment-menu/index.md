@@ -9,7 +9,6 @@ description: |
   remembering which instrument they prefer and have paid with previously.
 permalink: /:path/
 menu_order: 200
-hide_from_sidebar: true
 ---
 
 Swedbank Pay Payment Menu allows your customers to pay with their favorite payment
