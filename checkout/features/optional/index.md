@@ -26,6 +26,12 @@ card_list:
   icon:
     content: cached
     outlined: true
+- title: TRA
+  description: Transaction Risk Analysis
+  url:  /checkout/features/optional/tra
+  icon:
+    content: verified
+    outlined: true
 - title: Verify
   description: Validating the payer's payment details
   url:  /checkout/features/optional/verify
