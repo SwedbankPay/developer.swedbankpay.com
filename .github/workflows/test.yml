@@ -50,7 +50,6 @@ jobs:
         run: |
           docker-compose run \
             -e PAGES_REPO_NWO=${{ needs.variables.outputs.repository }} \
-            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
             -e GITHUB_BRANCH=${{ needs.variables.outputs.branch }} \
             portal build \
             --env=production \
