@@ -10,11 +10,12 @@ jobs:
       repository: ${{ steps.variables.outputs.repository }}
 
     steps:
+      - uses: actions/checkout@v2
       - name: Generate variables
         id: variables
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: ./.github/scripts/variables.sh
+        run: .github/scripts/variables.sh
 
   build:
     runs-on: ubuntu-latest
