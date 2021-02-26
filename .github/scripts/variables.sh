@@ -23,11 +23,18 @@ initialize() {
     repository=$(echo "$github_context_json" | jq --raw-output .repository)
     fork_repository=$(echo "$github_context_json" | jq --raw-output .event.pull_request.head.repo.full_name)
     ref=$(echo "$github_context_json" | jq --raw-output .ref)
+    head_ref=$(echo "$github_context_json" | jq --raw-output .head_ref)
 
     if [[ -n "$fork_repository" ]]; then
         # If $fork_repository is set (as it should be in pull requests), use that
         # as our $repository value instead of the main repository.
         repository="$fork_repository"
+    fi
+
+    if [[ -n "$head_ref" ]]; then
+        # If $head_ref is set (as it should be in pull requests), use that
+        # as our $ref value instead of the pull request ref.
+        ref="$head_ref"
     fi
 
     if [[ -z "$repository" ]]; then
