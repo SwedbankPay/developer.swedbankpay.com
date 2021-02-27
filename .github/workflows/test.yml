@@ -26,11 +26,7 @@ jobs:
         run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: build
-        run: |
-          docker-compose run \
-            -e PAGES_REPO_NWO=${{ github.repository }} \
-            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
-            portal build
+        run: docker-compose run portal build
       - name: Upload site
         uses: actions/upload-artifact@v2
         with:
@@ -47,10 +43,8 @@ jobs:
         run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify build
-        run: |
+        run:
           docker-compose run \
-            -e PAGES_REPO_NWO=${{ needs.variables.outputs.repository }} \
-            -e GITHUB_BRANCH=${{ needs.variables.outputs.branch }} \
             portal build \
             --env=production \
             --verify \

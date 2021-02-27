@@ -1,5 +1,5 @@
 name: Deploy to stage and prod
-on: 
+on:
   push:
     branches: ['develop', 'master']
 
@@ -9,12 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Build the site in the jekyll/builder container
         run: |
           docker-compose run \
-            -e PAGES_REPO_NWO=${{ github.repository }} \
-            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
             portal build \
             --env=production \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
