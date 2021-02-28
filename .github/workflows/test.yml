@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       branch: ${{ steps.variables.outputs.branch }}
-      repository: ${{ steps.variables.outputs.repository }}
+      repository_url: ${{ steps.variables.outputs.repository_url }}
 
     steps:
       - uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
         run: |
           docker-compose run \
             -e GITHUB_BRANCH=${{ needs.variables.outputs.branch }} \
-            -e GITHUB_REPOSITORY_URL=${{ needs.variables.outputs.repository }} \
+            -e GITHUB_REPOSITORY_URL=${{ needs.variables.outputs.repository_url }} \
             portal build \
             --verify \
             --env=production \

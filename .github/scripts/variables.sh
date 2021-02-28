@@ -20,15 +20,15 @@ initialize() {
         exit 1
     fi
 
-    repository=$(echo "$github_context_json" | jq --raw-output .repository)
-    fork_repository=$(echo "$github_context_json" | jq --raw-output .event.pull_request.head.repo.full_name)
+    repository_url=$(echo "$github_context_json" | jq --raw-output .event.repository.html_url)
+    pr_repository_url=$(echo "$github_context_json" | jq --raw-output .event.pull_request.head.repo.html_url)
     ref=$(echo "$github_context_json" | jq --raw-output .ref)
     head_ref=$(echo "$github_context_json" | jq --raw-output .head_ref)
 
-    if [[ -n "$fork_repository" ]]; then
-        # If $fork_repository is set (as it should be in pull requests), use that
-        # as our $repository value instead of the main repository.
-        repository="$fork_repository"
+    if [[ -n "$pr_repository_url" ]]; then
+        # If $pr_repository_url is set (as it should be in pull requests), use that
+        # as our $repository_url value instead of the main repository.
+        repository_url="$pr_repository_url"
     fi
 
     if [[ -n "$head_ref" ]]; then
@@ -37,8 +37,8 @@ initialize() {
         ref="$head_ref"
     fi
 
-    if [[ -z "$repository" ]]; then
-        echo "No 'repository' found in the GitHub context." >&2
+    if [[ -z "$repository_url" ]]; then
+        echo "No 'repository.html_url' found in the GitHub context." >&2
         echo "$help_message"
         exit 1
     fi
@@ -56,9 +56,9 @@ generate_variables() {
     branch="${branch#refs/heads/}"
 
     echo "Branch:     $branch"
-    echo "Repository: $repository"
+    echo "Repository: $repository_url"
     echo "::set-output name=branch::$branch"
-    echo "::set-output name=repository::$repository"
+    echo "::set-output name=repository_url::$repository_url"
 }
 
 main() {
