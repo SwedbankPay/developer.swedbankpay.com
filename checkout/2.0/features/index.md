@@ -164,7 +164,7 @@ card_list_3:
     outlined: true
 - title: TRA
   description: Transaction Risk Analysis
-  url:  /checkout/features/optional/tra
+  url:  /checkout/2.0/features/optional/tra
   icon:
     content: verified
     outlined: true
