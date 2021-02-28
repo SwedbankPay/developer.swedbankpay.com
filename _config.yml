@@ -2,10 +2,9 @@ repository: SwedbankPay/developer.swedbankpay.com
 theme: 'swedbank-pay-design-guide-jekyll-theme'
 exclude: ["Gemfile*", "Rakefile"]
 plugins:
-  - "jekyll-github-metadata"
   - jemoji
   - jekyll-material-icon-tag
-  - "kramdown-plantuml"
+  - kramdown-plantuml
   - jekyll-redirect-from
   - swedbank-pay-design-guide-jekyll-theme
 kramdown:

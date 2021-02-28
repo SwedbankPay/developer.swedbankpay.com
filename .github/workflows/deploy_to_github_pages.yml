@@ -18,7 +18,8 @@ jobs:
           GITHUB_REPO: ${{ github.repository }}
         run: |
           docker-compose run \
-            -e PAGES_REPO_NWO=${{ github.repository }} \
-            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            -e GITHUB_BRANCH=develop \
+            -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal deploy \
-            --env=production
+            --env=production \
+            --site-url=https://developer.swedbankpay.com

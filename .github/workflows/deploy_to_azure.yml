@@ -1,5 +1,5 @@
 name: Deploy to stage and prod
-on: 
+on:
   push:
     branches: ['develop', 'master']
 
@@ -9,14 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Build the site in the jekyll/builder container
         run: |
           docker-compose run \
-            -e PAGES_REPO_NWO=${{ github.repository }} \
-            -e JEKYLL_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+            -e GITHUB_BRANCH=develop \
+            -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal build \
             --env=production \
+            --site-url=https://developer.swedbankpay.com \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
             --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
             --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
