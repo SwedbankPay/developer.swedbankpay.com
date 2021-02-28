@@ -20,10 +20,10 @@ initialize() {
         exit 1
     fi
 
-    repository_url=$(echo "$github_context_json" | jq --raw-output .event.repository.html_url)
-    pr_repository_url=$(echo "$github_context_json" | jq --raw-output .event.pull_request.head.repo.html_url)
-    ref=$(echo "$github_context_json" | jq --raw-output .ref)
-    head_ref=$(echo "$github_context_json" | jq --raw-output .head_ref)
+    repository_url=$(echo "$github_context_json" | jq --raw-output '.event.repository.html_url | values')
+    pr_repository_url=$(echo "$github_context_json" | jq --raw-output '.event.pull_request.head.repo.html_url | values')
+    ref=$(echo "$github_context_json" | jq --raw-output '.ref | values')
+    head_ref=$(echo "$github_context_json" | jq --raw-output '.head_ref | values')
 
     if [[ -n "$pr_repository_url" ]]; then
         # If $pr_repository_url is set (as it should be in pull requests), use that
