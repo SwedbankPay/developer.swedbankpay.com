@@ -322,18 +322,18 @@ sequenceDiagram
         next_title="Capture" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
-[callback]: /payment-instruments/vipps/other-features#callback
-[callbackurl]: /payment-instruments/vipps/other-features#callback
-[cancellations]: /payment-instruments/vipps/after-payment#cancellations
+[callback]: /payment-instruments/vipps/features/technical-reference/callback
+[callbackurl]: /payment-instruments/vipps/features/technical-reference/callback
+[cancellations]: /payment-instruments/vipps/features/core/cancel
 [captures]: /payment-instruments/vipps/after-payment#captures
-[complete-url]: /payment-instruments/vipps/other-features#completeurl
-[create-payment]: /payment-instruments/vipps/other-features#create-payment
+[complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
+[create-payment]: /payment-instruments/vipps/features/technical-reference/create-payment
 [seamless-view]: /payment-instruments/vipps/seamless-view
-[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
-[price-resource]: /payment-instruments/vipps/other-features#prices
-[purchase]: /payment-instruments/vipps/other-features#purchase
+[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
+[price-resource]: /payment-instruments/vipps/features/technical-reference/prices
+[purchase]: /payment-instruments/vipps/features/technical-reference/purchase
 [reference-redirect]: /payment-instruments/vipps/redirect
-[reversal]: /payment-instruments/vipps/after-payment#reversals
+[reversal]: /payment-instruments/vipps/features/core/reversal
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

@@ -21,7 +21,7 @@ hide_from_sidebar: true
             solution, complete with a checkin interface and payment menu.'
             icon_content='shopping_cart'
             icon_outlined=true
-            to='/checkout'
+            to='/checkout/'
         %}
       </div>
       <div class="{{ card_col_class }}">
@@ -32,7 +32,7 @@ hide_from_sidebar: true
             while being able to choose between all available payment instruments
             in a single integration.'
             icon_content='menu_book'
-            to='/payment-menu'
+            to='/payment-menu/'
         %}
       </div>
       <div class="{{ card_col_class }}">
@@ -43,7 +43,7 @@ hide_from_sidebar: true
             more customization for each payment method to build your own
             payment menu.'
             icon_content='credit_card'
-            to='/payments'
+            to='/payments/'
         %}
       </div>
       <div class="{{ card_col_class }}">
@@ -53,7 +53,7 @@ hide_from_sidebar: true
             text='Our Gift Cards API allows your customers to pay with prepaid
             gift cards issued by Swedbank Pay.'
             icon_content='card_giftcard'
-            to='/gift-cards'
+            to='/gift-cards/'
         %}
       </div>
   </div>

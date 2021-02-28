@@ -71,7 +71,7 @@ The `reversal` resource will be returned, containing information about the newly
 
 The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment. The URI will be found on a `payment` that has a
-succesful `sale` operation.
+successful `sale` operation.
 
 {:.code-view-header}
 ***Request***
@@ -103,10 +103,9 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
-next_href="other-features" next_title="Other Features" %}
+next_href="features" next_title="Features" %}
 
 ----------------------------------------------------------
 [abort-description]: #abort
-[callback-request]: /payment-instruments/trustly/other-features#callback
+[callback-request]: /payment-instruments/trustly/features/technical-reference/callback
 [trustly-reversals]: /payment-instruments/trustly/after-payment##reversals
-[other-features-transaction]: /payment-instruments/trustly/other-features#transactions

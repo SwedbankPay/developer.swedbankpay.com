@@ -65,6 +65,12 @@ card_list_2:
   icon:
     content: code
     outlined: true
+- title: Operations
+  description: The operations of the payments
+  url:  /payment-instruments/trustly/features/technical-reference/operations
+  icon:
+    content: shopping_basket
+    outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
   url:  /payment-instruments/trustly/features/technical-reference/payee-info
@@ -93,6 +99,12 @@ card_list_2:
   url:  /payment-instruments/trustly/features/technical-reference/payment-url
   icon:
     content: link
+    outlined: true
+- title: Prices
+  description: The payment's prices resource
+  url:  /payment-instruments/trustly/features/technical-reference/prices
+  icon:
+    content: attach_money
     outlined: true
 - title: Problems
   description: Information when something goes wrong

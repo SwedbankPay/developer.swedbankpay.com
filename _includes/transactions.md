@@ -7,7 +7,7 @@
 
 {% if api_resource == "paymentorders" -%}
 A payment order contains one or more `payment` sub-resources, which in turn
-contains sub-resources in the form of `transactions`.
+contain sub-resources in the form of `transactions`.
 {% else -%}
 A payment contains sub-resources in the form of `transactions`.
 {% endif -%}

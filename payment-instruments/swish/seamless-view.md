@@ -308,13 +308,13 @@ sequenceDiagram
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="After Payment" %}
 
-[callback]: /payment-instruments/swish/other-features#callback
-[complete-url]: /payment-instruments/swish/other-features#completeurl
-[create-payment]: /payment-instruments/swish/other-features#create-payment
-[payee-reference]: /payment-instruments/swish/other-features#payee-reference
-[paymenturl]: /payment-instruments/swish/other-features#payment-url
-[price-resource]: /payment-instruments/swish/other-features#prices
-[purchase]: /payment-instruments/swish/other-features#create-payment
+[callback]: /payment-instruments/swish/features/technical-reference/callback
+[complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
+[create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
+[payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
+[paymenturl]: /payment-instruments/swish/features/technical-reference/payment-url
+[price-resource]: /payment-instruments/swish/features/technical-reference/prices
+[purchase]: /payment-instruments/swish/features/technical-reference/create-payment
 [sales-transaction]: /payment-instruments/swish/after-payment#sales
 [seamless-view-img]: /assets/img/checkout/swish-seamless-view.png
 [swish-payments]: /payment-instruments/swish/after-payment#payment-resource

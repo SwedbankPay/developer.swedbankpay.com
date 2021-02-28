@@ -71,7 +71,7 @@ docker-compose up -d
 {% include iterator.html prev_href="security"
                          prev_title="Security"
                          next_href="other-features"
-                         next_title="Other Features" %}
+                         next_title="Features" %}
 
 [docker-compose]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/docker-compose.yml
 [payment-client]: https://github.com/SwedbankPay/vas-payment-api-client

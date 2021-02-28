@@ -78,6 +78,12 @@ card_list_2:
   icon:
     content: code
     outlined: true
+- title: Operations
+  description: The operations of the payments
+  url:  /payment-instruments/vipps/features/technical-reference/operations
+  icon:
+    content: shopping_basket
+    outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
   url:  /payment-instruments/vipps/features/technical-reference/payee-info

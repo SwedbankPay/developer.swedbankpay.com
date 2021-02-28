@@ -31,7 +31,7 @@ merchants that currently have a contract with this integration." %}
 *   An invoice payment is always two-phased based - you create an Authorize
 transaction, that is followed by a `Capture` or `Cancel` request.
 The `Capture` , `Cancel`, `Reversal` opions are
-described in [other features][other-features].
+described in [features][features].
 
 {% include alert.html type="informative" icon="info" body="
 Note that the invoice will not be created/distributed before you have
@@ -390,18 +390,18 @@ Head over to [Capture][capture] to complete the Invoice Direct integration.
 {% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
 next_href="capture" next_title="Capture" %}
 
-[abort]: /payment-instruments/invoice/other-features#abort
-[callback]: /payment-instruments/invoice/other-features#callback
+[abort]: /payment-instruments/invoice/features/core/abort
+[callback]: /payment-instruments/invoice/features/technical-reference/callback
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
-[complete-url]: /payment-instruments/invoice/other-features#completeurl
+[complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
+[features]: /payment-instruments/invoice/features
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [financing-invoice-1-png]: /assets/img/checkout/disabled-payment-menu.png
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
-[other-features]: /payment-instruments/invoice/other-features
-[payee-reference]: /payment-instruments/invoice/other-features#payeeinfo
-[recur]: /payment-instruments/invoice/other-features#recur
+[payee-reference]: /payment-instruments/invoice/features/technical-reference/payee-info
+[recur]: /payment-instruments/invoice/features/optional/recur
 [redirect]: /payment-instruments/invoice/redirect
 [setup-mail]: mailto:setup.ecom@payex.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payment-instruments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/features/optional/verify

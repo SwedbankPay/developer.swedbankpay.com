@@ -1,8 +1,8 @@
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
-{%- if documentation_section != 'checkout' and documentation_section != 'payment-menu' and documentation_section != 'invoice' %}
+{%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' or documentation_section == 'invoice' %}
     {% assign has_one_click = true %}
-{%- endif %}
+{%- endunless %}
 
 The `Verify` operation lets you post verification payments, which are used to
 confirm the validity of card information without reserving or charging any
@@ -30,15 +30,15 @@ Swedbank Pay." %}
     `id`. You either receive a Redirect URL to a hosted page or a
     JavaScript source in response.
 *   You need to
-    {%- if documentation_section != 'checkout' and documentation_section != 'payment-menu' %}
+    {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' %}
     [redirect][redirect] the payer's browser to that specified URL, or
-    {%- endif %}
+    {%- endunless %}
     embed the script source on your site to create a
-    {%- if documentation_section != 'checkout' and documentation_section != 'payment-menu' %}
+    {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' %}
     [Seamless View][seamless-view]
     {%- else -%}
     Seamless View
-    {%- endif %}
+    {%- endunless %}
     in an `iframe`; so that the payer can enter the
     card details in a secure Swedbank Pay hosted environment.
 *   Swedbank Pay will handle 3-D Secure authentication when this is required.

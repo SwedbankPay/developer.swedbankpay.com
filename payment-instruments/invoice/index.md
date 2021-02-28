@@ -102,14 +102,14 @@ sequenceDiagram
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [after-payment]: /payment-instruments/invoice/after-payment
-[callback-api]: /payment-instruments/invoice/other-features#callback
+[callback-api]: /payment-instruments/invoice/features/technical-reference/callback
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [optional]: /payment-instruments/invoice/optional
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
-[recur]: /payment-instruments/invoice/other-features#recur
+[recur]: /payment-instruments/invoice/features/optional/recur
 [redirect]: /payment-instruments/invoice/redirect
-[purchase]: /payment-instruments/invoice/other-features#create-payment
+[purchase]: /payment-instruments/invoice/features/technical-reference/create-payment
 [setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
-[verify]: /payment-instruments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/features/optional/verify

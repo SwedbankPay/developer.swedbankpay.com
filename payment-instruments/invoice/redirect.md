@@ -36,7 +36,7 @@ To initiate the payment process, you need to make a `POST` request to Swedbank P
 Our `payment` example below uses the [`FinancingConsumer`]
 [financing-consumer] value. All valid options when posting a payment with
 operation equal to `FinancingConsumer`, are described in
-[other features][financing-consumer].
+[features][financing-consumer].
 
 {:.text-center}
 ![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
@@ -113,7 +113,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                    |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                               |
-|                  | └─➔&nbsp;`paymentUrl`             | `string`      | This Parameter is used when the payer is redirected out of the Seamless View (the iframe) and sent back after completing the payment. It should point to the page of where the Payment Order Seamless View is hosted. Read more about [paymentUrl][paymenturl].                                                          |
+|                  | └─➔&nbsp;`paymentUrl`             | `string`      | This Parameter is used when the payer is redirected out of the Seamless View (the iframe) and sent back after completing the payment. It should point to the page of where the Payment Order Seamless View is hosted. Read more about [paymentUrl][payment-url].                                                          |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                               |
 |                  | └─➔&nbsp;`logoUrl`                | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                                  |
@@ -253,15 +253,15 @@ next_href="seamless-view" next_title="Seamless View" %}
 
 [abort]: /payment-instruments/invoice/after-payment#abort
 [after-payment]: /payment-instruments/invoice/after-payment
-[callback]: /payment-instruments/invoice/other-features#callback
-[complete-url]: /payment-instruments/invoice/other-features#completeurl
-[paymenturl]: /checkout/other-features#payment-url-1
+[callback]: /payment-instruments/invoice/features/technical-reference/callback
+[complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
+[payment-url]: /payment-instruments/invoice/features/technical-reference/payment-url
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
-[payee-reference]: /payment-instruments/invoice/other-features#payeeinfo
-[recur]: /payment-instruments/invoice/other-features#recur
+[payee-reference]: /payment-instruments/invoice/features/technical-reference/payee-info
+[recur]: /payment-instruments/invoice/features/optional/recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payment-instruments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/features/optional/verify
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [fincon-invoice-approve]: /assets/img/payments/fincon-invoice-redirect-second-en.png

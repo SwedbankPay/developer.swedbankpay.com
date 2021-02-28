@@ -5,10 +5,10 @@
 {% capture top_h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
 {% capture sub_h %}{% for i in (1..next_header_level) %}#{% endfor %}{% endcapture %}
 
-{% if documentation_section == "checkout" or documentation_section == "payment-menu" %}
+{% if documentation_section contains "checkout" or documentation_section == "payment-menu" %}
     {% assign this_documentation_url = documentation_section %}
 {% else %}
-    {% assign this_documentation_url = "payments/" | append: documentation_section %}
+    {% assign this_documentation_url = "payment-instruments/" | append: documentation_section %}
 {% endif %}
 
 {{ top_h }} Transaction
@@ -72,6 +72,6 @@ Content-Type: application/json
 In the event that a transaction is `failed`, the `transaction` response will
 contain a `problem` property as seen in the example below. To view all the
 problems that can occur due to an unsuccesful transaction, head over to the
-[problems section](/{{ this_documentation_url }}/other-features#problems).
+[problems section](/{{ this_documentation_url }}/features/technical-reference/problems).
 
 {% include transaction-response.md transaction="transaction" %}
