@@ -6,18 +6,19 @@
     {% assign api_resource_field_name = 'payment' %}
 {% endif %}
 
-## Transaction Risk Analysis
+## Transaction Risk Analysis Exemption
 
 {:.code-view-header}
 **Request**
 
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/paymentorders HTTP/1.1
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
     "paymentorder": {
+        "requestTraExemption": true
         "payer": {
             "requireConsumerInfo": false,
             "digitalProducts": false,
@@ -96,6 +97,7 @@ Content-Type: application/json
 | Field | Type | Description |
 | :---- | :--- | :---------- |
 | └➔&nbsp;`paymentorder`                | `object` | {% include field-description-id.md resource="paymentorder" sub_resource="payer" %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| └➔&nbsp;`requestTraExemption`                       | `bool` | Set to `true` if the merchant requests a TRA exemption. |
 | └➔&nbsp;`payer`                       | `object` | The payer object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | └➔&nbsp;`requireConsumerInfo`                       | `bool` | Set to `true` if the merchant wants to receive profile information from Swedbank Pay. Applicable for when the merchant only needs `email` and/or `msisdn` for digital goods, or when the full shipping address is necessary. If set to `false`, Swedbank Pay will depend on the merchant to send `email` and/or `msisdn` for digital products and shipping address for physical orders. |
 | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
