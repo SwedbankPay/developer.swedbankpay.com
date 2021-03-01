@@ -1589,10 +1589,9 @@ shows the steps in a <a href="/payment-instruments/invoice/other-features#create
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
-
-  gtag('config', 'UA-156582708-1');
+  gtag('config', 'UA-156582708-1', { 'anonymize_ip': true });
 </script>
 
     </body>
