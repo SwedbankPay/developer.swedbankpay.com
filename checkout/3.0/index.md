@@ -2,7 +2,6 @@
 section: Checkout 3.0
 title: Introduction
 card_overview: true
-estimated_read: '-'
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
@@ -15,27 +14,27 @@ additional: true
 menu_order: 200
 card_list:
 - title: Checkout Basic
-  description: A Basic Description
+  description: A Basic description
   url:  /checkout/3.0/basic
   icon:
-    content: ??????
+    content: shopping_cart
 - title: Checkout Delegated SCA
   description: A Delegated SCA description
   url: /checkout/3.0/dsca
   icon:
-    content: ???????
+    content: shopping_cart
     outlined: true
 - title: Checkout Standard
-  description: A Standard Description
+  description: A Standard description
   url: /checkout/3.0/standard
   icon:
-    content: ??????
+    content: shopping_cart
     outlined: true
 - title: Checkout Tailored
-  description: A Tailored Description
+  description: A Tailored description
   url: /checkout/3.0/tailored
   icon:
-    content: ?????
+    content: shopping_cart
     outlined: true
 ---
 
