@@ -11,5 +11,6 @@ gem 'rake', '~> 13.0.3'
 gem 'html-proofer'
 gem 'html-proofer-unrendered-markdown'
 gem 'jekyll-redirect-from'
-gem "kramdown", ">= 2.3.0"
+gem 'kramdown', '>= 2.3.0'
+gem 'searchyll', git: 'https://github.com/SwedbankPay/searchyll.git', branch: 'feature/api_key'
 gem 'swedbank-pay-design-guide-jekyll-theme', '~> 1.9'
