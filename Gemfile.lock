@@ -117,7 +117,7 @@ GEM
       ffi (~> 1.9)
     sassc (2.4.0-x64-mingw32)
       ffi (~> 1.9)
-    swedbank-pay-design-guide-jekyll-theme (1.9.12)
+    swedbank-pay-design-guide-jekyll-theme (1.9.13)
       faraday (>= 1.0.1)
       html-proofer
       jekyll (>= 3.7, < 5.0)
