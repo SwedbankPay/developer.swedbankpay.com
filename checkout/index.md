@@ -2,7 +2,6 @@
 section: Checkout
 title: Choose Checkout Version
 card_overview: true
-estimated_read: '-'
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
