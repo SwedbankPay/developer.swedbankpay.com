@@ -6,7 +6,7 @@
 authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
-{%- if documentation_section != 'checkout/3.0/basic' %}
+{%- if documentation_section != 'checkout/v3/basic' %}
 **Delegated Strong Consumer Authentication** (hereby abbreviated as "Delegated
 SCA") is performed as an alternative to [Checkin][checkin] when creating the
 Payment Order upon the initialization of the [Payment Menu][payment-menu]. You

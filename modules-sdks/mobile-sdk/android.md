@@ -290,8 +290,8 @@ Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugg
 [dokka-paymentvm-richstate-exception]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-view-model/-rich-state/exception.md
 [dokka-consumer]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-consumer/index.md
 [dokka-paymentorder]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order/index.md
-[checkin-consumer]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
-[checkin-paymentorder]: /checkout/2.0/payment-menu#step-3-create-payment-order
+[checkin-consumer]: /checkout/v2/checkin#step-1-initiate-session-for-consumer-identification
+[checkin-paymentorder]: /checkout/v2/payment-menu#step-3-create-payment-order
 [dokka-paymentorderurls-init]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order-urls/-init-.md
 [dokka-activity-paymentvm]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/androidx.fragment.app.-fragment-activity/payment-view-model.md
 [backend-payment-orders]: merchant-backend#payment-orders-endpoint
@@ -310,6 +310,6 @@ Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for debugg
 [dokka-problem-server-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md
 [dokka-problem-server-unknown]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-unknown/index.md
 [dokka-swedbankpayproblem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md
-[paymenturl]: /checkout/2.0/features/technical-reference/payment-url
+[paymenturl]: /checkout/v2/features/technical-reference/payment-url
 [android-helper]: merchant-backend#android-payment-url-helper
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents

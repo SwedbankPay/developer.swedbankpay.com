@@ -594,8 +594,8 @@ Your implementation is encouraged to define its own problem types for any domain
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /payment-menu/features/technical-reference/payment-url
-[initiate-consumer-session]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /checkout/2.0/payment-menu#step-3-create-payment-order
+[initiate-consumer-session]: /checkout/v2/checkin#step-1-initiate-session-for-consumer-identification
+[create-payment-order]: /checkout/v2/payment-menu#step-3-create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
