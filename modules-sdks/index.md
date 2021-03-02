@@ -99,7 +99,6 @@ SDKs are often used as a building block to construct a *Module*.
 [android-icon]: /assets/img/logos/android.svg
 [android-link]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk
 [android-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-android
-[bjerkio-swedbank-pay-js]: https://github.com/SwedbankPay/swedbank-pay-sdk-js
 [dotnet-ext-link]: https://www.nuget.org/packages/SwedbankPay.Sdk.Extensions
 [dotnet-ext-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet-extensions
 [dotnet-icon]: /assets/img/logos/dotnet.svg
