@@ -2,14 +2,8 @@
 # Add more specific rules as needed.
 # The latest match takes precedence
 
-# Add tech writers to reviewers
-*   @SwedbankPay/techwriters 
+# Add DX as default reviewers
+* @SwedbankPay/dx
 
-# If a config file or a build file is edited
-*.yml   @SwedbankPay/dx 
-*.yaml   @SwedbankPay/dx 
-Gemfile @SwedbankPay/dx 
-*.lock  @SwedbankPay/dx 
-*.json  @SwedbankPay/dx 
-Rakefile @SwedbankPay/dx 
-CODEOWNERS @SwedbankPay/dx 
+# Tech writers should review changes to Markdown files
+.md @SwedbankPay/techwriters

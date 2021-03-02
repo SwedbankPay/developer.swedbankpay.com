@@ -1,16 +1,15 @@
-name: Deploy to stage and prod
+name: Deploy to Azure Production
 on:
   push:
-    branches: ['develop', 'master']
+    branches: ['master']
 
 jobs:
-  build:
-    name: Build and deploy
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build the site in the jekyll/builder container
+      - name: build
         run: |
           docker-compose run \
             -e GITHUB_BRANCH=develop \
@@ -22,28 +21,12 @@ jobs:
             --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
             --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
 
-      - name: Azure Login stage
-        if: github.ref == 'refs/heads/develop'
-        uses: azure/login@v1.1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
-
-      - name: Azure Deploy stage
-        if: github.ref == 'refs/heads/develop'
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalstage
-
-      - name: Azure Login prod
-        if: github.ref == 'refs/heads/master'
+      - name: login
         uses: azure/login@v1.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
 
-      - name: Azure Deploy prod
-        if: github.ref == 'refs/heads/master'
+      - name: deploy
         uses: azure/CLI@v1
         with:
-          inlineScript: |
-            az storage blob upload-batch -s _site -d \$web --account-name blobdevportalprod
+          inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalprod
