@@ -46,7 +46,7 @@ three example scenarios of why this is important:
     *   432 seconds
     *   864 seconds
     *   1265 seconds
-*   The callback is sent from the following IP address: `82.115.146.1`
+*   The callback is sent from the following IP address: `91.132.170.1`
 *   A callback should return a `200 OK` response.
 
 To understand the nature of the callback, the type of transaction, its status,
