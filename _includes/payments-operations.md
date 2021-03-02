@@ -6,7 +6,7 @@
 The `paid-payment` operation confirms that the transaction has been successful
 and that the payment is completed.
 
-A `paid-payment` operation looks like the following:
+A `paid-payment` operation looks like this:
 
 ```json
 {
@@ -18,8 +18,8 @@ A `paid-payment` operation looks like the following:
 ```
 
 To inspect the paid payment, you need to perform an HTTP `GET` request
-towards the operation's `href` field. An example of how the request and
-response look like is given below.
+towards the operation's `href` field. An example of the request and
+response is given below.
 
 {:.code-view-header}
 **Request**
@@ -122,11 +122,11 @@ Content-Type: application/json
 | `payment`                          | `string`     | {% include field-description-id.md sub_resource="transaction" %}                                                                                                                                                                                                                                     |
 | └➔&nbsp;`transaction`              | `string`     | The transaction object, containing information about the current transaction.                                                                                                                                                                                                                        |
 | └─➔&nbsp;`id`                      | `string`     | {% include field-description-id.md resource="transaction" %}                                                                                                                                                                                                                                         |
-| └─➔&nbsp;`number`                  | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead.                                                                                         |
+| └─➔&nbsp;`number`                  | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.                                                                                         |
 | └➔&nbsp;`payeeReference`           | `string`     | {% include field-description-payee-reference.md %}                                                                                                                                                                                                       |
-| └➔&nbsp;`orderReference`           | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                              |
+| └➔&nbsp;`orderReference`           | `string(50)` | The order reference, which should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                              |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                            |
-| └➔&nbsp;`tokens`                   | `integer`    | List of tokens generated.                                                                                                                                                                                                                                                                            |
+| └➔&nbsp;`tokens`                   | `integer`    | A list of generated tokens.                                                                                                                                                                                                                                                                            |
 | └➔&nbsp;`details`                  | `integer`    | A human readable and descriptive text of the payment.                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`cardBrand`               | `string`     | `Visa`, `MC`, etc. The brand of the card.                                                                                                                                                                                                                                                            |
 | └─➔&nbsp;`maskedPan`               | `string`     | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
@@ -137,16 +137,16 @@ Content-Type: application/json
 | └─➔&nbsp;`acquirerStan`            | `string`     | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                                                                                                         |
 | └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
 | └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
-| └─➔&nbsp;`nonPaymentToken`         | `string`     | Result of our own tokenization of the card used. Activated in POS on merchant or merchant group.                                                                                                                                                                                                     |
-| └─➔&nbsp;`externalNonPaymentToken` | `string`     | Result of external tokenization. This value varies depending on cards, acquirer, customer, etc. For ICA cards, the token comes in response from Swedbank. For Mass Transit(SL) it is populated with PAR if it comes in response from the redeemer (Visa). If not, our own token (Mastercard / Amex). |
+| └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
+| └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
 
 ### Operation `failed-payment`
 
 The `failed-payment` operation means that something went wrong during the
-payment process, the transaction was not authorized, and no further transactions
+payment process. The transaction was not authorized, and no further transactions
 can be created if the payment is in this state.
 
-A `failed-payment` operation looks like the following:
+A `failed-payment` operation looks like this:
 
 ```json
 {
@@ -160,11 +160,11 @@ A `failed-payment` operation looks like the following:
 To inspect why the payment failed, you need to perform an HTTP `GET` request
 towards the operation's `href` field.
 
-Under `details` you can see the problem message and under `problems` you can
-see which problem and the `description` of the problem with the corresponding
+The problem message can be found in `details` node. Under `problems` you can see
+which problem occured, a `description` of the problem and the corresponding
 error code.
 
-An example of how the request and response look like is given below.
+An example of the request and response is given below.
 
 {:.code-view-header}
 **Request**
@@ -202,11 +202,11 @@ Content-Type: application/json
 
 ### Operation `aborted-payment`
 
-The `aborted-payment` operation means that the merchant has aborted the payment
-before the payer has fulfilled the payment process. You can see this under
+The `aborted-payment` operation means that the merchant aborted the payment
+before the payer fulfilled the payment process. You can see this under
 `abortReason` in the response.
 
-An `aborted-payment` operation looks like the following:
+An `aborted-payment` operation looks like this:
 
 ```json
 {
@@ -218,8 +218,8 @@ An `aborted-payment` operation looks like the following:
 ```
 
 To inspect why the payment was aborted, you need to perform an HTTP `GET`
-request towards the operation's `href` field. An example of how the request and
-response looks like is given below.
+request towards the operation's `href` field. An example of the request and
+response is given below.
 
 {:.code-view-header}
 **Request**
