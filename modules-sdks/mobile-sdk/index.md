@@ -111,8 +111,8 @@ Internally, the SDK uses the same [Checkin][checkin] flow as would be used on a 
                          next_title="Next: Configuration" %}
 
 [plain-webview]: plain-webview
-[checkout]: /checkout/2.0
+[checkout]: /checkout/v2
 [https]: /introduction#connection-and-protocol
-[checkin]: /checkout/2.0/checkin
-[payment-menu]: /checkout/2.0/payment-menu
-[after-payment-capture]: /checkout/2.0/capture
+[checkin]: /checkout/v2/checkin
+[payment-menu]: /checkout/v2/payment-menu
+[after-payment-capture]: /checkout/v2/capture

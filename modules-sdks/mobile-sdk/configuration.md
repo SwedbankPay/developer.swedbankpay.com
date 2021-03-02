@@ -128,9 +128,9 @@ The next chapter will go over the Merchant Backend API. It will also explore in 
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml
-[payment-url]: /checkout/2.0/features/technical-reference/payment-url
-[initiate-consumer-session]: /checkout/2.0/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /checkout/2.0/payment-menu#step-3-create-payment-order
+[payment-url]: /checkout/v2/features/technical-reference/payment-url
+[initiate-consumer-session]: /checkout/v2/checkin#step-1-initiate-session-for-consumer-identification
+[create-payment-order]: /checkout/v2/payment-menu#step-3-create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

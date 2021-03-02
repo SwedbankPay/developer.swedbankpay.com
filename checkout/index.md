@@ -13,20 +13,20 @@ icon:
 additional: true
 menu_order: 100
 card_list:
-- title: Checkout 2.0
+- title: Checkout v2
   description: |
-    Checkout 2.0 was the generally available version of Checkout between 2018
-    and 2021. Choose this if you have an <strong>existing Checkout 2.0
+    Checkout v3 was the generally available version of Checkout between 2018
+    and 2021. Choose this if you have an <strong>existing Checkout v3
     integration</strong>.
-  url:  /checkout/2.0
+  url:  /checkout/v2
   icon:
     content: shopping_cart
     outlined: true
-- title: Checkout 3.0
+- title: Checkout v3
   description: |
-    Checkout 3.0 is the new version of Checkout, available from 2021 and is the
+    Checkout v3 is the new version of Checkout, available from 2021 and is the
     <strong>recommended choice for all new integrations</strong>.
-  url: /checkout/3.0
+  url: /checkout/v3
   icon:
     content: shopping_cart
     outlined: true
@@ -34,11 +34,11 @@ card_list:
 
 {:.heading-line}
 
-Choose between [Swedbank Pay Checkout 2.0][checkout-2] and [Swedbank Pay
-Checkout 3.0][checkout-3] below. For new integrations, **[Swedbank Pay
-Checkout 3.0][checkout-3] is recommended**.
+Choose between [Swedbank Pay Checkout v2][checkout-2] and [Swedbank Pay
+Checkout v3][checkout-3] below. For new integrations, **[Swedbank Pay
+Checkout v3][checkout-3] is recommended**.
 
 {% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
-[checkout-2]: /checkout/2.0
-[checkout-3]: /checkout/3.0
+[checkout-2]: /checkout/v2
+[checkout-3]: /checkout/v3
