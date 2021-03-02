@@ -6,6 +6,7 @@ estimated_read: 4
 description: |
   We have multiple Open Source-based SDKs and Modules to use with
   Swedbank Pay APIs.
+permalink: /:path/
 menu_order: 600
 ---
 

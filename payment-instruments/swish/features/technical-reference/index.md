@@ -3,6 +3,7 @@ title: Technical Reference
 description: |
   This section is a technical reference for the requests and responses
   you will encounter when integrating against Swish.
+permalink: /:path/
 icon:
   content: remove_red_eye
 additional: true
@@ -37,6 +38,12 @@ card_list:
   url:  /payment-instruments/swish/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: The operations of the payments
+  url:  /payment-instruments/swish/features/technical-reference/operations
+  icon:
+    content: shopping_basket
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information

@@ -1,6 +1,6 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture metadata_url -%}
-   {%- if documentation_section == "checkout" or documentation_section == "payment-menu" -%}
+   {%- if documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
         /{{documentation_section}}/features/technical-reference/metadata
     {%- else -%}
         /payment-instruments/{{documentation_section}}/features/technical-reference/metadata

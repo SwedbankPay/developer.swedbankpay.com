@@ -6,6 +6,7 @@ estimated_read: 4
 description: |
   Swish is Sweden's main payment app and the
   preferred online payment method with the highest convertion rates.
+permalink: /:path/
 menu_order: 500
 ---
 
@@ -91,7 +92,7 @@ Swish App.
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
 [Länsförsäkringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
 [nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
-[payment-resource]: /payment-instruments/swish/other-features#payment-resource
+[payment-resource]: /payment-instruments/swish/features/core/payment-resource
 [SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-handel.html
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/

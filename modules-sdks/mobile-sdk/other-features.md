@@ -786,9 +786,9 @@ manualArguments.putBoolean(
 As explained in the [iOS documentation][ios-payment-url], the iOS SDK will,
 in some cases, open navigations out of the payment menu in Safari rather than
 the WKWebView. The SDK contains a list of redirects that we have tested to be
-working, but, of course, this list can be neither complete not correct for all
-time. If you enounter a payment flow that opens in the WKWebView (i.e. does not
-open in Safari), but that does not work correctly, you can make all navigations
+working, but, of course, this list can be neither complete nor correct for all
+time. If you encounter a payment flow that opens in the WKWebView (i.e. does not
+open in Safari), but does not work correctly, you can make all navigations
 go to Safari to check if the flow has become incompatible with WKWebView. On
 the other hand, if you encounter a payment flow that opens in Safari and wish
 to investigate if it would work in the web view instead, you can make all
@@ -832,14 +832,14 @@ After you have verified that a domain works with WKWebView, please file an
 
 [checkout]: /checkout/
 [payment-menu]: /payment-menu/
-[checkout-features]: /checkout/other-features
-[checkout-urls]: /checkout/other-features#urls
-[checkout-orderitems]: /checkout/other-features#order-items
-[instrument-mode]: /payment-menu/other-features#instrument-mode
-[add-stored-details]: /payment-menu/other-features#add-stored-payment-instrument-details
-[terminal-failure]: /checkout/other-features#onerror
-[problems]: /payment-menu/other-features#problems
-[3ds2]: /checkout/other-features#3-d-secure-2
+[checkout-features]: /checkout/v2/features
+[checkout-urls]: /checkout/v2/features/technical-reference/urls
+[checkout-orderitems]: /checkout/v2/features/technical-reference/order-items
+[instrument-mode]: /payment-menu/features/optional/instrument-mode
+[add-stored-details]: /payment-menu/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
+[terminal-failure]: /checkout/v2/features/technical-reference/payment-menu-events#onerror
+[problems]: /payment-menu/features/technical-reference/problems
+[3ds2]: /checkout/v2/features/technical-reference/3-d-secure-2
 [ios-payment-url]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
 [ios-issues]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios/issues
 

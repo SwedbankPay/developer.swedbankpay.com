@@ -4,7 +4,6 @@ estimated_read: 15
 description: |
   **Payment Order** lets the payer complete their purchase.
 menu_order: 300
-hide_from_sidebar: true
 ---
 
 {% assign view_payment_order_javascript_url = "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE"%}
@@ -166,7 +165,7 @@ then you should await capture until after the goods have been sent.
 
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to
-[update the Payment Menu][payment-order-operations] after any changes to the
+[update the Payment Menu][operations] after any changes to the
 order.
 
 Below, you will see a complete overview of the payment menu process.
@@ -271,4 +270,4 @@ rect rgba(138, 205, 195, 0.1)
 
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
-[payment-order-operations]: /checkout/after-payment#operations
+[operations]: /checkout/v2/features/technical-reference/operations

@@ -17,32 +17,43 @@ hide_from_sidebar: true
         {% include card.html
             title='Checkout'
             title_type="h2"
-            text='With our Checkout you get the pre-built all-in-one payment 
+            text='With our Checkout you get the pre-built all-in-one payment
             solution, complete with a checkin interface and payment menu.'
             icon_content='shopping_cart'
             icon_outlined=true
-            to='/checkout'
+            to='/checkout/'
+        %}
+      </div>
+      <div class="{{ card_col_class }}">
+        {% include card.html
+            title='Payment Menu'
+            title_type="h2"
+            text='With Payment Menu you are in charge of the consumer journey
+            while being able to choose between all available payment instruments
+            in a single integration.'
+            icon_content='menu_book'
+            to='/payment-menu/'
         %}
       </div>
       <div class="{{ card_col_class }}">
         {% include card.html
             title='Payment Instruments'
             title_type="h2"
-            text='Payment Instruments gives you a one-by-one integration with 
+            text='Payment Instruments gives you a one-by-one integration with
             more customization for each payment method to build your own
             payment menu.'
             icon_content='credit_card'
-            to='/payments'
+            to='/payments/'
         %}
       </div>
       <div class="{{ card_col_class }}">
         {% include card.html
             title='Gift Cards'
             title_type="h2"
-            text='Our Gift Cards API allows your customers to pay with prepaid 
+            text='Our Gift Cards API allows your customers to pay with prepaid
             gift cards issued by Swedbank Pay.'
             icon_content='card_giftcard'
-            to='/gift-cards'
+            to='/gift-cards/'
         %}
       </div>
   </div>

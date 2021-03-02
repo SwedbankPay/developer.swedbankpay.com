@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md fallback="generic" %}{% endcapture %}
-{% if documentation_section == "checkout" or documentation_section == "payment-menu" %}
+{% if documentation_section contains "checkout" or documentation_section == "payment-menu" %}
     {% assign documentation_section = "generic" %}
 {% endif %}
 {% assign problem_include_file = documentation_section | prepend: "problems/" | append: ".md" %}

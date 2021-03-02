@@ -8,6 +8,7 @@ description: |
   The Mobile SDK consists of three components: An Android library, an iOS
   library, and a backend component with example implementations in Node.js
   and Java.
+permalink: /:path/
 menu_order: 600
 ---
 
@@ -110,8 +111,8 @@ Internally, the SDK uses the same [Checkin][checkin] flow as would be used on a 
                          next_title="Next: Configuration" %}
 
 [plain-webview]: plain-webview
-[checkout]: /checkout
+[checkout]: /checkout/v2
 [https]: /introduction#connection-and-protocol
-[checkin]: /checkout/checkin
-[payment-menu]: /checkout/payment-menu
-[after-payment-capture]: /checkout/capture
+[checkin]: /checkout/v2/checkin
+[payment-menu]: /checkout/v2/payment-menu
+[after-payment-capture]: /checkout/v2/capture

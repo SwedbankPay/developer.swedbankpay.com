@@ -5,6 +5,7 @@ estimated_read: 10
 card_overview: true
 description: |
   In this section you can read more about the features of Vipps.
+permalink: /:path/
 icon:
   content: remove_red_eye
 additional: true
@@ -76,6 +77,12 @@ card_list_2:
   url:  /payment-instruments/vipps/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: The operations of the payments
+  url:  /payment-instruments/vipps/features/technical-reference/operations
+  icon:
+    content: shopping_basket
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information

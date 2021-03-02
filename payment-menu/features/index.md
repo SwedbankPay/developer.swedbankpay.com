@@ -5,6 +5,7 @@ card_overview: true
 description: |
   In this section you can read more about the different features of the
   Swedbank Pay Payment Menu.
+permalink: /:path/
 icon:
   content: remove_red_eye
 additional: true
@@ -94,9 +95,9 @@ card_list_2:
   icon:
     content: event
     outlined: true
-- title: Payment Order Operations
+- title: Operations
   description: Possible operations for a payment order
-  url: /payment-menu/features/technical-reference/payment-order-operations
+  url: /payment-menu/features/technical-reference/operations
   icon:
     content: settings
     outlined: true

@@ -2,6 +2,7 @@
 title: Optional Features
 description: |
   This section details the features of Invoice that are optional.
+permalink: /:path/
 icon:
   content: remove_red_eye
 additional: true

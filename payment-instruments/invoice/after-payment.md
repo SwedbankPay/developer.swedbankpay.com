@@ -176,12 +176,11 @@ sequenceDiagram
 ```
 
 {% include iterator.html prev_href="capture" prev_title="Capture"
-next_href="other-features" next_title="Other Features" %}
+next_href="features" next_title="Features" %}
 
 ----------------------------------------------------------
 [abort-description]: #abort
-[callback-request]: /payment-instruments/invoice/other-features#callback
+[callback-request]: /payment-instruments/invoice/features/technical-reference/callback
 [invoice-captures]: #captures
 [invoice-cancellations]: #cancellations
 [invoice-reversals]: #reversals
-[other-features-transaction]: /payment-instruments/invoice/other-features#transactions
