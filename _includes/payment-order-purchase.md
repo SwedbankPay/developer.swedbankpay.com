@@ -20,7 +20,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",{% if documentation_section == "payment-menu" %}
-        "instrument": "null,{% endif %}
+        "instrument": null,{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
@@ -78,7 +78,7 @@ Content-Type: application/json
                 "amount": 1900,
                 "vatAmount": 0,
                 "restrictedToInstruments": [
-                "Invoice-PayExFinancingSe"
+                    "Invoice-PayExFinancingSe"
                 ]
             }
         ],
