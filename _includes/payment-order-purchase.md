@@ -19,8 +19,8 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "instrument": null,
+        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
+        "instrument": null{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
