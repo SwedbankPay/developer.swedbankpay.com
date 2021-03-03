@@ -20,7 +20,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",{% if documentation_section == "payment-menu" %}
-        "instrument": "CreditCard"{% endif %}
+        "instrument": "null,{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
@@ -77,6 +77,9 @@ Content-Type: application/json
                 "vatPercent": 0,
                 "amount": 1900,
                 "vatAmount": 0,
+                "restrictedToInstruments": [
+                "Invoice-PayExFinancingSe"
+                ]
             }
         ],
         "riskIndicator": {
@@ -236,7 +239,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`discountPrice`          | `integer`    | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                                               |
 | {% icon check %} | └─➔&nbsp;`vatPercent`             | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
-| {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
+| {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`    | {% include field-description-vatamount.md %}                                                                                                                               |                  | └➔&nbsp;`restrictedToInstruments` | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the consumer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay. |		                                                                                                                    |
+
 {% include risk-indicator-table.md %}
 
 {:.table .table-striped}
