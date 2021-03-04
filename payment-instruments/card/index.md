@@ -7,6 +7,7 @@ description: |
   **Card** is the most popular, versatile
   and global way to initate a transaction with a customer. Choose between our
   **Seamless View**, **Redirect**, or **Direct** integration options.
+permalink: /:path/
 menu_order: 300
 ---
 
@@ -39,7 +40,7 @@ menu_order: 300
   page (Redirect integration) or a JavaScript source in response (Seamless View
   integration).
 *   You need to [redirect][redirect] the payer's browser to that specified URL,
-    or embed the script source on your site to create a Hosted View in an
+    or embed the script source on your site to create a Seamless View in an
     `iframe`; so that the payer can enter the credit card details in a secure
     Swedbank Pay hosted environment.
 *   Swedbank Pay will handle 3-D Secure authentication when this is required.
@@ -62,7 +63,6 @@ When shopping in SEK, the page will look like this.
 
 {:.text-center}
 ![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="605px" width="475px"}
-
 
 ## Operations
 
@@ -183,14 +183,14 @@ sequenceDiagram
 
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
-[cancel]: /payment-instruments/card/after-payment#cancellations
+[cancel]: /payment-instruments/card/features/core/cancel
 [capture]: /payment-instruments/card/capture
 [card-payment]: /assets/img/payments/card-payment.png
-[create-payment]: /payment-instruments/card/other-features#create-payment
-[payout]: /payment-instruments/card/other-features#payout
-[purchase]: /payment-instruments/card/other-features#purchase
-[recur]: /payment-instruments/card/other-features#recur
+[create-payment]: /payment-instruments/card/features/technical-reference/create-payment
+[payout]: /payment-instruments/card/features/optional/payout
+[purchase]: /payment-instruments/card/features/technical-reference/purchase
+[recur]: /payment-instruments/card/features/optional/recur
 [redirect]: /payment-instruments/card/redirect
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
-[unscheduled-purchase]: /payment-instruments/card/other-features#unscheduled-purchase
-[verify]: /payment-instruments/card/other-features#verify
+[unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled-purchase
+[verify]: /payment-instruments/card/features/optional/verify

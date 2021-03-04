@@ -142,7 +142,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         }
     },
@@ -214,8 +214,8 @@ Content-Type: application/json
 
 [payment-verify]: #verify
 [card-payment-purchase]: #create-payment
-[card-payment-recur]: #recurring-payments
+[card-payment-recur]: /optional/recur
 [card-payment-capture]: #capture-sequence
 [card-payment-cancel]: #cancel-sequence
 [card-payments-remove-payment-token]: #delete-payment-token
-[technical-reference-callback]: /other-features#callback
+[technical-reference-callback]: /features/technical-reference/callback

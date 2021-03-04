@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: payex-dev
+          GITHUB_ACTOR_EMAIL: dev@payex.com
+          GITHUB_REPO: ${{ github.repository }}
+        run: |
+          docker-compose run \
+            -e GITHUB_BRANCH=develop \
+            -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
+            -e ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY}} \
+            -e ELASTICSEARCH_URL=${{ secrets.ELASTICSEARCH_API_URL}} \
+            portal deploy \
+            --env=production \
+            --site-url=https://developer.swedbankpay.com

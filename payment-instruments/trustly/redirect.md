@@ -69,7 +69,7 @@ Content-Type: application/json
             "productCategory": "PC1234",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -233,12 +233,12 @@ Here you will also find info on `Abort` and `Reversal`.
 {% include iterator.html prev_href="./" prev_title="Introduction"
 next_href="seamless-view" next_title="Seamless View" %}
 
-[complete-url]: /payment-instruments/trustly/other-features#completeurl
+[complete-url]: /payment-instruments/trustly/features/technical-reference/complete-url
 [deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /payment-instruments/trustly/after-payment
-[callback]: /payment-instruments/trustly/other-features#callback
-[reversal]: /payment-instruments/trustly/after-payment#reversals
-[payee-reference]: /payment-instruments/trustly/other-features#payeeinfo
-[recur]: /payment-instruments/trustly/other-features#recur
+[callback]: /payment-instruments/trustly/features/technical-reference/callback
+[reversal]: /payment-instruments/trustly/features/core/reversal
+[payee-reference]: /payment-instruments/trustly/features/technical-reference/payee-info
+[recur]: /payment-instruments/trustly/features/optional/recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payment-instruments/trustly/other-features#verify
+[verify]: /payment-instruments/trustly/features/optional/verify

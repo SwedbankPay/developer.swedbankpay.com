@@ -6,6 +6,7 @@ estimated_read: 3
 description: |
   MobilePay Online is the fast and simple way of paying with your mobile phone,
   reaching more than 4 million users in Denmark and Finland.
+permalink: /:path/
 menu_order: 700
 ---
 
@@ -48,7 +49,7 @@ products) have to make a [`Capture`][mobilepay-capture] or
 MobilePay Online is one of the instruments using two-phase payments. The
 `authorization` is done when the payer successfully confirms in the app, and
 the `abort`, `cancel`, `capture` or `reversal` is done by the merchant at a
-later time. Read more about the [different operations][other-features] and the
+later time. Read more about the [different operations][features] and the
 [payment resource][payment-resource].
 
 {% include alert-two-phase-payments.md %}
@@ -91,6 +92,6 @@ shipping to Denmark, for instance.
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations
 [mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
-[payment-resource]: /payment-instruments/mobile-pay/other-features#payment-resource
-[other-features]: /payment-instruments/mobile-pay/other-features#operations
+[payment-resource]: /payment-instruments/mobile-pay/features/core/payment-resource
+[features]: /payment-instruments/mobile-pay/features/technical-reference/operations
 [swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png
