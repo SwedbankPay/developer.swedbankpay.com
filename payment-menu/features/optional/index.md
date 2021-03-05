@@ -15,10 +15,10 @@ card_list:
     content: copyright
     outlined: true
 - title: Instrument Mode
-  description: Validating the payer's payment details
+  description: The Payment Menu with one payment instrument
   url:  /payment-menu/features/optional/instrument-mode
   icon:
-    content: verified_user
+    content: looks_one
     outlined: true
 - title: Payer Aware Payment Menu
   description: Possible events during Seamless View payments
