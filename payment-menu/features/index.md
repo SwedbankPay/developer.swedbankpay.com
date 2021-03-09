@@ -131,6 +131,12 @@ card_list_2:
   icon:
     content: event
     outlined: true
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-menu/features/technical-reference/transactions
+  icon:
+    content: done_all
+    outlined: true
 card_list_3:
 - title: Custom Logo
   description: How to add your own logo

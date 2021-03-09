@@ -6,4 +6,4 @@ description: |
 menu_order: 1800
 ---
 
-{% include recur.md %}
+{% include recurring-card-payments.md %}

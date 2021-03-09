@@ -137,6 +137,12 @@ card_list_2:
   icon:
     content: event
     outlined: true
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /checkout/v2/features/technical-reference/transactions
+  icon:
+    content: done_all
+    outlined: true
 - title: Urls
   description: The urls associated with the payment
   url:  /checkout/v2/features/technical-reference/urls

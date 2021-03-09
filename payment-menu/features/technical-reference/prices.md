@@ -3,7 +3,7 @@ title: Prices
 estimated_read: 10
 description: |
   The payment's prices resource.
-menu_order: 2600
+menu_order: 2500
 ---
 
 {% include prices.md %}

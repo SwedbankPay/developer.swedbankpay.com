@@ -99,6 +99,12 @@ card_list:
   icon:
     content: event
     outlined: true
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-menu/features/technical-reference/transactions
+  icon:
+    content: done_all
+    outlined: true
 ---
 
 {:.heading-line}
