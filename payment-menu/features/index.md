@@ -186,6 +186,12 @@ card_list_3:
   icon:
     content: looks_one
     outlined: true
+- title: MOTO
+  description: Mail Order / Telephone Order
+  url:  /payment-menu/features/optional/moto
+  icon:
+    content: dns
+    outlined: true
 - title: Payer Aware Payment Menu
   description: A payment menu tailored to the payer
   url:  /payment-menu/features/optional/payer-aware-payment-menu
