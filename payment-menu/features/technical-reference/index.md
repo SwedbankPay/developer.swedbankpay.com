@@ -39,11 +39,29 @@ card_list:
   icon:
     content: assignment
     outlined: true
+- title: Items
+  description: Information about the items field
+  url:  /payment-menu/features/technical-reference/items
+  icon:
+    content: article
+    outlined: true
 - title: Metadata
   description: Store payment associated data for later use
   url:  /payment-menu/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: Possible operations for a payment order
+  url: /payment-menu/features/technical-reference/operations
+  icon:
+    content: settings
+    outlined: true
+- title: Order Items
+  description: Information about the order items
+  url: /payment-menu/features/technical-reference/order-items
+  icon:
+    content: article
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
@@ -62,12 +80,6 @@ card_list:
   url: /payment-menu/features/technical-reference/payment-menu-events
   icon:
     content: event
-    outlined: true
-- title: Operations
-  description: Possible operations for a payment order
-  url: /payment-menu/features/technical-reference/operations
-  icon:
-    content: settings
     outlined: true
 - title: Payment State
   description: Different states in the payment process

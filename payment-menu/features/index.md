@@ -16,6 +16,12 @@ card_list:
   url:  /payment-menu/features/core/3d-secure-2
   icon:
     content: 3d_rotation
+  - title: Abort
+  description: Aborting a created payment
+  url: /payment-menu/features/core/payment-order-abort
+  icon:
+    content: pan_tool
+    outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
   url: /payment-menu/features/core/cancel
@@ -28,6 +34,12 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
+  - title: Payment Order
+  description: Creating the payment order
+  url:  /payment-menu/features/core/payment-order
+  icon:
+    content: credit_card
+    outlined: true
 - title: Reversal
   description: How to reverse a payment
   url: /payment-menu/features/core/reversal
@@ -39,6 +51,12 @@ card_list:
   url:  /payment-menu/features/core/settlement-reconciliation
   icon:
     content: description
+    outlined: true
+- title: Update Payment Order
+  description: Updating the payment order
+  url:  /payment-menu/features/core/update-payment-order
+  icon:
+    content: cached
     outlined: true
 card_list_2:
 - title: Callback
@@ -71,11 +89,29 @@ card_list_2:
   icon:
     content: assignment
     outlined: true
+- title: Items
+  description: Information about the items field
+  url:  /payment-menu/features/technical-reference/items
+  icon:
+    content: article
+    outlined: true
 - title: Metadata
   description: Store payment associated data for later use
   url:  /payment-menu/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: Possible operations for a payment order
+  url: /payment-menu/features/technical-reference/operations
+  icon:
+    content: settings
+    outlined: true
+- title: Order Items
+  description: Information about the order items
+  url: /payment-menu/features/technical-reference/order-items
+  icon:
+    content: article
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information

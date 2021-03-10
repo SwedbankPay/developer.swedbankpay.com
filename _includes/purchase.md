@@ -9,6 +9,25 @@ It is followed up by posting a `capture`, `cancellation` or `reversal`
 transaction. An example of a request is provided below. Each individual field of
 the JSON document is described in the following section.
 
+### Purchase Operation
+
+Posting a payment (operation `Purchase`) returns the options of aborting the
+payment altogether or creating an authorization transaction through the
+`redirect-authorization` hyperlink.
+
+{:.code-view-header}
+**Request**
+
+```json
+{
+    "payment": {
+        "operation": "Purchase"
+    }
+}
+```
+
+## Purchase Payment
+
 {:.code-view-header}
 **Request**
 

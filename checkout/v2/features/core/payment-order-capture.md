@@ -1,9 +1,9 @@
 ---
-title: PaymentOrders Capture
+title: Capture
 estimated_read: 5
 description: |
   Capturing the authorized funds.
-menu_order: 1400
+menu_order: 1500
 ---
 
 {% include payment-order-capture.md %}
