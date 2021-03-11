@@ -185,3 +185,5 @@ The response given when changing a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource, as displayed above. Even though
 the fields are the same, the `UpdateOrder` request will overwrite the fields
 that were sent in the initial `Purchase` request.
+
+[user-agent]: https://en.wikipedia.org/wiki/User_agent

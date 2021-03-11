@@ -65,12 +65,6 @@ card_list_2:
   icon:
     content: low_priority
     outlined: true
-- title: Checkin Events
-  description: Possible events during Checkin
-  url: /payment-menu/features/technical-reference/checkin-events
-  icon:
-    content: event
-    outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
   url:  /payment-menu/features/technical-reference/complete-url

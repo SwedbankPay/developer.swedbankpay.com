@@ -118,6 +118,3 @@ Content-Type: application/json
 | Field   | Type   | Description                                                              |
 | :------ | :----- | :----------------------------------------------------------------------- |
 | `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE`. The state of the transaction. |
-
-{% include iterator.html prev_href="test-client"
-                         prev_title="Test Client" %}
