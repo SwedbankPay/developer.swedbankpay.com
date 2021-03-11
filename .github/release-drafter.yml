@@ -25,9 +25,6 @@ version-resolver:
   minor:
     labels:
       - 'documentation'
-  patch:
-    labels:
-      - 'fix'
   default: patch
 template: |
   ## Changes
