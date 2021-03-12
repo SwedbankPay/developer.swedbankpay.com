@@ -76,5 +76,5 @@ Content-Type: application/json
 |                  | └➔&nbsp;`metadata`             | `object`     | {% include field-description-metadata.md %}                                                                                                                                                 |
 
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[technical-reference-callback]: {{ features_url }}/technical-reference/callback
-[settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
+[technical-reference-callback]: {{ features_url }}/features/technical-reference/callback
+[settlement-reconciliation]: {{ features_url }}/features/core/settlement-reconciliation
