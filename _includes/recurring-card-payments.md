@@ -1,3 +1,5 @@
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## Recurring payments
 
 {% include jumbotron.html body="A recurring payment enables you to charge a card
@@ -284,7 +286,7 @@ Content-Type: application/json
 
 [payment-verify]: #verify
 [card-payment-purchase]: #create-payment
-[card-payment-recur]: features/optional/recur
+[card-payment-recur]: /payment-instruments/card/features/optional/recur
 [card-payment-capture]: #capture-sequence
 [card-payment-cancel]: #cancel-sequence
 [card-payments-remove-payment-token]: #delete-payment-token
