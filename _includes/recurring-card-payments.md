@@ -288,6 +288,6 @@ Content-Type: application/json
 [card-payment-capture]: #capture-sequence
 [card-payment-cancel]: #cancel-sequence
 [card-payments-remove-payment-token]: #delete-payment-token
-[settlement-reconciliation]: {{ features_url }}/features/core/settlement-reconciliation
-[settlement-reconciliation-split]: {{ features_url }}/features/core/settlement-reconciliation#split-settlement
-[technical-reference-callback]: {{ features_url }}/features/technical-reference/callback
+[settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
+[settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement
+[technical-reference-callback]: {{ features_url }}/technical-reference/callback
