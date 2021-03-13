@@ -26,6 +26,12 @@ card_list:
   icon:
     content: dns
     outlined: true
+- title: One-Click Payments
+  description: Prefilling the payment details using payment tokens
+  url:  /payment-menu/features/optional/one-click-payments
+  icon:
+    content: touch_app
+    outlined: true
 - title: Payer Aware Payment Menu
   description: Possible events during Seamless View payments
   url:  /payment-menu/features/optional/payer-aware-payment-menu

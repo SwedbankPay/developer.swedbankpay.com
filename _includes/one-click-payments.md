@@ -1,3 +1,6 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## One-Click Payments
 
 {% include jumbotron.html body="One-Click Payments utilize a previously
@@ -32,16 +35,16 @@ operation to [`Verify`][verify].
 ### Finding paymentToken value
 
 When the initial purchase is successful, a `paymentToken` is linked to
-the payment.  You can return the value by sending a `GET` request towards the payment
-resource (expanding either the authorizations or verifications sub-resource),
-after the payer successfully has completed the purchase. The two examples are
-provided below.
+the payment.  You can return the value by sending a `GET` request towards the
+payment resource (expanding either the authorizations or verifications
+sub-resource), after the payer successfully has completed the purchase. The two
+examples are provided below.
 
 {:.code-view-header}
 **Request Towards Authorizations Resource**
 
 ```http
-GET /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
@@ -50,7 +53,7 @@ Authorization: Bearer <AccessToken>
 **Request Towards Verifications Resource**
 
 ```http
-GET /psp/creditcard/payments/{{ page.payment_id }}/verifications HTTP/1.1
+GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
@@ -78,7 +81,7 @@ Abbreviated code example:
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -160,7 +163,7 @@ Content-Type: application/json
 
 {
     "instrumentData": {
-        "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
+        "id": "/psp/{{ api_resource }}/payments/instrumentdata/{{ page.payment_token }}",
         "paymentToken": "{{ page.payment_token }}",
         "payeeId": "{{ page.merchant_id }}",
         "isDeleted": true,
@@ -182,8 +185,8 @@ TODO: Remove pipes from the above code example and add a field table
 [invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: #delete-payment-token
-[cancel]: /payment-instruments/card/features/core/cancel
-[capture]: /payment-instruments/card/features/core/capture
+[cancel]: {{ features_url }}/core/cancel
+[capture]: {{ features_url }}/core/capture
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
-[verify]: /payment-instruments/card/features/optional/verify
+[verify]: {{ features_url }}/optional/verify
