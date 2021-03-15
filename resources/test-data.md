@@ -72,61 +72,61 @@ institutions.
 ### American Express
 
 {:.table .table-striped}
-| Card number       | Expiry                  | CVC    | Type of test data |
-| :---------------- | :---------------------- | :----- | :---------------- |
-| `377601000000000` | After the current month | `5252` | Amex & loopback   |
+| Card number       | Expiry                  | CVC            | Type of test data |
+| :---------------- | :---------------------- | :------------  | :---------------- |
+| `377601000000000` | After the current month | Any (4 digits) | Amex & loopback   |
 
 ### JCB
 
 {:.table .table-striped}
 | Card number        | Expiry                  | CVC   |
 | :----------------- | :---------------------- | :---- |
-| `3569990010082211` | After the current month | `123` |
+| `3569990010082211` | After the current month | Any   |
 
 ### Diners
 
 {:.table .table-striped}
 | Card number     | Expiry                  | CVC   |
 | :-------------- | :---------------------- | :---- |
-| `6148201829798` | After the current month | `832` |
+| `6148201829798` | After the current month | Any   |
 
 ### Maestro
 
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
-| `6764429999947470` | After the current month  | `066` |
+| `6764429999947470` | After the current month  | Any   |
 
 ### Dankort
 
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
-| `5019994016316467` | After the current month  | `375` |
-| `5019994001307083` | After the current month  | `615` |
+| `5019994016316467` | After the current month  | Any   |
+| `5019994001307083` | After the current month  | Any   |
 
 ### Visa/DanKort
 
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
-| `4571994016401817` | After the current month  | `212` |
-| `4571994016471869` | After the current month  | `829` |
+| `4571994016401817` | After the current month  | Any   |
+| `4571994016471869` | After the current month  | Any   |
 
 ### Forbrugsforeningen
 
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
-| `6007220000000004` | After the current month  | `123` |
+| `6007220000000004` | After the current month  | Any   |
 
 ### 3-D Secure
 
 {:.table .table-striped}
 | Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
 | :--------- | :----------------- | :----------------------- | :-----| :------------------ |
-| Visa       | `4761739001010416` | After the current month  | `268` | 3-D Secure enrolled |
-| MasterCard | `5226612199533406` | After the current month  | `602` | 3-D Secure enrolled |
+| Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
+| MasterCard | `5226612199533406` | After the current month  | Any   | 3-D Secure enrolled |
 
 ## Failure Testing
 
