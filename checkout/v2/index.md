@@ -1,7 +1,6 @@
 ---
 section: Checkout v2
 title: Introduction
-redirect_from: /checkout/
 estimated_read: 3
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
