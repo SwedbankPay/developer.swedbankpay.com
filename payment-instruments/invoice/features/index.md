@@ -77,7 +77,7 @@ card_list_2:
   icon:
     content: assignment
     outlined: true
-  - title: Financing Consumer
+- title: Financing Consumer
   description: The payment request and country options
   url: /payment-instruments/invoice/features/technical-reference/financing-consumer
   icon:

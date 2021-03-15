@@ -14,7 +14,7 @@ card_list:
   url:  /checkout/v2/features/core/3d-secure-2
   icon:
     content: 3d_rotation
-  - title: Abort
+- title: Abort
   description: Aborting a created payment
   url: /checkout/v2/features/core/payment-order-abort
   icon:
@@ -32,7 +32,7 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-  - title: Payment Order
+- title: Payment Order
   description: Creating the payment order
   url:  /checkout/v2/features/core/payment-order
   icon:
@@ -50,7 +50,7 @@ card_list:
   icon:
     content: description
     outlined: true
-  - title: Update Payment Order
+- title: Update Payment Order
   description: Updating the payment order
   url:  /checkout/v2/features/core/update-payment-order
   icon:
