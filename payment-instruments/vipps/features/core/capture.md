@@ -6,4 +6,4 @@ description: |
 menu_order: 1400
 ---
 
-{% include capture.md %}
+{% include vipps-payments-capture.md %}

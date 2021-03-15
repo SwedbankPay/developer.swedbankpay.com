@@ -105,6 +105,7 @@ Content-Type: application/json
 }
 ```
 
+
 The valid instruments for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a
 merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
