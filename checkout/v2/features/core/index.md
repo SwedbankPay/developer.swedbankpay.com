@@ -52,7 +52,7 @@ card_list:
     outlined: true
 - title: Update Payment Order
   description: Updating the payment order
-  url:  /checkout/v2/features/core/update-payment-order
+  url:  /checkout/v2/features/core/payment-order-update
   icon:
     content: cached
     outlined: true
