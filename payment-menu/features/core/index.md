@@ -28,7 +28,7 @@ card_list:
       outlined: true
   - title: Capture
     description: Capturing the authorized funds
-    url: /payment-menu/features/core/payment-order-capture
+    url: /payment-menu/features/core/capture
     icon:
       content: compare_arrows
       outlined: true

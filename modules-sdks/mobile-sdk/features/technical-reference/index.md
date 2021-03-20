@@ -12,7 +12,7 @@ menu_order: 1100
 card_list:
 - title: Android Default UI
   description: Controlling the default UI
-  url: /modules-sdks/mobile-sdk/features/technical-reference/android-default-UI
+  url: /modules-sdks/mobile-sdk/features/technical-reference/android-default-ui
   icon:
     content: phone_android
     outlined: true
