@@ -188,18 +188,20 @@ access them with our script." %}
 
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in.
-After that has all loaded, you should see something like this:
+When everything has finished loading, you should see something like this:
 
 {:.text-center}
 ![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
 
-As you can see, the payer's information is pre-filled as provided by the
-initial `POST`.
+In this example, the payer's information is pre-filled as provided by the
+initial `POST`. If not, the fields will appear empty.
 
-From here, there are a three ways forward, depending on the consumer. If he or
-she is already registered with a profile at Swedbank Pay, the information
-already provided will be sufficient. The consumer can simply click proceed, and
-the profile will appear on the page (with sensitive data masked).
+{% include alert-checkin-agreement-required.md %}
+
+From here, there are three ways forwards, depending on the consumer. If they are
+registered with a profile at Swedbank Pay, the information already provided will
+be sufficient. The consumer can simply click proceed, and the profile will
+appear on the page (with sensitive data masked).
 
 If Swedbank Pay detects that the consumer hasn't registered any personal
 details, two options are provided: Store details for future purchases or proceed
