@@ -15,9 +15,9 @@ menu_order: 100
 card_list:
 - title: Checkout v2
   description: |
-    Checkout v3 was the generally available version of Checkout between 2018
-    and 2021. Choose this if you have an <strong>existing Checkout v3
-    integration</strong>.
+    Checkout v2 has been the generally available version of Checkout since 2018.
+    Choose this if you have an <strong>existing Checkout v2
+    integration</strong> or are currently completing one.
   url:  /checkout/v2
   icon:
     content: shopping_cart
