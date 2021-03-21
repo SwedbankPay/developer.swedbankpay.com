@@ -1,3 +1,7 @@
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% assign operation_status_bool = include.operation_status_bool | default: "false" %}
+{% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
+
 ## Payer Aware Payment Menu
 
 To maximize the experience of your payers, you should implement the Payer
@@ -68,8 +72,8 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "instrument": "CreditCard"
+        "language": "sv-SE", {% if documentation_section == "payment-menu" %}
+        "instrument": null{% endif %}
         "generateRecurrenceToken": true,
         "generatePaymentToken": true,
         "disableStoredPaymentDetails": true,

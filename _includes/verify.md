@@ -1,5 +1,6 @@
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' or documentation_section == 'invoice' %}
     {% assign has_one_click = true %}
 {%- endunless %}
@@ -83,7 +84,7 @@ below is the Redirect option.
 **Request**
 
 ```http
-POST /psp/{{ include.api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -134,7 +135,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -150,7 +151,7 @@ Content-Type: application/json
         "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
         "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
         "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
-        "payers": { "id": "/psp/trustly/payments/{{ page.payment_id }}/payers" },
+        "payers": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" },
         "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
