@@ -15,11 +15,11 @@ card_list:
     icon:
       content: 3d_rotation
   - title: Abort
-  description: Aborting a created payment
-  url: /payment-menu/features/core/payment-order-abort
-  icon:
-    content: pan_tool
-    outlined: true
+    description: Aborting a created payment
+    url: /payment-menu/features/core/payment-order-abort
+    icon:
+      content: pan_tool
+      outlined: true
   - title: Cancel
     description: Cancelling the authorization and releasing the funds
     url: /payment-menu/features/core/cancel
@@ -28,16 +28,16 @@ card_list:
       outlined: true
   - title: Capture
     description: Capturing the authorized funds
-    url: /payment-menu/features/core/payment-order-capture
+    url: /payment-menu/features/core/capture
     icon:
       content: compare_arrows
       outlined: true
   - title: Payment Order
-  description: Creating the payment order
-  url:  /payment-menu/features/core/payment-order
-  icon:
-    content: credit_card
-    outlined: true
+    description: Creating the payment order
+    url:  /payment-menu/features/core/payment-order
+    icon:
+      content: credit_card
+      outlined: true
   - title: Reversal
     description: How to reverse a payment
     url: /payment-menu/features/core/reversal
@@ -52,7 +52,7 @@ card_list:
       outlined: true
   - title: Update Payment Order
     description: Updating the payment order
-    url:  /payment-menu/features/core/update-payment-order
+    url:  /payment-menu/features/core/payment-order-update
     icon:
       content: cached
       outlined: true

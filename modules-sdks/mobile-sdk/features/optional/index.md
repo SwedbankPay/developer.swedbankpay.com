@@ -12,7 +12,7 @@ menu_order: 1100
 card_list:
 - title: Debugging Features
   description: Helping you investigate when a bug appears
-  url:  /modules-sdks/mobile-sdk/features/optional/debugging-features
+  url:  /modules-sdks/mobile-sdk/features/optional/debugging
   icon:
     content: bug_report
 - title: Instrument Mode

@@ -17,7 +17,7 @@ card_list:
     content: shopping_basket
 - title: Purchase Payments
   description: Setting the purchase operation
-  url: /modules-sdks/mobile-sdk/features/core/purchase-payments
+  url: /modules-sdks/mobile-sdk/features/core/purchase
   icon:
     content: shopping_basket
     outlined: true

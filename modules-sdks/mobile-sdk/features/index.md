@@ -18,7 +18,7 @@ card_list:
     content: shopping_basket
 - title: Purchase Payments
   description: Setting the purchase operation
-  url: /modules-sdks/mobile-sdk/features/core/purchase-payments
+  url: /modules-sdks/mobile-sdk/features/core/purchase
   icon:
     content: shopping_basket
     outlined: true
@@ -30,7 +30,7 @@ card_list_2:
     content: vpn_key
 - title: Android Default UI
   description: Controlling the default UI
-  url: /modules-sdks/mobile-sdk/features/technical-reference/
+  url: /modules-sdks/mobile-sdk/features/technical-reference/android-default-ui
   icon:
     content: phone_android
     outlined: true
@@ -49,7 +49,7 @@ card_list_2:
 card_list_3:
 - title: Debugging Features
   description: Helping you investigate when a bug appears
-  url:  /modules-sdks/mobile-sdk/features/optional/debugging-features
+  url:  /modules-sdks/mobile-sdk/features/optional/debugging
   icon:
     content: bug_report
 - title: Instrument Mode
