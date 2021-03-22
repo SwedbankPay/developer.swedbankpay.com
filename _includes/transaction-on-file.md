@@ -8,7 +8,7 @@
 
 {% assign token_url = token_url_without_psp | prepend: '/psp/' %}
 
-## Transaction on file
+## Transaction On File
 
 {% include alert-agreement-required.md %}
 
