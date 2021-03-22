@@ -8,6 +8,12 @@ icon:
 additional: true
 menu_order: 1200
 card_list:
+- title: One-Click Payments
+  description: Prefilling the payment details using payment tokens
+  url:  /payment-instruments/invoice/features/optional/one-click-payments
+  icon:
+    content: touch_app
+    outlined: true
 - title: Payment Link
   description: Sending the payment via mail or SMS
   url:  /payment-instruments/invoice/features/optional/payment-link

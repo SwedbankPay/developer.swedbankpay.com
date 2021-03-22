@@ -359,9 +359,9 @@ sequenceDiagram
     Swedbank Pay-->>-Merchant: payment resource
     activate Merchant
     note left of Merchant: Second API request
-    Merchant-->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    Merchant->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
     activate Swedbank Pay
-    Swedbank Pay-->>Swedbank Pay: Update payment with payer's delivery address
+    Swedbank Pay->>Swedbank Pay: Update payment with payer's delivery address
     Swedbank Pay-->>-Merchant: Approved legaladdress information
     activate Merchant
     Merchant-->>-Payer: Display all details and final price

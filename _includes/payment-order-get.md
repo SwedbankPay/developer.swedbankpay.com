@@ -107,3 +107,4 @@ Content-Type: application/json
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /checkout
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
