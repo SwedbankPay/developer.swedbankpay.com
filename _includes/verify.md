@@ -1,5 +1,6 @@
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' or documentation_section == 'invoice' %}
     {% assign has_one_click = true %}
 {%- endunless %}
@@ -83,7 +84,7 @@ below is the Redirect option.
 **Request**
 
 ```http
-POST /psp/{{ include.api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

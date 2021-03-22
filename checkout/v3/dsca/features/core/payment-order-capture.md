@@ -1,5 +1,5 @@
 ---
-title: PaymentOrders Capture
+title: Capture
 estimated_read: 5
 description: |
   Capturing the authorized funds.
