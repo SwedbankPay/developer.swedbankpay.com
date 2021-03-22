@@ -77,6 +77,16 @@ card_list_2:
   icon:
     content: assignment
     outlined: true
+- title: Financing Consumer
+  description: The payment request and country options
+  url: /payment-instruments/invoice/features/technical-reference/financing-consumer
+  icon:
+    content: credit_card
+- title: Invoice Authorization Transaction
+  description: Information about the payment's authorization(s)
+  url:  /payment-instruments/invoice/features/technical-reference/invoice-authorization-transaction
+  icon:
+    content: check_circle_outline
 - title: Metadata
   description: Store payment associated data for later use
   url:  /payment-instruments/invoice/features/technical-reference/metadata
@@ -143,6 +153,12 @@ card_list_2:
     content: done_all
     outlined: true
 card_list_3:
+- title: One-Click Payments
+  description: Prefilling the payment details using payment tokens
+  url:  /payment-instruments/invoice/features/optional/one-click-payments
+  icon:
+    content: touch_app
+    outlined: true
 - title: Payment Link
   description: Sending the payment via mail or SMS
   url:  /payment-instruments/invoice/features/optional/payment-link

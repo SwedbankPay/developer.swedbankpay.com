@@ -39,11 +39,29 @@ card_list_2:
   icon:
     content: assignment
     outlined: true
+- title: Items
+  description: Information about the items field
+  url:  /checkout/v2/features/technical-reference/items
+  icon:
+    content: article
+    outlined: true
 - title: Metadata
   description: Store payment associated data for later use
   url:  /checkout/v2/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: Possible operations for a payment order
+  url: /checkout/v2/features/technical-reference/operations
+  icon:
+    content: settings
+    outlined: true
+- title: Order Items
+  description: Information about the order items
+  url: /checkout/v2/features/technical-reference/order-items
+  icon:
+    content: article
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
@@ -62,18 +80,6 @@ card_list_2:
   url: /checkout/v2/features/technical-reference/payment-menu-events
   icon:
     content: event
-    outlined: true
-- title: Operations
-  description: Possible operations for a payment order
-  url: /checkout/v2/features/technical-reference/operations
-  icon:
-    content: settings
-    outlined: true
-- title: Order Items
-  description: Information about the order items
-  url: /checkout/v2/features/technical-reference/order-items
-  icon:
-    content: article
     outlined: true
 - title: Payment State
   description: Different states in the payment process
@@ -104,6 +110,12 @@ card_list_2:
   url:  /checkout/v2/features/technical-reference/seamless-view-events
   icon:
     content: event
+    outlined: true
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /checkout/v2/features/technical-reference/transactions
+  icon:
+    content: done_all
     outlined: true
 - title: Urls
   description: The urls associated with the payment

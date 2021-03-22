@@ -15,10 +15,22 @@ card_list:
     content: copyright
     outlined: true
 - title: Instrument Mode
-  description: Validating the payer's payment details
+  description: The Payment Menu with one payment instrument
   url:  /payment-menu/features/optional/instrument-mode
   icon:
-    content: verified_user
+    content: looks_one
+    outlined: true
+- title: MOTO
+  description: Mail Order / Telephone Order
+  url:  /payment-menu/features/optional/moto
+  icon:
+    content: dns
+    outlined: true
+- title: One-Click Payments
+  description: Prefilling the payment details using payment tokens
+  url:  /payment-menu/features/optional/one-click-payments
+  icon:
+    content: touch_app
     outlined: true
 - title: Payer Aware Payment Menu
   description: Possible events during Seamless View payments

@@ -16,6 +16,12 @@ card_list:
   url:  /payment-menu/features/core/3d-secure-2
   icon:
     content: 3d_rotation
+- title: Abort
+  description: Aborting a created payment
+  url: /payment-menu/features/core/payment-order-abort
+  icon:
+    content: pan_tool
+    outlined: true
 - title: Cancel
   description: Cancelling the authorization and releasing the funds
   url: /payment-menu/features/core/cancel
@@ -24,9 +30,15 @@ card_list:
     outlined: true
 - title: Capture
   description: Capturing the authorized funds
-  url: /payment-menu/features/core/payment-order-capture
+  url: /payment-menu/features/core/capture
   icon:
     content: compare_arrows
+    outlined: true
+- title: Payment Order
+  description: Creating the payment order
+  url:  /payment-menu/features/core/payment-order
+  icon:
+    content: credit_card
     outlined: true
 - title: Reversal
   description: How to reverse a payment
@@ -40,18 +52,18 @@ card_list:
   icon:
     content: description
     outlined: true
+- title: Update Payment Order
+  description: Updating the payment order
+  url:  /payment-menu/features/core/payment-order-update
+  icon:
+    content: cached
+    outlined: true
 card_list_2:
 - title: Callback
   description: Getting updates about payment or transaction changes
   url:  /payment-menu/features/technical-reference/callback
   icon:
     content: low_priority
-    outlined: true
-- title: Checkin Events
-  description: Possible events during Checkin
-  url: /payment-menu/features/technical-reference/checkin-events
-  icon:
-    content: event
     outlined: true
 - title: CompleteUrl
   description: Where you go when the payment is completed
@@ -71,11 +83,29 @@ card_list_2:
   icon:
     content: assignment
     outlined: true
+- title: Items
+  description: Information about the items field
+  url:  /payment-menu/features/technical-reference/items
+  icon:
+    content: article
+    outlined: true
 - title: Metadata
   description: Store payment associated data for later use
   url:  /payment-menu/features/technical-reference/metadata
   icon:
     content: code
+    outlined: true
+- title: Operations
+  description: Possible operations for a payment order
+  url: /payment-menu/features/technical-reference/operations
+  icon:
+    content: settings
+    outlined: true
+- title: Order Items
+  description: Information about the order items
+  url: /payment-menu/features/technical-reference/order-items
+  icon:
+    content: article
     outlined: true
 - title: PayeeInfo
   description: Payment specific merchant information
@@ -131,6 +161,12 @@ card_list_2:
   icon:
     content: event
     outlined: true
+- title: Transactions
+  description: The transactions making up a specific payment
+  url:  /payment-menu/features/technical-reference/transactions
+  icon:
+    content: done_all
+    outlined: true
 card_list_3:
 - title: Custom Logo
   description: How to add your own logo
@@ -142,7 +178,19 @@ card_list_3:
   description: The Payment Menu with one payment instrument
   url:  /payment-menu/features/optional/instrument-mode
   icon:
-    content: verified_user
+    content: looks_one
+    outlined: true
+- title: MOTO
+  description: Mail Order / Telephone Order
+  url:  /payment-menu/features/optional/moto
+  icon:
+    content: dns
+    outlined: true
+- title: One-Click Payments
+  description: Prefilling the payment details using payment tokens
+  url:  /payment-menu/features/optional/one-click-payments
+  icon:
+    content: touch_app
     outlined: true
 - title: Payer Aware Payment Menu
   description: A payment menu tailored to the payer

@@ -1,6 +1,6 @@
 ---
 section: Checkout
-title: Choose Checkout Version
+title: Checkout
 card_overview: true
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
@@ -15,18 +15,15 @@ menu_order: 100
 card_list:
 - title: Checkout v2
   description: |
-    Checkout v3 was the generally available version of Checkout between 2018
-    and 2021. Choose this if you have an <strong>existing Checkout v3
-    integration</strong>.
+    Checkout v2 has been the generally available version of Checkout since 2018.
+    Choose this if you have an <strong>existing Checkout v2
+    integration</strong> or are currently completing one.
   url:  /checkout/v2
   icon:
     content: shopping_cart
     outlined: true
 - title: Checkout v3
-  description: |
-    Checkout v3 is the new version of Checkout, available from 2021 and is the
-    <strong>recommended choice for all new integrations</strong>.
-  url: /checkout/v3
+  description: Coming soon…
   icon:
     content: shopping_cart
     outlined: true
@@ -34,9 +31,11 @@ card_list:
 
 {:.heading-line}
 
+{% comment %}
 Choose between [Swedbank Pay Checkout v2][checkout-2] and [Swedbank Pay
 Checkout v3][checkout-3] below. For new integrations, **[Swedbank Pay
 Checkout v3][checkout-3] is recommended**.
+{% endcomment %}
 
 {% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
