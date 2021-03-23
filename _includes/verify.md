@@ -135,7 +135,7 @@ Content-Type: application/json
 
 {
     "payment": {
-        "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
         "updated": "2016-09-14T13:21:57.6627579Z",
@@ -151,7 +151,7 @@ Content-Type: application/json
         "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
         "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
         "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
-        "payers": { "id": "/psp/trustly/payments/{{ page.payment_id }}/payers" },
+        "payers": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" },
         "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
