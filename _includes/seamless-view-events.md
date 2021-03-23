@@ -245,4 +245,10 @@ with the following event argument object:
 | :------------ | :------- | :---------------------------------------------------------------------------------- |
 | `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
 
+## Updating Payment Menu
+
+When the contents of the shopping cart changes or anything else that affects
+the amount occurs, the `paymentorder` must be updated and the Payment Menu
+must be `refresh`ed.
+
 {% endif %}

@@ -1,0 +1,32 @@
+name: Deploy to Azure Production
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: build
+        run: |
+          docker-compose run \
+            -e GITHUB_BRANCH=develop \
+            -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
+            portal build \
+            --env=production \
+            --site-url=https://developer.swedbankpay.com \
+            --ignore-url http://restcookbook.com/Basics/loggingin/ \
+            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
+            --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
+
+      - name: login
+        uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
+
+      - name: deploy
+        uses: azure/CLI@v1
+        with:
+          inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalprod

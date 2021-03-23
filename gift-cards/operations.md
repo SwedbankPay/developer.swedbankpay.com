@@ -33,7 +33,7 @@ Content-Type: application/json
 | {% icon check %} | `amount`    | `integer` | Total amount of Payment (in cents), ie. 100Kr -> 10000. If amount is 0 no deposit is made. |
 |                  | `email`     | `string`  | customers email.                                                                           |
 |                  | `msisdn`    | `string`  | customers mobile number.                                                                   |
-|                  | `productId` | `string`  | A human readable and descriptive text of the error.                                        |
+|                  | `productId` | `string`  | A product identifier provided by Swedbank Pay.                                        |
 
 {:.code-view-header}
 **Response**
@@ -133,5 +133,5 @@ Content-Type: application/json
 [auth]: /gift-cards/other-features#authentication
 [balance]: /gift-cards/other-features#balance
 [deposit]: /gift-cards/other-features#deposit
-[purchase]: /gift-cards/other-features#purchase
+[purchase]: /gift-cards/features/technical-reference/purchase
 [security]: /gift-cards/security

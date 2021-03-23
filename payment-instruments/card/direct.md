@@ -62,7 +62,7 @@ expanded `POST` request is available in the [other features section][purchase].
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include card-purchase.md %}
+{% include purchase.md %}
 
 {% include alert-callback-url.md %}
 
@@ -391,15 +391,15 @@ next_href="mobile-card-payments" next_title="Mobile Card Payments" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
 [expansion]: /introduction#expansion
-[callback]: /payment-instruments/card/other-features#callback
-[cancel]: /payment-instruments/card/after-payment#cancellations
+[callback]: /payment-instruments/card/features/technical-reference/callback
+[cancel]: /payment-instruments/card/features/core/cancel
 [capture]: /payment-instruments/card/capture
-[complete-url]: /payment-instruments/card/other-features#completeurl
-[reversal]: /payment-instruments/card/after-payment#reversals
-[authorization]: /payment-instruments/card/other-features#card-authorization-transaction
-[other features]: /payment-instruments/card/other-features#purchase
-[purchase]:  /payment-instruments/card/other-features#purchase
-[recur]:  /payment-instruments/card/other-features#recur
-[payout]:  /payment-instruments/card/other-features#purchase
-[verify]: /payment-instruments/card/other-features#verify
-[create-payment]: /payment-instruments/card/other-features#create-payment
+[complete-url]: /payment-instruments/card/features/technical-reference/complete-url
+[reversal]: /payment-instruments/card/features/core/reversal
+[authorization]: /payment-instruments/card/features/technical-reference/card-authorization-transaction
+[features]: /payment-instruments/card/features/technical-reference/purchase
+[purchase]:  /payment-instruments/card/features/technical-reference/purchase
+[recur]:  /payment-instruments/card/features/optional/recur
+[payout]:  /payment-instruments/card/features/technical-reference/purchase
+[verify]: /payment-instruments/card/features/optional/verify
+[create-payment]: /payment-instruments/card/features/technical-reference/create-payment

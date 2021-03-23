@@ -31,7 +31,7 @@ merchants that currently have a contract with this integration." %}
 *   An invoice payment is always two-phased based - you create an Authorize
 transaction, that is followed by a `Capture` or `Cancel` request.
 The `Capture` , `Cancel`, `Reversal` opions are
-described in [other features][other-features].
+described in [features][features].
 
 {% include alert.html type="informative" icon="info" body="
 Note that the invoice will not be created/distributed before you have
@@ -89,7 +89,7 @@ Content-Type: application/json
             "productCategory": "PC1234",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         }
     },
@@ -115,7 +115,7 @@ Content-Type: application/json
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                                                   |
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                     |
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                 |
-|                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                             |
+|                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                             |
 | {% icon check %}︎︎︎︎︎ | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                     |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                |
@@ -359,9 +359,9 @@ sequenceDiagram
     Swedbank Pay-->>-Merchant: payment resource
     activate Merchant
     note left of Merchant: Second API request
-    Merchant-->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
+    Merchant->>-Swedbank Pay: POST <approvedLegalAddress> (SNN and postal number)
     activate Swedbank Pay
-    Swedbank Pay-->>Swedbank Pay: Update payment with payer's delivery address
+    Swedbank Pay->>Swedbank Pay: Update payment with payer's delivery address
     Swedbank Pay-->>-Merchant: Approved legaladdress information
     activate Merchant
     Merchant-->>-Payer: Display all details and final price
@@ -390,18 +390,18 @@ Head over to [Capture][capture] to complete the Invoice Direct integration.
 {% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
 next_href="capture" next_title="Capture" %}
 
-[abort]: /payment-instruments/invoice/other-features#abort
-[callback]: /payment-instruments/invoice/other-features#callback
+[abort]: /payment-instruments/invoice/features/core/abort
+[callback]: /payment-instruments/invoice/features/technical-reference/callback
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
-[complete-url]: /payment-instruments/invoice/other-features#completeurl
+[complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
+[features]: /payment-instruments/invoice/features
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [financing-invoice-1-png]: /assets/img/checkout/disabled-payment-menu.png
 [financing-invoice-2-png]: /assets/screenshots/invoice/redirect-view/iframe-verify-data.png
-[other-features]: /payment-instruments/invoice/other-features
-[payee-reference]: /payment-instruments/invoice/other-features#payeeinfo
-[recur]: /payment-instruments/invoice/other-features#recur
+[payee-reference]: /payment-instruments/invoice/features/technical-reference/payee-info
+[recur]: /payment-instruments/invoice/features/optional/recur
 [redirect]: /payment-instruments/invoice/redirect
 [setup-mail]: mailto:setup.ecom@payex.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payment-instruments/invoice/other-features#verify
+[verify]: /payment-instruments/invoice/features/optional/verify

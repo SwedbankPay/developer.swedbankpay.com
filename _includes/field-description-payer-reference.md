@@ -1,7 +1,7 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture payer_aware_payment_menu_url -%}
    {%- if documentation_section == "payment-menu" -%}
-        /{{ documentation_section }}/other-features#payer-aware-payment-menu
+        /{{ documentation_section }}/features/optional/payer-aware-payment-menu
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payer_reference -%}

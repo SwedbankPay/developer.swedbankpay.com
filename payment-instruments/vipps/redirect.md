@@ -77,7 +77,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -161,7 +161,7 @@ Content-Type: application/json
 | :--------------: | :------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                  | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`operation`        | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`intent`           | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>                                                                                                                                                                         |
+| {% icon check %} | └➔&nbsp;`intent`           | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                          |
 | {% icon check %} | └➔&nbsp;`currency`         | `string`      | NOK                                                                                                                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`prices`           | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`type`            | `string`      |                                                                                                                                                                                                                                                                                                    |
@@ -245,8 +245,8 @@ Content-Type: application/json
         "payeeInfo": {
             "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo"
         },
-        "payers": { 
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" 
+        "payers": {
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers"
         },
         "urls": {
             "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
@@ -421,12 +421,12 @@ purchased products) have to make a [Capture][capture] or
                          next_href="seamless-view"
                          next_title="Seamless view" %}
 
-[callback]: /payment-instruments/vipps/other-features#callback
-[cancel]: /payment-instruments/vipps/after-payment#cancellations
+[callback]: /payment-instruments/vipps/features/technical-reference/callback
+[cancel]: /payment-instruments/vipps/features/core/cancel
 [capture]: /payment-instruments/vipps/after-payment#captures
-[complete-url]: /payment-instruments/vipps/other-features#completeurl
-[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
-[purchase]: /payment-instruments/vipps/other-features#purchase
+[complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
+[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
+[purchase]: /payment-instruments/vipps/features/technical-reference/purchase
 [reference-redirect]: /payment-instruments/vipps/redirect
 [seamless-view]: /payment-instruments/vipps/seamless-view
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
