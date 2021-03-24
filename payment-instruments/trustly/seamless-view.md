@@ -177,14 +177,14 @@ Content-Type: application/json
         {
             "method": "GET",
             "href": "https://ecom.externalintegration.payex.com/trustly/core/scripts/client/px.trustly.client.js?token=8f3ba6c8f4e3f6125ae6c18bec15c612747cf2c35dc5cac35d4bebc10cf7317e&operation=sale",
-            "rel": "view-sales",
+            "rel": "view-sale",
             "contentType": "application/javascript"
         }
     ]
 }
 ```
 
-The key information in the response is the `view-sales` operation. You
+The key information in the response is the `view-sale` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
 
