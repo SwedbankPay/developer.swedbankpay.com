@@ -48,8 +48,12 @@ three example scenarios of why this is important:
     *   432 seconds
     *   864 seconds
     *   1265 seconds
-*   The callback is sent from the following IP address: `82.115.146.1`
 *   A callback should return a `200 OK` response.
+
+{% include alert.html type="warning" icon="warning" header="Differing IP
+addresses" body="Please note that the callback is sent from `91.132.170.1` in
+the <strong>external integration environment</strong> and from `82.115.146.1` in
+the <strong>production environment</strong>." %}
 
 To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a `GET` request on the received URI and inspect the
