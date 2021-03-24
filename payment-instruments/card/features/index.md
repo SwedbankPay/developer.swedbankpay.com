@@ -190,7 +190,7 @@ card_list_3:
   icon:
     content: cached
     outlined: true
-- title: TransactionOnFile
+- title: Transaction On File
   description: Submitting subsequent transactions via file
   url:  /payment-instruments/card/features/optional/transaction-on-file
   icon:
