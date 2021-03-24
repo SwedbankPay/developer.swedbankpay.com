@@ -93,7 +93,7 @@ Content-Type: application/json
     {%- when "trustly" -%}
         {% include api-operation.md operation="create-sale" href_tail="sales" %},
         {% include api-operation.md operation="redirect-sale" %},
-        {% include api-operation.md operation="view-sales" %},
+        {% include api-operation.md operation="view-sale" %},
         {% include api-operation.md operation="update-payment-abort" %},
         {% include api-operation.md operation="paid-payment" href_tail="paid" %},
         {% include api-operation.md operation="failed-payment" href_tail="failed" %}
