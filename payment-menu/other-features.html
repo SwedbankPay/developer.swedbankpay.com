@@ -1419,10 +1419,12 @@ They are listed on this very page.</p>
 </div>
 
                         
-                        <div class="doc-container normal-padding max-width
-                            ">
-                            <article>
-                                <h2 id="payment-orders">
+                        
+
+<div class="doc-container normal-padding max-width">
+    <article>
+        
+            <h2 id="payment-orders">
         
         
           Payment Orders <a href="#payment-orders" class="header-anchor"></a>
@@ -9101,10 +9103,33 @@ transaction time:
       <li>1265 seconds</li>
     </ul>
   </li>
-  <li>The callback is sent from the following IP address: <code class="language-html highlighter-rouge">82.115.146.1</code>
-</li>
   <li>A callback should return a <code class="language-html highlighter-rouge">200 OK</code> response.</li>
 </ul>
+
+<div class="alert alert-complex alert-warning">
+    <header class="alert-header">
+        
+        <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Differing IP
+addresses
+        
+        
+      </h3></header>
+    
+
+    
+    
+    <div class="alert-body">
+        <p>Please note that the callback is sent from <code class="language-html highlighter-rouge">91.132.170.1</code> in
+the <strong>external integration environment</strong> and from <code class="language-html highlighter-rouge">82.115.146.1</code> in
+the <strong>production environment</strong>.</p>
+    </div>
+    
+    
+</div>
 
 <p>To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a <code class="language-html highlighter-rouge">GET</code> request on the received URI and inspect the
@@ -11394,15 +11419,17 @@ described in this standard setup documentation.</p>
 
     
 </nav>
-                            </article>
-                        </div>
+        
+    </article>
+</div>
+
                     </main>
                 </div>
             </div>
         </div>
         <script src="https://design.swedbankpay.com/v/5.0.1/scripts/dg.js"></script>
         <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
+            <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156582708-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
