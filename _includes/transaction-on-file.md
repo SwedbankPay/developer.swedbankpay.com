@@ -12,31 +12,32 @@
 
 {% include alert-agreement-required.md %}
 
-In rare use cases it can be useful for Merchants that operate with payment
+In rare use cases, it can be necessary for merchants who operate with payment
 tokens (recurring, one-click, etc) to be able to submit subsequent transactions
 via file transfer rather than using the regular operations in our API. Reasons
 for this could be that the subsequent transactions are triggered from an older
-system that do not support real-time API communication. For those use cases
-Swedbank Pay offer a service called Transaction on File. As this is a somewhat
-unmodern way to complete transactions, we strongly recommend to consider usage of
-regular API operations and only use transactions on file where it is the only
-option.
+system which doesn't support real-time API communication. For those use cases,
+Swedbank Pay offers a service called Transaction on File. This way of completing
+transactions is slightly outdated, so we strongly recommend that you consider
+our regular API operations instead, and only use transaction on file when it is
+the only option.
 
-For further information on this service, please contact our integration support.
+Do you want to know more about this service? Please contact our integration
+support.
 
 ### Screenshots
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
-the credit card information.
+their card information.
 
 {:.text-center}
 ![screenshot of the swedish card verification page][swedish-verify]{:height="600px" width="475px"}
 
 ### API Requests
 
-The API requests are displayed in the flow below. The token generated will be
-returned in parameter 'transactionOnFileToken'. For more information regarding
-the flow, see Verify.
+The API requests are displayed in the flow below. The generated token will be
+returned in the parameter 'transactionOnFileToken'. For more information
+regarding the flow, see Verify.
 
 {:.code-view-header}
 **Request**
@@ -102,7 +103,7 @@ Content-Type: application/json
         "verifications": { "id": "{{ token_url }}/{{ page.payment_id }}/verifications" },
         "urls" : { "id": "{{ token_url }}/{{ page.payment_id }}/urls" },
         "payeeInfo" : { "id": "{{ token_url }}/{{ page.payment_id }}/payeeInfo" },
-        "payers": { "id": ""{{ token_url }}/{{ page.payment_id }}/payers" },
+        "payers": { "id": "{{ token_url }}/{{ page.payment_id }}/payers" },
         "settings": { "id": "{{ token_url }}/{{ page.payment_id }}/settings" }
     },
     "operations": [

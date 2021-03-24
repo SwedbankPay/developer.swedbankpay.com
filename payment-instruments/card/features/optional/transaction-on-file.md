@@ -1,5 +1,5 @@
 ---
-title: TransactionOnFile
+title: Transaction On File
 estimated_read: 4
 description: |
   Submitting subsequent transactions via file.
