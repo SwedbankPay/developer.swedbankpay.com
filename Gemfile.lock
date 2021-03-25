@@ -88,19 +88,19 @@ GEM
       kramdown (~> 2.3)
       open3 (~> 0.1)
     liquid (4.0.3)
-    listen (3.4.1)
+    listen (3.5.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
     multipart-post (2.1.1)
-    nokogiri (1.11.1)
+    nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    nokogiri (1.11.1-x64-mingw32)
+    nokogiri (1.11.2-x64-mingw32)
       racc (~> 1.4)
-    nokogumbo (2.0.4)
+    nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
     open3 (0.1.1)
     parallel (1.20.1)
@@ -126,7 +126,7 @@ GEM
       ffi (~> 1.9)
     sassc (2.4.0-x64-mingw32)
       ffi (~> 1.9)
-    swedbank-pay-design-guide-jekyll-theme (1.9.13)
+    swedbank-pay-design-guide-jekyll-theme (1.10.1)
       faraday (>= 1.0.1)
       html-proofer
       jekyll (>= 3.7, < 5.0)
@@ -164,7 +164,7 @@ DEPENDENCIES
   kramdown-plantuml
   rake (~> 13.0.3)
   searchyll!
-  swedbank-pay-design-guide-jekyll-theme (>= 1.9, < 1.10)
+  swedbank-pay-design-guide-jekyll-theme (>= 1.9, < 1.11)
 
 BUNDLED WITH
    2.1.4
