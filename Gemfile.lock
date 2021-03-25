@@ -126,7 +126,7 @@ GEM
       ffi (~> 1.9)
     sassc (2.4.0-x64-mingw32)
       ffi (~> 1.9)
-    swedbank-pay-design-guide-jekyll-theme (1.9.13)
+    swedbank-pay-design-guide-jekyll-theme (1.10.1)
       faraday (>= 1.0.1)
       html-proofer
       jekyll (>= 3.7, < 5.0)
@@ -164,7 +164,7 @@ DEPENDENCIES
   kramdown-plantuml
   rake (~> 13.0.3)
   searchyll!
-  swedbank-pay-design-guide-jekyll-theme (>= 1.9, < 1.10)
+  swedbank-pay-design-guide-jekyll-theme (>= 1.9, < 1.11)
 
 BUNDLED WITH
    2.1.4
