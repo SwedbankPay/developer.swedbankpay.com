@@ -22,7 +22,8 @@ Content-Type: application/json
         "language": "sv-SE",{% if documentation_section == "payment-menu" %}
         "instrument": null,{% else %}
         "instrument": "CreditCard",{% endif %}
-        "generateRecurrenceToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
+        "generateRecurrenceToken": {{ operation_status_bool }},
+        "generateUnscheduledToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],

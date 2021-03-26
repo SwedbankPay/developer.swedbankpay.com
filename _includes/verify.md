@@ -95,10 +95,10 @@ Content-Type: application/json
         "currency": "NOK",
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "generatePaymentToken": true,
-        "generateRecurrenceToken": true,
-        "generateUnscheduledToken": true,
+        "language": "nb-NO",{% unless documentation_section contains "checkout" %}
+        "generatePaymentTooken": true,{% endunless %}
+        "generateRecurrenceToken": true,{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+        "generateUnscheduledToken": true,{% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
