@@ -7,11 +7,6 @@ is a payment which uses a `unscheduledToken` generated through a previous paymen
 order to charge the same card at a later time. They are done by the merchant
 without the cardholder being present.
 
-`unscheduled purchase`s differ from `recur` as they are not meant to be
-recurring, but occur as singular transactions. Examples of this can be car
-rental companies charging the payer's card for toll road expenses after the
-rental period.
-
 {:.code-view-header}
 **Request**
 
