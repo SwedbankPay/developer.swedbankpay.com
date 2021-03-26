@@ -98,6 +98,7 @@ Content-Type: application/json
         "language": "nb-NO",
         "generatePaymentToken": true,
         "generateRecurrenceToken": true,
+        "generateUnscheduledToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",

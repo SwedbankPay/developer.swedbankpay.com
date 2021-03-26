@@ -78,6 +78,11 @@ menu_order: 400
 {:.table .table-striped}
 | **Two-phase payment flow**      | A payment done in [two steps] [fundamentals]. Authorization and capture. The most common payment instrument using two-phase payments is card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
+### U
+
+{:.table .table-striped}
+| **Unscheduled Purchase**                       | An unscheduled purchase, also called a Merchant Initiated Transaction (MIT), is a payment which uses an `unscheduledToken` generated through a previous payment in order to charge the same card at a later time. They are done by the merchant without the cardholder being present..                                                                                                                                                                                                                                                           |
+
 ### V
 
 {:.table .table-striped}
