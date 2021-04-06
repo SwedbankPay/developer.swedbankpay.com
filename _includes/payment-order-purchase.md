@@ -43,11 +43,11 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "payer": {  {% if documentation_section contains "checkout" %}
-            "consumerProfileRef": "{{ page.payment_token }}",{% endif %}
+            "consumerProfileRef": "{{ page.payment_token }}"{% else %}
             "email": "olivia.nyhuus@payex.com",
             "msisdn": "+4798765432",
             "workPhoneNumber" : "+4787654321",
-            "homePhoneNumber" : "+4776543210"
+            "homePhoneNumber" : "+4776543210"{% endif %}
         },
         "orderItems": [
             {
