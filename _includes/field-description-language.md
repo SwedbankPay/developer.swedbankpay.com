@@ -6,6 +6,8 @@
             `lv-LV`, `lt-LT`, `ru-RU` or `fi-FI`.
         {% when "mobilepay" %}
             `da-DK`, `fi-FI` or `en-US`.
+        {% when "paymentorders" %}
+            `sv-SE`, `nb-NO`, `da-DK`, `en-US` or `fi-FI`.
         {% else %}
             `sv-SE`, `nb-NO` or `en-US`.
     {%- endcase -%}

@@ -7,7 +7,7 @@
 {%- case api_resource -%}
     {%- when "paymentorders" -%}
         {%- assign product = "Checkout" -%}
-        {%- assign language_codes = "en-US, nb-NO, sv-SE" -%}
+        {%- assign language_codes = "da-DK, en-US, fi-FI, nb-NO, sv-SE" -%}
     {%- when "creditcard" -%}
         {%- assign product = "Card" -%}
         {%- assign language_codes = "da-DK, de-DE, ee-EE, en-US, es-ES, fi-FI, fr-FR, lt-LT, lv-LV, nb-NO, ru-RU, sv-SE" -%}
