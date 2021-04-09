@@ -51,13 +51,16 @@ initialize() {
 }
 
 generate_variables() {
+    release="${ref#refs/heads/release/}"
     # Remove the 'refs/*/' prefix from $ref to get the bare branch name.
     branch="${ref#refs/tags/}"
     branch="${branch#refs/heads/}"
 
     echo "Branch:     $branch"
+    echo "Release:    $release"
     echo "Repository: $repository_url"
     echo "::set-output name=branch::$branch"
+    echo "::set-output name=release::$release"
     echo "::set-output name=repository_url::$repository_url"
 }
 
