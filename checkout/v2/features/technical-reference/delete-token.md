@@ -3,7 +3,7 @@ title: Delete Token
 estimated_read: 2
 description: |
   How to delete tokens.
-menu_order: 1600
+menu_order: 1700
 ---
 
 

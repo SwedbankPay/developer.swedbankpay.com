@@ -33,11 +33,11 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment Resource
-  description: The overall payment process
-  url: /payment-instruments/card/features/core/payment-resource
+- title: Purchase
+  description: The bread and butter of the payments
+  url:  /payment-instruments/card/features/core/purchase
   icon:
-    content: credit_card
+    content: shopping_basket
     outlined: true
 - title: Reversal
   description: How to reverse a payment
@@ -106,6 +106,12 @@ card_list_2:
   icon:
     content: assignment_ind
     outlined: true
+- title: Payment Resource
+  description: The overall payment process
+  url: /payment-instruments/card/features/technical-reference/payment-resource
+  icon:
+    content: credit_card
+    outlined: true
 - title: Payment State
   description: Different states in the payment process
   url: /payment-instruments/card/features/technical-reference/payment-state
@@ -134,12 +140,6 @@ card_list_2:
   url:  /payment-instruments/card/features/technical-reference/problems
   icon:
     content: report
-    outlined: true
-- title: Purchase
-  description: The bread and butter of the payments
-  url:  /payment-instruments/card/features/technical-reference/purchase
-  icon:
-    content: shopping_basket
     outlined: true
 - title: Seamless View Events
   description: Possible events during Seamless View payments

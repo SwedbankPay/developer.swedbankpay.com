@@ -32,6 +32,12 @@ card_list:
   icon:
     content: verified
     outlined: true
+- title: Update Payment Order
+  description: Updating the payment order
+  url:  /checkout/v2/features/optional/payment-order-update
+  icon:
+    content: cached
+    outlined: true
 - title: Verify
   description: Validating the payer's payment details
   url:  /checkout/v2/features/optional/verify

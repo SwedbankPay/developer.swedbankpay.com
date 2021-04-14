@@ -57,6 +57,12 @@ card_list:
   icon:
     content: assignment_ind
     outlined: true
+- title: Payment Resource
+  description: When initiating a payment process
+  url: /payment-instruments/mobile-pay/features/technical-reference/payment-resource
+  icon:
+    content: credit_card
+    outlined: true
 - title: Payment State
   description: Different states in the payment process
   url: /payment-instruments/mobile-pay/features/technical-reference/payment-state

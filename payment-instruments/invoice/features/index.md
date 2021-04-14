@@ -28,11 +28,11 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment Resource
-  description: When initiating a payment process
-  url: /payment-instruments/invoice/features/core/payment-resource
+- title: Purchase
+  description: The bread and butter of the payments
+  url:  /payment-instruments/invoice/features/core/purchase
   icon:
-    content: credit_card
+    content: shopping_basket
     outlined: true
 - title: Reversal
   description: How to reverse a payment
@@ -110,6 +110,12 @@ card_list_2:
   url:  /payment-instruments/invoice/features/technical-reference/payee-reference
   icon:
     content: assignment_ind
+    outlined: true
+- title: Payment Resource
+  description: When initiating a payment process
+  url: /payment-instruments/invoice/features/technical-reference/payment-resource
+  icon:
+    content: credit_card
     outlined: true
 - title: Payment State
   description: Different states in the payment process
