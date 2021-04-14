@@ -118,26 +118,16 @@ Content-Type: application/json
         "intent": "Authorization",
         "state": "Ready",
         "currency": "NOK",
-        "prices": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
-        },
         "amount": 0,
         "description": "Vipps Test",
         "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
         "userAgent": "Mozilla/5.0 weeeeee",
         "language": "nb-NO",
-        "urls": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
-        },
-        "payeeInfo": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "payers": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/payers"
-        },
-        "metadata": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata"
-        }
+        "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
+        "urls": { "id": "/psp/vipps/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo" },
+        "payers": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payers" },
+        "metadata": { "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata" }
     },
     "operations": [
         {
