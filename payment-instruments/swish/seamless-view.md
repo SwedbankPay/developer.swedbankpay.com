@@ -148,63 +148,63 @@ Content-Type: application/json
 
 {
     "payment": {
-      "id": "/psp/swish/payments/{{ page.payment_id }}",
-      "number": 1234567890,
-      "instrument": "Swish",
-      "created": "2016-09-14T13:21:29.3182115Z",
-      "updated": "2016-09-14T13:21:57.6627579Z",
-      "state": "Ready",
-      "operation": "Purchase",
-      "intent": "Sale",
-      "currency": "SEK",
-      "amount": 0,
-      "remainingCaptureAmount": 1500,
-      "remainingCancellationAmount": 1500,
-      "remainingReversalAmount": 0,
-      "description": "Test Purchase",
-      "initiatingSystemUserAgent": "PostmanRuntime/7.20.1",
-      "userAgent": "Mozilla/5.0...",
-      "language": "sv-SE",
-      "prices": { "id": "/psp/swish/payments/{{ page.payment_id }}/prices" },
-      "transactions": { "id": "/psp/swish/payments/{{ page.payment_id }}/transactions" },
-      "captures": { "id": "/psp/swish/payments/{{ page.payment_id }}/captures" },
-      "reversals": { "id": "/psp/swish/payments/{{ page.payment_id }}/reversals" },
-      "cancellations": { "id": "/psp/swish/payments/{{ page.payment_id }}/cancellations" },
-      "urls" : { "id": "/psp/swish/payments/{{ page.payment_id }}/urls" },
-      "payeeInfo" : { "id": "/psp/swish/payments/{{ page.payment_id }}/payeeInfo" },
-      "payers": { "id": "/psp/trustly/payments/{{ page.payment_id }}/payers" },
-      "settings": { "id": "/psp/swish/payments/{{ page.payment_id }}/settings" }
+        "id": "/psp/swish/payments/{{ page.payment_id }}",
+        "number": 1234567890,
+        "instrument": "Swish",
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Sale",
+        "currency": "SEK",
+        "amount": 0,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.20.1",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "prices": { "id": "/psp/swish/payments/{{ page.payment_id }}/prices" },
+        "transactions": { "id": "/psp/swish/payments/{{ page.payment_id }}/transactions" },
+        "captures": { "id": "/psp/swish/payments/{{ page.payment_id }}/captures" },
+        "reversals": { "id": "/psp/swish/payments/{{ page.payment_id }}/reversals" },
+        "cancellations": { "id": "/psp/swish/payments/{{ page.payment_id }}/cancellations" },
+        "urls": { "id": "/psp/swish/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/swish/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/trustly/payments/{{ page.payment_id }}/payers" },
+        "settings": { "id": "/psp/swish/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
-      {
-        "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
-        "rel": "update-payment-abort",
-        "method": "PATCH",
-        "contentType": "application/json"
-      },
-      {
-        "method": "POST",
-        "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
-        "rel": "create-sale"
-      },
-      {
-        "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
-        "rel": "redirect-sale",
-        "method": "GET",
-        "contentType": "text/html"
-      },
-      {
-        "method": "GET",
-        "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-        "rel": "view-sales",
-        "contentType": "application/javascript"
-      },
-      {
-        "method": "GET",
-        "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-        "rel": "view-payment",
-        "contentType": "application/javascript"
-      }
+        {
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort",
+            "method": "PATCH",
+            "contentType": "application/json"
+        },
+        {
+            "method": "POST",
+            "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
+            "rel": "create-sale"
+        },
+        {
+            "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
+            "rel": "redirect-sale",
+            "method": "GET",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
+            "rel": "view-sales",
+            "contentType": "application/javascript"
+        },
+        {
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
+            "rel": "view-payment",
+            "contentType": "application/javascript"
+        }
     ]
 }
 ```

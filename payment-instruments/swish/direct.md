@@ -134,8 +134,7 @@ Content-Type: application/json
 **Response**
 
 ```http
-POST /psp/swish/payments HTTP/1.1
-Authorization: Bearer <AccessToken>
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {

@@ -113,33 +113,15 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "prices": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
-        },
-        "transactions": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions"
-        },
-        "authorizations": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations"
-        },
-        "reversals": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals"
-        },
-        "cancellations": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations"
-        },
-        "urls": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
-        },
-        "payeeInfo": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo"
-        },
-        "payers": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/payers"
-        },
-        "settings": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/settings"
-        }
+        "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
+        "transactions": { "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions" },
+        "authorizations": { "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations" },
+        "reversals": { "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals" },
+        "cancellations": { "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations" },
+        "urls": { "id": "/psp/vipps/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payers" },
+        "settings": { "id": "/psp/vipps/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
@@ -239,33 +221,15 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "prices": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
-        },
-        "payeeInfo": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo"
-        },
-        "payers": {
-            "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers"
-        },
-        "urls": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
-        },
-        "transactions": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions"
-        },
-        "authorizations": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations"
-        },
-        "captures": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/captures"
-        },
-        "reversals": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals"
-        },
-        "cancellations": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations"
-        }
+        "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
+        "payeeInfo": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" },
+        "urls": { "id": "/psp/vipps/payments/{{ page.payment_id }}/urls" },
+        "transactions": { "id": "/psp/vipps/payments/{{ page.payment_id }}/transactions" },
+        "authorizations": { "id": "/psp/vipps/payments/{{ page.payment_id }}/authorizations" },
+        "captures": { "id": "/psp/vipps/payments/{{ page.payment_id }}/captures" },
+        "reversals": { "id": "/psp/vipps/payments/{{ page.payment_id }}/reversals" },
+        "cancellations": { "id": "/psp/vipps/payments/{{ page.payment_id }}/cancellations" }
     },
     "operations": [
         {

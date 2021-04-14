@@ -50,7 +50,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/{{ page.payment_order_id }}"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
         {
