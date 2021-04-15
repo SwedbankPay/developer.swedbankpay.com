@@ -296,16 +296,16 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
-    "paymentToken": "{{ page.payment_token }}",
-    "payeeId": "{{ page.merchant_id }}",
-    "isDeleted": true,
-    "isPayeeToken": false,
-    "cardBrand": "MasterCard",
-    "maskedPan": "123456xxxxxx1111",
-    "expiryDate": "MM/YYYY"
-  }
+    "instrumentData": {
+        "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
+        "paymentToken": "{{ page.payment_token }}",
+        "payeeId": "{{ page.merchant_id }}",
+        "isDeleted": true,
+        "isPayeeToken": false,
+        "cardBrand": "MasterCard",
+        "maskedPan": "123456xxxxxx1111",
+        "expiryDate": "MM/YYYY"
+    }
 }
 ```
 

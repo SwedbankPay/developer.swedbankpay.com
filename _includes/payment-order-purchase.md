@@ -109,12 +109,10 @@ Content-Type: application/json
 **Response**
 
 ```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
+HTTP/1.1 200 OK
 Content-Type: application/json
 
-
+{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if documentation_section == "payment-menu" %}
         "instrument": "CreditCard",

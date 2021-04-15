@@ -47,7 +47,7 @@ Content-Type: application/json
       "payeeId": "{{ page.merchant_id }}",
       "payeeReference": "CD1234",
     },
-    "payer": {  
+    "payer": {
       "payerReference": "AB1234",
     },
     "metadata": {
@@ -86,13 +86,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}",
-  "metadata": {
-    "id": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/metadata",
-    "key1": "value1",
-    "key2": 2,
-    "key3": 3.1,
-    "key4": false
- }
+    "payment": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}",
+    "metadata": {
+        "id": "/psp/{{ api_resource }}/{% unless api_resource == "paymentorders" %}payments/{% endunless %}{{ page.payment_id }}/metadata",
+        "key1": "value1",
+        "key2": 2,
+        "key3": 3.1,
+        "key4": false
+    }
 }
 ```
