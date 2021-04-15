@@ -177,7 +177,7 @@ next_href="seamless-view" next_title="Seamless View" %}
 [payment-transaction-states]: /payment-instruments/card/features/technical-reference/payment-transaction-states
 [payout]: /payment-instruments/card/features/optional/payout
 [price-resource]: /payment-instruments/card/features/technical-reference/prices
-[purchase]: /payment-instruments/card/features/technical-reference/purchase
+[purchase]: /payment-instruments/card/features/core/purchase
 [recur]: /payment-instruments/card/features/optional/recur
 [reversal]: /payment-instruments/card/features/core/reversal
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png

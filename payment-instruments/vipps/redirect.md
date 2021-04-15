@@ -426,7 +426,7 @@ purchased products) have to make a [Capture][capture] or
 [capture]: /payment-instruments/vipps/after-payment#captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
-[purchase]: /payment-instruments/vipps/features/technical-reference/purchase
+[purchase]: /payment-instruments/vipps/features/core/purchase
 [reference-redirect]: /payment-instruments/vipps/redirect
 [seamless-view]: /payment-instruments/vipps/seamless-view
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

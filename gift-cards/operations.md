@@ -133,5 +133,5 @@ Content-Type: application/json
 [auth]: /gift-cards/other-features#authentication
 [balance]: /gift-cards/other-features#balance
 [deposit]: /gift-cards/other-features#deposit
-[purchase]: /gift-cards/features/technical-reference/purchase
+[purchase]: /gift-cards/features/core/purchase
 [security]: /gift-cards/security

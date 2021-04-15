@@ -331,7 +331,7 @@ sequenceDiagram
 [seamless-view]: /payment-instruments/vipps/seamless-view
 [payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
 [price-resource]: /payment-instruments/vipps/features/technical-reference/prices
-[purchase]: /payment-instruments/vipps/features/technical-reference/purchase
+[purchase]: /payment-instruments/vipps/features/core/purchase
 [reference-redirect]: /payment-instruments/vipps/redirect
 [reversal]: /payment-instruments/vipps/features/core/reversal
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

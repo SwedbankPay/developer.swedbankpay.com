@@ -283,7 +283,7 @@ next_href="after-payment" next_title="After Payment" %}
 [create-payment]: /payment-instruments/trustly/features/technical-reference/create-payment
 [financing-consumer]: /payment-instruments/trustly/other-features#financing-consumer
 [payee-reference]: /payment-instruments/trustly/features/technical-reference/payee-reference
-[payment-resource]: /payment-instruments/trustly/features/core/payment-resource
+[payment-resource]: /payment-instruments/trustly/features/technical-reference/payment-resource
 [recur]: /payment-instruments/trustly/features/optional/recur
 [setup-mail]: mailto:setup.ecom@PayEx.com
 [trustly-payment-embedded-view]: /assets/screenshots/trustly/consumer-information-input.png
