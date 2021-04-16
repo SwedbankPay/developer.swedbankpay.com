@@ -125,46 +125,36 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": {
-       "id": "/psp/vipps/payments/{{ page.payment_id }}",
-       "number": 72100003079,
-       "created": "2018-09-05T14:18:44.4259255Z",
-       "instrument": "Vipps",
-       "operation": "Purchase",
-       "intent": "Authorization",
-       "state": "Ready",
-       "currency": "NOK",
-       "prices": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
-        },
-       "amount": 0,
-       "description": "Vipps Test",
-       "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
-       "userAgent": "Mozilla/5.0 weeeeee",
-       "language": "nb-NO",
-       "urls": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
-        },
-       "payeeInfo": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "payers": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/payers"
-        },
-       "metadata": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata"
-        }
+    "payment": {
+        "id": "/psp/vipps/payments/{{ page.payment_id }}",
+        "number": 72100003079,
+        "created": "2018-09-05T14:18:44.4259255Z",
+        "instrument": "Vipps",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "state": "Ready",
+        "currency": "NOK",
+        "amount": 0,
+        "description": "Vipps Test",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "userAgent": "Mozilla/5.0 weeeeee",
+        "language": "nb-NO",
+        "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
+        "urls": { "id": "/psp/vipps/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo" },
+        "payers": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payers" },
+        "metadata": { "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata" }
     },
-   "operations": [
+    "operations": [
         {
-           "method": "PATCH",
-           "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
-           "rel": "update-payment-abort"
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort"
         },
         {
-           "method": "GET",
-           "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.payment_token }}",
-           "rel": "redirect-authorization"
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.payment_token }}",
+            "rel": "redirect-authorization"
         },
         {
             "method": "GET",

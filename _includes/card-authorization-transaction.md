@@ -61,53 +61,54 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
-  "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
-  "authorization": {
-    "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
-    "paymentToken" : "{{ page.payment_token }}",
-    "recurrenceToken" : "{{ page.payment_id }}",
-    "maskedPan" : "123456xxxxxx1234",
-    "expiryDate" : "mm/yyyy",
-    "panToken" : "{{ page.transaction_id }}"
-    "cardBrand": "Visa",
-    "cardType": "Credit",
-    "issuingBank": "UTL MAESTRO",
-    "countryCode": "999",
-    "acquirerTransactionType": "3DSECURE",
-    "issuerAuthorizationApprovalCode": "397136",
-    "acquirerStan": "39736",
-    "acquirerTerminalId": "39",
-    "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-    "authenticationStatus": "Y",
-    "nonPaymentToken" : "",
-    "externalNonPaymentToken" : "",
-    "transaction": {
-      "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-      "created": "2016-09-14T01:01:01.01Z",
-      "updated": "2016-09-14T01:01:01.03Z",
-      "type": "Authorization",
-      "state": "Initialized",
-      "number": 1234567890,
-      "amount": 1000,
-      "vatAmount": 250,
-      "description": "Test transaction",
-      "payeeReference": "AH123456",
-      "failedReason": "ExternalResponseError",
-      "failedActivityName": "Authorize",
-      "failedErrorCode": "REJECTED_BY_ACQUIRER",
-      "failedErrorDescription": "General decline, response-code: 05",
-      "isOperational": "TRUE",
-      "activities": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/activities" },
-      "operations": [
-        {
-          "href": "https://api.payex.com/psp/creditcard/payments/{{ page.payment_id }}",
-          "rel": "edit-authorization",
-          "method": "PATCH"
+    "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
+    "authorization": {
+        "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
+        "paymentToken": "{{ page.payment_token }}",
+        "recurrenceToken": "{{ page.payment_id }}",
+        "maskedPan": "123456xxxxxx1234",
+        "expiryDate": "mm/yyyy",
+        "panToken": "{{ page.transaction_id }}",
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE",
+        "issuerAuthorizationApprovalCode": "397136",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y",
+        "nonPaymentToken": "",
+        "externalNonPaymentToken": "",
+        "transaction": {
+            "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "Authorization",
+            "state": "Initialized",
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "AH123456",
+            "failedReason": "ExternalResponseError",
+            "failedActivityName": "Authorize",
+            "failedErrorCode": "REJECTED_BY_ACQUIRER",
+            "failedErrorDescription": "General decline, response-code: 05",
+            "isOperational": "TRUE",
+            "activities": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}/activities" },
+            "operations": [
+                {
+                    "href": "https://api.payex.com/psp/creditcard/payments/{{ page.payment_id }}",
+                    "rel": "edit-authorization",
+                    "method": "PATCH"
+                }
+            ]
         }
-      ]
     }
-  }
 }
 ```
 

@@ -263,6 +263,7 @@ Content-Type: application/json
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 {
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "approvedLegalAddress": {

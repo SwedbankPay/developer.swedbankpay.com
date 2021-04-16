@@ -137,26 +137,16 @@ Content-Type: application/json
         "intent": "Sale",
         "state": "Ready",
         "currency": "SEK",
-        "prices": {
-            "id": "/psp/trustly/payments/{{ page.payment_id }}/prices"
-        },
         "amount": 0,
         "description": "Test Purchase",
         "initiatingSystemUserAgent": "PostmanRuntime/7.25.0",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "urls": {
-            "id": "/psp/trustly/payments/{{ page.payment_id }}/urls"
-        },
-        "payeeInfo": {
-            "id": "/psp/trustly/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "payers": {
-           "id": "/psp/trustly/payments/{{ page.payment_id }}/payers"
-        },
-        "metadata": {
-            "id": "/psp/trustly/payments/{{ page.payment_id }}/metadata"
-        }
+        "prices": { "id": "/psp/trustly/payments/{{ page.payment_id }}/prices" },
+        "urls": { "id": "/psp/trustly/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/trustly/payments/{{ page.payment_id }}/payeeinfo" },
+        "payers": { "id": "/psp/trustly/payments/{{ page.payment_id }}/payers" },
+        "metadata": { "id": "/psp/trustly/payments/{{ page.payment_id }}/metadata" }
     },
     "operations": [
         {

@@ -120,38 +120,30 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": {
-       "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
-       "number": 72100003079,
-       "created": "2018-09-05T14:18:44.4259255Z",
-       "instrument": "MobilePay",
-       "operation": "Purchase",
-       "intent": "Authorization",
-       "state": "Ready",
-       "currency": "DKK",
-       "prices": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
-        },
-       "amount": 0,
-       "description": "MobilePay Test",
-       "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
-       "userAgent": "Mozilla/5.0",
-       "language": "da-DK",
-       "urls": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
-        },
-       "payeeInfo": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "payers": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payers"
-        }
+    "payment": {
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
+        "number": 72100003079,
+        "created": "2018-09-05T14:18:44.4259255Z",
+        "instrument": "MobilePay",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "state": "Ready",
+        "currency": "DKK",
+        "amount": 0,
+        "description": "MobilePay Test",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "userAgent": "Mozilla/5.0",
+        "language": "da-DK",
+        "prices": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices" },
+        "urls": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo" },
+        "payers": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payers" }
     },
-   "operations": [
+    "operations": [
         {
-           "method": "PATCH",
-           "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
-           "rel": "update-payment-abort"
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort"
         },
         {
             "method": "GET",

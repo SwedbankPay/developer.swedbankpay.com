@@ -41,53 +41,53 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-  "paid": {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
-    "number": 1234567890,
-    "transaction": {
-      "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
-      "number" : 1234567891
-    },
-    "payeeReference": "CD123",
-    "orderReference": "AB1234",
-    "amount": 1500,
-    "tokens": [
-      {
-        "type": "payment",
-        "token": "{{ page.payment_token }}",
-        "name": "4925xxxxxx000004",
-        "expiryDate" : "mm/yyyy"
-      },
-      {
-        "type": "recurrence",
-        "token": "{{ page.payment_token }}",
-        "name": "4925xxxxxx000004",
-        "expiryDate" : "mm/yyyy"
-      },
-      {
-        "type": "transactionsOnFile",
-        "token": "{{ page.payment_token }}",
-        "name": "4925xxxxxx000004",
-        "expiryDate" : "mm/yyyy"
-      }
-    ],
-    "details": {
-      "cardBrand": "Visa",
-      "MaskedPan": "4925xxxxxx000004",
-      "cardType": "Credit",
-      "issuingBank": "UTL MAESTRO",
-      "countryCode": "999",
-      "acquirerTransactionType": "3DSECURE",
-      "issuerAuthorizationApprovalCode": "397136",
-      "acquirerStan": "39736",
-      "acquirerTerminalId": "39",
-      "acquirerTransactionTime": "2017-08-29T13:42:18Z",
-      "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
-      "externalNonPaymentToken" : "1234567890",
-      "transactionInitiator" : "MERCHANT"
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "paid": {
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
+        "number": 1234567890,
+        "transaction": {
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
+            "number": 1234567891
+        },
+        "payeeReference": "CD123",
+        "orderReference": "AB1234",
+        "amount": 1500,
+        "tokens": [
+            {
+                "type": "payment",
+                "token": "{{ page.payment_token }}",
+                "name": "4925xxxxxx000004",
+                "expiryDate": "mm/yyyy"
+            },
+            {
+                "type": "recurrence",
+                "token": "{{ page.payment_token }}",
+                "name": "4925xxxxxx000004",
+                "expiryDate": "mm/yyyy"
+            },
+            {
+                "type": "transactionsOnFile",
+                "token": "{{ page.payment_token }}",
+                "name": "4925xxxxxx000004",
+                "expiryDate": "mm/yyyy"
+            }
+        ],
+        "details": {
+            "cardBrand": "Visa",
+            "MaskedPan": "4925xxxxxx000004",
+            "cardType": "Credit",
+            "issuingBank": "UTL MAESTRO",
+            "countryCode": "999",
+            "acquirerTransactionType": "3DSECURE",
+            "issuerAuthorizationApprovalCode": "397136",
+            "acquirerStan": "39736",
+            "acquirerTerminalId": "39",
+            "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+            "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+            "externalNonPaymentToken": "1234567890",
+            "transactionInitiator": "MERCHANT"
+        }
     }
-  }
 }
 ```
 {% else %}
@@ -100,18 +100,18 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-  "paid": {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
-    "number": 1234567890,
-    "transaction": {
-      "id": "/psp{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
-      "number" : 1234567891
-    },
-    "payeeReference": "CD123",
-    "orderReference": "AB1234",
-    "amount": 1500,
-  }
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "paid": {
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
+        "number": 1234567890,
+        "transaction": {
+            "id": "/psp{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ site.transaction_id }}",
+            "number": 1234567891
+        },
+        "payeeReference": "CD123",
+        "orderReference": "AB1234",
+        "amount": 1500
+    }
 }
 ```
 {% endif %}
@@ -184,20 +184,20 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "problem": {
-       "type": "{{ page.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
-       "title": "Operation failed",
-       "status": 403,
-       "detail": {% if documentation_section == "trustly" %} "Unable to complete operation, error calling 3rd party", {% else %} "Unable to complete Authorization transaction, look at problem node!", {% endif %}
-       "problems": [
-        {
-          "name": "ExternalResponse",
-          "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
-        }
+    "problem": {
+        "type": "{{ page.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
+        "title": "Operation failed",
+        "status": 403,
+        "detail": {% if documentation_section == "trustly" %} "Unable to complete operation, error calling 3rd party", {% else %} "Unable to complete Authorization transaction, look at problem node!", {% endif %}
+        "problems": [
+            {
+                "name": "ExternalResponse",
+                "description": "REJECTED_BY_ACQUIRER-unknown error, response-code: 51"
+            }
         ]
-     }
-  }
+    }
 }
+
 ```
 
 ### Operation `aborted-payment`
@@ -239,9 +239,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-  "aborted": {
-    "abortReason": "Aborted by consumer"
-  }
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "aborted": {
+        "abortReason": "Aborted by consumer"
+    }
 }
 ```
