@@ -593,6 +593,6 @@ integration and the payer.
 [transaction-on-file]: /payment-instruments/card/features/optional/transaction-on-file
 [trustly-payments]: /payment-instruments/trustly
 [trustly-features]: /payment-instruments/trustly/features
-[vipps-payment-resource]: /payment-instruments/vipps/features/core/payment-resource
+[vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps

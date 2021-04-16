@@ -217,7 +217,7 @@ next_href="capture" next_title="Capture" %}
 [expansion]: /introduction#expansion
 [payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
 [payout]: /payment-instruments/card/features/optional/payout
-[purchase]: /payment-instruments/card/features/technical-reference/purchase
+[purchase]: /payment-instruments/card/features/core/purchase
 [price-resource]: /payment-instruments/card/features/technical-reference/prices
 [recur]: /payment-instruments/card/features/optional/recur
 [reversal]: /payment-instruments/card/features/core/reversal

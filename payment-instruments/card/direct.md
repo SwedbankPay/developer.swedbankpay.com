@@ -397,9 +397,9 @@ next_href="mobile-card-payments" next_title="Mobile Card Payments" %}
 [complete-url]: /payment-instruments/card/features/technical-reference/complete-url
 [reversal]: /payment-instruments/card/features/core/reversal
 [authorization]: /payment-instruments/card/features/technical-reference/card-authorization-transaction
-[features]: /payment-instruments/card/features/technical-reference/purchase
-[purchase]:  /payment-instruments/card/features/technical-reference/purchase
+[features]: /payment-instruments/card/features/core/purchase
+[purchase]:  /payment-instruments/card/features/core/purchase
 [recur]:  /payment-instruments/card/features/optional/recur
-[payout]:  /payment-instruments/card/features/technical-reference/purchase
+[payout]:  /payment-instruments/card/features/core/purchase
 [verify]: /payment-instruments/card/features/optional/verify
 [create-payment]: /payment-instruments/card/features/technical-reference/create-payment

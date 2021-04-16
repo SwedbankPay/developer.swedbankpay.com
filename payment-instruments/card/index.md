@@ -188,7 +188,7 @@ sequenceDiagram
 [card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [payout]: /payment-instruments/card/features/optional/payout
-[purchase]: /payment-instruments/card/features/technical-reference/purchase
+[purchase]: /payment-instruments/card/features/core/purchase
 [recur]: /payment-instruments/card/features/optional/recur
 [redirect]: /payment-instruments/card/redirect
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
