@@ -3,7 +3,7 @@ title: Payment Resource
 estimated_read: 15
 description: |
   When initiating a payment process.
-menu_order: 1300
+menu_order: 2200
 ---
 
 {% include payment-resource.md api_resource="swish"

@@ -225,7 +225,7 @@ sequenceDiagram
 [mobile-pay]: /payment-instruments/mobile-pay
 [payment-instruments-card-payment-pages]: /payment-instruments/card/
 [payment-instruments-mobilepay-payment-pages]: /payment-instruments/mobile-pay/
-[purchase-flow]: /payment-instruments/card/features/technical-reference/purchase
+[purchase-flow]: /payment-instruments/card/features/core/purchase
 [swish]: /payment-instruments/swish
 [technical-reference-callback]: /payment-instruments/card/features/technical-reference/callback
 [vipps]: /payment-instruments/vipps

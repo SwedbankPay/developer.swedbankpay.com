@@ -3,8 +3,8 @@
 ## Recurring payments
 
 {% include jumbotron.html body="A recurring payment enables you to charge a card
-without payer interaction. When an initial payment token is generated subsequent
-payments are made through server-to-server requests. " %}
+without payer interaction. When an initial payment token is generated,
+subsequent payments are made through server-to-server requests. " %}
 
 ### Prerequisites
 

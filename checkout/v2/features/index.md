@@ -34,12 +34,6 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment Order
-  description: Creating the payment order
-  url:  /checkout/v2/features/core/payment-order
-  icon:
-    content: credit_card
-    outlined: true
 - title: Reversal
   description: How to reverse a payment
   url: /checkout/v2/features/core/reversal
@@ -51,12 +45,6 @@ card_list:
   url:  /checkout/v2/features/core/settlement-reconciliation
   icon:
     content: description
-    outlined: true
-- title: Update Payment Order
-  description: Updating the payment order
-  url:  /checkout/v2/features/core/payment-order-update
-  icon:
-    content: cached
     outlined: true
 card_list_2:
 - title: Callback
@@ -131,6 +119,12 @@ card_list_2:
   icon:
     content: event
     outlined: true
+- title: Payment Order
+  description: Creating the payment order
+  url:  /checkout/v2/features/technical-reference/payment-order
+  icon:
+    content: credit_card
+    outlined: true
 - title: Payment State
   description: Different states in the payment process
   url: /checkout/v2/features/technical-reference/payment-state
@@ -197,6 +191,12 @@ card_list_3:
   url:  /checkout/v2/features/optional/tra
   icon:
     content: verified
+    outlined: true
+ title: Update Payment Order
+  description: Updating the payment order
+  url:  /checkout/v2/features/optional/payment-order-update
+  icon:
+    content: cached
     outlined: true
 - title: Verify
   description: Validating the payer's payment details

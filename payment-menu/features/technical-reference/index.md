@@ -75,6 +75,12 @@ card_list:
   icon:
     content: event
     outlined: true
+  - title: Payment Order
+    description: Creating the payment order
+    url:  /payment-menu/features/technical-reference/payment-order
+    icon:
+      content: credit_card
+      outlined: true
 - title: Payment State
   description: Different states in the payment process
   url: /payment-menu/features/technical-reference/payment-state

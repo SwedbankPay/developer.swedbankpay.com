@@ -15,11 +15,11 @@ card_list:
   icon:
     content: highlight_off
     outlined: true
-- title: Payment Resource
-  description: When initiating a payment process
-  url: /payment-instruments/swish/features/core/payment-resource
+- title: Purchase
+  description: The bread and butter of the payments
+  url:  /payment-instruments/swish/features/core/purchase
   icon:
-    content: credit_card
+    content: shopping_basket
     outlined: true
 - title: Reversal
   description: How to reverse a payment

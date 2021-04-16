@@ -50,6 +50,12 @@ card_list:
   icon:
     content: cached
     outlined: true
+  - title: Update Payment Order
+    description: Updating the payment order
+    url:  /payment-menu/features/optional/payment-order-update
+    icon:
+      content: cached
+      outlined: true
 - title: Verify
   description: Validating the payer's payment details
   url:  /payment-menu/features/optional/verify

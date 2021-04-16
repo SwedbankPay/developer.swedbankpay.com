@@ -32,11 +32,11 @@ card_list:
   icon:
     content: compare_arrows
     outlined: true
-- title: Payment Resource
-  description: The overall payment process
-  url: /payment-instruments/card/features/core/payment-resource
+- title: Purchase
+  description: The bread and butter of the payments
+  url:  /payment-instruments/card/features/core/purchase
   icon:
-    content: credit_card
+    content: shopping_basket
     outlined: true
 - title: Reversal
   description: How to reverse a payment
