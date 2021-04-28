@@ -2,10 +2,11 @@
 title: Payment Resource
 estimated_read: 15
 description: |
-  Welcome to Payment Resource - a subsection of Core Features.
-  This section has extented code examples and features that were not
-  covered by the other subsections.
+  When initiating a payment process.
 menu_order: 2200
+icon:
+  content: credit_card
+  outlined: true
 ---
 
 {% include payment-resource.md show_status_operations=true %}
