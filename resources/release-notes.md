@@ -10,57 +10,67 @@ description: |
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 30 Apr 2021
+
+### Version 2.2.0
+
+*   Restructured Features sections for all implementations into [core features][core-features], [optional features][optional-features] and [technical reference][technical-reference]
+*   Renamed Checkout to [Checkout v2][Checkout-v2]
+*   Added [TRA exemption][tra-exemption] section
+*   Fixed a handful of typos and bugs
 
 ## 28 Jan 2021
 
 ### Version 2.1.2
 
-* Updated Theme version to 1.9.9
-* Updated Design Guide Version to 5.0.1
+*   Updated Theme version to 1.9.9
+*   Updated Design Guide Version to 5.0.1
 
 ## 26 Jan 2021
 
 ### Version 2.1.0
 
-* Updated theme with visual fixes
-* Search icon is now clickable
-* Various bug fixes
-* Various corrections and typo fixes
-* Re-worded [split settlement][split-settlement]
-* Clarified that [callback][callback] is a fail-safe
-* Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
-* Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
-* Updated GitHub references for Mobile SDK
-* Re-wrote [Prices][prices] section
+*   Updated theme with visual fixes
+*   Search icon is now clickable
+*   Various bug fixes
+*   Various corrections and typo fixes
+*   Re-worded [split settlement][split-settlement]
+*   Clarified that [callback][callback] is a fail-safe
+*   Updated tables and code examples with payerReference in various places, like [card purchase][card-purchase]
+*   Updated Mobile SDK configurations for both [iOS][ios-configuration] and [Android][android-configuration] to include integration with custom backends
+*   Updated GitHub references for Mobile SDK
+*   Re-wrote [Prices][prices] section
 
 ## 01 Dec 2020
 
 ### Version 2.0.2
 
-* Various bug fixes
-* Various corrections and typo fixes
-* Corrected information about [3D-Secure][card-3ds-info]
-* Added paragraphs about different consumer flows in [Checkin][Checkin]
-* Added link to gift card on the [front page][frontpage]
+*   Various bug fixes
+*   Various corrections and typo fixes
+*   Corrected information about [3D-Secure][card-3ds-info]
+*   Added paragraphs about different consumer flows in [Checkin][Checkin]
+*   Added link to gift card on the [front page][frontpage]
 
 ## 12 Nov 2020
 
 ### Version 2.0.1
 
-* Added section for [MobilePay Seamless View][mobilepay-seamless-view]
-* Split [MobilePay Capture][mobilepay-capture] to a separate page
-* Code examples for digital products added in [Checkin][Checkin]
+*   Added section for [MobilePay Seamless View][mobilepay-seamless-view]
+*   Split [MobilePay Capture][mobilepay-capture] to a separate page
+*   Code examples for digital products added in [Checkin][Checkin]
 
 ## 11 Nov 2020
 
 ### Version 2.0.0
 
 Launched new developer portal theme:
+
 *   New design
 *   New menu structure
 *   Reading time
 
 Other changes:
+
 *   Added GDPR disclaimer.
 *   Added custom 404 page.
 *   Added section about [Transaction On File][transaction-on-file]
@@ -75,7 +85,6 @@ Other changes:
 *   Updated expiry date for test cards in [test data][test-data].
 *   Updated [callback][checkout-callback] documentation.
 *   Updated regex pattern for `orderItems.class`.
-
 
 ## 04 Sep 2020
 
@@ -274,7 +283,6 @@ This change contains build updates for the page. :octocat:
 *   Abort reference is back in [credit card reference][credit-card-abort].
 *   Swish error code reference got a face lift, check it out
     [here][swish-api-errors] :candy:.
-
 
 ### Version 1.7.4
 
@@ -548,9 +556,11 @@ integration and the payer.
 [checkout-payment-order-purchase]: /checkout/v2/payment-menu#request
 [checkout-payment-url]: /checkout/v2/features/technical-reference/payment-url
 [checkout]: /checkout
+[checkout-v2]: /checkout/v2/
 [checkout-3ds2]: /checkout/v2/features/core/3d-secure-2
 [checkout-callback]: /checkout/v2/features/technical-reference/callback
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
+[core-features]: /checkout/v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
@@ -570,6 +580,7 @@ integration and the payer.
 [modules-sdks]: /modules-sdks
 [moto-payment-card]: /payment-instruments/card/features/optional/moto
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
+[optional-features]: /checkout/v2/features/optional/
 [payment-orders]: /checkout/v2/payment-menu#step-3-create-payment-order
 [payments]: /payment-instruments
 [prices]: /checkout/v2/features/technical-reference/prices
@@ -588,9 +599,11 @@ integration and the payer.
 [seamless-view-events-card]: /payment-instruments/card/features/technical-reference/seamless-view-events
 [swish]: /payment-instruments/swish
 [swish-abort]: /payment-instruments/swish/after-payment#abort
+[technical-reference]: /checkout/v2/features/technical-reference/
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
 [transaction-on-file]: /payment-instruments/card/features/optional/transaction-on-file
+[tra-exemption]: /checkout/v2/features/optional/tra
 [trustly-payments]: /payment-instruments/trustly
 [trustly-features]: /payment-instruments/trustly/features
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
