@@ -6,8 +6,9 @@
 Within the {{ documentation_section }} part of the eCommerce API, you can create
 the following kind of payments:
 
-*   [Purchase][purchase]
+*   `Purchase`
 {%- if documentation_section == 'card' %}
+*   [Purchase][purchase]
 *   [Payout][payout]
 {%- endif %}
 {%- if documentation_section == 'card' or documentation_section == 'invoice' %}

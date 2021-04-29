@@ -142,7 +142,7 @@ Content-Type: application/json
 |     Required     | Field                      | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                  | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`operation`        | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`operation`        | `string`      | The operation that the `payment` is supposed to perform. The `Purchase` operation is used in our example.                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`intent`           | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                          |
 | {% icon check %} | └➔&nbsp;`currency`         | `string`      | NOK                                                                                                                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`prices`           | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
@@ -390,7 +390,6 @@ purchased products) have to make a [Capture][capture] or
 [capture]: /payment-instruments/vipps/after-payment#captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
-[purchase]: /payment-instruments/vipps/features/core/purchase
 [reference-redirect]: /payment-instruments/vipps/redirect
 [seamless-view]: /payment-instruments/vipps/seamless-view
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
