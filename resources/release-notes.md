@@ -12,7 +12,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## 29 Apr 2021
 
-### Version 2.1.3
+### Version 2.2.0
 
 *   Restructured Features sections for all implementations into [core features][core-features], [optional features][optional-features] and [technical reference][technical-reference]
 *   Renamed Checkout to [Checkout v2][Checkout-v2]
