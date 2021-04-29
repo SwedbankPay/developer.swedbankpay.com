@@ -1,7 +1,7 @@
 ### Update Payment Order
 
 {% include alert.html type="warning" icon="warning" body="If a payment is
-attempted, failed or currently being processed, you will no longer be able to
+attempted, failed or currently being processed, you will not be able to
 update the `orderItems` for the payment order. Should you need to update the
 `orderItems`, you will have to `abort` the payment order and create a new order
 with the updated `orderItems`." %}
