@@ -13,5 +13,4 @@ menu_order: 1200
 
 ## Optional Features
 
-{% include card-list.html card_list=page.card_list
-    col_class="col-lg-4" %}
+{% include card-list.html %}

@@ -4,6 +4,9 @@ estimated_read: 11
 description: |
   Possible events during Seamless View payments.
 menu_order: 3000
+icon:
+  content: event
+  outlined: true
 ---
 
 {% include seamless-view-events.md %}

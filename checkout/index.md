@@ -1,7 +1,6 @@
 ---
 section: Checkout
 title: Checkout
-card_overview: true
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
@@ -24,6 +23,7 @@ card_list:
     outlined: true
 - title: Checkout v3
   description: Coming soon…
+  disabled: true
   icon:
     content: shopping_cart
     outlined: true

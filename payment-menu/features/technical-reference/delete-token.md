@@ -4,6 +4,9 @@ estimated_read: 1
 description: |
   How to delete tokens.
 menu_order: 1600
+icon:
+  content: assignment
+  outlined: true
 ---
 
 
