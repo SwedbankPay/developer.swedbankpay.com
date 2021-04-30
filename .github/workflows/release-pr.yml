@@ -11,6 +11,7 @@ jobs:
       release: ${{ steps.variables.outputs.release }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - id: variables
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
