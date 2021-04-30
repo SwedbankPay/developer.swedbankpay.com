@@ -10,6 +10,7 @@ development:
   - "Rakefile"
   - ".gitignore"
   - ".gitattributes"
+  - "*.sh"
 documentation: ["*.md", "assets"]
 legal: ["LICENSE*", "NOTICES*"]
 config: [".github", "CODEOWNERS", "CNAME", "*.yml", "*.yaml"]

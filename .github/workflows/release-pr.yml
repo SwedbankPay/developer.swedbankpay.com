@@ -1,0 +1,48 @@
+name: Release PR
+
+on:
+  push:
+    branches:
+      - release/*
+
+jobs:
+  variables:
+    outputs:
+      release: ${{ steps.variables.outputs.release }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: variables
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: .github/scripts/variables.sh
+
+  release-develop-pr:
+    runs-on: ubuntu-latest
+    needs: variables
+    steps:
+      - uses: actions/checkout@v2
+      - uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: develop
+          pr_title: Release ${{ needs.variables.outputs.release }} (develop)
+          pr_body: "## Release ${{ needs.variables.outputs.release }} (develop)"
+          pr_label: release
+          pr_draft: true
+          pr_allow_empty: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  release-master-pr:
+    runs-on: ubuntu-latest
+    needs: variables
+    steps:
+      - uses: actions/checkout@v2
+      - uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: master
+          pr_title: Release ${{ needs.variables.outputs.release }} (master)
+          pr_body: "## Release ${{ needs.variables.outputs.release }} (master)"
+          pr_label: release
+          pr_draft: true
+          pr_allow_empty: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}

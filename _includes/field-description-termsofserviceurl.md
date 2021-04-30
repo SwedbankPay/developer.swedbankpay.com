@@ -1,9 +1,6 @@
 {%- capture termsofserviceurl -%}
-    The URI to the terms of service document the payer must accept in order to
-    complete the payment. Note that this field is not required
-    unless `generateReferenceToken` or `generateRecurrenceToken` is also submitted
-    in the request. This is the Merchants, not the Swedbank Pay Terms of
-    Service. **HTTPS is a requirement**.
+    The URI to the terms of service document which the payer must accept in
+    order to complete the payment. **HTTPS is a requirement**.
 {%- endcapture -%}
 {{- termsofserviceurl | strip_newlines -}}
 

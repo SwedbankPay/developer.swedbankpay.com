@@ -20,8 +20,7 @@ purchase process, you need to make a `POST` request towards Swedbank Pay with
 your Purchase information. This will generate a payment object with a unique
 `paymentID`. An example of an abbreviated `POST` request is provided below. You
 will receive a response in which you can find the **JavaScript source** in the
-`view-payment` operation. An example of an expanded `POST` request is available
-in the [other features section][purchase].
+`view-payment` operation.
 
 {% include payment-url.md when="selecting Vipps as payment instrument" %}
 
@@ -85,8 +84,8 @@ Content-Type: application/json
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :-------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`operation`               | `string`      | The [`Purchase`][purchase] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full example of the [Purchase][purchase] `operation`.                                                                                                             |
-| {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancellations] or [capture][captures] of funds.<br> <br> `AutoCapture`. A one phase option that enable capture of funds automatically after authorization.                                                               |
+| {% icon check %} | └➔&nbsp;`operation`               | `string`      | The `Purchase` operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full example of the `Purchase` `operation`.                                                                                                             |
+| {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancellations] or [capture][captures] of funds.                                                          |
 | {% icon check %} | └➔&nbsp;`currency`                | `string`      | NOK                                                                                                                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`type`                   | `string`      | Use the Vipps value. [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                                                       |
@@ -98,7 +97,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
+| {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
@@ -125,46 +124,36 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": {
-       "id": "/psp/vipps/payments/{{ page.payment_id }}",
-       "number": 72100003079,
-       "created": "2018-09-05T14:18:44.4259255Z",
-       "instrument": "Vipps",
-       "operation": "Purchase",
-       "intent": "Authorization",
-       "state": "Ready",
-       "currency": "NOK",
-       "prices": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
-        },
-       "amount": 0,
-       "description": "Vipps Test",
-       "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
-       "userAgent": "Mozilla/5.0 weeeeee",
-       "language": "nb-NO",
-       "urls": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
-        },
-       "payeeInfo": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "payers": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/payers"
-        },
-       "metadata": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata"
-        }
+    "payment": {
+        "id": "/psp/vipps/payments/{{ page.payment_id }}",
+        "number": 72100003079,
+        "created": "2018-09-05T14:18:44.4259255Z",
+        "instrument": "Vipps",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "state": "Ready",
+        "currency": "NOK",
+        "amount": 0,
+        "description": "Vipps Test",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "userAgent": "Mozilla/5.0 weeeeee",
+        "language": "nb-NO",
+        "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
+        "urls": { "id": "/psp/vipps/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo" },
+        "payers": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payers" },
+        "metadata": { "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata" }
     },
-   "operations": [
+    "operations": [
         {
-           "method": "PATCH",
-           "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
-           "rel": "update-payment-abort"
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/vipps/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort"
         },
         {
-           "method": "GET",
-           "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.payment_token }}",
-           "rel": "redirect-authorization"
+            "method": "GET",
+            "href": "{{ page.front_end_url }}/vipps/payments/authorize/{{ page.payment_token }}",
+            "rel": "redirect-authorization"
         },
         {
             "method": "GET",
@@ -188,7 +177,7 @@ loading the payment page in an `iframe` in our next step.
 
 ## Step 2: Display the payment window
 
-You need to embed the script source on your site to create a hosted-view in an
+You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the required information in a secure
 Swedbank Pay hosted environment. A simplified integration has these following
 steps:
@@ -322,18 +311,18 @@ sequenceDiagram
         next_title="Capture" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
-[callback]: /payment-instruments/vipps/other-features#callback
-[callbackurl]: /payment-instruments/vipps/other-features#callback
-[cancellations]: /payment-instruments/vipps/after-payment#cancellations
+[callback]: /payment-instruments/vipps/features/technical-reference/callback
+[callbackurl]: /payment-instruments/vipps/features/technical-reference/callback
+[cancellations]: /payment-instruments/vipps/features/core/cancel
 [captures]: /payment-instruments/vipps/after-payment#captures
-[complete-url]: /payment-instruments/vipps/other-features#completeurl
-[create-payment]: /payment-instruments/vipps/other-features#create-payment
-[hosted-view]: /payment-instruments/vipps/seamless-view
-[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
-[price-resource]: /payment-instruments/vipps/other-features#prices
-[purchase]: /payment-instruments/vipps/other-features#purchase
+[complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
+[create-payment]: /payment-instruments/vipps/features/technical-reference/create-payment
+[seamless-view]: /payment-instruments/vipps/seamless-view
+[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
+[price-resource]: /payment-instruments/vipps/features/technical-reference/prices
+[purchase]: /payment-instruments/vipps/features/core/purchase
 [reference-redirect]: /payment-instruments/vipps/redirect
-[reversal]: /payment-instruments/vipps/after-payment#reversals
+[reversal]: /payment-instruments/vipps/features/core/reversal
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

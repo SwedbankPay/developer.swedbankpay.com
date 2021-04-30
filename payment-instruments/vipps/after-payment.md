@@ -57,7 +57,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -82,7 +82,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the payer's browser - [see user agent][user-agent]                                                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
-| {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                       |
+| {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URIs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`     | The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment`.                                                                                                           |
 |                  | └─➔&nbsp;`paymentUrl`        | `string`     | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the `payment`. See [`paymentUrl`][paymenturl] for details.                                                                                                      |
@@ -118,26 +118,16 @@ Content-Type: application/json
         "intent": "Authorization",
         "state": "Ready",
         "currency": "NOK",
-        "prices": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/prices"
-        },
         "amount": 0,
         "description": "Vipps Test",
         "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
         "userAgent": "Mozilla/5.0 weeeeee",
         "language": "nb-NO",
-        "urls": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/urls"
-        },
-        "payeeInfo": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "payers": {
-           "id": "/psp/vipps/payments/{{ page.payment_id }}/payers"
-        },
-        "metadata": {
-            "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata"
-        }
+        "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
+        "urls": { "id": "/psp/vipps/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payeeinfo" },
+        "payers": { "id": "/psp/vipps/payments/{{ page.payment_id }}/payers" },
+        "metadata": { "id": "/psp/vipps/payments/{{ page.payment_id }}/metadata" }
     },
     "operations": [
         {
@@ -336,18 +326,18 @@ Content-Type: application/json
 {% include iterator.html
         prev_href="capture"
         prev_title="Capture"
-        next_href="other-features"
-        next_title="Other Features" %}
+        next_href="features"
+        next_title="Features" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
-[callback]: /payment-instruments/vipps/other-features#callback
+[callback]: /payment-instruments/vipps/features/technical-reference/callback
 [cancel]: #cancellations
 [capture]: #captures
-[complete-url]: /payment-instruments/vipps/other-features#completeurl
+[complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [expand-parameter]: /introduction#expansion
-[payee-reference]: /payment-instruments/vipps/other-features#payee-reference
-[paymenturl]: /payment-instruments/vipps/other-features#payment-url
-[prices]: /payment-instruments/vipps/other-features#prices
+[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
+[paymenturl]: /payment-instruments/vipps/features/technical-reference/payment-url
+[prices]: /payment-instruments/vipps/features/technical-reference/prices
 [reverse]: #reversals
-[transaction]: /payment-instruments/vipps/other-features#transactions
+[transaction]: /payment-instruments/vipps/features/technical-reference/transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

@@ -1,8 +1,10 @@
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## Recurring payments
 
 {% include jumbotron.html body="A recurring payment enables you to charge a card
-without payer interaction. When an initial payment token is generated subsequent
-payments are made through server-to-server requests. " %}
+without payer interaction. When an initial payment token is generated,
+subsequent payments are made through server-to-server requests. " %}
 
 ### Prerequisites
 
@@ -62,6 +64,76 @@ When you have a Recurrence token stored away. You can use the same token in a
 subsequent [`recurring payment`][card-payment-recur] `POST`.
 This will be a server-to-server affair, as we have both payment instrument
 details and recurrence token from the initial payment.
+
+{:.code-view-header}
+**Request**
+
+```http
+POST /psp/{{ include.api_resource }}/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Recur",
+        "intent": "Authorization",
+        "recurrenceToken": "{{ page.payment_id }}",
+        "currency": "NOK",
+        "amount": 1500,
+        "vatAmount": 0,
+        "description": "Test Recurrence",
+        "userAgent": "Mozilla/5.0...",
+        "language": "nb-NO",
+        "urls": {
+            "callbackUrl": "https://example.com/payment-callback"
+        },
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}"
+            "payeeReference": "CD1234",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-12456",
+            "subsite": "MySubsite"
+        },
+        "payer": {
+            "payerReference": "AB1234",
+        },
+        "metadata": {
+            "key1": "value1",
+            "key2": 2,
+            "key3": 3.1,
+            "key4": false
+        }
+    }
+}
+```
+
+{:.table .table-striped}
+|     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
+| :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {% icon check %} | `payment`                      | `object`     | The payment object.                                                                                                                                                                                                                                                                  |
+| {% icon check %} | `operation`                    | `object`     | `Recur`.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`recurrenceToken`      | `string`     | The created recurrenceToken, if `operation: Verify`, `operation: Recur` or `generateRecurrenceToken: true` was used.                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`currency`             | `string`     | The currency of the payment order.                                                                                                                                                                                                                                                    |
+| {% icon check %} | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
+| {% icon check %} | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`description`          | `string`     | {% include field-description-description.md %}                                                                                                                                                                                     |
+| {% icon check %} | └─➔&nbsp;`userAgent`           | `string`     | The [`User-Agent` string](https://en.wikipedia.org/wiki/User_agent) of the payer's web browser.                                                                                                                                                                                                                  |
+| {% icon check %} | └─➔&nbsp;`language`            | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                              |
+| {% icon check %} | └─➔&nbsp;`urls`                | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`callbackUrl`         | `string`     | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`payeeInfo`            | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`payeeId`             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                 |
+| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                          |
+|                  | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
+| {% icon check %} | └─➔&nbsp;`payeeName`           | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                               |
+| {% icon check %} | └─➔&nbsp;`productCategory`     | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                        |
+| {% icon check %} | └─➔&nbsp;`orderReference`      | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                               |
+| {% icon check %} | └─➔&nbsp;`subsite`             | `String(40)` | The subsite field can be used to perform [split settlement][settlement-reconciliation-split] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-reconciliation] before being used.                                                                      |
+|                  | └➔&nbsp;`payer`                | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
+|                  | └─➔&nbsp;`payerReference`      | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
+|                  | └➔&nbsp;`metadata`             | `object`     | {% include field-description-metadata.md %}                                                                                                                                                 |
 
 {% include alert.html type="informative" icon="info" body="
 Please note that this `POST`request is made directly on the payment level,
@@ -142,7 +214,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         }
     },
@@ -214,8 +286,10 @@ Content-Type: application/json
 
 [payment-verify]: #verify
 [card-payment-purchase]: #create-payment
-[card-payment-recur]: #recurring-payments
+[card-payment-recur]: /payment-instruments/card/features/optional/recur
 [card-payment-capture]: #capture-sequence
 [card-payment-cancel]: #cancel-sequence
 [card-payments-remove-payment-token]: #delete-payment-token
-[technical-reference-callback]: /other-features#callback
+[settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
+[settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement
+[technical-reference-callback]: {{ features_url }}/technical-reference/callback

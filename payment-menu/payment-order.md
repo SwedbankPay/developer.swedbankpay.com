@@ -38,7 +38,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/{{ page.payment_order_id }}"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
     "operations": [
         {
@@ -165,7 +165,7 @@ then you should await capture until after the goods have been sent.
 
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to
-[update the Payment Menu][payment-order-operations] after any changes to the
+[update the Payment Menu][operations] after any changes to the
 order.
 
 Below, you will see a complete overview of the payment menu process.
@@ -195,7 +195,7 @@ rect rgba(138, 205, 195, 0.1)
             deactivate SwedbankPay
             Merchant -->>- Payer: Display Payment Menu on Merchant Page
             activate Payer
-            Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+            Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
             Payer -->>+ SwedbankPay: Show Payment UI page in iframe
             deactivate Payer
             SwedbankPay ->>+ Payer: Do payment logic
@@ -207,7 +207,7 @@ rect rgba(138, 205, 195, 0.1)
                     deactivate Payer
                     3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Hosted View (open iframe)
+                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
                     Payer ->>+ SwedbankPay: Show Payment UI page in iframe
                     deactivate Payer
                     SwedbankPay ->> Payer: Do payment logic
@@ -270,4 +270,4 @@ rect rgba(138, 205, 195, 0.1)
 
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
 [login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
-[payment-order-operations]: /checkout/after-payment#operations
+[operations]: /checkout/v2/features/technical-reference/operations

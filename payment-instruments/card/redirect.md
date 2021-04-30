@@ -34,7 +34,7 @@ An example of an expanded `POST` request is available in the
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include card-purchase.md %}
+{% include purchase.md %}
 
 When you receive the redirect url from Swedbank Pay, you redirect the
 payer there to complete the payment. This ensures that card details and other
@@ -166,20 +166,20 @@ card payment:
 {% include iterator.html prev_href="./" prev_title="Introduction"
 next_href="seamless-view" next_title="Seamless View" %}
 
-[abort]: /payment-instruments/card/other-features#abort
-[callback]: /payment-instruments/card/other-features#callback
-[cancel]: /payment-instruments/card/after-payment#cancellations
+[abort]: /payment-instruments/card/features/core/abort
+[callback]: /payment-instruments/card/features/technical-reference/callback
+[cancel]: /payment-instruments/card/features/core/cancel
 [capture]: /payment-instruments/card/capture
 [card-payment]: /assets/img/payments/card-payment.png
-[create-payment]: /payment-instruments/card/other-features#create-payment
+[create-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [expansion]: /introduction#expansion
-[payee-reference]: /payment-instruments/card/other-features#payee-reference
-[payment-transaction-states]: /payment-instruments/card/other-features#payment-and-transaction-states
-[payout]: /payment-instruments/card/other-features#payout
-[price-resource]: /payment-instruments/card/other-features#prices
-[purchase]: /payment-instruments/card/other-features#purchase
-[recur]: /payment-instruments/card/other-features#recur
-[reversal]: /payment-instruments/card/after-payment#reversals
+[payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
+[payment-transaction-states]: /payment-instruments/card/features/technical-reference/payment-transaction-states
+[payout]: /payment-instruments/card/features/optional/payout
+[price-resource]: /payment-instruments/card/features/technical-reference/prices
+[purchase]: /payment-instruments/card/features/core/purchase
+[recur]: /payment-instruments/card/features/optional/recur
+[reversal]: /payment-instruments/card/features/core/reversal
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payment-instruments/card/other-features#verify
+[verify]: /payment-instruments/card/features/optional/verify

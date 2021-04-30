@@ -1,6 +1,6 @@
 ## Capture
 
-The capture transaction is where you ensure that the funds are charged from
+The capture transaction is where you ensure that the funds are drawn from
 the payer. This step usually takes place when the product has exchanged
 possession. You must first do a `GET` request on the payment to find the
 `create-capture` operation.
@@ -69,4 +69,4 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-[transaction-resource]: /payment-instruments/vipps/other-features#transactions
+[transaction-resource]: /payment-instruments/vipps/features/technical-reference/transactions

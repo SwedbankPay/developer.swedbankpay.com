@@ -296,24 +296,24 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "instrumentData": {
-    "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
-    "paymentToken": "{{ page.payment_token }}",
-    "payeeId": "{{ page.merchant_id }}",
-    "isDeleted": true,
-    "isPayeeToken": false,
-    "cardBrand": "MasterCard",
-    "maskedPan": "123456xxxxxx1111",
-    "expiryDate": "MM/YYYY"
-  }
+    "instrumentData": {
+        "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
+        "paymentToken": "{{ page.payment_token }}",
+        "payeeId": "{{ page.merchant_id }}",
+        "isDeleted": true,
+        "isPayeeToken": false,
+        "cardBrand": "MasterCard",
+        "maskedPan": "123456xxxxxx1111",
+        "expiryDate": "MM/YYYY"
+    }
 }
 ```
 
 {% include iterator.html prev_href="mobile-card-payments" prev_title="Mobile Card Payments"
-next_href="other-features" next_title="Other Features" %}
+next_href="features" next_title="Features" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
-[callback]: /payment-instruments/card/other-features#callback
-[operations]: /payment-instruments/card/other-features#operations
-[reversal]: /payment-instruments/card/after-payment#reversals
-[transaction-resource]: /payment-instruments/card/other-features#transactions
+[callback]: /payment-instruments/card/features/technical-reference/callback
+[operations]: /payment-instruments/card/features/technical-reference/operations
+[reversal]: /payment-instruments/card/features/core/reversal
+[transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

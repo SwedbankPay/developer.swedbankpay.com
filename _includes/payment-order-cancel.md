@@ -1,3 +1,5 @@
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 If we want to cancel up to the total authorized (not captured) amount, we need
 to perform `create-paymentorder-cancel` against the accompanying `href` returned
 in the `operations` list. See the abbreviated request and response below:
@@ -71,4 +73,4 @@ Content-Type: application/json
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 
-[payee-reference]: /checkout/other-features#payee-reference
+[payee-reference]: {{ features_url }}/technical-reference/payee-reference

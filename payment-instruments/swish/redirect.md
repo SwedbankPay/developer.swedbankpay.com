@@ -86,7 +86,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -105,7 +105,7 @@ Content-Type: application/json
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. The [`Purchase`][purchase] operation is used in our example.                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`operation`          | `string`      | The operation that the `payment` is supposed to perform. The `Purchase` operation is used in our example.                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`intent`             | `string`      | `Sale`.                                                                                                                                                                                                                                                                                            |
 | {% icon check %} | └➔&nbsp;`currency`           | `string`      | `SEK`.                                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`prices`             | `object`      | The `prices` array lists the prices related to a specific payment.                                                                                                                                                                                                                                 |
@@ -147,49 +147,49 @@ Content-Type: application/json
 
 {
     "payment": {
-      "id": "/psp/swish/payments/{{ page.payment_id }}",
-      "number": 1234567890,
-      "instrument": "Swish",
-      "created": "2016-09-14T13:21:29.3182115Z",
-      "updated": "2016-09-14T13:21:57.6627579Z",
-      "state": "Ready",
-      "operation": "Purchase",
-      "intent": "Sale",
-      "currency": "SEK",
-      "amount": 0,
-      "remainingCaptureAmount": 1500,
-      "remainingCancellationAmount": 1500,
-      "remainingReversalAmount": 0,
-      "description": "Test Purchase",
-      "initiatingSystemUserAgent": "Mozilla/5.0.",
-      "userAgent": "Mozilla/5.0...",
-      "language": "sv-SE",
-      "prices": { "id": "/psp/swish/payments/{{ page.payment_id }}/prices" },
-      "transactions": { "id": "/psp/swish/payments/{{ page.payment_id }}/transactions" },
-      "captures": { "id": "/psp/swish/payments/{{ page.payment_id }}/captures" },
-      "reversals": { "id": "/psp/swish/payments/{{ page.payment_id }}/reversals" },
-      "cancellations": { "id": "/psp/swish/payments/{{ page.payment_id }}/cancellations" },
-      "urls" : { "id": "/psp/swish/payments/{{ page.payment_id }}/urls" },
-      "payeeInfo" : { "id": "/psp/swish/payments/{{ page.payment_id }}/payeeInfo" },
-      "payers": {"id": "/psp/swish/payments/{{ page.payment_id }}/payers" },
-      "settings": { "id": "/psp/swish/payments/{{ page.payment_id }}/settings" }
+        "id": "/psp/swish/payments/{{ page.payment_id }}",
+        "number": 1234567890,
+        "instrument": "Swish",
+        "created": "2016-09-14T13:21:29.3182115Z",
+        "updated": "2016-09-14T13:21:57.6627579Z",
+        "state": "Ready",
+        "operation": "Purchase",
+        "intent": "Sale",
+        "currency": "SEK",
+        "amount": 0,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "initiatingSystemUserAgent": "Mozilla/5.0.",
+        "userAgent": "Mozilla/5.0...",
+        "language": "sv-SE",
+        "prices": { "id": "/psp/swish/payments/{{ page.payment_id }}/prices" },
+        "transactions": { "id": "/psp/swish/payments/{{ page.payment_id }}/transactions" },
+        "captures": { "id": "/psp/swish/payments/{{ page.payment_id }}/captures" },
+        "reversals": { "id": "/psp/swish/payments/{{ page.payment_id }}/reversals" },
+        "cancellations": { "id": "/psp/swish/payments/{{ page.payment_id }}/cancellations" },
+        "urls": { "id": "/psp/swish/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/swish/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/swish/payments/{{ page.payment_id }}/payers" },
+        "settings": { "id": "/psp/swish/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
-      {
+        {
             "method": "POST",
             "href": "{{ page.api_url }}/psp/swish/payments/{{ page.payment_id }}/sales",
             "rel": "create-sale"
-      },
-      {
+        },
+        {
             "method": "GET",
             "href": "{{ page.front_end_url }}/swish/payments/authorize/{{ page.payment_token }}",
             "rel": "redirect-sale",
-      },
-      {
+        },
+        {
             "method": "PATCH",
             "href": "{{ page.api_url }}/swish/payments/{{ page.payment_id }}",
             "rel": "update-payment-abort"
-      },
+        },
     ]
 }
 ```
@@ -250,12 +250,11 @@ sequenceDiagram
 {% include iterator.html prev_href="direct" prev_title="Direct"
 next_href="seamless-view" next_title="Seamless View" %}
 
-[callback-url]: /payment-instruments/swish/other-features#callback
-[complete-url]: /payment-instruments/swish/other-features#completeurl
-[payee-reference]: /payment-instruments/swish/other-features#payee-reference
-[purchase]: /payment-instruments/swish/other-features#purchase-flow
+[callback-url]: /payment-instruments/swish/features/technical-reference/callback
+[complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
+[payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
 [redirect]: /payment-instruments/swish/redirect
 [seamless-view]: /payment-instruments/swish/seamless-view
 [swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png
-[technical-reference-callback]: /payment-instruments/swish/other-features#callback
+[technical-reference-callback]: /payment-instruments/swish/features/technical-reference/callback
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

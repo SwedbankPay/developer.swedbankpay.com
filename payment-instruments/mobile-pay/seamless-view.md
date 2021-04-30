@@ -17,8 +17,7 @@ purchase process, you need to make a `POST` request towards Swedbank Pay with
 your Purchase information. This will generate a payment object with a unique
 `paymentID`. An example of an abbreviated `POST` request is provided below. You
 will receive a response in which you can find the **JavaScript source** in the
-`view-payment` operation. An example of an expanded `POST` request is available
-in the [other features section][purchase].
+`view-payment` operation.
 
 {% include alert-gdpr-disclaimer.md %}
 
@@ -63,7 +62,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -93,11 +92,11 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The [`User-Agent`string][user-agent] of the payer's web browser.                                                                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URIs valid for embedding of Swedbank Pay Hosted Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
+| {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URIs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URI that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`            | `string`     | The URI that Swedbank Pay will redirect back to when the user presses the cancel button in the payment page.                                                                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`           | `string`     | The URI that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
-|                  | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback-reference] for details.                                                                                         |
+|                  | └─➔&nbsp;`callbackUrl`          | `string`     | The URI that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                         |
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`    | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`payeeInfo`             | `object`     | This object contains the identificators of the payee of this payment.                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
@@ -120,38 +119,30 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-   "payment": {
-       "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
-       "number": 72100003079,
-       "created": "2018-09-05T14:18:44.4259255Z",
-       "instrument": "MobilePay",
-       "operation": "Purchase",
-       "intent": "Authorization",
-       "state": "Ready",
-       "currency": "DKK",
-       "prices": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
-        },
-       "amount": 0,
-       "description": "MobilePay Test",
-       "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
-       "userAgent": "Mozilla/5.0",
-       "language": "da-DK",
-       "urls": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls"
-        },
-       "payeeInfo": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo"
-        },
-        "payers": {
-           "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payers"
-        }
+    "payment": {
+        "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
+        "number": 72100003079,
+        "created": "2018-09-05T14:18:44.4259255Z",
+        "instrument": "MobilePay",
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "state": "Ready",
+        "currency": "DKK",
+        "amount": 0,
+        "description": "MobilePay Test",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "userAgent": "Mozilla/5.0",
+        "language": "da-DK",
+        "prices": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices" },
+        "urls": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payeeinfo" },
+        "payers": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/payers" }
     },
-   "operations": [
+    "operations": [
         {
-           "method": "PATCH",
-           "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
-           "rel": "update-payment-abort"
+            "method": "PATCH",
+            "href": "{{ page.api_url }}/psp/mobilepay/payments/{{ page.payment_id }}",
+            "rel": "update-payment-abort"
         },
         {
             "method": "GET",
@@ -175,7 +166,7 @@ loading the payment page in an `iframe` in our next step.
 
 ## Step 2: Display  the payment window
 
-You need to embed the script source on your site to create a hosted-view in an
+You need to embed the script source on your site to create a Seamless View in an
 `iframe` so that the payer can enter the required information in a secure
 Swedbank Pay hosted environment. A simplified integration has these following
 steps:
@@ -303,7 +294,6 @@ sequenceDiagram
         next_href="after-payment"
         next_title="After Payment" %}
 
-[callback-reference]: /payment-instruments/mobile-pay/other-features#callback
-[complete-url]: /payment-instruments/mobile-pay/other-features#completeurl
-[purchase]: /payment-instruments/mobile-pay/other-features#purchase
+[callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
+[complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent

@@ -77,7 +77,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         },
         "prefillInfo": {
@@ -134,8 +134,7 @@ Content-Type: application/json
 **Response**
 
 ```http
-POST /psp/swish/payments HTTP/1.1
-Authorization: Bearer <AccessToken>
+HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -429,11 +428,11 @@ sequenceDiagram
 {% include iterator.html prev_href="./" prev_title="Introduction"
 next_href="redirect" next_title="Redirect" %}
 
-[complete-url]: /payment-instruments/swish/other-features#completeurl
+[complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
-[callback-url]: /payment-instruments/swish/other-features#callback
+[callback-url]: /payment-instruments/swish/features/technical-reference/callback
 [redirect]: /payment-instruments/swish/redirect
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payee-reference]: /payment-instruments/swish/other-features#payee-reference
+[payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
 [purchase]: /payment-instruments/swish/direct#m-commerce-purchase-flow
-[sales-transaction]: /payment-instruments/swish/other-features#sales
+[sales-transaction]: /payment-instruments/swish/after-payment#sales
