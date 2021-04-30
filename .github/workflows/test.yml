@@ -74,7 +74,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
-      - uses: prologic/action-remark-lint@v2
+      - uses: reviewdog/action-remark-lint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
