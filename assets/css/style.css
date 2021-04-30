@@ -33,6 +33,10 @@
 
 .dx-card.dx-card-sdk .dx-card-icon svg { fill: #fff; }
 
+.dx-card.dx-card-sdk.dx-card-disabled, .dx-card.dx-card-sdk.dx-card-disabled .h1, .dx-card.dx-card-sdk.dx-card-disabled .h2, .dx-card.dx-card-sdk.dx-card-disabled .h3, .dx-card.dx-card-sdk.dx-card-disabled .h4, .dx-card.dx-card-sdk.dx-card-disabled h5, .dx-card.dx-card-sdk.dx-card-disabled .h6 { color: #98d0d6; }
+
+.dx-card.dx-card-sdk.dx-card-disabled .dx-card-icon { background-color: #98d0d6; }
+
 .dx-card.dx-card-module:hover:after, .dx-card.dx-card-module:focus:after { border-bottom: 4px solid #c5569a; }
 
 .dx-card.dx-card-module > i { color: #c5569a; }
@@ -40,6 +44,18 @@
 .dx-card.dx-card-module .dx-card-icon { color: #fff; background-color: #c5569a; }
 
 .dx-card.dx-card-module .dx-card-icon svg { fill: #fff; }
+
+.dx-card.dx-card-module.dx-card-disabled, .dx-card.dx-card-module.dx-card-disabled .h1, .dx-card.dx-card-module.dx-card-disabled .h2, .dx-card.dx-card-module.dx-card-disabled .h3, .dx-card.dx-card-module.dx-card-disabled .h4, .dx-card.dx-card-module.dx-card-disabled h5, .dx-card.dx-card-module.dx-card-disabled .h6 { color: #d698c8; }
+
+.dx-card.dx-card-module.dx-card-disabled .dx-card-icon { background-color: #d698c8; }
+
+.dx-card.dx-card-disabled, .dx-card.dx-card-disabled .h1, .dx-card.dx-card-disabled .h2, .dx-card.dx-card-disabled .h3, .dx-card.dx-card-disabled .h4, .dx-card.dx-card-disabled h5, .dx-card.dx-card-disabled .h6 { color: #a38b80; }
+
+.dx-card.dx-card-disabled:hover, .dx-card.dx-card-disabled:focus { box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1); }
+
+.dx-card.dx-card-disabled:hover:after, .dx-card.dx-card-disabled:focus:after { border-bottom: none; }
+
+.dx-card.dx-card-disabled .dx-card-icon { background-color: #fff3d5; }
 
 .card-horizontal-list { margin-top: 3.25rem; }
 
