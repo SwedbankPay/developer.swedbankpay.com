@@ -17,8 +17,7 @@ purchase process, you need to make a `POST` request towards Swedbank Pay with
 your Purchase information. This will generate a payment object with a unique
 `paymentID`. An example of an abbreviated `POST` request is provided below. You
 will receive a response in which you can find the **JavaScript source** in the
-`view-payment` operation. An example of an expanded `POST` request is available
-in the [other features section][purchase].
+`view-payment` operation.
 
 {% include alert-gdpr-disclaimer.md %}
 
@@ -297,5 +296,4 @@ sequenceDiagram
 
 [callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
 [complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
-[purchase]: /payment-instruments/mobile-pay/features/core/purchase
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent
