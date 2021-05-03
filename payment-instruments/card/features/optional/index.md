@@ -10,7 +10,6 @@ menu_order: 1200
 
 ---
 {:.heading-line}
-
 ## Optional Features
 
 {% include card-list.html %}

@@ -8,7 +8,7 @@ description: |
   provide **Direct Bank** payments on your website. Choose between our
   **Redirect** and **Seamless View** integration options.
 permalink: /:path/
-menu_order: 800
+menu_order: 700
 ---
 
 {% include alert.html type="informative"

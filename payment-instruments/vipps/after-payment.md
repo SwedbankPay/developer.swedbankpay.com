@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/vipps/after-payment
 estimated_read: 30
-menu_order: 1000
+menu_order: 1200
 ---
 
 ### Create Payment

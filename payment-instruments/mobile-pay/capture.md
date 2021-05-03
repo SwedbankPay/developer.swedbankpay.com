@@ -5,7 +5,7 @@ estimated_read: 5
 description: |
   When the authorization is completed, it is time to capture the funds. How you
   go about doing that is explained in this section.
-menu_order: 700
+menu_order: 800
 ---
 
 {% include alert-two-phase-payments.md %}

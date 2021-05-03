@@ -1,7 +1,7 @@
 ---
 title: Seamless View
 estimated_read: 10
-menu_order: 1000
+menu_order: 900
 ---
 
 {% include jumbotron.html body="The Seamless View scenario represents the
