@@ -284,6 +284,8 @@ Content-Type: application/json
 }
 ```
 
+<!--lint disable final-definition -->
+
 [payment-verify]: #verify
 [card-payment-purchase]: #create-payment
 [card-payment-recur]: /payment-instruments/card/features/optional/recur

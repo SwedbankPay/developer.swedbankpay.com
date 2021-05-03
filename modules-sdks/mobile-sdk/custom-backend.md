@@ -405,6 +405,8 @@ Note that the AASA file must be served over `https`, otherwise iOS will not load
 
 The SDK includes a facility for updating a payment order after is has been created. The Merchant Backend Configuration uses this to allow setting the instrument of an instrument mode payment, but your custom Configuration can use it for whatever purpose you need.
 
+<!--lint disable no-duplicate-headings-->
+
 ### Android
 
 First, implement `updatePaymentOrder` in your `Configuration` subclass. This method returns the same data type as `postPaymentorders`, and when it does, the `PaymentFragment` reloads the payment menu according to the new data. The `paymentOrder` and `userData` arguments are what you set for the `PaymentFragment`, the `viewPaymentOrderInfo` argument is the current `ViewPaymentOrderInfo` (as returned from a previous call to this method, or, if this is the first update, the original `postPaymentorders` call). The `updateInfo` argument will be the value you call `PaymentViewModel.updatePaymentOrder` with, its meaning is therefore defined by you.

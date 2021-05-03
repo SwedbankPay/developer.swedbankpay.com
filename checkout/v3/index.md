@@ -39,7 +39,6 @@ card_list:
     outlined: true
 ---
 
-
 {:.heading-line}
 
 ## Checkout

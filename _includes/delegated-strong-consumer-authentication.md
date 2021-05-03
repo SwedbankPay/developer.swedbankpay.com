@@ -24,7 +24,6 @@ additional `nationalIdentifier` field described below should be added to the
 alternative to `consumerProfileRef`.
 {%- endif %}
 
-
 {% include alert.html type="warning" icon="warning" header="Bank ID
 authentication required" body="In order to use the Delegated SCA feature, you
 need a **legal agreement with Swedbank Pay** which mandates that the payer
@@ -63,7 +62,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. Must be part of what you get from your authentication process. |
 |                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
-
 
 When the payer is authenticated by the Merchant, some payment instruments
 will allow a more frictionless payment process. Invoice One-Click Payments does

@@ -231,7 +231,7 @@ embedded on your website.
 This is what the result should look like:
 
 {:.text-center}
-![Vipps seamless view][Vipps-screenshot-1]{:width="475px" :height="150px"}
+![Vipps seamless view][vipps-screenshot-1]{:width="475px" :height="150px"}
 
 ## Vipps Seamless View integration flow
 
@@ -310,20 +310,12 @@ sequenceDiagram
         next_href="capture"
         next_title="Capture" %}
 
-[abort]: /payment-instruments/vipps/after-payment#abort
 [callback]: /payment-instruments/vipps/features/technical-reference/callback
-[callbackurl]: /payment-instruments/vipps/features/technical-reference/callback
 [cancellations]: /payment-instruments/vipps/features/core/cancel
 [captures]: /payment-instruments/vipps/after-payment#captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [create-payment]: /payment-instruments/vipps/features/technical-reference/create-payment
-[seamless-view]: /payment-instruments/vipps/seamless-view
-[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
 [price-resource]: /payment-instruments/vipps/features/technical-reference/prices
-[purchase]: /payment-instruments/vipps/features/core/purchase
-[reference-redirect]: /payment-instruments/vipps/redirect
-[reversal]: /payment-instruments/vipps/features/core/reversal
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[Vipps_flow_PaymentPages.png]: /assets/img/vipps-flow-paymentpages.png
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
-[Vipps-screenshot-1]: /assets/img/payments/vipps-seamless-view.png
+[vipps-screenshot-1]: /assets/img/payments/vipps-seamless-view.png

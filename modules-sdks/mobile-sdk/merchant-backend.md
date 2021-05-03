@@ -282,7 +282,6 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`operation`  | `string` | The operation to perform: "SetInstrument" |
 | {% icon check %} | └➔&nbsp;`instrument` | `string` | The instrument to set                     |
 
-
 Merchant Backend will then make a corresponding request to the Swedbank Pay API.
 
 {:.code-view-header}

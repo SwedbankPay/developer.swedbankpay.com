@@ -175,12 +175,8 @@ Content-Type: application/json
 }
 ```
 
-{% comment %}
-TODO: Remove pipes from the above code example and add a field table
-      explaining each field here.
-{% endcomment %}
+<!--lint disable final-definition -->
 
------------------------------
 [card]: /payment-instruments/card
 [invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
