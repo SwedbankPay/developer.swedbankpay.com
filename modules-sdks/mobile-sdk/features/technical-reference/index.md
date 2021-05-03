@@ -1,6 +1,5 @@
 ---
 title: Technical Reference
-card_overview: true
 description: |
   In this section you can read more about the technical references of mobile
   SDKs.
@@ -12,7 +11,6 @@ menu_order: 1300
 ---
 
 {:.heading-line}
-
 ## Technical Reference
 
 {% include card-list.html %}

@@ -11,7 +11,6 @@ menu_order: 1200
 ---
 
 {:.heading-line}
-
 ## Core Features
 
 {% include card-list.html %}

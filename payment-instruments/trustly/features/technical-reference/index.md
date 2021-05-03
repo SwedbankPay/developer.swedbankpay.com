@@ -11,7 +11,6 @@ menu_order: 1400
 ---
 
 {:.heading-line}
-
 ## Technical Reference
 
 {% include card-list.html %}
