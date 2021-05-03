@@ -78,5 +78,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true
-          remark_args: --frail
-      - run: npm run remark -- --frail
+          remark_args: --frail --rc-path .remarkrc.yaml
+          level: warning
+      - run: npm run remark -- --frail --rc-path .remarkrc.yaml
