@@ -7,7 +7,7 @@ description: |
   MobilePay Online is the fast and simple way of paying with your mobile phone,
   reaching more than 4 million users in Denmark and Finland.
 permalink: /:path/
-menu_order: 700
+menu_order: 500
 ---
 
 MobilePay is the main payment app in Denmark and one of the leading apps in

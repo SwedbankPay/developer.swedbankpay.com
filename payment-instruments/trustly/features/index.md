@@ -8,5 +8,5 @@ permalink: /:path/
 icon:
   content: remove_red_eye
 additional: true
-menu_order: 1000
+menu_order: 1100
 ---

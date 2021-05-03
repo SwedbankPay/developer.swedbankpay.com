@@ -2,7 +2,7 @@
 title: Capture
 redirect_from: /payments/vipps/capture
 estimated_read: 5
-menu_order: 900
+menu_order: 1100
 ---
 
 {% include alert-two-phase-payments.md %}
