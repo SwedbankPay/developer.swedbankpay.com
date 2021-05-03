@@ -79,3 +79,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true
           remark_args: --frail
+      - run: npm run remark -- --frail
