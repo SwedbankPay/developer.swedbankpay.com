@@ -119,7 +119,6 @@ Content-Type: application/json
         "language": "nb-NO",
         "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
         "payeeInfo" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo" },
-        "settings": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/settings" },
         "payers": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers"
         "orderItems" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderItems" },
         "metadata": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata" },
