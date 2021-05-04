@@ -7,7 +7,6 @@
 ## Step 3: Capture the funds
 {% endif %}
 
-
 Capture can only be done on a payment with a successful authorized transaction,
 and if the authorization was not done with a one-phase payment instrument.
 Examples of one-phase payment instruments are [Swish][swish] and
@@ -179,6 +178,8 @@ Content-Type: application/json
 | └─➔&nbsp;`description`      | `string`     | {% include field-description-description.md %}                                                                                                                                   |
 | └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                              |
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
+
+<!--lint disable final-definition -->
 
 [card]: /payment-instruments/card
 [vipps]: /payment-instruments/vipps

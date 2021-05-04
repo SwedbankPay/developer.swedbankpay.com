@@ -130,8 +130,4 @@ Content-Type: application/json
                          next_href="security"
                          next_title="Security" %}
 
-[auth]: /gift-cards/other-features#authentication
-[balance]: /gift-cards/other-features#balance
-[deposit]: /gift-cards/other-features#deposit
-[purchase]: /gift-cards/features/core/purchase
 [security]: /gift-cards/security

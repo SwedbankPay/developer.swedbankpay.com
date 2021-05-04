@@ -74,11 +74,13 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 
 The base URIs of the API Platform are:
 
+{% assign api_url_prod = 'https://api.payex.com/' %}
+
 {:.table .table-striped}
-| Environment                      | Base URL                 |
-| :------------------------------- | :----------------------- |
-| [**Test**][external-integration] | `{{ page.api_url }}/`    |
-| [**Production**][production]     | `https://api.payex.com/` |
+| Environment                          | Base URL              |
+| :----------------------------------- | :---------------------|
+| [**Test**]({{ page.api_url }})       | `{{ page.api_url }}/` |
+| [**Production**]({{ api_url_prod }}) | `{{ api_url_prod }}`  |
 
 An important part of REST is its use of **hypermedia**. Instead of having to
 perform complex state management and hard coding URIs and the availability of
@@ -333,7 +335,6 @@ specified in the response by finding the appropriate operation based on its
 
 [admin]: https://admin.externalintegration.payex.com/psp/login
 [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
-[external-integration]: {{ page.api_url }}/
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 [iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
@@ -343,7 +344,6 @@ specified in the response by finding the appropriate operation based on its
 [node-tls]: https://stackoverflow.com/a/44635449/61818
 [php-curl-tls]: https://stackoverflow.com/a/32926813/61818
 [php-zend-tls]: https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
-[production]: https://api.payex.com/
 [python-tls]: https://docs.python.org/2/library/ssl.html#ssl.PROTOCOL_TLSv1_2
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rfc-7239]: https://tools.ietf.org/html/rfc7239

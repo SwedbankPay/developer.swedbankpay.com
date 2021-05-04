@@ -5,7 +5,6 @@ you are using a Merchant Backend, you can have a payment order create payment
 tokens by setting the `generatePaymentToken` and `payerReference` fields of
 `PaymentOrder` and `PaymentOrderPayer`, respectively.
 
-
 {:.code-view-header}
 **Android**
 

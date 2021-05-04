@@ -228,7 +228,4 @@ next_href="seamless-view" next_title="Seamless View" %}
 [after-payment]: /payment-instruments/trustly/after-payment
 [callback]: /payment-instruments/trustly/features/technical-reference/callback
 [reversal]: /payment-instruments/trustly/features/core/reversal
-[payee-reference]: /payment-instruments/trustly/features/technical-reference/payee-info
-[recur]: /payment-instruments/trustly/features/optional/recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[verify]: /payment-instruments/trustly/features/optional/verify

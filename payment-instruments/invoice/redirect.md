@@ -251,7 +251,6 @@ Here you will also find info on `Cancel`, and `Reversal`.
 {% include iterator.html prev_href="./" prev_title="Introduction"
 next_href="seamless-view" next_title="Seamless View" %}
 
-[abort]: /payment-instruments/invoice/after-payment#abort
 [after-payment]: /payment-instruments/invoice/after-payment
 [callback]: /payment-instruments/invoice/features/technical-reference/callback
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
@@ -259,7 +258,6 @@ next_href="seamless-view" next_title="Seamless View" %}
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
-[payee-reference]: /payment-instruments/invoice/features/technical-reference/payee-info
 [recur]: /payment-instruments/invoice/features/optional/recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payment-instruments/invoice/features/optional/verify

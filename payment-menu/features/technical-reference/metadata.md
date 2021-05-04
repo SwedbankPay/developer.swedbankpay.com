@@ -9,5 +9,4 @@ icon:
   outlined: true
 ---
 
-
 {% include metadata.md %}

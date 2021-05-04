@@ -292,7 +292,6 @@ made a `capture` request." %}
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="direct" next_title="Direct" %}
 
-[after-payment]: /payment-instruments/invoice/after-payment
 [callback]: /payment-instruments/invoice/features/technical-reference/callback
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
@@ -300,9 +299,7 @@ next_href="direct" next_title="Direct" %}
 [create-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
-[payee-reference]: /payment-instruments/invoice/features/technical-reference/payee-reference
 [price-resource]: /payment-instruments/invoice/features/technical-reference/prices
 [recur]: /payment-instruments/invoice/features/optional/recur
-[setup-mail]: mailto:setup.ecom@payex.com
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [verify]: /payment-instruments/invoice/features/optional/verify

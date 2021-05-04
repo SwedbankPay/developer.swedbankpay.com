@@ -2,10 +2,9 @@
 title: After Payment
 estimated_read: 11
 description: |
-  When the payer is **done** interacting
-  with the Payment Menu, you need to implement the
-  relevant **after-payment operations** in your order system. Which these
-  operations are and how they are executed is described below."
+  When the payer is **done** interacting with the Payment Menu, you need to
+  implement the relevant **after-payment operations** in your order system.
+  Which these operations are and how they are executed is described below."
 menu_order: 500
 ---
 
@@ -15,5 +14,3 @@ menu_order: 500
                          prev_title="Capture"
                          next_href="features"
                          next_title="Features" %}
-
-[payment-order]: /payment-menu/payment-order
