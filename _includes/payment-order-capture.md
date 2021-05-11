@@ -2,24 +2,31 @@
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
 {% if documentation_section contains "checkout" %}
+
 ## Step 5: Capture the funds
+
 {% else %}
+
 ## Step 3: Capture the funds
+
 {% endif %}
 
-Capture can only be done on a payment with a successful authorized transaction,
-and if the authorization was not done with a one-phase payment instrument.
-Examples of one-phase payment instruments are [Swish][swish] and
-[Trustly][trustly], while payment instruments such as [Card Payments][card] and
-[Vipps][vipps] are two-phase payments, requiring a `Capture` to be performed.
+Captures are only possible when a payment has a successful authorize
+transaction, naturally excluding one-phase payment instruments like
+[Swish][swish] and [Trustly][trustly]. Two-phase payment instruments like
+[Card][card] and [Vipps][vipps] however, require a `Capture` to be completed.
+Please note that Invoice captures differ from the others. These are explained
+in it's [own section][invoice-section].
 
-It is possible to do a partial capture where you only capture a smaller amount
-than the authorized amount. You can later do more captures on the same payment
-up to the total authorization amount.
+In addition to full captures, it is possible to do partial `capture`s where you
+only capture a part of the authorized amount. You can do other captures on the
+same payment later, up to the total authorized amount. Useful for when you have
+to split orders into several shipments, for instance.
 
-This is done by requesting the order information from the server, to get the
-request link to perform the capture. With this, you can request the capture
-with the sum to capture, and get back the status.
+First off, you must request the order information from the server to get the
+request link. With this, you can request the capture with the amount to capture,
+and get the status back.
+
 
 ```mermaid
 sequenceDiagram
@@ -32,7 +39,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
     end
 ```
 
@@ -179,9 +186,15 @@ Content-Type: application/json
 | └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                              |
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 
+
+## Invoice
+
+{% include invoice-capture.md %}
+
 <!--lint disable final-definition -->
 
 [card]: /payment-instruments/card
+[invoice-section]: #invoice
 [vipps]: /payment-instruments/vipps
 [payee-reference]: {{ features_url }}/technical-reference/payee-reference
 [swish]: /payment-instruments/swish/
