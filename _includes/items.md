@@ -2,7 +2,7 @@
 
 The `items` field of the `paymentOrder` is an array containing items that will affect how the payment is performed.
 
-{% include alert.html type="warning" icon="warning" header="MobilePay Node"
+{% include alert.html type="warning" icon="warning" header="MobilePay"
 body="Please note that the MobilePay `shoplogoUrl` is mandatory. If you have an
 existing integration and wish to add MobilePay, you need to include this node in
 your payment order request." %}
