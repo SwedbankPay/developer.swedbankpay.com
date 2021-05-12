@@ -10,7 +10,7 @@ jobs:
       repository_url: ${{ steps.variables.outputs.repository_url }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
       - name: Generate variables
         id: variables
         env:
@@ -20,7 +20,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       - name: docker login
         run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: variables
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       - name: docker login
         run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
@@ -72,7 +72,7 @@ jobs:
   remark-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
       - run: npm install
       - uses: reviewdog/action-remark-lint@v2
         with:
