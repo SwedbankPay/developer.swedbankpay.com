@@ -3,13 +3,14 @@
 
 ### Introduction
 
-The Payment Link can be implemented for payment instruments listed below, using
+The Payment Link is available for payment instruments listed below, using
 the Redirect platform and Swedbank Pay hosted payment page.
 
-* [Credit card][payment-instruments-card-payment-pages]
-* [MobilePay Online][payment-instruments-mobilepay-payment-pages]
-* [Swish][swish]
-* [Vipps][vipps]
+*   [Card][card]
+*   [MobilePay Online][mobilepay]
+*   [Swish][swish]
+*   [Vipps][vipps]
+*   [Trustly][trustly]
 
 When the payer starts the purchase process in your merchant or webshop site, you
 need to make a `POST` request towards Swedbank Pay with your *Purchase*
@@ -27,7 +28,7 @@ When the payer clicks on the Payment Link, the Swedbank Pay payment page will
 open, letting him or her enter the payment details (varying depending on
 payment instrument) in a secure Swedbank Pay hosted environment.
 {% if show_3d_secure %}
-When paying with credit card and if required, Swedbank Pay will handle 3-D
+When paying with card and if required, Swedbank Pay will handle 3-D
 Secure authentication.
 {% endif %}
 
@@ -83,12 +84,11 @@ page similar to the examples below, where payment information can be entered.
 
 ### Options
 
-All valid options when posting a payment with operation `Purchase`,
-are described in each payment instrument's respective API reference.
-Please see the general sequence diagrams for more information about payments
-in one-phase (e.g. [Swish][swish] and credit card with autocapture) and
-two-phase (e.g. [Card][card], [MobilePay Online][mobile-pay],
-[Vipps][vipps]).
+All valid options when posting a payment with operation `Purchase`, are
+described in each payment instrument's respective API reference. Please see the
+general sequence diagrams for more information about one-phase (e.g.
+[Swish][swish] and [Trustly][trustly]) and two-phase (e.g. [Card][card],
+[MobilePay Online][mobilepay] and [Vipps][vipps]) payments.
 
 {% if show_authorization %}
 
@@ -222,10 +222,9 @@ sequenceDiagram
 [abort]: /payment-instruments/card/features/core/abort-reference
 [card-payment]: /assets/img/payments/card-payment.png
 [card]: /payment-instruments/card
-[mobile-pay]: /payment-instruments/mobile-pay
-[payment-instruments-card-payment-pages]: /payment-instruments/card/
-[payment-instruments-mobilepay-payment-pages]: /payment-instruments/mobile-pay/
+[mobilepay]: /payment-instruments/mobile-pay
 [purchase-flow]: /payment-instruments/card/features/core/purchase
 [swish]: /payment-instruments/swish
 [technical-reference-callback]: /payment-instruments/card/features/technical-reference/callback
 [vipps]: /payment-instruments/vipps
+[trustly]: /payment-instruments/trustly
