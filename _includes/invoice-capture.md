@@ -139,7 +139,3 @@ sequenceDiagram
   deactivate Merchant
   deactivate SwedbankPay
 ```
-
-[direct]: /payment-instruments/invoice/direct
-[redirect]: /payment-instruments/invoice/redirect
-[seamless-view]: /payment-instruments/invoice/seamless-view
