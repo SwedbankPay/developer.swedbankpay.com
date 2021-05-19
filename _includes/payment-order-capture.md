@@ -27,7 +27,6 @@ First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
 and get the status back.
 
-
 ```mermaid
 sequenceDiagram
     participant Merchant
@@ -185,7 +184,6 @@ Content-Type: application/json
 | └─➔&nbsp;`description`      | `string`     | {% include field-description-description.md %}                                                                                                                                   |
 | └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                              |
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
-
 
 ## Invoice
 

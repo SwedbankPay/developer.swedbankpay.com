@@ -10,6 +10,16 @@ description: |
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 19 May 2021
+
+### Version 2.2.1
+
+*   Added payment link option for [Trustly][trustly-payment-link]
+*   Added information about invoice capture in [Checkout v2][checkout-invoice-capture] and [Payment Menu][payment-menu-invoice-capture]
+*   Added MobilePay `shoplogoUrl` in the [Checkout v2][checkout-items] and [Payment Menu][payment-menu-items] items section
+*   Added [Delete Token section][card-delete-token] in Card's technical reference
+*   Fixed minor typos and bugs
+
 ## 30 Apr 2021
 
 ### Version 2.2.0
@@ -539,6 +549,7 @@ integration and the payer.
 
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [callback]: /payment-instruments/card/features/technical-reference/callback
+[card-delete-token]: /payment-instruments/card/features/technical-reference/delete-token
 [card-direct]: /payment-instruments/card/direct
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
@@ -551,12 +562,14 @@ integration and the payer.
 [card-seamless-view]: /payment-instruments/card/seamless-view
 [checkin]: /checkout/v2/checkin
 [checkout-capture]: /checkout/v2/capture
+[checkout-invoice-capture]: /checkout/v2/capture#invoice
 [checkout-checkin-front-end]:/checkout/v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout/v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout/v2/payment-menu#request
 [checkout-payment-url]: /checkout/v2/features/technical-reference/payment-url
 [checkout]: /checkout
 [checkout-v2]: /checkout/v2/
+[checkout-items]: /checkout/v2/features/technical-reference/items
 [checkout-3ds2]: /checkout/v2/features/core/3d-secure-2
 [checkout-callback]: /checkout/v2/features/technical-reference/callback
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
@@ -582,6 +595,8 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [optional-features]: /checkout/v2/features/optional/
 [payment-orders]: /checkout/v2/payment-menu#step-3-create-payment-order
+[payment-menu-invoice-capture]:/payment-menu/capture#invoice
+[payment-menu-items]: /payment-menu/features/technical-reference/items
 [payments]: /payment-instruments
 [prices]: /checkout/v2/features/technical-reference/prices
 [update-order-checkout]: /checkout/v2/features#update-order
@@ -605,6 +620,7 @@ integration and the payer.
 [transaction-on-file]: /payment-instruments/card/features/optional/transaction-on-file
 [tra-exemption]: /checkout/v2/features/optional/tra
 [trustly-payments]: /payment-instruments/trustly
+[trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url

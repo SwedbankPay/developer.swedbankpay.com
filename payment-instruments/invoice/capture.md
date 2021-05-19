@@ -16,3 +16,7 @@ The final step in the integration process for Invoice [Redirect][redirect],
 
 {% include iterator.html prev_href="direct" prev_title="Direct"
 next_href="after-payment" next_title="After Payment" %}
+
+[direct]: /payment-instruments/invoice/direct
+[redirect]: /payment-instruments/invoice/redirect
+[seamless-view]: /payment-instruments/invoice/seamless-view
