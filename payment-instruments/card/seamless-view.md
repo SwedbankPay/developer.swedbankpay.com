@@ -207,22 +207,6 @@ card payment:
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="capture" next_title="Capture" %}
 
-[payment-page_seamless-view.png]: /assets/screenshots/card/seamless-view/view/macos.png
-[abort]: /payment-instruments/card/features/core/abort
-[after-payment]: /payment-instruments/card/after-payment
-[callback]: /payment-instruments/card/features/technical-reference/callback
-[cancel]: /payment-instruments/card/after-payment#cancellations
-[capture]: /payment-instruments/card/capture
-[create-payment]: /payment-instruments/card/features/technical-reference/create-payment
-[expansion]: /introduction#expansion
-[payee-reference]: /payment-instruments/card/features/technical-reference/payee-reference
-[payout]: /payment-instruments/card/features/optional/payout
 [purchase]: /payment-instruments/card/features/core/purchase
-[price-resource]: /payment-instruments/card/features/technical-reference/prices
-[recur]: /payment-instruments/card/features/optional/recur
-[reversal]: /payment-instruments/card/features/core/reversal
-[verify]: /payment-instruments/card/features/optional/verify
-[create-payment]: /payment-instruments/card/features/technical-reference/create-payment
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [seamless-view-card]: /assets/img/payments/seamless-view-card.png
 [swedish-seamless-view-card]: /assets/img/payments/swedish-seamless-view-card.png

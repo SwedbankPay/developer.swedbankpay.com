@@ -1,4 +1,3 @@
-
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{%
 endcapture %}
@@ -103,13 +102,12 @@ Content-Type: application/json
 }
 ```
 
-
 The valid instruments for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a
 merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
 `availableInstruments` will look like this:
 
-```
+```json
         "availableInstruments": [
             "CreditCard",
             "Invoice-PayExFinancingSe",

@@ -183,8 +183,6 @@ sequenceDiagram
 
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
-[cancel]: /payment-instruments/card/features/core/cancel
-[capture]: /payment-instruments/card/capture
 [card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [payout]: /payment-instruments/card/features/optional/payout

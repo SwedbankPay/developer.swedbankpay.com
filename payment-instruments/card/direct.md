@@ -37,12 +37,12 @@ Below is a quick stepwise summary of how the Direct Card Payment scenario works.
   in the first request. You `POST` the payer's card data to the URL in the
   [`direct-authorization`][authorization] operation.
 *   If the issuer requires 3-D Secure authentication, you will then receive an
-  operation called `redirect-authentication`. You must redirect the payer to
-  this URL to let them authenticate against the issuer's 3-D Secure page.
-    -   When the 3-D Secure flow is completed, the payer will be redirected back to
-      the URL provided in `completeUrl` or `cancelUrl`, depending on the actions
-      performed by the payer.
-    -   If the issuer does not require 3-D Secure authentication, the payment will
+    operation called `redirect-authentication`. You must redirect the payer to
+    this URL to let them authenticate against the issuer's 3-D Secure page.
+    *   When the 3-D Secure flow is completed, the payer will be redirected back to
+        the URL provided in `completeUrl` or `cancelUrl`, depending on the actions
+        performed by the payer.
+    * If the issuer does not require 3-D Secure authentication, the payment will
       already be `Completed` after performing the `direct-authorization`
       request. Note that `Completed` just indicates that the payment is in a
       final state; the financial transaction could be either OK or failed.
@@ -390,16 +390,9 @@ sequenceDiagram
 next_href="mobile-card-payments" next_title="Mobile Card Payments" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
-[expansion]: /introduction#expansion
 [callback]: /payment-instruments/card/features/technical-reference/callback
 [cancel]: /payment-instruments/card/features/core/cancel
 [capture]: /payment-instruments/card/capture
-[complete-url]: /payment-instruments/card/features/technical-reference/complete-url
 [reversal]: /payment-instruments/card/features/core/reversal
 [authorization]: /payment-instruments/card/features/technical-reference/card-authorization-transaction
-[features]: /payment-instruments/card/features/core/purchase
 [purchase]:  /payment-instruments/card/features/core/purchase
-[recur]:  /payment-instruments/card/features/optional/recur
-[payout]:  /payment-instruments/card/features/core/purchase
-[verify]: /payment-instruments/card/features/optional/verify
-[create-payment]: /payment-instruments/card/features/technical-reference/create-payment

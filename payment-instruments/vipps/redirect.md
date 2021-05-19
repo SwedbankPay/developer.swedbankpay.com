@@ -8,7 +8,7 @@ description: |
   scenario, Swedbank Pay receives a mobile number (msisdn)
   from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
   that the payer must confirm through the Vipps mobile app.
-menu_order: 700
+menu_order: 900
 ---
 
 ## Introduction
@@ -389,9 +389,6 @@ purchased products) have to make a [Capture][capture] or
 [cancel]: /payment-instruments/vipps/features/core/cancel
 [capture]: /payment-instruments/vipps/after-payment#captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
-[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
 [reference-redirect]: /payment-instruments/vipps/redirect
-[seamless-view]: /payment-instruments/vipps/seamless-view
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[vipps-payments]: /payment-instruments/vipps/other-features
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

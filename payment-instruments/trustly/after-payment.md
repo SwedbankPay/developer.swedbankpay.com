@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/trustly/after-payment
 estimated_read: 9
-menu_order: 1100
+menu_order: 1000
 ---
 
 ## Options after posting a payment
@@ -12,13 +12,12 @@ When you detect that the payer has reached your `completeUrl`, you need to do a
 generated in the first step, to receive the state of the transaction. You will
 also be able to see the available `operations` after posting a payment.
 
-*   **Abort:** It is possible to abort the process if the payment has no
-    successful transactions. [See the `abort`
-    description][abort-description].
-*   For reversals, you will need to implement the `reversal` request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a
-    [Callback request][callback-request] will be posted to the `callbackUrl`,
-    which was set when the payment was created.
+* **Abort:** It is possible to abort the process if the payment has no
+  successful transactions. [See the `abort` description](#abort).
+* For reversals, you will need to implement the `reversal` request.
+* **If CallbackURL is set:** Whenever changes to the payment occur a[Callback
+  request][callback-request] will be posted to the `callbackUrl`,which was set
+  when the payment was created.
 
 {% include abort-reference.md %}
 
@@ -105,7 +104,4 @@ sequenceDiagram
 {% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
 next_href="features" next_title="Features" %}
 
-----------------------------------------------------------
-[abort-description]: #abort
 [callback-request]: /payment-instruments/trustly/features/technical-reference/callback
-[trustly-reversals]: /payment-instruments/trustly/after-payment##reversals

@@ -80,7 +80,6 @@ SDKs are often used as a building block to construct a *Module*.
 |     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]         | [`…sdk-php`][php-repo]         |
 |      ![JS][js-icon]      | [Swedban k Pay SDK for JavaScript][js-link]  | [`…sdk-js`][js-repo]           |
 
-
 ## Official Libraries
 
 **Software libraries** are bundles of code often used by an *SDK* or in a
@@ -95,12 +94,9 @@ SDKs are often used as a building block to construct a *Module*.
 | ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]   | [`…woocommerce-core`][woo-core-repo]  |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]         | [`…sdk-dotnet`][dotnet-repo]          |
 
-
 [android-icon]: /assets/img/logos/android.svg
 [android-link]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk
 [android-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-android
-[dotnet-ext-link]: https://www.nuget.org/packages/SwedbankPay.Sdk.Extensions
-[dotnet-ext-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet-extensions
 [dotnet-icon]: /assets/img/logos/dotnet.svg
 [dotnet-link]: https://www.nuget.org/packages/SwedbankPay.Sdk
 [dotnet-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet

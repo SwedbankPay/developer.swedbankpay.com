@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/vipps/after-payment
 estimated_read: 30
-menu_order: 1000
+menu_order: 1200
 ---
 
 ### Create Payment
@@ -335,9 +335,7 @@ Content-Type: application/json
 [capture]: #captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [expand-parameter]: /introduction#expansion
-[payee-reference]: /payment-instruments/vipps/features/technical-reference/payee-reference
 [paymenturl]: /payment-instruments/vipps/features/technical-reference/payment-url
 [prices]: /payment-instruments/vipps/features/technical-reference/prices
 [reverse]: #reversals
-[transaction]: /payment-instruments/vipps/features/technical-reference/transactions
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

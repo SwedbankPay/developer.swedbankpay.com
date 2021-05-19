@@ -77,6 +77,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`      | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`metadata`             | `object`     | {% include field-description-metadata.md %}                                                                                                                                                 |
 
+<!--lint disable final-definition -->
+
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [technical-reference-callback]: {{ features_url }}/technical-reference/callback
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation

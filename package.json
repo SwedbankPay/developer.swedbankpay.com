@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/SwedbankPay/developer.swedbankpay.com",
   "dependencies": {
-    "npm": "^7.11.2"
+    "npm": "^7.13.0"
   },
   "devDependencies": {
     "braces": "^3.0.2",
@@ -87,7 +87,6 @@
     "remark-retext": "^4.0.0",
     "remark-squeeze-paragraphs": "^4.0.0",
     "remark-textr": "^4.0.0",
-    "remark-validate-links": "^10.0.4",
     "retext-english": "^3.0.4",
     "retext-repeated-words": "^3.0.0",
     "retext-sentence-spacing": "^4.0.0",

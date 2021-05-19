@@ -19,8 +19,7 @@ underlying payments or transaction.
 {% include payment-url.md full_reference=true when="selecting the payment
 instrument Vipps or in the 3-D Secure verification for Credit Card Payments" %}
 
-
-#### URLs Resource
+### URLs Resource
 
 It is possible to perform a `GET` request on the `urls` resource to retrieve its
 contents.

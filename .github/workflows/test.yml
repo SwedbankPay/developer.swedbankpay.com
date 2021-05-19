@@ -74,7 +74,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
-      - uses: prologic/action-remark-lint@v2
+      - uses: reviewdog/action-remark-lint@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
+          fail_on_error: true
+          remark_args: --frail --rc-path .remarkrc.yaml
+          level: warning
+      - run: npm run remark -- --frail --rc-path .remarkrc.yaml

@@ -7,7 +7,7 @@ description: |
   Swish is Sweden's main payment app and the
   preferred online payment method with the highest convertion rates.
 permalink: /:path/
-menu_order: 500
+menu_order: 600
 ---
 
 Swish is the main Swedish payment app for mobile phones supported by all Swedish
@@ -67,13 +67,13 @@ Certificate means setup will be quicker and you will not have to assign a point
 of contact to monitor and renew a certificate.
 
 You could also contact one of the following banks offering Swish Handel:
-[Danske Bank][danske-bank], [SEB][SEB-swish],
-[Länsförsäkringar][Länsförsäkringar],
-[Sparbanken Syd][sparbanken-syd], [Sparbanken Öresund][sparbanken-oresund],
-[Nordea][nordea], [Handelsbanken][handelsbanken], in order to get an acquiring
-agreement, a Swish alias and access to Swish Certificate Management
-system (several banks do however support Technical Supplier Certificate setups
-so you can ask them for that).
+[Danske Bank][danske-bank], [SEB][seb-swish],
+[lansforsakringar][lansforsakringar], [Sparbanken Syd][sparbanken-syd],
+[Sparbanken Öresund][sparbanken-oresund], [Nordea][nordea],
+[Handelsbanken][handelsbanken], in order to get an acquiring agreement, a Swish
+alias and access to Swish Certificate Management system (several banks do
+however support Technical Supplier Certificate setups so you can ask them for
+that).
 
 ### Demoshop
 
@@ -90,10 +90,10 @@ Swish App.
 [after-payment]: /payment-instruments/swish/after-payment
 [danske-bank]: https://danskebank.se/sv-se/foretag/medelstora-foretag/onlinetjanster/pages/swish-handel.aspx
 [handelsbanken]: https://www.handelsbanken.se/sv/foretag/konton-betalningar/ta-betalt/swish-for-foretag
-[Länsförsäkringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
+[lansforsakringar]: https://www.lansforsakringar.se/stockholm/foretag/bank/lopande-ekonomi/betalningstjanster/swish-handel/
 [nordea]: https://www.nordea.se/foretag/produkter/betala/swish-handel.html
 [payment-resource]: /payment-instruments/swish/features/technical-reference/payment-resource
-[SEB-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
+[seb-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-handel.html
 [sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
 [swish-payment]: /assets/img/payments/swish-redirect-number-input-en.png

@@ -6,7 +6,7 @@ estimated_read: 2
 description: |
   Vipps is the Norwegian way of paying with your mobile phone, fast and simple.
 permalink: /:path/
-menu_order: 600
+menu_order: 800
 ---
 
 Vipps is the main Norwegian payment app for mobile phones supported by the major
@@ -71,7 +71,5 @@ successful purchase without using the Vipps app.
 
 [payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [after-payment]: /payment-instruments/vipps/features/technical-reference/operations
-[capture]: /payment-instruments/vipps/after-payment#captures
-[cancel]: /payment-instruments/vipps/after-payment#cancellations
 [vipps-redirect]: /assets/img/payments/vipps-redirect-en.png
 [vipps-number-input]: /assets/img/payments/vipps-number-input-en.png

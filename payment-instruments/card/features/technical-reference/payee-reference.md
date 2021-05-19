@@ -3,7 +3,7 @@ title: PayeeReference
 estimated_read: 1
 description: |
   The merchant's reference for a specific payment.
-menu_order: 2200
+menu_order: 2300
 icon:
   content: assignment_ind
   outlined: true

@@ -24,7 +24,6 @@ representative to make a booking. This feature is only supported in the
 `Purchase` operation. See the abbreviated example below on how to implement MOTO
 by setting the `generateMotoPayment` to `true`.
 
-
 {:.code-view-header}
 **Request**
 

@@ -7,11 +7,10 @@ permalink: /:path/
 icon:
   content: remove_red_eye
 additional: true
-menu_order: 1100
+menu_order: 1400
 ---
 
 {:.heading-line}
-
 ## Core Features
 
 {% include card-list.html %}

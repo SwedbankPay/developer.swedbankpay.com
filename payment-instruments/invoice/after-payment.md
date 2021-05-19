@@ -12,13 +12,12 @@ GET request on the payment resource, which contains the paymentID generated in
 the first step, to receive the state of the transaction. You will also be able
 to see the available operations after posting a payment.
 
-*   **Abort:** It is possible to abort the process if the payment has no
-  successful transactions. [See the `abort`
-  description][abort-description].
-*   An invoice authorization must be followed by a `capture` or
+* **Abort:** It is possible to abort the process if the payment has no
+  successful transactions. [See the `abort` description](#abort).
+* An invoice authorization must be followed by a `capture` or
   `cancel` request.
-*   For reversals, you will need to implement the `reversal` request.
-*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
+* For reversals, you will need to implement the `reversal` request.
+* **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
 
@@ -178,9 +177,4 @@ sequenceDiagram
 {% include iterator.html prev_href="capture" prev_title="Capture"
 next_href="features" next_title="Features" %}
 
-----------------------------------------------------------
-[abort-description]: #abort
 [callback-request]: /payment-instruments/invoice/features/technical-reference/callback
-[invoice-captures]: #captures
-[invoice-cancellations]: #cancellations
-[invoice-reversals]: #reversals

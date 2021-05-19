@@ -311,11 +311,8 @@ next_href="after-payment" next_title="After Payment" %}
 [callback]: /payment-instruments/swish/features/technical-reference/callback
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
-[payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
 [paymenturl]: /payment-instruments/swish/features/technical-reference/payment-url
 [price-resource]: /payment-instruments/swish/features/technical-reference/prices
 [purchase]: /payment-instruments/swish/features/technical-reference/create-payment
-[sales-transaction]: /payment-instruments/swish/after-payment#sales
 [seamless-view-img]: /assets/img/checkout/swish-seamless-view.png
-[swish-payments]: /payment-instruments/swish/after-payment#payment-resource
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

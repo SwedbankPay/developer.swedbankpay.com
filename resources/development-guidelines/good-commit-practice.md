@@ -295,7 +295,7 @@ What is self-evident to one person, might be clear as mud to another person.
 Always document what the original problem was and how it is being fixed, for
 any change except the most obvious typos, or whitespace only commits.
 
-### Describe *why*   a change is being made
+### Describe *why* a change is being made
 
 A common mistake is to just document how the code has been written, without
 describing *why*   the developer chose to do it that way. By all means describe
@@ -501,6 +501,8 @@ the check fails. e.g.:
     Fixes LP Bug #1012689.
     Change-Id: I91c0b7c41804b2b25026cbe672b9210c305dc29b
 ```
+
+<!--lint disable no-duplicate-headings-->
 
 ### Examples of good practice
 

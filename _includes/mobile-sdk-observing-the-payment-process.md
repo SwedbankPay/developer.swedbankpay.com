@@ -134,8 +134,8 @@ Any errors are ones thrown by your Configuration, or, in the case of
 `paymentFailed`, `SwedbankPaySDKController.WebContentError`.
 `SwedbankPaySDKController.WebContentError` has two cases:
 
-*    .ScriptLoadingFailure(scriptUrl: URL?): The script failed to load. No error message is available; this is a limitation of WKWebView
-*    .ScriptError(SwedbankPaySDK.TerminalFailure?): The script made an `onError` callback. The payload is the [Terminal Failure][terminal-failure] reported by Swedbank Pay.
+* .ScriptLoadingFailure(scriptUrl: URL?): The script failed to load. No error message is available; this is a limitation of WKWebView
+* .ScriptError(SwedbankPaySDK.TerminalFailure?): The script made an `onError` callback. The payload is the [Terminal Failure][terminal-failure] reported by Swedbank Pay.
 
 When using the Merchant Backend Configuration, other errors will be of the type
 `SwedbankPaySDK.MerchantBackendError`.

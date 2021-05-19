@@ -7,7 +7,7 @@ description: |
   In the Direct scenario, Swedbank Pay receives the Swish registered mobile
   number directly from the merchant UI. Swedbank Pay performs a payment that
   the payer confirms using her Swish mobile app.
-menu_order: 600
+menu_order: 900
 ---
 
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
@@ -429,10 +429,6 @@ sequenceDiagram
 next_href="redirect" next_title="Redirect" %}
 
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
-[swish-redirect-view]: /assets/screenshots/swish/redirect-view/view/windows-small-window.png
 [callback-url]: /payment-instruments/swish/features/technical-reference/callback
-[redirect]: /payment-instruments/swish/redirect
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
-[payee-reference]: /payment-instruments/swish/features/technical-reference/payee-reference
 [purchase]: /payment-instruments/swish/direct#m-commerce-purchase-flow
-[sales-transaction]: /payment-instruments/swish/after-payment#sales

@@ -8,7 +8,7 @@ description: |
   provide **Direct Bank** payments on your website. Choose between our
   **Redirect** and **Seamless View** integration options.
 permalink: /:path/
-menu_order: 800
+menu_order: 700
 ---
 
 {% include alert.html type="informative"
@@ -87,10 +87,5 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
 [after-payment]: /payment-instruments/trustly/after-payment
-[callback-api]: /payment-instruments/trustly/features/technical-reference/callback
-[optional]: /payment-instruments/trustly/optional
 [payment-resource]: /payment-instruments/swish/features/technical-reference/payment-resource
-[recur]: /payment-instruments/trustly/features/optional/recur
-[redirect]: /payment-instruments/trustly/redirect
-[purchase]: /payment-instruments/trustly/features/technical-reference/create-payment
 [trustly-guidelines]: https://trustly.com/en/developer/documents

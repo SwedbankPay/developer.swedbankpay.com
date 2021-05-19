@@ -130,8 +130,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`payer`                 | `string`     | The `payer` object, containing information about the payer.                                                                     |
 |                  | └─➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md %}                                                                     |
 |                  | └➔&nbsp;`prefillInfo`           | `object`     | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                        |
-|                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePay's page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectivly.                                                                                          |
-| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                                                                                                                                                                                                              |
+|                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePay's page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectively.                                                                                          |
+| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to the logo that will be visible at MobilePay Online. For it to be displayed correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                                                                                                                                                                                                              |
 
 {:.code-view-header}
 **Response**
@@ -386,9 +386,5 @@ sequenceDiagram
 [complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
 [mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
-[mobilepay-cancel]: /payment-instruments/mobile-pay/features/core/cancel
-[mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
-[payee-reference]: /payment-instruments/mobile-pay/features/technical-reference/payee-reference
 [user-agent]:  https://en.wikipedia.org/wiki/User_agent
 [swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png
-[technical-reference-callback]: /payment-instruments/mobile-pay/features/technical-reference/callback

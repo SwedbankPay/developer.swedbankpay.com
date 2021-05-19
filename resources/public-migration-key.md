@@ -21,7 +21,7 @@ paste it from below and save it to a file called `SwedbankPay.key`.
 {:.code-view-header}
 **Public Key**
 
-```
+```text
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBF9kf58BEADlsQpmtsDwieUC/Zw0Vrfsc5/wT3BpIwJoMEK5YkjwrX4vx3yC
@@ -110,4 +110,3 @@ gpg2 --armor --encrypt -r SwedbankPay CARDDATA.csv
 
 When the above command has executed, the `gpg` tool will have created a file
 named `CARDDATA.csv.asc`, which contains the encrypted data.
-

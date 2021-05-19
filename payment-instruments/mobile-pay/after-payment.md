@@ -2,7 +2,7 @@
 title: After Payment
 redirect_from: /payments/mobile-pay/after-payment
 estimated_read: 20
-menu_order: 700
+menu_order: 900
 ---
 
 ## Options after posting a payment

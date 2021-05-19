@@ -9,5 +9,4 @@ icon:
   outlined: true
 ---
 
-
 {% include payment-url.md full_reference=true %}
