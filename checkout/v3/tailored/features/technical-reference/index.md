@@ -95,6 +95,7 @@ card_list_2:
   icon:
     content: event
     outlined: true
+anchor_headings: false
 ---
 
 {:.heading-line}

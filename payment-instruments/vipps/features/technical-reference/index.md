@@ -5,6 +5,7 @@ description: |
   you will encounter when integrating against Vipps.
 permalink: /:path/
 menu_order: 1600
+anchor_headings: false
 ---
 
 {:.heading-line}

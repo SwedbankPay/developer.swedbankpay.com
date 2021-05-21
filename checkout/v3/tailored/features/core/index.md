@@ -34,6 +34,7 @@ card_list:
   icon:
     content: description
     outlined: true
+anchor_headings: false
 ---
 
 {:.heading-line}

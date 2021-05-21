@@ -4,6 +4,7 @@ description: |
   In this section, you can read more about the core features of Gift Cards.
 permalink: /:path/
 menu_order: 1100
+anchor_headings: false
 ---
 
 {:.heading-line}

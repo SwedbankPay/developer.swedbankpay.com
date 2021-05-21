@@ -152,6 +152,7 @@ card_list_3:
   icon:
     content: verified_user
     outlined: true
+anchor_headings: false
 ---
 
 {:.heading-line}

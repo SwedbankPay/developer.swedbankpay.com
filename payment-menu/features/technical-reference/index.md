@@ -5,6 +5,7 @@ description: |
   you will encounter when integrating against the Payment Menu.
 permalink: /:path/
 menu_order: 1300
+anchor_headings: false
 ---
 
 {:.heading-line}

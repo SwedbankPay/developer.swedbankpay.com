@@ -5,6 +5,7 @@ description: |
   you will encounter when integrating against Trustly.
 permalink: /:path/
 menu_order: 1400
+anchor_headings: false
 ---
 
 {:.heading-line}
