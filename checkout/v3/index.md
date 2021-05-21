@@ -9,9 +9,6 @@ description: |
   through highly customizable and flexible components.
   Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
   and try out Swedbank Pay Checkout for yourself!
-icon:
-  content: remove_red_eye
-additional: true
 menu_order: 200
 card_list:
 - title: Checkout Basic

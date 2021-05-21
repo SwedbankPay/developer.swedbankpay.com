@@ -3,9 +3,6 @@ title: Core Features
 description: |
   This section details the Checkout features that are essential for the payment
   process.
-icon:
-  content: remove_red_eye
-additional: true
 menu_order: 1100
 card_list:
 - title: 3-D Secure 2

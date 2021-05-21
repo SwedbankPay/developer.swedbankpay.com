@@ -2,9 +2,6 @@
 title: Optional Features
 description: |
   This section details the Checkout features that are optional.
-icon:
-  content: remove_red_eye
-additional: true
 menu_order: 1200
 card_list:
 - title: Custom Logo
