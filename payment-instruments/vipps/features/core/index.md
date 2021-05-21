@@ -4,10 +4,8 @@ description: |
   This section details the features of Vipps that are essential for the
   payment process.
 permalink: /:path/
-icon:
-  content: remove_red_eye
-additional: true
 menu_order: 1400
+anchor_headings: false
 ---
 
 {:.heading-line}
