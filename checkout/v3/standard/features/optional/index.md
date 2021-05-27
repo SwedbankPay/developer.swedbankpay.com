@@ -10,9 +10,9 @@ card_list:
   icon:
     content: copyright
     outlined: true
-- title: Delegated Strong Consumer Authentication
+- title: Merchant Authenticated Consumer
   description: The Checkin alternative
-  url: /checkout/v3/standard/features/optional/dsca
+  url: /checkout/v3/standard/features/optional/mac
   icon:
     content: verified
     outlined: true
