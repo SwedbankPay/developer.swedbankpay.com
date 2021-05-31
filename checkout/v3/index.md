@@ -16,9 +16,9 @@ card_list:
   url:  /checkout/v3/basic
   icon:
     content: shopping_cart
-- title: Checkout Delegated SCA
-  description: A Delegated SCA description
-  url: /checkout/v3/dsca
+- title: Checkout MAC
+  description: A MAC description
+  url: /checkout/v3/mac
   icon:
     content: shopping_cart
     outlined: true
