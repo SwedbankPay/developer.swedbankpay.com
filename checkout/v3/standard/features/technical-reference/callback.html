@@ -4055,30 +4055,8 @@ transaction time:
   <li>A callback should return a <code class="language-html highlighter-rouge">200 OK</code> response.</li>
 </ul>
 
-<div class="alert alert-complex alert-warning">
-<header class="alert-header">
-        
-        <i class="material-icons alert-icon">warning</i>
-      <h3>
-        
-        
-          Differing IP
-addresses
-        
-        
-      </h3></header>
-    
-
-    
-    
-    <div class="alert-body">
-        <p>Please note that the callback is sent from <code class="language-html highlighter-rouge">91.132.170.1</code> in
-the <strong>test environment</strong> and from <code class="language-html highlighter-rouge">82.115.146.1</code> in
-the <strong>production environment</strong>.</p>
-    </div>
-    
-    
-</div>
+<p>The callback is sent from <code class="language-html highlighter-rouge">91.132.170.1</code> in both the test and production
+environment.</p>
 
 <p>To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a <code class="language-html highlighter-rouge">GET</code> request on the received URI and inspect the
