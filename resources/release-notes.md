@@ -90,7 +90,7 @@ Other changes:
 *   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
 *   Renamed Merchant Authenticated Consumer to
-    [Delegated Strong Consumer Authentication][dsca].
+    [Delegated Strong Consumer Authentication][mac].
 *   Updated `payer`/`consumer`/`end-user` naming for most sections.
 *   Updated expiry date for test cards in [test data][test-data].
 *   Updated [callback][checkout-callback] documentation.
@@ -234,7 +234,7 @@ Other changes:
     block styling after the update to [Swedbank Pay Design Guide][design-guide]
     4.5.0.
 *   Added examples with screenshots of the effects of [Delegated Strong Consumer
-    Authentication][dsca-checkout].
+    Authentication][mac-checkout].
 
 ### Version 1.8.2
 
@@ -246,7 +246,7 @@ Other changes:
 *   Updated [Card Payments Direct][card-direct] to have a correct integration
     flow.
 *   Updated the [main page][frontpage] to be more welcoming.
-*   Updated information on [Delegated Strong Consumer Authentication][dsca-checkout].
+*   Updated information on [Delegated Strong Consumer Authentication][mac-checkout].
 
 ## 31 Mar 2020
 
@@ -578,7 +578,7 @@ integration and the payer.
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
-[dsca]: /checkout/v2/features/optional/dsca
+[mac]: /checkout/v2/features/optional/mac
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
 [home-technical-information]: /introduction
@@ -586,7 +586,7 @@ integration and the payer.
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
-[dsca-checkout]: /checkout/v2/features/optional/dsca
+[mac-checkout]: /checkout/v2/features/optional/mac
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
 [mobilepay-capture]: /payment-instruments/mobile-pay/capture

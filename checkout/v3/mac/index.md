@@ -1,5 +1,5 @@
 ---
-section: Checkout Delegated SCA
+section: Checkout MAC
 title: Introduction
 estimated_read: 3
 description: |
