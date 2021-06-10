@@ -16,20 +16,20 @@ card_list:
 - title: Authentication
   description: |
     Use this integration when having consumer data but want to access Swedbank Pay checkout for easier payment flow for your consumers.
-  url:  /checkout/v3/Authentication
+  url:  /checkout/v3/authentication
   icon:
     content: shopping_cart
     outlined: true
 - title: Standard
   description: Coming soon…
   disabled: true
-  url:  /checkout/v3/Standard
+  url:  /checkout/v3/standard
   icon:
     content: shopping_cart
     outlined: true
 - title: Merchant Authenticated Consumer
   description: Use this integration when having consumer data and consumers authenticate on your site, but want to access Swedbank Pay checkout for easier payment flow for your consumers.
-  url:  /checkout/v3/MAC
+  url:  /checkout/v3/mac
   icon:
     content: shopping_cart
     outlined: true
@@ -38,9 +38,9 @@ card_list:
 {:.heading-line}
 {% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
-[checkout-3-Authentication]: /checkout/v3/Authentication
-[checkout-3-Standard]: /checkout/v3/Standard
-[checkout-3-MAC]: /checkout/v3/MAC
+[checkout-3-Authentication]: /checkout/v3/authentication
+[checkout-3-Standard]: /checkout/v3/standard
+[checkout-3-MAC]: /checkout/v3/mac
 
 ## Checkout
 
@@ -55,7 +55,7 @@ To start integrating Swedbank Pay Checkout, you need the following:
 *   [HTTPS][https] enabled web server.
 *   Agreement that includes Swedbank Pay Checkout.
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
-    Swedbank Pay Admin. 
+    Swedbank Pay Admin.
 
 ## Introduction
 
@@ -75,5 +75,3 @@ features like storing cards, it is not a mandatory step for the Checkout process
 to work. If the payer is from a country where we currently don't support
 to create a consumer profile, or if he or she opts not to store their data, that's fine. The Payment
 Menu can still be used as a **guest**.
-
-
