@@ -143,12 +143,15 @@ Among the operations in the POST `paymentOrders` response, you will find the
 }
 ```
 
-The redirect link opens the payment menu in checkin state. It should look like
-this, a Checkin page followed by the payment menu with the provided payer
-information on top.
+The redirect link opens the payment menu in checkin state. The first page will
+be the checkin page where the payer provides their email and phone number.
 
 {:.text-center}
 ![screenshot of the authentication model redirect checkin][redirect-checkin]
+
+After checking in, the payment menu will appear on a new page with the payer
+information displayed above the menu. The payer can select their preferred
+payment instrument and pay.
 
 {:.text-center}
 ![screenshot of the authentication model redirect payment menu][redirect-payment-menu]
