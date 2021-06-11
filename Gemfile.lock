@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/SwedbankPay/searchyll.git
-  revision: 1b226961c92fe630acd9d19e93887b49f7529b17
-  branch: feature/api_key
+  revision: c10820e4762a2c22c3a4bdf54a20a1c6881ca0f0
   specs:
     searchyll (0.10.2)
       jekyll (>= 3.0)
@@ -19,7 +18,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -40,8 +39,8 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    ffi (1.15.0)
-    ffi (1.15.0-x64-mingw32)
+    ffi (1.15.1)
+    ffi (1.15.1-x64-mingw32)
     forwardable-extended (2.6.0)
     gemoji (3.0.1)
     html-pipeline (2.14.0)
@@ -100,13 +99,13 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     multipart-post (2.1.1)
-    nokogiri (1.11.5)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    nokogiri (1.11.5-x64-mingw32)
+    nokogiri (1.11.7-x64-mingw32)
       racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
