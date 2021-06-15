@@ -1,0 +1,29 @@
+---
+title: COMPLETE
+---
+//[mobilesdk](../../../../../index.html)/[com.swedbankpay.mobilesdk](../../../index.html)/[PaymentViewModel](../../index.html)/[State](../index.html)/[COMPLETE](index.html)
+
+
+
+# COMPLETE
+
+
+
+[androidJvm]\
+[COMPLETE](index.html)()
+
+
+
+Payment is complete. You should hide the [PaymentFragment](../../../-payment-fragment/index.html). This status does not signal anything of whether the payment was successful. You need to check the status from your servers.
+
+
+
+## Properties
+
+
+| Name | Summary |
+|---|---|
+| [isFinal](is-final.html) | [androidJvm]<br>open override val [isFinal](is-final.html): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>true |
+| [name](../../../-re-order-purchase-indicator/-f-i-r-s-t_-t-i-m-e_-o-r-d-e-r-e-d/index.html#-372974862%2FProperties%2F-1074806346) | [androidJvm]<br>val [name](../../../-re-order-purchase-indicator/-f-i-r-s-t_-t-i-m-e_-o-r-d-e-r-e-d/index.html#-372974862%2FProperties%2F-1074806346): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
+| [ordinal](../../../-re-order-purchase-indicator/-f-i-r-s-t_-t-i-m-e_-o-r-d-e-r-e-d/index.html#-739389684%2FProperties%2F-1074806346) | [androidJvm]<br>val [ordinal](../../../-re-order-purchase-indicator/-f-i-r-s-t_-t-i-m-e_-o-r-d-e-r-e-d/index.html#-739389684%2FProperties%2F-1074806346): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
+
