@@ -4,6 +4,7 @@ estimated_read: 10
 description: |
   The latest updates about our releases will be
   published on this page.
+menu_order: 800
 ---
 
 {% include alert.html type="informative" icon="info" header="Version numbers"

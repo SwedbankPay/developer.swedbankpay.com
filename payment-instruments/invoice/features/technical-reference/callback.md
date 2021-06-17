@@ -10,6 +10,4 @@ icon:
    outlined: true
 ---
 
-{% include alert-risk-indicator.md %}
-
 {% include callback.md %}

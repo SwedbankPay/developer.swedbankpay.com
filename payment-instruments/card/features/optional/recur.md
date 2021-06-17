@@ -10,5 +10,3 @@ icon:
 ---
 
 {% include recurring-card-payments.md %}
-
-{% include recur.md %}

@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "requestTraExemption": true
+        "requestTraExemption": true,
         "payer": {
             "requireConsumerInfo": false,
             "digitalProducts": false,
