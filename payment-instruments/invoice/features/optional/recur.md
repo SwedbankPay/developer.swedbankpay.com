@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include recur.md %}
+{% include recurring-card-payments.md %}
