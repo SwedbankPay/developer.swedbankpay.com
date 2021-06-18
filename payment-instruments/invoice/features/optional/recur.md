@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include recurring-card-payments.md %}
+{% include payment-order-recur.md %}
