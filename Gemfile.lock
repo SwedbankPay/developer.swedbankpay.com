@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/SwedbankPay/searchyll.git
-  revision: c10820e4762a2c22c3a4bdf54a20a1c6881ca0f0
+  revision: 6d4802163cd3ef11d4ea6d512d4be37dce484b73
   specs:
     searchyll (0.10.2)
       jekyll (>= 3.0)
