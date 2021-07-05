@@ -19,7 +19,8 @@ performed as an alternative to `Checkin` when creating the Payment Order upon
 the initialization of the `Payment Menu`. You can only use MAC if you have an
 agreement with Swedbank Pay. The additional `nationalIdentifier` field described
 below should be added to the `paymentorder.payer` object already in the Payment
-Order creation request, as an alternative to `consumerProfileRef`. {% endif %}
+Order creation request, as an alternative to `consumerProfileRef`.
+{% endif %}
 
 {% include alert.html type="warning" icon="warning" header="Bank ID
 authentication required" body="In order to use the MAC feature, you
