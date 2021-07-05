@@ -3,9 +3,9 @@ title: Redirect
 estimated_read: 12
 description: |
   Redirect is our simplest integration, where Swedbank Pay handles the
-  payments, so you can focus on your core activities. When ready to pay, the 
-  payer will be redirected to a secure Swedbank Pay hosted site, authenticate 
-  the Checkout profile and choose their payment instrument. After the payment, 
+  purchase, so you can focus on your core activities. When ready to pay, the
+  payer will be redirected to a secure Swedbank Pay hosted site, authenticate
+  the Checkout profile and choose their payment instrument. After the purchase,
   the payer will be redirected back to your website.
 menu_order: 200
 ---
@@ -25,33 +25,34 @@ sequenceDiagram
     participant 3rdParty
 
         rect rgba(238, 112, 35, 0.05)
-            note left of Consumer: Checkout Authenticate Redirect
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
             Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:redirect-paymentmenu
+            SwedbankPay -->>+ Merchant: rel:redirect-checkout
             deactivate SwedbankPay
-            Merchant -->>- Payer: Redirect consumer to SwedbankPay payment page.
+            Merchant -->>- Payer: Redirect payer to SwedbankPay payment page.
             activate Payer
             Payer ->> Payer: Initiate Authenticate step
-               Payer ->>+ SwedbankPay: Show Checkin component
+               Payer ->> SwedbankPay: Show Checkin component
     deactivate Payer
-    SwedbankPay ->>- Payer: Payer identification process
+    activate SwedbankPay
+    SwedbankPay ->> Payer: Payer identification process
     activate Payer
-    Payer ->>+ SwedbankPay: Payer identification process
+    Payer ->> SwedbankPay: Payer identification process
     deactivate Payer
-    SwedbankPay -->>- Payer: show payer completed iframe
-    activate Consumer
+    SwedbankPay -->> Payer: show payer completed iframe
+    activate Payer
     Payer ->> Payer: Initiate Payment step
-            deactivate Payer
-            SwedbankPay ->>+ Payer: Do payment logic
-            deactivate SwedbankPay
-            Payer ->> SwedbankPay: Do payment logic
-            deactivate Payer
 
-                opt Payer perform payment out of iFrame
+    deactivate Payer
+    SwedbankPay ->>+ Payer: Do payment logic
+    Payer ->> SwedbankPay: Do payment logic
+    deactivate Payer
+    deactivate SwedbankPay
+
+                    opt Payer perform payment out of iFrame
                     activate Payer
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
@@ -63,7 +64,9 @@ sequenceDiagram
                     deactivate Payer
                 end
 
-        SwedbankPay -->> Payer: Payment status
+                activate SwedbankPay
+                SwedbankPay -->> Payer: Payment status
+                deactivate SwedbankPay
 
             alt If payment is completed
             activate Payer
@@ -75,23 +78,21 @@ sequenceDiagram
             SwedbankPay ->>+ Merchant: rel: paid-paymentorder
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Payer
-            deactivate Payer
             Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
             deactivate Merchant
             SwedbankPay -->> Merchant: Payment Details
             deactivate SwedbankPay
             end
             end
- 
-        activate Merchant
-        Merchant -->>- Payer: Show Purchase complete
-            opt PaymentOrder Callback (if callbackUrls is set)
-            activate Payer
-            deactivate Payer
+
+activate Merchant
+Merchant -->>- Payer: Show Purchase complete
+         opt PaymentOrder Callback (if callbackUrls is set) ①
+                activate SwedbankPay
                 SwedbankPay ->> Merchant: POST Payment Callback
-            end
-            end
+                deactivate SwedbankPay
+         end
+         end
 
     rect rgba(81,43,43,0.1)
         activate Merchant
@@ -103,6 +104,8 @@ sequenceDiagram
         end
 ```
 
+*   ① Read more about [callback][callback] handling in the technical reference.
+
 ## Step 1: Create Payment Order And Checkin
 
 When the purchase is initiated, you need to create a payment order.
@@ -113,18 +116,23 @@ with payer information and a `completeUrl`.
 Two new fields have been added to the payment order request in this integration.
 `requireConsumerInfo` and `digitalProducts`. They are a part of the `payer`
 node. Please note that `shippingAdress` is only required if `digitalProducts` is
-set to `false`.
+set to `false`. `requireConsumerInfo` **must** be set to `false`.
 
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-authenticate.md %}
+{% include payment-order-checkout-authenticate.md integration_mode="redirect" %}
+
+Supported features for this integration are subscriptions (`recur` and
+`unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
+own `logo`.
 
 ## Step 2: Display Payment Menu And Checkin
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`redirect-paymentmenu`. This is the one you need to display the payment.
+`redirect-paymentmenu`. This is the one you need to display the checkin and
+payment menu.
 
 {:.code-view-header}
 **Response**
@@ -159,12 +167,14 @@ payment instrument and pay.
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the payment state.
 
-You are now ready to capture the funds. Follow the link below to read more.
+You are now ready to capture the funds. Follow the link below to read more about
+capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="capture"
-                         next_title="Capture" %}
+                         next_href="post-purchase"
+                         next_title="Post Purchase" %}
 
+[callback]: /checkout/v3/authentication/features/technical-reference/callback
 [redirect-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [redirect-payment-menu]: /assets/img/checkout/authentication-redirect-payment-menu.png

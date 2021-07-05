@@ -20,14 +20,14 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "urls": {
+        "urls": { {% if include.integration_mode=="seamless_view" %}
             "hostUrls": [ "https://example.com", "https://example.net" ],
-            "paymentUrl": "https://example.com/perform-payment",
+            "paymentUrl": "https://example.com/perform-payment", {% endif %}
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
-            "logoUrl": "https://example.com/logo.png"
+            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"{% if include.integration_mode=="redirect" %},
+            "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",

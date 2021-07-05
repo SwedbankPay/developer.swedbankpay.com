@@ -14,22 +14,30 @@ menu_order: 100
 
 You should choose our **Checkout Authentication** integration model if
 
--   you collect the consumer information needed to complete an order yourself.
--   you **do not** need consumer information from Swedbank Pay to calculate
+-   you collect the payer information needed to complete an order yourself.
+-   you **do not** need payer information from Swedbank Pay to calculate
     shipping costs.
--   you **do not** have a consumer authentication login.
--   you want your payers to access stored payment information in Swedbank Pay
-    Checkout for an easier payment process.
+-   you **do not** have a strong payer authentication login.
+-   you want your payers to access stored purchase information in Swedbank Pay
+    Checkout for an easier purchase process.
+
+### Requirements
+
+-   You need a Checkout agreement to use this product.
+-   You need a data exchange agreement since we receive payer data from you.
+
+Please contact our [Sales department][contact-sales] regarding these
+requirements.
 
 There are two different ways of integrating the Authentication model.
 **Redirect** and **Seamless View**.
 
 **Redirect** sends the consumer to a Swedbank Pay page where we handle the
-authentication and payment process. The consumer will be redirected back to you
-when the purchase is completed or if the consumer aborts the payment. The
+authentication and purchase process. The payer will be redirected back to you
+when the purchase is completed or if the payer aborts the purchase. The
 payment page will be styled by Swedbank Pay.
 
-With **Seamless View**, the consumer stays at your site, and you initiate the
+With **Seamless View**, the payer stays at your site, and you initiate the
 Swedbank Pay authentication and payment module in an iframe. The checkin and
 payment component will be styled by Swedbank Pay.
 
@@ -45,3 +53,4 @@ Read more about our two integration alternatives by clicking the links below.
 
 [after-payment-capture]: /checkout/v3/capture
 [https]: /introduction#connection-and-protocol
+[contact-sales]: /contact/
