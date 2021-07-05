@@ -18,55 +18,56 @@ Note that in this diagram, the Payer refers to the merchant front-end
 
 ```mermaid
 sequenceDiagram
-    participant Consumer
+    participant Payer
     participant Merchant
     participant SwedbankPay as Swedbank Pay
     participant 3rdParty
 
         rect rgba(238, 112, 35, 0.05)
-            note left of Consumer: Checkout Authenticate seamless view
-            activate Consumer
-            Consumer ->>+ Merchant: Initiate Purchase
-            deactivate Consumer
+            activate Payer
+            Payer ->>+ Merchant: Initiate Purchase
+            deactivate Payer
             Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-paymentmenu
+            SwedbankPay -->>+ Merchant: rel:view-checkout
             deactivate SwedbankPay
-            Merchant -->>- Consumer: Display SwedbankPay Payment Menu on Merchant Page
+            Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
             activate Consumer
-    Consumer ->> Consumer: Initiate Payment step
-            deactivate Consumer
-            SwedbankPay ->>+ Consumer: Do payment logic
+            Payer ->> Payer: Initiate Payment step
+            deactivate Payer
+            SwedbankPay ->>+ Payer: Do payment logic
             deactivate SwedbankPay
-            Consumer ->> SwedbankPay: Do payment logic
-            deactivate Consumer
+            Payer ->> SwedbankPay: Do payment logic
+            deactivate Payer
 
-                opt Consumer perform payment out of iFrame
-                    activate Consumer
+                opt Payer perform payment out of iFrame
+                    activate Payer
                     Consumer ->> Consumer: Redirect to 3rd party
                     Consumer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Consumer
-                    3rdParty -->>+ Consumer: Redirect back to paymentUrl (merchant)
+                    deactivate Payer
+                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
-                    Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
-                    Consumer ->>+ SwedbankPay: Show Payment UI page in iframe
-                    deactivate Consumer
+                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
+                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
+                    deactivate Payer
                 end
 
-        SwedbankPay -->> Payer: Payment status
+                activate SwedbankPay
+                SwedbankPay -->> Payer: Payment status
+                deactivate SwedbankPay
 
             alt If payment is completed
-            activate Consumer
-            Consumer ->> Consumer: Event: onPaymentCompleted
-            Consumer ->>+ Merchant: Check payment status
-            deactivate Consumer
+            activate Payer
+            Payer ->> Payer: Event: onPaymentCompleted ①
+            Payer ->>+ Merchant: Check payment status
+            deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
             SwedbankPay ->>+ Merchant: rel: paid-paymentorder
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Consumer
-            deactivate Consumer
+            activate Payer
+            deactivate Payer
             Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
             deactivate Merchant
             SwedbankPay -->> Merchant: Payment Details
@@ -74,32 +75,38 @@ sequenceDiagram
             end
             end
 
+            activate Merchant
+Merchant -->>- Payer: Show Purchase complete
+            end
+
                 opt If payment is failed
-                activate Consumer
-                Consumer ->> Consumer: Event: OnPaymentFailed
-                Consumer ->>+ Merchant: Check payment status
-                deactivate Consumer
+                activate Payer
+                Payer ->> Payer: Event: OnPaymentFailed ①
+                Payer ->>+ Merchant: Check payment status
+                deactivate Payer
                 Merchant ->>+ SwedbankPay: GET {paymentorder.id}
                 deactivate Merchant
                 SwedbankPay -->>+ Merchant: rel: failed-paymentorder
                 deactivate SwedbankPay
                 opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-                activate Consumer
-                deactivate Consumer
+                activate Payer
+                deactivate Payer
                 Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
                 deactivate Merchant
                 SwedbankPay -->> Merchant: Payment Details
                 deactivate SwedbankPay
                 end
+                activate Merchant
+                Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
                 end
-        activate Merchant
-        Merchant -->>- Consumer: Show Purchase complete
-            opt PaymentOrder Callback (if callbackUrls is set)
-            activate Consumer
-            deactivate Consumer
+
+           opt PaymentOrder Callback (if callbackUrls is set) ②
+                activate SwedbankPay
                 SwedbankPay ->> Merchant: POST Payment Callback
-            end
-            end
+                deactivate SwedbankPay
+         end
+         end
+
 
     rect rgba(81,43,43,0.1)
         activate Merchant
@@ -111,25 +118,63 @@ sequenceDiagram
         end
 ```
 
-### Explanations
+*   ① See [seamless view events][seamless-view-events] for further information.
+*   ② Read more about [callback][callback] handling in the technical reference.
 
-Under, you see a list of notes that explains some of the sequences in the
-diagram.
+## Step 1: Create Payment Order
 
-#### Checkin
+When the payer has been checked in and the purchase is initiated, you need to
+create a payment order.
 
-*   ① `rel: view-consumer-identification` is a value in one of the operations,
-    sent as a response from Swedbank Pay to the Merchant.
-*   ② `Initiate Consumer Seamless View (open iframe)` creates the iframe.
-*   ③ `Show Consumer UI page in iframe` displays the checkin form as content inside
-    of the iframe.
-*   ④ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when
-    the consumer has been identified
+Start by performing a `POST` request towards the `paymentorder` resource
+with payer information and a `completeUrl`.
 
-#### Payment Menu
+Two new fields have been added to the payment order request in this integration.
+`requireConsumerInfo` and `digitalProducts`. They are a part of the `payer`
+node. Please note that `shippingAdress` is only required if `digitalProducts` is
+set to `false`. `requireConsumerInfo` **must** be set to `false`.
 
-*   ⑤ `Authorize Payment` is when the payer has accepted the payment.
+{% include payment-url.md when="selecting the payment instrument Vipps or in the
+3-D Secure verification for Card Payments" %}
 
-{% include payment-order-checkout-mac.md %}
+{% include alert-risk-indicator.md %}
 
-{% include view-payment-order-checkout.md %}
+{% include alert-gdpr-disclaimer.md %}
+
+{% include payment-order-checkout-mac.md integration_mode="seamless-view" %}
+
+## Step 2: Display Payment Menu
+
+Among the operations in the POST `paymentOrders` response, you will find the
+`view-paymentmenu`. This is the one you need to display the checkin and payment
+module.
+
+{:.code-view-header}
+**Response**
+
+```
+{
+    "paymentOrder": {
+    "operations": [
+        {
+            "method": "GET",
+            "href": "https://ecom.stage.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
+            "rel": "view-paymentmenu",
+            "contentType": "text/html"
+        },
+    ]
+}
+```
+
+Embed the `href` in a `<script>` element. That script will then load the
+Seamless View.
+
+To load the Checkout from the JavaScript URL obtained in the backend API
+response, it needs to be set as a script element’s `src` attribute. You can
+cause a page reload and do this with static HTML, or you can avoid the page
+refresh by invoking the POST to create the payment order through Ajax and then
+create the script element with JavaScript. The HTML code will be unchanged in
+this example.
+
+[callback]: /checkout/v3/mac/features/technical-reference/callback
+[seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events

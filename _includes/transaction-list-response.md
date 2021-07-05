@@ -68,7 +68,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture response_table%}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | {% include field-description-id.md sub_resource=plural %}                                                                                                                                                    |
@@ -89,5 +90,8 @@ Content-Type: application/json
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content = response_table
+%}
 
 [operations]: {{ features_url }}/technical-reference/operations

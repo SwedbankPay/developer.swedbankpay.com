@@ -20,14 +20,14 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "urls": { {% if seamless_view %}
+        "urls": { {% if include.integration_mode=="seamless_view" %}
             "hostUrls": [ "https://example.com", "https://example.net" ],
-            "paymentUrl": "https://example.com/perform-payment",{% endif %}
+            "paymentUrl": "https://example.com/perform-payment", {% endif %}
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-canceled",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
-            "logoUrl": "https://example.com/logo.png"
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"{% if include.integration_mode=="redirect" %},
+            "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -267,7 +267,7 @@ Content-Type: application/json
 }
 ```
 
-{% capture request_table %}
+{% capture response_table%}
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -294,7 +294,7 @@ Content-Type: application/json
 | └➔&nbsp;`currentPayment` | `string`     | The URI to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 {% endcapture %}
-{% include accordion-table.html content = request_table
+{% include accordion-table.html content = response_table
 %}
 
 [complete-url]: /{{ documentation_section }}/features/technical-reference/complete-url
