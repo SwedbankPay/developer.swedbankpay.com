@@ -6,7 +6,8 @@
 authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
-{% if documentation_section != 'checkout/v3/basic' %} **Merchant Authenticated
+{% if documentation_section != 'checkout/v3/basic' %}
+**Merchant Authenticated
 Consumer** (hereby abbreviated as "MAC") is performed as an alternative to
 [Checkin][checkin] when creating the Payment Order upon the initialization of
 the [Payment Menu][payment-menu]. You can only use MAC if you have an agreement
