@@ -4,6 +4,7 @@ estimated_read: 5
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
+menu_order: 1000
 ---
 
 ## Swedbank Pay Checkout Test Data
@@ -12,7 +13,7 @@ During a Swedbank Pay Checkout implementation, you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout
 in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
 
-To test a checked-in user in the Demo Shop, please use the following test data:
+To test a checked-in user in the Demoshop, please use the following test data:
 
 ### Checkout test data for Norway
 
