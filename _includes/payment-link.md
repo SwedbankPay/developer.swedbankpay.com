@@ -3,9 +3,10 @@
 
 ### Introduction
 
-The Payment Link is available for payment instruments listed below, using
-the Redirect platform and Swedbank Pay hosted payment page.
+Payment Link is available for our payment menu and the payment instruments
+listed below, using the redirect platform and Swedbank Pay hosted payment page.
 
+*   [Payment Menu][payment-menu]
 *   [Card][card]
 *   [MobilePay Online][mobilepay]
 *   [Swish][swish]
@@ -25,10 +26,10 @@ about your terms and conditions, including purchase information and price. **See
 recommendations in the next section.**" %}
 
 When the payer clicks on the Payment Link, the Swedbank Pay payment page will
-open, letting him or her enter the payment details (varying depending on
+open, letting them enter the payment details (varies depending on
 payment instrument) in a secure Swedbank Pay hosted environment.
 {% if show_3d_secure %}
-When paying with card and if required, Swedbank Pay will handle 3-D
+When paying with card, and if required, Swedbank Pay will handle 3-D
 Secure authentication.
 {% endif %}
 
@@ -42,14 +43,14 @@ which will return the purchase result.
 
 ### E-mail And SMS Recommendations
 
-When you as a merchant sends an e-mail or SMS to the payer about the Payment
-Link, it is recommended to include contextual information which helps him or her
-understand what will happen when clicking the Payment Link. We recommend that
+When you as a merchant send an e-mail or SMS to the payer about the Payment
+Link, it is recommended to include contextual information which helps them
+understand what will happen when they click the Payment Link. We recommend that
 you include the following:
 
 *   The name of the merchant/shop initiating the payment
-*   An understandable product description, describing what kind of service the
-    payer will pay for.
+*   An understandable product description, describing the service they are
+    paying for.
 *   Some order-id (or similar) that exists in the merchant's order system.
 *   The price and currency.
 *   Details about shipping method and expected delivery (if physical goods will
@@ -63,7 +64,7 @@ you include the following:
 ### Receipt Recommendations
 
 We recommend that you send an e-mail or SMS confirmation to the payer with a
-receipt when the payment has been fulfilled.
+receipt when the payment is done.
 
 ### API Requests
 
@@ -223,6 +224,7 @@ sequenceDiagram
 [card-payment]: /assets/img/payments/card-payment.png
 [card]: /payment-instruments/card
 [mobilepay]: /payment-instruments/mobile-pay
+[payment-menu]: /payment-menu
 [purchase-flow]: /payment-instruments/card/features/core/purchase
 [swish]: /payment-instruments/swish
 [technical-reference-callback]: /payment-instruments/card/features/technical-reference/callback
