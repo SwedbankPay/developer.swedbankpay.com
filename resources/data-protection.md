@@ -1,6 +1,7 @@
 ---
 title: Data Protection
 estimated_read: 1
+menu_order: 1200
 ---
 
 ## Paymentorder consumer data

@@ -6,4 +6,4 @@ description: |
 menu_order: 1500
 ---
 
-{% include recur.md %}
+{% include payment-order-recur.md %}
