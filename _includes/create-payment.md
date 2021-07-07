@@ -13,7 +13,7 @@ the following kind of payments:
 *   [Recurrence][recur]
 *   [Verification][verify]
 {% else %}
-*   [Purchase][purchase]
+*   Purchase
 {% endif %}
 
 To create a {{ documentation_section }} payment, you perform an HTTP `POST`
