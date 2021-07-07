@@ -185,4 +185,4 @@ Content-Type: application/json
 [capture]: {{ features_url }}/core/capture
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
-[verify]: {{ features_url }}/optional/verify
+[verify]: /payment-instruments/card/features/optional/verify
