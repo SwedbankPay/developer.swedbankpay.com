@@ -6,15 +6,15 @@
 Within the {{ documentation_section }} part of the eCommerce API, you can create
 the following kind of payments:
 
-*   `Purchase`
-{%- if documentation_section == 'card' %}
+{% if documentation_section == 'card' %}
+
 *   [Purchase][purchase]
 *   [Payout][payout]
-{%- endif %}
-{%- if documentation_section == 'card' or documentation_section == 'invoice' %}
 *   [Recurrence][recur]
 *   [Verification][verify]
-{%- endif %}
+{% else %}
+*   [Purchase][purchase]
+{% endif %}
 
 To create a {{ documentation_section }} payment, you perform an HTTP `POST`
 against the `payments` resource. The kind of payment created is indicated with
@@ -45,6 +45,6 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`intent`    | `string` | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`: Reserves the amount, and is followed by a `Cancel` or `Capture` of funds.<br> <br>`AutoCapture`: A one phase-option which `Capture`s funds automatically after authorization, or `Sale`, where the funds are drawn from an app or a bank account immediately upon completion.                                                                                                                                                                                          |
 
 [purchase]: {{ features_url }}/core/purchase
-[payout]: {{ features_url }}/optional/payout
-[recur]: {{ features_url }}/optional/recur
-[verify]: {{ features_url }}/optional/verify
+[payout]: /payment-instruments/card/features/optional/payout
+[recur]: /payment-instruments/card/features/optional/recur
+[verify]: /payment-instruments/card/features//optional/verify
