@@ -28,7 +28,10 @@ operation to [`Verify`][verify].
 
 ```json
 {
-    "generatePaymentToken": true
+    "generatePaymentToken": true,
+    "payer": {
+    "payerReference": "AB1234",
+    }
 }
 ```
 
@@ -44,7 +47,7 @@ examples are provided below.
 **Request Towards Authorizations Resource**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+GET /psp/{{ api_resource }}/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
@@ -53,7 +56,7 @@ Authorization: Bearer <AccessToken>
 **Request Towards Verifications Resource**
 
 ```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications HTTP/1.1
+GET /psp/{{ api_resource }}/{{ page.payment_id }}/verifications HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
@@ -81,7 +84,7 @@ Abbreviated code example:
 **Request**
 
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -117,8 +120,10 @@ prefilled with the payer's card details. See example below." %}
 
 ### Delete payment token
 
-If you, for any reason, need to delete a `paymentToken`
-you use the `Delete payment token` request.
+If you need to delete a `paymentToken`, you have two options. The first is by
+`payerReference`, which deletes all payment, recurrence and/or unscheduled
+tokens associated with the payer. The second is by `paymentToken`, which only
+deletes a specific token.
 
 {% include alert.html type="warning"
                       icon="warning"
@@ -133,19 +138,21 @@ you use the `Delete payment token` request.
   [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se);
   and supply them with the relevant transaction reference or payment token." %}
 
+If you want to delete tokens by `payerReference`, the request and response
+should look like this:
+
 {:.code-view-header}
 **Request**
 
 ```http
-PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "state": "Deleted",
-    "tokenType": "PaymentToken",
-    "comment": "Comment on why the deletion is happening"
+  "state": "Deleted",
+  "comment": "Comment stating why this is being deleted"
 }
 ```
 
@@ -162,15 +169,69 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "instrumentData": {
-        "id": "/psp/{{ api_resource }}/payments/instrumentdata/{{ page.payment_token }}",
-        "paymentToken": "{{ page.payment_token }}",
-        "payeeId": "{{ page.merchant_id }}",
-        "isDeleted": true,
-        "isPayeeToken": false,
-        "cardBrand": "Visa",
-        "maskedPan": "123456xxxxxx1111",
-        "expiryDate": "MM/YYYY"
+  "payerOwnedTokens": {
+        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
+        "payerReference": "{payerReference}",
+        "tokens": [
+            {
+                "token": "{paymentToken}",
+                "tokenType": "Payment",
+                "instrument": "Invoice-payexfinancingno",
+                "instrumentDisplayName": "260267*****",
+                "instrumentParameters": {
+                    "email": "hei@hei.no",
+                    "msisdn": "+4798765432",
+                    "zipCode": "1642"
+                }
+            },
+            {
+                "token": "{paymentToken}",
+                "tokenType": "Unscheduled",
+                "instrument": "CreditCard",
+                "instrumentDisplayName": "492500******0004",
+                "instrumentParameters": {
+                    "expiryDate": "12/2020",
+                    "cardBrand": "Visa"
+                }
+            }
+        ]
+    }
+}
+```
+
+For single token deletions, the request and response should look like this. In
+this example, the token is connected to a card. If it was an invoice connected
+token, the `instrumentDisplayName` would be the payer's date of birth.
+
+{:.code-view-header}
+**Request**
+
+```http
+PATCH /psp/paymentorders/paymenttokens/{{ page.payment_token }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+  "state": "Deleted",
+  "comment": "Comment stating why this is being deleted"
+}
+```
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentToken": "{{paymentToken}}",
+    "instrument": "CreditCard",
+    "instrumentDisplayName": "492500******0004",
+    "instrumentParameters": {
+        "expiryDate": "12/2022",
+        "cardBrand": "Visa"
     }
 }
 ```
@@ -180,7 +241,7 @@ Content-Type: application/json
 [card]: /payment-instruments/card
 [invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
-[delete-payment-token]: #delete-payment-token
+[delete-payment-token]: {{ features_url }}/technical-reference/delete-token
 [cancel]: {{ features_url }}/core/cancel
 [capture]: {{ features_url }}/core/capture
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
