@@ -151,8 +151,8 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-  "state": "Deleted",
-  "comment": "Comment stating why this is being deleted"
+    "state": "Deleted",
+    "comment": "Comment stating why this is being deleted"
 }
 ```
 
