@@ -169,7 +169,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payerOwnedTokens": {
+    "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
         "payerReference": "{payerReference}",
         "tokens": [
