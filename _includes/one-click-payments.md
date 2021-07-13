@@ -30,7 +30,7 @@ operation to [`Verify`][verify].
 {
     "generatePaymentToken": true,
     "payer": {
-    "payerReference": "AB1234",
+        "payerReference": "AB1234",
     }
 }
 ```
