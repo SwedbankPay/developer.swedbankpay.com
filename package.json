@@ -91,7 +91,7 @@
     "retext-repeated-words": "^3.0.0",
     "retext-sentence-spacing": "^4.0.0",
     "retext-spell": "^4.0.1",
-    "retext-syntax-urls": "^2.0.0",
+    "retext-syntax-urls": "^3.0.0",
     "retext-usage": "^0.5.0",
     "typographic-em-dashes": "^1.0.2",
     "typographic-en-dashes": "^1.0.1",
