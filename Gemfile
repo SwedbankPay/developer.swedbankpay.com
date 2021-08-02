@@ -4,7 +4,7 @@ gem 'jekyll', '~> 4.2.0', group: :jekyll_plugins
 gem 'jemoji'
 
 # Neccessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
-gem 'faraday', '~> 1.5.0'
+gem 'faraday', '~> 1.6.0'
 gem 'jekyll-material-icon-tag'
 gem 'kramdown-plantuml'
 gem 'rake', '~> 13.0.3'
