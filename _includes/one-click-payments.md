@@ -1,5 +1,14 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% if documentation_section == "payment-menu" %}
+    {% capture verification_url %}/psp/paymentorders/{{ page.payment_id }}/verifications{% endcapture %}
+    {% capture authorization_url %}/psp/paymentorders/{{ page.payment_id }}/authorizations{% endcapture %}
+    {% capture purchase_url %}/psp/paymentorders/{{ page.payment_id }}{% endcapture %}
+{% else %}
+    {% capture verification_url %}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications{% endcapture %}
+    {% capture authorization_url %}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations{% endcapture %}
+    {% capture purchase_url %}/psp/{{ api_resource }}/payments/{{ page.payment_id }}{% endcapture %}
+{% endif %}
 
 ## One-Click Payments
 
@@ -47,7 +56,7 @@ examples are provided below.
 **Request Towards Authorizations Resource**
 
 ```http
-GET /psp/{{ api_resource }}/{{ page.payment_id }}/authorizations HTTP/1.1
+GET  {{ verification_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 ```
@@ -56,8 +65,7 @@ Authorization: Bearer <AccessToken>
 **Request Towards Verifications Resource**
 
 ```http
-GET /psp/{{ api_resource }}/{{ page.payment_id }}/verifications HTTP/1.1
-Host: {{ page.api_host }}
+GET {{ authorization_url }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
 
@@ -84,7 +92,7 @@ Abbreviated code example:
 **Request**
 
 ```http
-POST /psp/{{ api_resource }} HTTP/1.1
+POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
