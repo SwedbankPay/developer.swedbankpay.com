@@ -294,7 +294,6 @@ next_href="direct" next_title="Direct" %}
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
-[create-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
 [price-resource]: /payment-instruments/invoice/features/technical-reference/prices
