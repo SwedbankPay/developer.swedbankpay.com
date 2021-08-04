@@ -633,7 +633,7 @@ integration and the payer.
 [trustly-payments]: /payment-instruments/trustly
 [trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
-[unscheduled-mit]: payment-menu/features/optional/unscheduled
+[unscheduled-mit]: /payment-menu/features/optional/unscheduled
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps
