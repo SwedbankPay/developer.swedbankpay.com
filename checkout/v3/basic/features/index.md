@@ -5,9 +5,6 @@ card_overview: true
 description: |
   In this section you can read more about the different features of
   Swedbank Pay Checkout.
-icon:
-  content: remove_red_eye
-additional: true
 menu_order: 1000
 card_list:
 - title: 3-D Secure 2
@@ -137,9 +134,9 @@ card_list_3:
   icon:
     content: copyright
     outlined: true
-- title: Delegated Strong Consumer Authentication
+- title: Merchant Authenticated Consumer
   description: The Checkin alternative
-  url: /checkout/v3/basic/features/optional/dsca
+  url: /checkout/v3/basic/features/optional/mac
   icon:
     content: verified
     outlined: true
@@ -155,6 +152,7 @@ card_list_3:
   icon:
     content: verified_user
     outlined: true
+anchor_headings: false
 ---
 
 {:.heading-line}

@@ -4,11 +4,21 @@ estimated_read: 10
 description: |
   The latest updates about our releases will be
   published on this page.
+menu_order: 800
 ---
 
 {% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
+
+## 03 August 2021
+
+### Version 2.2.2
+
+*   Added payment link for [Payment Menu][payment-menu-payment-link]
+*   Renamed [Merchant Authenticated Consumer][mac-checkout] section (previously Delegated Strong Authenticated Consumer)
+*   Updated [Unscheduled Merchant Initiated Transaction][unscheduled-mit]
+*   Fixed typos, minor bugs and code examples
 
 ## 19 May 2021
 
@@ -90,7 +100,7 @@ Other changes:
 *   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
 *   Renamed Merchant Authenticated Consumer to
-    [Delegated Strong Consumer Authentication][dsca].
+    [Delegated Strong Consumer Authentication][mac].
 *   Updated `payer`/`consumer`/`end-user` naming for most sections.
 *   Updated expiry date for test cards in [test data][test-data].
 *   Updated [callback][checkout-callback] documentation.
@@ -234,7 +244,7 @@ Other changes:
     block styling after the update to [Swedbank Pay Design Guide][design-guide]
     4.5.0.
 *   Added examples with screenshots of the effects of [Delegated Strong Consumer
-    Authentication][dsca-checkout].
+    Authentication][mac-checkout].
 
 ### Version 1.8.2
 
@@ -246,7 +256,7 @@ Other changes:
 *   Updated [Card Payments Direct][card-direct] to have a correct integration
     flow.
 *   Updated the [main page][frontpage] to be more welcoming.
-*   Updated information on [Delegated Strong Consumer Authentication][dsca-checkout].
+*   Updated information on [Delegated Strong Consumer Authentication][mac-checkout].
 
 ## 31 Mar 2020
 
@@ -578,7 +588,7 @@ integration and the payer.
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
 [design-guide]: https://design.swedbankpay.com/
-[dsca]: /checkout/v2/features/optional/dsca
+[mac]: /checkout/v2/features/optional/mac
 [frontpage]: https://developer.swedbankpay.com/
 [gift-cards]: /gift-cards
 [home-technical-information]: /introduction
@@ -586,7 +596,7 @@ integration and the payer.
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
-[dsca-checkout]: /checkout/v2/features/optional/dsca
+[mac-checkout]: /checkout/v2/features/optional/mac
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
 [mobilepay-capture]: /payment-instruments/mobile-pay/capture
@@ -597,6 +607,7 @@ integration and the payer.
 [payment-orders]: /checkout/v2/payment-menu#step-3-create-payment-order
 [payment-menu-invoice-capture]:/payment-menu/capture#invoice
 [payment-menu-items]: /payment-menu/features/technical-reference/items
+[payment-menu-payment-link]: /payment-menu/features/optional/payment-link
 [payments]: /payment-instruments
 [prices]: /checkout/v2/features/technical-reference/prices
 [update-order-checkout]: /checkout/v2/features#update-order
@@ -622,6 +633,7 @@ integration and the payer.
 [trustly-payments]: /payment-instruments/trustly
 [trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
+[unscheduled-mit]: /payment-menu/features/optional/unscheduled
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps

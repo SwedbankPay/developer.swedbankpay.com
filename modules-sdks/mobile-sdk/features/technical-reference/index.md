@@ -4,10 +4,8 @@ description: |
   In this section you can read more about the technical references of mobile
   SDKs.
 permalink: /:path/
-icon:
-  content: remove_red_eye
-additional: true
 menu_order: 1300
+anchor_headings: false
 ---
 
 {:.heading-line}

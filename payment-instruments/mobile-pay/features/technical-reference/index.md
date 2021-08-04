@@ -4,10 +4,8 @@ description: |
   This section is a technical reference for the requests and responses
   you will encounter when integrating against MobilePay Online.
 permalink: /:path/
-icon:
-  content: remove_red_eye
-additional: true
 menu_order: 1300
+anchor_headings: false
 ---
 
 {:.heading-line}

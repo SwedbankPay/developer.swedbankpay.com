@@ -6,7 +6,7 @@ estimated_read: 8
 description: |
   **Card** is the most popular, versatile
   and global way to initate a transaction with a customer. Choose between our
-  **Seamless View**, **Redirect**, or **Direct** integration options.
+  **Seamless View** or **Redirect** integration options.
 permalink: /:path/
 menu_order: 300
 ---
@@ -24,14 +24,6 @@ menu_order: 300
                       Pay hosted payment page where they can perform a safe
                       transaction. The payer will be redirected back to your
                       website after the completion of the payment." %}
-
-{% include alert.html type="informative"
-                      icon="open_in_browser"
-                      body="**Direct** integration is a way to implement card
-                      payments without using Swedbank Pay hosted payment pages.
-                      This option allow you to collect the card data on your
-                      page. That implies that the process must be [PCI-DSS
-                      Compliant](https://www.pcisecuritystandards.org/)" %}
 
 *   When properly set up in your merchant/webshop site and the payer starts the
   purchase process, you need to make a `POST` request towards Swedbank Pay with

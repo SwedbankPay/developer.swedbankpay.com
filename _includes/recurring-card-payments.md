@@ -48,15 +48,14 @@ depending on if you want to make an initial charge or not:
 
 #### Retrieve Recurrence Token
 
-The recurrence token can then be retrieved by doing a `GET` request against the
+You can retrieve the recurrence token by doing a `GET` request against the
 `payment`. You need to store this `recurrenceToken` in your system and keep
 track of the corresponding `payerReference`.
 
 #### Delete Recurrence Token
 
-You can delete a created recurrence token.
-Please see technical reference for details
-[here][card-payments-remove-payment-token].
+You can delete a created recurrence token. Please see technical reference for
+details [here][card-payments-remove-payment-token].
 
 ### Recurring purchases
 

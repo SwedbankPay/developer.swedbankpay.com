@@ -1,6 +1,7 @@
 ---
 title: License
 estimated_read: 10
+menu_order: 1700
 ---
 
 ## Licensing
