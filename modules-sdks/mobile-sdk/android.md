@@ -26,9 +26,9 @@ differences will be highlighted in the chapter on custom backends.
 ## Installation
 
 The Android component of the Swedbank Pay Mobile SDK is distributed through
-JCenter, which is a default repository in Android Studio projects. Therefore,
-most applications can integrate the SDK by simply adding the dependency. Please
-refer to the [Bintray page][sdk-bintray] for the latest version of the SDK.
+Maven Central. Most applications can integrate the SDK by simply adding the
+dependency. Please refer to the [Maven Central page][sdk-maven] for the latest
+version of the SDK.
 
 ## Usage
 
@@ -381,7 +381,7 @@ using the browser for third-party sites, please file a bug on the Android SDK.
                          next_href="ios"
                          next_title="iOS" %}
 
-[sdk-bintray]: https://bintray.com/swedbankpay/swedbank-pay-sdk-android/swedbank-pay-sdk-android
+[sdk-maven]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk
 [dokka-pkg]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md
 [dokka-pkg-merch]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/index.md
 [dokka-payfrag]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md
