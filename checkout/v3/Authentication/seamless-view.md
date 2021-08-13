@@ -9,8 +9,8 @@ description: |
 menu_order: 300
 ---
 
-Below, you will see a sequence diagram a Swedbank Pay
-checkout integration using the Seamless view solution.
+Below, you will see a sequence diagram a Swedbank Pay checkout integration using
+the Seamless view solution.
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -149,7 +149,7 @@ set to `false`. `requireConsumerInfo` **must** be set to `false`.
 ## Step 2: Display Payment Menu And Checkin
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`view-paymentmenu`. This is the one you need to display the checkin and payment
+`view-paymentmenu`. This is what you need to display the checkin and payment
 module.
 
 {:.code-view-header}
