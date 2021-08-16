@@ -45,7 +45,7 @@
     "remark-lint-link-title-style": "^2.0.1",
     "remark-lint-list-item-bullet-indent": "^3.0.0",
     "remark-lint-list-item-content-indent": "^2.0.1",
-    "remark-lint-list-item-indent": "^2.0.1",
+    "remark-lint-list-item-indent": "^3.0.0",
     "remark-lint-maximum-heading-length": "^2.0.1",
     "remark-lint-no-auto-link-without-protocol": "^2.0.1",
     "remark-lint-no-blockquote-without-marker": "^4.0.0",
