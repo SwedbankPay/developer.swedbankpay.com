@@ -35,7 +35,7 @@
     "remark-lint-definition-spacing": "^2.0.1",
     "remark-lint-fenced-code-flag": "^3.0.0",
     "remark-lint-fenced-code-marker": "^2.0.1",
-    "remark-lint-file-extension": "^1.0.5",
+    "remark-lint-file-extension": "^2.0.0",
     "remark-lint-final-definition": "^2.1.0",
     "remark-lint-final-newline": "^1.0.5",
     "remark-lint-hard-break-spaces": "^2.0.1",
