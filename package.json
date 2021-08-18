@@ -31,7 +31,7 @@
     "remark-lint-checkbox-content-indent": "^4.0.1",
     "remark-lint-code": "^2.0.0",
     "remark-lint-code-block-style": "^2.0.1",
-    "remark-lint-definition-case": "^2.0.1",
+    "remark-lint-definition-case": "^3.0.1",
     "remark-lint-definition-spacing": "^3.0.1",
     "remark-lint-fenced-code-flag": "^3.0.1",
     "remark-lint-fenced-code-marker": "^2.0.1",
