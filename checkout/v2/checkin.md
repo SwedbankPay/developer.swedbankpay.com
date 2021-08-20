@@ -187,8 +187,8 @@ every element (like the container `<div>` elements) has loaded in before we try 
 access them with our script." %}
 
 With the scripts loading in after the entire page is loaded, we can access the
-`<div>` container that the Checkin will be hosted in.
-When everything has finished loading, you should see something like this:
+`<div>` container that the Checkin will be hosted in. When everything has
+finished loading, you should see something like this:
 
 {:.text-center}
 ![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
@@ -224,11 +224,12 @@ displayed.
 
 If the consumer opts out of storing their details, they will be sent directly to
 the page for address details to enter their shipping address. This info is not
-stored for future purchases. Please note that this is **not** the same as
+stored for future purchases. Please not that this is **not** the same as
 shopping as a guest.
 
-With a `consumerProfileRef` safely tucked into our pocket,
-the Checkin is complete and we can move on to [Payment Menu][payment-menu].
+With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
+complete and we can move on to [Payment Menu][payment-menu]. Be aware that
+the consumerProfileRef expires after 24 hours.
 
 A complete overview of how the process of identifying the payer through Checkin
 is illustrated in the sequence diagram below.
