@@ -1,9 +1,9 @@
 ---
-section: Authentication
+section: Standard
 title: Introduction
 estimated_read: 2
 description: |
-  **Authentication** is the checkout option for
+  **Standard** is the checkout option for
   Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
   and test this integration for yourself!
 menu_order: 100
@@ -12,7 +12,7 @@ menu_order: 100
 
 ## Introduction
 
-You should choose our **Authentication** integration model if
+You should choose our **Standard** integration model if
 
 -   you collect the payer information needed to complete an order yourself.
 -   you **do not** need payer information from Swedbank Pay to calculate
@@ -29,7 +29,7 @@ You should choose our **Authentication** integration model if
 Please contact our [Sales department][contact-sales] regarding these
 requirements.
 
-There are two different ways of integrating the Authentication model.
+There are two different ways of integrating the Standard model.
 **Redirect** and **Seamless View**.
 
 **Redirect** sends the consumer to a Swedbank Pay page where we handle the
@@ -51,6 +51,6 @@ Read more about our two integration alternatives by clicking the links below.
 {% include iterator.html next_href="seamless-view"
                          next_title="Implement Seamless View" %}
 
-[after-payment-capture]: /checkout/v3/capture
+
 [https]: /introduction#connection-and-protocol
 [contact-sales]: /contact/

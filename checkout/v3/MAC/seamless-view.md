@@ -9,8 +9,7 @@ description: |
 menu_order: 300
 ---
 
-Below, you will see a sequence diagram showing the sequence of a Swedbank Pay
-checkout integration using the Seamless view solution.
+Below, you will see a sequence diagram of a Seamless view integration.
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -123,7 +122,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 ## Step 1: Create Payment Order
 
-When the payer has been checked in and the purchase is initiated, you need to
+When the payer has been checked in and the purchase initiated, you need to
 create a payment order.
 
 Start by performing a `POST` request towards the `paymentorder` resource
@@ -146,8 +145,7 @@ set to `false`. `requireConsumerInfo` **must** be set to `false`.
 ## Step 2: Display Payment Menu
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`view-paymentmenu`. This is the one you need to display the checkin and payment
-module.
+`view-paymentmenu`. This is the one you need to display the payment module.
 
 {:.code-view-header}
 **Response**
@@ -176,5 +174,57 @@ refresh by invoking the POST to create the payment order through Ajax and then
 create the script element with JavaScript. The HTML code will be unchanged in
 this example.
 
+{:.code-view-header}
+**JavaScript**
+
+```js
+                var request = new XMLHttpRequest();
+                request.addEventListener('load', function () {
+                    response = JSON.parse(this.responseText);
+                    var script = document.createElement('script');
+                    var operation = response.operations.find(function (o) {
+                        return o.rel === 'view-paymentmenu';
+                    });
+                    script.setAttribute('src', operation.href);
+                    script.onload = function () {
+                        // When the 'view-paymentmenu' script is loaded, we can initialize the
+                        // Payment Menu inside our 'payment-menu' container.
+                        payex.hostedView.paymentMenu({
+                            container: 'payment-menu',
+                            culture: 'sv-SE'
+                        }).open();
+                    };
+                    // Append the Payment Menu script to the <head>
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(script);
+                });
+                // Like before, you should replace the address here with
+                // your own endpoint.
+                request.open('GET', '<Your-Backend-Endpoint-Here>', true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+                request.send();
+```
+
+The payment menu should appear with the payer information displayed above the
+menu. The payer can select their preferred payment instrument and pay.
+
+{:.text-center}
+![screenshot of the mac model seamless view payment menu][seamless-view-mac-payment-menu]
+
+Once the payer has completed the purchase, you can perform a GET towards the
+`paymentOrders` resource to see the payment state.
+
+You can read about the different [Seamless View Events][seamless-view-events] in
+the feature section.
+
+You are now ready to capture the funds. Follow the link below to read more about
+capture and the other options you have after the purchase.
+
+{% include iterator.html prev_href="./"
+                         prev_title="Introduction"
+                         next_href="post-purchase"
+                         next_title="Post Purchase" %}
+
 [callback]: /checkout/v3/mac/features/technical-reference/callback
 [seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
+[seamless-view-mac-payment-menu]: /
