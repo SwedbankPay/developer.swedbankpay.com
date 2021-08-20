@@ -1,10 +1,10 @@
 ---
-section: Checkout Merchant Authenticated Consumer (MAC)
+section: Merchant Authenticated Consumer (MAC)
 title: Introduction
 estimated_read: 3
 hide_from_sidebar: false
 description: |
-  **Checkout MAC** is the Checkout option for merchants with their own consumer 
+  **MAC** is the Checkout option for merchants with their own consumer
   authentication. Visit our 
   [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) and test 
   this integration for yourself!
@@ -13,7 +13,7 @@ menu_order: 300
 
 ## Introduction
 
-You should choose our Checkout MAC integration model if
+You should choose our MAC integration model if
 
 -   you collect the payer information needed to complete an order yourself.
 -   you **do not** need payer information from Swedbank Pay to calculate

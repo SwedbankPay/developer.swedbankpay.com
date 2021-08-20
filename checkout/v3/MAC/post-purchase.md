@@ -12,8 +12,8 @@ menu_order: 500
 
 {% include payment-order-capture.md %}
 
-The purchase should now be complete. But what if the purchase is cancelled or
-the payer wants to return the goods? For these scenarios, we have `abort`,
+The purchase should now be complete. But what if the purchase is canceled or
+the payer wants to return goods? For these scenarios, we have `abort`,
 `cancel` and `reversal`.
 
 {% include payment-order-abort.md %}
