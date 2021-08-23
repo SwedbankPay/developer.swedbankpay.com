@@ -229,7 +229,8 @@ shopping as a guest.
 
 With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
 complete and we can move on to [Payment Menu][payment-menu]. Be aware that
-the consumerProfileRef expires after 24 hours.
+the `consumerProfileRef` expires after 24 hours as well as after being used to complete a payment.
+The _`consumerProfileRef` can not be reused_ for several purchases.
 
 A complete overview of how the process of identifying the payer through Checkin
 is illustrated in the sequence diagram below.
