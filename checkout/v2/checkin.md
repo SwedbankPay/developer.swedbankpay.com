@@ -224,7 +224,7 @@ displayed.
 
 If the consumer opts out of storing their details, they will be sent directly to
 the page for address details to enter their shipping address. This info is not
-stored for future purchases. Please not that this is **not** the same as
+stored for future purchases. Please note that this is **not** the same as
 shopping as a guest.
 
 With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
