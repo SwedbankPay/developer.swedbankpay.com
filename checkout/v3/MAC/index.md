@@ -19,8 +19,8 @@ You should choose our MAC integration model if
 -   you **do not** need payer information from Swedbank Pay to calculate
     shipping costs.
 -   you **have** a strong payer authentication login.
--   you want your payers to access stored payment information in Swedbank Pay
-    Checkout for an easier payment process.
+-   you want your payers to access stored purchase information in Swedbank Pay
+    Checkout for an easier purchase process.
 
 ### Requirements
 
@@ -33,12 +33,12 @@ There are two different ways of integrating the MAC model.
 **Redirect** and **Seamless View**.
 
 **Redirect** sends the payer to a Swedbank Pay page where we handle the
-payment process. The payer will be redirected back to you when the purchase
-is completed or if the payer aborts the payment. The payment page will be
+purchase process. The payer will be redirected back to you when the purchase
+is completed or if the payer aborts the purchase. The purchase page will be
 styled by Swedbank Pay.
 
 With **Seamless View**, the payer stays at your site, and you initiate the
-Swedbank Pay payment module in an iframe. The payment component will be styled
+Swedbank Pay purchase module in an iframe. The purchase component will be styled
 by Swedbank Pay.
 
 Read more about our two integration alternatives by clicking the links below.
@@ -51,5 +51,4 @@ Read more about our two integration alternatives by clicking the links below.
 {% include iterator.html next_href="seamless-view"
                          next_title="Implement Seamless View" %}
 
-[after-payment-capture]: /checkout/v3/capture
-[https]: /introduction#connection-and-protocol
+[contact-sales]: /contact/

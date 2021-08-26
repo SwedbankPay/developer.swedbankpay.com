@@ -35,11 +35,11 @@ There are two different ways of integrating the Standard model.
 **Redirect** sends the payer to a Swedbank Pay page where we handle the
 authentication and purchase process. The payer will be redirected back to you
 when the purchase is completed or if the payer aborts the purchase. The
-payment page will be styled by Swedbank Pay.
+purchase page will be styled by Swedbank Pay.
 
 With **Seamless View**, the payer stays at your site, and you initiate the
-Swedbank Pay authentication and payment module in an iframe. The checkin and
-payment component will be styled by Swedbank Pay.
+Swedbank Pay authentication and purchase module in an iframe. The checkin and
+purchase component will be styled by Swedbank Pay.
 
 Read more about our two integration alternatives by clicking the links below.
 
@@ -50,7 +50,6 @@ Read more about our two integration alternatives by clicking the links below.
 
 {% include iterator.html next_href="seamless-view"
                          next_title="Implement Seamless View" %}
-
 
 [https]: /introduction#connection-and-protocol
 [contact-sales]: /contact/

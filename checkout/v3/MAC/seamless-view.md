@@ -3,9 +3,8 @@ title: Seamless View
 redirect_from: /payments/card/seamless-view
 estimated_read: 10
 description: |
-  The Seamless View purchase scenario
-  represents the opportunity to implement card payments
-  directly in your webshop.
+  The Seamless View purchase scenario shows you how to implement the payment
+  menu directly in your webshop.
 menu_order: 300
 ---
 
@@ -32,14 +31,14 @@ sequenceDiagram
             deactivate SwedbankPay
             Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
             activate Payer
-            Payer ->> Payer: Initiate Payment step
+            Payer ->> Payer: Initiate Purchase step
             deactivate Payer
-            SwedbankPay ->>+ Payer: Do payment logic
+            SwedbankPay ->>+ Payer: Do purchase logic
             deactivate SwedbankPay
-            Payer ->> SwedbankPay: Do payment logic
+            Payer ->> SwedbankPay: Do purchase logic
             deactivate Payer
 
-                opt Payer perform payment out of iFrame
+                opt Payer perform purchase out of iFrame
                     activate Payer
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
@@ -52,13 +51,13 @@ sequenceDiagram
                 end
 
                 activate SwedbankPay
-                SwedbankPay -->> Payer: Payment status
+                SwedbankPay -->> Payer: Purchase status
                 deactivate SwedbankPay
 
-            alt If payment is completed
+            alt If purchase is completed
             activate Payer
             Payer ->> Payer: Event: onPaymentCompleted ①
-            Payer ->>+ Merchant: Check payment status
+            Payer ->>+ Merchant: Check purchase status
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
@@ -69,7 +68,7 @@ sequenceDiagram
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
             deactivate Merchant
-            SwedbankPay -->> Merchant: Payment Details
+            SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
             end
             end
@@ -78,7 +77,7 @@ sequenceDiagram
 Merchant -->>- Payer: Show Purchase complete
             end
 
-                opt If payment is failed
+                opt If purchase is failed
                 activate Payer
                 Payer ->> Payer: Event: OnPaymentFailed ①
                 Payer ->>+ Merchant: Check payment status
@@ -92,7 +91,7 @@ Merchant -->>- Payer: Show Purchase complete
                 deactivate Payer
                 Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
                 deactivate Merchant
-                SwedbankPay -->> Merchant: Payment Details
+                SwedbankPay -->> Merchant: Purchase Details
                 deactivate SwedbankPay
                 end
                 activate Merchant
@@ -101,7 +100,7 @@ Merchant -->>- Payer: Show Purchase complete
 
            opt PaymentOrder Callback (if callbackUrls is set) ②
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Payment Callback
+                SwedbankPay ->> Merchant: POST Purchase Callback
                 deactivate SwedbankPay
          end
          end
@@ -145,7 +144,7 @@ set to `false`. `requireConsumerInfo` **must** be set to `false`.
 ## Step 2: Display Payment Menu
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`view-paymentmenu`. This is the one you need to display the payment module.
+`view-paymentmenu`. This is the one you need to display the purchase module.
 
 {:.code-view-header}
 **Response**
@@ -212,7 +211,7 @@ menu. The payer can select their preferred payment instrument and pay.
 ![screenshot of the mac model seamless view payment menu][seamless-view-mac-payment-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
-`paymentOrders` resource to see the payment state.
+`paymentOrders` resource to see the purchase state.
 
 You can read about the different [Seamless View Events][seamless-view-events] in
 the feature section.

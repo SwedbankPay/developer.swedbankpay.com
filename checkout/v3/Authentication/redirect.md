@@ -32,7 +32,7 @@ sequenceDiagram
             deactivate Merchant
             SwedbankPay -->>+ Merchant: rel:redirect-checkout
             deactivate SwedbankPay
-            Merchant -->>- Payer: Redirect payer to SwedbankPay payment page.
+            Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
             activate Payer
             Payer ->> Payer: Initiate Authenticate step
                Payer ->> SwedbankPay: Show Checkin component
@@ -44,15 +44,15 @@ sequenceDiagram
     deactivate Payer
     SwedbankPay -->> Payer: show payer completed iframe
     activate Payer
-    Payer ->> Payer: Initiate Payment step
+    Payer ->> Payer: Initiate Purchase step
 
     deactivate Payer
-    SwedbankPay ->>+ Payer: Do payment logic
-    Payer ->> SwedbankPay: Do payment logic
+    SwedbankPay ->>+ Payer: Do purchase logic
+    Payer ->> SwedbankPay: Do purchase logic
     deactivate Payer
     deactivate SwedbankPay
 
-                    opt Payer perform payment out of iFrame
+                    opt Payer perform purchase out of iFrame
                     activate Payer
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
@@ -60,18 +60,18 @@ sequenceDiagram
                     3rdParty -->>+ Payer: Redirect back to SwedbankPay 
                     deactivate 3rdParty
                     Payer ->> Payer: Initiate Payment Menu
-                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
+                    Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
                     deactivate Payer
                 end
 
                 activate SwedbankPay
-                SwedbankPay -->> Payer: Payment status
+                SwedbankPay -->> Payer: Purchase status
                 deactivate SwedbankPay
 
-            alt If payment is completed
+            alt If Purchase is completed
             activate Payer
             Payer ->> Payer: Redirect back to CompleteUrl
-            Payer ->>+ Merchant: Check payment status
+            Payer ->>+ Merchant: Check Purchase status
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
@@ -80,7 +80,7 @@ sequenceDiagram
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
             Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
             deactivate Merchant
-            SwedbankPay -->> Merchant: Payment Details
+            SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
             end
             end
@@ -89,7 +89,7 @@ activate Merchant
 Merchant -->>- Payer: Show Purchase complete
          opt PaymentOrder Callback (if callbackUrls is set) ①
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Payment Callback
+                SwedbankPay ->> Merchant: POST Purchase Callback
                 deactivate SwedbankPay
          end
          end
@@ -165,7 +165,7 @@ payment instrument and pay.
 ![screenshot of the authentication model redirect payment menu][redirect-payment-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
-`paymentOrders` resource to see the payment state.
+`paymentOrders` resource to see the purchase state.
 
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
