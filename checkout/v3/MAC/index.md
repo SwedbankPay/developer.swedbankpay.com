@@ -26,6 +26,9 @@ You should choose our MAC integration model if
 
 -   You need a Checkout agreement to use this product.
 
+Please contact our [Sales department][contact-sales] regarding this
+requirement.
+
 There are two different ways of integrating the MAC model.
 **Redirect** and **Seamless View**.
 

@@ -31,7 +31,7 @@ sequenceDiagram
             SwedbankPay -->>+ Merchant: rel:view-checkout
             deactivate SwedbankPay
             Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
-            activate Consumer
+            activate Payer
             Payer ->> Payer: Initiate Payment step
             deactivate Payer
             SwedbankPay ->>+ Payer: Do payment logic
@@ -41,8 +41,8 @@ sequenceDiagram
 
                 opt Payer perform payment out of iFrame
                     activate Payer
-                    Consumer ->> Consumer: Redirect to 3rd party
-                    Consumer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    Payer ->> Payer: Redirect to 3rd party
+                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
                     deactivate Payer
                     3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
@@ -109,7 +109,7 @@ Merchant -->>- Payer: Show Purchase complete
 
     rect rgba(81,43,43,0.1)
         activate Merchant
-        note left of Consumer: Capture
+        note left of Payer: Capture
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
