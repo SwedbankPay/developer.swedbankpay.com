@@ -32,7 +32,7 @@ requirements.
 There are two different ways of integrating the Standard model.
 **Redirect** and **Seamless View**.
 
-**Redirect** sends the consumer to a Swedbank Pay page where we handle the
+**Redirect** sends the payer to a Swedbank Pay page where we handle the
 authentication and purchase process. The payer will be redirected back to you
 when the purchase is completed or if the payer aborts the purchase. The
 payment page will be styled by Swedbank Pay.

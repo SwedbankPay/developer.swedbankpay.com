@@ -96,6 +96,18 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][callback] handling in the technical reference.
 
+## Step 1: Create Payment Order
+
+When the purchase is initiated, you need to create a payment order.
+
+Start by performing a `POST` request towards the `paymentorder` resource
+with payer information and a `completeUrl`.
+
+Two new fields have been added to the payment order request in this integration.
+`requireConsumerInfo` and `digitalProducts`. They are a part of the `payer`
+node. Please note that `shippingAdress` is only required if `digitalProducts` is
+set to `false`. `requireConsumerInfo` **must** be set to `false`.
+
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
