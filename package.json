@@ -89,7 +89,7 @@
     "remark-textr": "^5.0.0",
     "retext-english": "^4.0.0",
     "retext-repeated-words": "^4.1.0",
-    "retext-sentence-spacing": "^5.0.0",
+    "retext-sentence-spacing": "^5.1.0",
     "retext-spell": "^5.1.0",
     "retext-syntax-urls": "^3.0.0",
     "retext-usage": "^0.5.0",
