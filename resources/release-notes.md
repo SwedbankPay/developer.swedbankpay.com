@@ -182,7 +182,7 @@ Other changes:
 ### Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
-*   Added information about [Storing URIs][storing-uri] in the [Technical
+*   Added information about [Storing URLs][storing-uri] in the [Technical
     Information][home-technical-information] section.
 
 ## 22 May 2020
@@ -220,7 +220,7 @@ Other changes:
 ### Version 1.9.0
 
 *   Added a new section [SDKs and Modules][sdk-modules] in Resources.
-*   Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
+*   Corrected problem `type` URLs for [Card Payments][card], [Checkout][checkout]
     and [Swish Payments][swish].
 *   Required checkmarks have a new, fresh look: {% icon check %}
 *   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}

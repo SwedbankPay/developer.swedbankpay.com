@@ -79,8 +79,8 @@ When the request has been sent, a response containing an array of operations tha
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
 | └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
 | └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.                                                                                             |
-| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.     |
-| └➔&nbsp;`href`        | `string` | The target URI of the operation.                                                                                                                  |
+| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
+| └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
 
 ## Step 2: Display Swedbank Pay Checkin module
 

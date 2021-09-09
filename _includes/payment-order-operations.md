@@ -104,7 +104,7 @@ deprecated in the operation list below." %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                                        |
 | :------------ | :------- | :--------------------------------------------------------------------------------- |
-| `href`        | `string` | The target URI to perform the operation against.                                   |
+| `href`        | `string` | The target URL to perform the operation against.                                   |
 | `rel`         | `string` | The name of the relation the operation has to the current resource.                |
 | `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
 | `contentType` | `string` | The HTTP content type of the resource referenced in the `href` field.              |
@@ -121,7 +121,7 @@ for the given operation.
 | :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `update-paymentorder-abort`       | Aborts the payment order before any financial transactions are performed.                                                                                                                                                                                        |
 | `update-paymentorder-updateorder` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                                            |
-| `redirect-paymentorder`           | Contains the URI that is used to redirect the payer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
+| `redirect-paymentorder`           | Contains the URL used to redirect the payer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
 | `view-paymentorder`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
 | `create-paymentorder-capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
 | `create-paymentorder-cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |

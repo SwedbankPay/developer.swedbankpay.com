@@ -1,6 +1,6 @@
 ---
 section: Checkout v3
-title: Introduction V3
+title: Introduction
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
@@ -23,13 +23,13 @@ card_list:
     outlined: true
 - title: Authentication
   description: |
-    Use this integration when having consumer data but want to access Swedbank Pay checkout for easier payment flow for your consumers.
+    Use this implementation when you have consumer data, but want to access Swedbank Pay checkout for an easier purchase flow.
   url:  /checkout/v3/authentication
   icon:
     content: shopping_cart
     outlined: true
 - title: Merchant Authenticated Consumer
-  description: Use this integration when having consumer data and consumers authenticate on your site, but want to access Swedbank Pay checkout for easier payment flow for your consumers.
+  description: Use this implementation when you have consumer data and consumers authentication on your site, but want to access Swedbank Pay checkout for an easier purchase flow.
   url:  /checkout/v3/mac
   icon:
     content: shopping_cart
@@ -70,3 +70,5 @@ While Checkin is necessary to store personal information and access features
 like storing cards, it is not mandatory. If the payer is from a country where we
 don't support consumer profiles, or if the payer does not want to store data,
 that's fine. The Payment Menu can still be used as a **guest**.
+
+[https]: /introduction#connection-and-protocol

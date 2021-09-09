@@ -20,7 +20,7 @@ menu_order: 800
     reach completion.
 *   When you detect that the payer reach your `completeUrl`, you need to do a
     `GET` request to receive the state of the transaction, containing the
-    `id` URI generated in the first step, to receive the state of the
+    `id` URL generated in the first step, to receive the state of the
     transaction.
 
 ## Step 1: Create a payment
@@ -96,7 +96,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`           | `object`     | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`   | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
-|                  | └─➔&nbsp;`cancelUrl`           | `array`       | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                  |
+|                  | └─➔&nbsp;`cancelUrl`           | `array`       | The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                  |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |

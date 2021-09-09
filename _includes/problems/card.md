@@ -2,7 +2,7 @@
 
 There are a few problems specific to the `creditcard` resource that you may want
 to guard against in your integrations. All credit card problem types will have
-the following URI structure:
+the following URL structure:
 
 `https://api.payex.com/psp/errordetail/creditcard/<error-type>`
 

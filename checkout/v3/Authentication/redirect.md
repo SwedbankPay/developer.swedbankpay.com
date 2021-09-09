@@ -2,16 +2,15 @@
 title: Redirect
 estimated_read: 12
 description: |
-  Redirect is our simplest integration, where Swedbank Pay handles the
-  purchase, so you can focus on your core activities. When ready to pay, the
+  Redirect is our simplest integration. Swedbank Pay handles the
+  purchase so you can focus on your core activities. When ready to pay, the
   payer will be redirected to a secure Swedbank Pay hosted site, authenticate
-  the Checkout profile and choose their payment instrument. After the purchase,
+  their Checkout profile and choose payment instrument. After the purchase,
   the payer will be redirected back to your website.
 menu_order: 200
 ---
 
-Below, you can see a sequence diagram of a Swedbank Pay
-checkout integration using the Redirect solution.
+Below is a sequence diagram of the Redirect integration.
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, Payer refers to the merchant front-end
@@ -118,20 +117,26 @@ Two new fields have been added to the payment order request in this integration.
 node. Please note that `shippingAdress` is only required if `digitalProducts` is
 set to `false`. `requireConsumerInfo` **must** be set to `false`.
 
+Supported features for this integration are subscriptions (`recur` and
+`unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
+own `logo`.
+
+In some instances you need the possibility to abort purchases. This could be if
+a payer does not complete the purchase within a reasonable timeframe. For those
+instances we have `abort`, which you can read about in the [core
+features][abort-feature]. You can only use `abort` if the payer **has not**
+completed an `authorize` or a `sale`.
+
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
 
 {% include payment-order-checkout-authenticate.md integration_mode="redirect" %}
 
-Supported features for this integration are subscriptions (`recur` and
-`unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
-own `logo`.
-
 ## Step 2: Display Payment Menu And Checkin
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`redirect-paymentmenu`. This is the one you need to display the checkin and
+`redirect-checkout`. This is the one you need to display the checkin and
 payment menu.
 
 {:.code-view-header}
@@ -144,7 +149,7 @@ payment menu.
         {
             "method": "GET",
             "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d",
-            "rel": "redirect-paymentmenu",
+            "rel": "redirect-checkout",
             "contentType": "text/html"
         },
     ]
@@ -167,14 +172,15 @@ payment instrument and pay.
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 
-You are now ready to capture the funds. Follow the link below to read more about
-capture and the other options you have after the purchase.
+You are now ready to `capture` the funds. Follow the link below to read more
+about capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
+[abort-feature]: /checkout/v3/authentication/features/core/abort
 [callback]: /checkout/v3/authentication/features/technical-reference/callback
 [redirect-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [redirect-payment-menu]: /assets/img/checkout/authentication-redirect-payment-menu.png

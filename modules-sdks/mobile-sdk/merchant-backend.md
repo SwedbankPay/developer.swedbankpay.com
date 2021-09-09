@@ -152,8 +152,8 @@ Content-Type: application/json
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
 | └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
 | └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.                                                                                             |
-| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.     |
-| └➔&nbsp;`href`        | `string` | The target URI of the operation.                                                                                                                  |
+| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
+| └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
 
 ## Payment Orders Endpoint
 
@@ -498,7 +498,7 @@ Content-Type: text/html
 </div>
 
 <script>
-    function redirect() { window.location.href = decodeURIComponent("https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue"); };
+    function redirect() { window.location.href = decodeURLComponent("https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue"); };
 </script>
 
 </body>
@@ -573,7 +573,7 @@ If there are any errors in servicing a request, they should be reported using [P
 
 The following problem types are defined for Merchant Backend specific errors. The mobile SDK components contain data types for easy processing of these error types. The sample implementations emit these errors in the specified circumstances; your own implementation is encouraged to do so as well.
 
-All these Merchant Backend problem types will have a URI in the format `https://api.payex.com/psp/errordetail/mobilesdk/<error-type>`.
+All these Merchant Backend problem types will have a URL in the format `https://api.payex.com/psp/errordetail/mobilesdk/<error-type>`.
 
 {:.table .table-striped}
 | Type             | Status | Description                                                                     |

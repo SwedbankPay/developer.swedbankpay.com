@@ -5,14 +5,14 @@ estimated_read: 2
 description: |
   **Standard** is the checkout option for
   Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-  and test this integration for yourself!
+  and test this implementation for yourself!
 menu_order: 100
 ---
 
 
 ## Introduction
 
-You should choose our **Standard** integration model if
+You should choose our **Standard** implementation if
 
 -   you collect the payer information needed to complete an order yourself.
 -   you **do not** need payer information from Swedbank Pay to calculate
@@ -29,27 +29,18 @@ You should choose our **Standard** integration model if
 Please contact our [Sales department][contact-sales] regarding these
 requirements.
 
-There are two different ways of integrating the Standard model.
-**Redirect** and **Seamless View**.
-
-**Redirect** sends the payer to a Swedbank Pay page where we handle the
-authentication and purchase process. The payer will be redirected back to you
-when the purchase is completed or if the payer aborts the purchase. The
-purchase page will be styled by Swedbank Pay.
+The only way to integrate our **Standard** implementation is **Seamless View**.
 
 With **Seamless View**, the payer stays at your site, and you initiate the
 Swedbank Pay authentication and purchase module in an iframe. The checkin and
 purchase component will be styled by Swedbank Pay.
 
-Read more about our two integration alternatives by clicking the links below.
+Read more about the integration by clicking the link below.
 
 {% include languages.md %}
 
-{% include iterator.html next_href="redirect"
-                         next_title="Implement Redirect" %}
-
 {% include iterator.html next_href="seamless-view"
-                         next_title="Implement Seamless View" %}
+                         next_title="Integrate Seamless View" %}
 
 [https]: /introduction#connection-and-protocol
 [contact-sales]: /contact/

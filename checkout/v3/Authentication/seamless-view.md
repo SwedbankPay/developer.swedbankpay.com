@@ -8,7 +8,7 @@ description: |
 menu_order: 300
 ---
 
-Below, you will see a sequence diagram of a Seamless view integration.
+Below is a sequence diagram of a Seamless View integration.
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -135,6 +135,12 @@ Two new fields have been added to the payment order request in this integration.
 node. Please note that `shippingAdress` is only required if `digitalProducts` is
 set to `false`. `requireConsumerInfo` **must** be set to `false`.
 
+In some instances you need the possibility to abort purchases. This could be if
+a payer does not complete the purchase within a reasonable timeframe. For those
+instances we have `abort`, which you can read about in the [core
+features][abort-feature]. You can only use `abort` if the payer **has not**
+completed an `authorize` or a `sale`.
+
 {% include payment-url.md when="selecting the payment instrument Vipps or in the
 3-D Secure verification for Card Payments" %}
 
@@ -147,7 +153,7 @@ set to `false`. `requireConsumerInfo` **must** be set to `false`.
 ## Step 2: Display Payment Menu And Checkin
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`view-paymentmenu`. This is what you need to display the checkin and payment
+`view-checkout`. This is what you need to display the checkin and payment
 module.
 
 {:.code-view-header}
@@ -159,9 +165,9 @@ module.
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.stage.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
-            "rel": "view-paymentmenu",
-            "contentType": "text/html"
+            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
+            "rel": "view-checkout",
+            "contentType": "application/javascript"
         },
     ]
 }
@@ -181,31 +187,50 @@ this example.
 **JavaScript**
 
 ```js
-                var request = new XMLHttpRequest();
-                request.addEventListener('load', function () {
-                    response = JSON.parse(this.responseText);
-                    var script = document.createElement('script');
-                    var operation = response.operations.find(function (o) {
-                        return o.rel === 'view-paymentmenu';
-                    });
-                    script.setAttribute('src', operation.href);
-                    script.onload = function () {
-                        // When the 'view-paymentmenu' script is loaded, we can initialize the
-                        // Payment Menu inside our 'payment-menu' container.
-                        payex.hostedView.paymentMenu({
-                            container: 'payment-menu',
-                            culture: 'sv-SE'
-                        }).open();
-                    };
-                    // Append the Payment Menu script to the <head>
-                    var head = document.getElementsByTagName('head')[0];
-                    head.appendChild(script);
-                });
-                // Like before, you should replace the address here with
-                // your own endpoint.
-                request.open('GET', '<Your-Backend-Endpoint-Here>', true);
-                request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-                request.send();
+var request = new XMLHttpRequest();
+request.addEventListener('load', function () {
+    response = JSON.parse(this.responseText);
+    var script = document.createElement('script');
+    var operation = response.operations.find(function (o) {
+        return o.rel === 'view-checkout';
+    });
+    script.setAttribute('src', operation.href);
+    script.onload = function () {
+        // When the 'view-checkout' script is loaded, we can initialize the
+        // Checkin and Payment Menu inside 'checkout-container'.
+        payex.hostedView.checkout({
+            container: {
+                checkoutContainer: "checkout-container"
+            },
+            culture: 'nb-No',
+        }).open();
+    };
+    // Append the Checkout script to the <head>
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(script);
+});
+// Like before, you should replace the address here with
+// your own endpoint.
+request.open('GET', '<Your-Backend-Endpoint-Here>', true);
+request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+request.send();
+```
+
+{:.code-view-header}
+**HTML**
+
+```
+  < !DOCTYPE html >
+  <html>
+      <head>
+          <title>Swedbank Pay Checkout is Awesome!</title>
+      </head>
+      <body>
+          <div id="checkout-container"></div>
+          <!-- Here you can specify your own javascript file -->
+          <script src="<Your-JavaScript-File-Here>"></script>
+      </body>
+  </html>
 ```
 
 The result should look like this. First you will see a Checkin module where the
@@ -256,6 +281,7 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
+[abort-feature]: /checkout/v3/authentication/features/core/abort
 [callback]: /checkout/v3/authentication/features/technical-reference/callback
 [seamless-view-checkin]: /assets/img/checkout/authentication-seamless-view-checkin.png
 [seamless-view-events]: /checkout/v3/authentication/features/technical-reference/seamless-view-events

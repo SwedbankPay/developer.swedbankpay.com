@@ -415,9 +415,9 @@ On Android we can, and indeed should, query the system whether it can launch Act
         val intent = try {
             Intent.parseUri(
                 uri.toString(),
-                Intent.URI_INTENT_SCHEME
+                Intent.URL_INTENT_SCHEME
             )
-        } catch (_: URISyntaxException) {
+        } catch (_: URLSyntaxException) {
             return
         }
         // Web pages should only be allowed to start activities

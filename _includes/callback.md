@@ -52,9 +52,9 @@ The callback is sent from `91.132.170.1` in both the test and production
 environment.
 
 To understand the nature of the callback, the type of transaction, its status,
-etc., you need to perform a `GET` request on the received URI and inspect the
+etc., you need to perform a `GET` request on the received URL and inspect the
 response. The transaction type or any other information can not and should not
-be inferred from the URI. See [URI usage][uri-usage] for more information.
+be inferred from the URL. See [URL usage][url-usage] for more information.
 
 {% if api_resource == "paymentorders" %}
 {:.code-view-header}
@@ -96,7 +96,7 @@ be inferred from the URI. See [URI usage][uri-usage] for more information.
 
 {% endif %}
 
-When performing an HTTP `GET` request towards the URI found in the
+When performing an HTTP `GET` request towards the URL found in the
 `transaction.id` field of the callback, the response is going to look
 something like the abbreviated example provided below.
 
@@ -122,4 +122,4 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-[uri-usage]: /introduction#uri-usage
+[url-usage]: /introduction#url-usage
