@@ -5,15 +5,15 @@ estimated_read: 3
 hide_from_sidebar: false
 description: |
   **MAC** is the Checkout option for merchants with their own consumer
-  authentication. Visit our 
-  [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) and test 
-  this integration for yourself!
+  authentication. Visit our
+  [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) and test
+  this implementation for yourself!
 menu_order: 300
 ---
 
 ## Introduction
 
-You should choose our MAC integration model if
+You should choose our MAC implementation if
 
 -   you collect the payer information needed to complete an order yourself.
 -   you **do not** need payer information from Swedbank Pay to calculate
@@ -29,7 +29,7 @@ You should choose our MAC integration model if
 Please contact our [Sales department][contact-sales] regarding this
 requirement.
 
-There are two different ways of integrating the MAC model.
+There are two ways of integrating the MAC implementation.
 **Redirect** and **Seamless View**.
 
 **Redirect** sends the payer to a Swedbank Pay page where we handle the
@@ -46,9 +46,9 @@ Read more about our two integration alternatives by clicking the links below.
 {% include languages.md %}
 
 {% include iterator.html next_href="redirect"
-                         next_title="Implement Redirect" %}
+                         next_title="Integrate Redirect" %}
 
 {% include iterator.html next_href="seamless-view"
-                         next_title="Implement Seamless View" %}
+                         next_title="Integrate Seamless View" %}
 
 [contact-sales]: /contact/

@@ -19,7 +19,7 @@
 
 {%- assign language_codes = language_codes | split: ',' -%}
 
-This product supports the following languages:
+This product supports
 {% for language_code in language_codes %}
 {%- if forloop.last %}
  and {% comment %}Keep this to preserve the space after 'and'!{% endcomment %}

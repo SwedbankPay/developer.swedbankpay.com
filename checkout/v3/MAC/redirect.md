@@ -2,16 +2,15 @@
 title: Redirect
 estimated_read: 10
 description: |
-  Redirect is the simplest integration that lets Swedbank Pay handle the
-  purchases, while you handle your core activities. When ready to pay, the payer
-  will be redirected to a secure Swedbank Pay hosted site, authenticate the
-  Checkout profile and select preferred payment instrument. Finally, the payer
-  will be redirected back to your website after the purchase process.
+  Redirect is our simplest integration. Swedbank Pay handles the purchase so you
+  can focus on your core activities. When ready to pay, the payer will be
+  redirected to a secure Swedbank Pay hosted site, authenticate their Checkout
+  profile and choose payment instrument. After the purchase, the payer will be
+  redirected back to your website.
 menu_order: 200
 ---
 
-Below, you will see a sequence diagram showing the sequence of a Swedbank Pay
-checkout integration using the Redirect solution.
+Below is a sequence diagram of a Redirect integration.
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -107,20 +106,26 @@ Two new fields have been added to the payment order request in this integration.
 node. Please note that `shippingAdress` is only required if `digitalProducts` is
 set to `false`. `requireConsumerInfo` **must** be set to `false`.
 
+Supported features for this integration are subscriptions (`recur` and
+`unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
+own `logo`.
+
+In some instances you need the possibility to abort purchases. This could be if
+a payer does not complete the purchase within a reasonable timeframe. For those
+instances we have `abort`, which you can read about in the [core
+features][abort-feature]. You can only use `abort` if the payer **has not**
+completed an `authorize` or a `sale`.
+
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
 
 {% include payment-order-checkout-mac.md integration_mode="redirect" %}
 
-Supported features for this integration are subscriptions (`recur`
-and `unscheduled MIT`), split settlement (`subsite`) and the possibility to use
-your own `logo`.
-
 ## Step 2: Display Payment Menu
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`redirect-paymentmenu`. This is the one you need to display payment menu.
+`redirect-checkout`. This is the one you need to display payment menu.
 
 {:.code-view-header}
 **Response**
@@ -132,7 +137,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
         {
             "method": "GET",
             "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d",
-            "rel": "redirect-paymentmenu",
+            "rel": "redirect-checkout",
             "contentType": "text/html"
         },
     ]
@@ -154,4 +159,5 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
+[abort-feature]: /checkout/v3/mac/features/core/abort
 [callback]: /checkout/v3/mac/features/technical-reference/callback

@@ -11,7 +11,7 @@ description: |
 
 The **Swedbank Pay API Platform** is built using the [REST architectural
 style][rest] and the request and responses come in the [JSON] format. The API
-has predictable, resource-oriented URIs and use default HTTP features, like HTTP
+has predictable, resource-oriented URLs and use default HTTP features, like HTTP
 authentication (using OAuth 2), HTTP methods and headers. These techniques are
 widely used and understood by most HTTP client libraries.
 
@@ -37,7 +37,7 @@ We encourage you to keep [Postel's robustness principle][robustness-principle]
 in mind. Build your integration in a way that is resilient to change, wherever
 it may come. Don't confine yourself to the limits of our current documentation
 examples. A `string` looking like a `guid` must still be handled and stored like
-a `string`, not as a guid, as it could be a `URI` in the future. The day our
+a `string`, not as a guid, as it could be a `URL` in the future. The day our
 `transactionNumber` ticks past 1,000,000, make sure your integration can handle
 number 1,000,001. If some `fields`, `operations` or `headers` can't be
 understood, you must be able to ignore them. We have built our requests in a way
@@ -70,9 +70,9 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
 |                  | **`Forwarded`**     | The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the `for` parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
 
-## URI Usage
+## URL Usage
 
-The base URIs of the API Platform are:
+The base URLs of the API Platform are:
 
 {% assign api_url_prod = 'https://api.payex.com/' %}
 
@@ -83,7 +83,7 @@ The base URIs of the API Platform are:
 | [**Production**]({{ api_url_prod }}) | `{{ api_url_prod }}`  |
 
 An important part of REST is its use of **hypermedia**. Instead of having to
-perform complex state management and hard coding URIs and the availability of
+perform complex state management and hard coding URLs and the availability of
 different operations in the client, this task is moved to the server. The client
 simply follows links and performs operations provided by the API, given the
 current state of the resource. The server controls the state and lets the client
@@ -91,45 +91,45 @@ know through hypermedia what's possible in the current state of the resource. To
 get an [introduction to **hypermedia**, please watch this 20 minute
 video][the-rest-and-then-some].
 
-{% include alert.html type="warning" icon="warning" header="Don't build URIs"
-body=" It is very important that only the base URIs of Swedbank Pay's APIs are
-stored in your system. All other URIs are returned dynamically in the response.
+{% include alert.html type="warning" icon="warning" header="Don't build URLs"
+body=" It is very important that only the base URLs of Swedbank Pay's APIs are
+stored in your system. All other URLs are returned dynamically in the response.
 Swedbank Pay cannot guarantee that your implementation will remain working if
-you store any other URIs in your system. When performing requests, please make
-sure to use the complete URIs that are returned in the response. **Do not
+you store any other URLs in your system. When performing requests, please make
+sure to use the complete URLs that are returned in the response. **Do not
 attempt to parse or build** upon the returned data – you should not put any
-special significance to the information you might glean from an URI. URIs should
+special significance to the information you might glean from an URL. URLs should
 be treated as opaque identifiers you can use to retrieve the identified resource
 – nothing more, nothing less. If you don't follow this advice, your integration
 most assuredly will break when Swedbank Pay makes updates in the future.
 " %}
 
-### Storing URIs
+### Storing URLs
 
-{% include alert.html type="success" icon="link" header="Storing URIs" body="In
-general, URIs should be **discovered** in responses to previous requets, **not
+{% include alert.html type="success" icon="link" header="Storing URLs" body="In
+general, URLs should be **discovered** in responses to previous requets, **not
 stored**." %}
 
-However, URIs that are used to create new resources can be stored or hard coded.
-Also, the URI of the generated resource can be stored on your end to `GET` it at
-a later point. Note that the URIs should be stored as opaque identifiers and
+However, URLs that are used to create new resources can be stored or hard coded.
+Also, the URL of the generated resource can be stored on your end to `GET` it at
+a later point. Note that the URLs should be stored as opaque identifiers and
 should not be parsed or interpreted in any way.
 
-{% include alert.html type="warning" icon="warning" header="Operation URIs"
-body="URIs that are returned as part of the `operations` in each response should
+{% include alert.html type="warning" icon="warning" header="Operation URLs"
+body="URLs that are returned as part of the `operations` in each response should
 not be stored." %}
 
 See the abbreviated example below where `psp/creditcard/payments` from the
-`POST` header is an example of the URI that can be stored, as it is used to
+`POST` header is an example of the URL that can be stored, as it is used to
 create a new resource. Also, the `/psp/creditcard/payments/{{ page.payment_id}}`
-URI can be stored in order to retrieve the created payment with an HTTP `GET`
+URL can be stored in order to retrieve the created payment with an HTTP `GET`
 request later.
 
-The URIs found within `operations` such as the `href` of `update-payment-abort`,
+The URLs found within `operations` such as the `href` of `update-payment-abort`,
 `{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}` should not be
 stored.
 
-In order to find which operations you can perform on a resource and the URI of
+In order to find which operations you can perform on a resource and the URL of
 the operation to perform, you need to retrieve the resource with an HTTP `GET`
 request first and then find the operation in question within the `operations`
 field.
@@ -207,7 +207,7 @@ Content-Type: application/json
 
 When a `POST` or `PATCH` request is performed, the whole target resource
 representation is returned in the response, as when performing a `GET`
-request on the resource URI. This is an economic approach that limits the
+request on the resource URL. This is an economic approach that limits the
 number of necessary `GET` requests.
 
 ## Expansion
@@ -316,7 +316,7 @@ instrument specific operations.
 {:.table .table-striped}
 | Field    | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
-| `href`   | The target URI to perform the operation against.                    |
+| `href`   | The target URL to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
 | `method` | The HTTP method to use when performing the operation.               |
 

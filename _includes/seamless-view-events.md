@@ -62,7 +62,7 @@ object:
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a completed payment. |
 
 ### `onPaymentAborted`
 
@@ -84,7 +84,7 @@ object:
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a canceled payment. |
 
 ### `onPaymentFailed`
 
@@ -106,7 +106,7 @@ event argument object:
 | Field         | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                        |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a failed payment. |
 
 ### `onTermsOfServiceRequested`
 
@@ -128,7 +128,7 @@ argument object:
 | Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
+| `openUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
 
 ### `onError`
 
@@ -282,9 +282,9 @@ with the following event argument object:
 ```
 
 {:.table .table-striped}
-| Field         | Type     | Description                                                                         |
-| :------------ | :------- | :---------------------------------------------------------------------------------- |
-| `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
+| Field         | Type     | Description                                                                               |
+| :------------ | :------- | :---------------------------------------------------------------------------------------- |
+| `redirectUrl` | `string` | The URL which the user will be redirected to when a third party requires additional data. |
 
 ## Updating Payment Menu
 
