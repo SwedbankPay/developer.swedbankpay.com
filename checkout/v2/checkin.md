@@ -126,6 +126,8 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 Menu components (the two `<iframe>` elements) must be separate
 (one must not replace the other)." %}
 
+{% include alert-nested-iframe-unsupported.md %}
+
 In the HTML, you only need to add two `<div>` elements to place the
 check-in and payment menu inside of. The JavaScript will handle the rest when
 it comes to handling the check-in and payment menu.
