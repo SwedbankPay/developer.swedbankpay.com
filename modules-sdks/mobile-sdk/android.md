@@ -26,9 +26,28 @@ differences will be highlighted in the chapter on custom backends.
 ## Installation
 
 The Android component of the Swedbank Pay Mobile SDK is distributed through
-Maven Central. Most applications can integrate the SDK by simply adding the
-dependency. Please refer to the [Maven Central page][sdk-maven] for the latest
-version of the SDK.
+Maven Central. It is split into two libraries in the
+[`com.swedbankpay.mobilesdk`][maven-group] group:
+
+*   Core SDK: [`com.swedbankpay.mobilesdk:mobilesdk`][sdk-maven]
+*   Merchant Backend Utilities:
+    [`com.swedbankpay.mobilesdk:mobilesdk-merchantbackend`][merchantbackend-maven]
+
+If you are not using the Merchant Backend API in your backend, you only need to
+use the first one. Otherwise, you should add both libraries to your project to
+get utilities for interfacing with your Merchant Backend server.
+
+Most applications can integrate the SDK by simply adding the dependency in
+the `build.gradle` file:
+
+```groovy
+dependencies {
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk:3.0.0'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:3.0.0'
+}
+```
+
+Please refer to Maven Central for the latest versions of the libraries.
 
 ## Usage
 
@@ -381,7 +400,9 @@ using the browser for third-party sites, please file a bug on the Android SDK.
                          next_href="ios"
                          next_title="iOS" %}
 
+[maven-group]: https://search.maven.org/search?q=g:com.swedbankpay.mobilesdk
 [sdk-maven]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk
+[merchantbackend-maven]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk-merchantbackend
 [dokka-pkg]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/index.md
 [dokka-pkg-merch]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/index.md
 [dokka-payfrag]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-fragment/index.md
