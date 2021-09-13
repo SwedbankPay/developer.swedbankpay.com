@@ -237,14 +237,14 @@ The result should look like this. First you will see a Checkin module where the
 payer can enter their email and phone number.
 
 {:.text-center}
-![screenshot of the authentication model seamless view checkin][seamless-view-checkin]
+![screenshot of the authenticated seamless view checkin][seamless-view-checkin]
 
 After checking in, the payment menu will appear with the payer information
 displayed above the menu. The payer can select their preferred payment
 instrument and pay.
 
 {:.text-center}
-![screenshot of the authentication model seamless view payment menu][seamless-view-payment-menu]
+![screenshot of the authenticated seamless view payment menu][seamless-view-payment-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -281,8 +281,8 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/authentication/features/core/abort
-[callback]: /checkout/v3/authentication/features/technical-reference/callback
-[seamless-view-checkin]: /assets/img/checkout/authentication-seamless-view-checkin.png
-[seamless-view-events]: /checkout/v3/authentication/features/technical-reference/seamless-view-events
-[seamless-view-payment-menu]: /assets/img/checkout/authentication-seamless-view-payment-menu.png
+[abort-feature]: /checkout/v3/authenticated/features/core/abort
+[callback]: /checkout/v3/authenticated/features/technical-reference/callback
+[seamless-view-checkin]: /assets/img/checkout/authenticated-seamless-view-checkin.png
+[seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
+[seamless-view-payment-menu]: /assets/img/checkout/authenticated-seamless-view-payment-menu.png

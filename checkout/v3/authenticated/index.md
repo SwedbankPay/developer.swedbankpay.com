@@ -1,9 +1,9 @@
 ---
-section: Authentication
+section: Authenticated
 title: Introduction
 estimated_read: 2
 description: |
-  **Authentication** is the checkout option for
+  **Authenticated** is the checkout option for
   Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
   and test this implementation for yourself!
 menu_order: 100
@@ -12,7 +12,7 @@ menu_order: 100
 
 ## Introduction
 
-You should choose our **Authentication** implementation if
+You should choose the **Authenticated** implementation if
 
 -   you collect the payer information needed to complete an order yourself.
 -   you **do not** need payer information from Swedbank Pay to calculate
@@ -29,7 +29,7 @@ You should choose our **Authentication** implementation if
 Please contact our [Sales department][contact-sales] regarding these
 requirements.
 
-There are two ways of integrating the **Authentication** implementation.
+There are two ways of integrating the **Authenticated** implementation.
 **Redirect** and **Seamless View**.
 
 **Redirect** sends the payer to a Swedbank Pay page where we handle the

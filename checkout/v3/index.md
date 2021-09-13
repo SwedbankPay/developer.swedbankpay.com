@@ -21,15 +21,15 @@ card_list:
   icon:
     content: shopping_cart
     outlined: true
-- title: Authentication
+- title: Authenticated
   description: |
     Use this implementation when you have consumer data, but want to access Swedbank Pay checkout for an easier purchase flow.
-  url:  /checkout/v3/authentication
+  url:  /checkout/v3/authenticated
   icon:
     content: shopping_cart
     outlined: true
 - title: Merchant Authenticated Consumer
-  description: Use this implementation when you have consumer data and consumers authentication on your site, but want to access Swedbank Pay checkout for an easier purchase flow.
+  description: Use this implementation when you have consumer data and consumer authentication on your site, but want to access Swedbank Pay checkout for an easier purchase flow.
   url:  /checkout/v3/mac
   icon:
     content: shopping_cart
@@ -39,7 +39,7 @@ card_list:
 {:.heading-line}
 {% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
-[checkout-3-authentication]: /checkout/v3/authentication
+[checkout-3-authenticated]: /checkout/v3/authenticated
 [checkout-3-standard]: /checkout/v3/standard
 [checkout-3-mac]: /checkout/v3/mac
 

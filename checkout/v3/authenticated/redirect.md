@@ -56,7 +56,7 @@ sequenceDiagram
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
                     deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to SwedbankPay 
+                    3rdParty -->>+ Payer: Redirect back to SwedbankPay
                     deactivate 3rdParty
                     Payer ->> Payer: Initiate Payment Menu
                     Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
@@ -160,14 +160,14 @@ The redirect link opens the payment menu in checkin state. The first page will
 be the checkin page where the payer provides their email and phone number.
 
 {:.text-center}
-![screenshot of the authentication model redirect checkin][redirect-checkin]
+![screenshot of the authenticated implementation redirect checkin][redirect-checkin]
 
 After checking in, the payment menu will appear on a new page with the payer
 information displayed above the menu. The payer can select their preferred
 payment instrument and pay.
 
 {:.text-center}
-![screenshot of the authentication model redirect payment menu][redirect-payment-menu]
+![screenshot of the authenticated implementation redirect payment menu][redirect-payment-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -180,7 +180,7 @@ about capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/authentication/features/core/abort
-[callback]: /checkout/v3/authentication/features/technical-reference/callback
-[redirect-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
-[redirect-payment-menu]: /assets/img/checkout/authentication-redirect-payment-menu.png
+[abort-feature]: /checkout/v3/authenticated/features/core/abort
+[callback]: /checkout/v3/authenticated/features/technical-reference/callback
+[redirect-checkin]: /assets/img/checkout/authenticated-redirect-checkin.png
+[redirect-payment-menu]: /assets/img/checkout/authenticated-redirect-payment-menu.png
