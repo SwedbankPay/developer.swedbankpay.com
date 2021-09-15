@@ -133,12 +133,6 @@ card_list_3:
   icon:
     content: copyright
     outlined: true
-- title: Merchant Authenticated Consumer
-  description: The Checkin alternative
-  url: /checkout/v3/mac/features/optional/mac
-  icon:
-    content: verified
-    outlined: true
 - title: Recur
   description: Setting up subscriptions and recurring payments
   url:  /checkout/v3/mac/features/optional/recur
