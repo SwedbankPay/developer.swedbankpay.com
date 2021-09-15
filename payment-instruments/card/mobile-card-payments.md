@@ -5,6 +5,10 @@ estimated_read: 3
 menu_order: 800
 ---
 
+{% include alert.html type="warning" icon="warning" header="Integration options"
+body="We advise you to integrate our Mobile SDK Payment Menu instead of
+integrating card payments directly in your app with WebView." %}
+
 ## Card Payments in Mobile Apps
 
 The implementation sequence for Card Payments in mobile apps is identical to the
@@ -143,6 +147,7 @@ next_href="after-payment" next_title="After Payment" %}
 [create-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [payout]: /payment-instruments/card/features/optional/payout
 [purchase]: /payment-instruments/card/features/core/purchase
+[mobile-sdk]: /modules-sdks/mobile-sdk/
 [mobile-redirect-page]: /assets/img/payments/mobile-card-page.png
 [swedish-mobile-redirect-page]: /assets/img/payments/swedish-mobile-card-page.png
 [recur]: /payment-instruments/card/features/optional/recur
