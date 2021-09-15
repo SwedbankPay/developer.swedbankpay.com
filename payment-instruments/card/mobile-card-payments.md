@@ -6,8 +6,8 @@ menu_order: 800
 ---
 
 {% include alert.html type="warning" icon="warning" header="Integration options"
-body="We advise you to integrate our [Mobile SDK Payment Menu][mobile-sdk]
-instead of integrating card payments directly in your app with WebView." %}
+body="We advise you to integrate our Mobile SDK Payment Menu instead of
+integrating card payments directly in your app with WebView." %}
 
 ## Card Payments in Mobile Apps
 
