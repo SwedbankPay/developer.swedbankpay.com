@@ -380,6 +380,7 @@ sequenceDiagram
 
 *   If the payment shown above is done as a two-phase (Authorization), you will
   need to implement the [Capture][capture] and [Cancel][cancel] requests.
+*   {% include authorizations-timeout.md %}
 *   **Abort:** It is possible to [abort a payment][abort] if the payment has no
   successful transactions.
 *   For `reversals`, you will need to implement the [Reversal][reversal] request.
