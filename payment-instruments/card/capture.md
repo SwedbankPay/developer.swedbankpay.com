@@ -16,6 +16,8 @@ menu_order: 700
 everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described in After Payment.
 
+{% include authorizations-timeout.md %}
+
 {% include iterator.html prev_href="direct"
                          prev_title="Direct"
                          next_href="after-payment"
