@@ -13,6 +13,8 @@ menu_order: 500
 everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described below.
 
+{% include authorizations-timeout.md %}
+
 {% include iterator.html prev_href="payment-menu"
                          prev_title="Payment Menu"
                          next_href="after-payment"

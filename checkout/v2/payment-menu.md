@@ -195,7 +195,11 @@ When the the payment is completed, the Payment Menu script will be signaled and
 a full redirect to the `completeUrl` sent in with the Payment Order will be
 performed. When the `completeUrl` on your server is hit, you can inspect the
 status on the stored `paymentorder.id` on the server, and then perform
-`capture`. If the payment is a `Sale` or one-phase purchase, it will be
+`capture`.
+
+{% include authorizations-timeout.md %}
+
+If the payment is a `Sale` or one-phase purchase, it will be
 automatically captured. A third scenario is if the goods are sent physically to
 the payer; then you should await capture until after the goods have been sent.
 
