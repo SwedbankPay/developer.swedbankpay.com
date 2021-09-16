@@ -16,8 +16,6 @@ your payment order request." %}
 |          | └➔&nbsp;`rejectCreditCards`    | `bool`    | `true` if credit cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.    |
 |          | └➔&nbsp;`rejectConsumerCards`  | `bool`    | `true` if consumer cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request.  |
 |          | └➔&nbsp;`rejectCorporateCards` | `bool`    | `true` if corporate cards should be declined; otherwise `false` per default. Default value is set by Swedbank Pay and can be changed at your request. |
-|          | `invoice`                      | `object`  | The invoice object.                                                                                                                                   |
-|          | └➔&nbsp;`feeAmount`            | `integer` | The fee amount in the lowest monetary unit. Applied if the payer chooses to pay with invoice.                                                      |
 |          | `swish`                        | `object`  | The Swish object.                                                                                                                                     |
 |          | └➔&nbsp;`enableEcomOnly`       | `bool`    | `true` to enable Swish in e-commerce view only.                                                                                                |
 |          | `mobilePay`                    | `object`  | The MobilePay object.                                                                                                                                     |
