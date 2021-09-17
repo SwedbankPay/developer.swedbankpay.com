@@ -148,7 +148,7 @@ completed an `authorize` or a `sale`.
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-standard.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-authenticate.md integration_mode="seamless_view" %}
 
 ## Step 2: Display Payment Menu And Checkin
 

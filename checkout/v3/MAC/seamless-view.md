@@ -183,31 +183,50 @@ this example.
 **JavaScript**
 
 ```js
-                var request = new XMLHttpRequest();
-                request.addEventListener('load', function () {
-                    response = JSON.parse(this.responseText);
-                    var script = document.createElement('script');
-                    var operation = response.operations.find(function (o) {
-                        return o.rel === 'view-checkout';
-                    });
-                    script.setAttribute('src', operation.href);
-                    script.onload = function () {
-                        // When the 'view-checkout' script is loaded, we can initialize the
-                        // Payment Menu inside our 'payment-menu' container.
-                        payex.hostedView.paymentMenu({
-                            container: 'payment-menu',
-                            culture: 'sv-SE'
-                        }).open();
-                    };
-                    // Append the Payment Menu script to the <head>
-                    var head = document.getElementsByTagName('head')[0];
-                    head.appendChild(script);
-                });
-                // Like before, you should replace the address here with
-                // your own endpoint.
-                request.open('GET', '<Your-Backend-Endpoint-Here>', true);
-                request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-                request.send();
+var request = new XMLHttpRequest();
+request.addEventListener('load', function () {
+    response = JSON.parse(this.responseText);
+    var script = document.createElement('script');
+    var operation = response.operations.find(function (o) {
+        return o.rel === 'view-checkout';
+    });
+    script.setAttribute('src', operation.href);
+    script.onload = function () {
+        // When the 'view-checkout' script is loaded, we can initialize the
+        // Payment Menu inside 'checkout-container'.
+        payex.hostedView.checkout({
+            container: {
+                checkoutContainer: "checkout-container"
+            },
+            culture: 'nb-No',
+        }).open();
+    };
+    // Append the Checkout script to the <head>
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(script);
+});
+// Like before, you should replace the address here with
+// your own endpoint.
+request.open('GET', '<Your-Backend-Endpoint-Here>', true);
+request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+request.send();
+```
+
+{:.code-view-header}
+**HTML**
+
+```
+  < !DOCTYPE html >
+  <html>
+      <head>
+          <title>Swedbank Pay Checkout is Awesome!</title>
+      </head>
+      <body>
+          <div id="checkout-container"></div>
+          <!-- Here you can specify your own javascript file -->
+          <script src="<Your-JavaScript-File-Here>"></script>
+      </body>
+  </html>
 ```
 
 The payment menu should appear with the payer information displayed above the
