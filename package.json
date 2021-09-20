@@ -49,7 +49,7 @@
     "remark-lint-maximum-heading-length": "^3.0.1",
     "remark-lint-no-auto-link-without-protocol": "^3.0.1",
     "remark-lint-no-blockquote-without-marker": "^5.0.1",
-    "remark-lint-no-consecutive-blank-lines": "^4.0.1",
+    "remark-lint-no-consecutive-blank-lines": "^4.1.0",
     "remark-lint-no-duplicate-definitions": "^3.0.0",
     "remark-lint-no-duplicate-headings": "^3.0.1",
     "remark-lint-no-emphasis-as-heading": "^3.0.1",
