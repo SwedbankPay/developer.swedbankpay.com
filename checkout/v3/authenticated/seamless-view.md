@@ -77,7 +77,7 @@ sequenceDiagram
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
             Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
             deactivate Merchant
-            SwedbankPay -->> Merchant: Payment Details
+            SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
             end
                         activate Merchant
@@ -135,11 +135,11 @@ Two new fields have been added to the payment order request in this integration.
 node. Please note that `shippingAdress` is only required if `digitalProducts` is
 set to `false`. `requireConsumerInfo` **must** be set to `false`.
 
-In some instances you need the possibility to abort purchases. This could be if
-a payer does not complete the purchase within a reasonable timeframe. For those
-instances we have `abort`, which you can read about in the [core
-features][abort-feature]. You can only use `abort` if the payer **has not**
-completed an `authorize` or a `sale`.
+Sometimes you might need to abort purchases. An example could be if a payer does
+not complete the purchase within a reasonable timeframe. For those instances we
+have `abort`, which you can read about in the [core features][abort-feature].
+You can only use `abort` if the payer **has not** completed an `authorize` or a
+`sale`.
 
 {% include payment-url.md when="selecting the payment instrument Vipps or in the
 3-D Secure verification for Card Payments" %}
@@ -179,7 +179,7 @@ Seamless View.
 To load the Checkout from the JavaScript URL obtained in the backend API
 response, it needs to be set as a script element’s `src` attribute. You can
 cause a page reload and do this with static HTML, or you can avoid the page
-refresh by invoking the POST to create the payment order through Ajax and then
+refresh by invoking the POST to create the payment order through Ajax, and then
 create the script element with JavaScript. The HTML code will be unchanged in
 this example.
 
@@ -233,18 +233,36 @@ request.send();
   </html>
 ```
 
-The result should look like this. First you will see a Checkin module where the
-payer can enter their email and phone number.
+First you will see a Checkin module where the payer can enter their email and
+phone number.
 
 {:.text-center}
-![screenshot of the authenticated seamless view checkin][seamless-view-checkin]
+![screenshot of the authenticated implementation seamless view checkin][login-checkin]
+
+A known payer will be sent directly to the payment menu shown below. If we
+detect that the payer is new, we give them the option to save their details or
+proceed without saving. If that happens, these checkin steps will appear. Notice
+the lack of address input for digital products (bottom screenshot).
+
+{:.text-center}
+![screenshot of the seamless view checkin when the payer is new][checkin-new-payer]
+
+{:.text-center}
+![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
+
+{:.text-center}
+![screenshot of the seamless view checkin when entering details][checkin-enter-details-digital]
 
 After checking in, the payment menu will appear with the payer information
 displayed above the menu. The payer can select their preferred payment
-instrument and pay.
+instrument and pay. The example with shipping address is for all goods (physical
+and digital), the one without shipping address is for digital products only.
 
 {:.text-center}
-![screenshot of the authenticated seamless view payment menu][seamless-view-payment-menu]
+![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+
+{:.text-center}
+![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -283,6 +301,9 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
 [callback]: /checkout/v3/authenticated/features/technical-reference/callback
-[seamless-view-checkin]: /assets/img/checkout/authenticated-seamless-view-checkin.png
+[checkin-enter-details-digital]:
+[checkin-enter-details-mixed]:
+[checkin-new-payer]:
 [seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
-[seamless-view-payment-menu]: /assets/img/checkout/authenticated-seamless-view-payment-menu.png
+[seamless-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-seamless-digital.png
+[seamless-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-seamless-mixed-products.png

@@ -5,7 +5,7 @@ estimated_read: 2
 description: |
   **Authenticated** is the checkout option for
   Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-  and test this implementation for yourself!
+  and try this implementation yourself!
 menu_order: 100
 ---
 
@@ -32,8 +32,8 @@ requirements.
 There are two ways of integrating the **Authenticated** implementation.
 **Redirect** and **Seamless View**.
 
-**Redirect** sends the payer to a Swedbank Pay page where we handle the
-authentication and purchase process. The payer will be redirected back to you
+With **Redirect**, the payer is sent to a Swedbank Pay page, where we handle the
+authentication and purchase process. The payer is redirected back to you
 when the purchase is completed or if the payer aborts the purchase. The
 purchase page will be styled by Swedbank Pay.
 

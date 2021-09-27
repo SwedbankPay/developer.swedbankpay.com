@@ -155,6 +155,50 @@ object:
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
+### `onBillingDetailsAvailable`
+
+This event triggers when a consumer has been identified. The
+`onBillingDetailsAvailable` event will be raised with the following event
+argument object:
+
+{:.code-view-header}
+**onBillingDetailsAvailable event object**
+
+```json
+{
+    "actionType": "OnBillingDetailsAvailable",
+    "url": "/psp/consumers/{{ConsumerProfileRef}}/billing-details",
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `actionType`  | `string` | The type of event that was raised.                                                  |
+| `url`         | `string` | The URL containing billing details.                                                 |
+
+### `onShippingDetailsAvailable`
+
+This event triggers when a consumer has been identified or their shipping
+address has been updated. The `onShippingDetailsAvailable` event will be raised
+with the following event argument object:
+
+{:.code-view-header}
+**onShippingDetailsAvailable event object**
+
+```json
+{
+    "actionType": "OnShippingDetailsAvailable",
+    "url": "/psp/consumers/{{ConsumerProfileRef}}/shipping-details",
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `actionType`  | `string` | The type of event that was raised.                                                  |
+| `url`         | `string` | The URL containing shipping details.                                                |
+
 {% if api_resource == "paymentorders" %}
 
 ### `onApplicationConfigured`

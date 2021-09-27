@@ -32,13 +32,15 @@ sequenceDiagram
             SwedbankPay -->>+ Merchant: rel:redirect-checkout
             deactivate SwedbankPay
             Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
-            activate Payer
-            Payer ->> Payer: Initiate Purchase step
-            deactivate Payer
-            SwedbankPay ->>+ Payer: Do purchase logic
-            Payer ->> SwedbankPay: Do purchase logic
-            deactivate Payer
-            deactivate SwedbankPay
+    activate SwedbankPay
+    activate Payer
+    Payer ->> Payer: Initiate Purchase step
+
+    deactivate Payer
+    SwedbankPay ->>+ Payer: Do purchase logic
+    Payer ->> SwedbankPay: Do purchase logic
+    deactivate Payer
+    deactivate SwedbankPay
 
                     opt Payer perform purchase out of iFrame
                     activate Payer
@@ -56,10 +58,10 @@ sequenceDiagram
                 SwedbankPay -->> Payer: Purchase status
                 deactivate SwedbankPay
 
-            alt If purchase is completed
+            alt If Purchase is completed
             activate Payer
             Payer ->> Payer: Redirect back to CompleteUrl
-            Payer ->>+ Merchant: Check purchase status
+            Payer ->>+ Merchant: Check Purchase status
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
@@ -110,11 +112,11 @@ Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
 own `logo`.
 
-In some instances you need the possibility to abort purchases. This could be if
-a payer does not complete the purchase within a reasonable timeframe. For those
-instances we have `abort`, which you can read about in the [core
-features][abort-feature]. You can only use `abort` if the payer **has not**
-completed an `authorize` or a `sale`.
+Sometimes you might need to abort purchases. An example could be if a payer does
+not complete the purchase within a reasonable timeframe. For those instances we
+have `abort`, which you can read about in the [core features][abort-feature].
+You can only use `abort` if the payer **has not** completed an `authorize` or a
+`sale`.
 
 {% include alert-risk-indicator.md %}
 
@@ -146,7 +148,15 @@ Among the operations in the POST `paymentOrders` response, you will find the
 
 The redirect link opens the payment menu on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay.
+payment instrument and pay. The example with shipping address is for all goods
+(physical and digital), the one without shipping address is for digital
+products only.
+
+{:.text-center}
+![screenshot of the authenticated implementation redirect payment menu mixed][redirect-payment-menu-mixed]
+
+{:.text-center}
+![screenshot of the authenticated implementation redirect payment menu digital][redirect-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -161,3 +171,5 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
 [callback]: /checkout/v3/mac/features/technical-reference/callback
+[redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png
+[redirect-payment-menu-mixed]: //assets/img/checkout/v3/payment-menu-redirect-mixed-products.png

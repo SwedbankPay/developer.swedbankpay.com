@@ -29,16 +29,17 @@ sequenceDiagram
             deactivate Merchant
             SwedbankPay -->>+ Merchant: rel:view-checkout
             deactivate SwedbankPay
-            Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
-            activate Payer
-            Payer ->> Payer: Initiate Purchase step
-            deactivate Payer
-            SwedbankPay ->>+ Payer: Do purchase logic
-            deactivate SwedbankPay
-            Payer ->> SwedbankPay: Do purchase logic
-            deactivate Payer
+                        Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
+    activate Payer
+    Payer ->> Payer: Initiate Purchase step
+    deactivate Payer
+    activate SwedbankPay
+        SwedbankPay ->>+ Payer: Do purchase logic
+    Payer ->> SwedbankPay: Do purchase logic
+    deactivate Payer
+    deactivate SwedbankPay
 
-                opt Payer perform purchase out of iFrame
+                opt Payer performs purchase out of iFrame
                     activate Payer
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
@@ -80,7 +81,7 @@ Merchant -->>- Payer: Show Purchase complete
                 opt If purchase is failed
                 activate Payer
                 Payer ->> Payer: Event: OnPaymentFailed ①
-                Payer ->>+ Merchant: Check payment status
+                Payer ->>+ Merchant: Check purchase status
                 deactivate Payer
                 Merchant ->>+ SwedbankPay: GET {paymentorder.id}
                 deactivate Merchant
@@ -98,11 +99,10 @@ Merchant -->>- Payer: Show Purchase complete
                 Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
                 end
 
-           opt PaymentOrder Callback (if callbackUrls is set) ②
+                opt PaymentOrder Callback (if callbackUrls is set) ②
                 activate SwedbankPay
                 SwedbankPay ->> Merchant: POST Purchase Callback
                 deactivate SwedbankPay
-         end
          end
 
 
@@ -132,11 +132,11 @@ Two new fields have been added to the payment order request in this integration.
 node. Please note that `shippingAdress` is only required if `digitalProducts` is
 set to `false`. `requireConsumerInfo` **must** be set to `false`.
 
-In some instances you need the possibility to abort purchases. This could be if
-a payer does not complete the purchase within a reasonable timeframe. For those
-instances we have `abort`, which you can read about in the [core
-features][abort-feature]. You can only use `abort` if the payer **has not**
-completed an `authorize` or a `sale`.
+Sometimes you might need to abort purchases. An example could be if a payer does
+not complete the purchase within a reasonable timeframe. For those instances we
+have `abort`, which you can read about in the [core features][abort-feature].
+You can only use `abort` if the payer **has not** completed an `authorize` or a
+`sale`.
 
 {% include payment-url.md when="selecting the payment instrument Vipps or in the
 3-D Secure verification for Card Payments" %}
@@ -175,7 +175,7 @@ Seamless View.
 To load the Checkout from the JavaScript URL obtained in the backend API
 response, it needs to be set as a script element’s `src` attribute. You can
 cause a page reload and do this with static HTML, or you can avoid the page
-refresh by invoking the POST to create the payment order through Ajax and then
+refresh by invoking the POST to create the payment order through Ajax, and then
 create the script element with JavaScript. The HTML code will be unchanged in
 this example.
 
@@ -230,10 +230,17 @@ request.send();
 ```
 
 The payment menu should appear with the payer information displayed above the
-menu. The payer can select their preferred payment instrument and pay.
+menu. The payer can select their preferred payment instrument and pay. The
+example with shipping address is for all goods (physical and digital), the one
+without shipping address is for digital products only.
+
 
 {:.text-center}
-![screenshot of the mac model seamless view payment menu][seamless-view-mac-payment-menu]
+![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+
+
+{:.text-center}
+![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -252,4 +259,5 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout/v3/mac/features/core/abort
 [callback]: /checkout/v3/mac/features/technical-reference/callback
 [seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
-[seamless-view-mac-payment-menu]: /
+[seamless-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-seamless-digital.png
+[seamless-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-seamless-mixed-products.png
