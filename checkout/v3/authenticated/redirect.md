@@ -121,11 +121,11 @@ Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
 own `logo`.
 
-In some instances you need the possibility to abort purchases. This could be if
-a payer does not complete the purchase within a reasonable timeframe. For those
-instances we have `abort`, which you can read about in the [core
-features][abort-feature]. You can only use `abort` if the payer **has not**
-completed an `authorize` or a `sale`.
+Sometimes you might need to abort purchases. An example could be if a payer does
+not complete the purchase within a reasonable timeframe. For those instances we
+have `abort`, which you can read about in the [core features][abort-feature].
+You can only use `abort` if the payer **has not** completed an `authorize` or a
+`sale`.
 
 {% include alert-risk-indicator.md %}
 
@@ -160,14 +160,33 @@ The redirect link opens the payment menu in checkin state. The first page will
 be the checkin page where the payer provides their email and phone number.
 
 {:.text-center}
-![screenshot of the authenticated implementation redirect checkin][redirect-checkin]
+![screenshot of the authenticated implementation redirect checkin][login-checkin]
+
+A known payer will be sent directly to the payment menu shown below. If we
+detect that the payer is new, we give them the option to save their details or
+proceed without saving. If that happens, these checkin steps will appear. Notice
+the lack of address input for digital products (bottom screenshot).
+
+{:.text-center}
+![screenshot of the redirect checkin when the payer is new][checkin-new-payer]
+
+{:.text-center}
+![screenshot of the redirect checkin when entering details][checkin-enter-details-mixed]
+
+{:.text-center}
+![screenshot of the redirect checkin when entering details][checkin-enter-details-digital]
 
 After checking in, the payment menu will appear on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay.
+payment instrument and pay. The example with shipping address is for all goods
+(physical and digital), the one without shipping address is for digital
+products only.
 
 {:.text-center}
-![screenshot of the authenticated implementation redirect payment menu][redirect-payment-menu]
+![screenshot of the authenticated implementation redirect payment menu mixed][redirect-payment-menu-mixed]
+
+{:.text-center}
+![screenshot of the authenticated implementation redirect payment menu digital][redirect-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -182,5 +201,9 @@ about capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
 [callback]: /checkout/v3/authenticated/features/technical-reference/callback
-[redirect-checkin]: /assets/img/checkout/authenticated-redirect-checkin.png
-[redirect-payment-menu]: /assets/img/checkout/authenticated-redirect-payment-menu.png
+[login-checkin]: /assets/img/checkout/authenticated-redirect-checkin.png
+[checkin-enter-details-digital]:
+[checkin-enter-details-mixed]:
+[checkin-new-payer]:
+[redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png
+[redirect-payment-menu-mixed]: //assets/img/checkout/v3/payment-menu-redirect-mixed-products.png
