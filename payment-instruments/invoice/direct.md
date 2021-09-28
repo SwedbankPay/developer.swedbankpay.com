@@ -72,7 +72,7 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "generateReccurenceToken": false,
+        "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
