@@ -97,7 +97,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    kramdown-plantuml (1.1.4)
+    kramdown-plantuml (1.1.5)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
       open3 (~> 0.1)
