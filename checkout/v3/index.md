@@ -1,6 +1,7 @@
 ---
 section: Checkout v3
 title: Introduction
+hide_from_sidebar: true
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
