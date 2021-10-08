@@ -2,12 +2,11 @@
 title: Features
 card_overview: true
 description: |
-  In this section you can read more about the different features of
+  In this section, you can read more about the different features of
   Swedbank Pay Checkout.
-icon:
-  content: remove_red_eye
-additional: true
+permalink: /:path/
 menu_order: 1000
+<<<<<<< HEAD
 card_list:
 - title: 3-D Secure 2
   description: Authenticating the cardholder
@@ -157,21 +156,6 @@ card_list_3:
   icon:
     content: verified_user
     outlined: true
+=======
+>>>>>>> 03aad2a9 (ESM-1276: Big one before hidden release.)
 ---
-
-{:.heading-line}
-
-## Core Features
-
-{% include card-list.html card_list=page.card_list
-    col_class="col-lg-4" %}
-
-## Technical Reference
-
-{% include card-list.html card_list=page.card_list_2
-    col_class="col-lg-4" %}
-
-## Optional Features
-
-{% include card-list.html card_list=page.card_list_3
-    col_class="col-lg-4" %}

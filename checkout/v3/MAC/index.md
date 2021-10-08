@@ -13,7 +13,7 @@ menu_order: 300
 
 ## Introduction
 
-You should choose our MAC implementation if
+You should choose the **MAC** implementation if
 
 -   you collect the payer information needed to complete an order yourself.
 -   you **do not** need payer information from Swedbank Pay to calculate
