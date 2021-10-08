@@ -18,10 +18,10 @@ transaction, naturally excluding one-phase payment instruments like
 Please note that Invoice captures differ from the others. These are explained
 in it's [own section][invoice-section].
 
-In addition to full captures, it is possible to do partial `capture`s where you
-only capture a part of the authorized amount. You can do other captures on the
-same payment later, up to the total authorized amount. Useful for when you have
-to split orders into several shipments, for instance.
+In addition to full captures, it is possible to do partial captures of a part of
+the authorized amount. You can do other captures on the same payment later, up
+to the total authorized amount. Useful for when you have to split orders into
+several shipments, for instance.
 
 First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,

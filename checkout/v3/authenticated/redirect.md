@@ -2,108 +2,21 @@
 title: Redirect
 estimated_read: 12
 description: |
-  Redirect is our simplest integration. Swedbank Pay handles the
-  purchase so you can focus on your core activities. When ready to pay, the
-  payer will be redirected to a secure Swedbank Pay hosted site, authenticate
-  their Checkout profile and choose payment instrument. After the purchase,
-  the payer will be redirected back to your website.
+  Redirect is our simplest integration. The payer will be redirected to a secure
+  Swedbank Pay hosted site, authenticate their Checkout profile and choose
+  payment instrument. After the purchase, the payer will be redirected back to
+  your website.
 menu_order: 200
 ---
 
-Below is a sequence diagram of the Redirect integration.
+The **Authenticated Redirect** integration consists of three main steps.
+**Creating** the payment order and checkin, **displaying** the payment menu and
+checkin module, and finally **capturing** the funds. In addition, there are
+other post purchase options you need. We get to them later on.
 
-{% include alert.html type="informative" icon="info" body="
-Note that in this diagram, Payer refers to the merchant front-end
-(website) while Merchant refers to the merchant back-end." %}
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
-
-        rect rgba(238, 112, 35, 0.05)
-            activate Payer
-            Payer ->>+ Merchant: Initiate Purchase
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:redirect-checkout
-            deactivate SwedbankPay
-            Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
-            activate Payer
-            Payer ->> Payer: Initiate Authenticate step
-               Payer ->> SwedbankPay: Show Checkin component
-    deactivate Payer
-    activate SwedbankPay
-    SwedbankPay ->> Payer: Payer identification process
-    activate Payer
-    Payer ->> SwedbankPay: Payer identification process
-    deactivate Payer
-    SwedbankPay -->> Payer: show payer completed iframe
-    activate Payer
-    Payer ->> Payer: Initiate Purchase step
-
-    deactivate Payer
-    SwedbankPay ->>+ Payer: Do purchase logic
-    Payer ->> SwedbankPay: Do purchase logic
-    deactivate Payer
-    deactivate SwedbankPay
-
-                    opt Payer perform purchase out of iFrame
-                    activate Payer
-                    Payer ->> Payer: Redirect to 3rd party
-                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to SwedbankPay
-                    deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu
-                    Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
-                    deactivate Payer
-                end
-
-                activate SwedbankPay
-                SwedbankPay -->> Payer: Purchase status
-                deactivate SwedbankPay
-
-            alt If Purchase is completed
-            activate Payer
-            Payer ->> Payer: Redirect back to CompleteUrl
-            Payer ->>+ Merchant: Check Purchase status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
-            deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
-            end
-
-activate Merchant
-Merchant -->>- Payer: Show Purchase complete
-         opt PaymentOrder Callback (if callbackUrls is set) ①
-                activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
-                deactivate SwedbankPay
-         end
-         end
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
-        end
-```
-
-*   ① Read more about [callback][callback] handling in the technical reference.
+If you want to get an overview before proceeding, you can look at the [sequence
+diagram][sequence-diagrams]. It is also available in the sidebar if you want to
+look at it later. Let´s get going with the two first steps of the integration.
 
 ## Step 1: Create Payment Order And Checkin
 
@@ -112,10 +25,16 @@ When the purchase is initiated, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
-Two new fields have been added to the payment order request in this integration.
-`requireConsumerInfo` and `digitalProducts`. They are a part of the `payer`
-node. Please note that `shippingAdress` is only required if `digitalProducts` is
-set to `false`. `requireConsumerInfo` **must** be set to `false`.
+A new field has been added to the payment order request in this integration.
+This is called `productName` and is a part of the `payer` node. This field is
+required if you want to use Checkout v3, as the needed operations won't be
+available in the response if it's not included.
+
+When `productName` is set to `checkout3`, `requireConsumerInfo` will have its
+default value set to false. while `digitalProducts` will default to true.
+
+Please note that `shippingAdress` is only required if `digitalProducts` is set
+to `false`. `requireConsumerInfo` **must** be set to `false`.
 
 Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
@@ -162,19 +81,25 @@ be the checkin page where the payer provides their email and phone number.
 {:.text-center}
 ![screenshot of the authenticated implementation redirect checkin][login-checkin]
 
-A known payer will be sent directly to the payment menu shown below. If we
-detect that the payer is new, we give them the option to save their details or
-proceed without saving. If that happens, these checkin steps will appear. Notice
-the lack of address input for digital products (bottom screenshot).
+A known payer will be sent directly to the payment menu shown further below. If
+we detect that the payer is new, we give them the option to store their details
+or proceed without storing. If that happens, these checkin steps will appear.
 
 {:.text-center}
-![screenshot of the redirect checkin when the payer is new][checkin-new-payer]
+![screenshot of asking the payer to store details][checkin-new-payer]
+
+After choosing yes or no, the payer must enter their SSN.
 
 {:.text-center}
-![screenshot of the redirect checkin when entering details][checkin-enter-details-mixed]
+![screenshot of asking the payer to enter SSN while storing details][checkin-new-payer-ssn]
+
+With digital products, the payer will be sent directly to the payment menu after
+selecting to store their details. For mixed goods, the SSN input view will
+expand and the payer must enter their shipping address. Payers choosing not to
+store credentials (guests) must also enter their shipping address.
 
 {:.text-center}
-![screenshot of the redirect checkin when entering details][checkin-enter-details-digital]
+![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
 After checking in, the payment menu will appear on a new page with the payer
 information displayed above the menu. The payer can select their preferred
@@ -188,7 +113,7 @@ products only.
 {:.text-center}
 ![screenshot of the authenticated implementation redirect payment menu digital][redirect-payment-menu-digital]
 
-Once the payer has completed the purchase, you can perform a GET towards the
+Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
 
 You are now ready to `capture` the funds. Follow the link below to read more
@@ -201,9 +126,10 @@ about capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
 [callback]: /checkout/v3/authenticated/features/technical-reference/callback
-[login-checkin]: /assets/img/checkout/authenticated-redirect-checkin.png
-[checkin-enter-details-digital]:
-[checkin-enter-details-mixed]:
-[checkin-new-payer]:
+[sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-redirect
+[login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png
-[redirect-payment-menu-mixed]: //assets/img/checkout/v3/payment-menu-redirect-mixed-products.png
+[redirect-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-redirect-mixed-products.png
+[checkin-enter-details-mixed]: /assets/img/checkout/v3/checkin-enter-shipping-address.png
+[checkin-new-payer]: /assets/img/checkout/v3/checkin-new-payer.png
+[checkin-new-payer-ssn]: /assets/img/checkout/v3/checkin-new-payer-ssn.png
