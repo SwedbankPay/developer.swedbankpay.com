@@ -25,7 +25,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture request_table%}
+{:.table .table-striped .mb-5}
 |     Required     | Field                    | Type          | Description                                                                              |
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
@@ -33,6 +34,9 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}          |
+{% endcapture %}
+{% include accordion-table.html content = request_table
+%}
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -67,14 +71,15 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture response_table%}
+{:.table .table-striped .mb-5}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URI of the payment this `reversal` transaction belongs to.                                                                                                                                      |
+| `payment`                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
 | `reversal`                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
-| └➔&nbsp;`id`              | `string`  | The relative URI of the created `reversal`transaction.                                                                                                                                                       |
+| └➔&nbsp;`id`              | `string`  | The relative URL of the created `reversal`transaction.                                                                                                                                                       |
 | └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
-| └─➔&nbsp;`id`             | `string`  | The relative URI of the current  transaction  resource.                                                                                                                                                      |
+| └─➔&nbsp;`id`             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
 | └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
@@ -87,6 +92,11 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content = response_table
+%}
+
+
 
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.

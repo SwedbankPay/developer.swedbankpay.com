@@ -13,8 +13,6 @@ menu_order: 1100
 everyone should be happy. But, sometimes you also need to implement the
 cancellation and reversal operations described in After Payment.
 
-{% include authorizations-timeout.md %}
-
 {% include iterator.html prev_href="seamless-view"
                          prev_title="Seamless View"
                          next_href="after-payment"

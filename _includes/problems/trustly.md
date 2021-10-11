@@ -2,7 +2,7 @@
 
 There are a few problems specific to the `trustly` resource that you may want to
 guard against in your integrations. All Trustly problem types will have the
-following URI structure:
+following URL structure:
 
 `https://api.payex.com/psp/errordetail/trustly/<error-type>`
 

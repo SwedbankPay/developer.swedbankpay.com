@@ -62,6 +62,7 @@ Content-Type: application/json
         "description": "Test Invoice",
         "userAgent": "Mozilla/5.0...",
         "generatePaymentToken": false,
+        "generateRecurrenceToken": false,
         "paymentToken": ""
         "language": "sv-SE",
         "urls": {
@@ -93,7 +94,7 @@ Content-Type: application/json
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
 | :--------------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. |
+| {% icon check %} | └➔&nbsp;`operation`               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. Take a look at the [create `payment` section][create-payment] for a full examples of the following `operation` options: [FinancingConsumer][financing-consumer], [Recur][recur], and [Verify][verify] |
 | {% icon check %} | └➔&nbsp;`intent`                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`currency`                | `string`      | NOK or SEK.                                                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`prices`                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                          |
@@ -102,12 +103,13 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md %}                                                                                                                                                                                                                                                                 |
 |                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                        |
+|                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The`urls`resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A`GET`request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                                               |
-|                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with`paymentUrl`; only cancelUrl or`paymentUrl`can be used, not both.                                                                                                                                             |
+|                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with`paymentUrl`; only cancelUrl or`paymentUrl`can be used, not both.                                                                                                                                             |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`payeeInfo`               | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                                                            |
@@ -197,8 +199,6 @@ Content-Type: application/json
 The key information in the response is the `view-authorization` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
-
-{% include alert-nested-iframe-unsupported.md %}
 
 ## Step 2: Display the Payment
 
@@ -296,7 +296,10 @@ next_href="direct" next_title="Direct" %}
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
+[create-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
 [price-resource]: /payment-instruments/invoice/features/technical-reference/prices
+[recur]: /payment-instruments/invoice/features/optional/recur
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
+[verify]: /payment-instruments/invoice/features/optional/verify

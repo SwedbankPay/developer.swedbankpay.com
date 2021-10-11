@@ -84,7 +84,8 @@ Content-Type: application/json
 
 ```
 
-{:.table .table-striped}
+{% capture response_table%}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Description                                                                                                                                                                                                  |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | {% include field-description-id.md sub_resource=transaction %}                                                                                                                                               |
@@ -120,3 +121,6 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content = response_table
+%}

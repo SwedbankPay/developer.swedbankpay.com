@@ -1,7 +1,6 @@
 ---
 title: Contributing
 estimated_read: 2
-menu_order: 1400
 ---
 
 To make it clear exactly how outside contributors should provide their

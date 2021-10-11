@@ -8,4 +8,4 @@ icon:
   outlined: true
 ---
 
-{% include payment-order-recur.md %}
+{% include recur.md %}

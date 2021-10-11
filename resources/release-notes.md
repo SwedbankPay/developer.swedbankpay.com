@@ -4,21 +4,11 @@ estimated_read: 10
 description: |
   The latest updates about our releases will be
   published on this page.
-menu_order: 800
 ---
 
 {% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
-
-## 03 August 2021
-
-### Version 2.2.2
-
-*   Added payment link for [Payment Menu][payment-menu-payment-link]
-*   Renamed [Merchant Authenticated Consumer][mac-checkout] section (previously Delegated Strong Authenticated Consumer)
-*   Updated [Unscheduled Merchant Initiated Transaction][unscheduled-mit]
-*   Fixed typos, minor bugs and code examples
 
 ## 19 May 2021
 
@@ -192,7 +182,7 @@ Other changes:
 ### Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
-*   Added information about [Storing URIs][storing-uri] in the [Technical
+*   Added information about [Storing URLs][storing-uri] in the [Technical
     Information][home-technical-information] section.
 
 ## 22 May 2020
@@ -230,7 +220,7 @@ Other changes:
 ### Version 1.9.0
 
 *   Added a new section [SDKs and Modules][sdk-modules] in Resources.
-*   Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
+*   Corrected problem `type` URLs for [Card Payments][card], [Checkout][checkout]
     and [Swish Payments][swish].
 *   Required checkmarks have a new, fresh look: {% icon check %}
 *   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}
@@ -607,7 +597,6 @@ integration and the payer.
 [payment-orders]: /checkout/v2/payment-menu#step-3-create-payment-order
 [payment-menu-invoice-capture]:/payment-menu/capture#invoice
 [payment-menu-items]: /payment-menu/features/technical-reference/items
-[payment-menu-payment-link]: /payment-menu/features/optional/payment-link
 [payments]: /payment-instruments
 [prices]: /checkout/v2/features/technical-reference/prices
 [update-order-checkout]: /checkout/v2/features#update-order
@@ -633,7 +622,6 @@ integration and the payer.
 [trustly-payments]: /payment-instruments/trustly
 [trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
-[unscheduled-mit]: /payment-menu/features/optional/unscheduled
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps

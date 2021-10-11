@@ -9,13 +9,13 @@
         The reference to the payer from the merchant system, like e-mail
         address, mobile number, customer number etc. Also used in
         [Payer Aware Payment Menu]({{payer_aware_payment_menu_url}}).
-         Mandatory if `generateRecurrenceToken`, `RecurrenceToken`,
+         Mandatory if `generateReccurenceToken`, `RecurrenceToken`,
          `generatePaymentToken` or `paymentToken` is `true`.
 
     {%- else -%}
-        The reference to the payer from the merchant system, like e-mail 
-        address, mobile number, customer number etc. Mandatory if 
-        `generateRecurrenceToken`, `RecurrenceToken`,
+        The reference to the payer from the merchant system, like e-mail
+        address, mobile number, customer number etc. Mandatory if
+        `generateReccurenceToken`, `RecurrenceToken`,
         `generatePaymentToken` or `paymentToken` is `true`.
     {%- endif -%}
 {%- endcapture -%}

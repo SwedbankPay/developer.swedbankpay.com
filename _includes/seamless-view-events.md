@@ -24,7 +24,7 @@ event handler you are overriding." %}
 
 This events triggers when a payment enters a paying state ( `Sale`, `Authorize`,
 `Cancel`etc). The `onPaymentPending` event
-will be followed by either `onPaymentCompleted`, `onPaymentFailed` or
+will be followed by either `onPaymentPaid`, `onPaymentFailed` or
 `onPaymentTransactionFailed` based on the result of the payment. Read more about
 these events below.
 
@@ -42,14 +42,14 @@ these events below.
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
 
-### `onPaymentCompleted`
+### `onPaymentPaid`
 
 This event triggers when a payment has completed successfully.
-The `onPaymentCompleted` event is raised with the following event argument
+The `onPaymentPaid` event is raised with the following event argument
 object:
 
 {:.code-view-header}
-**onPaymentCompleted event object**
+**onPaymentPaid event object**
 
 ```json
 {
@@ -62,16 +62,16 @@ object:
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a completed payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a completed payment. |
 
-### `onPaymentCanceled`
+### `onPaymentAborted`
 
 This event triggers when the user cancels the payment.
-The `onPaymentCanceled` event is raised with the following event argument
+The `onPaymentAborted` event is raised with the following event argument
 object:
 
 {:.code-view-header}
-**onPaymentCanceled event object**
+**onPaymentAborted event object**
 
 ```json
 {
@@ -84,7 +84,7 @@ object:
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a canceled payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a canceled payment. |
 
 ### `onPaymentFailed`
 
@@ -106,16 +106,16 @@ event argument object:
 | Field         | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                        |
-| `redirectUrl` | `string` | The URI the user will be redirect to after a failed payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a failed payment. |
 
-### `onPaymentToS`
+### `onTermsOfServiceRequested`
 
 This event triggers when the user clicks on the "Display terms and conditions"
-link. The `onPaymentToS` event is raised with the following event
+link. The `onTermsOfServiceRequested` event is raised with the following event
 argument object:
 
 {:.code-view-header}
-**onPaymentToS event object**
+**onTermsOfServiceRequested event object**
 
 ```json
 {
@@ -128,7 +128,7 @@ argument object:
 | Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `openUrl` | `string` | The URI containing Terms of Service and conditions.                                     |
+| `openUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
 
 ### `onError`
 
@@ -155,16 +155,101 @@ object:
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
+### `onBillingDetailsAvailable`
+
+This event triggers when a consumer has been identified. The
+`onBillingDetailsAvailable` event will be raised with the following event
+argument object:
+
+{:.code-view-header}
+**onBillingDetailsAvailable event object**
+
+```json
+{
+    "actionType": "OnBillingDetailsAvailable",
+    "url": "/psp/consumers/{{ConsumerProfileRef}}/billing-details",
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `actionType`  | `string` | The type of event that was raised.                                                  |
+| `url`         | `string` | The URL containing billing details.                                                 |
+
+### `onShippingDetailsAvailable`
+
+This event triggers when a consumer has been identified or their shipping
+address has been updated. The `onShippingDetailsAvailable` event will be raised
+with the following event argument object:
+
+{:.code-view-header}
+**onShippingDetailsAvailable event object**
+
+```json
+{
+    "actionType": "OnShippingDetailsAvailable",
+    "url": "/psp/consumers/{{ConsumerProfileRef}}/shipping-details",
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `actionType`  | `string` | The type of event that was raised.                                                  |
+| `url`         | `string` | The URL containing shipping details.                                                |
+
 {% if api_resource == "paymentorders" %}
 
-### `onPaymentMenuInstrumentSelected`
+### `onApplicationConfigured`
 
-This event triggers when a user actively changes payment instrument in the
-Payment Menu. The `onPaymentMenuInstrumentSelected` event is raised with the
+This event triggers whenever a reconfiguration leads to resizing of the payment
+menu. No action will be done if callback is not set. The
+`onApplicationConfigured` event is raised with the following event argument
+object:
+
+{:.code-view-header}
+**onEventNotification event object**
+
+```json
+{
+    "details": "source: "PaymentMenuClient", bodyHeight: "[clientHeight of iframe content]""
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                          |
+| :-------- | :------- | :------------------------------------------------------------------- |
+| `details` | `string` | The source of the reconfiguration, and the new height of the iframe. |
+
+### `onEventNotification`
+
+This event triggers whenever any other public event is called. It does not
+prevent their handling. The `onEventNotification` event is raised with the
 following event argument object:
 
 {:.code-view-header}
-**onPaymentMenuInstrumentSelected event object**
+**onEventNotification event object**
+
+```json
+{
+    "details": "Name of the event called"
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                |
+| :-------- | :------- | :--------------------------------------------------------- |
+| `details` | `string` | A human readable and descriptive text with the event name. |
+
+### `onInstrumentSelected`
+
+This event triggers when a user actively changes payment instrument in the
+Payment Menu. The `onInstrumentSelected` event is raised with the
+following event argument object:
+
+{:.code-view-header}
+**onInstrumentSelected event object**
 
 ```json
 {
@@ -225,14 +310,14 @@ object:
 | `id`      | `string` | {% include field-description-id.md %}               |
 | `details` | `string` | A human readable and descriptive text of the error. |
 
-### `onExternalRedirect`
+### `onOutOfViewRedirect`
 
 This event triggers when a user is redirected to a separate web page, for
-example 3-D Secure or Bank ID signing. The `onExternalRedirect` event is raised
+example 3-D Secure or Bank ID signing. The `onOutOfViewRedirect` event is raised
 with the following event argument object:
 
 {:.code-view-header}
-**onExternalRedirect event object**
+**onOutOfViewRedirect event object**
 
 ```json
 {
@@ -241,9 +326,9 @@ with the following event argument object:
 ```
 
 {:.table .table-striped}
-| Field         | Type     | Description                                                                         |
-| :------------ | :------- | :---------------------------------------------------------------------------------- |
-| `redirectUrl` | `string` | The URI the user will be redirected to when a third party requires additional data. |
+| Field         | Type     | Description                                                                               |
+| :------------ | :------- | :---------------------------------------------------------------------------------------- |
+| `redirectUrl` | `string` | The URL which the user will be redirected to when a third party requires additional data. |
 
 ## Updating Payment Menu
 

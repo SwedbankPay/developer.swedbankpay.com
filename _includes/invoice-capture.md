@@ -9,7 +9,7 @@ authorized amount. You can do other captures on the same payment later, up to
 the total authorized amount.
 {% endif %}
 
-## Step 1: Create `FinancingConsumer` Capture
+## Step 1: Create Invoice Capture
 
 To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
@@ -54,7 +54,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture request_table %}
+{:.table .table-striped .mb-5}
 |     Required     | Parameter name                 | Datatype     | Value (with description)                                                                                                                                                                                                                                                   |
 | :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}︎ | `transaction.activity`         | `string`     | FinancingConsumer.                                                                                                                                                                                                                                                         |
@@ -68,6 +69,8 @@ Content-Type: application/json
 | {% icon check %}︎ | `vatSummary.amount`            | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                                                                                       |
 | {% icon check %}︎ | `vatSummary.vatAmount`         | `integer`    | VAT Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` =`50.00 SEK`.                                                                                                                                               |
 | {% icon check %}︎ | `vatSummary.vatPercent`        | `integer`     | The percent value of the VAT multiplied by 100. Supported values : `0`, `600`, `800`, `1000`, `1200`, `1400`, `1500`, `2200`, `2400`, `2500`.                                                                                                                                               |
+{% endcapture %}
+{% include accordion-table.html content = request_table %}
 
 Notes on `FinancingConsumer` captures:
 

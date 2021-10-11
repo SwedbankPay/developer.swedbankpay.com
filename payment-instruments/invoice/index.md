@@ -50,10 +50,16 @@ you have done the following:
 
 ## API Requests
 
+The API requests are displayed in the purchase flow below.
 You can create an invoice payment with the following `operation`
 options:
 
 *   [Financing Consumer][financing-consumer]
+*   [Recur][recur]
+*   [Verify][verify]
+
+Our `payment` example uses the [`FinancingConsumer`][financing-consumer]
+operation.
 
 {:.text-center}
 ![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
@@ -97,7 +103,9 @@ sequenceDiagram
 
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
+[recur]: /payment-instruments/invoice/features/optional/recur
 [purchase]: /payment-instruments/invoice/features/technical-reference/create-payment
 [setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
+[verify]: /payment-instruments/invoice/features/optional/verify

@@ -48,14 +48,15 @@ depending on if you want to make an initial charge or not:
 
 #### Retrieve Recurrence Token
 
-You can retrieve the recurrence token by doing a `GET` request against the
+The recurrence token can then be retrieved by doing a `GET` request against the
 `payment`. You need to store this `recurrenceToken` in your system and keep
 track of the corresponding `payerReference`.
 
 #### Delete Recurrence Token
 
-You can delete a created recurrence token. Please see technical reference for
-details [here][card-payments-remove-payment-token].
+You can delete a created recurrence token.
+Please see technical reference for details
+[here][card-payments-remove-payment-token].
 
 ### Recurring purchases
 
@@ -120,7 +121,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`          | `string`     | {% include field-description-description.md %}                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`userAgent`           | `string`     | The [`User-Agent` string](https://en.wikipedia.org/wiki/User_agent) of the payer's web browser.                                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`language`            | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`urls`                | `string`     | The URI to the `urls` resource where all URIs related to the payment order can be retrieved.                                                                                                                                                                                          |
+| {% icon check %} | └─➔&nbsp;`urls`                | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`         | `string`     | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`payeeInfo`            | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`payeeId`             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                 |

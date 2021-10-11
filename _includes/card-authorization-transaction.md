@@ -4,7 +4,7 @@
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment. To create a new `authorization` transaction,
-perform a `POST` towards the URI obtained from the `payment.authorization.id`
+perform a `POST` towards the URL obtained from the `payment.authorization.id`
 from the `payment` resource below. The example is abbreviated for brevity.
 
 {:.code-view-header}

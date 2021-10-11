@@ -5,8 +5,9 @@
     {% assign has_one_click = true %}
 {%- endunless %}
 
-The `Verify` operation lets you post verification payments, which confirm the
-validity of card information without reserving or charging any amount.
+The `Verify` operation lets you post verification payments, which are used to
+confirm the validity of card information without reserving or charging any
+amount.
 
 ## Introduction to Verify
 
@@ -24,7 +25,7 @@ Swedbank Pay." %}
 
 ## Verification through Swedbank Pay Payments
 
-*   When properly set up in your merchant/webshop site, and the payer initiates a
+*   When properly set up in your merchant/webshop site and the payer initiates a
     verification operation, you make a `POST` request towards Swedbank Pay with
     your Verify information. This will create a payment resource with a unique
     `id`. You either receive a Redirect URL to a hosted page or a

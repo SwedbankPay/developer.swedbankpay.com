@@ -1,5 +1,5 @@
 {%- capture termsofserviceurl -%}
-    The URI to the terms of service document which the payer must accept in
+    The URL to the terms of service document which the payer must accept in
     order to complete the payment. **HTTPS is a requirement**.
 {%- endcapture -%}
 {{- termsofserviceurl | strip_newlines -}}

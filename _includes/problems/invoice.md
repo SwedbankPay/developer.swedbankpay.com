@@ -2,7 +2,7 @@
 
 There are a few problems specific to the `invoice` resource that you may want to
 guard against in your integrations. All invoice error types will have the
-following URI structure:
+following URL structure:
 
 `https://api.payex.com/psp/errordetail/invoice/<error-type>`
 

@@ -2,7 +2,7 @@
 
 There are a few problems specific to the `vipps` resource that you may want to
 guard against in your integrations. All Vipps problem types will have the
-following URI structure:
+following URL structure:
 
 `https://api.payex.com/psp/errordetail/vipps/<error-type>`
 

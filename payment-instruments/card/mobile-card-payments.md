@@ -5,15 +5,12 @@ estimated_read: 3
 menu_order: 800
 ---
 
-{% include alert.html type="warning" icon="warning" header="Integration options"
-body="We advise you to integrate our Mobile SDK Payment Menu instead of
-integrating card payments directly in your app with WebView." %}
-
 ## Card Payments in Mobile Apps
 
-The implementation sequence for Card Payments in mobile apps is identical to the
-standard Redirect scenario, but also includes explanations of how to include
-this redirect in mobile apps or in mobile web pages.
+The implementation sequence for Card Payments in mobile apps
+is identical to the standard
+Redirect scenario, but also includes explanations of how to include this
+redirect in mobile apps or in mobile web pages.
 
 ### Screenshots for Payments
 

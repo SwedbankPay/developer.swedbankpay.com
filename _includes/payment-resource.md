@@ -129,12 +129,12 @@ Content-Type: application/json
 | └➔&nbsp;`description`    | `string`     | {% include field-description-description.md %}                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                      |
-| └➔&nbsp;`urls`           | `string`     | The URI to the  urls  resource where all URIs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
+| └➔&nbsp;`urls`           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                 |
-| └➔&nbsp;`payers`         | `string`     | The URI to the `payer` resource where the information about the payer can be retrieved.                                                        |
+| └➔&nbsp;`payers`         | `string`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
-| └─➔&nbsp;`href`          | `string`     | The target URI to perform the operation against.                                                                                                                                                                                                                                                                                                           |
+| └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
 ### Operations
@@ -155,7 +155,7 @@ for the given operation.
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the payer to the Swedbank Pay payment page containing the card authorization UI. |
+| `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay payment page containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured, payment.                                |
 
@@ -166,9 +166,9 @@ for the given operation.
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                                                                                               |
 | `create-sale`          | Creates a `sales` transaction without redirection to a payment page.                                                                                                      |
-| `redirect-sale`        | Contains the redirect-URI that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
-| `view-sales`           | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
-| `view-payment`         | Contains the URI of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.                                |
+| `redirect-sale`        | Contains the redirect-URL that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
+| `view-sales`           | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
+| `view-payment`         | Contains the URL of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.                                |
 
 {% when "trustly" %}
 
@@ -178,7 +178,7 @@ for the given operation.
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
-| `view-sale`             | Contains the URI of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
+| `view-sale`             | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
 
 {% when "invoice" %}
 
@@ -186,7 +186,7 @@ for the given operation.
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
+| `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
@@ -199,9 +199,9 @@ for the given operation.
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URI that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
+| `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
 | `view-authorization`     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
-| `view-payment`           | Contains the URI of the JavaScript to create a Seamless view iframe directly without redirecting the payer to a separate payment page.     |
+| `view-payment`           | Contains the URL of the JavaScript to create a Seamless view iframe directly without redirecting the payer to a separate payment page.     |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |

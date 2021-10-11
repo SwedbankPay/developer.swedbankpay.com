@@ -6,10 +6,10 @@
     {%- endcapture -%}
 {%- endif -%}
 {%- capture id_text -%}
-    The relative URI and unique identifier of the
+    The relative URL and unique identifier of the
     `{{ resource }}` resource {{ sub_resource_text }}.
-    Please read about [URI Usage](/introduction#uri-usage) to
-    understand how this and other URIs should be used in your solution.
+    Please read about [URL Usage](/introduction#url-usage) to
+    understand how this and other URLs should be used in your solution.
 {%- endcapture -%}
 {{- id_text | strip_newlines -}}
 {%- comment -%}

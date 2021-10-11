@@ -33,7 +33,7 @@ been made.
 
 Find the {{ transaction }}’s list of `transactions` either by expanding it when
 retrieving the {{ transaction }}, or by performing a `GET` request towards the
-`transactions.id` URI.
+`transactions.id` URL.
 
 If you find a `transaction` with `type` equal to {{ transaction }}, with its
 `state` equal to `Completed`, you can be sure that the amount of the

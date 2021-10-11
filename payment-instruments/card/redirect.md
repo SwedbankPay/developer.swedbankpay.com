@@ -23,10 +23,10 @@ page.
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
 
-An example of an abbreviated `POST` request is provided below. Each individual
-field of the JSON document is described in the following section. An example of
-an expanded `POST` request is available in the [other features
-section][purchase].
+An example of an abbreviated `POST` request is provided below.
+Each individual field of the JSON document is described in the following section.
+An example of an expanded `POST` request is available in the
+[other features section][purchase].
 
 {% include alert-callback-url.md %}
 
@@ -44,7 +44,7 @@ all authentication during this phase.
 After an attempted payment, Swedbank Pay will redirect the Payer to one of two
 specified URLs: `completeUrl` or `cancelUrl`.
 
-If the payer cancels at any point, the payer will be redirected to the
+If the payer cancel at any point, the payer will be redirected to the
 `cancelUrl`. If the payment is followed through completely the payer will
 reach the `completeUrl`.
 

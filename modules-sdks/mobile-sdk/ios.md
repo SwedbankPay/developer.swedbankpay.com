@@ -18,26 +18,11 @@ This guide assumes that you are using the Merchant Backend Configuration and you
 
 ## Installation
 
-The iOS component of the Swedbank Pay Mobile SDK is split into two libraries: `SwedbankPaySDK` contains the core SDK, while `SwedbankPaySDKMerchantBackend` contains utilities for interfacing with the Merchant Backend API. If you are using a custom backend, you to not need to install the `SwedbankPaySDKMerchantBackend` library.
+The iOS component of the Swedbank Pay Mobile SDK is distributed through [CocoaPods][cocoapods]. If you do not have CocoaPods installed on your development machine, please install it first according to the [instructions][cocoapods-gettingstarted] at the CocoaPods web page.
 
-### Swift Package Manager
+[Add CocoaPods][cocoapods-using] to your project, if needed. Then, add the [SDK pod][sdk-pod].
 
-The SDK is available through the Swift Package Manager. This is the simplest way of adding the SDK to an Xcode project. Follow the [Xcode documentation][xcode-swiftpm] to add a SwiftPM dependency.
-
-The package repository URL for the SDK is [`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo]. Add the `SwedbankPaySDK` library, and the `SwedbankPaySDKMerchantBackend` if needed.
-
-### CocoaPods
-
-The SDK is also available through [CocoaPods][cocoapods]. There are two pods: [SwedbankPaySDK][sdk-pod] for the core SDK, and `SwedbankPaySDKMerchantBackend` for the Merchant Backend utilities.
-
-Add the relevant dependencies in your `Podfile`:
-
-```ruby
-pod 'SwedbankPaySDK', '~> 2.1'
-```
-```ruby
-pod 'SwedbankPaySDKMerchantBackend', '~> 2.1'
-```
+Do not forget to run `pod install` after editing the `Podfile`.
 
 ### Url Scheme and Associated Domain
 
@@ -144,12 +129,6 @@ The iOS SDK is contained in the module `SwedbankPaySDK`.
 
 ```swift
 import SwedbankPaySDK
-```
-
-The Merchant Backend utilities are contained in the module `SwedbankPaySDKMerchantBackend`.
-
-```swift
-import SwedbankPaySDKMerchantBackend
 ```
 
 The main component of the SDK is `SwedbankPaySDKController`, a `UIViewController` that handles a single payment order. When initializing a `SwedbankPaySDKController`, you must provide a `SwedbankPaySDKConfiguration` that describes the server environment the `SwedbankPaySDKController` is working with, along with a `SwedbankPaySDK.PaymentOrder`, and, unless making a guest payment, a `SwedbankPaySDK.Consumer`. Providing a `SwedbankPaySDK.Consumer` makes future payments by the same payer easier.
@@ -449,10 +428,10 @@ sequenceDiagram
                          next_href="custom-backend"
                          next_title="Next: Custom Backend" %}
 
-[xcode-swiftpm]: https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app
-[sdk-package-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git
 [sdk-pod]: https://cocoapods.org/pods/SwedbankPaySDK
 [cocoapods]: https://cocoapods.org/
+[cocoapods-gettingstarted]: https://guides.cocoapods.org/using/getting-started.html
+[cocoapods-using]: https://guides.cocoapods.org/using/using-cocoapods.html
 [payment-url]: /checkout/v2/features/technical-reference/payment-url
 [custom-scheme-1]: /assets/img/mobile-sdk/ios-custom-scheme-1.png
 [custom-scheme-2]: /assets/img/mobile-sdk/ios-custom-scheme-2.png
