@@ -6,7 +6,6 @@ description: |
   Swedbank Pay Checkout.
 permalink: /:path/
 menu_order: 1000
-<<<<<<< HEAD
 card_list:
 - title: 3-D Secure 2
   description: Authenticating the cardholder
@@ -135,15 +134,12 @@ card_list_3:
   icon:
     content: copyright
     outlined: true
-<<<<<<< HEAD:checkout/v3/mac/features/index.md
-=======
 - title: Delegated Strong Consumer Authentication
   description: The Checkin alternative
   url: /checkout/v3/mac/features/optional/dsca
   icon:
     content: verified
     outlined: true
->>>>>>> 9b8b754c (Added 1st info on Checkout v3 Authentication and MAC integration):checkout/v3/MAC/features/index.md
 - title: Recur
   description: Setting up subscriptions and recurring payments
   url:  /checkout/v3/mac/features/optional/recur
@@ -156,6 +152,4 @@ card_list_3:
   icon:
     content: verified_user
     outlined: true
-=======
->>>>>>> 03aad2a9 (ESM-1276: Big one before hidden release.)
 ---
