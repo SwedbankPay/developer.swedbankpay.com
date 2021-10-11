@@ -309,7 +309,7 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/standard/features/core/abort
-[callback]: /checkout/v3/authentication/features/technical-reference/callback
+[callback]: /checkout/v3/authenticated/features/technical-reference/callback
 [seamless-view-checkin]: /assets/img/checkout/authentication-seamless-view-checkin.png
-[seamless-view-events]: /checkout/v3/authentication/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
 [seamless-view-payment-menu]: /assets/img/checkout/authentication-seamless-view-payment-menu.png

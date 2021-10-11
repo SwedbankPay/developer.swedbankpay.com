@@ -1,5 +1,5 @@
 {%- capture sections -%}
-    checkout/v2, checkout/v3/authentication, checkout/v3/tailored, checkout/v3/mac,
+    checkout/v2, checkout/v3/authenticated, checkout/v3/mac,
     checkout/v3/standard, payment-menu, gift-cards, card, invoice, mobile-pay,
     swish, trustly, vipps
 {%- endcapture -%}
