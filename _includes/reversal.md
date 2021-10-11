@@ -93,10 +93,7 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 {% endcapture %}
-{% include accordion-table.html content = response_table
-%}
-
-
+{% include accordion-table.html content = response_table %}
 
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.

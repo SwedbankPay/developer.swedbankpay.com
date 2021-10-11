@@ -58,7 +58,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -118,18 +118,18 @@ request.send();
 {:.code-view-header}
 **HTML**
 
-```
-  < !DOCTYPE html >
-  <html>
-      <head>
-          <title>Swedbank Pay Checkout is Awesome!</title>
-      </head>
-      <body>
-          <div id="checkout-container"></div>
-          <!-- Here you can specify your own javascript file -->
-          <script src="<Your-JavaScript-File-Here>"></script>
-      </body>
-  </html>
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Checkout is Awesome!</title>
+    </head>
+    <body>
+        <div id="checkout-container"></div>
+        <!-- Here you can specify your own javascript file -->
+        <script src="<Your-JavaScript-File-Here>"></script>
+    </body>
+</html>
 ```
 
 The payment menu should appear with the payer information displayed above the
@@ -137,10 +137,8 @@ menu. The payer can select their preferred payment instrument and pay. The
 example with shipping address is for all goods (physical and digital), the one
 without shipping address is for digital products only.
 
-
 {:.text-center}
 ![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
-
 
 {:.text-center}
 ![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
@@ -160,7 +158,6 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
-[callback]: /checkout/v3/mac/features/technical-reference/callback
 [seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-seamless-view
 [seamless-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-seamless-digital.png

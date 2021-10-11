@@ -9,7 +9,6 @@ description: |
 menu_order: 100
 ---
 
-
 ## Introduction
 
 You should choose our **Standard** implementation if
@@ -42,5 +41,4 @@ Read more about the integration by clicking the link below.
 {% include iterator.html next_href="seamless-view"
                          next_title="Integrate Seamless View" %}
 
-[https]: /introduction#connection-and-protocol
 [contact-sales]: /contact/

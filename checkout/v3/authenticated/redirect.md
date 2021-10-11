@@ -61,7 +61,7 @@ payment menu.
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -125,7 +125,6 @@ about capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
-[callback]: /checkout/v3/authenticated/features/technical-reference/callback
 [sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-redirect
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png

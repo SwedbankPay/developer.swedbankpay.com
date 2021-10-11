@@ -59,7 +59,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -97,8 +97,6 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
-[callback]: /checkout/v3/mac/features/technical-reference/callback
-[sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-redirect
 [redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png
 [redirect-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-redirect-mixed-products.png
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-redirect

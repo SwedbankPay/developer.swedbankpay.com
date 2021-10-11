@@ -6,7 +6,6 @@ description: |
 menu_order: 600
 ---
 
-
 ## Authenticated Redirect
 
 {% include alert.html type="informative" icon="info" body="

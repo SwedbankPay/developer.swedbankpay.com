@@ -9,7 +9,6 @@ description: |
 menu_order: 100
 ---
 
-
 ## Introduction
 
 You should choose the **Authenticated** implementation if

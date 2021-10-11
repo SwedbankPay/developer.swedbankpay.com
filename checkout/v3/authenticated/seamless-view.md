@@ -60,7 +60,7 @@ module.
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -120,18 +120,18 @@ request.send();
 {:.code-view-header}
 **HTML**
 
-```
-  < !DOCTYPE html >
-  <html>
-      <head>
-          <title>Swedbank Pay Checkout is Awesome!</title>
-      </head>
-      <body>
-          <div id="checkout-container"></div>
-          <!-- Here you can specify your own javascript file -->
-          <script src="<Your-JavaScript-File-Here>"></script>
-      </body>
-  </html>
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Checkout is Awesome!</title>
+    </head>
+    <body>
+        <div id="checkout-container"></div>
+        <!-- Here you can specify your own javascript file -->
+        <script src="<Your-JavaScript-File-Here>"></script>
+    </body>
+</html>
 ```
 
 First you will see a Checkin module where the payer can enter their email and
@@ -179,19 +179,19 @@ the feature section.
 
 If you want to see the payer activities, they are visible in the history node:
 
-```
+```json
 {
  "name": "CheckinInitiated",
  "initiatedBy": "System"
-}
+},
 {
  "name": "PayerCheckedIn",
  "initiatedBy": "Consumer"
-}
+},
 {
  "name": "PayerDetailsRetrieved",
  "initiatedBy": "System"
-}
+},
 {
  "name": "MerchantAuthenticatedConsumerCheckedIn",
  "initiatedBy": "System"
@@ -207,7 +207,6 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
-[callback]: /checkout/v3/authenticated/features/technical-reference/callback
 [sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-seamless-view
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events

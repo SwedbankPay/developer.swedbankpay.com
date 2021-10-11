@@ -159,7 +159,7 @@ module.
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -242,19 +242,19 @@ window.payex.hostedView.checkout({
 {:.code-view-header}
 **HTML**
 
-```
- < !DOCTYPE html >
-    <html>
-        <head>
-            <title>Swedbank Pay Checkout is Awesome!</title>
-        </head>
-        <body>
-            <div id="checkin-container"></div>
-            <div id="payment-menu-container"></div>
-            <!-- Here you can specify your own javascript file -->
-            <script src="<Your-JavaScript-File-Here>"></script>
-        </body>
-    </html>
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swedbank Pay Checkout is Awesome!</title>
+    </head>
+    <body>
+        <div id="checkin-container"></div>
+        <div id="payment-menu-container"></div>
+        <!-- Here you can specify your own javascript file -->
+        <script src="<Your-JavaScript-File-Here>"></script>
+    </body>
+</html>
 ```
 
 The result should look like this. First you will see a Checkin module where the
@@ -281,19 +281,19 @@ the feature section.
 
 If you want to see the payer activities, they are visible in the history node:
 
-```
+```json
 {
  "name": "CheckinInitiated",
  "initiatedBy": "System"
-}
+},
 {
  "name": "PayerCheckedIn",
  "initiatedBy": "Consumer"
-}
+},
 {
  "name": "PayerDetailsRetrieved",
  "initiatedBy": "System"
-}
+},
 {
  "name": "MerchantAuthenticatedConsumerCheckedIn",
  "initiatedBy": "System"
@@ -312,4 +312,3 @@ capture and the other options you have after the purchase.
 [callback]: /checkout/v3/authentication/features/technical-reference/callback
 [seamless-view-checkin]: /assets/img/checkout/authentication-seamless-view-checkin.png
 [seamless-view-events]: /checkout/v3/authentication/features/technical-reference/seamless-view-events
-[seamless-view-payment-menu]: /assets/img/checkout/authentication-seamless-view-payment-menu.png
