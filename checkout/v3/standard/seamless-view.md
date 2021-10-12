@@ -159,7 +159,7 @@ module.
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -242,7 +242,7 @@ window.payex.hostedView.checkout({
 {:.code-view-header}
 **HTML**
 
-```
+```html
  < !DOCTYPE html >
     <html>
         <head>
@@ -281,7 +281,7 @@ the feature section.
 
 If you want to see the payer activities, they are visible in the history node:
 
-```
+```json
 {
  "name": "CheckinInitiated",
  "initiatedBy": "System"
@@ -309,7 +309,6 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/standard/features/core/abort
-[callback]: /checkout/v3/authentication/features/technical-reference/callback
 [seamless-view-checkin]: /assets/img/checkout/authentication-seamless-view-checkin.png
 [seamless-view-events]: /checkout/v3/authentication/features/technical-reference/seamless-view-events
 [seamless-view-payment-menu]: /assets/img/checkout/authentication-seamless-view-payment-menu.png

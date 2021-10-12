@@ -39,10 +39,6 @@ card_list:
 {:.heading-line}
 {% include card-list.html card_list=page.card_list col_class="col-lg-4" %}
 
-[checkout-3-authenticated]: /checkout/v3/authenticated
-[checkout-3-standard]: /checkout/v3/standard
-[checkout-3-mac]: /checkout/v3/mac
-
 ## Prerequisites
 
 To start integrating Swedbank Pay Checkout, you need:

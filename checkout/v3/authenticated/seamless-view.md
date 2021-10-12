@@ -60,7 +60,7 @@ module.
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -120,7 +120,7 @@ request.send();
 {:.code-view-header}
 **HTML**
 
-```
+```html
   < !DOCTYPE html >
   <html>
       <head>
@@ -179,7 +179,7 @@ the feature section.
 
 If you want to see the payer activities, they are visible in the history node:
 
-```
+```json
 {
  "name": "CheckinInitiated",
  "initiatedBy": "System"
@@ -207,7 +207,6 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
-[callback]: /checkout/v3/authenticated/features/technical-reference/callback
 [sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-seamless-view
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events

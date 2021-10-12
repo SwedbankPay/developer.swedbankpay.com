@@ -58,7 +58,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
 {:.code-view-header}
 **Response**
 
-```
+```json
 {
     "paymentOrder": {
     "operations": [
@@ -118,7 +118,7 @@ request.send();
 {:.code-view-header}
 **HTML**
 
-```
+```html
   < !DOCTYPE html >
   <html>
       <head>
@@ -137,14 +137,10 @@ menu. The payer can select their preferred payment instrument and pay. The
 example with shipping address is for all goods (physical and digital), the one
 without shipping address is for digital products only.
 
-
 {:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
-
-
+![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]<br/>
 {:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
-
+![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]<br/>
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 

@@ -96,8 +96,6 @@ Content-Type: application/json
 {% include accordion-table.html content = response_table
 %}
 
-
-
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
