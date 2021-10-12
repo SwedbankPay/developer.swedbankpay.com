@@ -8,121 +8,6 @@ description: |
 menu_order: 300
 ---
 
-Below, you will see a sequence diagram of a Seamless View integration.
-
-{% include alert.html type="informative" icon="info" body="
-Note that in this diagram, the Payer refers to the merchant front-end
-(website) while Merchant refers to the merchant back-end." %}
-
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
-
-        rect rgba(238, 112, 35, 0.05)
-            activate Payer
-            Payer ->>+ Merchant: Initiate Purchase
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-checkout
-            deactivate SwedbankPay
-            Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
-            activate Payer
-            Payer ->> Payer: Initiate Authenticate step
-               Payer ->> SwedbankPay: Show Checkin component in iframe
-    deactivate Payer
-    activate SwedbankPay
-    SwedbankPay ->> Payer: Payer identification process
-    activate Payer
-    Payer ->> SwedbankPay: Payer identification process
-    deactivate Payer
-    SwedbankPay -->> Payer: show payer completed iframe
-    activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified ①
-    Payer ->> Payer: Initiate Purchase step
-    deactivate Payer
-    SwedbankPay ->>+ Payer: Do purchase logic
-    Payer ->> SwedbankPay: Do purchase logic
-    deactivate Payer
-    deactivate SwedbankPay
-
-                    opt Payer performs purchase out of iFrame
-                    activate Payer
-                    Payer ->> Payer: Redirect to 3rd party
-                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Payer
-                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
-                    deactivate 3rdParty
-                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
-                    deactivate Payer
-                end
-
-                activate SwedbankPay
-                SwedbankPay -->> Payer: Purchase status
-                deactivate SwedbankPay
-
-            alt If purchase is completed
-            activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
-            Payer ->>+ Merchant: Check purchase status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
-            deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Payment Details
-            deactivate SwedbankPay
-            end
-                        activate Merchant
-Merchant -->>- Payer: Show Purchase complete
-            end
-
-            alt If purchase is failed
-            activate Payer
-            Payer ->> Payer: Event: OnPaymentFailed ①
-            Payer ->>+ Merchant: Check purchase status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET {paymentorder.id}
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel: failed-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
-            activate Merchant
-            Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
-            end
-
-         opt PaymentOrder Callback (if callbackUrls is set) ②
-                activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
-                deactivate SwedbankPay
-         end
-         end
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
-        end
-```
-
-*   ① See [seamless view events][seamless-view-events] for further information.
-*   ② Read more about [callback][callback] handling in the technical reference.
-
 ## Step 1: Create Payment Order And Checkin
 
 When the purchase is initiated, you need to create a payment order.
@@ -260,18 +145,9 @@ window.payex.hostedView.checkout({
 The result should look like this. First you will see a Checkin module where the
 payer can enter their email and phone number.
 
-{:.text-center}
-![screenshot of the authentication model seamless view checkin][seamless-view-checkin]
-
 After checking in, the contact details and shipping address are displayed, along
 with the available shipping option(s). When the payer chooses a shipping option,
 the payment menu will appear. The payer can then proceed with the purchase.
-
-{:.text-center}
-![screenshot of the standard model seamless view contact details and shipping options][seamless-view-details-shipping]
-
-{:.text-center}
-![screenshot of the standard model seamless view is shipping confirmed and payment methods][seamless-view-details-shipping]
 
 Once a purchase is complete, you can perform a GET towards the `paymentOrders`
 resource to see the purchase state.
@@ -309,5 +185,3 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/standard/features/core/abort
-[seamless-view-checkin]: /assets/img/checkout/authentication-seamless-view-checkin.png
-[seamless-view-events]: /checkout/v3/authentication/features/technical-reference/seamless-view-events

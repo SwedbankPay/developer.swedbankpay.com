@@ -20,8 +20,5 @@ the payer wants to return goods? For these scenarios, we have `cancel` and
 
 {% include reversal.md %}
 
-{% include iterator.html prev_href="redirect"
-                         prev_title="Implement Redirect" %}
-
 {% include iterator.html prev_href="seamless-view"
                          prev_title="Implement Seamless View" %}
