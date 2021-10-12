@@ -4,7 +4,7 @@
         /payment-instruments
     {%- endunless -%}
 
-    {{- documentation_section -}}
+    /{{- documentation_section -}}
 
     {{- include.href -}}
 {%- endcapture -%}
