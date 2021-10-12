@@ -156,7 +156,6 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
-[callback]: /checkout/v3/mac/features/technical-reference/callback
 [seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-seamless-view
 [seamless-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-seamless-digital.png

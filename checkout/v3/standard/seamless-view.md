@@ -311,4 +311,3 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout/v3/standard/features/core/abort
 [seamless-view-checkin]: /assets/img/checkout/authentication-seamless-view-checkin.png
 [seamless-view-events]: /checkout/v3/authentication/features/technical-reference/seamless-view-events
-[seamless-view-payment-menu]: /assets/img/checkout/authentication-seamless-view-payment-menu.png
