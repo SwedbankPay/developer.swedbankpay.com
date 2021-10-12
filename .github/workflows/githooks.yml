@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Shellcheck
-      uses: bewuethr/shellcheck-action@v2.0.4
+      uses: bewuethr/shellcheck-action@v2.0.5
 
   commit-msg:
     runs-on: ubuntu-latest
