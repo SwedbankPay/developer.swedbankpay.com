@@ -1,7 +1,16 @@
 {%- capture sections -%}
-    checkout/v2, checkout/v3/authentication, checkout/v3/tailored, checkout/v3/mac,
-    checkout/v3/standard, payment-menu, gift-cards, card, invoice, mobile-pay,
-    swish, trustly, vipps
+    checkout/v2,
+    checkout/v3/mac,
+    checkout/v3/standard,
+    checkout/v3/authenticated,
+    payment-menu,
+    gift-cards,
+    card,
+    invoice,
+    mobile-pay,
+    swish,
+    trustly,
+    vipps
 {%- endcapture -%}
 {%- assign sections = sections | strip_newlines | strip | split: "," -%}
 {%- for s in sections -%}
