@@ -109,7 +109,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`           | `object`     | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                        |
 |                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePays page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectivly.                                                                                          |
-| {% icon check %} | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URL to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available.                            |
+|                  | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available. This URI will override the value configured in the contract setup.                            |
 
 {:.code-view-header}
 **Response**
@@ -163,6 +163,8 @@ Content-Type: application/json
 The key information in the response is the `view-payment` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
+
+{% include alert-nested-iframe-unsupported.md %}
 
 ## Step 2: Display  the payment window
 

@@ -2,6 +2,7 @@
 title: Direct
 redirect_from: /payments/card/direct
 estimated_read: 10
+hide_from_sidebar: true
 description: |
   The Direct Card Payment scenario is used by
   customers that are **compliant with PCI-DSS regulations**, and is a way to
@@ -42,7 +43,7 @@ Below is a quick stepwise summary of how the Direct Card Payment scenario works.
     *   When the 3-D Secure flow is completed, the payer will be redirected back to
         the URL provided in `completeUrl` or `cancelUrl`, depending on the actions
         performed by the payer.
-    * If the issuer does not require 3-D Secure authentication, the payment will
+    *   If the issuer does not require 3-D Secure authentication, the payment will
       already be `Completed` after performing the `direct-authorization`
       request. Note that `Completed` just indicates that the payment is in a
       final state; the financial transaction could be either OK or failed.
@@ -379,6 +380,7 @@ sequenceDiagram
 
 *   If the payment shown above is done as a two-phase (Authorization), you will
   need to implement the [Capture][capture] and [Cancel][cancel] requests.
+*   {% include authorizations-timeout.md %}
 *   **Abort:** It is possible to [abort a payment][abort] if the payment has no
   successful transactions.
 *   For `reversals`, you will need to implement the [Reversal][reversal] request.

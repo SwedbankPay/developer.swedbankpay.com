@@ -175,6 +175,8 @@ The key information in the response is the `view-payment` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
 
+{% include alert-nested-iframe-unsupported.md %}
+
 ## Step 2: Display the payment window
 
 You need to embed the script source on your site to create a Seamless View in an

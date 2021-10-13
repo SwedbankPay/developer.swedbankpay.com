@@ -39,7 +39,7 @@ the following URL structure:
 | `3dsecureusercanceled`         | `403`  | Transaction was Cancelled during 3DSecure verification                                        |
 | `3dsecuredeclined`             | `403`  | Transaction was declined during 3DSecure verification                                         |
 | `frauddetected`                | `403`  | Fraud detected, the payer needs to contact their Card-issuing bank.                             |
-| `badrequest`                   | `500`  | Bad request, try again after some time                                                        |
+| `badrequest`                   | `400`  | Bad request, try again after some time                                                        |
 | `internalservererror`          | `500`  | Server error, try again after some time                                                       |
 | `3dsecureacquirergatewayerror` | `502`  | Problems reaching 3DSecure verification, try again after some time.                           |
 | `badgateway`                   | `502`  | Problems reaching the gateway, try again after some time                                      |

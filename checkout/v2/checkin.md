@@ -126,6 +126,8 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
 Menu components (the two `<iframe>` elements) must be separate
 (one must not replace the other)." %}
 
+{% include alert-nested-iframe-unsupported.md %}
+
 In the HTML, you only need to add two `<div>` elements to place the
 check-in and payment menu inside of. The JavaScript will handle the rest when
 it comes to handling the check-in and payment menu.
@@ -187,8 +189,8 @@ every element (like the container `<div>` elements) has loaded in before we try 
 access them with our script." %}
 
 With the scripts loading in after the entire page is loaded, we can access the
-`<div>` container that the Checkin will be hosted in.
-When everything has finished loading, you should see something like this:
+`<div>` container that the Checkin will be hosted in. When everything has
+finished loading, you should see something like this:
 
 {:.text-center}
 ![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
@@ -227,8 +229,10 @@ the page for address details to enter their shipping address. This info is not
 stored for future purchases. Please note that this is **not** the same as
 shopping as a guest.
 
-With a `consumerProfileRef` safely tucked into our pocket,
-the Checkin is complete and we can move on to [Payment Menu][payment-menu].
+With a `consumerProfileRef` safely tucked into our pocket, the Checkin is
+complete and we can move on to [Payment Menu][payment-menu]. Be aware that
+the `consumerProfileRef` expires after 24 hours as well as after being used to complete a payment.
+The _`consumerProfileRef` can not be reused_ for several purchases.
 
 A complete overview of how the process of identifying the payer through Checkin
 is illustrated in the sequence diagram below.

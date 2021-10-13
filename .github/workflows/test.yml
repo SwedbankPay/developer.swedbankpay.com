@@ -74,7 +74,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
-      - uses: reviewdog/action-remark-lint@v2
+      - uses: reviewdog/action-remark-lint@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true

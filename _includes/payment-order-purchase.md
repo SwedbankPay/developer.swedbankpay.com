@@ -21,7 +21,6 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",{% if documentation_section == "payment-menu" %}
         "instrument": null,{% endif %}
-        "disablePaymentMenu": {{ operation_status_bool }},
         "generateRecurrenceToken": {{ operation_status_bool }},
         "generateUnscheduledToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
@@ -199,9 +198,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`                | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`instrument`               | `string`     | The payment instrument used. Selected by using the {% if documentation_section == "payment-menu" %}[Instrument Mode]({{ features_url }}/optional/instrument-mode){% else %}Instrument Mode{% endif %}.                                                                                                   |
-{% if documentation_section contains "checkout" -%}
-|                  | └➔&nbsp;`disablePaymentMenu`       | `bool`       | Set to `true` if only one payment instrument exist. Default value is `false`.                                                                                                                                                                                                                            |
-{% elsif documentation_section == "payment-menu" -%}
+{% if documentation_section == "payment-menu" -%}
 |                  | └➔&nbsp;`generatePaymentToken`     | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                  |
 {% endif -%}
 |                  | └➔&nbsp;`generateRecurrenceToken`  | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ features_url }}/optional/recur) – with the same token – through server-to-server calls. Default value is `false`.                                               |

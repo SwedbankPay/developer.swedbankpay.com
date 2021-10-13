@@ -30,8 +30,7 @@ need a **legal agreement with Swedbank Pay** which mandates that the payer
 identified by the `nationalIdentifier` is authenticated with **Bank ID** prior
 to the request." %}
 
-An example of how a MAC request looks is provided below (abbreviated
-for brevity):
+An abbreviated example of a MAC request looks like this:
 
 {:.code-view-header}
 **Request**
@@ -63,18 +62,18 @@ Content-Type: application/json
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. Must be part of what you get from your authentication process. |
 |                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
 
-When the payer is authenticated by the Merchant, some payment instruments
+When the payer is authenticated by the merchant, some payment instruments
 will allow a more frictionless payment process. Invoice One-Click Payments does
 not require the last 4/5 digits of the payer's social security number (SSN),
 for instance.
 
-Below you can see an example of the payment window with and without Delegated
-SCA. In the first image, the SSN is removed altogether because the payer is
-authenticated by the Merchant. In the bottom image, the last 4/5 digits of the
-SSN are required as usual.
+Below you can see an example of the payment window with and without MAC. In the
+first image, the SSN is removed altogether because the payer is authenticated by
+the merchant. In the bottom image, the last 4/5 digits of the SSN are required.
 
 {:.text-center}
 ![One-Click Payments without SSN][mac-no-ssn]{:width="475" height="385"}
+
 {:.text-center}
 ![Payments with SSN][mac-with-ssn]{:width="475" height="460"}
 

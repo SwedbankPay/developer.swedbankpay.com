@@ -369,7 +369,9 @@ On Android, web pages attempting to launch external apps happens in one of three
 
 Each of these maps into an `Intent`. For custom-scheme and patterned http(s) links, that `Intent` has the original url as its `uri`, an `action` of `android.intent.action.VIEW`, and the categories `android.intent.category.BROWSABLE` and `android.intent.category.DEFAULT`. An `Intent` created from an intent-scheme url can have any `action` and categories, although they too should have an implicit `android.intent.category.BROWSABLE` category. Their `uri` is parsed from the intent-scheme url, but we need not trouble ourselves with the specifics here.
 
-On Android we can, and indeed should, query the system whether it can launch Activities from arbitrary Intents. We should note, however, that an Android system is likely to have an app that accepts all http(s) url, namely the browser. Hence, we should exercise a bit of discretion when choosing to launch activities in place of web view navigations.
+When the `WebView` navigates to a new page, your app should check if the page url should launch an app instead. The custom-scheme and intent-scheme cases are simple: try to start an Activity with the Intent parsed from the url as described above. If that fails (by throwing an `ActivityNotFoundException`), then a suitable app was not installed. If the navigation was to an intent-scheme url, that url may contain a fallback url that can be substituted. Otherwise, there is little your app can do beyond notifying the user about the missing app.
+
+When the `WebView` navigates to an http(s) url, your app should not simply start an Activity with the url, as that would usually mean opening the url in the browser. Instead, the Activity should only be started if it is not a browser. Since Android 11 there is an `Intent` [flag][android-flag-non-browser] that does exactly that. On earlier versions, your app must first query the system about which app would be launched. Because of [privacy enhancements][android-package-visibility] in Android 11, it is not possible to use this method on Android 11; you must use the non-browser flag instead.
 
 {:.code-view-header}
 **Android**
@@ -398,98 +400,52 @@ On Android we can, and indeed should, query the system whether it can launch Act
     }
 
     private fun openInExternalApp(uri: Uri): Boolean {
-        when (uri.scheme) {
-            "intent" -> {
-                openIntentUri(uri)
-                // intent uris are always intercepted,
-                // as WebView cannot handle them anyway
-                return true
-            }
-            else -> {
-                return openRegularUri(uri)
-            }
-        }
-    }
-
-    private fun openIntentUri(uri: Uri) {
-        val intent = try {
-            Intent.parseUri(
+        try {
+            // Create an Intent from the Uri.
+            val intent = Intent.parseUri(
                 uri.toString(),
-                Intent.URL_INTENT_SCHEME
+                Intent.URI_INTENT_SCHEME
             )
-        } catch (_: URLSyntaxException) {
-            return
-        }
-        // Web pages should only be allowed to start activities
-        // with CATEGORY_BROWSABLE.
-        intent.addCategory(Intent.CATEGORY_BROWSABLE)
-        if (canStartActivity(intent)) {
-            try {
-                startActivity(intent)
-            } catch (_: Exception) {
-                // Could not start activity.
-                // There is little we can do here.
+
+            // Web pages should only be allowed to start activities
+            // with CATEGORY_BROWSABLE.
+            intent.addCategory(Intent.CATEGORY_BROWSABLE)
+
+            // Only start an Activiy if it is not a browser
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_REQUIRE_NON_BROWSER)
+            } else {
+                legacyRequireNonBrowser(intent)
             }
-        } else {
-            openIntentUriFallbackUrl(intent)
+
+            startActivity(intent)
+            return true
+        } catch (_: URISyntaxException) {
+            return false
+        } catch (_: ActivityNotFoundException) {
+            return false
         }
     }
 
-    private fun openIntentUriFallbackUrl(intent: Intent) {
-        val fallbackUrl = intent.getStringExtra("browser_fallback_url")
-        if (fallbackUrl != null) {
-            val fallbackIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse(fallbackUrl)
-            ).addCategory(Intent.CATEGORY_BROWSABLE)
-            if (canStartActivity(fallbackIntent)) {
-                try {
-                    startActivity(fallbackIntent)
-                } catch (_: Exception) {}
+    private fun legacyRequireNonBrowser(intent: Intent) {
+        // For Android < 11, need to simulate FLAG_ACTIVITY_REQUIRE_NON_BROWSER.
+        // This is just one way of doing it.
+        val scheme = intent.scheme
+        if (scheme == "http" || scheme == "https") {
+            // Resolve the Intent. If null, then we don't have the app installed.
+            val resolveInfo = packageManager.resolveActivity(
+                intent,
+                PackageManager.MATCH_DEFAULT_ONLY
+            ) ?: throw ActivityNotFoundException()
+
+            // Using "host" match category as a heuristic here.
+            // An app that handles http(s) uris for any host is more than likely a browser.
+            // Could use e.g. a list of package ids instead.
+            val matchCategory = resolveInfo.match and IntentFilter.MATCH_CATEGORY_MASK
+            if (matchCategory < IntentFilter.MATCH_CATEGORY_HOST) {
+                throw ActivityNotFoundException()
             }
         }
-    }
-
-
-    private fun openRegularUri(uri: Uri): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-            .addCategory(Intent.CATEGORY_BROWSABLE)
-        val resolveInfo = resolveActivity(intent)
-        val shouldStartActivity = resolveInfo != null && when (uri.scheme) {
-            "http", "https" -> shouldStartActivityForHttpUri(uri, resolveInfo)
-            else -> true
-        }
-        if (shouldStartActivity) {
-            try {
-                startActivity(intent)
-                return true
-            } catch (_: Exception) {}
-        }
-        return false
-    }
-
-    private fun resolveActivity(intent: Intent): ResolveInfo? {
-        return packageManager.resolveActivity(
-            intent,
-            PackageManager.MATCH_DEFAULT_ONLY
-        )
-    }
-
-    private fun canStartActivity(intent: Intent): Boolean {
-        return resolveActivity(intent) != null
-    }
-
-    private fun shouldStartActivityForHttpUri(
-        resolveInfo: ResolveInfo
-    ): Boolean {
-        // Only open http(s) links in external apps
-        // if the intent filter is a "good" match.
-        // Requiring a matching host in the intent filter
-        // is the most reasonable generic choice, but
-        // you can exercise more fine-grained control here
-        // if you wish.
-        val matchCategory = resolveInfo.match and IntentFilter.MATCH_CATEGORY_MASK
-        return matchCategory >= IntentFilter.MATCH_CATEGORY_HOST
     }
 ```
 
@@ -594,3 +550,5 @@ The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages.
 [sdk-paymenturl]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
 [android-autoverify]: https://developer.android.com/training/app-links/verify-site-associations
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[android-package-visibility]: https://developer.android.com/training/package-visibility
+[android-flag-non-browser]: https://developer.android.com/reference/android/content/Intent#FLAG_ACTIVITY_REQUIRE_NON_BROWSER

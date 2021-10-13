@@ -17,6 +17,7 @@ pull_request_rules:
   - name: Thank contributor
     conditions:
       - merged
+      - -author~=^.*\[bot\]$
     actions:
       comment:
         message: "Thank you @{{author}} for your contribution!"

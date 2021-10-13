@@ -4,6 +4,8 @@ endcapture %}
 
 ## Instrument Mode
 
+{% include alert-agreement-required.md %}
+
 In "Instrument Mode" the Payment Menu will display only one specific payment
 instrument instead of all configured on your merchant account. The Payment Order
 resource works just like it otherwise would, allowing you to remain largely

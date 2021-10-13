@@ -4,6 +4,7 @@ estimated_read: 5
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
+menu_order: 1000
 ---
 
 ## Swedbank Pay Checkout Test Data
@@ -12,7 +13,7 @@ During a Swedbank Pay Checkout implementation, you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout
 in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
 
-To test a checked-in user in the Demo Shop, please use the following test data:
+To test a checked-in user in the Demoshop, please use the following test data:
 
 ### Checkout test data for Norway
 
@@ -214,27 +215,6 @@ The amounts that can be used to trigger error codes
 ## Invoice Service Test Data
 
 Use any name, address etc.
-
-## Vipps Test Data
-
-Testing a successful Vipps purchase (in our external integration test
-environment) can be done using any valid Norwegian mobile number, E.g:
-`+47 99999999` except within the range: `9999991` - `99999998`, as these will
-trigger errors according to the table below. Please note that the external
-integration test environment is using a fake service, which means that no app
-will be involved.
-
-{:.table .table-striped}
-| Mobile number | Error message                                                   |
-| :------------ | :-------------------------------------------------------------- |
-| 99999991      | Vipps internal error                                            |
-| 99999992      | Request Validation error message on paticular request parameter |
-| 99999993      | Transaction Id already exists in vipps                          |
-| 99999994      | PSPID not enrolled in vipps                                     |
-| 99999995      | Invalid payment model type                                      |
-| 99999996      | User Vipps App version not supported                            |
-| 99999997      | User not Registered with Vipps                                  |
-| 99999998      | Merchant not available or active                                |
 
 ## Swish Test Data
 

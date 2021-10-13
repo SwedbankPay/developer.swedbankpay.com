@@ -30,7 +30,6 @@ The structure of a problem message will look like this:
     "detail": "Please correct the errors and retry the request",
     "instance": "{{ page.transaction_id }}",
     "status": 400,
-    "action": "RetryNewData",
     "problems": [{
         "name": "CreditCardParameters.Issuer",
         "description": "minimum one issuer must be enabled"
@@ -66,7 +65,7 @@ future.
 | `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
-| `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
+| `configurationerror` | `403`  | A error relating to configuration issues.                                                                                                          |
 
 {% include {{ problem_include_file }} %}
 
