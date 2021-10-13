@@ -308,7 +308,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][mac-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/MAC/redirect"
+{% include iterator.html prev_href="/checkout/v3/mac/redirect"
                          prev_title="Back to MAC Redirect" %}<br/>
 
 ## MAC Seamless View
@@ -422,7 +422,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][mac-seamless-view-events] for further information.
 *   ② Read more about [callback][mac-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/MAC/seamless-view"
+{% include iterator.html prev_href="/checkout/v3/mac/seamless-view"
                          prev_title="Back to MAC Seamless View" %}
 
 [callback]: /checkout/v3/authenticated/features/technical-reference/callback
