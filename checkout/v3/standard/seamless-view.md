@@ -185,3 +185,4 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/standard/features/core/abort
+[seamless-view-events]: /checkout/v3/standard/features/technical-reference/seamless-view-events
