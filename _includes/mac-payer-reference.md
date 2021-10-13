@@ -45,4 +45,4 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`msisdn`                  | `string`     | The mobile phone number of the payer. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3d-secure-2][3d-secure-2].            |
 |                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in MAC integrations to recognize the payer in the absence of SSN and/or a secure login.                                                                                                                                                                                                                               |
 
-[3d-secure-2]: checkout/v3/mac/features/core/3d-secure-2
+[3d-secure-2]: /checkout/v3/mac/features/core/3d-secure-2
