@@ -1,5 +1,6 @@
-{% assign transactions_link = '/payment-instruments/card/features/technical-reference/transactions' %}
-{% assign operations_link = '/payment-instruments/card/features/technical-reference/operations' %}
+{% capture techref_url %}{% include documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
+{% assign transactions_url = '/transactions' | prepend: techref_url %}
+{% assign operations_url = '/operations' | prepend: techref_url %}
 
 ## Reversal
 
@@ -32,7 +33,7 @@ Content-Type: application/json
 {:.table .table-striped .mb-5}
 |     Required     | Field                    | Type          | Description                                                                              |
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_link }}). |
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). |
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
@@ -81,7 +82,7 @@ Content-Type: application/json
 | `payment`                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
 | `reversal`                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
 | └➔&nbsp;`id`              | `string`  | The relative URL of the created `reversal`transaction.                                                                                                                                                       |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource]({{ transactions_link }}).                                                                                                                       |
+| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource]({{ transactions_url }}).                                                                                                                       |
 | └─➔&nbsp;`id`             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
 | └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
@@ -94,7 +95,7 @@ Content-Type: application/json
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations]({{ operations_link }}) that are possible to perform on the transaction in its current state.                                                                                                  |
+| └─➔&nbsp;`operations`     | `array`   | The array of [operations]({{ operations_url }}) that are possible to perform on the transaction in its current state.                                                                                                  |
 {% endcapture %}
 {% include accordion-table.html content = response_table %}
 

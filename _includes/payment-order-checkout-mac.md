@@ -38,7 +38,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "requireConsumerInfo": false,
             "digitalProducts": false,
             "nationalIdentifier": {
@@ -330,8 +330,7 @@ Content-Type: application/json
 | └➔&nbsp;`currentPayment` | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 {% endcapture %}
-{% include accordion-table.html content = response_table
-%}
+{% include accordion-table.html content=response_table %}
 
 [complete-url]: /{{ documentation_section }}/features/technical-reference/complete-url
 [initiate-consumer-session]: {{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification

@@ -1,5 +1,4 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features/core' %}{% endcapture %}
 {% assign api_resource_field_name = 'paymentorder' %}
 {% if api_resource != 'paymentorders' %}

@@ -122,5 +122,4 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |
 {% endcapture %}
-{% include accordion-table.html content = response_table
-%}
+{% include accordion-table.html content=response_table %}
