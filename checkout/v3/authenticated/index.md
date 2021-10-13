@@ -25,8 +25,7 @@ You should choose the **Authenticated** implementation if
 -   You need a Checkout agreement to use this product.
 -   You need a data exchange agreement since we receive payer data from you.
 
-Please contact our [Sales department][contact-sales] regarding these
-requirements.
+Please contact our Sales department regarding this requirement.
 
 There are two ways of integrating the **Authenticated** implementation.
 **Redirect** and **Seamless View**.
@@ -49,5 +48,3 @@ Read more about our two integration alternatives by clicking the links below.
 
 {% include iterator.html next_href="seamless-view"
                          next_title="Integrate Seamless View" %}
-
-[contact-sales]: /contact/

@@ -25,8 +25,7 @@ You should choose our **Standard** implementation if
 -   You need a Checkout agreement to use this product.
 -   You need a data exchange agreement since we receive payer data from you.
 
-Please contact our [Sales department][contact-sales] regarding these
-requirements.
+Please contact our Sales department regarding this requirement.
 
 The only way to integrate our **Standard** implementation is **Seamless View**.
 
@@ -40,5 +39,3 @@ Read more about the integration by clicking the link below.
 
 {% include iterator.html next_href="seamless-view"
                          next_title="Integrate Seamless View" %}
-
-[contact-sales]: /contact/
