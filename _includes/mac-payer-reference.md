@@ -2,7 +2,7 @@
 
 If a merchant wishes to use the MAC implementation, but does not have the
 payer's SSN or a secure login, they can add a `payerReference` in the payer
-node of the payment request.
+field of the payment request.
 
 If the `payerReference` is present along with `email` and `msisdn`, the merchant
 does not need to add a `nationalIdentifier`. Other than that, the integration

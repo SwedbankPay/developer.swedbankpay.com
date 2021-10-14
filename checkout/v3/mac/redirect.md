@@ -24,16 +24,13 @@ When the purchase is initiated, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
-A new field has been added to the payment order request in this integration.
-This is called `productName` and is a part of the `payer` node. This field is
-required if you want to use Checkout v3, as the needed operations won't be
-available in the response if it's not included.
+We have added `productName` to the payment order request in this integration.
+You can find it in the `paymentorder` field. This is required if you want to use
+Checkout v3. If it isn´t included in your request, you won't get the correct
+operations in the response.
 
-When `productName` is set to `checkout3`, `requireConsumerInfo` will have its
-default value set to false. while `digitalProducts` will default to true.
-
-Please note that `shippingAdress` is only required if `digitalProducts` is set
-to `false`. `requireConsumerInfo` **must** be set to `false`.
+When `productName` is set to `checkout3`, `requireConsumerInfo` and
+`digitalProducts` will be set to `false` by default.
 
 Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
@@ -98,5 +95,5 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-redirect
-[redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png
-[redirect-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-redirect-mixed-products.png
+[redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
+[redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png

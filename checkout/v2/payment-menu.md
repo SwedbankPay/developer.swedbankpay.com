@@ -21,7 +21,7 @@ Payment Menu.
 If you are sending a guest user `POST` request, simply leave out the
 `consumerProfileRef` from the input, and the payer will be sent to an empty
 Payment Menu. Information like `email`, `address` and `msisdn` can still be
-added manually in the payer node. If added, it will appear prefilled in the
+added manually in the `payer` field. If added, it will appear prefilled in the
 Payment Menu.
 
 Remember to read up on our [URL resource][urls].
