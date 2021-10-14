@@ -95,5 +95,5 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-redirect
-[redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png
-[redirect-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-redirect-mixed-products.png
+[redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
+[redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png

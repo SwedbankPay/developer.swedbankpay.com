@@ -124,8 +124,8 @@ about capture and the other options you have after the purchase.
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
 [sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-redirect
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
-[redirect-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-redirect-digital.png
-[redirect-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-redirect-mixed-products.png
-[checkin-enter-details-mixed]: /assets/img/checkout/v3/checkin-enter-shipping-address.png
-[checkin-new-payer]: /assets/img/checkout/v3/checkin-new-payer.png
-[checkin-new-payer-ssn]: /assets/img/checkout/v3/checkin-new-payer-ssn.png
+[redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
+[redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png
+[checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
+[checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
+[checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png

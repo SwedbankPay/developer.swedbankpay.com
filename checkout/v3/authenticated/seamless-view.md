@@ -207,8 +207,8 @@ capture and the other options you have after the purchase.
 [sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-seamless-view
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
-[seamless-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-seamless-digital.png
-[seamless-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-seamless-mixed-products.png
-[checkin-enter-details-mixed]: /assets/img/checkout/v3/checkin-enter-shipping-address.png
-[checkin-new-payer]: /assets/img/checkout/v3/checkin-new-payer.png
-[checkin-new-payer-ssn]: /assets/img/checkout/v3/checkin-new-payer-ssn.png
+[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
+[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
+[checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
+[checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
+[checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png

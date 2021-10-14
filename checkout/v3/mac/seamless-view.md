@@ -157,5 +157,5 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout/v3/mac/features/core/abort
 [seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-seamless-view
-[seamless-payment-menu-digital]: /assets/img/checkout/v3/payment-menu-seamless-digital.png
-[seamless-payment-menu-mixed]: /assets/img/checkout/v3/payment-menu-seamless-mixed-products.png
+[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
+[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
