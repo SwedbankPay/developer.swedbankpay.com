@@ -119,7 +119,7 @@ request.send();
 <!DOCTYPE html>
   <html>
       <head>
-      <title>Swedbank Pay Checkout is Awesome!</title>
+          <title>Swedbank Pay Checkout is Awesome!</title>
       </head>
       <body>
       <div id="checkout-container"></div>
