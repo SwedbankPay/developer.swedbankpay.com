@@ -118,15 +118,15 @@ request.send();
 **HTML**
 
 ```html
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html>
       <head>
-          <title>Swedbank Pay Checkout is Awesome!</title>
+      <title>Swedbank Pay Checkout is Awesome!</title>
       </head>
       <body>
-          <div id="checkout-container"></div>
-          <!-- Here you can specify your own javascript file -->
-          <script src="<Your-JavaScript-File-Here>"></script>
+      <div id="checkout-container"></div>
+      <!-- Here you can specify your own javascript file -->
+      <script src="<Your-JavaScript-File-Here>"></script>
       </body>
   </html>
 ```
