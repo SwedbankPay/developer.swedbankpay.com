@@ -485,7 +485,7 @@ payment page.
 
 ### Order Items
 
-The input parameter `quantity` in OrderItems-node is now updated to decimal.
+The input parameter `quantity` in the `OrderItems` field is now updated to decimal.
 You may send up to 4 decimals. See updated documentation
 [here][payment-orders]
 

@@ -24,16 +24,13 @@ create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
-A new field has been added to the payment order request in this integration.
-This is called `productName` and is a part of the `payer` node. This field is
-required if you want to use Checkout v3, as the needed operations won't be
-available in the response if it's not included.
+We have added `productName` to the payment order request in this integration.
+You can find it in the `paymentorder` field. This is required if you want to use
+Checkout v3. If it isn´t included in your request, you won't get the correct
+operations in the response.
 
-When `productName` is set to `checkout3`, `requireConsumerInfo` will have its
-default value set to false. while `digitalProducts` will default to true.
-
-Please note that `shippingAdress` is only required if `digitalProducts` is set
-to `false`. `requireConsumerInfo` **must** be set to `false`.
+When `productName` is set to `checkout3`, `requireConsumerInfo` and
+`digitalProducts` will be set to `false` by default.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
@@ -119,7 +116,7 @@ request.send();
 **HTML**
 
 ```html
-  < !DOCTYPE html >
+  <!DOCTYPE html>
   <html>
       <head>
           <title>Swedbank Pay Checkout is Awesome!</title>
@@ -138,9 +135,11 @@ example with shipping address is for all goods (physical and digital), the one
 without shipping address is for digital products only.
 
 {:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]<br/>
+![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+
 {:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]<br/>
+![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
+
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 

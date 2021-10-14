@@ -15,10 +15,13 @@ When the purchase is initiated, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
-Two new fields have been added to the payment order request in this integration.
-`requireConsumerInfo` and `digitalProducts`. They are a part of the `payer`
-node. Please note that `shippingAdress` is only required if `digitalProducts` is
-set to `false`. `requireConsumerInfo` **must** be set to `false`.
+We have added `productName` to the payment order request in this integration.
+You can find it in the `paymentorder` field. This is required if you want to use
+Checkout v3. If it isn´t included in your request, you won't get the correct
+operations in the response.
+
+When `productName` is set to `checkout3`, `requireConsumerInfo` and
+`digitalProducts` will be set to `false` by default.
 
 In some instances you need the possibility to abort purchases. This could be if
 a payer does not complete the purchase within a reasonable timeframe. For those
@@ -128,7 +131,7 @@ window.payex.hostedView.checkout({
 **HTML**
 
 ```html
- < !DOCTYPE html >
+ <!DOCTYPE html>
     <html>
         <head>
             <title>Swedbank Pay Checkout is Awesome!</title>
@@ -155,7 +158,7 @@ resource to see the purchase state.
 You can read about the different [Seamless View Events][seamless-view-events] in
 the feature section.
 
-If you want to see the payer activities, they are visible in the history node:
+If you want to see the payer activities, they are visible in the history field:
 
 ```json
 {
