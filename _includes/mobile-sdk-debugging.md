@@ -47,7 +47,7 @@ val arguments = PaymentFragment.ArgumentsBuilder()
 
 val manualArguments = Bundle()
 manualArguments.putBoolean(
-    PaymentFragment.ARG_DEBUG_INTENT_URIS,
+    PaymentFragment.ARG_DEBUG_INTENT_URLS,
     true
 )
 ```

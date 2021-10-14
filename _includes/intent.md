@@ -1,5 +1,5 @@
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features/core' %}{% endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign autocapture = include.autocapture | default: false %}
 {% assign show_authorization = include.show_authorization %}
 {% assign sale = include.sale | default: false %}

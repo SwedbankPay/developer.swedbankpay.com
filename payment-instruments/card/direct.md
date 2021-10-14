@@ -318,7 +318,7 @@ Content-Type: application/json
 
 When you find the `redirect-authentication` operation in the response from the
 authorization request, you will have to perform an HTTP redirect of the payer to
-the URI of the `href` to complete the authorization by performing a 3-D Secure
+the URL of the `href` to complete the authorization by performing a 3-D Secure
 authentication with the issuer.
 
 When the 3-D Secure flow is completed, the payer will be redirected back to the

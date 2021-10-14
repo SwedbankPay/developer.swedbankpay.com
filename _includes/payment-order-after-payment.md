@@ -17,7 +17,7 @@ capture or cancel. For a full list of the available operations, see the
 | `create-paymentorder-reversal` | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
 To identify the operations that are available we need to do a `GET` request
-against the URI of `paymentorder.id`:
+against the URL of `paymentorder.id`:
 
 {:.code-view-header}
 **Request**

@@ -1,5 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% assign operations_url = '/technical-reference/operations' | prepend: features_url %}
 {% assign transaction = include.transaction | default: "capture" %}
 {% if transaction == "cancel" %}
     {% assign plural = "cancellations" %}
@@ -68,7 +69,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture response_table%}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `string`  | {% include field-description-id.md sub_resource=plural %}                                                                                                                                                    |
@@ -88,6 +90,8 @@ Content-Type: application/json
 | └─➔&nbsp;`payeeReference`         | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         | {% if api_resource == "invoice" %}
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| └─➔&nbsp;`operations`             | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                                |
+| └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_url }}) that are possible to perform on the transaction in its current state.                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content=response_table %}
 
 [operations]: {{ features_url }}/technical-reference/operations
