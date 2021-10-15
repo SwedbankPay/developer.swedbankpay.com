@@ -97,7 +97,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    kramdown-plantuml (1.1.4)
+    kramdown-plantuml (1.1.5)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
       open3 (~> 0.1)
@@ -167,7 +167,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  faraday (~> 1.4.1)
+  faraday (~> 1.8.0)
   html-proofer
   html-proofer-unrendered-markdown
   jekyll (~> 4.2.0)
