@@ -18,7 +18,7 @@ this very documentation, not to a version of any APIs described by it." %}
 *   Updated [Android SDK documentation][android-sdk-documentation]
 *   Added info about [consumerProfileRef expiration][checkin]
 *   Added important information about WebView integrations for [mobile card payments][mobile-card-payments]
-*   Updated [Android iOS documentation][ios-sdk-documentation]
+*   Updated [iOS SDK documentation][ios-sdk-documentation]
 *   Added information about [authorization timeouts][authorization-timeouts] (bottom of page)
 *   Added important info about [MobilePay shoplogoUrl][mobilepay-seamless-view]
 *   Fixed minor bugs and code examples
