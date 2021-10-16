@@ -3,9 +3,8 @@ section: Authenticated
 title: Introduction
 estimated_read: 2
 description: |
-  **Authenticated** is the checkout option for
-  Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-  and try this implementation yourself!
+  **Authenticated** is the checkout option for merchants who want us to handle
+  both consumer authentication and payment.
 menu_order: 100
 ---
 

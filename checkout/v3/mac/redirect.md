@@ -29,8 +29,8 @@ You can find it in the `paymentorder` field. This is required if you want to use
 Checkout v3. If it isn´t included in your request, you won't get the correct
 operations in the response.
 
-When `productName` is set to `checkout3`, `requireConsumerInfo` and
-`digitalProducts` will be set to `false` by default.
+When `productName` is set to `checkout3`, `digitalProducts` will be set to
+`false` by default.
 
 Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), split settlement (`subsite`) and the possibility to use your

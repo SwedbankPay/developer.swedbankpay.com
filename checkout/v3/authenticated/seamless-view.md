@@ -30,8 +30,8 @@ You can find it in the `paymentorder` field. This is required if you want to use
 Checkout v3. If it isn´t included in your request, you won't get the correct
 operations in the response.
 
-When `productName` is set to `checkout3`, `requireConsumerInfo` and
-`digitalProducts` will be set to `false` by default.
+When `productName` is set to `checkout3`, `digitalProducts` will be set to
+`false` by default.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we

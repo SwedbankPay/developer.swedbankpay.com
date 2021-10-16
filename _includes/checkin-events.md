@@ -1,3 +1,5 @@
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+
 ## Checkin Events
 
 The Checkin Seamless View can inform about events that occur during Checkin
@@ -28,6 +30,26 @@ sequenceDiagram
     SwedbankPay->>Merchant: OnShippingDetailsAvailable
   end
 ```
+
+{% if documentation_section == "checkout/v3" %}
+
+### `onConsumerIdentified`
+
+This event triggers when a consumer has performed Checkin and is identified,
+if the Payment Menu is not loaded and in the DOM.
+The `onConsumerIdentified` event is raised with the following event argument
+object:
+
+{:.code-view-header}
+**onConsumerIdentified event object**
+
+```json
+{
+  "actionType": "OnConsumerIdentified"
+}
+```
+
+{% else %}
 
 ### `onConsumerIdentified`
 
@@ -77,3 +99,5 @@ Triggered when a consumer has been identified
   "url":"/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
+
+{% endif %}

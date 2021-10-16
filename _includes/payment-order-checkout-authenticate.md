@@ -132,8 +132,7 @@ Content-Type: application/json
 }
 ```
 
-{% capture request_table %}
-{:.table .table-striped .mb-5}
+{:.table .table-striped}
 |     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `paymentorder`                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
@@ -211,8 +210,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the payer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay.                                                   |
 {% include risk-indicator-table.md %}
-{% endcapture %}
-{% include accordion-table.html content = request_table %}
 
 {:.code-view-header}
 **Response**
@@ -298,8 +295,7 @@ Content-Type: application/json
 }
 ```
 
-{% capture response_table %}
-{:.table .table-striped .mb-5}
+{:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
@@ -323,5 +319,3 @@ Content-Type: application/json
 | └➔&nbsp;`payments`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`currentPayment` | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                       |
-{% endcapture %}
-{% include accordion-table.html content=response_table %}

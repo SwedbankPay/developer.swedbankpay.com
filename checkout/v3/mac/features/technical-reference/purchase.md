@@ -6,4 +6,4 @@ description: |
 menu_order: 2800
 ---
 
-{% include purchase.md full_reference=true %}
+{% include payment-order-purchase.md %}
