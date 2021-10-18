@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3969,13 +3970,13 @@ directly to step 3, which you will find on the next page.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">contentType</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The HTTP content type of the target URI. Indicates what sort of resource is to be found at the URI, how it is expected to be used and behave.</td>
+      <td style="text-align: left">The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">href</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The target URI of the operation.</td>
+      <td style="text-align: left">The target URL of the operation.</td>
     </tr>
   </tbody>
 </table>
@@ -4060,6 +4061,21 @@ operation is meant to be embedded in a <code class="language-html highlighter-ro
     <p>The Checkin and Payment
 Menu components (the two <code class="language-html highlighter-rouge"><span class="nt">&lt;iframe&gt;</span></code> elements) must be separate
 (one must not replace the other).</p>
+    
+    
+</div>
+
+<div class="alert  alert-warning">
+    
+    
+    <i class="material-icons alert-icon">warning</i>
+    
+    
+
+    
+    
+    <p>Please note that
+nested iframes (an iframe within an iframe) are unsupported.</p>
     
     
 </div>
@@ -4182,8 +4198,8 @@ access them with our script.</p>
 </div>
 
 <p>With the scripts loading in after the entire page is loaded, we can access the
-<code class="language-html highlighter-rouge"><span class="nt">&lt;div&gt;</span></code> container that the Checkin will be hosted in.
-When everything has finished loading, you should see something like this:</p>
+<code class="language-html highlighter-rouge"><span class="nt">&lt;div&gt;</span></code> container that the Checkin will be hosted in. When everything has
+finished loading, you should see something like this:</p>
 
 <p class="text-center"><img src="/assets/img/checkout/checkin-email-msisdn.png" alt="Consumer UI Start Page" width="425" height="275"></p>
 
@@ -4232,8 +4248,10 @@ the page for address details to enter their shipping address. This info is not
 stored for future purchases. Please note that this is <strong>not</strong> the same as
 shopping as a guest.</p>
 
-<p>With a <code class="language-html highlighter-rouge">consumerProfileRef</code> safely tucked into our pocket,
-the Checkin is complete and we can move on to <a href="payment-menu">Payment Menu</a>.</p>
+<p>With a <code class="language-html highlighter-rouge">consumerProfileRef</code> safely tucked into our pocket, the Checkin is
+complete and we can move on to <a href="payment-menu">Payment Menu</a>. Be aware that
+the <code class="language-html highlighter-rouge">consumerProfileRef</code> expires after 24 hours as well as after being used to complete a payment.
+The <em><code class="language-html highlighter-rouge">consumerProfileRef</code> can not be reused</em> for several purchases.</p>
 
 <p>A complete overview of how the process of identifying the payer through Checkin
 is illustrated in the sequence diagram below.</p>

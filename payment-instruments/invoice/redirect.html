@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3952,7 +3953,7 @@ operation equal to <code class="language-html highlighter-rouge">FinancingConsum
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"generateReccurenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"generateRecurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4094,7 +4095,7 @@ operation equal to <code class="language-html highlighter-rouge">FinancingConsum
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">cancelUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with <code class="language-html highlighter-rouge">paymentUrl</code>; only <code class="language-html highlighter-rouge">cancelUrl</code> or <code class="language-html highlighter-rouge">paymentUrl</code> can be used, not both.</td>
+      <td style="text-align: left">The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with <code class="language-html highlighter-rouge">paymentUrl</code>; only <code class="language-html highlighter-rouge">cancelUrl</code> or <code class="language-html highlighter-rouge">paymentUrl</code> can be used, not both.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -4122,7 +4123,7 @@ operation equal to <code class="language-html highlighter-rouge">FinancingConsum
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">termsOfServiceUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to the terms of service document which the payer must accept in    order to complete the payment. <strong>HTTPS is a requirement</strong>.</td>
+      <td style="text-align: left">The URL to the terms of service document which the payer must accept in    order to complete the payment. <strong>HTTPS is a requirement</strong>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -4185,7 +4186,7 @@ operation equal to <code class="language-html highlighter-rouge">FinancingConsum
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">payerReference</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail         address, mobile number, customer number etc. Mandatory if         <code class="language-html highlighter-rouge">generateReccurenceToken</code>, <code class="language-html highlighter-rouge">RecurrenceToken</code>,         <code class="language-html highlighter-rouge">generatePaymentToken</code> or <code class="language-html highlighter-rouge">paymentToken</code> is <code class="language-html highlighter-rouge">true</code>.</td>
+      <td style="text-align: left">The reference to the payer from the merchant system, like e-mail         address, mobile number, customer number etc. Mandatory if         <code class="language-html highlighter-rouge">generateRecurrenceToken</code>, <code class="language-html highlighter-rouge">RecurrenceToken</code>,        <code class="language-html highlighter-rouge">generatePaymentToken</code> or <code class="language-html highlighter-rouge">paymentToken</code> is <code class="language-html highlighter-rouge">true</code>.</td>
     </tr>
   </tbody>
 </table>

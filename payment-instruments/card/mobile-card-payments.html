@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3780,7 +3781,30 @@
 <div class="doc-container normal-padding max-width">
     <article>
         
-            <h2 id="card-payments-in-mobile-apps">
+            <div class="alert alert-complex alert-warning">
+<header class="alert-header">
+        
+        <i class="material-icons alert-icon">warning</i>
+      <h3>
+        
+        
+          Integration options
+        
+        
+      </h3></header>
+    
+
+    
+    
+    <div class="alert-body">
+        <p>We advise you to integrate our Mobile SDK Payment Menu instead of
+integrating card payments directly in your app with WebView.</p>
+    </div>
+    
+    
+</div>
+    
+      <h2 id="card-payments-in-mobile-apps">
         
         
           Card Payments in Mobile Apps <a href="#card-payments-in-mobile-apps" class="header-anchor"></a>
@@ -3788,10 +3812,9 @@
         
       </h2>
 
-<p>The implementation sequence for Card Payments in mobile apps
-is identical to the standard
-Redirect scenario, but also includes explanations of how to include this
-redirect in mobile apps or in mobile web pages.</p>
+<p>The implementation sequence for Card Payments in mobile apps is identical to the
+standard Redirect scenario, but also includes explanations of how to include
+this redirect in mobile apps or in mobile web pages.</p>
     
       <h3 id="screenshots-for-payments">
         

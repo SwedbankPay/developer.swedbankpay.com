@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Checkout MAC – Features">
+        <meta name="application-name" content="Merchant Authenticated Consumer (MAC) – Features">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Checkout MAC – Features">
+        <meta name="apple-mobile-web-app-title" content="Merchant Authenticated Consumer (MAC) – Features">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/checkout/v3/mac/features/">
-        <meta property="og:title" value="Checkout MAC – Features">
-        <meta name="title" content="Checkout MAC – Features">
+        <meta property="og:title" value="Merchant Authenticated Consumer (MAC) – Features">
+        <meta name="title" content="Merchant Authenticated Consumer (MAC) – Features">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Checkout MAC – Features</title>
+        <title>Merchant Authenticated Consumer (MAC) – Features</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/5.0.1/styles/dg-style.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3748,7 +3749,7 @@
 <div class="title-header">
     <div class="title-header-container max-width-card-overview">
         
-            <h4>Checkout MAC</h4>
+            <h4>Merchant Authenticated Consumer (MAC)</h4>
         
 
         <h1>Features</h1>
@@ -3757,7 +3758,7 @@
 
         
             <p></p>
-<p>In this section you can read more about the different features of
+<p>In this section, you can read more about the different features of
 Swedbank Pay Checkout.</p>
 
         
@@ -3841,6 +3842,57 @@ Swedbank Pay Checkout.</p>
     <span class="dx-card-content">
         <span class="h4">3-D Secure 2</span>
         <span><p>Authenticating the cardholder.</p>
+</span>
+    </span>
+    
+        <i class="material-icons">arrow_forward</i>
+    
+</a>
+
+        </div>
+    
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        <div class="col-lg-4">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/checkout/v3/mac/features/core/abort" class="dx-card">
+    <span class="dx-card-icon">
+        
+            <i class="material-icons">
+                
+            </i>
+        
+    </span>
+    <span class="dx-card-content">
+        <span class="h4">Abort</span>
+        <span><p>Aborting a created payment.</p>
 </span>
     </span>
     
@@ -4158,7 +4210,7 @@ Swedbank Pay Checkout.</p>
 
 
 
-<a href="/checkout/v3/mac/features/optional/mac" class="dx-card">
+<a href="/checkout/v3/mac/features/optional/mac-payer-reference" class="dx-card">
     <span class="dx-card-icon">
         
             <i class="material-icons">
@@ -4167,8 +4219,8 @@ Swedbank Pay Checkout.</p>
         
     </span>
     <span class="dx-card-content">
-        <span class="h4">Merchant Authenticated Consumer</span>
-        <span><p>The Checkin alternative.</p>
+        <span class="h4">MAC Payer Reference</span>
+        <span><p>The MAC option when you don’t have a secure login or SSN.</p>
 </span>
     </span>
     
@@ -4396,57 +4448,6 @@ Swedbank Pay Checkout.</p>
         <span class="h4">Callback</span>
         <span><p>Receive asynchronous, server-to-server updates from Swedbank Pay when
 transactions are performed on a payment.</p>
-</span>
-    </span>
-    
-        <i class="material-icons">arrow_forward</i>
-    
-</a>
-
-        </div>
-    
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
-        <div class="col-lg-4">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/checkout/v3/mac/features/technical-reference/checkin-events" class="dx-card">
-    <span class="dx-card-icon">
-        
-            <i class="material-icons">
-                
-            </i>
-        
-    </span>
-    <span class="dx-card-content">
-        <span class="h4">Checkin Events</span>
-        <span><p>Possible events during Checkin.</p>
 </span>
     </span>
     
@@ -5161,6 +5162,57 @@ transactions are performed on a payment.</p>
     <span class="dx-card-content">
         <span class="h4">Purchase</span>
         <span><p>The bread and butter of the payments.</p>
+</span>
+    </span>
+    
+        <i class="material-icons">arrow_forward</i>
+    
+</a>
+
+        </div>
+    
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        <div class="col-lg-4">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="/checkout/v3/mac/features/technical-reference/transactions" class="dx-card">
+    <span class="dx-card-icon">
+        
+            <i class="material-icons-outlined">
+                done_all
+            </i>
+        
+    </span>
+    <span class="dx-card-content">
+        <span class="h4">Transactions</span>
+        <span><p>The transactions making up a specific payment.</p>
 </span>
     </span>
     

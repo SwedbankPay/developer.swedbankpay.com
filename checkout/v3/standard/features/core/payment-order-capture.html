@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Checkout Standard – Capture">
+        <meta name="application-name" content="Standard – Capture">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Checkout Standard – Capture">
+        <meta name="apple-mobile-web-app-title" content="Standard – Capture">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/checkout/v3/standard/features/core/payment-order-capture.html">
-        <meta property="og:title" value="Checkout Standard – Capture">
-        <meta name="title" content="Checkout Standard – Capture">
+        <meta property="og:title" value="Standard – Capture">
+        <meta name="title" content="Standard – Capture">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Checkout Standard – Capture</title>
+        <title>Standard – Capture</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/5.0.1/styles/dg-style.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3748,7 +3749,7 @@
 <div class="title-header">
     <div class="title-header-container max-width">
         
-            <h4>Checkout Standard</h4>
+            <h4>Standard</h4>
         
 
         <h1>Capture</h1>
@@ -3799,10 +3800,10 @@ transaction, naturally excluding one-phase payment instruments like
 Please note that Invoice captures differ from the others. These are explained
 in it’s <a href="#invoice">own section</a>.</p>
 
-<p>In addition to full captures, it is possible to do partial <code class="language-html highlighter-rouge">capture</code>s where you
-only capture a part of the authorized amount. You can do other captures on the
-same payment later, up to the total authorized amount. Useful for when you have
-to split orders into several shipments, for instance.</p>
+<p>In addition to full captures, it is possible to do partial captures of a part of
+the authorized amount. You can do other captures on the same payment later, up
+to the total authorized amount. Useful for when you have to split orders into
+several shipments, for instance.</p>
 
 <p>First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
@@ -3925,7 +3926,14 @@ and get the status back.</p>
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<table class="table table-striped">
+<div class="accordion accordion-table mb-4">
+    <button type="button" class="accordion-header pt-0" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show properties</span>
+        <span class="mr-3 hide">Hide properties</span>
+    </button>
+    <div class="accordion-body p-0" id="exp-1">
+        
+<table class="table table-striped mb-5">
   <thead>
     <tr>
       <th style="text-align: center">Required</th>
@@ -4198,7 +4206,11 @@ and get the status back.</p>
   </tbody>
 </table>
 
-<p>If the capture succeeds, it should respond with something like the following:</p>
+
+    </div>
+</div>
+
+<p>If the capture succeeds, this should be the response:</p>
 
 <p class="code-view-header"><strong>Response</strong></p>
 
@@ -4245,7 +4257,14 @@ and get the status back.</p>
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<table class="table table-striped">
+<div class="accordion accordion-table mb-4">
+    <button type="button" class="accordion-header pt-0" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show properties</span>
+        <span class="mr-3 hide">Hide properties</span>
+    </button>
+    <div class="accordion-body p-0" id="exp-1">
+        
+<table class="table table-striped mb-5">
   <thead>
     <tr>
       <th style="text-align: left">Property</th>
@@ -4257,7 +4276,7 @@ and get the status back.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the payment this capture transaction belongs to.</td>
+      <td style="text-align: left">The relative URL of the payment this capture transaction belongs to.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">capture</code></td>
@@ -4268,7 +4287,7 @@ and get the status back.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the created capture transaction.</td>
+      <td style="text-align: left">The relative URL of the created capture transaction.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transaction</code>
@@ -4280,7 +4299,7 @@ and get the status back.</p>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI of the current <code class="language-html highlighter-rouge">transaction</code> resource.</td>
+      <td style="text-align: left">The relative URL of the current <code class="language-html highlighter-rouge">transaction</code> resource.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code>
@@ -4344,6 +4363,9 @@ and get the status back.</p>
     </tr>
   </tbody>
 </table>
+
+    </div>
+</div>
     
       <h2 id="invoice">
         
@@ -4357,10 +4379,10 @@ and get the status back.</p>
 any funds in itself. It will generate the actual invoice and distribute it to
 the payer.</p>
     
-      <h2 id="step-1-create-financingconsumer-capture">
+      <h2 id="step-1-create-invoice-capture">
         
         
-          Step 1: Create <code class="language-html highlighter-rouge">FinancingConsumer</code> Capture <a href="#step-1-create-financingconsumer-capture" class="header-anchor"></a>
+          Step 1: Create Invoice Capture <a href="#step-1-create-invoice-capture" class="header-anchor"></a>
         
         
       </h2>
@@ -4447,7 +4469,14 @@ operation with the following request body:</p>
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<table class="table table-striped">
+<div class="accordion accordion-table mb-4">
+    <button type="button" class="accordion-header pt-0" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show properties</span>
+        <span class="mr-3 hide">Hide properties</span>
+    </button>
+    <div class="accordion-body p-0" id="exp-1">
+        
+<table class="table table-striped mb-5">
   <thead>
     <tr>
       <th style="text-align: center">Required</th>
@@ -4535,6 +4564,9 @@ operation with the following request body:</p>
     </tr>
   </tbody>
 </table>
+
+    </div>
+</div>
 
 <p>Notes on <code class="language-html highlighter-rouge">FinancingConsumer</code> captures:</p>
 
@@ -4634,7 +4666,14 @@ Standard due date is 14 days.</li>
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<table class="table table-striped">
+<div class="accordion accordion-table mb-4">
+    <button type="button" class="accordion-header pt-0" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show properties</span>
+        <span class="mr-3 hide">Hide properties</span>
+    </button>
+    <div class="accordion-body p-0" id="exp-1">
+        
+<table class="table table-striped mb-5">
   <thead>
     <tr>
       <th style="text-align: left">Field</th>
@@ -4647,7 +4686,7 @@ Standard due date is 14 days.</li>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4660,7 +4699,7 @@ Standard due date is 14 days.</li>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">capture</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">capture</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4674,7 +4713,7 @@ Standard due date is 14 days.</li>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">itemDescriptions</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4688,7 +4727,7 @@ Standard due date is 14 days.</li>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">capture</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
       <td> </td>
     </tr>
     <tr>
@@ -4785,6 +4824,9 @@ Standard due date is 14 days.</li>
     </tr>
   </tbody>
 </table>
+
+    </div>
+</div>
     
       <h2 id="step-2-inspecting-the-captures">
         

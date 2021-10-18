@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Checkout MAC – Seamless View Events">
+        <meta name="application-name" content="Merchant Authenticated Consumer (MAC) – Seamless View Events">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Checkout MAC – Seamless View Events">
+        <meta name="apple-mobile-web-app-title" content="Merchant Authenticated Consumer (MAC) – Seamless View Events">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
         <meta property="og:url" value="https://developer.swedbankpay.com/checkout/v3/mac/features/technical-reference/seamless-view-events.html">
-        <meta property="og:title" value="Checkout MAC – Seamless View Events">
-        <meta name="title" content="Checkout MAC – Seamless View Events">
+        <meta property="og:title" value="Merchant Authenticated Consumer (MAC) – Seamless View Events">
+        <meta name="title" content="Merchant Authenticated Consumer (MAC) – Seamless View Events">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Checkout MAC – Seamless View Events</title>
+        <title>Merchant Authenticated Consumer (MAC) – Seamless View Events</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/5.0.1/styles/dg-style.css">
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3748,7 +3749,7 @@
 <div class="title-header">
     <div class="title-header-container max-width">
         
-            <h4>Checkout MAC</h4>
+            <h4>Merchant Authenticated Consumer (MAC)</h4>
         
 
         <h1>Seamless View Events</h1>
@@ -3833,7 +3834,7 @@ event handler you are overriding.</p>
 
 <p>This events triggers when a payment enters a paying state ( <code class="language-html highlighter-rouge">Sale</code>, <code class="language-html highlighter-rouge">Authorize</code>,
 <code class="language-html highlighter-rouge">Cancel</code>etc). The <code class="language-html highlighter-rouge">onPaymentPending</code> event
-will be followed by either <code class="language-html highlighter-rouge">onPaymentCompleted</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or
+will be followed by either <code class="language-html highlighter-rouge">onPaymentPaid</code>, <code class="language-html highlighter-rouge">onPaymentFailed</code> or
 <code class="language-html highlighter-rouge">onPaymentTransactionFailed</code> based on the result of the payment. Read more about
 these events below.</p>
 
@@ -3862,24 +3863,24 @@ these events below.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
   </tbody>
 </table>
     
-      <h3 id="onpaymentcompleted">
+      <h3 id="onpaymentpaid">
         
         
-          <code class="language-html highlighter-rouge">onPaymentCompleted</code> <a href="#onpaymentcompleted" class="header-anchor"></a>
+          <code class="language-html highlighter-rouge">onPaymentPaid</code> <a href="#onpaymentpaid" class="header-anchor"></a>
         
         
       </h3>
 
 <p>This event triggers when a payment has completed successfully.
-The <code class="language-html highlighter-rouge">onPaymentCompleted</code> event is raised with the following event argument
+The <code class="language-html highlighter-rouge">onPaymentPaid</code> event is raised with the following event argument
 object:</p>
 
-<p class="code-view-header"><strong>onPaymentCompleted event object</strong></p>
+<p class="code-view-header"><strong>onPaymentPaid event object</strong></p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -3906,29 +3907,29 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI the user will be redirect to after a completed payment.</td>
+      <td style="text-align: left">The URL the user will be redirect to after a completed payment.</td>
     </tr>
   </tbody>
 </table>
     
-      <h3 id="onpaymentcanceled">
+      <h3 id="onpaymentaborted">
         
         
-          <code class="language-html highlighter-rouge">onPaymentCanceled</code> <a href="#onpaymentcanceled" class="header-anchor"></a>
+          <code class="language-html highlighter-rouge">onPaymentAborted</code> <a href="#onpaymentaborted" class="header-anchor"></a>
         
         
       </h3>
 
 <p>This event triggers when the user cancels the payment.
-The <code class="language-html highlighter-rouge">onPaymentCanceled</code> event is raised with the following event argument
+The <code class="language-html highlighter-rouge">onPaymentAborted</code> event is raised with the following event argument
 object:</p>
 
-<p class="code-view-header"><strong>onPaymentCanceled event object</strong></p>
+<p class="code-view-header"><strong>onPaymentAborted event object</strong></p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -3955,12 +3956,12 @@ object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI the user will be redirect to after a canceled payment.</td>
+      <td style="text-align: left">The URL the user will be redirect to after a canceled payment.</td>
     </tr>
   </tbody>
 </table>
@@ -4004,29 +4005,29 @@ event argument object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">redirectUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI the user will be redirect to after a failed payment.</td>
+      <td style="text-align: left">The URL the user will be redirect to after a failed payment.</td>
     </tr>
   </tbody>
 </table>
     
-      <h3 id="onpaymenttos">
+      <h3 id="ontermsofservicerequested">
         
         
-          <code class="language-html highlighter-rouge">onPaymentToS</code> <a href="#onpaymenttos" class="header-anchor"></a>
+          <code class="language-html highlighter-rouge">onTermsOfServiceRequested</code> <a href="#ontermsofservicerequested" class="header-anchor"></a>
         
         
       </h3>
 
 <p>This event triggers when the user clicks on the “Display terms and conditions”
-link. The <code class="language-html highlighter-rouge">onPaymentToS</code> event is raised with the following event
+link. The <code class="language-html highlighter-rouge">onTermsOfServiceRequested</code> event is raised with the following event
 argument object:</p>
 
-<p class="code-view-header"><strong>onPaymentToS event object</strong></p>
+<p class="code-view-header"><strong>onTermsOfServiceRequested event object</strong></p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -4059,7 +4060,7 @@ argument object:</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">openUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI containing Terms of Service and conditions.</td>
+      <td style="text-align: left">The URL containing Terms of Service and conditions.</td>
     </tr>
   </tbody>
 </table>
@@ -4122,6 +4123,104 @@ object:</p>
       <td style="text-align: left"> </td>
       <td style="text-align: left"> </td>
       <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h3 id="onbillingdetailsavailable">
+        
+        
+          <code class="language-html highlighter-rouge">onBillingDetailsAvailable</code> <a href="#onbillingdetailsavailable" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>This event triggers when a consumer has been identified. The
+<code class="language-html highlighter-rouge">onBillingDetailsAvailable</code> event will be raised with the following event
+argument object:</p>
+
+<p class="code-view-header"><strong>onBillingDetailsAvailable event object</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code-view-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnBillingDetailsAvailable"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/consumers//billing-details"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">actionType</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The type of event that was raised.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">url</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL containing billing details.</td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h3 id="onshippingdetailsavailable">
+        
+        
+          <code class="language-html highlighter-rouge">onShippingDetailsAvailable</code> <a href="#onshippingdetailsavailable" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>This event triggers when a consumer has been identified or their shipping
+address has been updated. The <code class="language-html highlighter-rouge">onShippingDetailsAvailable</code> event will be raised
+with the following event argument object:</p>
+
+<p class="code-view-header"><strong>onShippingDetailsAvailable event object</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code-view-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OnShippingDetailsAvailable"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/consumers//shipping-details"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">actionType</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The type of event that was raised.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">url</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL containing shipping details.</td>
     </tr>
   </tbody>
 </table>

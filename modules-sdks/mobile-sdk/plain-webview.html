@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -4456,7 +4457,9 @@ and is not part of the Mobile SDK documentation proper.</p>
 
 <p>Each of these maps into an <code class="language-html highlighter-rouge">Intent</code>. For custom-scheme and patterned http(s) links, that <code class="language-html highlighter-rouge">Intent</code> has the original url as its <code class="language-html highlighter-rouge">uri</code>, an <code class="language-html highlighter-rouge">action</code> of <code class="language-html highlighter-rouge">android.intent.action.VIEW</code>, and the categories <code class="language-html highlighter-rouge">android.intent.category.BROWSABLE</code> and <code class="language-html highlighter-rouge">android.intent.category.DEFAULT</code>. An <code class="language-html highlighter-rouge">Intent</code> created from an intent-scheme url can have any <code class="language-html highlighter-rouge">action</code> and categories, although they too should have an implicit <code class="language-html highlighter-rouge">android.intent.category.BROWSABLE</code> category. Their <code class="language-html highlighter-rouge">uri</code> is parsed from the intent-scheme url, but we need not trouble ourselves with the specifics here.</p>
 
-<p>On Android we can, and indeed should, query the system whether it can launch Activities from arbitrary Intents. We should note, however, that an Android system is likely to have an app that accepts all http(s) url, namely the browser. Hence, we should exercise a bit of discretion when choosing to launch activities in place of web view navigations.</p>
+<p>When the <code class="language-html highlighter-rouge">WebView</code> navigates to a new page, your app should check if the page url should launch an app instead. The custom-scheme and intent-scheme cases are simple: try to start an Activity with the Intent parsed from the url as described above. If that fails (by throwing an <code class="language-html highlighter-rouge">ActivityNotFoundException</code>), then a suitable app was not installed. If the navigation was to an intent-scheme url, that url may contain a fallback url that can be substituted. Otherwise, there is little your app can do beyond notifying the user about the missing app.</p>
+
+<p>When the <code class="language-html highlighter-rouge">WebView</code> navigates to an http(s) url, your app should not simply start an Activity with the url, as that would usually mean opening the url in the browser. Instead, the Activity should only be started if it is not a browser. Since Android 11 there is an <code class="language-html highlighter-rouge">Intent</code> <a href="https://developer.android.com/reference/android/content/Intent#FLAG_ACTIVITY_REQUIRE_NON_BROWSER">flag</a> that does exactly that. On earlier versions, your app must first query the system about which app would be launched. Because of <a href="https://developer.android.com/training/package-visibility">privacy enhancements</a> in Android 11, it is not possible to use this method on Android 11; you must use the non-browser flag instead.</p>
 
 <p class="code-view-header"><strong>Android</strong></p>
 
@@ -4531,52 +4534,6 @@ and is not part of the Mobile SDK documentation proper.</p>
 68
 69
 70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
 </pre></td>
 <td class="code-view-code"><pre>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOverrideUrlLoading</span><span class="p">(</span>
         <span class="n">view</span><span class="p">:</span> <span class="nc">WebView</span><span class="p">?,</span>
@@ -4601,98 +4558,52 @@ and is not part of the Mobile SDK documentation proper.</p>
     <span class="p">}</span>
 
     <span class="k">private</span> <span class="k">fun</span> <span class="nf">openInExternalApp</span><span class="p">(</span><span class="n">uri</span><span class="p">:</span> <span class="nc">Uri</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
-        <span class="k">when</span> <span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="n">scheme</span><span class="p">)</span> <span class="p">{</span>
-            <span class="s">"intent"</span> <span class="p">-&gt;</span> <span class="p">{</span>
-                <span class="nf">openIntentUri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-                <span class="c1">// intent uris are always intercepted,</span>
-                <span class="c1">// as WebView cannot handle them anyway</span>
-                <span class="k">return</span> <span class="k">true</span>
-            <span class="p">}</span>
-            <span class="k">else</span> <span class="p">-&gt;</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="nf">openRegularUri</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">openIntentUri</span><span class="p">(</span><span class="n">uri</span><span class="p">:</span> <span class="nc">Uri</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="k">try</span> <span class="p">{</span>
-            <span class="nc">Intent</span><span class="p">.</span><span class="nf">parseUri</span><span class="p">(</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// Create an Intent from the Uri.</span>
+            <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">.</span><span class="nf">parseUri</span><span class="p">(</span>
                 <span class="n">uri</span><span class="p">.</span><span class="nf">toString</span><span class="p">(),</span>
                 <span class="nc">Intent</span><span class="p">.</span><span class="nc">URI_INTENT_SCHEME</span>
             <span class="p">)</span>
+
+            <span class="c1">// Web pages should only be allowed to start activities</span>
+            <span class="c1">// with CATEGORY_BROWSABLE.</span>
+            <span class="n">intent</span><span class="p">.</span><span class="nf">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">CATEGORY_BROWSABLE</span><span class="p">)</span>
+
+            <span class="c1">// Only start an Activiy if it is not a browser</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION</span><span class="p">.</span><span class="nc">SDK_INT</span> <span class="p">&gt;=</span> <span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION_CODES</span><span class="p">.</span><span class="nc">R</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">intent</span><span class="p">.</span><span class="nf">addFlags</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">FLAG_ACTIVITY_REQUIRE_NON_BROWSER</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nf">legacyRequireNonBrowser</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="nf">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+            <span class="k">return</span> <span class="k">true</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">URISyntaxException</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span>
-        <span class="p">}</span>
-        <span class="c1">// Web pages should only be allowed to start activities</span>
-        <span class="c1">// with CATEGORY_BROWSABLE.</span>
-        <span class="n">intent</span><span class="p">.</span><span class="nf">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">CATEGORY_BROWSABLE</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nf">canStartActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">try</span> <span class="p">{</span>
-                <span class="nf">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// Could not start activity.</span>
-                <span class="c1">// There is little we can do here.</span>
-            <span class="p">}</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nf">openIntentUriFallbackUrl</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+            <span class="k">return</span> <span class="k">false</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">ActivityNotFoundException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">openIntentUriFallbackUrl</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">val</span> <span class="py">fallbackUrl</span> <span class="p">=</span> <span class="n">intent</span><span class="p">.</span><span class="nf">getStringExtra</span><span class="p">(</span><span class="s">"browser_fallback_url"</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">fallbackUrl</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">val</span> <span class="py">fallbackIntent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span>
-                <span class="nc">Intent</span><span class="p">.</span><span class="nc">ACTION_VIEW</span><span class="p">,</span>
-                <span class="nc">Uri</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">fallbackUrl</span><span class="p">)</span>
-            <span class="p">).</span><span class="nf">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">CATEGORY_BROWSABLE</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nf">canStartActivity</span><span class="p">(</span><span class="n">fallbackIntent</span><span class="p">))</span> <span class="p">{</span>
-                <span class="k">try</span> <span class="p">{</span>
-                    <span class="nf">startActivity</span><span class="p">(</span><span class="n">fallbackIntent</span><span class="p">)</span>
-                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">legacyRequireNonBrowser</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// For Android &lt; 11, need to simulate FLAG_ACTIVITY_REQUIRE_NON_BROWSER.</span>
+        <span class="c1">// This is just one way of doing it.</span>
+        <span class="kd">val</span> <span class="py">scheme</span> <span class="p">=</span> <span class="n">intent</span><span class="p">.</span><span class="n">scheme</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">scheme</span> <span class="p">==</span> <span class="s">"http"</span> <span class="p">||</span> <span class="n">scheme</span> <span class="p">==</span> <span class="s">"https"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Resolve the Intent. If null, then we don't have the app installed.</span>
+            <span class="kd">val</span> <span class="py">resolveInfo</span> <span class="p">=</span> <span class="n">packageManager</span><span class="p">.</span><span class="nf">resolveActivity</span><span class="p">(</span>
+                <span class="n">intent</span><span class="p">,</span>
+                <span class="nc">PackageManager</span><span class="p">.</span><span class="nc">MATCH_DEFAULT_ONLY</span>
+            <span class="p">)</span> <span class="o">?:</span> <span class="k">throw</span> <span class="nc">ActivityNotFoundException</span><span class="p">()</span>
+
+            <span class="c1">// Using "host" match category as a heuristic here.</span>
+            <span class="c1">// An app that handles http(s) uris for any host is more than likely a browser.</span>
+            <span class="c1">// Could use e.g. a list of package ids instead.</span>
+            <span class="kd">val</span> <span class="py">matchCategory</span> <span class="p">=</span> <span class="n">resolveInfo</span><span class="p">.</span><span class="n">match</span> <span class="n">and</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_MASK</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">matchCategory</span> <span class="p">&lt;</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_HOST</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="nc">ActivityNotFoundException</span><span class="p">()</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">openRegularUri</span><span class="p">(</span><span class="n">uri</span><span class="p">:</span> <span class="nc">Uri</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
-        <span class="kd">val</span> <span class="py">intent</span> <span class="p">=</span> <span class="nc">Intent</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">ACTION_VIEW</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span>
-            <span class="p">.</span><span class="nf">addCategory</span><span class="p">(</span><span class="nc">Intent</span><span class="p">.</span><span class="nc">CATEGORY_BROWSABLE</span><span class="p">)</span>
-        <span class="kd">val</span> <span class="py">resolveInfo</span> <span class="p">=</span> <span class="nf">resolveActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
-        <span class="kd">val</span> <span class="py">shouldStartActivity</span> <span class="p">=</span> <span class="n">resolveInfo</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="k">when</span> <span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="n">scheme</span><span class="p">)</span> <span class="p">{</span>
-            <span class="s">"http"</span><span class="p">,</span> <span class="s">"https"</span> <span class="p">-&gt;</span> <span class="nf">shouldStartActivityForHttpUri</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">resolveInfo</span><span class="p">)</span>
-            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">true</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">shouldStartActivity</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">try</span> <span class="p">{</span>
-                <span class="nf">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
-                <span class="k">return</span> <span class="k">true</span>
-            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">false</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">resolveActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">):</span> <span class="nc">ResolveInfo</span><span class="p">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">packageManager</span><span class="p">.</span><span class="nf">resolveActivity</span><span class="p">(</span>
-            <span class="n">intent</span><span class="p">,</span>
-            <span class="nc">PackageManager</span><span class="p">.</span><span class="nc">MATCH_DEFAULT_ONLY</span>
-        <span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">canStartActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">:</span> <span class="nc">Intent</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nf">resolveActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span> <span class="p">!=</span> <span class="k">null</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">shouldStartActivityForHttpUri</span><span class="p">(</span>
-        <span class="n">resolveInfo</span><span class="p">:</span> <span class="nc">ResolveInfo</span>
-    <span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
-        <span class="c1">// Only open http(s) links in external apps</span>
-        <span class="c1">// if the intent filter is a "good" match.</span>
-        <span class="c1">// Requiring a matching host in the intent filter</span>
-        <span class="c1">// is the most reasonable generic choice, but</span>
-        <span class="c1">// you can exercise more fine-grained control here</span>
-        <span class="c1">// if you wish.</span>
-        <span class="kd">val</span> <span class="py">matchCategory</span> <span class="p">=</span> <span class="n">resolveInfo</span><span class="p">.</span><span class="n">match</span> <span class="n">and</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_MASK</span>
-        <span class="k">return</span> <span class="n">matchCategory</span> <span class="p">&gt;=</span> <span class="nc">IntentFilter</span><span class="p">.</span><span class="nc">MATCH_CATEGORY_HOST</span>
     <span class="p">}</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>

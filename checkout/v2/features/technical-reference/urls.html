@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3793,8 +3794,8 @@
       </h2>
 
 <p>When creating a Payment Order, the <code class="language-html highlighter-rouge">urls</code> field of the <code class="language-html highlighter-rouge">paymentOrder</code>
-contains the related URIs, including where the payer is redirected when
-going forward with or cancelling a payment session, as well as the callback URI
+contains the related URLs, including where the payer is redirected when
+going forward with or cancelling a payment session, as well as the callback URL
 that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.</p>
 
@@ -3813,7 +3814,7 @@ underlying payments or transaction.</p>
 <i class="material-icons">check</i> ︎︎︎︎︎</td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">hostUrls</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
-      <td style="text-align: left">The array of URIs valid for embedding of Swedbank Pay Hosted Views.</td>
+      <td style="text-align: left">The array of URLs valid for embedding of Swedbank Pay Hosted Views.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -3825,25 +3826,25 @@ underlying payments or transaction.</p>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">termsOfServiceUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to the terms of service document which the payer must accept in    order to complete the payment. <strong>HTTPS is a requirement</strong>.</td>
+      <td style="text-align: left">The URL to the terms of service document which the payer must accept in    order to complete the payment. <strong>HTTPS is a requirement</strong>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">cancelUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an <code class="language-html highlighter-rouge">abort</code> request of the <code class="language-html highlighter-rouge">payment</code> or <code class="language-html highlighter-rouge">paymentorder</code>.</td>
+      <td style="text-align: left">The URL to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an <code class="language-html highlighter-rouge">abort</code> request of the <code class="language-html highlighter-rouge">payment</code> or <code class="language-html highlighter-rouge">paymentorder</code>.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See <a href="/checkout/v2/features/technical-reference/payment-url"><code class="language-html highlighter-rouge">paymentUrl</code></a> for details.</td>
+      <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See <a href="/checkout/v2/features/technical-reference/payment-url"><code class="language-html highlighter-rouge">paymentUrl</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">callbackUrl</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to the API endpoint receiving <code class="language-html highlighter-rouge">POST</code> requests on transaction activity related to the payment order.</td>
+      <td style="text-align: left">The URL to the API endpoint receiving <code class="language-html highlighter-rouge">POST</code> requests on transaction activity related to the payment order.</td>
     </tr>
     <tr>
       <td style="text-align: center"> </td>
@@ -3998,7 +3999,7 @@ contents.</p>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to.    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-html highlighter-rouge">urls</code></td>
@@ -4009,13 +4010,13 @@ contents.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URI and unique identifier of the    <code class="language-html highlighter-rouge">urls</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to.    Please read about <a href="/introduction#uri-usage">URI Usage</a> to    understand how this and other URIs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">urls</code> resource this <code class="language-html highlighter-rouge">urls</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">hostsUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">An array of the whitelisted URIs that are allowed as parents to a Hosted View, typically the URI of the web shop or similar that will embed a Hosted View within it.</td>
+      <td style="text-align: left">An array of the whitelisted URLs that are allowed as parents to a Hosted View, typically the URL of the web shop or similar that will embed a Hosted View within it.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">completeUrl</code>
@@ -4027,19 +4028,19 @@ contents.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">cancelUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an <code class="language-html highlighter-rouge">abort</code> request of the <code class="language-html highlighter-rouge">payment</code> or <code class="language-html highlighter-rouge">paymentorder</code>.</td>
+      <td style="text-align: left">The URL to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an <code class="language-html highlighter-rouge">abort</code> request of the <code class="language-html highlighter-rouge">payment</code> or <code class="language-html highlighter-rouge">paymentorder</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See <a href="/checkout/v2/features/technical-reference/payment-url"><code class="language-html highlighter-rouge">paymentUrl</code></a> for details.</td>
+      <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See <a href="/checkout/v2/features/technical-reference/payment-url"><code class="language-html highlighter-rouge">paymentUrl</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">callbackUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="/checkout/v2/features/technical-reference/callback">callback</a> for details.</td>
+      <td style="text-align: left">The URL that Swedbank Pay will perform an HTTP <code class="language-html highlighter-rouge">POST</code> against every time a transaction is created on the payment. See <a href="/checkout/v2/features/technical-reference/callback">callback</a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">logoUrl</code>
@@ -4051,7 +4052,7 @@ contents.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">termsOfServiceUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URI to the terms of service document which the payer must accept in    order to complete the payment. <strong>HTTPS is a requirement</strong>.</td>
+      <td style="text-align: left">The URL to the terms of service document which the payer must accept in    order to complete the payment. <strong>HTTPS is a requirement</strong>.</td>
     </tr>
   </tbody>
 </table>

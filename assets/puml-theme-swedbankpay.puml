@@ -1,0 +1,433 @@
+''
+'' swedbankpay theme based on https://design.swedbankpay.com
+''
+'' Author = "Asbjørn Ulsberg"
+'' Copyright (c) 2021 Swedbank Pay
+
+!$theme = "swedbankpay"
+
+!$black = "#222222"
+!$text_gray = "#767676"
+!$list_gray = "#999999"
+!$light_gray = "#f9f8f6"
+!$white = "#ffffff"
+!$solid_brown = "#2f2424"
+!$dark_brown = "#493c3b"
+!$medium_brown = "#72605e"
+!$soft_brown = "#a38b80"
+!$light_brown = "#d4c4bc"
+!$orange = "#f35b1c"
+!$light_orange = "#f5b895"
+!$peach = "#fbf2ea"
+!$cyan = "#257886"
+!$light_cyan = "#ebf8f2"
+
+!$brand_primary = "#fdc129"
+!$brand_primary_light = "#ffcc00"
+!$brand_primary_light_2 = "#ffdf88"
+!$brand_primary_light_3 = "#fff3d5"
+!$brand_secondary_dark_1 = $dark_brown
+!$brand_secondary_dark_2 = $solid_brown
+!$brand_secondary = "#512b2b"
+!$brand_secondary_light_1 = $medium_brown
+!$brand_secondary_light_2 = $soft_brown
+!$brand_secondary_light_3 = $light_brown
+!$brand_secondary_light_4 = "#d4b8a3"
+!$brand_secondary_info_1 = "#8acdc3"
+!$brand_secondary_info_2 = "#efb7b6"
+!$brand_tertiary = "#ee7023"
+!$brand_accent = "#31a3ae"
+!$brand_accent_links = $cyan
+!$brand_accent_disabled = "#98d0d6"
+
+' Background Colors
+!$brand_bg_1 = $peach
+!$brand_bg_2 = $light_cyan
+!$brand_bg_3 = "#fbedf4"
+!$brand_bg_4 = "#e9f7fb"
+!$brand_bg_gray = "#ebe7e2"
+!$brand_bg_white = "#ffffff"
+
+' State colors
+!$brand_success = "#437e15"
+!$brand_success_light = "#f2f7eb"
+!$brand_success_light_2 = "#99cc66"
+!$brand_warning = "#f9ce22"
+!$brand_warning_light = "#fff3d5"
+!$brand_warning_2 = $brand_tertiary
+!$brand_error_border = "#f1bbb9"
+!$brand_error = "#c5131c"
+!$brand_error_light = "#f9ded3"
+!$brand_info = "#3e6ab6"
+!$brand_info_light = "#e8eff9"
+
+!$primary_text = $solid_brown
+!$secondary_text = $black
+!$info_text = $black
+!$success_text = $white
+!$warning_text = $white
+!$danger_text = $white
+
+!procedure $code($msg)
+  <font:Consolas>$msg</font>
+!endprocedure
+
+!procedure $participant($sprite, $title)
+    participant "<$$sprite,color=$light_orange>\n\n$title"
+!endprocedure
+
+!procedure $primary_scheme()
+	FontColor $primary_text
+	BorderColor $light_orange
+	BackgroundColor $peach
+!endprocedure
+
+sprite $payer [75x79/4z] {
+xT85bWCn30JHxjBzpxmCyeGC2gV2CF-PT9uC4NpT0Y82088WVmpu_Zc8tp-3cbXAAJyW5NT2lQWNzQ9U5FT0EGVO1d17BRM5-NsrJjPUV126GSfiO4zJj1Ha
+TOW2-m2bCSeWaygNqrL2YoXm4MNGbj8S1LgcudTwErHCKSOg6XMeW299BUKbIakKazHUeq7AIbHkGraIM2Vgf0mw5UwYGCDKxAN07HIxdurRog0PoZBA0MY2
+4eWTokh8UCVQfQIfONcNKb-xez-XB4qEIxYCaYOfGnMbGied_Wkg6fO7B4uDgtArAADycyE2ilFW6pscLdTmYvJW5YdZAafGHXbNKO92obMKu1OfuofAK40L
+z0u
+}
+
+sprite $merchant [75x62/4z] {
+xPG7TiCm3CM8h_kVEJkXPPggdjZT8c-PYE4j-nZG6eHI64u1aaAfS3MxRLk6SieHoVNLKrAx_feYxKegf9XoSEP4cY8J2YBEgQLQc2-auXuj4yobbCwdK_4A
+MKYrOq5oYFaB98pZ3jycnLIAGqCzrRB_Es8k9GvJuaLkK9QgyqpXzVugPbLoLjWBJQjq74HG117dcEJZNj6fuzFjPZmCKgOKLJXVjcKwPMFbI8Xj6dnZh48A
+M-KdfHXz5ueCKqWHxYdsBAIqbD8efPw_aVfF_QTQCSKLUu0LKcQ0EQmlCcQIXYcGD7LM7J657fHJ21uH6p6HyeAki9wIUzrPJ-6b1-KKUa8r9USRfEujU3k5
+Y9DD2abrdcdgN3jd
+}
+
+sprite $server [75x98/4z] {
+xPS5hkH050FjyltFl3JGcWo_UALF9GXNcgsMH0D9CXqiWHg0X5K16xLKud2IELoe4kOa5ohs4A-sSjZ7AXMqLNAkZYDLJcqcwNJjdcfQmVZgE53rUj2zSQLz
+gelHxlm3ai3X40wd0AUhq_MwI18lrJ_PdF-oo5WDZ0HsmuGaEXoC3LJb8qOg7pHIrOzKCeMF6gdghgAF8pNZIFMfekluGIBrIlaIkOfKiccY37BmeqMgsf6g
+F0Bo4FLpiAcY6AbOtWlTI2s5gkhuPvVwgaeLl5JE56zKP7VlgR45uA1IGPLhrLQOiSgR8r86gglyMyUHwbgPcOeGheu3LQq7QOmheztnx8k9Op85QwaAT5NT
+LHJi3nQfBm6em1TI_QX-L3yg3lHCqAgTmGNJfBsuYH_j4uggUWLVTvLCgsPgkQmEhtb-0m
+}
+
+sprite $3rdparty [75x67/4z] {
+xPO7biCW34JvtF_EszS3cIU7bqbFj7LawGSBKTg20RHpMF-pcCOlHgo8n8PCISEBajLf4j6WcC0aA1jZ-7xdHt7MKPslLYJDW86ZRj3_wLgsnWzO0686hCrQ
+RfndkyhBv3rnVwYJQzuNBIV9LcOBPlj9T1yh-uhZAG8pb9mdT6Cld1nV8-xqj2xdwlL0pedkJg-9LU77LpZhSGsxd3cdD3fwMABeZ17IuakBwU_trmnJ5dyl
+Ve3gXif7TVvQvJDu_hxAk_tyQ_3yEyFvzwlz3TETyc6V6vXDU61MZ79sBDgIwn8YhUPUaZuRXjeZ4w7Q6nMKFM-66YMDzQH9p_ORiFJmV5-oDJxyA8q9HHUI
+PjdqhW9Cvm9-JEYlIJQV7WgfF_AxLBI4KXKiSfCSuZR9XDBdADZaZ690SNHKCueQjL0h5cjrnXayNr-ThzkbxLHSbih-1
+}
+
+''
+'' Global Default Values
+''
+skinparam backgroundColor           "transparent"
+skinparam useBetaStyle              false
+skinparam creoleMonospacedFont      "Consolas"
+skinparam defaultMonospacedFontName "Consolas"
+skinparam defaultFontName           "Arial"
+skinparam defaultFontSize           16
+skinparam dpi                       100
+skinparam shadowing                 false
+skinparam roundcorner               20
+skinparam ParticipantPadding        40
+skinparam BoxPadding                40
+skinparam Padding                   8
+skinparam ArrowColor                $orange
+skinparam stereotype {
+    CBackgroundColor                $brand_secondary_light_1
+    CBorderColor                    $orange
+    ABackgroundColor                $brand_success_light
+    ABorderColor                    $brand_success
+    IBackgroundColor                $brand_error_light
+    IBorderColor                    $brand_error
+    EBackgroundColor                $brand_warning_light
+    EBorderColor                    $brand_warning
+    NBackgroundColor                $brand_info_light
+    NBorderColor                    $brand_info
+}
+skinparam title {
+	FontColor	                    $primary_text
+	BorderColor	                    $orange
+	FontSize	    	            20
+	BorderRoundCorner               8
+	BorderThickness 	            1
+	BackgroundColor                 $peach
+}
+
+skinparam legend {
+	BackgroundColor $brand_secondary
+	BorderColor $brand_secondary_dark_1
+	FontColor $primary_text
+}
+
+!startsub swimlane
+skinparam swimlane {
+	BorderColor $brand_info
+	BorderThickness 2
+	TitleBackgroundColor $brand_secondary
+	TitleFontColor $primary_text
+}
+!endsub
+
+!startsub activity
+
+skinparam activity {
+	$primary_scheme()
+	BarColor $brand_success
+	StartColor $brand_info
+	EndColor $brand_info
+	''
+	DiamondBackgroundColor $brand_secondary_light_1
+  	DiamondBorderColor $brand_secondary_dark_1
+  	DiamondFontColor $primary_text
+}
+!endsub
+
+!startsub participant
+    skinparam participant {
+        $primary_scheme()
+        BorderThickness 0
+        BackgroundColor $white
+
+        ParticipantBorderThickness 2
+    }
+!endsub
+
+!startsub actor
+    skinparam actor {
+        $primary_scheme()
+        BackgroundColor $peach
+        BorderColor $orange
+    }
+!endsub
+
+!startsub arrow
+    skinparam arrow {
+        Thickness 1
+        Color $orange
+        FontColor $primary_text
+    }
+!endsub
+
+!startsub sequence
+    skinparam sequence {
+        BorderColor $orange
+        ' For some reason sequence title font color does not pick up from global
+        TitleFontColor $primary_text
+        BackgroundColor $peach
+        StartColor $orange
+        EndColor $orange
+        ''
+        BoxBackgroundColor $brand_bg_1
+        BoxBorderColor $brand_secondary_dark_1
+        BoxFontColor $primary_text
+        ''
+        DelayFontColor $primary_text
+        ''
+        LifeLineBorderColor $orange
+        LifeLineBorderThickness 1
+        LifeLineBorderRoundCorner 20
+        LifeLineBackgroundColor $white
+        ''
+        GroupBorderThickness 1
+        GroupBorderColor $orange
+        GroupFontColor $primary_text
+        GroupHeaderFontColor $primary_text
+        GroupHeaderFontWeight 1
+        GroupBackgroundColor $white
+        GroupBodyBackgroundColor $peach
+        GroupHeaderBackgroundColor $brand_primary_light_2
+        ''
+        DividerBackgroundColor $brand_secondary_dark_1
+        DividerBorderColor $brand_secondary_dark_1
+        DividerBorderThickness 2
+        DividerFontColor $primary_text
+        ''
+        ReferenceBackgroundColor $brand_primary_light_2
+        ReferenceBorderColor $brand_secondary_dark_1
+        ReferenceFontColor $primary_text
+        ReferenceHeaderFontColor $primary_text
+        ReferenceHeaderBackgroundColor $brand_secondary
+        ''
+        StereotypeFontColor $primary_text
+    }
+!endsub
+
+!startsub partition
+
+skinparam partition {
+	BorderColor $brand_primary
+	FontColor $primary_text
+	BackgroundColor $brand_primary_light_2
+}
+!endsub
+
+!startsub collections
+    skinparam collections {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub control
+    skinparam control {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub entity
+
+skinparam entity {
+	$primary_scheme()
+}
+!endsub
+
+!startsub boundary
+    skinparam boundary {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub agent
+    skinparam agent {
+        BackgroundColor $brand_warning
+        BorderColor $brand_warning_light
+        FontColor $primary_text
+    }
+!endsub
+
+!startsub note
+    skinparam note {
+        BorderThickness 1
+        BackgroundColor $brand_bg_2
+        BorderColor $cyan
+    }
+!endsub
+
+!startsub artifact
+
+skinparam artifact {
+	BackgroundColor $brand_secondary_dark_1
+	BorderColor $brand_secondary_dark_2
+	FontColor $primary_text
+}
+!endsub
+
+!startsub component
+    skinparam component {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub interface
+    skinparam interface {
+        BackgroundColor  $brand_error
+        BorderColor  $brand_error
+        FontColor $primary_text
+    }
+!endsub
+
+!startsub storage
+    skinparam storage {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub node
+    skinparam node {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub cloud
+    skinparam cloud {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub database
+    skinparam database {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub class
+    skinparam class {
+        $primary_scheme()
+        HeaderBackgroundColor $brand_primary_light
+        StereotypeFontColor $primary_text
+        BorderThickness 1
+        AttributeFontColor $primary_text
+        AttributeFontSize 11
+    }
+!endsub
+
+!startsub object
+    skinparam object {
+        $primary_scheme()
+        StereotypeFontColor $primary_text
+        BorderThickness 1
+        AttributeFontColor $primary_text
+        AttributeFontSize 11
+    }
+!endsub
+
+!startsub usecase
+    skinparam usecase {
+        $primary_scheme()
+        BorderThickness 2
+        StereotypeFontColor $primary_text
+    }
+!endsub
+
+!startsub rectangle
+    skinparam rectangle {
+        $primary_scheme()
+        StereotypeFontColor $primary_text
+    }
+!endsub
+
+!startsub package
+    skinparam package {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub folder
+    skinparam folder {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub frame
+    skinparam frame {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub state
+    skinparam state {
+        $primary_scheme()
+        StartColor $orange
+        EndColor $brand_secondary
+        AttributeFontColor $primary_text
+        AttributeFontSize 11
+    }
+!endsub
+
+!startsub queue
+    skinparam queue {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub card
+    skinparam card {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub file
+    skinparam file {
+        $primary_scheme()
+    }
+!endsub
+
+!startsub stack
+
+skinparam stack {
+	$primary_scheme()
+}
+!endsub

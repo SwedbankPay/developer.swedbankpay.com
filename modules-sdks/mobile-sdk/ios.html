@@ -91,7 +91,7 @@
 <li class="nav-leaf"><a href="/introduction#connection-and-protocol">Connection and Protocol</a></li>
 <li class="nav-leaf"><a href="/introduction#postels-robustness-principle">Postel’s Robustness Principle</a></li>
 <li class="nav-leaf"><a href="/introduction#headers">Headers</a></li>
-<li class="nav-leaf"><a href="/introduction#uri-usage">URI Usage</a></li>
+<li class="nav-leaf"><a href="/introduction#url-usage">URL Usage</a></li>
 <li class="nav-leaf"><a href="/introduction#uniform-responses">Uniform Responses</a></li>
 <li class="nav-leaf"><a href="/introduction#expansion">Expansion</a></li>
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
@@ -156,7 +156,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/capture#capture-flow">Capture Flow</a></li>
         
@@ -226,7 +226,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/checkout/v2/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -591,7 +591,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/capture#capture-flow">Capture Flow</a></li>
         
@@ -661,7 +661,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-3-capture-the-funds">Step 3: Capture the funds</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#invoice">Invoice</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/capture#capture-flow">Capture Flow</a></li>
         
@@ -1564,7 +1564,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-financingconsumer-capture">Step 1: Create FinancingConsumer Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
@@ -3569,7 +3569,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#30-apr-2021">30 Apr 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#28-jan-2021">28 Jan 2021</a></li>
@@ -3815,11 +3816,44 @@ However, if you need support, please wait for a future, stable release.</p>
         
       </h2>
 
-<p>The iOS component of the Swedbank Pay Mobile SDK is distributed through <a href="https://cocoapods.org/">CocoaPods</a>. If you do not have CocoaPods installed on your development machine, please install it first according to the <a href="https://guides.cocoapods.org/using/getting-started.html">instructions</a> at the CocoaPods web page.</p>
+<p>The iOS component of the Swedbank Pay Mobile SDK is split into two libraries: <code class="language-html highlighter-rouge">SwedbankPaySDK</code> contains the core SDK, while <code class="language-html highlighter-rouge">SwedbankPaySDKMerchantBackend</code> contains utilities for interfacing with the Merchant Backend API. If you are using a custom backend, you to not need to install the <code class="language-html highlighter-rouge">SwedbankPaySDKMerchantBackend</code> library.</p>
+    
+      <h3 id="swift-package-manager">
+        
+        
+          Swift Package Manager <a href="#swift-package-manager" class="header-anchor"></a>
+        
+        
+      </h3>
 
-<p><a href="https://guides.cocoapods.org/using/using-cocoapods.html">Add CocoaPods</a> to your project, if needed. Then, add the <a href="https://cocoapods.org/pods/SwedbankPaySDK">SDK pod</a>.</p>
+<p>The SDK is available through the Swift Package Manager. This is the simplest way of adding the SDK to an Xcode project. Follow the <a href="https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app">Xcode documentation</a> to add a SwiftPM dependency.</p>
 
-<p>Do not forget to run <code class="language-html highlighter-rouge">pod install</code> after editing the <code class="language-html highlighter-rouge">Podfile</code>.</p>
+<p>The package repository URL for the SDK is <a href="https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git"><code class="language-html highlighter-rouge">https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git</code></a>. Add the <code class="language-html highlighter-rouge">SwedbankPaySDK</code> library, and the <code class="language-html highlighter-rouge">SwedbankPaySDKMerchantBackend</code> if needed.</p>
+    
+      <h3 id="cocoapods">
+        
+        
+          CocoaPods <a href="#cocoapods" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The SDK is also available through <a href="https://cocoapods.org/">CocoaPods</a>. There are two pods: <a href="https://cocoapods.org/pods/SwedbankPaySDK">SwedbankPaySDK</a> for the core SDK, and <code class="language-html highlighter-rouge">SwedbankPaySDKMerchantBackend</code> for the Merchant Backend utilities.</p>
+
+<p>Add the relevant dependencies in your <code class="language-html highlighter-rouge">Podfile</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre><span class="n">pod</span> <span class="s1">'SwedbankPaySDK'</span><span class="p">,</span> <span class="s1">'~&gt; 2.1'</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre><span class="n">pod</span> <span class="s1">'SwedbankPaySDKMerchantBackend'</span><span class="p">,</span> <span class="s1">'~&gt; 2.1'</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
     
       <h3 id="url-scheme-and-associated-domain">
         
@@ -3941,6 +3975,15 @@ However, if you need support, please wait for a future, stable release.</p>
 <td class="code-view-numbers gl"><pre class="lineno">1
 </pre></td>
 <td class="code-view-code"><pre><span class="kd">import</span> <span class="kt">SwedbankPaySDK</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>The Merchant Backend utilities are contained in the module <code class="language-html highlighter-rouge">SwedbankPaySDKMerchantBackend</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+</pre></td>
+<td class="code-view-code"><pre><span class="kd">import</span> <span class="kt">SwedbankPaySDKMerchantBackend</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
 
