@@ -18,10 +18,10 @@ transaction, naturally excluding one-phase payment instruments like
 Please note that Invoice captures differ from the others. These are explained
 in it's [own section][invoice-section].
 
-In addition to full captures, it is possible to do partial `capture`s where you
-only capture a part of the authorized amount. You can do other captures on the
-same payment later, up to the total authorized amount. Useful for when you have
-to split orders into several shipments, for instance.
+In addition to full captures, it is possible to do partial captures of a part of
+the authorized amount. You can do other captures on the same payment later, up
+to the total authorized amount. Useful for when you have to split orders into
+several shipments, for instance.
 
 First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
@@ -98,7 +98,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture request_table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
 | :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                               |
@@ -139,7 +140,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
 
-If the capture succeeds, it should respond with something like the following:
+{% endcapture %}
+{% include accordion-table.html content = request_table %}
+
+If the capture succeeds, this should be the response:
 
 {:.code-view-header}
 **Response**
@@ -166,14 +170,15 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture response_table%}
+{:.table .table-striped .mb-5}
 | Property                    | Type         | Description                                                                                                                                                                                                       |
 | :-------------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                   | `string`     | The relative URI of the payment this capture transaction belongs to.                                                                                                                                              |
+| `payment`                   | `string`     | The relative URL of the payment this capture transaction belongs to.                                                                                                                                              |
 | `capture`                   | `object`     | The capture object, containing the information about the capture transaction.                                                                                                                                     |
-| └➔&nbsp;`id`                | `string`     | The relative URI of the created capture transaction.                                                                                                                                                              |
+| └➔&nbsp;`id`                | `string`     | The relative URL of the created capture transaction.                                                                                                                                                              |
 | └➔&nbsp;`transaction`       | `object`     | The transaction object, containing information about the current transaction.                                                                                                                                     |
-| └─➔&nbsp;`id`               | `string`     | The relative URI of the current `transaction` resource.                                                                                                                                                           |
+| └─➔&nbsp;`id`               | `string`     | The relative URL of the current `transaction` resource.                                                                                                                                                           |
 | └─➔&nbsp;`created`          | `string`     | The ISO-8601 date and time of when the transaction was created.                                                                                                                                                   |
 | └─➔&nbsp;`updated`          | `string`     | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                                   |
 | └─➔&nbsp;`type`             | `string`     | Indicates the transaction type.                                                                                                                                                                                   |
@@ -184,6 +189,8 @@ Content-Type: application/json
 | └─➔&nbsp;`description`      | `string`     | {% include field-description-description.md %}                                                                                                                                   |
 | └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                              |
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
+{% endcapture %}
+{% include accordion-table.html content=response_table %}
 
 ## Invoice
 

@@ -27,7 +27,7 @@ for Credit Card Payments" %}
 
 ### Response
 
-The response back should look something like this (abbreviated for brevity):
+The response should look something like this (abbreviated for brevity):
 
 {:.code-view-header}
 **Response**
@@ -69,6 +69,8 @@ more about URL usage](/introduction#uri-usage)." %}
 Then find the `view-paymentorder` operation and embed its `href` in a `<script>`
 element. That script will then load the Seamless View for the Payment Menu. We
 will look into how to hook that up next.
+
+{% include alert-nested-iframe-unsupported.md %}
 
 {% include alert.html type="informative" icon="info" body="`orderReference` must
 be sent as a part of the `POST` request to `paymentorders` and must represent
@@ -161,7 +163,7 @@ then perform `capture`.
 
 If the payment is a `Sale` or one-phase purchase, it will be automatically
 captured. A third scenario is if the goods are sent physically to the payer;
-then you should await capture until after the goods have been sent.
+then you should not do a capture until the goods are sent.
 
 You may open and close the payment menu using `.open()` and `.close()`
 functions. You can also invoke `.refresh()` to

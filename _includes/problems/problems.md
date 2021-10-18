@@ -30,7 +30,6 @@ The structure of a problem message will look like this:
     "detail": "Please correct the errors and retry the request",
     "instance": "{{ page.transaction_id }}",
     "status": 400,
-    "action": "RetryNewData",
     "problems": [{
         "name": "CreditCardParameters.Issuer",
         "description": "minimum one issuer must be enabled"
@@ -41,7 +40,7 @@ The structure of a problem message will look like this:
 {:.table .table-striped}
 | Field                 | Type      | Description                                                                                                                                                                                                                                         |
 | :-------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                | `string`  | The URI that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
+| `type`                | `string`  | The URL that identifies the error type. This is the **only field usable for programmatic identification** of the type of error! When dereferenced, it might lead you to a human readable description of the error and how it can be recovered from. |
 | `title`               | `string`  | The title contains a human readable description of the error.                                                                                                                                                                                       |
 | `detail`              | `string`  | A detailed, human readable description of the error and how you can recover from it.                                                                                                                                                                |
 | `instance`            | `string`  | The identifier of the error instance. This might be of use to Swedbank Pay support personnel in order to find the exact error and the context it occurred in.                                                                                       |
@@ -53,10 +52,10 @@ The structure of a problem message will look like this:
 
 ### Common Problems
 
-All common problem types will have a URI in the format
-`https://api.payex.com/psp/errordetail/<error-type>`. The **URI is an
+All common problem types will have a URL in the format
+`https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an
 identifier** that you can hard-code and implement logic around. It is currently
-not not possible to dereference this URI, although that might be possible in the
+not not possible to dereference this URL, although that might be possible in the
 future.
 
 {:.table .table-striped}
@@ -66,7 +65,7 @@ future.
 | `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                                                                                                                           |
-| `configurationerror` | `500`  | A error relating to configuration issues.                                                                                                          |
+| `configurationerror` | `403`  | A error relating to configuration issues.                                                                                                          |
 
 {% include {{ problem_include_file }} %}
 

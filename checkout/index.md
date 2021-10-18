@@ -6,7 +6,7 @@ description: |
   of the checkout experience, integrating seamlessly into the merchant website
   through highly customizable and flexible components.
   Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-  and try out Swedbank Pay Checkout for yourself!
+  and try Swedbank Pay Checkout for yourself!
 menu_order: 100
 card_list:
 - title: Checkout v2
@@ -14,7 +14,7 @@ card_list:
     Checkout v2 has been the generally available version of Checkout since 2018.
     Choose this if you have an <strong>existing Checkout v2
     integration</strong> or are currently completing one.
-  url:  /checkout/v2
+  url:  /checkout/v2/
   icon:
     content: shopping_cart
     outlined: true

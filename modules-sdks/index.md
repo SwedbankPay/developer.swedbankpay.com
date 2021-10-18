@@ -101,7 +101,7 @@ SDKs are often used as a building block to construct a *Module*.
 [dotnet-link]: https://www.nuget.org/packages/SwedbankPay.Sdk
 [dotnet-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-dotnet
 [episerver-icon]: /assets/img/logos/episerver.svg
-[episerver-link]: https://www.optimizely.com/no/apps/swedbank-pay-checkout/
+[episerver-link]: https://www.optimizely.com/apps/swedbank-pay-checkout/
 [episerver-repo]: https://github.com/SwedbankPay/swedbank-pay-episerver-checkout
 [ios-icon]: /assets/img/logos/swift.svg
 [ios-link]: https://cocoapods.org/pods/SwedbankPaySDK

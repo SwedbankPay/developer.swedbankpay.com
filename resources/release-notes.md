@@ -11,6 +11,18 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 15 October 2021
+
+### Version 2.2.3
+
+*   Updated [Android SDK documentation][android-sdk-documentation]
+*   Added info about [consumerProfileRef expiration][checkin]
+*   Added important information about WebView integrations for [mobile card payments][mobile-card-payments]
+*   Updated [iOS SDK documentation][ios-sdk-documentation]
+*   Added information about [authorization timeouts][authorization-timeouts] (bottom of page)
+*   Added important info about [MobilePay shoplogoUrl][mobilepay-seamless-view]
+*   Fixed minor bugs and code examples
+
 ## 03 August 2021
 
 ### Version 2.2.2
@@ -192,7 +204,7 @@ Other changes:
 ### Version 1.11.0
 
 *   Added a new [Trustly Payments][trustly-payments] section.
-*   Added information about [Storing URIs][storing-uri] in the [Technical
+*   Added information about [Storing URLs][storing-uri] in the [Technical
     Information][home-technical-information] section.
 
 ## 22 May 2020
@@ -230,7 +242,7 @@ Other changes:
 ### Version 1.9.0
 
 *   Added a new section [SDKs and Modules][sdk-modules] in Resources.
-*   Corrected problem `type` URIs for [Card Payments][card], [Checkout][checkout]
+*   Corrected problem `type` URLs for [Card Payments][card], [Checkout][checkout]
     and [Swish Payments][swish].
 *   Required checkmarks have a new, fresh look: {% icon check %}
 *   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}
@@ -485,7 +497,7 @@ payment page.
 
 ### Order Items
 
-The input parameter `quantity` in OrderItems-node is now updated to decimal.
+The input parameter `quantity` in the `orderItems` field is now updated to decimal.
 You may send up to 4 decimals. See updated documentation
 [here][payment-orders]
 
@@ -558,6 +570,8 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
+[android-sdk-documentation]: /modules-sdks/mobile-sdk/android
+[authorization-timeouts]: /checkout/v2/capture
 [callback]: /payment-instruments/card/features/technical-reference/callback
 [card-delete-token]: /payment-instruments/card/features/technical-reference/delete-token
 [card-direct]: /payment-instruments/card/direct
@@ -596,7 +610,9 @@ integration and the payer.
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
+[ios-sdk-documentation]: /modules-sdks/mobile-sdk/ios
 [mac-checkout]: /checkout/v2/features/optional/mac
+[mobile-card-payments]: /payment-instruments/card/mobile-card-payments
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
 [mobilepay-capture]: /payment-instruments/mobile-pay/capture

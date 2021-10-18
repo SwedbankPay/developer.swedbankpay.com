@@ -318,7 +318,7 @@ Content-Type: application/json
 
 When you find the `redirect-authentication` operation in the response from the
 authorization request, you will have to perform an HTTP redirect of the payer to
-the URI of the `href` to complete the authorization by performing a 3-D Secure
+the URL of the `href` to complete the authorization by performing a 3-D Secure
 authentication with the issuer.
 
 When the 3-D Secure flow is completed, the payer will be redirected back to the
@@ -380,6 +380,7 @@ sequenceDiagram
 
 *   If the payment shown above is done as a two-phase (Authorization), you will
   need to implement the [Capture][capture] and [Cancel][cancel] requests.
+*   {% include authorizations-timeout.md %}
 *   **Abort:** It is possible to [abort a payment][abort] if the payment has no
   successful transactions.
 *   For `reversals`, you will need to implement the [Reversal][reversal] request.

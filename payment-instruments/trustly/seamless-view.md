@@ -32,7 +32,7 @@ An example of an expanded `POST` request is available in [Payment resource]
 When properly set up in your merchant/webshop site and the payer starts the
 payment process, you need to make a `POST` request towards Swedbank Pay with your
 payment information. This will generate a `payment` resource with a unique
-`id` URI. You will receive a **JavaScript source** in response.
+`id` URL. You will receive a **JavaScript source** in response.
 
 {% include alert-gdpr-disclaimer.md %}
 
@@ -104,7 +104,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md documentation_section="trustly" %}                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
-|                  | └─➔&nbsp;`paymentUrl`        | `string`      | The URI that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                 |
+|                  | └─➔&nbsp;`paymentUrl`        | `string`      | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment.                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`payeeInfo`          | `object`      | {% include field-description-payeeinfo.md documentation_section="trustly" %}                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(30*)` | {% include field-description-payee-reference.md documentation_section="trustly" %}                                                                                                                                                                                                                 |
@@ -176,6 +176,8 @@ Content-Type: application/json
 The key information in the response is the `view-sale` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
 loading the payment page in an `iframe` in our next step.
+
+{% include alert-nested-iframe-unsupported.md %}
 
 ## Step 2: Display the Payment
 

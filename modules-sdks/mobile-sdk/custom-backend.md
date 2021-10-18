@@ -335,7 +335,7 @@ Content-Type: text/html
 </div>
 
 <script>
-    function redirect() { window.location.href = decodeURIComponent("https%3A%2F%2Fexample.com%2Fpayment%2Fios%3Ffallback%3Dtrue"); };
+    function redirect() { window.location.href = decodeURLComponent("https%3A%2F%2Fexample.com%2Fpayment%2Fios%3Ffallback%3Dtrue"); };
 </script>
 
 </body>

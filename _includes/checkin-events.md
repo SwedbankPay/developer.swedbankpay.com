@@ -1,3 +1,5 @@
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+
 ## Checkin Events
 
 The Checkin Seamless View can inform about events that occur during Checkin
@@ -39,6 +41,16 @@ object:
 {:.code-view-header}
 **onConsumerIdentified event object**
 
+{% if documentation_section contains "checkout/v3" %}
+
+```json
+{
+  "actionType": "OnConsumerIdentified"
+}
+```
+
+{% else %}
+
 ```json
 {
   "actionType": "OnConsumerIdentified",
@@ -66,7 +78,7 @@ provides shipping address via the `onShippingDetailsAvailable` event." %}
 
 ### `onBillingDetailsAvailable`
 
-Triggered when a consumer has been identified
+Triggered when a consumer has been identified.
 
 {:.code-view-header}
 **onBillingDetailsAvailable event object**
@@ -77,3 +89,5 @@ Triggered when a consumer has been identified
   "url":"/psp/consumers/{{ page.payment_token }}/billing-details"
 }
 ```
+
+{% endif %}

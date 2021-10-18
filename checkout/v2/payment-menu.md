@@ -21,7 +21,7 @@ Payment Menu.
 If you are sending a guest user `POST` request, simply leave out the
 `consumerProfileRef` from the input, and the payer will be sent to an empty
 Payment Menu. Information like `email`, `address` and `msisdn` can still be
-added manually in the payer node. If added, it will appear prefilled in the
+added manually in the `payer` field. If added, it will appear prefilled in the
 Payment Menu.
 
 Remember to read up on our [URL resource][urls].
@@ -78,6 +78,8 @@ Then find the `view-paymentorder` operation and embed its `href` in a
 `<script>` element.
 That script will then load the Seamless View for the Payment Menu. We will look
 into how to hook that up next.
+
+{% include alert-nested-iframe-unsupported.md %}
 
 {% include alert.html type="informative" icon="info" body=" `orderReference` must
 be sent as a part of the `POST` request to `paymentorders` and must represent
@@ -193,7 +195,11 @@ When the the payment is completed, the Payment Menu script will be signaled and
 a full redirect to the `completeUrl` sent in with the Payment Order will be
 performed. When the `completeUrl` on your server is hit, you can inspect the
 status on the stored `paymentorder.id` on the server, and then perform
-`capture`. If the payment is a `Sale` or one-phase purchase, it will be
+`capture`.
+
+{% include authorizations-timeout.md %}
+
+If the payment is a `Sale` or one-phase purchase, it will be
 automatically captured. A third scenario is if the goods are sent physically to
 the payer; then you should await capture until after the goods have been sent.
 
