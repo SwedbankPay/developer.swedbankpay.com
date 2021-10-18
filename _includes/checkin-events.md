@@ -31,8 +31,6 @@ sequenceDiagram
   end
 ```
 
-{% if documentation_section == "checkout/v3" %}
-
 ### `onConsumerIdentified`
 
 This event triggers when a consumer has performed Checkin and is identified,
@@ -42,6 +40,8 @@ object:
 
 {:.code-view-header}
 **onConsumerIdentified event object**
+
+{% if documentation_section contains "checkout/v3" %}
 
 ```json
 {
@@ -50,16 +50,6 @@ object:
 ```
 
 {% else %}
-
-### `onConsumerIdentified`
-
-This event triggers when a consumer has performed Checkin and is identified,
-if the Payment Menu is not loaded and in the DOM.
-The `onConsumerIdentified` event is raised with the following event argument
-object:
-
-{:.code-view-header}
-**onConsumerIdentified event object**
 
 ```json
 {
@@ -88,7 +78,7 @@ provides shipping address via the `onShippingDetailsAvailable` event." %}
 
 ### `onBillingDetailsAvailable`
 
-Triggered when a consumer has been identified
+Triggered when a consumer has been identified.
 
 {:.code-view-header}
 **onBillingDetailsAvailable event object**
