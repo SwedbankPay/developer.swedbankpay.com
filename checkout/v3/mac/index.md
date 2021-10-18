@@ -5,9 +5,7 @@ estimated_read: 3
 hide_from_sidebar: false
 description: |
   **MAC** is the Checkout option for merchants with their own consumer
-  authentication. Visit our
-  [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop) and test
-  this implementation for yourself!
+  authentication.
 menu_order: 300
 ---
 

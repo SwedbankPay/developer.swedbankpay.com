@@ -11,6 +11,18 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 15 October 2021
+
+### Version 2.2.3
+
+*   Updated [Android SDK documentation][android-sdk-documentation]
+*   Added info about [consumerProfileRef expiration][checkin]
+*   Added important information about WebView integrations for [mobile card payments][mobile-card-payments]
+*   Updated [iOS SDK documentation][ios-sdk-documentation]
+*   Added information about [authorization timeouts][authorization-timeouts] (bottom of page)
+*   Added important info about [MobilePay shoplogoUrl][mobilepay-seamless-view]
+*   Fixed minor bugs and code examples
+
 ## 03 August 2021
 
 ### Version 2.2.2
@@ -558,6 +570,8 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
+[android-sdk-documentation]: /modules-sdks/mobile-sdk/android
+[authorization-timeouts]: /checkout/v2/capture
 [callback]: /payment-instruments/card/features/technical-reference/callback
 [card-delete-token]: /payment-instruments/card/features/technical-reference/delete-token
 [card-direct]: /payment-instruments/card/direct
@@ -596,7 +610,9 @@ integration and the payer.
 [invoice-direct]: /payment-instruments/invoice/direct
 [invoice]: /payment-instruments/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
+[ios-sdk-documentation]: /modules-sdks/mobile-sdk/ios
 [mac-checkout]: /checkout/v2/features/optional/mac
+[mobile-card-payments]: /payment-instruments/card/mobile-card-payments
 [mobile-pay]: /payment-instruments/mobile-pay
 [mobilepay-seamless-view]: /payment-instruments/mobile-pay/seamless-view
 [mobilepay-capture]: /payment-instruments/mobile-pay/capture
