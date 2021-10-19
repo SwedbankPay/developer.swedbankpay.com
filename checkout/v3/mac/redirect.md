@@ -72,15 +72,10 @@ Among the operations in the POST `paymentOrders` response, you will find the
 
 The redirect link opens the payment menu on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay. The example with shipping address is for all goods
-(physical and digital), the one without shipping address is for digital
-products only.
+payment instrument and pay.
 
 {:.text-center}
-![screenshot of the authenticated implementation redirect payment menu mixed][redirect-payment-menu-mixed]
-
-{:.text-center}
-![screenshot of the authenticated implementation redirect payment menu digital][redirect-payment-menu-digital]
+![screenshot of the mac implementation redirect payment menu][redirect-mac-menu]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -95,5 +90,4 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-redirect
-[redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
-[redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png
+[redirect-mac-menu]: /assets/img/checkout/mac-redirect.png

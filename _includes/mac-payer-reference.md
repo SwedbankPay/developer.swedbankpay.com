@@ -8,8 +8,14 @@ If the `payerReference` is present along with `email` and `msisdn`, the merchant
 does not need to add a `nationalIdentifier`. Other than that, the integration
 is the same as a normal MAC integration.
 
-If a payerReference is not present, we will search for the information in the
-`email` and `msisdn`.
+If no existing consumer profile exists on the `payerReference` or `email` and
+`msisdn`, the payer is asked to enter their social security number as shown
+below. This information is needed in order to store payment information. The
+payer will be able to continue as guest. When doing so, no payment information
+will be stored.
+
+{:.text-center}
+![Payer is presented with SSN input or continue as guest][mac-enter-ssn]
 
 This example leaves out the `nationalIdentifier`.
 
@@ -46,3 +52,4 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in MAC integrations to recognize the payer in the absence of SSN and/or a secure login.                                                                                                                                                                                                                               |
 
 [3d-secure-2]: /checkout/v3/mac/features/core/3d-secure-2
+[mac-enter-ssn]: /assets/img/checkout/mac-enter-ssn.png

@@ -1,5 +1,5 @@
 ---
-title: MAC Payer Reference
+title: MAC PayerReference
 estimated_read: 1
 description: |
   The MAC option when you don't have a secure login or SSN.
