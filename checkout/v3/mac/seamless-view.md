@@ -130,15 +130,10 @@ request.send();
 ```
 
 The payment menu should appear with the payer information displayed above the
-menu. The payer can select their preferred payment instrument and pay. The
-example with shipping address is for all goods (physical and digital), the one
-without shipping address is for digital products only.
+menu. The payer can select their preferred payment instrument and pay.
 
 {:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
-
-{:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
+![screenshot of the mac implementation seamless view payment menu][seamless-mac-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -157,5 +152,4 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout/v3/mac/features/core/abort
 [seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-seamless-view
-[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
-[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
+[seamless-mac-menu]: /assets/img/checkout/mac-seamless-view.png

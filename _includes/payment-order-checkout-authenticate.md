@@ -39,8 +39,11 @@ Content-Type: application/json
             "subsite": "MySubsite"
         },
         "payer": {
-            "requireConsumerInfo": false,
             "digitalProducts": false,
+            "nationalIdentifier": {
+                "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
+                "countryCode": "SE"
+            }
             "firstName": "Leia"
             "lastName": "Ahlström",
             "email": "leia@payex.com",
@@ -160,7 +163,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-|  | └➔&nbsp;`requireConsumerInfo`                       | `bool` | Set to `true` if the merchant wants to receive profile information from Swedbank Pay. Applicable for when the merchant only needs `email` and/or `msisdn` for digital goods, or when the full shipping address is necessary. If set to `false`, Swedbank Pay will depend on the merchant to send `email` and/or `msisdn` for digital products and shipping address for physical orders. |
 | | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 |                  | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. |
