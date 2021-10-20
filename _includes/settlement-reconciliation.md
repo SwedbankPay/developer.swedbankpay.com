@@ -19,7 +19,7 @@ transactions list - are available for all merchants using Swedbank Pay.
     (per default) once a month, or once a week.
 *   You do not need to subscribe, the files will be delivered by default.
 
-Contact [omni.client@swedbankpay.se][omni-client-email] for further
+Contact [kundsupport@swedbankpay.se][omni-client-email] for further
 inquiries regarding this.
 
 ### Settlement
@@ -331,4 +331,4 @@ merchant.
 [balance-report-pdf]: /assets/documents/balance-report.pdf
 [trans-list-xlsx]: /assets/documents/transaction-list.xlsx
 [trans-list-xml]: /assets/documents/transaction-list.xml
-[omni-client-email]: mailto:omni.client@swedbankpay.se
+[omni-client-email]: mailto:kundsupport@swedbankpay.se
