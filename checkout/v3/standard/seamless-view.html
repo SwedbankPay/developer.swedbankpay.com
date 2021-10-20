@@ -4022,6 +4022,9 @@ used in requests towards Swedbank Pay.</p>
 121
 122
 123
+124
+125
+126
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
@@ -4055,8 +4058,11 @@ used in requests towards Swedbank Pay.</p>
             </span><span class="nl">"subsite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MySubsite"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"requireConsumerInfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"digitalProducts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nationalIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"socialSecurityNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"199710202392"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SE"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
             </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leia"</span><span class="w">
             </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ahlström"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leia@payex.com"</span><span class="p">,</span><span class="w">
@@ -4349,14 +4355,6 @@ used in requests towards Swedbank Pay.</p>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
       <td style="text-align: left">The <code class="language-html highlighter-rouge">payer</code> object containing information about the payer relevant for the payment order.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td style="text-align: center"> </td>
-      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">requireConsumerInfo</code>
-</td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
-      <td style="text-align: left">Set to <code class="language-html highlighter-rouge">true</code> if the merchant wants to receive profile information from Swedbank Pay. Applicable for when the merchant only needs <code class="language-html highlighter-rouge">email</code> and/or <code class="language-html highlighter-rouge">msisdn</code> for digital goods, or when the full shipping address is necessary. If set to <code class="language-html highlighter-rouge">false</code>, Swedbank Pay will depend on the merchant to send <code class="language-html highlighter-rouge">email</code> and/or <code class="language-html highlighter-rouge">msisdn</code> for digital products and shipping address for physical orders.</td>
       <td> </td>
     </tr>
     <tr>
