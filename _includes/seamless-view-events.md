@@ -155,6 +155,8 @@ object:
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
+{% unless documentation_section contains "checkout/v3" %}
+
 ### `onBillingDetailsAvailable`
 
 This event triggers when a consumer has been identified. The
@@ -198,6 +200,8 @@ with the following event argument object:
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `actionType`  | `string` | The type of event that was raised.                                                  |
 | `url`         | `string` | The URL containing shipping details.                                                |
+
+{% endunless %}
 
 {% if api_resource == "paymentorders" %}
 

@@ -6,8 +6,6 @@ description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
   through highly customizable and flexible components.
-  Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-  and try Swedbank Pay Checkout for yourself!
 icon:
   content: remove_red_eye
 additional: true
