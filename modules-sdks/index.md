@@ -54,7 +54,7 @@ Swedbank Pay.
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
 | ![Episerver][episerver-icon] | [Swedbank Pay **Checkout** for Episerver][episerver-link]        | [`…episerver-checkout`][episerver-repo]       |
-|   ![Magento][magento-icon]   | [Swedbank Pay **Checkout** for Magento 2][magento-checkout-link] | [`…magento2-checkout`][magento-checkout-repo] |
+|   ![Magento][magento-icon]   | | [`…magento2-checkout`][magento-checkout-repo] |
 |   ![Magento][magento-icon]   | [Swedbank Pay **Payments** for Magento 2][magento-payments-link] | [`…magento2-payments`][magento-payments-repo] |
 |   ![WooCommerce][woo-icon]   | [Swedbank Pay **Checkout** for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
 |   ![WooCommerce][woo-icon]   | [Swedbank Pay **Payments** for WooCommerce][woo-payments-link]   | [`…woocommerce-payments`][woo-payments-repo]  |
@@ -109,7 +109,6 @@ SDKs are often used as a building block to construct a *Module*.
 [js-icon]: /assets/img/logos/js.svg
 [js-link]: https://www.npmjs.com/package/@swedbank-pay/sdk
 [js-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-js
-[magento-checkout-link]: https://marketplace.magento.com/media/catalog/product/swedbank-pay-magento2-checkout-1-1-2-ce/user_guides.pdf
 [magento-checkout-repo]: https://github.com/SwedbankPay/swedbank-pay-magento2-checkout
 [magento-core-link]: https://packagist.org/packages/swedbank-pay/magento2-core
 [magento-core-repo]: https://github.com/SwedbankPay/swedbank-pay-magento2-core
