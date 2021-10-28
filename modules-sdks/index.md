@@ -109,7 +109,7 @@ SDKs are often used as a building block to construct a *Module*.
 [js-icon]: /assets/img/logos/js.svg
 [js-link]: https://www.npmjs.com/package/@swedbank-pay/sdk
 [js-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-js
-[magento-checkout-link]: https://marketplace.magento.com/swedbank-pay-magento2-checkout.html
+[magento-checkout-link]: https://marketplace.magento.com/media/catalog/product/swedbank-pay-magento2-checkout-1-1-2-ce/user_guides.pdf
 [magento-checkout-repo]: https://github.com/SwedbankPay/swedbank-pay-magento2-checkout
 [magento-core-link]: https://packagist.org/packages/swedbank-pay/magento2-core
 [magento-core-repo]: https://github.com/SwedbankPay/swedbank-pay-magento2-core
