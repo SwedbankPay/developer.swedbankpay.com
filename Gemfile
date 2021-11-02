@@ -6,7 +6,7 @@ gem 'jemoji'
 # Neccessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
 gem 'faraday', '~> 1.8.0'
 gem 'jekyll-material-icon-tag'
-gem 'kramdown-plantuml', '<= 1.1.4'
+gem 'kramdown-plantuml', '<= 1.1.9'
 gem 'rake', '~> 13.0.3'
 gem 'html-proofer'
 gem 'html-proofer-unrendered-markdown'
