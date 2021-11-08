@@ -96,7 +96,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    kramdown-plantuml (1.1.11)
+    kramdown-plantuml (1.1.13)
       htmlentities (~> 4)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
@@ -171,7 +171,7 @@ DEPENDENCIES
   jekyll-redirect-from
   jemoji
   kramdown (>= 2.3.0)
-  kramdown-plantuml (<= 1.1.12)
+  kramdown-plantuml (<= 1.1.14)
   rake (~> 13.0.3)
   searchyll!
   swedbank-pay-design-guide-jekyll-theme (~> 1.10)
