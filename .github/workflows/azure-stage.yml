@@ -27,6 +27,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
 
       - name: deploy
-        uses: azure/CLI@1.0.4
+        uses: azure/CLI@v1.0.5
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalstage
