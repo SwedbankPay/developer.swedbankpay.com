@@ -29,6 +29,13 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
+  plantuml:
+    width: none
+    height: none
+    style: none
+    theme:
+      name: swedbankpay
+      directory: assets
 tipue_search:
   include:
     pages: true
