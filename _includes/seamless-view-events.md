@@ -155,6 +155,46 @@ object:
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
+{% if documentation_section contains "checkout/v3/standard" %}
+
+### `onPayerIdentified`
+
+This event triggers when a payer has been identified.
+
+{:.code-view-header}
+**onTermsOfServiceRequested event object**
+
+```json
+{
+    "bodyType": "OnPayerIdentified"
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `bodyType`  | `string` | The type of event that was raised. |
+
+### `onPayerIdentified`
+
+This event triggers when a payer has not been identified (proceeds as guest).
+
+{:.code-view-header}
+**onTermsOfServiceRequested event object**
+
+```json
+{
+    "bodyType": "OnPayerUnidentified"
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `bodyType`  | `string` | The type of event that was raised. |
+
+{% endif %}
+
 {% unless documentation_section contains "checkout/v3" %}
 
 ### `onBillingDetailsAvailable`
@@ -213,7 +253,7 @@ menu. No action will be done if callback is not set. The
 object:
 
 {:.code-view-header}
-**onEventNotification event object**
+**onApplicationConfigured event object**
 
 ```json
 {

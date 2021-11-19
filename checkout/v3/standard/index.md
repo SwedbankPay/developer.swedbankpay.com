@@ -1,33 +1,17 @@
 ---
 section: Standard
 title: Introduction
-estimated_read: 2
 description: |
-  **Standard** is the checkout option for
-  Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-  and test this implementation for yourself!
+  **Standard** Checkout is for you who want Swedbank Pay to handle everything.
 menu_order: 100
 ---
 
-## Introduction
+This is the option where Swedbank Pay does it all. Verifying your consumer,
+collecting billing and shipping addresses, storing consumer information and
+providing you with the full range of available payment methods.
 
-You should choose our **Standard** implementation if
-
--   you collect the payer information needed to complete an order yourself.
--   you **do not** need payer information from Swedbank Pay to calculate
-    shipping costs.
--   you **do not** have a strong payer authentication login.
--   you want your payers to access stored purchase information in Swedbank Pay
-    Checkout for an easier purchase process.
-
-### Requirements
-
--   You need a Checkout agreement to use this product.
--   You need a data exchange agreement since we receive payer data from you.
-
-Please contact our Sales department regarding this requirement.
-
-The only way to integrate our **Standard** implementation is **Seamless View**.
+The only way of integrating our **Standard** implementation is **Seamless
+View**.
 
 With **Seamless View**, the payer stays at your site, and you initiate the
 Swedbank Pay authentication and purchase module in an iframe. The checkin and
@@ -37,5 +21,7 @@ Read more about the integration by clicking the link below.
 
 {% include languages.md %}
 
-{% include iterator.html next_href="seamless-view"
+{% include iterator.html prev_href="/checkout/v3/get-started"
+                         prev_title="Back to Get Started"
+                         next_href="seamless-view"
                          next_title="Integrate Seamless View" %}
