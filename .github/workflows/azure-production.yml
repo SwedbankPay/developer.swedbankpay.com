@@ -22,11 +22,11 @@ jobs:
             --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
 
       - name: login
-        uses: azure/login@v1.4.0
+        uses: azure/login@v1.4.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
 
       - name: deploy
-        uses: azure/CLI@1.0.4
+        uses: azure/CLI@v1.0.6
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalprod
