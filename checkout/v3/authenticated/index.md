@@ -11,7 +11,7 @@ menu_order: 100
 The option for merchants who want Swedbank Pay to do **almost** everything. You
 collect and provide us with billing and shipping addresses, while we handle the
 rest. Verifying the consumer, storing the consumer info and providing you with
-all the available payment methods.
+all the available payment instruments.
 
 There are two ways of integrating the **Authenticated** implementation.
 **Redirect** and **Seamless View**.
