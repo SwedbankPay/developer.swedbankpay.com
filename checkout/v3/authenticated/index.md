@@ -29,7 +29,7 @@ Read more about our two integration alternatives by clicking the links below.
 
 {% include languages.md %}
 
-{% include iterator.html prev_href="/checkout/v3/get-started"
+{% include iterator.html prev_href="/checkout/v3/get-started/"
                          prev_title="Back to Get Started"
                          next_href="redirect"
                          next_title="Integrate Redirect" %}

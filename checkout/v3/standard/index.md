@@ -21,7 +21,7 @@ Read more about the integration by clicking the link below.
 
 {% include languages.md %}
 
-{% include iterator.html prev_href="/checkout/v3/get-started"
+{% include iterator.html prev_href="/checkout/v3/get-started/"
                          prev_title="Back to Get Started"
                          next_href="seamless-view"
                          next_title="Integrate Seamless View" %}
