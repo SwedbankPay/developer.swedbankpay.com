@@ -4,7 +4,7 @@ title: Introduction
 estimated_read: 3
 hide_from_sidebar: false
 description: |
-  **MAC** is the Checkout for merchants with their own consumer
+  **Merchant Authenticated Consumer** is the Checkout for merchants with their own consumer
   authentication.
 menu_order: 300
 ---
