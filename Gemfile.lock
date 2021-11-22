@@ -60,6 +60,7 @@ GEM
       yell (~> 2.0)
     html-proofer-unrendered-markdown (0.1.3)
       html-proofer (~> 3.0, >= 3.15.1)
+    htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -95,7 +96,8 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    kramdown-plantuml (1.1.4)
+    kramdown-plantuml (1.3.1)
+      htmlentities (~> 4)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
       open3 (~> 0.1)
@@ -107,6 +109,8 @@ GEM
     minitest (5.14.4)
     multipart-post (2.1.1)
     nokogiri (1.12.5-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
@@ -156,6 +160,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   faraday (~> 1.8.0)
@@ -166,7 +171,7 @@ DEPENDENCIES
   jekyll-redirect-from
   jemoji
   kramdown (>= 2.3.0)
-  kramdown-plantuml (<= 1.1.4)
+  kramdown-plantuml (<= 1.3.1)
   rake (~> 13.0.3)
   searchyll!
   swedbank-pay-design-guide-jekyll-theme (~> 1.10)
