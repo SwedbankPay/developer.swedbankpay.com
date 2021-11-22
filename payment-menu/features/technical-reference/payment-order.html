@@ -3868,6 +3868,12 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
 47
 48
 49
+50
+51
+52
+53
+54
+55
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -3889,6 +3895,12 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
         </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/3.0.1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"userAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0..."</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nb-NO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paymentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678-1234-1234-1234-123456789010"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"recurrenceToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678-1234-1234-1234-123456789011"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unscheduledToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678-1234-1234-1234-123456789012"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transactionsOnFileToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678-1234-1234-1234-123456789013"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nonPaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678-1234-1234-1234-1234567890AB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"externalNonPaymentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"urls"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/urls"</span><span class="w"> </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payeeInfo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/payeeinfo"</span><span class="w"> </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/payers"</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -4002,6 +4014,42 @@ through the sub-resources <code class="language-html highlighter-rouge">payments
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">
 <code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">en-US</code> or <code class="language-html highlighter-rouge">fi-FI</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paymentToken</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The payment token created for the purchase used in the authorization to create One-Click Payments.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">recurrenceToken</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The created recurrenceToken, if <code class="language-html highlighter-rouge">operation: Verify</code>, <code class="language-html highlighter-rouge">operation: Recur</code> or <code class="language-html highlighter-rouge">generateRecurrenceToken: true</code> was used.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">unscheduledToken</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The created unscheduledToken, if <code class="language-html highlighter-rouge">operation: Verify</code>, <code class="language-html highlighter-rouge">operation: UnscheduledPurchase</code> or <code class="language-html highlighter-rouge">generateUnscheduledToken: true</code> was used.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">transactionOnFileToken</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The created transactionOnFileToken, if <code class="language-html highlighter-rouge">operation: Verify</code> and <code class="language-html highlighter-rouge">generateTransactionOnFileToken: true</code> was used.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">nonPaymentToken</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The result of our own card tokenization. Activated in POS for the merchant or merchant group.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">externalNonPaymentToken</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">urls</code>
