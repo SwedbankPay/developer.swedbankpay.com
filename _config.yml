@@ -1,5 +1,5 @@
 repository: SwedbankPay/developer.swedbankpay.com
-theme: 'swedbank-pay-design-guide-jekyll-theme'
+theme: swedbank-pay-design-guide-jekyll-theme
 exclude:
   - Gemfile*
   - Rakefile
