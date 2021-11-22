@@ -48,6 +48,12 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
+        "paymentToken": "12345678-1234-1234-1234-123456789010",
+        "recurrenceToken": "12345678-1234-1234-1234-123456789011",
+        "unscheduledToken": "12345678-1234-1234-1234-123456789012",
+        "transactionsOnFileToken": "12345678-1234-1234-1234-123456789013",
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
         "payeeInfo" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo" },
         "payers": { "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers" },
@@ -94,6 +100,12 @@ Content-Type: application/json
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
 | └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                            |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
+| └➔&nbsp;`paymentToken`   | `string`     | The payment token created for the purchase used in the authorization to create One-Click Payments.                                                          |
+| └➔&nbsp;`recurrenceToken`      | `string`     | The created recurrenceToken, if `operation: Verify`, `operation: Recur` or `generateRecurrenceToken: true` was used.                                                                                                                                                                  |
+| └➔&nbsp;`unscheduledToken`     | `string`     | The created unscheduledToken, if `operation: Verify`, `operation: UnscheduledPurchase` or `generateUnscheduledToken: true` was used.                                                                                                                                                                  |
+| └➔&nbsp;`transactionOnFileToken`     | `string`     | The created transactionOnFileToken, if `operation: Verify` and `generateTransactionOnFileToken: true` was used.                                                                                                                                                                  |
+| └➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
+| └➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
 | └➔&nbsp;`urls`           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
 | └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                          |
 | └➔&nbsp;`payers`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
