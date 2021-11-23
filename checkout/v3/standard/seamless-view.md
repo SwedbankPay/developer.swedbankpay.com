@@ -215,7 +215,6 @@ the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/authenticated/features/core/abort
-[sequence-diagrams]: /checkout/v3/sequence-diagrams/
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
 [seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
