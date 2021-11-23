@@ -8,23 +8,10 @@ description: |
 menu_order: 100
 ---
 
-## Introduction
-
-You should choose the **Authenticated** implementation if
-
--   you collect the payer information needed to complete an order yourself.
--   you **do not** need payer information from Swedbank Pay to calculate
-    shipping costs.
--   you **do not** have a strong payer authentication login.
--   you want your payers to access stored purchase information in Swedbank Pay
-    Checkout for an easier purchase process.
-
-### Requirements
-
--   You need a Checkout agreement to use this product.
--   You need a data exchange agreement since we receive payer data from you.
-
-Please contact our Sales department regarding this requirement.
+The option for merchants who want Swedbank Pay to do **almost** everything. You
+collect and provide us with billing and shipping addresses, while we handle the
+rest. Verifying the payer, storing the consumer info and providing you with
+all the available payment instruments.
 
 There are two ways of integrating the **Authenticated** implementation.
 **Redirect** and **Seamless View**.
@@ -42,8 +29,9 @@ Read more about our two integration alternatives by clicking the links below.
 
 {% include languages.md %}
 
-{% include iterator.html next_href="redirect"
+{% include iterator.html prev_href=""
+                         prev_title="Back to Get Started"
+                         next_href="redirect"
                          next_title="Integrate Redirect" %}
-
 {% include iterator.html next_href="seamless-view"
                          next_title="Integrate Seamless View" %}

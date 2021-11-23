@@ -4,30 +4,18 @@ title: Introduction
 estimated_read: 3
 hide_from_sidebar: false
 description: |
-  **MAC** is the Checkout option for merchants with their own consumer
+  **Merchant Authenticated Consumer** is the Checkout for merchants with their own consumer
   authentication.
 menu_order: 300
 ---
 
-## Introduction
+Merchant Authenticated Consumer is the option if you have a strong consumer
+authentication login and collect consumer information yourself, so you don't
+need payer information to calculate shipping costs. We store the consumer
+information for you and offer the full range of available payment methods.
 
-You should choose the **MAC** implementation if
-
--   you collect the payer information needed to complete an order yourself.
--   you **do not** need payer information from Swedbank Pay to calculate
-    shipping costs.
--   you **have** a strong payer authentication login.
--   you want your payers to access stored purchase information in Swedbank Pay
-    Checkout for an easier purchase process.
-
-### Requirements
-
--   You need a Checkout agreement to use this product.
-
-Please contact our Sales department regarding this requirement.
-
-There are two ways of integrating the MAC implementation.
-**Redirect** and **Seamless View**.
+There are two ways of integrating the MAC implementation. **Redirect** and
+**Seamless View**.
 
 With **Redirect**, the payer is sent to a Swedbank Pay page, where we handle the
 authentication and purchase process. The payer is redirected back to you
@@ -42,8 +30,9 @@ Read more about our two integration alternatives by clicking the links below.
 
 {% include languages.md %}
 
-{% include iterator.html next_href="redirect"
+{% include iterator.html prev_href=""
+                         prev_title="Back to Get Started"
+                         next_href="redirect"
                          next_title="Integrate Redirect" %}
-
 {% include iterator.html next_href="seamless-view"
                          next_title="Integrate Seamless View" %}
