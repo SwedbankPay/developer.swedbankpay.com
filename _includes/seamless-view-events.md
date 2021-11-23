@@ -162,7 +162,7 @@ object:
 This event triggers when a payer has been identified.
 
 {:.code-view-header}
-**onTermsOfServiceRequested event object**
+**onPayerIdentified event object**
 
 ```json
 {
@@ -175,12 +175,12 @@ This event triggers when a payer has been identified.
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `bodyType`  | `string` | The type of event that was raised. |
 
-### `onPayerIdentified`
+### `onPayerUnidentified`
 
 This event triggers when a payer has not been identified (proceeds as guest).
 
 {:.code-view-header}
-**onTermsOfServiceRequested event object**
+**onPayerUnidentified event object**
 
 ```json
 {
