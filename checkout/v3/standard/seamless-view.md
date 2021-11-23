@@ -192,12 +192,6 @@ After checking in, the consumer's contact details and shipping address are shown
 for mixed goods. For digital products there will be only contact details. These
 will appear along with the available shipping option(s).
 
-{:.text-center}
-![screenshot of the standard implementation seamless digital shipping options][seamless-digital-shipping]
-
-{:.text-center}
-![screenshot of the standard implementation seamless physical shipping options][seamless-shipping-options]
-
 When the payer chooses a shipping option, you can `PATCH` the payment order and
 the payment menu will appear. The payer can then proceed with the purchase. The
 example with shipping address is for all goods (physical and digital), the one
