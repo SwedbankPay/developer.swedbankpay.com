@@ -13,7 +13,7 @@ card_list:
 - title: Standard
   description: |
     Coming soon...
-  url:  /checkout/v3/standard
+  url:  /checkout/v3/standard/
   disabled: false
   icon:
     content: shopping_cart
