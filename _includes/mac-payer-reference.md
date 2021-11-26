@@ -1,18 +1,18 @@
-## MAC PayerReference
+## Merchant Authenticated Consumer / Merchant Managed PayerReference
 
-If a merchant wishes to use the MAC implementation, but does not have the
-payer's SSN or a secure login, they can add a `payerReference` in the payer
-field of the payment request.
+If a merchant wishes to use the Merchant Authenticated Consumer / Merchant
+Managed implementation, but does not have the payer's SSN or a secure login,
+they can add a `payerReference` in the payer field of the payment request.
 
 If the `payerReference` is present along with `email` and `msisdn`, the merchant
 does not need to add a `nationalIdentifier`. Other than that, the integration
-is the same as a normal MAC integration.
+is the same as a normal MAC/MM integration.
 
 If no existing consumer profile exists on the `payerReference` or `email` and
 `msisdn`, the payer is asked to enter their social security number as shown
 below. This information is needed in order to store payment information. The
-payer will be able to continue as guest. When doing so, no payment information
-will be stored.
+payer will be given the option to continue as a guest. When doing so, no payment
+information will be stored.
 
 {:.text-center}
 ![Payer is presented with SSN input or continue as guest][mac-enter-ssn]
@@ -49,7 +49,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | └─➔&nbsp;`email`                   | `string`     | The e-mail address of the payer. Increases the chance for [frictionless 3-D Secure 2 flow][3d-secure-2].                                         |
 |                  | └─➔&nbsp;`msisdn`                  | `string`     | The mobile phone number of the payer. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3d-secure-2][3d-secure-2].            |
-|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in MAC integrations to recognize the payer in the absence of SSN and/or a secure login.                                                                                                                                                                                                                               |
+|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in MAC and MM integrations to recognize the payer in the absence of SSN and/or a secure login.                                                                                                                                                                                                                               |
 
 [3d-secure-2]: /checkout/v3/mac/features/core/3d-secure-2
 [mac-enter-ssn]: /assets/img/checkout/mac-enter-ssn.png

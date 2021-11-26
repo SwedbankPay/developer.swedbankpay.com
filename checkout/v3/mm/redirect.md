@@ -8,10 +8,10 @@ description: |
 menu_order: 200
 ---
 
-The **MAC Redirect** integration consists of three main steps. **Creating** the
-payment order, **displaying** the payment menu, and **capturing** the funds. In
-addition, there are other post purchase options you need. We get to them later
-on.
+The **Merchant Managed Redirect** integration consists of three main steps.
+**Creating** the payment order, **displaying** the payment menu, and
+**capturing** the funds. In addition, there are other post purchase options you
+need. We get to them later on.
 
 If you want to get an overview before proceeding, you can look at the [sequence
 diagram][sequence-diagram]. It is also available in the sidebar if you want to
@@ -32,9 +32,9 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
-Supported features for this integration are subscriptions (`recur` and
-`unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
-own `logo`.
+Supported features for this integration are subscriptions (`recur`, `one-click`
+and `unscheduled MIT`), `MOTO`, instrxument mode, split settlement (`subsite`)
+and the possibility to use your own `logo`.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
@@ -75,7 +75,7 @@ information displayed above the menu. The payer can select their preferred
 payment instrument and pay.
 
 {:.text-center}
-![screenshot of the mac implementation redirect payment menu][redirect-mac-menu]
+![screenshot of the merchant managed implementation redirect payment menu][redirect-mm-menu]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -88,6 +88,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/mac/features/core/abort
-[sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-redirect
-[redirect-mac-menu]: /assets/img/checkout/mac-redirect.png
+[abort-feature]: /checkout/v3/mm/features/core/abort
+[sequence-diagram]: /checkout/v3/sequence-diagrams/#merchant-managed-redirect
+[redirect-mm-menu]: /assets/img/checkout/mac-redirect.png
