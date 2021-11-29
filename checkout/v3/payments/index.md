@@ -1,20 +1,20 @@
 ---
-section: Merchant Managed
+section: Payments
 title: Introduction
 estimated_read: 3
 hide_from_sidebar: false
 description: |
-  **Merchant Managed** is the Checkout for merchants who does everything but the
+  **Payments** is the Checkout for merchants who does everything but the
   payment menu.
 menu_order: 300
 ---
 
-**Merchant Managed** is where you get to be in charge of everything. You handle
+**Payments** is where you get to be in charge of everything. You handle
 the consumer verification with a strong consumer authentication, collect the
 consumer information needed to calculate shipping costs, and store the
 information yourself. We provide you with our full range of payment methods.
 
-There are two ways of integrating the **Merchant Managed** implementation.
+There are two ways of integrating the **Payments** implementation.
 **Redirect** and **Seamless View**.
 
 With **Redirect**, the payer is sent to a Swedbank Pay page, where we handle the
@@ -27,7 +27,7 @@ Swedbank Pay purchase module in an iframe. The purchase component will be styled
 by Swedbank Pay.
 
 Just like with our other implementations, it is always possible to pay as a
-**guest**. When using **Merchant Managed**, the way to do it is to not include
+**guest**. When using **Payments**, the way to do it is to not include
 the `payerReference` in the `paymentOrder` request.
 
 Read more about our two integration alternatives by clicking the links below.
