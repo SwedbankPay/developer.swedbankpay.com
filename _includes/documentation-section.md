@@ -3,6 +3,7 @@
     checkout/v3/mac,
     checkout/v3/standard,
     checkout/v3/authenticated,
+    checkout/v3/payments,
     payment-menu,
     gift-cards,
     card,
