@@ -73,9 +73,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: haya14busa/action-cond@v1
+        id: reporter
+        with:
+          cond: ${{ github.event_name == 'pull_request' }}
+          if_true: github-pr-review
+          if_false: github-check
       - uses: reviewdog/action-remark-lint@v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true
           remark_args: --frail --rc-path .remarkrc.yaml
           level: warning
+          reporter: ${{ steps.reporter.outputs.value }}
