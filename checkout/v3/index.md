@@ -52,7 +52,7 @@ We can also prefill consumer info in the checkout if they have agreed to let us
 store their info. All of our implementations support both single payment options
 and the full payment offering.
 
-**Standard**
+### Standard
 
 We collect and verify the identity of your consumer. We also collect the billing
 and shipping address, and we store the consumer information. With our PSP you
