@@ -1,15 +1,15 @@
 ---
-section: Standard
+section: Merchant Authenticated Consumer
 title: Set Up
 description: |
-In this section we are going to guide you through setting up your test account
-and how to make an API request for your first test payment. After these steps,
-you're ready to build your integration!
+  In this section we are going to guide you through setting up your test account
+  and how to make an API request for your first test payment. After these steps,
+  you're ready to build your integration!
 ---
 
 ## Step 1: Sign Up For A Test Account
 
-A test account gives you access our unified dashboard for managing your
+A test account gives you access to our unified dashboard for managing your
 account across different platforms. We call this dashboard the Ecom Admin.
 
 Your test account request should be sent to: supporttestaccount@swedbankpay.se.
@@ -18,7 +18,7 @@ from your side:
 
 *   **Company name:** Your company name.
 
-*   **Services you prefer:** Full Checkout (Standard / Authendicated / MAC) or
+*   **Services you prefer:** Full Checkout (Standard / Authenticated / MAC) or
   Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.
@@ -53,9 +53,9 @@ testing environment.
 **Merchant details:** Here you will find information about your
 account.
 
-An access token is neccessary, since it will be used together with Payee ID to
-validate transactions. The Payee ID will serve as the door and your token is the
-key.
+An access token is necessary since it will be used together with Payee ID to
+validate transactions. The Payee ID will serve as the door and, your token is
+the key.
 
 *   Navigate to “Access Tokens” at the top of the page.
 
@@ -75,5 +75,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout/v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout/v3/payments/"
+                         next_href="/checkout/v3/mac/"
                          next_title="Start Integration" %}

@@ -3,8 +3,8 @@ section: Checkout v3
 title: Get Started
 estimated_read: 5
 description: |
-Before moving on we would like to give you a brief introduction to what you need
-to consider before composing your checkout page, along with some prerequisites.
+  Before moving on we would like to give you a brief introduction to what you need
+  to consider before composing your checkout page, along with some prerequisites.
 menu_order: 300
 ---
 
@@ -65,7 +65,7 @@ Delivery Info           v
 Consumer Info           v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/standard/set-up/"
+{% include iterator.html next_href="/checkout/v3/standard/setup/"
                          next_title="Proceed" %}
 
 **Authenticated**
@@ -82,7 +82,7 @@ Delivery Info           v
 Consumer Info                                         v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/authenticated/set-up/"
+{% include iterator.html next_href="/checkout/v3/authenticated/setup/"
                          next_title="Proceed" %}
 
 **Merchant Authenticated Consumer**
@@ -98,7 +98,7 @@ Delivery Info                                         v
 Consumer Info           v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/mac/set-up/"
+{% include iterator.html next_href="/checkout/v3/mac/setup/"
                          next_title="Proceed" %}
 
 ## Payments Only
@@ -121,5 +121,5 @@ Delivery Info                                         v
 Consumer Info                                         v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/payments/set-up/"
+{% include iterator.html next_href="/checkout/v3/payments/setup/"
                          next_title="Proceed" %}
