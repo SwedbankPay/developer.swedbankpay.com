@@ -53,7 +53,7 @@ summary and specifications for sales and for fees.
 ##### Payment Summary
 
 Provides a summary of the `Amount` sold, `Fees` and `VAT`. **If Swedbank Pay
-handles the settlement process**, the `Transfered``amount` - shown in the
+handles the settlement process**, the `Transferred``amount` - shown in the
 balance report summary is equivalent to the disbursement on the bank statement
 (the remaining total amount after fees).
 
@@ -252,7 +252,7 @@ In short, it is a settlement feature where a company with a website or an app
 can attach specific subsite numbers to sub merchants selling their goods or
 services through the company. The subsite number is used to match the
 transactions with the correct sub merchant, so the settlement is automatically
-split between them. If you run a site selling tickets to concerts, theatres,
+split between them. If you run a site selling tickets to concerts, theaters,
 sporting events etc., each venue gets its own subsite number. If you run a
 funeral home, the sub merchants can be everything from flower shops to
 charities.

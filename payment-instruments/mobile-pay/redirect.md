@@ -355,7 +355,7 @@ sequenceDiagram
   deactivate Merchant
 
   MobilePay_API-->>MobilePay_App: Confirm Payment UI
-  MobilePay_App-->>MobilePay_App: Confirmation Dialogue
+  MobilePay_App-->>MobilePay_App: Confirmation Dialog
   MobilePay_App-->>MobilePay_API: Confirmation
   MobilePay_API-->>SwedbankPay: make payment
   activate SwedbankPay

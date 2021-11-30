@@ -2,7 +2,7 @@
 
 When creating a Payment Order, the `urls` field of the `paymentOrder`
 contains the related URLs, including where the payer is redirected when
-going forward with or cancelling a payment session, as well as the callback URL
+going forward with or canceling a payment session, as well as the callback URL
 that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.
 

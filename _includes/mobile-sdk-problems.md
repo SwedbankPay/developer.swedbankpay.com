@@ -10,7 +10,7 @@ will be of the type `RequestProblemException`, which allows access to the
 response, allowing for easy access to standard fields. You are free to use
 `Problem` as-is for modeling your own problem types. The Merchant Backend
 Configuration further defines a subclass of `Problem`,
-`MerchantBackendProblem`, which is a sealed class containg all the problem
+`MerchantBackendProblem`, which is a sealed class containing all the problem
 types expected to occur with a Merchant Backend server. All problems reported
 by the Merchant Backenc Configuration are of this type, allowing you to use
 kotlin's powerful `when` expression to handle the different errors:

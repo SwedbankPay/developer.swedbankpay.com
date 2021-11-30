@@ -21,7 +21,7 @@ menu_order: 900
     where the payer must push the payment button.
     This triggers a `POST` towards Swedbank Pay.
 *   The payer is redirected to a Vipps payment page to enter the mobile number.
-*   Swedbank Pay handles the dialogue with Vipps and the payer confirms the
+*   Swedbank Pay handles the dialog with Vipps and the payer confirms the
     purchase in the Vipps app.
 *   To receive the state of the transaction you need to do a `GET`
     request containing the `paymentID` generated in the first step.
@@ -341,7 +341,7 @@ sequenceDiagram
 
     VippsApi-->>VippsApp: Confirm Payment UI
     activate VippsApp
-    VippsApp-->>VippsApp: Confirmation dialogue
+    VippsApp-->>VippsApp: Confirmation dialog
     VippsApp-->>VippsApi: Confirmation
     deactivate VippsApp
 
