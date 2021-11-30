@@ -1,5 +1,5 @@
 repository: SwedbankPay/developer.swedbankpay.com
-theme: 'swedbank-pay-design-guide-jekyll-theme'
+theme: swedbank-pay-design-guide-jekyll-theme
 exclude:
   - Gemfile*
   - Rakefile
@@ -29,6 +29,10 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
+  plantuml:
+    theme:
+      name: swedbankpay
+      directory: assets
 tipue_search:
   include:
     pages: true

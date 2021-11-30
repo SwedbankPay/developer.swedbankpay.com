@@ -174,27 +174,6 @@ Once the payer has completed the purchase, you can perform a GET towards the
 You can read about the different [Seamless View Events][seamless-view-events] in
 the feature section.
 
-If you want to see the payer activities, they are visible in the history field:
-
-```json
-{
- "name": "CheckinInitiated",
- "initiatedBy": "System"
-}
-{
- "name": "PayerCheckedIn",
- "initiatedBy": "Consumer"
-}
-{
- "name": "PayerDetailsRetrieved",
- "initiatedBy": "System"
-}
-{
- "name": "MerchantAuthenticatedConsumerCheckedIn",
- "initiatedBy": "System"
-}
-```
-
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
 

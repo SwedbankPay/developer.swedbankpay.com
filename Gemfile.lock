@@ -19,9 +19,9 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
     concurrent-ruby (1.1.9)
-    em-websocket (0.5.2)
+    em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.6.0)
+      http_parser.rb (~> 0)
     ethon (0.15.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
@@ -61,8 +61,8 @@ GEM
     html-proofer-unrendered-markdown (0.1.3)
       html-proofer (~> 3.0, >= 3.15.1)
     htmlentities (4.3.4)
-    http_parser.rb (0.6.0)
-    i18n (1.8.10)
+    http_parser.rb (0.8.0)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jekyll (4.2.1)
       addressable (~> 2.4)
@@ -96,7 +96,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    kramdown-plantuml (1.2.0)
+    kramdown-plantuml (1.3.1)
       htmlentities (~> 4)
       kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.1)
@@ -106,8 +106,12 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    mini_portile2 (2.6.1)
     minitest (5.14.4)
     multipart-post (2.1.1)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
@@ -119,7 +123,7 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.6)
-    racc (1.5.2)
+    racc (1.6.0)
     rainbow (3.0.0)
     rake (13.0.6)
     rb-fsevent (0.11.0)
@@ -136,18 +140,18 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     sassc (2.4.0)
       ffi (~> 1.9)
-    swedbank-pay-design-guide-jekyll-theme (1.12.0)
-      faraday (>= 1.0.1)
-      html-proofer
+    swedbank-pay-design-guide-jekyll-theme (1.12.5)
+      faraday (~> 1, >= 1.0.1)
+      html-proofer (~> 3, >= 3.19)
       jekyll (>= 3.7, < 5.0)
-      jekyll-contentblocks
-      jekyll-material-icon-tag
-      jekyll-redirect-from
-      jemoji
-      kramdown-plantuml
+      jekyll-contentblocks (~> 1, >= 1.2)
+      jekyll-material-icon-tag (~> 1, >= 1.1)
+      jekyll-redirect-from (~> 0.16)
+      jemoji (~> 0.12)
+      kramdown-plantuml (~> 1, >= 1.2)
       nokogiri (~> 1.11)
       rake (~> 13.0)
-      sass
+      sass (~> 3, >= 3.7)
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     typhoeus (1.4.0)
@@ -156,9 +160,10 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.8.0)
     yell (2.2.2)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
   x86_64-linux
 
@@ -171,10 +176,13 @@ DEPENDENCIES
   jekyll-redirect-from
   jemoji
   kramdown (>= 2.3.0)
-  kramdown-plantuml (<= 1.2.1)
+  kramdown-plantuml (>= 1.3)
   rake (~> 13.0.3)
   searchyll!
-  swedbank-pay-design-guide-jekyll-theme (~> 1.10)
+  swedbank-pay-design-guide-jekyll-theme (>= 1.12.4)
+
+RUBY VERSION
+   ruby 2.7.4p191
 
 BUNDLED WITH
    2.2.28

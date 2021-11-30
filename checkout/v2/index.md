@@ -44,150 +44,199 @@ to work. If the payer is from a country where we currently don't support
 Checkin, or if he or she opts not to store their data, that's fine. The Payment
 Menu can still be used as a **guest**.
 
-Below, you will see a sequence diagram showing the sequence of a Swedbank Pay
-checkout.
+## Sequence
 
-{% include alert.html type="informative" icon="info" body="
-Note that in this diagram, the Payer refers to the merchant front-end
-(website) while Merchant refers to the merchant back-end." %}
+Below, you will find sequence diagrams visualizing the sequence of Swedbank Pay
+Checkout. The parties involved in the sequences are:
 
-```mermaid
-sequenceDiagram
-    participant Consumer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+*  **Payer** refers to the front-end code that runs in the web browser
+   (JavaScript events as well as user interaction).
+*  **Merchant** refers to the merchant back-end server.
+*  **Swedbank Pay** refers to the Swedbank Pay API.
 
-        rect rgba(238, 112, 35, 0.05)
-            note left of Consumer: Checkin
+### Checkin
 
-    Consumer ->>+ Merchant: Start Checkin
-    Merchant ->>+ SwedbankPay: POST /psp/consumers
+The first operation in the Checkout process is to identify the payer. This step
+is called **Checkin** and is visualized in the below diagram.
+
+```plantuml
+@startuml "Checkin"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+
+    Payer -> Merchant: Start Checkin
+    activate Payer
+        activate SwedbankPay
+            Merchant -> SwedbankPay: $code("POST /psp/consumers")
+            activate Merchant
+                SwedbankPay --> Merchant: $code("rel:view-consumer-identification") <b>①</b>
+                Merchant --> Payer: $code("rel:view-consumer-identification") <b>②</b>
+            deactivate Merchant
+            Payer <-> SwedbankPay: $code("<script src=rel:view-consumer-identification.href />")
+        deactivate SwedbankPay
+    deactivate Payer
+
+    Payer -> Payer: $code("payex.hostedView.consumer()")
+
+    activate Payer
+        Payer -> SwedbankPay: Consumer identification <b>③</b>
+        activate SwedbankPay
+            SwedbankPay --> Payer: $code("onConsumerIdentified(consumerProfileRef)") <b>④</b>
+        deactivate SwedbankPay
+
+        Payer -> Merchant: $code("POST { consumerProfileRef }") <b>⑤</b>
+    deactivate Payer
+
+    activate Merchant
+        Merchant -> Merchant: Store $code("consumerProfileRef")
     deactivate Merchant
-    SwedbankPay -->>+ Merchant: rel:view-consumer-identification ①
-    deactivate SwedbankPay
-    Merchant -->>- Consumer: Show Checkin on Merchant Page
-
-    Consumer ->>+ Consumer: Initiate Consumer Seamless View (open iframe) ②
-    Consumer ->>+ SwedbankPay: Show Consumer UI page in iframe ③
-    deactivate Consumer
-    SwedbankPay ->>- Consumer: Consumer identification process
-    activate Consumer
-    Consumer ->>+ SwedbankPay: Consumer identification process
-    deactivate Consumer
-    SwedbankPay -->>- Consumer: show consumer completed iframe
-    activate Consumer
-    Consumer ->> Consumer: EVENT: onConsumerIdentified (consumerProfileRef) ④
-    deactivate Consumer
-    end
-        rect rgba(138, 205, 195, 0.1)
-            activate Consumer
-            note left of Consumer: Payment Menu
-            Consumer ->>+ Merchant: Initiate Purchase
-            deactivate Consumer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (paymentUrl, consumerProfileRef)
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-paymentorder
-            deactivate SwedbankPay
-            Merchant -->>- Consumer: Display Payment Menu on Merchant Page
-            activate Consumer
-            Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
-            Consumer -->>+ SwedbankPay: Show Payment UI page in iframe
-            deactivate Consumer
-            SwedbankPay ->>+ Consumer: Do payment logic
-            deactivate SwedbankPay
-            Consumer ->> SwedbankPay: Do payment logic
-            deactivate Consumer
-
-                opt Consumer perform payment out of iFrame
-                    activate Consumer
-                    Consumer ->> Consumer: Redirect to 3rd party
-                    Consumer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
-                    deactivate Consumer
-                    3rdParty -->>+ Consumer: Redirect back to paymentUrl (merchant)
-                    deactivate 3rdParty
-                    Consumer ->> Consumer: Initiate Payment Menu Seamless View (open iframe)
-                    Consumer ->>+ SwedbankPay: Show Payment UI page in iframe
-                    deactivate Consumer
-                end
-
-        SwedbankPay -->> Payer: Payment status
-
-            alt If payment is completed
-            activate Consumer
-            Consumer ->> Consumer: Event: onPaymentCompleted
-            Consumer ->>+ Merchant: Check payment status
-            deactivate Consumer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
-            deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Consumer
-            deactivate Consumer
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Payment Details
-            deactivate SwedbankPay
-            end
-            end
-
-                opt If payment is failed
-                activate Consumer
-                Consumer ->> Consumer: Event: OnPaymentFailed
-                Consumer ->>+ Merchant: Check payment status
-                deactivate Consumer
-                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
-                deactivate Merchant
-                SwedbankPay -->>+ Merchant: rel: failed-paymentorder
-                deactivate SwedbankPay
-                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-                activate Consumer
-                deactivate Consumer
-                Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
-                deactivate Merchant
-                SwedbankPay -->> Merchant: Payment Details
-                deactivate SwedbankPay
-                end
-                end
-        activate Merchant
-        Merchant -->>- Consumer: Show Purchase complete
-            opt PaymentOrder Callback (if callbackUrls is set)
-            activate Consumer
-            deactivate Consumer
-                SwedbankPay ->> Merchant: POST Payment Callback
-            end
-            end
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Consumer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
-        end
+@enduml
 ```
 
-### Explanations
-
-Under, you see a list of notes that explains some of the sequences in the
-diagram.
-
-#### Checkin
-
-*   ① `rel: view-consumer-identification` is a value in one of the operations,
+1.  `rel:view-consumer-identification` is a value in one of the operations,
     sent as a response from Swedbank Pay to the Merchant.
-*   ② `Initiate Consumer Seamless View (open iframe)` creates the iframe.
-*   ③ `Show Consumer UI page in iframe` displays the checkin form as content inside
-    of the iframe.
-*   ④ `onConsumerIdentified (consumerProfileRef)` is an event that triggers when
-    the consumer has been identified, and delivers a field
-    `consumerProfileRef` as a reference to be used in the payment menu.
+2.  **Show Checkin** creates and displays the Checkin Seamless View.
+3.  **Consumer identification** is a simplified view of what happens inside the
+    Checkin Seamless View in order to identify the payer.
+4.  `onConsumerIdentified(consumerProfileRef)` is an event that triggers when
+    the consumer has been identified, and delivers the field
+    `consumerProfileRef` as a reference to be used when creating the Payment
+    Order that will be used to display the Payment Menu.
+5.  `POST { consumerProfileRef }` ensures that the `consumerProfileRef` is
+    persisted in storage (a database, for example).
 
-#### Payment Menu
+### Payment Menu
 
-*   ⑤ `Authorize Payment` is when the payer has accepted the payment.
+When **Checkin** is completed successfully and the `consumerProfileRef` is
+secured, the next operation is to display the **Payment Menu** and have the
+payer complete a payment, which is visualized in the sequence diagram below.
+
+```plantuml
+@startuml "Payment Menu"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+
+    ' TODO: Remove scale once https://github.com/plantuml/plantuml/discussions/793 is solved.
+    scale 0.81
+
+    Payer -> Merchant: Pay
+    activate Payer
+        activate Merchant
+            Merchant -> SwedbankPay: $code("POST /psp/paymentorders { consumerProfileRef }")
+            activate SwedbankPay
+                SwedbankPay --> Merchant: $code("rel:view-paymentorder")
+            deactivate SwedbankPay
+            Merchant --> Payer: $code("rel:view-paymentorder")
+        deactivate Merchant
+
+        Payer <-> SwedbankPay: $code("<script src=rel:view-paymentorder.href />")
+
+        activate SwedbankPay
+            Payer -> Payer: $code("payex.hostedView.paymentMenu()")
+            SwedbankPay <-> Payer: Perform payment
+        deactivate SwedbankPay
+    deactivate Payer
+
+    alt#fff #ebf8f2 completed payment
+        SwedbankPay -> Payer: $code("onPaymentCompleted(paymentorder)")
+        activate SwedbankPay
+            activate Payer
+                Payer -> Merchant: Check payment status
+                activate Merchant
+                    Merchant -> SwedbankPay: $code("GET paymentorder.id")
+                    SwedbankPay --> Merchant: $code("rel:paid-paymentorder")
+                    Merchant -> SwedbankPay: $code("GET rel:paid-paymentorder.href")
+                    SwedbankPay --> Merchant: Completed Payment Order
+                    Merchant --> Payer: Show receipt
+                deactivate Merchant
+            deactivate Payer
+        deactivate SwedbankPay
+    else failed payment
+        SwedbankPay -> Payer: $code("onPaymentFailed(paymentorder)")
+        activate SwedbankPay
+            activate Payer
+                Payer -> Merchant: Check payment status
+                activate Merchant
+                    Merchant -> SwedbankPay: $code("GET paymentorder.id")
+                    SwedbankPay --> Merchant: $code("rel:failed-paymentorder")
+                    Merchant -> SwedbankPay: $code("GET rel:failed-paymentorder.href")
+                    SwedbankPay --> Merchant: Failed Payment Order
+                    Merchant --> Payer: Show failure page
+                deactivate Merchant
+            deactivate Payer
+        deactivate SwedbankPay
+    end
+@enduml
+```
+
+{% comment %}
+TODO: Number each important step in the above diagram and create a numbered list
+      that explains each step.
+{% endcomment %}
+
+### Callback
+
+For every change to the Payment Order after its creation, a [callback] will be
+made from Swedbank Pay towards the `callbackUrl` specified in the Payment Order.
+It is important to listen to these callbacks so in the event that the payer
+closes the browser window, there are network problems or anything else
+unexpected happens during the payment process, the status is updated in the
+merchant system.
+
+```plantuml
+@startuml "Callback"
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+
+    SwedbankPay -> Merchant: $code("POST { payment activity }")
+    activate Merchant
+        activate SwedbankPay
+            Merchant -> SwedbankPay: $code("GET paymentorder.id")
+            SwedbankPay --> Merchant: Payment Order
+        deactivate SwedbankPay
+
+        Merchant -> Merchant: Update order status
+    deactivate Merchant
+@enduml
+```
+
+{% comment %}
+TODO: Number each important step in the above diagram and create a numbered list
+      that explains each step.
+{% endcomment %}
+
+### Capture
+
+After the payment is completed, you can **Capture** the payment. Capture should
+be done after the goods are shipped or if the purchased goods don't require
+shipping. Only payment instruments that support authorizations will expose the
+`create-paymentorder-capture` operation when they can be captured.
+
+```plantuml
+@startuml "Capture"
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+
+    Merchant -> Merchant: Capture
+    activate Merchant
+        Merchant -> SwedbankPay: $code("GET paymentorder.id")
+        activate SwedbankPay
+            SwedbankPay --> Merchant: $code("rel:create-paymentorder-capture")
+            Merchant -> SwedbankPay: $code("POST rel:create-paymentorder-capture.href")
+            SwedbankPay --> Merchant: Capture status
+        deactivate SwedbankPay
+
+        Merchant -> Merchant: Update order status
+    deactivate Merchant
+@enduml
+```
+
+{% comment %}
+TODO: Number each important step in the above diagram and create a numbered list
+      that explains each step.
+{% endcomment %}
 
 {% include languages.md %}
 
@@ -195,4 +244,5 @@ diagram.
                          next_title="Implement Checkin" %}
 
 [after-payment-capture]: /checkout/v2/capture
+[callback]: /checkout/v2/features/technical-reference/callback
 [https]: /introduction#connection-and-protocol
