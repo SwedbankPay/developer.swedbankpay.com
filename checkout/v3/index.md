@@ -65,7 +65,7 @@ Delivery Info           v
 Consumer Info           v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/standard/setup/"
+{% include iterator.html next_href="/checkout/v3/standard/setup"
                          next_title="Proceed" %}
 
 ### Authenticated
@@ -82,7 +82,7 @@ Delivery Info           v
 Consumer Info                                         v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/authenticated/setup/"
+{% include iterator.html next_href="/checkout/v3/authenticated/setup"
                          next_title="Proceed" %}
 
 ### Merchant Authenticated Consumer
@@ -98,7 +98,7 @@ Delivery Info                                         v
 Consumer Info           v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/mac/setup/"
+{% include iterator.html next_href="/checkout/v3/mac/setup"
                          next_title="Proceed" %}
 
 ## Payments Only
@@ -121,5 +121,5 @@ Delivery Info                                         v
 Consumer Info                                         v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/payments/setup/"
+{% include iterator.html next_href="/checkout/v3/payments/setup"
                          next_title="Proceed" %}
