@@ -68,7 +68,7 @@ PSP                     v
 {% include iterator.html next_href="/checkout/v3/standard/setup/"
                          next_title="Proceed" %}
 
-**Authenticated**
+### Authenticated
 
 The consumer data you have collected, is shared with us for verification and
 storage. If you have a login, your consumer won't need to fill out their
