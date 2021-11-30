@@ -108,7 +108,7 @@ build your own checkout flow. You collect the consumer data and own the entire
 checkout process. The **Payments Only** implementation supports both single
 payment options and the full payment offering.
 
-**Payments**
+### Payments
 
 In order to implement this solution, you need to be able to both collect and
 verify your consumer's data using SCA. You also store the consumer information.
