@@ -11,14 +11,14 @@ menu_order: 300
 ## Choose The Right Implementation For Your Business
 
 Truth is, the customer journey varies a lot depending on your business
-vertical. For example, if you're selling physical goods like clothes, shoes,
-computers etc., you need to collect the address of the customer for shipping
+vertical. For example, if you're selling physical goods like clothes, shoes or
+computers, you need to collect the address of the consumer for shipping
 purposes. Unlike if you were selling digital goods, where that's simply not
-neccessary. But it also comes down to what you are able and wish to manage
+necessary. But it also comes down to what you are able and wish to manage
 yourself.
 
 When building your checkout page you have two main paths. Either you let us
-provide you with the entire checkout solution. This includes customer
+provide you with the entire checkout solution. This includes consumer
 identification and payment menu, where your customer themselves can choose how
 to pay. Or, you can choose to only use our payment option (also called the
 payment menu), where you are in charge of collecting and storing the customer
@@ -88,7 +88,7 @@ PSP                     v
 **Merchant Authenticated Consumer**
 
 In order to implement this solution, you need to be able to both collect and
-verify your customer's data using SCA. We store the consumer information, and
+verify your consumer's data using SCA. We store the consumer information, and
 with our PSP you are always able to choose one or more payment methods.
 
 Data Ownership          Swedbank Pay                  Merchant side
@@ -111,7 +111,7 @@ payment options and the full payment offering.
 **Payments**
 
 In order to implement this solution, you need to be able to both collect and
-verify your customers data using SCA. You also store the consumer information.
+verify your consumer's data using SCA. You also store the consumer information.
 With our PSP you are always able to choose one or more payment methods.
 
 Data Ownership          Swedbank Pay                  Merchant side
@@ -121,5 +121,5 @@ Delivery Info                                         v
 Consumer Info                                         v
 PSP                     v
 
-{% include iterator.html next_href="/checkout/v3/mm/set-up/"
+{% include iterator.html next_href="/checkout/v3/payments/set-up/"
                          next_title="Proceed" %}
