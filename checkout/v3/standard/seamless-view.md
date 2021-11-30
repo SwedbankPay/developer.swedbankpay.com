@@ -8,6 +8,17 @@ description: |
 menu_order: 300
 ---
 
+The **Standard Redirect** integration consists of three main steps. **Creating**
+the payment order and checkin, **displaying** the payment menu, shipping options
+and checkin module in an iframe, and finally **capturing** the funds. In
+addition, there are other post purchase options you need. We get to them later
+on.
+
+If you want to get an overview before proceeding, you can look at the
+[sequence diagram][sequence-diagrams]. It is also available in the sidebar if
+you want to look at it later. Let´s get going with the two first steps of the
+integration.
+
 ## Step 1: Create Payment Order And Checkin
 
 When the purchase is initiated, you need to create a payment order.
@@ -188,9 +199,13 @@ address.
 {:.text-center}
 ![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
-After checking in, the consumer's contact details and shipping address are shown
-for mixed goods. For digital products there will be only contact details. These
-will appear along with the available shipping option(s).
+After checking in, the payer's contact details and shipping address are shown
+for mixed goods. For digital products only contact details will be shown. You
+can now perform the `GET` on the payment order and display the available
+shipping option(s) to the payer.
+
+How the shipping options are displayed will be up to you, but you can see an
+example in our demoshop.
 
 When the payer chooses a shipping option, you can `PATCH` the payment order and
 the payment menu will appear. The payer can then proceed with the purchase. The
@@ -222,3 +237,4 @@ the feature section.
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
+[sequence-diagrams]: /checkout/v3/sequence-diagrams/#standard-seamless-view

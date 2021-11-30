@@ -7,10 +7,10 @@ description: |
 menu_order: 300
 ---
 
-The **MAC Seamless View** integration consists of three main steps. **Creating**
-the payment order, **displaying** the payment menu in an iframe, and
-**capturing** the funds. In addition, there are other post purchase options you
-need. We get to them later on.
+The **Payments Seamless View** integration consists of three main steps.
+**Creating** the payment order, **displaying** the payment menu in an iframe,
+and **capturing** the funds. In addition, there are other post purchase options
+you need. We get to them later on.
 
 If you want to get an overview before proceeding, you can look at the [sequence
 diagram][sequence-diagram]. It is also available in the sidebar if you want to
@@ -45,7 +45,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-mac.md integration_mode="seamless-view" %}
+{% include payment-order-checkout-payments-only.md integration_mode="seamless-view" %}
 
 ## Step 2: Display Payment Menu
 
@@ -149,7 +149,7 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/mac/features/core/abort
-[seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
-[sequence-diagram]: /checkout/v3/sequence-diagrams/#merchant-authenticated-consumer-seamless-view
+[abort-feature]: /checkout/v3/payments/features/core/abort
+[seamless-view-events]: /checkout/v3/payments/features/technical-reference/seamless-view-events
+[sequence-diagram]: /checkout/v3/sequence-diagrams/#payments-seamless-view
 [seamless-mac-menu]: /assets/img/checkout/mac-seamless-view.png
