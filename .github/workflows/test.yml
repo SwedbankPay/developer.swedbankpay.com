@@ -73,15 +73,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
-      #
-      # TODO: Figure out why remark-lint hangs on GitHub Actions.
-      #
-      # - uses: reviewdog/action-remark-lint@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     fail_on_error: true
-      #     remark_args: --frail --rc-path .remarkrc.yaml
-      #     level: warning
-      #
-      - run: npm run remark -- --frail --rc-path .remarkrc.yaml
+      - uses: reviewdog/action-remark-lint@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+          remark_args: --frail --rc-path .remarkrc.yaml
+          level: warning
