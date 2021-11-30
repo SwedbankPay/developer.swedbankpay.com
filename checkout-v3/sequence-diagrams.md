@@ -12,20 +12,23 @@ menu_order: 600
 Note that in this diagram, Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+```plantuml
+@startuml "Authenticated Redirect"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
+
+    ' TODO: Remove scale once https://github.com/plantuml/plantuml/discussions/793 is solved.
+    scale 0.81
 
         rect rgba(238, 112, 35, 0.05)
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (completeUrl, payer information)")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:redirect-checkout
+            SwedbankPay -->>+ Merchant: $code("rel:redirect-checkout")
             deactivate SwedbankPay
             Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
             activate Payer
@@ -68,12 +71,12 @@ sequenceDiagram
             Payer ->> Payer: Redirect back to CompleteUrl
             Payer ->>+ Merchant: Check Purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
@@ -84,7 +87,7 @@ activate Merchant
 Merchant -->>- Payer: Show Purchase complete
          opt PaymentOrder Callback (if callbackUrls is set) ①
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
                 deactivate SwedbankPay
          end
          end
@@ -92,11 +95,12 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
         end
+@enduml
 ```
 
 *   ① Read more about [callback][callback] handling in the technical reference.
@@ -110,20 +114,23 @@ Merchant -->>- Payer: Show Purchase complete
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+```plantuml
+@startuml "Authenticated Seamless View"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
+
+        ' TODO: Remove scale once https://github.com/plantuml/plantuml/discussions/793 is solved.
+    scale 0.81
 
         rect rgba(238, 112, 35, 0.05)
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (hostUrls, paymentUrl, payer information)")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-checkout
+            SwedbankPay -->>+ Merchant: $code("rel:view-checkout")
             deactivate SwedbankPay
             Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
             activate Payer
@@ -137,7 +144,7 @@ sequenceDiagram
     deactivate Payer
     SwedbankPay -->> Payer: show payer completed iframe
     activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified ①
+    Payer ->> Payer: $code("EVENT:onConsumerIdentified") ①
     Payer ->> Payer: Initiate Purchase step
     deactivate Payer
     SwedbankPay ->>+ Payer: Do purchase logic
@@ -163,15 +170,15 @@ sequenceDiagram
 
             alt If purchase is completed
             activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
+            Payer ->> Payer: $code("Event:onPaymentCompleted") ①
             Payer ->>+ Merchant: Check purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
@@ -182,15 +189,15 @@ Merchant -->>- Payer: Show Purchase complete
 
             alt If purchase is failed
             activate Payer
-            Payer ->> Payer: Event: OnPaymentFailed ①
+            Payer ->> Payer: $code("Event:OnPaymentFailed") ①
             Payer ->>+ Merchant: Check purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET {paymentorder.id}
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel: failed-paymentorder
+            SwedbankPay -->>+ Merchant: $code("rel:failed-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
+            Merchant ->>+ SwedbankPay: $code("GET rel:failed-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
@@ -201,7 +208,7 @@ Merchant -->>- Payer: Show Purchase complete
 
          opt PaymentOrder Callback (if callbackUrls is set) ②
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
                 deactivate SwedbankPay
          end
          end
@@ -209,11 +216,12 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
         end
+@enduml
 ```
 
 *   ① See [seamless view events][seamless-view-events] for further information.
@@ -228,20 +236,20 @@ Merchant -->>- Payer: Show Purchase complete
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+```plantuml
+@startuml "Merchant Authenticated Consumer Redirect"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
 
         rect rgba(238, 112, 35, 0.05)
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (completeUrl, payer information)")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:redirect-checkout
+            SwedbankPay -->>+ Merchant: $code("rel:redirect-checkout")
             deactivate SwedbankPay
             Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
     activate SwedbankPay
@@ -275,12 +283,12 @@ sequenceDiagram
             Payer ->> Payer: Redirect back to CompleteUrl
             Payer ->>+ Merchant: Check Purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
@@ -291,7 +299,7 @@ activate Merchant
 Merchant -->>- Payer: Show Purchase complete
          opt PaymentOrder Callback (if callbackUrls is set) ①
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
                 deactivate SwedbankPay
          end
          end
@@ -299,11 +307,12 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
         end
+@enduml
 ```
 
 *   ① Read more about [callback][mac-callback] handling in the technical reference.
@@ -317,20 +326,20 @@ Merchant -->>- Payer: Show Purchase complete
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+```plantuml
+@startuml "Merchant Authenticated Consumer Seamless View"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
 
         rect rgba(238, 112, 35, 0.05)
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (hostUrls, paymentUrl, payer information)")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-checkout
+            SwedbankPay -->>+ Merchant: $code("rel:view-checkout")
             deactivate SwedbankPay
                         Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
     activate Payer
@@ -360,17 +369,17 @@ sequenceDiagram
 
             alt If purchase is completed
             activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
+            Payer ->> Payer: $code("EVENT: onPaymentCompleted") ①
             Payer ->>+ Merchant: Check purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
             activate Payer
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
@@ -383,17 +392,17 @@ Merchant -->>- Payer: Show Purchase complete
 
                 opt If purchase is failed
                 activate Payer
-                Payer ->> Payer: Event: OnPaymentFailed ①
+                Payer ->> Payer: $code("EVENT:OnPaymentFailed") ①
                 Payer ->>+ Merchant: Check purchase status
                 deactivate Payer
-                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
+                Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
                 deactivate Merchant
-                SwedbankPay -->>+ Merchant: rel: failed-paymentorder
+                SwedbankPay -->>+ Merchant: $code("rel:failed-paymentorder")
                 deactivate SwedbankPay
                 opt Get PaymentOrder Details (if failed-paymentorder operation exist)
                 activate Payer
                 deactivate Payer
-                Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
+                Merchant ->>+ SwedbankPay: $code("GET rel:failed-paymentorder")
                 deactivate Merchant
                 SwedbankPay -->> Merchant: Purchase Details
                 deactivate SwedbankPay
@@ -404,7 +413,7 @@ Merchant -->>- Payer: Show Purchase complete
 
                 opt PaymentOrder Callback (if callbackUrls is set) ②
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
                 deactivate SwedbankPay
          end
 
@@ -412,11 +421,12 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
         end
+@enduml
 ```
 
 *   ① See [seamless view events][mac-seamless-view-events] for further information.
@@ -431,20 +441,20 @@ Merchant -->>- Payer: Show Purchase complete
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+```plantuml
+@startuml "Payments Redirect"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
 
         rect rgba(238, 112, 35, 0.05)
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (completeUrl, payer information)")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:redirect-checkout
+            SwedbankPay -->>+ Merchant: $code("rel:redirect-checkout")
             deactivate SwedbankPay
             Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
     activate SwedbankPay
@@ -478,12 +488,12 @@ sequenceDiagram
             Payer ->> Payer: Redirect back to CompleteUrl
             Payer ->>+ Merchant: Check Purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
@@ -494,7 +504,7 @@ activate Merchant
 Merchant -->>- Payer: Show Purchase complete
          opt PaymentOrder Callback (if callbackUrls is set) ①
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
                 deactivate SwedbankPay
          end
          end
@@ -502,11 +512,12 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
         end
+@enduml
 ```
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
@@ -520,20 +531,20 @@ Merchant -->>- Payer: Show Purchase complete
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+```plantuml
+@startuml "Payments Seamless View"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
 
         rect rgba(238, 112, 35, 0.05)
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (hostUrls, paymentUrl, payer information)")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-checkout
+            SwedbankPay -->>+ Merchant: $code("rel:view-checkout")
             deactivate SwedbankPay
                         Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
     activate Payer
@@ -563,17 +574,17 @@ sequenceDiagram
 
             alt If purchase is completed
             activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
+            Payer ->> Payer: $code("EVENT: onPaymentCompleted") ①
             Payer ->>+ Merchant: Check purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
             activate Payer
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
@@ -586,17 +597,17 @@ Merchant -->>- Payer: Show Purchase complete
 
                 opt If purchase is failed
                 activate Payer
-                Payer ->> Payer: Event: OnPaymentFailed ①
+                Payer ->> Payer: $code("EVENT:OnPaymentFailed") ①
                 Payer ->>+ Merchant: Check purchase status
                 deactivate Payer
-                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
+                Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
                 deactivate Merchant
-                SwedbankPay -->>+ Merchant: rel: failed-paymentorder
+                SwedbankPay -->>+ Merchant: $code("rel:failed-paymentorder")
                 deactivate SwedbankPay
                 opt Get PaymentOrder Details (if failed-paymentorder operation exist)
                 activate Payer
                 deactivate Payer
-                Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
+                Merchant ->>+ SwedbankPay: $code("GET rel:failed-paymentorder")
                 deactivate Merchant
                 SwedbankPay -->> Merchant: Purchase Details
                 deactivate SwedbankPay
@@ -607,7 +618,7 @@ Merchant -->>- Payer: Show Purchase complete
 
                 opt PaymentOrder Callback (if callbackUrls is set) ②
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
                 deactivate SwedbankPay
          end
 
@@ -615,11 +626,12 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
         end
+@enduml
 ```
 
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
@@ -634,42 +646,32 @@ Merchant -->>- Payer: Show Purchase complete
 Note that in this diagram, the Payer refers to the merchant front-end
 (website) while Merchant refers to the merchant back-end." %}
 
-```mermaid
-sequenceDiagram
-    participant Payer
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-    participant 3rdParty
+```plantuml
+@startuml "Standard Seamless View"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
 
         rect rgba(238, 112, 35, 0.05)
             activate Payer
             Payer ->>+ Merchant: Initiate Purchase
             deactivate Payer
-            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (hostUrls, paymentUrl, payer information)")
             deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel:view-checkout
+            SwedbankPay -->>+ Merchant: $code("rel:view-checkout")
             deactivate SwedbankPay
-            Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
-            activate Payer
-            Payer ->> Payer: Initiate Authenticate step
-               Payer ->> SwedbankPay: Show Checkin component in iframe
-    deactivate Payer
-    activate SwedbankPay
-    SwedbankPay ->> Payer: Payer identification process
+                        Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
     activate Payer
-    Payer ->> SwedbankPay: Payer identification process
-    deactivate Payer
-    SwedbankPay -->> Payer: show payer completed iframe
-    activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified ①
     Payer ->> Payer: Initiate Purchase step
     deactivate Payer
-    SwedbankPay ->>+ Payer: Do purchase logic
+    activate SwedbankPay
+        SwedbankPay ->>+ Payer: Do purchase logic
     Payer ->> SwedbankPay: Do purchase logic
     deactivate Payer
     deactivate SwedbankPay
 
-                    opt Payer performs purchase out of iFrame
+                opt Payer performs purchase out of iFrame
                     activate Payer
                     Payer ->> Payer: Redirect to 3rd party
                     Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
@@ -677,7 +679,7 @@ sequenceDiagram
                     3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
                     Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
+                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
                     deactivate Payer
                 end
 
@@ -687,57 +689,64 @@ sequenceDiagram
 
             alt If purchase is completed
             activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
+            Payer ->> Payer: $code("EVENT: onPaymentCompleted") ①
             Payer ->>+ Merchant: Check purchase status
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
             deactivate SwedbankPay
             opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
+            activate Payer
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
             deactivate Merchant
             SwedbankPay -->> Merchant: Purchase Details
             deactivate SwedbankPay
             end
-                        activate Merchant
+            end
+
+            activate Merchant
 Merchant -->>- Payer: Show Purchase complete
             end
 
-            alt If purchase is failed
-            activate Payer
-            Payer ->> Payer: Event: OnPaymentFailed ①
-            Payer ->>+ Merchant: Check purchase status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET {paymentorder.id}
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel: failed-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
-            activate Merchant
-            Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
-            end
+                opt If purchase is failed
+                activate Payer
+                Payer ->> Payer: $code("EVENT:OnPaymentFailed") ①
+                Payer ->>+ Merchant: Check purchase status
+                deactivate Payer
+                Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
+                deactivate Merchant
+                SwedbankPay -->>+ Merchant: $code("rel:failed-paymentorder")
+                deactivate SwedbankPay
+                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
+                activate Payer
+                deactivate Payer
+                Merchant ->>+ SwedbankPay: $code("GET rel:failed-paymentorder")
+                deactivate Merchant
+                SwedbankPay -->> Merchant: Purchase Details
+                deactivate SwedbankPay
+                end
+                activate Merchant
+                Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
+                end
 
-         opt PaymentOrder Callback (if callbackUrls is set) ②
+                opt PaymentOrder Callback (if callbackUrls is set) ②
                 activate SwedbankPay
-                SwedbankPay ->> Merchant: POST Purchase Callback
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
                 deactivate SwedbankPay
          end
-         end
+
 
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
         end
+@enduml
 ```
 
 *   ① See [seamless view events][standard-seamless-view-events] for further information.
