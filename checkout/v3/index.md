@@ -85,7 +85,7 @@ PSP                     v
 {% include iterator.html next_href="/checkout/v3/authenticated/setup/"
                          next_title="Proceed" %}
 
-**Merchant Authenticated Consumer**
+### Merchant Authenticated Consumer
 
 In order to implement this solution, you need to be able to both collect and
 verify your consumer's data using SCA. We store the consumer information, and
