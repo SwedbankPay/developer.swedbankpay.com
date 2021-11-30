@@ -36,7 +36,7 @@ Read more about our two integration alternatives by clicking the links below.
 
 {% include languages.md %}
 
-{% include iterator.html prev_href=""
+{% include iterator.html prev_href="/checkout/v3/"
                          prev_title="Back to Get Started"
                          next_href="redirect"
                          next_title="Integrate Redirect" %}

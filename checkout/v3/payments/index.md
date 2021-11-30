@@ -34,8 +34,9 @@ Read more about our two integration alternatives by clicking the links below.
 
 {% include languages.md %}
 
-{% include iterator.html next_href="redirect"
+{% include iterator.html prev_href="/checkout/v3/"
+                         prev_title="Back to Get Started"
+                         next_href="redirect"
                          next_title="Integrate Redirect" %}
-
 {% include iterator.html next_href="seamless-view"
                          next_title="Integrate Seamless View" %}
