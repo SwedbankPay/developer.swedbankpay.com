@@ -29,14 +29,14 @@ by Swedbank Pay.
 
 Just like with our other implementations, it is always possible to pay as a
 **guest**. When using **Merchant Authenticated Consumer**, the way to do it is
-to not include the `payerReference` and `nationalIdentifier` in the
+to not include the `payerReference` or `nationalIdentifier` in the
 `paymentOrder` request.
 
 Read more about our two integration alternatives by clicking the links below.
 
 {% include languages.md %}
 
-{% include iterator.html prev_href=""
+{% include iterator.html prev_href="/checkout/v3/"
                          prev_title="Back to Get Started"
                          next_href="redirect"
                          next_title="Integrate Redirect" %}
