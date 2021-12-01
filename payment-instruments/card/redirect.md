@@ -140,7 +140,7 @@ sequenceDiagram
   his or hers identity.
 *   ⑤ The Payer reaches the CompleteUrl which you defined in the initial POST
   request. Please note that both a successful and rejected payment reach
-  completion, in contrast to a cancelled payment.
+  completion, in contrast to a canceled payment.
 *   ⑥ Send a GET request with the `paymentId` to check the state of the
   transaction. Click the link for [a complete list of payment and transaction
   states][payment-transaction-states].

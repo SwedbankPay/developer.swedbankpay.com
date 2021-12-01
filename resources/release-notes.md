@@ -277,7 +277,7 @@ Other changes:
 *   Documented allowed characters in `orderItem.class`.
 *   Added `receiptReference` in [Invoice Payments][invoice] and
     [Payment Order][payment-orders] in capture and reversal.
-*   Callback is now moved to Other features in all payments intruments.
+*   Callback is now moved to Other features in all payments instruments.
 *   Clean up of [MobilePay][mobile-pay].
 *   Corrected the address of Leia Ahlström in [Test Data][test-data].
 *   Updated the documentation in [Card Payments][card-payment-url]
@@ -331,7 +331,7 @@ This change contains build updates for the page. :octocat:
 *   Added and fixed several missing headings in template files.
 *   Expanded information about `verify`.
 *   Created new page for [Checkout Capture][checkout-capture].
-*   Mobile Pay Online was previously only refered to as Mobile Pay, this has been
+*   Mobile Pay Online was previously only referred to as Mobile Pay, this has been
     corrected.
 
 ## 7 Feb 2020

@@ -280,7 +280,7 @@ Switching apps on iOS is always done by opening a URL. urls. It is preferred to 
 
 Now, the most straightforward way of escaping this situation is to define a custom url scheme for your app, and do something similar to the Android solution, involving that scheme. If you plan to support only iOS 13.4 and up, where the situation is rather unlikely to occur, this can be sufficient. Doing this on earlier versions is likely to end up suboptimal, though, as doing this will cause an unsightly confirmation dialog to be shown before the app is actually launched. As the situation where `paymentUrl` is opened in the browser is actually quite likely to occur on iOS earlier than 13.4, this means you are more or less subjecting all users on those systems to sub-par user experience.
 
-To provide a workaround to the confirmation popup, we devise a system that allows the user to retrigger the navigation to `paymentUrl` in such a way as to maximize the likelyhood that the system will let the app handle it. As one of the criteria is that the navigation must be to a domain different to the current one, the `paymentUrl` itsef will always redirect to a page on a different domain. That page is then able to link back to the `paymentUrl` and have that navigation be routed to the app. You could host this "trampoline" page yourself, but Swedbank Pay has a generic one available for use. The trampoline page takes three arguments, `target`, which should be set to your `paymentUrl`, `language`, which supports all the Checkout languages, and `app`, you app name that will be shown on the page.
+To provide a workaround to the confirmation popup, we devise a system that allows the user to retrigger the navigation to `paymentUrl` in such a way as to maximize the likelihood that the system will let the app handle it. As one of the criteria is that the navigation must be to a domain different to the current one, the `paymentUrl` itsef will always redirect to a page on a different domain. That page is then able to link back to the `paymentUrl` and have that navigation be routed to the app. You could host this "trampoline" page yourself, but Swedbank Pay has a generic one available for use. The trampoline page takes three arguments, `target`, which should be set to your `paymentUrl`, `language`, which supports all the Checkout languages, and `app`, you app name that will be shown on the page.
 
 On iOS any URL the app is opened with is delivered to the `UIApplicationDelegate` by either the `application(_:continue:restorationHandler:)` method (for universal links) or `application(_:open:options:)`. To let the SDK respond appropriately, you need to call `SwedbankPaySDK.continue(userActivity:)` or `SwedbankPaySDK.open(url:)` from those methods, respectively.
 
@@ -440,7 +440,7 @@ To trigger an update, call `updatePaymentOrder` on the `PaymentViewModel` of the
 ```
 ### iOS
 
-Implement `updatePaymentOrder` in your configuration. Rather like the Android method, this method takes a callback of the same type as `postPaymentorders`, and when that callback is invoked with a `Success` result, the `SwedbankPaySDKController` reloads the payment menu according to the new data. Unlike `postPaymentorders`, this method must also return a request handle, which can be used to cancel the request if needed. If the request is cancelled, the `completion` callback should _not_ be called.
+Implement `updatePaymentOrder` in your configuration. Rather like the Android method, this method takes a callback of the same type as `postPaymentorders`, and when that callback is invoked with a `Success` result, the `SwedbankPaySDKController` reloads the payment menu according to the new data. Unlike `postPaymentorders`, this method must also return a request handle, which can be used to cancel the request if needed. If the request is canceled, the `completion` callback should _not_ be called.
 
 ```swift
     struct MyConfiguration : SwedbankPaySDKConfiguration {
@@ -463,7 +463,7 @@ Implement `updatePaymentOrder` in your configuration. Rather like the Android me
                         termsOfServiceUrl: "https://example.com/tos"
                     )
                     completion(.success(info))
-                } catch NetworkError.cancelled {
+                } catch NetworkError.canceled {
                     // no callback
                 } catch {
                     completion(.failure(error))
@@ -510,7 +510,7 @@ Any exception you throw from your Configuration will be made available in `Payme
 
 ### iOS Payment Menu Redirect Handling
 
-In many cases the payment menu will need to navigate to a different web page as part of the payment process. Unfortunately, testing has shown that not all such pages are happy about being opened in a `WKWebView`. To mitigate this, the SDK contains a list of pages we know to work, and any others will be opened in Safari (or whatever browser the user has set as default in recent iOS). If you wish, you can customize this behaviour by overriding `decidePolicyForPaymentMenuRedirect` in your configuration. Note that you can also modify this behaviour by the `webRedirectBehavior` property of `SwedbankPaySDKController`.
+In many cases the payment menu will need to navigate to a different web page as part of the payment process. Unfortunately, testing has shown that not all such pages are happy about being opened in a `WKWebView`. To mitigate this, the SDK contains a list of pages we know to work, and any others will be opened in Safari (or whatever browser the user has set as default in recent iOS). If you wish, you can customize this behavior by overriding `decidePolicyForPaymentMenuRedirect` in your configuration. Note that you can also modify this behavior by the `webRedirectBehavior` property of `SwedbankPaySDKController`.
 
 ```swift
     struct MyConfiguration : SwedbankPaySDKConfiguration {
@@ -526,12 +526,12 @@ In many cases the payment menu will need to navigate to a different web page as 
 
 ### iOS Payment URL Matching
 
-The iOS `paymentUrl` universal-link/custom-scheme contraption makes it so that your app must be able to accept some variations in the urls. The default behaviour is to allow for a different scheme and additional query parameters. If these are not good for your app, you can override the `url(_:matchesPaymentUrl:)` method in your configuration. If you wish to simply specify the allowed custom scheme, you can conform to `SwedbankPaySDKConfigurationWithCallbackScheme` instead.
+The iOS `paymentUrl` universal-link/custom-scheme contraption makes it so that your app must be able to accept some variations in the urls. The default behavior is to allow for a different scheme and additional query parameters. If these are not good for your app, you can override the `url(_:matchesPaymentUrl:)` method in your configuration. If you wish to simply specify the allowed custom scheme, you can conform to `SwedbankPaySDKConfigurationWithCallbackScheme` instead.
 
 ```swift
     struct MyConfiguration : SwedbankPaySDKConfiguration {
         func url(_ url: URL, matchesPaymentUrl paymentUrl: URL) -> Bool {
-            // We trust univeral links enough
+            // We trust universal links enough
             // so we do not need the custom-scheme fallback
             return url == paymentUrl
         }

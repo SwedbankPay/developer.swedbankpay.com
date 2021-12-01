@@ -83,7 +83,7 @@ PAYLOAD\n
 | {% icon check %} | `METHOD`   | The requested method (in upper case)                                                          |
 | {% icon check %} | `RESOURCE` | The path to desired resource (without hostname and any query parameters)                      |
 | {% icon check %} | `NONSE`    | A unique value for each request ([UUID][uuid]                                                 |
-|                  | `DATE`     | Same as `Transmission-Time` if provided as seperate header. Uses [ISO8601 standard][iso-8601] |
+|                  | `DATE`     | Same as `Transmission-Time` if provided as separate header. Uses [ISO8601 standard][iso-8601] |
 |                  | `PAYLOAD`  | The body of request                                                                           |
 
 Example request:
@@ -166,7 +166,7 @@ function generateHMAC(user, secret, transmissionTime) {
     var nonce = generateNonce(); //UUID
     var date = transmissionTime;
     var uri_path = request.url.trim().replace(new RegExp('^https?://[^/]+/'), '/'); // strip hostname
-    uri_path = uri_path.split("?")[0]; //Remove query paramters
+    uri_path = uri_path.split("?")[0]; //Remove query parameters
     var payload = _.isEmpty(request.data) ? "" : request.data;
     var macData = method + '\n'
         + uri_path + '\n'

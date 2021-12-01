@@ -16,7 +16,7 @@ Content-Type: application/json
 {
     "transaction": {
         "payeeReference": "ABC123",
-        "description": "Cancelling parts of the total amount"
+        "description": "Canceling parts of the total amount"
     }
 }
 ```
@@ -26,7 +26,7 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md %} |
-| {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
+| {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is canceled.                                     |
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
@@ -48,7 +48,7 @@ Content-Type: application/json
             "state": "Completed",
             "amount": 5610,
             "vatAmount": 1122,
-            "description": "Cancelling parts of the authorized payment",
+            "description": "Canceling parts of the authorized payment",
             "payeeReference": "AB832"
         }
     }

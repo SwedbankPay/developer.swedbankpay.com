@@ -161,7 +161,7 @@ To inspect why the payment failed, you need to perform an HTTP `GET` request
 towards the operation's `href` field.
 
 The problem message can be found in `details` field. Under `problems` you can
-see which problem occured, a `description` of the problem and the corresponding
+see which problem occurred, a `description` of the problem and the corresponding
 error code.
 
 An example of the request and response is given below.

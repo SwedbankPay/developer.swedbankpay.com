@@ -163,7 +163,7 @@ Content-Type: application/json
 
 Caused By:
 
--   The payer cancelled BankID authorization.
+-   The payer canceled BankID authorization.
 
 {:.code-view-header}
 Example response bankidcancelled
@@ -175,10 +175,10 @@ Content-Type: application/json
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/bankidcancelled",
-    "title": "BankID Authorization Cancelled",
+    "title": "BankID Authorization Canceled",
     "status": 409,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer cancelled BankID authorization."
+    "detail": "The payer canceled BankID authorization."
 }
 ```
 
@@ -278,7 +278,7 @@ Content-Type: application/json
 
 Caused By:
 
--   The payer cancelled the payment in the Swish app.
+-   The payer canceled the payment in the Swish app.
 
 {:.code-view-header}
 Example response usercancelled
@@ -290,10 +290,10 @@ Content-Type: application/json
 {
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/usercancelled",
-    "title": "User Cancelled",
+    "title": "User Canceled",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer cancelled the payment in the Swish app."
+    "detail": "The payer canceled the payment in the Swish app."
 }
 ```
 
