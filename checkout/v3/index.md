@@ -32,7 +32,7 @@ or two if that makes more sense for your business.
 **Consumer Info:**  The consumer's personal data e.g. name, address, phone
 number etc.
 
-**Authendication:** The process for verifying the consumer's identity via
+**Authentication:** The process for verifying the consumer's identity via
 Strong Consumer Authentication (e.g. BankID).
 
 **Delivery Info:** Information about where the goods should be delivered.
