@@ -5,7 +5,7 @@ redirect_from: /payments/swish/
 estimated_read: 4
 description: |
   Swish is Sweden's main payment app and the
-  preferred online payment method with the highest convertion rates.
+  preferred online payment method with the highest conversion rates.
 permalink: /:path/
 menu_order: 600
 ---
@@ -14,7 +14,7 @@ Swish is the main Swedish payment app for mobile phones supported by all Swedish
 banks, making it one of the essential payment instruments for merchants
 operating in Sweden. According to Kantar Sifo, it is the preferred online
 payment method in the age group 18-40, and the payment method with the best
-convertion rates.
+conversion rates.
 
 We offer both desktop and mobile phone payment flows in our Redirect and
 Seamless View integrations, in addition to Direct API and Payment Link.

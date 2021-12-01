@@ -19,10 +19,10 @@ menu_order: 900
 *   The next step is to collect the payer's Swish registered mobile number
     and make a `POST` request towards Swedbank Pay to create a sales
     transaction.
-*   Swedbank Pay will handle the dialogue with Swish and the payer will have
+*   Swedbank Pay will handle the dialog with Swish and the payer will have
     to confirm the purchase in the Swish app.
 *   If `callbackURL` is set, you will receive a payment callback when the Swish
-    dialogue is completed.
+    dialog is completed.
 *   Make a `GET` request to check the payment status.
 
 {% include alert.html type="informative" icon="report_problem"

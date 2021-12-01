@@ -22,7 +22,7 @@ The SDK cannot communicate directly with your servers, so you must provide a Con
 
 ## iOS
 
-The Configuration is a value that conforms to the `SwedbankPaySDKConfiguration` protocol. The procotol has two required methods:
+The Configuration is a value that conforms to the `SwedbankPaySDKConfiguration` protocol. The protocol has two required methods:
 
 ```swift
     struct MyConfiguration : SwedbankPaySDKConfiguration {

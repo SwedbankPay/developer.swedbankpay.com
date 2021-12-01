@@ -26,7 +26,7 @@ sequenceDiagram
       end
   end
   alt Change shipping address
-    Consumer->>SwedbankPay: Click change shipping adress button
+    Consumer->>SwedbankPay: Click change shipping address button
     SwedbankPay->>Merchant: OnShippingDetailsAvailable
   end
 ```

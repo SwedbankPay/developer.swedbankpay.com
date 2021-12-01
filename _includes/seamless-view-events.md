@@ -15,7 +15,7 @@ described below.
 body="Adding an event
 handler to one of the following events **overrides** the default event handler,
 meaning your custom event handler will have to do what the default event handler
-did. If you don’t, the behaviour of the event is going to be undefined.
+did. If you don’t, the behavior of the event is going to be undefined.
 Just adding an event handler for logging purposes is therefore not possible, the
 event handler will have to perform some functionality similar to the
 event handler you are overriding." %}

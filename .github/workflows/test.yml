@@ -73,15 +73,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
-      #
-      # TODO: Figure out why remark-lint hangs on GitHub Actions.
-      #
-      # - uses: reviewdog/action-remark-lint@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     fail_on_error: true
-      #     remark_args: --frail --rc-path .remarkrc.yaml
-      #     level: warning
-      #
-      - run: npm run remark -- --frail --rc-path .remarkrc.yaml
+      - uses: haya14busa/action-cond@v1
+        id: reporter
+        with:
+          cond: ${{ github.event_name == 'pull_request' }}
+          if_true: github-pr-review
+          if_false: github-check
+      - uses: reviewdog/action-remark-lint@v5
+        with:
+          reporter: ${{ steps.reporter.outputs.value }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+          remark_args: --frail --rc-path .remarkrc.yaml
+          level: warning
+
+  misspell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haya14busa/action-cond@v1
+        id: reporter
+        with:
+          cond: ${{ github.event_name == 'pull_request' }}
+          if_true: github-pr-review
+          if_false: github-check
+      - uses: reviewdog/action-misspell@v1
+        with:
+          reporter: ${{ steps.reporter.outputs.value }}
+          locale: US

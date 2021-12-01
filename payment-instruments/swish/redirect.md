@@ -20,13 +20,13 @@ menu_order: 700
 *   You need to redirect the payer to the payment page to enter the Swish
     registered mobile number.
     This triggers the initiation of a sales transaction.
-*   Swedbank Pay handles the dialogue with Swish and the payer confirms the
+*   Swedbank Pay handles the dialog with Swish and the payer confirms the
     purchase in the Swish app.
 *   Swedbank Pay will redirect the payer's browser to - or display directly in
     the iFrame - one of two specified URLs, depending on whether the payment
-    session is followed through completely or cancelled beforehand.
+    session is followed through completely or canceled beforehand.
     Please note that both a successful and rejected payment reach completion,
-    in contrast to a cancelled payment.
+    in contrast to a canceled payment.
 
 The payer is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.

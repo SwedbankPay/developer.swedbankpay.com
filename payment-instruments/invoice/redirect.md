@@ -16,8 +16,8 @@ menu_order: 500
   payer can enter the invoice details in a secure Swedbank Pay environment.
 *   Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
   depending on whether the payment session is followed through completely or
-  cancelled beforehand. Please note that both a successful and rejected payment
-  reach completion, in contrast to a cancelled payment.
+  canceled beforehand. Please note that both a successful and rejected payment
+  reach completion, in contrast to a canceled payment.
 *   When you detect that the payer reach your `completeUrl` , you need to do a
   `GET` request to receive the state of the transaction, containing the
   `paymentID` generated in the first step, to receive the state of the
