@@ -27,7 +27,8 @@ purchase component will be styled by Swedbank Pay.
 
 Read more about our two integration alternatives by clicking the links below.
 
-{% include languages.md %}
+This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
+`sv-SE`.
 
 {% include iterator.html prev_href="/checkout/v3/"
                          prev_title="Back to Get Started"
