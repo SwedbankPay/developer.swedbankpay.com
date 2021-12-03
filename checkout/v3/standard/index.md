@@ -23,7 +23,8 @@ credentials during checkin. This way, the details will be used once.
 
 Read more about the integration by clicking the link below.
 
-{% include languages.md %}
+This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
+`sv-SE`.
 
 {% include iterator.html prev_href="/checkout/v3/"
                          prev_title="Back to Get Started"
