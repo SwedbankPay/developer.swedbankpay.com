@@ -266,7 +266,7 @@ sequenceDiagram
 
     Vipps_API-->>-Vipps_App: Confirm Payment UI
     activate Vipps_App
-    Vipps_App-->>Vipps_App: Confirmation Dialogue
+    Vipps_App-->>Vipps_App: Confirmation Dialog
     Vipps_App-->>-Vipps_API: Confirmation
 
     activate Vipps_API
@@ -303,7 +303,7 @@ sequenceDiagram
 5.  The response will contain the state of the transaction. It will normally be
    `AwaitingActivity` in this phase of the payment, meaning we are awaiting a
    response from Vipps.
-6.  Swedbank Pay handles the dialogue with Vipps and the payer confirms the
+6.  Swedbank Pay handles the dialog with Vipps and the payer confirms the
    purchase in the Vipps app.
 
 {% include iterator.html

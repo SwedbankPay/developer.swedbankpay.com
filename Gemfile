@@ -5,7 +5,7 @@ ruby '~> 2.7'
 gem 'jekyll', '~> 4.2.0', group: :jekyll_plugins
 gem 'jemoji'
 
-# Neccessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
+# Necessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
 gem 'faraday', '~> 1.8.0'
 gem 'html-proofer-unrendered-markdown'
 gem 'html-proofer'

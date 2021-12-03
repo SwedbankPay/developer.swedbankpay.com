@@ -5,8 +5,8 @@
 The `prices` resource lists the prices related to a specific payment. In short,
 it is where you enter the payment's amount. It consists of the payment's `id`
 and the `priceList`, which again contains the payment's `type`, `amount` and
-`vatAmount`. 
- 
+`vatAmount`.
+
  The `type` refers to the payment instrument, like `Swish`, `Trustly` or
  `Creditcard`. Read more about the types below the code example and table. The
  `amount` refers to the **full** amount (incl. VAT) for the payment, and
@@ -55,7 +55,7 @@ Content-Type: application/json
 | `payment`            | `string`  | {% include field-description-id.md sub_resource="prices" %}                                                                                                                                 |
 | `prices`             | `object`  | The `prices`  resource.                                                                                                                                                                     |
 | └➔&nbsp;`id`         | `string`  | {% include field-description-id.md resource="prices" %}                                                                                                                                     |
-| └➔&nbsp;`priceList`  | `array`   | The array of price objects. **Note:** Even if you specifiy  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
+| └➔&nbsp;`priceList`  | `array`   | The array of price objects. **Note:** Even if you specify  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
 | └─➔&nbsp;`type`      | `string`  | The type of the price object.                                                                                                                                                               |
 | └─➔&nbsp;`amount`    | `integer` | {% include field-description-amount.md %}                                                                                                                                                   |
 | └─➔&nbsp;`vatAmount` | `integer` | {% include field-description-vatamount.md %}                                          |
@@ -64,9 +64,9 @@ Content-Type: application/json
 
 Each payment instrument have one or more prices object types. Usually there is
 only one, whichs corresponds with the name of the payment instrument, like
-`Vipps`, `Swish` or `Mobilepay`. 
+`Vipps`, `Swish` or `Mobilepay`.
 
-The most common occurence of several object types is for card payments. While it
+The most common occurrence of several object types is for card payments. While it
 is possible to group them all as `Creditcard`, you can also differentiate on
 card types as shown in the example above. This is useful if certain card brands
 have additional fees, others have discounts or something similar. If you do

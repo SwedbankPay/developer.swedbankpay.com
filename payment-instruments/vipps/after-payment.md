@@ -244,7 +244,7 @@ Content-Type: application/json
 
 ## Create cancellation transaction
 
-A payment may be cancelled if the `rel` `create-cancellation` is available. You
+A payment may be canceled if the `rel` `create-cancellation` is available. You
 can only cancel a payment, or part of it, if it has yet to be captured. To
 revert a capture, or part of a capture, you must perform a `reversal`.
 Performing a cancellation will cancel all the remaining authorized amount on a

@@ -209,12 +209,12 @@ sequenceDiagram
     WebView ->> SDK: Navigate to another page
     alt Navigation is to a regular http(s) URL
         SDK ->> SDK: Check web view compatibility
-        alt Compatible with Web Wiew
+        alt Compatible with Web View
             SDK ->> WebView: Proceed with navigation normally ①
             WebView ->> SDK: Navigate to paymentUrl ②
             SDK ->> SDK: Recognize paymentUrl
             SDK ->> WebView: Cancel navigation
-        else Not Compatible with Web Wiew
+        else Not Compatible with Web View
             SDK ->> WebView: Cancel navigation
             SDK ->> System: Open URL
             System ->> Browser: Open URL in Browser
@@ -240,7 +240,7 @@ sequenceDiagram
 *   ① The same check is repeated for any further navigation inside the WebView
 *   ② All properly configured authentication flows must end up here
 *   ③ On Android, paymentUrl is an https URL that redirects to an Android Intent URL.
-*   ④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to another app, it should be routed to that app instead of the Browser. However, Univeral Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with "paymentUrl opened in Browser" below instead.
+*   ④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to another app, it should be routed to that app instead of the Browser. However, Universal Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with "paymentUrl opened in Browser" below instead.
 
 ### Return from Browser
 

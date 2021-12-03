@@ -4,7 +4,7 @@ redirect_from: /payments/card/after-payment
 estimated_read: 13
 description: |
   Apart from capturing the authorized funds, there are still a couple of options
-  available to you after a payment. Authorizations can cancelled, captures can
+  available to you after a payment. Authorizations can canceled, captures can
   be both partially and fully reversed. Read more about the options here.
 menu_order: 900
 ---

@@ -113,7 +113,7 @@ There are two ways of being notified of payment completion: listening for naviga
 
 ### Listening for Navigations
 
-The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be used to listen for navigations, and change their behaviour.
+The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be used to listen for navigations, and change their behavior.
 
 {:.code-view-header}
 **iOS**

@@ -33,7 +33,7 @@ If you want to inspect the transactional status of a payment, read about the
 
 ### Transaction States
 
-*   `ìntialized` is the transaction state when something unexpected occured, and
+*   `ìntialized` is the transaction state when something unexpected occurred, and
    it is impossible to determine the exact status of the transaction.
    An example of this can be a network failure.
    No further actions can be done on a payment with a transaction in this state.
