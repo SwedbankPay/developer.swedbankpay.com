@@ -31,7 +31,7 @@ containing the following information:
 -   **Merchant Name:** This represents your core business entity with us.
 -   **Merchant ID:** This is how we identify you.
 -   **Services:** These are the services that are activated and ready to test.
--   **Login Credentials:** You will receive a temporary password in a seperate
+-   **Login Credentials:** You will receive a temporary password in a separate
   e-mail.
 
 {% include alert.html type="warning" icon="warning" body="Please check your spam
@@ -48,14 +48,14 @@ To generate your Access Token:
   for testing environment.
 -   **Merchant details:** Here you will find information about your account.
 
-An Access Token is neccessary, since it will be used together with Payee ID to
+An Access Token is necessary, since it will be used together with Payee ID to
 validate transactions. The Payee ID will serve as the door and your token is the
 key.
 
 -   Navigate to "Access Tokens" at the top of the page.
 -   Choose "Add" and name the Token. Suggestion is to name it according to what
   environment it is created in.
--   Your Token will only be fully visable upon creation. For security purposes, we
+-   Your Token will only be fully visible upon creation. For security purposes, we
   will mask it like shown in the example above. If you need to keep track of it,
   please save it externally in a safe place as it will remain encrypted.
 
@@ -63,7 +63,7 @@ If you were to add more payments methods later, a new token needs to be created.
 This is because tokens are created with their current account settings in mind.
 
 {% include alert.html type="warning" icon="warning" body="Please note that the
-production and staging environment need seperate tokens." %}
+production and staging environment need separate tokens." %}
 
 {% include iterator.html next_href="/checkout/v3/"
                          next_title="Start Integrate" %}
