@@ -106,8 +106,7 @@ or two if that makes more sense for your business.
 
 ## What Are You Looking For?
 
-**Full Checkout**
-**Payments Only**
+{% capture full_checkout %}
 
 ## Full Checkout
 
@@ -164,6 +163,9 @@ payment methods.
   button_alignment='align-self-end'
   to='/checkout/v3/mac/setup'
 %}
+{% endcapture %}
+
+{% capture payments_only %}
 
 ## Payments Only
 
@@ -186,3 +188,9 @@ payment options and the full payment offering.
   button_alignment='align-self-end'
   to='/checkout/v3/payments/setup'
 %}
+{% endcapture %}
+
+{% include tabs.html
+  full_checkout=full_checkout
+  payments_only=payments_only
+  %}
