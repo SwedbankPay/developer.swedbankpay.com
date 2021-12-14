@@ -3,9 +3,73 @@ section: Checkout v3
 title: Get Started
 estimated_read: 5
 description: |
-  Before moving on we would like to give you a brief introduction to what you need
-  to consider before composing your checkout page, along with some prerequisites.
+  **Before moving on we would like to give you a brief introduction to what you need
+  to consider before composing your checkout page, along with some prerequisites.**
 menu_order: 300
+checkout_v3: true
+
+header:
+  - table_header: Data Ownership
+  - table_header: SwedbankPay
+    badge_type: default
+  - table_header: Merchant Side
+    badge_type: inactive
+table_content:
+  - icon: lock
+    label: Authentication
+    swedbankPay: true
+  - icon: local_shipping
+    label: Delivery Info
+    swedbankPay: true
+  - icon: assignment_ind
+    label: Consumer Info
+    swedbankPay: true
+  - icon: monetization_on
+    label: PSP
+    swedbankPay: true
+
+table_content_authenticated:
+  - icon: lock
+    label: Authentication
+    merchantSide: true
+  - icon: local_shipping
+    label: Delivery Info
+    swedbankPay: true
+  - icon: assignment_ind
+    label: Consumer Info
+    swedbankPay: true
+  - icon: monetization_on
+    label: PSP
+    swedbankPay: true
+
+table_content_mac:
+  - icon: lock
+    label: Authentication
+    merchantSide: true
+  - icon: local_shipping
+    label: Delivery Info
+    merchantSide: true
+  - icon: assignment_ind
+    label: Consumer Info
+    swedbankPay: true
+  - icon: monetization_on
+    label: PSP
+    swedbankPay: true
+
+table_content_payments:
+  - icon: lock
+    label: Authentication
+    merchantSide: true
+  - icon: local_shipping
+    label: Delivery Info
+    merchantSide: true
+  - icon: assignment_ind
+    label: Consumer Info
+    merchantSide: true
+  - icon: monetization_on
+    label: PSP
+    swedbankPay: true
+
 ---
 
 ## Choose The Right Implementation For Your Business
@@ -29,21 +93,20 @@ be able to decide which payment options are available for the consumer. Hence
 you can show all available payment options for that specific market, or just one
 or two if that makes more sense for your business.
 
-**Consumer Info:**  The consumer's personal data e.g. name, address, phone
-number etc.
+-   **Consumer Info:** The consumer's personal data e.g. name, address, phone
+    number etc.
 
-**Authentication:** The process for verifying the consumer's identity via
-Strong Consumer Authentication (e.g. BankID).
+-   **Authentication:** The process for verifying the consumer's identity via
+    Strong Consumer Authentication (e.g. BankID).
 
-**Delivery Info:** Information about where the goods should be delivered.
+-   **Delivery Info:** Information about where the goods should be delivered.
 
-**PSP:** The service of providing payment methods in the checkout or payment
-menu.
+-   **PSP:** The service of providing payment methods in the checkout or payment
+    menu.
 
 ## What Are You Looking For?
 
-**Full Checkout**
-**Payments Only**
+{% capture full_checkout %}
 
 ## Full Checkout
 
@@ -52,54 +115,57 @@ We can also prefill consumer info in the checkout if they have agreed to let us
 store their info. All of our implementations support both single payment options
 and the full payment offering.
 
-### Standard
-
-We collect and verify the identity of your consumer. We also collect the billing
-and shipping address, and we store the consumer information. With our PSP you
-are always able to choose one or more payment methods.
-
-Data Ownership          Swedbank Pay                  Merchant side
-
-Authentication          v
-Delivery Info           v
-Consumer Info           v
-PSP                     v
-
-{% include iterator.html next_href="/checkout/v3/standard/setup"
-                         next_title="Proceed" %}
-
-### Authenticated
+{% include card-extended.html
+  title='Standard'
+  icon_content='shopping_cart'
+  icon_outlined=true
+  button_content='Proceed'
+  text='We collect and verify the identity of your consumer. We also collect the billing and shipping address, and we store the consumer information. With our PSP you are always able to choose one or more payment methods.'
+  table_content=page.table_content
+  header=page.header
+  button_type='secondary'
+  button_alignment='align-self-end'
+  to='/checkout/v3/standard/setup'
+  %}
 
 The consumer data you have collected, is shared with us for verification and
 storage. If you have a login, your consumer won't need to fill out their
 information twice. With our PSP you are always able to choose one or more
 payment methods.
 
-Data Ownership          Swedbank Pay                  Merchant side
+{% include card-extended.html
+  title='Authenticated'
+  icon_content='shopping_cart'
+  icon_outlined=true
+  button_content='Proceed'
+  text="The consumer data you have collected, is shared with us for verification and
+  storage. If you have a login, your consumer won't need to fill out their
+  information twice. With our PSP you are always able to choose one or more
+  payment methods."
+  table_content=page.table_content_authenticated
+  header=page.header
+  button_type='secondary'
+  button_alignment='align-self-end'
+  to='/checkout/v3/authenticated/setup'
+%}
 
-Authentication          v
-Delivery Info           v
-Consumer Info                                         v
-PSP                     v
+{% include card-extended.html
+  title='Merchant Authenticated Consumer'
+  icon_content='shopping_cart'
+  icon_outlined=true
+  button_content='Proceed'
+  text="In order to implement this solution, you need to be able to both collect and
+  verify your consumer's data using SCA. We store the consumer information, and
+  with our PSP you are always able to choose one or more payment methods."
+  table_content=page.table_content_mac
+  header=page.header
+  button_type='secondary'
+  button_alignment='align-self-end'
+  to='/checkout/v3/mac/setup'
+%}
+{% endcapture %}
 
-{% include iterator.html next_href="/checkout/v3/authenticated/setup"
-                         next_title="Proceed" %}
-
-### Merchant Authenticated Consumer
-
-In order to implement this solution, you need to be able to both collect and
-verify your consumer's data using SCA. We store the consumer information, and
-with our PSP you are always able to choose one or more payment methods.
-
-Data Ownership          Swedbank Pay                  Merchant side
-
-Authentication                                        v
-Delivery Info                                         v
-Consumer Info           v
-PSP                     v
-
-{% include iterator.html next_href="/checkout/v3/mac/setup"
-                         next_title="Proceed" %}
+{% capture payments_only %}
 
 ## Payments Only
 
@@ -108,18 +174,23 @@ build your own checkout flow. You collect the consumer data and own the entire
 checkout process. The **Payments Only** implementation supports both single
 payment options and the full payment offering.
 
-### Payments
+{% include card-extended.html
+  title='Payments'
+  icon_content='shopping_cart'
+  icon_outlined=true
+  button_content='Proceed'
+  text="In order to implement this solution, you need to be able to both collect and
+  verify your consumer's data using SCA. You also store the consumer information.
+  With our PSP you are always able to choose one or more payment methods."
+  table_content=page.table_content_payments
+  header=page.header
+  button_type='secondary'
+  button_alignment='align-self-end'
+  to='/checkout/v3/payments/setup'
+%}
+{% endcapture %}
 
-In order to implement this solution, you need to be able to both collect and
-verify your consumer's data using SCA. You also store the consumer information.
-With our PSP you are always able to choose one or more payment methods.
-
-Data Ownership          Swedbank Pay                  Merchant side
-
-Authentication                                        v
-Delivery Info                                         v
-Consumer Info                                         v
-PSP                     v
-
-{% include iterator.html next_href="/checkout/v3/payments/setup"
-                         next_title="Proceed" %}
+{% include tabs.html
+  full_checkout=full_checkout
+  payments_only=payments_only
+  %}

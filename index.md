@@ -6,140 +6,37 @@ front_page:
     Our developer portal is a full tool box for getting started with easy,
     flexible and safe payments on your e-commerce website. Read the
     <a href="/introduction">introduction</a> or make your selection below.
+  show_merchants_bar: false
+  start_heading: Let's get you started with easy, flexible and safe payments on your e-commerce website!
 hide_from_sidebar: true
 ---
 
+{% contentfor intro_cards %}
+  {% include card-extended.html
+          title='Get to know Checkout v3'
+          no_icon=true
+          button_content='Get started'
+          text='All businesses have their own unique needs. Which is why we have made it possible for you to adapt to a variety of those needs, using only one integration. To help you get started we have made five implementation options to choose among. In that way you can utilize your checkin in just a few configurations, or switch into any other of our stand alone payment methods - if that suits you better. Intrigued yet? Let’s find out more!'
+          button_type='primary'
+          button_alignment='align-self-end'
+          to='/checkout/v3/'
+
+          %}
+
+      {% include card-extended.html
+          title='Want to try it yourself?'
+          no_icon=true
+          button_content='Visit our Demoshop'
+          text='Experience what it would be like to pay as a costumer of yours in our demoshop.'
+          button_type='primary'
+          button_alignment='align-self-start'
+          card_container=true
+          container_content='![demoshop](/assets/img/demoshop-image.svg)'
+          to='https://ecom.externalintegration.payex.com/pspdemoshop'
+          %}
+{% endcontentfor %}
+
 {% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
-
-{% contentfor start %}
-  <div class="row mt-4">
-      <div class="{{ card_col_class }}">
-        {% include card.html
-            title='Checkout'
-            title_type="h2"
-            text='With our Checkout you get the pre-built all-in-one payment
-            solution, complete with a checkin interface and payment menu.'
-            icon_content='shopping_cart'
-            icon_outlined=true
-            to='/checkout/'
-        %}
-      </div>
-      <div class="{{ card_col_class }}">
-        {% include card.html
-            title='Payment Menu'
-            title_type="h2"
-            text='With Payment Menu you are in charge of the consumer journey
-            while being able to choose between all available payment instruments
-            in a single integration.'
-            icon_content='menu_book'
-            to='/payment-menu/'
-        %}
-      </div>
-      <div class="{{ card_col_class }}">
-        {% include card.html
-            title='Payment Instruments'
-            title_type="h2"
-            text='Payment Instruments gives you a one-by-one integration with
-            more customization for each payment method to build your own
-            payment menu.'
-            icon_content='credit_card'
-            to='/payments/'
-        %}
-      </div>
-      <div class="{{ card_col_class }}">
-        {% include card.html
-            title='Gift Cards'
-            title_type="h2"
-            text='Our Gift Cards API allows your customers to pay with prepaid
-            gift cards issued by Swedbank Pay.'
-            icon_content='card_giftcard'
-            to='/gift-cards/'
-        %}
-      </div>
-  </div>
-{% endcontentfor %}
-
-{% contentfor sdks %}
-  <h2 id="front-page-sdk" class="heading-line heading-line-sdk">Looking for SDKs?</h2>
-  <div class="row mt-4">
-    <div class="{{ card_col_class }}">
-      {% include card.html
-          title='Android SDK'
-          text='Learn more about how to integrate our Android SDK'
-          icon_content='img/sdks/logo-android.svg'
-          icon_svg=true
-          type='sdk'
-          to='/modules-sdks/mobile-sdk/android'
-      %}
-    </div>
-    <div class="{{ card_col_class }}">
-      {% include card.html
-          title='iOS SDK'
-          text='Learn more about how to integrate our iOS SDK'
-          icon_content='img/sdks/logo-swift.svg'
-          icon_svg=true
-          type='sdk'
-          to='/modules-sdks/mobile-sdk/ios'
-      %}
-    </div>
-    <div class="{{ card_col_class }}">
-      {% include card.html
-          title='.NET SDK'
-          text='Learn more about how to integrate our .NET SDK'
-          icon_content='img/sdks/logo-net.svg'
-          icon_svg=true
-          type='sdk'
-          to='/modules-sdks/#official-sdks'
-      %}
-    </div>
-    <div class="{{ card_col_class }}">
-      {% include card.html
-          title='PHP SDK'
-          text='Learn more about how to integrate our PHP SDK'
-          icon_content='img/sdks/logo-php.svg'
-          icon_svg=true
-          type='sdk'
-          to='/modules-sdks/#official-sdks'
-      %}
-    </div>
-  </div>
-{% endcontentfor %}
-
-{% contentfor modules %}
-  <h2 id="front-page-module" class="heading-line heading-line-module">Or perhaps modules?</h2>
-  <div class="row mt-4">
-    <div class="{{ card_col_class }}">
-      {% include card.html
-          title='Episerver'
-          text='See how you can integrate the Episerver module'
-          icon_content='img/modules/logo-episerver.svg'
-          icon_svg=true
-          type='module'
-          to='/modules-sdks/#official-modules'
-      %}
-    </div>
-    <div class="{{ card_col_class }}">
-      {% include card.html
-          title='Magento 2'
-          text='See how you can integrate the Magento 2 module'
-          icon_content='img/modules/logo-magento2.svg'
-          icon_svg=true
-          type='module'
-          to='/modules-sdks/#official-modules'
-      %}
-    </div>
-    <div class="{{ card_col_class }}">
-      {% include card.html
-          title='WooCommerce'
-          text='See how you can integrate the WooCommerce module'
-          icon_content='img/modules/logo-woocommerce.svg'
-          icon_svg=true
-          type='module'
-          to='/modules-sdks/#official-modules'
-      %}
-    </div>
-  </div>
-{% endcontentfor %}
 
 {% contentfor release_notes %}
   <h2 id="front-page-release-notes" class="heading-line heading-line-green">What's new in the documentation</h2>

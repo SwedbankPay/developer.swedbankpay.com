@@ -2,9 +2,10 @@
 section: Authenticated
 title: Set Up
 description: |
-  In this section we are going to guide you through setting up your test account
+  **In this section we are going to guide you through setting up your test account
   and how to make an API request for your first test payment. After these steps,
-  you're ready to build your integration!
+  you're ready to build your integration!**
+checkout_v3: true
 ---
 
 ## Step 1: Sign Up For A Test Account
@@ -12,9 +13,9 @@ description: |
 A test account gives you access to our unified dashboard for managing your
 account across different platforms. We call this dashboard the Ecom Admin.
 
-Your test account request should be sent to: supporttestaccount@swedbankpay.se.
-In order to create an account for you, we need some specific information
-from your side:
+Your test account request should be sent to:
+[testaccount@swedbankpay.com](mailto:testaccount@swedbankpay.com) in order to
+create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
