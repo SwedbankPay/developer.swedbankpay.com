@@ -19,6 +19,8 @@ hide_from_sidebar: true
           text='All businesses have their own unique needs. Which is why we have made it possible for you to adapt to a variety of those needs, using only one integration. To help you get started we have made five implementation options to choose among. In that way you can utilize your checkin in just a few configurations, or switch into any other of our stand alone payment methods - if that suits you better. Intrigued yet? Let’s find out more!'
           button_type='primary'
           button_alignment='align-self-end'
+          to='/checkout/v3/'
+
           %}
 
       {% include card-extended.html
