@@ -3,9 +3,7 @@ title: Developer Portal
 layout: front-page
 front_page:
   ingress: |
-    Our developer portal is a full tool box for getting started with easy,
-    flexible and safe payments on your e-commerce website. Read the
-    <a href="/introduction">introduction</a> or make your selection below.
+    Here you'll find the full toolbox for how to integrate our payment solutions and acquaint yourself with their different features and functionalities.
   show_merchants_bar: false
   start_heading: Let's get you started with easy, flexible and safe payments on your e-commerce website!
 hide_from_sidebar: true
@@ -73,7 +71,7 @@ hide_from_sidebar: true
           {% include card.html title='See all resources (7)'
               text='Data protection, public migration key etc'
               no_icon=true
-              to='/resources'
+              to='/resources/'
           %}
       </div>
   </div>

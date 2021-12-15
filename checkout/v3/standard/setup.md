@@ -64,8 +64,8 @@ the key.
   environment it is created in.
 
 *   Your token will only be fully visible upon creation. For security purposes,
-    we will mask it as shown in the example above. If you need to keep track
-    of it, please save it externally in a safe place as it will remain
+    we will mask it like this `12a3**********bc4de56f`. If you need to keep
+    track of it, please save it externally in a safe place as it will remain
     encrypted.
 
 If you were to add more payment methods later, a new token needs to be created.
