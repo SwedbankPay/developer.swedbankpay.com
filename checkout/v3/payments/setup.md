@@ -58,9 +58,9 @@ An access token is necessary since it will be used together with Payee ID to
 validate transactions. The Payee ID will serve as the door and, your token is
 the key.
 
-*   Navigate to “access tokens” at the top of the page.
+*   Navigate to “Access Tokens” at the top of the page.
 
-*   Choose "add" and name the token. We suggest you name it according to what
+*   Choose "Add" and name the token. We suggest you name it according to what
   environment it is created in.
 
 *   Your token will only be fully visible upon creation. For security purposes,
