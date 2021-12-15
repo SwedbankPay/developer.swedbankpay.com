@@ -10,7 +10,7 @@ checkout_v3: true
 
 header:
   - table_header: Data Ownership
-  - table_header: SwedbankPay
+  - table_header: Swedbank Pay
     badge_type: default
   - table_header: Merchant Side
     badge_type: inactive
@@ -110,10 +110,10 @@ or two if that makes more sense for your business.
 
 ## Full Checkout
 
-By using the Full Checkout, we help you collect and safely store consumer data.
-We can also prefill consumer info in the checkout if they have agreed to let us
-store their info. All of our implementations support both single payment options
-and the full payment offering.
+By using the **Full Checkout**, we help you collect and safely store consumer
+data. We can also prefill consumer info in the checkout if they have agreed to
+let us store their info. All of our implementations support both single payment
+options and the full payment offering.
 
 {% include card-extended.html
   title='Standard'
@@ -127,11 +127,6 @@ and the full payment offering.
   button_alignment='align-self-end'
   to='/checkout/v3/standard/setup'
   %}
-
-The consumer data you have collected, is shared with us for verification and
-storage. If you have a login, your consumer won't need to fill out their
-information twice. With our PSP you are always able to choose one or more
-payment methods.
 
 {% include card-extended.html
   title='Authenticated'

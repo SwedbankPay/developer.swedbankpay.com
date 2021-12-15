@@ -73,7 +73,7 @@ hide_from_sidebar: true
           {% include card.html title='See all resources (7)'
               text='Data protection, public migration key etc'
               no_icon=true
-              to='/resources'
+              to='/resources/'
           %}
       </div>
   </div>
