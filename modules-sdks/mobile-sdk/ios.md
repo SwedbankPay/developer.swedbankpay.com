@@ -154,13 +154,15 @@ import SwedbankPaySDKMerchantBackend
 
 The main component of the SDK is `SwedbankPaySDKController`, a `UIViewController` that handles a single payment order. When initializing a `SwedbankPaySDKController`, you must provide a `SwedbankPaySDKConfiguration` that describes the server environment the `SwedbankPaySDKController` is working with, along with a `SwedbankPaySDK.PaymentOrder`, and, unless making a guest payment, a `SwedbankPaySDK.Consumer`. Providing a `SwedbankPaySDK.Consumer` makes future payments by the same payer easier.
 
-The `SwedbankPaySDKConfiguration` is, in most cases, static for a given server environment. Therefore, it makes sense to keep it in a convenient constant. The `SwedbankPaySDK.MerchantBackendConfiguration` initializer can determine your application's custom scheme for payment urls automatically, if you have set it up as described above.
+The `SwedbankPaySDKConfiguration` is, in most cases, static for a given server environment. Unless you need dynamic selection, create a single `SwedbankPaySDKConfiguration` and set it as the default configuration. For more complicated cases you need to subclass `SwedbankPaySDKController` and override the `configuration` property.
 
 ```swift
-let swedbankPayConfig = SwedbankPaySDK.MerchantBackendConfiguration(
+let configuration = SwedbankPaySDK.MerchantBackendConfiguration(
     backendUrl: "https://example.com/swedbank-pay-mobile/",
     headers: [:]
 )
+
+SwedbankPaySDKController.defaultConfiguration = configuration
 ```
 
 The semantics of `SwedbankPaySDK.Consumer` properties are the same as the fields of the [POST /psp/consumers][checkin-consumer]. There are default values for the `operation` and `language` properties (`.InitiateConsumerSession` and `.English`, respectively).
@@ -217,17 +219,17 @@ let paymentOrder = SwedbankPaySDK.PaymentOrder(
 
 *   ① payeeId and payeeReference are required fields, but default to the empty string. The assumption here is that your Merchant Backend will override the values set here. If your system works better with the Mobile Client setting them instead, they are available here also.
 
-To start a payment, create a `SwedbankPaySDKController` and display it. The payment process starts as soon as the `SwedbankPaySDKController` is visible.
+Create a `SwedbankPaySDKController` and display it. Then, call `startPayment` to start the payment process.
 
 ```swift
-val paymentController = SwedbankPaySDKController(
-    configuration: swedbankPayConfig,
-    consumer: consumer,
-    paymentOrder: paymentOrder
-)
+let paymentController = SwedbankPaySDKController()
+// or have a storyboard create it
 
 present(paymentController, animated: true, completion: nil)
 // There are, of course, many other ways of displaying a view controller
+
+paymentController.startPayment(withCheckin: true, consumer: consumer, paymentOrder: paymentOrder, userData: nil)
+// userData is not used with MerchantBackendConfiguration
 ```
 
 To observe the payment process, set a `delegate` to the `SwedbankPaySDKController`. When the delegate is informed that the payment process is finished, you should remove the `SwedbankPaySDKController` and inform the user of the result.
@@ -303,24 +305,7 @@ func paymentFailed(failureReason: SwedbankPaySDKController.FailureReason) {
 
 The payment process may involve navigating to third-party web pages, or even launching external applications. To resume processing the payment in the payment menu, each payment order must have a [Payment Url][payment-url]. Let us now discuss how that payment url is used in the iOS environment. In any case, using the convenience constructors for `SwedbankPaySDK.PaymentOrderUrls` is recommended; they will generate a unique payment url, which will be routed to the application in all cases, assuming the application and the merchant backend are configured correctly.
 
-`SwedbankPaySDKController` internally uses a `WKWebView`, and in many cases third-party pages can be opened inside that web view. In these cases the SDK can intercept the navigation to the payment url and reload the payment menu without further setup. Unfortunately, our testing has revealed that some web pages used in confirmation flows are incompatible with being opened in a web view. Because of these cases, `SwedbankPaySDKController` will only open known-good pages internally, and will open other pages in Safari instead. The SDK contains a list of domain names of pages tested to work in the web view. You can also specify your own list of domains, and there are debugging features available for testin unknown pages in the web view. Pull requests updating the list of good domains in the SDK are welcome.
-
-```mermaid
-sequenceDiagram
-    participant SDK
-    participant Web as Web View
-    participant Safari
-
-    Web ->> SDK: Navigate to third-party web page
-    SDK ->> SDK: Check if page is in list of good domains
-    alt Domain is good
-        SDK ->> Web: Allow navigation
-        Web ->> Web: Load third-party page
-    else Domain is not good
-        SDK ->> Web: Cancel navigation
-        SDK ->> Safari: Open third-party page
-    end
-```
+`SwedbankPaySDKController` internally uses a `WKWebView`, and in many cases third-party pages can be opened inside that web view. Unfortunately, our testing has revealed that some web pages used in confirmation flows are incompatible with being opened in a web view. As of version `2.5.0-alpha.1`, the SDK will attempt to detect such incompatibility, and allow the user to restart the payment such that redirects are instead opened in Safari (or any other app the user has set as the default browser).
 
 Returning to the payment menu from inside the web view is simple: detect the navigation and override it to reload the payment menu instead.
 

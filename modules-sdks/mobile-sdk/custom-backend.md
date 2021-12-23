@@ -297,7 +297,7 @@ Host: example.com
 
 ```http
 HTTP/1.1 301 Moved Permanently
-Location: https://ecom.stage.payex.com/externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fpayment%2Fios%3Ffallback%3Dtrue&language=en-US&app=Example%20App
+Location: https://ecom.payex.com/externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fpayment%2Fios%3Ffallback%3Dtrue&language=en-US&app=Example%20App
 ```
 
 The trampoline url will, in turn, serve an html page:
@@ -307,7 +307,7 @@ The trampoline url will, in turn, serve an html page:
 
 ```http
 GET /externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fpayment%2Fios%3Ffallback%3Dtrue&language=en-US&app=Example%20App HTTP/1.1
-Host: ecom.stage.payex.com
+Host: ecom.payex.com
 ```
 
 {:.code-view-header}

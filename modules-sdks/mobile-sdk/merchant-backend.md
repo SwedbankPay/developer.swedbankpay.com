@@ -159,7 +159,7 @@ Content-Type: application/json
 
 The `paymentorders` endpoint is used to create a new Payment Order. It is specified as a transparent wrapper around the corresponding [Swedbank Pay API][create-payment-order]. However, it is to be expected that your backend will need to process the payment order both before making the Swedbank Pay API call, and after receiving the response from Swedbank Pay. The sample implementations validate the input, then create an internal unique identitifer for the payment order, and set that as `paymentorder.payeeInfo.payeeReference`, before making the Swedbank Pay call. After receiving the response, the backend stores the `id` of the Payment Order for future use, and forwards the response to the SDK.
 
-Optionally, if your implementation uses [instrument mode payments][instrument-mode], your backend can return the list of valid instruments, along with an endpoint to change the instrument. If you do this, you must also implement the Change Instrument endpoint. The Merchant Backend Configuration on the client side can then use this endpoint to change the instrument of an ongoing payment order.
+Optionally, if your implementation uses [instrument mode payments][instrument-mode], your backend can return a link to an endpoint to change the instrument. Of course, you must then also implement the Change Instrument endpoint. The Merchant Backend Configuration on the client side can then use this endpoint to change the instrument of an ongoing payment order.
 
 A production implementation should validate the payment order also from a business logic perspective. This is, naturally, outside the scope of the SDK, as is any other processing you may wish to perform with the payment order. The SDK expects the same form of response as returned from the Swedbank Pay API. Specifically, the response must contain the `view-paymentorder` operation.
 
@@ -224,7 +224,7 @@ Content-Type: application/json
 
 The Merchant Backend will then forward the response it received back to the calling app.
 
-If instrument mode is used, an you wish to be able to change the instrument, you can provide the list of valid instruments, and an endpoint for changing the instrument. This additional data is placed in an object under the key "mobileSDK".
+If instrument mode is used, an you wish to be able to change the instrument, make sure the `paymentorder` contains the list of available instruments, and provide a link to an endpoint for changing the instrument. This link is placed in an object under the key "mobileSDK".
 
 {:.code-view-header}
 **Forwarded Response**
@@ -235,7 +235,9 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-      "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
+      "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce",
+      "instrument": "CreditCard",
+      "availableInstruments": ["CreditCard", "Invoice-PayExFinancingSe"]
     },
     "operations": [
         {
@@ -246,7 +248,6 @@ Content-Type: application/json
         }
     ]
     "mobileSDK": {
-        "validInstruments": ["CreditCard", "Invoice-PayExFinancingSe"],
         "setInstrument": "/paymentorders/1234/setInstrument"
     }
 }
@@ -451,10 +452,10 @@ Host: example.com
 
 ```http
 HTTP/1.1 301 Moved Permanently ①
-Location: https://ecom.stage.payex.com/externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&language=en-US&app=Your%20Ecom%20App
+Location: https://ecom.payex.com/externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&language=en-US&app=Your%20Ecom%20App
 ```
 
-This example uses the public server hosted by Swedbank Pay \[Development note: The public server is not yet available in the production environment. The url will be updated when it is released.\], but you can also host the back-link page yourself if desired.
+This example uses the public server hosted by Swedbank Pay, but you can also host the back-link page yourself if desired.
 
 Safari will immediately follow the redirect:
 
@@ -463,7 +464,7 @@ Safari will immediately follow the redirect:
 
 ```http
 GET /externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&language=en-US&app=Your%20Ecom%20App HTTP/1.1
-Host: ecom.stage.payex.com
+Host: ecom.payex.com
 ```
 
 {:.table .table-striped}
@@ -537,6 +538,8 @@ The iOS payment url helper endpoint must be configured as a universal link to th
 
 The example implementations assume they are rooted at host root, and serve an Apple app site association using a configurable application ID.
 
+Note that the Apple app site association file has a new format starting with iOS 13. To support both newer and earlier iOS, the file needs to be a combination of the two.
+
 {:.code-view-header}
 **Request**
 
@@ -557,8 +560,16 @@ Content-Type: application/json
         "apps": [],
         "details": [
             {
-                "appID":"YOURTEAMID.your.ecom.app",
-                "paths":["/swedbank-pay-mobile/sdk-callback/*"]
+                "appID": "YOURTEAMID.your.ecom.app",
+                "paths": ["/swedbank-pay-mobile/sdk-callback/*"],
+
+                "appIDs": ["YOURTEAMID.your.ecom.app"],
+                "components": [
+                    {
+                        "/": "/swedbank-pay-mobile/sdk-callback/*",
+                        "comment": "Swedbank Pay SDK callback"
+                    }
+                ]
             }
         ]
     }

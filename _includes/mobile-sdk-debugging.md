@@ -54,52 +54,22 @@ manualArguments.putBoolean(
 
 ### iOS
 
-As explained in the [iOS documentation][ios-payment-url], the iOS SDK will,
-in some cases, open navigations out of the payment menu in Safari rather than
-the WKWebView. The SDK contains a list of redirects that we have tested to be
-working, but, of course, this list can be neither complete nor correct for all
-time. If you encounter a payment flow that opens in the WKWebView (i.e. does not
-open in Safari), but does not work correctly, you can make all navigations
-go to Safari to check if the flow has become incompatible with WKWebView. On
-the other hand, if you encounter a payment flow that opens in Safari and wish
-to investigate if it would work in the web view instead, you can make all
-navigations open in the web view.
+As explained in the [iOS documentation][ios-payment-url], the iOS SDK will
+sometimes need to open navigations out of the payment menu in Safari rather
+than the WKWebView. The SDK attempts to detect WKWebView incompatibilty, but
+the logic might miss some cases. If you encounter a payment flow that does not
+work correctly in the WKWebView, you can make all navigations go to Safari to
+check if the flow is incompatible with WKWebView. 
 
 {:.code-view-header}
 **iOS**
 
 ```swift
-swedbankPaySDKController.webRedirectBehavior = .AlwaysUseWebView
-
 swedbankPaySDKController.webRedirectBehavior = .AlwaysUseBrowser
 ```
 
-If you have set `.AlwaysUseBrowser` and discovered a site that works with
-WKWebView, you can set a `webNavigationLogger` to your
-`SwedbankPaySDKController` and make note of the URL. Then, modify your
-Configuration to allow that URL to be opened in the WKWebView. If using
-the Merchant Backend Configuration, add a `additionalAllowedWebViewRedirects`
-argument to your initializer. If using a custom Configuration, change your
-`decidePolicyForPaymentMenuRedirect` implementation accordingly.
-
-{:.code-view-header}
-**iOS**
-
-```swift
-swedbankPaySDKController.webNavigationLogger = { url in
-    print(url)
-}
-```
-
-```swift
-let configuration = SwedbankPaySDK.MerchantBackendConfiguration(
-    backendUrl: backendUrl,
-    additionalAllowedWebViewRedirects: [.Domain("example.com")]
-)
-```
-
-After you have verified that a domain works with WKWebView, please file an
-[issue][ios-issues] to have it added to the SDK's bundled list.
+If you discover a payment process that works with `.AlwaysUseBrowser` but fails
+with `.Default`, please file an [issue][ios-issues].
 
 [ios-issues]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios/issues
 [ios-payment-url]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
