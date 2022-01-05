@@ -230,59 +230,54 @@ Content-Type: application/json
         "created": "2020-06-22T10:56:56.2927632Z",
         "updated": "2020-06-22T10:56:56.4035291Z",
         "operation": "Purchase",
-        "state": "Ready",
+        "status": "Initialized",
         "currency": "SEK",
-        "amount": 10000,
-        "vatAmount": 0,
+        "vatAmount": 375,
+        "remainingCaptureAmount": 1500,
+        "remainingCancellationAmount": 1500,
+        "remainingReversalAmount": 0,
+        "description": "Test Purchase",
+        "initiatingSystemUserAgent": "<should be set by the system calling POST:/psp/paymentorders>",
+        "language": "sv-SE",
+        "availableInstruments": [ "CreditCard", "Invoice-PayExFinancingSe", "Invoice-PayMonthlyInvoiceSe", "Swish", "CreditAccount", "Trustly" ],
+        "implementation": "MerchantAuthenticatedConsumer", {% if include.integration_mode=="seamless_view" %}
+        "integration": "HostedView", {% if include.integration_mode=="redirect" %}
+        "integration": "Redirect",
+        {% endif %}
+        "instrumentMode": false,
+        "guestMode": false,
         "orderItems": {
             "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
         },
-        "description": "test description",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
-        "userAgent": "Mozilla/5.0",
-        "language": "sv-SE",
-        "urls": {
-            "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
-        },
-        "payeeInfo": {
-            "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeInfo"
-        },
-        "payments": {
-            "id": "/psp/paymentorders/{{ page.payment_order_id }}/payments"
-        },
-        "currentPayment": {
-            "id": "/psp/paymentorders/{{ page.payment_order_id }}/currentpayment"
-        },
-        "items": [
-            {
-                "creditCard": {
-                    "cardBrands": [
-                        "Visa",
-                        "MasterCard"
-                    ]
-                }
-            }
-        ]
+    "payer": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers"
+    },
+    "history": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
+    },
+    "failed": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failed"
+    },
+    "aborted": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/aborted"
+    },
+    "paid": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/paid"
+    },
+    "cancelled": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"
+    },
+    "financialTransactions": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"
+    },
+    "failedAttempts": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"
+    },
+    "metadata": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
     }
-    "operations": [
-        {
-            "method": "PATCH",
-            "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
-            "rel": "update-paymentorder-updateorder",
-            "contentType": "application/json"
-        },
-        {
-            "method": "PATCH",
-            "href": "{{ page.api_url }}/paymentorders/{{ page.payment_order_id }}",
-            "rel": "update-paymentorder-abort",
-            "contentType": "application/json"
-        },
-        {
-            "method": "PATCH",
-            "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
-            "rel": "update-paymentorder-expandinstrument",
-            "contentType": "application/json"
-        },{% if include.integration_mode=="redirect" %}
+    },
+    "operations": [ {% if include.integration_mode=="redirect" %}
         {
             "method": "GET",
             "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
@@ -295,8 +290,52 @@ Content-Type: application/json
             "rel": "view-checkout",
             "contentType": "application/javascript"
         }{% endif %}
+        {
+            "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+            "rel":"update-order",
+            "method":"PATCH",
+            "contentType":"application/json"
+        },
+        {
+            "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+            "rel": "abort",
+            "method": "PATCH",
+            "contentType": "application/json"
+        },
+        {
+            "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+            "rel": "set-instrument",
+            "method": "PATCH",
+            "contentType": "application/json"
+        },
+        {
+            "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
+            "rel": "cancel",
+            "method": "POST",
+            "contentType": "application/json"
+        },
+        {
+            "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/captures",
+            "rel": "capture",
+            "method": "POST",
+            "contentType": "application/json"
+        },
+        {
+            "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
+            "rel": "reversal",
+            "method": "POST",
+            "contentType": "application/json"
+        },
+        {
+            "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+            "rel": "overcharged-amount",
+            "method": "POST",
+            "contentType": "application/json"
+        }
     ]
-}
+    }
+        ]
+    }
 ```
 
 {:.table .table-striped}
