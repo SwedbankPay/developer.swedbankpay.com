@@ -100,7 +100,7 @@ operation is meant to be embedded in a `<script>` element in an HTML document.
                     the user to Swedbank's own site to handle the checkin
                     and is used in other implementations.
                     `redirect-consumer-identification` **should only be used in
-                    test enviroments**. It is not suitable for the production
+                    test environments**. It is not suitable for the production
                     environment as there is no simple way of retrieving the
                     `consumerProfileRef`."%}
 

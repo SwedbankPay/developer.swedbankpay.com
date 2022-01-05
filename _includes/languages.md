@@ -4,7 +4,6 @@
 
 ## Languages
 
-​
 {%- case api_resource -%}
     {%- when "paymentorders" -%}
         {%- assign product = "Checkout" -%}

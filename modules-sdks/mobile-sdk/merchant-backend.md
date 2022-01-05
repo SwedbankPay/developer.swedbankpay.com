@@ -74,7 +74,7 @@ N.B! The API as specified allows assigning endpoints to hosts other that the roo
 
 ## Consumers Endpoint
 
-The `consumers` endpoint is used to start a consumer identification session. It is specified as a transparent wrapper around the corresponding [Swedbank Pay API][initiate-consumer-session]. The sample implementations do superficial input validation, and forward the request to the Swedbank Pay API without further processing. You are free to override this default behaviour as you see fit in your implementation, but the default should be fine for most use-cases. The expected response is the same as the expected response to the Swedbank Pay API. The default is to pass the response from Swedbank as-is; you should probably not modify this behaviour. Specifically, the response must contain the `view-consumer-identification` operation.
+The `consumers` endpoint is used to start a consumer identification session. It is specified as a transparent wrapper around the corresponding [Swedbank Pay API][initiate-consumer-session]. The sample implementations do superficial input validation, and forward the request to the Swedbank Pay API without further processing. You are free to override this default behavior as you see fit in your implementation, but the default should be fine for most use-cases. The expected response is the same as the expected response to the Swedbank Pay API. The default is to pass the response from Swedbank as-is; you should probably not modify this behavior. Specifically, the response must contain the `view-consumer-identification` operation.
 
 {:.code-view-header}
 **Request**
@@ -270,7 +270,7 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "SetInstrument",
-        "intrument": "CreditCard"
+        "instrument": "CreditCard"
     }
 }
 ```
@@ -296,7 +296,7 @@ Content-Type: application/json
 {
     "paymentorder": {
         "operation": "SetInstrument",
-        "intrument": "CreditCard"
+        "instrument": "CreditCard"
     }
 }
 ```
@@ -333,7 +333,7 @@ The payment url allows navigations to third-party sites to happen as a part of t
 
 Since we want the payment urls to be https urls, they must be hosted somewhere. These helper endpoints facilitate that. Each platform has its own payment url helper, due to the platforms' different requirements for url routing. The endpoints take query arguments to enable apps using the SDK to locally generate unique payment urls for each payment order. The endpoints have no side-effects, and will always return the same response for the same query arguments.
 
-The payment url helper endpoints are specified with static paths relative to the root endpoint url. This is done so that payment urls can be generated locally on the app, without needing to make a network round trip at that point. The SDK has no hard requirement for the helper endpoint urls to have such a relationship to the root endpoint url, but it does contain utility methods for easier integration when that is the case. If you wish to host the payment url helper endpoints elsewhere, or, indeed, replicate the behaviour with some other schema for the payment urls, you must manually set `paymentorder.urls.paymentUrl` to the correct value when creating your payment orders.
+The payment url helper endpoints are specified with static paths relative to the root endpoint url. This is done so that payment urls can be generated locally on the app, without needing to make a network round trip at that point. The SDK has no hard requirement for the helper endpoint urls to have such a relationship to the root endpoint url, but it does contain utility methods for easier integration when that is the case. If you wish to host the payment url helper endpoints elsewhere, or, indeed, replicate the behavior with some other schema for the payment urls, you must manually set `paymentorder.urls.paymentUrl` to the correct value when creating your payment orders.
 
 Importantly, the payment url helper endpoints must be accessible without any authentication headers. This is because the scenario where they will be used is when a third-party site wishes to navigate back to the payment order. Such a site will necessarily not have any authentication tokens related to your backend. Consequently, it is important to ensure that these endpoints do not inadvertently disclose information.
 
@@ -426,7 +426,7 @@ Like the Android payment url helper endpoint, the iOS payment url helper endpoin
 
 The specified path for the iOS payment url helper endpoint is `sdk-callback/ios-universal-link`. The default constructors of the iOS SDK form payment urls by appending `sdk-callback/ios-universal-link` to the backend url, i.e. the root endpoint, and adding the `scheme` query parameter with the custom scheme registered in the app for handling Swedbank Pay SDK payment urls, the `language` parameter with the chosen language, the `app` parameter with the application name (if available), and an `id` query parameter with a random value. The `fallback` parameter is _not_ set for the payment url.
 
-Let us consider the cases above, when a third-party page wants to navigate back to the payment menu. Case 1 requires no further analysis. The univeral link system works as we intend, the payment url is opened in the app as-is.
+Let us consider the cases above, when a third-party page wants to navigate back to the payment menu. Case 1 requires no further analysis. The universal link system works as we intend, the payment url is opened in the app as-is.
 
 Case 2 causes the payment url to be opened in Safari. In this case we want to show a web page with a link back to the payment url, so the user can tap the link and it will be opened in the application, as provided by the conditions outlined above. Since this page must be served from a different domain, the payment url itself must respond with a redirect response.
 
@@ -505,7 +505,7 @@ Content-Type: text/html
 </html>
 ```
 
-The back-link page contains a link to the payment url, but with an added with the `fallback=true` parameter. In case 2a the link will be opened in the application, and we are done. In case 2b, however, the link is again opened in Safari. Since the back-link page did not work, it makes no sense to redirect back to it again. Instead we will redirect to a custom scheme url, as those will always be opened in the registered application, albeit only after a confirmation dialog. Of course, this means that we need to know that the payment url is being opened from the back-link page. The `fallback=true` parameter signals to the iOS payment url helper endpoint to alter its behaviour this way.
+The back-link page contains a link to the payment url, but with an added with the `fallback=true` parameter. In case 2a the link will be opened in the application, and we are done. In case 2b, however, the link is again opened in Safari. Since the back-link page did not work, it makes no sense to redirect back to it again. Instead we will redirect to a custom scheme url, as those will always be opened in the registered application, albeit only after a confirmation dialog. Of course, this means that we need to know that the payment url is being opened from the back-link page. The `fallback=true` parameter signals to the iOS payment url helper endpoint to alter its behavior this way.
 
 You may note that in case 2a the application was not opened with the original payment url, but with one with an extra query parameter. The SDK handles this by considering the query part of the payment url separately, allowing additional parameters.
 

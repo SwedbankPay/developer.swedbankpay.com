@@ -3,10 +3,21 @@ title: Seamless View
 redirect_from: /payments/card/seamless-view
 estimated_read: 10
 description: |
-  The Seamless View purchase scenario shows you how to implement the payment
-  menu directly in your webshop.
+  The Seamless View purchase scenario shows you how to implement the checkin and
+  payment menu directly in your webshop.
 menu_order: 300
 ---
+
+The **Standard Redirect** integration consists of three main steps. **Creating**
+the payment order and checkin, **displaying** the payment menu, shipping options
+and checkin module in an iframe, and finally **capturing** the funds. In
+addition, there are other post purchase options you need. We get to them later
+on.
+
+If you want to get an overview before proceeding, you can look at the
+[sequence diagram][sequence-diagrams]. It is also available in the sidebar if
+you want to look at it later. Let´s get going with the two first steps of the
+integration.
 
 ## Step 1: Create Payment Order And Checkin
 
@@ -21,7 +32,10 @@ Checkout v3. If it isn´t included in your request, you won't get the correct
 operations in the response.
 
 When `productName` is set to `checkout3`, `requireConsumerInfo` and
-`digitalProducts` will be set to `false` by default.
+`digitalProducts` will be set to `false` by default. For the **Standard**
+integration, you must set `requireConsumerInfo` to `true`. If `digitalProducts`
+is set to `false`, you also need to add
+`shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
 In some instances you need the possibility to abort purchases. This could be if
 a payer does not complete the purchase within a reasonable timeframe. For those
@@ -36,11 +50,11 @@ completed an `authorize` or a `sale`.
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-authenticate.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-standard.md integration_mode="seamless_view" %}
 
-## Step 2: Display Payment Menu And Checkin
+## Step 2: Display Checkin, Shipping Options And Payment Menu
 
-Among the operations in the POST `paymentOrders` response, you will find the
+Among the operations in the POST `paymentOrders` response, you will find
 `view-checkout`. This is what you need to display the checkin and payment
 module.
 
@@ -67,7 +81,7 @@ Seamless View.
 To load the Checkout from the JavaScript URL obtained in the backend API
 response, it needs to be set as a script element’s `src` attribute. You can
 cause a page reload and do this with static HTML, or you can avoid the page
-refresh by invoking the POST to create the payment order through Ajax and then
+refresh by invoking the POST to create the payment order through Ajax, and then
 create the script element with JavaScript. The HTML code will be unchanged in
 this example.
 
@@ -85,8 +99,7 @@ request.addEventListener('load', function () {
     script.setAttribute('src', operation.href);
     script.onload = function () {
         // When the 'view-checkout' script is loaded, we can initialize the
-        // Checkin inside 'checkin-container'.
-
+        // Payment Menu inside our 'payment-menu' container.
         // to open the Checkin
         window.payex.hostedView.checkout({
             container: {
@@ -94,8 +107,11 @@ request.addEventListener('load', function () {
                 paymentMenuContainer: "payment-menu-container",
             },
             culture: 'nb-No',
-            onShippingDetailsAvailable: function onShippingDetailsAvailable(shippingDetailsAvailableEvent) {
-                console.log(shippingDetailsAvailableEvent);
+            onPayerIdentified: function onPayerIdentified(payerIdentified) {
+                console.log(payerIdentified);
+            },
+            onEventNotification: function onEventNotification(eventNotification) {
+                console.log(eventNotification);
             },
         }).open("checkin");
     };
@@ -110,8 +126,20 @@ request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 request.send();
 ```
 
-After you have received the shipping details, you can update the payment order
-with shipping costs, then proceed to initialize the payment menu.
+When you get notified about the event `onPayerIdentified`, you need to do a
+`GET` on the `paymentOrder`. By expanding the `payer` field, you should get all
+the info you need to calculate shipping costs. You can now update the
+paymentOrder with a `PATCH` if you need to, using the patch from `operations` in
+the `paymentOrder` response.
+
+```http
+        {
+            "method": "PATCH",
+            "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
+            "rel": "update-paymentorder-updateorder",
+            "contentType": "application/json"
+        }
+```
 
 {:.code-view-header}
 **JavaScript**
@@ -131,61 +159,82 @@ window.payex.hostedView.checkout({
 **HTML**
 
 ```html
- <!DOCTYPE html>
     <html>
         <head>
             <title>Swedbank Pay Checkout is Awesome!</title>
         </head>
         <body>
-            <div id="checkin-container"></div>
-            <div id="payment-menu-container"></div>
+            <div id="checkin"></div>
+            <div id="payment-menu"></div>
             <!-- Here you can specify your own javascript file -->
             <script src="<Your-JavaScript-File-Here>"></script>
         </body>
     </html>
 ```
 
-The result should look like this. First you will see a Checkin module where the
-payer can enter their email and phone number.
+First you will see a Checkin module where the payer can enter their email and
+phone number.
 
-After checking in, the contact details and shipping address are displayed, along
-with the available shipping option(s). When the payer chooses a shipping option,
-the payment menu will appear. The payer can then proceed with the purchase.
+{:.text-center}
+![screenshot of the standard implementation seamless view checkin][login-checkin]
 
-Once a purchase is complete, you can perform a GET towards the `paymentOrders`
+A known payer will be sent directly to the payment menu shown further below. If
+we detect that the payer is new, we give them the option to store their details
+or proceed without storing. If that happens, these checkin steps will appear.
+
+{:.text-center}
+![screenshot of asking the payer to store details][checkin-new-payer]
+
+After choosing yes or no, the payer must enter their SSN.
+
+{:.text-center}
+![screenshot of asking the payer to enter SSN while storing details][checkin-new-payer-ssn]
+
+With digital products, the payer will be sent directly to shipping options after
+they select to store their details (see below). For mixed goods, the SSN input
+view will expand and the payer must enter their shipping address. Payers
+choosing not to store credentials (guests) must also enter their shipping
+address.
+
+{:.text-center}
+![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
+
+After checking in, the payer's contact details and shipping address are shown
+for mixed goods. For digital products only contact details will be shown. You
+can now perform the `GET` on the payment order and display the available
+shipping option(s) to the payer.
+
+How the shipping options are displayed will be up to you, but you can see an
+example in our demoshop.
+
+When the payer chooses a shipping option, you can `PATCH` the payment order and
+the payment menu will appear. The payer can then proceed with the purchase. The
+example with shipping address is for all goods (physical and digital), the one
+without shipping address is for digital products only.
+
+{:.text-center}
+![screenshot of the standard implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+
+{:.text-center}
+![screenshot of the standard implementation seamless view payment menu digital][seamless-payment-menu-digital]
+
+Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
 
 You can read about the different [Seamless View Events][seamless-view-events] in
 the feature section.
-
-If you want to see the payer activities, they are visible in the history field:
-
-```json
-{
- "name": "CheckinInitiated",
- "initiatedBy": "System"
-}
-{
- "name": "PayerCheckedIn",
- "initiatedBy": "Consumer"
-}
-{
- "name": "PayerDetailsRetrieved",
- "initiatedBy": "System"
-}
-{
- "name": "MerchantAuthenticatedConsumerCheckedIn",
- "initiatedBy": "System"
-}
-```
-
-You are now ready to capture the funds. Follow the link below to read more about
-capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/standard/features/core/abort
-[seamless-view-events]: /checkout/v3/standard/features/technical-reference/seamless-view-events
+[abort-feature]: /checkout/v3/authenticated/features/core/abort
+[login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
+[seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
+[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
+[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
+[checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
+[checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
+[checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
+[sequence-diagrams]: /checkout/v3/sequence-diagrams/#standard-seamless-view

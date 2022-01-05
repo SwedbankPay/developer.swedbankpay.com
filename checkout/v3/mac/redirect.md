@@ -8,10 +8,10 @@ description: |
 menu_order: 200
 ---
 
-The **MAC Redirect** integration consists of three main steps. **Creating** the
-payment order, **displaying** the payment menu, and **capturing** the funds. In
-addition, there are other post purchase options you need. We get to them later
-on.
+The **Merchant Authenticated Consumer Redirect** integration consists of three
+main steps. **Creating** the payment order, **displaying** the payment menu, and
+**capturing** the funds. In addition, there are other post purchase options you
+need. We get to them later on.
 
 If you want to get an overview before proceeding, you can look at the [sequence
 diagram][sequence-diagram]. It is also available in the sidebar if you want to
@@ -89,5 +89,5 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout/v3/mac/features/core/abort
-[sequence-diagram]: /checkout/v3/sequence-diagrams/#mac-redirect
+[sequence-diagram]: /checkout/v3/sequence-diagrams/#merchant-authenticated-consumer-redirect
 [redirect-mac-menu]: /assets/img/checkout/mac-redirect.png

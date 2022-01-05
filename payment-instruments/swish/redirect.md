@@ -20,13 +20,13 @@ menu_order: 700
 *   You need to redirect the payer to the payment page to enter the Swish
     registered mobile number.
     This triggers the initiation of a sales transaction.
-*   Swedbank Pay handles the dialogue with Swish and the payer confirms the
+*   Swedbank Pay handles the dialog with Swish and the payer confirms the
     purchase in the Swish app.
 *   Swedbank Pay will redirect the payer's browser to - or display directly in
     the iFrame - one of two specified URLs, depending on whether the payment
-    session is followed through completely or cancelled beforehand.
+    session is followed through completely or canceled beforehand.
     Please note that both a successful and rejected payment reach completion,
-    in contrast to a cancelled payment.
+    in contrast to a canceled payment.
 
 The payer is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
@@ -124,7 +124,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`payeeInfo`          | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(50*)` | {% include field-description-payee-reference.md %}                                                                                                                                                                                                                   |
+| {% icon check %} | └─➔&nbsp;`payeeReference`    | `string` | {% include field-description-payee-reference.md %}                                                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |

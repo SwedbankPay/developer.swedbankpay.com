@@ -53,7 +53,7 @@ Code quality of course depends on a lot of other factors too, such as:
 *   Adhering to established style guides.
 *   Good understanding of
     [The Principles of Object Oriented Design][principles-of-object-oriented-design].
-*   A good domain architecture, modelled after
+*   A good domain architecture, modeled after
     [Domain Driven Design][domain-driven-design].
 
 ### Accessibility

@@ -171,7 +171,7 @@ requests you have to send to Swedbank Pay to make a purchase.
 
 Swedbank Pay Trustly Payments uses the [`Deposit`][deposit] to perform
 a payment. After this, the payer will be presented with the returned `iframe`
-URL in order to perform the payment with their prefered bank.
+URL in order to perform the payment with their preferred bank.
 Once the user has completed the payment, Swedbank Pay will receive a
 notification asynchronously from Trustly, hence why
 the UI will initiate polling toward our back-end. The payment status after being

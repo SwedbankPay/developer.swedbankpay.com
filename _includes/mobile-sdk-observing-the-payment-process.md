@@ -75,8 +75,8 @@ this, set a listener for the event by calling
 ```kotlin
 paymentViewModel.setOnTermsOfServiceClickListener(lifecycleOwner) { paymentFragment, url ->
     // show ToS UI
-    // return true to disable the default behaviour
-    // (alternatively, return false to continue with the default behaviour)
+    // return true to disable the default behavior
+    // (alternatively, return false to continue with the default behavior)
 }
 ```
 
@@ -123,7 +123,7 @@ extension MyClass : SwedbankPaySDKDelegate {
 
     func overrideTermsOfServiceTapped(url: URL) -> Bool {
         // Show custom Terms of Service UI, if needed.
-        // Return true to disable the default behaviour,
+        // Return true to disable the default behavior,
         // false to allow SwedbankPaySDKController to show
         // the default ToS UI.
     }

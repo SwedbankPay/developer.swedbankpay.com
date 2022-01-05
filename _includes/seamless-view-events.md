@@ -15,7 +15,7 @@ described below.
 body="Adding an event
 handler to one of the following events **overrides** the default event handler,
 meaning your custom event handler will have to do what the default event handler
-did. If you don’t, the behaviour of the event is going to be undefined.
+did. If you don’t, the behavior of the event is going to be undefined.
 Just adding an event handler for logging purposes is therefore not possible, the
 event handler will have to perform some functionality similar to the
 event handler you are overriding." %}
@@ -155,6 +155,46 @@ object:
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
+{% if documentation_section contains "checkout/v3/standard" %}
+
+### `onPayerIdentified`
+
+This event triggers when a payer has been identified.
+
+{:.code-view-header}
+**onPayerIdentified event object**
+
+```json
+{
+    "bodyType": "OnPayerIdentified"
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `bodyType`  | `string` | The type of event that was raised. |
+
+### `onPayerUnidentified`
+
+This event triggers when a payer has not been identified (proceeds as guest).
+
+{:.code-view-header}
+**onPayerUnidentified event object**
+
+```json
+{
+    "bodyType": "OnPayerUnidentified"
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                                                             |
+| :-------- | :------- | :-------------------------------------------------------------------------------------- |
+| `bodyType`  | `string` | The type of event that was raised. |
+
+{% endif %}
+
 {% unless documentation_section contains "checkout/v3" %}
 
 ### `onBillingDetailsAvailable`
@@ -213,7 +253,7 @@ menu. No action will be done if callback is not set. The
 object:
 
 {:.code-view-header}
-**onEventNotification event object**
+**onApplicationConfigured event object**
 
 ```json
 {
