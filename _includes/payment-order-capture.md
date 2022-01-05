@@ -15,8 +15,6 @@ Captures are only possible when a payment has a successful authorize
 transaction, naturally excluding one-phase payment instruments like
 [Swish][swish] and [Trustly][trustly]. Two-phase payment instruments like
 [Card][card] and [Vipps][vipps] however, require a `Capture` to be completed.
-Please note that Invoice captures differ from the others. These are explained
-in it's [own section][invoice-section].
 
 In addition to full captures, it is possible to do partial captures of a part of
 the authorized amount. You can do other captures on the same payment later, up
@@ -192,14 +190,9 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content=response_table %}
 
-## Invoice
-
-{% include invoice-capture.md %}
-
 <!--lint disable final-definition -->
 
 [card]: /payment-instruments/card
-[invoice-section]: #invoice
 [vipps]: /payment-instruments/vipps
 [payee-reference]: {{ features_url }}/technical-reference/payee-reference
 [swish]: /payment-instruments/swish/
