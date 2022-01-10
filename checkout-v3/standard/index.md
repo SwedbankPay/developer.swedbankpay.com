@@ -26,7 +26,7 @@ Read more about the integration by clicking the link below.
 This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
 `sv-SE`.
 
-{% include iterator.html prev_href="/checkout/v3/"
+{% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
                          next_href="seamless-view"
                          next_title="Integrate Seamless View" %}

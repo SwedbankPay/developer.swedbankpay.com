@@ -88,6 +88,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/payments/features/core/abort
-[sequence-diagram]: /checkout/v3/sequence-diagrams/#payments-redirect
+[abort-feature]: /checkout-v3/payments/features/core/abort
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-redirect
 [redirect-mm-menu]: /assets/img/checkout/mac-redirect.png

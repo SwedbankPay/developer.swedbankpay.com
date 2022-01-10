@@ -121,8 +121,8 @@ about capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/authenticated/features/core/abort
-[sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-redirect
+[abort-feature]: /checkout-v3/authenticated/features/core/abort
+[sequence-diagrams]: /checkout-v3/sequence-diagrams/#authenticated-redirect
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
 [redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png

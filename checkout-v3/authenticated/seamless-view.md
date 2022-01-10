@@ -182,10 +182,10 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/authenticated/features/core/abort
-[sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-seamless-view
+[abort-feature]: /checkout-v3/authenticated/features/core/abort
+[sequence-diagrams]: /checkout-v3/sequence-diagrams/#authenticated-seamless-view
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
-[seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout-v3/authenticated/features/technical-reference/seamless-view-events
 [seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
 [seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png

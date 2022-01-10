@@ -125,7 +125,7 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout/v3/standard/setup'
+  to='/checkout-v3/standard/setup'
   %}
 
 {% include card-extended.html
@@ -141,7 +141,7 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout/v3/authenticated/setup'
+  to='/checkout-v3/authenticated/setup'
 %}
 
 {% include card-extended.html
@@ -156,7 +156,7 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout/v3/mac/setup'
+  to='/checkout-v3/mac/setup'
 %}
 {% endcapture %}
 
@@ -181,7 +181,7 @@ payment options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout/v3/payments/setup'
+  to='/checkout-v3/payments/setup'
 %}
 {% endcapture %}
 

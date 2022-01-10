@@ -149,7 +149,7 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/mac/features/core/abort
-[seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
-[sequence-diagram]: /checkout/v3/sequence-diagrams/#merchant-authenticated-consumer-seamless-view
+[abort-feature]: /checkout-v3/mac/features/core/abort
+[seamless-view-events]: /checkout-v3/mac/features/technical-reference/seamless-view-events
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#merchant-authenticated-consumer-seamless-view
 [seamless-mac-menu]: /assets/img/checkout/mac-seamless-view.png
