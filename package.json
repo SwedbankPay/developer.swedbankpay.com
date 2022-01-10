@@ -88,7 +88,7 @@
     "remark-squeeze-paragraphs": "^5.0.1",
     "remark-textr": "^5.0.1",
     "retext-english": "^4.1.0",
-    "retext-repeated-words": "^4.1.0",
+    "retext-repeated-words": "^4.2.0",
     "retext-sentence-spacing": "^5.2.0",
     "retext-spell": "^5.1.0",
     "retext-syntax-urls": "^3.1.1",
