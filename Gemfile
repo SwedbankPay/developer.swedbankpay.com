@@ -6,7 +6,7 @@ gem 'jekyll', '~> 4.2.0', group: :jekyll_plugins
 gem 'jemoji'
 
 # Necessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
-gem 'faraday', '~> 1.8.0'
+gem 'faraday', '~> 1.9.3'
 gem 'html-proofer-unrendered-markdown'
 gem 'html-proofer'
 gem 'jekyll-material-icon-tag'
