@@ -18,7 +18,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0...",
+        "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
         "productName": "Checkout3",
         "urls": { {% if include.integration_mode=="seamless_view" %}
@@ -236,9 +236,15 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "Mozilla/5.0",
         "language": "sv-SE",
-        "availableInstruments": [ "CreditCard", "Invoice-PayExFinancingSe", "Invoice-PayMonthlyInvoiceSe", "Swish", "CreditAccount", "Trustly" ],
+        "availableInstruments": [
+          "CreditCard",
+          "Invoice-PayExFinancingSe",
+          "Invoice-PayMonthlyInvoiceSe",
+          "Swish",
+          "CreditAccount",
+          "Trustly" ],
         "implementation": "MerchantAuthenticatedConsumer", {% if include.integration_mode=="seamless_view" %}
         "integration": "HostedView", {% if include.integration_mode=="redirect" %}
         "integration": "Redirect",

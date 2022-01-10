@@ -236,7 +236,13 @@ Content-Type: application/json
         "description": "Test Purchase",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "language": "sv-SE",
-        "availableInstruments": [ "CreditCard", "Invoice-PayExFinancingSe", "Invoice-PayMonthlyInvoiceSe", "Swish", "CreditAccount", "Trustly" ],
+        "availableInstruments": [
+          "CreditCard",
+          "Invoice-PayExFinancingSe",
+          "Invoice-PayMonthlyInvoiceSe",
+          "Swish",
+          "CreditAccount",
+          "Trustly" ],
         "implementation": "Authenticated", {% if include.integration_mode=="seamless_view" %}
         "integration": "HostedView", {% if include.integration_mode=="redirect" %}
         "integration": "Redirect",
