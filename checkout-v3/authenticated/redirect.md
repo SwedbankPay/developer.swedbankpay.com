@@ -6,7 +6,7 @@ description: |
   Swedbank Pay hosted site, authenticate their Checkout profile and choose
   payment instrument. After the purchase, the payer will be redirected back to
   your website.
-menu_order: 200
+menu_order: 300
 ---
 
 The **Authenticated Redirect** integration consists of three main steps.

@@ -5,7 +5,7 @@ estimated_read: 10
 description: |
   The Seamless View purchase scenario shows you how to implement the payment
   menu directly in your webshop.
-menu_order: 300
+menu_order: 400
 ---
 
 The **Authenticated Redirect** integration consists of three main steps.

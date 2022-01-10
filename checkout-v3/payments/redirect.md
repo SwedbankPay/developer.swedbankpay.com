@@ -5,7 +5,7 @@ description: |
  Redirect is our simplest integration. The payer will be redirected to a secure
  Swedbank Pay hosted site and choose payment instrument. After the purchase,
  the payer will be redirected back to your website.
-menu_order: 200
+menu_order: 300
 ---
 
 The **Merchant Managed Redirect** integration consists of three main steps.
