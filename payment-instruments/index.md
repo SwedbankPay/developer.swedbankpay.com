@@ -8,7 +8,7 @@ description: |
   You can pick and choose among them to tailor the instrument package best
   suited for your business.
 permalink: /:path/
-menu_order: 300
+menu_order: 500
 ---
 
 Is Card the only payment instrument you need? Go for Card only. Do you want Card

@@ -5,7 +5,7 @@ estimated_read: 5
 description: |
   **Before moving on we would like to give you a brief introduction to what you need
   to consider before composing your checkout page, along with some prerequisites.**
-menu_order: 300
+menu_order: 200
 checkout_v3: true
 
 header:
