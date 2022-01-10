@@ -29,7 +29,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",{% if documentation_section == "payment-menu" %}
         "instrument": null,{% endif %}
-        "CorporateMode": "false",
+        "corporateMode": "false",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
