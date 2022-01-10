@@ -128,6 +128,6 @@ orderItem.name = "Other Thing"
 
 [checkout]: /checkout/
 [payment-menu]: /payment-menu/
-[checkout-features]: /checkout/v2/features
-[checkout-urls]: /checkout/v2/features/technical-reference/urls
-[checkout-orderitems]: /checkout/v2/features/technical-reference/order-items
+[checkout-features]: /checkout-v2/features
+[checkout-urls]: /checkout-v2/features/technical-reference/urls
+[checkout-orderitems]: /checkout-v2/features/technical-reference/order-items

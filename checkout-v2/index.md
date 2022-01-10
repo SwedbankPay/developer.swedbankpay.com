@@ -244,6 +244,6 @@ TODO: Number each important step in the above diagram and create a numbered list
 {% include iterator.html next_href="checkin"
                          next_title="Implement Checkin" %}
 
-[after-payment-capture]: /checkout/v2/capture
-[callback]: /checkout/v2/features/technical-reference/callback
+[after-payment-capture]: /checkout-v2/capture
+[callback]: /checkout-v2/features/technical-reference/callback
 [https]: /introduction#connection-and-protocol
