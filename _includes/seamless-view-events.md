@@ -142,8 +142,8 @@ object:
 ```json
 {
     "origin": "{{ api_resource }}",
-    "messageId": "{{ page.transaction_id }}",
-    "details": "Descriptive text of the error"
+    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "details": "English descriptive text of the error"
 }
 ```
 
@@ -151,7 +151,7 @@ object:
 | Field       | Type     | Description                                                    |
 | :---------- | :------- | :------------------------------------------------------------- |
 | `origin`    | `string` | `{{ api_resource }}`, identifies the system that originated the error. |
-| `messageId` | `string` | A unique identifier for the message.                           |
+| `id`        | `string` | {% include field-description-id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
@@ -298,6 +298,7 @@ following event argument object:
 ```json
 {
     "name": "menu identifier",
+    "id": "/psp/paymentorders/{{ page.payment_id }}",
     "instrument": "creditcard | vipps | swish | invoice",
 }
 ```
