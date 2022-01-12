@@ -8,4 +8,4 @@ icon:
   outlined: true
 ---
 
-{% include settlement-reconciliation.md %}
+{% include settlement-reconciliation.md checkout="checkout-v2" %}

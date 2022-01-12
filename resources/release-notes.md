@@ -591,7 +591,7 @@ integration and the payer.
 [checkout-payment-menu-frontend]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout-v2/payment-menu#request
 [checkout-payment-url]: /checkout-v2/features/technical-reference/payment-url
-[checkout]: /checkout
+[checkout]: /checkout-v2/
 [checkout-v2]: /checkout-v2/
 [checkout-items]: /checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
