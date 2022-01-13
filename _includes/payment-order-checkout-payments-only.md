@@ -240,7 +240,7 @@ Content-Type: application/json
           "CreditAccount",
           "Trustly" ],
         "implementation": "Payments", {% if include.integration_mode=="seamless_view" %}
-        "integration": "HostedView", {% if include.integration_mode=="redirect" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect",
         {% endif %}
         "instrumentMode": false,

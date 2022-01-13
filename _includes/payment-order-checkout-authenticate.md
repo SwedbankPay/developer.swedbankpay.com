@@ -244,7 +244,7 @@ Content-Type: application/json
           "CreditAccount",
           "Trustly" ],
         "implementation": "Authenticated", {% if include.integration_mode=="seamless_view" %}
-        "integration": "HostedView", {% if include.integration_mode=="redirect" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect",
         {% endif %}
         "instrumentMode": false,
