@@ -1,5 +1,10 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% if features_url contains "payment-instruments" %}
+    {% capture capture_url %}capture{% endcapture %}
+{% else %}
+    {% capture capture_url %}payment-order-capture{% endcapture %}
+{% endif %}
 {% if documentation_section == "payment-menu" %}
     {% capture verification_url %}/psp/paymentorders/{{ page.payment_id }}/verifications{% endcapture %}
     {% capture authorization_url %}/psp/paymentorders/{{ page.payment_id }}/authorizations{% endcapture %}
@@ -252,7 +257,7 @@ Content-Type: application/json
 [one-click-image]: /assets/img/checkout/one-click.png
 [delete-payment-token]: {{ features_url }}/technical-reference/delete-token
 [cancel]: {{ features_url }}/core/cancel
-[capture]: {{ features_url }}/core/capture
+[capture]: {{ features_url }}/core/{{ capture_url }}
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
 [verify]: /payment-instruments/card/features/optional/verify

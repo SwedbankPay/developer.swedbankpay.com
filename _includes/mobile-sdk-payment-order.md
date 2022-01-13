@@ -1,14 +1,14 @@
 ## Payment Orders
 
 The SDK works in terms of Payment Orders as used in [Checkout][checkout]
-and [Payment Menu][payment-menu]. Therefore, all [features][checkout-features]
+and [Payment Menu][payment-menu]. Therefore, all [features][checkout]
 of payment orders are available in the SDK by using a suitable custom
 configuration.
 
 The rest of the page illustrates how to use certain Payment Order features
 with the SDK-provided Merchant Backend Configuration. Detailed descriptions
 of the features will not be repeated here; please refer to the
-[Checkout documentation][checkout-features] instead.
+[Checkout documentation][checkout] instead.
 
 ### URLs
 
@@ -126,8 +126,7 @@ orderItem.reference = "456def"
 orderItem.name = "Other Thing"
 ```
 
-[checkout]: /checkout/
+[checkout]: /checkout-v3
 [payment-menu]: /payment-menu/
-[checkout-features]: /checkout-v2/features
 [checkout-urls]: /checkout-v2/features/technical-reference/urls
 [checkout-orderitems]: /checkout-v2/features/technical-reference/order-items
