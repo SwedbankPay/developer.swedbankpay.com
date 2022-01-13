@@ -55,8 +55,8 @@ Content-Type: application/json
         "language": "nb-NO",
         "urls": { {% if seamless_view %}
             "hostUrls": ["https://example.com"],{% endif %}
-            "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",{% if seamless_view %}
+            "completeUrl": "https://example.com/payment-completed", {% unless seamless_view %}
+            "cancelUrl": "https://example.com/payment-canceled",{% endunless %} {% if seamless_view %}
             "paymentUrl": "https://example.com/perform-payment",{% endif %}
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/payment-logo.png",

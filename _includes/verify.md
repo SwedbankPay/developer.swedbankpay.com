@@ -24,10 +24,10 @@ Swedbank Pay." %}
 
 ## Verification through Swedbank Pay Payments
 
-*   When properly set up in your merchant/webshop site, and the payer initiates a
-    verification operation, you make a `POST` request towards Swedbank Pay with
-    your Verify information. This will create a payment resource with a unique
-    `id`. You either receive a Redirect URL to a hosted page or a
+*   When properly set up in your merchant/webshop site, and the payer initiates
+    a verification operation, you make a `POST` request towards Swedbank Pay
+    with your Verify information. This will create a payment resource with a
+    unique `id`. You either receive a Redirect URL to a hosted page or a
     JavaScript source in response.
 *   You need to
     {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' %}
@@ -95,7 +95,7 @@ Content-Type: application/json
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",{% unless documentation_section contains "checkout" %}
-        "generatePaymentTooken": true,{% endunless %}
+        "generatePaymentToken": true,{% endunless %}
         "generateRecurrenceToken": true,{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}
         "urls": {
