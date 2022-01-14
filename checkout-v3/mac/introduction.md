@@ -1,12 +1,12 @@
 ---
-section: Merchant Authenticated Consumer (MAC)
-title: Introduction
+section: Introduction
+title: Merchant Authenticated Consumer (MAC)
 estimated_read: 3
 hide_from_sidebar: false
 description: |
   **Merchant Authenticated Consumer** is the Checkout for merchants with their
   own consumer authentication, but don´t want to store the consumer information.
-menu_order: 300
+menu_order: 200
 ---
 
 **Merchant Authenticated Consumer** is the option if you have a strong consumer
@@ -37,7 +37,7 @@ Read more about our two integration alternatives by clicking the links below.
 This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
 `sv-SE`.
 
-{% include iterator.html prev_href="/checkout/v3/"
+{% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
                          next_href="redirect"
                          next_title="Integrate Redirect" %}

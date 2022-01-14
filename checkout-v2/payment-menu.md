@@ -312,6 +312,6 @@ finalizing the payment in the [After Payment section][after-payment].
 [login-payment-menu-image]: /assets/img/checkout/loggedin-payment-menu.png
 [swedish-guest-payment-menu-image]: /assets/img/checkout/swedish-guest-payment-menu.png
 [swedish-login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
-[operations]: /checkout/v2/features/technical-reference/operations
-[technical-reference-onconsumer-identified]: /checkout/v2/checkin#step-2-display-swedbank-pay-checkin-module
-[urls]: /checkout/v2/features/technical-reference/urls#urls-resource
+[operations]: /checkout-v2/features/technical-reference/operations
+[technical-reference-onconsumer-identified]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
+[urls]: /checkout-v2/features/technical-reference/urls#urls-resource

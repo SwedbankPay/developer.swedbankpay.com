@@ -1,6 +1,12 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign operation_title = include.operation_title %}
+{% assign checkout = include.checkout %}
+{% if checkout == "checkout-v2" %}
+    {% assign checkout_version = "checkout-v2" %}
+{% else %}
+    {% assign checkout_version = "checkout-v3" %}
+{% endif %}
 
 ## Settlement and Reconciliation
 
@@ -325,7 +331,7 @@ merchant.
 
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
-[checkout]: /checkout/
+[checkout]: /{{ checkout_version }}
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
 [balance-report-pdf]: /assets/documents/balance-report.pdf

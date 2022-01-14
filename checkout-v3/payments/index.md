@@ -6,6 +6,7 @@ description: |
   and how to make an API request for your first test payment. After these steps,
   you're ready to build your integration!**
 checkout_v3: true
+menu_order: 100
 ---
 
 ## Step 1: Sign Up For A Test Account
@@ -74,7 +75,7 @@ This is because tokens are created with their current account settings in mind.
 {% include alert.html type="warning" icon="warning" body="Please note that the
 production and staging environment need separate tokens. " %}
 
-{% include iterator.html prev_href="/checkout/v3/"
+{% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout/v3/payments/"
+                         next_href="/checkout-v3/payments/introduction"
                          next_title="Start Integration" %}

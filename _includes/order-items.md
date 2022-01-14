@@ -25,4 +25,4 @@ requests. It should be specified on both payment order creation as well as on
 | {% icon check %} | `amount`              | `integer` | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | `vatAmount`           | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
 
-[payment-order-capture]: /checkout/v2/capture
+[payment-order-capture]: /checkout-v2/capture
