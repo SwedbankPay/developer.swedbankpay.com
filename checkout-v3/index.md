@@ -1,7 +1,6 @@
 ---
 section: Checkout v3
 title: Get Started
-estimated_read: 5
 description: |
   **Before moving on we would like to give you a brief introduction to what you need
   to consider before composing your checkout page, along with some prerequisites.**
@@ -129,7 +128,7 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/standard'
+  to='/checkout-v3/standard/'
   %}
 
 {% include card-extended.html
@@ -145,7 +144,7 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/authenticated'
+  to='/checkout-v3/authenticated/'
 %}
 
 {% include card-extended.html
@@ -160,7 +159,7 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/mac'
+  to='/checkout-v3/mac/'
 %}
 {% endcapture %}
 
@@ -189,7 +188,7 @@ payment options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/payments'
+  to='/checkout-v3/payments/'
 %}
 {% endcapture %}
 
