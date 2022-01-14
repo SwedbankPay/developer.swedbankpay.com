@@ -101,7 +101,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/authenticated/redirect"
+{% include iterator.html prev_href="/checkout-v3/authenticated/redirect"
                          prev_title="Back to Authenticated Redirect" %}<br/>
 
 ## Authenticated Seamless View
@@ -219,7 +219,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][seamless-view-events] for further information.
 *   ② Read more about [callback][callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/authenticated/seamless-view"
+{% include iterator.html prev_href="/checkout-v3/authenticated/seamless-view"
                          prev_title="Back to Authenticated Seamless View" %}<br/>
 
 ## Merchant Authenticated Consumer Redirect
@@ -308,7 +308,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][mac-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/mac/redirect"
+{% include iterator.html prev_href="/checkout-v3/mac/redirect"
                          prev_title="Back to MAC Redirect" %}<br/>
 
 ## Merchant Authenticated Consumer Seamless View
@@ -422,7 +422,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][mac-seamless-view-events] for further information.
 *   ② Read more about [callback][mac-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/mac/seamless-view"
+{% include iterator.html prev_href="/checkout-v3/mac/seamless-view"
                          prev_title="Back to MAC Seamless View" %}
 
 ## Payments Redirect
@@ -511,7 +511,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/payments/redirect"
+{% include iterator.html prev_href="/checkout-v3/payments/redirect"
                          prev_title="Back to Payments Redirect" %}<br/>
 
 ## Payments Seamless View
@@ -625,7 +625,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/payments/seamless-view"
+{% include iterator.html prev_href="/checkout-v3/payments/seamless-view"
                          prev_title="Back to Payments Seamless View" %}
 
 ## Standard Seamless View
@@ -743,14 +743,14 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][standard-seamless-view-events] for further information.
 *   ② Read more about [callback][standard-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout/v3/standard/seamless-view"
+{% include iterator.html prev_href="/checkout-v3/standard/seamless-view"
                          prev_title="Back to Standard Seamless View" %}
 
-[callback]: /checkout/v3/authenticated/features/technical-reference/callback
-[mac-callback]: /checkout/v3/mac/features/technical-reference/callback
-[payments-callback]: /checkout/v3/payments/features/technical-reference/callback
-[standard-callback]: /checkout/v3/standard/features/technical-reference/callback
-[seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
-[mac-seamless-view-events]: /checkout/v3/mac/features/technical-reference/seamless-view-events
-[payments-seamless-view-events]: /checkout/v3/payments/features/technical-reference/seamless-view-events
-[standard-seamless-view-events]: /checkout/v3/standard/features/technical-reference/seamless-view-events
+[callback]: /checkout-v3/authenticated/features/technical-reference/callback
+[mac-callback]: /checkout-v3/mac/features/technical-reference/callback
+[payments-callback]: /checkout-v3/payments/features/technical-reference/callback
+[standard-callback]: /checkout-v3/standard/features/technical-reference/callback
+[seamless-view-events]: /checkout-v3/authenticated/features/technical-reference/seamless-view-events
+[mac-seamless-view-events]: /checkout-v3/mac/features/technical-reference/seamless-view-events
+[payments-seamless-view-events]: /checkout-v3/payments/features/technical-reference/seamless-view-events
+[standard-seamless-view-events]: /checkout-v3/standard/features/technical-reference/seamless-view-events

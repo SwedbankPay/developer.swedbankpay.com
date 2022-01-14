@@ -1,26 +1,25 @@
 ---
 title: Seamless View
-redirect_from: /payments/card/seamless-view
 estimated_read: 10
 description: |
   The Seamless View purchase scenario shows you how to implement the payment
   menu directly in your webshop.
-menu_order: 300
+menu_order: 400
 ---
 
-The **Authenticated Redirect** integration consists of three main steps.
-**Creating** the payment order and checkin, **displaying** the payment menu and
-checkin module in an iframe, and finally **capturing** the funds. In addition,
-there are other post purchase options you need. We get to them later on.
+The **MAC Seamless View** integration consists of three main steps. **Creating**
+the payment order, **displaying** the payment menu in an iframe, and
+**capturing** the funds. In addition, there are other post purchase options you
+need. We get to them later on.
 
-If you want to get an overview before proceeding, you can look at the
-[sequence diagram][sequence-diagrams]. It is also available in the sidebar if
-you want to look at it later. Let´s get going with the two first steps of the
-integration.
+If you want to get an overview before proceeding, you can look at the [sequence
+diagram][sequence-diagram]. It is also available in the sidebar if you want to
+look at it later. Let´s get going with the two first steps of the integration.
 
-## Step 1: Create Payment Order And Checkin
+## Step 1: Create Payment Order
 
-When the purchase is initiated, you need to create a payment order.
+When the payer has been checked in and the purchase initiated, you need to
+create a payment order.
 
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
@@ -46,13 +45,12 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-authenticate.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-mac.md integration_mode="seamless-view" %}
 
-## Step 2: Display Payment Menu And Checkin
+## Step 2: Display Payment Menu
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`view-checkout`. This is what you need to display the checkin and payment
-module.
+`view-checkout`. This is the one you need to display the purchase module.
 
 {:.code-view-header}
 **Response**
@@ -95,7 +93,7 @@ request.addEventListener('load', function () {
     script.setAttribute('src', operation.href);
     script.onload = function () {
         // When the 'view-checkout' script is loaded, we can initialize the
-        // Checkin and Payment Menu inside 'checkout-container'.
+        // Payment Menu inside 'checkout-container'.
         payex.hostedView.checkout({
             container: {
                 checkoutContainer: "checkout-container"
@@ -131,42 +129,11 @@ request.send();
   </html>
 ```
 
-First you will see a Checkin module where the payer can enter their email and
-phone number.
+The payment menu should appear with the payer information displayed above the
+menu. The payer can select their preferred payment instrument and pay.
 
 {:.text-center}
-![screenshot of the authenticated implementation seamless view checkin][login-checkin]
-
-A known payer will be sent directly to the payment menu shown further below. If
-we detect that the payer is new, we give them the option to store their details
-or proceed without storing. If that happens, these checkin steps will appear.
-
-{:.text-center}
-![screenshot of asking the payer to store details][checkin-new-payer]
-
-After choosing yes or no, the payer must enter their SSN.
-
-{:.text-center}
-![screenshot of asking the payer to enter SSN while storing details][checkin-new-payer-ssn]
-
-With digital products, the payer will be sent directly to the payment menu after
-they select to store their details. For mixed goods, the SSN input view will
-expand and the payer must enter their shipping address. Payers choosing not to
-store credentials (guests) must also enter their shipping address.
-
-{:.text-center}
-![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
-
-After checking in, the payment menu will appear with the payer information
-displayed above the menu. The payer can select their preferred payment
-instrument and pay. The example with shipping address is for all goods (physical
-and digital), the one without shipping address is for digital products only.
-
-{:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
-
-{:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
+![screenshot of the mac implementation seamless view payment menu][seamless-mac-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -182,12 +149,7 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/authenticated/features/core/abort
-[sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-seamless-view
-[login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
-[seamless-view-events]: /checkout/v3/authenticated/features/technical-reference/seamless-view-events
-[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
-[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
-[checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
-[checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
-[checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
+[abort-feature]: /checkout-v3/mac/features/core/abort
+[seamless-view-events]: /checkout-v3/mac/features/technical-reference/seamless-view-events
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#merchant-authenticated-consumer-seamless-view
+[seamless-mac-menu]: /assets/img/checkout/mac-seamless-view.png

@@ -117,5 +117,5 @@ Content-Type: application/json
 
 -----------------------------------------
 [payment-menu]: /payment-menu
-[checkout]: /checkout
+[checkout]: /{{ documentation_section }}
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

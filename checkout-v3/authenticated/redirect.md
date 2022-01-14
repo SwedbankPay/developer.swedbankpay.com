@@ -6,7 +6,7 @@ description: |
   Swedbank Pay hosted site, authenticate their Checkout profile and choose
   payment instrument. After the purchase, the payer will be redirected back to
   your website.
-menu_order: 200
+menu_order: 300
 ---
 
 The **Authenticated Redirect** integration consists of three main steps.
@@ -121,8 +121,8 @@ about capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/authenticated/features/core/abort
-[sequence-diagrams]: /checkout/v3/sequence-diagrams/#authenticated-redirect
+[abort-feature]: /checkout-v3/authenticated/features/core/abort
+[sequence-diagrams]: /checkout-v3/sequence-diagrams/#authenticated-redirect
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
 [redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png

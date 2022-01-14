@@ -1,9 +1,9 @@
 ---
-section: Standard
-title: Introduction
+section: Introduction
+title: Standard
 description: |
   **Standard** Checkout is for you who want Swedbank Pay to handle everything.
-menu_order: 100
+menu_order: 200
 ---
 
 This is the option where Swedbank Pay does it all. Verifying your consumer,
@@ -26,7 +26,7 @@ Read more about the integration by clicking the link below.
 This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
 `sv-SE`.
 
-{% include iterator.html prev_href="/checkout/v3/"
+{% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
                          next_href="seamless-view"
                          next_title="Integrate Seamless View" %}

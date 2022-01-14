@@ -5,7 +5,7 @@ description: |
  Redirect is our simplest integration. The payer will be redirected to a secure
  Swedbank Pay hosted site and choose payment instrument. After the purchase,
  the payer will be redirected back to your website.
-menu_order: 200
+menu_order: 300
 ---
 
 The **Merchant Authenticated Consumer Redirect** integration consists of three
@@ -88,6 +88,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout/v3/mac/features/core/abort
-[sequence-diagram]: /checkout/v3/sequence-diagrams/#merchant-authenticated-consumer-redirect
+[abort-feature]: /checkout-v3/mac/features/core/abort
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#merchant-authenticated-consumer-redirect
 [redirect-mac-menu]: /assets/img/checkout/mac-redirect.png

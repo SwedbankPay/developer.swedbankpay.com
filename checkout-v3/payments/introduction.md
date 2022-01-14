@@ -1,12 +1,12 @@
 ---
-section: Payments
-title: Introduction
+section: Introduction
+title: Payments
 estimated_read: 3
 hide_from_sidebar: false
 description: |
   **Payments** is the Checkout for merchants who does everything but the
   payment menu.
-menu_order: 300
+menu_order: 200
 ---
 
 **Payments** is where you get to be in charge of everything. You handle
@@ -35,7 +35,7 @@ Read more about our two integration alternatives by clicking the links below.
 This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
 `sv-SE`.
 
-{% include iterator.html prev_href="/checkout/v3/"
+{% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
                          next_href="redirect"
                          next_title="Integrate Redirect" %}

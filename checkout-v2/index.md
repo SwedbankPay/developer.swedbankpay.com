@@ -2,6 +2,7 @@
 section: Checkout v2
 title: Introduction
 estimated_read: 3
+menu_order: 300
 description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
@@ -49,10 +50,10 @@ Menu can still be used as a **guest**.
 Below, you will find sequence diagrams visualizing the sequence of Swedbank Pay
 Checkout. The parties involved in the sequences are:
 
-*  **Payer** refers to the front-end code that runs in the web browser
+*   **Payer** refers to the front-end code that runs in the web browser
    (JavaScript events as well as user interaction).
-*  **Merchant** refers to the merchant back-end server.
-*  **Swedbank Pay** refers to the Swedbank Pay API.
+*   **Merchant** refers to the merchant back-end server.
+*   **Swedbank Pay** refers to the Swedbank Pay API.
 
 ### Checkin
 
@@ -243,6 +244,6 @@ TODO: Number each important step in the above diagram and create a numbered list
 {% include iterator.html next_href="checkin"
                          next_title="Implement Checkin" %}
 
-[after-payment-capture]: /checkout/v2/capture
-[callback]: /checkout/v2/features/technical-reference/callback
+[after-payment-capture]: /checkout-v2/capture
+[callback]: /checkout-v2/features/technical-reference/callback
 [https]: /introduction#connection-and-protocol

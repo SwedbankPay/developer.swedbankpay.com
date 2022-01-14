@@ -67,6 +67,6 @@ Content-Type: application/json
 | └➔&nbsp;`logoUrl`           | `string` | {% include field-description-logourl.md %}                                                                                                                                                                                     |
 | └➔&nbsp;`termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
 
-[payment-url]: /checkout/v2/features/technical-reference/payment-url
-[completeurl]: /checkout/v2/features/technical-reference/complete-url
-[callback]: /checkout/v2/features/technical-reference/callback
+[payment-url]: /checkout-v2/features/technical-reference/payment-url
+[completeurl]: /checkout-v2/features/technical-reference/complete-url
+[callback]: /checkout-v2/features/technical-reference/callback
