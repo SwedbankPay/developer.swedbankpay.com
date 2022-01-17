@@ -94,7 +94,8 @@ Content-Type: application/json
         "currency": "NOK",
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",{% unless documentation_section contains "checkout" %}
+        "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
+        "productName": "Checkout3", {% endif %} {% unless documentation_section contains "checkout" %}
         "generatePaymentToken": true,{% endunless %}
         "generateRecurrenceToken": true,{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}
