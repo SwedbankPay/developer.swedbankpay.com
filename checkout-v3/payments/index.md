@@ -6,7 +6,7 @@ description: |
   and how to make an API request for your first test payment. After these steps,
   you're ready to build your integration!**
 checkout_v3: true
-menu_order: 100
+menu_order: 400
 ---
 
 ## Step 1: Sign Up For A Test Account
