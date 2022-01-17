@@ -51,7 +51,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": ["https://example.com"],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {

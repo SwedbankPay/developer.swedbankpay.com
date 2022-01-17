@@ -32,7 +32,7 @@ cases:
 *   `PaymentViewModel.State.IN_PROGRESS`: Active; waiting for either network response or user interaction
 *   `PaymentViewModel.State.UPDATING_PAYMENT_ORDER`: Updating the payment order (because you called `updatePaymentOrder`)
 *   `PaymentViewModel.State.COMPLETE`: Complete; you should hide the `PaymentFragment` and check the payment status from your application servers
-*   `PaymentViewModel.State.CANCELED`: Canceled by the user; you should hide the `PaymentFragment`.
+*   `PaymentViewModel.State.cancelled`: cancelled by the user; you should hide the `PaymentFragment`.
 *   `PaymentViewModel.State.RETRYABLE_ERROR`: Payment could not proceed, but the error is not fatal. See below for options here.
 *   `PaymentViewModel.State.FAILURE`: Payment has failed. You should hide the `PaymentFragment`.
 
@@ -112,8 +112,8 @@ extension MyClass : SwedbankPaySDKDelegate {
     func paymentComplete() {
         // Payment is complete; you should hide the SwedbankPaySDKController
     }
-    func paymentCanceled() {
-        // Payment canceled by user; you should hide the SwedbankPaySDKController
+    func paymentcancelled() {
+        // Payment cancelled by user; you should hide the SwedbankPaySDKController
     }
 
     func paymentFailed(error: Error) {

@@ -77,7 +77,7 @@ object:
 ```json
 {
     "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
-    "redirectUrl": "https://example.com/canceled"
+    "redirectUrl": "https://example.com/cancelled"
 }
 ```
 
@@ -85,7 +85,7 @@ object:
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a canceled payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ### `onPaymentFailed`
 
