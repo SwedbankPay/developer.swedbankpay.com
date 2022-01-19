@@ -30,10 +30,10 @@ table_content:
 table_content_authenticated:
   - icon: lock
     label: Authentication
-    merchantSide: true
+    swedbankPay: true
   - icon: local_shipping
     label: Delivery Info
-    swedbankPay: true
+    merchantSide: true
   - icon: assignment_ind
     label: Consumer Info
     swedbankPay: true
