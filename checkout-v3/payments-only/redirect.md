@@ -8,7 +8,7 @@ description: |
 menu_order: 300
 ---
 
-The **Merchant Managed Redirect** integration consists of three main steps.
+The **Payments Only Redirect** integration consists of three main steps.
 **Creating** the payment order, **displaying** the payment menu, and
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.
@@ -75,7 +75,7 @@ information displayed above the menu. The payer can select their preferred
 payment instrument and pay.
 
 {:.text-center}
-![screenshot of the merchant managed implementation redirect payment menu][redirect-mm-menu]
+![screenshot of the merchant managed implementation redirect payment menu][redirect-payments-only-menu]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -88,6 +88,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments/features/core/abort
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-redirect
-[redirect-mm-menu]: /assets/img/checkout/mac-redirect.png
+[abort-feature]: /checkout-v3/payments-only/features/core/abort
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-only-redirect
+[redirect-payments-only-menu]: /assets/img/checkout/mac-redirect.png

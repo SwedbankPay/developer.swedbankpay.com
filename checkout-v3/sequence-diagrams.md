@@ -425,7 +425,7 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/mac/seamless-view"
                          prev_title="Back to MAC Seamless View" %}
 
-## Payments Redirect
+## Payments Only Redirect
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -514,7 +514,7 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/payments/redirect"
                          prev_title="Back to Payments Redirect" %}<br/>
 
-## Payments Seamless View
+## Payments Only Seamless View
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end

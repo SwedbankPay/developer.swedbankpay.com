@@ -1,5 +1,5 @@
 ---
-section: Payments
+section: Payments Only
 title: Set Up
 description: |
   **In this section we are going to guide you through setting up your test account
@@ -77,5 +77,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout-v3/payments/introduction"
+                         next_href="/checkout-v3/payments-only/introduction"
                          next_title="Start Integration" %}

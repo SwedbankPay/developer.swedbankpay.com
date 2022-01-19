@@ -127,7 +127,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `true`, and not to be included if it is `false`.                                    |
-|                  | `requireConsumerInfo` | `string` | Set to `true` by merchants who want to receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed. If set to `false`, Swedbank Pay will depend on the merchant to send the `email` and/or `msisdn` for digital products, and also the shipping address if the order is shipped.                              |
+|  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Standard, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
 | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                 |
 | {% icon check %} | └─➔&nbsp;`reference`               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`name`                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -238,12 +238,6 @@ Content-Type: application/json
           "contentType": "application/json"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "set-instrument",
-          "method": "PATCH",
-          "contentType": "application/json"
-        },
-        {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
           "rel": "cancel",
           "method": "POST",
@@ -258,12 +252,6 @@ Content-Type: application/json
         {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
           "rel": "reversal",
-          "method": "POST",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "overcharged-amount",
           "method": "POST",
           "contentType": "application/json"
         }
