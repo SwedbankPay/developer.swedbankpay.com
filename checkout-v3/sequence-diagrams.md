@@ -511,8 +511,8 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/payments/redirect"
-                         prev_title="Back to Payments Redirect" %}<br/>
+{% include iterator.html prev_href="/checkout-v3/payments-only/redirect"
+                         prev_title="Back to Payments Only Redirect" %}<br/>
 
 ## Payments Only Seamless View
 
@@ -625,8 +625,8 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/payments/seamless-view"
-                         prev_title="Back to Payments Seamless View" %}
+{% include iterator.html prev_href="/checkout-v3/payments-only/seamless-view"
+                         prev_title="Back to Payments Only Seamless View" %}
 
 ## Standard Seamless View
 
@@ -748,9 +748,9 @@ Merchant -->>- Payer: Show Purchase complete
 
 [callback]: /checkout-v3/authenticated/features/technical-reference/callback
 [mac-callback]: /checkout-v3/mac/features/technical-reference/callback
-[payments-callback]: /checkout-v3/payments/features/technical-reference/callback
+[payments-callback]: /checkout-v3/payments-only/features/technical-reference/callback
 [standard-callback]: /checkout-v3/standard/features/technical-reference/callback
 [seamless-view-events]: /checkout-v3/authenticated/features/technical-reference/seamless-view-events
 [mac-seamless-view-events]: /checkout-v3/mac/features/technical-reference/seamless-view-events
-[payments-seamless-view-events]: /checkout-v3/payments/features/technical-reference/seamless-view-events
+[payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [standard-seamless-view-events]: /checkout-v3/standard/features/technical-reference/seamless-view-events
