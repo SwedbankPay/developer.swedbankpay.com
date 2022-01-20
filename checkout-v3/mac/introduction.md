@@ -27,11 +27,6 @@ With **Seamless View**, the payer stays at your site, and you initiate the
 Swedbank Pay purchase module in an iframe. The purchase component will be styled
 by Swedbank Pay.
 
-Just like with our other implementations, it is always possible to pay as a
-**guest**. When using **Merchant Authenticated Consumer**, the way to do it is
-to not include the `payerReference` or `nationalIdentifier` in the
-`paymentOrder` request.
-
 Read more about our two integration alternatives by clicking the links below.
 
 This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
