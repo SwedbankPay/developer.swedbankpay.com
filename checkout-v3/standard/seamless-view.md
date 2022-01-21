@@ -37,6 +37,10 @@ integration, you must set `requireConsumerInfo` to `true`. If `digitalProducts`
 is set to `false`, you also need to add
 `shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
+There is also a guest mode option for the payers who don't wish to store their
+information. When using **Standard**, this is triggered when the payer chooses
+not to store credentials during checkin.
+
 In some instances you need the possibility to abort purchases. This could be if
 a payer does not complete the purchase within a reasonable timeframe. For those
 instances we have `abort`, which you can read about in the [core
