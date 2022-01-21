@@ -166,7 +166,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | └─➔&nbsp;`email`                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/3d-secure-2).                                                                             |
 |                  | └─➔&nbsp;`msisdn`                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).            |
-|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in the Merchant Authenticated Consumer and Payments implementations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/checkout-v3/payments/features/optional/mac-payer-reference) feature section.                                                                                                                                                                                                                                        |
+|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in the Merchant Authenticated Consumer and Payments implementations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/checkout-v3/payments-only/features/optional/mac-payer-reference) feature section.                                                                                                                                                                                                                                        |
 | | └➔&nbsp;`shippingAddress`            | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).                                                                                                                                  |
 | | └─➔&nbsp;`firstName`                   | `string` | The first name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
 | | └─➔&nbsp;`lastName`                   | `string` | The last name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
@@ -302,12 +302,6 @@ Content-Type: application/json
           "contentType": "application/json"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "set-instrument",
-          "method": "PATCH",
-          "contentType": "application/json"
-        },
-        {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
           "rel": "cancel",
           "method": "POST",
@@ -322,12 +316,6 @@ Content-Type: application/json
         {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
           "rel": "reversal",
-          "method": "POST",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "overcharged-amount",
           "method": "POST",
           "contentType": "application/json"
         }

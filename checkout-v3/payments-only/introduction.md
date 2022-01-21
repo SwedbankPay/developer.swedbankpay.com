@@ -1,20 +1,20 @@
 ---
 section: Introduction
-title: Payments
+title: Payments Only
 estimated_read: 3
 hide_from_sidebar: false
 description: |
-  **Payments** is the Checkout for merchants who does everything but the
+  **Payments Only** is the Checkout for merchants who does everything but the
   payment menu.
 menu_order: 200
 ---
 
-**Payments** is where you get to be in charge of everything. You handle
+**Payments Only** is where you get to be in charge of everything. You handle
 the consumer verification with a strong consumer authentication, collect the
 consumer information needed to calculate shipping costs, and store the
 information yourself. We provide you with our full range of payment methods.
 
-There are two ways of integrating the **Payments** implementation.
+There are two ways of integrating the **Payments Only** implementation.
 **Redirect** and **Seamless View**.
 
 With **Redirect**, the payer is sent to a Swedbank Pay page, where we handle the

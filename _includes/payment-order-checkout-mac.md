@@ -308,12 +308,6 @@ Content-Type: application/json
           "contentType": "application/json"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "set-instrument",
-          "method": "PATCH",
-          "contentType": "application/json"
-        },
-        {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
           "rel": "cancel",
           "method": "POST",
@@ -331,12 +325,6 @@ Content-Type: application/json
           "method": "POST",
           "contentType": "application/json"
         },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "overcharged-amount",
-          "method": "POST",
-          "contentType": "application/json"
-        }
        ]
       }
 ```
