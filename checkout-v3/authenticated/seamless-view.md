@@ -33,6 +33,10 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
+There is also a guest mode option for the payers who don't wish to store their
+information. When using **Authenticated**, this is triggered when the payer
+chooses not to store credentials during checkin.
+
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
 have `abort`, which you can read about in the [core features][abort-feature].

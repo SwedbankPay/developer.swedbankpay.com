@@ -308,12 +308,6 @@ Content-Type: application/json
           "contentType": "application/json"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "set-instrument",
-          "method": "PATCH",
-          "contentType": "application/json"
-        },
-        {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
           "rel": "cancel",
           "method": "POST",
@@ -331,12 +325,6 @@ Content-Type: application/json
           "method": "POST",
           "contentType": "application/json"
         },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "overcharged-amount",
-          "method": "POST",
-          "contentType": "application/json"
-        }
        ]
       }
 ```
@@ -363,7 +351,7 @@ Content-Type: application/json
 | └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Authenticated`, `MerchantAuthenticatedConsumer`, `Payments` or `Standard`.                                                                                                                                                  |
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`.                                                                                                                                                  |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
-| └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not.                                                                                                                                                  |
+| └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Merchant Authenticated Consumer implementation, this is triggered by not including a `payerReference` or `nationalIdentifier` in the original payment order request.                                                                                                                                                   |
 | └➔&nbsp;`payer`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
 | └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | └➔&nbsp;`history`     | `string`     | The URL to the `history` resource where information about the payment's history can be retrieved.                                                                                                                            |

@@ -32,6 +32,11 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
+There is also a guest mode option for the payers who don't wish to store their
+information. When using **Payments Only**, the way to trigger this is to not
+include the `payerReference` field in your `paymentOrder` request. You can find
+it in the `payer` node in the example below.
+
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
 have `abort`, which you can read about in the [core features][abort-feature].
@@ -149,7 +154,7 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments/features/core/abort
-[seamless-view-events]: /checkout-v3/payments/features/technical-reference/seamless-view-events
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-seamless-view
+[abort-feature]: /checkout-v3/payments-only/features/core/abort
+[seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-only-seamless-view
 [seamless-mac-menu]: /assets/img/checkout/mac-seamless-view.png
