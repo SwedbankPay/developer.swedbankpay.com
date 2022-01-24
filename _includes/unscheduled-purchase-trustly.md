@@ -11,13 +11,13 @@ To use this, you need to make sure `directDebitEnabled` is `true` in the Trustly
 
 If you enable `callbackEnabled` and send a `callbackUrl`, you can expect to get a callback when the payment is finised. The alternative is setting up polling to poll for a state.
 
-#### Creating a Payment
+### Creating a Payment
 
 *   You need to `POST` a [Purchase payment][trustly-paymentorder-create] / and generate an unscheduled token (for later use). As mentioned, the `email` parameter MUST be set for trustly to appear as an available option
 
 *   You need to `POST` a [Verify payment][trustly-paymentorder-create] / and generate an unscheduled token (for later use). As mentioned, the `email` parameter MUST be set for trustly to appear as an available option
 
-#### Delete Unscheduled Token
+### Delete Unscheduled Token
 
 You can delete a created unscheduled token. Please see technical reference for
 details [here][trustly-remove-payment-token].
