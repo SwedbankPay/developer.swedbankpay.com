@@ -21,7 +21,7 @@ table_content:
     label: Delivery Info
     swedbankPay: true
   - icon: assignment_ind
-    label: Consumer Info
+    label: Payer Info
     swedbankPay: true
   - icon: monetization_on
     label: PSP
@@ -30,12 +30,12 @@ table_content:
 table_content_authenticated:
   - icon: lock
     label: Authentication
-    merchantSide: true
+    swedbankPay: true
   - icon: local_shipping
     label: Delivery Info
-    swedbankPay: true
+    merchantSide: true
   - icon: assignment_ind
-    label: Consumer Info
+    label: Payer Info
     swedbankPay: true
   - icon: monetization_on
     label: PSP
@@ -49,7 +49,7 @@ table_content_mac:
     label: Delivery Info
     merchantSide: true
   - icon: assignment_ind
-    label: Consumer Info
+    label: Payer Info
     swedbankPay: true
   - icon: monetization_on
     label: PSP
@@ -63,7 +63,7 @@ table_content_payments:
     label: Delivery Info
     merchantSide: true
   - icon: assignment_ind
-    label: Consumer Info
+    label: Payer Info
     merchantSide: true
   - icon: monetization_on
     label: PSP
@@ -75,27 +75,27 @@ table_content_payments:
 
 Truth is, the customer journey varies a lot depending on your business
 vertical. For example, if you're selling physical goods like clothes, shoes or
-computers, you need to collect the address of the consumer for shipping
+computers, you need to collect the address of the payer for shipping
 purposes. Unlike if you were selling digital goods, where that's simply not
 necessary. But it also comes down to what you are able and wish to manage
 yourself.
 
 When building your checkout page you have two main paths. Either you let us
-provide you with the entire checkout solution. This includes consumer
+provide you with the entire checkout solution. This includes payer
 identification and payment menu, where your customer themselves can choose how
 to pay. Or, you can choose to only use our payment option (also called the
 payment menu), where you are in charge of collecting and storing the customer
 data.
 
 Regardless if you choose our checkout or payments only option, you will always
-be able to decide which payment options are available for the consumer. Hence
+be able to decide which payment options are available for the payer. Hence
 you can show all available payment options for that specific market, or just one
 or two if that makes more sense for your business.
 
--   **Consumer Info:** The consumer's personal data e.g. name, address, phone
+-   **Payer Info:** The payer's personal data e.g. name, address, phone
     number etc.
 
--   **Authentication:** The process for verifying the consumer's identity via
+-   **Authentication:** The process for verifying the Payer's identity via
     Strong Consumer Authentication (e.g. BankID).
 
 -   **Delivery Info:** Information about where the goods should be delivered.
@@ -109,8 +109,8 @@ or two if that makes more sense for your business.
 
 ## Full Checkout
 
-By using the **Full Checkout**, we help you collect and safely store consumer
-data. We can also prefill consumer info in the checkout if they have agreed to
+By using the **Full Checkout**, we help you collect and safely store payer
+data. We can also prefill payer info in the checkout if they have agreed to
 let us store their info. All of our implementations support both single payment
 options and the full payment offering.
 {:.heading-line}
@@ -123,7 +123,7 @@ options and the full payment offering.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text='We collect and verify the identity of your consumer. We also collect the billing and shipping address, and we store the consumer information. With our PSP you are always able to choose one or more payment methods.'
+  text='We collect and verify the identity of your payer. We also collect the billing and shipping address, and we store the payer information. With our PSP you are always able to choose one or more payment methods.'
   table_content=page.table_content
   header=page.header
   button_type='secondary'
@@ -136,8 +136,8 @@ options and the full payment offering.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="The consumer data you have collected, is shared with us for verification and
-  storage. If you have a login, your consumer won't need to fill out their
+  text="The payer data you have collected, is shared with us for verification and
+  storage. If you have a login, your payer won't need to fill out their
   information twice. With our PSP you are always able to choose one or more
   payment methods."
   table_content=page.table_content_authenticated
@@ -153,7 +153,7 @@ options and the full payment offering.
   icon_outlined=true
   button_content='Proceed'
   text="In order to implement this solution, you need to be able to both collect and
-  verify your consumer's data using SCA. We store the consumer information, and
+  verify your payer's data using SCA. We store the payer information, and
   with our PSP you are always able to choose one or more payment methods."
   table_content=page.table_content_mac
   header=page.header
@@ -168,7 +168,7 @@ options and the full payment offering.
 ## Payments Only
 
 If you are looking for our payments package, you will have the flexibility to
-build your own checkout flow. You collect the consumer data and own the entire
+build your own checkout flow. You collect the payer data and own the entire
 checkout process. The **Payments Only** implementation supports both single
 payment options and the full payment offering.
 {:.heading-line}
@@ -177,18 +177,18 @@ payment options and the full payment offering.
 {% capture tab2_content %}
 
 {% include card-extended.html
-  title='Payments'
+  title='Payments Only'
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
   text="In order to implement this solution, you need to be able to both collect and
-  verify your consumer's data using SCA. You also store the consumer information.
+  verify your payer's data using SCA. You also store the payer information.
   With our PSP you are always able to choose one or more payment methods."
   table_content=page.table_content_payments
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/payments/'
+  to='/checkout-v3/payments-only/'
 %}
 {% endcapture %}
 
