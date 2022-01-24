@@ -226,33 +226,33 @@ Content-Type: application/json
           "contentType": "application/javascript"
         },{% endif %}
         {
+          "method":"PATCH",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel":"update-order",
-          "method":"PATCH",
           "contentType":"application/json"
         },
         {
+          "method":"PATCH",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel": "abort",
-          "method": "PATCH",
           "contentType": "application/json"
         },
         {
+          "method": "POST",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
           "rel": "cancel",
-          "method": "POST",
           "contentType": "application/json"
         },
         {
+          "method": "POST",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/captures",
           "rel": "capture",
-          "method": "POST",
           "contentType": "application/json"
         },
         {
+          "method": "POST",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
           "rel": "reversal",
-          "method": "POST",
           "contentType": "application/json"
         }
        ]
