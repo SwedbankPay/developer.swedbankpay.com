@@ -1,5 +1,5 @@
 ---
-section: Standard
+section: Starter
 title: Set Up
 description: |
   **In this section we are going to guide you through setting up your test account
@@ -20,7 +20,7 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **Services you prefer:** Full Checkout (Standard / Authenticated / Merchant
+*   **Services you prefer:** Full Checkout (Starter / Authenticated / Merchant
     Authenticated Consumer) or Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.
@@ -74,5 +74,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout-v3/standard/introduction"
+                         next_href="/checkout-v3/starter/introduction"
                          next_title="Start Integration" %}

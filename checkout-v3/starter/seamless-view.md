@@ -8,7 +8,7 @@ description: |
 menu_order: 300
 ---
 
-The **Standard Seamless View** integration consists of three main steps.
+The **Starter Seamless View** integration consists of three main steps.
 **Creating** the payment order and checkin, **displaying** the payment menu,
 shipping options and checkin module in an iframe, and finally **capturing** the
 funds. In addition, there are other post purchase options you need. We get to
@@ -32,13 +32,13 @@ Checkout v3. If it isn´t included in your request, you won't get the correct
 operations in the response.
 
 When `productName` is set to `checkout3`, `requireConsumerInfo` and
-`digitalProducts` will be set to `false` by default. For the **Standard**
+`digitalProducts` will be set to `false` by default. For the **Starter**
 integration, you must set `requireConsumerInfo` to `true`. If `digitalProducts`
 is set to `false`, you also need to add
 `shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Standard**, this is triggered when the payer chooses
+information. When using **Starter**, this is triggered when the payer chooses
 not to store credentials during checkin.
 
 In some instances you need the possibility to abort purchases. This could be if
@@ -54,7 +54,7 @@ completed an `authorize` or a `sale`.
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-standard.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-starter.md integration_mode="seamless_view" %}
 
 ## Step 2: Display Checkin, Shipping Options And Payment Menu
 
@@ -180,7 +180,7 @@ First you will see a Checkin module where the payer can enter their email and
 phone number.
 
 {:.text-center}
-![screenshot of the standard implementation seamless view checkin][login-checkin]
+![screenshot of the starter implementation seamless view checkin][login-checkin]
 
 A known payer will be sent directly to the payment menu shown further below. If
 we detect that the payer is new, we give them the option to store their details
@@ -217,10 +217,10 @@ example with shipping address is for all goods (physical and digital), the one
 without shipping address is for digital products only.
 
 {:.text-center}
-![screenshot of the standard implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+![screenshot of the starter implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
 
 {:.text-center}
-![screenshot of the standard implementation seamless view payment menu digital][seamless-payment-menu-digital]
+![screenshot of the starter implementation seamless view payment menu digital][seamless-payment-menu-digital]
 
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
@@ -241,4 +241,4 @@ the feature section.
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
-[sequence-diagrams]: /checkout-v3/sequence-diagrams/#standard-seamless-view
+[sequence-diagrams]: /checkout-v3/sequence-diagrams/#starter-seamless-view

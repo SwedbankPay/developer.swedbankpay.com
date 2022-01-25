@@ -119,7 +119,7 @@ options and the full payment offering.
 {% capture tab1_content %}
 
 {% include card-extended.html
-  title='Standard'
+  title='Starter'
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
@@ -128,7 +128,7 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/standard/'
+  to='/checkout-v3/starter/'
   %}
 
 {% include card-extended.html
