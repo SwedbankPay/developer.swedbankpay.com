@@ -239,7 +239,7 @@ Content-Type: application/json
           "Swish",
           "CreditAccount",
           "Trustly" ],
-        "implementation": "Payments", {% if include.integration_mode=="seamless_view" %}
+        "implementation": "PaymentsOnly", {% if include.integration_mode=="seamless_view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect",
         {% endif %}
@@ -342,8 +342,8 @@ Content-Type: application/json
 | └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource.                                                                                                                                                          |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
 | └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
-| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Authenticated`, `MerchantAuthenticatedConsumer`, `Payments` or `Standard`.                                                                                                                                                  |
-| └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`.                                                                                                                                                  |
+| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Authenticated`, `MerchantAuthenticatedConsumer`, `PaymentsOnly` or `Standard`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
+| └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | └➔&nbsp;`payer`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
