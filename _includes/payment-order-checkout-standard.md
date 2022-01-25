@@ -144,7 +144,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the payer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay.                                                   |
+|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
 {:.code-view-header}
@@ -226,33 +226,33 @@ Content-Type: application/json
           "contentType": "application/javascript"
         },{% endif %}
         {
+          "method":"PATCH",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel":"update-order",
-          "method":"PATCH",
           "contentType":"application/json"
         },
         {
+          "method":"PATCH",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel": "abort",
-          "method": "PATCH",
           "contentType": "application/json"
         },
         {
+          "method": "POST",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
           "rel": "cancel",
-          "method": "POST",
           "contentType": "application/json"
         },
         {
+          "method": "POST",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/captures",
           "rel": "capture",
-          "method": "POST",
           "contentType": "application/json"
         },
         {
+          "method": "POST",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
           "rel": "reversal",
-          "method": "POST",
           "contentType": "application/json"
         }
        ]
