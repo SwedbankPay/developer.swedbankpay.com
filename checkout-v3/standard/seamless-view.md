@@ -225,14 +225,19 @@ without shipping address is for digital products only.
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
 
-You can read about the different [Seamless View Events][seamless-view-events] in
-the feature section.
+### Events
 
-{% include alert.html type="success" icon="info" header="`onPaid` Event"
-body="When integrating Seamless View, we strongly recommend that you implement
-the `onPaid` event for the best possible setup. Even with this implemented, you
-need to check the payment status towards our APIs, as the payer can change this
-in the browser fast." %}
+When integrating Seamless View, we strongly recommend that you implement the
+`onPaid` event, which will give you the best setup. Even with this implemented,
+you need to check the payment status towards our APIs, as the payer can make
+changes in the browser at any time.
+
+For Standard, you also need to implement `onPayerUnidentified` when you
+implement `onPayerIdentified`. This is important because the "Remember Me"
+feature (which will be released soon) will not work without it.
+
+You can read more about the different [Seamless View
+Events][seamless-view-events] available in the feature section.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
