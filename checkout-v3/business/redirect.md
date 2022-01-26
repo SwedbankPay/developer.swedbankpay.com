@@ -51,7 +51,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-authenticate.md integration_mode="redirect" %}
+{% include payment-order-checkout-business.md integration_mode="redirect" %}
 
 ## Step 2: Display Payment Menu And Checkin
 
@@ -80,7 +80,7 @@ The redirect link opens the payment menu in checkin state. The first page will
 be the checkin page where the payer provides their email and phone number.
 
 {:.text-center}
-![screenshot of the authenticated implementation redirect checkin][login-checkin]
+![screenshot of the business implementation redirect checkin][login-checkin]
 
 A known payer will be sent directly to the payment menu shown further below. If
 we detect that the payer is new, we give them the option to store their details
@@ -109,10 +109,10 @@ payment instrument and pay. The example with shipping address is for all goods
 products only.
 
 {:.text-center}
-![screenshot of the authenticated implementation redirect payment menu mixed][redirect-payment-menu-mixed]
+![screenshot of the business implementation redirect payment menu mixed][redirect-payment-menu-mixed]
 
 {:.text-center}
-![screenshot of the authenticated implementation redirect payment menu digital][redirect-payment-menu-digital]
+![screenshot of the business implementation redirect payment menu digital][redirect-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -125,8 +125,8 @@ about capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/authenticated/features/core/abort
-[sequence-diagrams]: /checkout-v3/sequence-diagrams/#authenticated-redirect
+[abort-feature]: /checkout-v3/business/features/core/abort
+[sequence-diagrams]: /checkout-v3/sequence-diagrams/#business-redirect
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
 [redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
 [redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png

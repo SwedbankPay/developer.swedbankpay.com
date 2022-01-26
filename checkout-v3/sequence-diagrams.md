@@ -101,7 +101,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/authenticated/redirect"
+{% include iterator.html prev_href="/checkout-v3/business/redirect"
                          prev_title="Back to Business Redirect" %}<br/>
 
 ## Business Seamless View
@@ -219,7 +219,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][seamless-view-events] for further information.
 *   ② Read more about [callback][callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/authenticated/seamless-view"
+{% include iterator.html prev_href="/checkout-v3/business/seamless-view"
                          prev_title="Back to Business Seamless View" %}<br/>
 
 ## Enterprise Redirect
@@ -746,11 +746,11 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/starter/seamless-view"
                          prev_title="Back to Starter Seamless View" %}
 
-[callback]: /checkout-v3/authenticated/features/technical-reference/callback
+[callback]: /checkout-v3/business/features/technical-reference/callback
 [enterprise-callback]: /checkout-v3/enterprise/features/technical-reference/callback
 [payments-callback]: /checkout-v3/payments-only/features/technical-reference/callback
 [starter-callback]: /checkout-v3/starter/features/technical-reference/callback
-[seamless-view-events]: /checkout-v3/authenticated/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
 [enterprise-seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events
 [payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [starter-seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events

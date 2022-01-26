@@ -27,7 +27,7 @@ table_content:
     label: PSP
     swedbankPay: true
 
-table_content_authenticated:
+table_content_business:
   - icon: lock
     label: Authentication
     swedbankPay: true
@@ -140,11 +140,11 @@ options and the full payment offering.
   storage. If you have a login, your payer won't need to fill out their
   information twice. With our PSP you are always able to choose one or more
   payment methods."
-  table_content=page.table_content_authenticated
+  table_content=page.table_content_business
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/authenticated/'
+  to='/checkout-v3/business/'
 %}
 
 {% include card-extended.html

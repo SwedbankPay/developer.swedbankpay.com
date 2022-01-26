@@ -73,5 +73,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout-v3/authenticated/introduction"
+                         next_href="/checkout-v3/business/introduction"
                          next_title="Start Integration" %}

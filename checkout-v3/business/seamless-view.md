@@ -50,7 +50,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-authenticate.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-business.md integration_mode="seamless_view" %}
 
 ## Step 2: Display Payment Menu And Checkin
 
@@ -139,7 +139,7 @@ First you will see a Checkin module where the payer can enter their email and
 phone number.
 
 {:.text-center}
-![screenshot of the authenticated implementation seamless view checkin][login-checkin]
+![screenshot of the business implementation seamless view checkin][login-checkin]
 
 A known payer will be sent directly to the payment menu shown further below. If
 we detect that the payer is new, we give them the option to store their details
@@ -167,10 +167,10 @@ instrument and pay. The example with shipping address is for all goods (physical
 and digital), the one without shipping address is for digital products only.
 
 {:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+![screenshot of the business implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
 
 {:.text-center}
-![screenshot of the authenticated implementation seamless view payment menu digital][seamless-payment-menu-digital]
+![screenshot of the business implementation seamless view payment menu digital][seamless-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -186,10 +186,10 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/authenticated/features/core/abort
-[sequence-diagrams]: /checkout-v3/sequence-diagrams/#authenticated-seamless-view
+[abort-feature]: /checkout-v3/business/features/core/abort
+[sequence-diagrams]: /checkout-v3/sequence-diagrams/#business-seamless-view
 [login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
-[seamless-view-events]: /checkout-v3/authenticated/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
 [seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
 [seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
