@@ -178,6 +178,12 @@ Once the payer has completed the purchase, you can perform a GET towards the
 You can read about the different [Seamless View Events][seamless-view-events] in
 the feature section.
 
+{% include alert.html type="success" icon="info" header="`onPaid` Event"
+body="When integrating Seamless View, we strongly recommend that you implement
+the `onPaid` event for the best possible setup. Even with this implemented, you
+need to check the payment status towards our APIs, as the payer can change this
+in the browser fast." %}
+
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
 
