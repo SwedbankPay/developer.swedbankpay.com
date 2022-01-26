@@ -8,7 +8,7 @@ description: |
 menu_order: 400
 ---
 
-The **Authenticated Redirect** integration consists of three main steps.
+The **Business Redirect** integration consists of three main steps.
 **Creating** the payment order and checkin, **displaying** the payment menu and
 checkin module in an iframe, and finally **capturing** the funds. In addition,
 there are other post purchase options you need. We get to them later on.
@@ -34,7 +34,7 @@ When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Authenticated**, this is triggered when the payer
+information. When using **Business**, this is triggered when the payer
 chooses not to store credentials during checkin.
 
 Sometimes you might need to abort purchases. An example could be if a payer does

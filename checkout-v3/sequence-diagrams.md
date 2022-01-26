@@ -6,7 +6,7 @@ description: |
 menu_order: 600
 ---
 
-## Authenticated Redirect
+## Business Redirect
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, Payer refers to the merchant front-end
@@ -102,9 +102,9 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① Read more about [callback][callback] handling in the technical reference.
 
 {% include iterator.html prev_href="/checkout-v3/authenticated/redirect"
-                         prev_title="Back to Authenticated Redirect" %}<br/>
+                         prev_title="Back to Business Redirect" %}<br/>
 
-## Authenticated Seamless View
+## Business Seamless View
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -220,7 +220,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ② Read more about [callback][callback] handling in the technical reference.
 
 {% include iterator.html prev_href="/checkout-v3/authenticated/seamless-view"
-                         prev_title="Back to Authenticated Seamless View" %}<br/>
+                         prev_title="Back to Business Seamless View" %}<br/>
 
 ## Enterprise Redirect
 

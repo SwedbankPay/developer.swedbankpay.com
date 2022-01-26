@@ -1,5 +1,5 @@
 ---
-section: Authenticated
+section: Business
 title: Set Up
 description: |
   **In this section we are going to guide you through setting up your test account
@@ -20,7 +20,7 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **Services you prefer:** Full Checkout (Starter / Authenticated / Merchant
+*   **Services you prefer:** Full Checkout (Starter / Business / Merchant
     Authenticated Consumer) or Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.

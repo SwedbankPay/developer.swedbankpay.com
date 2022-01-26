@@ -9,7 +9,7 @@ description: |
 menu_order: 300
 ---
 
-The **Authenticated Redirect** integration consists of three main steps.
+The **Business Redirect** integration consists of three main steps.
 **Creating** the payment order and checkin, **displaying** the payment menu and
 checkin module, and finally **capturing** the funds. In addition, there are
 other post purchase options you need. We get to them later on.
@@ -38,7 +38,7 @@ Supported features for this integration are subscriptions (`recur` and
 own `logo`.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Authenticated**, this is triggered when the payer
+information. When using **Business**, this is triggered when the payer
 chooses not to store credentials during checkin.
 
 Sometimes you might need to abort purchases. An example could be if a payer does

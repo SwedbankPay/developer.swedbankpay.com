@@ -132,7 +132,7 @@ options and the full payment offering.
   %}
 
 {% include card-extended.html
-  title='Authenticated'
+  title='Business'
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
