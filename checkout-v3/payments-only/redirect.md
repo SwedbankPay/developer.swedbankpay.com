@@ -95,4 +95,4 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
 [sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-only-redirect
-[redirect-payments-only-menu]: /assets/img/checkout/mac-redirect.png
+[redirect-payments-only-menu]: /assets/img/checkout/enterprise-redirect.png

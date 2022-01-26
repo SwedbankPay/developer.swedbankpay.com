@@ -1,12 +1,12 @@
-## Merchant Authenticated Consumer PayerReference
+## Enterprise PayerReference
 
-If a merchant wishes to use the Merchant Authenticated Consumer or Payments
+If a merchant wishes to use the Enterprise or Payments
 implementation, but does not have the payer's SSN or a secure login, they can
 add a `payerReference` in the payer field of the payment request.
 
 If the `payerReference` is present along with `email` and `msisdn`, the merchant
 does not need to add a `nationalIdentifier`. Other than that, the integration
-is the same as a normal MAC integration.
+is the same as a normal Enterprise integration.
 
 If no existing consumer profile exists on the `payerReference` or `email` and
 `msisdn`, the payer is asked to enter their social security number as shown
@@ -15,7 +15,7 @@ payer will be given the option to continue as a guest. When doing so, no payment
 information will be stored.
 
 {:.text-center}
-![Payer is presented with SSN input or continue as guest][mac-enter-ssn]
+![Payer is presented with SSN input or continue as guest][enterprise-enter-ssn]
 
 This example leaves out the `nationalIdentifier`.
 
@@ -49,7 +49,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | └─➔&nbsp;`email`                   | `string`     | The e-mail address of the payer. Increases the chance for [frictionless 3-D Secure 2 flow][3d-secure-2].                                         |
 |                  | └─➔&nbsp;`msisdn`                  | `string`     | The mobile phone number of the payer. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3d-secure-2][3d-secure-2].            |
-|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in Merchant Authenticated Consumer and Payments integrations to recognize the payer in the absence of SSN and/or a secure login.                                                                                                                                                                                                                               |
+|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in Enterprise and Payments integrations to recognize the payer in the absence of SSN and/or a secure login.                                                                                                                                                                                                                               |
 
-[3d-secure-2]: /checkout-v3/mac/features/core/3d-secure-2
-[mac-enter-ssn]: /assets/img/checkout/mac-enter-ssn.png
+[3d-secure-2]: /checkout-v3/enterprise/features/core/3d-secure-2
+[enterprise-enter-ssn]: /assets/img/checkout/enterprise-enter-ssn.png

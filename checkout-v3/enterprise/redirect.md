@@ -8,7 +8,7 @@ description: |
 menu_order: 300
 ---
 
-The **Merchant Authenticated Consumer Redirect** integration consists of three
+The **Enterprise Redirect** integration consists of three
 main steps. **Creating** the payment order, **displaying** the payment menu, and
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.
@@ -37,7 +37,7 @@ Supported features for this integration are subscriptions (`recur` and
 own `logo`.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Merchant Authenticated Consumer**, the way to trigger
+information. When using **Enterprise**, the way to trigger
 this is to not include the `payerReference` or `nationalIdentifier` field in
 your `paymentOrder` request. You find them in the `payer` node in the example
 below.
@@ -52,7 +52,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-mac.md integration_mode="redirect" %}
+{% include payment-order-checkout-enterprise.md integration_mode="redirect" %}
 
 ## Step 2: Display Payment Menu
 
@@ -81,7 +81,7 @@ information displayed above the menu. The payer can select their preferred
 payment instrument and pay.
 
 {:.text-center}
-![screenshot of the mac implementation redirect payment menu][redirect-mac-menu]
+![screenshot of the enterprise implementation redirect payment menu][redirect-enterprise-menu]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -94,6 +94,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/mac/features/core/abort
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#merchant-authenticated-consumer-redirect
-[redirect-mac-menu]: /assets/img/checkout/mac-redirect.png
+[abort-feature]: /checkout-v3/enterprise/features/core/abort
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#enterprise-redirect
+[redirect-enterprise-menu]: /assets/img/checkout/enterprise-redirect.png

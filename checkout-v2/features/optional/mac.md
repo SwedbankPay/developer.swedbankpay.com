@@ -1,5 +1,5 @@
 ---
-title: Merchant Authenticated Consumer
+title: Enterprise
 estimated_read: 3
 description: The Checkin alternative.
 menu_order: 1400
@@ -8,4 +8,4 @@ icon:
   outlined: true
 ---
 
-{% include merchant-authenticated-consumer.md %}
+{% include enterprise.md %}

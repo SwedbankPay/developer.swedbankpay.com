@@ -7,7 +7,7 @@ description: |
 menu_order: 400
 ---
 
-The **MAC Seamless View** integration consists of three main steps. **Creating**
+The **Enterprise Seamless View** integration consists of three main steps. **Creating**
 the payment order, **displaying** the payment menu in an iframe, and
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.
@@ -33,7 +33,7 @@ When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Merchant Authenticated Consumer**, the way to trigger
+information. When using **Enterprise**, the way to trigger
 this is to not include the `payerReference` or `nationalIdentifier` field in
 your `paymentOrder` request. You find them in the `payer` node in the example
 below.
@@ -51,7 +51,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-mac.md integration_mode="seamless-view" %}
+{% include payment-order-checkout-enterprise.md integration_mode="seamless-view" %}
 
 ## Step 2: Display Payment Menu
 
@@ -139,7 +139,7 @@ The payment menu should appear with the payer information displayed above the
 menu. The payer can select their preferred payment instrument and pay.
 
 {:.text-center}
-![screenshot of the mac implementation seamless view payment menu][seamless-mac-menu]
+![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -155,7 +155,7 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/mac/features/core/abort
-[seamless-view-events]: /checkout-v3/mac/features/technical-reference/seamless-view-events
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#merchant-authenticated-consumer-seamless-view
-[seamless-mac-menu]: /assets/img/checkout/mac-seamless-view.png
+[abort-feature]: /checkout-v3/enterprise/features/core/abort
+[seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#enterprise-seamless-view
+[seamless-enterprise-menu]: /assets/img/checkout/enterprise-seamless-view.png

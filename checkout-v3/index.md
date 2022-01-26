@@ -41,7 +41,7 @@ table_content_authenticated:
     label: PSP
     swedbankPay: true
 
-table_content_mac:
+table_content_enterprise:
   - icon: lock
     label: Authentication
     merchantSide: true
@@ -148,18 +148,18 @@ options and the full payment offering.
 %}
 
 {% include card-extended.html
-  title='Merchant Authenticated Consumer'
+  title='Enterprise'
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
   text="In order to implement this solution, you need to be able to both collect and
   verify your payer's data using SCA. We store the payer information, and
   with our PSP you are always able to choose one or more payment methods."
-  table_content=page.table_content_mac
+  table_content=page.table_content_enterprise
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/mac/'
+  to='/checkout-v3/enterprise/'
 %}
 {% endcapture %}
 
