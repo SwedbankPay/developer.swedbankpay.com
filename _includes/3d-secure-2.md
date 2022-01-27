@@ -46,6 +46,7 @@ fields that should be included in your request when implementing 3-D Secure 2.
             "zipCode": "1642",
             "countryCode": "NO"
             }{% endif %}
+}
 ```
 
 {:.table .table-striped}
