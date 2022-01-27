@@ -29,8 +29,8 @@ by Swedbank Pay.
 
 Read more about our two integration alternatives by clicking the links below.
 
-This product supports Danish `da-DK` English (US) `en-US`, Finnish `fi-FI`
-Norwegian `nb-NO` and Swedish `sv-SE`.
+This product supports Danish `da-DK`, English (US) `en-US`, Finnish `fi-FI`,
+Norwegian `nb-NO`, and Swedish `sv-SE`.
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
