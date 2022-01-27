@@ -14,6 +14,7 @@ input from the cardholder. To increase the chances of this, there are certain
 fields that should be included in your request when implementing 3-D Secure 2.
 
 ```json
+{
 {% if api_resource == "creditcard" %}
     "cardholder": {
         "firstName": "Olivia",
