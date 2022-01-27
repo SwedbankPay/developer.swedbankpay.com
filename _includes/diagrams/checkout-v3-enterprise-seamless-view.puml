@@ -1,0 +1,100 @@
+@startuml "Merchant Authenticated Consumer Seamless View"
+    $participant("payer", "Payer") as Payer
+    $participant("merchant", "Merchant") as Merchant
+    $participant("server", "Swedbank Pay") as SwedbankPay
+    $participant("3rd party", "3rd Party") as 3rd Party
+
+        rect rgba(238, 112, 35, 0.05)
+            activate Payer
+            Payer ->>+ Merchant: Initiate Purchase
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: $code("POST /psp/paymentorders (hostUrls, paymentUrl, payer information)")
+            deactivate Merchant
+            SwedbankPay -->>+ Merchant: $code("rel:view-checkout")
+            deactivate SwedbankPay
+                        Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
+    activate Payer
+    Payer ->> Payer: Initiate Purchase step
+    deactivate Payer
+    activate SwedbankPay
+        SwedbankPay ->>+ Payer: Do purchase logic
+    Payer ->> SwedbankPay: Do purchase logic
+    deactivate Payer
+    deactivate SwedbankPay
+
+                opt Payer performs purchase out of iFrame
+                    activate Payer
+                    Payer ->> Payer: Redirect to 3rd party
+                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    deactivate Payer
+                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
+                    deactivate 3rdParty
+                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
+                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
+                    deactivate Payer
+                end
+
+                activate SwedbankPay
+                SwedbankPay -->> Payer: Purchase status
+                deactivate SwedbankPay
+
+            alt If purchase is completed
+            activate Payer
+            Payer ->> Payer: $code("EVENT: onPaymentCompleted") ①
+            Payer ->>+ Merchant: Check purchase status
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
+            deactivate Merchant
+            SwedbankPay ->>+ Merchant: $code("rel:paid-paymentorder")
+            deactivate SwedbankPay
+            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
+            activate Payer
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: $code("GET rel:paid-paymentorder")
+            deactivate Merchant
+            SwedbankPay -->> Merchant: Purchase Details
+            deactivate SwedbankPay
+            end
+            end
+
+            activate Merchant
+Merchant -->>- Payer: Show Purchase complete
+            end
+
+                opt If purchase is failed
+                activate Payer
+                Payer ->> Payer: $code("EVENT:OnPaymentFailed") ①
+                Payer ->>+ Merchant: Check purchase status
+                deactivate Payer
+                Merchant ->>+ SwedbankPay: $code("GET paymentorder.id")
+                deactivate Merchant
+                SwedbankPay -->>+ Merchant: $code("rel:failed-paymentorder")
+                deactivate SwedbankPay
+                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
+                activate Payer
+                deactivate Payer
+                Merchant ->>+ SwedbankPay: $code("GET rel:failed-paymentorder")
+                deactivate Merchant
+                SwedbankPay -->> Merchant: Purchase Details
+                deactivate SwedbankPay
+                end
+                activate Merchant
+                Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
+                end
+
+                opt PaymentOrder Callback (if callbackUrls is set) ②
+                activate SwedbankPay
+                SwedbankPay ->> Merchant: $code("POST Purchase Callback")
+                deactivate SwedbankPay
+         end
+
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: $code("rel:create-paymentorder-capture")
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        end
+@enduml

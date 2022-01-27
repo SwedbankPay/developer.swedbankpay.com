@@ -114,62 +114,7 @@ secured, the next operation is to display the **Payment Menu** and have the
 payer complete a payment, which is visualized in the sequence diagram below.
 
 ```plantuml
-@startuml "Payment Menu"
-    $participant("payer", "Payer") as Payer
-    $participant("merchant", "Merchant") as Merchant
-    $participant("server", "Swedbank Pay") as SwedbankPay
-
-    ' TODO: Remove scale once https://github.com/plantuml/plantuml/discussions/793 is solved.
-    scale 0.81
-
-    Payer -> Merchant: Pay
-    activate Payer
-        activate Merchant
-            Merchant -> SwedbankPay: $code("POST /psp/paymentorders { consumerProfileRef }")
-            activate SwedbankPay
-                SwedbankPay --> Merchant: $code("rel:view-paymentorder")
-            deactivate SwedbankPay
-            Merchant --> Payer: $code("rel:view-paymentorder")
-        deactivate Merchant
-
-        Payer <-> SwedbankPay: $code("<script src=rel:view-paymentorder.href />")
-
-        activate SwedbankPay
-            Payer -> Payer: $code("payex.hostedView.paymentMenu()")
-            SwedbankPay <-> Payer: Perform payment
-        deactivate SwedbankPay
-    deactivate Payer
-
-    alt#fff #ebf8f2 completed payment
-        SwedbankPay -> Payer: $code("onPaymentCompleted(paymentorder)")
-        activate SwedbankPay
-            activate Payer
-                Payer -> Merchant: Check payment status
-                activate Merchant
-                    Merchant -> SwedbankPay: $code("GET paymentorder.id")
-                    SwedbankPay --> Merchant: $code("rel:paid-paymentorder")
-                    Merchant -> SwedbankPay: $code("GET rel:paid-paymentorder.href")
-                    SwedbankPay --> Merchant: Completed Payment Order
-                    Merchant --> Payer: Show receipt
-                deactivate Merchant
-            deactivate Payer
-        deactivate SwedbankPay
-    else failed payment
-        SwedbankPay -> Payer: $code("onPaymentFailed(paymentorder)")
-        activate SwedbankPay
-            activate Payer
-                Payer -> Merchant: Check payment status
-                activate Merchant
-                    Merchant -> SwedbankPay: $code("GET paymentorder.id")
-                    SwedbankPay --> Merchant: $code("rel:failed-paymentorder")
-                    Merchant -> SwedbankPay: $code("GET rel:failed-paymentorder.href")
-                    SwedbankPay --> Merchant: Failed Payment Order
-                    Merchant --> Payer: Show failure page
-                deactivate Merchant
-            deactivate Payer
-        deactivate SwedbankPay
-    end
-@enduml
+{% include diagrams/checkout-v2-payment-menu.puml %}
 ```
 
 {% comment %}
