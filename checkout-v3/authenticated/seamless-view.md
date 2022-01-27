@@ -50,7 +50,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-authenticate.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-authenticate.md integration_mode="seamless-view" %}
 
 ## Step 2: Display Payment Menu And Checkin
 

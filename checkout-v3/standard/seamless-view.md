@@ -54,7 +54,7 @@ completed an `authorize` or a `sale`.
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-standard.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-standard.md integration_mode="seamless-view" %}
 
 ## Step 2: Display Checkin, Shipping Options And Payment Menu
 
