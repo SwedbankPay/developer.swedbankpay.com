@@ -21,7 +21,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
         "productName": "Checkout3",
-        "urls": { {% if include.integration_mode=="seamless_view" %}
+        "urls": { {% if include.integration_mode=="seamless-view" %}
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
             "completeUrl": "https://example.com/payment-completed",
@@ -54,22 +54,22 @@ Content-Type: application/json
                 "lastName": "lastname",
                 "email": "karl.anderssson@mail.se",
                 "msisdn": "+46759123456",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "streetAddress": "Helgestavägen 9",
+                "coAddress": "",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
             },
             "billingAddress": {
                 "firstName": "firstname/companyname",
                 "lastName": "lastname",
                 "email": "karl.anderssson@mail.se",
                 "msisdn": "+46759123456",
-                "streetAddress": "string",
-                "coAddress": "string",
-                "city": "string",
-                "zipCode": "string",
-                "countryCode": "string"
+                "streetAddress": "Helgestavägen 9",
+                "coAddress": "",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
             },
             "accountInfo": {
                 "accountAgeIndicator": "04",
@@ -90,13 +90,13 @@ Content-Type: application/json
                 "imageUrl": "https://example.com/product123.jpg",
                 "description": "Product 1 description",
                 "discountDescription": "Volume discount",
-                "quantity": 4,
+                "quantity": 5,
                 "quantityUnit": "pcs",
                 "unitPrice": 300,
-                "discountPrice": 200,
+                "discountPrice": 0,
                 "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
+                "amount": 1500,
+                "vatAmount": 375
             },
             {
                 "reference": "I1",
@@ -137,18 +137,18 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `paymentorder`                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`operation`                | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`currency`                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
-| {% icon check %} | └➔&nbsp;`vatAmount`                | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
+| Required         | Field     | Type         | Description   |
+| :--------------: | :-------- | :----------- | :------------ |
+| {% icon check %} | `paymentorder`                     | `object`     | The payment order object.                                              |
+| {% icon check %} | └➔&nbsp;`operation`                | `string`     | The operation that the payment order is supposed to perform.                        |
+| {% icon check %} | └➔&nbsp;`currency`                 | `string`     | The currency of the payment.                                             |
+| {% icon check %} | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                       |
+| {% icon check %} | └➔&nbsp;`vatAmount`                | `integer`    | {% include field-description-vatamount.md %}                    |
+| {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |{% if include.integration_mode=="seamless_view" %}
+| {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |{% if include.integration_mode=="seamless-view" %}
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   | {% endif %}
 | {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`]({{ features_url }}/technical-reference/complete-url) for details. |
@@ -230,11 +230,8 @@ Content-Type: application/json
         "operation": "Purchase",
         "status": "Initialized",
         "currency": "SEK",
-        "vatAmount": 375,
         "amount": 1500,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
+        "vatAmount": 375,
         "description": "Test Purchase",
         "initiatingSystemUserAgent": "Mozilla/5.0",
         "language": "sv-SE",
@@ -245,7 +242,7 @@ Content-Type: application/json
           "Swish",
           "CreditAccount",
           "Trustly" ],
-        "implementation": "MerchantAuthenticatedConsumer", {% if include.integration_mode=="seamless_view" %}
+        "implementation": "MerchantAuthenticatedConsumer", {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect",
         {% endif %}
@@ -306,25 +303,7 @@ Content-Type: application/json
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
-          "rel": "cancel",
-          "method": "POST",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/captures",
-          "rel": "capture",
-          "method": "POST",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
-          "rel": "reversal",
-          "method": "POST",
-          "contentType": "application/json"
-        },
+        }
        ]
       }
 ```
@@ -341,9 +320,6 @@ Content-Type: application/json
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`remainingCaptureAmount`      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
-| └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| └➔&nbsp;`remainingReversalAmount`      | `integer`    | The previously captured amount still available for reversals.                                                                                                                                                                             |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
 | └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource. Should be set by the system itself.                                                                                                                                                          |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
