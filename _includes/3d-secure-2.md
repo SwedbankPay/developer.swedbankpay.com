@@ -13,7 +13,7 @@ allowing frictionless payments where transactions can be completed without
 input from the cardholder. To increase the chances of this, there are certain
 fields that should be included in your request when implementing 3-D Secure 2.
 
-```
+```json
 {% if api_resource == "creditcard" %}
     "cardholder": {
         "firstName": "Olivia",
@@ -78,7 +78,10 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`city`                       | `string` | Payer's city of residence.                                                                            |
 | └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
 
-```
+{% endif %}
+
+```json
+{
     "riskIndicator": {
         "deliveryEmailAddress": "olivia.nyhuus@payex.com",
         "deliveryTimeFrameIndicator": "01",
@@ -96,6 +99,7 @@ fields that should be included in your request when implementing 3-D Secure 2.
             "countryCode": "NO"
         }
     }
+}
 ```
 
 {:.table .table-striped}
@@ -108,11 +112,11 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`preOrderPurchaseIndicator`  | `string` | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability).                                                  |
 | └─➔&nbsp;`shipIndicator`              | `string` | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in the `riskIndicator.pickUpAddress` and `payer.shippingAddress` fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service). |
 | └─➔&nbsp;`giftCardPurchase`           | `bool`   | `true` if this is a purchase of a gift card.                                                                 |
-| └─➔&nbsp;`reOrderPurchaseIndicator`   | `string` | Indicates whether the cardholder is reordering previously purchased merchandise. <br>`01` (First time ordered) <br>`02` (Reordered).                                               |
-|          | └➔&nbsp;`pickUpAddress`               | `object`     | If `shipIndicator` set to `04`, then prefill this with the payers `pickUpAddress` of the purchase to decrease the risk factor of the purchase.                                                                      |
-|          | └─➔&nbsp;`name`                       | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `name` of the purchase to decrease the risk factor of the purchase.                                                                           |
-|          | └─➔&nbsp;`streetAddress`              | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `streetAddress` of the purchase to decrease the risk factor of the purchase. Maximum 50 characters long.                                                        |
-|          | └─➔&nbsp;`coAddress`                  | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `coAddress` of the purchase to decrease the risk factor of the purchase.                                                                        |
-|          | └─➔&nbsp;`city`                       | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `city` of the purchase to decrease the risk factor of the purchase.                                                                           |
-|          | └─➔&nbsp;`zipCode`                    | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `zipCode` of the purchase to decrease the risk factor of the purchase.                                                                               |
-|          | └─➔&nbsp;`countryCode`                | `string`     | If `shipIndicator` set to `04`, then prefill this with the payers `countryCode` of the purchase to decrease the risk factor of the purchase.                                                                                  |
+| └─➔&nbsp;`reOrderPurchaseIndicator`   | `string` | Indicates if the cardholder is reordering previously purchased merchandise. <br>`01` (First time ordered) <br>`02` (Reordered).                                               |
+|          | └➔&nbsp;`pickUpAddress`               | `object`     | If the `shipIndicator` is set to `04`, you can prefill these fields with the payer's `pickUpAddress` of the purchase to decrease the risk factor of the purchase.                                                                      |
+|          | └─➔&nbsp;`name`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `name`.                                                                           |
+|          | └─➔&nbsp;`streetAddress`              | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `streetAddress`. Maximum 50 characters long.                                                        |
+|          | └─➔&nbsp;`coAddress`                  | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `coAddress`.                                                     |
+|          | └─➔&nbsp;`city`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `city`.                                                                           |
+|          | └─➔&nbsp;`zipCode`                    | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `zipCode`.                                                                               |
+|          | └─➔&nbsp;`countryCode`                | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `countryCode`.                                                  |
