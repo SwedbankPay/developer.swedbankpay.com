@@ -186,8 +186,8 @@ deprecated in the operation list below." %}
 {% endif %}
 
 {:.table .table-striped}
-| Field         | Type     | Description                                                                        |
-| :------------ | :------- | :--------------------------------------------------------------------------------- |
+| Field         | Type     | Description |
+| :------------ | :------- | :---------- |
 | `method`      | `string` | `GET`, `PATCH`, `POST`, etc. The HTTP method to use when performing the operation. |
 | `href`        | `string` | The target URL to perform the operation against.                                   |
 | `rel`         | `string` | The name of the relation the operation has to the current resource.                |
@@ -203,9 +203,8 @@ for the given operation.
 {% if documentation_section contains "checkout-v3" %}
 
 {:.table .table-striped}
-| Operation                         | Description                                                                                                                                                                                                                                                                    |
-| :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
+| Operation  | Description   |
+| :--------- | :------------ |
 | `update-order` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                             |
 | `abort`       | Aborts the payment order before any financial transactions are performed.                                                                              |
 | `cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                     |
@@ -217,8 +216,8 @@ for the given operation.
 {% else %}
 
 {:.table .table-striped}
-| Operation                         | Description                                                                                                                                                                                                                                                                    |
-| :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Operation  | Description  |
+| :----------| :----------- |
 | `update-paymentorder-abort`       | Aborts the payment order before any financial transactions are performed.                                                                                                                                                                                        |
 | `update-paymentorder-updateorder` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                                                                                                                                       |
 | `redirect-paymentorder`           | Contains the URL used to redirect the payer to the Swedbank Pay Payments containing the Payment Menu.                                                                                                                                                               |
