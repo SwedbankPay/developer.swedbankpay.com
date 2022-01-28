@@ -12,17 +12,16 @@ During operation in the {{ product }}, several events can occur. They are
 described below.
 
 {% include alert.html type="warning" icon="info" header="Event Overrides"
-body="Adding an event
-handler to one of the following events **overrides** the default event handler,
-meaning your custom event handler will have to do what the default event handler
-did. If you don’t, the behavior of the event is going to be undefined.
-Just adding an event handler for logging purposes is therefore not possible, the
-event handler will have to perform some functionality similar to the
-event handler you are overriding." %}
+body="Adding an event handler to one of the following events **overrides** the
+default event handler, meaning your custom event handler will have to do what
+the default event handler did. If you don’t, the behavior of the event is going
+to be undefined. Just adding an event handler for logging purposes is therefore
+not possible, the event handler will have to perform some functionality similar
+to the event handler you are overriding." %}
 
 ### `OnAborted`
 
-This event triggers when the payer clicks on the "Abort" redirect page link in
+This event triggers when the payer clicks "Abort" on the redirect page link in
 the Payment Menu. It will be raised with the following event argument object:
 
 {:.code-view-header}
@@ -31,7 +30,7 @@ the Payment Menu. It will be raised with the following event argument object:
 ```json
 {
     "event": "OnAborted",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/cancelled"
 }
 ```
@@ -40,7 +39,7 @@ the Payment Menu. It will be raised with the following event argument object:
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                   |
-| `id`          | `string` | {% include field-description-id.md %}                           |
+| `paymentOrder`          | `string` | {% include field-description-id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ### `onCheckoutLoaded`
@@ -55,7 +54,7 @@ the following event argument object:
 ```json
 {
     "event": "onCheckoutLoaded",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
 }
 ```
@@ -64,13 +63,13 @@ the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `id`         | `string` | {% include field-description-id.md %}                                 |
+| `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
 ### `onCheckoutResized`
 
 This event triggers every time a reconfiguration leads to resizing of the
-payment menu. If no callback method is set, no handling action will be done. It
+payment menu.  If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
 
 {:.code-view-header}
@@ -79,7 +78,7 @@ will be raised with the following event argument object:
 ```json
 {
     "event": "onCheckoutResized",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
 }
 ```
@@ -88,7 +87,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `id`         | `string` | {% include field-description-id.md %}                                 |
+| `paymentOrder`     | `string` | {% include field-description-id.md %}                           |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
 ### `onError`
@@ -103,7 +102,7 @@ will be raised with the following event argument object:
 ```json
 {
     "event": "onError",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "details": "English descriptive text of the error"
 }
 ```
@@ -112,13 +111,13 @@ will be raised with the following event argument object:
 | Field       | Type     | Description                                                            |
 | :---------- | :------- | :-------------------------------------------------------------         |
 | `event`     | `string` | The name of the event raised.                                          |
-| `id`        | `string` | {% include field-description-id.md %}                                  |
+| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.                    |
 
 ### `onEventNotification`
 
 This event triggers whenever any other public event is called. It does not
-prevent their handling. The `onEventNotification` event is raised with the
+prevent their handling. `onEventNotification` is raised with the
 following event argument object:
 
 {:.code-view-header}
@@ -127,7 +126,7 @@ following event argument object:
 ```json
 {
     "event": "OnEventNotification",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "sourceEvent": "OnCheckoutLoaded | OnCheckoutResized | OnError |
      OnPayerIdentified | OnInstrumentSelected | OnPaid | OnAborted |
      OnOutOfViewRedirect | OnTermsOfServiceRequested | OnOutOfViewOpen"
@@ -137,6 +136,8 @@ following event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                |
 | :--------     | :------- | :--------------------------------------------------------- |
+| `event`     | `string` | The name of the event raised.                                |
+| `paymentOrder`        | `string` | {% include field-description-id.md %}              |
 | `sourceEvent` | `string` | A human readable and descriptive text with the event name. |
 
 ### `onInstrumentSelected`
@@ -151,7 +152,7 @@ will be raised with the following event argument object:
 ```json
 {
     "event": "onInstrumentSelected",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "instrument": "creditcard | vipps | swish | invoice",
 }
 ```
@@ -160,13 +161,13 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                          |
-| `id`        | `string` | {% include field-description-id.md %}                                  |
+| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
 
 ### `onOutOfViewRedirect`
 
-This event triggers when a user is directed to a separate web page, like
+This event triggers when a user is redirected to a separate web page, like
 3D-Secure or BankID signing. If no callback method is set, you will be
 redirected to the relevant url. It will be raised with the following event
 argument object:
@@ -177,7 +178,7 @@ argument object:
 ```json
 {
     "event": "onOutOfViewRedirect",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/external"
 }
 ```
@@ -186,7 +187,7 @@ argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `id`         | `string` | {% include field-description-id.md %}                                 |
+| `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
 ### `onOutOfViewOpen`
@@ -203,7 +204,7 @@ new tab. It will be raised with the following event argument object:
 ```json
 {
     "event": "onOutOfViewRedirect",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "openUrl": "https://example.com/external"
 }
 ```
@@ -212,8 +213,8 @@ new tab. It will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `id`         | `string` | {% include field-description-id.md %}                                 |
-| `openUrl` | `string` | The external URL where the user will be redirected.                      |
+| `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
+| `openUrl`    | `string` | The external URL where the user will be redirected.                   |
 
 ### `OnPaid`
 
@@ -226,7 +227,7 @@ payment. It will be raised with the following event argument object:
 ```json
 {
     "event": "OnPaid",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/success"
 }
 ```
@@ -235,43 +236,15 @@ payment. It will be raised with the following event argument object:
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                       |
-| `id`          | `string` | {% include field-description-id.md %}                               |
+| `paymentOrder`          | `string` | {% include field-description-id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
-
-{% if documentation_section contains "checkout/v3/payments" %}
-
-### `onPaymentAttemptStarted`
-
-This event triggers when a user has selected a payment instrument and actively
-attempts to perform a payment. The `onPaymentAttemptStarted` event is raised
-with the following event argument object:
-
-{:.code-view-header}
-**onPaymentAttemptStarted event object**
-
-```json
-{
-    "event": "OnPaymentAttemptStarted",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
-    "instrument": "creditcard",
-}
-```
-
-{:.table .table-striped}
-| Field        | Type     | Description                                                                                     |
-| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `event`     | `string` | The name of the event raised.                                          |
-| `id`         | `string` | {% include field-description-id.md %}                                                           |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
-
-{% endif %}
 
 {% if documentation_section contains "checkout/v3/standard" %}
 
 ### `onPayerIdentified`
 
-This event triggers when a payer has been identified. It will be raised with the
-following event argument object:
+This event triggers when a payer clicks "Not you" when identified with Remember
+Me. It will be raised with the following event argument object:
 
 {:.code-view-header}
 **onPayerIdentified event object**
@@ -279,7 +252,7 @@ following event argument object:
 ```json
 {
     "event": "OnPayerIdentified",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "payer": "/psp/paymentorders/{{ page.payment_id }}/payers",
 }
 ```
@@ -288,17 +261,38 @@ following event argument object:
 | Field       | Type     | Description                                                            |
 | :---------- | :------- | :-------------------------------------------------------------         |
 | `event`     | `string` | The name of the event raised.                                          |
-| `id`        | `string` | {% include field-description-id.md %}                                  |
+| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
 | `payer`     | `string` | The `url` of the resource containing information about the payer.      |
+
+### `onPayerUnidentified`
+
+This event triggers when a payer has been identified. It will be raised with the
+following event argument object:
+
+{:.code-view-header}
+**onPayerUnidentified event object**
+
+```json
+{
+    "event": "OnPayerUnidentified",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+}
+```
+
+{:.table .table-striped}
+| Field           | Type     | Description                                                  |
+| :-------------  | :------- | :------------------------------------------------------      |
+| `event`         | `string` | The name of the event raised.                                |
+| `paymentOrder`  | `string` | {% include field-description-id.md                           |
 
 {% endif %}
 
 ### `OnTermsOfServiceRequested`
 
 This event triggers when the user clicks on the "Display terms and conditions"
-link. Will be handled with callback function if origin is "merchant". If no
-callback method is set, terms and conditions will be displayed in an overlay or
-a new tab. It will be raised with the following event argument object:
+link. If no callback method is set, terms and conditions will be displayed in an
+overlay or a new tab. It will be raised with the following event argument
+object:
 
 {:.code-view-header}
 **onTermsOfServiceRequested event object**
@@ -306,7 +300,7 @@ a new tab. It will be raised with the following event argument object:
 ```json
 {
     "origin": "owner",
-    "openUrl": "https://example.com/terms-of-service"
+    "termsOfServiceUrl": "https://example.com/terms-of-service"
 }
 ```
 
@@ -314,4 +308,4 @@ a new tab. It will be raised with the following event argument object:
 | Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `openUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
+| `termsOfServiceUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
