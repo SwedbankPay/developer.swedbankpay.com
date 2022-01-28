@@ -1,5 +1,6 @@
 {% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 {% if documentation_section contains "checkout" %}
 
@@ -147,15 +148,17 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/paymentorders/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/paymentorders/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "created": "2020-06-22T10:56:56.2927632Z",
+            "updated": "2020-06-22T10:56:56.4035291Z",
             "type": "Capture",
             "state": "Completed",
-            "amount": 15610,
-            "vatAmount": 3122,
+            "amount": 1500,
+            "vatAmount": 375,
             "description": "Capturing the authorized payment",
             "payeeReference": "AB832",
             "receiptReference": "AB831"
