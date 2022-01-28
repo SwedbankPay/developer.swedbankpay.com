@@ -69,9 +69,6 @@ the key.
     of it, please save it externally in a safe place as it will remain
     encrypted.
 
-If you were to add more payment methods later, a new token needs to be created.
-This is because tokens are created with their current account settings in mind.
-
 {% include alert.html type="warning" icon="warning" body="Please note that the
 production and staging environment need separate tokens. " %}
 

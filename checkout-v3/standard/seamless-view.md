@@ -8,11 +8,11 @@ description: |
 menu_order: 300
 ---
 
-The **Standard Redirect** integration consists of three main steps. **Creating**
-the payment order and checkin, **displaying** the payment menu, shipping options
-and checkin module in an iframe, and finally **capturing** the funds. In
-addition, there are other post purchase options you need. We get to them later
-on.
+The **Standard Seamless View** integration consists of three main steps.
+**Creating** the payment order and checkin, **displaying** the payment menu,
+shipping options and checkin module in an iframe, and finally **capturing** the
+funds. In addition, there are other post purchase options you need. We get to
+them later on.
 
 If you want to get an overview before proceeding, you can look at the
 [sequence diagram][sequence-diagrams]. It is also available in the sidebar if
@@ -140,7 +140,7 @@ the `paymentOrder` response.
         {
             "method": "PATCH",
             "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
-            "rel": "update-paymentorder-updateorder",
+            "rel": "update-order",
             "contentType": "application/json"
         }
 ```
