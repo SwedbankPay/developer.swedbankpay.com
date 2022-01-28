@@ -244,8 +244,7 @@ Content-Type: application/json
           "Trustly" ],
         "implementation": "MerchantAuthenticatedConsumer", {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
-        "integration": "Redirect",
-        {% endif %}
+        "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
         "payer": {
