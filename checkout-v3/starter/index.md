@@ -31,7 +31,7 @@ containing the following information:
 
 **Merchant name:** This represents your core business entity with us.
 
-**Merchant ID:** This is how we identify you.
+**Payer ID:** This is how we identify you.
 
 **Services:** The services that are activated and ready for testing.
 
