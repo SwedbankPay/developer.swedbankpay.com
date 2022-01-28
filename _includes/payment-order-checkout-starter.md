@@ -25,7 +25,7 @@ Content-Type: application/json
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
             "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"
         },
@@ -52,13 +52,13 @@ Content-Type: application/json
                 "imageUrl": "https://example.com/product123.jpg",
                 "description": "Product 1 description",
                 "discountDescription": "Volume discount",
-                "quantity": 4,
+                "quantity": 5,
                 "quantityUnit": "pcs",
                 "unitPrice": 300,
-                "discountPrice": 200,
+                "discountPrice": 0,
                 "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
+                "amount": 1500,
+                "vatAmount": 375
             },
             {
                 "reference": "I1",
@@ -114,7 +114,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   |
 | {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`]({{ features_url }}/technical-reference/complete-url) for details.  |
-|                  | └─➔&nbsp;`cancelUrl`               | `string`     | The URL to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
+|                  | └─➔&nbsp;`cancelUrl`               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`             | `string`     | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`       | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
 | {% icon check %} | └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
@@ -162,11 +162,8 @@ Content-Type: application/json
         "operation": "Purchase",
         "status": "Initialized",
         "currency": "SEK",
-        "vatAmount": 375,
         "amount": 1500,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
+        "vatAmount": 375,
         "description": "Test Purchase",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "language": "sv-SE",
@@ -236,24 +233,6 @@ Content-Type: application/json
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel": "abort",
           "contentType": "application/json"
-        },
-        {
-          "method": "POST",
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
-          "rel": "cancel",
-          "contentType": "application/json"
-        },
-        {
-          "method": "POST",
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/captures",
-          "rel": "capture",
-          "contentType": "application/json"
-        },
-        {
-          "method": "POST",
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
-          "rel": "reversal",
-          "contentType": "application/json"
         }
        ]
       }
@@ -271,14 +250,11 @@ Content-Type: application/json
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`remainingCaptureAmount`      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
-| └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| └➔&nbsp;`remainingReversalAmount`      | `integer`    | The previously captured amount still available for reversals.                                                                                                                                                                             |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
 | └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource.                                                                                                                                                          |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
 | └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
-| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                                                                  |
+| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                                                                  |
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) is the only available option when using `Starter`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                                      |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Starter implementation, this is achieved if the payer chooses to proceed as a guest when given the option during checkin.                                                                                                                                                 |

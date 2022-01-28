@@ -318,7 +318,7 @@ sequenceDiagram
 
 ## Payment Completion
 
-When the payment is completed, possibly after reloading the payment menu after a navigation to `paymentUrl`, the payment menu will report success by attempting to navigate to `completeUrl`. The SDK intercepts this and invokes a callback to your app. It is your app's responsibility to then remove the payment UI from view and notify the user. Similarly, if the payment is canceled, the SDK intercepts the navigation to `cancelUrl` and reports the cancellation status to your app.
+When the payment is completed, possibly after reloading the payment menu after a navigation to `paymentUrl`, the payment menu will report success by attempting to navigate to `completeUrl`. The SDK intercepts this and invokes a callback to your app. It is your app's responsibility to then remove the payment UI from view and notify the user. Similarly, if the payment is cancelled, the SDK intercepts the navigation to `cancelUrl` and reports the cancellation status to your app.
 
 ```mermaid
 sequenceDiagram

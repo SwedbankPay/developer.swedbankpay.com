@@ -1,7 +1,8 @@
 {% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-{% if documentation_section contains "checkout" %}
+{% if documentation_section contains "checkout-v2" %}
 
 ## Step 5: Capture the funds
 
@@ -25,6 +26,8 @@ First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
 and get the status back.
 
+{% if documentation_section contains "checkout-v2" %}
+
 ```mermaid
 sequenceDiagram
     participant Merchant
@@ -40,9 +43,38 @@ sequenceDiagram
     end
 ```
 
+{% else %}
+
+```mermaid
+sequenceDiagram
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:capture
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+    end
+```
+
+{% endif %}
+
+{% if documentation_section contains "checkout-v2" %}
+
 To capture the authorized payment, we need to perform
 `create-paymentorder-capture` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
+
+{% else %}
+
+To capture the authorized payment, we need to perform
+`capture` against the accompanying `href` returned in the
+`operations` list. See the abbreviated request and response below:
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
@@ -147,15 +179,17 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
+    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
-        "id": "/psp/paymentorders/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
+        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/paymentorders/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
+            "created": "2020-06-22T10:56:56.2927632Z",
+            "updated": "2020-06-22T10:56:56.4035291Z",
             "type": "Capture",
             "state": "Completed",
-            "amount": 15610,
-            "vatAmount": 3122,
+            "amount": 1500,
+            "vatAmount": 375,
             "description": "Capturing the authorized payment",
             "payeeReference": "AB832",
             "receiptReference": "AB831"

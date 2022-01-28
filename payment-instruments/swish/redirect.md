@@ -24,9 +24,9 @@ menu_order: 700
     purchase in the Swish app.
 *   Swedbank Pay will redirect the payer's browser to - or display directly in
     the iFrame - one of two specified URLs, depending on whether the payment
-    session is followed through completely or canceled beforehand.
+    session is followed through completely or cancelled beforehand.
     Please note that both a successful and rejected payment reach completion,
-    in contrast to a canceled payment.
+    in contrast to a cancelled payment.
 
 The payer is redirected to Swedbank Pay hosted pages and prompted
 to insert her phone number to initiate the sales transaction.
@@ -73,7 +73,7 @@ Content-Type: application/json
             "hostUrls": [ "https://example.com" ],
             "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
@@ -118,7 +118,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
-|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
+|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |

@@ -1,6 +1,6 @@
 ## Enterprise PayerReference
 
-If a merchant wishes to use the Enterprise or Payments
+If a merchant wishes to use the Enterprise or Payments Only
 implementation, but does not have the payer's SSN or a secure login, they can
 add a `payerReference` in the payer field of the payment request.
 

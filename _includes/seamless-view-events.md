@@ -13,13 +13,12 @@ During operation in the {{ product }}, several events can occur. They are
 described below.
 
 {% include alert.html type="warning" icon="info" header="Event Overrides"
-body="Adding an event
-handler to one of the following events **overrides** the default event handler,
-meaning your custom event handler will have to do what the default event handler
-did. If you don’t, the behavior of the event is going to be undefined.
-Just adding an event handler for logging purposes is therefore not possible, the
-event handler will have to perform some functionality similar to the
-event handler you are overriding." %}
+body="Adding an event handler to one of the following events **overrides** the
+default event handler, meaning your custom event handler will have to do what
+the default event handler did. If you don’t, the behavior of the event is going
+to be undefined. Just adding an event handler for logging purposes is therefore
+not possible, the event handler will have to perform some functionality similar
+to the event handler you are overriding." %}
 
 ### `onPaymentPending`
 
@@ -77,7 +76,7 @@ object:
 ```json
 {
     "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
-    "redirectUrl": "https://example.com/canceled"
+    "redirectUrl": "https://example.com/cancelled"
 }
 ```
 
@@ -85,7 +84,7 @@ object:
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a canceled payment. |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ### `onPaymentFailed`
 
