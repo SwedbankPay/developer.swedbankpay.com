@@ -1,10 +1,22 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 ## Abort
+
+{% if documentation_section contains "checkout-v3" %}
+
+To abort a payment order, perform the `abort` operation that is returned in the
+payment order response. You need to include the following in the request body:
+
+{% else %}
 
 To abort a payment order, perform the `update-paymentorder-abort` operation that
 is returned in the payment order response. You need to include the following
 in the request body:
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
@@ -22,6 +34,144 @@ Content-Type: application/json
   }
 }
 ```
+
+{:.table .table-striped}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| └➔&nbsp;`operation`      | `string`     | `Abort`                                                                                                                                                                                                                |
+| └➔&nbsp;`abortReason`      | `string`     | `CancelledByConsumer` or `CancelledByCostumer`. Why the payment was aborted.                                                                                                                                                                         |
+
+{% if documentation_section contains "checkout-v3" %}
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentOrder": {
+        "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd",
+        "created": "2022-01-24T10:54:05.6243371Z",
+        "updated": "2022-01-24T10:54:19.2679591Z",
+        "operation": "Purchase",
+        "status": "Aborted",
+        "currency": "SEK",
+        "amount": 32000,
+        "vatAmount": 0,
+        "description": "Abort test",
+        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "language": "sv-SE",
+        "availableInstruments": [
+            "CreditCard",
+            "Invoice-PayExFinancingSe",
+            "Invoice-PayMonthlyInvoiceSe",
+            "Swish",
+            "CreditAccount",
+            "Trustly"
+        ], {% if documentation_section contains "checkout-v3/mac" %}
+        "implementation": "MerchantAuthenticatedConsumer", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/authenticated" %}
+        "implementation": "Authenticated", {% endif %} {% if documentation_section contains "checkout-v3/standard" %}
+        "implementation": "Standard", {% endif %} { {% if include.integration_mode=="seamless_view" %}
+        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "integration": "Redirect", {% endif %}
+        "instrumentMode": false,
+        "guestMode": false,
+        "orderItems": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/orderitems"
+        },
+        "urls": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/payeeinfo"
+        },
+        "payer": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/payers"
+        },
+        "history": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/history"
+        },
+        "failed": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/failed"
+        },
+        "aborted": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/aborted"
+        },
+        "paid": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/paid"
+        },
+        "cancelled": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/cancelled"
+        },
+        "financialTransactions": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/financialtransactions"
+        },
+        "failedAttempts": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/failedattempts"
+        },
+        "metadata": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/metadata"
+        }
+    },
+    "operations": [
+        {
+            "method": "GET",
+            "href": "https://ecom.stage.payex.com/checkout/ea0662af3e13362b72e56432512880456da7f9e57b747e09f2fb75251e204332",
+            "rel": "redirect-checkout",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.stage.payex.com/checkout/core/js/px.checkout.client.js?token=ea0662af3e13362b72e56432512880456da7f9e57b747e09f2fb75251e204332&culture=sv-SE",
+            "rel": "view-checkout",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
+{:.table .table-striped}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
+| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
+| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
+| └➔&nbsp;`status`          | `string`     | `Initialized`, `Paid`, `Failed`, `Cancelled` or `Aborted`. Indicates the state of the payment order. |
+| └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
+| └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
+| └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
+| └➔&nbsp;`remainingCaptureAmount`      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
+| └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
+| └➔&nbsp;`remainingReversalAmount`      | `integer`    | The previously captured amount still available for reversals.                                                                                                                                                                             |
+| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
+| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource.                                                                                                                                                          |
+| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
+| └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Authenticated`, `MerchantAuthenticatedConsumer`, `Payments` or `Standard`.                                                                                                                                                  |
+| └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`.                                                                                                                                                  |
+| └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
+| └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
+| └➔&nbsp;`urls`     | `string`     | The URL to the `urls` resource where information about the urls can be retrieved.                                                                                                                            |
+| └➔&nbsp;`payeeInfo`     | `string`     | The URL to the `payeeInfo` resource where information about the payee (the one who receives the funds) can be retrieved.                                                                                                                            |
+| └➔&nbsp;`payer`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
+| └➔&nbsp;`history`     | `string`     | The URL to the `history` resource where information about the payment's history can be retrieved.                                                                                                                            |
+| └➔&nbsp;`failed`     | `string`     | The URL to the `failed` resource where information about the failed transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`aborted`     | `string`     | The URL to the `aborted` resource where information about the aborted transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`paid`     | `string`     | The URL to the `paid` resource where information about the paid transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`cancelled`     | `string`     | The URL to the `cancelled` resource where information about the cancelled transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` resource where information about the financial transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
+| └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+
+{% else %}
 
 {:.code-view-header}
 **Response**
@@ -78,6 +228,18 @@ Content-Type: application/json
 }
 ```
 
+{% endif %}
+
+{% if documentation_section contains "checkout-v3" %}
+
 The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above.
-with its `state` set to `Aborted`.
+request towards the `paymentorders` resource, as displayed above, with its
+`status` set to `Aborted`.
+
+{% else %}
+
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, as displayed above, with its
+`state` set to `Aborted`.
+
+{% endif %}

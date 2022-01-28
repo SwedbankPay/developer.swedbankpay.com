@@ -1,4 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
 
 {% if api_resource == "paymentorders" %}
     {% assign product="Payment Menu" %}
