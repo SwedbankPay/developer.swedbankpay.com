@@ -9,7 +9,7 @@
 
 When dealing with card payments, 3-D Secure authentication of the cardholder is
 an essential topic. 3-D Secure 2 is an improved version of the old protocol, now
-allowing frictionless payments where transactions can be completed without
+allowing frictionless payments where transactions can be completed without
 input from the cardholder. To increase the chances of this, there are certain
 fields that should be included in your request when implementing 3-D Secure 2.
 
@@ -49,10 +49,11 @@ fields that should be included in your request when implementing 3-D Secure 2.
 }
 ```
 
+{% if api_resource == "creditcard" %}
+
 {:.table .table-striped}
 | Field | Type | Description |
-| :---- | :--- | :---------- |{% if api_resource == "creditcard" %}
-
+| :---- | :--- | :---------- |
 | └➔&nbsp;`cardholder`                  | `object` | Cardholder object that can hold information about a payer (private or company). The information added increases the chance for a frictionless 3-D Secure 2 flow.                                                                                    |
 | └➔&nbsp;`firstname`                   | `string` | Payer's first name.                 |
 | └➔&nbsp;`lastname`                    | `string` | Payer's last name.                    |
@@ -66,7 +67,13 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`streetAddress`              | `string` | Payer's street address. Maximum 50 characters long.                                                                         |
 | └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code.                                           |
 | └─➔&nbsp;`city`                       | `string` | Payer's city of residence.                                                                            |
-| └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      | {% else %}
+| └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
+
+{% else %}
+
+{:.table .table-striped}
+| Field | Type | Description |
+| :---- | :--- | :---------- |
 | └➔&nbsp;`payer`                       | `object` | The payer object.        |
 | └➔&nbsp;`email`                       | `string` | Payer's registered email address.                                                  |
 | └➔&nbsp;`msisdn`  | `string` | Payer's registered mobile phone number.                                                  |
@@ -115,10 +122,10 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`shipIndicator`              | `string` | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in the `riskIndicator.pickUpAddress` and `payer.shippingAddress` fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service). |
 | └─➔&nbsp;`giftCardPurchase`           | `bool`   | `true` if this is a purchase of a gift card.                                                                 |
 | └─➔&nbsp;`reOrderPurchaseIndicator`   | `string` | Indicates if the cardholder is reordering previously purchased merchandise. <br>`01` (First time ordered) <br>`02` (Reordered).                                               |
-|          | └➔&nbsp;`pickUpAddress`               | `object`     | If the `shipIndicator` is set to `04`, you can prefill these fields with the payer's `pickUpAddress` of the purchase to decrease the risk factor of the purchase.                                                                      |
-|          | └─➔&nbsp;`name`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `name`.                                                                           |
-|          | └─➔&nbsp;`streetAddress`              | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `streetAddress`. Maximum 50 characters long.                                                        |
-|          | └─➔&nbsp;`coAddress`                  | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `coAddress`.                                                     |
-|          | └─➔&nbsp;`city`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `city`.                                                                           |
-|          | └─➔&nbsp;`zipCode`                    | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `zipCode`.                                                                               |
-|          | └─➔&nbsp;`countryCode`                | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `countryCode`.                                                  |
+| └➔&nbsp;`pickUpAddress`               | `object`     | If the `shipIndicator` is set to `04`, you can prefill these fields with the payer's `pickUpAddress` of the purchase to decrease the risk factor of the purchase.                                                                      |
+| └─➔&nbsp;`name`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `name`.                                                                           |
+| └─➔&nbsp;`streetAddress`              | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `streetAddress`. Maximum 50 characters long.                                                        |
+| └─➔&nbsp;`coAddress`                  | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `coAddress`.                                                     |
+| └─➔&nbsp;`city`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `city`.                                                                           |
+| └─➔&nbsp;`zipCode`                    | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `zipCode`.                                                                               |
+| └─➔&nbsp;`countryCode`                | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `countryCode`.                                                  |
