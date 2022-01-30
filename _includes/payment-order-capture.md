@@ -2,7 +2,7 @@
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-{% if documentation_section contains "checkout" %}
+{% if documentation_section contains "checkout-v2" %}
 
 ## Step 5: Capture the funds
 
