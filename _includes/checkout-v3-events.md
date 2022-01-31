@@ -283,7 +283,7 @@ following event argument object:
 | Field           | Type     | Description                                                  |
 | :-------------  | :------- | :------------------------------------------------------      |
 | `event`         | `string` | The name of the event raised.                                |
-| `paymentOrder`  | `string` | {% include field-description-id.md                           |
+| `paymentOrder`  | `string` | {% include field-description-id.md %}                          |
 
 {% endif %}
 
