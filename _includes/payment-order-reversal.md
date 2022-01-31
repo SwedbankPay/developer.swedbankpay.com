@@ -1,6 +1,25 @@
+{% capture techref_url %}{% include documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
+{% assign transactions_url = '/transactions' | prepend: techref_url %}
+{% assign operations_url = '/operations' | prepend: techref_url %}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+
+{% if documentation_section contains "checkout/v3" %}
+
+## Reversal
+
+This transaction is used when a captured payment needs to be reversed.
+
+### Create reversal transaction
+
+The `reversal` operation will reverse a previously captured payment.
+
+{% else %}
+
 If we want to reverse a previously captured amount, we need to perform
 `create-paymentorder-reversal` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
@@ -90,18 +109,18 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",
     "reversal": {
-        "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/reversals/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/pcreditcard/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
             "type": "Reversal",
             "state": "Completed",
-            "amount": 15610,
-            "vatAmount": 3122,
+            "amount": 1500,
+            "vatAmount": 375,
             "description": "Reversing the capture amount",
-            "payeeReference": "ABC987",
-            "receiptReference": "ABC986"
+            "payeeReference": "ABC123",
+            "receiptReference": "ABC122"
         }
     }
 }

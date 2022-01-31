@@ -73,10 +73,10 @@ Content-Type: application/json
             "type": "Reversal",
             "state": "Completed",
             "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
+            "amount": 1500,
+            "vatAmount": 375,
             "description": "Test transaction",
-            "payeeReference": "AH123456",
+            "payeeReference": "ABC123",
             "failedReason": "",
             "isOperational": false,
             "operations": []

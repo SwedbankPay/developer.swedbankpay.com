@@ -18,7 +18,7 @@ the payer wants to return goods? For these scenarios, we have `cancel` and
 
 {% include cancel.md %}
 
-{% include reversal.md %}
+{% include payment-order-reversal.md %}
 
 {% include iterator.html prev_href="seamless-view"
                          prev_title="Implement Seamless View" %}
