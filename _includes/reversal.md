@@ -9,7 +9,15 @@ This transaction is used when a captured payment needs to be reversed.
 
 ### Create reversal transaction
 
+{% if documentation_section contains "checkout-v3" %}
+
+The `reversal` operation will reverse a previously captured payment.
+
+{% else %}
+
 The `create-reversal` operation will reverse a previously captured payment.
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
