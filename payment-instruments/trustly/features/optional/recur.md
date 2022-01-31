@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include recurring-trustly-payments.md}
+{% include recurring-trustly-payments.md %}
