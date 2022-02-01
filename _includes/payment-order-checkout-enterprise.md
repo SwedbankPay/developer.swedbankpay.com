@@ -242,7 +242,7 @@ Content-Type: application/json
           "Swish",
           "CreditAccount",
           "Trustly" ],
-        "implementation": "Enterprise", {% if include.integration_mode=="seamless_view" %}
+        "implementation": "Enterprise", {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
