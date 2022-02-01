@@ -5,8 +5,17 @@ specific payment.
 
 ### Create cancellation transaction
 
+{% if documentation_section contains "checkout-v3" %}
+
+Perform the `cancel` operation to cancel a previously created payment.
+You can only cancel a payment - or part of payment - not yet captured.
+
+{% else %}
+
 Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
+
+{% endif %}
 
 {:.code-view-header}
 **Request**

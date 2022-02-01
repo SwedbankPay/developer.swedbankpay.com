@@ -1,8 +1,9 @@
 ## Merchant Authenticated Consumer PayerReference
 
-If a merchant wishes to use the Merchant Authenticated Consumer or Payments
-implementation, but does not have the payer's SSN or a secure login, they can
-add a `payerReference` in the payer field of the payment request.
+If a merchant wishes to use the **Merchant Authenticated Consumer** or
+**Payments Only** implementation, but does not have the payer's SSN or a secure
+login, they can add a `payerReference` in the payer field of the payment
+request.
 
 If the `payerReference` is present along with `email` and `msisdn`, the merchant
 does not need to add a `nationalIdentifier`. Other than that, the integration

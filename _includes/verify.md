@@ -44,9 +44,9 @@ Swedbank Pay." %}
 *   Swedbank Pay will handle 3-D Secure authentication when this is required.
 *   Swedbank Pay will redirect the payer's browser to - or display directly in
     the `iframe` - one of two specified URLs, depending on whether the payment
-    session is followed through completely or canceled beforehand.
+    session is followed through completely or cancelled beforehand.
     Please note that both a successful and rejected payment reach completion,
-    in contrast to a canceled payment.
+    in contrast to a cancelled payment.
 *   When you detect that the payer reach your completeUrl, you need to do a
     `GET` request to receive the state of the transaction.
 *   Finally you will make a `GET` request towards Swedbank Pay with the
@@ -102,7 +102,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "logoUrl": "https://example.com/payment-logo.png",
             "termsOfServiceUrl": "https://example.com/payment-terms.html"
         },

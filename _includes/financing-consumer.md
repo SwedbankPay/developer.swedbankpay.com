@@ -28,7 +28,7 @@ Content-Type: application/json
         "language": "nb-NO",
         "urls": {
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "http://example.com/terms.pdf"

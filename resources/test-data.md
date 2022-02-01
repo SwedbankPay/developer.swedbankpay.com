@@ -230,7 +230,7 @@ the following values:
 | :---------- | :--------------------------------------------- |
 | RF07        | Transaction declined                           |
 | TM01        | Swish timed out before the payment was started |
-| BANKIDCL    | Payer canceled BankId signing                 |
+| BANKIDCL    | Payer cancelled BankId signing                 |
 
 [create-card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
