@@ -16,8 +16,8 @@ menu_order: 500
   payer can enter the invoice details in a secure Swedbank Pay environment.
 *   Swedbank Pay will redirect the payer's browser to - one of two specified URLs,
   depending on whether the payment session is followed through completely or
-  canceled beforehand. Please note that both a successful and rejected payment
-  reach completion, in contrast to a canceled payment.
+  cancelled beforehand. Please note that both a successful and rejected payment
+  reach completion, in contrast to a cancelled payment.
 *   When you detect that the payer reach your `completeUrl` , you need to do a
   `GET` request to receive the state of the transaction, containing the
   `paymentID` generated in the first step, to receive the state of the
@@ -72,7 +72,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
@@ -111,7 +111,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                    |
-|                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                               |
+|                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                               |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | This Parameter is used when the payer is redirected out of the Seamless View (the iframe) and sent back after completing the payment. It should point to the page of where the Payment Order Seamless View is hosted. Read more about [paymentUrl][payment-url].                                                          |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                               |
 |                  | └─➔&nbsp;`logoUrl`                | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                                   |
