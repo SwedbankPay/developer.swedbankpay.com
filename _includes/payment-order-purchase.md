@@ -20,10 +20,10 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",{% if documentation_section == "payment-menu" %}
-        "instrument": null,{% endif %}
-        "generateRecurrenceToken": {{ operation_status_bool }},
-        "generateUnscheduledToken": {{ operation_status_bool }},{% if documentation_section == "payment-menu" %}
+        "instrument": null,
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
+        "generateRecurrenceToken": {{ operation_status_bool }},
+        "generateUnscheduledToken": {{ operation_status_bool }},
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
@@ -116,6 +116,8 @@ Content-Type: application/json
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if documentation_section == "payment-menu" %}
         "instrument": "CreditCard",
         "paymentToken" : "{{ page.payment_token }}",{% endif %}
+        "recurrenceToken": {{ page.recurrence_token }},
+        "unscheduledToken": {{ page.unscheduled_token }},
         "created": "2020-06-22T10:56:56.2927632Z",
         "updated": "2020-06-22T10:56:56.4035291Z",
         "operation": "Purchase",
@@ -199,10 +201,10 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`instrument`               | `string`     | The payment instrument used. Selected by using the {% if documentation_section == "payment-menu" %}[Instrument Mode]({{ features_url }}/optional/instrument-mode){% else %}Instrument Mode{% endif %}.                                                                                                   |
 {% if documentation_section == "payment-menu" -%}
-|                  | └➔&nbsp;`generatePaymentToken`     | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                  |
+|                  | └➔&nbsp;`generatePaymentToken`     | `bool`       | Determines if a payment token should be generated. A payment token is used to enable future [one-click payments]({{ features_url }}/optional/one-click-payments) – with the same token. Default value is `false`.                                               |
 {% endif -%}
-|                  | └➔&nbsp;`generateRecurrenceToken`  | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ features_url }}/optional/recur) – with the same token – through server-to-server calls. Default value is `false`.                                               |
-|                  | └➔&nbsp;`generateUnscheduledToken` | `bool`       | Determines whether an unscheduled token should be generated. An unscheduled token is primarily used to enable future [unscheduled payments]({{ features_url }}/optional/unscheduled) – with the same token – through server-to-server calls. Default value is `false`.                                                  |
+|                  | └➔&nbsp;`generateRecurrenceToken`  | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ features_url }}/optional/recur) – with the same token – through server-to-server calls. Default value is `false`.                                               |
+|                  | └➔&nbsp;`generateUnscheduledToken` | `bool`       | Determines if an unscheduled token should be generated. An unscheduled token is primarily used to enable future [unscheduled payments]({{ features_url }}/optional/unscheduled) – with the same token – through server-to-server calls. Default value is `false`.                                                  |
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
@@ -253,7 +255,9 @@ Content-Type: application/json
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |{% if documentation_section == "payment-menu" %}
 | └➔&nbsp;`instrument`     | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ features_url }}/optional/instrument-mode).                                                                                                           |
-| └➔&nbsp;`paymentToken`   | `string`     | The payment token created for the purchase used in the authorization to create [One Click Payments][one-click-payments].                                                                                                  | {% endif %}                                              |
+| └➔&nbsp;`paymentToken`   | `string`     | The payment token created if `generatePaymentToken: true` was used. Enables future [one-click payments]({{ features_url }}/optional/one-click-payments) – with the same token.                                                                                                  | {% endif %}                                              |
+| └➔&nbsp;`recurrenceToken`   | `string`     | The recurrence token created if `generateRecurrenceToken: true` was used. Enables future [recurring payments]({{ features_url }}/optional/recur) – with the same token.                                                                                                  |
+| └➔&nbsp;`unscheduledToken`   | `string`     | The unscheduled token created if `generateUnscheduledToken: true` was used. Enables future [unscheduled payments]({{ features_url }}/optional/unscheduled) – with the same token.                                                                                                  |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |

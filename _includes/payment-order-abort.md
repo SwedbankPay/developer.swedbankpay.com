@@ -73,7 +73,7 @@ Content-Type: application/json
             "Trustly"
         ], {% if documentation_section contains "checkout-v3/mac" %}
         "implementation": "MerchantAuthenticatedConsumer", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "Payments", {% endif %} {% if documentation_section contains "checkout-v3/authenticated" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/authenticated" %}
         "implementation": "Authenticated", {% endif %} {% if documentation_section contains "checkout-v3/standard" %}
         "implementation": "Standard", {% endif %} { {% if include.integration_mode=="seamless-view" %}
         "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
