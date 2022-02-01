@@ -204,7 +204,7 @@ card payment:
   authorization.
 *   ④ `Event: OnPaymentComplete` is when a payment is complete. Please note
   that both successful and rejected payments reach completion, in contrast to a
-  canceled payment.
+  cancelled payment.
 
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="capture" next_title="Capture" %}

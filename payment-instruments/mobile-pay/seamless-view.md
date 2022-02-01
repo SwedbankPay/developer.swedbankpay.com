@@ -48,7 +48,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",

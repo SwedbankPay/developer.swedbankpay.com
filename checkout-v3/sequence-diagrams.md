@@ -277,14 +277,8 @@ sequenceDiagram
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: Status: Paid
             deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
             end
 
 activate Merchant
@@ -299,7 +293,7 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
@@ -360,21 +354,13 @@ sequenceDiagram
 
             alt If purchase is completed
             activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
+            Payer ->> Payer: Event: OnPaid ①
             Payer ->>+ Merchant: Check purchase status
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: Status: Paid
             deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Payer
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
             end
 
             activate Merchant
@@ -382,22 +368,10 @@ Merchant -->>- Payer: Show Purchase complete
             end
 
                 opt If purchase is failed
-                activate Payer
-                Payer ->> Payer: Event: OnPaymentFailed ①
-                Payer ->>+ Merchant: Check purchase status
-                deactivate Payer
                 Merchant ->>+ SwedbankPay: GET {paymentorder.id}
                 deactivate Merchant
-                SwedbankPay -->>+ Merchant: rel: failed-paymentorder
+                SwedbankPay -->>+ Merchant: Status: Failed
                 deactivate SwedbankPay
-                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-                activate Payer
-                deactivate Payer
-                Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
-                deactivate Merchant
-                SwedbankPay -->> Merchant: Purchase Details
-                deactivate SwedbankPay
-                end
                 activate Merchant
                 Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
                 end
@@ -412,7 +386,7 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.

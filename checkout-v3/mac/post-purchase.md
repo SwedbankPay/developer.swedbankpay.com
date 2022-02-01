@@ -12,15 +12,13 @@ menu_order: 500
 
 {% include payment-order-capture.md %}
 
-The purchase should now be complete. But what if the purchase is canceled or
+The purchase should now be complete. But what if the purchase is cancelled or
 the payer wants to return goods? For these instances, we have `cancel` and
 `reversal`.
 
 {% include cancel.md %}
 
 {% include reversal.md %}
-
-{% include payment-order-expansions.md %}
 
 {% include iterator.html prev_href="redirect"
                          prev_title="Implement Redirect" %}

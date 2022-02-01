@@ -39,7 +39,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://api.example.com/payment-callback",
             "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",

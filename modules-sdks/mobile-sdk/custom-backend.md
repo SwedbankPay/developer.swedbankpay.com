@@ -440,7 +440,7 @@ To trigger an update, call `updatePaymentOrder` on the `PaymentViewModel` of the
 ```
 ### iOS
 
-Implement `updatePaymentOrder` in your configuration. Rather like the Android method, this method takes a callback of the same type as `postPaymentorders`, and when that callback is invoked with a `Success` result, the `SwedbankPaySDKController` reloads the payment menu according to the new data. Unlike `postPaymentorders`, this method must also return a request handle, which can be used to cancel the request if needed. If the request is canceled, the `completion` callback should _not_ be called.
+Implement `updatePaymentOrder` in your configuration. Rather like the Android method, this method takes a callback of the same type as `postPaymentorders`, and when that callback is invoked with a `Success` result, the `SwedbankPaySDKController` reloads the payment menu according to the new data. Unlike `postPaymentorders`, this method must also return a request handle, which can be used to cancel the request if needed. If the request is cancelled, the `completion` callback should _not_ be called.
 
 ```swift
     struct MyConfiguration : SwedbankPaySDKConfiguration {
@@ -463,7 +463,7 @@ Implement `updatePaymentOrder` in your configuration. Rather like the Android me
                         termsOfServiceUrl: "https://example.com/tos"
                     )
                     completion(.success(info))
-                } catch NetworkError.canceled {
+                } catch NetworkError.cancelled {
                     // no callback
                 } catch {
                     completion(.failure(error))
