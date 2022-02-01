@@ -151,8 +151,8 @@ Content-Type: application/json
 | `failed`                | `object`     | The failed object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`problem`             | `object`     | The problem object.  |
-| └─➔&nbsp;`type`  | `string`   | The type of problem that occured. |
-| └─➔&nbsp;`title`  | `string`   | The title of the problem that occured. |
+| └─➔&nbsp;`type`  | `string`   | The type of problem that occurred. |
+| └─➔&nbsp;`title`  | `string`   | The title of the problem that occurred. |
 | └─➔&nbsp;`status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
 | └─➔&nbsp;`detail`              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
 | └─➔&nbsp;`problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
@@ -236,8 +236,8 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`status`             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
 | └➔&nbsp;`problem`             | `object`     | The problem object.  |
-| └─➔&nbsp;`type`  | `string`   | The type of problem that occured. |
-| └─➔&nbsp;`title`  | `string`   | The title of the problem that occured. |
+| └─➔&nbsp;`type`  | `string`   | The type of problem that occurred. |
+| └─➔&nbsp;`title`  | `string`   | The title of the problem that occurred. |
 | └─➔&nbsp;`status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
 | └─➔&nbsp;`detail`              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
 | └─➔&nbsp;`problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
@@ -487,7 +487,7 @@ Content-Type: application/json
 | └➔&nbsp;`historyList`  | `array`   | The array of history objects. |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the history event was created.                                 |
 | └➔&nbsp;`name`              | `string`     | Name of the history event. See list below for information.     |
-| └➔&nbsp;`instrument`        | `string`     | The payment instrument used when the event occured.       |
+| └➔&nbsp;`instrument`        | `string`     | The payment instrument used when the event occurred.       |
 | └➔&nbsp;`number`              | `string`   | Payment number associated with the event.                 |
 | └➔&nbsp;`prefill`              | `bool`   | Indicates if payment info was prefilled or not.                 |
 | └➔&nbsp;`initiatedBy`        | `string`     | `Consumer`, `Merchant` or `System`. The party that initiated the event.       |
@@ -500,8 +500,8 @@ Content-Type: application/json
 | `PayerDetailsRetrieved`   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
 | `PayerCheckedIn`      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
 | `MerchantAuthenticatedConsumerCheckedIn`       | Will be set when checkin is completed through the MerchantAuthenticatedConsumer integration. The merchant must be configured with ProductPackage=Checkout and has "Has GDPR Processing Agreement" activated.                  |
-| `PaymentInstrumentSet`      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
-| `PaymentLoaded`       | Will be set the first time the payer loads the payment window. If this event hasn't occured, the payment window hasn't been loaded.              |
+| `PaymentInstrumentSet`      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
+| `PaymentLoaded`       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
 | `PaymentInstrumentSelected`       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
 | `PaymentAttemptStarted`      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the instrument for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
 | `PaymentAttemptAborted`      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
