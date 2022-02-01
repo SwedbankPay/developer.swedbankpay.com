@@ -55,7 +55,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
@@ -99,7 +99,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
-|                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
+|                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | The URL that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                              |
 |                  | └─➔&nbsp;`logoUrl`                | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |
