@@ -136,7 +136,13 @@ the info you need to calculate shipping costs. You can now update the
 paymentOrder with a `PATCH` if you need to, using the patch from `operations` in
 the `paymentOrder` response.
 
+{:.code-view-header}
+**Response**
+
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
         {
             "method": "PATCH",
             "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
