@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include cancel.md %}
+{% include payment-order-cancel.md %}
