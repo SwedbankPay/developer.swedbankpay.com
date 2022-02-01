@@ -243,7 +243,7 @@ func paymentComplete() {
     // Notify user
 }
 
-func paymentCanceled() {
+func paymentcancelled() {
     dismiss(animated: true, completion: nil)
     // Notify user
 }

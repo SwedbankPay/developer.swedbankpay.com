@@ -26,7 +26,7 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md %} |
-| {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is canceled.                                     |
+| {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
