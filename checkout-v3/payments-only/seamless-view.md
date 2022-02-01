@@ -143,8 +143,15 @@ menu. The payer can select their preferred payment instrument and pay.
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 
-You can read about the different [Seamless View Events][seamless-view-events] in
-the feature section.
+### Events
+
+When integrating Seamless View, we strongly recommend that you implement the
+`onPaid` event, which will give you the best setup. Even with this implemented,
+you need to check the payment status towards our APIs, as the payer can make
+changes in the browser at any time.
+
+You can read more about the different [Seamless View
+Events][seamless-view-events] available in the feature section.
 
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.

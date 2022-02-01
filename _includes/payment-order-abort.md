@@ -75,7 +75,7 @@ Content-Type: application/json
         "implementation": "MerchantAuthenticatedConsumer", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/authenticated" %}
         "implementation": "Authenticated", {% endif %} {% if documentation_section contains "checkout-v3/standard" %}
-        "implementation": "Standard", {% endif %} { {% if include.integration_mode=="seamless_view" %}
+        "implementation": "Standard", {% endif %} { {% if include.integration_mode=="seamless-view" %}
         "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
