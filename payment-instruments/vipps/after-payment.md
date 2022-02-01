@@ -43,7 +43,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "{{ page.api_url }}/psp/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
@@ -84,7 +84,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                       |
 | {% icon check %}︎ | └─➔&nbsp;`completeUrl`       | `string`     | The URL that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
-|                  | └─➔&nbsp;`cancelUrl`         | `string`     | The URL to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment`.                                                                                                           |
+|                  | └─➔&nbsp;`cancelUrl`         | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment`.                                                                                                           |
 |                  | └─➔&nbsp;`paymentUrl`        | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the `payment`. See [`paymentUrl`][paymenturl] for details.                                                                                                      |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`     | The URL that Swedbank Pay will perform an HTTP `POST` request against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                           |
 |                  | └─➔&nbsp;`logoUrl`           | `string`     | {% include field-description-logourl.md %}                                                                                                                       |
@@ -244,7 +244,7 @@ Content-Type: application/json
 
 ## Create cancellation transaction
 
-A payment may be canceled if the `rel` `create-cancellation` is available. You
+A payment may be cancelled if the `rel` `create-cancellation` is available. You
 can only cancel a payment, or part of it, if it has yet to be captured. To
 revert a capture, or part of a capture, you must perform a `reversal`.
 Performing a cancellation will cancel all the remaining authorized amount on a

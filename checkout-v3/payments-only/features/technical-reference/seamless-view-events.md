@@ -6,4 +6,4 @@ description: |
 menu_order: 2800
 ---
 
-{% include seamless-view-events.md %}
+{% include checkout-v3-events.md %}
