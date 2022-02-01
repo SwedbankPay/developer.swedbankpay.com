@@ -33,6 +33,10 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
+There is also a guest mode option for the payers who don't wish to store their
+information. When using **Authenticated**, this is triggered when the payer
+chooses not to store credentials during checkin.
+
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
 have `abort`, which you can read about in the [core features][abort-feature].
@@ -46,7 +50,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-authenticate.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-authenticate.md integration_mode="seamless-view" %}
 
 ## Step 2: Display Payment Menu And Checkin
 
@@ -171,8 +175,15 @@ and digital), the one without shipping address is for digital products only.
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 
-You can read about the different [Seamless View Events][seamless-view-events] in
-the feature section.
+### Events
+
+When integrating Seamless View, we strongly recommend that you implement the
+`onPaid` event, which will give you the best setup. Even with this implemented,
+you need to check the payment status towards our APIs, as the payer can make
+changes in the browser at any time.
+
+You can read more about the different [Seamless View
+Events][seamless-view-events] available in the feature section.
 
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.

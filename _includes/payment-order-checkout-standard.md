@@ -52,13 +52,13 @@ Content-Type: application/json
                 "imageUrl": "https://example.com/product123.jpg",
                 "description": "Product 1 description",
                 "discountDescription": "Volume discount",
-                "quantity": 4,
+                "quantity": 5,
                 "quantityUnit": "pcs",
                 "unitPrice": 300,
-                "discountPrice": 200,
+                "discountPrice": 0,
                 "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
+                "amount": 1500,
+                "vatAmount": 375
             },
             {
                 "reference": "I1",
@@ -127,7 +127,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `true`, and not to be included if it is `false`.                                    |
-|                  | `requireConsumerInfo` | `string` | Set to `true` by merchants who want to receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed. If set to `false`, Swedbank Pay will depend on the merchant to send the `email` and/or `msisdn` for digital products, and also the shipping address if the order is shipped.                              |
+|  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Standard, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
 | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                 |
 | {% icon check %} | └─➔&nbsp;`reference`               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`name`                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -144,7 +144,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Limits the options available to the payer in the payment menu. Default value is all supported payment instruments. Usage of this field requires an agreement with Swedbank Pay.                                                   |
+|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
 {:.code-view-header}
@@ -162,11 +162,8 @@ Content-Type: application/json
         "operation": "Purchase",
         "status": "Initialized",
         "currency": "SEK",
-        "vatAmount": 375,
         "amount": 1500,
-        "remainingCaptureAmount": 1500,
-        "remainingCancellationAmount": 1500,
-        "remainingReversalAmount": 0,
+        "vatAmount": 375,
         "description": "Test Purchase",
         "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
         "language": "sv-SE",
@@ -177,7 +174,7 @@ Content-Type: application/json
           "Swish",
           "CreditAccount",
           "Trustly" ],
-        "implementation": "Authenticated",
+        "implementation": "Standard",
         "integration": "HostedView",
         "instrumentMode": false,
         "guestMode": false,
@@ -226,45 +223,15 @@ Content-Type: application/json
           "contentType": "application/javascript"
         },{% endif %}
         {
+          "method":"PATCH",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel":"update-order",
-          "method":"PATCH",
           "contentType":"application/json"
         },
         {
+          "method":"PATCH",
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel": "abort",
-          "method": "PATCH",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "set-instrument",
-          "method": "PATCH",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/cancellations",
-          "rel": "cancel",
-          "method": "POST",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/captures",
-          "rel": "capture",
-          "method": "POST",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
-          "rel": "reversal",
-          "method": "POST",
-          "contentType": "application/json"
-        },
-        {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-          "rel": "overcharged-amount",
-          "method": "POST",
           "contentType": "application/json"
         }
        ]
@@ -279,21 +246,18 @@ Content-Type: application/json
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
-| └➔&nbsp;`status`          | `string`     | `Initialized`, `Paid`, `Failed`, `Cancelled` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. |
+| └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. `Paid` is returned when the payer has completed the payment successfully. See the paid section for further information. `Failed` is returned when a payment has failed. You will find an error message in the failed section. Further information in this section. `Cancelled` is returned when an authorized amount has been fully cancelled. See the cancelled section for further information. It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). See the aborted section for further information. |
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`remainingCaptureAmount`      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
-| └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| └➔&nbsp;`remainingReversalAmount`      | `integer`    | The previously captured amount still available for reversals.                                                                                                                                                                             |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
 | └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource.                                                                                                                                                          |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
 | └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
-| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Authenticated`, `MerchantAuthenticatedConsumer`, `Payments` or `Standard`.                                                                                                                                                  |
-| └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) is the only available option when using `Standard`.                                                                                                                      |
+| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Authenticated`, `MerchantAuthenticatedConsumer`, `PaymentsOnly` or `Standard`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                                                                  |
+| └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) is the only available option when using `Standard`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                                      |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
-| └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not.                                                                                                                                                  |
+| └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Standard implementation, this is achieved if the payer chooses to proceed as a guest when given the option during checkin.                                                                                                                                                 |
 | └➔&nbsp;`payer`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
 | └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | └➔&nbsp;`history`     | `string`     | The URL to the `history` resource where information about the payment's history can be retrieved.                                                                                                                            |

@@ -8,11 +8,11 @@ description: |
 menu_order: 300
 ---
 
-The **Standard Redirect** integration consists of three main steps. **Creating**
-the payment order and checkin, **displaying** the payment menu, shipping options
-and checkin module in an iframe, and finally **capturing** the funds. In
-addition, there are other post purchase options you need. We get to them later
-on.
+The **Standard Seamless View** integration consists of three main steps.
+**Creating** the payment order and checkin, **displaying** the payment menu,
+shipping options and checkin module in an iframe, and finally **capturing** the
+funds. In addition, there are other post purchase options you need. We get to
+them later on.
 
 If you want to get an overview before proceeding, you can look at the
 [sequence diagram][sequence-diagrams]. It is also available in the sidebar if
@@ -37,6 +37,10 @@ integration, you must set `requireConsumerInfo` to `true`. If `digitalProducts`
 is set to `false`, you also need to add
 `shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
+There is also a guest mode option for the payers who don't wish to store their
+information. When using **Standard**, this is triggered when the payer chooses
+not to store credentials during checkin.
+
 In some instances you need the possibility to abort purchases. This could be if
 a payer does not complete the purchase within a reasonable timeframe. For those
 instances we have `abort`, which you can read about in the [core
@@ -50,7 +54,7 @@ completed an `authorize` or a `sale`.
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-standard.md integration_mode="seamless_view" %}
+{% include payment-order-checkout-standard.md integration_mode="seamless-view" %}
 
 ## Step 2: Display Checkin, Shipping Options And Payment Menu
 
@@ -136,7 +140,7 @@ the `paymentOrder` response.
         {
             "method": "PATCH",
             "href": "{{ page.front_end_url }}/paymentorders/{{ page.payment_order_id }}",
-            "rel": "update-paymentorder-updateorder",
+            "rel": "update-order",
             "contentType": "application/json"
         }
 ```
@@ -221,8 +225,19 @@ without shipping address is for digital products only.
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
 
-You can read about the different [Seamless View Events][seamless-view-events] in
-the feature section.
+### Events
+
+When integrating Seamless View, we strongly recommend that you implement the
+`onPaid` event, which will give you the best setup. Even with this implemented,
+you need to check the payment status towards our APIs, as the payer can make
+changes in the browser at any time.
+
+For Standard, you also need to implement `onPayerUnidentified` when you
+implement `onPayerIdentified`. This is important because the "Remember Me"
+feature (which will be released soon) will not work without it.
+
+You can read more about the different [Seamless View
+Events][seamless-view-events] available in the feature section.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"

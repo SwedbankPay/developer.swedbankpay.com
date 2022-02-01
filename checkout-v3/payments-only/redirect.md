@@ -8,7 +8,7 @@ description: |
 menu_order: 300
 ---
 
-The **Merchant Managed Redirect** integration consists of three main steps.
+The **Payments Only Redirect** integration consists of three main steps.
 **Creating** the payment order, **displaying** the payment menu, and
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.
@@ -33,8 +33,13 @@ When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
 Supported features for this integration are subscriptions (`recur`, `one-click`
-and `unscheduled MIT`), `MOTO`, instrxument mode, split settlement (`subsite`)
+and `unscheduled MIT`), `MOTO`, instrument mode, split settlement (`subsite`)
 and the possibility to use your own `logo`.
+
+There is also a guest mode option for the payers who don't wish to store their
+information. When using **Payments Only**, the way to trigger this is to not
+include the `payerReference` field in your `paymentOrder` request. You can find
+it in the `payer` node in the example below.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
@@ -75,7 +80,7 @@ information displayed above the menu. The payer can select their preferred
 payment instrument and pay.
 
 {:.text-center}
-![screenshot of the merchant managed implementation redirect payment menu][redirect-mm-menu]
+![screenshot of the merchant managed implementation redirect payment menu][redirect-payments-only-menu]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -88,6 +93,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments/features/core/abort
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-redirect
-[redirect-mm-menu]: /assets/img/checkout/mac-redirect.png
+[abort-feature]: /checkout-v3/payments-only/features/core/abort
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-only-redirect
+[redirect-payments-only-menu]: /assets/img/checkout/mac-redirect.png

@@ -37,6 +37,10 @@ Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
 own `logo`.
 
+There is also a guest mode option for the payers who don't wish to store their
+information. When using **Authenticated**, this is triggered when the payer
+chooses not to store credentials during checkin.
+
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
 have `abort`, which you can read about in the [core features][abort-feature].

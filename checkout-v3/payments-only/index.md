@@ -1,5 +1,5 @@
 ---
-section: Payments
+section: Payments Only
 title: Set Up
 description: |
   **In this section we are going to guide you through setting up your test account
@@ -69,13 +69,10 @@ the key.
     of it, please save it externally in a safe place as it will remain
     encrypted.
 
-If you were to add more payment methods later, a new token needs to be created.
-This is because tokens are created with their current account settings in mind.
-
 {% include alert.html type="warning" icon="warning" body="Please note that the
 production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout-v3/payments/introduction"
+                         next_href="/checkout-v3/payments-only/introduction"
                          next_title="Start Integration" %}

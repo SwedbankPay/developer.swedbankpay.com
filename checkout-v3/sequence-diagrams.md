@@ -277,14 +277,8 @@ sequenceDiagram
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: Status: Paid
             deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
             end
 
 activate Merchant
@@ -299,7 +293,7 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
@@ -360,21 +354,13 @@ sequenceDiagram
 
             alt If purchase is completed
             activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
+            Payer ->> Payer: Event: OnPaid ①
             Payer ->>+ Merchant: Check purchase status
             deactivate Payer
             Merchant ->>+ SwedbankPay: GET <paymentorder.id>
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
+            SwedbankPay ->>+ Merchant: Status: Paid
             deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            activate Payer
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
             end
 
             activate Merchant
@@ -382,22 +368,10 @@ Merchant -->>- Payer: Show Purchase complete
             end
 
                 opt If purchase is failed
-                activate Payer
-                Payer ->> Payer: Event: OnPaymentFailed ①
-                Payer ->>+ Merchant: Check purchase status
-                deactivate Payer
                 Merchant ->>+ SwedbankPay: GET {paymentorder.id}
                 deactivate Merchant
-                SwedbankPay -->>+ Merchant: rel: failed-paymentorder
+                SwedbankPay -->>+ Merchant: Status: Failed
                 deactivate SwedbankPay
-                opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-                activate Payer
-                deactivate Payer
-                Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
-                deactivate Merchant
-                SwedbankPay -->> Merchant: Purchase Details
-                deactivate SwedbankPay
-                end
                 activate Merchant
                 Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
                 end
@@ -412,7 +386,7 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
@@ -425,7 +399,7 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/mac/seamless-view"
                          prev_title="Back to MAC Seamless View" %}
 
-## Payments Redirect
+## Payments Only Redirect
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -511,10 +485,10 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/payments/redirect"
-                         prev_title="Back to Payments Redirect" %}<br/>
+{% include iterator.html prev_href="/checkout-v3/payments-only/redirect"
+                         prev_title="Back to Payments Only Redirect" %}<br/>
 
-## Payments Seamless View
+## Payments Only Seamless View
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -625,8 +599,8 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/payments/seamless-view"
-                         prev_title="Back to Payments Seamless View" %}
+{% include iterator.html prev_href="/checkout-v3/payments-only/seamless-view"
+                         prev_title="Back to Payments Only Seamless View" %}
 
 ## Standard Seamless View
 
@@ -748,9 +722,9 @@ Merchant -->>- Payer: Show Purchase complete
 
 [callback]: /checkout-v3/authenticated/features/technical-reference/callback
 [mac-callback]: /checkout-v3/mac/features/technical-reference/callback
-[payments-callback]: /checkout-v3/payments/features/technical-reference/callback
+[payments-callback]: /checkout-v3/payments-only/features/technical-reference/callback
 [standard-callback]: /checkout-v3/standard/features/technical-reference/callback
 [seamless-view-events]: /checkout-v3/authenticated/features/technical-reference/seamless-view-events
 [mac-seamless-view-events]: /checkout-v3/mac/features/technical-reference/seamless-view-events
-[payments-seamless-view-events]: /checkout-v3/payments/features/technical-reference/seamless-view-events
+[payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [standard-seamless-view-events]: /checkout-v3/standard/features/technical-reference/seamless-view-events
