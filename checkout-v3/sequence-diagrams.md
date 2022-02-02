@@ -6,7 +6,7 @@ description: |
 menu_order: 600
 ---
 
-## Authenticated Redirect
+## Business Redirect
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, Payer refers to the merchant front-end
@@ -101,10 +101,10 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/authenticated/redirect"
-                         prev_title="Back to Authenticated Redirect" %}<br/>
+{% include iterator.html prev_href="/checkout-v3/business/redirect"
+                         prev_title="Back to Business Redirect" %}<br/>
 
-## Authenticated Seamless View
+## Business Seamless View
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -219,10 +219,10 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][seamless-view-events] for further information.
 *   ② Read more about [callback][callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/authenticated/seamless-view"
-                         prev_title="Back to Authenticated Seamless View" %}<br/>
+{% include iterator.html prev_href="/checkout-v3/business/seamless-view"
+                         prev_title="Back to Business Seamless View" %}<br/>
 
-## Merchant Authenticated Consumer Redirect
+## Enterprise Redirect
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -300,12 +300,12 @@ Merchant -->>- Payer: Show Purchase complete
         end
 ```
 
-*   ① Read more about [callback][mac-callback] handling in the technical reference.
+*   ① Read more about [callback][enterprise-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/mac/redirect"
-                         prev_title="Back to MAC Redirect" %}<br/>
+{% include iterator.html prev_href="/checkout-v3/enterprise/redirect"
+                         prev_title="Back to Enterprise Redirect" %}<br/>
 
-## Merchant Authenticated Consumer Seamless View
+## Enterprise Seamless View
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -393,11 +393,11 @@ Merchant -->>- Payer: Show Purchase complete
         end
 ```
 
-*   ① See [seamless view events][mac-seamless-view-events] for further information.
-*   ② Read more about [callback][mac-callback] handling in the technical reference.
+*   ① See [seamless view events][enterprise-seamless-view-events] for further information.
+*   ② Read more about [callback][enterprise-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/mac/seamless-view"
-                         prev_title="Back to MAC Seamless View" %}
+{% include iterator.html prev_href="/checkout-v3/enterprise/seamless-view"
+                         prev_title="Back to Enterprise Seamless View" %}
 
 ## Payments Only Redirect
 
@@ -602,7 +602,7 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/payments-only/seamless-view"
                          prev_title="Back to Payments Only Seamless View" %}
 
-## Standard Seamless View
+## Starter Seamless View
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end
@@ -714,17 +714,17 @@ Merchant -->>- Payer: Show Purchase complete
         end
 ```
 
-*   ① See [seamless view events][standard-seamless-view-events] for further information.
-*   ② Read more about [callback][standard-callback] handling in the technical reference.
+*   ① See [seamless view events][starter-seamless-view-events] for further information.
+*   ② Read more about [callback][starter-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/standard/seamless-view"
-                         prev_title="Back to Standard Seamless View" %}
+{% include iterator.html prev_href="/checkout-v3/starter/seamless-view"
+                         prev_title="Back to Starter Seamless View" %}
 
-[callback]: /checkout-v3/authenticated/features/technical-reference/callback
-[mac-callback]: /checkout-v3/mac/features/technical-reference/callback
+[callback]: /checkout-v3/business/features/technical-reference/callback
+[enterprise-callback]: /checkout-v3/enterprise/features/technical-reference/callback
 [payments-callback]: /checkout-v3/payments-only/features/technical-reference/callback
-[standard-callback]: /checkout-v3/standard/features/technical-reference/callback
-[seamless-view-events]: /checkout-v3/authenticated/features/technical-reference/seamless-view-events
-[mac-seamless-view-events]: /checkout-v3/mac/features/technical-reference/seamless-view-events
+[starter-callback]: /checkout-v3/starter/features/technical-reference/callback
+[seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
+[enterprise-seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events
 [payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
-[standard-seamless-view-events]: /checkout-v3/standard/features/technical-reference/seamless-view-events
+[starter-seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events

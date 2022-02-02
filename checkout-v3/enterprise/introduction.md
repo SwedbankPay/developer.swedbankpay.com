@@ -1,21 +1,21 @@
 ---
 section: Introduction
-title: Merchant Authenticated Consumer (MAC)
+title: Enterprise
 estimated_read: 3
 hide_from_sidebar: false
 description: |
-  **Merchant Authenticated Consumer** is the Checkout for merchants with their
+  **Enterprise** is the Checkout for merchants with their
   own consumer authentication, but don´t want to store the consumer information.
 menu_order: 200
 ---
 
-**Merchant Authenticated Consumer** is the option if you have a strong consumer
+**Enterprise** is the option if you have a strong consumer
 authentication login and collect consumer information yourself, so you don't
 need payer information from us to calculate shipping costs. We store the
 consumer information for you and offer the full range of available payment
 methods.
 
-There are two ways of integrating the **Merchant Authenticated Consumer**
+There are two ways of integrating the **Enterprise**
 implementation. **Redirect** and **Seamless View**.
 
 With **Redirect**, the payer is sent to a Swedbank Pay page, where we handle the

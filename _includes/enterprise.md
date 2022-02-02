@@ -1,12 +1,12 @@
 {% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
 
-## Merchant Authenticated Consumer
+## Enterprise
 
 {% include jumbotron.html body="When the payer is identified and
 authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
-{%- if documentation_section != 'checkout/v3/authenticated' %}
+{%- if documentation_section != 'checkout/v3/business' %}
 **Delegated Strong Consumer Authentication** (hereby abbreviated as "Delegated
 SCA") is performed as an alternative to [Checkin][checkin] when creating the
 Payment Order upon the initialization of the [Payment Menu][payment-menu]. You
@@ -25,12 +25,12 @@ alternative to `consumerProfileRef`.
 {%- endif %}
 
 {% include alert.html type="warning" icon="warning" header="Bank ID
-authentication required" body="In order to use the MAC feature, you
+authentication required" body="In order to use the Enterprise feature, you
 need a **legal agreement with Swedbank Pay** which mandates that the payer
 identified by the `nationalIdentifier` is authenticated with **Bank ID** prior
 to the request." %}
 
-An abbreviated example of a MAC request looks like this:
+An abbreviated example of a Enterprise request looks like this:
 
 {:.code-view-header}
 **Request**
@@ -67,17 +67,17 @@ will allow a more frictionless payment process. Invoice One-Click Payments does
 not require the last 4/5 digits of the payer's social security number (SSN),
 for instance.
 
-Below you can see an example of the payment window with and without MAC. In the
+Below you can see an example of the payment window with and without Enterprise. In the
 first image, the SSN is removed altogether because the payer is authenticated by
 the merchant. In the bottom image, the last 4/5 digits of the SSN are required.
 
 {:.text-center}
-![One-Click Payments without SSN][mac-no-ssn]{:width="475" height="385"}
+![One-Click Payments without SSN][enterprise-no-ssn]{:width="475" height="385"}
 
 {:.text-center}
-![Payments with SSN][mac-with-ssn]{:width="475" height="460"}
+![Payments with SSN][enterprise-with-ssn]{:width="475" height="460"}
 
 [checkin]: {{ documentation_section_url }}/checkin
 [payment-menu]: {{ documentation_section_url }}/payment-menu
-[mac-no-ssn]: /assets/img/checkout/mac-no-ssn.png
-[mac-with-ssn]: /assets/img/checkout/mac-with-ssn.png
+[enterprise-no-ssn]: /assets/img/checkout/enterprise-no-ssn.png
+[enterprise-with-ssn]: /assets/img/checkout/enterprise-with-ssn.png

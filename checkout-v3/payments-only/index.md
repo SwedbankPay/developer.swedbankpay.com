@@ -20,8 +20,7 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **Services you prefer:** Full Checkout (Standard / Authenticated / Merchant
-    Authenticated Consumer) or Payments Only (Payments).
+*   **Services you prefer:** Full Checkout (Starter / Business / Enterprise) or Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.
 

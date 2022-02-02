@@ -1,9 +1,9 @@
 ---
 section: Introduction
-title: Authenticated
+title: Business
 estimated_read: 2
 description: |
-  **Authenticated** is the checkout option for merchants who want us to handle
+  **Business** is the checkout option for merchants who want us to handle
   both consumer authentication and payment.
 menu_order: 200
 ---
@@ -13,7 +13,7 @@ collect and provide us with billing and shipping addresses, while we handle the
 rest. Verifying the payer, storing the consumer info and providing you with
 all the available payment instruments.
 
-There are two ways of integrating the **Authenticated** implementation.
+There are two ways of integrating the **Business** implementation.
 **Redirect** and **Seamless View**.
 
 With **Redirect**, the payer is sent to a Swedbank Pay page, where we handle the
