@@ -98,7 +98,7 @@ of payment methods and features to cater for your business needs.
 -   **Payer Info:** The payer’s personal data e.g. name, address, card number
     etc.
 
--   **PSP:** The service of providing payment methods in the checkout.
+-   **PSP:** The service of providing payment instruments in the checkout.
 
 ## What Are You Looking For?
 
