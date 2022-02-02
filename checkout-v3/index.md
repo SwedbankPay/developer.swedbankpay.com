@@ -95,7 +95,7 @@ of payment methods and features to cater for your business needs.
 
 -   **Delivery Info:** Information about where the goods should be delivered.
 
--   **Payer Info:** The consumers’ personal data e.g. name, address, card number
+-   **Payer Info:** The payer’s personal data e.g. name, address, card number
     etc.
 
 -   **PSP:** The service of providing payment methods in the checkout.
