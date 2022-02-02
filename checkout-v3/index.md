@@ -89,7 +89,7 @@ data and the payment methods to be presented.
 
 Regardless of whether you choose
 to go with the full checkout or payments only, we will supply you with a variety
-of payment methods and features to cater for your business needs.
+of payment instruments and features to cater for your business needs.
 
 -   **Authentication:** The process for verifying the payers identity.
 
