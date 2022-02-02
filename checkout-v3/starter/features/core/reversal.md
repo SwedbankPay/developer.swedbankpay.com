@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include reversal.md %}
+{% include payment-order-reversal.md %}
