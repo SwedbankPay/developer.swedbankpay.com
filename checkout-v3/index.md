@@ -181,7 +181,7 @@ full range of payment instruments.
   button_content='Proceed'
   text="If you can collect, verify and store your payer data, and if needed -
   the delivery address - this is the option for you. With our PSP you can decide
-  if you want to offer a single payment method or the full payment offering. "
+  if you want to offer a single payment instrument or the full payment offering."
   table_content=page.table_content_payments
   header=page.header
   button_type='secondary'
