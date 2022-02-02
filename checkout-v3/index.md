@@ -168,7 +168,7 @@ their information to have it prefilled next time they shop.
 
 With our payments only package, you collect the payer data and have the
 flexibility to build your own checkout flow. This implementation supports our
-full range of payment methods.
+full range of payment instruments.
 {:.heading-line}
 {% endcapture %}
 
