@@ -155,3 +155,5 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`reconciliationNumber`          | `string`     | The number of the reconciliation batch file where the transaction can be found. |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+
+[operations]: /{{ documentation_section }}/features/technical-reference/operations
