@@ -166,7 +166,7 @@ their information to have it prefilled next time they shop.
 
 ## Payments Only
 
-With our payments only package, you collect the consumer data and have the
+With our payments only package, you collect the payer data and have the
 flexibility to build your own checkout flow. This implementation supports our
 full range of payment methods.
 {:.heading-line}
