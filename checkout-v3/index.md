@@ -82,7 +82,7 @@ and/or wish to collect and manage yourself.
 
 Here, you can choose from two main
 paths. Either you let us provide you with a full checkout solution (including
-both consumer identification and payment menu) - meaning the consumer self can
+both consumer identification and payment menu) - meaning the payer themself can
 choose how they'd like to pay. Or, you can decide to use the option for payments
 only. This means that you are in charge of collecting and storing the consumer
 data and the payment methods to be presented.
