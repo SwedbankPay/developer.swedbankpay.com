@@ -1,8 +1,27 @@
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 
-If we want to cancel up to the total authorized (not captured) amount, we need
-to perform `create-paymentorder-cancel` against the accompanying `href` returned
-in the `operations` list. See the abbreviated request and response below:
+## Cancel
+
+The `cancellations` resource lists the cancellation transactions on a
+specific payment.
+
+### Create cancellation transaction
+
+{% if documentation_section contains "checkout-v3" %}
+
+To cancel a previously created payment, you must perform the `cancel` operation
+against the accompanying `href` returned in the `operations` list. You can only
+cancel a payment - or part of a payment - which has not been captured yet.
+
+{% else %}
+
+To cancel a previously created payment, you must perform the
+`create-paymentorder-cancel` operation against the accompanying `href` returned
+in the `operations` list. You can only cancel a payment - or part of a payment -
+which has not been captured yet.
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
@@ -15,8 +34,8 @@ Content-Type: application/json
 
 {
     "transaction": {
-        "payeeReference": "ABC123",
-        "description": "Canceling parts of the total amount"
+        "description": "Test Cancellation"
+        "payeeReference": "ABC123"
     }
 }
 ```
@@ -25,8 +44,8 @@ Content-Type: application/json
 |     Required     | Field                    | Type         | Description                                                                                    |
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md %} |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md %} |
 
 If the cancellation request succeeds, the response should be similar to the
 example below:
@@ -44,12 +63,15 @@ Content-Type: application/json
         "id": "/psp/paymentorders/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
         "transaction": {
             "id": "/psp/paymentorders/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-            "type": "Cancel",
+            "created": "2022-01-31T09:49:13.7567756Z",
+            "updated": "2022-01-31T09:49:14.7374165Z",
+            "type": "Cancellation",
             "state": "Completed",
-            "amount": 5610,
-            "vatAmount": 1122,
-            "description": "Canceling parts of the authorized payment",
-            "payeeReference": "AB832"
+            "number": 71100732065,
+            "amount": 1500,
+            "vatAmount": 375,
+            "description": "Test Cancellation",
+            "payeeReference": "AB123"
         }
     }
 }
@@ -72,5 +94,22 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
+
+### Cancel Sequence
+
+Cancel can only be done on a authorized transaction. If you perform a cancel
+after doing a partial capture, you will cancel the remaining authorized amount.
+
+```mermaid
+sequenceDiagram
+    participant SwedbankPay as Swedbank Pay
+
+    Merchant->>SwedbankPay: POST < {{ include.api_resource }} cancellation>
+    activate Merchant
+    activate SwedbankPay
+    SwedbankPay-->>Merchant: transaction resource
+    deactivate SwedbankPay
+    deactivate Merchant
+```
 
 [payee-reference]: {{ features_url }}/technical-reference/payee-reference
