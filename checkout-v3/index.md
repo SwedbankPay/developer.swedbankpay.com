@@ -179,7 +179,7 @@ full range of payment instruments.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="If you can collect, verify and store your consumer data, and if needed -
+  text="If you can collect, verify and store your payer data, and if needed -
   the delivery address - this is the option for you. With our PSP you can decide
   if you want to offer a single payment method or the full payment offering. "
   table_content=page.table_content_payments
