@@ -16,7 +16,7 @@ The purchase should now be complete. But what if the purchase is cancelled or
 the payer wants to return goods? For these instances, we have `cancel` and
 `reversal`.
 
-{% include cancel.md %}
+{% include payment-order-cancel.md %}
 
 {% include payment-order-reversal.md %}
 
