@@ -1,18 +1,17 @@
 {% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
 
-## Merchant Authenticated Consumer PayerReference
+## Enterprise PayerReference
 
-If a merchant wants to use the **Merchant Authenticated Consumer** or
-**Payments Only** implementation, but does not have the payer's SSN or a secure
-login, they can add a `payerReference` in the `payer` field of the payment
-request.
+If a merchant wants to use the **Enterprise** or **Payments Only**
+implementation, but does not have the payer's SSN or a secure login, they can
+add a `payerReference` in the `payer` field of the payment request.
 
-{% if documentation_section contains "checkout-v3/mac" %}
+{% if documentation_section contains "checkout-v3/enterprise" %}
 
 If the `payerReference` is present along with `email` and `msisdn`, the merchant
 does not need to add a `nationalIdentifier`. Other than that, it is the same as
-a regular [Redirect][mac-redirect] or [Seamless View][mac-seamless-view] request
-using the MAC implementation.
+a regular [Redirect][enterprise-redirect] or [Seamless
+View][enterprise-seamless-view] request using the **Enterprise** implementation.
 
 {% else %}
 
@@ -33,11 +32,9 @@ information will be stored.
 {:.text-center}
 ![Payer is presented with SSN input or continue as guest][enterprise-enter-ssn]
 
-![Payer is presented with SSN input or continue as guest][mac-enter-ssn]
-
 [3d-secure-2]: /checkout-v3/mac/features/core/3d-secure-2
-[mac-enter-ssn]: /assets/img/checkout/mac-enter-ssn.png
-[mac-redirect]: /checkout-v3/mac/redirect#step-1-create-payment-order
-[mac-seamless-view]: /checkout-v3/mac/seamless-view#step-1-create-payment-order
+[entreprise-enter-ssn]: /assets/img/checkout/mac-enter-ssn.png
+[enterprise-redirect]: /checkout-v3/enterprise/redirect#step-1-create-payment-order
+[enterprise-seamless-view]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
 [payments-only-redirect]: /checkout-v3/payments-only/redirect#step-1-create-payment-order
 [payments-only-seamless-view]: /checkout-v3/payments-only/seamless-view#step-1-create-payment-order
