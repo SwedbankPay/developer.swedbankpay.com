@@ -1,8 +1,8 @@
 {%- capture sections -%}
     checkout-v2,
-    checkout-v3/mac,
-    checkout-v3/standard,
-    checkout-v3/authenticated,
+    checkout-v3/enterprise,
+    checkout-v3/starter,
+    checkout-v3/business,
     checkout-v3/payments-only,
     payment-menu,
     gift-cards,

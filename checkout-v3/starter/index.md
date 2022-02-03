@@ -1,12 +1,12 @@
 ---
-section: Payments Only
+section: Starter
 title: Set Up
 description: |
   **In this section we are going to guide you through setting up your test account
   and how to make an API request for your first test payment. After these steps,
   you're ready to build your integration!**
 checkout_v3: true
-menu_order: 400
+menu_order: 100
 ---
 
 ## Step 1: Sign Up For A Test Account
@@ -64,8 +64,8 @@ the key.
   environment it is created in.
 
 *   Your token will only be fully visible upon creation. For security purposes,
-    we will mask it as shown in the example above. If you need to keep track
-    of it, please save it externally in a safe place as it will remain
+    we will mask it like this `12a3**********bc4de56f`. If you need to keep
+    track of it, please save it externally in a safe place as it will remain
     encrypted.
 
 {% include alert.html type="warning" icon="warning" body="Please note that the
@@ -73,5 +73,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout-v3/payments-only/introduction"
+                         next_href="/checkout-v3/starter/introduction"
                          next_title="Start Integration" %}

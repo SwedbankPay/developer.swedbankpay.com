@@ -1,5 +1,6 @@
 ---
 title: Seamless View
+redirect_from: /payments/card/seamless-view
 estimated_read: 10
 description: |
   The Seamless View purchase scenario shows you how to implement the payment
@@ -7,19 +8,19 @@ description: |
 menu_order: 400
 ---
 
-The **Payments Seamless View** integration consists of three main steps.
-**Creating** the payment order, **displaying** the payment menu in an iframe,
-and **capturing** the funds. In addition, there are other post purchase options
-you need. We get to them later on.
+The **Business Redirect** integration consists of three main steps.
+**Creating** the payment order and checkin, **displaying** the payment menu and
+checkin module in an iframe, and finally **capturing** the funds. In addition,
+there are other post purchase options you need. We get to them later on.
 
-If you want to get an overview before proceeding, you can look at the [sequence
-diagram][sequence-diagram]. It is also available in the sidebar if you want to
-look at it later. Let´s get going with the two first steps of the integration.
+If you want to get an overview before proceeding, you can look at the
+[sequence diagram][sequence-diagrams]. It is also available in the sidebar if
+you want to look at it later. Let´s get going with the two first steps of the
+integration.
 
-## Step 1: Create Payment Order
+## Step 1: Create Payment Order And Checkin
 
-When the payer has been checked in and the purchase initiated, you need to
-create a payment order.
+When the purchase is initiated, you need to create a payment order.
 
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
@@ -33,9 +34,8 @@ When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Payments Only**, the way to trigger this is to not
-include the `payerReference` field in your `paymentOrder` request. You can find
-it in the `payer` node in the example below.
+information. When using **Business**, this is triggered when the payer
+chooses not to store credentials during checkin.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
@@ -50,12 +50,13 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-payments-only.md integration_mode="seamless-view" %}
+{% include payment-order-checkout-business.md integration_mode="seamless_view" %}
 
-## Step 2: Display Payment Menu
+## Step 2: Display Payment Menu And Checkin
 
 Among the operations in the POST `paymentOrders` response, you will find the
-`view-checkout`. This is the one you need to display the purchase module.
+`view-checkout`. This is what you need to display the checkin and payment
+module.
 
 {:.code-view-header}
 **Response**
@@ -98,7 +99,7 @@ request.addEventListener('load', function () {
     script.setAttribute('src', operation.href);
     script.onload = function () {
         // When the 'view-checkout' script is loaded, we can initialize the
-        // Payment Menu inside 'checkout-container'.
+        // Checkin and Payment Menu inside 'checkout-container'.
         payex.hostedView.checkout({
             container: {
                 checkoutContainer: "checkout-container"
@@ -134,11 +135,42 @@ request.send();
   </html>
 ```
 
-The payment menu should appear with the payer information displayed above the
-menu. The payer can select their preferred payment instrument and pay.
+First you will see a Checkin module where the payer can enter their email and
+phone number.
 
 {:.text-center}
-![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]
+![screenshot of the business implementation seamless view checkin][login-checkin]
+
+A known payer will be sent directly to the payment menu shown further below. If
+we detect that the payer is new, we give them the option to store their details
+or proceed without storing. If that happens, these checkin steps will appear.
+
+{:.text-center}
+![screenshot of asking the payer to store details][checkin-new-payer]
+
+After choosing yes or no, the payer must enter their SSN.
+
+{:.text-center}
+![screenshot of asking the payer to enter SSN while storing details][checkin-new-payer-ssn]
+
+With digital products, the payer will be sent directly to the payment menu after
+they select to store their details. For mixed goods, the SSN input view will
+expand and the payer must enter their shipping address. Payers choosing not to
+store credentials (guests) must also enter their shipping address.
+
+{:.text-center}
+![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
+
+After checking in, the payment menu will appear with the payer information
+displayed above the menu. The payer can select their preferred payment
+instrument and pay. The example with shipping address is for all goods (physical
+and digital), the one without shipping address is for digital products only.
+
+{:.text-center}
+![screenshot of the business implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+
+{:.text-center}
+![screenshot of the business implementation seamless view payment menu digital][seamless-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -161,7 +193,12 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments-only/features/core/abort
-[seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-only-seamless-view
-[seamless-enterprise-menu]: /assets/img/checkout/enterprise-seamless-view.png
+[abort-feature]: /checkout-v3/business/features/core/abort
+[sequence-diagrams]: /checkout-v3/sequence-diagrams/#business-seamless-view
+[login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
+[seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
+[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
+[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
+[checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
+[checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
+[checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png

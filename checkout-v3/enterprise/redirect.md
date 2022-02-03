@@ -8,8 +8,8 @@ description: |
 menu_order: 300
 ---
 
-The **Payments Only Redirect** integration consists of three main steps.
-**Creating** the payment order, **displaying** the payment menu, and
+The **Enterprise Redirect** integration consists of three
+main steps. **Creating** the payment order, **displaying** the payment menu, and
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.
 
@@ -32,14 +32,15 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
-Supported features for this integration are subscriptions (`recur`, `one-click`
-and `unscheduled MIT`), `MOTO`, instrument mode, split settlement (`subsite`)
-and the possibility to use your own `logo`.
+Supported features for this integration are subscriptions (`recur` and
+`unscheduled MIT`), split settlement (`subsite`) and the possibility to use your
+own `logo`.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Payments Only**, the way to trigger this is to not
-include the `payerReference` field in your `paymentOrder` request. You can find
-it in the `payer` node in the example below.
+information. When using **Enterprise**, the way to trigger
+this is to not include the `payerReference` or `nationalIdentifier` field in
+your `paymentOrder` request. You find them in the `payer` node in the example
+below.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
@@ -51,7 +52,7 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-payments-only.md integration_mode="redirect" %}
+{% include payment-order-checkout-enterprise.md integration_mode="redirect" %}
 
 ## Step 2: Display Payment Menu
 
@@ -80,7 +81,7 @@ information displayed above the menu. The payer can select their preferred
 payment instrument and pay.
 
 {:.text-center}
-![screenshot of the merchant managed implementation redirect payment menu][redirect-payments-only-menu]
+![screenshot of the enterprise implementation redirect payment menu][redirect-enterprise-menu]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -93,6 +94,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments-only/features/core/abort
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-only-redirect
-[redirect-payments-only-menu]: /assets/img/checkout/enterprise-redirect.png
+[abort-feature]: /checkout-v3/enterprise/features/core/abort
+[sequence-diagram]: /checkout-v3/sequence-diagrams/#enterprise-redirect
+[redirect-enterprise-menu]: /assets/img/checkout/enterprise-redirect.png

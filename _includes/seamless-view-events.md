@@ -155,7 +155,7 @@ object:
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
-{% if documentation_section contains "checkout/v3/standard" %}
+{% if documentation_section contains "checkout/v3/starter" %}
 
 ### `onPayerIdentified`
 

@@ -27,7 +27,7 @@ table_content:
     label: PSP
     swedbankPay: true
 
-table_content_authenticated:
+table_content_business:
   - icon: lock
     label: Authentication
     swedbankPay: true
@@ -41,7 +41,7 @@ table_content_authenticated:
     label: PSP
     swedbankPay: true
 
-table_content_mac:
+table_content_enterprise:
   - icon: lock
     label: Authentication
     merchantSide: true
@@ -119,7 +119,7 @@ options and the full payment offering.
 {% capture tab1_content %}
 
 {% include card-extended.html
-  title='Standard'
+  title='Starter'
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
@@ -128,11 +128,11 @@ options and the full payment offering.
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/standard/'
+  to='/checkout-v3/starter/'
   %}
 
 {% include card-extended.html
-  title='Authenticated'
+  title='Business'
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
@@ -140,26 +140,26 @@ options and the full payment offering.
   storage. If you have a login, your payer won't need to fill out their
   information twice. With our PSP you are always able to choose one or more
   payment methods."
-  table_content=page.table_content_authenticated
+  table_content=page.table_content_business
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/authenticated/'
+  to='/checkout-v3/business/'
 %}
 
 {% include card-extended.html
-  title='Merchant Authenticated Consumer'
+  title='Enterprise'
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
   text="In order to implement this solution, you need to be able to both collect and
   verify your payer's data using SCA. We store the payer information, and
   with our PSP you are always able to choose one or more payment methods."
-  table_content=page.table_content_mac
+  table_content=page.table_content_enterprise
   header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
-  to='/checkout-v3/mac/'
+  to='/checkout-v3/enterprise/'
 %}
 {% endcapture %}
 
