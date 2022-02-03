@@ -121,7 +121,7 @@ their information to have it prefilled the next time they shop.
   icon_outlined=true
   button_content='Proceed'
   text='The ultimate implementation pack for anyone new to this, who needs support
-  with all parts covering the checkout. We collect and verify the consumer
+  with all parts covering the checkout. We collect and verify the payer's
   identity, the billing and shipping address and store the consumer data.
   Everything needed to get started with online payments.'
   table_content=page.table_content
