@@ -2,8 +2,9 @@
 section: Checkout v3
 title: Get Started
 description: |
-  **Before moving on we would like to give you a brief introduction to what you need
-  to consider before composing your checkout page, along with some prerequisites.**
+  **To give you a hint of how to implement our checkout in a matter that will
+  make the most sense for your business, this page aims to give you a brief
+  introduction to our four implementation options.**
 menu_order: 200
 checkout_v3: true
 
@@ -73,35 +74,31 @@ table_content_payments:
 
 ## Choose The Right Implementation For Your Business
 
-Truth is, the customer journey varies a lot depending on your business
-vertical. For example, if you're selling physical goods like clothes, shoes or
-computers, you need to collect the address of the payer for shipping
-purposes. Unlike if you were selling digital goods, where that's simply not
-necessary. But it also comes down to what you are able and wish to manage
-yourself.
+The customer journey varies a lot depending on your business vertical. For
+example, if you're selling physical goods - like clothes, shoes, computers,
+etc., you need to collect a delivery address. Unlike if you were selling digital
+goods, where that isn't needed. But this is also a matter of which data you can
+and/or wish to collect and manage yourself.
 
-When building your checkout page you have two main paths. Either you let us
-provide you with the entire checkout solution. This includes payer
-identification and payment menu, where your customer themselves can choose how
-to pay. Or, you can choose to only use our payment option (also called the
-payment menu), where you are in charge of collecting and storing the customer
-data.
+Here, you can choose between two main
+paths. Either you let us provide you with a full checkout solution (including
+both payer identification and payment menu) - meaning the payer themselves can
+choose how they'd like to pay. Or, you can decide to use the option for payments
+only. This means that you are in charge of collecting and storing the payer
+data and the payment instruments to be presented.
 
-Regardless if you choose our checkout or payments only option, you will always
-be able to decide which payment options are available for the payer. Hence
-you can show all available payment options for that specific market, or just one
-or two if that makes more sense for your business.
+Regardless of whether you choose
+to go with the full checkout or payments only, we will supply you with a variety
+of payment instruments and features to cater for your business needs.
 
--   **Payer Info:** The payer's personal data e.g. name, address, phone
-    number etc.
-
--   **Authentication:** The process for verifying the Payer's identity via
-    Strong Consumer Authentication (e.g. BankID).
+-   **Authentication:** The process for verifying the payers identity.
 
 -   **Delivery Info:** Information about where the goods should be delivered.
 
--   **PSP:** The service of providing payment methods in the checkout or payment
-    menu.
+-   **Payer Info:** The payer’s personal data e.g. name, address, card number
+    etc.
+
+-   **PSP:** The service of providing payment instruments in the checkout.
 
 ## What Are You Looking For?
 
@@ -109,10 +106,10 @@ or two if that makes more sense for your business.
 
 ## Full Checkout
 
-By using the **Full Checkout**, we help you collect and safely store payer
-data. We can also prefill payer info in the checkout if they have agreed to
-let us store their info. All of our implementations support both single payment
-options and the full payment offering.
+From the **Full Checkout**, you will get access to a number of payment instruments.
+selected to support the needs of the local market. We help you collect and
+safely store the payer's data. And if the payer agrees, we will store
+their information to have it prefilled the next time they shop.
 {:.heading-line}
 {% endcapture %}
 
@@ -123,7 +120,10 @@ options and the full payment offering.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text='We collect and verify the identity of your payer. We also collect the billing and shipping address, and we store the payer information. With our PSP you are always able to choose one or more payment methods.'
+  text="The ultimate implementation pack for anyone new to this, who needs support
+  with all parts covering the checkout. We collect and verify the payer's
+  identity, billing and shipping address, and store the payer data.
+  Everything needed to get started with online payments."
   table_content=page.table_content
   header=page.header
   button_type='secondary'
@@ -136,10 +136,10 @@ options and the full payment offering.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="The payer data you have collected, is shared with us for verification and
-  storage. If you have a login, your payer won't need to fill out their
-  information twice. With our PSP you are always able to choose one or more
-  payment methods."
+  text="On the next level on your growth journey, looking for someone to
+  authenticate and store the payer data you collected? We've got you covered, so the
+payer won't have to fill out their information twice. Simply
+  everything needed for growing your business. "
   table_content=page.table_content_business
   header=page.header
   button_type='secondary'
@@ -152,11 +152,10 @@ options and the full payment offering.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="In order to implement this solution, you need to be able to both collect and
-  verify your payer's data using SCA. We store the payer information, and
-  with our PSP you are always able to choose one or more payment methods."
-  table_content=page.table_content_enterprise
-  header=page.header
+  text="If you only need support with data storage and payment instruments - this is
+  the most suitable option for you. You collect and verify the consumer data,
+  and we sort out the rest. Everything you need for scaling your business."
+  table_content=page.table_content_enterprise header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
   to='/checkout-v3/enterprise/'
@@ -167,10 +166,9 @@ options and the full payment offering.
 
 ## Payments Only
 
-If you are looking for our payments package, you will have the flexibility to
-build your own checkout flow. You collect the payer data and own the entire
-checkout process. The **Payments Only** implementation supports both single
-payment options and the full payment offering.
+With our payments only package, you collect the payer data and have the
+flexibility to build your own checkout flow. This implementation supports our
+full range of payment instruments.
 {:.heading-line}
 {% endcapture %}
 
@@ -181,9 +179,9 @@ payment options and the full payment offering.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="In order to implement this solution, you need to be able to both collect and
-  verify your payer's data using SCA. You also store the payer information.
-  With our PSP you are always able to choose one or more payment methods."
+  text="If you can collect, verify and store your payer data, and if needed -
+  the delivery address - this is the option for you. With our PSP you can decide
+  if you want to offer a single payment instrument or the full payment offering."
   table_content=page.table_content_payments
   header=page.header
   button_type='secondary'
