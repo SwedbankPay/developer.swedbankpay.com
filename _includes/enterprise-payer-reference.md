@@ -32,7 +32,6 @@ information will be stored.
 {:.text-center}
 ![Payer is presented with SSN input or continue as guest][enterprise-enter-ssn]
 
-[3d-secure-2]: /checkout-v3/mac/features/core/3d-secure-2
 [enterprise-enter-ssn]: /assets/img/checkout/enterprice-enter-ssn.png
 [enterprise-redirect]: /checkout-v3/enterprise/redirect#step-1-create-payment-order
 [enterprise-seamless-view]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
