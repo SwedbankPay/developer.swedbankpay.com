@@ -84,7 +84,7 @@ Here, you can choose between two main
 paths. Either you let us provide you with a full checkout solution (including
 both payer identification and payment menu) - meaning the payer themselves can
 choose how they'd like to pay. Or, you can decide to use the option for payments
-only. This means that you are in charge of collecting and storing the consumer
+only. This means that you are in charge of collecting and storing the payer
 data and the payment methods to be presented.
 
 Regardless of whether you choose
