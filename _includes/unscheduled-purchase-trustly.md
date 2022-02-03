@@ -21,3 +21,8 @@ If you enable `callbackEnabled` and send a `callbackUrl`, you can expect to get 
 
 You can delete a created unscheduled token. Please see technical reference for
 details [here][trustly-remove-payment-token].
+
+<!--lint disable final-definition -->
+
+[trustly-remove-payment-token]: /payment-menu/features/technical-reference/delete-token
+[trustly-paymentorder-create]: /payment-menu/payment-order

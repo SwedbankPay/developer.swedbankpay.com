@@ -6,7 +6,7 @@
 
 ### Prerequisites
 
-Prior to making any server-to-server requests, you need to make sure the `directDebitEnabled` setting in your Trustly contract is set to `true`. Then you need to supply the payment instrument details and a payment token to Swedbank Pay by initial purchase or [select account verification][payment-verify]. Note that the `email` field must be set, as this is a required parameter. If the `email` is missing, Trustly will not be available for selection from the payments menu.
+Prior to making any server-to-server requests, you need to make sure the `directDebitEnabled` setting in your Trustly contract is set to `true`. Then you need to supply the payment instrument details and a payment token to Swedbank Pay by initial purchase or select account verification. Note that the `email` field must be set, as this is a required parameter. If the `email` is missing, Trustly will not be available for selection from the payments menu.
 
 If you enable `callbackEnabled` and send a `callbackUrl`, you can expect to get a callback when the payment is finised. The alternative is setting up polling to poll for a state.
 
