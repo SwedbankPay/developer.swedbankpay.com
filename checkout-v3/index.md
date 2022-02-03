@@ -152,7 +152,7 @@ payer won't have to fill out their information twice. Simply
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="If you only need support with data storage and payment methods - this is
+  text="If you only need support with data storage and payment instruments - this is
   the most suitable option for you. You collect and verify the consumer data,
   and we sort out the rest. Everything you need for scaling your business."
   table_content=page.table_content_enterprise header=page.header
