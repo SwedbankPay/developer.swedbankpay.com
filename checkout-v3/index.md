@@ -120,10 +120,10 @@ their information to have it prefilled the next time they shop.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text='The ultimate implementation pack for anyone new to this, who needs support
+  text="The ultimate implementation pack for anyone new to this, who needs support
   with all parts covering the checkout. We collect and verify the payer's
   identity, billing and shipping address, and store the payer data.
-  Everything needed to get started with online payments.'
+  Everything needed to get started with online payments."
   table_content=page.table_content
   header=page.header
   button_type='secondary'
