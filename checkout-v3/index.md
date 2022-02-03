@@ -80,7 +80,7 @@ etc., you need to collect a delivery address. Unlike if you were selling digital
 goods, where that isn't needed. But this is also a matter of which data you can
 and/or wish to collect and manage yourself.
 
-Here, you can choose from two main
+Here, you can choose between two main
 paths. Either you let us provide you with a full checkout solution (including
 both consumer identification and payment menu) - meaning the payer themself can
 choose how they'd like to pay. Or, you can decide to use the option for payments
