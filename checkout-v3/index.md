@@ -109,7 +109,7 @@ of payment instruments and features to cater for your business needs.
 From the **Full Checkout**, you will get access to a number of payment instruments.
 selected to support the needs of the local market. We help you collect and
 safely store the payer's data. And if the payer agrees, we will store
-their information to have it prefilled next time they shop.
+their information to have it prefilled the next time they shop.
 {:.heading-line}
 {% endcapture %}
 
