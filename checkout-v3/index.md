@@ -137,7 +137,7 @@ their information to have it prefilled the next time they shop.
   icon_outlined=true
   button_content='Proceed'
   text="On the next level on your growth journey, looking for someone to
-  authenticate and store the consumer data you collected? We got you covered and
+  authenticate and store the payer data you collected? We've got you covered, so the
 payer won't have to fill out their information twice. Simply
   everything needed for growing your business. "
   table_content=page.table_content_business
