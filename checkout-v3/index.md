@@ -138,7 +138,7 @@ their information to have it prefilled the next time they shop.
   button_content='Proceed'
   text="On the next level on your growth journey, looking for someone to
   authenticate and store the consumer data you collected? We got you covered and
-  the consumer doesn’t need to fill out their information twice. Simply
+payer won't have to fill out their information twice. Simply
   everything needed for growing your business. "
   table_content=page.table_content_business
   header=page.header
