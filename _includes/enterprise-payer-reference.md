@@ -32,7 +32,7 @@ information will be stored.
 {:.text-center}
 ![Payer is presented with SSN input or continue as guest][enterprise-enter-ssn]
 
-[enterprise-enter-ssn]: /assets/img/checkout/enterprice-enter-ssn.png
+[enterprise-enter-ssn]: /assets/img/checkout/enterprise-enter-ssn.png
 [enterprise-redirect]: /checkout-v3/enterprise/redirect#step-1-create-payment-order
 [enterprise-seamless-view]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
 [payments-only-redirect]: /checkout-v3/payments-only/redirect#step-1-create-payment-order
