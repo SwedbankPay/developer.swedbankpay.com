@@ -131,7 +131,7 @@ sequenceDiagram
     deactivate Payer
     SwedbankPay -->> Payer: show payer completed iframe
     activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified ①
+    Payer ->> Payer: EVENT: onPayerIdentified ①
     Payer ->> Payer: Initiate Purchase step
     deactivate Payer
     SwedbankPay ->>+ Payer: Do purchase logic
