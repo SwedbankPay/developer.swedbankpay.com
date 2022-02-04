@@ -24,7 +24,7 @@ GEM
     ethon (0.15.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
-    faraday (2.1.0)
+    faraday (2.2.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.1)
@@ -148,7 +148,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  faraday (~> 2.1.0)
+  faraday (~> 2.2.0)
   html-proofer
   html-proofer-unrendered-markdown
   jekyll (~> 4.2.0)
