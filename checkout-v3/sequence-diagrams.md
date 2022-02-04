@@ -623,22 +623,44 @@ sequenceDiagram
             deactivate Merchant
             SwedbankPay -->>+ Merchant: rel:view-checkout
             deactivate SwedbankPay
-            Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
+            Merchant ->> Merchant: Configure checkout on merchant page
+            note left of Merchant: Start the checkout by providing 2 iframes
+            * Checkin iframe
+            * PaymentMenu iframe
+            window.payex.hostedView.checkout(checkoutConfig)
+            end note
+            Merchant -->>- Payer: Display Swedbank Pay Checkin on merchant page
+            note right of Merchant: windows.payex.hostedview.checkout().open("checkin")
+            end note
             activate Payer
             Payer ->> Payer: Initiate Authenticate step
-               Payer ->> SwedbankPay: Show Checkin component in iframe
     deactivate Payer
-    activate SwedbankPay
-    SwedbankPay ->> Payer: Payer identification process
-    activate Payer
+
+ activate Payer
     Payer ->> SwedbankPay: Payer identification process
     deactivate Payer
+    activate SwedbankPay
     SwedbankPay -->> Payer: show payer completed iframe
+    SwedbankPay --> Merchant: EVENT: OnPayerIdentified ①
+    deactivate SwedbankPay
+    activate Merchant
+    Merchant --> SwedbankPay : Get delivery information
+    Merchant ->> Merchant : Calculate shipping
+    Merchant -->- Payer : Show shipping costs
+    deactivate Merchant
     activate Payer
-    Payer ->> Payer: EVENT: onConsumerIdentified ①
-    Payer ->> Payer: Initiate Purchase step
+    Payer -->+ Merchant : Choose delivery
     deactivate Payer
-    SwedbankPay ->>+ Payer: Do purchase logic
+    Merchant -> SwedbankPay : PATCH rel:update-order
+    note left of Merchant:
+    Merchant updates PaymentOrder with finalized price now that shipping costs
+    have been chosen.
+    end note
+
+    Merchant -->+ Payer : Display SwedbankPay Payment Menu on merchant page
+    note right of Merchant:
+    windows.payex.hostedview.checkout().open("paymentmenu")
+    end note
     Payer ->> SwedbankPay: Do purchase logic
     deactivate Payer
     deactivate SwedbankPay
@@ -651,7 +673,7 @@ sequenceDiagram
                     3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
                     deactivate 3rdParty
                     Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
-                    Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
+                    Merchant ->>+ Payer: Show Purchase UI page in iframe
                     deactivate Payer
                 end
 
@@ -661,41 +683,26 @@ sequenceDiagram
 
             alt If purchase is completed
             activate Payer
-            Payer ->> Payer: Event: onPaymentCompleted ①
-            Payer ->>+ Merchant: Check purchase status
+            Payer ->> Payer: Event: onPaid ①
             deactivate Payer
-            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            Merchant ->>+ SwedbankPay: GET <paymentorder.id> expand Paid
             deactivate Merchant
-            SwedbankPay ->>+ Merchant: rel: paid-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if paid-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: paid-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
+            SwedbankPay ->>+ Merchant: Payment details, Status: Paid
             deactivate SwedbankPay
             end
+
                         activate Merchant
 Merchant -->>- Payer: Show Purchase complete
             end
 
-            alt If purchase is failed
-            activate Payer
-            Payer ->> Payer: Event: OnPaymentFailed ①
-            Payer ->>+ Merchant: Check purchase status
-            deactivate Payer
-            Merchant ->>+ SwedbankPay: GET {paymentorder.id}
-            deactivate Merchant
-            SwedbankPay -->>+ Merchant: rel: failed-paymentorder
-            deactivate SwedbankPay
-            opt Get PaymentOrder Details (if failed-paymentorder operation exist)
-            Merchant ->>+ SwedbankPay: GET rel: failed-paymentorder
-            deactivate Merchant
-            SwedbankPay -->> Merchant: Purchase Details
-            deactivate SwedbankPay
-            end
-            activate Merchant
-            Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
-            end
+                alt If purchase is failed
+                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
+                deactivate Merchant
+                SwedbankPay -->>+ Merchant: Status: Failed
+                deactivate SwedbankPay
+                activate Merchant
+                Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
+                end
 
          opt PaymentOrder Callback (if callbackUrls is set) ②
                 activate SwedbankPay
@@ -707,7 +714,7 @@ Merchant -->>- Payer: Show Purchase complete
     rect rgba(81,43,43,0.1)
         activate Merchant
         note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
