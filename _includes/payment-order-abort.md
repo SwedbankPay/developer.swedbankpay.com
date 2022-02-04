@@ -71,11 +71,11 @@ Content-Type: application/json
             "Swish",
             "CreditAccount",
             "Trustly"
-        ], {% if documentation_section contains "checkout-v3/mac" %}
-        "implementation": "MerchantAuthenticatedConsumer", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/authenticated" %}
-        "implementation": "Authenticated", {% endif %} {% if documentation_section contains "checkout-v3/standard" %}
-        "implementation": "Standard", {% endif %} { {% if include.integration_mode=="seamless-view" %}
+        ], {% if documentation_section contains "checkout-v3/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
+        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
         "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
