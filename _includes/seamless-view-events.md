@@ -155,7 +155,7 @@ object:
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
-{% if documentation_section contains "checkout/v3/starter" %}
+{% if documentation_section contains "checkout-v3/starter" %}
 
 ### `onPayerIdentified`
 
@@ -195,7 +195,7 @@ This event triggers when a payer has not been identified (proceeds as guest).
 
 {% endif %}
 
-{% unless documentation_section contains "checkout/v3" %}
+{% unless documentation_section contains "checkout-v3" %}
 
 ### `onBillingDetailsAvailable`
 
