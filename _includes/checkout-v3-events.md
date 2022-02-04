@@ -239,7 +239,7 @@ payment. It will be raised with the following event argument object:
 | `paymentOrder`          | `string` | {% include field-description-id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
-{% if documentation_section contains "checkout/v3/standard" %}
+{% if documentation_section contains "checkout-v3/starter" %}
 
 ### `onPayerIdentified`
 
