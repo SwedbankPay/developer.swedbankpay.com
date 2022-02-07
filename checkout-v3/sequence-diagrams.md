@@ -165,7 +165,8 @@ sequenceDiagram
             SwedbankPay ->>+ Merchant: Status: Paid
             deactivate SwedbankPay
             end
-                        activate Merchant
+
+activate Merchant
 Merchant -->>- Payer: Show Purchase complete
             end
 
@@ -182,7 +183,6 @@ Merchant -->>- Payer: Show Purchase complete
                 activate SwedbankPay
                 SwedbankPay ->> Merchant: POST Purchase Callback
                 deactivate SwedbankPay
-         end
          end
 
     rect rgba(81,43,43,0.1)
@@ -577,14 +577,9 @@ sequenceDiagram
             SwedbankPay -->>+ Merchant: rel:view-checkout
             deactivate SwedbankPay
             Merchant ->> Merchant: Configure checkout on merchant page
-            note left of Merchant: Start the checkout by providing 2 iframes
-            * Checkin iframe
-            * PaymentMenu iframe
-            window.payex.hostedView.checkout(checkoutConfig)
-            end note
+            note left of Merchant: Start the checkout by providing 2 iframes <br/>* Checkin iframe <br/>* PaymentMenu iframe <br/>window.payex.hostedView.checkout(checkoutConfig)
             Merchant -->>- Payer: Display Swedbank Pay Checkin on merchant page
             note right of Merchant: windows.payex.hostedview.checkout().open("checkin")
-            end note
             activate Payer
             Payer ->> Payer: Initiate Authenticate step
     deactivate Payer
@@ -599,21 +594,16 @@ sequenceDiagram
     activate Merchant
     Merchant --> SwedbankPay : Get delivery information
     Merchant ->> Merchant : Calculate shipping
-    Merchant -->- Payer : Show shipping costs
+    Merchant -->+ Payer : Show shipping costs
     deactivate Merchant
     activate Payer
     Payer -->+ Merchant : Choose delivery
     deactivate Payer
     Merchant -> SwedbankPay : PATCH rel:update-order
-    note left of Merchant:
-    Merchant updates PaymentOrder with finalized price now that shipping costs
-    have been chosen.
-    end note
+    note left of Merchant: Merchant updates PaymentOrder with finalized price now that shipping costs have been chosen.
 
     Merchant -->+ Payer : Display SwedbankPay Payment Menu on merchant page
-    note right of Merchant:
-    windows.payex.hostedview.checkout().open("paymentmenu")
-    end note
+    note right of Merchant: windows.payex.hostedview.checkout().open("paymentmenu")
     Payer ->> SwedbankPay: Do purchase logic
     deactivate Payer
     deactivate SwedbankPay
@@ -648,6 +638,7 @@ sequenceDiagram
 Merchant -->>- Payer: Show Purchase complete
             end
 
+
                 alt If purchase is failed
                 Merchant ->>+ SwedbankPay: GET {paymentorder.id}
                 deactivate Merchant
@@ -661,7 +652,6 @@ Merchant -->>- Payer: Show Purchase complete
                 activate SwedbankPay
                 SwedbankPay ->> Merchant: POST Purchase Callback
                 deactivate SwedbankPay
-         end
          end
 
     rect rgba(81,43,43,0.1)
