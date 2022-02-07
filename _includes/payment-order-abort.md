@@ -117,19 +117,19 @@ Content-Type: application/json
             "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/metadata"
         }
     },
-    "operations": [
+    "operations": [ {% if include.integration_mode=="redirect" %}
         {
-            "method": "GET",
-            "href": "https://ecom.stage.payex.com/checkout/ea0662af3e13362b72e56432512880456da7f9e57b747e09f2fb75251e204332",
-            "rel": "redirect-checkout",
-            "contentType": "text/html"
-        },
+          "method": "GET",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "rel": "redirect-checkout",
+          "contentType": "text/html"
+        }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
-            "method": "GET",
-            "href": "https://ecom.stage.payex.com/checkout/core/js/px.checkout.client.js?token=ea0662af3e13362b72e56432512880456da7f9e57b747e09f2fb75251e204332&culture=sv-SE",
-            "rel": "view-checkout",
-            "contentType": "application/javascript"
-        }
+          "method": "GET",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "rel": "view-checkout",
+          "contentType": "application/javascript"
+        }{% endif %}
     ]
 }
 ```
@@ -146,9 +146,6 @@ Content-Type: application/json
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`remainingCaptureAmount`      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
-| └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| └➔&nbsp;`remainingReversalAmount`      | `integer`    | The previously captured amount still available for reversals.                                                                                                                                                                             |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
 | └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource.                                                                                                                                                          |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
