@@ -107,8 +107,8 @@ request.addEventListener('load', function () {
         // to open the Checkin
         window.payex.hostedView.checkout({
             container: {
-                checkinContainer: "checkin-container",
-                paymentMenuContainer: "payment-menu-container",
+                checkin: "checkin",
+                paymentMenu: "paymentMenu",
             },
             culture: 'nb-No',
             onPayerIdentified: function onPayerIdentified(payerIdentified) {
@@ -158,8 +158,8 @@ Content-Type: application/json
 //to open the Payment Menu
 window.payex.hostedView.checkout({
     container: {
-        checkinContainer: "checkin-container",
-        paymentMenuContainer: "payment-menu-container",
+        checkin: "checkin",
+        paymentMenu: "paymentMenu",
     },
     culture: 'nb-No',
 }).open("paymentmenu");
