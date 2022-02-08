@@ -104,15 +104,20 @@ request.addEventListener('load', function () {
     script.onload = function () {
         // When the 'view-checkout' script is loaded, we can initialize the
         // Payment Menu inside our 'payment-menu' container.
-        // to open the Checkin
+        // To open the Checkin
         window.payex.hostedView.checkout({
             container: {
-                checkinContainer: "checkin-container",
-                paymentMenuContainer: "payment-menu-container",
+                checkin: "checkin",
+                paymentMenu: "paymentMenu",
             },
             culture: 'nb-No',
+            // If payer is identified
             onPayerIdentified: function onPayerIdentified(payerIdentified) {
                 console.log(payerIdentified);
+            },
+            // If payer chooses "Not you?"
+            onPayerUnidentified: function onPayerUnidentified(payerUnidentified) {
+            console.log(payerUnidentified);
             },
             onEventNotification: function onEventNotification(eventNotification) {
                 console.log(eventNotification);
@@ -158,8 +163,8 @@ Content-Type: application/json
 //to open the Payment Menu
 window.payex.hostedView.checkout({
     container: {
-        checkinContainer: "checkin-container",
-        paymentMenuContainer: "payment-menu-container",
+        checkin: "checkin",
+        paymentMenu: "paymentMenu",
     },
     culture: 'nb-No',
 }).open("paymentmenu");
