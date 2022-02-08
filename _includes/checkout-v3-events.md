@@ -243,8 +243,8 @@ payment. It will be raised with the following event argument object:
 
 ### `onPayerIdentified`
 
-This event triggers when a payer clicks "Not you" when identified with Remember
-Me. It will be raised with the following event argument object:
+This event triggers when a payer has been identified. It will be raised with the
+following event argument object:
 
 {:.code-view-header}
 **onPayerIdentified event object**
@@ -266,8 +266,8 @@ Me. It will be raised with the following event argument object:
 
 ### `onPayerUnidentified`
 
-This event triggers when a payer has been identified. It will be raised with the
-following event argument object:
+This event triggers when a payer clicks "Not you" when identified with Remember
+Me. It will be raised with the following event argument object:
 
 {:.code-view-header}
 **onPayerUnidentified event object**
