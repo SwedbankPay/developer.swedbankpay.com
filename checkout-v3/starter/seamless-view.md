@@ -104,9 +104,7 @@ request.addEventListener('load', function () {
     script.onload = function () {
         // When the 'view-checkout' script is loaded, we can initialize the
         // Payment Menu inside our 'payment-menu' container.
-        // to open the Checkin
-
-        //chosen not you ? suksess : fail
+        // To open the Checkin
         window.payex.hostedView.checkout({
             container: {
                 checkin: "checkin",
