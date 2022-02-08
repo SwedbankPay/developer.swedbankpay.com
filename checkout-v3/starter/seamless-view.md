@@ -105,14 +105,21 @@ request.addEventListener('load', function () {
         // When the 'view-checkout' script is loaded, we can initialize the
         // Payment Menu inside our 'payment-menu' container.
         // to open the Checkin
+
+        //chosen not you ? suksess : fail
         window.payex.hostedView.checkout({
             container: {
                 checkin: "checkin",
                 paymentMenu: "paymentMenu",
             },
             culture: 'nb-No',
+            // If payer is identified
             onPayerIdentified: function onPayerIdentified(payerIdentified) {
                 console.log(payerIdentified);
+            },
+            // If payer chooses "Not you?"
+            onPayerUnidentified: function onPayerUnidentified(payerUnidentified) {
+            console.log(payerUnidentified);
             },
             onEventNotification: function onEventNotification(eventNotification) {
                 console.log(eventNotification);
