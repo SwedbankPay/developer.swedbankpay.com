@@ -499,7 +499,6 @@ Content-Type: application/json
 | `CheckinInitiated`        | Will be set when checkin is started, if checkin is activated for the merchant. The merchant must be configured with ProductPackage=Checkout                  |
 | `PayerDetailsRetrieved`   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
 | `PayerCheckedIn`      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
-| `MerchantAuthenticatedConsumerCheckedIn`       | Will be set when checkin is completed through the MerchantAuthenticatedConsumer integration. The merchant must be configured with ProductPackage=Checkout and has "Has GDPR Processing Agreement" activated.                  |
 | `PaymentInstrumentSet`      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
 | `PaymentLoaded`       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
 | `PaymentInstrumentSelected`       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
