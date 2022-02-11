@@ -10,3 +10,5 @@ icon:
 ---
 
 {% include moto.md %}
+
+{% include card-payments-capture.md %}
