@@ -2,7 +2,10 @@
 title: Status Response Models
 description: |
   Payment order responses with different payment statuses.
-menu_order: 2900
+menu_order: 3000
+icon:
+  content: credit_card
+  outlined: true
 ---
 
 {% include checkout-v3-status-models.md %}
