@@ -20,7 +20,7 @@ the card details to the sales representative by telephone or in writing.
 The sales representative will then enter the details into the payment interface.
 
 Common use cases are travel or hotel bookings, where the payer calls the sales
-representative to make a booking. This feature is only supported in the
+representative to make a booking. This feature is only supported with the
 `Purchase` operation. See the abbreviated example below on how to implement MOTO
 by setting the `generateMotoPayment` to `true`.
 
