@@ -132,5 +132,5 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
             "CreditCard",
             "Invoice-PayExFinancingSe",
             "Swish"
-        ],
+        ]
 ```
