@@ -40,10 +40,6 @@ Content-Type: application/json
         },
         "payer": {
             "digitalProducts": false,
-            "nationalIdentifier": {
-                "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
-                "countryCode": "SE"
-            }
             "firstName": "Leia"
             "lastName": "Ahlström",
             "email": "leia@payex.com",
@@ -164,9 +160,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
-|                  | └─➔&nbsp;`nationalIdentifier`    | `object` | The national identifier object.                                                                      |
-|                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. |
-|                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
 | {% icon check %} | └─➔&nbsp;`firstName`                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | └─➔&nbsp;`email`                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/3d-secure-2).                                                                             |
