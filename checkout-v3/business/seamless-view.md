@@ -33,6 +33,9 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
+Supported features for this integration are subscriptions (`recur` and
+`unscheduled MIT`), instrument mode and split settlement (`subsite`).
+
 There is also a guest mode option for the payers who don't wish to store their
 information. When using **Business**, this is triggered when the payer
 chooses not to store credentials during checkin.
