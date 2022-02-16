@@ -37,6 +37,9 @@ integration, you must set `requireConsumerInfo` to `true`. If `digitalProducts`
 is set to `false`, you also need to add
 `shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
+Supported features for this integration are subscriptions (`recur` and
+`unscheduled MIT`), instrument mode and split settlement (`subsite`).
+
 There is also a guest mode option for the payers who don't wish to store their
 information. When using **Starter**, this is triggered when the payer chooses
 not to store credentials during checkin.
