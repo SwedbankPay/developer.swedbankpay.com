@@ -10,3 +10,5 @@ icon:
 ---
 
 {% include payment-order-moto.md %}
+
+{% include payment-order-capture.md %}
