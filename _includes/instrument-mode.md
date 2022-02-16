@@ -104,6 +104,24 @@ Content-Type: application/json
 }
 ```
 
+{% if documentation_section contains "checkout-v3" %}
+
+When instrument mode is enabled, the following `rel` will appear among the available operations in the `paymentOrder` response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+    {
+      "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+      "rel": "set-instrument",
+      "method": "PATCH",
+      "contentType": "application/json"
+    }
+```
+
+{% endif %}
+
 The valid instruments for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a
 merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
@@ -114,5 +132,5 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
             "CreditCard",
             "Invoice-PayExFinancingSe",
             "Swish"
-        ],
+        ]
 ```
