@@ -8,7 +8,7 @@
 
 {% else %}
 
-## Step 3: Capture the funds
+## Capture
 
 {% endif %}
 
