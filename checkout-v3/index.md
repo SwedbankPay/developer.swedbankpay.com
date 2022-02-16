@@ -115,7 +115,7 @@ their information to have it prefilled the next time they shop.
 
 {% capture tab1_content %}
 
-{% include card-extended.html
+{% include card-table.html
   title='Starter'
   icon_content='shopping_cart'
   icon_outlined=true
@@ -131,7 +131,7 @@ their information to have it prefilled the next time they shop.
   to='/checkout-v3/starter/'
   %}
 
-{% include card-extended.html
+{% include card-table.html
   title='Business'
   icon_content='shopping_cart'
   icon_outlined=true
@@ -147,7 +147,7 @@ payer won't have to fill out their information twice. Simply
   to='/checkout-v3/business/'
 %}
 
-{% include card-extended.html
+{% include card-table.html
   title='Enterprise'
   icon_content='shopping_cart'
   icon_outlined=true
@@ -174,7 +174,7 @@ full range of payment instruments.
 
 {% capture tab2_content %}
 
-{% include card-extended.html
+{% include card-table.html
   title='Payments Only'
   icon_content='shopping_cart'
   icon_outlined=true
