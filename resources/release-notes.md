@@ -11,6 +11,33 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 18 February 2022
+
+### Version 3.0.0
+
+It's been a minute, but the day is finally here. We can proudly present Checkout
+version 3.0! The same range of payment instruments, checkin options and features
+as always, but since different merchants have different needs, we've made it
+easier for you to get the checkout experience which fits you best. So, what's
+new?
+
+*   Four Checkout implementations tailor-made for different needs and wishes:
+    Starter, Business, Enterprise or Payments Only. We've summed them up to help
+    you find the right fit and [get started][get-started].
+*   Each implementation starts off with a guide to set up your test account
+    quickly.
+*   Want to see the new implementations in action? Head over to the
+    [demoshop][demoshop].
+*   Put the [sequence diagrams][sequence-diagrams] in a separate section.
+*   The [Seamless View events][seamless-view-events] have been re-worked to make
+    the integration smoother for you.
+*   Renamed and gathered the Post Purchase options on one page. The rest of the
+    features are still where they used to be.
+*   We've given the [front page][frontpage] a touch up, and given the new
+    sections a slighty different look to distinguish them.
+*   Already up on Checkout version 2.0? No worries. All the documentation is
+    still available in the sidebar and [here][checkout-v2].
+
 ## 15 October 2021
 
 ### Version 2.2.3
@@ -601,9 +628,11 @@ integration and the payer.
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
+[demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [mac]: /checkout-v2/features/optional/mac
 [frontpage]: https://developer.swedbankpay.com/
+[get-started]: /checkout-v3/
 [gift-cards]: /gift-cards
 [home-technical-information]: /introduction
 [initiate-consumer-session]: /checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
@@ -638,7 +667,9 @@ integration and the payer.
 [swish-features]: /payment-instruments/swish/features
 [swish-redirect]: /payment-instruments/swish/redirect
 [swish-seamless-view]: /payment-instruments/swish/seamless-view
+[seamless-view-events]: /checkout-v3/starter/features/technical-reference//seamless-view-events
 [seamless-view-events-card]: /payment-instruments/card/features/technical-reference/seamless-view-events
+[sequence-diagrams]: /checkout-v3/sequence-diagrams
 [swish]: /payment-instruments/swish
 [swish-abort]: /payment-instruments/swish/after-payment#abort
 [technical-reference]: /checkout-v2/features/technical-reference/
