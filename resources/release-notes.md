@@ -34,7 +34,7 @@ new?
 *   Renamed and gathered the Post Purchase options on one page. The rest of the
     features are still where they used to be.
 *   We've given the [front page][frontpage] a touch up, and given the new
-    sections a slighty different look to distinguish them.
+    sections a slightly different look to distinguish them.
 *   Already up on Checkout version 2.0? No worries. All the documentation is
     still available in the sidebar and [here][checkout-v2].
 
