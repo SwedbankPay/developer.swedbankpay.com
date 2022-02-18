@@ -127,7 +127,7 @@ about capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout-v3/business/features/core/abort
 [sequence-diagrams]: /checkout-v3/sequence-diagrams/#business-redirect
-[login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
+[login-checkin]: /assets/img/checkout/checkin.png
 [redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
 [redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png

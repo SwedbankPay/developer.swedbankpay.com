@@ -260,7 +260,7 @@ Events][seamless-view-events] available in the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/business/features/core/abort
-[login-checkin]: /assets/img/checkout/authentication-redirect-checkin.png
+[login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
 [seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
 [seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
