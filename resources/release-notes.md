@@ -28,7 +28,7 @@ new?
     quickly.
 *   Want to see the new implementations in action? Head over to the
     [demoshop][demoshop].
-*   Put the [sequence diagrams][sequence-diagrams] in a separate section.
+*   We've put the [sequence diagrams][sequence-diagrams] in a separate section.
 *   The [Seamless View events][seamless-view-events] have been re-worked to make
     the integration smoother for you.
 *   Renamed and gathered the Post Purchase options on one page. The rest of the
