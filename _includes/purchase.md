@@ -11,9 +11,19 @@ the JSON document is described in the following section.
 
 ### Purchase Operation
 
+{% if seamless_view %}
+
+Posting a payment (operation `Purchase`) returns the options of aborting the
+payment altogether or creating an authorization transaction through the
+`view-authorization` hyperlink, or `view-payment`.
+
+{% else %}
+
 Posting a payment (operation `Purchase`) returns the options of aborting the
 payment altogether or creating an authorization transaction through the
 `redirect-authorization` hyperlink.
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
