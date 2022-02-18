@@ -171,8 +171,8 @@ skinparam activity {
 	EndColor $brand_info
 	''
 	DiamondBackgroundColor $brand_secondary_light_1
-  	DiamondBorderColor $brand_secondary_dark_1
-  	DiamondFontColor $primary_text
+    DiamondBorderColor $brand_secondary_dark_1
+    DiamondFontColor $primary_text
 }
 !endsub
 
