@@ -1,6 +1,12 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% assign operation_title = include.operation_title %}
+{% assign checkout = include.checkout %}
+{% if checkout == "checkout-v2" %}
+    {% assign checkout_version = "checkout-v2" %}
+{% else %}
+    {% assign checkout_version = "checkout-v3" %}
+{% endif %}
 
 ## Settlement and Reconciliation
 
@@ -19,7 +25,7 @@ transactions list - are available for all merchants using Swedbank Pay.
     (per default) once a month, or once a week.
 *   You do not need to subscribe, the files will be delivered by default.
 
-Contact [omni.client@swedbankpay.se][omni-client-email] for further
+Contact [kundsupport@swedbankpay.se][omni-client-email] for further
 inquiries regarding this.
 
 ### Settlement
@@ -53,7 +59,7 @@ summary and specifications for sales and for fees.
 ##### Payment Summary
 
 Provides a summary of the `Amount` sold, `Fees` and `VAT`. **If Swedbank Pay
-handles the settlement process**, the `Transfered``amount` - shown in the
+handles the settlement process**, the `Transferred``amount` - shown in the
 balance report summary is equivalent to the disbursement on the bank statement
 (the remaining total amount after fees).
 
@@ -252,7 +258,7 @@ In short, it is a settlement feature where a company with a website or an app
 can attach specific subsite numbers to sub merchants selling their goods or
 services through the company. The subsite number is used to match the
 transactions with the correct sub merchant, so the settlement is automatically
-split between them. If you run a site selling tickets to concerts, theatres,
+split between them. If you run a site selling tickets to concerts, theaters,
 sporting events etc., each venue gets its own subsite number. If you run a
 funeral home, the sub merchants can be everything from flower shops to
 charities.
@@ -325,10 +331,10 @@ merchant.
 
 [attachement-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
-[checkout]: /checkout/
+[checkout]: /{{ checkout_version }}
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
 [balance-report-pdf]: /assets/documents/balance-report.pdf
 [trans-list-xlsx]: /assets/documents/transaction-list.xlsx
 [trans-list-xml]: /assets/documents/transaction-list.xml
-[omni-client-email]: mailto:omni.client@swedbankpay.se
+[omni-client-email]: mailto:kundsupport@swedbankpay.se

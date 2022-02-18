@@ -54,8 +54,7 @@ jobs:
             --site-url=https://developer.swedbankpay.com \
             --ignore-url http://restcookbook.com/Basics/loggingin/ \
             --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
-            --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server \
-            --ignore-url https://magento.com
+            --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
 
       - name: Upload build output artifacts
         uses: actions/upload-artifact@v2
@@ -69,20 +68,3 @@ jobs:
 
       - name: Verify base URL
         run: grep 'src="/assets/' $(pwd)/_site/index.html
-
-  remark-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      #
-      # TODO: Figure out why remark-lint hangs on GitHub Actions.
-      #
-      # - uses: reviewdog/action-remark-lint@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     fail_on_error: true
-      #     remark_args: --frail --rc-path .remarkrc.yaml
-      #     level: warning
-      #
-      - run: npm run remark -- --frail --rc-path .remarkrc.yaml

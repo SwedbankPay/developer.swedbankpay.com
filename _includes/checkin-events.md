@@ -26,7 +26,7 @@ sequenceDiagram
       end
   end
   alt Change shipping address
-    Consumer->>SwedbankPay: Click change shipping adress button
+    Consumer->>SwedbankPay: Click change shipping address button
     SwedbankPay->>Merchant: OnShippingDetailsAvailable
   end
 ```
@@ -41,7 +41,7 @@ object:
 {:.code-view-header}
 **onConsumerIdentified event object**
 
-{% if documentation_section contains "checkout/v3" %}
+{% if documentation_section contains "checkout-v3" %}
 
 ```json
 {

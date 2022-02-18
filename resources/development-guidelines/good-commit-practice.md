@@ -37,7 +37,7 @@ require the submitter to split them into separate commits. Ensure whitespace
 changes are not mixed in with functional changes. Ensure no-op code
 refactoring is done separately from functional changes. And so on.
 
-Software source code is "read mostly, write occassionally" and thus the most
+Software source code is "read mostly, write occasionally" and thus the most
 important criteria is to improve the long term maintainability by the large
 pool of developers in the community, and not to sacrifice too much for the
 sake of the single author who may never touch the code again.
@@ -488,7 +488,7 @@ Date:   Wed Jun 13 10:11:04 2012 -0400
 
 Problem: This commit message is merely documenting what was done, and not why
 it was done. It should have mentioned what earlier changeset introduced the
-new min libvirt version. It should also have mentioned what behaviour is when
+new min libvirt version. It should also have mentioned what behavior is when
 the check fails. e.g.:
 
     Add libvirt version check, min 0.9.7

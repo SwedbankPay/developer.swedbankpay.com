@@ -44,11 +44,11 @@ If you choose option 3 (forking the repository), then please read on.
 
 [coc]: /resources/development-guidelines/code-of-conduct
 [github]: https://github.com/join
-[edit]: https://help.github.com/articles/editing-files-in-your-repository/
-[forking]: https://help.github.com/articles/fork-a-repo/
+[edit]: https://help.github.com/articles/editing-files-in-your-repository
+[forking]: https://help.github.com/articles/fork-a-repo
 [branching]: https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
 [commit]: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 [commit-practice]: /resources/development-guidelines/good-commit-practice
 [push]: https://git-scm.com/docs/git-push
 [remote]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
-[pull-request]: https://help.github.com/articles/using-pull-requests/
+[pull-request]: https://help.github.com/articles/using-pull-requests

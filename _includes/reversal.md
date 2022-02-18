@@ -1,6 +1,7 @@
 {% capture techref_url %}{% include documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
 {% assign transactions_url = '/transactions' | prepend: techref_url %}
 {% assign operations_url = '/operations' | prepend: techref_url %}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
 
 ## Reversal
 
@@ -8,7 +9,15 @@ This transaction is used when a captured payment needs to be reversed.
 
 ### Create reversal transaction
 
+{% if documentation_section contains "checkout-v3" %}
+
+The `reversal` operation will reverse a previously captured payment.
+
+{% else %}
+
 The `create-reversal` operation will reverse a previously captured payment.
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
@@ -32,8 +41,9 @@ Content-Type: application/json
 {% capture request_table%}
 {:.table .table-striped .mb-5}
 |     Required     | Field                    | Type          | Description                                                                              |
-| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
-| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). |
+| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- | {% if documentation_section contains "checkout-v3" %}
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic transaction resource. | {% else %}
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). | {% endif %}
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
@@ -63,10 +73,10 @@ Content-Type: application/json
             "type": "Reversal",
             "state": "Completed",
             "number": 1234567890,
-            "amount": 1000,
-            "vatAmount": 250,
+            "amount": 1500,
+            "vatAmount": 375,
             "description": "Test transaction",
-            "payeeReference": "AH123456",
+            "payeeReference": "ABC123",
             "failedReason": "",
             "isOperational": false,
             "operations": []
@@ -81,8 +91,9 @@ Content-Type: application/json
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
 | `reversal`                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
-| └➔&nbsp;`id`              | `string`  | The relative URL of the created `reversal`transaction.                                                                                                                                                       |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource]({{ transactions_url }}).                                                                                                                       |
+| └➔&nbsp;`id`              | `string`  | The relative URL of the created `reversal` transaction.                                                                                                                                                       |{% if documentation_section contains "checkout-v3" %}
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic transaction resource. | {% else %}
+| {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). | {% endif %}
 | └─➔&nbsp;`id`             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
 | └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |

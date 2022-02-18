@@ -48,7 +48,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/path/to/logo.png",
@@ -108,7 +108,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`payer`                 | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`           | `object`     | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                        |
-|                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePays page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectivly.                                                                                          |
+|                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePays page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectively.                                                                                          |
 |                  | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available. This URI will override the value configured in the contract setup.                            |
 
 {:.code-view-header}
@@ -255,7 +255,7 @@ sequenceDiagram
 
     MobilePayApi-->>-MobilePayApp: Confirm Payment UI
     activate MobilePayApp
-    MobilePayApp-->>MobilePayApp: Confirmation Dialogue
+    MobilePayApp-->>MobilePayApp: Confirmation Dialog
     MobilePayApp-->>-MobilePayApi: Confirmation
 
     activate MobilePayApi
@@ -284,7 +284,7 @@ sequenceDiagram
     `iFrame`.
 4.  A `POST` request is sent to the MobilePay API with
     the mobile number (optional) for authorization.
-5.  Swedbank Pay handles the dialogue with MobilePay and the payer confirms the
+5.  Swedbank Pay handles the dialog with MobilePay and the payer confirms the
     purchase in the MobilePay app.
 6.  After the purchase has been authorized, the payer will be redirected back
     to the merchant, where the status can be checked to ensure the payment was

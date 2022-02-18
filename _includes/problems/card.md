@@ -36,7 +36,7 @@ the following URL structure:
 | `acquirerinsufficientfunds`    | `403`  | Card does not have sufficient funds, the payer needs to contact their Card-issuing bank.        |
 | `acquirerinvalidamount`        | `403`  | Amount not valid by aquirer, contact support.ecom@payex.com                                   |
 | `acquirerpossiblefraud`        | `403`  | Transaction declined due to possible fraud, the payer needs to contact their Card-issuing bank. |
-| `3dsecureusercanceled`         | `403`  | Transaction was Cancelled during 3DSecure verification                                        |
+| `3dsecureusercancelled`         | `403`  | Transaction was cancelled during 3DSecure verification                                        |
 | `3dsecuredeclined`             | `403`  | Transaction was declined during 3DSecure verification                                         |
 | `frauddetected`                | `403`  | Fraud detected, the payer needs to contact their Card-issuing bank.                             |
 | `badrequest`                   | `400`  | Bad request, try again after some time                                                        |

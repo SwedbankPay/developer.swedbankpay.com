@@ -56,8 +56,8 @@ Content-Type: application/json
             "amount": 1000,
             "vatAmount": 250,
             "description": "Test transaction",
-            "payeeReference": "AH123456", {% if api_resource == "invoice" %}
-            "receiptReference": "AH12355", {% endif %}
+            "payeeReference": "ABC123", {% if api_resource == "invoice" %}
+            "receiptReference": "ABC123", {% endif %}
             "isOperational": false,
             "problem": {
                 "type": "https://api.payex.com/psp/errordetail/{{ api_resource }}/3DSECUREERROR",

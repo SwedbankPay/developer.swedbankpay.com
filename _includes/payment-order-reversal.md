@@ -1,6 +1,27 @@
+{% capture techref_url %}{% include documentation-section-url.md href='/features/technical-reference' %}{% endcapture %}
+{% assign transactions_url = '/transactions' | prepend: techref_url %}
+{% assign operations_url = '/operations' | prepend: techref_url %}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+
+{% if documentation_section contains "checkout-v3" %}
+
+## Reversal
+
+This transaction is used when a captured payment needs to be reversed.
+
+### Create reversal transaction
+
+If we want to reverse a previously captured amount, we need to perform
+`reversal` against the accompanying `href` returned in the
+`operations` list.
+
+{% else %}
+
 If we want to reverse a previously captured amount, we need to perform
 `create-paymentorder-reversal` against the accompanying `href` returned in the
-`operations` list. See the abbreviated request and response below:
+`operations` list.
+
+{% endif %}
 
 {:.code-view-header}
 **Request**
@@ -90,18 +111,24 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "payment": "/psp/paymentorders/payments/{{ page.payment_order_id }}",
+    "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",
     "reversal": {
-        "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/cancellations/{{ page.transaction_id }}",
+        "id": "/psp/creditcard/payments/{{ page.payment_order_id }}/reversals/{{ page.transaction_id }}",
         "transaction": {
-            "id": "/psp/paymentorders/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
+            "id": "/psp/pcreditcard/payments/{{ page.payment_order_id }}/transactions/{{ page.transaction_id }}",
+            "created": "2022-01-26T14:00:03.4725904Z",
+            "updated": "2022-01-26T14:00:04.3851302Z",
             "type": "Reversal",
             "state": "Completed",
-            "amount": 15610,
-            "vatAmount": 3122,
+            "number": 71100730898,
+            "amount": 1500,
+            "vatAmount": 375,
             "description": "Reversing the capture amount",
-            "payeeReference": "ABC987",
-            "receiptReference": "ABC986"
+            "payeeReference": "ABC123",
+            "receiptReference": "ABC122"
+            "isOperational": false,
+            "reconciliationNumber": 738180,
+            "operations": []
         }
     }
 }
@@ -125,3 +152,8 @@ Content-Type: application/json
 | └─➔&nbsp;`description`     | `string`     | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference`  | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 | └➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                      |
+| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| └─➔&nbsp;`reconciliationNumber`          | `string`     | The number of the reconciliation batch file where the transaction can be found. |
+| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+
+[operations]: /{{ documentation_section }}/features/technical-reference/operations

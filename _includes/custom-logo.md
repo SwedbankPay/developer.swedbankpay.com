@@ -3,17 +3,17 @@ endcapture %}
 
 ## Custom Logo
 
-With permission and activation on your contract, it is possible to replace the
-Swedbank Pay logo in the Payment Menu. See the abbreviated example
-below with the added `logoUrl` in the Payment Order Purchase request.
+If you have permission and the feature has been activated in your contract, you
+can replace the Swedbank Pay logo in the Payment Menu. See the **abbreviated**
+example below with `logoUrl` present in the `paymentOrder` request's `urls`.
 
-*   If the configuration is activated and you send in a `logoUrl`, then the
-    SwedbankPay logo is replaced with the logo sent in and the text is changed accordingly.
+*   If the configuration is activated and you add a `logoUrl`, the SwedbankPay
+    logo will be replaced and the text changed accordingly.
 
-*   If the configuration is activated and you do not send in a `logoUrl`, then
-    no logo and no text is shown.
+*   If the configuration is activated and you do not add a `logoUrl`, no logo or
+    text will be shown.
 
-*   If the configuration is deactivated, sending in a `logoUrl` has no effect.
+*   If the configuration is deactivated, adding a `logoUrl` has no effect.
 
 {:.code-view-header}
 **Request**
@@ -26,20 +26,10 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "operation": "Purchase",
-        "currency": "SEK",
-        "amount": 1500,
-        "vatAmount": 375,
-        "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",{% if include.documentation_section == "payment-menu" %}
-        "instrument": "CreditCard"{% endif %}
-        "generateRecurrenceToken": {{ operation_status_bool }},{% if include.documentation_section == "payment-menu" %}
-        "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://api.example.com/payment-callback",
             "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",

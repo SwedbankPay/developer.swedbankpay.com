@@ -75,7 +75,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback",
             "termsOfServiceUrl": "https://example.com/payment-terms.pdf"
         },
@@ -355,7 +355,7 @@ sequenceDiagram
   deactivate Merchant
 
   MobilePay_API-->>MobilePay_App: Confirm Payment UI
-  MobilePay_App-->>MobilePay_App: Confirmation Dialogue
+  MobilePay_App-->>MobilePay_App: Confirmation Dialog
   MobilePay_App-->>MobilePay_API: Confirmation
   MobilePay_API-->>SwedbankPay: make payment
   activate SwedbankPay

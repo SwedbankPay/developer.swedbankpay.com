@@ -47,7 +47,7 @@ Let us assume that the urls of the payment are as follows:
 
 *   `https://example.com/perform-payment` is the page containing the Payment Menu or Payment Seamless View, i.e. the `paymentUrl`
 *   `https://example.com/payment-completed` is the `completeUrl`
-*   `https://example.com/payment-canceled` is the `cancelUrl`
+*   `https://example.com/payment-cancelled` is the `cancelUrl`
 
 Swedbank Pay payments use JavaScript, so that needs to be enabled:
 
@@ -113,7 +113,7 @@ There are two ways of being notified of payment completion: listening for naviga
 
 ### Listening for Navigations
 
-The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be used to listen for navigations, and change their behaviour.
+The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be used to listen for navigations, and change their behavior.
 
 {:.code-view-header}
 **iOS**
@@ -155,7 +155,7 @@ In the simplest case you could listen for a navigation to the `completeUrl` or `
             decisionHandler(.cancel)
             // Handle payment completion (success/failure)
 
-        case "https://example.com/payment-canceled":
+        case "https://example.com/payment-cancelled":
             decisionHandler(.cancel)
             // Handle payment cancellation
 
@@ -179,7 +179,7 @@ In the simplest case you could listen for a navigation to the `completeUrl` or `
                 true
             }
 
-            "https://example.com/payment-canceled" -> {
+            "https://example.com/payment-cancelled" -> {
                 // Handle payment cancellation
                 true
             }
@@ -213,7 +213,7 @@ On iOS, JavaScript interfaces are added through the `WKUserContentController` of
     // This example uses Self as the handler.
     // It could be a separate object also.
     userContentController.add(self, name: "completed")
-    userContentController.add(self, name: "canceled")
+    userContentController.add(self, name: "cancelled")
 ```
 
 ```swift
@@ -226,7 +226,7 @@ On iOS, JavaScript interfaces are added through the `WKUserContentController` of
             case "completed":
                 // Handle payment completion (success/failure)
 
-            case "canceled":
+            case "cancelled":
                 // Handle payment cancellation
             }
 
@@ -242,7 +242,7 @@ On iOS, the interfaces added by `WKUserContentController.add(_:name:)` are expos
 ```
 
 ```js
-    window.webkit.messageHandlers.canceled.postMessage()
+    window.webkit.messageHandlers.cancelled.postMessage()
 ```
 
 #### JavaScript Hooks: Android
@@ -279,7 +279,7 @@ On Android, JavaScript interfaces are added by the `WebView.addJavascriptInterfa
         }
 
         @JavascriptInterface
-        fun canceled() {
+        fun cancelled() {
             // Handle payment cancellation
         }
     }
@@ -292,7 +292,7 @@ On Android, the objects added by `WebView.addJavascriptInterface` are exposed as
 ```
 
 ```js
-    callbacks.canceled()
+    callbacks.cancelled()
 ```
 
 ## External Applications

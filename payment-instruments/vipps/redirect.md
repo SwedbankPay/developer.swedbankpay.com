@@ -21,7 +21,7 @@ menu_order: 900
     where the payer must push the payment button.
     This triggers a `POST` towards Swedbank Pay.
 *   The payer is redirected to a Vipps payment page to enter the mobile number.
-*   Swedbank Pay handles the dialogue with Vipps and the payer confirms the
+*   Swedbank Pay handles the dialog with Vipps and the payer confirms the
     purchase in the Vipps app.
 *   To receive the state of the transaction you need to do a `GET`
     request containing the `paymentID` generated in the first step.
@@ -66,7 +66,7 @@ Content-Type: application/json
         "urls": {
             "hostUrls": [ "https://example.net" ],
             "completeUrl": "https://example.net/payment-completed",
-            "cancelUrl": "https://example.net/payment-canceled",
+            "cancelUrl": "https://example.net/payment-cancelled",
             "callbackUrl": "https://example.net/payment-callback",
             "logoUrl": "https://example.net/payment-logo.png",
             "termsOfServiceUrl": "https://example.net/payment-terms.pdf",
@@ -154,7 +154,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`         | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
-|                  | └─➔&nbsp;`cancelUrl`       | `string`      | The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
+|                  | └─➔&nbsp;`cancelUrl`       | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`     | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`payeeInfo`        | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`         | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
@@ -341,7 +341,7 @@ sequenceDiagram
 
     VippsApi-->>VippsApp: Confirm Payment UI
     activate VippsApp
-    VippsApp-->>VippsApp: Confirmation dialogue
+    VippsApp-->>VippsApp: Confirmation dialog
     VippsApp-->>VippsApi: Confirmation
     deactivate VippsApp
 

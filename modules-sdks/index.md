@@ -7,7 +7,7 @@ description: |
   We have multiple Open Source-based SDKs and Modules to use with
   Swedbank Pay APIs.
 permalink: /:path/
-menu_order: 600
+menu_order: 700
 ---
 
 Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
@@ -43,10 +43,10 @@ how it tastes.
 ## Official Modules
 
 **Modules, extensions and plugins** are typically used as a way to extend
-webshop platforms such as [WooCommerce][woocommerce] and [Magento][magento] with
-functionality that isn't provided in the core platform. Such functionality may
-be to allow visitors of your website to pay with a payment provider such as
-Swedbank Pay.
+webshop platforms such as [WooCommerce][woocommerce] and
+[Magento][magento]{:data-proofer-ignore=''} with functionality that isn't
+provided in the core platform. Such functionality may be to allow visitors of
+your website to pay with a payment provider such as Swedbank Pay.
 
 {% include alert-unsupported.md type='modules' %}
 
@@ -54,7 +54,7 @@ Swedbank Pay.
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
 | ![Episerver][episerver-icon] | [Swedbank Pay **Checkout** for Episerver][episerver-link]        | [`…episerver-checkout`][episerver-repo]       |
-|   ![Magento][magento-icon]   | Swedbank Pay **Checkout** for Magento 2| [`…magento2-checkout`][magento-checkout-repo] |
+|   ![Magento][magento-icon]   | Swedbank Pay **Checkout** for Magento 2                          | [`…magento2-checkout`][magento-checkout-repo] |
 |   ![Magento][magento-icon]   | [Swedbank Pay **Payments** for Magento 2][magento-payments-link] | [`…magento2-payments`][magento-payments-repo] |
 |   ![WooCommerce][woo-icon]   | [Swedbank Pay **Checkout** for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
 |   ![WooCommerce][woo-icon]   | [Swedbank Pay **Payments** for WooCommerce][woo-payments-link]   | [`…woocommerce-payments`][woo-payments-repo]  |

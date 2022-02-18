@@ -19,10 +19,10 @@ menu_order: 900
 *   The next step is to collect the payer's Swish registered mobile number
     and make a `POST` request towards Swedbank Pay to create a sales
     transaction.
-*   Swedbank Pay will handle the dialogue with Swish and the payer will have
+*   Swedbank Pay will handle the dialog with Swish and the payer will have
     to confirm the purchase in the Swish app.
 *   If `callbackURL` is set, you will receive a payment callback when the Swish
-    dialogue is completed.
+    dialog is completed.
 *   Make a `GET` request to check the payment status.
 
 {% include alert.html type="informative" icon="report_problem"
@@ -64,7 +64,7 @@ Content-Type: application/json
             "hostUrls": [ "https://example.com" ],
             "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-canceled",
+            "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
             "termsOfServiceUrl": "https://example.com/terms.pdf"
@@ -110,13 +110,13 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
-|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URL to redirect the payer to if the payment is canceled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
+|                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`payeenInfo`         | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`           | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`payeeReference`    | `string(50*)` | {% include field-description-payee-reference.md %}                                                                                                                                                                                                                   |
+| {% icon check %} | └─➔&nbsp;`payeeReference`    | `string` | {% include field-description-payee-reference.md %}                                                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`payeeName`         | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`productCategory`   | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`    | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |

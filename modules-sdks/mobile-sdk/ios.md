@@ -41,7 +41,7 @@ pod 'SwedbankPaySDKMerchantBackend', '~> 2.1'
 
 ### Url Scheme and Associated Domain
 
-The [Payment Url][payment-url] handling in the iOS SDK uses [Universal Links][ios-universal-links], and additionaly a [custom url scheme][ios-custom-scheme] as a fallback mechanism. You must therefore set these up in the app before using the SDK.
+The [Payment Url][payment-url] handling in the iOS SDK uses [Universal Links][ios-universal-links], and additionally a [custom url scheme][ios-custom-scheme] as a fallback mechanism. You must therefore set these up in the app before using the SDK.
 
 The easiest way to add a url scheme to your app is to select the project file, go to the `Info` tab, scroll down to `URL Types`, and click the `+` button to add a new scheme. Insert a single **unique** url scheme to the `URL Schemes` field. You can choose the url `Identifier` freely, but remember that that too should be unique. The `Role` for the url type should be `Editor`. Finally, to mark this url type as the Swedbank Pay payment url scheme, open the `Additional url type properties`, and add a property with the key `com.swedbank.SwedbankPaySDK.callback`, type `Boolean`, and value `YES`.
 
@@ -243,7 +243,7 @@ func paymentComplete() {
     // Notify user
 }
 
-func paymentCanceled() {
+func paymentcancelled() {
     dismiss(animated: true, completion: nil)
     // Notify user
 }
@@ -262,7 +262,7 @@ If the payment fails for any reason, the cause will be made available as the arg
 
 If errors are encountered in the payment process, the Merchant Backend is expected to respond with a [Problem Details for HTTP APIs (RFC 7807)][rfc-7807] message. If the payment fails because of a problem, the `SwedbankPaySDK.MerchantBackendError` will be `.problem`, the associated value being the problem as parsed from the response. The iOS SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the [Common Problems][swedbankpay-problems] and the [Merchand Backend Problems][backend-problems].
 
-Problems are expressed in Swift as `enum`s with associated values, representing a hierarchy of problem types. At the root of the hierarchy is `enum SwedbankPaySDK.Problem`, with two cases: `.Client` and `.Server`. A `.Client` problem is one caused by client behaviour, and is to be fixed by changing the request made to the server. Generally, a `.Client` problem is a programming error, with the possible exception of `.Client(.MobileSDK(.Unauthorized))`. A `.Server` problem is one caused by a malfunction or lack of service in the server evironment. A `.Server` problem is fixed by correcting the behaviour of the malfunctioning server, or simply trying again later.
+Problems are expressed in Swift as `enum`s with associated values, representing a hierarchy of problem types. At the root of the hierarchy is `enum SwedbankPaySDK.Problem`, with two cases: `.Client` and `.Server`. A `.Client` problem is one caused by client behavior, and is to be fixed by changing the request made to the server. Generally, a `.Client` problem is a programming error, with the possible exception of `.Client(.MobileSDK(.Unauthorized))`. A `.Server` problem is one caused by a malfunction or lack of service in the server evironment. A `.Server` problem is fixed by correcting the behavior of the malfunctioning server, or simply trying again later.
 
 Both `.Client` and `.Server` have an associated value, of type `SwedbankPaySDK.ClientProblem` and `SwedbankPaySDK.ServerProblem` respectively, that further classify the problems as `.MobileSDK`, `.SwedbankPay`, `.Unknown` or `.UnexpectedContent`. `MobileSDK` problems are ones with [Merchant Backend problem types][backend-problems], while `SwedbankPay` problems have [Swedbank Pay API problem types][swedbankpay-problems]. `Unknown` problems are of types that the SDK has no knowledge of. `.UnexpectedContent` problems are not proper RFC 7807 problems, but are emitted when the SDK cannot make sense of the response it received from the backend.
 
@@ -338,7 +338,7 @@ sequenceDiagram
 
 Returning to the payment menu from Safari is more involved. The merchant backend page [explains][ios-paymenturl-helper] the process from the backend perspective; let us now view it from the iOS side.
 
-When the third party page wants to return to the payment menu, it navigates to the payment url. As this navigation is happening inside Safari, the payment url must provide some meaningful respose when Safari makes the request. However, even before that happens, consider the case where the payment url is a [universal link][ios-universal-links] for the application using the SDK. Assuming the [conditions][ios-universal-links-routing] for opening universal links in the registered application are met, then Safari will never actually request the payment url, but will instead open the application, giving it the universal link in its Application Delegate's [`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity] method. Recall that we enabled universal links for the backend url's domain [in the installation instructions](#url-scheme-and-associated-domain). Note that the merchant backend must also be properly configured to [enable univeral links][backend-aasa].
+When the third party page wants to return to the payment menu, it navigates to the payment url. As this navigation is happening inside Safari, the payment url must provide some meaningful respose when Safari makes the request. However, even before that happens, consider the case where the payment url is a [universal link][ios-universal-links] for the application using the SDK. Assuming the [conditions][ios-universal-links-routing] for opening universal links in the registered application are met, then Safari will never actually request the payment url, but will instead open the application, giving it the universal link in its Application Delegate's [`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity] method. Recall that we enabled universal links for the backend url's domain [in the installation instructions](#url-scheme-and-associated-domain). Note that the merchant backend must also be properly configured to [enable universal links][backend-aasa].
 
 The application delegate is, of course, squarely in the domain of the application; the SDK cannot hook into it automatically. Therefore, you need to implement the [`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity] method, and pass control over to the SDK when a Swedbank Pay SDK Payment Url is passed into it. Do this by calling the `SwedbankPaySDK.continue(userActivity:)` method.
 
@@ -403,7 +403,7 @@ sequenceDiagram
     end
 ```
 
-Finally, to prevent the user being stuck in a situation where universal links fail to work despite our efforts, and to help in the development phase where configurations may end up being broken from time to time, we also have a custom scheme fallback. The way this works is that the when the payment url link is tapped on the page where the payment url redirected to, then in that instance the payment url will redirect to a custom scheme url instead. Now this is, of course, more or less impossible to do, so we relax the requirements of the payment url slightly: In addition to the original payment url, the SDK accepts a payment url with any number of additional query parameters added (note that none may be removed or modified, though). This enables us to alter the behaviour of the backend on the "same" payment url.
+Finally, to prevent the user being stuck in a situation where universal links fail to work despite our efforts, and to help in the development phase where configurations may end up being broken from time to time, we also have a custom scheme fallback. The way this works is that the when the payment url link is tapped on the page where the payment url redirected to, then in that instance the payment url will redirect to a custom scheme url instead. Now this is, of course, more or less impossible to do, so we relax the requirements of the payment url slightly: In addition to the original payment url, the SDK accepts a payment url with any number of additional query parameters added (note that none may be removed or modified, though). This enables us to alter the behavior of the backend on the "same" payment url.
 
 To forward the custom-scheme payment urls to the SDK, implement the [`application(_:open:options:)`][uiappdelegate-openurl] method in your application delegate, and call `SwedbankPaySDK.open(url: url)` to let the SDK handle the url.
 
@@ -453,7 +453,7 @@ sequenceDiagram
 [sdk-package-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git
 [sdk-pod]: https://cocoapods.org/pods/SwedbankPaySDK
 [cocoapods]: https://cocoapods.org/
-[payment-url]: /checkout/v2/features/technical-reference/payment-url
+[payment-url]: /checkout-v2/features/technical-reference/payment-url
 [custom-scheme-1]: /assets/img/mobile-sdk/ios-custom-scheme-1.png
 [custom-scheme-2]: /assets/img/mobile-sdk/ios-custom-scheme-2.png
 [assoc-domains-entitlement]: /assets/img/mobile-sdk/ios-assoc-domain.png
@@ -469,7 +469,7 @@ sequenceDiagram
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /introduction#problems
 [backend-problems]: merchant-backend#problems
-[checkin-consumer]: /checkout/v2/checkin#step-1-initiate-session-for-consumer-identification
-[checkin-paymentorder]: /checkout/v2/payment-menu#step-3-create-payment-order
+[checkin-consumer]: /checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
+[checkin-paymentorder]: /checkout-v2/payment-menu#step-3-create-payment-order
 [backend-payment-orders]: merchant-backend#payment-orders-endpoint
 [ios-payment-url]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications

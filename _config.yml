@@ -1,5 +1,5 @@
 repository: SwedbankPay/developer.swedbankpay.com
-theme: 'swedbank-pay-design-guide-jekyll-theme'
+theme: swedbank-pay-design-guide-jekyll-theme
 exclude:
   - Gemfile*
   - Rakefile
@@ -29,6 +29,10 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
+  plantuml:
+    theme:
+      name: swedbankpay
+      directory: assets
 tipue_search:
   include:
     pages: true
@@ -37,7 +41,7 @@ opengraph:
   image: /assets/img/swedbank-pay-developer-portal.png
 design_guide:
   base_url: https://design.swedbankpay.com
-  version: 5.0.1
+  version: 7.1.0
 search:
   enabled: true
   url: /search
@@ -61,6 +65,8 @@ defaults:
       payment_order_id: 09ccd29a-7c4f-4752-9396-12100cbfecce
       merchant_id: 5cabf558-5283-482f-b252-4d58e06f6f3b
       payment_token: 5a17c24e-d459-4567-bbad-aa0f17a76119
+      recurrence_token: 2c327f17-1818-425a-9657-5d7d69778b31
+      unscheduled_token: 064c3cbd-9401-4356-aba2-92cc3484313b
       api_host: api.externalintegration.payex.com
       api_url: https://api.externalintegration.payex.com
       front_end_url: https://ecom.externalintegration.payex.com

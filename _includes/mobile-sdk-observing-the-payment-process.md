@@ -32,7 +32,7 @@ cases:
 *   `PaymentViewModel.State.IN_PROGRESS`: Active; waiting for either network response or user interaction
 *   `PaymentViewModel.State.UPDATING_PAYMENT_ORDER`: Updating the payment order (because you called `updatePaymentOrder`)
 *   `PaymentViewModel.State.COMPLETE`: Complete; you should hide the `PaymentFragment` and check the payment status from your application servers
-*   `PaymentViewModel.State.CANCELED`: Canceled by the user; you should hide the `PaymentFragment`.
+*   `PaymentViewModel.State.cancelled`: cancelled by the user; you should hide the `PaymentFragment`.
 *   `PaymentViewModel.State.RETRYABLE_ERROR`: Payment could not proceed, but the error is not fatal. See below for options here.
 *   `PaymentViewModel.State.FAILURE`: Payment has failed. You should hide the `PaymentFragment`.
 
@@ -75,8 +75,8 @@ this, set a listener for the event by calling
 ```kotlin
 paymentViewModel.setOnTermsOfServiceClickListener(lifecycleOwner) { paymentFragment, url ->
     // show ToS UI
-    // return true to disable the default behaviour
-    // (alternatively, return false to continue with the default behaviour)
+    // return true to disable the default behavior
+    // (alternatively, return false to continue with the default behavior)
 }
 ```
 
@@ -112,8 +112,8 @@ extension MyClass : SwedbankPaySDKDelegate {
     func paymentComplete() {
         // Payment is complete; you should hide the SwedbankPaySDKController
     }
-    func paymentCanceled() {
-        // Payment canceled by user; you should hide the SwedbankPaySDKController
+    func paymentcancelled() {
+        // Payment cancelled by user; you should hide the SwedbankPaySDKController
     }
 
     func paymentFailed(error: Error) {
@@ -123,7 +123,7 @@ extension MyClass : SwedbankPaySDKDelegate {
 
     func overrideTermsOfServiceTapped(url: URL) -> Bool {
         // Show custom Terms of Service UI, if needed.
-        // Return true to disable the default behaviour,
+        // Return true to disable the default behavior,
         // false to allow SwedbankPaySDKController to show
         // the default ToS UI.
     }
@@ -140,4 +140,4 @@ Any errors are ones thrown by your Configuration, or, in the case of
 When using the Merchant Backend Configuration, other errors will be of the type
 `SwedbankPaySDK.MerchantBackendError`.
 
-[terminal-failure]: /checkout/v2/features/technical-reference/payment-menu-events#onerror
+[terminal-failure]: /checkout-v2/features/technical-reference/payment-menu-events#onerror

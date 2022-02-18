@@ -209,12 +209,12 @@ sequenceDiagram
     WebView ->> SDK: Navigate to another page
     alt Navigation is to a regular http(s) URL
         SDK ->> SDK: Check web view compatibility
-        alt Compatible with Web Wiew
+        alt Compatible with Web View
             SDK ->> WebView: Proceed with navigation normally ①
             WebView ->> SDK: Navigate to paymentUrl ②
             SDK ->> SDK: Recognize paymentUrl
             SDK ->> WebView: Cancel navigation
-        else Not Compatible with Web Wiew
+        else Not Compatible with Web View
             SDK ->> WebView: Cancel navigation
             SDK ->> System: Open URL
             System ->> Browser: Open URL in Browser
@@ -240,7 +240,7 @@ sequenceDiagram
 *   ① The same check is repeated for any further navigation inside the WebView
 *   ② All properly configured authentication flows must end up here
 *   ③ On Android, paymentUrl is an https URL that redirects to an Android Intent URL.
-*   ④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to another app, it should be routed to that app instead of the Browser. However, Univeral Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with "paymentUrl opened in Browser" below instead.
+*   ④ On iOS, paymentUrl is a Universal Link. When an app open a Universal Link to another app, it should be routed to that app instead of the Browser. However, Universal Links are finicky things, and it is not impossible that it gets opened in the Browser instead. In that case, the flow continues with "paymentUrl opened in Browser" below instead.
 
 ### Return from Browser
 
@@ -318,7 +318,7 @@ sequenceDiagram
 
 ## Payment Completion
 
-When the payment is completed, possibly after reloading the payment menu after a navigation to `paymentUrl`, the payment menu will report success by attempting to navigate to `completeUrl`. The SDK intercepts this and invokes a callback to your app. It is your app's responsibility to then remove the payment UI from view and notify the user. Similarly, if the payment is canceled, the SDK intercepts the navigation to `cancelUrl` and reports the cancellation status to your app.
+When the payment is completed, possibly after reloading the payment menu after a navigation to `paymentUrl`, the payment menu will report success by attempting to navigate to `completeUrl`. The SDK intercepts this and invokes a callback to your app. It is your app's responsibility to then remove the payment UI from view and notify the user. Similarly, if the payment is cancelled, the SDK intercepts the navigation to `cancelUrl` and reports the cancellation status to your app.
 
 ```mermaid
 sequenceDiagram

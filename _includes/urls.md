@@ -2,7 +2,7 @@
 
 When creating a Payment Order, the `urls` field of the `paymentOrder`
 contains the related URLs, including where the payer is redirected when
-going forward with or cancelling a payment session, as well as the callback URL
+going forward with or canceling a payment session, as well as the callback URL
 that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.
 
@@ -12,7 +12,7 @@ underlying payments or transaction.
 | {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of URLs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
 | {% icon check %}  | `completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][completeurl] for details.  |
 | {% icon check %}  | `termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
-|                   | `cancelUrl`         | `string` | The URL to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
+|                   | `cancelUrl`         | `string` | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 |                   | `paymentUrl`        | `string` | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`][payment-url] for details.                                                                                                                                                       |
 |                   | `callbackUrl`       | `string` | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 |                   | `logoUrl`           | `string` | {% include field-description-logourl.md %}                                                                                                                                                                                                               |
@@ -44,7 +44,7 @@ Content-Type: application/json
         "id": "/psp/payments/{{ page.payment_order_id }}/urls",
         "hostUrls": [ "https://example.com", "https://example.net" ],
         "completeUrl": "https://example.com/payment-complete",
-        "cancelUrl": "https://example.com/payment-canceled",
+        "cancelUrl": "https://example.com/payment-cancelled",
         "paymentUrl": "https://example.com/perform-payment",
         "callbackUrl": "http://api.example.com/payment-callback",
         "logoUrl": "http://merchant.com/path/to/logo.png",
@@ -61,12 +61,12 @@ Content-Type: application/json
 | └➔&nbsp;`id`                | `string` | {% include field-description-id.md resource="urls" %}                                                                                                                                                                                                                                                    |
 | └➔&nbsp;`hostsUrl`          | `string` | An array of the whitelisted URLs that are allowed as parents to a Hosted View, typically the URL of the web shop or similar that will embed a Hosted View within it.                                                                                                                                     |
 | └➔&nbsp;`completeUrl`       | `string` | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][completeurl] for details. |
-| └➔&nbsp;`cancelUrl`         | `string` | The URL to redirect the payer to if the payment is canceled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
+| └➔&nbsp;`cancelUrl`         | `string` | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 | └➔&nbsp;`paymentUrl`        | `string` | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`][payment-url] for details.                                                                                                          |
 | └➔&nbsp;`callbackUrl`       | `string` | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                |
 | └➔&nbsp;`logoUrl`           | `string` | {% include field-description-logourl.md %}                                                                                                                                                                                     |
 | └➔&nbsp;`termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
 
-[payment-url]: /checkout/v2/features/technical-reference/payment-url
-[completeurl]: /checkout/v2/features/technical-reference/complete-url
-[callback]: /checkout/v2/features/technical-reference/callback
+[payment-url]: /checkout-v2/features/technical-reference/payment-url
+[completeurl]: /checkout-v2/features/technical-reference/complete-url
+[callback]: /checkout-v2/features/technical-reference/callback
