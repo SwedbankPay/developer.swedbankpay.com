@@ -94,5 +94,5 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
-[sequence-diagram]: /checkout-v3/sequence-diagrams/#payments-only-redirect
+[sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-redirect
 [redirect-payments-only-menu]: /assets/img/checkout/v3-redirect.png
