@@ -104,7 +104,8 @@ Content-Type: application/json
 
 {% if documentation_section contains "checkout-v3" %}
 
-When instrument mode is enabled, the following `rel` will appear among the available operations in the `paymentOrder` response:
+When instrument mode is enabled, the following `rel` will appear among the
+available operations in the `paymentOrder` response:
 
 ```http
 HTTP/1.1 200 OK
