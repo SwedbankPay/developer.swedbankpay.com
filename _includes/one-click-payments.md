@@ -104,7 +104,7 @@ the `generatePaymentToken` to `true`.
 See the Features section for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
 
-{% endif %}
+{% endunless%}
 
 Abbreviated code example:
 
