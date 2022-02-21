@@ -1,4 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 {% if features_url contains "payment-instruments" %}
     {% capture capture_url %}capture{% endcapture %}
@@ -24,11 +25,21 @@ these details for every purchase." %}
 
 ### Introduction
 
-For [credit card][card] and [financing invoice][invoice] payments the
-payment flow and implementation varies from your default only being the
-use of a `paymentToken`.
-The details in this section describe explicitly the parameters that must
-be set to enable one-click purchases.
+{% if documentation_section contains "checkout-v3" %}
+
+For card and invoice payments, the payment flow and implementation varies from
+your default only being the use of a `paymentToken`. The details in this section
+describe explicitly the parameters that must be set to enable one-click
+purchases.
+
+{% else %}
+
+For [card][card] and [invoice][invoice] payments, the payment flow and
+implementation varies from your default only being the use of a `paymentToken`.
+The details in this section describe explicitly the parameters that must be set
+to enable one-click purchases.
+
+{% endif %}
 
 ### API Requests To Generate paymentToken
 
@@ -88,8 +99,12 @@ creating the first `POST` request you insert the `paymentToken` field. This must
 be the `paymentToken` you received in the initial purchase, where you specified
 the `generatePaymentToken` to `true`.
 
-See the Other Feature sections for how to create a [card][create-card-payment]
+{% unless documentation_section contains "checkout-v3" %}
+
+See the Features section for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
+
+{% endunless%}
 
 Abbreviated code example:
 
