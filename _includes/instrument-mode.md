@@ -4,19 +4,17 @@ endcapture %}
 
 ## Instrument Mode
 
-{% include alert-agreement-required.md %}
-
 In "Instrument Mode" the Payment Menu will display only one specific payment
-instrument instead of all configured on your merchant account. The Payment Order
-resource works just like it otherwise would, allowing you to remain largely
-indifferent to the payment instrument in use.
+instrument instead of all those configured on your merchant account. The
+`PaymentOrder` resource works just like it otherwise would, allowing you to
+remain largely indifferent to the payment instrument in use.
 
 If you do not want to use Swedbank Pay Payment Menu or do have multiple payment
-providers on your site we strongly recommend that you implement the "Instrument
-Mode" functionality. To use this feature you will need to add the `instrument`
-field to the request. This will make the  Swedbank Pay Payment Menu only render
-a single payment instrument. So even if Swedbank Pay is set up to provide more
-than one instrument you will be able to let it only show one at a time.
+providers on your site, we strongly recommend that you implement the "Instrument
+Mode" functionality. To use this feature you need to add the `instrument` field
+to the request. When applied, the Swedbank Pay Payment Menu will render a single
+payment instrument only. So even if Swedbank Pay is set up to provide more than
+one instrument, you can let it show just one at a time.
 
 It is important to use this feature if you want to build your own payment menu.
 In this case you should use the `instrument` field to enforce which payment
