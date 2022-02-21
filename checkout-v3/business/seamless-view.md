@@ -197,7 +197,7 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/business/features/core/abort
-[sequence-diagrams]: /checkout-v3/sequence-diagrams/#business-seamless-view
+[sequence-diagrams]: /checkout-v3/sequence-diagrams#business-seamless-view
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
 [seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
