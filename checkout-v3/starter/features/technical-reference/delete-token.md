@@ -4,7 +4,7 @@ estimated_read: 1
 description: How to delete tokens.
 menu_order: 1700
 icon:
-  content: assignment
+  content: delete_sweep
   outlined: true
 ---
 
