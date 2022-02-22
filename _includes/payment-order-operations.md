@@ -205,7 +205,7 @@ for the given operation.
 {:.table .table-striped}
 | Operation  | Description   |
 | :--------- | :------------ |
-| `update-order` | Updates the order with a change in the `amount` and/or `vatAmount`.                                                                             |
+| `update-order` | Updates the order with a change in `orderItems`, `amount` and/or `vatAmount`.                                                                             |
 | `abort`       | Aborts the payment order before any financial transactions are performed.                                                                              |
 | `cancel`      | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                     |
 | `capture`     | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
