@@ -247,9 +247,10 @@ give you the best setup. Even with this implemented, you need to check the
 payment status towards our APIs, as the payer can make changes in the browser at
 any time.
 
-For **Starter**, you also need to implement `onPayerUnidentified` when you
-implement `onPayerIdentified`. This is important because the "Remember Me"
-feature (which will be released soon) won't work without it.
+When implementing **Starter**, you also need to subscribe to the event
+[`onPayerUnidentified`][onpayerunidentified] when you implement
+[`onPayerIdentified`][onpayeridentified]. This is important because the
+"Remember Me" feature (to be released soon) won't work without it.
 
 You can read more about the different [Seamless View
 Events][seamless-view-events] available in the feature section.
@@ -259,12 +260,14 @@ Events][seamless-view-events] available in the feature section.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/business/features/core/abort
+[abort-feature]: /checkout-v3/starter/features/core/abort
 [login-checkin]: /assets/img/checkout/checkin.png
-[seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
 [seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
 [seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
+[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayeridentified
+[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayerunidentified
 [sequence-diagrams]: /checkout-v3/sequence-diagrams#starter-seamless-view
