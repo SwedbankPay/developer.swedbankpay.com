@@ -18,7 +18,7 @@ widely used and understood by most HTTP client libraries.
 ## Connection and Protocol
 
 All requests towards Swedbank Pay API Platform are made with **HTTP/1.1** over
-a secure a **TLS 1.2** (or higher) connection. Older HTTP clients running on
+a secure **TLS 1.2** (or higher) connection. Older HTTP clients running on
 older operating systems and frameworks might receive connection errors when
 connecting to Swedbank Pay's APIs. This is most likely due to the connection
 being made from the client with TLS 1.0 or even SSL, which are all insecure and
