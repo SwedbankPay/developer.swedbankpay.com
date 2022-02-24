@@ -5,7 +5,7 @@ description: |
   Different states in the payment process.
 menu_order: 2400
 icon:
-  content: credit_card
+  content: pending
   outlined: true
 ---
 
