@@ -302,8 +302,8 @@ expected merchant behavior:
 
 *   Merchant activates shipping cost calculation.
 
-*   When shipping cost is calculated, updat the payment order with new price and
-  open Payment Menu.
+*   When shipping cost is calculated, update the payment order with new price
+  and open Payment Menu.
 
 *   The **second** is when the payer has added or edited a shipping address. In
   those cases, this is the expected merchant behavior:
@@ -311,13 +311,13 @@ expected merchant behavior:
 *   Merchant needs to decide if payment menu should be closed (the menu is
   already open).
 
-*   Merchant calls GET on `payment0rder` again to receive new payer data
+*   Merchant calls GET on `paymentOrder` again to receive new payer data
     (shipping address).
 
 *   Merchant activates shipping cost calculation if required.
 
-*   If a new shipping cost is calculated, update payment order with the new
-    price and open Payment Menu.
+*   If a new shipping cost is calculated, update the payment order with the new
+    price and open the Payment Menu.
 
 It will be raised with the
 following event argument object:
