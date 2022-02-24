@@ -265,7 +265,7 @@ Events][seamless-view-events] available in the feature section.
 [checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
-[seamless-payment-menu-starter]: /assets/img/checkout/payment-menu-seamless-starter.png
+[seamless-payment-menu-starter]: /assets/img/checkout/seamless-payment-menu-starter.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
