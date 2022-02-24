@@ -104,12 +104,15 @@ store credentials (guests) must also enter their shipping address.
 
 After checking in, the payment menu will appear on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay. The example with shipping address is for all goods
-(physical and digital), the one without shipping address is for digital
-products only.
+payment instrument and pay.
+
+This is how it will look with all goods (physical and digital), with shipping
+address visible.
 
 {:.text-center}
 ![screenshot of the business implementation redirect payment menu mixed][redirect-payment-menu-mixed]
+
+This is for digital products, consequently with no shipping address.
 
 {:.text-center}
 ![screenshot of the business implementation redirect payment menu digital][redirect-payment-menu-digital]

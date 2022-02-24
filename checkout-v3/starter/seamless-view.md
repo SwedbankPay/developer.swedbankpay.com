@@ -226,12 +226,15 @@ How the shipping options are displayed will be up to you, but you can see an
 example in our demoshop.
 
 When the payer chooses a shipping option, you can `PATCH` the payment order and
-the payment menu will appear. The payer can then proceed with the purchase. The
-example with shipping address is for all goods (physical and digital), the one
-without shipping address is for digital products only.
+open the payment menu. The payer can then proceed with the purchase.
+
+This is how it will look with all goods (physical and digital), with shipping
+address visible.
 
 {:.text-center}
 ![screenshot of the starter implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+
+This is for digital products, consequently with no shipping address.
 
 {:.text-center}
 ![screenshot of the starter implementation seamless view payment menu digital][seamless-payment-menu-digital]
