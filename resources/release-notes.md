@@ -11,6 +11,17 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 24 February 2022
+
+### Version 3.0.1
+
+*   Added descriptive card icons
+*   Added [Payer Aware Payment Menu][payer-aware-payment-menu]
+*   Added new screenshots for Checkout v3 implementations
+*   Rewrote instrument mode section
+*   Reorganized features in the sidebar
+*   Fixed internal links
+
 ## 18 February 2022
 
 ### Version 3.0.0
@@ -654,6 +665,7 @@ integration and the payer.
 [payment-menu-items]: /payment-menu/features/technical-reference/items
 [payment-menu-payment-link]: /payment-menu/features/optional/payment-link
 [payments]: /payment-instruments
+[payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /checkout-v2/features#update-order
 [resources]: /resources/
