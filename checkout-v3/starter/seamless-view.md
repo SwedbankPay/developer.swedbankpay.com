@@ -222,22 +222,16 @@ for mixed goods. For digital products only contact details will be shown. You
 can now perform the `GET` on the payment order and display the available
 shipping option(s) to the payer.
 
-How the shipping options are displayed will be up to you, but you can see an
-example in our demoshop.
+![screenshot of the seamless view checkin mixed and delivery options][checkin-delivery-options-mixed]
+![screenshot of the seamless view checkin digital and delivery options][checkin-delivery-options-digital]
 
 When the payer chooses a shipping option, you can `PATCH` the payment order and
-open the payment menu. The payer can then proceed with the purchase.
-
-This is how it will look with all goods (physical and digital), with shipping
-address visible.
-
-{:.text-center}
-![screenshot of the starter implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
-
-This is for digital products, consequently with no shipping address.
+the payment menu will appear. The payer can then proceed with the purchase. The
+example with shipping address is for all goods (physical and digital), the one
+without shipping address is for digital products only.
 
 {:.text-center}
-![screenshot of the starter implementation seamless view payment menu digital][seamless-payment-menu-digital]
+![screenshot of the starter implementation seamless view payment menu mixed][seamless-payment-menu-starter]
 
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
@@ -264,10 +258,11 @@ Events][seamless-view-events] available in the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/starter/features/core/abort
+[checkin-delivery-options-digital]:/assets/img/checkout/checkin-delivery-options-digital.png
+[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
-[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
-[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
+[seamless-payment-menu-starter]: /assets/img/checkout/payment-menu-seamless-starter.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
