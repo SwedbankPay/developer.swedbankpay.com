@@ -218,8 +218,8 @@ address.
 ![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
 After checking in, the payer's contact details and shipping address are shown
-for mixed goods. can now perform the `GET` on the payment order and display the
-available delivery option(s) to the payer.
+for mixed goods. You can now perform the `GET` on the payment order and display
+the available delivery option(s) to the payer.
 
 You are in charge of how the delivery options are displayed. This is how they
 appear in our demoshop.
