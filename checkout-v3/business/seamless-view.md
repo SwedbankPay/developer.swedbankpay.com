@@ -166,11 +166,15 @@ store credentials (guests) must also enter their shipping address.
 
 After checking in, the payment menu will appear with the payer information
 displayed above the menu. The payer can select their preferred payment
-instrument and pay. The example with shipping address is for all goods (physical
-and digital), the one without shipping address is for digital products only.
+instrument and pay.
+
+This is how it will look with all goods (physical and digital), with shipping
+address visible.
 
 {:.text-center}
 ![screenshot of the business implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
+
+This is for digital products, consequently with no shipping address.
 
 {:.text-center}
 ![screenshot of the business implementation seamless view payment menu digital][seamless-payment-menu-digital]
@@ -197,7 +201,7 @@ capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/business/features/core/abort
-[sequence-diagrams]: /checkout-v3/sequence-diagrams/#business-seamless-view
+[sequence-diagrams]: /checkout-v3/sequence-diagrams#business-seamless-view
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
 [seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png

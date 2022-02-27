@@ -4,35 +4,38 @@ endcapture %}
 
 ## Instrument Mode
 
-{% include alert-agreement-required.md %}
+With "Instrument Mode", the Payment Menu will display only one specific payment
+instrument instead of all those configured on your merchant account. The
+`PaymentOrder` resource works just like it otherwise would, allowing you to
+remain largely indifferent to the payment instrument in use. To use the feature
+you need to add the `instrument` field in the request as shown in the example
+below.
 
-In "Instrument Mode" the Payment Menu will display only one specific payment
-instrument instead of all configured on your merchant account. The Payment Order
-resource works just like it otherwise would, allowing you to remain largely
-indifferent to the payment instrument in use.
+It is important to only create one `paymentOrder` for each purchase, even if the
+payer changes their mind and wants to use another payment instrument. This is
+because we don't allow creating multiple `paymentOrder`s with the same
+`payeeReference`. If this happens, you should use the `PATCH` request below to
+reflect what the payer has chosen instead of creating a new `paymentOrder`. This
+way, you can still use the same `payeeReference`.
 
-If you do not want to use Swedbank Pay Payment Menu or do have multiple payment
-providers on your site we strongly recommend that you implement the "Instrument
-Mode" functionality. To use this feature you will need to add the `instrument`
-field to the request. This will make the  Swedbank Pay Payment Menu only render
-a single payment instrument. So even if Swedbank Pay is set up to provide more
-than one instrument you will be able to let it only show one at a time.
+If you don't want to use Swedbank Pay's Payment Menu (e.g. building your own
+payment menu), or have multiple payment providers on your site, we strongly
+recommend that you implement this functionality. In this case you should use the
+`instrument` field to enforce which payment instrument to show. If you have an
+agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
+payer chooses either of these instruments, you should add the `instrument`
+parameter with the specific payment instrument.
 
-It is important to use this feature if you want to build your own payment menu.
-In this case you should use the `instrument` field to enforce which payment
-instrument to show. If you have an agreement with Swedbank Pay for both Card and
-Swish/Vipps processing, and the payer chooses either of these instruments, you
-should add the `instrument` parameter with the specific payment instrument. If
-the payer later changes their mind and chooses the other instrument, you can
-make a call to Swedbank Pay to change the instrument on the active payment. This
-is important because we do not allow creating multiple payments with the same
-`orderReference`. To ensure that you can still use the same `orderReference`,
-you should only make one payment for each purchase and change the `instrument`
-to reflect what the payer has chosen in your menu.
+{:.code-view-header}
+**Request**
 
-The Payment Menu is switched to "Instrument Mode" by providing the request field
-`instrument` as described in the abbreviated example below.
+```http
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
 
+{
 {:.code-view-header}
 **Request**
 
@@ -51,15 +54,86 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": "CreditCard"
-        "generateRecurrenceToken": true,{% if include.documentation_section == "payment-menu" %}
-        "generatePaymentToken": true,{% endif %}
-        "urls": {
+        "instrument": "CreditCard", {% if documentation_section contains "checkout-v3" %}
+        "productName": "Checkout3", {% endif %}
+        "urls":
             "hostUrls": [ "https://example.com", "https://example.net" ],
+            "paymentUrl": "https://example.com/perform-payment",
+            "completeUrl": "https://example.com/payment-completed",
+            "cancelUrl": "https://example.com/payment-cancelled",
+            "callbackUrl": "https://api.example.com/payment-callback",
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"
+        },
+        "payeeInfo": {
+            "payeeId": "{{ page.merchant_id }}",
+            "payeeReference": "AB832",
+            "payeeName": "Merchant1",
+            "productCategory": "A123",
+            "orderReference": "or-123456",
+            "subsite": "MySubsite"
+        },
+        "payer": {
+            "requireConsumerInfo": true,
+            "digitalProducts": false,
+            "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
+        },
+        "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/products/123",
+                "imageUrl": "https://example.com/product123.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 5,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 0,
+                "vatPercent": 2500,
+                "amount": 1500,
+                "vatAmount": 375
+            },
+            {
+                "reference": "I1",
+                "name": "InvoiceFee",
+                "type": "PAYMENT_FEE",
+                "class": "Fees",
+                "description": "Fee for paying with Invoice",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 1900,
+                "vatPercent": 0,
+                "amount": 1900,
+                "vatAmount": 0,
+                "restrictedToInstruments": [
+                    "Invoice-PayExFinancingSe"
+                ]
+            }
+        ],
+        "riskIndicator": {
+            "deliveryEmailAddress": "olivia.nyhuus@payex.com",
+            "deliveryTimeFrameIndicator": "01",
+            "preOrderDate": "19801231",
+            "preOrderPurchaseIndicator": "01",
+            "shipIndicator": "01",
+            "giftCardPurchase": false,
+            "reOrderPurchaseIndicator": "01",
+            "pickUpAddress": {
+                "name": "Olivia Nyhus",
+                "streetAddress": "Saltnestoppen 43",
+                "coAddress": "",
+                "city": "Saltnes",
+                "zipCode": "1642",
+                "countryCode": "NO"
+            }
         }
     }
 }
 ```
+
+{% if documentation_section contains "checkout-v3" %}
 
 {:.code-view-header}
 **Response**
@@ -69,26 +143,205 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "instrument": "CreditCard"{% if include.documentation_section == "payment-menu" %}
-        "paymentToken" : "{{ page.payment_token }}",{% endif %}
-        "created": "2020-06-22T10:56:56.2927632Z",
-        "updated": "2020-06-22T10:56:56.4035291Z",
+    "paymentOrder": {
+        "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd",
+        "created": "2022-01-24T10:54:05.6243371Z",
+        "updated": "2022-01-24T10:54:19.2679591Z",
+        "operation": "Purchase",
+        "status": "Initialized",
+        "currency": "SEK",
+        "amount": 1500,
+        "vatAmount": 375,
+        "description": "Test",
+        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "language": "sv-SE",
+        "availableInstruments": [
+            "CreditCard",
+            "Swish"
+        ], {% if documentation_section contains "checkout-v3/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
+        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
+        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "integration": "Redirect", {% endif %}
+        "instrumentMode": false,
+        "guestMode": false,
+        "orderItems": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/orderitems"
+        },
+        "urls": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/payeeinfo"
+        },
+        "payer": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/payers"
+        },
+        "history": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/history"
+        },
+        "failed": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/failed"
+        },
+        "aborted": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/aborted"
+        },
+        "paid": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/paid"
+        },
+        "cancelled": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/cancelled"
+        },
+        "financialTransactions": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/financialtransactions"
+        },
+        "failedAttempts": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/failedattempts"
+        },
+        "metadata": {
+            "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/metadata"
+        }
+    },
+      "operations": [ {% if include.integration_mode=="redirect" %}
+        {
+          "method": "GET",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "rel": "redirect-checkout",
+          "contentType": "text/html"
+        },{% endif %} {% if include.integration_mode=="seamless-view" %}
+        {
+          "method": "GET",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "rel": "view-checkout",
+          "contentType": "application/javascript"
+        },{% endif %}
+        {
+          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+          "rel":"update-order",
+          "method":"PATCH",
+          "contentType":"application/json"
+        },
+        {
+          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+          "rel": "abort",
+          "method": "PATCH",
+          "contentType": "application/json"
+        },
+        {
+          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+          "rel": "set-instrument",
+          "method": "PATCH",
+          "contentType": "application/json"
+        }
+    ]
+}
+```
+
+{% else %}
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentOrder": {
+        "id": "/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8",
+        "created": "2022-02-23T12:59:10.9600933Z",
+        "updated": "2022-02-23T12:59:11.77654Z",
         "operation": "Purchase",
         "state": "Ready",
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "orderItems": {
-            "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
-        }
-    }
+        "description": "Testing - Stage",
+        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "userAgent": "Mozilla/5.0",
+        "language": "sv-SE",
+        "instrument": "CreditCard",
+        "availableInstruments": [
+            "CreditCard",
+            "Invoice-PayExFinancingSe",
+            "CreditAccount"
+        ],
+        "integration": "",
+        "urls": {
+            "id": "/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8/payeeInfo"
+        },
+        "payer": {
+            "id": "/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8/payers"
+        },
+        "payments": {
+            "id": "/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8/payments"
+        },
+        "currentPayment": {
+            "id": "/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8/currentpayment"
+        },
+        "items": [{
+            "creditCard": {
+                "cardBrands": ["Visa", "MasterCard", "Amex", "Dankort", "Diners", "Finax", "Forbrugsforeningen", "Jcb", "IkanoFinansDk", "Lindex", "Maestro", "Ica"]
+            }
+        }]
+    },
+    "operations": [
+        {
+        "method": "PATCH",
+        "href": "https://api.stage.payex.com/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8",
+        "rel": "update-paymentorder-updateorder",
+        "contentType": "application/json"
+        },
+        {
+        "method": "PATCH",
+        "href": "https://api.stage.payex.com/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8",
+        "rel": "update-paymentorder-abort",
+        "contentType": "application/json"
+        },
+        {
+        "method": "PATCH",
+        "href": "https://api.stage.payex.com/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8",
+        "rel": "update-paymentorder-setinstrument",
+        "contentType": "application/json"
+        }, {% if include.integration_mode=="redirect" %}
+        {
+        "method": "GET",
+        "href": "https://ecom.stage.payex.com/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835",
+        "rel": "redirect-paymentorder",
+        "contentType": "text/html"
+        } {% endif %} {% if include.integration_mode=="seamless-view" %}
+        {
+        "method": "GET",
+        "href": "https://ecom.stage.payex.com/paymentmenu/core/client/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?culture=sv-SE",
+        "rel": "view-paymentorder",
+        "contentType": "application/javascript"
+        } {% endif %}
+    ]
 }
 ```
 
-It is possible to switch instrument after the `paymentOrder` has been created.
-You can do this with the following `PATCH` request, using Swish as an example.
+{% endif %}
+
+{% if documentation_section contains "checkout-v3" %}
+
+Note the `rel` named `set-instrument`, which appears among the available
+operations in the `paymentOrder` response when instrument mode is applied.
+
+{% else %}
+
+Note the `rel` named `update-paymentorder-setinstrument`, which appears among
+the available operations in the `paymentOrder` response when instrument mode is
+applied.
+
+{% endif %}
+
+To switch instrument after the `paymentOrder` has been created, you can use the
+following `PATCH` request, here with Swish as an example.
 
 ```http
 PATCH /psp/{{ include.api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
@@ -103,24 +356,6 @@ Content-Type: application/json
   }
 }
 ```
-
-{% if documentation_section contains "checkout-v3" %}
-
-When instrument mode is enabled, the following `rel` will appear among the available operations in the `paymentOrder` response:
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-    {
-      "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
-      "rel": "set-instrument",
-      "method": "PATCH",
-      "contentType": "application/json"
-    }
-```
-
-{% endif %}
 
 The valid instruments for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a

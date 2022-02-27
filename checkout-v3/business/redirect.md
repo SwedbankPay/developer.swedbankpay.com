@@ -104,12 +104,15 @@ store credentials (guests) must also enter their shipping address.
 
 After checking in, the payment menu will appear on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay. The example with shipping address is for all goods
-(physical and digital), the one without shipping address is for digital
-products only.
+payment instrument and pay.
+
+This is how it will look with all goods (physical and digital), with shipping
+address visible.
 
 {:.text-center}
 ![screenshot of the business implementation redirect payment menu mixed][redirect-payment-menu-mixed]
+
+This is for digital products, consequently with no shipping address.
 
 {:.text-center}
 ![screenshot of the business implementation redirect payment menu digital][redirect-payment-menu-digital]
@@ -126,7 +129,7 @@ about capture and the other options you have after the purchase.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/business/features/core/abort
-[sequence-diagrams]: /checkout-v3/sequence-diagrams/#business-redirect
+[sequence-diagrams]: /checkout-v3/sequence-diagrams#business-redirect
 [login-checkin]: /assets/img/checkout/checkin.png
 [redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
 [redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png

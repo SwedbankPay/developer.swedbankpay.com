@@ -10,7 +10,7 @@ menu_order: 300
 
 The **Starter Seamless View** integration consists of three main steps.
 **Creating** the payment order and checkin, **displaying** the payment menu,
-shipping options and checkin module in an iframe, and finally **capturing** the
+delivery options and checkin module in an iframe, and finally **capturing** the
 funds. In addition, there are other post purchase options you need. We get to
 them later on.
 
@@ -59,7 +59,7 @@ completed an `authorize` or a `sale`.
 
 {% include payment-order-checkout-starter.md integration_mode="seamless_view" %}
 
-## Step 2: Display Checkin, Shipping Options And Payment Menu
+## Step 2: Display Checkin, Delivery Options And Payment Menu
 
 Among the operations in the POST `paymentOrders` response, you will find
 `view-checkout`. This is what you need to display the checkin and payment
@@ -208,7 +208,7 @@ After choosing yes or no, the payer must enter their SSN.
 {:.text-center}
 ![screenshot of asking the payer to enter SSN while storing details][checkin-new-payer-ssn]
 
-With digital products, the payer will be sent directly to shipping options after
+With digital products, the payer will be sent directly to delivery options after
 they select to store their details (see below). For mixed goods, the SSN input
 view will expand and the payer must enter their shipping address. Payers
 choosing not to store credentials (guests) must also enter their shipping
@@ -218,23 +218,23 @@ address.
 ![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
 After checking in, the payer's contact details and shipping address are shown
-for mixed goods. For digital products only contact details will be shown. You
-can now perform the `GET` on the payment order and display the available
-shipping option(s) to the payer.
+for mixed goods. You can now perform the `GET` on the payment order and display
+the available delivery option(s) to the payer.
 
-How the shipping options are displayed will be up to you, but you can see an
-example in our demoshop.
+You are in charge of how the delivery options are displayed. This is how they
+appear in our demoshop.
 
-When the payer chooses a shipping option, you can `PATCH` the payment order and
-the payment menu will appear. The payer can then proceed with the purchase. The
-example with shipping address is for all goods (physical and digital), the one
-without shipping address is for digital products only.
+![screenshot of the seamless view checkin mixed and delivery options][checkin-delivery-options-mixed]
+
+For digital products only contact details will be shown.
+
+![screenshot of the seamless view checkin digital and delivery options][checkin-delivery-options-digital]
+
+When the payer chooses a delivery option, you can `PATCH` the payment order and
+open the payment menu. The payer can then proceed with the purchase.
 
 {:.text-center}
-![screenshot of the starter implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
-
-{:.text-center}
-![screenshot of the starter implementation seamless view payment menu digital][seamless-payment-menu-digital]
+![screenshot of the starter implementation seamless view payment menu][seamless-payment-menu-starter]
 
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
@@ -247,9 +247,10 @@ give you the best setup. Even with this implemented, you need to check the
 payment status towards our APIs, as the payer can make changes in the browser at
 any time.
 
-For **Starter**, you also need to implement `onPayerUnidentified` when you
-implement `onPayerIdentified`. This is important because the "Remember Me"
-feature (which will be released soon) won't work without it.
+When implementing **Starter**, you also need to subscribe to the event
+[`onPayerUnidentified`][onpayerunidentified] when you implement
+[`onPayerIdentified`][onpayeridentified]. This is important because the
+"Remember Me" feature (to be released soon) won't work without it.
 
 You can read more about the different [Seamless View
 Events][seamless-view-events] available in the feature section.
@@ -259,12 +260,15 @@ Events][seamless-view-events] available in the feature section.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/business/features/core/abort
+[abort-feature]: /checkout-v3/starter/features/core/abort
+[checkin-delivery-options-digital]:/assets/img/checkout/checkin-delivery-options-digital.png
+[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
-[seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
-[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
-[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
+[seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
+[seamless-payment-menu-starter]: /assets/img/checkout/seamless-payment-menu-starter.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
-[sequence-diagrams]: /checkout-v3/sequence-diagrams/#starter-seamless-view
+[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayeridentified
+[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayerunidentified
+[sequence-diagrams]: /checkout-v3/sequence-diagrams#starter-seamless-view
