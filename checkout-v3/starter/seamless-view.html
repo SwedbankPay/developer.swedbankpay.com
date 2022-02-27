@@ -166,7 +166,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-1-create-payment-order-and-checkin">Step 1: Create Payment Order And Checkin</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#payment-url">Payment Url</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-2-display-checkin-shipping-options-and-payment-menu">Step 2: Display Checkin, Shipping Options And Payment Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-2-display-checkin-delivery-options-and-payment-menu">Step 2: Display Checkin, Delivery Options And Payment Menu</a></li>
         
       </ul>
       </li>
@@ -1465,20 +1465,20 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
+          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
         
       </ul>
       </li>
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
+          <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
         
       </ul>
       </li>
@@ -1500,6 +1500,16 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/one-click-payments#one-click-payments">One-Click Payments</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/payments-only/features/optional/payer-aware-payment-menu">Payer Aware Payment Menu</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/payer-aware-payment-menu#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
         
       </ul>
       </li>
@@ -5229,7 +5239,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
@@ -5452,12 +5463,12 @@ payment menu directly in your webshop.</p>
         
             <p>The <strong>Starter Seamless View</strong> integration consists of three main steps.
 <strong>Creating</strong> the payment order and checkin, <strong>displaying</strong> the payment menu,
-shipping options and checkin module in an iframe, and finally <strong>capturing</strong> the
+delivery options and checkin module in an iframe, and finally <strong>capturing</strong> the
 funds. In addition, there are other post purchase options you need. We get to
 them later on.</p>
 
 <p>If you want to get an overview before proceeding, you can look at the
-<a href="/checkout-v3/sequence-diagrams/#starter-seamless-view">sequence diagram</a>. It is also available in the sidebar if
+<a href="/checkout-v3/sequence-diagrams#starter-seamless-view">sequence diagram</a>. It is also available in the sidebar if
 you want to look at it later. Let´s get going with the two first steps of the
 integration.</p>
       <h2 id="step-1-create-payment-order-and-checkin">
@@ -5493,7 +5504,7 @@ not to store credentials during checkin.</p>
 
 <p>In some instances you need the possibility to abort purchases. This could be if
 a payer does not complete the purchase within a reasonable timeframe. For those
-instances we have <code class="language-html highlighter-rouge">abort</code>, which you can read about in the <a href="/checkout-v3/business/features/core/abort">core
+instances we have <code class="language-html highlighter-rouge">abort</code>, which you can read about in the <a href="/checkout-v3/starter/features/core/abort">core
 features</a>. You can only use <code class="language-html highlighter-rouge">abort</code> if the payer <strong>has not</strong>
 completed an <code class="language-html highlighter-rouge">authorize</code> or a <code class="language-html highlighter-rouge">sale</code>.</p>
     
@@ -6573,10 +6584,10 @@ used in requests towards Swedbank Pay.</p>
   </tbody>
 </table>
     
-      <h2 id="step-2-display-checkin-shipping-options-and-payment-menu">
+      <h2 id="step-2-display-checkin-delivery-options-and-payment-menu">
         
         
-          Step 2: Display Checkin, Shipping Options And Payment Menu <a href="#step-2-display-checkin-shipping-options-and-payment-menu" class="header-anchor"></a>
+          Step 2: Display Checkin, Delivery Options And Payment Menu <a href="#step-2-display-checkin-delivery-options-and-payment-menu" class="header-anchor"></a>
         
         
       </h2>
@@ -6809,7 +6820,7 @@ or proceed without storing. If that happens, these checkin steps will appear.</p
 
 <p class="text-center"><img src="/assets/img/checkout/checkin-new-payer-ssn.png" alt="screenshot of asking the payer to enter SSN while storing details"></p>
 
-<p>With digital products, the payer will be sent directly to shipping options after
+<p>With digital products, the payer will be sent directly to delivery options after
 they select to store their details (see below). For mixed goods, the SSN input
 view will expand and the payer must enter their shipping address. Payers
 choosing not to store credentials (guests) must also enter their shipping
@@ -6818,21 +6829,22 @@ address.</p>
 <p class="text-center"><img src="/assets/img/checkout/checkin-enter-shipping-address.png" alt="screenshot of the seamless view checkin when entering details"></p>
 
 <p>After checking in, the payer’s contact details and shipping address are shown
-for mixed goods. For digital products only contact details will be shown. You
-can now perform the <code class="language-html highlighter-rouge">GET</code> on the payment order and display the available
-shipping option(s) to the payer.</p>
+for mixed goods. You can now perform the <code class="language-html highlighter-rouge">GET</code> on the payment order and display
+the available delivery option(s) to the payer.</p>
 
-<p>How the shipping options are displayed will be up to you, but you can see an
-example in our demoshop.</p>
+<p>You are in charge of how the delivery options are displayed. This is how they
+appear in our demoshop.</p>
 
-<p>When the payer chooses a shipping option, you can <code class="language-html highlighter-rouge">PATCH</code> the payment order and
-the payment menu will appear. The payer can then proceed with the purchase. The
-example with shipping address is for all goods (physical and digital), the one
-without shipping address is for digital products only.</p>
+<p><img src="/assets/img/checkout/checkin-delivery-options-mixed.png" alt="screenshot of the seamless view checkin mixed and delivery options"></p>
 
-<p class="text-center"><img src="/assets/img/checkout/payment-menu-seamless-mixed-products.png" alt="screenshot of the starter implementation seamless view payment menu mixed"></p>
+<p>For digital products only contact details will be shown.</p>
 
-<p class="text-center"><img src="/assets/img/checkout/payment-menu-seamless-digital.png" alt="screenshot of the starter implementation seamless view payment menu digital"></p>
+<p><img src="/assets/img/checkout/checkin-delivery-options-digital.png" alt="screenshot of the seamless view checkin digital and delivery options"></p>
+
+<p>When the payer chooses a delivery option, you can <code class="language-html highlighter-rouge">PATCH</code> the payment order and
+open the payment menu. The payer can then proceed with the purchase.</p>
+
+<p class="text-center"><img src="/assets/img/checkout/seamless-payment-menu-starter.png" alt="screenshot of the starter implementation seamless view payment menu"></p>
 
 <p>Once a purchase is complete, you can perform a <code class="language-html highlighter-rouge">GET</code> towards the <code class="language-html highlighter-rouge">paymentOrders</code>
 resource to see the purchase state.</p>
@@ -6851,11 +6863,12 @@ give you the best setup. Even with this implemented, you need to check the
 payment status towards our APIs, as the payer can make changes in the browser at
 any time.</p>
 
-<p>For <strong>Starter</strong>, you also need to implement <code class="language-html highlighter-rouge">onPayerUnidentified</code> when you
-implement <code class="language-html highlighter-rouge">onPayerIdentified</code>. This is important because the “Remember Me”
-feature (which will be released soon) won’t work without it.</p>
+<p>When implementing <strong>Starter</strong>, you also need to subscribe to the event
+<a href="/checkout-v3/starter/features/technical-reference/seamless-view-events##onpayerunidentified"><code class="language-html highlighter-rouge">onPayerUnidentified</code></a> when you implement
+<a href="/checkout-v3/starter/features/technical-reference/seamless-view-events##onpayeridentified"><code class="language-html highlighter-rouge">onPayerIdentified</code></a>. This is important because the
+“Remember Me” feature (to be released soon) won’t work without it.</p>
 
-<p>You can read more about the different <a href="/checkout-v3/business/features/technical-reference/seamless-view-events">Seamless View
+<p>You can read more about the different <a href="/checkout-v3/starter/features/technical-reference/seamless-view-events">Seamless View
 Events</a> available in the feature section.</p>
 
 <nav class="iterator d-flex">

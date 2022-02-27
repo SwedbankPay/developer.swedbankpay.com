@@ -166,7 +166,7 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-1-create-payment-order-and-checkin">Step 1: Create Payment Order And Checkin</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#payment-url">Payment Url</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-2-display-checkin-shipping-options-and-payment-menu">Step 2: Display Checkin, Shipping Options And Payment Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-2-display-checkin-delivery-options-and-payment-menu">Step 2: Display Checkin, Delivery Options And Payment Menu</a></li>
         
       </ul>
       </li>
@@ -1465,20 +1465,20 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
+          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
         
       </ul>
       </li>
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
+          <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
         
       </ul>
       </li>
@@ -1500,6 +1500,16 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/one-click-payments#one-click-payments">One-Click Payments</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/payments-only/features/optional/payer-aware-payment-menu">Payer Aware Payment Menu</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/payer-aware-payment-menu#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
         
       </ul>
       </li>
@@ -5229,7 +5239,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#19-may-2021">19 May 2021</a></li>
@@ -5457,7 +5468,7 @@ your website.</p>
 checkin module, and finally <strong>capturing</strong> the funds. In addition, there are
 other post purchase options you need. We get to them later on.</p>
 
-<p>If you want to get an overview before proceeding, you can look at the <a href="/checkout-v3/sequence-diagrams/#business-redirect">sequence
+<p>If you want to get an overview before proceeding, you can look at the <a href="/checkout-v3/sequence-diagrams#business-redirect">sequence
 diagram</a>. It is also available in the sidebar if you want to
 look at it later. Let´s get going with the two first steps of the integration.</p>
       <h2 id="step-1-create-payment-order-and-checkin">
@@ -6879,11 +6890,14 @@ store credentials (guests) must also enter their shipping address.</p>
 
 <p>After checking in, the payment menu will appear on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay. The example with shipping address is for all goods
-(physical and digital), the one without shipping address is for digital
-products only.</p>
+payment instrument and pay.</p>
+
+<p>This is how it will look with all goods (physical and digital), with shipping
+address visible.</p>
 
 <p class="text-center"><img src="/assets/img/checkout/payment-menu-redirect-mixed-products.png" alt="screenshot of the business implementation redirect payment menu mixed"></p>
+
+<p>This is for digital products, consequently with no shipping address.</p>
 
 <p class="text-center"><img src="/assets/img/checkout/payment-menu-redirect-digital.png" alt="screenshot of the business implementation redirect payment menu digital"></p>
 
