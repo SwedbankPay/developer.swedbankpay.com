@@ -8,6 +8,11 @@ description: |
 menu_order: 600
 ---
 
+{% include alert.html type="informative" icon="report_problem" body="This
+invoice integration has been phased out, due to Strong Costumer Authentication
+(SCA) being required by law. As we will not activate SCA for this integration
+option, it is no longer compliant." %}
+
 ## Introduction
 
 Seamless View provides an integration of the payment process directly on your
