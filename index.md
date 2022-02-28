@@ -25,7 +25,7 @@ hide_from_sidebar: true
           title='Want to try it yourself?'
           no_icon=true
           button_content='Visit our Demoshop'
-          text='Experience what it would be like to pay as a costumer of yours in our demoshop.'
+          text='Experience what it would be like to pay as a customer of yours in our demoshop.'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true
