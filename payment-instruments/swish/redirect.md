@@ -71,7 +71,6 @@ Content-Type: application/json
         "language": "sv-SE",
         "urls": {
             "hostUrls": [ "https://example.com" ],
-            "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback",
