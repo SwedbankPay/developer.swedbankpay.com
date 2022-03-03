@@ -10,10 +10,9 @@ description: |
 menu_order: 700
 ---
 
-{% include alert.html type="informative" icon="report_problem" body="This
-invoice integration has been phased out, due to Strong Customer Authentication
-(SCA) being required by law. As we will not activate SCA for this integration
-option, it is no longer compliant." %}
+{% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
+Direct Invoice is about to be phased out. This section is only for merchants
+who currently have a contract with this integration." %}
 
 ## Invoice Direct implementation flow
 
