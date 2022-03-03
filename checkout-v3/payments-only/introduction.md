@@ -10,7 +10,7 @@ menu_order: 200
 ---
 
 **Payments Only** is where you get to be in charge of everything. You handle
-the consumer verification with a strong consumer authentication, collect the
+the consumer verification with a strong customer authentication, collect the
 consumer information needed to calculate shipping costs, and store the
 information yourself. We provide you with our full range of payment methods.
 
