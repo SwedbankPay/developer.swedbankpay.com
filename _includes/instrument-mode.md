@@ -4,6 +4,12 @@ endcapture %}
 
 ## Instrument Mode
 
+{% unless documentation_section contains "checkout-v3/payments-only" %}
+
+{% include alert-agreement-required.md %}
+
+{% endunless %}
+
 With "Instrument Mode", the Payment Menu will display only one specific payment
 instrument instead of all those configured on your merchant account. The
 `PaymentOrder` resource works just like it otherwise would, allowing you to
