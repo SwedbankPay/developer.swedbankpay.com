@@ -4,9 +4,9 @@
     {%- assign api_resource = "Payment Order" -%}
 {%- endif -%}
 {%- capture initiating_system_user_agent -%}
-The [user agent](https://en.wikipedia.org/wiki/User_agent) of the HTTP client
-making the request, reflecting the value sent in the `User-Agent` header with
-the initial `POST` request which created the {{ api_resource | strip }}.
+The [user agent](/introduction#user-agent) of the HTTP client making the
+request, reflecting the value sent in the `User-Agent` header with the initial
+`POST` request which created the {{ api_resource | strip }}.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

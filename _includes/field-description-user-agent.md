@@ -1,7 +1,6 @@
 {%- capture user_agent -%}
-The [user agent](https://en.wikipedia.org/wiki/User_agent) of the payer. Should
-typically be set to the value of the `User-Agent` header sent by the payer's web
-browser.
+The [user agent](/introduction#user-agent) of the payer. Should typically be set
+to the value of the `User-Agent` header sent by the payer's web browser.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes
