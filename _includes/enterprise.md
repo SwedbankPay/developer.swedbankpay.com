@@ -7,7 +7,7 @@ authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
 {%- if documentation_section != 'checkout-v3/business' %}
-**Delegated Strong Consumer Authentication** (hereby abbreviated as "Delegated
+**Delegated Strong Customer Authentication** (hereby abbreviated as "Delegated
 SCA") is performed as an alternative to [Checkin][checkin] when creating the
 Payment Order upon the initialization of the [Payment Menu][payment-menu]. You
 can only use Delegated SCA if you have an agreement with Swedbank Pay. The
@@ -15,7 +15,7 @@ additional `nationalIdentifier` field described below should be added to the
 `paymentorder.payer` object already in the Payment Order creation request, as an
 alternative to `consumerProfileRef`.
 {%- else %}
-**Delegated Strong Consumer Authentication** (hereby abbreviated as "Delegated
+**Delegated Strong Customer Authentication** (hereby abbreviated as "Delegated
 SCA") is performed as an alternative to `Checkin` when creating the
 Payment Order upon the initialization of the `Payment Menu`. You
 can only use Delegated SCA if you have an agreement with Swedbank Pay. The

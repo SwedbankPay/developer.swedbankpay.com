@@ -150,7 +150,7 @@ Other changes:
 *   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
 *   Renamed Merchant Authenticated Consumer to
-    [Delegated Strong Consumer Authentication][mac].
+    [Delegated Strong Customer Authentication][mac].
 *   Updated `payer`/`consumer`/`end-user` naming for most sections.
 *   Updated expiry date for test cards in [test data][test-data].
 *   Updated [callback][checkout-callback] documentation.
@@ -293,7 +293,7 @@ Other changes:
 *   Bug fixes to Mermaid diagram and alert styling, plus improvements to code
     block styling after the update to [Swedbank Pay Design Guide][design-guide]
     4.5.0.
-*   Added examples with screenshots of the effects of [Delegated Strong Consumer
+*   Added examples with screenshots of the effects of [Delegated Strong Customer
     Authentication][mac-checkout].
 
 ### Version 1.8.2
@@ -306,7 +306,7 @@ Other changes:
 *   Updated [Card Payments Direct][card-direct] to have a correct integration
     flow.
 *   Updated the [main page][frontpage] to be more welcoming.
-*   Updated information on [Delegated Strong Consumer Authentication][mac-checkout].
+*   Updated information on [Delegated Strong Customer Authentication][mac-checkout].
 
 ## 31 Mar 2020
 

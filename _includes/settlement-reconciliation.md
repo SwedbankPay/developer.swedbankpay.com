@@ -265,7 +265,7 @@ charities.
 
 #### What we need from you as a company
 
-*   Submit a KYC (Know Your Costumer) form for each sub merchant you want to
+*   Submit a KYC (Know Your Customer) form for each sub merchant you want to
     include. We will also do a KYC check on your sub merchants, providing extra
     security for you.
 *   Give every sub merchant who sells goods/services through your website or in
