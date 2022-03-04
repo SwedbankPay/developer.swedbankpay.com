@@ -120,7 +120,7 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Vipps Test",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0 weeeeee",
         "language": "nb-NO",
         "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },

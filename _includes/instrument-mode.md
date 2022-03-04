@@ -149,7 +149,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
             "CreditCard",
@@ -255,7 +255,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Testing - Stage",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
         "instrument": "CreditCard",

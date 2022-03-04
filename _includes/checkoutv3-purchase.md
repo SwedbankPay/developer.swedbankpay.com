@@ -238,7 +238,7 @@ Content-Type: application/json
             "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
         },
         "description": "test description",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
         "urls": {

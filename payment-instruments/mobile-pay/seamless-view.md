@@ -130,7 +130,7 @@ Content-Type: application/json
         "currency": "DKK",
         "amount": 0,
         "description": "MobilePay Test",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "da-DK",
         "prices": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices" },

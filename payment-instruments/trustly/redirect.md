@@ -134,7 +134,7 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.25.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": { "id": "/psp/trustly/payments/{{ page.payment_id }}/prices" },

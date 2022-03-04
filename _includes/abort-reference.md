@@ -58,7 +58,7 @@ Content-Type: application/json
         },
         "amount": 0,
         "description": "{{ api_resource }} Test",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.1.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "{{ language }}",
         "urls": {
