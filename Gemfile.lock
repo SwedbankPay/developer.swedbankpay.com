@@ -90,8 +90,14 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    mini_portile2 (2.8.0)
     minitest (5.15.0)
+    nokogiri (1.13.3)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nokogiri (1.13.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     open3 (0.1.1)
     parallel (1.21.0)
@@ -137,7 +143,9 @@ GEM
     yell (2.2.2)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   faraday (~> 2.2.0)
@@ -154,7 +162,7 @@ DEPENDENCIES
   swedbank-pay-design-guide-jekyll-theme (>= 1.16)
 
 RUBY VERSION
-   ruby 2.7.5p203
+   ruby 2.7.4p191
 
 BUNDLED WITH
    2.2.28
