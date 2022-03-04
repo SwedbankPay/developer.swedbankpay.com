@@ -10,9 +10,9 @@ description: |
 menu_order: 700
 ---
 
-{% include alert.html type="informative" icon="report_problem" header="Disclaimer"
-body="Direct Invoice is about to be phased out. This section is only for
-merchants that currently have a contract with this integration." %}
+{% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
+Direct Invoice is about to be phased out. This section is only for merchants
+who currently have a contract with this integration." %}
 
 ## Invoice Direct implementation flow
 

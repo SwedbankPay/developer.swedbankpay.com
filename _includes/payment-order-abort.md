@@ -40,7 +40,7 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | └➔&nbsp;`operation`      | `string`     | `Abort`                                                                                                                                                                                                                |
-| └➔&nbsp;`abortReason`      | `string`     | `CancelledByConsumer` or `CancelledByCostumer`. Why the payment was aborted.                                                                                                                                                                         |
+| └➔&nbsp;`abortReason`      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
 
 {% if documentation_section contains "checkout-v3" %}
 

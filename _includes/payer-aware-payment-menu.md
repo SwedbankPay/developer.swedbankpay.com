@@ -6,7 +6,7 @@
 
 To maximize the experience of your payers, you should implement the Payer
 Aware Payment Menu by identifying each payer with a unique identifier. It is
-important that you enforce a good SCA (Strong Consumer Authentication) strategy
+important that you enforce a good SCA (Strong Customer Authentication) strategy
 when authenticating the payer. The payer identifier must then be sent with
 the creation of the payment order to Swedbank Pay. This will enable Swedbank Pay
 to render a unique payment menu experience for each payer. It will also
