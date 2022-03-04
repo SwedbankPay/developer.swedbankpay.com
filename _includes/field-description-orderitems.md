@@ -7,7 +7,7 @@
     `Capture` requests should only contain items meant to be captured from the
     order.
     {%- endcapture -%} {{- orderitems | strip_newlines-}}
-    {%- comment -%} The dashes in the Liquid code tags remove output whitespace.
+    {%- comment -%} The dashes in the Liquid code tags remove output space.
 More on that here:
 
 <https://shopify.github.io/liquid/basics/whitespace/>

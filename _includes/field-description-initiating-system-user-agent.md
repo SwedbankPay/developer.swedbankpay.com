@@ -14,7 +14,7 @@ extranous spaces.
 {%- endcomment -%}
 {{- initiating_system_user_agent | newline_to_br | strip_newlines | split: '<br />' | join: ' ' | strip -}}
 {%- comment -%}
-The dashes in the Liquid code tags remove output whitespace. More on that here:
+The dashes in the Liquid code tags remove output space. More on that here:
 
 <https://shopify.github.io/liquid/basics/whitespace/>
 
