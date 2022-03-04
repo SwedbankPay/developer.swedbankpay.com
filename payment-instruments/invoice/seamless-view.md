@@ -8,6 +8,10 @@ description: |
 menu_order: 600
 ---
 
+{% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
+Seamless View Invoice is about to be phased out. This section is only for
+merchants who currently have a contract with this integration." %}
+
 ## Introduction
 
 Seamless View provides an integration of the payment process directly on your
