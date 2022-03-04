@@ -98,7 +98,7 @@ Content-Type: application/json
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                            |
+| └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                        |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
 | └➔&nbsp;`paymentToken`   | `string`     | The payment token created for the purchase used in the authorization to create One-Click Payments.                                                          |
 | └➔&nbsp;`recurrenceToken`      | `string`     | The created recurrenceToken, if `operation: Verify`, `operation: Recur` or `generateRecurrenceToken: true` was used.                                                                                                                                                                  |
@@ -118,4 +118,3 @@ Content-Type: application/json
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /{{ documentation_section }}
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
