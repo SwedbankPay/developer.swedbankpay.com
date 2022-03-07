@@ -217,10 +217,10 @@ To help with writing release notes, projects can use the tool
 [github-flow]: https://guides.github.com/introduction/flow/
 [gitversion-task]: https://www.nuget.org/packages/GitVersionTask
 [google-play]: https://play.google.com/store
-[markdown]: https://help.github.com/articles/github-flavored-markdown
+[markdown]: https://docs.github.com/en/get-started/writing-on-github
 [owasp-top-10]: https://owasp.org/www-project-top-ten/
 [principles-of-object-oriented-design]: https://wiki.c2.com/?PrinciplesOfObjectOrientedDesign
-[release]: https://help.github.com/articles/creating-releases
+[release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
 [sans-25]: https://www.sans.org/top25-software-errors/
 [semantic-versioning]: https://semver.org/
 [software-license]: /resources/development-guidelines/license
