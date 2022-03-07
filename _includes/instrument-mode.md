@@ -42,16 +42,6 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
