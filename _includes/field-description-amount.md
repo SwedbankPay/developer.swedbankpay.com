@@ -11,11 +11,11 @@ unit of the selected currency. E.g.:
 {%- comment -%}
 First convert newlines to '<br />', strip all newlines, split into an array
 on '<br />' as a separator, then join the array back into a string separated
-by ' ' (a space) and then strip extraneous whitespace.
+by ' ' (a space) and then strip extraneous space.
 {%- endcomment -%}
 {{- amount_text | newline_to_br | strip_newlines | split: '<br />' | join: ' ' | strip -}}
 {%- comment -%}
-The dashes in the Liquid code tags remove output whitespace. More on that here:
+The dashes in the Liquid code tags remove output space. More on that here:
 
 <https://shopify.github.io/liquid/basics/whitespace/>
 
