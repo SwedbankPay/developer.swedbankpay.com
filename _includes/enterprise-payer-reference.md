@@ -2,26 +2,14 @@
 
 ## Enterprise PayerReference
 
-If a merchant wants to use the **Enterprise** or **Payments Only**
-implementation, but does not have the payer's SSN or a secure login, they can
-add a `payerReference` in the `payer` field of the payment request.
-
-{% if documentation_section contains "checkout-v3/enterprise" %}
+If a merchant wants to use the **Enterprise** implementation and has a secure
+login, but doesn't store the payer's SSN, they can add a `payerReference` in the
+`payer` field of the payment request.
 
 If the `payerReference` is present along with `email` and `msisdn`, the merchant
-does not need to add a `nationalIdentifier`. Other than that, it is the same as
+doesn't need to add a `nationalIdentifier`. Other than that, it is the same as
 a regular [Redirect][enterprise-redirect] or [Seamless
 View][enterprise-seamless-view] request using the **Enterprise** implementation.
-
-{% else %}
-
-If the `payerReference` is present along with `email` and `msisdn`, the merchant
-does not need to add a `nationalIdentifier`. Other than that, it is the same as
-a regular [Redirect][payments-only-redirect] or [Seamless
-View][payments-only-seamless-view] request using the Payments Only
-implementation.
-
-{% endif %}
 
 If no existing consumer profile exists on the `payerReference` or `email` and
 `msisdn`, the payer will be asked to enter their social security number as shown
