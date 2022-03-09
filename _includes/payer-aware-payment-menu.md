@@ -59,10 +59,8 @@ menu.
 Remember that you have the responsibility of enforcing GDPR requirements and
 letting the payer remove active payment tokens when they want. It is up to you
 how to implement this functionality on your side, but Swedbank Pay has the API
-you need to make it easy to [clean up old data][delete-tokens]. It is possible
-to query for all active payment tokens registered on a specific
-`payerReference`. Then you can either remove all tokens or a subset of the
-tokens registered on the payer.
+you need to make it easy to [clean up old data][tokens]. See more below the main
+`paymentOrder` request example, or follow the hyperlink above.
 
 A Payer Aware Payment Menu request can look like this.
 
@@ -86,9 +84,7 @@ Content-Type: application/json
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
         "productName": "Checkout3",{% endif %} {% if documentation_section == "payment-menu" %}
         "instrument": null,{% endif %}
-        "generateRecurrenceToken": true,
-        "generatePaymentToken": true,
-        "disableStoredPaymentDetails": true,
+        "disableStoredPaymentDetails": false,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -211,9 +207,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`description`             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if include.documentation_section == "payment-menu" %}
 | {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode][instrument-mode].                                                                                                                                                                                          | {% endif %}                                              |
-| {% icon check %} | └➔&nbsp;`generateRecurrenceToken` | `bool`       | Determines whether a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments][recur] – with the same token – through server-to-server calls. Default value is `false`.                                     | {% if include.documentation_section == "payment-menu" %} |
-| {% icon check %} | └➔&nbsp;`generatePaymentToken`    | `bool`       | `true` or `false`. Set this to `true` if you want to create a `paymentToken` to use in future [One Click Payments][one-click-payments].                                                                                                                                                                  | {% endif %}                                              |
-|                  | └➔&nbsp;`disableStoredPaymentDetails` | `bool` | Setting to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
+|                  | └➔&nbsp;`disableStoredPaymentDetails` | `bool` | Set to `false` by default. Switching to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               | {% if documentation_section contains "checkout-v3/payments-only" %}
 | {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |{% endif %}
@@ -406,6 +400,196 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
+### Tokens
+
+It is possible to query for all active payment tokens registered on a specific
+`payerReference`. After doing so, you can either remove all tokens or a subset
+of the tokens registered on the payer. This is the easiest way of cleaning up
+all data for **Payments Only** implementations.
+
+Querying with a `GET` request will give you a response containing all tokens and
+the operation(s) available for them.
+
+{:.code-view-header}
+**Request**
+
+```http
+GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-view-header}
+**Response**
+
+```http
+{
+  "payerOwnedTokens": {
+        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
+        "payerReference": "{payerReference}",
+        "tokens": [
+            {
+                "token": "{paymentToken}",
+                "tokenType": "Payment",
+                "instrument": "CreditCard",
+                "instrumentDisplayName": "492500******0004",
+                "instrumentParameters": {
+                    "expiryDate": "12/2022",
+                    "cardBrand": "Visa"
+                },
+                "operations": [
+                    {
+                        "method": "PATCH",
+                        "href": "https://api.internaltest.payex.com/psp/paymentorders/paymenttokens/0ecf804f-e68f-404e-8ae6-adeb43052559",
+                        "rel": "delete-paymenttokens",
+                        "contentType": "application/json"
+                    }
+                ]
+            },
+            {
+                "token": "{paymentToken}",
+                "tokenType": "Payment",
+                "instrument": "Invoice-payexfinancingno",
+                "instrumentDisplayName": "260267*****",
+                "instrumentParameters": {
+                    "email": "hei@hei.no",
+                    "msisdn": "+4798765432",
+                    "zipCode": "1642"
+                },
+                "operations": [
+                    {
+                        "method": "PATCH",
+                        "href": "https://api.internaltest.payex.com/psp/paymentorders/paymenttokens/dd9c1103-3e0f-492a-95a3-a39bb32a6b59",
+                        "rel": "delete-paymenttokens",
+                        "contentType": "application/json"
+                    }
+                ]
+            },
+            {
+                "token": "{token}",
+                "tokenType": "Unscheduled",
+                "instrument": "CreditCard",
+                "instrumentDisplayName": "492500******0004",
+                "instrumentParameters": {
+                    "expiryDate": "12/2020",
+                    "cardBrand": "Visa"
+                },
+                "operations": [
+                    {
+                        "method": "PATCH",
+                        "href": "https://api.internaltest.payex.com/psp/paymentorders/unscheduledtokens/e2f06785-805d-4605-bf40-426a725d313d",
+                        "rel": "delete-unscheduledtokens",
+                        "contentType": "application/json"
+                    }
+                ]
+            }
+        ]
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "https://api.internaltest.payex.com/psp/paymentorders/payerOwnedPaymentTokens/{payerReference}",
+            "rel": "delete-payerownedtokens",
+            "contentType": "application/json"
+        }
+    ]
+}
+```
+
+{:.table .table-striped}
+| Field                    | Type         | Description    |
+| :----------------------- | :----------- | :------------------- |
+| └➔&nbsp;`payerOwnedTokens`                    | `object`     | The `payerOwnedTokens` object containing information about the payer relevant for the payment order.       |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                   |
+| └─➔&nbsp;`payerReference`                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                  |
+| └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                           |
+| └─➔&nbsp;`token`  | `string`   | The token `guid`. |
+| └─➔&nbsp;`tokenType`  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| └➔&nbsp;`instrument`             | `string`     | Payment instrument connected to the token. |
+| └➔&nbsp;`instrumentDisplayName`             | `string`     | Payment instrument connected to the token.|
+| └➔&nbsp;`instrumentParameters`             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform regarding the token. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+
+You can remove the tokens by using the following `PATCH` request.
+
+{:.code-view-header}
+**Request**
+
+```http
+PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+  "state": "Deleted",
+  "comment": "Some words about why the tokens are being deleted"
+}
+```
+
+{:.table .table-striped}
+| Field                    | Type         | Description    |
+| :----------------------- | :----------- | :------------------- |
+| └➔&nbsp;`state`          | `string`  | The state you want the token to be in.                                                                                     |
+| └➔&nbsp;`comment`          | `string`  | Explanation as to why the token is being deleted.                                                                                     |
+
+Which will provide this response.
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "payerOwnedTokens": {
+        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
+        "payerReference": "{payerReference}",
+        "tokens": [
+            {
+                "token": "{paymentToken}",
+                "tokenType": "Payment",
+                "instrument": "Invoice-payexfinancingno",
+                "instrumentDisplayName": "260267*****",
+                "instrumentParameters": {
+                    "email": "hei@hei.no",
+                    "msisdn": "+4798765432",
+                    "zipCode": "1642"
+                }
+            },
+            {
+                "token": "{paymentToken}",
+                "tokenType": "Unscheduled",
+                "instrument": "CreditCard",
+                "instrumentDisplayName": "492500******0004",
+                "instrumentParameters": {
+                    "expiryDate": "12/2020",
+                    "cardBrand": "Visa"
+                }
+            }
+        ]
+    }
+}
+```
+
+{:.table .table-striped}
+| Field                    | Type         | Description    |
+| :----------------------- | :----------- | :------------------- |
+| └➔&nbsp;`payerOwnedTokens`                    | `object`     | The `payerOwnedTokens` object containing information about the payer relevant for the payment order.       |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                   |
+| └─➔&nbsp;`payerReference`                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                  |
+| └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                           |
+| └─➔&nbsp;`token`  | `string`   | The token `guid`. |
+| └─➔&nbsp;`tokenType`  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| └➔&nbsp;`instrument`             | `string`     | Payment instrument connected to the token. |
+| └➔&nbsp;`instrumentDisplayName`             | `string`     | Payment instrument connected to the token.|
+| └➔&nbsp;`instrumentParameters`             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+
+It is also possible to [delete a single token][delete-tokens] if you wish to do
+that.
+
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [completeurl]: {{ features_url }}/technical-reference/complete-url
@@ -413,5 +597,6 @@ Content-Type: application/json
 [payment-url]: {{ features_url }}/technical-reference/payment-url
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [recur]: {{ features_url }}/optional/recur
+[tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [instrument-mode]: {{ features_url }}/optional/instrument-mode
