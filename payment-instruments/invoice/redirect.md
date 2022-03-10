@@ -6,8 +6,8 @@ menu_order: 500
 ---
 
 {% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
-Seamless View Invoice is about to be phased out. This section is only for
-merchants who currently have a contract with this integration." %}
+Redirect Invoice is about to be phased out. This section is only for merchants
+who currently have a contract with this integration." %}
 
 ## Introduction
 
