@@ -405,7 +405,8 @@ Content-Type: application/json
 It is possible to query for all active payment tokens registered on a specific
 `payerReference`. After doing so, you can either remove all tokens or a subset
 of the tokens registered on the payer. This is the easiest way of cleaning up
-all data for **Payments Only** implementations.
+all data for **Payments Only** implementations. It is also possible to [delete a
+single token][delete-tokens] if you wish to do that.
 
 Querying with a `GET` request will give you a response containing all tokens and
 the operation(s) available for them.
@@ -424,6 +425,9 @@ Content-Type: application/json
 **Response**
 
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 {
   "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
@@ -586,9 +590,6 @@ Content-Type: application/json
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument connected to the token. |
 | └➔&nbsp;`instrumentDisplayName`             | `string`     | Payment instrument connected to the token.|
 | └➔&nbsp;`instrumentParameters`             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
-
-It is also possible to [delete a single token][delete-tokens] if you wish to do
-that.
 
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
