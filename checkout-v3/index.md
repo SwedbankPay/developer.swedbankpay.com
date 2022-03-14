@@ -106,9 +106,9 @@ of payment instruments and features to cater for your business needs.
 
 ## Full Checkout
 
-From the **Full Checkout**, you will get access to a number of payment instruments.
-selected to support the needs of the local market. We help you collect and
-safely store the payer's data. And if the payer agrees, we will store
+With the **Full Checkout**, you will get access to a number of payment
+instruments. selected to support the needs of the local market. We help you
+collect and safely store the payer's data. If the payer agrees, we will store
 their information to have it prefilled the next time they shop.
 {:.heading-line}
 {% endcapture %}
@@ -179,9 +179,14 @@ full range of payment instruments.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="If you can collect, verify and store your payer data, and if needed -
+  text="If you can collect, verify and store your payer data*, and if needed -
   the delivery address - this is the option for you. With our PSP you can decide
-  if you want to offer a single payment instrument or the full payment offering."
+  if you want to offer a single payment instrument or the full payment offering.
+
+  *We will store the **card** data for you, but you will keep the ownership.
+   This means that you will have to facilitate removal of data in accordance
+   with GDPR requirements, but won't have to worry about handling sensitive card
+   data."
   table_content=page.table_content_payments
   header=page.header
   button_type='secondary'
