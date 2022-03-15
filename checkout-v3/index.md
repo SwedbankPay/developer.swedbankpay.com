@@ -75,23 +75,23 @@ table_content_payments:
 ## Choose The Right Implementation For Your Business
 
 The customer journey varies a lot depending on your business vertical. For
-example, if you're selling physical goods - like clothes, shoes, computers,
-etc., you need to collect a delivery address. Unlike if you were selling digital
-goods, where that isn't needed. But this is also a matter of which data you can
-and/or wish to collect and manage yourself.
+example, if you're selling physical goods - like clothes, shoes or computers,
+you need to collect a delivery address. Unlike if you are selling digital goods,
+where that isn't needed. But this is also a matter of which data you can and/or
+wish to collect and manage yourself.
 
-Here, you can choose between two main
-paths. Either you let us provide you with a full checkout solution (including
-both payer identification and payment menu) - meaning the payer themselves can
-choose how they'd like to pay. Or, you can decide to use the option for payments
-only. This means that you are in charge of collecting and storing the payer
-data and the payment instruments to be presented.
+Here, you can choose between two main paths. Either you let us provide you with
+a **Full Checkout** solution (including both payer identification and payment
+menu) - meaning the payer themselves can choose how they'd like to pay, or you
+can decide to use the **Payments Only** option. This means that you are in
+charge of collecting and storing the payer data and the payment instruments to
+be presented.
 
-Regardless of whether you choose
-to go with the full checkout or payments only, we will supply you with a variety
-of payment instruments and features to cater for your business needs.
+Regardless of whether you choose to go with the full checkout or payments only,
+we will supply you with a variety of payment instruments and features which
+cater to your business needs.
 
--   **Authentication:** The process for verifying the payers identity.
+-   **Authentication:** The process of verifying the payer's identity.
 
 -   **Delivery Info:** Information about where the goods should be delivered.
 
@@ -106,9 +106,9 @@ of payment instruments and features to cater for your business needs.
 
 ## Full Checkout
 
-From the **Full Checkout**, you will get access to a number of payment instruments.
-selected to support the needs of the local market. We help you collect and
-safely store the payer's data. And if the payer agrees, we will store
+With the **Full Checkout**, you will get access to a number of payment
+instruments. selected to support the needs of the local market. We help you
+collect and safely store the payer's data. If the payer agrees, we will store
 their information to have it prefilled the next time they shop.
 {:.heading-line}
 {% endcapture %}
@@ -139,7 +139,7 @@ their information to have it prefilled the next time they shop.
   text="On the next level on your growth journey, looking for someone to
   authenticate and store the payer data you collected? We've got you covered, so the
 payer won't have to fill out their information twice. Simply
-  everything needed for growing your business. "
+  everything needed for growing your business."
   table_content=page.table_content_business
   header=page.header
   button_type='secondary'
@@ -179,9 +179,14 @@ full range of payment instruments.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="If you can collect, verify and store your payer data, and if needed -
+  text="If you can collect, verify and store your payer data*, and if needed -
   the delivery address - this is the option for you. With our PSP you can decide
-  if you want to offer a single payment instrument or the full payment offering."
+  if you want to offer a single payment instrument or the full payment offering.
+
+  *We will store the **card** data for you, but you will keep the ownership.
+   This means that you will have to facilitate removal of data in accordance
+   with GDPR requirements, but won't have to worry about handling sensitive card
+   data."
   table_content=page.table_content_payments
   header=page.header
   button_type='secondary'
