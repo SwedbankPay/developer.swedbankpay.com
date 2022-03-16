@@ -1465,16 +1465,6 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
@@ -1746,13 +1736,13 @@
           <a href="/checkout-v3/sequence-diagrams">Sequence Diagrams</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-seamless-view">Business Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-redirect">Enterprise Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-seamless-view">Enterprise Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-redirect">Payments Only Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-seamless-view">Payments Only Seamless View</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
         
       </ul>
       </li>
@@ -5239,7 +5229,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
@@ -5473,6 +5464,33 @@ this very documentation, not to a version of any APIs described by it.</p>
     
     
 </div>
+      <h2 id="16-march-2022">
+        
+        
+          16 March 2022 <a href="#16-march-2022" class="header-anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="version-302">
+        
+        
+          Version 3.0.2 <a href="#version-302" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Typos and minor bug fixes in code examples and tables.</li>
+  <li>Re-wrote <a href="/checkout-v3/payments-only/features/optional/payer-aware-payment-menu">Payer Aware Payment Menu</a>
+</li>
+  <li>Clarified <a href="/checkout-v3/starter/features/technical-reference/seamless-view-events#onaborted"><code class="language-html highlighter-rouge">OnAborted</code> Seamless View event</a>
+</li>
+  <li>Elaborated user agent fields in requests.</li>
+  <li>Added links to resource models in <a href="/checkout-v3/enterprise/seamless-view#step-1-create-payment-order">Checkout v3 response tables</a>
+</li>
+</ul>
+    
       <h2 id="24-february-2022">
         
         
@@ -5530,7 +5548,7 @@ quickly.</li>
   <li>Want to see the new implementations in action? Head over to the
 <a href="https://ecom.externalintegration.payex.com/pspdemoshop">demoshop</a>.</li>
   <li>We’ve put the <a href="/checkout-v3/sequence-diagrams">sequence diagrams</a> in a separate section.</li>
-  <li>The <a href="/checkout-v3/starter/features/technical-reference//seamless-view-events">Seamless View events</a> have been re-worked to make
+  <li>The <a href="/checkout-v3/starter/features/technical-reference/seamless-view-events">Seamless View events</a> have been re-worked to make
 the integration smoother for you.</li>
   <li>Renamed and gathered the Post Purchase options on one page. The rest of the
 features are still where they used to be.</li>
@@ -5787,7 +5805,7 @@ still available in the sidebar and <a href="/checkout-v2/">here</a>.</li>
   <li>Added section regarding <a href="/payment-instruments/card/features/optional/moto">MOTO</a> in Card Other Features.</li>
   <li>Deleted Merchant Identified Payer in <a href="/checkout-v2/">Checkout</a>.</li>
   <li>Renamed Merchant Authenticated Consumer to
-<a href="/checkout-v2/features/optional/mac">Delegated Strong Consumer Authentication</a>.</li>
+<a href="/checkout-v2/features/optional/mac">Delegated Strong Customer Authentication</a>.</li>
   <li>Updated <code class="language-html highlighter-rouge">payer</code>/<code class="language-html highlighter-rouge">consumer</code>/<code class="language-html highlighter-rouge">end-user</code> naming for most sections.</li>
   <li>Updated expiry date for test cards in <a href="/resources/test-data">test data</a>.</li>
   <li>Updated <a href="/checkout-v2/features/technical-reference/callback">callback</a> documentation.</li>
@@ -6122,7 +6140,7 @@ and <a href="/payment-instruments/swish">Swish Payments</a>.</li>
   <li>Bug fixes to Mermaid diagram and alert styling, plus improvements to code
 block styling after the update to <a href="https://design.swedbankpay.com/">Swedbank Pay Design Guide</a>
 4.5.0.</li>
-  <li>Added examples with screenshots of the effects of <a href="/checkout-v2/features/optional/mac">Delegated Strong Consumer
+  <li>Added examples with screenshots of the effects of <a href="/checkout-v2/features/optional/mac">Delegated Strong Customer
 Authentication</a>.</li>
 </ul>
     
@@ -6144,7 +6162,7 @@ relevant payments.</li>
   <li>Updated <a href="/payment-instruments/card/direct">Card Payments Direct</a> to have a correct integration
 flow.</li>
   <li>Updated the <a href="https://developer.swedbankpay.com/">main page</a> to be more welcoming.</li>
-  <li>Updated information on <a href="/checkout-v2/features/optional/mac">Delegated Strong Consumer Authentication</a>.</li>
+  <li>Updated information on <a href="/checkout-v2/features/optional/mac">Delegated Strong Customer Authentication</a>.</li>
 </ul>
     
       <h2 id="31-mar-2020">

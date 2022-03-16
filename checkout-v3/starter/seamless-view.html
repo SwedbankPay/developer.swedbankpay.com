@@ -1465,16 +1465,6 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
@@ -1746,13 +1736,13 @@
           <a href="/checkout-v3/sequence-diagrams">Sequence Diagrams</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-seamless-view">Business Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-redirect">Enterprise Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-seamless-view">Enterprise Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-redirect">Payments Only Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-seamless-view">Payments Only Seamless View</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
         
       </ul>
       </li>
@@ -5239,7 +5229,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
@@ -5670,6 +5661,10 @@ used in requests towards Swedbank Pay.</p>
 88
 89
 90
+91
+92
+93
+94
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
@@ -5707,6 +5702,10 @@ used in requests towards Swedbank Pay.</p>
             </span><span class="nl">"digitalProducts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"shippingAddressRestrictedToCountryCodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"NO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"US"</span><span class="w"> </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"swish"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"paymentRestrictedToAgeLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"paymentRestrictedToSocialSecurityNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"199710202392"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
         </span><span class="nl">"orderItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P1"</span><span class="p">,</span><span class="w">
@@ -5827,7 +5826,7 @@ used in requests towards Swedbank Pay.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">userAgent</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The user agent of the payer.</td>
+      <td style="text-align: left">The <a href="/introduction#user-agent">user agent</a> of the payer. Should typically be set to the value of the <code class="language-html highlighter-rouge">User-Agent</code> header sent by the payer’s web browser.</td>
       <td> </td>
     </tr>
     <tr>
@@ -5986,6 +5985,30 @@ used in requests towards Swedbank Pay.</p>
       <td style="text-align: left"><code class="language-html highlighter-rouge">requireConsumerInfo</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">Must be set to <code class="language-html highlighter-rouge">true</code> by merchants using Starter, as they receive profile information from Swedbank Pay. This applies both when the merchant needs <code class="language-html highlighter-rouge">email</code> and/or <code class="language-html highlighter-rouge">msisdn</code> for digital goods, and when full shipping address is needed.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">swish</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">An object that holds different scenarios for Swish payments.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">paymentRestrictedToAgeLimit</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">paymentRestrictedToSocialSecurityNumber</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6342,7 +6365,7 @@ used in requests towards Swedbank Pay.</p>
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostmanRuntime/3.0.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swedbankpay-sdk-dotnet/3.0.1"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"availableInstruments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
@@ -6476,7 +6499,7 @@ used in requests towards Swedbank Pay.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">initiatingSystemUserAgent</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The <code class="language-html highlighter-rouge">userAgent</code> of the system used when the merchant makes a call towards the resource.</td>
+      <td style="text-align: left">The <a href="/introduction#user-agent">user agent</a> of the HTTP client making the request, reflecting the value sent in the <code class="language-html highlighter-rouge">User-Agent</code> header with the initial <code class="language-html highlighter-rouge">POST</code> request which created the Payment Order.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">language</code>
@@ -6531,49 +6554,49 @@ used in requests towards Swedbank Pay.</p>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">history</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">history</code> resource where information about the payment’s history can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">history</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#history">resource</a> where information about the payment’s history can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">failed</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">failed</code> resource where information about the failed transactions can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">failed</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#failed">resource</a> where information about the failed transactions can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">aborted</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">aborted</code> resource where information about the aborted transactions can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">aborted</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#aborted">resource</a> where information about the aborted transactions can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">paid</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">paid</code> resource where information about the paid transactions can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">paid</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#paid">resource</a> where information about the paid transactions can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">cancelled</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">cancelled</code> resource where information about the cancelled transactions can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">cancelled</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#cancelled">resource</a> where information about the cancelled transactions can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">financialTransactions</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">financialTransactions</code> resource where information about the financial transactions can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">financialTransactions</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#financialtransactions">resource</a> where information about the financial transactions can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">failedAttempts</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">failedAttempts</code> resource where information about the failed attempts can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">failedAttempts</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#failedattempts">resource</a> where information about the failed attempts can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">metadata</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">metadata</code> resource where information about the metadata can be retrieved.</td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">metadata</code> <a href="/checkout-v3/starter/features/technical-reference/resource-sub-models#metadata">resource</a> where information about the metadata can be retrieved.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operations</code>

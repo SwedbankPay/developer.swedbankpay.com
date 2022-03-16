@@ -1465,16 +1465,6 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
@@ -1746,13 +1736,13 @@
           <a href="/checkout-v3/sequence-diagrams">Sequence Diagrams</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-seamless-view">Business Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-redirect">Enterprise Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-seamless-view">Enterprise Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-redirect">Payments Only Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-seamless-view">Payments Only Seamless View</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
         
       </ul>
       </li>
@@ -5239,7 +5229,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
@@ -5461,19 +5452,18 @@ own consumer authentication, but don´t want to store the consumer information.<
 <div class="doc-container normal-padding max-width">
     <article>
         
-            <p><strong>Enterprise</strong> is the option if you have a strong consumer
-authentication login and collect consumer information yourself, so you don’t
-need payer information from us to calculate shipping costs. We store the
-consumer information for you and offer the full range of available payment
-methods.</p>
+            <p><strong>Enterprise</strong> is the option if you have a strong customer authentication login
+and collect consumer information yourself, so you don’t need payer information
+from us to calculate shipping costs. We store the consumer information for you
+and offer the full range of available payment methods.</p>
 
-<p>There are two ways of integrating the <strong>Enterprise</strong>
-implementation. <strong>Redirect</strong> and <strong>Seamless View</strong>.</p>
+<p>There are two ways of integrating the <strong>Enterprise</strong> implementation.
+<strong>Redirect</strong> and <strong>Seamless View</strong>.</p>
 
 <p>With <strong>Redirect</strong>, the payer is sent to a Swedbank Pay page, where we handle the
-authentication and purchase process. The payer is redirected back to you
-when the purchase is completed or if the payer aborts the purchase. The
-purchase page will be styled by Swedbank Pay.</p>
+authentication and purchase process. The payer is redirected back to you when
+the purchase is completed or if the payer aborts the purchase. The purchase page
+will be styled by Swedbank Pay.</p>
 
 <p>With <strong>Seamless View</strong>, the payer stays at your site, and you initiate the
 Swedbank Pay purchase module in an iframe. The purchase component will be styled

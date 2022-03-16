@@ -1465,16 +1465,6 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference">Enterprise PayerReference</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/enterprise-payer-reference#enterprise-payerreference">Enterprise PayerReference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
@@ -1746,13 +1736,13 @@
           <a href="/checkout-v3/sequence-diagrams">Sequence Diagrams</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-redirect">Business Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#business-seamless-view">Business Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-redirect">Enterprise Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#enterprise-seamless-view">Enterprise Seamless View</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-redirect">Payments Only Redirect</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#payments-only-seamless-view">Payments Only Seamless View</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/sequence-diagrams#starter-seamless-view">Starter Seamless View</a></li>
         
       </ul>
       </li>
@@ -5239,7 +5229,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-october-2021">15 October 2021</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#03-august-2021">03 August 2021</a></li>
@@ -5468,12 +5459,12 @@
         
       </h2>
 
-<p>If a merchant wants to use the <strong>Enterprise</strong> or <strong>Payments Only</strong>
-implementation, but does not have the payer’s SSN or a secure login, they can
-add a <code class="language-html highlighter-rouge">payerReference</code> in the <code class="language-html highlighter-rouge">payer</code> field of the payment request.</p>
+<p>If a merchant wants to use the <strong>Enterprise</strong> implementation and has a secure
+login, but doesn’t store the payer’s SSN, they can add a <code class="language-html highlighter-rouge">payerReference</code> in the
+<code class="language-html highlighter-rouge">payer</code> field of the payment request.</p>
 
 <p>If the <code class="language-html highlighter-rouge">payerReference</code> is present along with <code class="language-html highlighter-rouge">email</code> and <code class="language-html highlighter-rouge">msisdn</code>, the merchant
-does not need to add a <code class="language-html highlighter-rouge">nationalIdentifier</code>. Other than that, it is the same as
+doesn’t need to add a <code class="language-html highlighter-rouge">nationalIdentifier</code>. Other than that, it is the same as
 a regular <a href="/checkout-v3/enterprise/redirect#step-1-create-payment-order">Redirect</a> or <a href="/checkout-v3/enterprise/seamless-view#step-1-create-payment-order">Seamless
 View</a> request using the <strong>Enterprise</strong> implementation.</p>
 
