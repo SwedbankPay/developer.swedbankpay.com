@@ -48,6 +48,10 @@ Content-Type: application/json
             "workPhoneNumber" : "+4787654321",
             "homePhoneNumber" : "+4776543210"{% endif %}
         },
+        "swish": {
+            "paymentRestrictedToAgeLimit": 18,
+            "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
+            },
         "orderItems": [
             {
                 "reference": "P1",
@@ -129,7 +133,7 @@ Content-Type: application/json
             "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
         },
         "description": "test description",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
         "urls": {
@@ -205,7 +209,7 @@ Content-Type: application/json
 {% endif -%}
 |                  | └➔&nbsp;`generateRecurrenceToken`  | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ features_url }}/optional/recur) – with the same token – through server-to-server calls. Default value is `false`.                                               |
 |                  | └➔&nbsp;`generateUnscheduledToken` | `bool`       | Determines if an unscheduled token should be generated. An unscheduled token is primarily used to enable future [unscheduled payments]({{ features_url }}/optional/unscheduled) – with the same token – through server-to-server calls. Default value is `false`.                                                  |
-| {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
+| {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
@@ -230,6 +234,9 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`msisdn`                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).            |
 |                  | └─➔&nbsp;`workPhoneNumber`         | `string`     | The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).                                                                                                                                     |
 |                  | └─➔&nbsp;`homePhoneNumber`         | `string`     | The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).                                                                                                                                     |
+|                  | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
+|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
+|                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`reference`               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`name`                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -266,7 +273,7 @@ Content-Type: application/json
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                            |
+| └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                            |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
 | └➔&nbsp;`urls`           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
 | └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                          |
@@ -283,4 +290,3 @@ Content-Type: application/json
 [operations]: /{{ documentation_section }}/features/technical-reference/operations
 [settlement-reconciliation]: /{{ documentation_section }}/features/core/settlement-reconciliation
 [split-settlement]: {{ documentation_section }}/features/core/settlement-reconciliation#split-settlement
-[user-agent]: https://en.wikipedia.org/wiki/User_agent

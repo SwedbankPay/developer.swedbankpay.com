@@ -106,7 +106,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`         | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |  |
 | {% icon check %} | └➔&nbsp;`description`        | `string(40)`  | {% include field-description-description.md %}                                                                                                                                                                                                                       |
 |                  | └➔&nbsp;`payeeName`          | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                      |
-| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
@@ -149,7 +149,7 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -313,7 +313,7 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "prices": {
@@ -370,7 +370,7 @@ Content-Type: application/json
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                                                                                                                               |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                           |
 | └➔&nbsp;`urls`           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | The URL to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
@@ -430,5 +430,4 @@ next_href="redirect" next_title="Redirect" %}
 
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [callback-url]: /payment-instruments/swish/features/technical-reference/callback
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [purchase]: /payment-instruments/swish/direct#m-commerce-purchase-flow

@@ -5,7 +5,7 @@ are possible, the state will be `awaitingActivity`.
 {%- endcapture -%}
 {{- text | strip_newlines -}}
 {%- comment -%}
-The dashes in the Liquid code tags remove output whitespace. More on that here:
+The dashes in the Liquid code tags remove output space. More on that here:
 
 <https://shopify.github.io/liquid/basics/whitespace/>
 

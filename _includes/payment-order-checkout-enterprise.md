@@ -80,6 +80,10 @@ Content-Type: application/json
                 "suspiciousAccountActivity": "01",
             }
         },
+        "swish": {
+            "paymentRestrictedToAgeLimit": 18,
+            "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
+            },
         "orderItems": [
             {
                 "reference": "P1",
@@ -145,7 +149,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                       |
 | {% icon check %} | └➔&nbsp;`vatAmount`                | `integer`    | {% include field-description-vatamount.md %}                    |
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                               |
-| {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | The user agent of the payer.                                                                                                                                                                                                                                                                             |
+| {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
@@ -196,6 +200,9 @@ Content-Type: application/json
 | | └─➔&nbsp;`shippingAddressUsageIndicator` | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
 | | └─➔&nbsp;`shippingNameIndicator` | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
 | | └─➔&nbsp;`suspiciousAccountActivity` | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
+|                  | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
+|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
+|                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`reference`               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`name`                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -233,7 +240,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
           "CreditCard",
@@ -320,9 +327,9 @@ Content-Type: application/json
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
-| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource. Should be set by the system itself.                                                                                                                                                          |
+| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include field-description-initiating-system-user-agent.md %}                                                                                                                                                          |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
-| └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for the payment.                                                                                                                                                   |
 | └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |

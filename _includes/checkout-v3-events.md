@@ -21,12 +21,14 @@ to the event handler you are overriding." %}
 
 ### `OnAborted`
 
-This event triggers when the payer clicks "Abort" on the redirect page link in
-the Payment Menu.
-
-Subscribe to this event if an action is required before the payer is redirected
-to the `CancelUrl`. Swedbank Pay returns the url sent in as `cancelUrl` in the
-`paymentOrder` request.
+This event triggers when the payer aborts the purchase from the payment menu. As
+the Seamless View payment menu doesn't have a cancel button (present in the
+Redirect integration), you need to provide this button for the payer at your
+end. When the payer presses the cancel button, we recommend sending an API
+request aborting the payment so it can't be completed at a later time. When we
+receive the request, an abort event will be raised the next time the UI fetches
+information from the server. Because of that, you should also refresh after
+aborting, as this will trigger the event.
 
 It will be raised with the following event argument object:
 

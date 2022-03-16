@@ -8,6 +8,10 @@ description: |
 menu_order: 600
 ---
 
+{% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
+Seamless View Invoice is about to be phased out. This section is only for
+merchants who currently have a contract with this integration." %}
+
 ## Introduction
 
 Seamless View provides an integration of the payment process directly on your
@@ -102,7 +106,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md %}                                                                                                                                                                                                                                                                 |
 |                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                                                                           |
+| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The`urls`resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                     |
@@ -143,7 +147,7 @@ Content-Type: application/json
         },
         "amount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -299,4 +303,3 @@ next_href="direct" next_title="Direct" %}
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
 [price-resource]: /payment-instruments/invoice/features/technical-reference/prices
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
