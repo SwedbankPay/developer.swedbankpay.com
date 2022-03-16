@@ -114,7 +114,7 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls" : { "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls" },
@@ -176,7 +176,7 @@ Content-Type: application/json
 | └➔&nbsp;`remainingCancelAmount`   | `integer`    | The available amount to cancel.                                                                                                                                                                                                                                                                                                                            |
 | └➔&nbsp;`remainingReversalAmount` | `integer`    | The available amount to reverse.                                                                                                                                                                                                                                                                                                                           |
 | └➔&nbsp;`description`             | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                                                                                                         |
-| └➔&nbsp;`userAgent`               | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`userAgent`               | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`                | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`                    | `string`     | The URL to the urls resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`               | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                 |
@@ -190,5 +190,3 @@ The response given when changing a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource, as displayed above. Even though
 the fields are the same, the `UpdateOrder` request will overwrite the fields
 that were sent in the initial `Purchase` request.
-
-[user-agent]: https://en.wikipedia.org/wiki/User_agent

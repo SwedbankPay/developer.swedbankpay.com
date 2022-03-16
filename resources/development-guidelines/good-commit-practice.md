@@ -33,7 +33,7 @@ can act as the stick.
 In other words, when reviewing a change, do not simply look at the correctness
 of the code. Review the commit message itself and request improvements to its
 content. Look out for commits which are mixing multiple logical changes and
-require the submitter to split them into separate commits. Ensure whitespace
+require the submitter to split them into separate commits. Ensure space
 changes are not mixed in with functional changes. Ensure no-op code
 refactoring is done separately from functional changes. And so on.
 
@@ -68,7 +68,7 @@ to avoid:
 
 ### Mixing formatting changes with functional code changes
 
-The formatting (code style, whitespace, etc.) changes will obscure the
+The formatting (code style, space, etc.) changes will obscure the
 important functional changes, making it harder for a reviewer to correctly
 determine whether the change is correct.
 **Solution**: Create 2 commits, one with the formatting changes and one with
@@ -294,7 +294,7 @@ commit message should be totally self-contained, to maintain that benefit.
 
 What is self-evident to one person, might be clear as mud to another person.
 Always document what the original problem was and how it is being fixed, for
-any change except the most obvious typos, or whitespace only commits.
+any change except the most obvious typos, or space only commits.
 
 ### Describe *why* a change is being made
 

@@ -94,7 +94,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md %}                                                                                                                                                                                                                       |
 |                  | └➔&nbsp;`generatePaymentToken`    | `boolean`     | `true` or `false`. Set this to `true` if you want to create a paymentToken for future use as One Click.                                                                                                                                                                                            |
 |                  | └➔&nbsp;`generateRecurrenceToken` | `boolean`     | `true` or `false`. Set this to `true` if you want to create a recurrenceToken for future use Recurring purchases (subscription payments).                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
@@ -135,7 +135,7 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Vipps Test",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0 weeeeee",
         "language": "nb-NO",
         "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
@@ -318,6 +318,5 @@ sequenceDiagram
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [create-payment]: /payment-instruments/vipps/features/technical-reference/create-payment
 [price-resource]: /payment-instruments/vipps/features/technical-reference/prices
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png
 [vipps-screenshot-1]: /assets/img/payments/vipps-seamless-view.png

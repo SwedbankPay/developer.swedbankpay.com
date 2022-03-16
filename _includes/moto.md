@@ -94,7 +94,7 @@ Content-Type: application/json
         },
         "amount": 0,
         "description": "Test Moto",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.26.10",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {

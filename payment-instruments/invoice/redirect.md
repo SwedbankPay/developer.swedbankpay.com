@@ -5,6 +5,10 @@ estimated_read: 7
 menu_order: 500
 ---
 
+{% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
+Redirect Invoice is about to be phased out. This section is only for merchants
+who currently have a contract with this integration." %}
+
 ## Introduction
 
 *   When properly set up in your merchant/webshop site and the payer starts the
@@ -106,7 +110,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                 | `integer`     | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`vatAmount`              | `integer`     | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                                          |
 | {% icon check %} | └➔&nbsp;`description`             | `string(40)`  | {% include field-description-description.md %}                                                                                                                                                                                                                                        |
-| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`userAgent`               | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                  |
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
@@ -257,6 +261,5 @@ next_href="seamless-view" next_title="Seamless View" %}
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
-[user-agent]: https://en.wikipedia.org/wiki/User_agent
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [fincon-invoice-approve]: /assets/img/payments/fincon-invoice-redirect-second-en.png

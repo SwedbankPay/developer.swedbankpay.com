@@ -71,7 +71,7 @@ Content-Type: application/json
             "orderReference": "or-12456",
             "subsite": "MySubsite"
         },
-        "payer": {  
+        "payer": {
             "payerReference": "AB1234",
         }
     }
@@ -96,7 +96,7 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Test Verification",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "transactions": { "id": "{{ token_url }}/{{ page.payment_id }}/transactions" },

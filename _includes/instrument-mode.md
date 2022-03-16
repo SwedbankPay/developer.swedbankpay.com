@@ -4,6 +4,12 @@ endcapture %}
 
 ## Instrument Mode
 
+{% unless documentation_section contains "checkout-v3/payments-only" %}
+
+{% include alert-agreement-required.md %}
+
+{% endunless %}
+
 With "Instrument Mode", the Payment Menu will display only one specific payment
 instrument instead of all those configured on your merchant account. The
 `PaymentOrder` resource works just like it otherwise would, allowing you to
@@ -26,16 +32,6 @@ agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
 payer chooses either of these instruments, you should add the `instrument`
 parameter with the specific payment instrument.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
 {:.code-view-header}
 **Request**
 
@@ -153,7 +149,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
             "CreditCard",
@@ -259,7 +255,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Testing - Stage",
-        "initiatingSystemUserAgent": "Mozilla/5.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
         "instrument": "CreditCard",

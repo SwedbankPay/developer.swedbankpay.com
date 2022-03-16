@@ -77,7 +77,7 @@ Content-Type: application/json
     "remainingCancellationAmount": 1500,
     "remainingReversalAmount": 0,
     "description": "Test Recurrence",
-    "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+    "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
     "paymentToken": "{{ page.payment_id }}",

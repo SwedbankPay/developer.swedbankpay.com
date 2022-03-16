@@ -14,7 +14,7 @@ hide_from_sidebar: true
           title='Get to know Checkout v3'
           no_icon=true
           button_content='Get started'
-          text='All businesses have their own unique needs. Which is why we have made it possible for you to adapt to a variety of those needs, using only one integration. To help you get started we have made four implementation options to choose among. In that way you can utilize your checkin in just a few configurations, or switch into any other of our stand alone payment methods - if that suits you better. Intrigued yet? Let’s find out more!'
+          text='All businesses have their own unique needs. Which is why we have made it possible for you to adapt to a variety of those needs, using only one integration. To help you get started we have made four implementation options to choose from. In that way you can utilize your checkin in just a few configurations, or switch into any other of our stand alone payment methods - if that suits you better. Intrigued yet? Let’s find out more!'
           button_type='primary'
           button_alignment='align-self-end'
           to='/checkout-v3/'
@@ -25,7 +25,7 @@ hide_from_sidebar: true
           title='Want to try it yourself?'
           no_icon=true
           button_content='Visit our Demoshop'
-          text='Experience what it would be like to pay as a costumer of yours in our demoshop.'
+          text='Experience what it would be like to pay as a customer of yours in our demoshop.'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true
