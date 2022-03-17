@@ -296,7 +296,7 @@ made a `capture` request." %}
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="direct" next_title="Direct" %}
 
-[callback]: /payment-instruments/invoice/features/technical-reference/callback
+[callback]: /payment-instruments/invoice/features/core/callback
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url

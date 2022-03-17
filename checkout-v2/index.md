@@ -245,5 +245,5 @@ TODO: Number each important step in the above diagram and create a numbered list
                          next_title="Implement Checkin" %}
 
 [after-payment-capture]: /checkout-v2/capture
-[callback]: /checkout-v2/features/technical-reference/callback
+[callback]: /checkout-v2/features/core/callback
 [https]: /introduction#connection-and-protocol

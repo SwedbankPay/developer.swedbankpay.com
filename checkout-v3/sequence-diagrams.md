@@ -670,10 +670,10 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/payments-only/seamless-view"
                          prev_title="Back to Payments Only Seamless View" %}
 
-[callback]: /checkout-v3/business/features/technical-reference/callback
-[enterprise-callback]: /checkout-v3/enterprise/features/technical-reference/callback
-[payments-callback]: /checkout-v3/payments-only/features/technical-reference/callback
-[starter-callback]: /checkout-v3/starter/features/technical-reference/callback
+[callback]: /checkout-v3/business/features/core/callback
+[enterprise-callback]: /checkout-v3/enterprise/features/core/callback
+[payments-callback]: /checkout-v3/payments-only/features/core/callback
+[starter-callback]: /checkout-v3/starter/features/core/callback
 [seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
 [enterprise-seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events
 [payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events

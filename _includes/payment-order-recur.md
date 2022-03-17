@@ -130,5 +130,5 @@ Content-Type: application/json
 
 <!--lint disable final-definition -->
 
-[technical-reference-callback]: {{ features_url }}/technical-reference/callback
+[technical-reference-callback]: {{ features_url }}/core/callback
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation

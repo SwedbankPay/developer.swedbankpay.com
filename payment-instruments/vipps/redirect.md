@@ -385,7 +385,7 @@ purchased products) have to make a [Capture][capture] or
                          next_href="seamless-view"
                          next_title="Seamless view" %}
 
-[callback]: /payment-instruments/vipps/features/technical-reference/callback
+[callback]: /payment-instruments/vipps/features/core/callback
 [cancel]: /payment-instruments/vipps/features/core/cancel
 [capture]: /payment-instruments/vipps/after-payment#captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url

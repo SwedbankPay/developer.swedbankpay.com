@@ -339,7 +339,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`                   | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-[callback]: {{ features_url }}/technical-reference/callback
+[callback]: {{ features_url }}/core/callback
 [complete-url]: {{ features_url }}/technical-reference/complete-url
 [3ds2]: {{ features_url }}/core/3d-secure-2
 [one-click-payments]: {{ features_url }}/optional/one-click-payments

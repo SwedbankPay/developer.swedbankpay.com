@@ -382,7 +382,7 @@ sequenceDiagram
                          next_href="seamless-view"
                          next_title="Seamless View" %}
 
-[callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
+[callback]: /payment-instruments/mobile-pay/features/core/callback
 [complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
 [mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
