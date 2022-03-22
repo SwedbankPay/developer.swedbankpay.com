@@ -24,3 +24,4 @@
     {%- endcase -%}
 {%- endcapture -%}
 {{ api_resource | strip_newlines | strip -}}
+
