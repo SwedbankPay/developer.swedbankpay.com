@@ -11,6 +11,16 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 16 March 2022
+
+### Version 3.0.2
+
+*   Typos and minor bug fixes in code examples and tables.
+*   Re-wrote [Payer Aware Payment Menu][payer-aware-payment-menu]
+*   Clarified [`OnAborted` Seamless View event][seamless-view-events-onaborted]
+*   Elaborated user agent fields in requests.
+*   Added links to resource models in [Checkout v3 response tables][checkout-create-starter-paymentorder]
+
 ## 24 February 2022
 
 ### Version 3.0.1
@@ -150,7 +160,7 @@ Other changes:
 *   Added section regarding [MOTO][moto-payment-card] in Card Other Features.
 *   Deleted Merchant Identified Payer in [Checkout][checkout].
 *   Renamed Merchant Authenticated Consumer to
-    [Delegated Strong Consumer Authentication][mac].
+    [Delegated Strong Customer Authentication][mac].
 *   Updated `payer`/`consumer`/`end-user` naming for most sections.
 *   Updated expiry date for test cards in [test data][test-data].
 *   Updated [callback][checkout-callback] documentation.
@@ -293,7 +303,7 @@ Other changes:
 *   Bug fixes to Mermaid diagram and alert styling, plus improvements to code
     block styling after the update to [Swedbank Pay Design Guide][design-guide]
     4.5.0.
-*   Added examples with screenshots of the effects of [Delegated Strong Consumer
+*   Added examples with screenshots of the effects of [Delegated Strong Customer
     Authentication][mac-checkout].
 
 ### Version 1.8.2
@@ -306,7 +316,7 @@ Other changes:
 *   Updated [Card Payments Direct][card-direct] to have a correct integration
     flow.
 *   Updated the [main page][frontpage] to be more welcoming.
-*   Updated information on [Delegated Strong Consumer Authentication][mac-checkout].
+*   Updated information on [Delegated Strong Customer Authentication][mac-checkout].
 
 ## 31 Mar 2020
 
@@ -629,6 +639,7 @@ integration and the payer.
 [checkout-payment-menu-frontend]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout-v2/payment-menu#request
 [checkout-payment-url]: /checkout-v2/features/technical-reference/payment-url
+[checkout-create-starter-paymentorder]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /checkout-v2/
 [checkout-v2]: /checkout-v2/
 [checkout-items]: /checkout-v2/features/technical-reference/items
@@ -679,7 +690,8 @@ integration and the payer.
 [swish-features]: /payment-instruments/swish/features
 [swish-redirect]: /payment-instruments/swish/redirect
 [swish-seamless-view]: /payment-instruments/swish/seamless-view
-[seamless-view-events]: /checkout-v3/starter/features/technical-reference//seamless-view-events
+[seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
+[seamless-view-events-onaborted]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /payment-instruments/card/features/technical-reference/seamless-view-events
 [sequence-diagrams]: /checkout-v3/sequence-diagrams
 [swish]: /payment-instruments/swish

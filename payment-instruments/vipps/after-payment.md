@@ -79,7 +79,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └─➔&nbsp;`amount`            | `integer`    | {% include field-description-amount.md currency="NOK" %}                                                                                                                                                                                                  |
 | {% icon check %}︎ | └─➔&nbsp;`vatAmount`         | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                                                                                                                                                                                               |
 | {% icon check %}︎ | └➔&nbsp;`description`        | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                              |
-| {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | The user agent reference of the payer's browser - [see user agent][user-agent]                                                                                                                                                                         |
+| {% icon check %}︎ | └➔&nbsp;`userAgent`          | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                         |
 | {% icon check %}︎ | └➔&nbsp;`language`           | `string`     | {% include field-description-language.md %}                                                                                                                                                                                          |
 | {% icon check %}︎ | └➔&nbsp;`urls`               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`          | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                       |
@@ -120,7 +120,7 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Vipps Test",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0 weeeeee",
         "language": "nb-NO",
         "prices": { "id": "/psp/vipps/payments/{{ page.payment_id }}/prices" },
@@ -338,4 +338,3 @@ Content-Type: application/json
 [paymenturl]: /payment-instruments/vipps/features/technical-reference/payment-url
 [prices]: /payment-instruments/vipps/features/technical-reference/prices
 [reverse]: #reversals
-[user-agent]: https://en.wikipedia.org/wiki/User_agent

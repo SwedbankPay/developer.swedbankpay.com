@@ -89,7 +89,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                         |
-| {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The [`User-Agent`string][user-agent] of the payer's web browser.                                                                                                                                                                                         |
+| {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`hosturls`              | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                |
@@ -130,7 +130,7 @@ Content-Type: application/json
         "currency": "DKK",
         "amount": 0,
         "description": "MobilePay Test",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "da-DK",
         "prices": { "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices" },
@@ -298,4 +298,3 @@ sequenceDiagram
 
 [callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
 [complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
-[user-agent]:  https://en.wikipedia.org/wiki/User_agent

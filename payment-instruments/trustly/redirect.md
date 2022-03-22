@@ -92,7 +92,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`        | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`vatAmount`     | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                                       |
 | {% icon check %} | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                                                                     |
-| {% icon check %} | └➔&nbsp;`userAgent`      | `string`     | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                                                               |
+| {% icon check %} | └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`           | `object`     | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`completeUrl`   | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
@@ -134,7 +134,7 @@ Content-Type: application/json
         "currency": "SEK",
         "amount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.25.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "prices": { "id": "/psp/trustly/payments/{{ page.payment_id }}/prices" },
@@ -228,4 +228,3 @@ next_href="seamless-view" next_title="Seamless View" %}
 [after-payment]: /payment-instruments/trustly/after-payment
 [callback]: /payment-instruments/trustly/features/technical-reference/callback
 [reversal]: /payment-instruments/trustly/features/core/reversal
-[user-agent]: https://en.wikipedia.org/wiki/User_agent

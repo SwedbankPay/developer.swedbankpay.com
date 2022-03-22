@@ -53,7 +53,7 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "{{ language }}",
         "prices": {
@@ -127,7 +127,7 @@ Content-Type: application/json
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
 | └➔&nbsp;`description`    | `string`     | {% include field-description-description.md %}                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                 |
@@ -208,5 +208,3 @@ for the given operation.
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 
 {% endcase %}
-
-[user-agent]: https://en.wikipedia.org/wiki/User_agent

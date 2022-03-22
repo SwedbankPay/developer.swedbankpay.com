@@ -194,7 +194,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [ "CreditCard" ],
         "implementation": "PaymentsOnly", { {% if include.integration_mode=="seamless-view" %}

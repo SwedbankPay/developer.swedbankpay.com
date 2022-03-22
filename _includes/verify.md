@@ -145,7 +145,7 @@ Content-Type: application/json
         "currency": "NOK",
         "amount": 0,
         "description": "Test Verification",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
         "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },

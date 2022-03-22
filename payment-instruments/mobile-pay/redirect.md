@@ -113,7 +113,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md currency="DKK" %}                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`feeAmount`            | `integer`    | If the amount given includes Fee, this may be displayed for the user in the payment page (redirect only).                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`description`           | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                         |
-| {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | The [`User-Agent` string][user-agent] of the payer's web browser.                                                                                                                                                                                      |
+| {% icon check %} | └➔&nbsp;`userAgent`             | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`language`              | `string`     | {% include field-description-language.md %}                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`urls`                  | `object`     | The URLs object containing the urls used for this payment.                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`completeUrl`          | `string`     | The URL that Swedbank Pay will redirect back to when the payment page is completed. This does not indicate a successful payment, only that it has reached a completion state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
@@ -156,7 +156,7 @@ Content-Type: application/json
         "currency": "DKK",
         "amount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/7.2.0",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "da-DK",
         "transactions": {
@@ -224,7 +224,7 @@ Content-Type: application/json
         "remainingCancellationAmount": 1500,
         "remainingReversalAmount": 0,
         "description": "Test Purchase",
-        "initiatingSystemUserAgent": "PostmanRuntime/3.0.1",
+        "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0...",
         "language": "da-DK",
         "prices": {
@@ -308,7 +308,7 @@ Content-Type: application/json
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                                                                                                                                                                          |
-| └➔&nbsp;`userAgent`      | `string`     | The [user agent][user-agent] string of the payer's browser.                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                                             |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md api_resource="mobile-pay" %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                 |
@@ -386,5 +386,4 @@ sequenceDiagram
 [complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url
 [mobilepay-screenshot-1]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-screenshot-2]: /assets/img/payments/mobilepay-approve-en.png
-[user-agent]:  https://en.wikipedia.org/wiki/User_agent
 [swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png

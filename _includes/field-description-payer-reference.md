@@ -13,15 +13,15 @@
          `generatePaymentToken` or `paymentToken` is `true`.
 
     {%- else -%}
-        The reference to the payer from the merchant system, like e-mail 
-        address, mobile number, customer number etc. Mandatory if 
+        The reference to the payer from the merchant system, like e-mail
+        address, mobile number, customer number etc. Mandatory if
         `generateRecurrenceToken`, `RecurrenceToken`,
         `generatePaymentToken` or `paymentToken` is `true`.
     {%- endif -%}
 {%- endcapture -%}
 {{- payer_reference | strip_newlines -}}
 {%- comment -%}
-The dashes in the Liquid code tags remove output whitespace. More on that here:
+The dashes in the Liquid code tags remove output space. More on that here:
 
 <https://shopify.github.io/liquid/basics/whitespace/>
 

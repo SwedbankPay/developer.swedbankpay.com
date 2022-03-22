@@ -36,7 +36,7 @@ If you choose option 3 (forking the repository), then please read on.
     *   This is usually the `master` or `develop` branch.
     *   Please avoid working directly on the `master` and `develop` branch.
 *   Make [commits][commit] of logical units in the new branch.
-*   Check for unnecessary whitespace with `git diff --check` before committing.
+*   Check for unnecessary space with `git diff --check` before committing.
 *   Make sure your [commit messages][commit-practice] are well written and in the
     proper format.
 *   [Push][push] the branch to your [forked repository (remote)][remote].
