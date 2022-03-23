@@ -620,7 +620,7 @@ integration and the payer.
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
 [authorization-timeouts]: /checkout-v2/capture
-[callback]: /payment-instruments/card/features/technical-reference/callback
+[callback]: /payment-instruments/card/features/core/callback
 [card-delete-token]: /payment-instruments/card/features/technical-reference/delete-token
 [card-direct]: /payment-instruments/card/direct
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
@@ -644,7 +644,7 @@ integration and the payer.
 [checkout-v2]: /checkout-v2/
 [checkout-items]: /checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
-[checkout-callback]: /checkout-v2/features/technical-reference/callback
+[checkout-callback]: /checkout-v2/features/core/callback
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort

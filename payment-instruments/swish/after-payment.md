@@ -250,5 +250,5 @@ Swish does not support `recurring` payments.
 [create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
 [payex-admin-portal]: https://admin.payex.com/psp/login/
 [sales-transaction]: #sales
-[technical-reference-callback]: /payment-instruments/swish/features/technical-reference/callback
+[technical-reference-callback]: /payment-instruments/swish/features/core/callback
 [unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled-purchase

@@ -312,7 +312,7 @@ sequenceDiagram
         next_href="capture"
         next_title="Capture" %}
 
-[callback]: /payment-instruments/vipps/features/technical-reference/callback
+[callback]: /payment-instruments/vipps/features/core/callback
 [cancellations]: /payment-instruments/vipps/features/core/cancel
 [captures]: /payment-instruments/vipps/after-payment#captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url

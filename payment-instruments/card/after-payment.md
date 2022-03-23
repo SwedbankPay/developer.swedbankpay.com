@@ -313,7 +313,7 @@ Content-Type: application/json
 next_href="features" next_title="Features" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
-[callback]: /payment-instruments/card/features/technical-reference/callback
+[callback]: /payment-instruments/card/features/core/callback
 [operations]: /payment-instruments/card/features/technical-reference/operations
 [reversal]: /payment-instruments/card/features/core/reversal
 [transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

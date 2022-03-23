@@ -104,4 +104,4 @@ sequenceDiagram
 {% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
 next_href="features" next_title="Features" %}
 
-[callback-request]: /payment-instruments/trustly/features/technical-reference/callback
+[callback-request]: /payment-instruments/trustly/features/core/callback
