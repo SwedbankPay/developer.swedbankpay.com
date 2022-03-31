@@ -44,8 +44,8 @@ Content-Type: application/json
                 "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE"
             }
-            "firstName": "Leia"
-            "lastName": "Ahlström"
+            "firstName": "Leia",
+            "lastName": "Ahlström",
             "email": "leia@payex.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234",
@@ -77,7 +77,7 @@ Content-Type: application/json
                 "accountPwdChangeIndicator": "01",
                 "shippingAddressUsageIndicator": "01",
                 "shippingNameIndicator": "01",
-                "suspiciousAccountActivity": "01",
+                "suspiciousAccountActivity": "01"
             }
         },
         "swish": {
