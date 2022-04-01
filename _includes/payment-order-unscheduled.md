@@ -465,13 +465,7 @@ Content-Type: application/json
                     "Invoice-PayExFinancingSe"
                 ]
             }
-        ],
-        "metadata": {
-            "key1": "value1",
-            "key2": 2,
-            "key3": 3.1,
-            "key4": false
-        }
+        ]
     }
 }
 ```
@@ -519,7 +513,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
-
 
 <!--lint disable final-definition -->
 

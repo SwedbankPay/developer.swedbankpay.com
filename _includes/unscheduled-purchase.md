@@ -311,7 +311,6 @@ Content-Type: application/json
 | └➔&nbsp;`state`                   | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
 | {% icon check %} | └➔&nbsp;`intent`                | `string`     | `Authorization`                     |
-
 | {% icon check %} | └➔&nbsp;`currency`                | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                        |
 | └➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                                                                  |
 | └➔&nbsp;`remainingCaptureAmount`  | `integer`    | The available amount to capture.                                                                                                                                                                                                                                                                                                                           |
@@ -485,3 +484,4 @@ See the table in the initial purchase response for descriptions.
 [price-resource]: {{ features_url }}/technical-reference/prices
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
+[verify]: {{ features_url }}/optional/verify
