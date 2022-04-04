@@ -227,6 +227,6 @@ sequenceDiagram
 [payment-menu]: /payment-menu
 [purchase-flow]: /payment-instruments/card/features/core/purchase
 [swish]: /payment-instruments/swish
-[technical-reference-callback]: /payment-instruments/card/features/technical-reference/callback
+[technical-reference-callback]: /payment-instruments/card/features/core/callback
 [vipps]: /payment-instruments/vipps
 [trustly]: /payment-instruments/trustly

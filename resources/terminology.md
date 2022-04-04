@@ -94,7 +94,7 @@ menu_order: 1100
 | **3-D Secure 2.0 (3DS2)**       | The new authentication protocol for online card payments. The protocol is XML-based and designed to be an additional security layer for online credit and debit card transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 [auto-capture]: /payment-instruments/card/features/core/capture
-[callback-url]:/payment-instruments/card/features/technical-reference/callback
+[callback-url]:/payment-instruments/card/features/core/callback
 [cancel-url]: /payment-instruments/card/after-payment#cancellations
 [checkout-url]: /checkout-v3
 [common-headers]: /introduction#headers

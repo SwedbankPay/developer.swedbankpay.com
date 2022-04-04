@@ -69,4 +69,4 @@ Content-Type: application/json
 
 [payment-url]: /checkout-v2/features/technical-reference/payment-url
 [completeurl]: /checkout-v2/features/technical-reference/complete-url
-[callback]: /checkout-v2/features/technical-reference/callback
+[callback]: /checkout-v2/features/core/callback

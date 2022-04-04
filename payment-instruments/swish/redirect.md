@@ -249,6 +249,6 @@ sequenceDiagram
 {% include iterator.html prev_href="direct" prev_title="Direct"
 next_href="seamless-view" next_title="Seamless View" %}
 
-[callback-url]: /payment-instruments/swish/features/technical-reference/callback
+[callback-url]: /payment-instruments/swish/features/core/callback
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png

@@ -134,4 +134,4 @@ sequenceDiagram
                          next_title="Features" %}
 
 [abort]: /payment-instruments/mobile-pay/after-payment#abort
-[technical-reference-callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
+[technical-reference-callback]: /payment-instruments/mobile-pay/features/core/callback

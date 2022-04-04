@@ -226,5 +226,5 @@ next_href="seamless-view" next_title="Seamless View" %}
 [complete-url]: /payment-instruments/trustly/features/technical-reference/complete-url
 [deposit]: https://trustly.com/en/developer/api#/deposit
 [after-payment]: /payment-instruments/trustly/after-payment
-[callback]: /payment-instruments/trustly/features/technical-reference/callback
+[callback]: /payment-instruments/trustly/features/core/callback
 [reversal]: /payment-instruments/trustly/features/core/reversal

@@ -390,7 +390,7 @@ Head over to [Capture][capture] to complete the Invoice Direct integration.
 {% include iterator.html prev_href="seamless-view" prev_title="Seamless View"
 next_href="capture" next_title="Capture" %}
 
-[callback]: /payment-instruments/invoice/features/technical-reference/callback
+[callback]: /payment-instruments/invoice/features/core/callback
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
