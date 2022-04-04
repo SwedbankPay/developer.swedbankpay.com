@@ -11,6 +11,16 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 04 April 2022
+
+### Version 3.0.3
+
+*   Added a new [card error code][card-error-codes] and restructured the tables.
+*   Fleshed out the [Unscheduled Purchase][unscheduled-mit] section.
+*   Fleshed out the [Recur][recur] section.
+*   Moved the [callback][callback] section to core features.
+*   Typos and minor bug fixes in code examples and tables.
+
 ## 16 March 2022
 
 ### Version 3.0.2
@@ -620,9 +630,10 @@ integration and the payer.
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
 [authorization-timeouts]: /checkout-v2/capture
-[callback]: /payment-instruments/card/features/core/callback
+[callback]: /checkout-v3/payments-only/features/core/callback
 [card-delete-token]: /payment-instruments/card/features/technical-reference/delete-token
 [card-direct]: /payment-instruments/card/direct
+[card-error-codes]: /payment-instruments/card/features/technical-reference/problems
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [card-unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled-purchase
@@ -679,6 +690,7 @@ integration and the payer.
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /checkout-v2/features#update-order
+[recur]: /checkout-v3/payments-only/features/optional/recur
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
@@ -704,7 +716,7 @@ integration and the payer.
 [trustly-payments]: /payment-instruments/trustly
 [trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
-[unscheduled-mit]: /payment-menu/features/optional/unscheduled
+[unscheduled-mit]: /checkout-v3/payments-only/features/optional/unscheduled
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps
