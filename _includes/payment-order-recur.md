@@ -17,8 +17,7 @@ newspapers or streaming services.
 First, you need an initial transaction where the `recurrenceToken` is generated
 and connected. You do that by adding the field `generateRecurrenceToken` in the
 `PaymentOrder` request and set the value to `true`. The payer must complete the
-purchase to activate the token. You can also use [Verify][verify] to activate
-tokens.
+purchase to activate the token.
 
 (Read more about [deleting the recurrence token][delete-token] here.)
 
@@ -518,4 +517,3 @@ Content-Type: application/json
 [paid-status-model]: {{ features_url }}/technical-reference/status-models#paid
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [technical-reference-callback]: {{ features_url }}/core/callback
-[verify]: {{ features_url }}/optional/verify
