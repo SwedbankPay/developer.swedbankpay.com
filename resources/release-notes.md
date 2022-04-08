@@ -636,7 +636,7 @@ integration and the payer.
 [card-error-codes]: /payment-instruments/card/features/technical-reference/problems
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
-[card-unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled-purchase
+[card-unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled
 [card-transaction-states]: /payment-instruments/card/features/technical-reference/payment-transaction-states
 [card]: /payment-instruments/card
 [card-3ds-info]: /payment-instruments/card#purchase-flow

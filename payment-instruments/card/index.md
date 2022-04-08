@@ -182,5 +182,5 @@ sequenceDiagram
 [recur]: /payment-instruments/card/features/optional/recur
 [redirect]: /payment-instruments/card/redirect
 [swedish-card-payment]: /assets/img/payments/swedish-card-payment.png
-[unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled-purchase
+[unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled
 [verify]: /payment-instruments/card/features/optional/verify
