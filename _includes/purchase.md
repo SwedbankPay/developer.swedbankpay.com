@@ -62,7 +62,7 @@ Content-Type: application/json
         "generateRecurrenceToken": false,
         "generateUnscheduledToken": false,{% endif %}
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
+        "language": "sv-SE",
         "urls": { {% if seamless_view %}
             "hostUrls": ["https://example.com"],{% endif %}
             "completeUrl": "https://example.com/payment-completed",

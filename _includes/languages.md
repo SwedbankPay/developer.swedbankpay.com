@@ -2,7 +2,7 @@
 {%- assign product = api_resource  | capitalize -%}
 {%- assign language_codes = "en-US, nb-NO, sv-SE" -%}
 
-## Languages
+## Supported Languages
 
 {%- case api_resource -%}
     {%- when "paymentorders" -%}
@@ -18,7 +18,6 @@
 
 {%- assign language_codes = language_codes | split: ',' -%}
 
-This product supports
 {% for language_code in language_codes %}
 {%- if forloop.last %}
  and {% comment %}Keep this to preserve the space after 'and'!{% endcomment %}
