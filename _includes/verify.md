@@ -12,9 +12,9 @@ validity of card information without reserving or charging any amount.
 
 This option is commonly used when initiating a subsequent
 {%- if has_one_click %}
-[One-click card payment][one-click-payments] or a
+[One-click payment][one-click-payments] or an
 {%- endif %}
-[recurring card payment][recurrence] flow - where you do not want
+[unscheduled purchase][unscheduled-mit] flow - where you do not want
 to charge the payer right away.
 
 {% include alert.html type="informative" icon="info" body="
@@ -56,8 +56,8 @@ Swedbank Pay." %}
     a `paymentToken` that can be used for subsequent
     [One-Click Payments][one-click-payments] or
     {%- endif %}
-    a `recurrenceToken` that can be used for subsequent
-    [recurring server-to-server based payments][recurrence].
+    a `unscheduledToken` that can be used for subsequent
+    [unscheduled server-to-server based payments][unscheduled-mit].
 
 ## Screenshots
 
@@ -96,8 +96,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", {% endif %} {% unless documentation_section contains "checkout" %}
-        "generatePaymentToken": true,{% endunless %}
-        "generateRecurrenceToken": true,{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+        "generatePaymentToken": true,{% endunless %} {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
@@ -260,6 +259,6 @@ sequenceDiagram
 
 [seamless-view]: {{ documentation_section_url }}/seamless-view
 [one-click-payments]: {{ documentation_section_url }}/features/optional/one-click-payments
-[recurrence]: {{ documentation_section_url }}/features/optional/recur
+[unscheduled-mit]: {{ documentation_section_url }}/features/optional/unscheduled
 [redirect]: {{ documentation_section_url }}/redirect
 [swedish-verify]: /assets/img/payments/swedish-verify.png

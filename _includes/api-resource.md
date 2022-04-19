@@ -7,8 +7,16 @@
         creditcard
     {%- when "mobile-pay" -%}
         mobilepay
-    {%- when docsec contains "checkout" -%}
-        paymentorders
+    {%- when "checkout-v2" -%}
+         paymentorders
+     {%- when "checkout-v3/enterprise" -%}
+         paymentorders
+     {%- when "checkout-v3/starter" -%}
+         paymentorders
+     {%- when "checkout-v3/business" -%}
+         paymentorders
+     {%- when "checkout-v3/payments-only" -%}
+         paymentorders
     {%- when "payment-menu" -%}
         paymentorders
     {%- else -%}

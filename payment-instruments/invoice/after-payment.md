@@ -177,4 +177,4 @@ sequenceDiagram
 {% include iterator.html prev_href="capture" prev_title="Capture"
 next_href="features" next_title="Features" %}
 
-[callback-request]: /payment-instruments/invoice/features/technical-reference/callback
+[callback-request]: /payment-instruments/invoice/features/core/callback

@@ -255,7 +255,7 @@ Here you will also find info on `Cancel`, and `Reversal`.
 next_href="seamless-view" next_title="Seamless View" %}
 
 [after-payment]: /payment-instruments/invoice/after-payment
-[callback]: /payment-instruments/invoice/features/technical-reference/callback
+[callback]: /payment-instruments/invoice/features/core/callback
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
 [payment-url]: /payment-instruments/invoice/features/technical-reference/payment-url
 [cancel]: /payment-instruments/invoice/after-payment#cancellations

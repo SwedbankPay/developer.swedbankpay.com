@@ -429,5 +429,5 @@ sequenceDiagram
 next_href="redirect" next_title="Redirect" %}
 
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
-[callback-url]: /payment-instruments/swish/features/technical-reference/callback
+[callback-url]: /payment-instruments/swish/features/core/callback
 [purchase]: /payment-instruments/swish/direct#m-commerce-purchase-flow

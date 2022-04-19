@@ -3,7 +3,7 @@ title: Payment State
 estimated_read: 2
 description: |
   Different states in the payment process.
-menu_order: 2600
+menu_order: 2700
 icon:
   content: credit_card
   outlined: true

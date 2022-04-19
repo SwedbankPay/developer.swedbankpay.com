@@ -296,5 +296,5 @@ sequenceDiagram
         next_href="after-payment"
         next_title="After Payment" %}
 
-[callback]: /payment-instruments/mobile-pay/features/technical-reference/callback
+[callback]: /payment-instruments/mobile-pay/features/core/callback
 [complete-url]: /payment-instruments/mobile-pay/features/technical-reference/complete-url

@@ -310,7 +310,7 @@ sequenceDiagram
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="After Payment" %}
 
-[callback]: /payment-instruments/swish/features/technical-reference/callback
+[callback]: /payment-instruments/swish/features/core/callback
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
 [paymenturl]: /payment-instruments/swish/features/technical-reference/payment-url

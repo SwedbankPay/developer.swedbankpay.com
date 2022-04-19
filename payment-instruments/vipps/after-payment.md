@@ -330,7 +330,7 @@ Content-Type: application/json
         next_title="Features" %}
 
 [abort]: /payment-instruments/vipps/after-payment#abort
-[callback]: /payment-instruments/vipps/features/technical-reference/callback
+[callback]: /payment-instruments/vipps/features/core/callback
 [cancel]: #cancellations
 [capture]: #captures
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url

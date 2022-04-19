@@ -25,23 +25,24 @@ the following URL structure:
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
 | :----------------------------- | :----: | :-------------------------------------------------------------------------------------------- |
-| `3dsecureerror`                | `400`  | 3D Secure not working, try again some time later                                              |
-| `cardblacklisted`              | `400`  | Card blacklisted, the payer needs to contact their Card-issuing bank                            |
-| `paymenttokenerror`            | `403`  | There was an error with the payment token.                                                    |
-| `carddeclined`                 | `403`  | The card was declined.                                                                        |
+| `3dsecureerror`                | `400`  | 3-D Secure is not working. Try again after some time.                                              |
+| `badrequest`                   | `400`  | Bad request. Try again after some time.                                                        |
+| `cardblacklisted`              | `400`  | The card is blacklisted. The payer needs to contact their card issuing bank.                            |
+| `3dsecureusercancelled`        | `403`  | Transaction was cancelled during 3-D Secure verification.                                        |
+| `3dsecuredeclined`             | `403`  | Transaction was declined during 3-D Secure verification.                                         |
+| `acquirercardblacklisted`      | `403`  | The card is blacklisted. The payer needs to contact their card issuing bank.                            |
+| `acquirercardexpired`          | `403`  | The expiry date is wrong, or the card has expired. The payer needs to contact their card issuing bank.   |
+| `acquirercardstolen`           | `403`  | The card is blacklisted. The payer needs to contact their card issuing bank.                            |
 | `acquirererror`                | `403`  | The acquirer responded with a generic error.                                                  |
-| `acquirercardblacklisted`      | `403`  | Card blacklisted, the payer needs to contact their Card-issuing bank                            |
-| `acquirercardexpired`          | `403`  | Wrong expire date or Card has expired and payer needs to contact their Card-issuing bank    |
-| `acquirercardstolen`           | `403`  | Card blacklisted, the payer needs to contact their Card-issuing bank                            |
-| `acquirerinsufficientfunds`    | `403`  | Card does not have sufficient funds, the payer needs to contact their Card-issuing bank.        |
-| `acquirerinvalidamount`        | `403`  | Amount not valid by aquirer, contact support.ecom@payex.com                                   |
-| `acquirerpossiblefraud`        | `403`  | Transaction declined due to possible fraud, the payer needs to contact their Card-issuing bank. |
-| `3dsecureusercancelled`         | `403`  | Transaction was cancelled during 3DSecure verification                                        |
-| `3dsecuredeclined`             | `403`  | Transaction was declined during 3DSecure verification                                         |
-| `frauddetected`                | `403`  | Fraud detected, the payer needs to contact their Card-issuing bank.                             |
-| `badrequest`                   | `400`  | Bad request, try again after some time                                                        |
-| `internalservererror`          | `500`  | Server error, try again after some time                                                       |
-| `3dsecureacquirergatewayerror` | `502`  | Problems reaching 3DSecure verification, try again after some time.                           |
-| `badgateway`                   | `502`  | Problems reaching the gateway, try again after some time                                      |
-| `acquirergatewayerror`         | `502`  | Problems reaching acquirers gateway, try again after some time                                |
-| `acquirergatewaytimeout`       | `504`  | Problems reaching acquirers gateway, try again after some time                                |
+| `acquirerinsufficientfunds`    | `403`  | The card does not have sufficient funds. The payer needs to contact their card issuing bank.        |
+| `acquirerinvalidamount`        | `403`  | Amount not valid by acquirer. Contact teknisksupport@swedbankpay.com.                                   |
+| `acquirerpossiblefraud`        | `403`  | Transaction declined due to possible fraud. The payer needs to contact their card issuing bank. |
+| `authenticationrequired`       | `403`  | Transaction declined due to missing 3-D Secure credentials. The payer needs to initiate a new transaction.                         |
+| `carddeclined`                 | `403`  | The card was declined.                  |
+| `frauddetected`                | `403`  | Fraud detected. The payer needs to contact their card issuing bank.                             |
+| `paymenttokenerror`            | `403`  | There was an error with the payment token.                                                    |
+| `internalservererror`          | `500`  | Server error. Try again after some time.                                                       |
+| `3dsecureacquirergatewayerror` | `502`  | Problems reaching 3-D Secure verification. Try again after some time.                           |
+| `acquirergatewayerror`         | `502`  | Problems reaching acquirers gateway. Try again after some time.                                |
+| `badgateway`                   | `502`  | Problems reaching the gateway. Try again after some time.                                |
+| `acquirergatewaytimeout`       | `504`  | Problems reaching acquirers gateway. Try again after some time.                                |

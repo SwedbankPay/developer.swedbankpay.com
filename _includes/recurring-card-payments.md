@@ -294,4 +294,4 @@ Content-Type: application/json
 [card-payments-remove-payment-token]: {{ features_url }}/technical-reference/delete-token
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement
-[technical-reference-callback]: {{ features_url }}/technical-reference/callback
+[technical-reference-callback]: {{ features_url }}/core/callback
