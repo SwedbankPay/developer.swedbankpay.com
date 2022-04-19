@@ -7,7 +7,6 @@ description: |
 menu_order: 1000
 ---
 
-
 <script language="javascript">
 const elm = document.querySelector(".doc-container");
 
@@ -16,7 +15,6 @@ elm.addEventListener('copy', (event) => {
     event.clipboardData.setData('text/plain', selection.baseNode.data.trim());
     event.preventDefault();
 });
-
 
 </script>
 
@@ -29,7 +27,6 @@ in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
 To test a checked-in user in the Demoshop, please use the following test data:
 
 ### Checkout test data for Norway
-
 
 {:.table .table-striped }
 | Type              | Data                         | Description                                                           |
