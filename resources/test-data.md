@@ -7,6 +7,19 @@ description: |
 menu_order: 1000
 ---
 
+
+<script language="javascript">
+const elm = document.querySelector(".doc-container");
+
+elm.addEventListener('copy', (event) => {
+    let selection = document.getSelection();
+    event.clipboardData.setData('text/plain', selection.baseNode.data.trim());
+    event.preventDefault();
+});
+
+
+</script>
+
 ## Swedbank Pay Checkout Test Data
 
 During a Swedbank Pay Checkout implementation, you can use the test data related
@@ -17,13 +30,14 @@ To test a checked-in user in the Demoshop, please use the following test data:
 
 ### Checkout test data for Norway
 
-{:.table .table-striped}
-| Type            | Data                         | Description                                                           |
-| :-------------- | :--------------------------- | :-------------------------------------------------------------------- |
-| `Email`         | `olivia.nyhuus@payex.com`    | The e-mail address of the payer.                                      |
-| `Mobile number` | `+47 98765432`               | The mobile phone number of the payer. Format Norway: `+47 99999999`.  |
-| `SSN`           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: `DDMMYYXXXXX` |
-| `ZipCode`       | `1642`                       | The city zip code. Format Norway: `XXXX`                              |
+
+{:.table .table-striped }
+| Type              | Data                         | Description                                                           |
+| :--------------   | :--------------------------- | :-------------------------------------------------------------------- |
+| `{{"Email getClass"}}` | `olivia.nyhuus@payex.com`    | The e-mail address of the payer.                                      |
+| `Mobile number`   | `+47 98765432`               | The mobile phone number of the payer. Format Norway: `+47 99999999`.  |
+| `SSN`             | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: `DDMMYYXXXXX` |
+| `ZipCode`         | `1642`                       | The city zip code. Format Norway: `XXXX`                              |
 
 ### Checkout test data for Sweden
 
@@ -235,3 +249,10 @@ the following values:
 [create-card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
 [3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
+
+
+
+
+
+
+
