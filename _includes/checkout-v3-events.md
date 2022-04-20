@@ -336,11 +336,11 @@ following event argument object:
 ```
 
 {:.table .table-striped}
-| Field       | Type     | Description                                                            |
-| :---------- | :------- | :-------------------------------------------------------------         |
-| `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
-| `payer`     | `string` | The `url` of the resource containing information about the payer.      |
+| Field          | Type     | Description                                                         |
+| :------------- | :------- | :-------------------------------------------------------------      |
+| `event`        | `string` | The name of the event raised.                                       |
+| `paymentOrder` | `string` | {% include field-description-id.md %}                               |
+| `payer`        | `string` | The `url` of the resource containing information about the payer.   |
 
 ### `onPayerUnidentified`
 
@@ -371,7 +371,7 @@ It will be raised with the following event argument object:
 | Field           | Type     | Description                                                  |
 | :-------------  | :------- | :------------------------------------------------------      |
 | `event`         | `string` | The name of the event raised.                                |
-| `paymentOrder`  | `string` | {% include field-description-id.md %}                          |
+| `paymentOrder`  | `string` | {% include field-description-id.md %}                        |
 
 {% endif %}
 
@@ -380,9 +380,9 @@ It will be raised with the following event argument object:
 This event triggers when the user clicks on the "Display terms and conditions"
 link.
 
-Subscribe to this event if you don't want the default handing of the
-`termsOfServiceUrl`. Swedbank Pay will by default open the `termsOfServiceUrl`
-in a new tab within the same browser.
+Subscribe to this event if you don't want the default handling of the
+`termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl`
+in a new tab within the same browser by default.
 
 If no callback method is set, terms and conditions will be displayed in an
 overlay or a new tab. It will be raised with the following event argument
@@ -393,13 +393,15 @@ object:
 
 ```json
 {
-    "origin": "owner",
-    "termsOfServiceUrl": "https://example.com/terms-of-service"
+"event": "OnTermsOfServiceRequested",
+"paymentOrder": { "id": "/psp/paymentorders/<paymentorderId>"},
+"termsOfServiceUrl": "https://example.org/terms.html"
 }
 ```
 
 {:.table .table-striped}
-| Field     | Type     | Description                                                                             |
-| :-------- | :------- | :-------------------------------------------------------------------------------------- |
-| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `termsOfServiceUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
+| Field                | Type     | Description                                         |
+| :--------            | :------- | :---------------------------------------------------|
+| `event`              | `string` | The name of the event raised.                       |
+| `paymentOrder`       | `string` | {% include field-description-id.md %}               |
+| `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions. |
