@@ -19,7 +19,7 @@ to be undefined. Just adding an event handler for logging purposes is therefore
 not possible, the event handler will have to perform some functionality similar
 to the event handler you are overriding." %}
 
-### `OnAborted`
+### `onAborted`
 
 This event triggers when the payer aborts the purchase from the payment menu. As
 the Seamless View payment menu doesn't have a cancel button (present in the
@@ -65,7 +65,7 @@ with the following event argument object:
 
 ```json
 {
-    "event": "onCheckoutLoaded",
+    "event": "OnCheckoutLoaded",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
 }
@@ -96,7 +96,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onCheckoutResized",
+    "event": "OnCheckoutResized",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
 }
@@ -125,7 +125,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onError",
+    "event": "OnError",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "details": "English descriptive text of the error"
 }
@@ -184,7 +184,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onInstrumentSelected",
+    "event": "OnInstrumentSelected",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "instrument": "creditcard | vipps | swish | invoice",
 }
@@ -217,7 +217,7 @@ new tab. It will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onOutOfViewOpen",
+    "event": "OnOutOfViewOpen",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "openUrl": "https://example.com/external"
 }
@@ -246,7 +246,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onOutOfViewRedirect",
+    "event": "OnOutOfViewRedirect",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/external"
 }
@@ -259,7 +259,7 @@ will be raised with the following event argument object:
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
-### `OnPaid`
+### `onPaid`
 
 This event triggers when the payer successfully completes or cancels the
 payment.
@@ -375,7 +375,7 @@ It will be raised with the following event argument object:
 
 {% endif %}
 
-### `OnTermsOfServiceRequested`
+### `onTermsOfServiceRequested`
 
 This event triggers when the user clicks on the "Display terms and conditions"
 link.
