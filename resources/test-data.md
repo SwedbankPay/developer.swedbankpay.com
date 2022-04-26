@@ -31,7 +31,7 @@ To test a checked-in user in the Demoshop, please use the following test data:
 {:.table .table-striped }
 | Type              | Data                         | Description                                                           |
 | :--------------   | :--------------------------- | :-------------------------------------------------------------------- |
-| `{{"Email getClass"}}` | `olivia.nyhuus@payex.com`    | The e-mail address of the payer.                                      |
+| `Email getClass` | `olivia.nyhuus@payex.com`    | The e-mail address of the payer.                                      |
 | `Mobile number`   | `+47 98765432`               | The mobile phone number of the payer. Format Norway: `+47 99999999`.  |
 | `SSN`             | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: `DDMMYYXXXXX` |
 | `ZipCode`         | `1642`                       | The city zip code. Format Norway: `XXXX`                              |
