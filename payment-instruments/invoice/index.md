@@ -36,7 +36,7 @@ menu_order: 400
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-### Important steps before you launch Swedbank Pay Invoice Payments at your website
+## Important Steps Before You Launch Swedbank Pay Invoice Payments
 
 Prior to launching Swedbank Pay Invoice Payments at your site, make sure that
 you have done the following:
@@ -60,7 +60,7 @@ options:
 
 {% include languages.md %}
 
-## Invoice flow
+## Invoice Flow
 
 This is an example of the Redirect scenario. For other integrations, take a
 look at the respective sections. The sequence diagram below shows the two

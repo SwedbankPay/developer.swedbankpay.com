@@ -53,7 +53,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the Payment
+## Step 2: Display The Payment
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the credit card details in a secure Swedbank Pay
@@ -88,6 +88,8 @@ The previous two steps gives this HTML:
     </body>
 </html>
 ```
+
+## Load The Javascript
 
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
@@ -176,7 +178,7 @@ sequenceDiagram
     activate Payer
 ```
 
-### 3-D Secure
+## 3-D Secure
 
 {% include card-general.md %}
 
@@ -194,7 +196,7 @@ card payment:
    decided by the issuing bank. Normally this will be done using BankID or
    Mobile BankID.
 
-### Explanations
+## Explanations
 
 *   ① `rel: view-authorization` is a value in one of the operations, sent as a
   response from Swedbank Pay to the Merchant.

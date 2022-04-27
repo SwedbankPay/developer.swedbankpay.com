@@ -22,6 +22,8 @@ not need to communicate with each other directly.
 The usage of `metadata` field is shown in the abbreviated `Purchase` request
 below.
 
+## Metadata Request
+
 {:.code-view-header}
 **Request**
 
@@ -67,6 +69,8 @@ Content-Type: application/json
 | Parameter            | Type                                                |
 | :------------------- | :-------------------------------------------------- |
 | `metadata`           | `string`, `boolean`, `integer`,`decimal`            |
+
+## GET Metadata
 
 {:.code-view-header}
 **Request**

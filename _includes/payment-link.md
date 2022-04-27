@@ -1,7 +1,7 @@
 {% assign show_3d_secure = include.show_3d_secure | default: true %}
 {% assign show_authorization = include.show_authorization | default: true %}
 
-### Introduction
+## Introduction
 
 Payment Link is available for our payment menu and the payment instruments
 listed below, using the redirect platform and Swedbank Pay hosted payment page.
@@ -41,7 +41,7 @@ will receive a callback from Swedbank Pay, enabling you to make a `GET` request
 towards Swedbank Pay with the `id` of the payment received in the first step,
 which will return the purchase result.
 
-### E-mail And SMS Recommendations
+## E-mail And SMS Recommendations
 
 When you as a merchant send an e-mail or SMS to the payer about the Payment
 Link, it is recommended to include contextual information which helps them
@@ -61,12 +61,12 @@ you include the following:
 *   Details informing that the payer accepts the Terms & Conditions when
     clicking on the Payment Link.
 
-### Receipt Recommendations
+## Receipt Recommendations
 
 We recommend that you send an e-mail or SMS confirmation to the payer with a
 receipt when the payment is done.
 
-### API Requests
+## API Requests
 
 The API requests depend on the payment instrument you are using when
 implementing the Payment Link scenario, see [purchase flow][purchase-flow].
@@ -75,7 +75,7 @@ One-phase payment instruments will not implement `capture`, `cancellation` or
 The options you can choose from when creating a payment with key `operation`
 set to `Purchase` are listed below.
 
-### Screenshots
+## How It Looks
 
 When clicking the payment link, the payer will be directed to a payment
 page similar to the examples below, where payment information can be entered.
@@ -83,7 +83,7 @@ page similar to the examples below, where payment information can be entered.
 {:.text-center}
 ![screenshot of the redirect card payment page][card-payment]{:height="620px" width="475px"}
 
-### Options
+## Options
 
 All valid options when posting a payment with operation `Purchase`, are
 described in each payment instrument's respective API reference. Please see the
@@ -93,7 +93,7 @@ general sequence diagrams for more information about one-phase (e.g.
 
 {% if show_authorization %}
 
-#### Authorization
+## Authorization
 
 When using two-phase payment instruments you reserve the amount with an
 authorization, and you will have to specify that the _intent_ of the _purchase_
@@ -103,7 +103,7 @@ purchased products).
 
 {% endif %}
 
-#### Capture
+## Capture
 
 Capture can only be performed on a payment with a successfully authorized
 transaction. It is possible to do a part-capture where you only capture a
@@ -114,18 +114,18 @@ If you want the credit card to be charged right away, you will have to specify
 that the _intent_ of the purchase is `AutoCapture`. The card will be charged and
 you don't need to do any more financial operations to this purchase.
 
-#### Cancel
+## Cancel
 
 Cancel can only be done on an authorized transaction. If you cancel after
 doing a part-capture you will cancel the difference between the captured amount
 and the authorized amount.
 
-#### Reversal
+## Reversal
 
 Reversal can only be done on a payment where there are some captured amount not
 yet reversed.
 
-#### General
+## General
 
 When implementing the Payment Link scenario, it is optional to set a
 [`callbackURL`][technical-reference-callback] in the `POST` request. If
@@ -133,7 +133,7 @@ callbackURL is set Swedbank Pay will send a request to this URL when the
 payer has completed the payment. [See the Callback API description
 here][technical-reference-callback].
 
-### Purchase flow
+## Purchase Flow
 
 The sequence diagrams display the high level process of the purchase, from
 generating a Payment Link to receiving a Callback.

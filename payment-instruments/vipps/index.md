@@ -14,10 +14,16 @@ Norwegian banks, making it one of the essential payment instruments for
 merchants operating in Norway. We offer it on our redirect and seamless view
 platforms.
 
-## Purchase flow
+## Purchase Flow
 
 After the payment is created, the payer pushes the payment button on Swedbank
 Pay's payment page (redirect) or in the `iframe` (seamless view).
+
+The payment request will appear in the app and can be confirmed by the payer.
+If you are using the redirect option, the payer will be redirected back to
+the merchant's site.
+
+## How It Looks
 
 {:.text-center}
 ![screenshot of the first Vipps redirect page][vipps-redirect]{:height="375px" width="475px"}
@@ -27,10 +33,6 @@ page where the phone number is entered, and a push message is sent to the phone.
 
 {:.text-center}
 ![screenshot of the Vipps number input page][vipps-number-input]{:height="500px" width="475px"}
-
-The payment request will appear in the app and can be confirmed by the payer.
-If you are using the redirect option, the payer will be redirected back to
-the merchant's site.
 
 ## Good To Know
 

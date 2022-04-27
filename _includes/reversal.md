@@ -7,7 +7,7 @@
 
 This transaction is used when a captured payment needs to be reversed.
 
-### Create reversal transaction
+### Create Reversal Transaction
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -18,6 +18,8 @@ The `reversal` operation will reverse a previously captured payment.
 The `create-reversal` operation will reverse a previously captured payment.
 
 {% endif %}
+
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -54,6 +56,8 @@ Content-Type: application/json
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
+
+## Reversal Request
 
 {:.code-view-header}
 **Response**
@@ -110,6 +114,8 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content = response_table %}
 
+## List Reversal Transactions
+
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
@@ -125,7 +131,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md api_resource=include.api_resource documentation_section=include.api_resource transaction="reversal" %}
 
-### Reversal Sequence
+## Reversal Sequence
 
 ```mermaid
 sequenceDiagram

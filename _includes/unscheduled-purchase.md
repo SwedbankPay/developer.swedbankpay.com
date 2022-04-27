@@ -26,7 +26,7 @@ tokens.
 
 (Read more about [deleting the unscheduled token][delete-token] here.)
 
-The initial request should look like this:
+## Initial Request
 
 {:.code-view-header}
 **Request**
@@ -226,6 +226,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`noCvc`                           | `boolean`     | `true` if the CVC field should be disabled for this payment in case a stored card is used; otherwise `false` per default. This feature is commonly used when {%- if include.documentation_section == 'card' -%} [One-Click Payments][one-click-payments]{% else %} One-Click Payments{% endif %} is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                          |
 {% endif %}
 
+## Initial Response
+
 {:.code-view-header}
 **Response**
 
@@ -352,8 +354,9 @@ Content-Type: application/json
 ### Performing The Unscheduled Purchase
 
 When you are ready to perform the unscheduled purchase, simply add the
-`unscheduledToken` field and use the token as the value. Your request should
-look like this:
+`unscheduledToken` field and use the token as the value.
+
+## Unscheduled Request
 
 {:.code-view-header}
 **Request**
@@ -429,6 +432,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-reconciliation] before being used.                                                                                                                                                                                                                                                                                                                                                                          |
 |                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
+
+## Unscheduled Response
 
 {:.code-view-header}
 **Response**

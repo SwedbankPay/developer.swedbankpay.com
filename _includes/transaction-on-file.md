@@ -25,7 +25,7 @@ the only option.
 Do you want to know more about this service? Please contact our integration
 support.
 
-### Screenshots
+### How It Looks
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
 their card information.
@@ -33,11 +33,13 @@ their card information.
 {:.text-center}
 ![screenshot of the swedish card verification page][swedish-verify]{:height="600px" width="475px"}
 
-### API Requests
+### Create The Transaction On File Payment
 
-The API requests are displayed in the flow below. The generated token will be
-returned in the parameter 'transactionOnFileToken'. For more information
-regarding the flow, see Verify.
+The API request and response are displayed in the flow below. The generated
+token will be returned in the parameter 'transactionOnFileToken'. For more
+information regarding the flow, see Verify.
+
+## Request
 
 {:.code-view-header}
 **Request**
@@ -77,6 +79,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Response
 
 {:.code-view-header}
 **Response**

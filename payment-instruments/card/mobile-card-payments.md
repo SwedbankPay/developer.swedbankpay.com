@@ -9,13 +9,13 @@ menu_order: 800
 body="We advise you to integrate our Mobile SDK Payment Menu instead of
 integrating card payments directly in your app with WebView." %}
 
-## Card Payments in Mobile Apps
+## Card Payments In Mobile Apps
 
 The implementation sequence for Card Payments in mobile apps is identical to the
 standard Redirect scenario, but also includes explanations of how to include
 this redirect in mobile apps or in mobile web pages.
 
-### Screenshots for Payments
+## How It Looks
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
 the card information.
@@ -41,7 +41,7 @@ options:
 
 Our `payment` example below uses the [`Purchase`][purchase] value.
 
-## Purchase flow mobile
+## Purchase Flow Mobile
 
 The sequence diagram below shows a high level description of a complete
 purchase, and the two requests you have to send to Swedbank Pay. The links will

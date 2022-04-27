@@ -78,6 +78,8 @@ module.
 }
 ```
 
+## Load The Javascript
+
 Embed the `href` in a `<script>` element. That script will then load the
 Seamless View.
 
@@ -138,6 +140,8 @@ request.send();
   </html>
 ```
 
+## How It Looks
+
 First you will see a Checkin module where the payer can enter their email and
 phone number.
 
@@ -182,7 +186,7 @@ This is for digital products, consequently with no shipping address.
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 
-### Events
+## Events
 
 When integrating Seamless View, we strongly recommend that you implement the
 `onPaid` event, which will give you the best setup. Even with this implemented,

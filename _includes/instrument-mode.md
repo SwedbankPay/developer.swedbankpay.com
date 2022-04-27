@@ -32,6 +32,8 @@ agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
 payer chooses either of these instruments, you should add the `instrument`
 parameter with the specific payment instrument.
 
+## Instrument Mode Request
+
 {:.code-view-header}
 **Request**
 
@@ -128,6 +130,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Instrument Mode Response
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -322,6 +326,8 @@ Content-Type: application/json
 ```
 
 {% endif %}
+
+## Switch Instrument
 
 {% if documentation_section contains "checkout-v3" %}
 

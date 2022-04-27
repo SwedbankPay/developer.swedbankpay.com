@@ -16,7 +16,7 @@ operating in these Nordic countries. More than 4.2 million Danes and Finns use
 the app and 140,000 stores are accepting payments. We offer it on
 our redirect and seamless view platforms.
 
-## Purchase flow
+## Purchase Flow
 
 When the payment is created, the payer is redirected to a Swedbank Pay landing
 page where he or she can proceed with the payment by pressing the pay button.
@@ -80,7 +80,7 @@ MobilePay app.
 
 {% include languages.md %}
 
-## Payment availability
+## Payment Availability
 
 Even though MobilePay Online supports several currencies, the payment instrument
 itself is only available for payers in Denmark and Finland. This allows a shop

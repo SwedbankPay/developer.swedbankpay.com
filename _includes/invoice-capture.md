@@ -12,7 +12,15 @@ the total authorized amount.
 ## Step 1: Create Invoice Capture
 
 To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
-operation with the following request body:
+operation.
+
+Notes on `FinancingConsumer` captures:
+
+*   The due date is set by Swedbank Pay based on the agreement with merchant.
+    Standard due date is 14 days.
+*   The invoice number is set by Swedbank Pay.
+
+## Capture Request
 
 ```http
 POST /psp/invoice/payments/{{ page.payment_id }}/captures HTTP/1.1
@@ -72,15 +80,11 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content = request_table %}
 
-Notes on `FinancingConsumer` captures:
-
-*   The due date is set by Swedbank Pay based on the agreement with merchant.
-    Standard due date is 14 days.
-*   The invoice number is set by Swedbank Pay.
+## Capture Response
 
 {% include transaction-response.md transaction="capture" %}
 
-## Step 2: Inspecting the Captures
+## Step 2: List Capture Transactions
 
 The `captures` resource lists the capture transactions performed on a
 specific invoice payment.

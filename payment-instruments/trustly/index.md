@@ -25,7 +25,7 @@ menu_order: 700
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-### Important steps before you launch Swedbank Pay Trustly Payments at your website
+## Important Steps Before You Launch Swedbank Pay Trustly Payments
 
 Prior to launching Trustly Payments at your site, make sure that
 the payment option is displayed with a Trustly logo, corresponding
@@ -42,7 +42,8 @@ operations][after-payment] and the [payment resource][payment-resource].
 
 ## Languages
 
-The displayed languages that we currently support is English (`en-us`), Norwegian (`nb-no`), Swedish (`sv-se`), and Finish (`fi-fi`).
+The displayed languages that we currently support is English (`en-us`),
+Norwegian (`nb-no`), Swedish (`sv-se`), and Finish (`fi-fi`).
 
 ## Banks
 

@@ -10,7 +10,7 @@ description: |
   must confirm through the MobilePay mobile app.
 menu_order: 700
 ---
-## Step 1: Create a purchase
+## Step 1: Create The Purchase
 
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a `POST` request towards Swedbank Pay with
@@ -20,6 +20,8 @@ will receive a response in which you can find the **JavaScript source** in the
 `view-payment` operation.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## MobilePay Request
 
 {:.code-view-header}
 **Request**
@@ -111,6 +113,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePays page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectively.                                                                                          |
 |                  | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available. This URI will override the value configured in the contract setup.                            |
 
+## MobilePay Response
+
 {:.code-view-header}
 **Response**
 
@@ -166,7 +170,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display  the payment window
+## Step 2: Display The Payment
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe` so that the payer can enter the required information in a secure
@@ -203,6 +207,8 @@ The previous two steps gives this HTML:
 </html>
 ```
 
+## Load The Javascript
+
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
@@ -219,7 +225,7 @@ embedded on your website.
 </script>
 ```
 
-## MobilePay Online Seamless View flow
+## MobilePay Online Seamless View Flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.

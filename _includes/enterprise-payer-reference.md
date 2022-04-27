@@ -17,6 +17,8 @@ below. This information is needed in order to store payment information. The
 payer will be given the option to continue as a guest. When doing so, no payment
 information will be stored.
 
+## How It Looks
+
 {:.text-center}
 ![Payer is presented with SSN input or continue as guest][enterprise-enter-ssn]
 

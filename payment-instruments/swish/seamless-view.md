@@ -32,7 +32,7 @@ menu_order: 800
 
 ![screenshot of the seamless view swish payment page][seamless-view-img]{:height="215px" width="475px"}
 
-## Step 1: Create a Purchase
+## Step 1: Create The Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 You need to make a `POST` request towards Swedbank Pay as shown below to create
@@ -43,6 +43,8 @@ a purchase. An example of an expanded `POST` request is available in the
 {% include payment-url.md when="selecting Swish as payment instrument" %}
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Swish Request
 
 {:.code-view-header}
 **Request**
@@ -139,6 +141,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
+## Swish Response
+
 {:.code-view-header}
 **Response**
 
@@ -215,7 +219,7 @@ payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the Payment Window
+## Step 2: Display The Payment Window
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the required information in a secure Swedbank
@@ -267,7 +271,7 @@ embedded on your website.
 </script>
 ```
 
-## Seamless View Purchase flow
+## Seamless View Purchase Flow
 
 The sequence diagram below shows the requests you have to send to Swedbank Pay
 to make a purchase. The Callback response is a simplified example

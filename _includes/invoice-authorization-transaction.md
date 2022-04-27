@@ -3,6 +3,8 @@
 The `redirect-authorization` operation redirects the payer to Swedbank Pay
 Payments where the payment is authorized.
 
+## Invoice Request
+
 {:.code-view-header}
 **Request**
 
@@ -65,6 +67,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the billing address adressee.                          |
 |                  | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
+
+## Invoice Response
 
 {:.code-view-header}
 **Response**

@@ -9,7 +9,7 @@
     {% assign entity = "Payment" %}
 {% endif %}
 
-## Payment Url
+### Payment Url
 
 For our Seamless Views, the field called `paymentUrl` will be used when the
 payer is redirected out of the Seamless View (the `iframe`). The payer is

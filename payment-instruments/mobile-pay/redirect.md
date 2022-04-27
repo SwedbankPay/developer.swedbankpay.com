@@ -12,7 +12,7 @@ description: |
 menu_order: 600
 ---
 
-## MobilePay Online redirect integration flow
+## MobilePay Online Redirect Integration Flow
 
 *   When you have prepared your merchant/webshop site, you make a `POST` request
     towards Swedbank Pay with your Purchase information.
@@ -25,6 +25,8 @@ menu_order: 600
 *   Finally you need to make a `GET` request towards Swedbank Pay with the
     `paymentID` received in the first step, which will return the purchase
     result.
+
+## How It Looks
 
 {:.text-center}
 ![screenshot of the Swedbank Pay landing page][swedbankpay-landing-page]{:height="425px" width="475px"}
@@ -41,13 +43,15 @@ a `callbackUrl` in the `POST` request. If `callbackUrl` is set, Swedbank Pay
 will send a `POST` request to this URL when the payer has fulfilled the
 payment." %}
 
-## Step 1: Create a Purchase
+## Step 1: Create The Purchase
 
 When the payer starts the purchase process, you make a `POST` request towards
 Swedbank Pay with the collected Purchase information. This will generate a
 payment with a unique `id`. See the `POST`request example below.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## MobilePay Request
 
 {:.code-view-header}
 **Request**
@@ -131,7 +135,9 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`       | `string`     | {% include field-description-payer-reference.md %}                                                                     |
 |                  | └➔&nbsp;`prefillInfo`           | `object`     | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                        |
 |                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePay's page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectively.                                                                                          |
-|                  | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to the logo that will be visible at MobilePay Online. For it to be displayed correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available. This URI will override the value configured in the contract setup.                                                                                                                                                                                                              |
+|                  | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to the logo that will be visible at MobilePay Online. For it to be displayed correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available. This URI will override the value configured in the contract setup.                                                                                                                                                                                                             |
+
+## MobilePay Response
 
 {:.code-view-header}
 **Response**
@@ -187,7 +193,7 @@ Content-Type: application/json
 }
 ```
 
-## Step 2: Get the transaction status
+## Step 2: GET The Transaction Status
 
 Finally you need to make a `GET` request towards Swedbank Pay with the `id` of
 the payment received in the first step, which will return the purchase result.
@@ -318,7 +324,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Purchase flow
+## Purchase Flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.

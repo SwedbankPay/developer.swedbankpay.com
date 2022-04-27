@@ -20,7 +20,7 @@ does not need to leave your webpage, since we are handling the payment in the
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create the payment
+## Step 1: Create The Payment
 
 A Trustly payment is a straightforward way to perform a direct-bank payment.
 
@@ -35,6 +35,8 @@ payment information. This will generate a `payment` resource with a unique
 `id` URL. You will receive a **JavaScript source** in response.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Trustly Request
 
 {:.code-view-header}
 **Request**
@@ -118,6 +120,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
 
+## Trustly Response
+
 {:.code-view-header}
 **Response**
 
@@ -179,7 +183,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the Payment
+## Step 2: Display The Payment
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the payment details in a secure Swedbank Pay
@@ -214,6 +218,8 @@ The previous two steps gives this HTML:
     </body>
 </html>
 ```
+
+## Load The Javascript
 
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.

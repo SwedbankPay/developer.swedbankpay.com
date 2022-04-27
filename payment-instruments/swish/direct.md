@@ -31,11 +31,13 @@ transactions not involving `capture` or `cancellation` operations." %}
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create a Purchase
+## Step 1: Create The Purchase
 
 A `Purchase` payment is created by performing the following request.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Swish Request
 
 {:.code-view-header}
 **Request**
@@ -129,6 +131,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`enableEcomOnly`    | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                                 |
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+
+## Swish Response
 
 {:.code-view-header}
 **Response**
@@ -279,7 +283,7 @@ Content-Type: application/json
 
 {% include transaction-response.md transaction="sale" mcom=true %}
 
-## Step 3: Get the payment status
+## Step 3: GET The Payment Status
 
 {:.code-view-header}
 **Request**

@@ -16,6 +16,8 @@ capture or cancel. For a full list of the available operations, see the
 | `create-paymentorder-cancel`   | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
 | `create-paymentorder-reversal` | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
 
+## GET Operations Request
+
 To identify the operations that are available we need to do a `GET` request
 against the URL of `paymentorder.id`:
 
@@ -26,6 +28,8 @@ against the URL of `paymentorder.id`:
 GET /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
+
+## GET Operations Response
 
 The (abbreviated) response containing an `updateorder`, `capture`,
 `cancellation`, and `reversal` operation should look similar to the response
@@ -78,11 +82,7 @@ Content-Type: application/json
 | └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
-## Cancel
-
 {% include payment-order-cancel.md %}
-
-## Reversal
 
 {% include payment-order-reversal.md %}
 
