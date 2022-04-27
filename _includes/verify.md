@@ -59,7 +59,7 @@ Swedbank Pay." %}
     a `unscheduledToken` that can be used for subsequent
     [unscheduled server-to-server based payments][unscheduled-mit].
 
-## Screenshots
+## How It Looks
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
 the credit card information.
@@ -78,6 +78,8 @@ Please note that not including `paymentUrl` in the request will generate a
 Redirect flow. Adding `paymentUrl` input will generate the response meant for
 Seamless View, which does not include the `redirect-verification`. The request
 below is the Redirect option.
+
+## Verify Request
 
 {:.code-view-header}
 **Request**
@@ -125,6 +127,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Verify Response
 
 {:.code-view-header}
 **Response**

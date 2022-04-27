@@ -19,13 +19,14 @@ underlying payments or transaction.
 {% include payment-url.md full_reference=true when="selecting the payment
 instrument Vipps or in the 3-D Secure verification for Credit Card Payments" %}
 
-### URLs Resource
+### GET URL Resource
 
 It is possible to perform a `GET` request on the `urls` resource to retrieve its
 contents.
 
 {:.code-view-header}
 Request
+
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
 Host: {{ page.api_host }}
@@ -35,6 +36,7 @@ Content-Type: application/json
 
 {:.code-view-header}
 Response
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json

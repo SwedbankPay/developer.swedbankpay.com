@@ -18,6 +18,8 @@ in the request body:
 
 {% endif %}
 
+## Abort Request
+
 {:.code-view-header}
 **Request**
 
@@ -41,6 +43,22 @@ Content-Type: application/json
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | └➔&nbsp;`operation`      | `string`     | `Abort`                                                                                                                                                                                                                |
 | └➔&nbsp;`abortReason`      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
+
+## Abort Response
+
+{% if documentation_section contains "checkout-v3" %}
+
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, as displayed above, with its
+`status` set to `Aborted`.
+
+{% else %}
+
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, as displayed above, with its
+`state` set to `Aborted`.
+
+{% endif %}
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -224,19 +242,5 @@ Content-Type: application/json
     ]
 }
 ```
-
-{% endif %}
-
-{% if documentation_section contains "checkout-v3" %}
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above, with its
-`status` set to `Aborted`.
-
-{% else %}
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above, with its
-`state` set to `Aborted`.
 
 {% endif %}

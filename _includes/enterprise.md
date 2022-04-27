@@ -30,7 +30,9 @@ need a **legal agreement with Swedbank Pay** which mandates that the payer
 identified by the `nationalIdentifier` is authenticated with **Bank ID** prior
 to the request." %}
 
-An abbreviated example of a Enterprise request looks like this:
+## Enterprise Request
+
+An abbreviated payment order example looks like this:
 
 {:.code-view-header}
 **Request**
@@ -67,12 +69,15 @@ will allow a more frictionless payment process. Invoice One-Click Payments does
 not require the last 4/5 digits of the payer's social security number (SSN),
 for instance.
 
-Below you can see an example of the payment window with and without Enterprise. In the
-first image, the SSN is removed altogether because the payer is authenticated by
-the merchant. In the bottom image, the last 4/5 digits of the SSN are required.
+Below you can see an example of the payment window with and without Enterprise.
+In the first image, the SSN is removed altogether because the payer is
+authenticated by the merchant. In the bottom image, the last 4/5 digits of the
+SSN are required.
+
+## How It Looks
 
 {:.text-center}
-![One-Click Payments without SSN][enterprise-no-ssn]{:width="475" height="385"}
+![Payments without SSN][enterprise-no-ssn]{:width="475" height="385"}
 
 {:.text-center}
 ![Payments with SSN][enterprise-with-ssn]{:width="475" height="460"}

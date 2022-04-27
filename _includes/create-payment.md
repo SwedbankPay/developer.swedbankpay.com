@@ -20,8 +20,10 @@ To create a {{ documentation_section }} payment, you perform an HTTP `POST`
 against the `payments` resource. The kind of payment created is indicated with
 the value of the `operation` field in the request.
 
+## Payment Request
+
 {:.code-view-header}
-**Request**"
+**Request**
 
 ```http
 POST /psp/creditcard/payments HTTP/1.1

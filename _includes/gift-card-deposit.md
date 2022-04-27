@@ -1,5 +1,7 @@
 ## Deposit
 
+## Gift Card Deposit Request
+
 {:.code-view-header}
 **Request**
 
@@ -56,6 +58,8 @@ Content-Type: application/json
 | {% icon check %} | `paymentTransactionRef` | `string`  | Unique ID for each payment.                                                                                                     |
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                              |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                     |
+
+## Gift Card Deposit Response
 
 {:.code-view-header}
 **Response:**

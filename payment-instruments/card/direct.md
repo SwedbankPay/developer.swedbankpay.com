@@ -28,7 +28,7 @@ body="The direct integration option requires you to collect the card data on
 your website, which means it must be [PCI-DSS Compliant](
 https://www.pcisecuritystandards.org/)." %}
 
-## Payment flow
+## Payment Flow
 
 Below is a quick stepwise summary of how the Direct Card Payment scenario works.
 
@@ -80,6 +80,8 @@ the payer to be redirected to complete the 3-D Secure authentication." %}
 The `direct-authorization` operation creates an authorization transaction
 directly.
 
+## Non 3-D Secure Request
+
 {:.code-view-header}
 **Request**
 
@@ -110,6 +112,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
+
+## Non 3-D Secure Response
 
 {:.code-view-header}
 **Response**
@@ -209,6 +213,8 @@ authorization request will contain a `redirect-authentication` operation and the
 payer will have to be redirected to the issuer to complete the 3-D Secure
 authentication. See the request and response examples below.
 
+## 3-D Secure Request
+
 {:.code-view-header}
 **Request**
 
@@ -239,6 +245,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
+
+## 3-D Secure Response
 
 {:.code-view-header}
 **Response**
@@ -316,6 +324,8 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
+## Redirecting The Payer
+
 When you find the `redirect-authentication` operation in the response from the
 authorization request, you will have to perform an HTTP redirect of the payer to
 the URL of the `href` to complete the authorization by performing a 3-D Secure
@@ -376,7 +386,7 @@ sequenceDiagram
     deactivate Payer
 ```
 
-## Options after posting a purchase payment
+## Options After Posting A Purchase Payment
 
 *   If the payment shown above is done as a two-phase (Authorization), you will
   need to implement the [Capture][capture] and [Cancel][cancel] requests.

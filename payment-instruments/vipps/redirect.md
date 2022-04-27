@@ -30,7 +30,7 @@ You redirect the payer to collect the payer's mobile number.
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
-## Step 1: Create a Purchase
+## Step 1: Create The Purchase
 
 {% include alert-callback-url.md %}
 
@@ -39,6 +39,8 @@ You redirect the payer to collect the payer's mobile number.
 A `Purchase` payment is a straightforward way to charge the the payer. Below
 you will see the `POST` request you will need to send to collect the purchase
 information.
+
+## Vipps Request
 
 {:.code-view-header}
 **Request**
@@ -86,6 +88,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Vipps Response
 
 {:.code-view-header}
 **Response**
@@ -180,7 +184,7 @@ Once the payment is successfully authorized, the payer is returned to either the
 On the page as well as in the `callbackUrl` you need to perform an HTTP `GET`
 request towards the `id` of the payment to inspect its status.
 
-## Step 3: Get the transaction state
+## Step 3: GET The Transaction State
 
 The `GET`request below will give you the transaction state of the payment.
 The `paymentId` used below was provided in the fist step when creating a
@@ -300,7 +304,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Vipps Redirect integration flow
+## Vipps Redirect Integration Flow
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.

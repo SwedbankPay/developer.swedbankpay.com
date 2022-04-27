@@ -2,11 +2,13 @@
 
 {% include transaction-list-response.md %}
 
-## Create capture transaction
+## Create Capture Transaction
 
 A `capture` transaction to withdraw money from the payer's MobilePay can be
 created after a completed authorization by performing the `create-capture`
 operation.
+
+## Capture Request
 
 {:.code-header}
 **Request**
@@ -35,6 +37,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                     |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
+
+## Capture Response
 
 {% include transaction-response.md %}
 

@@ -5,7 +5,7 @@ estimated_read: 20
 menu_order: 900
 ---
 
-## Options after posting a payment
+## Options After Posting A Payment
 
 *   **Abort**: It is possible to [abort a payment][abort] if the payment has no
     successful transactions.
@@ -21,10 +21,12 @@ menu_order: 900
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-### Create cancellation transaction
+### Create Cancellation Transaction
 
 Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
+
+## Cancel Request
 
 {:.code-view-header}
 **Request**
@@ -50,6 +52,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                             |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
+## Cancel Response
+
 {% include transaction-response.md transaction="cancel" %}
 
 ## Cancel Sequence
@@ -74,10 +78,12 @@ sequenceDiagram
 
 {% include transaction-list-response.md transaction="reversal" %}
 
-## Create reversal transaction
+### Create Reversal Transaction
 
 The `create-reversal` operation reverses a previously created and
 captured payment.
+
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -106,6 +112,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                  |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
+
+## Reversal Response
 
 {% include transaction-response.md transaction="reversal"%}
 

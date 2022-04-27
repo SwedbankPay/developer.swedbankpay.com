@@ -78,6 +78,8 @@ Among the operations in the POST `paymentOrders` response, you will find the
 }
 ```
 
+## Load The Javascript
+
 Embed the `href` in a `<script>` element. That script will then load the
 Seamless View.
 
@@ -138,6 +140,8 @@ request.send();
   </html>
 ```
 
+## How It Looks
+
 The payment menu should appear with the payer information displayed above the
 menu. The payer can select their preferred payment instrument and pay.
 
@@ -147,7 +151,7 @@ menu. The payer can select their preferred payment instrument and pay.
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
 
-### Events
+## Events
 
 When integrating Seamless View, we strongly recommend that you implement the
 `onPaid` event, which will give you the best setup. Even with this implemented,

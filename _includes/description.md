@@ -38,6 +38,8 @@ in the code example. For the Seamless View scenario, the description is not
 shown in the payment window, but it is still required in the initial request."
 %}
 
+## Description Request
+
 {:.code-view-header}
 **Request**
 
@@ -67,6 +69,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## How It Looks
 
 {% if api_resource == "paymentorders" %}
 {:.text-center}

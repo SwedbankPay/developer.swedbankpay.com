@@ -15,6 +15,8 @@ please contact [Swedbank Pay Support][swedbankpay-support]. The example below
 shows the payment window where the payer can choose between Dankort or Visa
 before completing the payment.
 
+## How It Looks
+
 ![Co-badge Dankort cards with option to choose between Dankort and Visa before
 paying][card-badge]{:height="620px" width="475px"}
 

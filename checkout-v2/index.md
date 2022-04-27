@@ -58,7 +58,7 @@ Checkout. The parties involved in the sequences are:
 ### Checkin
 
 The first operation in the Checkout process is to identify the payer. This step
-is called **Checkin** and is visualized in the below diagram.
+is called **Checkin** and is visualized in the diagram below.
 
 ```plantuml
 @startuml "Checkin"

@@ -31,7 +31,7 @@ sequenceDiagram
   end
 ```
 
-### `onConsumerIdentified`
+## `onConsumerIdentified`
 
 This event triggers when a consumer has performed Checkin and is identified,
 if the Payment Menu is not loaded and in the DOM.
@@ -58,7 +58,7 @@ object:
 }
 ```
 
-### `onShippingDetailsAvailable`
+## `onShippingDetailsAvailable`
 
 Triggered when a consumer has been identified or shipping address has been
 updated.
@@ -76,7 +76,7 @@ provides shipping address via the `onShippingDetailsAvailable` event." %}
 }
 ```
 
-### `onBillingDetailsAvailable`
+## `onBillingDetailsAvailable`
 
 Triggered when a consumer has been identified.
 

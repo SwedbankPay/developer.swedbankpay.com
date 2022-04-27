@@ -5,19 +5,19 @@ estimated_read: 11
 menu_order: 900
 ---
 
-## Options after posting a payment
+## Options After Posting A Payment
 
 When you detect that the payer has reached your `completeUrl`, you need to do a
 GET request on the payment resource, which contains the paymentID generated in
 the first step, to receive the state of the transaction. You will also be able
 to see the available operations after posting a payment.
 
-* **Abort:** It is possible to abort the process if the payment has no
+*   **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the `abort` description](#abort).
-* An invoice authorization must be followed by a `capture` or
+*   An invoice authorization must be followed by a `capture` or
   `cancel` request.
-* For reversals, you will need to implement the `reversal` request.
-* **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
+*   For reversals, you will need to implement the `reversal` request.
+*   **If CallbackURL is set:** Whenever changes to the payment occur a [Callback
   request][callback-request] will be posted to the callbackUrl, which was
   generated when the payment was created.
 
@@ -25,10 +25,10 @@ to see the available operations after posting a payment.
 
 ## Cancellations
 
-### Create cancel transaction
-
 Perform the `create-cancellation` operation to cancel a previously authorized
 or partially captured invoice payment.
+
+## Cancel Request
 
 {:.code-view-header}
 ***Request***
@@ -55,12 +55,14 @@ Content-Type: application/json
 | {% icon check %}︎ | `transaction.payeeReference` | `string`     | The `payeeReference` is the receipt/invoice number, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
 | {% icon check %}︎ | `transaction.description`    | `string(50)` | A textual description for the cancellation.                                                                                                                                                                                           |
 
+## Cancel Response
+
 The `cancel` resource will be returned, containing information about the
 newly created `cancel` transaction.
 
 {% include transaction-response.md transaction="cancel" %}
 
-### Inspecting the Cancellation
+### List Cancel Transactions
 
 The `cancellations` resource lists the cancellation transaction made on a
 specific payment.
@@ -97,12 +99,11 @@ sequenceDiagram
 
 ## Reversals
 
-### Create reversal transaction
-
 The `create-reversal` operation will reverse a previously captured payment and
 refund the amount to the payer. To reverse a payment, perform the
-`create-reversal` operation. The HTTP body of the request should look as
-follows:
+`create-reversal` operation.
+
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -136,11 +137,13 @@ Content-Type: application/json
 |                  | └➔&nbsp;`receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. This reference is used as an invoice/receipt number.                                                                                                                                                       |
 | {% icon check %}︎ | └➔&nbsp;`description`      | `string`     | A textual description of the reversal.                                                                                                                                                                                                                                     |
 
+## Reversal Response
+
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
 {% include transaction-response.md transaction="reversal" %}
 
-### Inspecting the Reversal
+## List Reversal Transactions
 
 The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment.
@@ -157,7 +160,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="reversal" %}
 
-### Reversal Sequence
+## Reversal Sequence
 
 `Reversal` can only be done on an captured transaction where there are
 some captured amount not yet reversed.

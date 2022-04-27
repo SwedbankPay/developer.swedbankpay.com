@@ -40,7 +40,7 @@ To start integrating Swedbank Pay Payments, you need the following:
 *   Credentials (Merchant Access Token) from Swedbank Pay retrieved from
     Swedbank Pay Admin.
 
-## Platform options
+## Platform Options
 
 Here are our three platform options at a glance. You can read more about the
 integration process by visiting the sections for each payment instrument.

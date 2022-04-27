@@ -45,6 +45,8 @@ menu_order: 300
   `GET` request, containing the `id` of the payment generated in the first step,
   to receive the state of the transaction.
 
+## How It Looks
+
 You will redirect the payer to Swedbank Pay hosted pages to collect the credit
 card information.
 
@@ -69,8 +71,6 @@ options:
 *   [Unscheduled Purchase][unscheduled-purchase]
 
 Our `payment` example below uses the [`Purchase`][purchase] operation.
-
-## Intent
 
 {% include intent.md autocapture=true %}
 

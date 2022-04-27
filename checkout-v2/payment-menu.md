@@ -95,6 +95,8 @@ create the script element with JavaScript, all inside the event handler for
 [`onConsumerIdentified`][technical-reference-onconsumer-identified].
 The HTML code will be unchanged in this example.
 
+## Load The Javascript
+
 For the guest Payment Menu, lines 23-44 in the JavaScript should be your main
 focus. They contain what you need to display the Payment Menu without Checkin.
 
@@ -173,6 +175,8 @@ request.send(JSON.stringify({
     shippingAddressRestrictedToCountryCodes : ['NO', 'SE']
 }));
 ```
+
+## How It Looks
 
 This should bring up the Payment Menu in a Seamless View looking like
 this, depending on whether the payer is logged in (top two) or a guest user

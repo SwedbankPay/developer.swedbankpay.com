@@ -82,8 +82,10 @@ module.
 }
 ```
 
-Embed the `href` in a `<script>` element. That script will then load the
-Seamless View.
+## Load The Javascript
+
+Embed the `href` from the example above in a `<script>` element. That script
+will then load the Seamless View.
 
 To load the Checkout from the JavaScript URL obtained in the backend API
 response, it needs to be set as a script element’s `src` attribute. You can
@@ -190,6 +192,8 @@ window.payex.hostedView.checkout({
     </html>
 ```
 
+## How It Looks
+
 First you will see a Checkin module where the payer can enter their email and
 phone number.
 
@@ -239,7 +243,7 @@ open the payment menu. The payer can then proceed with the purchase.
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
 
-### Events
+## Events
 
 When integrating Seamless View, especially with **Starter** where it's the only
 option, we strongly recommend that you implement the `onPaid` event, as it will

@@ -76,6 +76,8 @@ Among the operations in the POST `paymentOrders` response, you will find the
 }
 ```
 
+## How It Looks
+
 The redirect link opens the payment menu on a new page with the payer
 information displayed above the menu. The payer can select their preferred
 payment instrument and pay.

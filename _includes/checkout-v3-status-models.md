@@ -3,7 +3,7 @@
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
-### Aborted
+## Aborted
 
 A payment order response with the status `Aborted`.
 
@@ -105,7 +105,7 @@ responses:
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an aborted payment, the available operations are `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations) |
 
-### Cancelled
+## Cancelled
 
 The `cancel` response is not yet converted to the new Checkout v3 standard.
 
@@ -154,7 +154,7 @@ Content-Type: application/json
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 
-### Failed
+## Failed
 
 The failed response is not yet converted to the new Checkout v3 standard.
 
@@ -199,7 +199,7 @@ Content-Type: application/json
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
 
-### Initialized
+## Initialized
 
 {:.code-view-header}
 **Response**
@@ -330,7 +330,7 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
-### Paid
+## Paid
 
 The payment order response with status `Paid`, and the `Paid` resource
 expanded.

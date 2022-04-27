@@ -12,7 +12,7 @@ As the name implies, these payments are used for transactions which happen on a
 recurring basis. Common use cases could be subscriptions for magazines,
 newspapers or streaming services.
 
-### Generating The Token
+## Generating The Token
 
 First, you need an initial transaction where the `recurrenceToken` is generated
 and connected. You do that by adding the field `generateRecurrenceToken` in the
@@ -21,7 +21,7 @@ purchase to activate the token.
 
 (Read more about [deleting the recurrence token][delete-token] here.)
 
-The initial request should look like this:
+## Initial Request
 
 {:.code-view-header}
 **Request**
@@ -238,6 +238,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
+## Initial Response
+
 {:.code-view-header}
 **Response**
 
@@ -367,7 +369,7 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` [resource]({{ features_url }}/technical-reference/resource-sub-models#metadata) where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
-### GET The Token
+## GET The Token
 
 The token can be retrieved from the initial payment response as shown above, or
 by performing a `GET` towards the `paymentOrder`:
@@ -392,6 +394,8 @@ When you are ready to perform the recurring purchase, simply add the
 `recurrenceToken` field to the `paymentOrder` request and use the token as the
 value. Your request should look like the example below, and the response will
 match the `paymentOrder` response from the initial purchase.
+
+## Recurring Request
 
 {:.code-view-header}
 **Request**

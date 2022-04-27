@@ -23,13 +23,16 @@ menu_order: 800
     `id` URL generated in the first step, to receive the state of the
     transaction.
 
-## Step 1: Create a payment
+## Step 1: Create The Payment
 
 {% include alert-callback-url.md %}
 
 {% include alert-gdpr-disclaimer.md %}
 
-To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
+To initiate the payment process, you need to make a `POST` request to Swedbank
+Pay.
+
+## Trustly Request
 
 {:.code-view-header}
 **Request**
@@ -114,6 +117,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
 
+## Trustly Response
+
 {:.code-view-header}
 **Response**
 
@@ -163,7 +168,7 @@ Content-Type: application/json
 }
 ```
 
-## Trustly flow
+## Trustly Flow
 
 This is an example of the Redirect scenario. For other integrations, take a
 look at the respective sections. The sequence diagram below shows the two
@@ -214,7 +219,7 @@ sequenceDiagram
     Merchant-->>-Consumer: display purchase result
 ```
 
-## Options after posting a payment
+## Options After Posting A Payment
 
 Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.

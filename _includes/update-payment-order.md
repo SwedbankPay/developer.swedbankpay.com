@@ -19,6 +19,13 @@ initialized, `refresh()` should be invoked so the correct amount is authorized.
 
 If the page is refreshed by a full page reload, `refresh()` is not necessary.
 
+The response given when changing a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource. Even though the fields are the
+same, the `UpdateOrder` request will overwrite the fields that were sent in the
+initial `Purchase` request.
+
+## Update Request
+
 {:.code-view-header}
 **Request**
 
@@ -92,6 +99,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer` | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer` | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
+
+## Update Response
 
 {:.code-view-header}
 **Response**
@@ -185,8 +194,3 @@ Content-Type: application/json
 | └─➔&nbsp;`method`                 | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`                   | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
-
-The response given when changing a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above. Even though
-the fields are the same, the `UpdateOrder` request will overwrite the fields
-that were sent in the initial `Purchase` request.

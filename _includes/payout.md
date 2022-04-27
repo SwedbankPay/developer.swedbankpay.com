@@ -15,11 +15,13 @@ having to collect card details a second time." %}
     (Merchant Category Code 7995).
 *   The payout service is not a part of Swedbank Pay Settlement Service.
 
-### API requests
+### Create The Payout
 
 The API requests are displayed in the [payout flow](#payout-flow).  You create
 a payout by performing a `POST` creditcard payments with key `operation` set to
 `payout`.
+
+## Payout Request
 
 {:.code-view-header}
 **Request**
@@ -55,6 +57,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Payout Response
 
 {:.code-view-header}
 **Response**
@@ -94,7 +98,7 @@ Content-Type: application/json
 }
 ```
 
-### Payout flow
+### Payout Flow
 
 You must set `Operation` to `Payout` in the initial `POST` request.
 

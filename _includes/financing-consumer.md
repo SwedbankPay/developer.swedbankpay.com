@@ -50,12 +50,10 @@ Content-Type: application/json
 }
 ```
 
-## API requests
+## Operation Alternatives
 
 The options you can choose from when creating a payment with key operation
 set to value `FinancingConsumer` are listed below.
-
-### Options before posting a payment
 
 {:.table .table-striped}
 |               | Norway {% flag no %} | Finland {% flag fi %} | Sweden {% flag se %} |

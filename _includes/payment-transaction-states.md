@@ -3,7 +3,7 @@
 Both payments and transactions can be in several different states during
 the course of a purchase. You can find a short description of each state below.
 
-### Payment States
+## Payment States
 
 *   `ready` means that the payment has been created successfully, and is now
     ready for further transaction operations, like `authorization`, `sale` or
@@ -31,7 +31,7 @@ If you want to inspect the transactional status of a payment, read about the
 
 {% include alert.html type="informative" icon="info" body=alert %}
 
-### Transaction States
+## Transaction States
 
 *   `ìntialized` is the transaction state when something unexpected occurred, and
    it is impossible to determine the exact status of the transaction.

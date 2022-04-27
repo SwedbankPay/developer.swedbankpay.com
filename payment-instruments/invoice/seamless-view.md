@@ -25,7 +25,7 @@ does not need to leave your webpage, since we are handling the payment in the
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create the payment
+## Step 1: Create The Payment
 
 {% include alert-gdpr-disclaimer.md %}
 
@@ -42,6 +42,8 @@ When properly set up in your merchant/webshop site and the payer starts the
 invoice process, you need to make a POST request towards Swedbank Pay with your
 invoice information. This will generate a payment object with a unique
 `paymentID`. You will receive a **JavaScript source** in response.
+
+## Invoice Request
 
 {:.code-view-header}
 **Request**
@@ -124,6 +126,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md documentation_section="invoice" %}                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`invoiceType`            | `String`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
 
+## Invoice Response
+
 {:.code-view-header}
 **Response**
 
@@ -204,7 +208,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the Payment
+## Step 2: Display The Payment
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the payment details in a secure Swedbank Pay

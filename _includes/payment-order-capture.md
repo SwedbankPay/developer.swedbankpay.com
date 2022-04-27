@@ -60,6 +60,8 @@ sequenceDiagram
     end
 ```
 
+## Capture Request
+
 {% endif %}
 
 {% if documentation_section contains "checkout-v2" %}
@@ -168,6 +170,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
+
+## Capture Response
 
 If the capture succeeds, this should be the response:
 

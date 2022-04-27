@@ -60,7 +60,7 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`    | `integer` | {% include field-description-amount.md %}                                                                                                                                                   |
 | └─➔&nbsp;`vatAmount` | `integer` | {% include field-description-vatamount.md %}                                          |
 
-### Prices Object Types
+## Prices Object Types
 
 Each payment instrument have one or more prices object types. Usually there is
 only one, whichs corresponds with the name of the payment instrument, like
@@ -77,7 +77,7 @@ types.
 
 {% when "creditcard" %}
 
-#### Card Payments
+## Card Payments
 
 {:.table .table-striped}
 | Type            | Description                                |
@@ -95,7 +95,7 @@ types.
 
 {% when "invoice" %}
 
-#### Invoice Payments
+## Invoice Payments
 
 {:.table .table-striped}
 | Type      | Description    |
@@ -104,7 +104,7 @@ types.
 
 {% when "mobilepay" %}
 
-#### MobilePay Online Payments
+## MobilePay Online Payments
 
 {:.table .table-striped}
 | Type        | Description      |
@@ -113,7 +113,7 @@ types.
 
 {% when "swish" %}
 
-#### Swish Payments
+## Swish Payments
 
 {:.table .table-striped}
 | Type    | Description  |
@@ -122,7 +122,7 @@ types.
 
 {% when "vipps" %}
 
-#### Vipps Payments
+## Vipps Payments
 
 {:.table .table-striped}
 | Type    | Description  |

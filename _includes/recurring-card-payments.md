@@ -6,7 +6,7 @@
 without payer interaction. When an initial payment token is generated,
 subsequent payments are made through server-to-server requests. " %}
 
-### Prerequisites
+## Prerequisites
 
 Prior to making any server-to-server requests, you need to supply the payment
 instrument details and a payment token to Swedbank Pay by initial purchase or
@@ -23,7 +23,7 @@ depending on if you want to make an initial charge or not:
     This is done by creating  a "Verify Payment" and generating a recurrence
     token.
 
-#### Generate RecurrenceToken
+## Generate Recurrence Token
 
 *   When posting a `Purchase` payment, you need to make sure that the field
     `generateRecurrenceToken` is set to `true`
@@ -38,7 +38,7 @@ depending on if you want to make an initial charge or not:
 *   When posting a `Verify` payment, a payment token will be generated
     automatically.
 
-#### Creating a Payment
+## Creating The Payment
 
 *   You need to `POST` a [Purchase payment][card-payment-purchase] / and
     generate a recurrence token (safekeep for later recurring use).
@@ -46,23 +46,27 @@ depending on if you want to make an initial charge or not:
 *   You need to `POST` a [Verify payment][payment-verify], that will
     automatically generate a recurrence token (for later recurring use).
 
-#### Retrieve Recurrence Token
+## Retrieve Recurrence Token
 
 You can retrieve the recurrence token by doing a `GET` request against the
 `payment`. You need to store this `recurrenceToken` in your system and keep
 track of the corresponding `payerReference`.
 
-#### Delete Recurrence Token
+## Delete Recurrence Token
 
 You can delete a created recurrence token. Please see technical reference for
 details [here][card-payments-remove-payment-token].
 
-### Recurring purchases
+## Recurring Purchases
 
 When you have a Recurrence token stored away. You can use the same token in a
-subsequent [`recurring payment`][card-payment-recur] `POST`.
-This will be a server-to-server affair, as we have both payment instrument
-details and recurrence token from the initial payment.
+subsequent [`recurring payment`][card-payment-recur] `POST`. This will be a
+server-to-server affair, as we have both payment instrument details and
+recurrence token from the initial payment. Your request should look like the
+example below, and the response will match the `payments` response from the
+initial purchase.
+
+## Recurring Request
 
 {:.code-view-header}
 **Request**
@@ -139,11 +143,11 @@ Content-Type: application/json
 Please note that this `POST`request is made directly on the payment level,
 and will not create a payment order." %}
 
-#### Options after a payment
+## Options After A Payment
 
 You have the following options after a server-to-server Recur payment `POST`.
 
-##### Autorization (intent)
+### Authorization (intent)
 
 *   **Authorization (two-phase):** If you want the credit card to reserve the
     amount, you will have to specify that the intent of the purchase is
@@ -153,7 +157,7 @@ You have the following options after a server-to-server Recur payment `POST`.
     have to make a [Capture][card-payment-capture] or
     [Cancel][card-payment-cancel] request.
 
-##### Capture (intent)
+### Capture (intent)
 
 *   **AutoCapture (one-phase)**: If you want the credit card to be charged right
     away, you will have to specify that the intent of the purchase is
@@ -161,7 +165,7 @@ You have the following options after a server-to-server Recur payment `POST`.
     The card will be charged and you don't need to do any more financial
     operations to this purchase.​​​​​
 
-##### General
+### General
 
 *   **Defining CallbackURL**: When implementing a scenario,
     it is optional to set a [`CallbackURL`][technical-reference-callback]
@@ -179,6 +183,8 @@ flow where you do not want to charge the payer right away.
 {% include alert.html type="informative" icon="info" body="
 Please note that all boolean credit card attributes involving rejection of
 certain card types are optional and set on contract level." %}
+
+## Verify Request
 
 {:.code-view-header}
 **Request**
@@ -226,6 +232,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Verify Response
 
 {:.code-view-header}
 **Response**

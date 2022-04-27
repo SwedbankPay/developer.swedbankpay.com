@@ -23,7 +23,7 @@ generated payment token to prefill payment details for credit card or
 invoice payments pages - which means that the payer don't need to enter
 these details for every purchase." %}
 
-### Introduction
+## Introduction
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -41,7 +41,7 @@ to enable one-click purchases.
 
 {% endif %}
 
-### API Requests To Generate paymentToken
+## Generate The Payment Token
 
 When making the initial purchase request, you need to generate a `paymentToken`.
 You can do this either by by setting the `generatePaymentToken` field to
@@ -60,7 +60,7 @@ operation to [`Verify`][verify].
 }
 ```
 
-### Finding paymentToken value
+## GET Payment Token
 
 When the initial purchase is successful, a `paymentToken` is linked to
 the payment.  You can return the value by sending a `GET` request towards the
@@ -88,7 +88,7 @@ Authorization: Bearer <AccessToken>
 You need to store the `paymentToken` from the response in your system and keep
 track of the corresponding `payerReference` in your system.
 
-### Returning Purchases
+## Returning Purchases
 
 When a known payer (where you have attained a `payerReference` or similar)
 returns to your system, you can use the `paymentToken`, using already stored
@@ -105,6 +105,8 @@ See the Features section for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
 
 {% endunless%}
+
+## Returning Purchase Request
 
 Abbreviated code example:
 
@@ -144,10 +146,12 @@ Content-Type: application/json
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 
+## How It Looks
+
 {:.text-center}
 ![One click payment page][one-click-image]{:height="510px" width="475px"}
 
-### Delete payment token
+### Delete Payment Token
 
 If you need to delete a `paymentToken`, you have two options. The first is by
 `payerReference`, which deletes all payment, recurrence and/or unscheduled
