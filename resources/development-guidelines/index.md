@@ -84,15 +84,15 @@ be perceived as accessible:
 2.  The project’s documentation should be easily accessible in or linked to from
     the project’s `README` file.
 3.  The `README` file and associated documentation should be written in simple
-    [Markdown][markdown] markup so it is easy to correct by anyone simply by
+    Markdown markup so it is easy to correct by anyone simply by
     using GitHub’s online Markdown editing features.
 4.  How to contribute should be clearly explained in a `CONTRIBUTING` file.
 5.  The process of contributing should be as simple as possible.
     1.  The project should follow the norm and best practice of the language and
         environment it is written in.
     2.  There should be tests in the project that are easy to get up and running
-        on a developer machine without installing any external services, tools or
-        libraries, unless they are handled by a package manager like NuGet.
+        on a developer machine without installing any external services, tools
+        or libraries, unless they are handled by a package manager like NuGet.
     3.  Contributed code should be checked by a
         [continuous integration][continuous-integration] server that labels the
         status of pull request accordingly. If a test fails, the contributor
@@ -101,7 +101,7 @@ be perceived as accessible:
     server so build failures are visible to the contributor such that it can be
     fixed without any project manager’s involvement.
 7.  The development and branching process should preferably be based on an
-    existing scheme such as [GitFlow][gitflow] or [GitHub Flow][github-flow].
+    existing scheme such as [GitFlow][gitflow] or GitHub Flow.
 8.  All development should be done in public.
     1.  Code should be pushed to GitHub regularly, so it’s possible to see
         progress.
@@ -180,7 +180,7 @@ automatically based on which branch the code being built exists on.
 ### Branching strategy
 
 To make versioning easier, the Git repository should follow [GitFlow][gitflow],
-[GitHub Flow][github-flow] or derivates, so released and stable code is kept in
+GitHub Flow or derivates, so released and stable code is kept in
  the master branch, while unstable and pre-released code
   — if such is required — is kept in the develop branch.
 
@@ -197,7 +197,7 @@ official storefront for applications
 [Apple’s App Store][apple-app-store] or [Google Play][google-play],
 should try to publish the released software in these marketplaces.
 
-Releases should correspond to a tagged version number and a [Release][release]
+Releases should correspond to a tagged version number and a Release
 for the version should be created on GitHub. The GitHub Release should
 summarize all changes made since the last release and highlight new features,
 possibly by referring to blog entries or similar that describes them in more
@@ -214,13 +214,10 @@ To help with writing release notes, projects can use the tool
 [git-release-notes]: https://github.com/GitTools/GitReleaseNotes
 [git-version]: https://github.com/GitTools/GitVersion
 [gitflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
-[github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
 [gitversion-task]: https://www.nuget.org/packages/GitVersionTask
 [google-play]: https://play.google.com/store
-[markdown]: https://docs.github.com/en/get-started/writing-on-github
 [owasp-top-10]: https://owasp.org/www-project-top-ten/
 [principles-of-object-oriented-design]: https://wiki.c2.com/?PrinciplesOfObjectOrientedDesign
-[release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
 [sans-25]: https://www.sans.org/top25-software-errors/
 [semantic-versioning]: https://semver.org/
 [software-license]: /resources/development-guidelines/license
