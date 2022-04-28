@@ -214,7 +214,7 @@ To help with writing release notes, projects can use the tool
 [git-release-notes]: https://github.com/GitTools/GitReleaseNotes
 [git-version]: https://github.com/GitTools/GitVersion
 [gitflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
-[github-flow]: https://guides.github.com/introduction/flow/
+[github-flow]: https://docs.github.com/en/get-started/quickstart/github-flow
 [gitversion-task]: https://www.nuget.org/packages/GitVersionTask
 [google-play]: https://play.google.com/store
 [markdown]: https://docs.github.com/en/get-started/writing-on-github
