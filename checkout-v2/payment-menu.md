@@ -33,11 +33,9 @@ Remember to read up on our [URL resource][urls].
 {% include payment-url.md when="selecting the payment instrument Vipps or in the
 3-D Secure verification for Credit Card Payments" %}
 
-### Request
-
 {% include payment-order-purchase.md %}
 
-### Response
+## Response
 
 The response back should look something like this (abbreviated for brevity):
 
@@ -85,7 +83,7 @@ into how to hook that up next.
 be sent as a part of the `POST` request to `paymentorders` and must represent
 the order ID of the webshop or merchant website." %}
 
-## Step 4: Display the Payment Menu
+## Step 4: Display The Payment Menu
 
 To load the Payment Menu from the JavaScript URL obtained in the back end API
 response, it needs to be set as a `script` element's `src` attribute. You can
