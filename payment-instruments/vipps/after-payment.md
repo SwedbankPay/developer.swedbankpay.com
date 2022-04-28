@@ -205,7 +205,7 @@ All Vipps after payment transactions are described below.
 The `authorizations` resource contains information about the authorization
 transactions made on a specific payment.
 
-## GET Request
+## Authorizations GET Request
 
 {:.code-view-header}
 **Request**
@@ -226,7 +226,7 @@ Content-Type: application/json
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-## GET Request
+## Cancellation GET Request
 
 {:.code-view-header}
 **Request**
