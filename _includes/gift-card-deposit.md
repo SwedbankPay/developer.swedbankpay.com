@@ -1,5 +1,3 @@
-## Deposit
-
 ## Gift Card Deposit Request
 
 {:.code-view-header}

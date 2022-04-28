@@ -1,5 +1,3 @@
-## Purchase
-
 ## Gift Card Purchase Request
 
 {:.code-view-header}

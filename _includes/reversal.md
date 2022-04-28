@@ -57,7 +57,7 @@ Content-Type: application/json
 The `reversal` resource contains information about the newly created reversal
 transaction.
 
-## Reversal Request
+## Reversal Response
 
 {:.code-view-header}
 **Response**

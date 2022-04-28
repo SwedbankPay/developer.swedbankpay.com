@@ -11,3 +11,7 @@ services:
     volumes:
       - .:/srv/jekyll
       - .bundle:/usr/local/bundle
+    deploy:
+      resources:
+        limits:
+          memory: 2000M

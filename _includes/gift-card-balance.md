@@ -1,5 +1,3 @@
-## Balance
-
 ## Gift Card Balance Request
 
 {:.code-view-header}
