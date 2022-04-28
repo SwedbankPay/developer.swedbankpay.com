@@ -21,7 +21,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "productName": "Checkout3",
-        "urls":
+        "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
