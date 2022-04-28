@@ -83,7 +83,10 @@ must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
 
-{% include languages.md %}
+## Languages
+
+This product supports English (US) `en-US`, Norwegian `nb-NO` and Swedish
+`sv-SE.`
 
 {% include iterator.html next_href="direct" next_title="Direct" %}
 

@@ -74,7 +74,12 @@ Our `payment` example below uses the [`Purchase`][purchase] operation.
 
 {% include intent.md autocapture=true %}
 
-{% include languages.md %}
+## Languages
+
+This product supports Danish `da-DK`, German `de-DE`, Estonian `ee-EE`, English
+(US) `en-US`, Spanish `es-ES`, Finnish `fi-FI`, French `fr-FR`, Lithuanian
+`lt-LT`, Latvian `lv-LV`, Norwegian `nb-NO`, Russian `ru-RU` and Swedish
+`sv-SE`.
 
 ## Purchase Flow
 
