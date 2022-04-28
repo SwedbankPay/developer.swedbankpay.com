@@ -548,7 +548,7 @@ Content-Type: application/json
 | └➔&nbsp;`state`          | `string`  | The state you want the token to be in.                                                                                     |
 | └➔&nbsp;`comment`          | `string`  | Explanation as to why the token is being deleted.                                                                                     |
 
-## Delete Token Reponse
+## Delete Token Response
 
 {:.code-view-header}
 **Response**
