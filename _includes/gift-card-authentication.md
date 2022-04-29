@@ -1,5 +1,3 @@
-## Authentication
-
 ## Gift Card Authentication Request
 
 {:.code-view-header}
