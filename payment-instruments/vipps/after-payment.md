@@ -217,7 +217,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-## GET Response
+## Authorizations GET Response
 
 {% include transaction-response.md transaction="authorization" %}
 
@@ -238,7 +238,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-## GET Response
+## Cancellation GET Response
 
 {% include transaction-list-response.md transaction="cancel" %}
 
