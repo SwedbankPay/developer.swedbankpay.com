@@ -14,7 +14,7 @@ plugins:
   - jekyll-material-icon-tag
   - kramdown-plantuml
   - jekyll-redirect-from
-  - searchyll
+  # - searchyll
   - swedbank-pay-design-guide-jekyll-theme
 kramdown:
   input: GFM
