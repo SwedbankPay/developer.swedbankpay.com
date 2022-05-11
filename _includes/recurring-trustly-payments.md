@@ -79,5 +79,5 @@ the payer right away.
 
 <!--lint disable final-definition -->
 
-[trustly-remove-payment-token]: /payment-menu/features/technical-reference/delete-token
+[trustly-remove-payment-token]: /payment-menu/features/optional/delete-token
 [trustly-paymentorder-create]: /payment-menu/payment-order

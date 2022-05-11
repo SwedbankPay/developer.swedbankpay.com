@@ -1,10 +1,10 @@
 ---
 title: Delete Token
-estimated_read: 2
+estimated_read: 1
 description: How to delete tokens.
-menu_order: 1700
+menu_order: 1400
 icon:
-  content: assignment
+  content: delete_sweep
   outlined: true
 ---
 

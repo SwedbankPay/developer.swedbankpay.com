@@ -604,7 +604,7 @@ Content-Type: application/json
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [completeurl]: {{ features_url }}/technical-reference/complete-url
-[delete-tokens]: {{ features_url }}/technical-reference/delete-token
+[delete-tokens]: {{ features_url }}/optional/delete-token
 [payment-url]: {{ features_url }}/technical-reference/payment-url
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [recur]: {{ features_url }}/optional/recur

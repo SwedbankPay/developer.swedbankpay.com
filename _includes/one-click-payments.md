@@ -274,7 +274,7 @@ Content-Type: application/json
 [card]: /payment-instruments/card
 [invoice]: /payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
-[delete-payment-token]: {{ features_url }}/technical-reference/delete-token
+[delete-payment-token]: {{ features_url }}/optional/delete-token
 [cancel]: {{ features_url }}/core/cancel
 [capture]: {{ features_url }}/core/{{ capture_url }}
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment

@@ -478,7 +478,7 @@ See the table in the initial purchase response for descriptions.
 
 [callback]: {{ features_url }}/core/callback
 [complete-url]: {{ features_url }}/technical-reference/complete-url
-[delete-token]: {{ features_url }}/technical-reference/delete-token
+[delete-token]: {{ features_url }}/optional/delete-token
 [3ds2]: {{ features_url }}/core/3d-secure-2
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [payee-reference]: {{ features_url }}/technical-reference/payee-reference
