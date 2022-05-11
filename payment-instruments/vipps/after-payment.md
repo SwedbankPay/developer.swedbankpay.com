@@ -205,7 +205,7 @@ All Vipps after payment transactions are described below.
 The `authorizations` resource contains information about the authorization
 transactions made on a specific payment.
 
-## GET Request
+## GET Request Authorizations
 
 {:.code-view-header}
 **Request**
@@ -217,7 +217,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-## GET Response
+## GET Response Authorizations
 
 {% include transaction-response.md transaction="authorization" %}
 
@@ -226,7 +226,7 @@ Content-Type: application/json
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-## GET Request
+## GET Request Cancel
 
 {:.code-view-header}
 **Request**
@@ -238,7 +238,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-## GET Response
+## GET Response Cancel
 
 {% include transaction-list-response.md transaction="cancel" %}
 
@@ -278,7 +278,7 @@ Content-Type: application/json
 The `reversals` resource lists the reversal transactions (one or more)
 on a specific payment.
 
-## GET Request
+## GET Request Reversal
 
 {:.code-view-header}
 **Request**
@@ -290,7 +290,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-## GET Response
+## GET Response Reversal
 
 {% include transaction-list-response.md transaction="reversal" %}
 
@@ -329,7 +329,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
 
-## Request Response
+## Reversal Response
 
 {% include transaction-response.md transaction="reversal" %}
 
