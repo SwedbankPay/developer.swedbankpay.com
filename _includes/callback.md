@@ -102,6 +102,8 @@ something like the abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
 
+## Sequence Diagram
+
 The sequence diagram below shows the HTTP `POST` you will receive from Swedbank
 Pay, and the two `GET` requests that you make to get the updated status.
 

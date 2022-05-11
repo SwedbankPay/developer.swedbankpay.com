@@ -1,11 +1,13 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-## Card authorization transaction
+## Card Authorization Transaction
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment. To create a new `authorization` transaction,
 perform a `POST` towards the URL obtained from the `payment.authorization.id`
 from the `payment` resource below. The example is abbreviated for brevity.
+
+## Authorization Request
 
 {:.code-view-header}
 **Request**
@@ -54,6 +56,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Authorization Response
 
 {:.code-view-header}
 **Response**

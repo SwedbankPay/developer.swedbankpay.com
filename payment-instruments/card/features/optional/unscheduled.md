@@ -3,7 +3,7 @@ title: Unscheduled Purchase
 estimated_read: 12
 description: |
   Merchant initiated transactions with absent cardholders.
-menu_order: 2000
+menu_order: 2100
 icon:
   content: report_problem
   outlined: true

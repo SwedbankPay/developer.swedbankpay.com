@@ -13,9 +13,20 @@ allowing frictionless payments where transactions can be completed without
 input from the cardholder. To increase the chances of this, there are certain
 fields that should be included in your request when implementing 3-D Secure 2.
 
+{% if api_resource == "creditcard" %}
+
+## Cardholder
+
+{% else %}
+
+## Payer
+
+{% endif %}
+
+{% if api_resource == "creditcard" %}
+
 ```json
 {
-{% if api_resource == "creditcard" %}
     "cardholder": {
         "firstName": "Olivia",
         "lastName": "Nyhuus",
@@ -32,7 +43,13 @@ fields that should be included in your request when implementing 3-D Secure 2.
             "city": "Saltnes",
             "zipCode": "1642",
             "countryCode": "NO",
-        },{% else %}
+            }
+}
+```
+
+{% else %}
+
+```json
     "payer": {
         "email": "olivia.nyhuus@payex.com",
         "msisdn": "+4798765432",
@@ -45,9 +62,11 @@ fields that should be included in your request when implementing 3-D Secure 2.
             "city": "Saltnes",
             "zipCode": "1642",
             "countryCode": "NO"
-            }{% endif %}
+            }
 }
 ```
+
+{% endif %}
 
 {% if api_resource == "creditcard" %}
 
@@ -55,18 +74,18 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | Field | Type | Description |
 | :---- | :--- | :---------- |
 | └➔&nbsp;`cardholder`                  | `object` | Cardholder object that can hold information about a payer (private or company). The information added increases the chance for a frictionless 3-D Secure 2 flow.                                                                                    |
-| └➔&nbsp;`firstname`                   | `string` | Payer's first name.                 |
-| └➔&nbsp;`lastname`                    | `string` | Payer's last name.                    |
-| └➔&nbsp;`email`                       | `string` | Payer's registered email address.                                                  |
-| └➔&nbsp;`msisdn`  | `string` | Payer's registered mobile phone number.                                                  |
-| └➔&nbsp;`homePhoneNumber`             | `string` | Payer's registered home phone number.                                                               |
-| └➔&nbsp;`workPhoneNumber`             | `string` | Payer's registered work phone number.                                                                 |
-| └➔&nbsp;`shippingAddress`             | `object` | The shipping address object related to the `payer`.                                                         |
+| └➔&nbsp;`firstname`                   | `string` | Cardholder's first name.                 |
+| └➔&nbsp;`lastname`                    | `string` | Cardholder's last name.                    |
+| └➔&nbsp;`email`                       | `string` | Cardholder's registered email address.                                                  |
+| └➔&nbsp;`msisdn`  | `string` | Cardholder's registered mobile phone number.                                                  |
+| └➔&nbsp;`homePhoneNumber`             | `string` | Cardholder's registered home phone number.                                                               |
+| └➔&nbsp;`workPhoneNumber`             | `string` | Cardholder's registered work phone number.                                                                 |
+| └➔&nbsp;`shippingAddress`             | `object` | The shipping address object related to the `cardholder`.                                                         |
 | └─➔&nbsp;`addressee`                  | `string` | The name of the addressee – the receiver of the shipped goods.                                                      |
-| └─➔&nbsp;`coAddress`                  | `string` | Payer' s c/o address, if applicable.                                                          |
-| └─➔&nbsp;`streetAddress`              | `string` | Payer's street address. Maximum 50 characters long.                                                                         |
-| └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code.                                           |
-| └─➔&nbsp;`city`                       | `string` | Payer's city of residence.                                                                            |
+| └─➔&nbsp;`coAddress`                  | `string` | Cardholder's c/o address, if applicable.                                                          |
+| └─➔&nbsp;`streetAddress`              | `string` | Cardholder's street address. Maximum 50 characters long.                                                                         |
+| └─➔&nbsp;`zipCode`                    | `string` | Cardholder's zip code.                                           |
+| └─➔&nbsp;`city`                       | `string` | Cardholder's city of residence.                                                                            |
 | └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
 
 {% else %}
@@ -88,6 +107,8 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
 
 {% endif %}
+
+## Risk Indicator
 
 ```json
 {

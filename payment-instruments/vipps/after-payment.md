@@ -16,6 +16,8 @@ section.
 Use the [expand][expand-parameter] request parameter to get a
 response that includes one or more expanded sub-resources inlined.
 
+## Vipps Request
+
 {:.code-view-header}
 **Request**
 
@@ -100,6 +102,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
+
+## Vipps Response
 
 {:.code-view-header}
 **Response**
@@ -192,7 +196,7 @@ the given operation.
 | `create-cancellation`    | Creates a [`cancellation`][cancel] transaction.                                  |
 | `create-reversal`        | Creates a [`reversal`][reverse] transaction.                                     |
 
-## Vipps transactions
+## Vipps Transactions
 
 All Vipps after payment transactions are described below.
 
@@ -200,6 +204,8 @@ All Vipps after payment transactions are described below.
 
 The `authorizations` resource contains information about the authorization
 transactions made on a specific payment.
+
+## GET Request
 
 {:.code-view-header}
 **Request**
@@ -211,17 +217,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-{% include transaction-response.md transaction="authorization" %}
-
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/vipps/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+## GET Response
 
 {% include transaction-response.md transaction="authorization" %}
 
@@ -229,6 +225,8 @@ Content-Type: application/json
 
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
+
+## GET Request
 
 {:.code-view-header}
 **Request**
@@ -240,15 +238,19 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
+## GET Response
+
 {% include transaction-list-response.md transaction="cancel" %}
 
-## Create cancellation transaction
+## Create Cancellation Transaction
 
 A payment may be cancelled if the `rel` `create-cancellation` is available. You
 can only cancel a payment, or part of it, if it has yet to be captured. To
 revert a capture, or part of a capture, you must perform a `reversal`.
 Performing a cancellation will cancel all the remaining authorized amount on a
 payment.
+
+## Cancel Request
 
 {:.code-view-header}
 **Request**
@@ -267,12 +269,16 @@ Content-Type: application/json
 }
 ```
 
+## Cancel Response
+
 {% include transaction-response.md transaction="cancel" %}
 
 ## Reversals
 
 The `reversals` resource lists the reversal transactions (one or more)
 on a specific payment.
+
+## GET Request
 
 {:.code-view-header}
 **Request**
@@ -284,12 +290,16 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
+## GET Response
+
 {% include transaction-list-response.md transaction="reversal" %}
 
-### Create reversal transaction
+## Create Reversal Transaction
 
 A `reversal` transaction can be created if the `rel` `create-reversal` is
 available.
+
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -318,6 +328,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                      |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
+
+## Request Response
 
 {% include transaction-response.md transaction="reversal" %}
 

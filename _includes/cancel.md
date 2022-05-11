@@ -3,7 +3,7 @@
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-### Create cancellation transaction
+### Create Cancellation Transaction
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -16,6 +16,8 @@ Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
 
 {% endif %}
+
+## Cancel Request
 
 {:.code-view-header}
 **Request**
@@ -44,6 +46,8 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content = request_table
 %}
+
+## Cancel Response
 
 {% include transaction-response.md api_resource=include.api_resource
 documentation_section=include.documentation_section transaction="cancel" %}

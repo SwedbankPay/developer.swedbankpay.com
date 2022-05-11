@@ -9,7 +9,7 @@ description: |
 menu_order: 900
 ---
 
-## Options after posting a payment
+## Options After Posting A Payment
 
 When you detect that the payer reach your `completeUrl` , you need to do a `GET`
 request on the payment resource, containing the `paymentID` generated in the
@@ -31,10 +31,7 @@ see the available operations after posting a payment.
 doing a part-capture you will cancel the difference between the capture amount
 and the authorization amount.
 
-### Create cancellation transaction
-
-Perform the `create-cancel` operation to cancel a previously created - and not
-yet captured - payment.
+## Cancel Request
 
 {:.code-view-header}
 **Request**
@@ -59,6 +56,8 @@ Content-Type: application/json
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                              |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}          |
+
+## Cancel Response
 
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
@@ -113,6 +112,8 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
+## List Cancel Transactions
+
 The `cancellations` resource lists the cancellation transactions on a specific
 payment.
 
@@ -128,7 +129,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="cancellation" %}
 
-#### Cancel Sequence
+## Cancel Sequence
 
 ```mermaid
 sequenceDiagram
@@ -142,9 +143,7 @@ sequenceDiagram
 
 This transaction is used when a captured payment needs to be reversed.
 
-### Create reversal transaction
-
-The `create-reversal` operation will reverse a previously captured payment.
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -173,6 +172,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}          |
+
+## Reversal Response
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -228,6 +229,8 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
+## List Reversal Transactions
+
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
@@ -243,7 +246,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="reversal" %}
 
-### Reversal Sequence
+## Reversal Sequence
 
 ```mermaid
 sequenceDiagram
@@ -255,7 +258,7 @@ sequenceDiagram
 
 {% include abort-reference.md %}
 
-## Remove payment token
+## Remove Payment Token
 
 If you, for any reason, need to delete a paymentToken you use the
 `Delete payment token` request.
@@ -272,6 +275,8 @@ If you, for any reason, need to delete a paymentToken you use the
   [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se); and supply
   them with the relevant transaction reference or payment token." %}
 
+## Delete Token Request
+
 {:.code-view-header}
 **Request**
 
@@ -287,6 +292,8 @@ Content-Type: application/json
   "comment": "Comment on why the deletion is happening"
 }
 ```
+
+## Delete Token Response
 
 {:.code-view-header}
 **Response**

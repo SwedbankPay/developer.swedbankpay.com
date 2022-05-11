@@ -12,7 +12,7 @@ description: |
 menu_order: 300
 ---
 
-## Step 1: Initiate session for consumer identification
+## Step 1: Initiate Session For Consumer Identification
 
 The payer will be identified with the `consumers` resource and will be
 persisted to streamline future Payment Menu processes. Payer identification
@@ -21,6 +21,8 @@ is done through the `initiate-consumer-session` operation.
 {% include alert.html type="informative" icon="info" header="Guest Checkout"
 body="Note: If the payer is using the Payment Menu as a guest, you can go
 directly to step 3, which you will find on the next page." %}
+
+## Checkin Request
 
 {:.code-view-header}
 **Request**
@@ -46,6 +48,8 @@ Content-Type: application/json
 | {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. This is required unless `requireShippingAddress` is set to false.                                                           |
 |                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we will not collect a shipping address from the consumer.                                                            |
+
+## Checkin Response
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
@@ -82,14 +86,13 @@ When the request has been sent, a response containing an array of operations tha
 | └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
 | └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
 
-## Step 2: Display Swedbank Pay Checkin module
+## Step 2: Display Swedbank Pay Checkin Module
 
 The response from the `POST` of consumer information contains a few operations.
 The combination of `rel`, `method` and `contentType` should give you a clue how
-the operation should be performed.
-The `view-consumer-identification` operation
-and its `application/javascript` content type gives us a clue that the
-operation is meant to be embedded in a `<script>` element in an HTML document.
+the operation should be performed. The `view-consumer-identification` operation
+and its `application/javascript` content type gives us a clue that the operation
+is meant to be embedded in a `<script>` element in an HTML document.
 
 {% include alert.html type="warning"
                     icon="warning"
@@ -187,6 +190,8 @@ request.send(JSON.stringify({
 Note that we add the script at the end of the body. This ensures that
 every element (like the container `<div>` elements) has loaded in before we try to
 access them with our script." %}
+
+## How It Looks
 
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in. When everything has
