@@ -57,5 +57,5 @@ A `Verify` payment lets you post verifications to confirm the validity of one of
 
 <!--lint disable final-definition -->
 
-[trustly-remove-payment-token]: /payment-menu/features/technical-reference/delete-token
+[trustly-remove-payment-token]: /payment-menu/features/optional/delete-token
 [trustly-paymentorder-create]: /payment-menu/payment-order

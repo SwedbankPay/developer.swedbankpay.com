@@ -5,17 +5,17 @@ estimated_read: 9
 menu_order: 1000
 ---
 
-## Options after posting a payment
+## Options After Posting A Payment
 
 When you detect that the payer has reached your `completeUrl`, you need to do a
 `GET` request on the payment resource, which contains the `id` of the `payment`
 generated in the first step, to receive the state of the transaction. You will
 also be able to see the available `operations` after posting a payment.
 
-* **Abort:** It is possible to abort the process if the payment has no
+*   **Abort:** It is possible to abort the process if the payment has no
   successful transactions. [See the `abort` description](#abort).
-* For reversals, you will need to implement the `reversal` request.
-* **If CallbackURL is set:** Whenever changes to the payment occur a[Callback
+*   For reversals, you will need to implement the `reversal` request.
+*   **If CallbackURL is set:** Whenever changes to the payment occur a[Callback
   request][callback-request] will be posted to the `callbackUrl`,which was set
   when the payment was created.
 
@@ -23,12 +23,14 @@ also be able to see the available `operations` after posting a payment.
 
 ## Reversals
 
-### Create reversal transaction
+### Create Reversal Transaction
 
 The `create-reversal` operation will reverse a payment and
 refund the amount to the payer. To reverse a payment, perform the
 `create-reversal` operation. The HTTP body of the request should look as
 follows:
+
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -62,11 +64,13 @@ Content-Type: application/json
 |                  | └➔&nbsp;`receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. This reference is used as an invoice/receipt number.                                                                                                                                                       |
 | {% icon check %}︎ | └➔&nbsp;`description`      | `string`     | A textual description of the reversal.                                                                                                                                                                                                                                     |
 
+## Reversal Response
+
 The `reversal` resource will be returned, containing information about the newly created reversal transaction.
 
 {% include transaction-response.md transaction="reversal" %}
 
-### Inspecting the Reversal
+## List Reversal Transactions
 
 The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment. The URL will be found on a `payment` that has a
@@ -84,7 +88,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="reversal" %}
 
-### Reversal Sequence
+## Reversal Sequence
 
 `Reversal` can only be done on completed Sales transactions.
 

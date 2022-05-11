@@ -16,7 +16,8 @@
 
 To abort a payment, perform the `update-payment-abort` operation that is
 returned in the payment request.
-You need to include the following HTTP body:
+
+## Abort Request
 
 {:.code-view-header}
 **Request**
@@ -34,6 +35,8 @@ Content-Type: application/json
   }
 }
 ```
+
+## Abort Response
 
 {:.code-view-header}
 **Response**

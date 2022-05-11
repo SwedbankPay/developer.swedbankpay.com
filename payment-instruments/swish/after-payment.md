@@ -11,7 +11,7 @@ You need to retrieve payment status with `GET` [Sales
 transaction][sales-transaction] before presenting a confirmation page to the
 payer.
 
-## Options after posting a payment
+## Options After Posting A Payment
 
 *   **If CallbackURL is set**: Whenever changes to the payment occur a [Callback
     request][technical-reference-callback] will be posted to the `callbackUrl`,
@@ -20,13 +20,13 @@ payer.
     You can also access and reverse a payment through your merchant pages in the
     [Swedbank Pay admin portal][payex-admin-portal].
 
-## Swish transactions
+## Swish Transactions
 
 All Swish transactions are described below. Please note that Swish does not
 support [Merchant Initiated Transactions][unscheduled-purchase] for the time
 being.
 
-## Sales
+## List Sales Transactions
 
 The `sales` resource lists the sales transactions (one or more)
 on a specific payment.
@@ -43,17 +43,18 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="sale" %}
 
-### Create Sales transaction
+## Create Sales Transactions
 
-In browser based solutions the payers `msisdn` (mobile number) is required. This
-is managed either by sending a `POST` request as seen below, or by redirecting
-the payer to the hosted payment page. The `msisdn` is only required for
-browser based solutions. With mobile app based solutions, the payer uses the
-device that hosts the Swish app to manage the purchase, making `msisdn`
-optional.
+In browser solutions the payer's `msisdn` (mobile number) is required. This is
+managed either by sending a `POST` request as seen below, or by redirecting the
+payer to the hosted payment page. The `msisdn` is only required for browser
+solutions. With in-app solutions, the payer uses the device that hosts the Swish
+app to manage the purchase, making `msisdn` optional.
+
+## Browser Request
 
 {:.code-view-header}
-**Browser-based Request**
+**Browser Request**
 
 ```http
 POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
@@ -69,7 +70,7 @@ Content-Type: application/json
 ```
 
 {:.code-view-header}
-**Browser-based Response**
+**Browser Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -99,6 +100,8 @@ Content-Type: application/json
 }
 ```
 
+## In-app Request
+
 {:.code-view-header}
 **In-app Request**
 
@@ -113,6 +116,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## In-app Response
 
 {:.code-view-header}
 **In-app Response**
@@ -163,7 +168,7 @@ from Swedbank Pay.
 The `Reversals` resource list the reversals transactions (one or more) on a
 specific payment.
 
-### Reversal Sequence
+## Reversal Sequence
 
 A reversal transcation need to match the Payee reference of a completed
 sales transaction.
@@ -176,24 +181,14 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/swish/payments/{{ page.payment_id }}/reversals HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
-
-{% include transaction-list-response.md transaction="reversal" %}
-
-### Create Reversal transaction
+## Create Reversal Transaction
 
 A reversal transaction can be created after a completed authorization by
 performing a request to the `create-reversal` operation.
 A [callback][technical-reference-callback] request will follow from
 Swedbank Pay.
+
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -222,6 +217,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                     |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of this reversal.                                            |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | {% include field-description-payee-reference.md %} |
+
+## Reversal Response
 
 {% include transaction-response.md transaction="reversal" %}
 

@@ -631,7 +631,7 @@ integration and the payer.
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
 [authorization-timeouts]: /checkout-v2/capture
 [callback]: /checkout-v3/payments-only/features/core/callback
-[card-delete-token]: /payment-instruments/card/features/technical-reference/delete-token
+[card-delete-token]: /payment-instruments/card/features/optional/delete-token
 [card-direct]: /payment-instruments/card/direct
 [card-error-codes]: /payment-instruments/card/features/technical-reference/problems
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url

@@ -517,7 +517,7 @@ Content-Type: application/json
 <!--lint disable final-definition -->
 
 [checkout]: /{{ documentation_section }}
-[delete-token]: {{ features_url }}/technical-reference/delete-token
+[delete-token]: {{ features_url }}/optional/delete-token
 [paid-status-model]: {{ features_url }}/technical-reference/status-models#paid
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [technical-reference-callback]: {{ features_url }}/core/callback
