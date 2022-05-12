@@ -42,7 +42,7 @@ jobs:
 
       - name: docker login
         run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
-      - name: docker process status
+      # - name: docker process status
         # run: docker ps
       # - name: docker statistics
       #   run: docker stats
