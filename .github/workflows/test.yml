@@ -46,7 +46,7 @@ jobs:
         # run: docker ps
       # - name: docker statistics
       #   run: docker stats
-      # - name: Verify build
+      - name: Verify build
         run: |
           docker-compose run \
             -e GITHUB_BRANCH=${{ needs.variables.outputs.branch }} \
