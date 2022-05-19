@@ -32,6 +32,23 @@ agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
 payer chooses either of these instruments, you should add the `instrument`
 parameter with the specific payment instrument.
 
+{% if documentation_section contains "checkout-v3" %}
+
+## Eligibility Check
+
+If you want to display certain wallets like ApplePay, GooglePay or Click2Pay,
+you need to do an eligibility check. This is to ensure that the payer is using a
+device or browser which supports the wallet in question.
+
+Swedbank Pay provides a script to do this check, which is used by calling the
+`payex.getAcceptedWallets()` method. We will return an array with the wallets
+eligible for that purchase.
+
+We have scripts available for both the [test environment][test-env] and
+[production environment][prod-env].
+
+{% endif %}
+
 {:.code-view-header}
 **Request**
 
@@ -159,7 +176,7 @@ Content-Type: application/json
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
         "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "integration": "HostedView", {% endif %} { {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -365,3 +382,6 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
             "Swish"
         ]
 ```
+
+[prod-env]: https://ecom.payex.com/checkout/core/integration
+[test-env]: https://ecom.externalintegration.payex.com/checkout/core/integration
