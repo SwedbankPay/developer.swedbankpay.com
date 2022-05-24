@@ -145,7 +145,7 @@ Content-Type: application/json
             "digitalProducts": false,
             "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
         }, {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-                "payer": {
+        "payer": {
             "digitalProducts": false,
             "firstName": "Leia",
             "lastName": "Ahlström",
