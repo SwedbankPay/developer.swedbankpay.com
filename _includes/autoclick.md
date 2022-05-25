@@ -7,14 +7,14 @@ endcapture %}
 
 AutoClick is a feature which automatically forwards the payer from the payment
 window when an instrument is selected, just as if they pressed the Pay button.
-It is only available when using **Checkout v3**, and currently only available
-for **ApplePay**. Support for more payment instruments will be added going
-forward. Apart from adding the field in your payment order request, no changes
-are required at your (the merchant's) end for AutoClick to work.
+It is only available when using **Checkout v3**, for all wallets **except**
+ApplePay. Support for more payment instruments will be added going forward.
+Apart from adding the field in your payment order request, no changes are
+required at your (the merchant's) end for AutoClick to work.
 
 There are a couple of limitations in place for this feature. First of all, it is
 restricted to payment instruments which require **no input** from the payer
-before pressing the Pay button, like **ApplePay**. It will also be limited to
+before pressing the Pay button, like **GooglePay**. It will also be limited to
 instruments with **no terms and conditions**. This will exclude instruments like
 Invoice, as there are terms and conditions attached. As a consequence,
 activating AutoClick in a request which also contains a `termsOfServiceUrl`
@@ -361,8 +361,8 @@ Content-Type: application/json
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "HostedView", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
