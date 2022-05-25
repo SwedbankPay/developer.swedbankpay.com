@@ -42,8 +42,8 @@ the `build.gradle` file:
 
 ```groovy
 dependencies {
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk:3.0.0'
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:3.0.0'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk:4.0.0'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:4.0.0'
 }
 ```
 
@@ -232,13 +232,15 @@ To start a payment, create a `PaymentFragment` and set its arguments according
 to the payment. The
 [`PaymentFragment.ArgumentsBuilder`][dokka-payfrag-argbuilder] class is provided
 to help with creating the argument bundle. In most cases you only need to worry
-about the [`consumer`][dokka-payfrag-argbuilder-consumer] and
-[`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] properties. The payment
-process starts as soon as the `PaymentFragment` is visible.
+about the
+[`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] property. The payment
+process starts as soon as the `PaymentFragment` is visible. Note that checkoutV3 
+is currently opt-in, so that merchants can upgrade without too much breaking changes 
+and start using the new checkoutV3 when ready.
 
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
-    .consumer(consumer)
+    .checkoutV3(true)
     .paymentOrder(paymentOrder)
     .build()
 
@@ -249,6 +251,19 @@ paymentFragment.arguments = arguments
 // You can also make a navigation graph with PaymentFragment
 // and do something like
 // findNavController().navigate(R.id.showPaymentFragment, arguments)
+```
+
+Note that the SDK only supports customer-checkin for version 2, and provides fallback for merchants in need of this. Then you need to supply a [`consumer`][dokka-payfrag-argbuilder-consumer] and the ckeckoutV3 setting becomes irrelevant.
+```kotlin
+val arguments = PaymentFragment.ArgumentsBuilder()
+    .consumer(consumer)
+    .paymentOrder(paymentOrder)
+    .build()
+
+val paymentFragment = PaymentFragment()
+paymentFragment.arguments = arguments
+
+// Now handle the fragment the same way as previously.
 ```
 
 To observe the payment process, use the [`PaymentViewModel`][dokka-paymentvm]
