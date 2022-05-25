@@ -254,6 +254,7 @@ paymentFragment.arguments = arguments
 ```
 
 Note that the SDK only supports customer-checkin for version 2, and provides fallback for merchants in need of this. Then you need to supply a [`consumer`][dokka-payfrag-argbuilder-consumer] and the ckeckoutV3 setting becomes irrelevant.
+
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
     .consumer(consumer)
