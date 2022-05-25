@@ -82,14 +82,25 @@ below is the Redirect option.
 {:.code-view-header}
 **Request**
 
+{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
-{
-    "payment": {
+{% else %}
+
+POST /psp/{{ api_resource }}/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+{% endif %}
+
+{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+    "paymentorder": { {% else %}
+    "payment": { {% endif %}
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
@@ -133,8 +144,9 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-    "payment": {
+{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+    "paymentorder": { {% else %}
+    "payment": { {% endif %}
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -147,12 +159,12 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
-        "payers": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
+        "transactions": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers" },
+        "settings": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
