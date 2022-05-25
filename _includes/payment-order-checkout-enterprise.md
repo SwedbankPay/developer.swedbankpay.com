@@ -20,6 +20,8 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
+        "requestDeliveryInfo": true,
+        "restrictedToDeliveryInfoInstruments": true,
         "productName": "Checkout3",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
@@ -151,6 +153,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
+| | └➔&nbsp;`requestDeliveryInfo`                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which supports this. The delivery information will then be displayed as the `shippingAddress`. Currently available for `ApplePay` only.  |
+| | └➔&nbsp;`restrictedToDeliveryInfoInstruments`                       | `bool` | Set to `true` if you want to restrict your payment menu to only include payment instruments which return delivery info.  |
 | {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
