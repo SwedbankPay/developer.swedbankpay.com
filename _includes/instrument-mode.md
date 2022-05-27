@@ -36,15 +36,16 @@ parameter with the specific payment instrument.
 
 ## Eligibility Check
 
-If you want to display certain wallets like ApplePay, GooglePay or Click2Pay,
-you need to do an eligibility check. This is to ensure that the payer is using a
-device or browser which supports the wallet in question.
+If you want to **build your own menu** and display **at least** one wallet like
+Apple Pay or Google Pay, you need to do an eligibility check. This is to ensure
+that the wallet is supported on the payer's device or browser.
 
 Swedbank Pay provides a script to do this check, which is used by calling the
 `payex.getAcceptedWallets()` method. We will return an array with the wallets
-eligible for that purchase.
+eligible for that purchase. If you are not building your own menu or don't offer
+these wallets, there is no need to run the script to do the check.
 
-We have scripts available for both the [test environment][test-env] and
+There are scripts available for both the [test environment][test-env] and
 [production environment][prod-env].
 
 {% endif %}
