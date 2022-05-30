@@ -1,6 +1,6 @@
 ---
 title: AutoClick
-estimated_read: 3
+estimated_read: 2
 description: |
   Automatic redirect from the payment window.
 menu_order: 1300
