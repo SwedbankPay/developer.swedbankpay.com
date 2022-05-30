@@ -1,7 +1,7 @@
 ---
 title: Verify
 estimated_read: 1
-description: A payment menu tailored to the payer
+description: Verify purchase using the SDK
 menu_order: 1600
 icon:
  content: verified_user
