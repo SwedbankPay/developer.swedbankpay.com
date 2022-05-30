@@ -1,6 +1,29 @@
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% assign operation_status_bool = include.operation_status_bool | default: "false" %}
-{% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{%
+endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
+## Request Delivery Information
+
+Swedbank Pay provides the possibility to return delivery information from
+payment instruments which support this. You do this by adding the field
+`requestDeliveryInfo` in your payment order request and setting it to `true`.
+
+Only payment instruments which support this will return delivery information. If
+you only want to show payment instruments which support this in you menu, you
+can also add the field `restrictedToDeliveryInfoInstruments` and setting it to
+`true`. This will leave out all instruments which didn't return delivery
+information.
+
+You are currently only able to request delivery information from Apple Pay, but
+we will add support for more payment instruments going forward. No changes are
+required at your (the merchant's) end to be able to offer more instruments at a
+later time.
+
+## Request
+
+The fields themselves are `bool`s which must be added in the `paymentorder` node
+of the request, like the example below.
 
 {:.code-view-header}
 **Request**
@@ -18,7 +41,7 @@ Content-Type: application/json
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test Purchase",
-        "userAgent": "Mozilla/5.0",
+        "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "requestDeliveryInfo": true,
         "restrictedToDeliveryInfoInstruments": true,
@@ -28,8 +51,7 @@ Content-Type: application/json
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled",
-            "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"{% if include.integration_mode=="redirect" %},
+            "callbackUrl": "https://api.example.com/payment-callback"{% if include.integration_mode=="redirect" %},
             "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
@@ -39,7 +61,44 @@ Content-Type: application/json
             "productCategory": "A123",
             "orderReference": "or-123456",
             "subsite": "MySubsite"
-        },
+        }, {% if documentation_section contains "checkout-v3/business" %}
+        "payer": {
+            "digitalProducts": false,
+            "firstName": "Leia",
+            "lastName": "Ahlström",
+            "email": "leia@payex.com",
+            "msisdn": "+46787654321",
+            "shippingAddress": {
+                "firstName": "firstname/companyname",
+                "lastName": "lastname",
+                "email": "karl.anderssson@mail.se",
+                "msisdn": "+46759123456",
+                "streetAddress": "Helgestavägen 9",
+                "coAddress": "",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
+            },
+            "billingAddress": {
+                "firstName": "firstname/companyname",
+                "lastName": "lastname",
+                "email": "karl.anderssson@mail.se",
+                "msisdn": "+46759123456",
+                "streetAddress": "Helgestavägen 9",
+                "coAddress": "",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
+            },
+            "accountInfo": {
+                "accountAgeIndicator": "04",
+                "accountChangeIndicator": "04",
+                "accountPwdChangeIndicator": "01",
+                "shippingAddressUsageIndicator": "01",
+                "shippingNameIndicator": "01",
+                "suspiciousAccountActivity": "01"
+            }
+        }, {% endif %} {% if documentation_section contains "checkout-v3/enterprise" %}
         "payer": {
             "digitalProducts": false,
             "nationalIdentifier": {
@@ -81,7 +140,50 @@ Content-Type: application/json
                 "shippingNameIndicator": "01",
                 "suspiciousAccountActivity": "01"
             }
-        },
+        }, {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        "payer": {
+            "requireConsumerInfo": true,
+            "digitalProducts": false,
+            "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
+        }, {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        "payer": {
+            "digitalProducts": false,
+            "firstName": "Leia",
+            "lastName": "Ahlström",
+            "email": "leia@payex.com",
+            "msisdn": "+46787654321",
+            "payerReference": "AB1234",
+            "shippingAddress": {
+                "firstName": "firstname/companyname",
+                "lastName": "lastname",
+                "email": "karl.anderssson@mail.se",
+                "msisdn": "+46759123456",
+                "streetAddress": "string",
+                "coAddress": "string",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
+            },
+            "billingAddress": {
+                "firstName": "firstname/companyname",
+                "lastName": "lastname",
+                "email": "karl.anderssson@mail.se",
+                "msisdn": "+46759123456",
+                "streetAddress": "string",
+                "coAddress": "string",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
+            },
+            "accountInfo": {
+                "accountAgeIndicator": "04",
+                "accountChangeIndicator": "04",
+                "accountPwdChangeIndicator": "01",
+                "shippingAddressUsageIndicator": "01",
+                "shippingNameIndicator": "01",
+                "suspiciousAccountActivity": "01"
+            }
+        }, {% endif %}
         "swish": {
             "paymentRestrictedToAgeLimit": 18,
             "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
@@ -153,7 +255,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| | └➔&nbsp;`requestDeliveryInfo`                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. The delivery information will then be displayed as the `shippingAddress`. Currently available for Apple Pay only.  |
+| | └➔&nbsp;`requestDeliveryInfo`                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. Currently available for Apple Pay only. |
 | | └➔&nbsp;`restrictedToDeliveryInfoInstruments`                       | `bool` | Set to `true` if you want to restrict your payment menu to only include payment instruments which return delivery info.  |
 | {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
@@ -171,11 +273,13 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
-|                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-| | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
+|                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                | {% if documentation_section contains "checkout-v3/starter" %}
+|  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Starter, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
+|                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `true`, and not to be included if it is `false`.                                    | {% endif %}
+| | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% unless documentation_section contains "checkout-v3/starter" %} {% if documentation_section contains "checkout-v3/enterprise" %}
 |                  | └─➔&nbsp;`nationalIdentifier`    | `object` | The national identifier object.                                                                      |
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. |
-|                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
+|                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     | {% endif %}
 | {% icon check %} | └─➔&nbsp;`firstName`                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | └─➔&nbsp;`email`                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/3d-secure-2).                                                                             |
@@ -203,7 +307,7 @@ Content-Type: application/json
 | | └─➔&nbsp;`accountChangePwdIndicator` | `string` | Indicates when the account's password was last changed. <br>`01` (No changes) <br>`02` (Changed during this transaction) <br>`03` (Less than 30 days ago) <br>`04` (30 to 60 days ago) <br>`05` (More than 60 days old) |
 | | └─➔&nbsp;`shippingAddressUsageIndicator` | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
 | | └─➔&nbsp;`shippingNameIndicator` | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
-| | └─➔&nbsp;`suspiciousAccountActivity` | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
+| | └─➔&nbsp;`suspiciousAccountActivity` | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) | {% endunless %}
 |                  | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
@@ -226,6 +330,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
+## Response
+
 {:.code-view-header}
 **Response**
 
@@ -234,10 +340,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",
-        "created": "2020-06-22T10:56:56.2927632Z",
-        "updated": "2020-06-22T10:56:56.4035291Z",
+    "paymentOrder": {
+        "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b",
+        "created": "2022-01-07T07:58:26.1300282Z",
+        "updated": "2022-01-07T08:17:44.6839034Z",
         "operation": "Purchase",
         "status": "Initialized",
         "currency": "SEK",
@@ -247,18 +353,22 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
-          "CreditCard",
-          "Invoice-PayExFinancingSe",
-          "Invoice-PayMonthlyInvoiceSe",
-          "Swish",
-          "CreditAccount",
-          "Trustly" ],
-        "implementation": "Enterprise", {% if include.integration_mode=="seamless-view" %}
+            "CreditCard",
+            "Invoice-PayExFinancingSe",
+            "Invoice-PayMonthlyInvoiceSe",
+            "Swish",
+            "CreditAccount",
+            "Trustly"
+        ],{% if documentation_section contains "checkout-v3/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
+        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
-        "payer": {
+       "payer": {
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers"
         },
         "orderItems": {
@@ -289,20 +399,20 @@ Content-Type: application/json
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
         }
       },
-      "operations": [ {% if include.integration_mode=="redirect" %}
+    "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
           "rel": "redirect-checkout",
           "contentType": "text/html"
-        },{% endif %} {% if include.integration_mode=="seamless-view" %}
+        }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
-        {
+                {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel":"update-order",
           "method":"PATCH",
@@ -314,8 +424,9 @@ Content-Type: application/json
           "method": "PATCH",
           "contentType": "application/json"
         }
-       ]
-      }
+    ]
+}
+
 ```
 
 {:.table .table-striped}
@@ -326,14 +437,14 @@ Content-Type: application/json
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
-| └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). |
+| └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` section for further information]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in the failed section. [Further information here]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the cancel feature section for further information]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the Abort feature section for further information]({{ features_url }}/technical-reference/status-models#aborted). |
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
 | └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
 | └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include field-description-initiating-system-user-agent.md %}                                                                                                                                                          |
 | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
-| └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for the payment.                                                                                                                                                   |
+| └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
 | └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
