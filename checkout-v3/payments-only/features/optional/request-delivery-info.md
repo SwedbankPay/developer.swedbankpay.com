@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include request-delivery-information.md %}
+{% include request-delivery-info.md %}
