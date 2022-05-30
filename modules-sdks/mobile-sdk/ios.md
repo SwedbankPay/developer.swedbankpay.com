@@ -211,7 +211,7 @@ let paymentOrder = SwedbankPaySDK.PaymentOrder(
 
 *   ① payeeId and payeeReference are required fields, but default to the empty string. The assumption here is that your Merchant Backend will override the values set here. If your system works better with the Mobile Client setting them instead, they are available here also.
 
-To start a payment, create a `SwedbankPaySDKController` and call startPayment. You can add it to the view heirarchy any way you like, and here we are using the `present` function. Note that this function always uses the new CheckoutV3.
+To start a payment, create a `SwedbankPaySDKController` and call startPayment. You can add it to the view hierarchy any way you like, and here we are using the `present` function. Note that this function always uses the new CheckoutV3.
 
 ```swift
 let paymentController = SwedbankPaySDKController()
