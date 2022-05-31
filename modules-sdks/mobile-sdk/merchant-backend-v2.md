@@ -1,11 +1,9 @@
 ---
-title: Merchant Backend V3
+title: Merchant Backend V2
 estimated_read: 20
 description: |
-  To use the **Swedbank Pay Mobile SDK**, you must have a backend server
-  that communicates with your Configuration. The fastest way to start
-  developing is to use the Merchant Backend API.
-menu_order: 800
+  This document contains information for the older version of the Backend Merchant of the **Swedbank Pay Mobile SDK**.
+menu_order: 9800
 ---
 
 {% capture disclaimer %}
@@ -161,7 +159,7 @@ The `paymentorders` endpoint is used to create a new Payment Order. It is specif
 
 Optionally, if your implementation uses [instrument mode payments][instrument-mode], your backend can return the list of valid instruments, along with an endpoint to change the instrument. If you do this, you must also implement the Change Instrument endpoint. The Merchant Backend Configuration on the client side can then use this endpoint to change the instrument of an ongoing payment order.
 
-A production implementation should validate the payment order also from a business logic perspective. This is, naturally, outside the scope of the SDK, as is any other processing you may wish to perform with the payment order. The SDK expects the same form of response as returned from the Swedbank Pay API. Specifically, the response must contain the `view-checkout` operation.
+A production implementation should validate the payment order also from a business logic perspective. This is, naturally, outside the scope of the SDK, as is any other processing you may wish to perform with the payment order. The SDK expects the same form of response as returned from the Swedbank Pay API. Specifically, the response must contain the `view-paymentorder` operation.
 
 {:.code-view-header}
 **Request**
@@ -214,7 +212,7 @@ Content-Type: application/json
     "operations": [
         {
             "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE",
-            "rel": "view-checkout",
+            "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"
         }
@@ -224,27 +222,50 @@ Content-Type: application/json
 
 The Merchant Backend will then forward the response it received back to the calling app.
 
-If instrument mode is used, an you wish to be able to change the instrument, you can provide the list of valid instruments. 
+If instrument mode is used, an you wish to be able to change the instrument, you can provide the list of valid instruments, and an endpoint for changing the instrument. This additional data is placed in an object under the key "mobileSDK".
 
-## Patching the Payment Order
+{:.code-view-header}
+**Forwarded Response**
 
-To modify the payment order you perform a `patch` `operation`. If instrument mode is used, you change the instrument by patching the payment with the `SetInstrument` `operation`. The SDK handles this by packaging the `id` of the `PaymentOrder` with the values needed to perform the operation, and sends it to the `patch` endpoint of the Merchant Backend. The Backend will then need to validate the request, and then passing it on to SwedbankPay as a PATCH request to execute the functionality. The response of that request is passed back to the SDK. 
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
 
-This makes all `operations` behave the same and the backend does not need to communicate or setup special endpoints for each `operation`, e.g. the `abort` operation is handled the same way. This paves the way for future operations, which will also be handled like this.
+{
+    "paymentorder": {
+      "id": "/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"
+    },
+    "operations": [
+        {
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE",
+            "rel": "view-paymentorder",
+            "method": "GET",
+            "contentType": "application/javascript"
+        }
+    ]
+    "mobileSDK": {
+        "validInstruments": ["CreditCard", "Invoice-PayExFinancingSe"],
+        "setInstrument": "/paymentorders/1234/setInstrument"
+    }
+}
+```
 
-You only need to implement this endpoint if you are using instrument mode payments, or one of the other operations.
+## Set Instrument Endpoint
+
+You only need to implement this endpoint if you are using instrument mode payments. This endpoint is invoked when making a request to the `mobileSDK.setInstrument` url of a payment order created with the Payment Orders endpoint.
+
+This endpoint forwards the PATCH request made to it to the corresponding Swedbank Pay endpoint, as identified by the `update-paymentorder-setinstrument` operation of the payment order. It passes the response to that request back to the SDK. The sample implementation verifies the request body to contain exactly the operation `SetInstrument` and a string `instrument`.
 
 {:.code-view-header}
 **Request**
 
 ```http
-PATCH /swedbank-pay-mobile/patch HTTP/1.1
+POST /swedbank-pay-mobile/paymentorders HTTP/1.1
 Host: example.com
 Your-Api-Key: secretish
 Content-Type: application/json
 
 {
-    "href": "https://api.externalintegration.payex.com/psp/paymentorders/6290caac-90f6-4f10-bb90-08da37ab87d7"
     "paymentorder": {
         "operation": "SetInstrument",
         "instrument": "CreditCard"
@@ -255,7 +276,6 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field                | Type     | Description                               |
 | :--------------: | :------------------- | :------- | :---------------------------------------- |
-| {% icon check %} | `href`               | `string` | The href of the Operation                 |
 | {% icon check %} | `paymentorder`       | `object` | The changes to make to the payment order  |
 | {% icon check %} | └➔&nbsp;`operation`  | `string` | The operation to perform: "SetInstrument" |
 | {% icon check %} | └➔&nbsp;`instrument` | `string` | The instrument to set                     |
@@ -266,7 +286,7 @@ Merchant Backend will then make a corresponding request to the Swedbank Pay API.
 **Forwarded Request**
 
 ```http
-PATCH https://api.externalintegration.payex.com/psp/paymentorders/6290caac-90f6-4f10-bb90-08da37ab87d7 HTTP/1.1
+PATCH /psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
@@ -279,7 +299,7 @@ Content-Type: application/json
 }
 ```
 
-The Merchant Backend will then forward the response it received back to the calling app.
+The Merchant Backend will then forward the response it received back to the calling app. If needed, you can append the `mobileSDK` object to this response as well. If it is missing, the SDK will assume the original values are still valid.
 
 {:.code-view-header}
 **Response &amp; Forwarded Response**
@@ -295,7 +315,7 @@ Content-Type: application/json
     "operations": [
         {
             "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE",
-            "rel": "view-checkout",
+            "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"
         }
