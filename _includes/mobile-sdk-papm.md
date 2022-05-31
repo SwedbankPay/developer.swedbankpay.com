@@ -9,7 +9,7 @@ Enterprise merchant can supply the email and phone of the customer to let Swedba
 {:.code-view-header}
 **iOS**
 
-``` Swift
+```swift
 var paymentOrder = ...
 payment.payer = .init(
     consumerProfileRef: nil, 
@@ -23,7 +23,7 @@ payment.payer = .init(
 {:.code-view-header}
 **Android**
 
-``` Kotlin
+```kotlin
 
 val paymentOrder = PaymentOrder(
     ...
@@ -77,8 +77,7 @@ Retrieve the token by expanding the "paid" property of a previous successful pay
 {:.code-view-header}
 **iOS**
 
-```Swift
-
+```swift
 // ExpandResponse is a struct you define to match the response from your server, since you will want to adapt it to your needs.
 
 let request = configuration.expandOperation(paymentId: paymentId, expand: [.paid], endpoint: "expand") { (result: Result<ExpandResponse, Error>) in
@@ -99,7 +98,7 @@ let request = configuration.expandOperation(paymentId: paymentId, expand: [.paid
 {:.code-view-header}
 **Android**
 
-``` Kotlin
+```kotlin
 // N.B! expandOperation is a suspending function, so this call must be done inside suspending code.
 // ExpandedPaymentOrder is a data class you define to match the response from your server, since you will want to adapt it to your needs.
 
