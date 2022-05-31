@@ -5,8 +5,7 @@ A common practice is to store a credit-card for later use, e.g. for subscription
 {:.code-view-header}
 **iOS**
 
-``` Swift
-
+```swift
 var paymentOrder = ... //create the paymentOrder as usual by calculating price, etc
 paymentOrder.generateRecurrenceToken = true
 paymentOrder.generateUnscheduledToken = true
@@ -16,7 +15,7 @@ paymentOrder.generateUnscheduledToken = true
 {:.code-view-header}
 **Android**
 
-``` Kotlin
+```kotlin
 
 val paymentOrder = PaymentOrder(
     ...
@@ -24,12 +23,14 @@ val paymentOrder = PaymentOrder(
     generateUnscheduledToken = true,
     ...
 )
-
 ```
 
 When expanding the paid property of this verified or purchased payment, there is an array with tokens one can save for later use. Read more on: [expanding properties][expanding_properties]. Here is an abbreviated example of what is received, typically only on the backend. 
 
-``` JSON
+{:.code-view-header}
+**JSON**
+
+```http
 {
     "paymentOrder": {
         ...
