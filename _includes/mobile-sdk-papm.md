@@ -70,7 +70,6 @@ paymentOrder.payer = PaymentOrderPayer(
 )
 ```
 
-
 ### Token Retrieval Checkout V3
 
 Retrieve the token by expanding the "paid" property of a previous successful payment. To see this in action, the example merchant backend has an endpoint called "/expand" that takes a "resource" (in this case the paymentId), and an array of properties to expand. You get a payment order back, and in the expanded paid property there is a "tokens" array (if the customer agreed to let you store the information). A good practice is to only do this on the backend and serve the token as part of user's info, to have the token available at the next purchase.
@@ -234,5 +233,3 @@ paymentOrder.disableStoredPaymentDetails = true
 [add-stored-details]: /payment-menu/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
 [enterprise-payer-ref]: https://developer.swedbankpay.com/checkout-v3/enterprise/features/optional/enterprise-payer-reference
 [expanding_properties]: https://developer.swedbankpay.com/introduction#expansion
-[unscheduled]: https://developer.swedbankpay.com/checkout-v3/payments-only/features/optional/unscheduled
-[recur]: https://developer.swedbankpay.com/checkout-v3/payments-only/features/optional/recur

@@ -29,7 +29,6 @@ val paymentOrder = PaymentOrder(
 
 When expanding the paid property of this verified or purchased payment, there is an array with tokens one can save for later use. Read more on: [expanding properties][expanding_properties]. Here is an abbreviated example of what is received, typically only on the backend. 
 
-
 ``` JSON
 {
     "paymentOrder": {
