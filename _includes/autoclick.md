@@ -14,11 +14,11 @@ required at your (the merchant's) end for AutoClick to work.
 
 There are a couple of limitations in place for this feature. First of all, it is
 restricted to payment instruments which require **no input** from the payer
-before pressing the Pay button, like **Google Pay**. It will also be limited to
-instruments with **no terms and conditions**. This will exclude instruments like
-Invoice, as there are terms and conditions attached. As a consequence,
-activating AutoClick in a request which also contains a `termsOfServiceUrl`
-will result in an error message.
+before pressing the Pay button. It will also be limited to instruments with
+**no terms and conditions**. This will exclude instruments like Invoice, as
+there are terms and conditions attached. As a consequence, activating AutoClick
+in a request which also contains a `termsOfServiceUrl` will result in an error
+message.
 
 ## Request
 
