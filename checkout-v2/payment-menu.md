@@ -54,7 +54,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"

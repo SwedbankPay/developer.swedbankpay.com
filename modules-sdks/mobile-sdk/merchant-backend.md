@@ -213,7 +213,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "method": "GET",
             "contentType": "application/javascript"
@@ -224,11 +224,11 @@ Content-Type: application/json
 
 The Merchant Backend will then forward the response it received back to the calling app.
 
-If instrument mode is used, an you wish to be able to change the instrument, you can provide the list of valid instruments. 
+If instrument mode is used, an you wish to be able to change the instrument, you can provide the list of valid instruments.
 
 ## Patching the Payment Order
 
-To modify the payment order you perform a `patch` `operation`. If instrument mode is used, you change the instrument by patching the payment with the `SetInstrument` `operation`. The SDK handles this by packaging the `id` of the `PaymentOrder` with the values needed to perform the operation, and sends it to the `patch` endpoint of the Merchant Backend. The Backend will then need to validate the request, and then passing it on to SwedbankPay as a PATCH request to execute the functionality. The response of that request is passed back to the SDK. 
+To modify the payment order you perform a `patch` `operation`. If instrument mode is used, you change the instrument by patching the payment with the `SetInstrument` `operation`. The SDK handles this by packaging the `id` of the `PaymentOrder` with the values needed to perform the operation, and sends it to the `patch` endpoint of the Merchant Backend. The Backend will then need to validate the request, and then passing it on to SwedbankPay as a PATCH request to execute the functionality. The response of that request is passed back to the SDK.
 
 This makes all `operations` behave the same and the backend does not need to communicate or setup special endpoints for each `operation`, e.g. the `abort` operation is handled the same way. This paves the way for future operations, which will also be handled like this.
 
@@ -294,7 +294,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE",
+            "href": "https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "method": "GET",
             "contentType": "application/javascript"
