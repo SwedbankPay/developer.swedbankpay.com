@@ -40,10 +40,14 @@ If you want to **build your own menu** and display **at least** one wallet like
 **Apple Pay** or **Google Pay**, you need to do an eligibility check. This is to
 ensure that the wallet is supported on the payer's device or browser.
 
-Swedbank Pay provides a script to do this check, which is used by calling the
-`payex.getAcceptedWallets()` method. We will return an array with the wallets
-eligible for that purchase. If you are not building your own menu or don't offer
-these wallets, there is no need to run the script to do the check.
+Swedbank Pay provides a script to do this check. It is a static URL which
+provides a script tag when called. Add the script tag to your website (like
+this: <script src="url you get from us here">) and use it to call the
+`payex.getAcceptedWallets()` method. We will return a string array with the
+wallets eligible for that purchase. The format will e.g. be `ApplePay`.
+
+If you are not building your own menu or don't offer these wallets, there is no
+need to run the script to do the check.
 
 There are scripts available for both the [test environment][test-env] and
 [production environment][prod-env].
