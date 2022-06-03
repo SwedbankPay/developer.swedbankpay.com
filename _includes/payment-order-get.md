@@ -71,13 +71,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }

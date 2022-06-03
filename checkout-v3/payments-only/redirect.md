@@ -67,7 +67,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d",
+            "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-checkout",
             "contentType": "text/html"
         },
