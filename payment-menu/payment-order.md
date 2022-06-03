@@ -42,7 +42,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ view_payment_order_script_url }}",
+            "href": "{{ view_payment_order_script_url }}&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"

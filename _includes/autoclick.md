@@ -14,11 +14,11 @@ required at your (the merchant's) end for AutoClick to work.
 
 There are a couple of limitations in place for this feature. First of all, it is
 restricted to payment instruments which require **no input** from the payer
-before pressing the Pay button, like **Google Pay**. It will also be limited to
-instruments with **no terms and conditions**. This will exclude instruments like
-Invoice, as there are terms and conditions attached. As a consequence,
-activating AutoClick in a request which also contains a `termsOfServiceUrl`
-will result in an error message.
+before pressing the Pay button. It will also be limited to instruments with
+**no terms and conditions**. This will exclude instruments like Invoice, as
+there are terms and conditions attached. As a consequence, activating AutoClick
+in a request which also contains a `termsOfServiceUrl` will result in an error
+message.
 
 ## Request
 
@@ -400,13 +400,13 @@ Content-Type: application/json
     "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
