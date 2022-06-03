@@ -82,14 +82,15 @@ wish to collect and manage yourself.
 
 Here, you can choose between two main paths. Either you let us provide you with
 a **Full Checkout** solution (including both payer identification and payment
-menu) - meaning the payer themselves can choose how they'd like to pay, or you
-can decide to use the **Payments Only** option. This means that you are in
-charge of collecting and storing the payer data and the payment instruments to
-be presented.
+menu) - meaning the payer themselves chooses how to pay, or you can use the
+**Payments Only** option. This means that you are in charge of collecting and
+storing the payer data and the payment instruments to be presented.
 
 Regardless of whether you choose to go with the full checkout or payments only,
 we will supply you with a variety of payment instruments and features which
-cater to your business needs.
+cater to your business needs. Somewhat depending on which country or countries
+you are present in, we offer **Apple Pay, card, invoice (also monthly),**
+**MobilePay, Swish, Trustly** and **Vipps**.
 
 -   **Authentication:** The process of verifying the payer's identity.
 
