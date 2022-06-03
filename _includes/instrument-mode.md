@@ -221,13 +221,13 @@ Content-Type: application/json
       "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         },{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
@@ -325,13 +325,13 @@ Content-Type: application/json
         }, {% if include.integration_mode=="redirect" %}
         {
         "method": "GET",
-        "href": "https://ecom.stage.payex.com/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835",
+        "href": "https://ecom.stage.payex.com/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?_tc_tid=30f2168171e142d38bcd4af2c3721959",
         "rel": "redirect-paymentorder",
         "contentType": "text/html"
         } {% endif %} {% if include.integration_mode=="seamless-view" %}
         {
         "method": "GET",
-        "href": "https://ecom.stage.payex.com/paymentmenu/core/client/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?culture=sv-SE",
+        "href": "https://ecom.stage.payex.com/paymentmenu/core/client/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
         "rel": "view-paymentorder",
         "contentType": "application/javascript"
         } {% endif %}
