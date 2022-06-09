@@ -54,6 +54,8 @@ There are scripts available for both the [test environment][test-env] and
 
 {% endif %}
 
+## Instrument Mode Request
+
 {:.code-view-header}
 **Request**
 
@@ -150,6 +152,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Instrument Mode Response
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -343,6 +347,8 @@ Content-Type: application/json
 }
 ```
 
+## PATCH Instrument Selection
+
 {% endif %}
 
 {% if documentation_section contains "checkout-v3" %}
@@ -374,6 +380,8 @@ Content-Type: application/json
   }
 }
 ```
+
+## Available Instruments
 
 The valid instruments for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a
