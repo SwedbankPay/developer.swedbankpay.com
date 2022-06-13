@@ -44,9 +44,9 @@ to enable one-click purchases.
 ### API Requests To Generate paymentToken
 
 When making the initial purchase request, you need to generate a `paymentToken`.
-You can do this either by by setting the `generatePaymentToken` field to
-`true` (see example below) when doing a card purchase, or set the initial
-operation to [`Verify`][verify].
+You can do this by setting the `generatePaymentToken` field in the request's
+payment object to `true` (see example below) when doing a card purchase, or
+setting the initial operation to [`Verify`][verify].
 
 {:.code-view-header}
 **generatePaymentToken field**
@@ -92,12 +92,16 @@ track of the corresponding `payerReference` in your system.
 
 When a known payer (where you have attained a `payerReference` or similar)
 returns to your system, you can use the `paymentToken`, using already stored
-payment data, to initiate one-click payments. You will need to make a standard
-purchase, following the sequence as specified in the Redirect or Seamless View
-scenarios for [credit card][card] and [financing invoice][invoice]. When
-creating the first `POST` request you insert the `paymentToken` field. This must
-be the `paymentToken` you received in the initial purchase, where you specified
-the `generatePaymentToken` to `true`.
+payment data, to initiate one-click payments.
+
+You will need to make a standard purchase, following the sequence as specified
+in the Redirect or Seamless View scenarios for [credit card][card] and
+[financing invoice][invoice]. When creating the first `POST` request you insert
+the `paymentToken` field. This must be the `paymentToken` you received in the
+initial purchase, where you specified the `generatePaymentToken` to `true`.
+
+You can add the field `noCvc` set to `true` in the `creditcard` object, which
+card specific feature fields. This disables the CVC field.
 
 {% unless documentation_section contains "checkout-v3" %}
 
@@ -228,9 +232,13 @@ Content-Type: application/json
 }
 ```
 
+## Deleting Single Tokens
+
+{% if documentation_section contains "checkout" %}
+
 For single token deletions, the request and response should look like this. In
-this example, the token is connected to a card. If it was an invoice connected
-token, the `instrumentDisplayName` would be the payer's date of birth.
+this example, the token is connected to a card. If it was a token connected to
+an invoice, the `instrumentDisplayName` would be the payer's date of birth.
 
 {:.code-view-header}
 **Request**
@@ -264,6 +272,54 @@ Content-Type: application/json
     }
 }
 ```
+
+{% else %}
+
+For single token deletions, the request and response should look like this. In
+this example, the token is a payment token and is connected to a card.
+
+{:.code-view-header}
+**Request**
+
+```http
+PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+{
+  "state": "Deleted",
+  "comment": "Comment on why the deletion is happening",
+  "tokenType" : "PaymentToken"
+
+}
+}
+```
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "instrumentData": {
+    "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
+    "paymentToken": "12345678-1234-1234-1234-123456789000",
+    "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
+    "isDeleted": true,
+    "isPayeeToken": false,
+    "cardBrand": "Visa",
+    "maskedPan": "123456xxxxxx1111",
+    "expiryDate": "MM/YYYY",
+    "tokenType" : "PaymentToken"
+  }
+}
+```
+
+{% endif %}
 
 <!--lint disable final-definition -->
 
