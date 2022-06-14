@@ -5,7 +5,7 @@ description: |
   Automatic redirect from the payment window.
 menu_order: 1300
 icon:
-  content: fast-forward
+  content: fast_forward
   outlined: true
 ---
 
