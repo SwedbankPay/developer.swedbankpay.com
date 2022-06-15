@@ -43,7 +43,7 @@ ensure that the wallet is supported on the payer's device or browser.
 Swedbank Pay provides a script to do this check, with the URL
 https://ecom.<environment>.payex.com/<integration>/core/integration.
 Environments available for you are `externalintegration` and `production`, and
-you can switch integration between `checkout` and `paymentmenu`. Follow the
+you can switch integration between `checkout` and `paymentmenu`. Follow these
 links for [test environment][test-env] and [production environment][prod-env]
 **Checkout** scripts.
 
@@ -53,9 +53,6 @@ format will e.g. be `["applepay"]`.
 
 If you are not building your own menu or don't offer these wallets, there is no
 need to run the script to do the check.
-
-There are scripts available for both the [test environment][test-env] and
-[production environment][prod-env].
 
 {% endif %}
 
