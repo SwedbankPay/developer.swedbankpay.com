@@ -41,11 +41,11 @@ If you want to **build your own menu** and display **at least** one wallet like
 ensure that the wallet is supported on the payer's device or browser.
 
 Swedbank Pay provides a script to do this check, with the URL
-`https:// ecom.<environment>.payex.com/<integration>/core/integration.`
-Environments available for you are `externalintegration` and `production`, and
-you can switch integration between `checkout` and `paymentmenu`. Follow these
-links for [test environment][test-env] and [production environment][prod-env]
-**Checkout** scripts.
+`ecom.<environment>.payex.com/<integration>/core/integration.` Environments
+available for you are `externalintegration` and `production`, and you can switch
+integration between `checkout` and `paymentmenu`. Follow these links for [test
+environment][test-env] and [production environment][prod-env] **Checkout**
+scripts.
 
 Add the script tag to your website and do an `await payex.getAcceptedWallets()`.
 We will return a string array with the wallets eligible for that purchase. The
