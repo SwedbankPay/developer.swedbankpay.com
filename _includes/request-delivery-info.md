@@ -8,6 +8,9 @@ endcapture %}
 Swedbank Pay provides the possibility to return delivery information from
 payment instruments which support this. You do this by adding the field
 `requestDeliveryInfo` in your payment order request and setting it to `true`.
+The returned delivery information will appear in the `payer` node after the
+payment has been completed, and **not** the initial response. You have to
+perform a GET to see it.
 
 Only payment instruments which support this will return delivery information. If
 you only want to show payment instruments which support this in you menu, you
@@ -255,7 +258,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| | └➔&nbsp;`requestDeliveryInfo`                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. Currently available for Apple Pay only. |
+| | └➔&nbsp;`requestDeliveryInfo`                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. It will be visible in a GET response after the payment has been completed. Currently available for Apple Pay only. |
 | | └➔&nbsp;`restrictedToDeliveryInfoInstruments`                       | `bool` | Set to `true` if you want to restrict your payment menu to only include payment instruments which return delivery info.  |
 | {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
