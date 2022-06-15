@@ -16,13 +16,21 @@ However, if you need support, please wait for a future, stable release.
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
 
-While making a payment, the SDK will need to create a payment order, and possibly start a consumer identification session. These are ultimately done using the relevant Swedbank Pay APIs, but as those are protected by secrets you cannot securely embed in a mobile app, you will need our own server in the middle.
+While making a payment, the SDK will need to create a payment order, and
+possibly start a consumer identification session. These are ultimately done
+using the relevant Swedbank Pay APIs, but as those are protected by secrets you
+cannot securely embed in a mobile app, you will need our own server in the
+middle.
 
-The SDK cannot communicate directly with your servers, so you must provide a Configuration that specifies how it does that. This page provides a basic overview of the Configuration on both iOS and Android. More details shall be discussed in the platform-specific chapters.
+The SDK cannot communicate directly with your servers, so you must provide a
+Configuration that specifies how it does that. This page provides a basic
+overview of the Configuration on both iOS and Android. More details shall be
+discussed in the platform-specific chapters.
 
 ## iOS
 
-The Configuration is a value that conforms to the `SwedbankPaySDKConfiguration` protocol. The protocol has two required methods:
+The Configuration is a value that conforms to the `SwedbankPaySDKConfiguration`
+protocol. The protocol has two required methods:
 
 ```swift
     struct MyConfiguration : SwedbankPaySDKConfiguration {
@@ -67,7 +75,10 @@ The Configuration is a value that conforms to the `SwedbankPaySDKConfiguration` 
 
 ## Android
 
-The Configuration is a subclass of the abstract class [`Configuration`][dokka-config]. The class has two abstract methods. These methods are suspending (asynchronous) Kotlin methods; a compatibility class is provided if you need to implement your Configuration in Java instead.
+The Configuration is a subclass of the abstract class
+[`Configuration`][dokka-config]. The class has two abstract methods. These
+methods are suspending (asynchronous) Kotlin methods; a compatibility class is
+provided if you need to implement your Configuration in Java instead.
 
 ```kotlin
     class MyConfiguration : Configuration() {
@@ -115,11 +126,27 @@ The Configuration is a subclass of the abstract class [`Configuration`][dokka-co
 
 ## Backend
 
-As the mobile application cannot talk directly to Swedbank Pay servers, you will need your own backend to make those requests on the behalf of your Configuration. You are free to design your backend as best suits you, but the next chapter will detail one possible implementation, which also has a bundled-in Configuration implementation available in the SDK.
+As the mobile application cannot talk directly to Swedbank Pay servers, you will
+need your own backend to make those requests on the behalf of your
+Configuration. You are free to design your backend as best suits you, but the
+next chapter will detail one possible implementation, which also has a
+bundled-in Configuration implementation available in the SDK.
 
-One thing you should keep in mind while designing your backend is that the `paymentUrl` of your payment order needs special consideration in order to work correctly. This is a somewhat complicated issue, discussed in detail in each platform-specific chapter, but the gist of the issue is that the `paymentUrl` will, in some cases, be opened in the browser application, and at that point we must take some measures to return to your application to continue the payment. This can be accomplished by having `paymentUrl` return a redirect response; the details of that redirect will be discussed in the platform-specific pages. It is recommneded that `paymentUrl` be unique to each payment order that you create.
+One thing you should keep in mind while designing your backend is that the
+`paymentUrl` of your payment order needs special consideration in order to work
+correctly. This is a somewhat complicated issue, discussed in detail in each
+platform-specific chapter, but the gist of the issue is that the `paymentUrl`
+will, in some cases, be opened in the browser application, and at that point we
+must take some measures to return to your application to continue the payment.
+This can be accomplished by having `paymentUrl` return a redirect response; the
+details of that redirect will be discussed in the platform-specific pages. It is
+recommneded that `paymentUrl` be unique to each payment order that you create.
 
-The next chapter will go over the Merchant Backend API. It will also explore in detail how `paymentUrl` is handled on a server implementing the Merchant Backend API. The SDK comes ready with a Configuration suitable for a server implementing the Merchant Backend API, which will be discussed in detail in the client platform specific chapters.
+The next chapter will go over the Merchant Backend API. It will also explore in
+detail how `paymentUrl` is handled on a server implementing the Merchant Backend
+API. The SDK comes ready with a Configuration suitable for a server implementing
+the Merchant Backend API, which will be discussed in detail in the client
+platform specific chapters.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"

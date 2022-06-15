@@ -17,14 +17,21 @@ However, if you need support, please wait for a future, stable release.
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
 
-You can find sample implementations of the Merchant Backend at [this Github repository][backend-samples]. Currently there are available the following:
+You can find sample implementations of the Merchant Backend at [this Github
+repository][backend-samples]. Currently there are available the following:
 
 *   [node.js][node-sample]
 *   [Java][java-sample]
 
-Please refer to the sample code documentation for instructions for running a local development server, and/or deploying to selected cloud services. Do note that if you are running a local server over http, you will need to allow insecure communications in the mobile application; otherwise any payments will immediately fail due to a security error.
+Please refer to the sample code documentation for instructions for running a
+local development server, and/or deploying to selected cloud services. Do note
+that if you are running a local server over http, you will need to allow
+insecure communications in the mobile application; otherwise any payments will
+immediately fail due to a security error.
 
-The samples provide a fully functioning API for the SDK, but the implementations are, of course, devoid of any business logic. They should, nevertheless, provide a good starting point toward integration with your business systems.
+The samples provide a fully functioning API for the SDK, but the implementations
+are, of course, devoid of any business logic. They should, nevertheless, provide
+a good starting point toward integration with your business systems.
 
 {% include iterator.html prev_href="merchant-backend"
                          prev_title="Merchant Backend"

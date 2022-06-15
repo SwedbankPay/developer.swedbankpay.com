@@ -14,21 +14,36 @@ However, if you need support, please wait for a future, stable release.
 {% include alert.html type="warning" icon="warning" header="Unsupported"
 body=disclaimer %}
 
-This guide assumes that you are using the Merchant Backend Configuration and your backend implements the Merchant Backend API. If you are using a custom backend instead, the meaning of `SwedbankPaySDKController` arguments will be different, as well as any errors reported, but the basic process is the same. The differences will be highlighted in the chapter on custom backends.
+This guide assumes that you are using the Merchant Backend Configuration and
+your backend implements the Merchant Backend API. If you are using a custom
+backend instead, the meaning of `SwedbankPaySDKController` arguments will be
+different, as well as any errors reported, but the basic process is the same.
+The differences will be highlighted in the chapter on custom backends.
 
 ## Installation
 
-The iOS component of the Swedbank Pay Mobile SDK is split into two libraries: `SwedbankPaySDK` contains the core SDK, while `SwedbankPaySDKMerchantBackend` contains utilities for interfacing with the Merchant Backend API. If you are using a custom backend, you to not need to install the `SwedbankPaySDKMerchantBackend` library.
+The iOS component of the Swedbank Pay Mobile SDK is split into two libraries:
+`SwedbankPaySDK` contains the core SDK, while `SwedbankPaySDKMerchantBackend`
+contains utilities for interfacing with the Merchant Backend API. If you are
+using a custom backend, you to not need to install the
+`SwedbankPaySDKMerchantBackend` library.
 
 ### Swift Package Manager
 
-The SDK is available through the Swift Package Manager. This is the simplest way of adding the SDK to an Xcode project. Follow the [Xcode documentation][xcode-swiftpm] to add a SwiftPM dependency.
+The SDK is available through the Swift Package Manager. This is the simplest way
+of adding the SDK to an Xcode project. Follow the [Xcode
+documentation][xcode-swiftpm] to add a SwiftPM dependency.
 
-The package repository URL for the SDK is [`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo]. Add the `SwedbankPaySDK` library, and the `SwedbankPaySDKMerchantBackend` if needed.
+The package repository URL for the SDK is
+[`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo].
+Add the `SwedbankPaySDK` library, and the `SwedbankPaySDKMerchantBackend` if
+needed.
 
 ### CocoaPods
 
-The SDK is also available through [CocoaPods][cocoapods]. There are two pods: [SwedbankPaySDK][sdk-pod] for the core SDK, and `SwedbankPaySDKMerchantBackend` for the Merchant Backend utilities.
+The SDK is also available through [CocoaPods][cocoapods]. There are two pods:
+[SwedbankPaySDK][sdk-pod] for the core SDK, and `SwedbankPaySDKMerchantBackend`
+for the Merchant Backend utilities.
 
 Add the relevant dependencies in your `Podfile`:
 

@@ -1,6 +1,13 @@
 ## Payment tokens for unscheduled or recurring purchases
 
-A common practice is to store a credit-card for later use, e.g. for subscriptions, and charge every month. To make this safe & secure you let SwedbankPay store the payment information and only keep a reference, a payment token. This token can later be used to make purchases, and there are two types of tokens that can be created. One for subscriptions, and one for later unscheduled purchases. They are created the same way, by setting generateUnscheduledToken = true or generateRecurrenceToken = true, in the paymentOrder and then either making a purchase or verifying a purchase. 
+A common practice is to store a credit-card for later use, e.g. for
+subscriptions, and charge every month. To make this safe & secure you let
+SwedbankPay store the payment information and only keep a reference, a payment
+token. This token can later be used to make purchases, and there are two types
+of tokens that can be created. One for subscriptions, and one for later
+unscheduled purchases. They are created the same way, by setting
+generateUnscheduledToken = true or generateRecurrenceToken = true, in the
+paymentOrder and then either making a purchase or verifying a purchase.
 
 {:.code-view-header}
 **iOS**
@@ -25,7 +32,10 @@ val paymentOrder = PaymentOrder(
 )
 ```
 
-When expanding the paid property of this verified or purchased payment, there is an array with tokens one can save for later use. Read more on: [expanding properties][expanding_properties]. Here is an abbreviated example of what is received, typically only on the backend. 
+When expanding the paid property of this verified or purchased payment, there is
+an array with tokens one can save for later use. Read more on: [expanding
+properties][expanding_properties]. Here is an abbreviated example of what is
+received, typically only on the backend.
 
 {:.code-view-header}
 **JSON**
@@ -55,7 +65,9 @@ When expanding the paid property of this verified or purchased payment, there is
 }
 ```
 
-Then, to make an unscheduled purchase you simply add the unscheduledToken, or the recurrenceToken to the paymentOrder request. Obviously these purchases and the expanding of tokens is only needed to be done on the backend.
+Then, to make an unscheduled purchase you simply add the unscheduledToken, or
+the recurrenceToken to the paymentOrder request. Obviously these purchases and
+the expanding of tokens is only needed to be done on the backend.
 
 More info on [unscheduled purchases][unscheduled].
 

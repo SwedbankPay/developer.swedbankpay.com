@@ -1,10 +1,15 @@
-## One-click Payments
+## One-Click Payments
 
-It is really easy to improve the purchase experience by auto-filling the payment details. In order to do this, SwedbankPay needs to identify your customer. If the customer is identified and has approved storing the payment details, the rest is handled automatically.
+It is really easy to improve the purchase experience by auto-filling the payment
+details. In order to do this, SwedbankPay needs to identify your customer. If
+the customer is identified and has approved storing the payment details, the
+rest is handled automatically.
 
-## One-click Payments in Enterprise
+## One-Click Payments in Enterprise
 
-Enterprise merchant can supply the email and phone of the customer to let SwedbankPay match the customer internally and let the customer store card information (if desired).
+Enterprise merchant can supply the email and phone of the customer to let
+SwedbankPay match the customer internally and let the customer store card
+information (if desired).
 
 {:.code-view-header}
 **iOS**
@@ -37,7 +42,8 @@ val paymentOrder = PaymentOrder(
 
 ```
 
-Now the customer has the option to store card numbers or select one of the previously stored cards. More info in [the documentation][enterprise-payer-ref].
+Now the customer has the option to store card numbers or select one of the
+previously stored cards. More info in [the documentation][enterprise-payer-ref].
 
 ## One-click Payments in PaymentsOnly
 
@@ -72,7 +78,14 @@ paymentOrder.payer = PaymentOrderPayer(
 
 ### Token Retrieval Checkout V3
 
-Retrieve the token by expanding the "paid" property of a previous successful payment. To see this in action, the example merchant backend has an endpoint called "/expand" that takes a "resource" (in this case the paymentId), and an array of properties to expand. You get a payment order back, and in the expanded paid property there is a "tokens" array (if the customer agreed to let you store the information). A good practice is to only do this on the backend and serve the token as part of user's info, to have the token available at the next purchase.
+Retrieve the token by expanding the "paid" property of a previous successful
+payment. To see this in action, the example merchant backend has an endpoint
+called "/expand" that takes a "resource" (in this case the paymentId), and an
+array of properties to expand. You get a payment order back, and in the expanded
+paid property there is a "tokens" array (if the customer agreed to let you store
+the information). A good practice is to only do this on the backend and serve
+the token as part of user's info, to have the token available at the next
+purchase.
 
 {:.code-view-header}
 **iOS**
@@ -123,11 +136,12 @@ Read more on [expanding properties here][expanding_properties].
 
 ### Token Retrieval in V2
 
-If you are still using the older Checkout version 2, the SDK contains a utility method to query a conforming Merchant Backend server
-for the payment tokens of a particular `payerReference`. Of course, you should
-have proper authentication in your implementation if you use this
-functionality, to prevent unauthorized access to other users' tokens (the
-example implementation has the endpoint disabled by default).
+If you are still using the older Checkout version 2, the SDK contains a utility
+method to query a conforming Merchant Backend server for the payment tokens of a
+particular `payerReference`. Of course, you should have proper authentication in
+your implementation if you use this functionality, to prevent unauthorized
+access to other users' tokens (the example implementation has the endpoint
+disabled by default).
 
 The utility method allows you to add extra header to the request; these can
 be useful for implementing authentication.
@@ -169,10 +183,9 @@ let request = SwedbankPaySDK.MerchantBackend.getPayerOwnedPaymentTokens(
 
 ### Token Usage
 
-Usage of tokens are the same in both V3 as in V2 and to use a payment token with a Merchant Backend, 
-create a payment order where
-you set the `paymentToken` field of `PaymentOrder` and the `payerReference`
-field of `PaymentOrderPayer`:
+Usage of tokens are the same in both V3 as in V2 and to use a payment token with
+a Merchant Backend, create a payment order where you set the `paymentToken`
+field of `PaymentOrder` and the `payerReference` field of `PaymentOrderPayer`:
 
 {:.code-view-header}
 **Android**

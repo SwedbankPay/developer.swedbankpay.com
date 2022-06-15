@@ -1,6 +1,7 @@
 ## Verify Payments
 
-`Verify` payments are also supported by the SDK. This is particularly useful e.g. when creating tokens to charge a card later.
+`Verify` payments are also supported by the SDK. This is particularly useful
+e.g. when creating tokens to charge a card later.
 
 {:.code-view-header}
 **Android**

@@ -232,11 +232,10 @@ To start a payment, create a `PaymentFragment` and set its arguments according
 to the payment. The
 [`PaymentFragment.ArgumentsBuilder`][dokka-payfrag-argbuilder] class is provided
 to help with creating the argument bundle. In most cases you only need to worry
-about the
-[`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] property. The payment
-process starts as soon as the `PaymentFragment` is visible. Note that checkoutV3 
-is currently opt-in, so that merchants can upgrade without too much breaking changes 
-and start using the new checkoutV3 when ready.
+about the [`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] property. The
+payment process starts as soon as the `PaymentFragment` is visible. Note that
+checkoutV3 is currently opt-in, so that merchants can upgrade without too much
+breaking changes and start using the new checkoutV3 when ready.
 
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
@@ -253,7 +252,10 @@ paymentFragment.arguments = arguments
 // findNavController().navigate(R.id.showPaymentFragment, arguments)
 ```
 
-Note that the SDK only supports customer-checkin for version 2, and provides fallback for merchants in need of this. Then you need to supply a [`consumer`][dokka-payfrag-argbuilder-consumer] and the ckeckoutV3 setting becomes irrelevant.
+Note that the SDK only supports customer-checkin for version 2, and provides
+fallback for merchants in need of this. Then you need to supply a
+[`consumer`][dokka-payfrag-argbuilder-consumer] and the ckeckoutV3 setting
+becomes irrelevant.
 
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
