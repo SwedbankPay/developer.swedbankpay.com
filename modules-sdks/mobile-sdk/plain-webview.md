@@ -13,12 +13,9 @@ menu_order: 1500
 ---
 
 {% capture disclaimer %}
-This page is prodived for informational purposes only,
+This page is provided for informational purposes only,
 and is not part of the Mobile SDK documentation proper.
 {% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
 
 ## Quick Fix List
 

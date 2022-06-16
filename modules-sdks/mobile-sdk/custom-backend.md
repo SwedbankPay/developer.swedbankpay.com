@@ -6,16 +6,6 @@ description: |
 menu_order: 1200
 ---
 
-{% capture disclaimer %}
-The SDK is at an early stage of development
-and is not supported as of yet by Swedbank Pay. It is provided as a
-convenience to speed up your development, so please feel free to play around.
-However, if you need support, please wait for a future, stable release.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
-
 In this chapter we explore how to integrate the mobile SDK with a fully custom
 backend server. It is recommended that you first read through the previous
 chapters and gain an understanding of how the SDK works with a backend

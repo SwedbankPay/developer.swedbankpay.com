@@ -39,8 +39,7 @@ To start integrating the Swedbank Pay Mobile SDK, you need the following:
     specifically [Enterprise][checkout-enterprise] or [Payments
     Only][checkout-payments-only].
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
-    Swedbank Pay Admin. Please observe that Swedbank Pay Checkout encompasses
-    both the **`consumer`** and **`paymentmenu`** scope.
+    Swedbank Pay Admin. Please observe that the Swedbank Pay Checkout v3 implementations currently available encompasses the **`paymentmenu`** scope.
 
 It is important to secure all communication between your app and your servers.
 If you wish to use the Merchant Backend API to communicate between your app and
@@ -48,101 +47,31 @@ your server, an example implementation is provided for Node.js and for Java.
 
 ## Introduction
 
-As the Mobile SDK is built on top of [Checkout v3][checkout], it is a good idea
-to familiarize yourself with it first. The **Enterprise** and **Payments Only**
-implementations are the ones currently supported. The rest of this document will
-assume some familiarity with Checkout concepts. Note, however, that you need not
-build a working Checkout v3 example with web technologies to use the Mobile SDK.
+As the Mobile SDK is built on top of [Checkout v3][checkout]. It is a good idea
+to familiarize yourself with it first, as the rest of this document will assume
+some familiarity with Checkout concepts. Note, however, that you need not build
+a working Checkout v3 example with web technologies to use the Mobile SDK.
 
-The Mobile SDK provides a mobile component to show [Checkin][checkin] and
-[Payment Menu][payment-menu] in a mobile application. The integrating
-application must set a Configuration, which is responsible for making the
-necessary calls to your backend. A Configuration for a server implementing the
-Merchant Backend API is bundled with the SDK, but it is simple to implement a
-Configuration for your custom server. The [Post Purchase][after-payment-capture]
-part is the same as when using Checkout on a web page, and is thus intentionally
-left out of the scope of the SDK.
+The Mobile SDK currently provides a mobile component to show Checkout v3
+[Enterprise][checkout-enterprise] or [Payments Only][checkout-payments-only] in
+a mobile application. The integrating application must set a Configuration,
+which is responsible for making the necessary calls to your backend. A
+Configuration for a server implementing the Merchant Backend API is bundled with
+the SDK, but it is simple to implement a Configuration for your custom server.
+The [Post Purchase][post-purchase-capture] part is the same as when using
+Checkout on a web page, and is thus intentionally left out of the scope of the
+SDK.
 
 See below for a sequence diagram of a payment made using the Mobile SDK. This is
 a high-level diagram. More detailed views highlighting platform differences will
 follow for each step.
 
-{% include alert.html type="informative" icon="info" body="
-Note that in this diagram, SDK refers to the Mobile SDK Android or iOS component, and Backend refers to your backend server, possibly one implementing the Merchant Backend API." %}
-
-```mermaid
-sequenceDiagram
-    participant App
-    participant SDK
-    participant Backend
-    participant SwedbankPay as Swedbank Pay
-
-    rect rgba(238, 112, 35, 0.05)
-        App ->> SDK: Set SDK Configuration
-        note right of App: The Configuration is responsible for all<br/>communication with your backend.
-    end
-
-    rect rgba(138, 205, 195, 0.1)
-        note left of App: Payment
-        opt Unless guest payment
-            App ->> App: Prepare Consumer to identify
-        end
-        App ->> App: Prepare Payment Order to create
-        App ->> SDK: Create payment UI component with prepared Consumer and Payment Order
-        opt Unless guest payment
-            SDK ->> App: Start identification session
-            App ->> Backend: Start identification session
-            Backend ->> SwedbankPay: Forward call to Swedbank Pay: POST /psp/consumers
-            SwedbankPay -->> Backend: rel: view-consumer-identification
-            Backend -->> App: rel: view-consumer-identification
-            App -->> SDK: rel: view-consumer-identification
-            SDK ->> SDK: Compose and show html using view-consumer-identification link
-            SwedbankPay ->> SDK: Consumer identification process
-            SDK ->> SwedbankPay: Consumer identification process
-            SwedbankPay ->> SDK: consumerProfileRef
-        end
-        SDK ->> App: Create Payment Order
-        App ->> Backend: Create Payment Order
-        Backend ->> SwedbankPay: Forward call to Swedbank Pay: POST /psp/paymentorders
-        SwedbankPay -->> Backend: rel: view-paymentorder
-        Backend -->> App: rel: view-paymentorder
-        App -->> SDK: paymentorder.urls, rel: view-paymentorder
-        SDK ->> SDK: Compose and show html using view-paymentorder link
-        SwedbankPay ->> SDK: Payment process ①
-        SDK ->> SwedbankPay: Payment process
-        SwedbankPay -->> SDK: Navigate to completeUrl
-        SDK ->> App: Callback: Payment completed
-        App ->> App: Remove payment UI component
-    end
-
-    rect rgba(81,43,43,0.1)
-        note left of App: Capture (not in scope of SDK)
-        Backend ->>+ SwedbankPay: rel:create-paymentorder-capture
-        SwedbankPay -->> Backend: Capture status
-    end
-```
-
-*   ① The payment process may navigate to 3rd party web pages. This is glossed
-    over in this diagram, but the process and its implications are discussed
-    further in the next pages.
-
-### The Checkin Flow
-
-Internally, the SDK uses the same [Checkin][checkin] flow as would be used on a
-web page. The flow described on the Checkin page reflects closely what happens
-inside the SDK. From the perspective of the app using the SDK, that is an
-implementation detail, and is therefore not reflected in the above diagram. You
-should, nevertheless, read up on the Checkin documentation before continuing
-with the SDK documentation.
-
 {% include iterator.html next_href="configuration"
                          next_title="Next: Configuration" %}
 
-[plain-webview]: plain-webview
+[plain-webview]: /modules-sdks/mobile-sdk/plain-webview
 [checkout]: /checkout-v3
 [checkout-enterprise]: /checkout-v3/enterprise
 [checkout-payments-only]: /checkout-v3/payments-only
 [https]: /introduction#connection-and-protocol
-[checkin]: /checkout-v2/checkin
-[payment-menu]: /checkout-v2/payment-menu
-[after-payment-capture]: /checkout-v2/capture
+[post-purchase-capture]: /checkout-v3/payments-only/post-purchase#capture

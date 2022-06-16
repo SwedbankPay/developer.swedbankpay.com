@@ -6,16 +6,6 @@ description: |
 menu_order: 700
 ---
 
-{% capture disclaimer %}
-The SDK is at an early stage of development
-and is not supported as of yet by Swedbank Pay. It is provided as a
-convenience to speed up your development, so please feel free to play around.
-However, if you need support, please wait for a future, stable release.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
-
 While making a payment, the SDK will need to create a payment order, and
 possibly start a consumer identification session. These are ultimately done
 using the relevant Swedbank Pay APIs, but as those are protected by secrets you

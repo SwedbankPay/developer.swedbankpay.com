@@ -7,15 +7,6 @@ description: |
   Let us begin with Android.
 menu_order: 1000
 ---
-{% capture disclaimer %}
-The SDK is at an early stage of development
-and is not supported as of yet by Swedbank Pay. It is provided as a
-convenience to speed up your development, so please feel free to play around.
-However, if you need support, please wait for a future, stable release.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
 
 This guide assumes that you are using the Merchant Backend Configuration and
 your backend implements the Merchant Backend API. If you are using a custom

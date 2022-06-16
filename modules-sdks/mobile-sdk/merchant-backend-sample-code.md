@@ -7,16 +7,6 @@ description: |
 menu_order: 900
 ---
 
-{% capture disclaimer %}
-The SDK is at an early stage of development
-and is not supported as of yet by Swedbank Pay. It is provided as a
-convenience to speed up your development, so please feel free to play around.
-However, if you need support, please wait for a future, stable release.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
-
 You can find sample implementations of the Merchant Backend at [this Github
 repository][backend-samples]. Currently there are available the following:
 
