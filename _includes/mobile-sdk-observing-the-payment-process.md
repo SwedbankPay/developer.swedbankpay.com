@@ -29,12 +29,18 @@ The process state is available at `richState.state`, which has the following
 cases:
 
 *   `PaymentViewModel.State.IDLE`: Not active
-*   `PaymentViewModel.State.IN_PROGRESS`: Active; waiting for either network response or user interaction
-*   `PaymentViewModel.State.UPDATING_PAYMENT_ORDER`: Updating the payment order (because you called `updatePaymentOrder`)
-*   `PaymentViewModel.State.COMPLETE`: Complete; you should hide the `PaymentFragment` and check the payment status from your application servers
-*   `PaymentViewModel.State.cancelled`: cancelled by the user; you should hide the `PaymentFragment`.
-*   `PaymentViewModel.State.RETRYABLE_ERROR`: Payment could not proceed, but the error is not fatal. See below for options here.
-*   `PaymentViewModel.State.FAILURE`: Payment has failed. You should hide the `PaymentFragment`.
+*   `PaymentViewModel.State.IN_PROGRESS`: Active; waiting for either network
+    response or user interaction
+*   `PaymentViewModel.State.UPDATING_PAYMENT_ORDER`: Updating the payment order
+    (because you called `updatePaymentOrder`)
+*   `PaymentViewModel.State.COMPLETE`: Complete; you should hide the
+    `PaymentFragment` and check the payment status from your application servers
+*   `PaymentViewModel.State.cancelled`: cancelled by the user; you should hide
+    the `PaymentFragment`.
+*   `PaymentViewModel.State.RETRYABLE_ERROR`: Payment could not proceed, but the
+    error is not fatal. See below for options here.
+*   `PaymentViewModel.State.FAILURE`: Payment has failed. You should hide the
+    `PaymentFragment`.
 
 In the retryable error and failure states, the error that caused the failure is
 available at `richState.exception`. The exception is of any type thrown by
@@ -134,8 +140,11 @@ Any errors are ones thrown by your Configuration, or, in the case of
 `paymentFailed`, `SwedbankPaySDKController.WebContentError`.
 `SwedbankPaySDKController.WebContentError` has two cases:
 
-* .ScriptLoadingFailure(scriptUrl: URL?): The script failed to load. No error message is available; this is a limitation of WKWebView
-* .ScriptError(SwedbankPaySDK.TerminalFailure?): The script made an `onError` callback. The payload is the [Terminal Failure][terminal-failure] reported by Swedbank Pay.
+* .ScriptLoadingFailure(scriptUrl: URL?): The script failed to load. No error
+  message is available; this is a limitation of WKWebView
+* .ScriptError(SwedbankPaySDK.TerminalFailure?): The script made an `onError`
+  callback. The payload is the [Terminal Failure][terminal-failure] reported by
+  Swedbank Pay.
 
 When using the Merchant Backend Configuration, other errors will be of the type
 `SwedbankPaySDK.MerchantBackendError`.
