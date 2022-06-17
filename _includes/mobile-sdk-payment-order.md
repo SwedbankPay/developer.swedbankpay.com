@@ -11,7 +11,7 @@ of the features will not be repeated here; please refer to the
 
 ### URLs
 
-A Payment Order created for the SDK must have `urls` the same
+A Payment Order created for the SDK must have [`urls`][urls] the same
 way a Payment Order to be used on a web page would. The SDK context places some
 requirement on these urls.
 
@@ -60,9 +60,10 @@ let urls = SwedbankPaySDK.PaymentOrderUrls(
 
 ### Order Items
 
-You may want to populate the `orderItems` field of the `paymentOrder` for e.g.
-printing invoices. The SDK offers facilities for working with `orderItems`,
-allowing you to discover the fields of an Order Item in your IDE.
+You may want to populate the [`orderItems`][order-items] field of the
+`paymentOrder` for e.g. printing invoices. The SDK offers facilities for working
+with `orderItems`, allowing you to discover the fields of an Order Item in your
+IDE.
 
 Please refer to the [Checkout documentation][checkout] and/or the
 class documentation for the meaning of the fields.
@@ -126,4 +127,6 @@ orderItem.name = "Other Thing"
 ```
 
 [checkout]: /checkout-v3
+[order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
 [payment-menu]: /payment-menu/
+[urls]: /checkout-v3/payments-only/features/technical-reference/urls
