@@ -5,7 +5,7 @@ description: |
   Request that payment instruments return delivery information.
 menu_order: 1800
 icon:
-  content: truck_delivery
+  content: dolly
   outlined: true
 ---
 
