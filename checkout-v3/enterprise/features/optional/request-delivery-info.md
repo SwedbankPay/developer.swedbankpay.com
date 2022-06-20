@@ -5,7 +5,7 @@ description: |
   Request that payment instruments return delivery information.
 menu_order: 1900
 icon:
-  content: dolly
+  content: local_shipping
   outlined: true
 ---
 
