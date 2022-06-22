@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Business – Delete Token">
+        <meta name="application-name" content="Mobile SDK – Merchant Backend V2">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Business – Delete Token">
+        <meta name="apple-mobile-web-app-title" content="Mobile SDK – Merchant Backend V2">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
-        <meta property="og:url" value="https://developer.swedbankpay.com/checkout-v3/business/features/technical-reference/delete-token.html">
-        <meta property="og:title" value="Business – Delete Token">
-        <meta name="title" content="Business – Delete Token">
+        <meta property="og:url" value="https://developer.swedbankpay.com/modules-sdks/mobile-sdk/merchant-backend-v2.html">
+        <meta property="og:title" value="Mobile SDK – Merchant Backend V2">
+        <meta name="title" content="Mobile SDK – Merchant Backend V2">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Business – Delete Token</title>
+        <title>Mobile SDK – Merchant Backend V2</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/7.1.0/styles/swedbankpay.css">
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/7.1.0/styles/documentation-swedbankpay.css">
         <link rel="stylesheet" href="/assets/css/style.css">
@@ -30,7 +30,7 @@
         <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Delete Token">
+<meta name="apple-mobile-web-app-title" content="Merchant Backend V2">
 <link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/7.1.0/icons/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/7.1.0/icons/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/7.1.0/icons/apple-touch-icon-72x72.png">
@@ -109,11 +109,12 @@
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
 <li class="nav-leaf"><a href="/introduction#operations">Operations</a></li>
 <li class="nav-leaf"><a href="/introduction#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/introduction#sequence-diagram">Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/introduction#problems">Problems</a></li>
         
       </ul>
       </li>
-<li class="nav-group active">
+<li class="nav-group">
         <div class="nav-group-heading">
           <i class="material-icons">arrow_right</i>
           <span>Checkout v3</span>
@@ -203,6 +204,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/3d-secure-2#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/3d-secure-2#payer">Payer</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/3d-secure-2#risk-indicator">Risk Indicator</a></li>
         
       </ul>
       </li>
@@ -222,7 +225,7 @@
           <a href="/checkout-v3/starter/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/starter/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -288,10 +291,29 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/starter/features/optional/delete-token">Delete Token</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/starter/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/instrument-mode#eligibility-check">Eligibility Check</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/instrument-mode#instrument-mode-request">Instrument Mode Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/instrument-mode#instrument-mode-response">Instrument Mode Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/instrument-mode#available-instruments">Available Instruments</a></li>
         
       </ul>
       </li>
@@ -361,17 +383,6 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/starter/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/starter/features/technical-reference/description">Description</a>
         </div>
         <ul class="nav-ul">
@@ -386,6 +397,26 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/metadata#metadata">Metadata</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/starter/features/technical-reference/operations">Operations</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/operations#operations">Operations</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/starter/features/technical-reference/order-items">Order Items</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/order-items#order-items">Order Items</a></li>
         
       </ul>
       </li>
@@ -407,16 +438,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/payee-reference#payee-reference">Payee Reference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/starter/features/technical-reference/operations">Operations</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/operations#operations">Operations</a></li>
         
       </ul>
       </li>
@@ -503,7 +524,22 @@
           <a href="/checkout-v3/starter/features/technical-reference/status-models">Status Response Models</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/starter/features/technical-reference/status-models">Status Response Models</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/status-models#aborted">Aborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/status-models#cancelled">Cancelled</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/status-models#failed">Failed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/status-models#initialized">Initialized</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/status-models#paid">Paid</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/starter/features/technical-reference/urls">Urls</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/urls#urls">URLs</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -513,7 +549,7 @@
       </li>
       </ul>
       </li>
-<li class="nav-subgroup active">
+<li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/">Business</a>
@@ -575,7 +611,7 @@
         
       </ul>
       </li>
-<li class="nav-subgroup active">
+<li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/features/">Features</a>
@@ -596,6 +632,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/core/3d-secure-2#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/3d-secure-2#payer">Payer</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/3d-secure-2#risk-indicator">Risk Indicator</a></li>
         
       </ul>
       </li>
@@ -615,7 +653,7 @@
           <a href="/checkout-v3/business/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/business/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -681,10 +719,29 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/optional/delete-token">Delete Token</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/instrument-mode#eligibility-check">Eligibility Check</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/instrument-mode#instrument-mode-request">Instrument Mode Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/instrument-mode#instrument-mode-response">Instrument Mode Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/instrument-mode#available-instruments">Available Instruments</a></li>
         
       </ul>
       </li>
@@ -695,6 +752,18 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/recur#recur">Recur</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/optional/request-delivery-info">Request Delivery Information</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/request-delivery-info#request-delivery-information">Request Delivery Information</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/request-delivery-info#request">Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/request-delivery-info#response">Response</a></li>
         
       </ul>
       </li>
@@ -734,7 +803,7 @@
       </li>
       </ul>
       </li>
-<li class="nav-subgroup active">
+<li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/features/technical-reference/">Technical Reference</a>
@@ -748,17 +817,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/complete-url#completeurl">CompleteUrl</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup active">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/business/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
         
       </ul>
       </li>
@@ -785,6 +843,26 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/technical-reference/operations">Operations</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/operations#operations">Operations</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/technical-reference/order-items">Order Items</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/order-items#order-items">Order Items</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/features/technical-reference/payee-info">PayeeInfo</a>
         </div>
         <ul class="nav-ul">
@@ -800,16 +878,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/payee-reference#payee-reference">Payee Reference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/business/features/technical-reference/operations">Operations</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/operations#operations">Operations</a></li>
         
       </ul>
       </li>
@@ -856,6 +924,17 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/technical-reference/purchase">Purchase</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/purchase#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/purchase#payment-order-response">Payment Order Response</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/features/technical-reference/resource-sub-models">Resource Models</a>
         </div>
         <ul class="nav-ul">
@@ -866,16 +945,6 @@
 <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/resource-sub-models#financialtransactions">FinancialTransactions</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/resource-sub-models#history">History</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/resource-sub-models#paid">Paid</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/business/features/technical-reference/purchase">Purchase</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/business/features/technical-reference/purchase">Purchase</a></li>
         
       </ul>
       </li>
@@ -895,7 +964,22 @@
           <a href="/checkout-v3/business/features/technical-reference/status-models">Status Response Models</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/business/features/technical-reference/status-models">Status Response Models</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/status-models#aborted">Aborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/status-models#cancelled">Cancelled</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/status-models#failed">Failed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/status-models#initialized">Initialized</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/status-models#paid">Paid</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/technical-reference/urls">Urls</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/urls#urls">URLs</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -988,6 +1072,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/3d-secure-2#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/3d-secure-2#payer">Payer</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/3d-secure-2#risk-indicator">Risk Indicator</a></li>
         
       </ul>
       </li>
@@ -1007,7 +1093,7 @@
           <a href="/checkout-v3/enterprise/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/enterprise/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1073,10 +1159,15 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/enterprise/features/optional/instrument-mode">Instrument Mode</a>
+          <a href="/checkout-v3/enterprise/features/optional/delete-token">Delete Token</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
         
       </ul>
       </li>
@@ -1093,10 +1184,36 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/optional/instrument-mode">Instrument Mode</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#eligibility-check">Eligibility Check</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode-request">Instrument Mode Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode-response">Instrument Mode Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#available-instruments">Available Instruments</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/enterprise/features/optional/recur">Recur</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/recur#recur">Recur</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/optional/request-delivery-info">Request Delivery Information</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/request-delivery-info#request-delivery-information">Request Delivery Information</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/request-delivery-info#request">Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/request-delivery-info#response">Response</a></li>
         
       </ul>
       </li>
@@ -1156,17 +1273,6 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/enterprise/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/enterprise/features/technical-reference/description">Description</a>
         </div>
         <ul class="nav-ul">
@@ -1181,6 +1287,26 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/metadata#metadata">Metadata</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/technical-reference/operations">Operations</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/operations#operations">Operations</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/technical-reference/order-items">Order Items</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/order-items#order-items">Order Items</a></li>
         
       </ul>
       </li>
@@ -1202,16 +1328,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/payee-reference#payee-reference">Payee Reference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/enterprise/features/technical-reference/operations">Operations</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/operations#operations">Operations</a></li>
         
       </ul>
       </li>
@@ -1261,7 +1377,8 @@
           <a href="/checkout-v3/enterprise/features/technical-reference/purchase">Purchase</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/purchase">Purchase</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/purchase#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/purchase#payment-order-response">Payment Order Response</a></li>
         
       </ul>
       </li>
@@ -1297,7 +1414,22 @@
           <a href="/checkout-v3/enterprise/features/technical-reference/status-models">Status Response Models</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models">Status Response Models</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#aborted">Aborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#cancelled">Cancelled</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#failed">Failed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#initialized">Initialized</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#paid">Paid</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/technical-reference/urls">Urls</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/urls#urls">URLs</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -1390,6 +1522,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/3d-secure-2#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/3d-secure-2#payer">Payer</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/3d-secure-2#risk-indicator">Risk Indicator</a></li>
         
       </ul>
       </li>
@@ -1409,7 +1543,7 @@
           <a href="/checkout-v3/payments-only/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/payments-only/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1475,10 +1609,29 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/payments-only/features/optional/delete-token">Delete Token</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/payments-only/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#eligibility-check">Eligibility Check</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#instrument-mode-request">Instrument Mode Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#instrument-mode-response">Instrument Mode Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/instrument-mode#available-instruments">Available Instruments</a></li>
         
       </ul>
       </li>
@@ -1500,6 +1653,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/one-click-payments#one-click-payments">One-Click Payments</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/one-click-payments#deleting-single-tokens">Deleting Single Tokens</a></li>
         
       </ul>
       </li>
@@ -1520,6 +1674,18 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/recur#recur">Recur</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/payments-only/features/optional/request-delivery-info">Request Delivery Information</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/request-delivery-info#request-delivery-information">Request Delivery Information</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/request-delivery-info#request">Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/request-delivery-info#response">Response</a></li>
         
       </ul>
       </li>
@@ -1569,17 +1735,6 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/payments-only/features/technical-reference/description">Description</a>
         </div>
         <ul class="nav-ul">
@@ -1594,6 +1749,26 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/metadata#metadata">Metadata</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/payments-only/features/technical-reference/operations">Operations</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/operations#operations">Operations</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/payments-only/features/technical-reference/order-items">Order Items</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/order-items#order-items">Order Items</a></li>
         
       </ul>
       </li>
@@ -1615,16 +1790,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/payee-reference#payee-reference">Payee Reference</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v3/payments-only/features/technical-reference/operations">Operations</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/operations#operations">Operations</a></li>
         
       </ul>
       </li>
@@ -1674,7 +1839,8 @@
           <a href="/checkout-v3/payments-only/features/technical-reference/purchase">Purchase</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/purchase">Purchase</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/purchase#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/purchase#payment-order-response">Payment Order Response</a></li>
         
       </ul>
       </li>
@@ -1710,7 +1876,11 @@
           <a href="/checkout-v3/payments-only/features/technical-reference/status-models">Status Response Models</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/status-models">Status Response Models</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/status-models#aborted">Aborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/status-models#cancelled">Cancelled</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/status-models#failed">Failed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/status-models#initialized">Initialized</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/status-models#paid">Paid</a></li>
         
       </ul>
       </li>
@@ -1721,6 +1891,17 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/transactions#transactions">Transactions</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/payments-only/features/technical-reference/urls">Urls</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/urls#urls">URLs</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -1763,7 +1944,7 @@
 <li class="nav-leaf"><a href="/checkout-v2/#prerequisites">Prerequisites</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/#introduction">Introduction</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/#sequence">Sequence</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/#languagesthis-product-supports">LanguagesThis product supports</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/#supported-languagesdanish-da-dk-english-us-en-us-finnish-fi-fi-norwegian-nb-no">Supported LanguagesDanish da-DK, English (US) en-US, Finnish fi-FI, Norwegian nb-NO</a></li>
 </ul>
       </li>
         <li class="nav-subgroup">
@@ -1772,8 +1953,11 @@
           <a href="/checkout-v2/checkin">Checkin</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification">Step 1: Initiate session for consumer identification</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module">Step 2: Display Swedbank Pay Checkin module</a></li>
+        <li class="nav-leaf"><a href="/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification">Step 1: Initiate Session For Consumer Identification</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/checkin#checkin-request">Checkin Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/checkin#checkin-response">Checkin Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module">Step 2: Display Swedbank Pay Checkin Module</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/checkin#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -1833,6 +2017,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/core/3d-secure-2#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/3d-secure-2#payer">Payer</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/3d-secure-2#risk-indicator">Risk Indicator</a></li>
         
       </ul>
       </li>
@@ -1852,7 +2038,7 @@
           <a href="/checkout-v2/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v2/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/checkout-v2/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1863,6 +2049,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -1912,6 +2100,21 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/optional/custom-logo#custom-logo">Custom Logo</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v2/features/optional/delete-token">Delete Token</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
         
       </ul>
       </li>
@@ -1995,6 +2198,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/checkin-events#checkin-events">Checkin Events</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/checkin-events#onconsumeridentified">onConsumerIdentified</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/checkin-events#onshippingdetailsavailable">onShippingDetailsAvailable</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/checkin-events#onbillingdetailsavailable">onBillingDetailsAvailable</a></li>
         
       </ul>
       </li>
@@ -2005,17 +2211,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/complete-url#completeurl">CompleteUrl</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/checkout-v2/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
         
       </ul>
       </li>
@@ -2261,6 +2456,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/3d-secure-2#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/3d-secure-2#payer">Payer</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/3d-secure-2#risk-indicator">Risk Indicator</a></li>
         
       </ul>
       </li>
@@ -2280,7 +2477,7 @@
           <a href="/payment-menu/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-menu/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/payment-menu/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2291,6 +2488,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -2346,10 +2545,29 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/payment-menu/features/optional/delete-token">Delete Token</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/payment-menu/features/optional/instrument-mode">Instrument Mode</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/instrument-mode#instrument-mode-request">Instrument Mode Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/instrument-mode#instrument-mode-response">Instrument Mode Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/instrument-mode#patch-instrument-selection">PATCH Instrument Selection</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/instrument-mode#available-instruments">Available Instruments</a></li>
         
       </ul>
       </li>
@@ -2370,6 +2588,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/optional/one-click-payments#one-click-payments">One-Click Payments</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/one-click-payments#deleting-single-tokens">Deleting Single Tokens</a></li>
         
       </ul>
       </li>
@@ -2473,17 +2692,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/technical-reference/corporate-limited-menu#corporate-limited-menu">Corporate Limited Menu</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/payment-menu/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-menu/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/technical-reference/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
         
       </ul>
       </li>
@@ -2678,7 +2886,7 @@
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/card/#operations">Operations</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/#intent">Intent</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/#languagesthis-product-supports">LanguagesThis product supports</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#supported-languagesdanish-da-dk-german-de-de-estonian-ee-ee-english-us-en-us-spanish-es-es-finnish-fi-fi-french-fr-fr-lithuanian-lt-lt-latvian-lv-lv-norwegian-nb-no-russian-ru-ru">Supported LanguagesDanish da-DK, German de-DE, Estonian ee-EE, English (US) en-US, Spanish es-ES, Finnish fi-FI, French fr-FR, Lithuanian lt-LT, Latvian lv-LV, Norwegian nb-NO, Russian ru-RU</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/#purchase-flow">Purchase Flow</a></li>
 </ul>
       </li>
@@ -2716,6 +2924,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
       </li>
@@ -2737,11 +2949,23 @@
           <a href="/payment-instruments/card/after-payment">After Payment</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#options-after-posting-a-payment">Options After Posting A Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#list-cancel-transactions">List Cancel Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancel-sequence">Cancel Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#list-reversal-transactions">List Reversal Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort">Abort</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#remove-payment-token">Remove payment token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort-response">Abort Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#remove-payment-token">Remove Payment Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#delete-token-response">Delete Token Response</a></li>
         
       </ul>
       </li>
@@ -2766,6 +2990,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/core/3d-secure-2#3-d-secure-2">3-D Secure 2</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/3d-secure-2#cardholder">Cardholder</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/3d-secure-2#risk-indicator">Risk Indicator</a></li>
         
       </ul>
       </li>
@@ -2776,6 +3002,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/core/abort-reference#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/abort-reference#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/abort-reference#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -2785,7 +3013,7 @@
           <a href="/payment-instruments/card/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/card/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/card/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2796,6 +3024,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -2806,6 +3036,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
       </li>
@@ -2862,6 +3096,22 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort">Co-badge Card Choice for Dankort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/cobadge-dankort#how-it-looks">How It Looks</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/card/features/optional/delete-token">Delete Token</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
         
       </ul>
       </li>
@@ -2873,6 +3123,10 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#moto">MOTO</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture-sequence">Capture Sequence</a></li>
         
       </ul>
       </li>
@@ -2883,6 +3137,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/one-click-payments#one-click-payments">One-Click Payments</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/one-click-payments#deleting-single-tokens">Deleting Single Tokens</a></li>
         
       </ul>
       </li>
@@ -2929,10 +3184,10 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/payment-instruments/card/features/optional/unscheduled-purchase">Unscheduled Purchase</a>
+          <a href="/payment-instruments/card/features/optional/unscheduled">Unscheduled Purchase</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/unscheduled-purchase#unscheduled-purchase">Unscheduled Purchase</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -2965,7 +3220,9 @@
           <a href="/payment-instruments/card/features/technical-reference/card-authorization-transaction">Card Authorization Transaction</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/card-authorization-transaction#card-authorization-transaction">Card authorization transaction</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/card-authorization-transaction#card-authorization-transaction">Card Authorization Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/card-authorization-transaction#authorization-request">Authorization Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/card-authorization-transaction#authorization-response">Authorization Response</a></li>
         
       </ul>
       </li>
@@ -2986,17 +3243,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/create-payment#create-payment">Create Payment</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/payment-instruments/card/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/create-payment#payment-request">Payment Request</a></li>
         
       </ul>
       </li>
@@ -3150,7 +3397,7 @@
         </div>
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/invoice/#api-requests">API Requests</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/#languagesthis-product-supports">LanguagesThis product supports</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#supported-languagesenglish-us-en-us-norwegian-nb-no">Supported LanguagesEnglish (US) en-US, Norwegian nb-NO</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/#invoice-flow">Invoice flow</a></li>
 </ul>
       </li>
@@ -3214,10 +3461,18 @@
           <a href="/payment-instruments/invoice/after-payment">After Payment</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#options-after-posting-a-payment">Options After Posting A Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#abort-response">Abort Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#list-reversal-transactions">List Reversal Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversal-sequence">Reversal Sequence</a></li>
         
       </ul>
       </li>
@@ -3242,6 +3497,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/abort-reference#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/abort-reference#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/abort-reference#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -3251,7 +3508,7 @@
           <a href="/payment-instruments/invoice/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/invoice/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3262,6 +3519,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -3272,6 +3531,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
       </li>
@@ -3307,10 +3570,23 @@
         <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/payment-instruments/invoice/features/optional/delete-token">Delete Token</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/payment-instruments/invoice/features/optional/one-click-payments">One-Click Payments</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/optional/one-click-payments#one-click-payments">One-Click Payments</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/optional/one-click-payments#deleting-single-tokens">Deleting Single Tokens</a></li>
         
       </ul>
       </li>
@@ -3339,7 +3615,9 @@
           <a href="/payment-instruments/invoice/features/technical-reference/authorizations">Authorizations</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations">Authorizations</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations#list-authorizations">List Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations#authorization-request">Authorization Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations#authorization-response">Authorization Response</a></li>
         
       </ul>
       </li>
@@ -3360,16 +3638,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/create-payment#create-payment">Create Payment</a></li>
-        
-      </ul>
-      </li>
-<li class="nav-subgroup">
-        <div class="nav-subgroup-heading">
-          <i class="material-icons">arrow_right</i>
-          <a href="/payment-instruments/invoice/features/technical-reference/delete-token">Delete Token</a>
-        </div>
-        <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/create-payment#payment-request">Payment Request</a></li>
         
       </ul>
       </li>
@@ -3545,7 +3814,7 @@
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#purchase-flow">Purchase flow</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#good-to-know">Good To Know</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#languagesthis-product-supports">LanguagesThis product supports</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#supported-languagesdanish-da-dk-english-us-en-us">Supported LanguagesDanish da-DK, English (US) en-US</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#payment-availability">Payment availability</a></li>
 </ul>
       </li>
@@ -3592,13 +3861,18 @@
           <a href="/payment-instruments/mobile-pay/after-payment">After Payment</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#options-after-posting-a-payment">Options After Posting A Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-sequence">Cancel Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversals">Reversals</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#create-reversal-transaction">Create reversal transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-response">Reversal Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -3623,6 +3897,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/abort-reference#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/abort-reference#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/abort-reference#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -3632,7 +3908,7 @@
           <a href="/payment-instruments/mobile-pay/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/mobile-pay/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3643,6 +3919,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -3653,6 +3931,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
       </li>
@@ -3721,6 +4003,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/technical-reference/create-payment#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/technical-reference/create-payment#payment-request">Payment Request</a></li>
         
       </ul>
       </li>
@@ -3855,7 +4138,7 @@
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/swish/#payment-flow">Payment Flow</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/#good-to-know">Good To Know</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/#languagesthis-product-supports">LanguagesThis product supports</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#supported-languagesenglish-us-en-us-norwegian-nb-no">Supported LanguagesEnglish (US) en-US, Norwegian nb-NO</a></li>
 </ul>
       </li>
         <li class="nav-subgroup">
@@ -3906,11 +4189,21 @@
           <a href="/payment-instruments/swish/after-payment">After Payment</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#swish-transactions">Swish transactions</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#sales">Sales</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#options-after-posting-a-payment">Options After Posting A Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#swish-transactions">Swish Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#list-sales-transactions">List Sales Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#create-sales-transactions">Create Sales Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#browser-request">Browser Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#in-app-request">In-app Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#in-app-response">In-app Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversal-response">Reversal Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort-response">Abort Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#capture">Capture</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#recurring">Recurring</a></li>
@@ -3938,6 +4231,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/swish/features/core/abort-reference#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/features/core/abort-reference#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/features/core/abort-reference#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -3947,7 +4242,7 @@
           <a href="/payment-instruments/swish/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/swish/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/swish/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4016,6 +4311,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/swish/features/technical-reference/create-payment#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/features/technical-reference/create-payment#payment-request">Payment Request</a></li>
         
       </ul>
       </li>
@@ -4205,9 +4501,15 @@
           <a href="/payment-instruments/trustly/after-payment">After Payment</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#options-after-posting-a-payment">Options after posting a payment</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#options-after-posting-a-payment">Options After Posting A Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#abort-response">Abort Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#list-reversal-transactions">List Reversal Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversal-sequence">Reversal Sequence</a></li>
         
       </ul>
       </li>
@@ -4232,6 +4534,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/abort-reference#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/abort-reference#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/abort-reference#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -4241,7 +4545,7 @@
           <a href="/payment-instruments/trustly/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/trustly/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4330,6 +4634,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/trustly/features/technical-reference/create-payment#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/features/technical-reference/create-payment#payment-request">Payment Request</a></li>
         
       </ul>
       </li>
@@ -4484,7 +4789,7 @@
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/vipps/#purchase-flow">Purchase flow</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/#good-to-know">Good To Know</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/#languagesthis-product-supports">LanguagesThis product supports</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#supported-languagesenglish-us-en-us-norwegian-nb-no">Supported LanguagesEnglish (US) en-US, Norwegian nb-NO</a></li>
 </ul>
       </li>
         <li class="nav-subgroup">
@@ -4530,13 +4835,28 @@
           <a href="/payment-instruments/vipps/after-payment">After Payment</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#operations">Operations</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#vipps-transactions">Vipps transactions</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#vipps-request">Vipps Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#vipps-response">Vipps Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#operations">Operations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#vipps-transactions">Vipps Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#authorizations">Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-request-authorizations">GET Request Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-response-authorizations">GET Response Authorizations</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancellations">Cancellations</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#create-cancellation-transaction">Create cancellation transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-request-cancel">GET Request Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-response-cancel">GET Response Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#create-cancellation-transaction">Create Cancellation Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-request-reversal">GET Request Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-response-reversal">GET Response Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversal-response">Reversal Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -4561,6 +4881,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/abort-reference#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/abort-reference#abort-request">Abort Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/abort-reference#abort-response">Abort Response</a></li>
         
       </ul>
       </li>
@@ -4570,7 +4892,7 @@
           <a href="/payment-instruments/vipps/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/vipps/features/core/callback">Callback</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4581,6 +4903,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -4659,6 +4983,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/features/technical-reference/create-payment#create-payment">Create Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/technical-reference/create-payment#payment-request">Payment Request</a></li>
         
       </ul>
       </li>
@@ -4918,7 +5243,7 @@
       </li>
       </ul>
       </li>
-<li class="nav-group">
+<li class="nav-group active">
         <div class="nav-group-heading">
           <i class="material-icons">arrow_right</i>
           <span>Modules &amp; SDKs</span>
@@ -4935,7 +5260,7 @@
 <li class="nav-leaf"><a href="/modules-sdks/#official-libraries">Official Libraries</a></li>
 </ul>
       </li>
-        <li class="nav-subgroup">
+        <li class="nav-subgroup active">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
           <a href="/modules-sdks/mobile-sdk/">Mobile SDK</a>
@@ -4966,7 +5291,7 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
-          <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend</a>
+          <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend V3</a>
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
@@ -4974,7 +5299,7 @@
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#set-instrument-endpoint">Set Instrument Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#patching-the-payment-order">Patching the Payment Order</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
         
@@ -5059,7 +5384,19 @@
           <a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu">Payer Aware Payment Menu</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#payer-aware-payment-menu">Payer Aware Payment Menu</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments">One-Click Payments</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments-in-enterprise">One-Click Payments in Enterprise</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments-in-paymentsonly">One-click Payments in PaymentsOnly</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/features/optional/payer-tokens">Payer Tokens</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-tokens#payment-tokens-for-unscheduled-or-recurring-purchases">Payment tokens for unscheduled or recurring purchases</a></li>
         
       </ul>
       </li>
@@ -5200,6 +5537,23 @@
         
       </ul>
       </li>
+<li class="nav-subgroup active">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/modules-sdks/mobile-sdk/merchant-backend-v2">Merchant Backend V2</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#root-endpoint">Root Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#consumers-endpoint">Consumers Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#payment-orders-endpoint">Payment Orders Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#set-instrument-endpoint">Set Instrument Endpoint</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#problems">Problems</a></li>
+        
+      </ul>
+      </li>
       </ul>
       </li>
       </ul>
@@ -5227,7 +5581,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#04-april-2022">04 April 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#22-june-2022">22 June 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#04-april-2022">04 April 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#18-february-2022">18 February 2022</a></li>
@@ -5414,30 +5769,30 @@
 
         <div class="title-header-container max-width">
             
-                <h4>Business</h4>
+                <h4>Mobile SDK</h4>
             
 
-            <h1>Delete Token</h1>
+            <h1>Merchant Backend V2</h1>
 
             
                 <div class="title-header-estimated-read">
                     <i class="material-icons">schedule</i>
-                    1 min read
+                    20 min read
                 </div>
             
 
             
                 <p></p>
-<p>How to delete tokens.</p>
+<p>This document contains information for the older version of the Backend Merchant of the <strong>Swedbank Pay Mobile SDK</strong>.</p>
 
             
         </div>
 
         
 
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout-v3/business/features/technical-reference/delete-token.md" id="github" target="_blank" rel="noopener noreferrer" title="Edit 'Delete Token' on GitHub">
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/modules-sdks/mobile-sdk/merchant-backend-v2.md" id="github" target="_blank" rel="noopener noreferrer" title="Edit 'Merchant Backend V2' on GitHub">
     <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <title id="simpleicons-github-icon">Edit "Delete Token" on GitHub</title>
+        <title id="simpleicons-github-icon">Edit "Merchant Backend V2" on GitHub</title>
         <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
     </svg>
 </a>
@@ -5450,18 +5805,161 @@
 <div class="doc-container normal-padding max-width">
     <article>
         
-            <h2 id="delete-recurrencetoken">
+            <p>The Merchant Backend API serves as a simple starting point, and an illustrative
+example of how to integrate the SDK to your backend systems. The SDK has a
+Configuration implementation for a backend implementing this API; in addition,
+there is both a Node.js and a Java sample implementation of this API available.</p>
+
+<p>Even if you plan to integrate the SDK using your own backend API, it is
+recommended to read through this chapter; especially the section Payment Url
+Helper Endpoints, which will illustrate how any <code class="language-html highlighter-rouge">paymentUrl</code> created for the SDK
+should behave.</p>
+
+<p>The Mobile SDK Merchant Backend API contains a total of six endpoints, three of
+which have statically defined paths. An OpenAPI specification is
+<a href="https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml">available</a>. (It may be easier to view it in the <a href="https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml">Swagger
+Editor</a>.)</p>
+
+<p>The main part of the API is designed as a transparent wrapper around the
+Swedbank Pay API, which is the same one used in Checkout. Additionally, two
+“helper” endpoints are specified, which facilitate the proper routing of the
+<a href="/payment-menu/features/technical-reference/payment-url">Payment Url</a> back to the originating app.</p>
+      <h2 id="authentication-and-authorization">
         
         
-          Delete recurrenceToken <a href="#delete-recurrencetoken" class="header-anchor"></a>
+          Authentication and Authorization <a href="#authentication-and-authorization" class="header-anchor"></a>
         
         
       </h2>
 
-<p>Payers should be able to delete payment tokens that are associated to
-them. How to delete a <code class="language-html highlighter-rouge">recurrenceToken</code> is described in the example below.
-Note that the value of <code class="language-html highlighter-rouge">state</code> must be <code class="language-html highlighter-rouge">Deleted</code> when deleting the token.
-No other states are supported.</p>
+<p>You should have some authorization and authentication measures in place to
+prevent misuse of your Merchant Backend API. The sample implementations have a
+very rudimentary API key header check. This may or may not be sufficient to your
+purposes. You should adapt the sample implementation or create your own
+according to your security needs.</p>
+
+<p>The mobile component of the SDK allows adding your own headers to the requests
+it makes. Therefore you can build your own authentication and authorization
+measures by adding custom headers in the app, and checking that they have the
+correct content in the backend.</p>
+    
+      <h2 id="the-merchant-backend-configuration">
+        
+        
+          The Merchant Backend Configuration <a href="#the-merchant-backend-configuration" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>To use a backend implementing the Merchant Backend API, you can use the Merchant
+Backend Configuration provided with the SDK. This implementation is available as
+<code class="language-html highlighter-rouge">SwedbankPaySDK.MerchantBackendConfiguration</code> on iOS and
+<code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk.merchantbackend.MerchantBackendConfiguration</code> on
+Android; on Android you create the <code class="language-html highlighter-rouge">MerchantBackendConfiguration</code> object via a
+<code class="language-html highlighter-rouge">MerchantBackendConfiguration.Builder</code>.</p>
+
+<p>At a minimum, you must supply the url of the Merchant Backend, i.e. the url of
+the Root Endpoint. On iOS, you must also have registered a URL type for the SDK:
+that URL type must have a single scheme, and an additional property with name
+<code class="language-html highlighter-rouge">com.swedbank.SwedbankPaySDK.callback</code>, type <code class="language-html highlighter-rouge">Boolean</code>, and value <code class="language-html highlighter-rouge">YES</code>.
+Alternatively you may set the url scheme explicitly in the initializer. Refer to
+the class documentation for more options.</p>
+    
+      <h2 id="root-endpoint">
+        
+        
+          Root Endpoint <a href="#root-endpoint" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The root endpoint is used to discover the main API endpoints. The URL of the
+root endpoint is what is configured as the “Backend URL” in the mobile SDK
+component. The point of this is to not bind your service to any particular path
+or even domain. In most cases, however, you can serve a static response for the
+root endpoint, with the other endpoint urls being relative to the root endpoint.
+The sample implementations do this.</p>
+
+<p class="code-view-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+<span class="na">Your-Api-Key</span><span class="p">:</span> <span class="s">secretish</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p class="code-view-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"consumers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/swedbank-pay-mobile/consumers"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentorders"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/swedbank-pay-mobile/paymentorders"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">consumers</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">URL of the “consumers” endpoint. Resolved against the root endpoint URL.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorders</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">URL of the “paymentorders” endpoint. Resolved against the root endpoint URL.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>N.B! The API as specified allows assigning endpoints to hosts other that the
+root endpoint host. However, as this seen to be an uncommon use case, the mobile
+component of the SDK is, by default, configured to only accept links to the
+domain of the root endpoint, or its subdomains. If your configuration uses other
+hosts, you must manually allow them in your mobile app’s configuration.</p>
+    
+      <h2 id="consumers-endpoint">
+        
+        
+          Consumers Endpoint <a href="#consumers-endpoint" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The <code class="language-html highlighter-rouge">consumers</code> endpoint is used to start a consumer identification session. It
+is specified as a transparent wrapper around the corresponding <a href="/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification">Swedbank Pay
+API</a>. The sample implementations do superficial input
+validation, and forward the request to the Swedbank Pay API without further
+processing. You are free to override this default behavior as you see fit in
+your implementation, but the default should be fine for most use-cases. The
+expected response is the same as the expected response to the Swedbank Pay API.
+The default is to pass the response from Swedbank as-is; you should probably not
+modify this behavior. Specifically, the response must contain the
+<code class="language-html highlighter-rouge">view-consumer-identification</code> operation.</p>
 
 <p class="code-view-header"><strong>Request</strong></p>
 
@@ -5475,20 +5973,87 @@ No other states are supported.</p>
 7
 8
 9
+10
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/paymentorders/recurrenceTokens/5a17c24e-d459-4567-bbad-aa0f17a76119</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/swedbank-pay-mobile/consumers</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+<span class="na">Your-Api-Key</span><span class="p">:</span> <span class="s">secretish</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initiate-consumer-session"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shippingAddressRestrictedToCountryCodes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DK"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">operation</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">
+<code class="language-html highlighter-rouge">initiate-consumer-session</code>, the operation to perform.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">language</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Selected language to be used in Checkin. Supported values are <code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code> or <code class="language-html highlighter-rouge">en-US</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">shippingAddressRestrictedToCountryCodes</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">List of supported shipping countries for merchant. Using ISO-3166 standard.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>At this point, the Merchant Backend will make a corresponding request to the
+Swedbank Pay API, using its secret access token.</p>
+
+<p class="code-view-header"><strong>Forwarded Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/consumers</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deleted"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comment on why the deletion is happening"</span><span class="w">
+    </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initiate-consumer-session"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shippingAddressRestrictedToCountryCodes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"NO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DK"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<p class="code-view-header"><strong>Response</strong></p>
+<p>The Merchant Backend will then forward the response it received back to the
+calling app.</p>
+
+<p class="code-view-header"><strong>Response &amp; Forwarded Response</strong></p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -5503,34 +6068,114 @@ No other states are supported.</p>
 10
 11
 12
+13
+14
+15
+16
+17
+18
+19
+20
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
-<span class="p">{</span><span class="w">   
-    </span><span class="nl">"instrumentData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/recurrenceTokens/5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"paymentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cabf558-5283-482f-b252-4d58e06f6f3b"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"isDeleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> 
-    </span><span class="p">}</span><span class="w">
-    
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redirect-consumer-identification"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text/html"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-consumer-identification"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/consumers/core/scripts/client/px.consumer.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">token</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A session token used to initiate Checkout UI.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">operations</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of operation objects to choose from, described in detail in the table below.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">rel</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">method</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The HTTP method to use when performing the operation.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">contentType</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">href</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The target URL of the operation.</td>
+    </tr>
+  </tbody>
+</table>
     
-      <h2 id="delete-unscheduledtoken">
+      <h2 id="payment-orders-endpoint">
         
         
-          Delete unscheduledToken <a href="#delete-unscheduledtoken" class="header-anchor"></a>
+          Payment Orders Endpoint <a href="#payment-orders-endpoint" class="header-anchor"></a>
         
         
       </h2>
 
-<p>Payers should be able to delete payment tokens that are associated to
-them. How to delete a <code class="language-html highlighter-rouge">unscheduledToken</code> is described in the example below.
-Note that the value of <code class="language-html highlighter-rouge">state</code> must be <code class="language-html highlighter-rouge">Deleted</code> when deleting the token.
-No other states are supported.</p>
+<p>The <code class="language-html highlighter-rouge">paymentorders</code> endpoint is used to create a new Payment Order. It is
+specified as a transparent wrapper around the corresponding <a href="/checkout-v2/payment-menu#step-3-create-payment-order">Swedbank Pay
+API</a>. However, it is to be expected that your backend will
+need to process the payment order both before making the Swedbank Pay API call,
+and after receiving the response from Swedbank Pay. The sample implementations
+validate the input, then create an internal unique identitifer for the payment
+order, and set that as <code class="language-html highlighter-rouge">paymentorder.payeeInfo.payeeReference</code>, before making
+the Swedbank Pay call. After receiving the response, the backend stores the <code class="language-html highlighter-rouge">id</code>
+of the Payment Order for future use, and forwards the response to the SDK.</p>
+
+<p>Optionally, if your implementation uses <a href="/payment-menu/features/optional/instrument-mode">instrument mode
+payments</a>, your backend can return the list of valid
+instruments, along with an endpoint to change the instrument. If you do this,
+you must also implement the Change Instrument endpoint. The Merchant Backend
+Configuration on the client side can then use this endpoint to change the
+instrument of an ongoing payment order.</p>
+
+<p>A production implementation should validate the payment order also from a
+business logic perspective. This is, naturally, outside the scope of the SDK, as
+is any other processing you may wish to perform with the payment order. The SDK
+expects the same form of response as returned from the Swedbank Pay API.
+Specifically, the response must contain the <code class="language-html highlighter-rouge">view-paymentorder</code> operation.</p>
 
 <p class="code-view-header"><strong>Request</strong></p>
 
@@ -5543,16 +6188,63 @@ No other states are supported.</p>
 6
 7
 8
-9
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/paymentorders/unscheduledTokens/5a17c24e-d459-4567-bbad-aa0f17a76119</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/swedbank-pay-mobile/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+<span class="na">Your-Api-Key</span><span class="p">:</span> <span class="s">secretish</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"①"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The payment order to create</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>① The contents of <code class="language-html highlighter-rouge">paymentorder</code> are omitted here. See <a href="/checkout-v2/payment-menu#step-3-create-payment-order">Checkout Documentation</a> for details.</li>
+</ul>
+
+<p>At this point, the Merchant Backend will preform necessary processing, and make
+a corresponding request to the Swedbank Pay API, using its secret access token.</p>
+
+<p class="code-view-header"><strong>Forwarded Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deleted"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comment on why the deletion is happening"</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -5573,22 +6265,897 @@ No other states are supported.</p>
 11
 12
 13
+14
+15
+16
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=sv-SE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-paymentorder"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>The Merchant Backend will then forward the response it received back to the
+calling app.</p>
+
+<p>If instrument mode is used, an you wish to be able to change the instrument, you
+can provide the list of valid instruments, and an endpoint for changing the
+instrument. This additional data is placed in an object under the key
+“mobileSDK”.</p>
+
+<p class="code-view-header"><strong>Forwarded Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=sv-SE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-paymentorder"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"mobileSDK"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"validInstruments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Invoice-PayExFinancingSe"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"setInstrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/paymentorders/1234/setInstrument"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="set-instrument-endpoint">
+        
+        
+          Set Instrument Endpoint <a href="#set-instrument-endpoint" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>You only need to implement this endpoint if you are using instrument mode
+payments. This endpoint is invoked when making a request to the
+<code class="language-html highlighter-rouge">mobileSDK.setInstrument</code> url of a payment order created with the Payment Orders
+endpoint.</p>
+
+<p>This endpoint forwards the PATCH request made to it to the corresponding
+Swedbank Pay endpoint, as identified by the <code class="language-html highlighter-rouge">update-paymentorder-setinstrument</code>
+operation of the payment order. It passes the response to that request back to
+the SDK. The sample implementation verifies the request body to contain exactly
+the operation <code class="language-html highlighter-rouge">SetInstrument</code> and a string <code class="language-html highlighter-rouge">instrument</code>.</p>
+
+<p class="code-view-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/swedbank-pay-mobile/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+<span class="na">Your-Api-Key</span><span class="p">:</span> <span class="s">secretish</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SetInstrument"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The changes to make to the payment order</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">operation</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The operation to perform: “SetInstrument”</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">instrument</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The instrument to set</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Merchant Backend will then make a corresponding request to the Swedbank Pay API.</p>
+
+<p class="code-view-header"><strong>Forwarded Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">PATCH</span> <span class="nn">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SetInstrument"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>The Merchant Backend will then forward the response it received back to the
+calling app. If needed, you can append the <code class="language-html highlighter-rouge">mobileSDK</code> object to this response
+as well. If it is missing, the SDK will assume the original values are still
+valid.</p>
+
+<p class="code-view-header"><strong>Response &amp; Forwarded Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ecom.externalintegration.payex.com/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token=5a17c24e-d459-4567-bbad-aa0f17a76119&amp;culture=sv-SE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view-paymentorder"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/javascript"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="payment-url-helper-endpoints">
+        
+        
+          Payment Url Helper Endpoints <a href="#payment-url-helper-endpoints" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>The <a href="/payment-menu/features/technical-reference/payment-url">Payment Url</a> helper endpoints do not interact directly with
+Swedbank Pay. Instead, they are used to route any navigations to the payment
+order’s payment url to the app using the SDK.</p>
+
+<p>The payment url allows navigations to third-party sites to happen as a part of
+the payment process. To continue the payment after any third-party processes,
+navigating to the payment url is expected to load the payment menu again. In the
+case of an app using the SDK, this means that the payment url must be routed to
+that app, and the app must react to that url by reloading the payment menu.
+Furthermore, for maximum compatibility, the payment url should be a regular
+https url.</p>
+
+<p>Since we want the payment urls to be https urls, they must be hosted somewhere.
+These helper endpoints facilitate that. Each platform has its own payment url
+helper, due to the platforms’ different requirements for url routing. The
+endpoints take query arguments to enable apps using the SDK to locally generate
+unique payment urls for each payment order. The endpoints have no side-effects,
+and will always return the same response for the same query arguments.</p>
+
+<p>The payment url helper endpoints are specified with static paths relative to the
+root endpoint url. This is done so that payment urls can be generated locally on
+the app, without needing to make a network round trip at that point. The SDK has
+no hard requirement for the helper endpoint urls to have such a relationship to
+the root endpoint url, but it does contain utility methods for easier
+integration when that is the case. If you wish to host the payment url helper
+endpoints elsewhere, or, indeed, replicate the behavior with some other schema
+for the payment urls, you must manually set <code class="language-html highlighter-rouge">paymentorder.urls.paymentUrl</code> to
+the correct value when creating your payment orders.</p>
+
+<p>Importantly, the payment url helper endpoints must be accessible without any
+authentication headers. This is because the scenario where they will be used is
+when a third-party site wishes to navigate back to the payment order. Such a
+site will necessarily not have any authentication tokens related to your
+backend. Consequently, it is important to ensure that these endpoints do not
+inadvertently disclose information.</p>
+
+<p>The sample implementations serve these payment url helper endpoints at the
+specified static paths.</p>
+
+<p>N.B! The SDK generates unique payment urls by adding unique query arguments to
+the helper endpoint url. These payment urls only have meaning on the generating
+device, in the generating app. Opening them on another device will be unable to
+navigate the user to the originating payment menu.</p>
+    
+      <h3 id="android-payment-url-helper">
+        
+        
+          Android Payment Url Helper <a href="#android-payment-url-helper" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The Android payment url helper endpoint expects a query parameter named
+<code class="language-html highlighter-rouge">package</code>: the package name of the Android application to redirect to. It has no
+requirements as to the existence or value of other query parameters. As the
+application using the SDK knows its own package name, it can use this endpoint
+to generate a payment url that is routed back to itself.</p>
+
+<p>The specified path for the Android payment url helper endpoint is
+<code class="language-html highlighter-rouge">sdk-callback/android-intent</code>. The default constructors of the Android SDK form
+payment urls by appending <code class="language-html highlighter-rouge">sdk-callback/android-intent</code> to the backend url, i.e.
+the root endpoint, and adding the <code class="language-html highlighter-rouge">package</code> query parameter with the containing
+application’s package name, and an <code class="language-html highlighter-rouge">id</code> query parameter with a random value.</p>
+
+<p>The endpoint responds with an html document that attempts to immediately
+redirect to an <a href="https://developer.chrome.com/multidevice/android/intents">Intent-scheme Url</a>. That url is
+constructed such that it uses the value of the <code class="language-html highlighter-rouge">package</code> query parameter as the
+target package of the intent. The action of the intent shall be
+<code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER</code>; the SDK has an intent filter for
+this action. The uri (data) of the intent shall be the full url used in the
+request. The html document shall also contain a link to that same url. This is
+needed because in some cases the browser will block the redirect to an
+Intent-scheme url, and will instead require that the navigation to that url
+happen from a user interaction.</p>
+
+<p class="code-view-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">package</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The package name of the Android application to redirect to</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="code-view-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
+
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;</span>Swedbank Pay Payment<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://design.swedbankpay.com/v/4.3.0/styles/dg-style.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"refresh"</span> <span class="na">content=</span><span class="s">"0;url=intent://example.com/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=your.ecom.app;end; ①"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://design.swedbankpay.com/v/4.3.0/img/swedbankpay-logo.svg"</span> <span class="na">alt=</span><span class="s">"Swedbank Pay"</span> <span class="na">height=</span><span class="s">"120"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-executive"</span> <span class="na">href=</span><span class="s">"intent://example.com/swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d#Intent;scheme=https;action=com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER;package=your.ecom.app;end;"</span><span class="nt">&gt;</span>Back to app<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>① The <code class="language-html highlighter-rouge">intent</code> url is transformed to an Android Intent using the data after
+the <code class="language-html highlighter-rouge">#Intent;</code> token. The uri of that intent is the intent url up to that
+token, with the <code class="language-html highlighter-rouge">intent</code> scheme replaced according to the <code class="language-html highlighter-rouge">scheme=</code>
+parameter – in this case <code class="language-html highlighter-rouge">https</code>.</li>
+</ul>
+
+<p>Using a payment url crafted this way causes an intent with the payment url to be
+delivered to the application when a third-party page navigates to the payment
+url. The SDK receives this intent, recognizes the payment url, and reloads the
+payment menu.</p>
+
+<p>N.B! It is possible to craft arbitrary
+<code class="language-html highlighter-rouge">com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER</code> intents using this endpoint.
+However, further processing of such intents is dependent on local data, and thus
+this endpoint leaks no information. Indeed, it is conceptually possible for two
+different devices to use the same payment url to refer to different payments.
+Your implementation may restrict the requests it serves; e.g. you may only allow
+a specific <code class="language-html highlighter-rouge">package</code>.</p>
+    
+      <h3 id="ios-payment-url-helper">
+        
+        
+          iOS Payment Url Helper <a href="#ios-payment-url-helper" class="header-anchor"></a>
+        
+        
+      </h3>
+    
+      <h4 id="background">
+        
+        
+          Background <a href="#background" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>The iOS payment url helper endpoint is more involved than the Android one. While
+a similar mechanism could be used with <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app">custom url schemes</a>,
+doing so will not provide optimal user experience: custom schemes will show a
+confirmation dialog before being routed to the handling application, and the
+content of that dialog is not under developer control. Instead, the best
+practice for assigning urls to applications is to use <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content">Universal
+Links</a>.</p>
+
+<p>With the merchant backend host and the iOS application using the SDK configured
+correctly, the payment url becomes a universal link. Universal links function
+such that they are given directly to the handling application. This means that
+if the navigation to the payment url is handled as a unversal link, the actual
+payment url is never dereferenced before being handled by the application. In
+this scenario, is does not matter what kind of response would be received by
+making a <code class="language-html highlighter-rouge">GET</code> request to the payment url. Unfortunately, this is not guaranteed
+to happen.</p>
+
+<p>As <a href="https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753">documented</a>, universal links open the
+registered application “when [the user] tap[s] links to your website within
+Safari”, but “When a user browses your website in Safari and taps a universal
+link in the same domain, the system opens that link in Safari – If the user
+taps a universal link in a different domain, the system opens the link in your
+app.” This presents two preconditions: the navigation must originate from user
+interaction, and the domain of the universal link must be different to the
+domain of the current page. Also, practice has shown that universal links may
+still sometimes fail to work as intended, so we must have some way of escaping
+that situation.</p>
+
+<p>In order to have a foolproof system with optimal user experience, we must
+therefore work correctly in different scenarios:</p>
+
+<ol>
+  <li>The initial navigation to the payment url is opened in the application: no
+requirements for the payment url</li>
+  <li>The initial navigation to the payment url is opened in Safari: need a way to
+link back to the payment url such that it is opened in the application
+instead
+    <ul>
+      <li>2a: The second navigation to the payment url is opened in the
+application: no further requirements for the payment url</li>
+      <li>2b: The second navigation to the payment url is also opened in Safari:
+out of nice-UX options; need to redirect to a custom scheme url</li>
+    </ul>
+  </li>
+</ol>
+
+<p>This state of matters necessitates an unintuitive and cumbersome system
+involving two hosts and a custom url scheme. The usage of two hosts is
+unavoidable if maximum compatibility combined with optimum user experience is
+desired. The custom url scheme is unavoidable if an escape hatch in badly
+behaving scenarios is desired. However, universal links need be configured only
+to one of the involved hosts, namely the one hosting the payment url. Thus, the
+page with a link back to the payment url can be on a generic server hosted by
+Swedbank Pay. [Development note: the Swedbank Pay server for this purpose is
+not yet available in the production environment.]</p>
+    
+      <h4 id="ios-payment-url-system">
+        
+        
+          iOS Payment Url System <a href="#ios-payment-url-system" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>The iOS payment url helper endpoint expects the following query parameters:</p>
+
+<ul>
+  <li>
+<code class="language-html highlighter-rouge">scheme</code>: The custom scheme for Swedbank Pay SDK payment urls in the
+application</li>
+  <li>
+<code class="language-html highlighter-rouge">language</code>: The language to use in the back-link web page in the case 2
+above</li>
+</ul>
+
+<p>The endpoint also accepts two optional query parameters:</p>
+
+<ul>
+  <li>
+<code class="language-html highlighter-rouge">app</code>: The name of the application to show in the back-link web page</li>
+  <li>
+<code class="language-html highlighter-rouge">fallback</code>: If <code class="language-html highlighter-rouge">true</code>, redirects to a custom-scheme url instead of the
+back-link web page</li>
+</ul>
+
+<p>Like the Android payment url helper endpoint, the iOS payment url helper
+endpoint imposes no requirements on any other query parameters.</p>
+
+<p>The specified path for the iOS payment url helper endpoint is
+<code class="language-html highlighter-rouge">sdk-callback/ios-universal-link</code>. The default constructors of the iOS SDK form
+payment urls by appending <code class="language-html highlighter-rouge">sdk-callback/ios-universal-link</code> to the backend url,
+i.e. the root endpoint, and adding the <code class="language-html highlighter-rouge">scheme</code> query parameter with the custom
+scheme registered in the app for handling Swedbank Pay SDK payment urls, the
+<code class="language-html highlighter-rouge">language</code> parameter with the chosen language, the <code class="language-html highlighter-rouge">app</code> parameter with the
+application name (if available), and an <code class="language-html highlighter-rouge">id</code> query parameter with a random
+value. The <code class="language-html highlighter-rouge">fallback</code> parameter is <em>not</em> set for the payment url.</p>
+
+<p>Let us consider the cases above, when a third-party page wants to navigate back
+to the payment menu. Case 1 requires no further analysis. The universal link
+system works as we intend, the payment url is opened in the app as-is.</p>
+
+<p>Case 2 causes the payment url to be opened in Safari. In this case we want to
+show a web page with a link back to the payment url, so the user can tap the
+link and it will be opened in the application, as provided by the conditions
+outlined above. Since this page must be served from a different domain, the
+payment url itself must respond with a redirect response.</p>
+
+<p class="code-view-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&amp;language=en-US&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d&amp;app=Your%20Ecom%20App</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">scheme</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The custom scheme for handling Swedbank Pay payment urls in the app</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">language</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The language to use in the back-link page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">app</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The application name to display in the back-link page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">fallback</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">boolean</code></td>
+      <td style="text-align: left">If <code class="language-html highlighter-rouge">true</code>, redirect to custom scheme rather than back-link page</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="code-view-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently ①</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">https://ecom.stage.payex.com/externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&amp;language=en-US&amp;app=Your%20Ecom%20App</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>This example uses the public server hosted by Swedbank Pay [Development note:
+The public server is not yet available in the production environment. The url
+will be updated when it is released.], but you can also host the back-link page
+yourself if desired.</p>
+
+<p>Safari will immediately follow the redirect:</p>
+
+<p class="code-view-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue&amp;language=en-US&amp;app=Your%20Ecom%20App</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">ecom.stage.payex.com</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">target</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The link to open when the button on the page is tapped</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">language</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The language to use in the page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">app</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The application name to display in the page</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="code-view-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Swedbank Pay Redirect<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">type=</span><span class="s">"image/png"</span> <span class="na">href=</span><span class="s">"/externalresourcehost/content/images/favicon.png"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/externalresourcehost/content/css/style.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"trampoline-container"</span> <span class="na">onclick=</span><span class="s">"redirect()"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Swedbank Pay Logo"</span> <span class="na">src=</span><span class="s">"/externalresourcehost/content/images/swedbank-pay-logo-vertical.png"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"trampoline-text"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a&gt;</span>Back to Your Ecom App<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+    <span class="kd">function</span> <span class="nx">redirect</span><span class="p">()</span> <span class="p">{</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">decodeURLComponent</span><span class="p">(</span><span class="dl">"</span><span class="s2">https%3A%2F%2Fexample.com%2Fswedbank-pay-mobile%2Fsdk-callback%2Fios-universal-link%3Fscheme%3Dyourecomapp%26language%3Den-US%26id%3Dabb50c53-53c1-4138-923f-59fcf0acd08d%26app%3DYour%2520Ecom%2520App%26fallback%3Dtrue</span><span class="dl">"</span><span class="p">);</span> <span class="p">};</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>The back-link page contains a link to the payment url, but with an added with
+the <code class="language-html highlighter-rouge">fallback=true</code> parameter. In case 2a the link will be opened in the
+application, and we are done. In case 2b, however, the link is again opened in
+Safari. Since the back-link page did not work, it makes no sense to redirect
+back to it again. Instead we will redirect to a custom scheme url, as those will
+always be opened in the registered application, albeit only after a confirmation
+dialog. Of course, this means that we need to know that the payment url is being
+opened from the back-link page. The <code class="language-html highlighter-rouge">fallback=true</code> parameter signals to the iOS
+payment url helper endpoint to alter its behavior this way.</p>
+
+<p>You may note that in case 2a the application was not opened with the original
+payment url, but with one with an extra query parameter. The SDK handles this by
+considering the query part of the payment url separately, allowing additional
+parameters.</p>
+
+<p>Case 2b continues by making a request to the payment url with the added
+<code class="language-html highlighter-rouge">fallback=true</code> parameter. The endpoint responds with a redirect similar to the
+Android one: the scheme is replaced with the custom scheme, and the rest of the
+request url is unmodified.</p>
+
+<p class="code-view-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&amp;language=en-US&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d&amp;app=Your%20Ecom%20App&amp;fallback=true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p class="code-view-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">301</span> <span class="ne">Moved Permanently ①</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">yourecomapp://example.com/swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&amp;language=en-US&amp;id=abb50c53-53c1-4138-923f-59fcf0acd08d&amp;app=Your%20Ecom%20App&amp;fallback=true</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>Note that this custom-scheme link is otherwise equal to the universal link
+opened in case 2a; accordingly, the SDK handles this by allowing the scheme of
+the payment url to be either the original scheme, or the custom scheme
+registered to the application.</p>
+
+<ul>
+  <li>① 302 Found is perhaps a more appropriate status. This may be changed in the
+future, after testing that the routing works correctly with that status.</li>
+</ul>
+    
+      <h4 id="apple-app-site-association">
+        
+        
+          Apple App Site Association <a href="#apple-app-site-association" class="header-anchor"></a>
+        
+        
+      </h4>
+
+<p>The iOS payment url helper endpoint must be configured as a universal link to
+the application for it to work correctly. Doing this requires an <a href="https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215">Apple app site
+association</a> file on the host of the iOS payment url. This file must
+be at a path relative to the host root (namely
+<code class="language-html highlighter-rouge">/.well-known/apple-app-site-association</code>), and is thus outside the scope of,
+but linked to, the merchant backend API.</p>
+
+<p>The example implementations assume they are rooted at host root, and serve an
+Apple app site association using a configurable application ID.</p>
+
+<p class="code-view-header"><strong>Request</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/.well-known/apple-app-site-association</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">example.com</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p class="code-view-header"><strong>Response</strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
-<span class="p">{</span><span class="w">   
-    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a17c24e-d459-4567-bbad-aa0f17a76119"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"instrument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"instrumentDisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456xxxxxx1111"</span><span class="w">
-    </span><span class="nl">"instrumentParameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"cardBrand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MM/YYYY"</span><span class="w">
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"applinks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"apps"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"appID"</span><span class="p">:</span><span class="s2">"YOURTEAMID.your.ecom.app"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"paths"</span><span class="p">:[</span><span class="s2">"/swedbank-pay-mobile/sdk-callback/*"</span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
-    
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="problems">
+        
+        
+          Problems <a href="#problems" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>If there are any errors in servicing a request, they should be reported using
+<a href="https://tools.ietf.org/html/rfc7807">Problem Details for HTTP APIs (RFC 7807)</a> messages, like the
+<a href="/introduction#problems">Swedbank Pay APIs do</a>. In particular, if the Swedbank Pay
+API response contains a problem, that problem should be forwarded to the client
+making the original request.</p>
+    
+      <h3 id="merchant-backend-problems">
+        
+        
+          Merchant Backend Problems <a href="#merchant-backend-problems" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<p>The following problem types are defined for Merchant Backend specific errors.
+The mobile SDK components contain data types for easy processing of these error
+types. The sample implementations emit these errors in the specified
+circumstances; your own implementation is encouraged to do so as well.</p>
+
+<p>All these Merchant Backend problem types will have a URL in the format
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/mobilesdk/<span class="nt">&lt;error-type&gt;</span></code>.</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: center">Status</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">gatewaytimeout</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">504</code></td>
+      <td style="text-align: left">The Swedbank Pay API did not respond in time.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">badgateway</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">502</code></td>
+      <td style="text-align: left">The Merchant Backend did not understand the response from the Swedbank Pay API.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">unauthorized</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">401</code></td>
+      <td style="text-align: left">The request did not have proper credentials to perform the operation.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">badrequest</code></td>
+      <td style="text-align: center"><code class="language-html highlighter-rouge">400</code></td>
+      <td style="text-align: left">The Merchant Backend did not undestand the request.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.</p>
+
+<nav class="iterator d-flex">
+    
+    <a class="mr-auto btn btn-secondary" role="button" rel="prev" href="./">
+        Introduction
+    </a>
+    
+
+    
+    <a class="ml-auto btn btn-secondary" role="button" rel="next" href="merchant-backend-sample-code">
+        Merchant Backend Sample Code
+    </a>
+    
+</nav>
         
     </article>
 </div>
