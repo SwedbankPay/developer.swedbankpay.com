@@ -70,7 +70,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
+            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         },
@@ -168,4 +168,4 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout-v3/enterprise/features/core/abort
 [seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout-v3/sequence-diagrams#enterprise-seamless-view
-[seamless-enterprise-menu]: /assets/img/checkout/enterprise-seamless-view.png
+[seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png

@@ -12,9 +12,9 @@ validity of card information without reserving or charging any amount.
 
 This option is commonly used when initiating a subsequent
 {%- if has_one_click %}
-[One-click card payment][one-click-payments] or a
+[One-click payment][one-click-payments] or an
 {%- endif %}
-[recurring card payment][recurrence] flow - where you do not want
+[unscheduled purchase][unscheduled-mit] flow - where you do not want
 to charge the payer right away.
 
 {% include alert.html type="informative" icon="info" body="
@@ -56,8 +56,8 @@ Swedbank Pay." %}
     a `paymentToken` that can be used for subsequent
     [One-Click Payments][one-click-payments] or
     {%- endif %}
-    a `recurrenceToken` that can be used for subsequent
-    [recurring server-to-server based payments][recurrence].
+    a `unscheduledToken` that can be used for subsequent
+    [unscheduled server-to-server based payments][unscheduled-mit].
 
 ## Screenshots
 
@@ -82,22 +82,32 @@ below is the Redirect option.
 {:.code-view-header}
 **Request**
 
+{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
-{
-    "payment": {
+{% else %}
+
+POST /psp/{{ api_resource }}/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+{% endif %}
+
+{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+    "paymentorder": { {% else %}
+    "payment": { {% endif %}
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", {% endif %} {% unless documentation_section contains "checkout" %}
-        "generatePaymentToken": true,{% endunless %}
-        "generateRecurrenceToken": true,{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+        "generatePaymentToken": true,{% endunless %} {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
@@ -134,8 +144,9 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-    "payment": {
+{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+    "paymentorder": { {% else %}
+    "payment": { {% endif %}
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -148,12 +159,12 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
-        "payers": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
+        "transactions": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers" },
+        "settings": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
@@ -260,6 +271,6 @@ sequenceDiagram
 
 [seamless-view]: {{ documentation_section_url }}/seamless-view
 [one-click-payments]: {{ documentation_section_url }}/features/optional/one-click-payments
-[recurrence]: {{ documentation_section_url }}/features/optional/recur
+[unscheduled-mit]: {{ documentation_section_url }}/features/optional/unscheduled
 [redirect]: {{ documentation_section_url }}/redirect
 [swedish-verify]: /assets/img/payments/swedish-verify.png

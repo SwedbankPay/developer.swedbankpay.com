@@ -32,6 +32,32 @@ agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
 payer chooses either of these instruments, you should add the `instrument`
 parameter with the specific payment instrument.
 
+{% if documentation_section contains "checkout-v3" %}
+
+## Eligibility Check
+
+If you want to **build your own menu** and display **at least** one wallet like
+**Apple Pay** or **Google Pay**, you need to do an eligibility check. This is to
+ensure that the wallet is supported on the payer's device or browser.
+
+Swedbank Pay provides a script to do this check, with the URL
+`ecom.<environment>.payex.com/<integration>/core/integration.` Environments
+available for you are `externalintegration` and `production`, and you can switch
+integration between `checkout` and `paymentmenu`. Follow these links for [test
+environment][test-env] and [production environment][prod-env] **Checkout**
+scripts.
+
+Add the script tag to your website and do an `await payex.getAcceptedWallets()`.
+We will return a string array with the wallets eligible for that purchase. The
+format will e.g. be `["applepay"]`.
+
+If you are not building your own menu or don't offer these wallets, there is no
+need to run the script to do the check.
+
+{% endif %}
+
+## Instrument Mode Request
+
 {:.code-view-header}
 **Request**
 
@@ -129,6 +155,8 @@ Content-Type: application/json
 }
 ```
 
+## Instrument Mode Response
+
 {% if documentation_section contains "checkout-v3" %}
 
 {:.code-view-header}
@@ -158,8 +186,8 @@ Content-Type: application/json
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -203,13 +231,13 @@ Content-Type: application/json
       "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         },{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
@@ -307,19 +335,21 @@ Content-Type: application/json
         }, {% if include.integration_mode=="redirect" %}
         {
         "method": "GET",
-        "href": "https://ecom.stage.payex.com/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835",
+        "href": "https://ecom.stage.payex.com/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?_tc_tid=30f2168171e142d38bcd4af2c3721959",
         "rel": "redirect-paymentorder",
         "contentType": "text/html"
         } {% endif %} {% if include.integration_mode=="seamless-view" %}
         {
         "method": "GET",
-        "href": "https://ecom.stage.payex.com/paymentmenu/core/client/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?culture=sv-SE",
+        "href": "https://ecom.stage.payex.com/paymentmenu/core/client/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
         "rel": "view-paymentorder",
         "contentType": "application/javascript"
         } {% endif %}
     ]
 }
 ```
+
+## PATCH Instrument Selection
 
 {% endif %}
 
@@ -353,6 +383,8 @@ Content-Type: application/json
 }
 ```
 
+## Available Instruments
+
 The valid instruments for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a
 merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
@@ -365,3 +397,6 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
             "Swish"
         ]
 ```
+
+[prod-env]: https://ecom.payex.com/checkout/core/integration
+[test-env]: https://ecom.externalintegration.payex.com/checkout/core/integration

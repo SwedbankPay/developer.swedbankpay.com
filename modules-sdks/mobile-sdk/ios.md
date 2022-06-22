@@ -4,39 +4,44 @@ estimated_read: 30
 menu_order: 1100
 ---
 
-{% capture disclaimer %}
-The SDK is at an early stage of development
-and is not supported as of yet by Swedbank Pay. It is provided as a
-convenience to speed up your development, so please feel free to play around.
-However, if you need support, please wait for a future, stable release.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
-
-This guide assumes that you are using the Merchant Backend Configuration and your backend implements the Merchant Backend API. If you are using a custom backend instead, the meaning of `SwedbankPaySDKController` arguments will be different, as well as any errors reported, but the basic process is the same. The differences will be highlighted in the chapter on custom backends.
+This guide assumes that you are using the Merchant Backend Configuration and
+your backend implements the Merchant Backend API. If you are using a custom
+backend instead, the meaning of `SwedbankPaySDKController` arguments will be
+different, as well as any errors reported, but the basic process is the same.
+The differences will be highlighted in the chapter on custom backends.
 
 ## Installation
 
-The iOS component of the Swedbank Pay Mobile SDK is split into two libraries: `SwedbankPaySDK` contains the core SDK, while `SwedbankPaySDKMerchantBackend` contains utilities for interfacing with the Merchant Backend API. If you are using a custom backend, you to not need to install the `SwedbankPaySDKMerchantBackend` library.
+The iOS component of the Swedbank Pay Mobile SDK is split into two libraries:
+`SwedbankPaySDK` contains the core SDK, while `SwedbankPaySDKMerchantBackend`
+contains utilities for interfacing with the Merchant Backend API. If you are
+using a custom backend, you to not need to install the
+`SwedbankPaySDKMerchantBackend` library.
 
 ### Swift Package Manager
 
-The SDK is available through the Swift Package Manager. This is the simplest way of adding the SDK to an Xcode project. Follow the [Xcode documentation][xcode-swiftpm] to add a SwiftPM dependency.
+The SDK is available through the Swift Package Manager. This is the simplest way
+of adding the SDK to an Xcode project. Follow the [Xcode
+documentation][xcode-swiftpm] to add a SwiftPM dependency.
 
-The package repository URL for the SDK is [`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo]. Add the `SwedbankPaySDK` library, and the `SwedbankPaySDKMerchantBackend` if needed.
+The package repository URL for the SDK is
+[`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo].
+Add the `SwedbankPaySDK` library, and the `SwedbankPaySDKMerchantBackend` if
+needed.
 
 ### CocoaPods
 
-The SDK is also available through [CocoaPods][cocoapods]. There are two pods: [SwedbankPaySDK][sdk-pod] for the core SDK, and `SwedbankPaySDKMerchantBackend` for the Merchant Backend utilities.
+The SDK is also available through [CocoaPods][cocoapods]. There are two pods:
+[SwedbankPaySDK][sdk-pod] for the core SDK, and `SwedbankPaySDKMerchantBackend`
+for the Merchant Backend utilities.
 
 Add the relevant dependencies in your `Podfile`:
 
 ```ruby
-pod 'SwedbankPaySDK', '~> 2.1'
+pod 'SwedbankPaySDK', '~> 3.0'
 ```
 ```ruby
-pod 'SwedbankPaySDKMerchantBackend', '~> 2.1'
+pod 'SwedbankPaySDKMerchantBackend', '~> 3.0'
 ```
 
 ### Url Scheme and Associated Domain
@@ -161,18 +166,12 @@ let swedbankPayConfig = SwedbankPaySDK.MerchantBackendConfiguration(
     backendUrl: "https://example.com/swedbank-pay-mobile/",
     headers: [:]
 )
+
+// Make it the default for all SDKControllers
+SwedbankPaySDKController.defaultConfiguration = swedbankPayConfig
 ```
 
-The semantics of `SwedbankPaySDK.Consumer` properties are the same as the fields of the [POST /psp/consumers][checkin-consumer]. There are default values for the `operation` and `language` properties (`.InitiateConsumerSession` and `.English`, respectively).
-
-```swift
-let consumer = SwedbankPaySDK.Consumer(
-    language = .Swedish,
-    shippingAddressRestrictedToCountryCodes: = ["NO", "SE", "DK"]
-)
-```
-
-Similarly, the semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the `urls` property, there are convenience constructors for the `SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/ios-universal-link`), then using one of the convenience constructors taking a `SwedbankPaySDK.MerchantBackendConfiguration` argument will set the `paymentUrl` correctly.
+The semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the `urls` property, there are convenience constructors for the `SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/ios-universal-link`), then using one of the convenience constructors taking a `SwedbankPaySDK.MerchantBackendConfiguration` argument will set the `paymentUrl` correctly.
 
 ```swift
 let paymentOrder = SwedbankPaySDK.PaymentOrder(
@@ -217,17 +216,37 @@ let paymentOrder = SwedbankPaySDK.PaymentOrder(
 
 *   ① payeeId and payeeReference are required fields, but default to the empty string. The assumption here is that your Merchant Backend will override the values set here. If your system works better with the Mobile Client setting them instead, they are available here also.
 
-To start a payment, create a `SwedbankPaySDKController` and display it. The payment process starts as soon as the `SwedbankPaySDKController` is visible.
+To start a payment, create a `SwedbankPaySDKController` and call startPayment. You can add it to the view hierarchy any way you like, and here we are using the `present` function. Note that this function always uses the new CheckoutV3.
 
 ```swift
-val paymentController = SwedbankPaySDKController(
-    configuration: swedbankPayConfig,
-    consumer: consumer,
-    paymentOrder: paymentOrder
+let paymentController = SwedbankPaySDKController()
+paymentController.startPayment(paymentOrder: payment)
+
+present(paymentController, animated: true, completion: nil)
+```
+
+To start a payment with consumer-checkin, you need to use CheckoutV2 and supply a consumer value. This function also allows merchants to remain on V2 while updating the SDK, and then to opt-in to V3 when ready.
+
+```swift
+let paymentController = SwedbankPaySDKController()
+paymentController.startPayment(
+    withCheckin: true, 
+    consumer: consumer, 
+    paymentOrder: payment, 
+    userData: nil
 )
 
 present(paymentController, animated: true, completion: nil)
 // There are, of course, many other ways of displaying a view controller
+```
+
+The semantics of `SwedbankPaySDK.Consumer` properties are the same as the fields of the [POST /psp/consumers][checkin-consumer]. There are default values for the `operation` and `language` properties (`.InitiateConsumerSession` and `.English`, respectively).
+
+```swift
+let consumer = SwedbankPaySDK.Consumer(
+    language = .Swedish,
+    shippingAddressRestrictedToCountryCodes: = ["NO", "SE", "DK"]
+)
 ```
 
 To observe the payment process, set a `delegate` to the `SwedbankPaySDKController`. When the delegate is informed that the payment process is finished, you should remove the `SwedbankPaySDKController` and inform the user of the result.

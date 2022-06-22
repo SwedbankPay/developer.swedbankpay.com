@@ -74,7 +74,7 @@ module.
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
+            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         },
@@ -218,16 +218,22 @@ address.
 ![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
 After checking in, the payer's contact details and shipping address are shown
-for mixed goods. You can now perform the `GET` on the payment order and display
-the available delivery option(s) to the payer.
+for mixed goods. Note the new "Remember me" checkbox. The first time the checks
+in, the box will appear unchecked. If checked during a purchase, it will appear
+like the screenshot below during future check-ins, with a "Not you?" option in
+the top right corner.
 
-You are in charge of how the delivery options are displayed. This is how they
-appear in our demoshop.
+You can now perform the `GET` on the payment order and display the available
+delivery option(s) to the payer. How the delivery options are displayed is up to
+you. This is how they appear in our demoshop.
 
+{:.text-center}
 ![screenshot of the seamless view checkin mixed and delivery options][checkin-delivery-options-mixed]
 
-For digital products only contact details will be shown.
+For digital products, only contact details will be shown. "Remember me" will
+work the same way as with mixed goods.
 
+{:.text-center}
 ![screenshot of the seamless view checkin digital and delivery options][checkin-delivery-options-digital]
 
 When the payer chooses a delivery option, you can `PATCH` the payment order and
@@ -261,11 +267,11 @@ Events][seamless-view-events] available in the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/starter/features/core/abort
-[checkin-delivery-options-digital]:/assets/img/checkout/checkin-delivery-options-digital.png
-[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-mixed.png
+[checkin-delivery-options-digital]:/assets/img/checkout/checkin-delivery-options-remember-me-digital.png
+[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-remember-me-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
-[seamless-payment-menu-starter]: /assets/img/checkout/seamless-payment-menu-starter.png
+[seamless-payment-menu-starter]: /assets/img/checkout/checkout-v3-seamless-menu.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png

@@ -81,6 +81,7 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
+        "generatePaymentToken": true,
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
         "productName": "Checkout3",{% endif %} {% if documentation_section == "payment-menu" %}
         "instrument": null,{% endif %}
@@ -209,6 +210,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`instrument`              | `string`     | The payment instrument used. Selected by using the [Instrument Mode][instrument-mode].                                                                                                                                                                                          | {% endif %}                                              |
 |                  | └➔&nbsp;`disableStoredPaymentDetails` | `bool` | Set to `false` by default. Switching to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
 | {% icon check %} | └➔&nbsp;`userAgent`               | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
+|                  | └➔&nbsp;`generatePaymentToken`     | `bool`       | Determines if a payment token should be generated. Default value is `false`.                                               |
 | {% icon check %} | └➔&nbsp;`language`                | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               | {% if documentation_section contains "checkout-v3/payments-only" %}
 | {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |{% endif %}
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
@@ -289,6 +291,7 @@ Content-Type: application/json
         "updated": "2020-06-22T10:56:56.4035291Z",
         "operation": "Purchase",
         "status": "Initialized",
+        "paymentToken" : "{{ page.payment_token }}",
         "currency": "SEK",
         "vatAmount": 375,
         "amount": 1500,
@@ -342,13 +345,13 @@ Content-Type: application/json
       "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         },{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
@@ -377,6 +380,7 @@ Content-Type: application/json
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
 | └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). |
+| └➔&nbsp;`paymentToken`   | `string`     | The payment token generated in the initial purchase.                                                                                                |
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
@@ -594,7 +598,7 @@ Content-Type: application/json
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [completeurl]: {{ features_url }}/technical-reference/complete-url
-[delete-tokens]: {{ features_url }}/technical-reference/delete-token
+[delete-tokens]: {{ features_url }}/optional/delete-token
 [payment-url]: {{ features_url }}/technical-reference/payment-url
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [recur]: {{ features_url }}/optional/recur

@@ -68,7 +68,7 @@ payment menu.
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d",
+            "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-checkout",
             "contentType": "text/html"
         },
@@ -102,20 +102,16 @@ store credentials (guests) must also enter their shipping address.
 {:.text-center}
 ![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
-After checking in, the payment menu will appear on a new page with the payer
-information displayed above the menu. The payer can select their preferred
-payment instrument and pay.
+After checking in, the payment menu will appear with the payer information
+displayed above the menu. Note the new "Remember me" checkbox. The first time
+the payer checks in, the box will appear blank. If checked during a purchase, it
+will appear like the screenshot below during future check-ins, with a "Not you?"
+option in the top right corner.
 
-This is how it will look with all goods (physical and digital), with shipping
-address visible.
+The payer can select their preferred payment instrument and pay.
 
 {:.text-center}
 ![screenshot of the business implementation redirect payment menu mixed][redirect-payment-menu-mixed]
-
-This is for digital products, consequently with no shipping address.
-
-{:.text-center}
-![screenshot of the business implementation redirect payment menu digital][redirect-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a `GET` towards the
 `paymentOrders` resource to see the purchase state.
@@ -131,8 +127,7 @@ about capture and the other options you have after the purchase.
 [abort-feature]: /checkout-v3/business/features/core/abort
 [sequence-diagrams]: /checkout-v3/sequence-diagrams#business-redirect
 [login-checkin]: /assets/img/checkout/checkin.png
-[redirect-payment-menu-digital]: /assets/img/checkout/payment-menu-redirect-digital.png
-[redirect-payment-menu-mixed]: /assets/img/checkout/payment-menu-redirect-mixed-products.png
+[redirect-payment-menu-mixed]: /assets/img/checkout/checkout-v3-business-redirect.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png

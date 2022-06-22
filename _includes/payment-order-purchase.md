@@ -62,13 +62,13 @@ Content-Type: application/json
                 "imageUrl": "https://example.com/product123.jpg",
                 "description": "Product 1 description",
                 "discountDescription": "Volume discount",
-                "quantity": 4,
+                "quantity": 5,
                 "quantityUnit": "pcs",
                 "unitPrice": 300,
-                "discountPrice": 200,
+                "discountPrice": 0,
                 "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
+                "amount": 1500,
+                "vatAmount": 375
             },
             {
                 "reference": "I1",
@@ -180,13 +180,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }

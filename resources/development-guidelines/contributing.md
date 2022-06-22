@@ -25,8 +25,8 @@ things you need to know.
             bug.
         *   Make sure you fill in the earliest version that you know has the
             issue.
-    2.  [Directly edit the file][edit] you want to change on GitHub.
-    3.  [Fork the repository on GitHub][forking].
+    2.  Edit the file you want to change directly on GitHub.
+    3.  Fork the repository on GitHub.
 
 If you choose option 3 (forking the repository), then please read on.
 
@@ -37,18 +37,15 @@ If you choose option 3 (forking the repository), then please read on.
     *   Please avoid working directly on the `master` and `develop` branch.
 *   Make [commits][commit] of logical units in the new branch.
 *   Check for unnecessary space with `git diff --check` before committing.
-*   Make sure your [commit messages][commit-practice] are well written and in the
-    proper format.
+*   Make sure your [commit messages][commit-practice] are well written and in
+    the proper format.
 *   [Push][push] the branch to your [forked repository (remote)][remote].
-*   Submit a [pull request][pull-request] for the pushed branch.
+*   Submit a pull request for the pushed branch.
 
 [coc]: /resources/development-guidelines/code-of-conduct
 [github]: https://github.com/join
-[edit]: https://help.github.com/articles/editing-files-in-your-repository
-[forking]: https://help.github.com/articles/fork-a-repo
 [branching]: https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
 [commit]: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 [commit-practice]: /resources/development-guidelines/good-commit-practice
 [push]: https://git-scm.com/docs/git-push
 [remote]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
-[pull-request]: https://help.github.com/articles/using-pull-requests

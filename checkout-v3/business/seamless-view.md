@@ -70,7 +70,7 @@ module.
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
+            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         },
@@ -165,19 +165,15 @@ store credentials (guests) must also enter their shipping address.
 ![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
 After checking in, the payment menu will appear with the payer information
-displayed above the menu. The payer can select their preferred payment
-instrument and pay.
+displayed above the menu. Note the new "Remember me" checkbox. The first time
+the payer checks in, the box will appear blank. If checked during a purchase, it
+will appear like the screenshot below during future check-ins, with a "Not you?"
+option in the top right corner.
 
-This is how it will look with all goods (physical and digital), with shipping
-address visible.
+The payer can select their preferred payment instrument and pay.
 
 {:.text-center}
 ![screenshot of the business implementation seamless view payment menu mixed][seamless-payment-menu-mixed]
-
-This is for digital products, consequently with no shipping address.
-
-{:.text-center}
-![screenshot of the business implementation seamless view payment menu digital][seamless-payment-menu-digital]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -204,8 +200,7 @@ capture and the other options you have after the purchase.
 [sequence-diagrams]: /checkout-v3/sequence-diagrams#business-seamless-view
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/business/features/technical-reference/seamless-view-events
-[seamless-payment-menu-digital]: /assets/img/checkout/payment-menu-seamless-digital.png
-[seamless-payment-menu-mixed]: /assets/img/checkout/payment-menu-seamless-mixed-products.png
+[seamless-payment-menu-mixed]: /assets/img/checkout/checkout-v3-business-seamless-menu.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png

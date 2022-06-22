@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
-### Authorizations
+## List Authorizations
 
 The `authorizations` resource will list the authorization transactions
 made on a specific payment.
@@ -17,10 +17,15 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="authorization" %}
 
-#### Create Authorization transaction
+### Create Authorization Transaction
 
 To create an `authorization` transaction, perform the `create-authorization`
 operation as returned in a previously created invoice payment.
+
+{% include alert.html type="informative" icon="info" body="
+Note: The legal address must be the registered address of the payer." %}
+
+## Authorization Request
 
 {:.code-view-header}
 **Request**
@@ -86,8 +91,7 @@ Content-Type: application/json
 | {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
 | {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
-{% include alert.html type="informative" icon="info" body="
-Note: The legal address must be the registered address of the payer." %}
+## Authorization Response
 
 The `authorization` resource will be returned, containing information about
 the newly created authorization transaction.

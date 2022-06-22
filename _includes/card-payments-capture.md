@@ -5,10 +5,12 @@ the payer. This step usually takes place when the product has exchanged
 possession. You must first do a `GET` request on the payment to find the
 `create-capture` operation.
 
-### Create capture transaction
+### Create Capture Transaction
 
 To create a `capture` transaction to withdraw money from the payer's card, you
 need to perform the `create-capture` operation.
+
+## Capture Request
 
 {:.code-view-header}
 **Request**
@@ -37,6 +39,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}                               |
+
+## Capture Response
 
 {:.code-view-header}
 **Response**
@@ -88,6 +92,8 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
+## List Capture Transactions
+
 The `captures` resource list the capture transactions (one or more) on a
 specific payment.
 
@@ -103,7 +109,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="capture" %}
 
-### Capture Sequence
+## Capture Sequence
 
 `Capture` can only be done on an authorized transaction. It is possible to do a
 partial capture where you only capture a part of the authorized amount. You can

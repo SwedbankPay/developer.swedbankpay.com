@@ -17,8 +17,7 @@ newspapers or streaming services.
 First, you need an initial transaction where the `recurrenceToken` is generated
 and connected. You do that by adding the field `generateRecurrenceToken` in the
 `PaymentOrder` request and set the value to `true`. The payer must complete the
-purchase to activate the token. You can also use [Verify][verify] to activate
-tokens.
+purchase to activate the token.
 
 (Read more about [deleting the recurrence token][delete-token] here.)
 
@@ -270,8 +269,8 @@ Content-Type: application/json
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -309,13 +308,13 @@ Content-Type: application/json
       "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         },{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
@@ -514,8 +513,7 @@ Content-Type: application/json
 <!--lint disable final-definition -->
 
 [checkout]: /{{ documentation_section }}
-[delete-token]: {{ features_url }}/technical-reference/delete-token
+[delete-token]: {{ features_url }}/optional/delete-token
 [paid-status-model]: {{ features_url }}/technical-reference/status-models#paid
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [technical-reference-callback]: {{ features_url }}/core/callback
-[verify]: {{ features_url }}/optional/verify

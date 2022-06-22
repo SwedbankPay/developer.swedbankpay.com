@@ -291,7 +291,7 @@ Content-Type: application/json
 [card-payment-recur]: /payment-instruments/card/features/optional/recur
 [card-payment-capture]: #capture-sequence
 [card-payment-cancel]: #cancel-sequence
-[card-payments-remove-payment-token]: {{ features_url }}/technical-reference/delete-token
+[card-payments-remove-payment-token]: {{ features_url }}/optional/delete-token
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [technical-reference-callback]: {{ features_url }}/core/callback

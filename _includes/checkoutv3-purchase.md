@@ -2,6 +2,8 @@
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
 
+## Payment Order Request
+
 {:.code-view-header}
 **Request**
 
@@ -215,6 +217,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
+## Payment Order Response
+
 {:.code-view-header}
 **Response**
 
@@ -285,13 +289,13 @@ Content-Type: application/json
         },{% if include.integration_mode=="redirect" %}
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-checkout",
             "contentType": "text/html"
         }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         }{% endif %}

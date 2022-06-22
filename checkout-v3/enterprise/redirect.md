@@ -68,7 +68,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d",
+            "href": "https://ecom.externalintegration.payex.com/payment/menu/b934d6f84a89a01852eea01190c2bbcc937ba29228ca7502df8592975ee3bb0d?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-checkout",
             "contentType": "text/html"
         },
@@ -96,4 +96,4 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout-v3/enterprise/features/core/abort
 [sequence-diagram]: /checkout-v3/sequence-diagrams#enterprise-redirect
-[redirect-enterprise-menu]: /assets/img/checkout/v3-redirect.png
+[redirect-enterprise-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png

@@ -19,7 +19,7 @@ to be undefined. Just adding an event handler for logging purposes is therefore
 not possible, the event handler will have to perform some functionality similar
 to the event handler you are overriding." %}
 
-### `OnAborted`
+### `onAborted`
 
 This event triggers when the payer aborts the purchase from the payment menu. As
 the Seamless View payment menu doesn't have a cancel button (present in the
@@ -65,7 +65,7 @@ with the following event argument object:
 
 ```json
 {
-    "event": "onCheckoutLoaded",
+    "event": "OnCheckoutLoaded",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
 }
@@ -96,7 +96,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onCheckoutResized",
+    "event": "OnCheckoutResized",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
 }
@@ -125,7 +125,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onError",
+    "event": "OnError",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "details": "English descriptive text of the error"
 }
@@ -184,7 +184,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onInstrumentSelected",
+    "event": "OnInstrumentSelected",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "instrument": "creditcard | vipps | swish | invoice",
 }
@@ -217,7 +217,7 @@ new tab. It will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onOutOfViewOpen",
+    "event": "OnOutOfViewOpen",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "openUrl": "https://example.com/external"
 }
@@ -246,7 +246,7 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "onOutOfViewRedirect",
+    "event": "OnOutOfViewRedirect",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/external"
 }
@@ -259,7 +259,7 @@ will be raised with the following event argument object:
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
-### `OnPaid`
+### `onPaid`
 
 This event triggers when the payer successfully completes or cancels the
 payment.
@@ -336,11 +336,11 @@ following event argument object:
 ```
 
 {:.table .table-striped}
-| Field       | Type     | Description                                                            |
-| :---------- | :------- | :-------------------------------------------------------------         |
-| `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
-| `payer`     | `string` | The `url` of the resource containing information about the payer.      |
+| Field          | Type     | Description                                                         |
+| :------------- | :------- | :-------------------------------------------------------------      |
+| `event`        | `string` | The name of the event raised.                                       |
+| `paymentOrder` | `string` | {% include field-description-id.md %}                               |
+| `payer`        | `string` | The `url` of the resource containing information about the payer.   |
 
 ### `onPayerUnidentified`
 
@@ -371,18 +371,18 @@ It will be raised with the following event argument object:
 | Field           | Type     | Description                                                  |
 | :-------------  | :------- | :------------------------------------------------------      |
 | `event`         | `string` | The name of the event raised.                                |
-| `paymentOrder`  | `string` | {% include field-description-id.md %}                          |
+| `paymentOrder`  | `string` | {% include field-description-id.md %}                        |
 
 {% endif %}
 
-### `OnTermsOfServiceRequested`
+### `onTermsOfServiceRequested`
 
 This event triggers when the user clicks on the "Display terms and conditions"
 link.
 
-Subscribe to this event if you don't want the default handing of the
-`termsOfServiceUrl`. Swedbank Pay will by default open the `termsOfServiceUrl`
-in a new tab within the same browser.
+Subscribe to this event if you don't want the default handling of the
+`termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl`
+in a new tab within the same browser by default.
 
 If no callback method is set, terms and conditions will be displayed in an
 overlay or a new tab. It will be raised with the following event argument
@@ -393,13 +393,15 @@ object:
 
 ```json
 {
-    "origin": "owner",
-    "termsOfServiceUrl": "https://example.com/terms-of-service"
+"event": "OnTermsOfServiceRequested",
+"paymentOrder": { "id": "/psp/paymentorders/<paymentorderId>"},
+"termsOfServiceUrl": "https://example.org/terms.html"
 }
 ```
 
 {:.table .table-striped}
-| Field     | Type     | Description                                                                             |
-| :-------- | :------- | :-------------------------------------------------------------------------------------- |
-| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
-| `termsOfServiceUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
+| Field                | Type     | Description                                         |
+| :--------            | :------- | :---------------------------------------------------|
+| `event`              | `string` | The name of the event raised.                       |
+| `paymentOrder`       | `string` | {% include field-description-id.md %}               |
+| `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions. |
