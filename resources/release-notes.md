@@ -11,6 +11,25 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 22 June 2022
+
+### Version 3.1.0
+
+Summer has finally arrived, and we have quite a treat waiting in our final
+release before the vacation pulse kicks in. Without further ado: We now proudly
+offer **Apple Pay**! It is available in all our Checkout v3 implementations and
+integrations. Give it a go in our [demoshop][demoshop]! There are a couple of
+other new additions as well:
+
+*   Our [SDKs][sdk-modules] have been updated to support Checkout v3
+*   You can now [request delivery information][request-delivery-information] for
+  selected instruments
+*   An eligibility check [eligibility check][eligibility-check] for wallets has
+  been added to instrument mode
+*   "Remember me" has been added to Checkout v3 [Starter][checkout-v3-starter]
+  and [Business][checkout-v3-business]
+*   Fixed typos, minor bugs and code examples
+
 ## 04 April 2022
 
 ### Version 3.0.3
@@ -656,6 +675,8 @@ integration and the payer.
 [checkout-items]: /checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
+[checkout-v3-business]: /checkout-v3/business
+[checkout-v3-starter]: /checkout-v3/starter
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
@@ -663,6 +684,7 @@ integration and the payer.
 [data-protection]: /resources/data-protection
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
+[eligibility-check]: /checkout-v3/payments-only/features/optional/instrument-mode#eligibility-check
 [mac]: /checkout-v2/features/optional/mac
 [frontpage]: https://developer.swedbankpay.com/
 [get-started]: /checkout-v3/
