@@ -168,4 +168,4 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-seamless-view
-[seamless-enterprise-menu]: /assets/img/checkout/enterprise-seamless-view.png
+[seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
