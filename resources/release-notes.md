@@ -713,6 +713,7 @@ integration and the payer.
 [prices]: /checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /checkout-v2/features#update-order
 [recur]: /checkout-v3/payments-only/features/optional/recur
+[request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
