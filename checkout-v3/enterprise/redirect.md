@@ -96,4 +96,4 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout-v3/enterprise/features/core/abort
 [sequence-diagram]: /checkout-v3/sequence-diagrams#enterprise-redirect
-[redirect-enterprise-menu]: /assets/img/checkout/v3-redirect.png
+[redirect-enterprise-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png
