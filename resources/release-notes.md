@@ -18,8 +18,7 @@ this very documentation, not to a version of any APIs described by it." %}
 Summer has finally arrived, and we have quite a treat waiting in our final
 release before the vacation pulse kicks in. Without further ado: We now proudly
 offer **Apple Pay**! It is available in all our Checkout v3 implementations and
-integrations. Give it a go in our [demoshop][demoshop]! There are a couple of
-other new additions as well:
+integrations. There are a couple of other new additions as well:
 
 *   Our [SDKs][sdk-modules] have been updated to support Checkout v3
 *   You can now [request delivery information][request-delivery-information] for
