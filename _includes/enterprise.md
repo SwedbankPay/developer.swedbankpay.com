@@ -1,4 +1,5 @@
 {% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 
 ## Enterprise
 
