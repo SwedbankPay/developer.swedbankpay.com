@@ -16,7 +16,6 @@ paymentOrder and then either making a purchase or verifying a purchase.
 var paymentOrder = ... //create the paymentOrder as usual by calculating price, etc
 paymentOrder.generateRecurrenceToken = true
 paymentOrder.generateUnscheduledToken = true
-
 ```
 
 {:.code-view-header}

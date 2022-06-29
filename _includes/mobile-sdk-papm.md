@@ -39,7 +39,6 @@ val paymentOrder = PaymentOrder(
     ),
     ...
 )
-
 ```
 
 Now the customer has the option to store card numbers or select one of the
