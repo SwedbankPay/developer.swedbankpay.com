@@ -570,6 +570,16 @@ Content-Type: application/json
     "details": {
       "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
       "externalNonPaymentToken" : "1234567890",
+      "cardBrand": "Visa",
+6     "cardType": "Credit",
+7     "maskedPan": "492500******0004",
+8     "expiryDate": "12/2022",
+9     "issuerAuthorizationApprovalCode": "L00302",
+10    "acquirerTransactionType": "STANDARD",
+11    "acquirerStan": "302",
+12    "acquirerTerminalId": "70101301389",
+13    "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
+14    "transactionInitiator": "CARDHOLDER"
     }
   }
 }
@@ -594,3 +604,12 @@ Content-Type: application/json
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
 | └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+| └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
+| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
+| └➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
+| └─➔&nbsp;`issuerAuthorizationApprovalCode` | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
+| └─➔&nbsp;`acquirerTransactionType` | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
+| └─➔&nbsp;`acquirerStan`            | `string`     | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                                                                                                         |
+| └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
+| └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
