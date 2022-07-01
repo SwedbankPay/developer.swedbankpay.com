@@ -19,6 +19,75 @@
 The created `{{ transaction }}` resource contains information about the
 `{{ transaction }}` transaction made against a `{{ api_resource }}` payment.
 
+{% if documentation_section contains "checkout" or "payment-menu" %}
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
+    "{{ transaction }}": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",{% if api_resource == "creditcard" %}
+        "paymentToken": "{{ page.payment_token }}",
+        "maskedPan": "123456xxxxxx1234",
+        "expireDate": "mm/yyyy",
+        "panToken": "{{ page.transaction_id }}",
+        "cardBrand": "Visa",
+        "cardType": "Credit Card",
+        "issuingBank": "UTL MAESTRO",
+        "countryCode": "999",
+        "acquirerTransactionType": "3DSECURE",
+        "acquirerStan": "39736",
+        "acquirerTerminalId": "39",
+        "acquirerTransactionTime": "2017-08-29T13:42:18Z",
+        "authenticationStatus": "Y",{% endif %}
+        "itemDescriptions": {
+            "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}/itemDescriptions"
+        },
+        "transaction": {
+            "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",
+            "created": "2016-09-14T01:01:01.01Z",
+            "updated": "2016-09-14T01:01:01.03Z",
+            "type": "{{ transaction | capitalize }}",
+            "state": {% if transaction == "transaction" %}"Failed"{% else %}"Completed"{% endif %},
+            "number": 1234567890,
+            "amount": 1000,
+            "vatAmount": 250,
+            "description": "Test transaction",
+            "payeeReference": "ABC123", {% if api_resource == "invoice" %}
+            "receiptReference": "ABC123", {% endif %}
+            "isOperational": false,
+            "problem": {
+                "type": "https://api.payex.com/psp/errordetail/{{ api_resource }}/3DSECUREERROR",
+                "title": "Error when complete authorization",
+                "status": 400,
+                "detail": "Unable to complete 3DSecure verification!",
+                "problems": [
+                ] {% unless transaction == "transaction" %}
+            "operations": [{% if api_resource == "swish" and mcom == true %}
+                {
+                    "href": "swish://paymentrequest?token=LhXrK84MSpWU2RO09f8kUP-FHiBo-1pB",
+                    "method": "GET",
+                    "rel": "redirect-app-swish"
+                },{% endif %}
+                {
+                    "href": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",
+                    "rel": "edit-{{ transaction }}",
+                    "method": "PATCH"
+                }
+            ]{% endunless %}
+        }
+    }
+}
+
+```
+
+{% else %}
+
 {:.code-view-header}
 **Response**
 
@@ -84,12 +153,14 @@ Content-Type: application/json
 
 ```
 
-{% capture response_table%}
-{:.table .table-striped .mb-5}
+{% endif %}
+
+{:.table .table-striped}
 | Field                             | Type      | Description                                                                                                                                                                                                  |
-| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                         | `string`  | {% include field-description-id.md sub_resource=transaction %}                                                                                                                                               |
-| `{{ transaction }}`               | `string`  | The current `{{ transaction }}` transaction resource.                                                                                                                                                        |
+| :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |{% if documentation_section contains "checkout" or "payment-menu" %}
+| `paymentorder`                         | `string`  | {% include field-description-id.md %}                                                                                                                                                    | {% else %}
+| `payment`                         | `string`  | {% include field-description-id.md sub_resource=plural %}                                                                                                                                                    |
+| `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         | {% endif %}
 | └➔&nbsp;`id`                      | `string`  | {% include field-description-id.md resource=transaction %}                                                                                                                                                   | {% if api_resource == "creditcard" %} |
 | └➔&nbsp;`paymentToken`            | `string`  | The payment token created for the card used in the authorization.                                                                                                                                            |
 | └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                           |
@@ -121,5 +192,4 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |
-{% endcapture %}
 {% include accordion-table.html content=response_table %}
