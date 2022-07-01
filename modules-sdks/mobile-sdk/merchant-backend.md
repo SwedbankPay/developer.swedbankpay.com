@@ -83,7 +83,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-    "consumers": "/swedbank-pay-mobile/consumers",
     "paymentorders": "/swedbank-pay-mobile/paymentorders"
 }
 ```
@@ -91,7 +90,6 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field           | Type     | Description                                                                  |
 | :-------------- | :------- | :--------------------------------------------------------------------------- |
-| `consumers`     | `string` | URL of the "consumers" endpoint. Resolved against the root endpoint URL.     |
 | `paymentorders` | `string` | URL of the "paymentorders" endpoint. Resolved against the root endpoint URL. |
 
 N.B! The API as specified allows assigning endpoints to hosts other that the
@@ -99,99 +97,6 @@ root endpoint host. However, as this seen to be an uncommon use case, the mobile
 component of the SDK is, by default, configured to only accept links to the
 domain of the root endpoint, or its subdomains. If your configuration uses other
 hosts, you must manually allow them in your mobile app's configuration.
-
-## Consumers Endpoint
-
-The `consumers` endpoint is used to start a consumer identification session. It
-is specified as a transparent wrapper around the corresponding [Swedbank Pay
-API][initiate-consumer-session]. The sample implementations do superficial input
-validation, and forward the request to the Swedbank Pay API without further
-processing. You are free to override this default behavior as you see fit in
-your implementation, but the default should be fine for most use-cases. The
-expected response is the same as the expected response to the Swedbank Pay API.
-The default is to pass the response from Swedbank as-is; you should probably not
-modify this behavior. Specifically, the response must contain the
-`view-consumer-identification` operation.
-
-{:.code-view-header}
-**Request**
-
-```http
-POST /swedbank-pay-mobile/consumers HTTP/1.1
-Host: example.com
-Your-Api-Key: secretish
-Content-Type: application/json
-
-{
-    "operation": "initiate-consumer-session",
-    "language": "sv-SE",
-    "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"]
-}
-```
-
-{:.table .table-striped}
-|     Required     | Field                                     | Type     | Description                                                                                                                            |
-| :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
-| {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
-
-At this point, the Merchant Backend will make a corresponding request to the Swedbank Pay API, using its secret access token.
-
-{:.code-view-header}
-**Forwarded Request**
-
-```http
-POST /psp/consumers HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "operation": "initiate-consumer-session",
-    "language": "sv-SE",
-    "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"]
-}
-```
-
-The Merchant Backend will then forward the response it received back to the
-calling app.
-
-{:.code-view-header}
-**Response &amp; Forwarded Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
-    "operations": [
-        {
-            "method": "GET",
-            "rel": "redirect-consumer-identification",
-            "href": "{{ page.front_end_url }}/consumers/sessions/7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
-            "contentType": "text/html"
-        },
-        {
-            "method": "GET",
-            "rel": "view-consumer-identification",
-            "href": "{{ page.front_end_url }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.payment_token }}",
-            "contentType": "application/javascript"
-        }
-    ]
-}
-```
-
-{:.table .table-striped}
-| Field                 | Type     | Description                                                                                                                                       |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
-| `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
-| └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
-| └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.                                                                                             |
-| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
-| └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
 
 ## Payment Orders Endpoint
 
@@ -791,8 +696,7 @@ name under your control – usually the host name of the Merchant Backend.
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /payment-menu/features/technical-reference/payment-url
-[initiate-consumer-session]: /checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /checkout-v2/payment-menu#step-3-create-payment-order
+[create-payment-order]: /checkout-v3/payments-only/seamless-view#step-1-create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

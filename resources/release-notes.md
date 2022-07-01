@@ -11,6 +11,15 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 01 July 2022
+
+### Version 3.1.1
+
+A release filled with leftovers before we clock out for summer. Mostly small
+fixes in code examples and tables, but the most important additions are the new
+fields added in the [paid resource model][resource-model-paid]. Have a great
+summer!
+
 ## 22 June 2022
 
 ### Version 3.1.0
@@ -712,6 +721,7 @@ integration and the payer.
 [prices]: /checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /checkout-v2/features#update-order
 [recur]: /checkout-v3/payments-only/features/optional/recur
+[resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation

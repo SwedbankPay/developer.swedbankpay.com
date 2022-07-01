@@ -30,6 +30,47 @@ When a transaction is created it will have one of three states:
     card) up to a maximum amount of retries (in that case which the payment
     order gets the state `failed` as well).
 
+{% if documentation_section contains "checkout" or "payment-menu" %}
+
+{:.code-view-header}
+**Request**
+
+```http
+GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
+    "transaction": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",
+        "created": "2016-09-14T01:01:01.01Z",
+        "updated": "2016-09-14T01:01:01.03Z",
+        "type": {% if documentation_section == "trustly" %} "Sale", {% else %} "Capture", {% endif %}
+        "state": "Initialized",
+        "number": 1234567890,
+        "amount": 1000,
+        "vatAmount": 250,
+        "description": "Test transaction",
+        "payeeReference": "AH123456",
+        "failedReason": "",
+        "isOperational": true,
+        "operations": []
+    }
+}
+```
+
+{% else %}
+
 {:.code-view-header}
 **Request**
 
@@ -66,6 +107,8 @@ Content-Type: application/json
     }
 }
 ```
+
+{% endif %}
 
 {{ sub_h }} Transaction Problems
 
