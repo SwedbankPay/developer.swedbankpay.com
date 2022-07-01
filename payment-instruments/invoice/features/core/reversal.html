@@ -535,6 +535,16 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/starter/features/technical-reference/transactions">Transactions</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/transactions#transactions">Transactions</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/starter/features/technical-reference/urls">Urls</a>
         </div>
         <ul class="nav-ul">
@@ -975,6 +985,16 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/technical-reference/transactions">Transactions</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/transactions#transactions">Transactions</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/features/technical-reference/urls">Urls</a>
         </div>
         <ul class="nav-ul">
@@ -1192,6 +1212,16 @@
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode-request">Instrument Mode Request</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode-response">Instrument Mode Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#available-instruments">Available Instruments</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/optional/mac">Enterprise</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/mac#enterprise">Enterprise</a></li>
         
       </ul>
       </li>
@@ -1419,6 +1449,16 @@
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#failed">Failed</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#initialized">Initialized</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#paid">Paid</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/technical-reference/transactions">Transactions</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/transactions#transactions">Transactions</a></li>
         
       </ul>
       </li>
@@ -5297,7 +5337,6 @@
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#patching-the-payment-order">Patching the Payment Order</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
@@ -5581,7 +5620,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#22-june-2022">22 June 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#01-july-2022">01 July 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-june-2022">22 June 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-april-2022">04 April 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
@@ -6171,14 +6211,14 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"reversals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
         </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AH12355"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/7e6cdfc3-1276-44e9-9992-7cf4419750e1/currentpayment"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reversalList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/reversals/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/7e6cdfc3-1276-44e9-9992-7cf4419750e1/currentpayment/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/invoice/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/7e6cdfc3-1276-44e9-9992-7cf4419750e1/currentpayment/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.01Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-14T01:01:01.03Z"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reversal"</span><span class="p">,</span><span class="w">
@@ -6197,14 +6237,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
 
-<div class="accordion accordion-table mb-4">
-    <button type="button" class="accordion-header pt-0" aria-expanded="false" aria-controls="exp-1">
-        <span class="mr-3 show">Show properties</span>
-        <span class="mr-3 hide">Hide properties</span>
-    </button>
-    <div class="accordion-body p-0" id="exp-1">
-        
-<table class="table table-striped mb-5">
+<table class="table table-striped">
   <thead>
     <tr>
       <th style="text-align: left">Field</th>
@@ -6214,20 +6247,15 @@ towards the specific transaction’s <code class="language-html highlighter-roug
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">payment</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">paymentorder</code></td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource this <code class="language-html highlighter-rouge">reversals</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">reversals</code></td>
-      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
-      <td style="text-align: left">The current <code class="language-html highlighter-rouge">reversals</code> resource.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">payment</code> resource .    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">reversals</code> resource this <code class="language-html highlighter-rouge">reversals</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">reversals</code> resource .    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└➔ <code class="language-html highlighter-rouge">reversalList</code>
@@ -6245,7 +6273,7 @@ towards the specific transaction’s <code class="language-html highlighter-roug
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">id</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource this <code class="language-html highlighter-rouge">reversals</code> belongs to.    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
+      <td style="text-align: left">The relative URL and unique identifier of the    <code class="language-html highlighter-rouge">transaction</code> resource .    Please read about <a href="/introduction#url-usage">URL Usage</a> to    understand how this and other URLs should be used in your solution.</td>
     </tr>
     <tr>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">created</code>
@@ -6322,9 +6350,6 @@ towards the specific transaction’s <code class="language-html highlighter-roug
     </tr>
   </tbody>
 </table>
-
-    </div>
-</div>
     
       <h3 id="reversal-sequence">
         

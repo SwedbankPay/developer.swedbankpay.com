@@ -535,6 +535,16 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/starter/features/technical-reference/transactions">Transactions</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/transactions#transactions">Transactions</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/starter/features/technical-reference/urls">Urls</a>
         </div>
         <ul class="nav-ul">
@@ -975,6 +985,16 @@
 <li class="nav-subgroup">
         <div class="nav-subgroup-heading">
           <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/business/features/technical-reference/transactions">Transactions</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/transactions#transactions">Transactions</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
           <a href="/checkout-v3/business/features/technical-reference/urls">Urls</a>
         </div>
         <ul class="nav-ul">
@@ -1192,6 +1212,16 @@
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode-request">Instrument Mode Request</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#instrument-mode-response">Instrument Mode Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/instrument-mode#available-instruments">Available Instruments</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/optional/mac">Enterprise</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/mac#enterprise">Enterprise</a></li>
         
       </ul>
       </li>
@@ -1419,6 +1449,16 @@
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#failed">Failed</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#initialized">Initialized</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/status-models#paid">Paid</a></li>
+        
+      </ul>
+      </li>
+<li class="nav-subgroup">
+        <div class="nav-subgroup-heading">
+          <i class="material-icons">arrow_right</i>
+          <a href="/checkout-v3/enterprise/features/technical-reference/transactions">Transactions</a>
+        </div>
+        <ul class="nav-ul">
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/transactions#transactions">Transactions</a></li>
         
       </ul>
       </li>
@@ -5297,7 +5337,6 @@
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#patching-the-payment-order">Patching the Payment Order</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
@@ -5581,7 +5620,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#22-june-2022">22 June 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#01-july-2022">01 July 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#22-june-2022">22 June 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-april-2022">04 April 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#24-february-2022">24 February 2022</a></li>
@@ -5972,6 +6012,8 @@ tokens.</p>
 126
 127
 128
+129
+130
 </pre></td>
 <td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
@@ -5991,11 +6033,13 @@ tokens.</p>
         </span><span class="nl">"generateUnscheduledToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Checkout3"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://example.net"</span><span class="w"> </span><span class="p">],</span><span class="w"> 
+            </span><span class="nl">"hostUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://example.net"</span><span class="w"> </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"paymentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/perform-payment"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Seamless</span><span class="w"> </span><span class="err">View</span><span class="w"> </span><span class="err">only</span><span class="w">
             </span><span class="nl">"completeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-completed"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"cancelUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/payment-cancelled"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"callbackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com/payment-callback"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"termsOfServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/termsandconditoons.pdf"</span><span class="w">
+            </span><span class="nl">"termsOfServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/termsandconditoons.pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/logo.png"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redirect</span><span class="w"> </span><span class="err">only</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"payeeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cabf558-5283-482f-b252-4d58e06f6f3b"</span><span class="p">,</span><span class="w">
@@ -6212,6 +6256,14 @@ tokens.</p>
       <td> </td>
     </tr>
     <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">paymentUrl</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See <a href="/checkout-v3/payments-only/features/technical-reference/payment-url"><code class="language-html highlighter-rouge">paymentUrl</code></a> for details.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code>
 </td>
@@ -6241,6 +6293,14 @@ tokens.</p>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
       <td style="text-align: left">The URL to the terms of service document which the payer must accept in    order to complete the payment. <strong>HTTPS is a requirement</strong>.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">logoUrl</code>
+</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">With permission and activation on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> will    replace the Swedbank Pay logo with the logo sent in. If you do not send in a    <code class="language-html highlighter-rouge">logoUrl</code>, then no logo and no text is shown. Without permission or activation    on your contract, sending in a <code class="language-html highlighter-rouge">logoUrl</code> has no effect. Read more about this in    <a href="/checkout-v3/payments-only/features/optional/custom-logo">Custom Logo</a>.</td>
       <td> </td>
     </tr>
     <tr>
@@ -6895,6 +6955,8 @@ tokens.</p>
 71
 72
 73
+74
+75
 </pre></td>
 <td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -6920,7 +6982,9 @@ tokens.</p>
           </span><span class="s2">"Swish"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"CreditAccount"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"Trustly"</span><span class="w"> </span><span class="p">],</span><span class="w"> 
-        </span><span class="nl">"implementation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PaymentsOnly"</span><span class="p">,</span><span class="w">     
+        </span><span class="nl">"implementation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PaymentsOnly"</span><span class="p">,</span><span class="w">   
+        </span><span class="nl">"integration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HostedView"</span><span class="p">,</span><span class="w"> </span><span class="err">//For</span><span class="w"> </span><span class="err">Seamless</span><span class="w"> </span><span class="err">View</span><span class="w"> </span><span class="err">integrations</span><span class="w">
+        </span><span class="nl">"integration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Redirect"</span><span class="p">,</span><span class="w"> </span><span class="err">//For</span><span class="w"> </span><span class="err">Redirect</span><span class="w"> </span><span class="err">integrations</span><span class="w">
         </span><span class="nl">"instrumentMode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"guestMode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
