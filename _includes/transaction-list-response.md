@@ -27,9 +27,9 @@ Content-Type: application/json
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
     "{{ plural }}": { {% if api_resource == "invoice" %}
         "receiptReference": "AH12355", {% endif %}
-        "id": "/psp/paymentorders/{{ page.payment_id }}/{{ plural }}",
+        "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment",
         "{{ transaction }}List": [{
-            "id": "/psp/paymentorders/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if api_resource == "swish" %}
+            "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",{% if api_resource == "swish" %}
             "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
             "swishStatus": "PAID",{% endif %}{% if transaction == "authorization" %}
             "consumer": {
@@ -131,62 +131,6 @@ Content-Type: application/json
 ```
 
 {% endif %}
-
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-    "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-    "{{ plural }}": { {% if api_resource == "invoice" %}
-        "receiptReference": "AH12355", {% endif %}
-        "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/{{ plural }}",
-        "{{ transaction }}List": [{
-            "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if api_resource == "swish" %}
-            "swishPaymentReference": "8D0A30A7804E40479F88FFBA26111F04",
-            "swishStatus": "PAID",{% endif %}{% if transaction == "authorization" %}
-            "consumer": {
-                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/consumer"
-                },
-                "legalAddress": {
-                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/legaladdress"
-                },
-                "billingAddress": {
-                    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/billingaddress"
-                },{% endif %}
-            "transaction": {
-                "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
-                "created": "2016-09-14T01:01:01.01Z",
-                "updated": "2016-09-14T01:01:01.03Z",
-                "type": "{{ transaction | capitalize }}",
-                "state": "Completed",
-                "number": 1234567890,
-                "amount": 1000,
-                "vatAmount": 250,
-                "description": "Test transaction",
-                "payeeReference": "AH123456",
-                "isOperational": false,
-                "operations": [{% if transaction == "authorization" %}
-                       {
-                            "method": "POST",
-                            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations",
-                            "rel": "create-authorization",
-                            "contentType": "application/json"
-                        },
-                        {
-                            "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-                            "rel": "edit-authorization",
-                            "method": "PATCH"
-                        }
-                {% endif %}]
-            }
-        }]
-    }
-}
-```
 
 {:.table .table-striped}
 | Field                             | Type      | Required                                                                                                                                                                                                     |

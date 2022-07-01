@@ -31,7 +31,7 @@ Content-Type: application/json
 {
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
     "{{ transaction }}": {
-        "id": "/psp/paymentorders/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if api_resource == "creditcard" %}
+        "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",{% if api_resource == "creditcard" %}
         "paymentToken": "{{ page.payment_token }}",
         "maskedPan": "123456xxxxxx1234",
         "expireDate": "mm/yyyy",
