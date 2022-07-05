@@ -78,6 +78,8 @@ Among the operations in the POST `paymentOrders` response, you will find the
 }
 ```
 
+## Load The Seamless View
+
 Embed the `href` in a `<script>` element. That script will then load the
 Seamless View.
 
@@ -137,6 +139,8 @@ request.send();
       </body>
   </html>
 ```
+
+## How It Looks
 
 The payment menu should appear with the payer information displayed above the
 menu. The payer can select their preferred payment instrument and pay.
