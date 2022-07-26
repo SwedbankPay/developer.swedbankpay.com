@@ -217,8 +217,9 @@ sequenceDiagram
 
 ## License
 
-This website is available as open source under the terms of the
-[MIT License][license].
+The code within this repository is available as open source under the terms of
+the [Apache 2.0 License][license] and the [contributor's license
+agreement][cla].
 
 [bundler]: https://bundler.io/
 [ccov]: http://contributor-covenant.org
@@ -246,7 +247,7 @@ This website is available as open source under the terms of the
 [jekyll]: https://jekyllrb.com/
 [last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/develop
 [license-badge]: https://img.shields.io/github/license/SwedbankPay/developer.swedbankpay.com
-[license]: https://opensource.org/licenses/MIT
+[license]: https://opensource.org/licenses/Apache-2.0
 [liquid-includes]: https://jekyllrb.com/docs/includes/
 [liquid]: https://jekyllrb.com/docs/liquid/
 [manual-install]: #manual-install
