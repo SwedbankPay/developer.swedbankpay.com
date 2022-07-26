@@ -693,8 +693,8 @@ name under your control – usually the host name of the Merchant Backend.
                          next_href="merchant-backend-sample-code"
                          next_title="Merchant Backend Sample Code" %}
 
-[swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
-[swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml
+[swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
+[swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /payment-menu/features/technical-reference/payment-url
 [create-payment-order]: /checkout-v3/payments-only/seamless-view#step-1-create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
