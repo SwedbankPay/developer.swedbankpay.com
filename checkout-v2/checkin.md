@@ -217,7 +217,7 @@ without storing details.
 {:.text-center}
 ![Consumer UI New Consumer Options][checkin-options]{:width="425" height="475"}
 
-If he or she chooses to store details, the next step is to enter their SSN.
+If they choose to store details, the next step is to enter their SSN.
 
 {:.text-center}
 ![Consumer UI SSN][checkin-ssn]{:width="425" height="250"}

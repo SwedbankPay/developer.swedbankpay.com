@@ -612,7 +612,7 @@ must be able to invoke the same JavaScript URL from the same Payment as the one
 that initiated the payment originally, so it should include some sort of state
 identifier in the URL. The state identifier is the ID of the order, shopping
 cart or similar that has the URL of the Payment stored. When the JavaScript is
-invoked after return of the payer, he or she will either be redirected to
+invoked after return of the payer, they will either be redirected to
 the `completeUrl` (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.
 
@@ -641,7 +641,7 @@ JavaScript URL from the same Payment or Payment Order as the one that initiated
 the payment originally, so it should include some sort of state identifier in
 the URL. The state identifier is the ID of the order, shopping cart or similar
 that has the URL of the Payment or Payment Order stored. When the JavaScript is
-invoked after return of the payer, he or she will either be redirected to the
+invoked after return of the payer, they will either be redirected to the
 `completeUrl`, or, if payment failed, see an error message and get the option
 to retry the payment.
 
