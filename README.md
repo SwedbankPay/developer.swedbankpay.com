@@ -3,7 +3,7 @@
 [![Swedbank Pay Developer Portal][opengraph-image]][dev-portal]
 
 [![Test][gh-actions-badge]][gh-actions]
-![Last Master Commit][last-commit-badge]
+![Last Develop Commit][last-commit-badge]
 
 This is the repository for [Swedbank Pay Developer Portal][swp-dp]. It is run as a
 [Jekyll][jekyll] website on [GitHub Pages][gh-pages].
@@ -234,7 +234,7 @@ This website is available as open source under the terms of the
 [github]: https://github.com/SwedbankPay/developer.swedbankpay.com/
 [graphviz]: https://graphviz.org/download/
 [jekyll]: https://jekyllrb.com/
-[last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
+[last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/develop
 [license]: https://opensource.org/licenses/MIT
 [liquid-includes]: https://jekyllrb.com/docs/includes/
 [liquid]: https://jekyllrb.com/docs/liquid/
