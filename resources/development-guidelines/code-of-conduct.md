@@ -4,6 +4,8 @@ estimated_read: 2
 menu_order: 1300
 ---
 
+<!--alex disable sexual attacks-->
+
 It is important that the projects governed by Swedbank Pay foster a
 collaborative, open, inclusive, positive and tolerant community. To underscore
 this, a `CODE_OF_CONDUCT.md` file from
@@ -15,6 +17,7 @@ As contributors and maintainers of this project, and in the interest of
 fostering an open and welcoming community, we pledge to respect all people who
 contribute through reporting issues, posting feature requests, updating
 documentation, submitting pull requests or patches, and other activities.
+
 
 We are committed to making participation in this project a harassment-free
 experience for everyone, regardless of level of experience, gender, gender
