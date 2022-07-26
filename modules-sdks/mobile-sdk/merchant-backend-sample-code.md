@@ -29,5 +29,5 @@ a good starting point toward integration with your business systems.
                          next_title="Android" %}
 
 [backend-samples]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant
-[node-sample]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/main/examples/node.js
-[java-sample]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/main/examples/java/merchant
+[node-sample]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/main/examples/node.js/README.md
+[java-sample]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/main/examples/java/merchant/README.md
