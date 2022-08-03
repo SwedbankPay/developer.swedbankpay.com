@@ -29,9 +29,9 @@ The following is a quick presentation of the purchase flow when using the
 Redirect or Seamless view. You can find in-depth descriptions of the separate
 flows in the corresponding sections.
 
-In the desktop intended e-commerce flow, the payer enters a Swish connected mobile
-phone number on Swedbank Pay's payment page (Redirect) or in the `iframe` (Seamless
-View) after the payment is created.
+In the desktop intended e-commerce flow, the payer enters a Swish connected
+mobile phone number on Swedbank Pay's payment page (Redirect) or in the `iframe`
+(Seamless View) after the payment is created.
 
 {:.text-center}
 ![screenshot of the Swish redirect payment page with number input][swish-payment]{:height="400px" width="475px"}
@@ -48,7 +48,7 @@ The Swish app will be launched automatically when you push the pay button.
 
 {% include intent.md sale=true show_authorization=false %}
 
-### Payment Type
+## Payment Type
 
 Swish is one of the instruments using one-phase payments. The `sale` is done
 when the payer successfully confirms in the app, capturing the funds
@@ -57,7 +57,7 @@ instantly. The `abort` operation is still available, but the `cancel` and
 merchant at a later time. Read more about the [different
 operations][after-payment] and the [payment resource][payment-resource].
 
-### Certificate
+## Certificate
 
 We recommend that you apply for Swish as part of our Settlement Service and
 utilize our Technical Supplier Certificate. A Swedbank Pay sales representative
@@ -75,7 +75,7 @@ alias and access to Swish Certificate Management system (several banks do
 however support Technical Supplier Certificate setups so you can ask them for
 that).
 
-### Demoshop
+## Demoshop
 
 You can give Swish a go in our demoshop if you like. For Redirect payments, you
 need to toggle `paymentUrl` off, if you want to try Seamless View, `paymentUrl`

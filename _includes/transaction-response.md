@@ -21,6 +21,8 @@ The created `{{ transaction }}` resource contains information about the
 
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
+## Capture Response
+
 {:.code-view-header}
 **Response**
 
@@ -87,6 +89,8 @@ Content-Type: application/json
 ```
 
 {% else %}
+
+## Capture Response
 
 {:.code-view-header}
 **Response**

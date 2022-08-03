@@ -23,8 +23,6 @@ also be able to see the available `operations` after posting a payment.
 
 ## Reversals
 
-### Create Reversal Transaction
-
 The `create-reversal` operation will reverse a payment and
 refund the amount to the payer. To reverse a payment, perform the
 `create-reversal` operation. The HTTP body of the request should look as
@@ -77,7 +75,7 @@ The `reversals` resource will list the reversal transactions
 successful `sale` operation.
 
 {:.code-view-header}
-***Request***
+**Request**
 
 ```http
 GET /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
@@ -88,7 +86,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="reversal" %}
 
-## Reversal Sequence
+## Reversal Sequence Diagram
 
 `Reversal` can only be done on completed Sales transactions.
 

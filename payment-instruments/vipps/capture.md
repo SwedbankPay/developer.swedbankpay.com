@@ -9,9 +9,9 @@ menu_order: 1100
 
 {% include vipps-payments-capture.md %}
 
-**Et voilà!** The payment should now be complete, secure and
-everyone should be happy. But, sometimes you also need to implement the
-cancellation and reversal operations described in After Payment.
+**Et voilà!** The payment should now be complete, secure and everyone should be
+happy. But, sometimes you also need to implement the cancellation and reversal
+operations described in After Payment.
 
 {% include authorizations-timeout.md %}
 

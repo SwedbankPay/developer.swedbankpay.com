@@ -31,11 +31,13 @@ transactions not involving `capture` or `cancellation` operations." %}
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 A `Purchase` payment is created by performing the following request.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Initial Direct Request
 
 {:.code-view-header}
 **Request**
@@ -130,6 +132,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
+## Initial Direct Response
+
 {:.code-view-header}
 **Response**
 
@@ -184,6 +188,8 @@ scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the payer to the hosted payment pages. Note that the `msisdn`
 value (the payer's mobile number) is required in this request.
 
+## E-Commerce Request
+
 {:.code-view-header}
 **Request**
 
@@ -206,9 +212,11 @@ Content-Type: application/json
 | `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | └➔&nbsp;`msisdn` | `string` | The payer's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
 
+## E-Commerce Response
+
 {% include transaction-response.md transaction="sale" %}
 
-## E-Commerce Purchase Flow
+## E-Commerce Sequence Diagram
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
@@ -258,6 +266,8 @@ by directing the payer to the hosted payment pages. Note that the `msisdn`
 value (the payer's mobile number) is left out in this request. The
 `redirect-app-swish` operation is only present in the m-commerce flow response.
 
+## M-Commerce Request
+
 {:.code-view-header}
 **Request**
 
@@ -277,9 +287,11 @@ Content-Type: application/json
 | :------------ | :------- | :------------------------------------------------------------------- |
 | `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 
+## M-Commerce Response
+
 {% include transaction-response.md transaction="sale" mcom=true %}
 
-## Step 3: Get the payment status
+## Step 3: GET The Payment Status
 
 {:.code-view-header}
 **Request**
@@ -290,6 +302,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Payment Response
 
 {:.code-view-header}
 **Response**
@@ -380,7 +394,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## M-Commerce Purchase Flow
+## M-Commerce Sequence Diagram
 
 The sequence diagram below shows the three requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example

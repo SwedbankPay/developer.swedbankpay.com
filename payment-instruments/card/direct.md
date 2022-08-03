@@ -28,30 +28,30 @@ body="The direct integration option requires you to collect the card data on
 your website, which means it must be [PCI-DSS Compliant](
 https://www.pcisecuritystandards.org/)." %}
 
-## Payment flow
+## Purchase Flow
 
 Below is a quick stepwise summary of how the Direct Card Payment scenario works.
 
 *   The payer places an order and you make a `Purchase` request towards Swedbank
   Pay with the gathered payment information.
-*   The action taken next is the `direct-authorization` operation that is returned
-  in the first request. You `POST` the payer's card data to the URL in the
-  [`direct-authorization`][authorization] operation.
+*   The action taken next is the `direct-authorization` operation that is
+  returned in the first request. You `POST` the payer's card data to the URL in
+  the [`direct-authorization`][authorization] operation.
 *   If the issuer requires 3-D Secure authentication, you will then receive an
     operation called `redirect-authentication`. You must redirect the payer to
     this URL to let them authenticate against the issuer's 3-D Secure page.
-    *   When the 3-D Secure flow is completed, the payer will be redirected back to
-        the URL provided in `completeUrl` or `cancelUrl`, depending on the actions
-        performed by the payer.
-    *   If the issuer does not require 3-D Secure authentication, the payment will
-      already be `Completed` after performing the `direct-authorization`
+    *   When the 3-D Secure flow is completed, the payer will be redirected back
+        to the URL provided in `completeUrl` or `cancelUrl`, depending on the
+        actions performed by the payer.
+    *   If the issuer does not require 3-D Secure authentication, the payment
+      will already be `Completed` after performing the `direct-authorization`
       request. Note that `Completed` just indicates that the payment is in a
       final state; the financial transaction could be either OK or failed.
 *   Finally you make a `GET` request towards Swedbank Pay with the `id` of the
   payment created in the first step, which will return the result of the
   authorization.
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
@@ -75,10 +75,12 @@ are the same for both steps. The difference is in the operations, where Step 2a
 has the `redirect-authentication` operation in its response. This is needed for
 the payer to be redirected to complete the 3-D Secure authentication." %}
 
-## Step 2a: Create authorization without 3-D Secure authentication
+## Step 2a: Create Authorization Without 3-D Secure Authentication
 
 The `direct-authorization` operation creates an authorization transaction
 directly.
+
+## Direct Non 3-D Secure Request
 
 {:.code-view-header}
 **Request**
@@ -110,6 +112,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
+
+## Direct Non 3-D Secure Response
 
 {:.code-view-header}
 **Response**
@@ -201,13 +205,15 @@ not successful." body="Note that `Completed` does not indicate a successful
 payment, only that it has reached a final (complete) state. A `GET` request
 needs to be performed on the payment to inspect it further." %}
 
-## Step 2b: Create authorization with 3-D Secure authentication
+## Step 2b: Create Authorization With 3-D Secure Authentication
 
 If the issuer requires 3-D Secure authentication, the response from the
 authorization request will contain a `redirect-authentication` operation and the
 `state` of the `transaction` will be `AwaitingActivity`. This means that the
 payer will have to be redirected to the issuer to complete the 3-D Secure
 authentication. See the request and response examples below.
+
+## Direct 3-D Secure Request
 
 {:.code-view-header}
 **Request**
@@ -239,6 +245,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.                |
+
+## Direct 3-D Secure Response
 
 {:.code-view-header}
 **Response**
@@ -316,6 +324,8 @@ Content-Type: application/json
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
 
+## Complete The 3-D Secure Authentication
+
 When you find the `redirect-authentication` operation in the response from the
 authorization request, you will have to perform an HTTP redirect of the payer to
 the URL of the `href` to complete the authorization by performing a 3-D Secure
@@ -324,6 +334,8 @@ authentication with the issuer.
 When the 3-D Secure flow is completed, the payer will be redirected back to the
 URL provided in `completeUrl` or `cancelUrl`, depending on the actions performed
 by the payer.
+
+## Sequence Diagram
 
 The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay.
