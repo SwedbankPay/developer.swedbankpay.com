@@ -9,7 +9,7 @@
 
 This transaction is used when a captured payment needs to be reversed.
 
-### Create reversal transaction
+## Create Reversal Transaction
 
 If we want to reverse a previously captured amount, we need to perform
 `reversal` against the accompanying `href` returned in the
@@ -22,6 +22,8 @@ If we want to reverse a previously captured amount, we need to perform
 `operations` list.
 
 {% endif %}
+
+## Reversal Request
 
 {:.code-view-header}
 **Request**
@@ -100,6 +102,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 SEK` and `5000` equals `50.00 SEK`.                                                                                        |
+
+## Reversal Response
 
 If the reversal request succeeds, the response should be similar to the example below:
 

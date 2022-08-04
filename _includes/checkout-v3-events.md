@@ -19,7 +19,7 @@ to be undefined. Just adding an event handler for logging purposes is therefore
 not possible, the event handler will have to perform some functionality similar
 to the event handler you are overriding." %}
 
-### `onAborted`
+## `onAborted`
 
 This event triggers when the payer aborts the purchase from the payment menu. As
 the Seamless View payment menu doesn't have a cancel button (present in the
@@ -50,7 +50,7 @@ It will be raised with the following event argument object:
 | `paymentOrder`          | `string` | {% include field-description-id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
-### `onCheckoutLoaded`
+## `onCheckoutLoaded`
 
 This event triggers when the payment menu is rendered after being opened.
 
@@ -78,7 +78,7 @@ with the following event argument object:
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
-### `onCheckoutResized`
+## `onCheckoutResized`
 
 This event triggers every time a reconfiguration leads to resizing of the
 payment menu.
@@ -109,7 +109,7 @@ will be raised with the following event argument object:
 | `paymentOrder`     | `string` | {% include field-description-id.md %}                           |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
-### `onError`
+## `onError`
 
 This event triggers during terminal errors or if the configuration fails
 validation.
@@ -138,7 +138,7 @@ will be raised with the following event argument object:
 | `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.                    |
 
-### `onEventNotification`
+## `onEventNotification`
 
 This event triggers whenever any other public event is called. It does not
 prevent their handling.
@@ -168,7 +168,7 @@ payment flow at Swedbank Pay.
 | `paymentOrder`        | `string` | {% include field-description-id.md %}              |
 | `sourceEvent` | `string` | A human readable and descriptive text with the event name. |
 
-### `onInstrumentSelected`
+## `onInstrumentSelected`
 
 This event triggers when a user actively changes payment instrument in the
 Payment Menu.
@@ -198,7 +198,7 @@ will be raised with the following event argument object:
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
 
-### `onOutOfViewOpen`
+## `onOutOfViewOpen`
 
 This event triggers when another tab is opened in the browser, like the
 information page for onboarding of stored cards, or Swedbank Pay's owner TOS. It
@@ -230,7 +230,7 @@ new tab. It will be raised with the following event argument object:
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `openUrl`    | `string` | The external URL where the user will be redirected.                   |
 
-### `onOutOfViewRedirect`
+## `onOutOfViewRedirect`
 
 This event triggers when a user is redirected to a separate web page, like
 3D-Secure or BankID signing.
@@ -259,7 +259,7 @@ will be raised with the following event argument object:
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
-### `onPaid`
+## `onPaid`
 
 This event triggers when the payer successfully completes or cancels the
 payment.
@@ -291,7 +291,7 @@ It will be raised with the following event argument object:
 
 {% if documentation_section contains "checkout-v3/starter" %}
 
-### `onPayerIdentified`
+## `onPayerIdentified`
 
 This event triggers when a payer has been identified. This event is required for
 **Starter** to work, and there are two scenarios where it will occur.
@@ -342,7 +342,7 @@ following event argument object:
 | `paymentOrder` | `string` | {% include field-description-id.md %}                               |
 | `payer`        | `string` | The `url` of the resource containing information about the payer.   |
 
-### `onPayerUnidentified`
+## `onPayerUnidentified`
 
 This event triggers when a payer clicks "Not you" when identified with Remember
 Me, and it is required for **Starter** to work.
@@ -375,7 +375,7 @@ It will be raised with the following event argument object:
 
 {% endif %}
 
-### `onTermsOfServiceRequested`
+## `onTermsOfServiceRequested`
 
 This event triggers when the user clicks on the "Display terms and conditions"
 link.

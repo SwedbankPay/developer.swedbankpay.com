@@ -41,7 +41,7 @@ to enable one-click purchases.
 
 {% endif %}
 
-### API Requests To Generate paymentToken
+### API Requests To Generate The Payment Token
 
 When making the initial purchase request, you need to generate a `paymentToken`.
 You can do this by setting the `generatePaymentToken` field in the request's
@@ -60,7 +60,7 @@ setting the initial operation to [`Verify`][verify].
 }
 ```
 
-### Finding paymentToken value
+### Finding The `paymentToken` Value
 
 When the initial purchase is successful, a `paymentToken` is linked to
 the payment.  You can return the value by sending a `GET` request towards the
@@ -110,6 +110,8 @@ and [invoice][create-invoice-payment] payment.
 
 {% endunless%}
 
+## One-Click Request
+
 Abbreviated code example:
 
 {:.code-view-header}
@@ -148,10 +150,12 @@ Content-Type: application/json
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 
+## How It Looks
+
 {:.text-center}
 ![One click payment page][one-click-image]{:height="510px" width="475px"}
 
-### Delete payment token
+### Delete Payment Token
 
 If you need to delete a `paymentToken`, you have two options. The first is by
 `payerReference`, which deletes all payment, recurrence and/or unscheduled
@@ -170,6 +174,8 @@ deletes a specific token.
   [ehandelsetup@swedbankpay.no](mailto:ehandelsetup@swedbankpay.no) or
   [ehandelsetup@swedbankpay.se](mailto:ehandelsetup@swedbankpay.se);
   and supply them with the relevant transaction reference or payment token." %}
+
+## Delete Payment Token Request
 
 If you want to delete tokens by `payerReference`, the request and response
 should look like this:
@@ -193,6 +199,8 @@ Content-Type: application/json
 TODO: Remove pipes from the above code example and add a field table
       explaining each field here.
 {% endcomment %}
+
+## Delete Payment Token Response
 
 {:.code-view-header}
 **Response**
@@ -240,6 +248,8 @@ For single token deletions, the request and response should look like this. In
 this example, the token is connected to a card. If it was a token connected to
 an invoice, the `instrumentDisplayName` would be the payer's date of birth.
 
+## Delete Single Token Request
+
 {:.code-view-header}
 **Request**
 
@@ -254,6 +264,8 @@ Content-Type: application/json
   "comment": "Comment stating why this is being deleted"
 }
 ```
+
+## Delete Single Token Response
 
 {:.code-view-header}
 **Response**
@@ -278,6 +290,8 @@ Content-Type: application/json
 For single token deletions, the request and response should look like this. In
 this example, the token is a payment token and is connected to a card.
 
+## Delete Single Token Request
+
 {:.code-view-header}
 **Request**
 
@@ -296,6 +310,8 @@ Content-Type: application/json
 }
 }
 ```
+
+## Delete Single Token Response
 
 {:.code-view-header}
 **Response**

@@ -3,7 +3,7 @@
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-### Create Cancellation Transaction
+## Create Cancel Transaction
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -52,7 +52,7 @@ Content-Type: application/json
 {% include transaction-response.md api_resource=include.api_resource
 documentation_section=include.documentation_section transaction="cancel" %}
 
-### Cancel Sequence
+### Cancel Sequence Diagram
 
 Cancel can only be done on a authorized transaction.
 If you do cancel after doing a part-capture you will cancel the different

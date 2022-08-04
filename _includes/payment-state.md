@@ -18,7 +18,7 @@ The `state` field on the `{{ transaction }}` does not indicate whether a given
 resource itself is operational or not. To figure out the `state` of i.e. {{
 transaction }} `transactions`, you have two options:
 
-### Paid or Failed Operations
+### Paid Or Failed Operations
 
 You can perform a `GET` request on the {{ transaction }}. As long as the
 {{ transaction }} has been completed, successful or not, you will find the
@@ -29,7 +29,7 @@ but the payer still has attempts left to complete the {{ transaction }}, you
 won't see the `Failed` operation. It will only appear when all attempts have
 been made.
 
-### Authorization or Sale Transactions
+### Authorization Or Sale Transactions
 
 Find the {{ transaction }}’s list of `transactions` either by expanding it when
 retrieving the {{ transaction }}, or by performing a `GET` request towards the

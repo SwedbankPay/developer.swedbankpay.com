@@ -15,6 +15,8 @@
 The `payeeinfo` resource contains information about the payee (i.e. a merchant,
 a corporation etc) related to a specific payment.
 
+## GET Request
+
 {:.code-view-header}
 **Request**
 
@@ -24,6 +26,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Response
 
 {:.code-view-header}
 **Response**

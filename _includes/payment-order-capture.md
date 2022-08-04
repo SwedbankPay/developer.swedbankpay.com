@@ -26,6 +26,8 @@ First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
 and get the status back.
 
+## Capture Sequence Diagram
+
 {% if documentation_section contains "checkout-v2" %}
 
 ```mermaid
@@ -59,6 +61,8 @@ sequenceDiagram
         note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
     end
 ```
+
+## Capture Request
 
 {% endif %}
 
@@ -168,6 +172,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
+
+## Capture Response
 
 If the capture succeeds, this should be the response:
 

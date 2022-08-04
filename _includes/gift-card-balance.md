@@ -1,5 +1,7 @@
 ## Balance
 
+## Request
+
 {:.code-view-header}
 **Request**
 
@@ -33,6 +35,8 @@ Content-Type: application/json
 |                  | `expiryDate`        | `string` | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY |
 |                  | `securityCode`      | `string` | Card Security Code.                                                                                                             |
 |                  | `track2`            | `string` | Track 2 excluding start and end sentinel.                                                                                       |
+
+## Response
 
 {:.code-view-header}
 **Response:**

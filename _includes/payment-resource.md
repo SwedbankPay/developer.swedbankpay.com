@@ -21,6 +21,8 @@ that target the payment resource directly produce a response similar to the
 example seen below. The response given contains all operations that are
 possible to perform in the current state of the payment.
 
+## GET Payment Request
+
 {:.code-view-header}
 **Request**
 
@@ -30,6 +32,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Payment Response
 
 {:.code-view-header}
 **Response**
@@ -137,7 +141,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-### Operations
+## Operations
 
 The operations should be performed as described in each response and not as
 described here in the documentation.

@@ -4,7 +4,7 @@
 enables you to deposit winnings directly to the winner's card. This without
 having to collect card details a second time." %}
 
-### Introduction
+## Introduction
 
 *   The only acquirer for this service is Swedbank. You require a separate
     Swedbank acquiring number to ensure that payout transactions and regular
@@ -15,11 +15,13 @@ having to collect card details a second time." %}
     (Merchant Category Code 7995).
 *   The payout service is not a part of Swedbank Pay Settlement Service.
 
-### API requests
+## API Requests
 
 The API requests are displayed in the [payout flow](#payout-flow).  You create
 a payout by performing a `POST` creditcard payments with key `operation` set to
 `payout`.
+
+## Payout Request
 
 {:.code-view-header}
 **Request**
@@ -55,6 +57,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Payout Response
 
 {:.code-view-header}
 **Response**
@@ -94,7 +98,7 @@ Content-Type: application/json
 }
 ```
 
-### Payout flow
+### Payout Flow
 
 You must set `Operation` to `Payout` in the initial `POST` request.
 

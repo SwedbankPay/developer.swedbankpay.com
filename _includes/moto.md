@@ -24,6 +24,8 @@ representative to make a booking. This feature is only supported with the
 `Purchase` operation. See the abbreviated example below on how to implement MOTO
 by setting the `generateMotoPayment` to `true`.
 
+## MOTO Request
+
 {:.code-view-header}
 **Request**
 
@@ -70,6 +72,8 @@ To authorize the payment, find the operation with `rel` equal to
 `redirect-{{ api_redirect_rel }}` in the response, and redirect the merchant
 employee to the provided `href` to fill out the payer’s card details. You will
 find an abbreviated example of the response provided below.
+
+## MOTO Response
 
 {:.code-view-header}
 **Response**

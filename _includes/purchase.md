@@ -9,7 +9,7 @@ It is followed up by posting a `capture`, `cancellation` or `reversal`
 transaction. An example of a request is provided below. Each individual field of
 the JSON document is described in the following section.
 
-### Purchase Operation
+## Purchase Operation
 
 {% if seamless_view %}
 
@@ -36,7 +36,7 @@ payment altogether or creating an authorization transaction through the
 }
 ```
 
-## Purchase Payment
+## Purchase Request
 
 {:.code-view-header}
 **Request**
@@ -240,6 +240,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`no3DSecure`                      | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                            |
 |                  | └➔&nbsp;`noCvc`                           | `boolean`     | `true` if the CVC field should be disabled for this payment in case a stored card is used; otherwise `false` per default. This feature is commonly used when {%- if include.documentation_section == 'card' -%} [One-Click Payments][one-click-payments]{% else %} One-Click Payments{% endif %} is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                          |
 {% endif %}
+
+## Purchase Response
 
 {:.code-view-header}
 **Response**

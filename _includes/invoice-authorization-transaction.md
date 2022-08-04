@@ -66,6 +66,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
 
+## Invoice Authorization Response
+
 {:.code-view-header}
 **Response**
 
