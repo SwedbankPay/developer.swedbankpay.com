@@ -6,7 +6,7 @@ description: |
   Swish is a one-phase payment instrument supported by the major Swedish banks.
   In the Direct scenario, Swedbank Pay receives the Swish registered mobile
   number directly from the merchant UI. Swedbank Pay performs a payment that
-  the payer confirms using her Swish mobile app.
+  the payer confirms using their Swish mobile app.
 menu_order: 900
 ---
 
@@ -109,7 +109,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
+| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |
