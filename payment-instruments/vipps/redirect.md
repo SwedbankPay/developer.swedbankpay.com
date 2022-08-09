@@ -89,7 +89,7 @@ Content-Type: application/json
 }
 ```
 
-## Redirect Request
+## Redirect Response
 
 {:.code-view-header}
 **Response**

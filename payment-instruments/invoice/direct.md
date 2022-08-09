@@ -242,6 +242,8 @@ Content-Type: application/json
 
 ## Step 2: Get `approvedLegalAddress` Confirmation
 
+Retrieve the payer's legal address, which is needed to do the next step.
+
 ## Approved Legal Address Request
 
 {:.code-view-header}
@@ -284,6 +286,8 @@ Content-Type: application/json
 ```
 
 ## Step 3: Complete The Payment
+
+Add the legal address in your complete request.
 
 ## Complete Request
 

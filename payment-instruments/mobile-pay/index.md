@@ -16,7 +16,7 @@ operating in these Nordic countries. More than 4.2 million Danes and Finns use
 the app and 140,000 stores are accepting payments. We offer it on
 our redirect and seamless view platforms.
 
-## Purchase Flow
+## How It Looks
 
 When the payment is created, the payer is redirected to a Swedbank Pay landing
 page where he or she can proceed with the payment by pressing the pay button.
@@ -33,8 +33,6 @@ entered, and a push message is sent to the phone.
 A countdown is shown in the browser and the payment request will appear in the
 app, waiting to be confirmed by the payer. If you are using the redirect
 option, the payer will be redirected back to the merchant's site.
-
-## Good To Know
 
 ## Intent
 
