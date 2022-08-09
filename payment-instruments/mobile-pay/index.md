@@ -19,7 +19,7 @@ our redirect and seamless view platforms.
 ## How It Looks
 
 When the payment is created, the payer is redirected to a Swedbank Pay landing
-page where he or she can proceed with the payment by pressing the pay button.
+page where they can proceed with the payment by pressing the pay button.
 
 {:.text-center}
 ![screenshot of the Swedbank Pay landing page][swedbankpay-landing-page]{:height="425px" width="475px"}

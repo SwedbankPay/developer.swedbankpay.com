@@ -4,6 +4,8 @@ estimated_read: 2
 menu_order: 1300
 ---
 
+<!--alex disable sexual attacks-->
+
 It is important that the projects governed by Swedbank Pay foster a
 collaborative, open, inclusive, positive and tolerant community. To underscore
 this, a `CODE_OF_CONDUCT.md` file from

@@ -806,8 +806,8 @@ Your implementation is encouraged to define its own problem types for any domain
                          next_href="merchant-backend-sample-code"
                          next_title="Merchant Backend Sample Code" %}
 
-[swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/master/documentation/swedbankpaysdk_openapi.yaml
-[swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/master/documentation/swedbankpaysdk_openapi.yaml
+[swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
+[swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /payment-menu/features/technical-reference/payment-url
 [initiate-consumer-session]: /checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [create-payment-order]: /checkout-v2/payment-menu#step-3-create-payment-order

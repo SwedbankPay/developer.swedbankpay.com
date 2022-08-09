@@ -19,7 +19,7 @@ menu_order: 600
 *   You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
     environment, in response.
 *   You need to redirect the browser of the payer to that URL so
-    that he or she may enter their MobilePay details.
+    that they may enter their MobilePay details.
 *   When the payment is completed, Swedbank Pay will redirect the browser back
     to your merchant/webshop site.
 *   Finally you need to make a `GET` request towards Swedbank Pay with the
