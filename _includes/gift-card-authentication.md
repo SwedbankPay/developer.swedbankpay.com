@@ -1,5 +1,7 @@
 ## Authentication
 
+An example request and response of a gift card authentication.
+
 ## Request
 
 {:.code-view-header}

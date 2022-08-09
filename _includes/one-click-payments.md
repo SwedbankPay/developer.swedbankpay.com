@@ -248,7 +248,7 @@ For single token deletions, the request and response should look like this. In
 this example, the token is connected to a card. If it was a token connected to
 an invoice, the `instrumentDisplayName` would be the payer's date of birth.
 
-## Delete Single Token Request
+## Delete Single Token Request For Checkout Integrations
 
 {:.code-view-header}
 **Request**
@@ -265,7 +265,7 @@ Content-Type: application/json
 }
 ```
 
-## Delete Single Token Response
+## Delete Single Token Response For Checkout Integrations
 
 {:.code-view-header}
 **Response**

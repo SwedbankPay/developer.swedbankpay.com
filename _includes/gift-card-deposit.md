@@ -1,5 +1,7 @@
 ## Deposit
 
+An example request and response of a gift card deposit.
+
 ## Request
 
 {:.code-view-header}

@@ -1,5 +1,7 @@
 ## Purchase
 
+An example request and response of a gift card purchase.
+
 ## Request
 
 {:.code-view-header}

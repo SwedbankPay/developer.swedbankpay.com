@@ -1,5 +1,7 @@
 ## Balance
 
+An example request and response of a gift card balance check.
+
 ## Request
 
 {:.code-view-header}
