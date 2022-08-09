@@ -671,8 +671,6 @@ convention for reporting errors from your backend. At the moment of writing, the
 Android SDK also contains a [utility][dokka-problem] for parsing RFC 7807
 messages to help with this.
 
-## Other Features
-
 ## iOS Payment Menu Redirect Handling
 
 In many cases the payment menu will need to navigate to a different web page as

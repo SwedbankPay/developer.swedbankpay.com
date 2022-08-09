@@ -406,8 +406,6 @@ a specific `package`.
 
 ## iOS Payment Url Helper
 
-## Background
-
 The iOS payment url helper endpoint is more involved than the Android one. While
 a similar mechanism could be used with [custom url schemes][ios-custom-scheme],
 doing so will not provide optimal user experience: custom schemes will show a

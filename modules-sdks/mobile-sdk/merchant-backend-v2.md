@@ -521,8 +521,6 @@ a specific `package`.
 
 ## iOS Payment Url Helper
 
-## Background
-
 The iOS payment url helper endpoint is more involved than the Android one. While
 a similar mechanism could be used with [custom url schemes][ios-custom-scheme],
 doing so will not provide optimal user experience: custom schemes will show a
@@ -574,7 +572,7 @@ page with a link back to the payment url can be on a generic server hosted by
 Swedbank Pay. \[Development note: the Swedbank Pay server for this purpose is
 not yet available in the production environment.\]
 
-# iOS Payment Url System
+## iOS Payment Url System
 
 The iOS payment url helper endpoint expects the following query parameters:
 
