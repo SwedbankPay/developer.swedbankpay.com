@@ -28,7 +28,7 @@ Swedbank Pay API, which is the same one used in Checkout. Additionally, two
 "helper" endpoints are specified, which facilitate the proper routing of the
 [Payment Url][payment-url] back to the originating app.
 
-## Authentication and Authorization
+## Authentication And Authorization
 
 You should have some authorization and authentication measures in place to
 prevent misuse of your Merchant Backend API. The sample implementations have a
@@ -190,7 +190,7 @@ calling app.
 If instrument mode is used, an you wish to be able to change the instrument, you
 can provide the list of valid instruments.
 
-## Patching the Payment Order
+## Patching The Payment Order
 
 To modify the payment order you perform a `patch` `operation`. If instrument
 mode is used, you change the instrument by patching the payment with the
@@ -325,7 +325,7 @@ the helper endpoint url. These payment urls only have meaning on the generating
 device, in the generating app. Opening them on another device will be unable to
 navigate the user to the originating payment menu.
 
-### Android Payment Url Helper
+## Android Payment Url Helper
 
 The Android payment url helper endpoint expects a query parameter named
 `package`: the package name of the Android application to redirect to. It has no
@@ -404,9 +404,7 @@ different devices to use the same payment url to refer to different payments.
 Your implementation may restrict the requests it serves; e.g. you may only allow
 a specific `package`.
 
-### iOS Payment Url Helper
-
-#### Background
+## iOS Payment Url Helper
 
 The iOS payment url helper endpoint is more involved than the Android one. While
 a similar mechanism could be used with [custom url schemes][ios-custom-scheme],
@@ -459,7 +457,7 @@ page with a link back to the payment url can be on a generic server hosted by
 Swedbank Pay. \[Development note: the Swedbank Pay server for this purpose is
 not yet available in the production environment.\]
 
-#### iOS Payment Url System
+## iOS Payment Url System
 
 The iOS payment url helper endpoint expects the following query parameters:
 
@@ -618,7 +616,7 @@ registered to the application.
 *   ① 302 Found is perhaps a more appropriate status. This may be changed in the
     future, after testing that the routing works correctly with that status.
 
-#### Apple App Site Association
+## Apple App Site Association
 
 The iOS payment url helper endpoint must be configured as a universal link to
 the application for it to work correctly. Doing this requires an [Apple app site
@@ -666,7 +664,7 @@ If there are any errors in servicing a request, they should be reported using
 API response contains a problem, that problem should be forwarded to the client
 making the original request.
 
-### Merchant Backend Problems
+## Merchant Backend Problems
 
 The following problem types are defined for Merchant Backend specific errors.
 The mobile SDK components contain data types for easy processing of these error

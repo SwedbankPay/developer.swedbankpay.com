@@ -1,4 +1,4 @@
-## Payment tokens for unscheduled or recurring purchases
+## Payment Tokens For Unscheduled Or Recurring Purchases
 
 A common practice is to store a credit-card for later use, e.g. for
 subscriptions, and charge every month. To make this safe & secure you let
