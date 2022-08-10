@@ -32,7 +32,7 @@ containing the following information:
 
 **Merchant name:** This represents your core business entity with us.
 
-**Payer ID:** This is how we identify you.
+**Payee ID:** This is how we identify you.
 
 **Services:** The payment options which are activated and ready for testing.
 
