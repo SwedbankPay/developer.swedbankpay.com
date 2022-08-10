@@ -76,6 +76,8 @@ payment menu.
 }
 ```
 
+## How It Looks
+
 The redirect link opens the payment menu in checkin state. The first page will
 be the checkin page where the payer provides their email and phone number.
 

@@ -82,6 +82,8 @@ module.
 }
 ```
 
+## Load The Seamless View
+
 Embed the `href` in a `<script>` element. That script will then load the
 Seamless View.
 
@@ -189,6 +191,8 @@ window.payex.hostedView.checkout({
         </body>
     </html>
 ```
+
+## How It Looks
 
 First you will see a Checkin module where the payer can enter their email and
 phone number.
