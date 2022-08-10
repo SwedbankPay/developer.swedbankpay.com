@@ -27,7 +27,7 @@ who currently have a contract with this integration." %}
   `paymentID` generated in the first step, to receive the state of the
   transaction.
 
-## Step 1: Create a payment
+## Step 1: Create The Payment
 
 *   An invoice payment is always two-phased based - you create an
   `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
@@ -42,13 +42,15 @@ Our `payment` example below uses the [`FinancingConsumer`]
 operation equal to `FinancingConsumer`, are described in
 [features][financing-consumer].
 
+## How It Looks
+
 {:.text-center}
 ![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
 {:.text-center}
 ![screenshot of the second Invoice redirect page][fincon-invoice-approve]{:height="500px" width="475px"}
 
-### Financing Consumer
+### Financing Consumer Request
 
 {:.code-view-header}
 **Request**
@@ -129,6 +131,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                                           |
 |                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
+
+## Financing Consumer Response
 
 {:.code-view-header}
 **Response**
@@ -212,7 +216,7 @@ Content-Type: application/json
 }
 ```
 
-## Invoice flow
+## Invoice Flow
 
 The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase.

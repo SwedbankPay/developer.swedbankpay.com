@@ -21,7 +21,7 @@ menu_order: 900
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-### Create Cancellation Transaction
+## Create Cancel Transaction
 
 Perform the `create-cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.
@@ -56,7 +56,7 @@ Content-Type: application/json
 
 {% include transaction-response.md transaction="cancel" %}
 
-## Cancel Sequence
+## Cancel Sequence Diagram
 
 Cancel can only be done on a authorized transaction.
 If you do cancel after doing a part-capture you will cancel the different

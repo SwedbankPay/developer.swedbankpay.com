@@ -168,7 +168,7 @@ from Swedbank Pay.
 The `Reversals` resource list the reversals transactions (one or more) on a
 specific payment.
 
-## Reversal Sequence
+## Reversal Sequence Diagram
 
 A reversal transcation need to match the Payee reference of a completed
 sales transaction.

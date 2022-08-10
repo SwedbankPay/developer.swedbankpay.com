@@ -13,7 +13,7 @@ menu_order: 1000
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a `POST` request towards Swedbank Pay with
@@ -27,6 +27,8 @@ will receive a response in which you can find the **JavaScript source** in the
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Seamless View Request
 
 {:.code-view-header}
 **Request**
@@ -116,6 +118,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
 
+## Seamless View Response
+
 {:.code-view-header}
 **Response**
 
@@ -177,7 +181,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the payment window
+## Step 2: Display The Payment Window
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the required information in a secure
@@ -214,6 +218,8 @@ The previous two steps gives this HTML:
 </html>
 ```
 
+## Load The Seamless View
+
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
@@ -235,7 +241,7 @@ This is what the result should look like:
 {:.text-center}
 ![Vipps seamless view][vipps-screenshot-1]{:width="475px" :height="150px"}
 
-## Vipps Seamless View integration flow
+## Vipps Seamless View Sequence Diagram
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.
