@@ -159,11 +159,13 @@ handle the communication in any way you see fit. The important part is that your
 backend must then communicate with the Swedbank Pay API using your secret token,
 and perform the requested operation.
 
-### POST consumers
+## POST Consumers
 
 The "POST consumers" operation is simple, you must make a request to `POST
 /psp/consumers` with a payload of your choosing, and you must get the
 `view-consumer-identification` link back to the SDK.
+
+## Consumer SDK Request
 
 {:.code-view-header}
 **SDK Request**
@@ -172,6 +174,20 @@ The "POST consumers" operation is simple, you must make a request to `POST
 POST /identify HTTP/1.1
 Host: example.com
 ```
+
+## Consumer SDK Response
+
+{:.code-view-header}
+**SDK Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/plain
+
+{{ page.front_end_url }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.payment_token }}
+```
+
+## Consumer Swedbank Pay Request
 
 {:.code-view-header}
 **Swedbank Pay Request**
@@ -188,6 +204,8 @@ Content-Type: application/json
     "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"]
 }
 ```
+
+## Consumer Swedbank Pay Response
 
 {:.code-view-header}
 **Swedbank Pay Response**
@@ -208,25 +226,17 @@ Content-Type: application/json
 }
 ```
 
-{:.code-view-header}
-**SDK Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: text/plain
-
-{{ page.front_end_url }}/consumers/core/scripts/client/px.consumer.client.js?token={{ page.payment_token }}
-```
-
 This is, of course, an over-simplified protocol for documentation purposes.
 
-### POST paymentorders
+## POST Payment Orders
 
 The "POST paymentorders" is a bit more complicated, as it needs to tie in with
 `paymentUrl` handling. Also, the full set of payment order urls must be made
 available to the app. In this simple example we use static urls for all of
 those, but in a real application you will want to create at least some of them
 dynamically, and will therefore need to incorporate them to your protocol.
+
+## Payment Order SDK Request
 
 {:.code-view-header}
 **SDK Request**
@@ -235,6 +245,20 @@ dynamically, and will therefore need to incorporate them to your protocol.
 POST /pay/android HTTP/1.1
 Host: example.com
 ```
+
+## Payment Order SDK Response
+
+{:.code-view-header}
+**SDK Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/plain
+
+{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE
+```
+
+## Payment Order Swedbank Pay Request
 
 {:.code-view-header}
 **Swedbank Pay Request**
@@ -257,6 +281,8 @@ Content-Type: application/json
 }
 ```
 
+## Payment Order Swedbank Pay Response
+
 {:.code-view-header}
 **Swedbank Pay Response**
 
@@ -276,24 +302,14 @@ Content-Type: application/json
 }
 ```
 
-{:.code-view-header}
-**SDK Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: text/plain
-
-{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=sv-SE
-```
-
-### Payment URL
+## Payment URL
 
 As discussed in previous chapters, in some situations the `paymentUrl` of a
 payment will be opened in the browser. When this happens, we need a way of
 returning the flow to the mobile application. We need to take a slightly
 different approach depending on the client platform.
 
-#### Android
+## Android
 
 The SDK has an Intent Filter for the
 `com.swedbankpay.mobilesdk.VIEW_PAYMENTORDER` action. When it receives this
@@ -337,7 +353,7 @@ Content-Type: text/html
 </html>
 ```
 
-#### iOS
+## iOS
 
 Switching apps on iOS is always done by opening a URL. urls. It is preferred to
 use a Universal Link URL. Your app and backend must be configured such that the
@@ -471,7 +487,7 @@ by default it will allow the scheme to change and for additional query
 parameters to be added to the url, so this example would work with the default
 configuration.
 
-#### Apple App-Site Association
+## Apple App-Site Association
 
 As the iOS `paymentUrl` needs to be a universal link, the backend will also need
 an [Apple App-Site Association file][ios-aasa]. This must be served at
@@ -516,13 +532,16 @@ it. This example AASA file contains both old-style and new-style values for
 maximum compatibility. You may not need the old-style values in your
 implementation, depending on your situation.
 
-## Updating a Payment Order
+## Updating The Payment Order
 
-The SDK includes a facility for updating a payment order after is has been created. The Merchant Backend Configuration uses this to allow setting the instrument of an instrument mode payment, but your custom Configuration can use it for whatever purpose you need.
+The SDK includes a facility for updating a payment order after is has been
+created. The Merchant Backend Configuration uses this to allow setting the
+instrument of an instrument mode payment, but your custom Configuration can use
+it for whatever purpose you need.
 
 <!--lint disable no-duplicate-headings-->
 
-### Android
+## Android
 
 First, implement `updatePaymentOrder` in your `Configuration` subclass. This
 method returns the same data type as `postPaymentorders`, and when it does, the
@@ -565,7 +584,7 @@ active payment. The argument of that call will be passed to your
     activity.paymentViewModel.updatePaymentOrder("frob")
 ```
 
-### iOS
+## iOS
 
 Implement `updatePaymentOrder` in your configuration. Rather like the Android
 method, this method takes a callback of the same type as `postPaymentorders`,
@@ -617,7 +636,7 @@ the `updateInfo` argument.
     )
 ```
 
-### Backend
+## Backend
 
 The backend implementation makes any needed calls to Swedbank Pay, and returns
 whatever your implementation expects. It is recommended to always use the
@@ -652,9 +671,7 @@ convention for reporting errors from your backend. At the moment of writing, the
 Android SDK also contains a [utility][dokka-problem] for parsing RFC 7807
 messages to help with this.
 
-## Other Features
-
-### iOS Payment Menu Redirect Handling
+## iOS Payment Menu Redirect Handling
 
 In many cases the payment menu will need to navigate to a different web page as
 part of the payment process. Unfortunately, testing has shown that not all such
@@ -678,7 +695,7 @@ also modify this behavior by the `webRedirectBehavior` property of
     }
 ```
 
-### iOS Payment URL Matching
+## iOS Payment URL Matching
 
 The iOS `paymentUrl` universal-link/custom-scheme contraption makes it so that
 your app must be able to accept some variations in the urls. The default

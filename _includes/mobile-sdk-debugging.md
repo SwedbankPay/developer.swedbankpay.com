@@ -3,7 +3,7 @@
 To help with investigating problematic scenarios, the SDK has some debugging
 features.
 
-### Android
+## Android
 
 The SDK normally attempts to keep the payment flow inside a WebView as far as
 possible. In case some payment instrument fails to work properly, it may be
@@ -52,7 +52,7 @@ manualArguments.putBoolean(
 )
 ```
 
-### iOS
+## iOS
 
 As explained in the [iOS documentation][ios-payment-url], the iOS SDK will,
 in some cases, open navigations out of the payment menu in Safari rather than

@@ -14,7 +14,7 @@ menu_order: 700
 Direct Invoice is about to be phased out. This section is only for merchants
 who currently have a contract with this integration." %}
 
-## Invoice Direct implementation flow
+## Invoice Direct Implementation Flow
 
 1.  Collect all purchase information and send it in a `POST` request to Swedbank
    Pay. Make sure to include personal information (SSN and postal code).
@@ -42,13 +42,14 @@ the invoice to the payer and the order is ready for shipping." %}
 
 The 3 most important steps in the Invoice Direct flow are shown below.
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
-Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] value.
+Our `payment` example below uses the [`FinancingConsumer`][financing-consumer]
+value.
 
 {% include alert-gdpr-disclaimer.md %}
 
-### Financing Consumer
+## Financing Consumer Request
 
 {:.code-view-header}
 **Request**
@@ -129,6 +130,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                                            |
 |                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
+
+## Financing Consumer Response
 
 {:.code-view-header}
 **Response**
@@ -237,7 +240,11 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Step 2: Get `approvedLegalAddress` confirmation
+## Step 2: Get `approvedLegalAddress` Confirmation
+
+Retrieve the payer's legal address, which is needed to do the next step.
+
+## Approved Legal Address Request
 
 {:.code-view-header}
 **Request**
@@ -255,6 +262,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Approved Legal Address Response
 
 {:.code-view-header}
 **Response**
@@ -276,7 +285,11 @@ Content-Type: application/json
 }
 ```
 
-## Step 3: Complete a Payment
+## Step 3: Complete The Payment
+
+Add the legal address in your complete request.
+
+## Complete Request
 
 {:.code-view-header}
 **Request**
@@ -307,6 +320,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Complete Response
 
 {:.code-view-header}
 **Response**
@@ -347,7 +362,7 @@ The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to Swedbank Pay to create
 an authorized transaction.
 
-## Invoice flow
+## Invoice Flow
 
 ```mermaid
 sequenceDiagram
@@ -383,7 +398,7 @@ sequenceDiagram
     Merchant-->>-Payer: Display result
 ```
 
-## Options after posting a purchase payment
+## Options After Posting A Purchase Payment
 
 Head over to [Capture][capture] to complete the Invoice Direct integration.
 

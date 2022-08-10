@@ -9,7 +9,7 @@ authorized amount. You can do other captures on the same payment later, up to
 the total authorized amount.
 {% endif %}
 
-## Step 1: Create Invoice Capture
+## Step 1: Create The Capture Request
 
 To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
@@ -80,10 +80,12 @@ Notes on `FinancingConsumer` captures:
 
 {% include transaction-response.md transaction="capture" %}
 
-## Step 2: Inspecting the Captures
+## Step 2: Inspecting The Captures
 
 The `captures` resource lists the capture transactions performed on a
 specific invoice payment.
+
+## GET Capture Request
 
 {:.code-view-header}
 **Request**
@@ -94,6 +96,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Capture Response
 
 {:.code-view-header}
 **Response**

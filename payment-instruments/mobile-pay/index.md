@@ -16,7 +16,7 @@ operating in these Nordic countries. More than 4.2 million Danes and Finns use
 the app and 140,000 stores are accepting payments. We offer it on
 our redirect and seamless view platforms.
 
-## Purchase flow
+## How It Looks
 
 When the payment is created, the payer is redirected to a Swedbank Pay landing
 page where they can proceed with the payment by pressing the pay button.
@@ -34,9 +34,7 @@ A countdown is shown in the browser and the payment request will appear in the
 app, waiting to be confirmed by the payer. If you are using the redirect
 option, the payer will be redirected back to the merchant's site.
 
-## Good To Know
-
-### Intent
+## Intent
 
 **`Authorization` (two-phase)**: The intent of a MobilePay Online purchase is
 always `Authorization`. The amount will be reserved but not charged. You will
@@ -44,7 +42,7 @@ later (i.e. if a physical product, when you are ready to ship the purchased
 products) have to make a [`Capture`][mobilepay-capture] or
 [`Cancel`][mobilepay-cancel] request.
 
-### Payment Type
+## Payment Type
 
 MobilePay Online is one of the instruments using two-phase payments. The
 `authorization` is done when the payer successfully confirms in the app, and
@@ -54,14 +52,14 @@ later time. Read more about the [different operations][features] and the
 
 {% include alert-two-phase-payments.md %}
 
-### Settlement
+## Settlement
 
 MobilePay Online transactions are handled, processed and settled as card
 transactions in our system. They are, however, tagged as MobilePay Online
 transactions and have their own acquirer agreement, so the two payment
 instruments are settled separately.
 
-### 3-D Secure
+## 3-D Secure
 
 As MobilePay Online transactions are processed as card transactions, a 3-D
 Secure agreement is needed to complete the payment instrument setup. This
@@ -71,16 +69,10 @@ two separate 3-D Secure agreements, one for each payment instrument. Apart from
 the agreement with the acquirer, no further 3-D Secure compliance is required
 from you as a merchant in this regard.
 
-### Demoshop
+Languages supported by this instruments are Danish `da-DK`, English (US) `en-US`
+and Finnish `fi-FI`.
 
-MobilePay Online is unfortunately not available in our demoshop at the moment,
-but it will be in the future. The demoshop in the test environments will use a
-fakeservice which enables you to test a successful purchase without using the
-MobilePay app.
-
-{% include languages.md %}
-
-## Payment availability
+## Payment Availability
 
 Even though MobilePay Online supports several currencies, the payment instrument
 itself is only available for payers in Denmark and Finland. This allows a shop
