@@ -526,6 +526,6 @@ Content-Type: application/json
 
 [checkout]: /{{ documentation_section }}
 [delete-token]: {{ features_url }}/optional/delete-token
-[paid-status-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
+[paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [technical-reference-callback]: {{ features_url }}/core/callback
