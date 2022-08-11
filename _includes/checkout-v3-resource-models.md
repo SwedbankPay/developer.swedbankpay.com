@@ -519,7 +519,7 @@ Content-Type: application/json
 **Request**
 
 ```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/failed HTTP/1.1
+GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
