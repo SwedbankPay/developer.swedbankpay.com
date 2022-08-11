@@ -36,7 +36,7 @@ Content-Type: application/json
 
 {
     "transaction": {
-        "description": "Test Cancellation"
+        "description": "Test Cancellation",
         "payeeReference": "ABC123"
     }
 }
