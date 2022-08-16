@@ -259,8 +259,9 @@ any time.
 
 When implementing **Starter**, you also need to subscribe to the event
 [`onPayerUnidentified`][onpayerunidentified] when you implement
-[`onPayerIdentified`][onpayeridentified]. This is important because the
-"Remember Me" feature (to be released soon) won't work without it.
+[`onPayerIdentified`][onpayeridentified]. This is needed for the "Remember Me"
+feature to work. It is a part of the acceptance criteria, meaning you won't get
+the green light to go live with your **Starter** implementation without it.
 
 You can read more about the different [Seamless View
 Events][seamless-view-events] available in the feature section.
