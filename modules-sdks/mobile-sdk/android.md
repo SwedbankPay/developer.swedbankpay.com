@@ -377,7 +377,7 @@ paymentViewModel.richState.observe(this, Observer {
 })
 ```
 
-## Payment URL and External Applications
+## Payment URL And External Applications
 
 The payment process may involve navigating to third-party web pages, or even
 launching external applications. To resume processing the payment in the payment

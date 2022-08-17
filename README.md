@@ -3,7 +3,11 @@
 [![Swedbank Pay Developer Portal][opengraph-image]][dev-portal]
 
 [![Test][gh-actions-badge]][gh-actions]
-![Last Master Commit][last-commit-badge]
+![Last Develop Commit][last-commit-badge]
+[![CLA assistant][cla-badge]][cla]
+[![Codacy][codacy-badge]][codacy]
+[![Contributor Covenant][coc-badge]][coc]
+[![License][license-badge]][license]
 
 This is the repository for [Swedbank Pay Developer Portal][swp-dp]. It is run as a
 [Jekyll][jekyll] website on [GitHub Pages][gh-pages].
@@ -213,12 +217,19 @@ sequenceDiagram
 
 ## License
 
-This website is available as open source under the terms of the
-[MIT License][license].
+The code within this repository is available as open source under the terms of
+the [Apache 2.0 License][license] and the [contributor's license
+agreement][cla].
 
 [bundler]: https://bundler.io/
 [ccov]: http://contributor-covenant.org
+[cla-badge]: https://cla-assistant.io/readme/badge/SwedbankPay/developer.swedbankpay.com
+[cla]: https://cla-assistant.io/SwedbankPay/developer.swedbankpay.com
 [clone]: https://help.github.com/articles/cloning-a-repository/
+[coc-badge]: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
+[coc]: ./CODE_OF_CONDUCT.md
+[codacy-badge]: https://app.codacy.com/project/badge/Grade/2dcec08155e142e2935eb54605d933ce
+[codacy]: https://www.codacy.com/gh/SwedbankPay/developer.swedbankpay.com/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SwedbankPay/developer.swedbankpay.com&amp;utm_campaign=Badge_Grade
 [config-yml]: _config.yml
 [dev-guidelines]: https://developer.swedbankpay.com/resources/development-guidelines
 [dev-portal]: https://developer.swedbankpay.com/
@@ -234,8 +245,9 @@ This website is available as open source under the terms of the
 [github]: https://github.com/SwedbankPay/developer.swedbankpay.com/
 [graphviz]: https://graphviz.org/download/
 [jekyll]: https://jekyllrb.com/
-[last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/master
-[license]: https://opensource.org/licenses/MIT
+[last-commit-badge]: https://img.shields.io/github/last-commit/SwedbankPay/developer.swedbankpay.com/develop
+[license-badge]: https://img.shields.io/github/license/SwedbankPay/developer.swedbankpay.com
+[license]: https://opensource.org/licenses/Apache-2.0
 [liquid-includes]: https://jekyllrb.com/docs/includes/
 [liquid]: https://jekyllrb.com/docs/liquid/
 [manual-install]: #manual-install

@@ -27,7 +27,7 @@ who currently have a contract with this integration." %}
   `paymentID` generated in the first step, to receive the state of the
   transaction.
 
-## Step 1: Create a payment
+## Step 1: Create The Payment
 
 *   An invoice payment is always two-phased based - you create an
   `Authorize` transaction, that is followed by a `Capture` or `Cancel` request.
@@ -42,13 +42,15 @@ Our `payment` example below uses the [`FinancingConsumer`]
 operation equal to `FinancingConsumer`, are described in
 [features][financing-consumer].
 
+## How It Looks
+
 {:.text-center}
 ![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
 {:.text-center}
 ![screenshot of the second Invoice redirect page][fincon-invoice-approve]{:height="500px" width="475px"}
 
-### Financing Consumer
+### Financing Consumer Request
 
 {:.code-view-header}
 **Request**
@@ -114,7 +116,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                    |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                    |
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                    |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                               |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | This Parameter is used when the payer is redirected out of the Seamless View (the iframe) and sent back after completing the payment. It should point to the page of where the Payment Order Seamless View is hosted. Read more about [paymentUrl][payment-url].                                                          |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                               |
@@ -129,6 +131,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                                           |
 |                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
+
+## Financing Consumer Response
 
 {:.code-view-header}
 **Response**
@@ -212,7 +216,7 @@ Content-Type: application/json
 }
 ```
 
-## Invoice flow
+## Invoice Flow
 
 The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase.

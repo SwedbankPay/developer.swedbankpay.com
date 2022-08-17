@@ -23,13 +23,16 @@ menu_order: 800
     `id` URL generated in the first step, to receive the state of the
     transaction.
 
-## Step 1: Create a payment
+## Step 1: Create A Payment
 
 {% include alert-callback-url.md %}
 
 {% include alert-gdpr-disclaimer.md %}
 
-To initiate the payment process, you need to make a `POST` request to Swedbank Pay.
+To initiate the payment process, you need to make a `POST` request to Swedbank
+Pay.
+
+## Redirect Request
 
 {:.code-view-header}
 **Request**
@@ -95,7 +98,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                 |
 | {% icon check %} | └➔&nbsp;`urls`           | `object`     | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`   | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
+| {% icon check %} | └─➔&nbsp;`completeUrl`   | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
 |                  | └─➔&nbsp;`cancelUrl`           | `array`       | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                  |
 |                  | └─➔&nbsp;`hostUrl`           | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless View. If not supplied, view-operation will not be available.                                                                                                                                                                        |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                            |
@@ -113,6 +116,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`prefillInfo`       | `object`      | Object representing information of what the UI text fields should be populated with                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
+
+## Redirect Response
 
 {:.code-view-header}
 **Response**
@@ -163,7 +168,7 @@ Content-Type: application/json
 }
 ```
 
-## Trustly flow
+## Redirect Sequence Diagram
 
 This is an example of the Redirect scenario. For other integrations, take a
 look at the respective sections. The sequence diagram below shows the two
@@ -214,7 +219,7 @@ sequenceDiagram
     Merchant-->>-Consumer: display purchase result
 ```
 
-## Options after posting a payment
+## Options After Posting A Payment
 
 Head over to [after payment][after-payment]
 to see what you can do when a payment is completed.

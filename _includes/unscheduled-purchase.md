@@ -16,7 +16,7 @@ recurring, but occur as singular transactions. Examples of this can be car
 rental companies charging the payer's card for toll road expenses after the
 rental period.
 
-### Generating The Token
+## Generating The Token
 
 First, you need an initial transaction where the `unscheduledToken` is generated
 and connected. You do that by adding the field `generateUnscheduledToken` in the
@@ -163,7 +163,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %}︎ | └➔&nbsp;`urls`                    | `object`      | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |{% if seamless_view %}
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |{% endif %}
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                                                                                                                                                                                                                                                                                         |
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                                                                                                                                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | The URL that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used. {% if documentation_section != 'mobile-pay' %} See [`paymentUrl`][paymenturl] for details.{% endif %}                                                                                                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -337,23 +337,38 @@ Content-Type: application/json
 | └➔&nbsp;`settings`                  | `string`     | The URL to the `settings` resource where the information about the payer can be retrieved.                                                        |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
-### GET The Token
+## GET The Token
 
-The token can be retrieved from the initial payment response as shown above, or
-by performing a `GET` towards the `payment`. Your `GET` should look like this,
-and the information in the response should match the initial payment response.
+The token can be retrieved by performing a [`GET` towards
+`paid`][paid-resource-model]. It will be visible under `tokens`in the `paid`
+node.
 
 {:.code-view-header}
 **Request**
 
 ```http
-GET /psp/creditcard/payments/{{ page.payment_order_id }}/ HTTP/1.1
+GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-### Performing The Unscheduled Purchase
+As an alternative, you can also retrieve it by using the expand option when you
+`GET` your payment. The `GET` request should look like the one below, with a
+`?$expand=paid` after the `paymentOrderId`. The response should match the
+initial payment response, but with an expanded `paid` node.
+
+{:.code-view-header}
+**Request**
+
+```http
+GET /psp/creditcard/payments/{{ page.payment_order_id }}/?$expand=paid HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+## Performing The Unscheduled Purchase
 
 When you are ready to perform the unscheduled purchase, simply add the
 `unscheduledToken` field and use the token as the value. Your request should
@@ -418,7 +433,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %}︎ | └➔&nbsp;`urls`                    | `object`      | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |{% if seamless_view %}
 | {% icon check %}︎ | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |{% endif %}
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                                                                                                                                                                                                                                                                                         |
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                                                                                                                                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | The URL that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used. {% if documentation_section != 'mobile-pay' %} See [`paymentUrl`][paymenturl] for details.{% endif %}                                                                                                                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -478,6 +493,7 @@ See the table in the initial purchase response for descriptions.
 [callback]: {{ features_url }}/core/callback
 [complete-url]: {{ features_url }}/technical-reference/complete-url
 [delete-token]: {{ features_url }}/optional/delete-token
+[paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [3ds2]: {{ features_url }}/core/3d-secure-2
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [payee-reference]: {{ features_url }}/technical-reference/payee-reference

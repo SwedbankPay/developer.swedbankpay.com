@@ -6,7 +6,7 @@
 The `cancellations` resource lists the cancellation transactions on a
 specific payment.
 
-### Create cancellation transaction
+## Create Cancel Transaction
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -23,6 +23,8 @@ which has not been captured yet.
 
 {% endif %}
 
+## Cancel Request
+
 {:.code-view-header}
 **Request**
 
@@ -34,7 +36,7 @@ Content-Type: application/json
 
 {
     "transaction": {
-        "description": "Test Cancellation"
+        "description": "Test Cancellation",
         "payeeReference": "ABC123"
     }
 }
@@ -47,7 +49,9 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md %} |
 
-If the cancellation request succeeds, the response should be similar to the
+## Cancel Response
+
+If the cancel request succeeds, the response should be similar to the
 example below:
 
 {:.code-view-header}
@@ -95,7 +99,7 @@ Content-Type: application/json
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 
-### Cancel Sequence
+### Cancel Sequence Diagram
 
 Cancel can only be done on a authorized transaction. If you perform a cancel
 after doing a partial capture, you will cancel the remaining authorized amount.

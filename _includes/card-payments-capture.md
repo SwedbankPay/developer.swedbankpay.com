@@ -109,7 +109,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="capture" %}
 
-## Capture Sequence
+## Capture Sequence Diagram
 
 `Capture` can only be done on an authorized transaction. It is possible to do a
 partial capture where you only capture a part of the authorized amount. You can

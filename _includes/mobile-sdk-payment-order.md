@@ -9,7 +9,7 @@ with the SDK-provided Merchant Backend Configuration. Detailed descriptions
 of the features will not be repeated here; please refer to the
 [Checkout documentation][checkout] instead.
 
-### URLs
+## URLs
 
 A Payment Order created for the SDK must have [`urls`][urls] the same
 way a Payment Order to be used on a web page would. The SDK context places some
@@ -25,7 +25,7 @@ requirement on these urls.
 | `paymentUrl`        | If opened in a browser, must eventually be delivered to the SDK, bringing the containing app to the foreground. See the Android and iOS specific documentation. |
 | `callbackUrl`       | No special requirements. This is a server-to-server affair.                                                                                                     |
 
-#### Merchant Backend Configuration
+## Merchant Backend Configuration
 
 The SDK-provided Merchant Backend Configuration allows creating a set of `urls`
 that fulfill the above when used with a backend implementing the Merchant
@@ -58,7 +58,7 @@ let urls = SwedbankPaySDK.PaymentOrderUrls(
 )
 ```
 
-### Order Items
+## Order Items
 
 You may want to populate the [`orderItems`][order-items] field of the
 `paymentOrder` for e.g. printing invoices. The SDK offers facilities for working
@@ -128,5 +128,4 @@ orderItem.name = "Other Thing"
 
 [checkout]: /checkout-v3
 [order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
-[payment-menu]: /payment-menu/
 [urls]: /checkout-v3/payments-only/features/technical-reference/urls

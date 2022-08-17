@@ -30,7 +30,7 @@ You redirect the payer to collect the payer's mobile number.
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 {% include alert-callback-url.md %}
 
@@ -39,6 +39,8 @@ You redirect the payer to collect the payer's mobile number.
 A `Purchase` payment is a straightforward way to charge the the payer. Below
 you will see the `POST` request you will need to send to collect the purchase
 information.
+
+## Redirect Request
 
 {:.code-view-header}
 **Request**
@@ -86,6 +88,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Redirect Response
 
 {:.code-view-header}
 **Response**
@@ -153,7 +157,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`        | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`         | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`             | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
+| {% icon check %} | └─➔&nbsp;`completeUrl`     | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 |                  | └─➔&nbsp;`cancelUrl`       | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`     | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`payeeInfo`        | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                              |
@@ -180,11 +184,13 @@ Once the payment is successfully authorized, the payer is returned to either the
 On the page as well as in the `callbackUrl` you need to perform an HTTP `GET`
 request towards the `id` of the payment to inspect its status.
 
-## Step 3: Get the transaction state
+## Step 3: Get The Transaction State
 
 The `GET`request below will give you the transaction state of the payment.
 The `paymentId` used below was provided in the fist step when creating a
 purchase.
+
+## GET Transaction State Request
 
 {:.code-view-header}
 **Request**
@@ -195,6 +201,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Transaction State Response
 
 {:.code-view-header}
 **Response**
@@ -300,7 +308,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Vipps Redirect integration flow
+## Vipps Redirect Sequence Diagram
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.

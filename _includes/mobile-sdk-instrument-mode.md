@@ -5,7 +5,7 @@ instrument instead of all configured on your merchant account. Please refer to
 the [Payment Menu documentation][instrument-mode] for more information on when
 you should use this feature.
 
-To use Instrment Mode with a Merchant Backend, set the `instrument` field
+To use Instrument Mode with a Merchant Backend, set the `instrument` field
 of your payment order to a non-null value.
 
 On Android, `instrument` is a String, but some common instruments are available
@@ -37,7 +37,7 @@ paymentOrder.instrument = .creditCard
 paymentOrder.instrument = Instrument(rawValue: "SomeInstrument")
 ```
 
-### Changing the Instrument
+## Changing The Instrument
 
 If a payment order is created in instrument mode, the Merchant Backend
 Configuration will populate the `instrument` and `availableInstruments`
