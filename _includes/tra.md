@@ -25,8 +25,8 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0",
-        "language": "sv-SE",
-        "productName": "Checkout3",
+        "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
+        "productName": "Checkout3", {% endif %}
         "requestTraExemption": true,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
@@ -43,7 +43,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId", {% endif %}
         },
         "payer": {
             "nationalIdentifier": {
@@ -184,7 +185,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
+|                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                   | {% if documentation_section contains "checkout-v3" %}
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | This parameter is used when you as a Merchant is using Swedbank Pays ”Split Settlement” and have a need to be able to specify towards AMEX which Merchant that the transaction belongs to.                                                                                                                | {% endif %}
 |                   |└➔&nbsp;`payer`                       | `object` | The payer object.       |
 |                  | └─➔&nbsp;`nationalIdentifier`    | `object` | The national identifier object.                                                                      |
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. |

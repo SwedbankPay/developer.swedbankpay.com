@@ -63,7 +63,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite",
+            "siteId": "MySiteId"
         }, {% if documentation_section contains "checkout-v3/business" %}
         "payer": {
             "digitalProducts": false,
@@ -272,6 +273,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | This parameter is used when you as a Merchant is using Swedbank Pays ”Split Settlement” and have a need to be able to specify towards AMEX which Merchant that the transaction belongs to.                                                                                      |
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                | {% if documentation_section contains "checkout-v3/starter" %}
 |  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Starter, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `false`, and not to be included if it is `true`.                                    | {% endif %}

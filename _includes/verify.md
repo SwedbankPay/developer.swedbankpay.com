@@ -122,7 +122,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId", {% endif %}
         },
         "payer": {
             "payerReference": "AB1234",
