@@ -2,7 +2,7 @@
 
 An example request and response of a gift card deposit.
 
- ## Request
+## Request
 
 {:.code-view-header}
 **Request**

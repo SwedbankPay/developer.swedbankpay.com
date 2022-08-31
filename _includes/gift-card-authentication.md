@@ -2,7 +2,7 @@
 
 An example request and response of a gift card authentication.
 
- ## Request
+## Request
 
 {:.code-view-header}
 **Request**
