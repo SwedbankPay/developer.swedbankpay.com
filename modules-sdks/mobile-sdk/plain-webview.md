@@ -144,7 +144,7 @@ navigations, or using JavaScript hooks. Which one you want to use is partly a
 matter of taste, but if your existing system does some processing in the
 `completeUrl` page, it may be easier to use JavaScript hooks.
 
-### Listening for Navigations
+## Listening for Navigations
 
 The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be
 used to listen for navigations, and change their behavior.
@@ -228,7 +228,7 @@ If your `completeUrl`, or `cancelUrl` for that matter, do some processing and
 redirect further, you can adapt these patterns to listen to your custom urls
 instead.
 
-### Adding JavaScript Hooks
+## Adding JavaScript Hooks
 
 On both iOS and Android, it is possible to add custom JavaScript interfaces to a
 web view. These interfaces then result in callbacks to native
@@ -238,7 +238,7 @@ need to modify your `completeUrl` and `cancelUrl` pages to call these
 mobile-app-specific JavaScript interfaces. How you do this is beyond our scope
 here.
 
-#### JavaScript Hooks: iOS
+## JavaScript Hooks: iOS
 
 On iOS, JavaScript interfaces are added through the `WKUserContentController` of
 the `WKWebView`. The `WKUserContentController` is set by the
@@ -296,7 +296,7 @@ and `cancelUrl` pages would need to eventually execute code like
     window.webkit.messageHandlers.cancelled.postMessage()
 ```
 
-#### JavaScript Hooks: Android
+## JavaScript Hooks: Android
 
 {% include alert.html type="warning" icon="warning" header="Security Warning" body="Never use `WebView.addJavascriptInterface` on Android versions earlier than 4.2 (`Build.VERSION_CODES.JELLY_BEAN_MR1`)!" %}
 
@@ -370,7 +370,7 @@ Determining whether a url should launch an external app is straightforward,
 though on Android it involves a bit of a judgement call. Let us take a look at
 the arguably simpler iOS case first.
 
-### External Applications: iOS
+## External Applications: iOS
 
 You cannot query the system for an arbitrary url to see if it can be opened –
 this is a deliberate privacy measure. What can be done, and what also happens to
@@ -431,7 +431,7 @@ the surface, indistiguishable from web links.
     }
 ```
 
-### External Applications: Android
+## External Applications: Android
 
 On Android, web pages attempting to launch external apps happens in one of three
 ways:
@@ -553,7 +553,7 @@ opened in the browser application (usually Safari or Chrome), so we need to
 build a system that gets it back to the application where the payment is being
 processed in a web view.
 
-### Using a Custom-Scheme paymentUrl
+## Using a Custom-Scheme paymentUrl
 
 Perhaps the simplest way of making `paymentUrl` open in the application is to
 make it a custom-scheme url rather than an https url. This does come with a few
@@ -568,7 +568,7 @@ disadvantages, though:
 
 It is somewhat of a Quick and Dirty solution. We do not recommend this approach.
 
-### iOS: Make paymentUrl a Universal Link
+## iOS: Make paymentUrl A Universal Link
 
 On iOS, the recommended way of assigning urls to apps is to use [Universal
 Links][ios-universal-links]. This fits our use-case quite well, and indeed it is
@@ -604,7 +604,7 @@ link with `UIApplication.open(_:options:completionHandler:)` (i.e.
 both. Universal Links opened from Safari will callback to
 `application(_:continue:restorationHandler:)`.
 
-### Android: Add an Intent Filter for paymentUrl
+## Android: Add An Intent Filter For The PaymentUrl
 
 Android has always supported apps handling urls matching a pattern. Therefore,
 it seems sensible to just create an intent filter matching any `paymentUrl` you
@@ -631,7 +631,7 @@ The second one is obviously undesirable. The last one is also not great. The
 user is not expecting to "open a url", and may well make the "wrong" choice
 here, and it is anyway a bad user experience.
 
-#### Autoverify to the Rescue?
+## Autoverify To The Rescue?
 
 Since Android 6.0 it has been possible to use a [mechanism][android-autoverify]
 very similar to Apple's Universal Links to "strongly" assing http(s) urls to
@@ -644,7 +644,7 @@ could solve the problems above, but it has its own issues, namely:
 
 The SDK does not use this method.
 
-### Android: Have paymentUrl Redirect to an Intent Url
+## Android: Have PaymentUrl Redirect To An Intent Url
 
 Another option on Android is to allow the https `paymentUrl` to be opened in
 Chrome normally, but have that url redirect to an [intent

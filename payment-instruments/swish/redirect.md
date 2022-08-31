@@ -39,12 +39,14 @@ Swish is a one-phase payment instrument that is based on sales transactions
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 All valid options when posting in a payment with operation equal to `Purchase`.
 The `Purchase` example shown below.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Redirect Request
 
 {:.code-view-header}
 **Request**
@@ -137,6 +139,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
+## Redirect Response
+
 {:.code-view-header}
 **Response**
 
@@ -193,7 +197,7 @@ Content-Type: application/json
 }
 ```
 
-## Redirect Purchase flow
+## Redirect Sequence Diagram
 
 The sequence diagram below shows the requests you have to send to Swedbank Pay
 to make a purchase. The Callback response is a simplified example

@@ -344,8 +344,10 @@ following event argument object:
 
 ## `onPayerUnidentified`
 
-This event triggers when a payer clicks "Not you" when identified with Remember
-Me, and it is required for **Starter** to work.
+This event triggers when a payer clicks "Not you" when identified with "Remember
+Me", and it is a mandatory event for **Starter** to work. It is a part of the
+acceptance criteria, meaning you won't get the green light to go live with your
+implementation without it.
 
 Expected merchant behavior when it occurs is:
 

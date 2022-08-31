@@ -15,7 +15,7 @@ recurring, but occur as singular transactions. Examples of this can be car
 rental companies charging the payer's card for toll road expenses after the
 rental period.
 
-### Generating The Token
+## Generating The Token
 
 First, you need an initial transaction where the `unscheduledToken` is generated
 and connected. You do that by adding the field `generateUnscheduledToken` in the
@@ -105,10 +105,6 @@ Content-Type: application/json
                 "suspiciousAccountActivity": "01",
             }
         },
-        "swish": {
-            "paymentRestrictedToAgeLimit": 18,
-            "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
-            },
         "orderItems": [
             {
                 "reference": "P1",
@@ -222,9 +218,6 @@ Content-Type: application/json
 | | └─➔&nbsp;`shippingAddressUsageIndicator` | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
 | | └─➔&nbsp;`shippingNameIndicator` | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
 | | └─➔&nbsp;`suspiciousAccountActivity` | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
-|                  | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
-|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
-|                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`reference`               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`name`                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -241,7 +234,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
+|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
 ## Initial Response
@@ -375,10 +368,26 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` [resource]({{ features_url }}/technical-reference/resource-sub-models#metadata) where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
-### GET The Token
+## GET The Token
 
-The token can be retrieved from the initial payment response as shown above, or
-by performing a `GET` towards the `paymentOrder`:
+The token can be retrieved by performing a [`GET` towards
+`paid`][paid-resource-model]. It will be visible under `tokens` in the `paid`
+node.
+
+{:.code-view-header}
+**Request**
+
+```http
+GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+As an alternative, you can also retrieve it by using the expand option when you
+`GET` your payment. The `GET` request should look like the one below, with a
+`?$expand=paid` after the `paymentOrderId`. The response should match the
+initial payment response, but with an expanded `paid` node.
 
 {:.code-view-header}
 **Request**
@@ -390,11 +399,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-When you do a `GET` on the initial payment, it will most likely have the status
-`Paid`. Please note the token examples at the very bottom of the
-[status model section][paid-status-model].
-
-### Performing The Unscheduled Purchase
+## Performing The Unscheduled Purchase
 
 When you are ready to perform the unscheduled purchase, simply add the
 `unscheduledToken` field to the `paymentOrder` request and use the token as the
@@ -518,13 +523,13 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
+|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 
 <!--lint disable final-definition -->
 
 [checkout]: /{{ documentation_section }}
 [delete-token]: {{ features_url }}/optional/delete-token
-[paid-status-model]: {{ features_url }}/technical-reference/status-models#paid
+[paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [technical-reference-callback]: {{ features_url }}/core/callback
 [verify]: {{ features_url }}/optional/verify

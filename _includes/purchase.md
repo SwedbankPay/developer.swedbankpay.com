@@ -36,7 +36,7 @@ payment altogether or creating an authorization transaction through the
 }
 ```
 
-## Purchase Request
+## Card Payment Request
 
 {:.code-view-header}
 **Request**
@@ -241,7 +241,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`noCvc`                           | `boolean`     | `true` if the CVC field should be disabled for this payment in case a stored card is used; otherwise `false` per default. This feature is commonly used when {%- if include.documentation_section == 'card' -%} [One-Click Payments][one-click-payments]{% else %} One-Click Payments{% endif %} is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                          |
 {% endif %}
 
-## Purchase Response
+
+## Card Payment Response
 
 {:.code-view-header}
 **Response**

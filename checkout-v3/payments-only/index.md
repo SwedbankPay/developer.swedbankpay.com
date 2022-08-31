@@ -20,7 +20,8 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **Services you prefer:** Full Checkout (Starter / Business / Enterprise) or Payments Only (Payments).
+*   **The service you prefer:** Full Checkout (Starter/Business/Enterprise) or
+    Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.
 
@@ -31,7 +32,7 @@ containing the following information:
 
 **Merchant name:** This represents your core business entity with us.
 
-**Payer ID:** This is how we identify you.
+**Payee ID:** This is how we identify you.
 
 **Services:** The payment options which are activated and ready for testing.
 

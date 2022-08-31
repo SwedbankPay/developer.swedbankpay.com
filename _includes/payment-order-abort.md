@@ -18,7 +18,7 @@ in the request body:
 
 {% endif %}
 
-## Abort Request
+## Abort PATCH Request
 
 {:.code-view-header}
 **Request**
@@ -44,7 +44,7 @@ Content-Type: application/json
 | └➔&nbsp;`operation`      | `string`     | `Abort`                                                                                                                                                                                                                |
 | └➔&nbsp;`abortReason`      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
 
-## Abort Response
+## Abort PATCH Response
 
 {% if documentation_section contains "checkout-v3" %}
 

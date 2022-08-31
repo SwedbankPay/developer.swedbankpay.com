@@ -129,7 +129,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="cancellation" %}
 
-## Cancel Sequence
+## Cancel Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -246,7 +246,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="reversal" %}
 
-## Reversal Sequence
+## Reversal Sequence Diagram
 
 ```mermaid
 sequenceDiagram

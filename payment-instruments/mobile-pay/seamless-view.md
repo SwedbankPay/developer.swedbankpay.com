@@ -10,7 +10,7 @@ description: |
   must confirm through the MobilePay mobile app.
 menu_order: 700
 ---
-## Step 1: Create a purchase
+## Step 1: Create A purchase
 
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a `POST` request towards Swedbank Pay with
@@ -20,6 +20,8 @@ will receive a response in which you can find the **JavaScript source** in the
 `view-payment` operation.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Seamless View Request
 
 {:.code-view-header}
 **Request**
@@ -179,7 +181,7 @@ steps:
     obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="payment-page-script" src="https://ecom.dev.payex.com/mobilepay/core/ scripts/client/px.mobilepay.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/mobilepay/core/ scripts/client/px.mobilepay.client.js"></script>
 ```
 
 The previous two steps gives this HTML:

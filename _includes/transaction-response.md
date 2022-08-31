@@ -19,6 +19,8 @@
 The created `{{ transaction }}` resource contains information about the
 `{{ transaction }}` transaction made against a `{{ api_resource }}` payment.
 
+## Capture Response
+
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
 {:.code-view-header}

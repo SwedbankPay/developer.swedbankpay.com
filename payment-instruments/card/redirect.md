@@ -18,7 +18,7 @@ your Purchase information. This will generate a payment object with a unique
 `paymentID`. You will receive a **redirect URL** to a Swedbank Pay payment
 page.
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 It is followed up by posting a capture, cancellation or reversal transaction.
@@ -53,14 +53,14 @@ successful and rejected payments are labeled as `completed`." %}
 
 This means that when you reach this point, you need to make sure that the
 payment has gone through before you let the payer know that the payment was
-successful. You do this by doing a `GET` request. This request has to include the
-payment Id generated from the initial `POST` request, so that you can receive the
-state of the transaction.
+successful. You do this by doing a `GET` request. This request has to include
+the payment Id generated from the initial `POST` request, so that you can
+receive the state of the transaction.
 
 If you have chosen Seamless View, the `completeUrl` and `cancelUrl` will display
 directly inside the iframe.
 
-This is how the payment window should look:
+## How It Looks
 
 {:.text-center}
 ![screenshot of the redirect card payment page][card-payment]{:height="570px" width="475px"}
@@ -71,7 +71,7 @@ selection available:
 {:.text-center}
 ![screenshot of the swedish redirect card payment page][swedish-card-payment]{:height="605px" width="475px"}
 
-### Purchase flow
+## Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -128,7 +128,7 @@ sequenceDiagram
     Merchant-->>-Payer: Display purchase result
 ```
 
-### Explanations
+## Explanations
 
 *   ① `rel: redirect-authorization` is the name of one of the operations, sent
     as a response from Swedbank Pay to the Merchant. The `href` in this
@@ -145,7 +145,7 @@ sequenceDiagram
   transaction. Click the link for [a complete list of payment and transaction
   states][payment-transaction-states].
 
-### 3-D Secure
+## 3-D Secure
 
 {% include card-general.md %}
 

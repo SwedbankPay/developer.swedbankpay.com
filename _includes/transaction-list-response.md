@@ -14,6 +14,8 @@ The `{{ transaction }}` resource contains information about the
 return a specific `{{ transaction }}` transaction by performing a `GET` request
 towards the specific transaction's `id`.
 
+## Transaction List Response
+
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
 {:.code-view-header}

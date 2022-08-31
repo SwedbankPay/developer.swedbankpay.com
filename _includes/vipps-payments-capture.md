@@ -5,10 +5,12 @@ the payer. This step usually takes place when the product has exchanged
 possession. You must first do a `GET` request on the payment to find the
 `create-capture` operation.
 
-### Create capture transaction
+## Create Capture Transaction
 
 To create a `capture` transaction to withdraw money from the payer's Vipps
 account, you need to perform the `create-capture` operation.
+
+## Capture Request
 
 {:.code-header}
 **Request**
@@ -38,10 +40,16 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}                               |
 
+## Capture Response
+
 {% include transaction-response.md transaction="capture" %}
+
+## List Capture Transactions
 
 The `captures` resource lists the capture transactions (one or more) on a
 specific payment.
+
+## Transaction List Request
 
 {:.code-header}
 **Request**
@@ -55,7 +63,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="capture" %}
 
-### Capture Sequence
+### Capture Sequence Diagram
 
 `Capture` can only be done on an authorized transaction. It is possible to do a
 partial capture where you only capture a part of the authorized amount. You can

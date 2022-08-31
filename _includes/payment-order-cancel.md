@@ -36,7 +36,7 @@ Content-Type: application/json
 
 {
     "transaction": {
-        "description": "Test Cancellation"
+        "description": "Test Cancellation",
         "payeeReference": "ABC123"
     }
 }
@@ -51,8 +51,8 @@ Content-Type: application/json
 
 ## Cancel Response
 
-If the cancel request succeeds, the response should be similar to the example
-below:
+If the cancel request succeeds, the response should be similar to the
+example below:
 
 {:.code-view-header}
 **Response**

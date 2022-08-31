@@ -304,7 +304,7 @@ sequenceDiagram
     it gets opened in the Browser instead. In that case, the flow continues with
     "paymentUrl opened in Browser" below instead.
 
-### Return from Browser
+## Return From Browser
 
 If the external flow ended with `paymentUrl` opened in the browser, we need a
 way to get back to the app. On Android, this is simple to accomplish by

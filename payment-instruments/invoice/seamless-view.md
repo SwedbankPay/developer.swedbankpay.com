@@ -20,12 +20,14 @@ payment pages seamlessly integrated in an `iframe` on your website. The payer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
+## How It Looks
+
 {:.text-center}
 ![screenshot of the invoice payment window][invoice-payment]{:height="525px" width="475px"}
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create the payment
+## Step 1: Create The Payment
 
 {% include alert-gdpr-disclaimer.md %}
 
@@ -42,6 +44,8 @@ When properly set up in your merchant/webshop site and the payer starts the
 invoice process, you need to make a POST request towards Swedbank Pay with your
 invoice information. This will generate a payment object with a unique
 `paymentID`. You will receive a **JavaScript source** in response.
+
+## Seamless View Request
 
 {:.code-view-header}
 **Request**
@@ -124,6 +128,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md documentation_section="invoice" %}                                                                                                                                                                                                                                                           |
 | {% icon check %} | └─➔&nbsp;`invoiceType`            | `String`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
 
+## Seamless View Response
+
 {:.code-view-header}
 **Response**
 
@@ -204,7 +210,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the Payment
+## Step 2: Display The Payment
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the payment details in a secure Swedbank Pay
@@ -216,7 +222,7 @@ hosted environment. A simplified integration has these following steps:
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="payment-page-script" src="https://ecom.dev.payex.com/invoice/core/ scripts/client/px.invoice.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/invoice/core/ scripts/client/px.invoice.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -239,6 +245,8 @@ The previous two steps gives this HTML:
     </body>
 </html>
 ```
+
+## Loading The JavaScript
 
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.

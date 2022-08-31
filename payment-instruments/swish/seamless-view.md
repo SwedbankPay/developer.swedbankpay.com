@@ -11,7 +11,7 @@ description: |
 menu_order: 800
 ---
 
-## Swish Seamless View integration flow
+## Swish Seamless View Integration Flow
 
 1.  When the payer starts the purchase process, you make a `POST` request
    towards Swedbank Pay with the collected Purchase information.
@@ -30,9 +30,7 @@ menu_order: 800
     dialog is completed, and you will have to make a `GET` request to check
     the payment status.
 
-![screenshot of the seamless view swish payment page][seamless-view-img]{:height="215px" width="475px"}
-
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 A `Purchase` payment is a straightforward way to charge the card of the payer.
 You need to make a `POST` request towards Swedbank Pay as shown below to create
@@ -43,6 +41,8 @@ a purchase. An example of an expanded `POST` request is available in the
 {% include payment-url.md when="selecting Swish as payment instrument" %}
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Seamless View Request
 
 {:.code-view-header}
 **Request**
@@ -139,6 +139,8 @@ Content-Type: application/json
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 
+## Seamless View Response
+
 {:.code-view-header}
 **Response**
 
@@ -215,7 +217,7 @@ payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the Payment Window
+## Step 2: Display The Payment Window
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the required information in a secure Swedbank
@@ -227,7 +229,7 @@ Pay hosted environment. A simplified integration has these following steps:
     obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-<script id="payment-page-script" src="https://ecom.dev.payex.com/swish/core/scripts/client/px.swish.client.js"></script>
+<script id="payment-page-script" src="https://ecom.externalintegration.payex.com/swish/core/scripts/client/px.swish.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -251,6 +253,8 @@ The previous two steps gives this HTML:
 </html>
 ```
 
+## Load The Seamless View
+
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
@@ -267,7 +271,11 @@ embedded on your website.
 </script>
 ```
 
-## Seamless View Purchase flow
+## How It Looks
+
+![screenshot of the seamless view swish payment page][seamless-view-img]{:height="215px" width="475px"}
+
+## Seamless View Sequence Diagram
 
 The sequence diagram below shows the requests you have to send to Swedbank Pay
 to make a purchase. The Callback response is a simplified example
