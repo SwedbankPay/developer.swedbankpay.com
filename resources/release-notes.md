@@ -11,6 +11,20 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 02 September 2022
+
+### Version 3.1.2
+
+We have been picking up steam since our summer break, hitting full throttle as
+September arrived. A smaller release this time around, but there are some
+important additions nonetheless. We have added a
+[siteID][checkout-v3-payments-only-redirect-request] field to checkout v3
+implementations, re-worked nearly all
+[headers][checkout-v3-payments-only-seamless] across the portal to make
+navigation easier, added a section on
+[deleting payment tokens][delete-payment-tokens], along with the usual batch of
+assorted bug fixes and typos.
+
 ## 01 July 2022
 
 ### Version 3.1.1
@@ -612,7 +626,7 @@ must be able to invoke the same JavaScript URL from the same Payment as the one
 that initiated the payment originally, so it should include some sort of state
 identifier in the URL. The state identifier is the ID of the order, shopping
 cart or similar that has the URL of the Payment stored. When the JavaScript is
-invoked after return of the payer, he or she will either be redirected to
+invoked after return of the payer, they will either be redirected to
 the `completeUrl` (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.
 
@@ -641,7 +655,7 @@ JavaScript URL from the same Payment or Payment Order as the one that initiated
 the payment originally, so it should include some sort of state identifier in
 the URL. The state identifier is the ID of the order, shopping cart or similar
 that has the URL of the Payment or Payment Order stored. When the JavaScript is
-invoked after return of the payer, he or she will either be redirected to the
+invoked after return of the payer, they will either be redirected to the
 `completeUrl`, or, if payment failed, see an error message and get the option
 to retry the payment.
 
@@ -684,12 +698,15 @@ integration and the payer.
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
 [checkout-v3-business]: /checkout-v3/business
+[checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
+[checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [checkout-v3-starter]: /checkout-v3/starter
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
 [data-protection]: /resources/data-protection
+[delete-payment-tokens]: /checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [eligibility-check]: /checkout-v3/payments-only/features/optional/instrument-mode#eligibility-check

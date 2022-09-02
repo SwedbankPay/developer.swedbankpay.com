@@ -1,5 +1,9 @@
 ## Purchase
 
+An example request and response of a gift card purchase.
+
+## Request
+
 {:.code-view-header}
 **Request**
 
@@ -75,6 +79,8 @@ Content-Type: application/json
 |                  | `vatRate`               | `number`  | Vat-rate for purchased product (both integer and decimal numbers supported).                                                                                                            |
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                                                                                      |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                                                                             |
+
+## Response
 
 {:.code-view-header}
 **Response**

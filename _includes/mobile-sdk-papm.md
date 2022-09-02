@@ -5,7 +5,7 @@ details. In order to do this, SwedbankPay needs to identify your customer. If
 the customer is identified and has approved storing the payment details, the
 rest is handled automatically.
 
-## One-Click Payments in Enterprise
+## One-Click Payments In Enterprise
 
 Enterprise merchant can supply the email and phone of the customer to let
 SwedbankPay match the customer internally and let the customer store card
@@ -44,7 +44,7 @@ val paymentOrder = PaymentOrder(
 Now the customer has the option to store card numbers or select one of the
 previously stored cards. More info in [the documentation][enterprise-payer-ref].
 
-## One-click Payments in PaymentsOnly
+## One-Click Payments In PaymentsOnly
 
 Using Payer Aware Payment Menu involves managing payment tokens yourself. If
 you are using a Merchant Backend, you can have a payment order create payment
@@ -75,7 +75,7 @@ paymentOrder.payer = PaymentOrderPayer(
 )
 ```
 
-### Token Retrieval Checkout V3
+## Token Retrieval Checkout V3
 
 Retrieve the token by expanding the "paid" property of a previous successful
 payment. To see this in action, the example merchant backend has an endpoint
@@ -133,7 +133,7 @@ try {
 
 Read more on [expanding properties here][expanding_properties].
 
-### Token Retrieval in V2
+## Token Retrieval In Checkout V2
 
 If you are still using the older Checkout version 2, the SDK contains a utility
 method to query a conforming Merchant Backend server for the payment tokens of a
@@ -180,7 +180,7 @@ let request = SwedbankPaySDK.MerchantBackend.getPayerOwnedPaymentTokens(
 // request.cancel()
 ```
 
-### Token Usage
+## Token Usage
 
 Usage of tokens are the same in both V3 as in V2 and to use a payment token with
 a Merchant Backend, create a payment order where you set the `paymentToken`
@@ -214,14 +214,14 @@ Your backend implementation should have proper authentication to prevent misuse
 of tokens. The example implementation will reject attempts to use
 `paymentToken` by default.
 
-#### Disable Stored Payment Instrument Details
+## Disable Stored Payment Instrument Details
 
 The Merchant Backend allows you to set
 `PaymentOrder.disableStoredPaymentDetails` to use this feature as described
 in the [Version2 Payment Menu Documentation][add-stored-details].
 
 As mentioned there, it is important that you have obtained consent from the
-user for storing payment details beforehand, if you use this feature. 
+user for storing payment details beforehand, if you use this feature.
 
 {:.code-view-header}
 **Android**

@@ -76,7 +76,7 @@ Our `payment` example below uses the [`Purchase`][purchase] operation.
 
 {% include languages.md %}
 
-## Purchase Flow
+## Sequence Diagram
 
 The sequence diagram below shows a high level description of a complete
 purchase, and the requests you have to send to Swedbank Pay. The links will

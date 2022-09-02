@@ -14,7 +14,7 @@ Norwegian banks, making it one of the essential payment instruments for
 merchants operating in Norway. We offer it on our redirect and seamless view
 platforms.
 
-## Purchase flow
+## Purchase Flow
 
 After the payment is created, the payer pushes the payment button on Swedbank
 Pay's payment page (redirect) or in the `iframe` (seamless view).
