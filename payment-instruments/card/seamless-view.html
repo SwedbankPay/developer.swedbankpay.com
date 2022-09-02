@@ -109,6 +109,7 @@
 <li class="nav-leaf"><a href="/introduction#data-types">Data Types</a></li>
 <li class="nav-leaf"><a href="/introduction#operations">Operations</a></li>
 <li class="nav-leaf"><a href="/introduction#payee-reference">Payee Reference</a></li>
+<li class="nav-leaf"><a href="/introduction#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/introduction#sequence-diagram">Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/introduction#problems">Problems</a></li>
         
@@ -166,8 +167,11 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-1-create-payment-order-and-checkin">Step 1: Create Payment Order And Checkin</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#payment-order-response">Payment Order Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#step-2-display-checkin-delivery-options-and-payment-menu">Step 2: Display Checkin, Delivery Options And Payment Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#load-the-seamless-view">Load The Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/seamless-view#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -178,8 +182,17 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#capture-sequence-diagram">Capture Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/post-purchase#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -216,6 +229,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/abort#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/abort#abort-patch-request">Abort PATCH Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/abort#abort-patch-response">Abort PATCH Response</a></li>
         
       </ul>
       </li>
@@ -225,7 +240,8 @@
           <a href="/checkout-v3/starter/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -236,6 +252,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/cancel#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -246,6 +265,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/payment-order-capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/payment-order-capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/payment-order-capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/payment-order-capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -256,6 +278,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/reversal#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/reversal#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/core/reversal#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -294,12 +319,13 @@
           <a href="/checkout-v3/starter/features/optional/delete-token">Delete Token</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-unscheduled-recurrence-or-payment-tokens">Delete Unscheduled, Recurrence Or Payment Tokens</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-recurrencetoken-request">Delete recurrenceToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-recurrencetoken-response">Delete recurrenceToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-unscheduledtoken-request">Delete unscheduledToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-unscheduledtoken-response">Delete unscheduledToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-paymenttoken-request">Delete paymentToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/delete-token#delete-paymenttoken-response">Delete paymentToken Response</a></li>
         
       </ul>
       </li>
@@ -324,6 +350,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/recur#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/recur#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/recur#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/recur#performing-the-recurring-purchase">Performing The Recurring Purchase</a></li>
         
       </ul>
       </li>
@@ -344,6 +373,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/unscheduled#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/unscheduled#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/optional/unscheduled#performing-the-unscheduled-purchase">Performing The Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -457,7 +489,7 @@
           <a href="/checkout-v3/starter/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/starter/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -488,7 +520,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/purchase#purchase">Purchase</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/purchase#purchase-payment">Purchase Payment</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/purchase#card-payment-request">Card Payment Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/purchase#card-payment-response">Card Payment Response</a></li>
         
       </ul>
       </li>
@@ -539,6 +572,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -549,7 +584,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/urls#urls">URLs</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/starter/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -593,7 +627,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/redirect#step-1-create-payment-order-and-checkin">Step 1: Create Payment Order And Checkin</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/redirect#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/redirect#payment-order-response">Payment Order Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/business/redirect#step-2-display-payment-menu-and-checkin">Step 2: Display Payment Menu And Checkin</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/redirect#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -604,8 +641,11 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/seamless-view#step-1-create-payment-order-and-checkin">Step 1: Create Payment Order And Checkin</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/seamless-view#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/seamless-view#payment-order-response">Payment Order Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/business/seamless-view#step-2-display-payment-menu-and-checkin">Step 2: Display Payment Menu And Checkin</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/seamless-view#loading-the-seamless-view">Loading The Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/seamless-view#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -616,8 +656,17 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#capture-sequence-diagram">Capture Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/post-purchase#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -654,6 +703,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/core/abort#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/abort#abort-patch-request">Abort PATCH Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/abort#abort-patch-response">Abort PATCH Response</a></li>
         
       </ul>
       </li>
@@ -663,7 +714,8 @@
           <a href="/checkout-v3/business/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/business/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -674,6 +726,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/cancel#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -684,6 +739,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/core/payment-order-capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/payment-order-capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/payment-order-capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/payment-order-capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -694,6 +752,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/reversal#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/reversal#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/core/reversal#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -732,12 +793,13 @@
           <a href="/checkout-v3/business/features/optional/delete-token">Delete Token</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-unscheduled-recurrence-or-payment-tokens">Delete Unscheduled, Recurrence Or Payment Tokens</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-recurrencetoken-request">Delete recurrenceToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-recurrencetoken-response">Delete recurrenceToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-unscheduledtoken-request">Delete unscheduledToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-unscheduledtoken-response">Delete unscheduledToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-paymenttoken-request">Delete paymentToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/delete-token#delete-paymenttoken-response">Delete paymentToken Response</a></li>
         
       </ul>
       </li>
@@ -762,6 +824,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/recur#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/recur#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/recur#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/recur#performing-the-recurring-purchase">Performing The Recurring Purchase</a></li>
         
       </ul>
       </li>
@@ -794,6 +859,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/unscheduled#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/unscheduled#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/optional/unscheduled#performing-the-unscheduled-purchase">Performing The Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -907,7 +975,7 @@
           <a href="/checkout-v3/business/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/business/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -989,6 +1057,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -999,7 +1069,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/urls#urls">URLs</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/business/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -1043,7 +1112,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/redirect#step-1-create-payment-order">Step 1: Create Payment Order</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/redirect#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/redirect#payment-order-response">Payment Order Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/redirect#step-2-display-payment-menu">Step 2: Display Payment Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/redirect#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -1054,8 +1126,11 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/seamless-view#step-1-create-payment-order">Step 1: Create Payment Order</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/seamless-view#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/seamless-view#payment-order-response">Payment Order Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/seamless-view#step-2-display-payment-menu">Step 2: Display Payment Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/seamless-view#loading-the-seamless-view">Loading The Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/seamless-view#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -1066,8 +1141,17 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#capture-sequence-diagram">Capture Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/post-purchase#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -1104,6 +1188,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/abort#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/abort#abort-patch-request">Abort PATCH Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/abort#abort-patch-response">Abort PATCH Response</a></li>
         
       </ul>
       </li>
@@ -1113,7 +1199,8 @@
           <a href="/checkout-v3/enterprise/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1124,6 +1211,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/cancel#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -1134,6 +1224,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/payment-order-capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/payment-order-capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/payment-order-capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/payment-order-capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1144,6 +1237,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/reversal#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/reversal#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/core/reversal#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -1182,12 +1278,13 @@
           <a href="/checkout-v3/enterprise/features/optional/delete-token">Delete Token</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-unscheduled-recurrence-or-payment-tokens">Delete Unscheduled, Recurrence Or Payment Tokens</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-recurrencetoken-request">Delete recurrenceToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-recurrencetoken-response">Delete recurrenceToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-unscheduledtoken-request">Delete unscheduledToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-unscheduledtoken-response">Delete unscheduledToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-paymenttoken-request">Delete paymentToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/delete-token#delete-paymenttoken-response">Delete paymentToken Response</a></li>
         
       </ul>
       </li>
@@ -1232,6 +1329,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/recur#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/recur#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/recur#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/recur#performing-the-recurring-purchase">Performing The Recurring Purchase</a></li>
         
       </ul>
       </li>
@@ -1264,6 +1364,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/unscheduled#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/unscheduled#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/optional/unscheduled#performing-the-unscheduled-purchase">Performing The Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -1377,7 +1480,7 @@
           <a href="/checkout-v3/enterprise/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -1459,6 +1562,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -1469,7 +1574,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/urls#urls">URLs</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/enterprise/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -1513,7 +1617,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/redirect#step-1-create-payment-order">Step 1: Create Payment Order</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/redirect#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/redirect#payment-order-response">Payment Order Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/payments-only/redirect#step-2-display-payment-menu">Step 2: Display Payment Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/redirect#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -1524,8 +1631,11 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/seamless-view#step-1-create-payment-order">Step 1: Create Payment Order</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/seamless-view#payment-url">Payment Url</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/seamless-view#payment-order-request">Payment Order Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/seamless-view#payment-order-response">Payment Order Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/payments-only/seamless-view#step-2-display-payment-menu">Step 2: Display Payment Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/seamless-view#load-the-seamless-view">Load The Seamless View</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/seamless-view#how-it-looks">How It Looks</a></li>
         
       </ul>
       </li>
@@ -1536,8 +1646,17 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#capture-sequence-diagram">Capture Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/post-purchase#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -1574,6 +1693,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/abort#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/abort#abort-patch-request">Abort PATCH Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/abort#abort-patch-response">Abort PATCH Response</a></li>
         
       </ul>
       </li>
@@ -1583,7 +1704,8 @@
           <a href="/checkout-v3/payments-only/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1594,6 +1716,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/cancel#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/cancel#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/cancel#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/cancel#cancel-response">Cancel Response</a></li>
         
       </ul>
       </li>
@@ -1604,6 +1729,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/payment-order-capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/payment-order-capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/payment-order-capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/payment-order-capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1614,6 +1742,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/reversal#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/reversal#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/core/reversal#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -1652,12 +1783,13 @@
           <a href="/checkout-v3/payments-only/features/optional/delete-token">Delete Token</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-unscheduled-recurrence-or-payment-tokens">Delete Unscheduled, Recurrence Or Payment Tokens</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-recurrencetoken-request">Delete recurrenceToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-recurrencetoken-response">Delete recurrenceToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-unscheduledtoken-request">Delete unscheduledToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-unscheduledtoken-response">Delete unscheduledToken Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request">Delete paymentToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-response">Delete paymentToken Response</a></li>
         
       </ul>
       </li>
@@ -1683,6 +1815,9 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/moto#moto">MOTO</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/moto#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/moto#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/moto#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/moto#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -1714,6 +1849,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/recur#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/recur#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/recur#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/recur#performing-the-recurring-purchase">Performing The Recurring Purchase</a></li>
         
       </ul>
       </li>
@@ -1736,6 +1874,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/unscheduled#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/unscheduled#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/optional/unscheduled#performing-the-unscheduled-purchase">Performing The Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -1849,7 +1990,7 @@
           <a href="/checkout-v3/payments-only/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -1931,6 +2072,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -1941,7 +2084,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/urls#urls">URLs</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/payments-only/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -2008,7 +2150,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/payment-menu#step-3-create-payment-order">Step 3: Create Payment Order</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/payment-menu#payment-url">Payment Url</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/payment-menu#step-4-display-the-payment-menu">Step 4: Display the Payment Menu</a></li>
         
       </ul>
@@ -2019,7 +2160,10 @@
           <a href="/checkout-v2/capture">Capture</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v2/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
+        <li class="nav-leaf"><a href="/checkout-v2/capture#step-5-capture">Step 5: Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2032,7 +2176,12 @@
         <li class="nav-leaf"><a href="/checkout-v2/after-payment#operations">Operations</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/after-payment#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/after-payment#cancel-1">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/after-payment#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/after-payment#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/after-payment#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/after-payment#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/after-payment#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -2069,6 +2218,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/core/abort#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/abort#abort-patch-request">Abort PATCH Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/abort#abort-patch-response">Abort PATCH Response</a></li>
         
       </ul>
       </li>
@@ -2078,7 +2229,8 @@
           <a href="/checkout-v2/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v2/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/checkout-v2/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2091,6 +2243,7 @@
         <li class="nav-leaf"><a href="/checkout-v2/features/core/cancel#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/features/core/cancel#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/features/core/cancel#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/cancel#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -2100,7 +2253,10 @@
           <a href="/checkout-v2/features/core/capture">Capture</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v2/features/core/capture#step-5-capture-the-funds">Step 5: Capture the funds</a></li>
+        <li class="nav-leaf"><a href="/checkout-v2/features/core/capture#step-5-capture">Step 5: Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2111,6 +2267,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -2152,9 +2309,8 @@
         <li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
 <li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-unscheduledtoken-request">Delete unscheduledToken Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/delete-token#delete-unscheduledtoken-response">Delete unscheduledToken Response</a></li>
         
       </ul>
       </li>
@@ -2175,6 +2331,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/optional/recur#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/recur#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/recur#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/recur#performing-the-recurring-purchase">Performing The Recurring Purchase</a></li>
         
       </ul>
       </li>
@@ -2195,6 +2354,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/unscheduled#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/unscheduled#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/optional/unscheduled#performing-the-unscheduled-purchase">Performing The Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -2362,7 +2524,7 @@
           <a href="/checkout-v2/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/checkout-v2/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -2404,6 +2566,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -2414,7 +2578,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/urls#urls">URLs</a></li>
-<li class="nav-leaf"><a href="/checkout-v2/features/technical-reference/urls#payment-url">Payment Url</a></li>
         
       </ul>
       </li>
@@ -2447,7 +2610,6 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/payment-order#step-1-create-payment-order">Step 1: Create Payment Order</a></li>
-<li class="nav-leaf"><a href="/payment-menu/payment-order#payment-url">Payment Url</a></li>
 <li class="nav-leaf"><a href="/payment-menu/payment-order#step-2-display-the-payment-menu">Step 2: Display the Payment Menu</a></li>
         
       </ul>
@@ -2459,6 +2621,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2471,7 +2636,12 @@
         <li class="nav-leaf"><a href="/payment-menu/after-payment#operations">Operations</a></li>
 <li class="nav-leaf"><a href="/payment-menu/after-payment#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-menu/after-payment#cancel-1">Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-menu/after-payment#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-menu/after-payment#cancel-request">Cancel Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/after-payment#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/payment-menu/after-payment#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-menu/after-payment#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/after-payment#reversal-response">Reversal Response</a></li>
         
       </ul>
       </li>
@@ -2508,6 +2678,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/payment-order-abort#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/payment-order-abort#abort-patch-request">Abort PATCH Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/payment-order-abort#abort-patch-response">Abort PATCH Response</a></li>
         
       </ul>
       </li>
@@ -2517,7 +2689,8 @@
           <a href="/payment-menu/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-menu/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/payment-menu/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2530,6 +2703,7 @@
         <li class="nav-leaf"><a href="/payment-menu/features/core/cancel#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/cancel#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/core/cancel#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/cancel#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -2540,6 +2714,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/payment-order-capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/payment-order-capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/payment-order-capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/payment-order-capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2550,6 +2727,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -2591,9 +2769,8 @@
         <li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-recurrencetoken">Delete recurrenceToken</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-request">Delete Token Request</a></li>
 <li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-response">Delete Token Response</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-unscheduledtoken">Delete unscheduledToken</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-request-1">Delete Token Request</a></li>
-<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-token-response-1">Delete Token Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-unscheduledtoken-request">Delete unscheduledToken Request</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/delete-token#delete-unscheduledtoken-response">Delete unscheduledToken Response</a></li>
         
       </ul>
       </li>
@@ -2659,6 +2836,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/optional/recur#recur">Recur</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/recur#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/recur#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/recur#performing-the-recurring-purchase">Performing The Recurring Purchase</a></li>
         
       </ul>
       </li>
@@ -2679,6 +2859,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/unscheduled#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/unscheduled#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/optional/unscheduled#performing-the-unscheduled-purchase">Performing The Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -2843,7 +3026,7 @@
           <a href="/payment-menu/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-menu/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-menu/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -2885,6 +3068,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-menu/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-menu/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -2907,7 +3092,7 @@
         </div>
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/#prerequisites">Prerequisites</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/#platform-options">Platform options</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/#platform-options">Platform Options</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/#the-fundamentals">The Fundamentals</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/#the-payment-object">The Payment Object</a></li>
 </ul>
@@ -2927,7 +3112,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/#operations">Operations</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/#intent">Intent</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/#supported-languagesdanish-da-dk-german-de-de-estonian-ee-ee-english-us-en-us-spanish-es-es-finnish-fi-fi-french-fr-fr-lithuanian-lt-lt-latvian-lv-lv-norwegian-nb-no-russian-ru-ru">Supported LanguagesDanish da-DK, German de-DE, Estonian ee-EE, English (US) en-US, Spanish es-ES, Finnish fi-FI, French fr-FR, Lithuanian lt-LT, Latvian lv-LV, Norwegian nb-NO, Russian ru-RU</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/#purchase-flow">Purchase Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/#sequence-diagram">Sequence Diagram</a></li>
 </ul>
       </li>
         <li class="nav-subgroup">
@@ -2936,9 +3121,14 @@
           <a href="/payment-instruments/card/redirect">Redirect</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/card/redirect#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/redirect#purchase">Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/redirect#purchase-payment">Purchase Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/redirect#card-payment-request">Card Payment Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/redirect#card-payment-response">Card Payment Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/redirect#how-it-looks">How It Looks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/redirect#sequence-diagram">Sequence Diagram</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/redirect#explanations">Explanations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/redirect#3-d-secure">3-D Secure</a></li>
         
       </ul>
       </li>
@@ -2949,11 +3139,17 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#how-it-looks">How It Looks</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#step-1-create-payment">Step 1: Create Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#purchase">Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#purchase-payment">Purchase Payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#purchase-flow">Purchase Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#card-payment-request">Card Payment Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#card-payment-response">Card Payment Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#step-2-display-the-payment">Step 2: Display The Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#load-the-seamless-view">Load The Seamless View</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#events">Events</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#sequence-diagram">Sequence Diagram</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#3-d-secure">3-D Secure</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/seamless-view#explanations">Explanations</a></li>
         
       </ul>
       </li>
@@ -2967,7 +3163,8 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/capture#capture-request">Capture Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/capture#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/capture#list-capture-transactions">List Capture Transactions</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/capture#capture-sequence">Capture Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/capture#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -2977,9 +3174,10 @@
           <a href="/payment-instruments/card/mobile-card-payments">Mobile</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#card-payments-in-mobile-apps">Card Payments in Mobile Apps</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#api-requests-for-payments">API Requests for Payments</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#purchase-flow-mobile">Purchase flow mobile</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#card-payments-in-mobile-apps">Card Payments In Mobile Apps</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#how-it-looks">How It Looks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#api-requests-for-payments">API Requests For Payments</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/mobile-card-payments#sequence-diagram-for-mobile">Sequence Diagram For Mobile</a></li>
         
       </ul>
       </li>
@@ -2994,12 +3192,14 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancel-response">Cancel Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#list-cancel-transactions">List Cancel Transactions</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancel-sequence">Cancel Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#cancel-sequence-diagram">Cancel Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversals">Reversals</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversal-request">Reversal Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversal-response">Reversal Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#list-reversal-transactions">List Reversal Transactions</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#transaction-list-response-1">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/after-payment#reversal-sequence-diagram">Reversal Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort">Abort</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort-request">Abort Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/after-payment#abort-response">Abort Response</a></li>
@@ -3053,7 +3253,8 @@
           <a href="/payment-instruments/card/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/card/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3066,6 +3267,7 @@
         <li class="nav-leaf"><a href="/payment-instruments/card/features/core/cancel#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/core/cancel#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/core/cancel#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/cancel#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -3079,6 +3281,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#capture-request">Capture Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/core/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
@@ -3090,7 +3293,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/core/purchase#purchase">Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/features/core/purchase#purchase-payment">Purchase Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/purchase#card-payment-request">Card Payment Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/purchase#card-payment-response">Card Payment Response</a></li>
         
       </ul>
       </li>
@@ -3101,6 +3305,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -3166,7 +3371,8 @@
 <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture-request">Capture Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#list-capture-transactions">List Capture Transactions</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture-sequence">Capture Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/moto#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3228,6 +3434,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/optional/unscheduled#unscheduled-purchase">Unscheduled Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/unscheduled#generating-the-token">Generating The Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/unscheduled#get-the-token">GET The Token</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/optional/unscheduled#performing-the-unscheduled-purchase">Performing The Unscheduled Purchase</a></li>
         
       </ul>
       </li>
@@ -3374,7 +3583,7 @@
           <a href="/payment-instruments/card/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/card/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -3415,6 +3624,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/card/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -3438,7 +3649,7 @@
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/invoice/#api-requests">API Requests</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/#supported-languagesenglish-us-en-us-norwegian-nb-no">Supported LanguagesEnglish (US) en-US, Norwegian nb-NO</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/#invoice-flow">Invoice flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/#invoice-flow">Invoice Flow</a></li>
 </ul>
       </li>
         <li class="nav-subgroup">
@@ -3448,8 +3659,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#introduction">Introduction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#step-1-create-a-payment">Step 1: Create a payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#invoice-flow">Invoice flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#step-1-create-the-payment">Step 1: Create The Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#how-it-looks">How It Looks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#financing-consumer-response">Financing Consumer Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#invoice-flow">Invoice Flow</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/redirect#options-after-posting-a-payment">Options after posting a payment</a></li>
         
       </ul>
@@ -3461,8 +3674,12 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#introduction">Introduction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-1-create-the-payment">Step 1: Create the payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#how-it-looks">How It Looks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-1-create-the-payment">Step 1: Create The Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#seamless-view-request">Seamless View Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#seamless-view-response">Seamless View Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#step-2-display-the-payment">Step 2: Display The Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#loading-the-javascript">Loading The JavaScript</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/seamless-view#purchase-flow">Purchase Flow</a></li>
         
       </ul>
@@ -3473,12 +3690,18 @@
           <a href="/payment-instruments/invoice/direct">Direct</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-direct-implementation-flow">Invoice Direct implementation flow</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-2-get-approvedlegaladdress-confirmation">Step 2: Get approvedLegalAddress confirmation</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-3-complete-a-payment">Step 3: Complete a Payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-flow">Invoice flow</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#options-after-posting-a-purchase-payment">Options after posting a purchase payment</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-direct-implementation-flow">Invoice Direct Implementation Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#financing-consumer-request">Financing Consumer Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#financing-consumer-response">Financing Consumer Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-2-get-approvedlegaladdress-confirmation">Step 2: Get approvedLegalAddress Confirmation</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#approved-legal-address-request">Approved Legal Address Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#approved-legal-address-response">Approved Legal Address Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#step-3-complete-the-payment">Step 3: Complete The Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#complete-request">Complete Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#complete-response">Complete Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#invoice-flow">Invoice Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/direct#options-after-posting-a-purchase-payment">Options After Posting A Purchase Payment</a></li>
         
       </ul>
       </li>
@@ -3489,8 +3712,11 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-invoice-capture">Step 1: Create Invoice Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting the Captures</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-1-create-the-capture-request">Step 1: Create The Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#step-2-inspecting-the-captures">Step 2: Inspecting The Captures</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#get-capture-request">GET Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/capture#get-capture-response">GET Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/capture#capture-flow">Capture Flow</a></li>
         
       </ul>
@@ -3508,10 +3734,14 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancellations">Cancellations</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversals">Reversals</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversal-request">Reversal Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#capture-response-1">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#list-reversal-transactions">List Reversal Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#transaction-list-response-1">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/after-payment#reversal-sequence">Reversal Sequence</a></li>
         
       </ul>
@@ -3548,7 +3778,8 @@
           <a href="/payment-instruments/invoice/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3561,6 +3792,7 @@
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/cancel#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/cancel#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/cancel#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/cancel#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -3574,6 +3806,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#capture-request">Capture Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
@@ -3585,6 +3818,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -3656,6 +3890,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations#list-authorizations">List Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations#authorization-request">Authorization Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/authorizations#authorization-response">Authorization Response</a></li>
         
@@ -3790,7 +4025,7 @@
           <a href="/payment-instruments/invoice/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/invoice/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -3831,6 +4066,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/invoice/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -3852,10 +4089,12 @@
           <a href="/payment-instruments/mobile-pay/">Introduction</a>
         </div>
         <ul class="nav-ul">
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#purchase-flow">Purchase flow</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#good-to-know">Good To Know</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#supported-languagesdanish-da-dk-english-us-en-us">Supported LanguagesDanish da-DK, English (US) en-US</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#payment-availability">Payment availability</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#how-it-looks">How It Looks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#intent">Intent</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#payment-type">Payment Type</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#settlement">Settlement</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#3-d-secure">3-D Secure</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/#payment-availability">Payment Availability</a></li>
 </ul>
       </li>
         <li class="nav-subgroup">
@@ -3865,9 +4104,14 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#mobilepay-online-redirect-integration-flow">MobilePay Online redirect integration flow</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get the transaction status</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#purchase-flow">Purchase flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#redirect-request">Redirect Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#redirect-response">Redirect Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#how-it-looks">How It Looks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#step-2-get-the-transaction-status">Step 2: Get The Transaction Status</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#get-transaction-status-request">GET Transaction Status Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#get-transaction-status-response">GET Transaction Status Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/redirect#mobile-pay-redirect-sequence-diagram">Mobile Pay Redirect Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3877,7 +4121,8 @@
           <a href="/payment-instruments/mobile-pay/seamless-view">Seamless View</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#step-1-create-a-purchase">Step 1: Create a purchase</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#step-1-create-a-purchase">Step 1: Create A purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#seamless-view-request">Seamless View Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#step-2-display--the-payment-window">Step 2: Display  the payment window</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/seamless-view#mobilepay-online-seamless-view-flow">MobilePay Online Seamless View flow</a></li>
         
@@ -3890,8 +4135,12 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#create-capture-transaction">Create capture transaction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture-sequence">Capture Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#create-capture-transaction">Create Capture Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture-response-1">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/capture#capture-sequence-diagram">Capture Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3903,12 +4152,16 @@
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#options-after-posting-a-payment">Options After Posting A Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancellations">Cancellations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#create-cancel-transaction">Create Cancel Transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-response">Cancel Response</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-sequence">Cancel Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#cancel-sequence-diagram">Cancel Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversals">Reversals</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-request">Reversal Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#capture-response-1">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#reversal-sequence">Reversal Sequence</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#abort">Abort</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/after-payment#abort-request">Abort Request</a></li>
@@ -3948,7 +4201,8 @@
           <a href="/payment-instruments/mobile-pay/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -3961,6 +4215,7 @@
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/cancel#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/cancel#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/cancel#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/cancel#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -3974,6 +4229,7 @@
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#capture-request">Capture Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/capture#capture-sequence">Capture Sequence</a></li>
         
       </ul>
@@ -3985,6 +4241,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -4155,6 +4412,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/mobile-pay/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -4178,6 +4437,9 @@
         <ul class="nav-ul">
 <li class="nav-leaf"><a href="/payment-instruments/swish/#payment-flow">Payment Flow</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/#good-to-know">Good To Know</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#payment-type">Payment Type</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#certificate">Certificate</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/#demoshop">Demoshop</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/#supported-languagesenglish-us-en-us-norwegian-nb-no">Supported LanguagesEnglish (US) en-US, Norwegian nb-NO</a></li>
 </ul>
       </li>
@@ -4188,8 +4450,10 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/swish/redirect#introduction">Introduction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#redirect-purchase-flow">Redirect Purchase flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#redirect-request">Redirect Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#redirect-response">Redirect Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/redirect#redirect-sequence-diagram">Redirect Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4199,11 +4463,14 @@
           <a href="/payment-instruments/swish/seamless-view">Seamless View</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#swish-seamless-view-integration-flow">Swish Seamless View integration flow</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#payment-url">Payment Url</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-2-display-the-payment-window">Step 2: Display the Payment Window</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#seamless-view-purchase-flow">Seamless View Purchase flow</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#swish-seamless-view-integration-flow">Swish Seamless View Integration Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#seamless-view-request">Seamless View Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#seamless-view-response">Seamless View Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#step-2-display-the-payment-window">Step 2: Display The Payment Window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#load-the-seamless-view">Load The Seamless View</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#how-it-looks">How It Looks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/seamless-view#seamless-view-sequence-diagram">Seamless View Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4214,12 +4481,21 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/swish/direct#payment-flow">Payment Flow</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#initial-direct-request">Initial Direct Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#initial-direct-response">Initial Direct Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-2a-create-e-commerce-sale-transaction">Step 2a: Create E-Commerce Sale Transaction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/direct#e-commerce-purchase-flow">E-Commerce Purchase Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#e-commerce-request">E-Commerce Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#e-commerce-response">E-Commerce Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#e-commerce-sequence-diagram">E-Commerce Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction">Step 2b: Create M-Commerce Sale Transaction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-3-get-the-payment-status">Step 3: Get the payment status</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/direct#m-commerce-purchase-flow">M-Commerce Purchase Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#m-commerce-request">M-Commerce Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#m-commerce-response">M-Commerce Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#capture-response-1">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#step-3-get-the-payment-status">Step 3: GET The Payment Status</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#get-payment-response">GET Payment Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/direct#m-commerce-sequence-diagram">M-Commerce Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4232,15 +4508,17 @@
         <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#options-after-posting-a-payment">Options After Posting A Payment</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#swish-transactions">Swish Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#list-sales-transactions">List Sales Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#create-sales-transactions">Create Sales Transactions</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#browser-request">Browser Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#in-app-request">In-app Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#in-app-response">In-app Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversals">Reversals</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversal-sequence-diagram">Reversal Sequence Diagram</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#create-reversal-transaction">Create Reversal Transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversal-request">Reversal Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort">Abort</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort-request">Abort Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/swish/after-payment#abort-response">Abort Response</a></li>
@@ -4282,7 +4560,8 @@
           <a href="/payment-instruments/swish/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/swish/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/swish/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4293,6 +4572,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/swish/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -4442,7 +4722,7 @@
           <a href="/payment-instruments/swish/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/swish/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/swish/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -4483,6 +4763,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/swish/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/swish/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -4504,9 +4786,12 @@
           <a href="/payment-instruments/trustly/">Introduction</a>
         </div>
         <ul class="nav-ul">
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#important-steps-before-you-launch-trustly-at-your-website">Important Steps Before You Launch Trustly At Your Website</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/#payment-type">Payment Type</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/#languages">Languages</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/#banks">Banks</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#finland-">Finland</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/#sweden-">Sweden</a></li>
 </ul>
       </li>
         <li class="nav-subgroup">
@@ -4516,9 +4801,11 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#introduction">Introduction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#step-1-create-a-payment">Step 1: Create a payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#trustly-flow">Trustly flow</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#options-after-posting-a-payment">Options after posting a payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#step-1-create-a-payment">Step 1: Create A Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#redirect-request">Redirect Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#redirect-response">Redirect Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#redirect-sequence-diagram">Redirect Sequence Diagram</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/redirect#options-after-posting-a-payment">Options After Posting A Payment</a></li>
         
       </ul>
       </li>
@@ -4529,9 +4816,12 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#introduction">Introduction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-1-create-the-payment">Step 1: Create the payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-2-display-the-payment">Step 2: Display the Payment</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#purchase-flow">Purchase Flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-1-create-the-payment">Step 1: Create The payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#seamless-view-request">Seamless View Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#seamless-view-response">Seamless View Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#step-2-display-the-payment">Step 2: Display The Payment</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#load-the-seamless-view">Load The Seamless View</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/seamless-view#seamless-view-sequence-diagram">Seamless View Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4548,8 +4838,10 @@
 <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversals">Reversals</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversal-request">Reversal Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#list-reversal-transactions">List Reversal Transactions</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversal-sequence">Reversal Sequence</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/after-payment#reversal-sequence-diagram">Reversal Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4585,7 +4877,8 @@
           <a href="/payment-instruments/trustly/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4596,6 +4889,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -4765,7 +5059,7 @@
           <a href="/payment-instruments/trustly/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/trustly/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/trustly/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -4806,6 +5100,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/trustly/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/trustly/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -4827,7 +5123,7 @@
           <a href="/payment-instruments/vipps/">Introduction</a>
         </div>
         <ul class="nav-ul">
-<li class="nav-leaf"><a href="/payment-instruments/vipps/#purchase-flow">Purchase flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/#purchase-flow">Purchase Flow</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/#good-to-know">Good To Know</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/#supported-languagesenglish-us-en-us-norwegian-nb-no">Supported LanguagesEnglish (US) en-US, Norwegian nb-NO</a></li>
 </ul>
@@ -4839,10 +5135,14 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#introduction">Introduction</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#redirect-request">Redirect Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#redirect-response">Redirect Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-2-authorization">Step 2: Authorization</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-3-get-the-transaction-state">Step 3: Get the transaction state</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#vipps-redirect-integration-flow">Vipps Redirect integration flow</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#step-3-get-the-transaction-state">Step 3: Get The Transaction State</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#get-transaction-state-request">GET Transaction State Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#get-transaction-state-response">GET Transaction State Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/redirect#vipps-redirect-sequence-diagram">Vipps Redirect Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4852,10 +5152,12 @@
           <a href="/payment-instruments/vipps/seamless-view">Seamless View</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-1-create-a-purchase">Step 1: Create a Purchase</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#payment-url">Payment Url</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-2-display-the-payment-window">Step 2: Display the payment window</a></li>
-<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#vipps-seamless-view-integration-flow">Vipps Seamless View integration flow</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-1-create-a-purchase">Step 1: Create A Purchase</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#seamless-view-request">Seamless View Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#seamless-view-response">Seamless View Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#step-2-display-the-payment-window">Step 2: Display The Payment Window</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#load-the-seamless-view">Load The Seamless View</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/seamless-view#vipps-seamless-view-sequence-diagram">Vipps Seamless View Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4866,6 +5168,13 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/capture#create-capture-transaction">Create Capture Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/capture#capture-response-1">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/capture#transaction-list-request">Transaction List Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/capture#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -4882,18 +5191,23 @@
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#authorizations">Authorizations</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-request-authorizations">GET Request Authorizations</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-response-authorizations">GET Response Authorizations</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#capture-response">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancellations">Cancellations</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-request-cancel">GET Request Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-response-cancel">GET Response Cancel</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#transaction-list-response">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#create-cancellation-transaction">Create Cancellation Transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#capture-response-1">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversals">Reversals</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-request-reversal">GET Request Reversal</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#get-response-reversal">GET Response Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#transaction-list-response-1">Transaction List Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#create-reversal-transaction">Create Reversal Transaction</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversal-request">Reversal Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#capture-response-2">Capture Response</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort">Abort</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort-request">Abort Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/after-payment#abort-response">Abort Response</a></li>
@@ -4932,7 +5246,8 @@
           <a href="/payment-instruments/vipps/features/core/callback">Callback</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
+        <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/callback#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/callback#sequence-diagram">Sequence Diagram</a></li>
         
       </ul>
       </li>
@@ -4945,6 +5260,7 @@
         <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/cancel#cancel">Cancel</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/cancel#cancel-request">Cancel Request</a></li>
 <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/cancel#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/cancel#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -4955,6 +5271,13 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#create-capture-transaction">Create Capture Transaction</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#capture-response-1">Capture Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#list-capture-transactions">List Capture Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#transaction-list-request">Transaction List Request</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/capture#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -4965,6 +5288,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/reversal#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/core/reversal#transaction-list-response">Transaction List Response</a></li>
         
       </ul>
       </li>
@@ -5114,7 +5438,7 @@
           <a href="/payment-instruments/vipps/features/technical-reference/payment-url">PaymentUrl</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/payment-instruments/vipps/features/technical-reference/payment-url#payment-url">Payment Url</a></li>
+        <li class="nav-leaf nav-subgroup-leaf"><a href="/payment-instruments/vipps/features/technical-reference/payment-url">PaymentUrl</a></li>
         
       </ul>
       </li>
@@ -5155,6 +5479,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/payment-instruments/vipps/features/technical-reference/transactions#transactions">Transactions</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/technical-reference/transactions#transaction-list-response">Transaction List Response</a></li>
+<li class="nav-leaf"><a href="/payment-instruments/vipps/features/technical-reference/transactions#capture-response">Capture Response</a></li>
         
       </ul>
       </li>
@@ -5244,6 +5570,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/gift-cards/features/core/authentication#authentication">Authentication</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/authentication#request">Request</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/authentication#response">Response</a></li>
         
       </ul>
       </li>
@@ -5254,6 +5582,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/gift-cards/features/core/balance#balance">Balance</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/balance#request">Request</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/balance#response">Response</a></li>
         
       </ul>
       </li>
@@ -5264,6 +5594,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/gift-cards/features/core/deposit#deposit">Deposit</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/deposit#request">Request</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/deposit#response">Response</a></li>
         
       </ul>
       </li>
@@ -5274,6 +5606,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/gift-cards/features/core/purchase#purchase">Purchase</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/purchase#request">Request</a></li>
+<li class="nav-leaf"><a href="/gift-cards/features/core/purchase#response">Response</a></li>
         
       </ul>
       </li>
@@ -5334,13 +5668,18 @@
           <a href="/modules-sdks/mobile-sdk/merchant-backend">Merchant Backend V3</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication and Authorization</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#authentication-and-authorization">Authentication And Authorization</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint">Payment Orders Endpoint</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#patching-the-payment-order">Patching the Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#patching-the-payment-order">Patching The Payment Order</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#apple-app-site-association">Apple App Site Association</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend#merchant-backend-problems">Merchant Backend Problems</a></li>
         
       </ul>
       </li>
@@ -5375,6 +5714,9 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/core/payment-orders#payment-orders">Payment Orders</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/core/payment-orders#urls">URLs</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/core/payment-orders#merchant-backend-configuration">Merchant Backend Configuration</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/core/payment-orders#order-items">Order Items</a></li>
         
       </ul>
       </li>
@@ -5404,6 +5746,8 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/debugging#debugging-features">Debugging Features</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/debugging#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/debugging#ios">iOS</a></li>
         
       </ul>
       </li>
@@ -5414,6 +5758,7 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/instrument-mode#instrument-mode">Instrument Mode</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/instrument-mode#changing-the-instrument">Changing The Instrument</a></li>
         
       </ul>
       </li>
@@ -5424,8 +5769,12 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments">One-Click Payments</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments-in-enterprise">One-Click Payments in Enterprise</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments-in-paymentsonly">One-click Payments in PaymentsOnly</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments-in-enterprise">One-Click Payments In Enterprise</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#one-click-payments-in-paymentsonly">One-Click Payments In PaymentsOnly</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#token-retrieval-checkout-v3">Token Retrieval Checkout V3</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#token-retrieval-in-checkout-v2">Token Retrieval In Checkout V2</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#token-usage">Token Usage</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-aware-payment-menu#disable-stored-payment-instrument-details">Disable Stored Payment Instrument Details</a></li>
         
       </ul>
       </li>
@@ -5435,7 +5784,7 @@
           <a href="/modules-sdks/mobile-sdk/features/optional/payer-tokens">Payer Tokens</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-tokens#payment-tokens-for-unscheduled-or-recurring-purchases">Payment tokens for unscheduled or recurring purchases</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/optional/payer-tokens#payment-tokens-for-unscheduled-or-recurring-purchases">Payment Tokens For Unscheduled Or Recurring Purchases</a></li>
         
       </ul>
       </li>
@@ -5484,7 +5833,11 @@
           <a href="/modules-sdks/mobile-sdk/features/technical-reference/observing-the-payment-process">Observing The Payment Process</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/technical-reference/observing-the-payment-process#observing-the-payment-process">Observing the Payment Process</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/technical-reference/observing-the-payment-process#observing-the-payment-process">Observing The Payment Process</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/technical-reference/observing-the-payment-process#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/technical-reference/observing-the-payment-process#retryable-errors">Retryable Errors</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/technical-reference/observing-the-payment-process#overriding-terms-of-service-link">Overriding Terms Of Service Link</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/features/technical-reference/observing-the-payment-process#ios">iOS</a></li>
         
       </ul>
       </li>
@@ -5512,7 +5865,7 @@
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#errors">Errors</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/android#payment-url-and-external-applications">Payment URL And External Applications</a></li>
         
       </ul>
       </li>
@@ -5523,9 +5876,12 @@
         </div>
         <ul class="nav-ul">
         <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#installation">Installation</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#swift-package-manager">Swift Package Manager</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#cocoapods">CocoaPods</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#url-scheme-and-associated-domain">Url Scheme and Associated Domain</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#usage">Usage</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications">Payment URL and External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications">Payment URL And External Applications</a></li>
         
       </ul>
       </li>
@@ -5539,9 +5895,27 @@
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android-configuration">Android Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-configuration">iOS Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#backend">Backend</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#updating-a-payment-order">Updating a Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#post-consumers">POST Consumers</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#consumer-sdk-request">Consumer SDK Request</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#consumer-sdk-response">Consumer SDK Response</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#consumer-swedbank-pay-request">Consumer Swedbank Pay Request</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#consumer-swedbank-pay-response">Consumer Swedbank Pay Response</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#post-payment-orders">POST Payment Orders</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#payment-order-sdk-request">Payment Order SDK Request</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#payment-order-sdk-response">Payment Order SDK Response</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#payment-order-swedbank-pay-request">Payment Order Swedbank Pay Request</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#payment-order-swedbank-pay-response">Payment Order Swedbank Pay Response</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#payment-url">Payment URL</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios">iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#apple-app-site-association">Apple App-Site Association</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#updating-the-payment-order">Updating The Payment Order</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#android-1">Android</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-1">iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#backend-1">Backend</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#errors">Errors</a></li>
-<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#other-features">Other Features</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-payment-menu-redirect-handling">iOS Payment Menu Redirect Handling</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/custom-backend#ios-payment-url-matching">iOS Payment URL Matching</a></li>
         
       </ul>
       </li>
@@ -5556,6 +5930,7 @@
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#optional-checkin">Optional Checkin</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#begin-checkout">Begin Checkout</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#external-content">External Content</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#return-from-browser">Return From Browser</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/process-diagrams#payment-completion">Payment Completion</a></li>
         
       </ul>
@@ -5570,8 +5945,19 @@
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#the-mobile-sdk-and-you">The Mobile SDK And You</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#basics">Basics</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#completion">Completion</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#listening-for-navigations">Listening for Navigations</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#adding-javascript-hooks">Adding JavaScript Hooks</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#javascript-hooks-ios">JavaScript Hooks: iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#javascript-hooks-android">JavaScript Hooks: Android</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications">External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications-ios">External Applications: iOS</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#external-applications-android">External Applications: Android</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#getting-back-from-external-applications">Getting Back from External Applications</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#using-a-custom-scheme-paymenturl">Using a Custom-Scheme paymentUrl</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#ios-make-paymenturl-a-universal-link">iOS: Make paymentUrl A Universal Link</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#android-add-an-intent-filter-for-the-paymenturl">Android: Add An Intent Filter For The PaymentUrl</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#autoverify-to-the-rescue">Autoverify To The Rescue?</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#android-have-paymenturl-redirect-to-an-intent-url">Android: Have PaymentUrl Redirect To An Intent Url</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/plain-webview#dealing-with-picky-web-pages">Dealing with Picky Web Pages</a></li>
         
       </ul>
@@ -5582,14 +5968,19 @@
           <a href="/modules-sdks/mobile-sdk/merchant-backend-v2">Merchant Backend V2</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#authentication-and-authorization">Authentication and Authorization</a></li>
+        <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#authentication-and-authorization">Authentication And Authorization</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#the-merchant-backend-configuration">The Merchant Backend Configuration</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#root-endpoint">Root Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#consumers-endpoint">Consumers Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#payment-orders-endpoint">Payment Orders Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#set-instrument-endpoint">Set Instrument Endpoint</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#payment-url-helper-endpoints">Payment Url Helper Endpoints</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#android-payment-url-helper">Android Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#ios-payment-url-helper">iOS Payment Url Helper</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#ios-payment-url-system">iOS Payment Url System</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#apple-app-site-association">Apple App Site Association</a></li>
 <li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/modules-sdks/mobile-sdk/merchant-backend-v2#merchant-backend-problems">Merchant Backend Problems</a></li>
         
       </ul>
       </li>
@@ -5620,7 +6011,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#01-july-2022">01 July 2022</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#02-september-2022">02 September 2022</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#01-july-2022">01 July 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#22-june-2022">22 June 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#04-april-2022">04 April 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#16-march-2022">16 March 2022</a></li>
@@ -5860,6 +6252,14 @@ website. This solution offers a smooth shopping experience with Swedbank Pay
 payment pages seamlessly integrated in an <code class="language-html highlighter-rouge">iframe</code> on your website. The payer
 does not need to leave your webpage, since we are handling the payment in the
 <code class="language-html highlighter-rouge">iframe</code> on your page.</p>
+    
+      <h2 id="how-it-looks">
+        
+        
+          How It Looks <a href="#how-it-looks" class="header-anchor"></a>
+        
+        
+      </h2>
 
 <p class="text-center"><img src="/assets/img/payments/seamless-view-card.png" alt="screenshot of the seamless view card payment page" height="255px" width="475px"></p>
 
@@ -5962,10 +6362,10 @@ payment altogether or creating an authorization transaction through the
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
     
-      <h2 id="purchase-payment">
+      <h2 id="card-payment-request">
         
         
-          Purchase Payment <a href="#purchase-payment" class="header-anchor"></a>
+          Card Payment Request <a href="#card-payment-request" class="header-anchor"></a>
         
         
       </h2>
@@ -6269,7 +6669,7 @@ payment altogether or creating an authorization transaction through the
       <td style="text-align: left">└─➔ <code class="language-html highlighter-rouge">completeUrl</code>
 </td>
       <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
-      <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment to inspect it further. See <a href="/payment-instruments/card/features/technical-reference/complete-url"><code class="language-html highlighter-rouge">completeUrl</code></a> for details.</td>
+      <td style="text-align: left">The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A <code class="language-html highlighter-rouge">GET</code> request needs to be performed on the payment to inspect it further. See <a href="/payment-instruments/card/features/technical-reference/complete-url"><code class="language-html highlighter-rouge">completeUrl</code></a> for details.</td>
     </tr>
     <tr>
       <td style="text-align: center"><i class="material-icons">check</i></td>
@@ -6674,6 +7074,14 @@ payment altogether or creating an authorization transaction through the
     </tr>
   </tbody>
 </table>
+    
+      <h2 id="card-payment-response">
+        
+        
+          Card Payment Response <a href="#card-payment-response" class="header-anchor"></a>
+        
+        
+      </h2>
 
 <p class="code-view-header"><strong>Response</strong></p>
 
@@ -6978,7 +7386,7 @@ nested iframes (an iframe within an iframe) are unsupported.</p>
       <h2 id="step-2-display-the-payment">
         
         
-          Step 2: Display the Payment <a href="#step-2-display-the-payment" class="header-anchor"></a>
+          Step 2: Display The Payment <a href="#step-2-display-the-payment" class="header-anchor"></a>
         
         
       </h2>
@@ -6997,7 +7405,7 @@ hosted environment. A simplified integration has these following steps:</p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
 </pre></td>
-<td class="code-view-code"><pre>    <span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"payment-page-script"</span> <span class="na">src=</span><span class="s">"https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<td class="code-view-code"><pre>    <span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"payment-page-script"</span> <span class="na">src=</span><span class="s">"https://ecom.externalintegration.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
 
@@ -7035,6 +7443,14 @@ hosted environment. A simplified integration has these following steps:</p>
 <span class="nt">&lt;/html&gt;</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="load-the-seamless-view">
+        
+        
+          Load The Seamless View <a href="#load-the-seamless-view" class="header-anchor"></a>
+        
+        
+      </h2>
 
 <p>Lastly, initiate the Seamless View with a JavaScript call to open the <code class="language-html highlighter-rouge">iframe</code>
 embedded on your website.</p>
@@ -7059,6 +7475,14 @@ embedded on your website.</p>
 <span class="nt">&lt;/script&gt;</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
+    
+      <h2 id="events">
+        
+        
+          Events <a href="#events" class="header-anchor"></a>
+        
+        
+      </h2>
 
 <p>When a user actively attempts to perform a payment, the <code class="language-html highlighter-rouge">onPaymentCreated</code> event
 is raised with the following event argument object:</p>
@@ -7100,10 +7524,10 @@ is raised with the following event argument object:</p>
   </tbody>
 </table>
     
-      <h2 id="purchase-flow">
+      <h2 id="sequence-diagram">
         
         
-          Purchase Flow <a href="#purchase-flow" class="header-anchor"></a>
+          Sequence Diagram <a href="#sequence-diagram" class="header-anchor"></a>
         
         
       </h2>
@@ -7157,13 +7581,13 @@ is raised with the following event argument object:</p>
     activate Payer
 </code></pre>
     
-      <h3 id="3-d-secure">
+      <h2 id="3-d-secure">
         
         
           3-D Secure <a href="#3-d-secure" class="header-anchor"></a>
         
         
-      </h3>
+      </h2>
 
 <div class="alert alert-informative">
     
@@ -7199,13 +7623,13 @@ card payment:</p>
    Mobile BankID.</li>
 </ol>
     
-      <h3 id="explanations">
+      <h2 id="explanations">
         
         
           Explanations <a href="#explanations" class="header-anchor"></a>
         
         
-      </h3>
+      </h2>
 
 <ul>
   <li>① <code class="language-html highlighter-rouge">rel: view-authorization</code> is a value in one of the operations, sent as a
