@@ -51,7 +51,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite",
+            "siteId": "MySiteId"
         },
         "payer": {
             "digitalProducts": false,
