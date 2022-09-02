@@ -25,7 +25,7 @@ the only option.
 Do you want to know more about this service? Please contact our integration
 support.
 
-### Screenshots
+### How It Looks
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
 their card information.
@@ -38,6 +38,8 @@ their card information.
 The API requests are displayed in the flow below. The generated token will be
 returned in the parameter 'transactionOnFileToken'. For more information
 regarding the flow, see Verify.
+
+## Transaction On File Request
 
 {:.code-view-header}
 **Request**
@@ -79,6 +81,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Transaction On File Response
 
 {:.code-view-header}
 **Response**
