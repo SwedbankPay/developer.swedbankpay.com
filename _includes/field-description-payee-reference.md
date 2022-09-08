@@ -1,6 +1,11 @@
 {%- capture documentation_section -%}{%- include documentation-section.md fallback="card" -%}{%- endcapture -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{% if api_resource == "card" %}
+  {% assign payee_reference_max_length = 50 %}
+{% else %}
+  {% assign payee_reference_max_length = 30 %}
+{% endif %}
 {%- capture payee_reference_url -%}
     {%- if documentation_section == nil or documentation_section == empty -%}
         {%- assign payee_reference_url = "/introduction#payee-reference" -%}
@@ -9,9 +14,15 @@
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payee_reference -%}
-    A unique reference from the merchant system. It is set per operation to
-    ensure an exactly-once delivery of a transactional operation. See
-    [`payeeReference`]({{ payee_reference_url }}) for details.
+    A unique reference from the merchant system. Set per operation to
+    ensure an exactly-once delivery of a transactional operation. Length and
+    content validation depends on whether the `transaction.number` or the
+    `payeeReference` is sent to the acquirer. **If Swedbank Pay handles the**
+    **settlement**, the `transaction.number` is sent and the `payeeReference`
+    must be in the format of `A-Za-z0-9` (including `-`) and
+    `string({{ payee_reference_max_length }})`. **If you handle the settlement**,
+    Swedbank Pay will send the `payeeReference` and it will be limited to the
+    format of `string(12)` and all characters **must be digits**.
 
     {% if describe_receipt %}
         In Invoice Payments `payeeReference` is used as an invoice/receipt
