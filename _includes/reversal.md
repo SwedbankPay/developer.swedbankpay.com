@@ -47,7 +47,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}          |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}          |
 {% endcapture %}
 {% include accordion-table.html content = request_table
 %}

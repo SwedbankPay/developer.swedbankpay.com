@@ -457,7 +457,7 @@ responses:
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
