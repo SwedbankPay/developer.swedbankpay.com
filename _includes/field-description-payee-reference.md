@@ -1,7 +1,7 @@
 {%- capture documentation_section -%}{%- include documentation-section.md fallback="card" -%}{%- endcapture -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
-{% if api_resource == "card" %}
+{% if documentation_section == "card" %}
   {% assign payee_reference_max_length = 50 %}
 {% else %}
   {% assign payee_reference_max_length = 30 %}
@@ -22,7 +22,7 @@
     must be in the format of `A-Za-z0-9` (including `-`) and
     `string({{ payee_reference_max_length }})`. **If you handle the settlement**,
     Swedbank Pay will send the `payeeReference` and it will be limited to the
-    format of `string(12)` and all characters **must be digits**.
+    format of `string(12)`. All characters **must be digits**.
 
     {% if describe_receipt %}
         In Invoice Payments `payeeReference` is used as an invoice/receipt
