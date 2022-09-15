@@ -517,10 +517,10 @@ Content-Type: application/json
 ## Paid
 
 The payment order response with status `Paid`, and the `Paid` resource expanded.
-Please note that we have included the `Paid` resources of all instruments in
-this code example. Only the instruments used to pay with will appear in
-production responses. Resource examples where details are empty indicate that no
-details are available.
+Please note that the main code example is of a card payment. We have included
+`Paid` resources of the remaining instruments below the main code example.
+Resource examples where details are empty indicate that no details are
+available.
 
 The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
@@ -592,8 +592,11 @@ Content-Type: application/json
       "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
       "transactionInitiator": "CARDHOLDER"
     }
-  },
-    "paid": {
+  }
+```
+
+```http
+   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
     "instrument": "ApplePay",
     "number": 80100001190,
@@ -610,7 +613,10 @@ Content-Type: application/json
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
         "transactionInitiator": "CARDHOLDER"
     }
-  },
+  }
+```
+
+```http
     "paid": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
     "instrument": "MobilePay",
@@ -627,7 +633,10 @@ Content-Type: application/json
         "acquirerTerminalId": "42",
         "acquirerTransactionTime": "2022-09-05T09:54:05Z"
     }
-  },
+  }
+```
+
+```http
     "paid": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
     "instrument": "Vipps",
@@ -635,7 +644,10 @@ Content-Type: application/json
     "payeeReference": "1662366424",
     "amount": 1500,
     "details": {}
-  },
+  }
+```
+
+```http
     "paid": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
     "instrument": "Swish",
@@ -643,7 +655,10 @@ Content-Type: application/json
     "payeeReference": "1662360831",
     "amount": 1500,
     "details": {}
-},
+  }
+```
+
+```http
 "paid": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
     "instrument": "Invoice",
@@ -651,7 +666,10 @@ Content-Type: application/json
     "payeeReference": "1662360980",
     "amount": 2000,
     "details": {}
-},
+  }
+```
+
+```http
 "paid": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
     "instrument": "CreditAccount",
@@ -659,7 +677,10 @@ Content-Type: application/json
     "payeeReference": "1662361777",
     "amount": 1500,
     "details": {}
-},
+  }
+```
+
+```http
 "paid": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
     "instrument": "Trustly",
@@ -668,10 +689,7 @@ Content-Type: application/json
     "orderReference": "orderReference",
     "amount": 90361,
     "details": {}
-    }
-}
   }
-}
 ```
 
 {:.table .table-striped}

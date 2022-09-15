@@ -333,10 +333,10 @@ Content-Type: application/json
 ## Paid
 
 The payment order response with status `Paid`, and the `Paid` resource expanded.
-Please note that we have included the `Paid` resources of all instruments in
-this code example. Only the instruments used to pay with will appear in
-production responses. Resource examples where details are empty indicate that no
-details are available.
+Please note that the main code example is of a card payment. We have included
+`Paid` resources of the remaining instruments below the main code example.
+Resource examples where details are empty indicate that no details are
+available.
 
 The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
@@ -422,83 +422,6 @@ Content-Type: application/json
                 "transactionInitiator": "CARDHOLDER"
            }
         },
-        "paid": {
-            "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
-            "instrument": "ApplePay",
-            "number": 80100001190,
-            "payeeReference": "1662360210",
-            "amount": 1500,
-            "details": {
-                "cardBrand": "Visa",
-                "cardType": "Credit",
-                "expiryDate": "12/0023",
-                "issuerAuthorizationApprovalCode": "L00392",
-                "acquirerTransactionType": "WALLET",
-                "acquirerStan": "392",
-                "acquirerTerminalId": "80100001190",
-                "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
-                "transactionInitiator": "CARDHOLDER"
-           }
-        },
-        "paid": {
-            "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
-            "instrument": "MobilePay",
-            "number": 75100106637,
-            "payeeReference": "1662364327",
-            "amount": 1500,
-            "details": {
-               "cardBrand": "Visa",
-               "maskedPan": "489537******1424",
-               "expiryDate": "12/2022",
-               "issuerAuthorizationApprovalCode": "018117",
-               "acquirerTransactionType": "MOBILEPAY",
-               "acquirerStan": "53889",
-               "acquirerTerminalId": "42",
-               "acquirerTransactionTime": "2022-09-05T09:54:05Z"
-           }
-        },
-        "paid": {
-            "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
-            "instrument": "Vipps",
-            "number": 99463794,
-            "payeeReference": "1662366424",
-            "amount": 1500,
-            "details": {}
-        },
-        "paid": {
-            "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
-            "instrument": "Swish",
-            "number": 74100413405,
-            "payeeReference": "1662360831",
-            "amount": 1500,
-            "details": {}
-        },
-        "paid": {
-            "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
-            "instrument": "Invoice",
-            "number": 71100775379,
-            "payeeReference": "1662360980",
-            "amount": 2000,
-            "details": {}
-        },
-        "paid": {
-            "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
-            "instrument": "CreditAccount",
-            "number": 77100038000,
-            "payeeReference": "1662361777",
-            "amount": 1500,
-            "details": {}
-        },
-        "paid": {
-            "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
-            "instrument": "Trustly",
-            "number": 79100113652,
-            "payeeReference": "1662373401",
-            "orderReference": "orderReference",
-            "amount": 90361,
-            "details": {}
-        }
-    },
         "cancelled": {
             "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b/cancelled"
         },
@@ -540,6 +463,103 @@ Content-Type: application/json
     ]
 }
 
+```
+
+```http
+   "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "ApplePay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "amount": 1500,
+    "details": {
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "expiryDate": "12/0023",
+        "issuerAuthorizationApprovalCode": "L00392",
+        "acquirerTransactionType": "WALLET",
+        "acquirerStan": "392",
+        "acquirerTerminalId": "80100001190",
+        "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+        "transactionInitiator": "CARDHOLDER"
+    }
+  }
+```
+
+```http
+    "paid": {
+    "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
+    "instrument": "MobilePay",
+    "number": 75100106637,
+    "payeeReference": "1662364327",
+    "amount": 1500,
+    "details": {
+        "cardBrand": "Visa",
+        "maskedPan": "489537******1424",
+        "expiryDate": "12/2022",
+        "issuerAuthorizationApprovalCode": "018117",
+        "acquirerTransactionType": "MOBILEPAY",
+        "acquirerStan": "53889",
+        "acquirerTerminalId": "42",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+    }
+  }
+```
+
+```http
+    "paid": {
+    "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
+    "instrument": "Vipps",
+    "number": 99463794,
+    "payeeReference": "1662366424",
+    "amount": 1500,
+    "details": {}
+  }
+```
+
+```http
+    "paid": {
+    "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
+    "instrument": "Swish",
+    "number": 74100413405,
+    "payeeReference": "1662360831",
+    "amount": 1500,
+    "details": {}
+  }
+```
+
+```http
+"paid": {
+    "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
+    "instrument": "Invoice",
+    "number": 71100775379,
+    "payeeReference": "1662360980",
+    "amount": 2000,
+    "details": {}
+  }
+```
+
+```http
+"paid": {
+    "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
+    "instrument": "CreditAccount",
+    "number": 77100038000,
+    "payeeReference": "1662361777",
+    "amount": 1500,
+    "details": {}
+  }
+```
+
+```http
+"paid": {
+    "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
+    "instrument": "Trustly",
+    "number": 79100113652,
+    "payeeReference": "1662373401",
+    "orderReference": "orderReference",
+    "amount": 90361,
+    "details": {}
+  }
 ```
 
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
