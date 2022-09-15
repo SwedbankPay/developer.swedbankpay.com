@@ -359,8 +359,6 @@ Content-Type: application/json
 
 ## PATCH Instrument Selection
 
-{% endif %}
-
 {% if documentation_section contains "checkout-v3" %}
 
 Note the `rel` named `set-instrument`, which appears among the available
