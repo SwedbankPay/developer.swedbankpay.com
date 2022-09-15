@@ -26,7 +26,7 @@ jobs:
         run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
 
       - name: build
-        run: docker-compose run portal build --site-url=https://developer.swedbankpay.com \
+        run: docker-compose run portal build --site-url=https://developer.swedbankpay.com
 
       - name: Upload site
         uses: actions/upload-artifact@v3
@@ -36,12 +36,30 @@ jobs:
 
   verify:
     runs-on: ubuntu-latest
-    needs: variables
+    needs: [variables, build]
     steps:
       - uses: actions/checkout@v3
 
-      - name: docker login
-        run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-site
+          path: _site
+
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gems-
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: bundle config
+        run: bundle config path vendor/bundle
+
+      - name: bundle install
+        run: bundle install --jobs 4 --retry 3
 
       - name: Cache HTMLProofer
         id: cache-htmlproofer
@@ -50,25 +68,16 @@ jobs:
           path: tmp/.htmlproofer
           key: ${{ runner.os }}-htmlproofer
 
-      - name: Verify build
+      - name: HTMLProofer
         run: |
-          docker-compose run \
-            -e GITHUB_BRANCH=${{ needs.variables.outputs.branch }} \
-            -e GITHUB_REPOSITORY_URL=${{ needs.variables.outputs.repository_url }} \
-            portal build \
-            --verify \
-            --env=production \
-            --site-url=https://developer.swedbankpay.com \
-            --ignore-url http://restcookbook.com/Basics/loggingin/ \
-            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
-            --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
-
-      - name: Upload build output artifacts
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: verify-site
-          path: _site
+          bundle exec htmlproofer \
+            _site \
+            --assume-extension \
+            --check-html \
+            --enforce-https \
+            --internal-domains "developer.swedbankpay.com" \
+            --hydra '{ "max_concurrency": 32 }' \
+            --url-ignore "http://restcookbook.com/Basics/loggingin/,https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default,https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server"
 
       - name: Verify absolute URL
         run: grep 'https://developer.swedbankpay.com/' $(pwd)/_site/index.html
