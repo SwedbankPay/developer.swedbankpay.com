@@ -516,9 +516,9 @@ Content-Type: application/json
 
 ## Paid
 
-The payment order response with status `Paid`, and the `Paid` resource expanded.
+The payment order response with status `paid`, and the `paid` resource expanded.
 Please note that the main code example is of a card payment. We have included
-`Paid` resources of the remaining instruments below the main code example.
+`paid` resources of the remaining instruments below the main code example.
 Resource examples where details are empty indicate that no details are
 available.
 
