@@ -595,8 +595,16 @@ Content-Type: application/json
   }
 ```
 
+{:.code-view-header}
+**Apple Pay**
+
 ```http
-   "paid": {
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
     "instrument": "ApplePay",
     "number": 80100001190,
@@ -614,6 +622,7 @@ Content-Type: application/json
         "transactionInitiator": "CARDHOLDER"
     }
   }
+}
 ```
 
 ```http
