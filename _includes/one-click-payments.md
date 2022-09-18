@@ -162,7 +162,7 @@ the paymentToken generated in the initial purchase.
 You can add the field `noCvc` set to `true` in the `creditcard` object,
 containing card specific feature fields. This disables the CVC field.
 
-**Abbreviated code example:**
+## One-Click Request Displaying All Cards
 
 {:.code-view-header}
 **Request**
@@ -188,7 +188,7 @@ Content-Type: application/json
 }
 ```
 
-**Abbreviated code example for displaying one card:**
+## One-Click Request Displaying A Specific Card
 
 {:.code-view-header}
 **Request**
