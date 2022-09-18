@@ -332,9 +332,9 @@ Content-Type: application/json
 
 ## Paid
 
-The payment order response with status `Paid`, and the `Paid` resource expanded.
+The payment order response with status `paid`, and the `paid` resource expanded.
 Please note that the main code example is of a card payment. We have included
-`Paid` resources of the remaining instruments below the main code example.
+`paid` resources of the remaining instruments below the main code example.
 Resource examples where details are empty indicate that no details are
 available.
 
@@ -462,11 +462,23 @@ Content-Type: application/json
         }{% endif %}
     ]
 }
-
 ```
 
+### Apple Pay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Apple Pay**
+
 ```http
-   "paid": {
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
     "instrument": "ApplePay",
     "number": 80100001190,
@@ -484,9 +496,23 @@ Content-Type: application/json
         "transactionInitiator": "CARDHOLDER"
     }
   }
+}
 ```
 
+### MobilePay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**MobilePay**
+
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
     "instrument": "MobilePay",
@@ -504,9 +530,23 @@ Content-Type: application/json
         "acquirerTransactionTime": "2022-09-05T09:54:05Z"
     }
   }
+}
 ```
 
+### Vipps `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Vipps**
+
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
     "instrument": "Vipps",
@@ -515,9 +555,23 @@ Content-Type: application/json
     "amount": 1500,
     "details": {}
   }
+}
 ```
 
+### Swish `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Swish**
+
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
     "instrument": "Swish",
@@ -526,9 +580,23 @@ Content-Type: application/json
     "amount": 1500,
     "details": {}
   }
+}
 ```
 
+### Invoice `Paid` Resource
+
+Please note that this is an abbreviated example. See the main `Paid` example for
+more context.
+
+{:.code-view-header}
+**Invoice**
+
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
     "instrument": "Invoice",
@@ -537,9 +605,23 @@ Content-Type: application/json
     "amount": 2000,
     "details": {}
   }
+}
 ```
 
+### Credit Account `Paid` Resource
+
+Please note that this is an abbreviated example. See the main `Paid` example for
+more context.
+
+{:.code-view-header}
+**CreditAccount**
+
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
     "instrument": "CreditAccount",
@@ -548,9 +630,23 @@ Content-Type: application/json
     "amount": 1500,
     "details": {}
   }
+}
 ```
 
+### Trustly `Paid` Resource
+
+Please note that this is an abbreviated example. See the main `Paid` example for
+more context.
+
+{:.code-view-header}
+**Trustly**
+
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
     "instrument": "Trustly",
@@ -560,6 +656,7 @@ Content-Type: application/json
     "amount": 90361,
     "details": {}
   }
+}
 ```
 
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
