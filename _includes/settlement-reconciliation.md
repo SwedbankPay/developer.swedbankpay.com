@@ -52,6 +52,8 @@ lists. Your acquirer will transfer settled funds to you.
 
 #### Balance Report
 
+{% include alert-balance-report.md %}
+
 The Balance Report (a _.pdf file_) specifies the total sales for a specific
 period, including fees and VAT. The report contains three parts: a payment
 summary and specifications for sales and for fees.
@@ -98,7 +100,7 @@ body.
 | Field         | Type       | Description                                                                |
 | :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
-| Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
+| `Currency`    | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
 | `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
 | `Service`     | `String`   | The service used (e.g. `Creditcard`).                                      |
 | `NoOfDebet`   | `Decimal`  | Total number of debit transactions for the given service.                  |
@@ -228,6 +230,8 @@ report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` 
 {% include pba-tables.md operation_title="reversal" %}
 
 ### Samples
+
+{% include alert-balance-report-samples.md %}
 
 The content of the files depends on the type of agreement you have made with
 Swedbank Pay. For some payment instruments, only option A is available, while for other

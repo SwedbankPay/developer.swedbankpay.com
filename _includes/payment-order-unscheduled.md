@@ -54,7 +54,7 @@ Content-Type: application/json
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf",
             "logoUrl": "https://example.com/logo.png" // Redirect only
         },
         "payeeInfo": {
