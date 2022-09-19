@@ -22,14 +22,14 @@ the details stored or not.
 all payment instruments provided by Swedbank Pay support Payer Awareness today."
 %}
 
-### BYO Payment Menu
+## BYO Payment Menu
 
 Payment Menu is versatile and can be configured in such a way that it functions
 like a single payment instrument. In such configuration, it is easy to Bring
 Your Own Payment Menu, i.e. building a customized payment menu in our own user
 interface.
 
-#### Add Stored Payment Instrument Details
+## Add Stored Payment Instrument Details
 
 When building a custom payment menu, features like adding new stored payment
 instrument details (i.e. "Add new card") is something that needs to be provided
@@ -54,7 +54,7 @@ menu and want to show stored payment details, you will need to set the
 get all active payment tokens registered on that payer when building your
 menu.
 
-### GDPR
+## GDPR
 
 Remember that you have the responsibility of enforcing GDPR requirements and
 letting the payer remove active payment tokens when they want. It is up to you
@@ -63,6 +63,8 @@ you need to make it easy to [clean up old data][tokens]. See more below the main
 `paymentOrder` request example, or follow the hyperlink above.
 
 A Payer Aware Payment Menu request can look like this.
+
+## Payer Aware Payment Menu Request
 
 {:.code-view-header}
 **Request**
@@ -279,6 +281,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
+## Payer Aware Payment Menu Response
+
 {:.code-view-header}
 **Response**
 
@@ -406,13 +410,15 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
-### Tokens
+## Tokens
 
 It is possible to query for all active payment tokens registered on a specific
 `payerReference`. After doing so, you can either remove all tokens or a subset
 of the tokens registered on the payer. This is the easiest way of cleaning up
 all data for **Payments Only** implementations. It is also possible to [delete a
 single token][delete-tokens] if you wish to do that.
+
+## GET Tokens Request
 
 Querying with a `GET` request will give you a response containing all tokens and
 the operation(s) available for them.
@@ -426,6 +432,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Tokens Response
 
 {:.code-view-header}
 **Response**
@@ -520,6 +528,8 @@ Content-Type: application/json
 | └➔&nbsp;`instrumentDisplayName`             | `string`     | Payment instrument connected to the token.|
 | └➔&nbsp;`instrumentParameters`             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform regarding the token. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+
+## PATCH Request For Removing Tokens
 
 You can remove the tokens by using the following `PATCH` request.
 

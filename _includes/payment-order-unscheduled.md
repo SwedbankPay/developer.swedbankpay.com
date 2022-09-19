@@ -25,6 +25,8 @@ tokens.
 
 (Read more about [deleting the unscheduled token][delete-token] here.)
 
+## Initial Unscheduled Request
+
 The initial request should look like this:
 
 {:.code-view-header}
@@ -237,6 +239,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
+## Initial Unscheduled Response
+
 {:.code-view-header}
 **Response**
 
@@ -403,6 +407,8 @@ When you are ready to perform the unscheduled purchase, simply add the
 `unscheduledToken` field to the `paymentOrder` request and use the token as the
 value. Your request should look like the example below, and the response will
 match the `paymentOrder` response from the initial purchase.
+
+## Unscheduled Request
 
 {:.code-view-header}
 **Request**

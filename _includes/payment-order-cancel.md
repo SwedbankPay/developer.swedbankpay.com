@@ -99,7 +99,7 @@ Content-Type: application/json
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
 
-### Cancel Sequence Diagram
+## Cancel Sequence Diagram
 
 Cancel can only be done on a authorized transaction. If you perform a cancel
 after doing a partial capture, you will cancel the remaining authorized amount.
