@@ -47,7 +47,7 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30)` | {% include field-description-payee-reference.md %} |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
 
 ## Cancel Response
 
