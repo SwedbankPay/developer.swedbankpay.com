@@ -31,7 +31,7 @@ need a **legal agreement with Swedbank Pay** which mandates that the payer
 identified by the `nationalIdentifier` is authenticated with **Bank ID** prior
 to the request." %}
 
-An abbreviated example of a Enterprise request looks like this:
+An abbreviated example of an **Enterprise** request looks like this:
 
 {:.code-view-header}
 **Request**
