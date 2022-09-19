@@ -94,7 +94,7 @@ Content-Type: application/json
 | └➔&nbsp;`cancelReason`             | `string`     | Why the payment was cancelled. |
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
@@ -333,14 +333,15 @@ Content-Type: application/json
 | └─➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └─➔&nbsp;`vatAmount`                | `integer`    | {% include field-description-vatamount.md %}                                          |
 | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                         |
-| └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
 | └➔&nbsp;`orderItems`           | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                         |
 
 ## History
 
 We advise you to not build logic around the content of these fields. They are
-mainly for information purposes, and might be subject to name changes. If these should occur, updates will be available in the list below.
+mainly for information purposes, and might be subject to name changes. If these
+should occur, updates will be available in the list below.
 
 {:.code-view-header}
 **Request**
@@ -515,6 +516,16 @@ Content-Type: application/json
 
 ## Paid
 
+The payment order response with status `paid`, and the `paid` resource expanded.
+Please note that the main code example is of a card payment. We have included
+`paid` resources of the remaining instruments below the main code example.
+Resource examples where details are empty indicate that no details are
+available.
+
+The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
+while MobilePay does return this field, the value present is actually a
+`networkToken`, which **represents** the PAN, but is not a PAN in itself.
+
 {:.code-view-header}
 **Request**
 
@@ -571,16 +582,210 @@ Content-Type: application/json
       "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
       "externalNonPaymentToken" : "1234567890",
       "cardBrand": "Visa",
-6     "cardType": "Credit",
-7     "maskedPan": "492500******0004",
-8     "expiryDate": "12/2022",
-9     "issuerAuthorizationApprovalCode": "L00302",
-10    "acquirerTransactionType": "STANDARD",
-11    "acquirerStan": "302",
-12    "acquirerTerminalId": "70101301389",
-13    "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
-14    "transactionInitiator": "CARDHOLDER"
+      "cardType": "Credit",
+      "maskedPan": "492500******0004",
+      "expiryDate": "12/2022",
+      "issuerAuthorizationApprovalCode": "L00302",
+      "acquirerTransactionType": "STANDARD",
+      "acquirerStan": "302",
+      "acquirerTerminalId": "70101301389",
+      "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
+      "transactionInitiator": "CARDHOLDER"
     }
+  }
+```
+
+### Apple Pay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Apple Pay**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "ApplePay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "amount": 1500,
+    "details": {
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "expiryDate": "12/0023",
+        "issuerAuthorizationApprovalCode": "L00392",
+        "acquirerTransactionType": "WALLET",
+        "acquirerStan": "392",
+        "acquirerTerminalId": "80100001190",
+        "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+        "transactionInitiator": "CARDHOLDER"
+    }
+  }
+}
+```
+
+### MobilePay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**MobilePay**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paid": {
+    "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
+    "instrument": "MobilePay",
+    "number": 75100106637,
+    "payeeReference": "1662364327",
+    "amount": 1500,
+    "details": {
+        "cardBrand": "Visa",
+        "maskedPan": "489537******1424",
+        "expiryDate": "12/2022",
+        "issuerAuthorizationApprovalCode": "018117",
+        "acquirerTransactionType": "MOBILEPAY",
+        "acquirerStan": "53889",
+        "acquirerTerminalId": "42",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+    }
+  }
+}
+```
+
+### Vipps `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Vipps**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paid": {
+    "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
+    "instrument": "Vipps",
+    "number": 99463794,
+    "payeeReference": "1662366424",
+    "amount": 1500,
+    "details": {}
+  }
+}
+```
+
+### Swish `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Swish**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paid": {
+    "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
+    "instrument": "Swish",
+    "number": 74100413405,
+    "payeeReference": "1662360831",
+    "amount": 1500,
+    "details": {}
+  }
+}
+```
+
+### Invoice `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Invoice**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+"paid": {
+    "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
+    "instrument": "Invoice",
+    "number": 71100775379,
+    "payeeReference": "1662360980",
+    "amount": 2000,
+    "details": {}
+  }
+}
+```
+
+### Credit Account `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**CreditAccount**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+"paid": {
+    "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
+    "instrument": "CreditAccount",
+    "number": 77100038000,
+    "payeeReference": "1662361777",
+    "amount": 1500,
+    "details": {}
+  }
+}
+```
+
+### Trustly `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Trustly**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+"paid": {
+    "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
+    "instrument": "Trustly",
+    "number": 79100113652,
+    "payeeReference": "1662373401",
+    "orderReference": "orderReference",
+    "amount": 90361,
+    "details": {}
   }
 }
 ```
@@ -593,7 +798,7 @@ Content-Type: application/json
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
