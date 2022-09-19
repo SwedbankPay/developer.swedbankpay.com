@@ -46,8 +46,6 @@ Content-Type: application/json
 
 ## Abort PATCH Response
 
-{% endif %}
-
 {% if documentation_section contains "checkout-v3" %}
 
 The response given when aborting a payment order is equivalent to a `GET`
