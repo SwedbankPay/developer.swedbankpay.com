@@ -179,7 +179,7 @@ response provided below.
 
 {% endif %}
 
-## MOTO Request
+## MOTO Response
 
 {:.code-view-header}
 **Response**
