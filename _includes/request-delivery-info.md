@@ -23,7 +23,7 @@ we will add support for more payment instruments going forward. No changes are
 required at your (the merchant's) end to be able to offer more instruments at a
 later time.
 
-## Request
+## Request Delivery Info Request
 
 The fields themselves are `bool`s which must be added in the `paymentorder` node
 of the request, like the example below.
@@ -328,7 +328,7 @@ Content-Type: application/json
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
-## Response
+## Request Delivery Info Response
 
 {:.code-view-header}
 **Response**
