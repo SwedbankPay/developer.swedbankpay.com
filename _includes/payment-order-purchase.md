@@ -2,6 +2,8 @@
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
 
+## Payment Order Request
+
 {:.code-view-header}
 **Request**
 
@@ -103,6 +105,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Payment Order Response
 
 {:.code-view-header}
 **Response**

@@ -16,6 +16,8 @@ representative to make a booking. This feature is only supported with the
 `Purchase` operation. See the example below on how to implement MOTO
 by setting the `generateMotoPayment` to `true`.
 
+## MOTO Request
+
 {:.code-view-header}
 **Request**
 
@@ -176,6 +178,8 @@ so they can fill out the payer’s card details. You will find an example of the
 response provided below.
 
 {% endif %}
+
+## MOTO Request
 
 {:.code-view-header}
 **Response**
