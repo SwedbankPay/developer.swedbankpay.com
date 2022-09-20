@@ -17,7 +17,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="authorization" %}
 
-### Create Authorization Transaction
+## Create Authorization Transaction
 
 To create an `authorization` transaction, perform the `create-authorization`
 operation as returned in a previously created invoice payment.

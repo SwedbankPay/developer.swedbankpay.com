@@ -38,6 +38,8 @@ Content-Type: application/json
 
 ## Abort Response
 
+The response will be the `payment` resource with its `state` set to `Aborted`.
+
 {:.code-view-header}
 **Response**
 
@@ -80,5 +82,3 @@ Content-Type: application/json
     "operations": []
 }
 ```
-
-The response will be the `payment` resource with its `state` set to `Aborted`.

@@ -2,6 +2,8 @@
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
 
+## Payment Order Request
+
 {:.code-view-header}
 **Request**
 
@@ -30,7 +32,7 @@ Content-Type: application/json
             "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf",
             "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
@@ -103,6 +105,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Payment Order Response
 
 {:.code-view-header}
 **Response**
@@ -217,7 +221,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`logoUrl`                 | `string`     | {% include field-description-logourl.md %}                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
+| {% icon check %} | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |

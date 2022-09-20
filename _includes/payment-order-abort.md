@@ -48,6 +48,20 @@ Content-Type: application/json
 
 {% if documentation_section contains "checkout-v3" %}
 
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, as displayed above, with its
+`status` set to `Aborted`.
+
+{% else %}
+
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, as displayed above, with its
+`state` set to `Aborted`.
+
+{% endif %}
+
+{% if documentation_section contains "checkout-v3" %}
+
 {:.code-view-header}
 **Response**
 
@@ -228,19 +242,5 @@ Content-Type: application/json
     ]
 }
 ```
-
-{% endif %}
-
-{% if documentation_section contains "checkout-v3" %}
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above, with its
-`status` set to `Aborted`.
-
-{% else %}
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above, with its
-`state` set to `Aborted`.
 
 {% endif %}

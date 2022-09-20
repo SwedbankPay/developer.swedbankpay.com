@@ -21,6 +21,8 @@ transaction is described below.
 The `transactions` resource will list the transactions (one or more) on a
 specific payment.
 
+## Transaction List Request
+
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
 {:.code-view-header}
@@ -46,6 +48,8 @@ Content-Type: application/json
 ```
 
 {% endif %}
+
+## Transaction List Response
 
 {% include transaction-list-response.md transaction="transaction" %}
 {% include transaction.md header_level=next_header_level %}

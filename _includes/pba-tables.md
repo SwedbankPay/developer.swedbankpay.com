@@ -2,7 +2,7 @@
 {% assign operation_title = include.operation_title %}
 {%- assign operation_title_field_name = operation_title | capitalize -%}
 
-### **{{ operation_title_field_name }}**
+## **{{ operation_title_field_name }}**
 
 {:.table .table-striped}
 | API                                                                                               | XLSX                            | XML                     |
