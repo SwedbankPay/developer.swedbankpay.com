@@ -23,7 +23,7 @@ generated payment token to prefill payment details for credit card or
 invoice payments pages - which means that the payer don't need to enter
 these details for every purchase." %}
 
-### Introduction
+## Introduction
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -41,7 +41,7 @@ to enable one-click purchases.
 
 {% endif %}
 
-### API Requests To Generate paymentToken
+### API Requests To Generate The Payment Token
 
 When making the initial purchase request, you need to generate a `paymentToken`.
 You can do this by setting the `generatePaymentToken` field in the request's
@@ -60,7 +60,7 @@ setting the initial operation to [`Verify`][verify].
 }
 ```
 
-### Finding paymentToken value
+## Finding The `paymentToken` Value
 
 When the initial purchase is successful, a `paymentToken` is linked to
 the payment. You can return the value by sending a `GET` request towards the
@@ -88,7 +88,7 @@ Authorization: Bearer <AccessToken>
 You need to store the `paymentToken` from the response in your system and keep
 track of the corresponding `payerReference` in your system.
 
-### Returning Purchases
+## Returning Purchases
 
 {% unless documentation_section contains "checkout" or "payment-menu" %}
 
@@ -105,8 +105,14 @@ initial purchase, where you specified the `generatePaymentToken` to `true`.
 You can add the field `noCvc` set to `true` in the `creditcard` object, which
 card specific feature fields. This disables the CVC field.
 
+{% if documentation_section contains "payment-instruments" %}
+
 See the Features section for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
+
+{% endif %}
+
+## One-Click Request
 
 Abbreviated code example:
 
@@ -232,10 +238,12 @@ Content-Type: application/json
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 
+## How It Looks
+
 {:.text-center}
 ![One click payment page][one-click-image]{:height="510px" width="475px"}
 
-### Delete payment token
+## Delete Payment Token
 
 If you need to delete a `paymentToken`, you have two options. The first is by
 `payerReference`, which deletes all payment, recurrence and/or unscheduled
@@ -258,6 +266,8 @@ deletes a specific token.
 If you want to delete tokens by `payerReference`, the request and response
 should look like this:
 
+## Delete Payment Token Request
+
 {:.code-view-header}
 **Request**
 
@@ -277,6 +287,8 @@ Content-Type: application/json
 TODO: Remove pipes from the above code example and add a field table
       explaining each field here.
 {% endcomment %}
+
+## Delete Payment Token Response
 
 {:.code-view-header}
 **Response**
@@ -324,6 +336,8 @@ For single token deletions, the request and response should look like this. In
 this example, the token is connected to a card. If it was a token connected to
 an invoice, the `instrumentDisplayName` would be the payer's date of birth.
 
+## Delete Single Token Request For Checkout Integrations
+
 {:.code-view-header}
 **Request**
 
@@ -338,6 +352,8 @@ Content-Type: application/json
   "comment": "Comment stating why this is being deleted"
 }
 ```
+
+## Delete Single Token Response For Checkout Integrations
 
 {:.code-view-header}
 **Response**
@@ -362,6 +378,8 @@ Content-Type: application/json
 For single token deletions, the request and response should look like this. In
 this example, the token is a payment token and is connected to a card.
 
+## Delete Single Token Request
+
 {:.code-view-header}
 **Request**
 
@@ -380,6 +398,8 @@ Content-Type: application/json
 }
 }
 ```
+
+## Delete Single Token Response
 
 {:.code-view-header}
 **Response**
