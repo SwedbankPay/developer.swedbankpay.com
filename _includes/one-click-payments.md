@@ -103,12 +103,12 @@ initial purchase, where you specified the `generatePaymentToken` to `true`.
 You can add the field `noCvc` set to `true` in the `creditcard` object, which
 card specific feature fields. This disables the CVC field.
 
-{% unless documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "payment-instruments" %}
 
 See the Features section for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
 
-{% endunless %}
+{% endif %}
 
 ## One-Click Request
 
