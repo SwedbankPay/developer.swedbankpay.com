@@ -11,6 +11,16 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 20 September 2022
+
+### Version 3.1.3
+
+Another small one. We've added Checkout v3 paid responses for all instruments in
+both [status][status-models] and [resource-models][resource-models], finished up
+the headers which was missing, added MobilePay to
+[Request Delivery Information][request-delivery-information] and done away with
+some more bugs and typos.
+
 ## 02 September 2022
 
 ### Version 3.1.2
@@ -739,11 +749,13 @@ integration and the payer.
 [update-order-checkout]: /checkout-v2/features#update-order
 [recur]: /checkout-v3/payments-only/features/optional/recur
 [resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
+[resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
+[status-models]: /checkout-v3/payments-only/features/technical-reference/status-response-models
 [storing-uri]: /introduction#storing-uris
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
