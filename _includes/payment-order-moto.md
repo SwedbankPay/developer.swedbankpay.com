@@ -16,6 +16,8 @@ representative to make a booking. This feature is only supported with the
 `Purchase` operation. See the example below on how to implement MOTO
 by setting the `generateMotoPayment` to `true`.
 
+## MOTO Request
+
 {:.code-view-header}
 **Request**
 
@@ -51,7 +53,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite",
+            "siteId": "MySiteId"
         },
         "payer": {
             "digitalProducts": false,
@@ -175,6 +178,8 @@ so they can fill out the payer’s card details. You will find an example of the
 response provided below.
 
 {% endif %}
+
+## MOTO Response
 
 {:.code-view-header}
 **Response**

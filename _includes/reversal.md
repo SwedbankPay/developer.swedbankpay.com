@@ -7,7 +7,7 @@
 
 This transaction is used when a captured payment needs to be reversed.
 
-### Create reversal transaction
+## Reversal Request
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -47,10 +47,12 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}          |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md documentation_section=include.documentation_section %}          |
 {% endcapture %}
 {% include accordion-table.html content = request_table
 %}
+
+## Reversal Response
 
 The `reversal` resource contains information about the newly created reversal
 transaction.
@@ -110,6 +112,8 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content = response_table %}
 
+## List Reversal Transactions
+
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
@@ -125,7 +129,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md api_resource=include.api_resource documentation_section=include.api_resource transaction="reversal" %}
 
-### Reversal Sequence
+## Reversal Sequence Diagram
 
 ```mermaid
 sequenceDiagram

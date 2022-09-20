@@ -8,7 +8,7 @@
 The `Verify` operation lets you post verification payments, which confirm the
 validity of card information without reserving or charging any amount.
 
-## Introduction to Verify
+## Introduction To Verify
 
 This option is commonly used when initiating a subsequent
 {%- if has_one_click %}
@@ -22,7 +22,7 @@ Please note that all boolean credit card attributes involving the rejection of
 certain card types are optional and require enabling on the contract with
 Swedbank Pay." %}
 
-## Verification through Swedbank Pay Payments
+## Verification Through Swedbank Pay Payments
 
 *   When properly set up in your merchant/webshop site, and the payer initiates
     a verification operation, you make a `POST` request towards Swedbank Pay
@@ -59,7 +59,7 @@ Swedbank Pay." %}
     a `unscheduledToken` that can be used for subsequent
     [unscheduled server-to-server based payments][unscheduled-mit].
 
-## Screenshots
+## How It Looks
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
 the credit card information.
@@ -78,6 +78,8 @@ Please note that not including `paymentUrl` in the request will generate a
 Redirect flow. Adding `paymentUrl` input will generate the response meant for
 Seamless View, which does not include the `redirect-verification`. The request
 below is the Redirect option.
+
+## Verify Request
 
 {:.code-view-header}
 **Request**
@@ -122,7 +124,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId", {% endif %}
         },
         "payer": {
             "payerReference": "AB1234",
@@ -136,6 +139,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Verify Response
 
 {:.code-view-header}
 **Response**
@@ -195,7 +200,7 @@ Content-Type: application/json
 }
 ```
 
-## Verification flow
+## Verification Flow
 
 The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase. The links will take you directly to the API description

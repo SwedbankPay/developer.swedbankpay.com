@@ -41,7 +41,7 @@ If you want to **build your own menu** and display **at least** one wallet like
 ensure that the wallet is supported on the payer's device or browser.
 
 Swedbank Pay provides a script to do this check, with the URL
-`ecom.<environment>.payex.com/<integration>/core/integration.` Environments
+`ecom.<environment>.payex.com/checkout/core/integration.` Environments
 available for you are `externalintegration` and `production`, and you can switch
 integration between `checkout` and `paymentmenu`. Follow these links for [test
 environment][test-env] and [production environment][prod-env] **Checkout**
@@ -57,6 +57,8 @@ need to run the script to do the check.
 {% endif %}
 
 ## Instrument Mode Request
+
+An example with invoice as the instrument of choice.
 
 {:.code-view-header}
 **Request**
@@ -76,7 +78,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": "CreditCard", {% if documentation_section contains "checkout-v3" %}
+        "instrument": "Invoice-PayExFinancingSe", {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", {% endif %}
         "urls":
             "hostUrls": [ "https://example.com", "https://example.net" ],
@@ -92,7 +94,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId", {% endif %}
         },
         "payer": {
             "requireConsumerInfo": true,
@@ -159,6 +162,11 @@ Content-Type: application/json
 
 {% if documentation_section contains "checkout-v3" %}
 
+Note the implementation options **Seamless View** and **Redirect** (`HostedView`
+or `Redirect` in the response's implementation field). Depending on which it is,
+either `view-checkout` (Seamless View) or `redirect-checkout` will appear in the
+response. Never both at the same time.
+
 {:.code-view-header}
 **Response**
 
@@ -180,15 +188,13 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
-            "CreditCard",
-            "Swish"
+            "Invoice-PayExFinancingSe"
         ], {% if documentation_section contains "checkout-v3/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
-        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
-        "integration": "Redirect", {% endif %}
+        "implementation": "Starter",
+        "integration": "HostedView|Redirect",
         "instrumentMode": false,
         "guestMode": false,
         "orderItems": {
@@ -228,13 +234,13 @@ Content-Type: application/json
             "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd/metadata"
         }
     },
-      "operations": [ {% if include.integration_mode=="redirect" %}
+      "operations": [
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
-        },{% endif %} {% if include.integration_mode=="seamless-view" %}
+        },
         {
           "method": "GET",
           "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
@@ -265,6 +271,10 @@ Content-Type: application/json
 
 {% else %}
 
+Depending on which implementation you are using, either `view-paymentorder`
+(Seamless View) or `redirect-paymentorder` will appear in the response. Never
+both at the same time.
+
 {:.code-view-header}
 **Response**
 
@@ -288,9 +298,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "instrument": "CreditCard",
         "availableInstruments": [
-            "CreditCard",
             "Invoice-PayExFinancingSe",
-            "CreditAccount"
         ],
         "integration": "",
         "urls": {
@@ -332,13 +340,13 @@ Content-Type: application/json
         "href": "https://api.stage.payex.com/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8",
         "rel": "update-paymentorder-setinstrument",
         "contentType": "application/json"
-        }, {% if include.integration_mode=="redirect" %}
+        },
         {
         "method": "GET",
         "href": "https://ecom.stage.payex.com/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?_tc_tid=30f2168171e142d38bcd4af2c3721959",
         "rel": "redirect-paymentorder",
         "contentType": "text/html"
-        } {% endif %} {% if include.integration_mode=="seamless-view" %}
+        }
         {
         "method": "GET",
         "href": "https://ecom.stage.payex.com/paymentmenu/core/client/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
@@ -350,8 +358,6 @@ Content-Type: application/json
 ```
 
 ## PATCH Instrument Selection
-
-{% endif %}
 
 {% if documentation_section contains "checkout-v3" %}
 

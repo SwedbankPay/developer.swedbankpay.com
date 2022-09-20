@@ -43,6 +43,13 @@ jobs:
       - name: docker login
         run: docker login https://docker.pkg.github.com -u SwedbankPay --password ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Cache HTMLProofer
+        id: cache-htmlproofer
+        uses: actions/cache@v3
+        with:
+          path: tmp/.htmlproofer
+          key: ${{ runner.os }}-htmlproofer
+
       - name: Verify build
         run: |
           docker-compose run \

@@ -25,7 +25,7 @@ the only option.
 Do you want to know more about this service? Please contact our integration
 support.
 
-### Screenshots
+### How It Looks
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
 their card information.
@@ -38,6 +38,8 @@ their card information.
 The API requests are displayed in the flow below. The generated token will be
 returned in the parameter 'transactionOnFileToken'. For more information
 regarding the flow, see Verify.
+
+## Transaction On File Request
 
 {:.code-view-header}
 **Request**
@@ -55,7 +57,8 @@ Content-Type: application/json
         "description": "Create TransactionOnFileToken",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "generateTransactionOnFileToken": true,
+        "generateTransactionOnFileToken": true, {% if documentation_section contains "checkout-v3" %}
+        "productName": "Checkout3",{% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -69,7 +72,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId", {% endif %}
         },
         "payer": {
             "payerReference": "AB1234",
@@ -77,6 +81,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Transaction On File Response
 
 {:.code-view-header}
 **Response**
