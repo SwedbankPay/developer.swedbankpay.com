@@ -34,53 +34,27 @@ jobs:
           name: build-site
           path: _site
 
-  verify:
+  spec:
     runs-on: ubuntu-latest
-    needs: [variables, build]
+    needs: build
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/download-artifact@v3
         with:
           name: build-site
           path: _site
-
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: ${{ runner.os }}-gems-
-
-      - uses: actions/setup-ruby@v1
+      - name: Set up Ruby 2.7
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
-
-      - name: bundle config
-        run: bundle config path vendor/bundle
-
-      - name: bundle install
-        run: bundle install --jobs 4 --retry 3
-
+          bundler-cache: true
       - name: Cache HTMLProofer
         id: cache-htmlproofer
         uses: actions/cache@v3
         with:
           path: tmp/.htmlproofer
           key: ${{ runner.os }}-htmlproofer
-
-      - name: HTMLProofer
-        run: |
-          bundle exec htmlproofer \
-            _site \
-            --assume-extension \
-            --check-html \
-            --enforce-https \
-            --internal-domains "developer.swedbankpay.com" \
-            --hydra '{ "max_concurrency": 32 }' \
-            --url-ignore "https://github.com/,http://restcookbook.com/Basics/loggingin/,https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default,https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server"
-
-      - name: Verify absolute URL
-        run: grep 'https://developer.swedbankpay.com/' $(pwd)/_site/index.html
-
-      - name: Verify base URL
-        run: grep 'src="/assets/' $(pwd)/_site/index.html
+      - name: rspec
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bundle exec rake
