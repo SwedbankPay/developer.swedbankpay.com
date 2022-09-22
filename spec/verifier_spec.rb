@@ -15,7 +15,7 @@ describe Verifier do
   end
 
   it 'verifies the built site' do
-    verifier = Verifier.new(auth_token)
+    verifier = Verifier.new(auth_token, log_level: :warn)
     verifier.verify(dir)
   end
 

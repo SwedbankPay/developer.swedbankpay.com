@@ -46,16 +46,21 @@ module SwedbankPay
     end
 
     def options
+      o = default_options
+      o[:typheous] = { verbose: true } if @log_level == :debug
+      o
+    end
+
+    def default_options
       {
         cache: { timeframe: { external: '1w' } },
         check_html: true,
         check_unrendered_link: true,
         checks: %w[Links Images Scripts UnrenderedLink],
         enforce_https: true,
-        # log_level: :debug,
+        log_level: @log_level,
         only_4xx: true,
         parallel: { in_processes: Concurrent.processor_count },
-        # typheous: { verbose: false },
         url_ignore: [
           'https://api.payex.com/',
           'http://www.wikipedia.org',
