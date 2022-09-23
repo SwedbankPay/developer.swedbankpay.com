@@ -56,6 +56,7 @@ module SwedbankPay
         cache: { timeframe: { external: '1w' } },
         check_html: true,
         check_unrendered_link: true,
+        check_internal_hash: false, # Without this, HTMLProofer times out.
         checks: %w[Links Images Scripts UnrenderedLink],
         enforce_https: true,
         log_level: @log_level,
