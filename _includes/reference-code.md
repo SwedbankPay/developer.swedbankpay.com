@@ -1,7 +1,7 @@
 ## Reference Code
 
 Swedbank Pay's Checkout v3 API is built in a way that depends on that you, as a
-merchant, is able to store the `paymentOrderId`. The `paymentOrderId` is a url
+merchant, is able to store the `paymentOrderId`. The `paymentOrderId` is a URL
 which points to the specific instance of a payment resource, but in some cases
 it will be hard to use it as a payment reference.
 
