@@ -18,12 +18,11 @@ your merchant in our end to appear in the payment order response.
 When enabled, the `referenceCode` will appear as a 16 digit code in the expanded
 `paid` node when the payment has been completed by the payer.
 
-There are two possibilities to choose from when you want to fetch it. The `GET`
-endpoint will be the same as with a regular `GET` call against the
-`paymentOrder` resource, but you can either use `referenceCode` or `paid` as an
-identification. Both responses will look like the abbreviated `paid` example
-below. The parts omitted from this example will look like a regular `GET`
-response.
+There are two possibilities to choose from when you want to fetch it. The request
+will look the same a regular `GET` request against the `paymentOrder` resource,
+but you can either use `referenceCode` or `paid` as an identification. Both 
+responses will look like the abbreviated `paid` example below. The parts omitted
+from this example will look like a the response from a regular `GET` request.
 
 ## GET Request
 
