@@ -3,7 +3,7 @@ title: Enterprise PayerReference
 estimated_read: 1
 description: |
   The Enterprise option when you don't have a secure login or SSN.
-menu_order: 1600
+menu_order: 1500
 icon:
   content: assignment_ind
   outlined: true
