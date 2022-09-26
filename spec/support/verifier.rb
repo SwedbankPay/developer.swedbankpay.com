@@ -19,7 +19,7 @@ module SwedbankPay
       proofer = HTMLProofer.check_directory(path, options)
       @logger = proofer.logger
 
-      @logger.log(@log_level, "Checking '#{path}' with HTMLProofer")
+      @logger.log(:info, "Checking '#{path}' with HTMLProofer")
 
       proofer.before_request { |request| before_request(request) }
       proofer.run
@@ -31,13 +31,13 @@ module SwedbankPay
       uri = URI(request.base_url)
 
       unless uri.host.match('github\.(com|io)$')
-        @logger.log(@log_level, "No authorization set for <#{uri}> as it's not matching github.com or github.io.")
+        @logger.log(:info, "No authorization set for <#{uri}> as it's not matching github.com or github.io.")
         return
       end
 
       auth = "Bearer #{@auth_token}"
       request.options[:headers]['Authorization'] = auth
-      @logger.log(@log_level, "Authorization set for <#{uri}>.")
+      @logger.log(:info, "Authorization set for <#{uri}>.")
     end
 
     def ensure_directory_not_empty!(dir)
