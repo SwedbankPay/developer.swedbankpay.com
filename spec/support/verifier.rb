@@ -56,8 +56,8 @@ module SwedbankPay
         cache: { timeframe: { external: '1w' } },
         check_html: true,
         check_unrendered_link: true,
-        check_internal_hash: false, # Without this, HTMLProofer times out.
         checks: %w[Links Images Scripts UnrenderedLink],
+        allow_missing_href: true,
         enforce_https: true,
         log_level: @log_level,
         only_4xx: true,
@@ -65,7 +65,7 @@ module SwedbankPay
         url_ignore: [
           'https://api.payex.com/',
           'http://www.wikipedia.org',
-          'http://restcookbook.com/Basics/loggingin/'
+          'https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server'
         ]
       }
     end

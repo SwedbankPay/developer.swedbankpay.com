@@ -16,7 +16,15 @@ describe Verifier do
 
   it 'verifies the built site' do
     verifier = Verifier.new(auth_token, log_level: :warn)
-    verifier.verify(dir)
+    result = nil
+
+    begin
+      result = verifier.verify(dir)
+    rescue SystemExit => e
+      result = e
+    end
+
+    expect(result).to be_a(HTMLProofer::Runner)
   end
 
   context 'index.html' do
