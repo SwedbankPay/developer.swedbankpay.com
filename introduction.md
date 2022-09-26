@@ -384,7 +384,7 @@ specified in the response by finding the appropriate operation based on its
 [iso-4217]: https://en.wikipedia.org/wiki/ISO_4217
 [iso-639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
-[java-tls]: https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default
+[java-tls]: https://blogs.oracle.com/java/post/jdk-8-will-use-tls-12-as-default
 [json]: https://www.json.org/
 [node-tls]: https://stackoverflow.com/a/44635449/61818
 [php-curl-tls]: https://stackoverflow.com/a/32926813/61818

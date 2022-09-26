@@ -768,7 +768,7 @@ integration and the payer.
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
-[status-models]: /checkout-v3/payments-only/features/technical-reference/status-response-models
+[status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [storing-uri]: /introduction#storing-uris
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
