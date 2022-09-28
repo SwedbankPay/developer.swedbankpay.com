@@ -701,13 +701,13 @@ integration and the payer.
 [card-unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled
 [card-transaction-states]: /payment-instruments/card/features/technical-reference/payment-transaction-states
 [card]: /payment-instruments/card
-[card-3ds-info]: /payment-instruments/card#purchase-flow
+[card-3ds-info]: /payment-instruments/card#sequence-diagram
 [card-3ds2]: /payment-instruments/card/features/core/3d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
 [card-seamless-view]: /payment-instruments/card/seamless-view
 [checkin]: /checkout-v2/checkin
 [checkout-capture]: /checkout-v2/capture
-[checkout-invoice-capture]: /checkout-v2/capture#invoice
+[checkout-invoice-capture]: /checkout-v2/capture
 [checkout-checkin-front-end]:/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout-v2/payment-menu#request
@@ -753,13 +753,13 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [optional-features]: /checkout-v2/features/optional/
 [payment-orders]: /checkout-v2/payment-menu#step-3-create-payment-order
-[payment-menu-invoice-capture]:/payment-menu/capture#invoice
+[payment-menu-invoice-capture]:/payment-menu/capture
 [payment-menu-items]: /payment-menu/features/technical-reference/items
 [payment-menu-payment-link]: /payment-menu/features/optional/payment-link
 [payments]: /payment-instruments
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /checkout-v2/features/technical-reference/prices
-[update-order-checkout]: /checkout-v2/features#update-order
+[update-order-checkout]: /checkout-v2/features/optional/update
 [recur]: /checkout-v3/payments-only/features/optional/recur
 [resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
@@ -769,7 +769,7 @@ integration and the payer.
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
-[storing-uri]: /introduction#storing-uris
+[storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payment-instruments/swish/direct
