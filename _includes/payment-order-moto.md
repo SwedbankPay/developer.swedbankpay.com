@@ -137,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-Request field not covered in the common Checkout v3 [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
+Request field not covered in the common Checkout redirect or seamless view
 table:
 
 {:.table .table-striped}
