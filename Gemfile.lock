@@ -34,7 +34,7 @@ GEM
     html-pipeline (2.14.2)
       activesupport (>= 2)
       nokogiri (>= 1.4)
-    html-proofer (4.4.1)
+    html-proofer (3.19.4)
       addressable (~> 2.3)
       mercenary (~> 0.3)
       nokogiri (~> 1.13)
@@ -42,9 +42,8 @@ GEM
       rainbow (~> 3.0)
       typhoeus (~> 1.3)
       yell (~> 2.0)
-      zeitwerk (~> 2.5)
-    html-proofer-unrendered-markdown (0.2.0)
-      html-proofer (>= 4.0.0)
+    html-proofer-unrendered-markdown (0.1.3)
+      html-proofer (~> 3.0, >= 3.15.1)
     htmlentities (4.3.4)
     http_parser.rb (0.8.0)
     i18n (1.12.0)
@@ -122,8 +121,9 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     sassc (2.4.0)
       ffi (~> 1.9)
-    swedbank-pay-design-guide-jekyll-theme (1.16.1)
+    swedbank-pay-design-guide-jekyll-theme (1.17.0)
       faraday (>= 1.0.1, < 3)
+      html-proofer (~> 3, >= 3.19)
       jekyll (>= 3.7, < 5.0)
       jekyll-contentblocks (~> 1, >= 1.2)
       jekyll-material-icon-tag (~> 1, >= 1.1)
@@ -131,6 +131,7 @@ GEM
       jemoji (~> 0.12)
       kramdown-plantuml (~> 1, >= 1.3.2)
       nokogiri (~> 1.11)
+      rake (~> 13.0)
       sass (~> 3, >= 3.7)
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -140,7 +141,6 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.8.0)
     yell (2.2.2)
-    zeitwerk (2.6.0)
 
 PLATFORMS
   ruby
@@ -159,7 +159,7 @@ DEPENDENCIES
   kramdown-plantuml (>= 1.3)
   rake (~> 13.0.3)
   searchyll!
-  swedbank-pay-design-guide-jekyll-theme (= 1.16.1)
+  swedbank-pay-design-guide-jekyll-theme (= 1.17.0)
 
 RUBY VERSION
    ruby 2.7.4p191
