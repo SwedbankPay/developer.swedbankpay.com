@@ -28,7 +28,7 @@ some more bugs and typos.
 We have been picking up steam since our summer break, hitting full throttle as
 September arrived. A smaller release this time around, but there are some
 important additions nonetheless. We have added a
-[siteID][checkout-v3-payments-only-redirect-request] field to checkout v3
+[siteId][checkout-v3-payments-only-redirect-request] field to checkout v3
 implementations, re-worked nearly all
 [headers][checkout-v3-payments-only-seamless] across the portal to make
 navigation easier, added a section on
