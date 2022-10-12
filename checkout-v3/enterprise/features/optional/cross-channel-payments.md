@@ -1,12 +1,12 @@
 ---
-title: Reference Code
+title: Cross Channel Payments
 estimated_read: 5
 description: |
     A printable, scannable reference code for payment tracking.
-menu_order: 1700
+menu_order: 1300
 icon:
   content: barcode_scanner
   outlined: true
 ---
 
-{% include reference-code.md %}
+{% include cross-channel-payments.md %}

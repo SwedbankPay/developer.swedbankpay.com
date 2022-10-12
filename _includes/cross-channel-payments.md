@@ -1,28 +1,30 @@
-## Reference Code
+## Cross Channel Payments
 
 Swedbank Pay's Checkout v3 API is built in a way that depends on that you, as a
 merchant, is able to store the `paymentOrderId`. The `paymentOrderId` is a URL
-which points to the specific instance of a payment order resource, but in some cases
-it will be hard to use it as a payment reference.
+which points to the specific instance of a payment order resource, but in some
+cases it will be hard to use it as a payment reference.
 
 To help you keep track of the transaction easier, we provide a unique
-identification called `referenceCode` for all v3 implementations. The code can
-then be printed and used, for instance, as a scannable barcode for future
+identification called `referenceCode` in all v3 implementations. The code can
+then be printed and, for instance, used as a scannable barcode for future
 tracking.
 
-The `referenceCode` isn't available by default, but needs to be activated for
-your merchant in our end to appear in the payment order response.
+The `referenceCode` isn't available by default, but needs to be activated by us
+to appear in your payment order responses.
 
-## GET The Reference Code
+## GET or QUERY The Reference Code
 
 When enabled, the `referenceCode` will appear as a 16 digit code in the expanded
-`paid` node when the payment has been completed by the payer.
+`Paid` node when the payment is fully paid.
 
-There are two possibilities to choose from when you want to fetch it. The request
-will look the same a regular `GET` request against the `paymentOrder` resource,
-but you can either use `referenceCode` or `paid` as an identification. Both 
-responses will look like the abbreviated `paid` example below. The parts omitted
-from this example will look like a the response from a regular `GET` request.
+In addition to the `GET` option, you obtain information about the payment by
+doing a `QUERY` with the `referenceCode` in the `json` body as the example two
+headers down. The url will be the same as you use with the `GET` endpoint.
+
+Both `GET` and `QUERY` responses will look like the abbreviated `paid`
+example below. The parts omitted from this example will look like the response
+from a regular `GET` request.
 
 ## GET Request
 
@@ -34,6 +36,14 @@ GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
+```
+
+## QUERY Request JSON Body
+
+```
+{
+ "referenceCode": 1717224235360011
+}
 ```
 
 ## GET Response
@@ -53,7 +63,7 @@ Content-Type: application/json
     "number": 80100001190,
     "payeeReference": "1662360210",
     "amount": 1500,
-    "referenceCode": "1234567890123456"
+    "referenceCode": "1717224235360011"
     "details": {}
   }
 }
@@ -66,7 +76,7 @@ Content-Type: application/json
 | `paid`                | `object`     | The paid object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
-| └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
+| └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's a need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └─➔&nbsp;`referenceCode`          | `string` | A 16 digit reference code which can be used for tracking payments.  |
