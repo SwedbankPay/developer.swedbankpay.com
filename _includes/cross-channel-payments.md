@@ -40,7 +40,7 @@ Content-Type: application/json
 
 ## QUERY Request JSON Body
 
-```
+```http
 {
  "referenceCode": 1717224235360011
 }
