@@ -1,8 +1,8 @@
 ---
 title: Instrument Mode
 estimated_read: 30
-description: The Payment Menu with one payment instrument.
-menu_order: 1700
+description: The Payment Menu with one payment instrument
+menu_order: 1800
 icon:
   content: looks_one
   outlined: true
