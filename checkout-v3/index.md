@@ -89,7 +89,7 @@ storing the payer data and the payment instruments to be presented.
 Regardless of whether you choose to go with the full checkout or payments only,
 we will supply you with a variety of payment instruments and features which
 cater to your business needs. Somewhat depending on which country or countries
-where you are present, we offer **Apple Pay (on iOS devices), Click to Pay,**
+where you are present, we offer **Apple Pay (on Apple devices), Click to Pay,**
 **card, invoice (incl. monthly payments), MobilePay, Swish, Trustly** and
 **Vipps**.
 
