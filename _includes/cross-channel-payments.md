@@ -13,7 +13,7 @@ tracking.
 The `referenceCode` isn't available by default, but needs to be activated by us
 to appear in your payment order responses.
 
-## GET or QUERY The Reference Code
+## Reference Code Query
 
 When enabled, the `referenceCode` will appear as a 16 digit code in the expanded
 `Paid` node when the payment is fully paid.
