@@ -18,9 +18,9 @@ to appear in your payment order responses.
 When enabled, the `referenceCode` will appear as a 16 digit code in the expanded
 `Paid` field when the payment is fully paid.
 
-In addition to the `GET` option, you obtain information about the payment by
-doing a `QUERY` with the `referenceCode` in the `json` body as the example two
-headers down. The url will be the same as you use with the `GET` endpoint.
+In addition to the regular `GET` method, you may obtain information about the payment by
+doing a `QUERY` with the `referenceCode` in the JSON body as shown in the below
+example.
 
 Both `GET` and `QUERY` responses will look like the abbreviated `paid`
 example below. The parts omitted from this example will look like the response
