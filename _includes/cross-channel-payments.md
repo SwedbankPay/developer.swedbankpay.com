@@ -38,15 +38,24 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
-## QUERY Request JSON Body
+## QUERY Request
+
+{:.code-view-header}
+**Request**
 
 ```http
+QUERY /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
 {
- "referenceCode": 1717224235360011
+  "referenceCode": 1717224235360011
 }
+
 ```
 
-## GET Response
+## GET And QUERY Response
 
 {:.code-view-header}
 **Response**
