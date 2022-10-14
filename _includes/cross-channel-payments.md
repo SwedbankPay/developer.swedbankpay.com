@@ -16,7 +16,7 @@ to appear in your payment order responses.
 ## Reference Code Query
 
 When enabled, the `referenceCode` will appear as a 16 digit code in the expanded
-`Paid` field when the payment is fully paid.
+`paid` field when the payment is fully paid.
 
 In addition to the regular `GET` method, you may obtain information about the payment by
 doing a `QUERY` with the `referenceCode` in the JSON body as shown in the below
