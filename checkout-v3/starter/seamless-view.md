@@ -272,8 +272,8 @@ Events][seamless-view-events] available in the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/starter/features/core/abort
-[checkin-delivery-options-digital]:/assets/img/checkout/checkin-remember-me-digital.png
-[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-remember-me-mixed.png
+[checkin-remember-me-digital]:/assets/img/checkout/checkin-remember-me-digital.png
+[checkin-remember-me-mixed]:/assets/img/checkout/checkin-remember-me-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
 [seamless-payment-menu-starter]: /assets/img/checkout/checkout-v3-seamless-menu.png
