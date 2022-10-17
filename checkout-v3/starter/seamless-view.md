@@ -232,13 +232,13 @@ delivery option(s) to the payer. How the delivery options are displayed is up to
 you, so they are not included in this screenshot.
 
 {:.text-center}
-![screenshot of the seamless view checkin mixed and delivery options][checkin-remember-me-mixed]
+![screenshot of the seamless view checkin mixed products][checkin-remember-me-mixed]
 
 For digital products, only contact details will be shown. "Remember me" will
 work the same way as with mixed goods.
 
 {:.text-center}
-![screenshot of the seamless view checkin digital and delivery options][checkin-remember-me-digital]
+![screenshot of the seamless view checkin digital products][checkin-remember-me-digital]
 
 When the payer chooses a delivery option, you can `PATCH` the payment order and
 open the payment menu. The payer can then proceed with the purchase.
