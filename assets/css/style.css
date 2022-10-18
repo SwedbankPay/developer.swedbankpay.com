@@ -275,37 +275,11 @@ a.header-anchor::before { content: '#'; }
 
 .paragraph-highlight { margin: 2rem 0; padding: 0.25rem 0; padding-left: 1.5rem; border-left: 2px solid #fdc129; }
 
-.sidebar .sidebar-nav .sidebar-header { display: flex; flex-direction: column; align-items: center; margin-top: 2rem; text-decoration: none; color: #512b2b; }
+#dg-sidebar.sidebar .nav-ul { list-style: none; overflow: hidden; padding: 0; top: auto; position: relative; transition: none; }
 
-.sidebar .sidebar-nav .sidebar-header img { margin-top: 1.5rem; margin-bottom: 1.25rem; }
+#dg-sidebar .main-nav-ul a.disabled ~ nav { display: none; }
 
-.sidebar .sidebar-nav .sidebar-header span { color: #fdc129; }
-
-.sidebar .sidebar-nav .sidebar-header .sidebar-header-text { margin-top: -0.5rem; font-size: 1.125rem; line-height: 1.5rem; color: #222; font-family: "Akkurat Mono", monospace; white-space: nowrap; }
-
-.sidebar .sidebar-nav .search-container { box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.15); border-radius: 0.125rem; }
-
-.sidebar .sidebar-nav .search-container:focus-within { outline: -webkit-focus-ring-color auto 0.5px; }
-
-.sidebar .sidebar-nav .search-container .search-input { color: #72605e; font-size: 0.875rem; border: none; padding: 0.375rem; }
-
-.sidebar .sidebar-nav .search-container .search-input:focus { color: #512b2b; outline: none; }
-
-.sidebar .sidebar-nav .search-container i { display: block; color: #512b2b; }
-
-.sidebar .sidebar-nav .search-container i:hover { color: #257886; }
-
-.sidebar .sidebar-nav .search-container button { background-color: #fff; border: none; cursor: pointer; }
-
-.sidebar .sidebar-nav .main-nav-ul .nav-group .nav-ul .nav-subgroup.active > .nav-subgroup-heading a { color: #257886; font-weight: 700; }
-
-.sidebar .sidebar-nav .main-nav-ul .nav-group .nav-ul .nav-subgroup .nav-subgroup-heading { padding: 0; }
-
-.sidebar .sidebar-nav .main-nav-ul .nav-group .nav-ul .nav-subgroup .nav-subgroup-heading i { padding: 0.5rem 0; }
-
-.sidebar .sidebar-nav .main-nav-ul .nav-group .nav-ul .nav-subgroup .nav-subgroup-heading a { color: #512b2b; padding: .5rem; font-size: 1rem; line-height: 1.5rem; text-decoration: none; width: 100%; }
-
-.sidebar .sidebar-nav .main-nav-ul .nav-group .nav-ul .nav-subgroup .nav-subgroup-heading a:hover, .sidebar .sidebar-nav .main-nav-ul .nav-group .nav-ul .nav-subgroup .nav-subgroup-heading a:focus { color: #257886; }
+#dg-sidebar .main-nav-ul .leaf.active > a:hover:after { content: none; }
 
 .title-header { display: flex; justify-content: center; background-color: #493c3b; }
 
