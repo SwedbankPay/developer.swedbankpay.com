@@ -7,10 +7,10 @@ endcapture %}
 
 AutoClick is a feature which automatically forwards the payer from the payment
 window when an instrument is selected, just as if they pressed the Pay button.
-It is only available when using **Checkout v3** and the wallet **Click to Pay**.
-Support for more payment instruments will be added going forward. Apart from
-adding the field in your payment order request, no changes are required at your
-(the merchant's) end for AutoClick to work.
+It is only available when using **Checkout v3**, for all wallets **except**
+**Apple Pay**. Support for more payment instruments will be added going forward.
+Apart from adding the field in your payment order request, no changes are
+required at your (the merchant's) end for AutoClick to work.
 
 There are a couple of limitations in place for this feature. First of all, it is
 restricted to payment instruments which require **no input** from the payer
@@ -268,7 +268,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
-|                  | └─➔&nbsp;`siteId`                 | `String(15)` | `SiteId` is used for [split settlement][split-settlement] transactions when you, as a merchant, need to specify towards AMEX which sub-merchant the transaction belongs to.                                                                                      |
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | This parameter is used when you as a Merchant is using Swedbank Pays ”Split Settlement” and have a need to be able to specify towards AMEX which Merchant that the transaction belongs to.                                                                                      |
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                | {% if documentation_section contains "checkout-v3/starter" %}
 |  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Starter, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `false`, and not to be included if it is `true`.                                    | {% endif %}
@@ -453,5 +453,3 @@ Content-Type: application/json
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` [resource]({{ features_url }}/technical-reference/resource-sub-models#failedAttempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
-
-[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

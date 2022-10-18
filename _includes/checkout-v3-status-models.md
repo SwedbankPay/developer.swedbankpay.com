@@ -499,41 +499,6 @@ Content-Type: application/json
 }
 ```
 
-### Click to Pay `paid` Resource
-
-Please note that this is an abbreviated example. See the main `paid` example for
-more context.
-
-{:.code-view-header}
-**Click to Pay**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
-  "paid": {
-    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
-    "instrument": "ClickToPay",
-    "number": 80100001190,
-    "payeeReference": "1662360210",
-    "amount": 1500,
-    "details": {
-        "cardBrand": "Visa",
-        "cardType": "Credit",
-        "expiryDate": "12/0023",
-        "issuerAuthorizationApprovalCode": "L00392",
-        "acquirerTransactionType": "WALLET",
-        "acquirerStan": "392",
-        "acquirerTerminalId": "80100001190",
-        "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
-        "transactionInitiator": "CARDHOLDER"
-    }
-  }
-}
-```
-
 ### MobilePay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
