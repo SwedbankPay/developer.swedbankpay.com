@@ -119,6 +119,22 @@ Content-Type: application/json
                 "vatPercent": 2500,
                 "amount": 1500,
                 "vatAmount": 375
+            },
+            {
+                "reference": "I1",
+                "name": "InvoiceFee",
+                "type": "PAYMENT_FEE",
+                "class": "Fees",
+                "description": "Fee for paying with Invoice",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 1900,
+                "vatPercent": 0,
+                "amount": 1900,
+                "vatAmount": 0,
+                "restrictedToInstruments": [
+                    "Invoice-PayExFinancingSe"
+                ]
             }
         ],
         "riskIndicator": {
@@ -170,7 +186,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform split settlement on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                          | {% if documentation_section contains "checkout-v3" %}
-|                  | └─➔&nbsp;`siteId`                 | `String(15)` | `SiteId` is used for [split settlement][split-settlement] transactions when you, as a merchant, need to specify towards AMEX which sub-merchant the transaction belongs to.                                                                                                                     | {% endif %}
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | This parameter is used when you as a Merchant is using Swedbank Pays ”Split Settlement” and have a need to be able to specify towards AMEX which Merchant that the transaction belongs to.                                                                                                                | {% endif %}
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 | {% icon check %} | └─➔&nbsp;`firstName`                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
@@ -216,6 +232,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
+|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
 ## Initial Recur Response
@@ -486,7 +503,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`productCategory`     | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                        |
 | {% icon check %} | └─➔&nbsp;`orderReference`      | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                         |
 | {% icon check %} | └─➔&nbsp;`subsite`             | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-reconciliation] before being used.                                                                      | {% if documentation_section contains "checkout-v3" %}
-|                  | └─➔&nbsp;`siteId`                 | `String(15)` | `SiteId` is used for [split settlement][split-settlement] transactions when you, as a merchant, need to specify towards AMEX which sub-merchant the transaction belongs to.                                                                                           | {% endif %}
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | This parameter is used when you as a Merchant is using Swedbank Pays ”Split Settlement” and have a need to be able to specify towards AMEX which Merchant that the transaction belongs to.                                                                                      | {% endif %}
 |                  | └➔&nbsp;`payer`                | `string`     | The `payer` object, containing information about the payer.                     |
 |                  | └─➔&nbsp;`payerReference`      | `string`     | {% include field-description-payer-reference.md %}                                   |
 |                  | └➔&nbsp;`metadata`             | `object`     | {% include field-description-metadata.md %}                                       |
@@ -514,5 +531,4 @@ Content-Type: application/json
 [delete-token]: {{ features_url }}/optional/delete-token
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
-[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [technical-reference-callback]: {{ features_url }}/core/callback

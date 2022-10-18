@@ -114,6 +114,22 @@ Content-Type: application/json
                 "vatPercent": 2500,
                 "amount": 1500,
                 "vatAmount": 375
+            },
+            {
+                "reference": "I1",
+                "name": "InvoiceFee",
+                "type": "PAYMENT_FEE",
+                "class": "Fees",
+                "description": "Fee for paying with Invoice",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 1900,
+                "vatPercent": 0,
+                "amount": 1900,
+                "vatAmount": 0,
+                "restrictedToInstruments": [
+                    "Invoice-PayExFinancingSe"
+                ]
             }
         ],
         "riskIndicator": {

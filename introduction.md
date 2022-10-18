@@ -152,7 +152,7 @@ most assuredly will break when Swedbank Pay makes updates in the future.
 ### Storing URLs
 
 {% include alert.html type="success" icon="link" header="Storing URLs" body="In
-general, URLs should be **discovered** in responses to previous requests, **not
+general, URLs should be **discovered** in responses to previous requets, **not
 stored**." %}
 
 However, URLs that are used to create new resources can be stored or hard coded.

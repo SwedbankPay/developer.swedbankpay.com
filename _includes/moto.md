@@ -30,13 +30,13 @@ by setting the `generateMotoPayment` to `true`.
 **Request**
 
 ```http
-POST /psp/creditcard/payments HTTP/1.1
+POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "payment": {
+    "{{api_resource_field_name}}": {
         "operation": "Purchase",
         "intent": "Authorization",
         "generateMotoPayment": true,
@@ -71,7 +71,7 @@ Content-Type: application/json
 ## MOTO Response
 
 To authorize the payment, find the operation with `rel` equal to
-`redirect-authorization` in the response, and redirect the merchant
+`redirect-{{ api_redirect_rel }}` in the response, and redirect the merchant
 employee to the provided `href` to fill out the payer’s card details. You will
 find an abbreviated example of the response provided below.
 
@@ -83,7 +83,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "payment": {
+  "{{api_resource_field_name}}": {
         "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699",
         "number": 40106480687,
         "created": "2021-02-24T12:51:51.0932275Z",
@@ -102,13 +102,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/urls"
+            "id": "/psp/{{ api_resource }}/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/urls"
         },
         "payeeInfo": {
-            "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/payeeInfo"
+            "id": "id": "/psp/{{ api_resource }}/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/payeeInfo"
         },
         "metadata": {
-            "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/metadata"
+            "id": "/psp/{{ api_resource }}/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/metadata"
         }
     },
        "operations": [

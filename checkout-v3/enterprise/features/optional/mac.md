@@ -2,7 +2,7 @@
 title: Enterprise
 estimated_read: 3
 description: The Checkin alternative.
-menu_order: 1900
+menu_order: 1800
 icon:
   content: verified
   outlined: true
