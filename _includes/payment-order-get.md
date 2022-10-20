@@ -1,4 +1,5 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
 {% capture product %}
     {% if documentation_section == "payment-menu" %}
@@ -117,8 +118,9 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`payments`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`currentPayment` | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
-| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details](#operations).                                                                                             |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                             |
 
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /{{ documentation_section }}
+[operations]: {{ features_url }}/technical-reference/operations

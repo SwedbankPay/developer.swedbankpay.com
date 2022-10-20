@@ -1,3 +1,5 @@
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## Payment And Transaction States
 
 Both payments and transactions can be in several different states during
@@ -24,9 +26,9 @@ the course of a purchase. You can find a short description of each state below.
 
 {% capture alert %}
 If you want to inspect the transactional status of a payment, read about the
-[`paid-payment`](#operation-paid-payment),
-[`failed-payment`](#operation-failed-payment) and
-[`aborted-payment`](#operation-aborted-payment) operations.
+[`paid-payment`][paid-payment],
+[`failed-payment`][failed-payment] and
+[`aborted-payment`][aborted-payment] operations.
 {% endcapture %}
 
 {% include alert.html type="informative" icon="info" body=alert %}
@@ -55,3 +57,7 @@ If you want to inspect the transactional status of a payment, read about the
     to do a confirmation or verification. Examples of this can be payment apps
     like Swish, Vipps or MobilePay, or 3-D Secure verifications for card
     payments.
+
+[aborted-payment]: {{ features_url }}/technical-reference/operations#operation-aborted-payment
+[failed-payment]: {{ features_url }}/technical-reference/operations#operation-failed-payment
+[paid-payment]: {{ features_url }}//technical-reference/operations#operation-paid-payment

@@ -95,5 +95,5 @@ Swish App.
 [payment-resource]: /payment-instruments/swish/features/technical-reference/payment-resource
 [seb-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-handel.html
-[sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
+[sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-for-foretag
 [swish-payment]: /assets/img/payments/swish-redirect-number-input-en.png
