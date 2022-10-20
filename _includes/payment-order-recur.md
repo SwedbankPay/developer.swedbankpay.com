@@ -353,6 +353,8 @@ Content-Type: application/json
 
 ## GET The Token
 
+{% if documentation_section contains "checkout-v3" %}
+
 The token can be retrieved by performing a [`GET` towards
 `paid`][paid-resource-model]. It will be visible under `tokens` in the `paid`
 node.
@@ -381,6 +383,25 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+{% else %}
+
+You can retrieve it by using the expand option when you `GET` your payment. The
+`GET` request should look like the one below, with a `?$expand=paid` after the
+`paymentOrderId`. The response should match the initial payment response, but
+with an expanded `paid` node.
+
+{:.code-view-header}
+**Request**
+
+```http
+GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{% endif %}
 
 ## Performing The Recurring Purchase
 
