@@ -60,4 +60,4 @@ If you want to inspect the transactional status of a payment, read about the
 
 [aborted-payment]: {{ features_url }}/technical-reference/operations#operation-aborted-payment
 [failed-payment]: {{ features_url }}/technical-reference/operations#operation-failed-payment
-[paid-payment]: {{ features_url }}//technical-reference/operations#operation-paid-payment
+[paid-payment]: {{ features_url }}/technical-reference/operations#operation-paid-payment
