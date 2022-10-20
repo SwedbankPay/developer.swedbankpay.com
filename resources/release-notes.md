@@ -710,7 +710,7 @@ integration and the payer.
 [checkout-invoice-capture]: /checkout-v2/capture
 [checkout-checkin-front-end]:/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
-[checkout-payment-order-purchase]: /checkout-v2/payment-menu#request
+[checkout-payment-order-purchase]: /checkout-v2/payment-menu#step-3-create-payment-order
 [checkout-payment-url]: /checkout-v2/features/technical-reference/payment-url
 [checkout-create-starter-paymentorder]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /checkout-v2/
