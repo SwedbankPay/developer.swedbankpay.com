@@ -24,14 +24,9 @@ the course of a purchase. You can find a short description of each state below.
     `initialized` state. See more below. As long as a payment is `pending`, no
     further transactions can be done.
 
-{% capture alert %}
-If you want to inspect the transactional status of a payment, read about the
-[`paid-payment`][paid-payment],
-[`failed-payment`][failed-payment] and
-[`aborted-payment`][aborted-payment] operations.
-{% endcapture %}
-
-{% include alert.html type="informative" icon="info" body=alert %}
+**If you want to inspect the transactional status of a payment, read about**
+**the** [`paid-payment`][paid-payment], [`failed-payment`][failed-payment]
+**and** [`aborted-payment`][aborted-payment] **operations.**
 
 ## Transaction States
 
