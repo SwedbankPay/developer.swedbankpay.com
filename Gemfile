@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '~> 2.7'
 
-gem 'jekyll', '~> 4.2.0', group: :jekyll_plugins
+gem 'jekyll', '~> 4.3.0', group: :jekyll_plugins
 gem 'jemoji'
 
 # Necessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
