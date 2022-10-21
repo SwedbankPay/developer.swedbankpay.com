@@ -65,7 +65,7 @@ module SwedbankPay
         url_ignore: [
           'https://api.payex.com/',
           'http://www.wikipedia.org',
-          'https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server'
+          'https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server',
           'https://blogs.oracle.com/java/post/jdk-8-will-use-tls-12-as-default'
         ]
       }
