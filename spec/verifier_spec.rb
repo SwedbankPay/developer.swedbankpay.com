@@ -19,12 +19,12 @@ describe Verifier do
     result = nil
 
     begin
-      result = verifier.verify(dir)
+      verifier.verify(dir)
     rescue SystemExit => e
       result = e
     end
 
-    expect(result).to be_a(HTMLProofer::Runner)
+    expect(result).to be_nil
   end
 
   context 'index.html' do
