@@ -62,7 +62,7 @@ module SwedbankPay
         log_level: @log_level,
         only_4xx: true,
         parallel: { in_processes: Concurrent.processor_count },
-        url_ignore: [
+        ignore_urls: [
           'https://api.payex.com/',
           'http://www.wikipedia.org',
           'https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server',
