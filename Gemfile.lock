@@ -98,6 +98,8 @@ GEM
     minitest (5.16.3)
     nokogiri (1.13.9-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
+      racc (~> 1.4)
     open3 (0.1.1)
     parallel (1.22.1)
     parser (3.1.2.1)
@@ -194,7 +196,7 @@ DEPENDENCIES
   rubocop (>= 1)
   rubocop-rake (>= 0.6)
   searchyll!
-  swedbank-pay-design-guide-jekyll-theme (~> 1.16)
+  swedbank-pay-design-guide-jekyll-theme (= 1.16.2)
 
 RUBY VERSION
    ruby 2.7.6p219
