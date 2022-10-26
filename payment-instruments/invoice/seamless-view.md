@@ -308,6 +308,6 @@ next_href="direct" next_title="Direct" %}
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
-[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[financing-consumer]: /payment-instruments/invoice/features/technical-reference/financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
 [price-resource]: /payment-instruments/invoice/features/technical-reference/prices

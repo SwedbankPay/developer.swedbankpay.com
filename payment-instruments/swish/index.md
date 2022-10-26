@@ -83,7 +83,8 @@ must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
 
-{% include languages.md %}
+This payment instrument supports English (US) `en-US`, Norwegian `nb-NO` and
+Swedish `sv-SE`.
 
 {% include iterator.html next_href="direct" next_title="Direct" %}
 
@@ -95,5 +96,5 @@ Swish App.
 [payment-resource]: /payment-instruments/swish/features/technical-reference/payment-resource
 [seb-swish]: https://seb.se/foretag/digitala-tjanster/swish-handel
 [sparbanken-oresund]: https://www.sparbankenskane.se/foretag/digitala-tjanster/swish/swish-handel.html
-[sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-foretag/
+[sparbanken-syd]: https://www.sparbankensyd.se/vardagstjanster/betala/swish-for-foretag
 [swish-payment]: /assets/img/payments/swish-redirect-number-input-en.png

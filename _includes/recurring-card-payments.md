@@ -289,10 +289,10 @@ Content-Type: application/json
 <!--lint disable final-definition -->
 
 [payment-verify]: #verify
-[card-payment-purchase]: #create-payment
+[card-payment-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [card-payment-recur]: /payment-instruments/card/features/optional/recur
-[card-payment-capture]: #capture-sequence
-[card-payment-cancel]: #cancel-sequence
+[card-payment-capture]: /payment-instruments/card/capture
+[card-payment-cancel]: /payment-instruments/card/after-payment#cancellations
 [card-payments-remove-payment-token]: {{ features_url }}/optional/delete-token
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement

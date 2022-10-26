@@ -264,6 +264,6 @@ next_href="seamless-view" next_title="Seamless View" %}
 [payment-url]: /payment-instruments/invoice/features/technical-reference/payment-url
 [cancel]: /payment-instruments/invoice/after-payment#cancellations
 [capture]: /payment-instruments/invoice/capture
-[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[financing-consumer]: /payment-instruments/invoice/features/technical-reference/financing-consumer
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [fincon-invoice-approve]: /assets/img/payments/fincon-invoice-redirect-second-en.png

@@ -69,7 +69,7 @@ two separate 3-D Secure agreements, one for each payment instrument. Apart from
 the agreement with the acquirer, no further 3-D Secure compliance is required
 from you as a merchant in this regard.
 
-Languages supported by this instruments are Danish `da-DK`, English (US) `en-US`
+Languages supported by this instrument are Danish `da-DK`, English (US) `en-US`
 and Finnish `fi-FI`.
 
 ## Payment Availability
@@ -83,7 +83,7 @@ shipping to Denmark, for instance.
 
 [mobilepay-number-input]: /assets/img/payments/mobilepay-redirect-en.png
 [mobilepay-cancel]: /payment-instruments/mobile-pay/after-payment#cancellations
-[mobilepay-capture]: /payment-instruments/mobile-pay/after-payment#capture
+[mobilepay-capture]: /payment-instruments/mobile-pay/features/core/capture
 [payment-resource]: /payment-instruments/mobile-pay/features/technical-reference/payment-resource
 [features]: /payment-instruments/mobile-pay/features/technical-reference/operations
 [swedbankpay-landing-page]: /assets/img/payments/sbp-mobilepaylandingpage-en.png

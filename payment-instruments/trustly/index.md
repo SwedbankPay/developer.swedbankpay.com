@@ -42,7 +42,8 @@ operations][after-payment] and the [payment resource][payment-resource].
 
 ## Languages
 
-The displayed languages that we currently support is English (`en-us`), Norwegian (`nb-no`), Swedish (`sv-se`), and Finish (`fi-fi`).
+The languages we currently support are English (`en-us`), Norwegian (`nb-no`),
+Swedish (`sv-se`), and Finish (`fi-fi`).
 
 ## Banks
 

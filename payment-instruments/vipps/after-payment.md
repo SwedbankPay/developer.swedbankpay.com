@@ -344,7 +344,7 @@ Content-Type: application/json
 [abort]: /payment-instruments/vipps/after-payment#abort
 [callback]: /payment-instruments/vipps/features/core/callback
 [cancel]: #cancellations
-[capture]: #captures
+[capture]: /payment-instruments/vipps/features/core//capture
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [expand-parameter]: /introduction#expansion
 [paymenturl]: /payment-instruments/vipps/features/technical-reference/payment-url
