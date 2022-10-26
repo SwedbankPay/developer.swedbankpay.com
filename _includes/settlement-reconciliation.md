@@ -275,8 +275,9 @@ charities.
     include. We will also do a KYC check on your sub-merchants, providing extra
     security for you.
 *   Give every sub-merchant who sells goods/services through your website or in
-    your app a unique subsite number. This must be included in the KYC form. We
-    recommend using the same customer number they have in your system.
+    your app a unique subsite number. It must be in the format of `A-Za-z0-9`.
+    This must be included in the KYC form. We recommend using the same customer
+    number they have in your system.
 *   Attach the subsite number to all the goods/services the sub-merchant
     sells through your website or app, so the goods/services can be matched
     to the correct merchant in our back office system.
