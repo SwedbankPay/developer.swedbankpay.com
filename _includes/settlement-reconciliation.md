@@ -141,7 +141,7 @@ To do the reconciliation, you need to match the information in your system
 against the information provided by Swedbank Pay in the balance report and
 transaction list. Below is a sequence diagram detailing the interaction.
 
-## Reconciliation Sequnce Diagram
+## Reconciliation Sequence Diagram
 
 ```mermaid
 sequenceDiagram

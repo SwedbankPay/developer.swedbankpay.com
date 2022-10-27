@@ -16,10 +16,7 @@ jobs:
             -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal build \
             --env=production \
-            --site-url=https://developer.stage.swedbankpay.com \
-            --ignore-url http://restcookbook.com/Basics/loggingin/ \
-            --ignore-url https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default \
-            --ignore-url https://zend18.zendesk.com/hc/en-us/articles/219131697-HowTo-Implement-TLS-1-2-Support-with-the-cURL-PHP-Extension-in-Zend-Server
+            --site-url=https://developer.stage.swedbankpay.com
 
       - name: login
         uses: azure/login@v1.4.6
@@ -27,6 +24,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
 
       - name: deploy
-        uses: azure/CLI@v1.0.6
+        uses: azure/CLI@v1.0.7
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalstage --overwrite

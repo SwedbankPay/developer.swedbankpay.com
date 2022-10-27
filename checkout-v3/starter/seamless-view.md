@@ -280,6 +280,6 @@ Events][seamless-view-events] available in the feature section.
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
-[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayeridentified
-[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayerunidentified
+[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayeridentified
+[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayerunidentified
 [sequence-diagrams]: /checkout-v3/sequence-diagrams#starter-seamless-view

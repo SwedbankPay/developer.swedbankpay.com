@@ -239,7 +239,8 @@ TODO: Number each important step in the above diagram and create a numbered list
       that explains each step.
 {% endcomment %}
 
-{% include languages.md %}
+This product supports Danish `da-DK`, English (US) `en-US`, Finnish `fi-FI`,
+Norwegian `nb-NO` and Swedish `sv-SE`.
 
 {% include iterator.html next_href="checkin"
                          next_title="Implement Checkin" %}
