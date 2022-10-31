@@ -61,8 +61,8 @@ Content-Type: application/json
             "nationalIdentifier": {
                 "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE"
-            }
-            "firstName": "Leia"
+            },
+            "firstName": "Leia",
             "lastName": "Ahlström",
             "email": "leia@payex.com",
             "msisdn": "+46787654321",
