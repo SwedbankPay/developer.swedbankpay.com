@@ -165,7 +165,7 @@ Content-Type: application/json
 | | └─➔&nbsp;`countryCode`                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`.                                                               |
 |  | `billingAddress`               | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
 |  | └➔&nbsp;`firstName`            | `string`  | The first name of the payer.                                                                                                                  |
-|  | └➔&nbsp;`firstName`            | `string`  | The first name of the payer.                                                                                                                  |
+|  | └➔&nbsp;`lastName`            | `string`  | The last name of the payer.                                                                                                                  |
 |  ︎ | └➔&nbsp;`streetAddress`        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
 |                   | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
 |   | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
