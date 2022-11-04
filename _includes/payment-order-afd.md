@@ -6,11 +6,11 @@
 
 {% include alert-agreement-required.md %}
 
-Automated Fuel Dispenser (AFD) payments is a purchase where the user
-request an authorization for a fuel transaction for an automatic fuel dispenser. The request contains the maximum purchase amount, but the issuer can reply with a partial approval to lower the maximum purchase amount. This can be used to stop the fuel dispension at the maximum price.
+An Automated Fuel Dispenser (AFD) payment is a purchase where the user
+requests an authorization transaction for an automatic fuel dispenser. The request contains the maximum purchase amount, but the issuer can reply with a partial approval to lower the maximum purchase amount. This can be used to stop the fuel dispension at the maximum price.
 
 The only supported use case is automated fuel dispensers. To be able to verify this, it is required that the Merchant Category Code `mcc` is passed in the request under `PayeeInfo`. This feature is only supported with the
-`Purchase` operation. This feature is not supported with order items. By default the available instruments and card types will be limited to those which support AFD payments. To enable more options for the end user, pass inn `restrictedToAfdInstruments` with the value `false`. See the abbreviated example below on how to implement AFD payments
+`Purchase` operation. This feature is not supported with [order items][order-items]. By default the available instruments and card types will be limited to those which support AFD payments. To enable other payment options for the end user, pass inn `restrictedToAfdInstruments` with the value `false`. See the abbreviated example below on how to implement AFD payments
 by setting the `generateAfdPayment` to `true`.
 
 {:.code-view-header}
@@ -51,6 +51,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "mcc": 5542
         },
+        "orderItems": null
     }
 }
 ```
@@ -61,7 +62,7 @@ table:
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| └➔&nbsp;`generateAfdPayment`     | `bool`      | Set to `true` if the payment order is a AFD payment, `false` if not. |
+| └➔&nbsp;`generateAfdPayment`     | `bool`      | Set to `true` if the payment order is an AFD payment, `false` if not. |
 | └➔&nbsp;`restrictedToAfdInstruments`     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
 | └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
 | └─➔&nbsp;`mcc`     | `integer`      | The merchant category code used for the purchase, 4 digits. |
@@ -179,3 +180,5 @@ Content-Type: application/json
 ### When the authorization is completed
 
 The authorized amount might be a lower value than the requested amount, known as partial approval. Then the `amount` and `vatAmount` will contain the value that is authorized. In this case, the original submitted amount might be found by requesting `rel:view-consumer-identification` and checking the field `submittedAmount`. The final amount to be paid must be passed in the capture amount, and if the authorized amount is larger than the final amount the rest should be cancelled.
+
+[order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
