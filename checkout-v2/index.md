@@ -42,7 +42,7 @@ Swedbank Pay Checkout.
 While Checkin is a necessary component to store personal information and access
 features like storing cards, it is not a mandatory step for the Checkout process
 to work. If the payer is from a country where we currently don't support
-Checkin, or if he or she opts not to store their data, that's fine. The Payment
+Checkin, or if they opt not to store their data, that's fine. The Payment
 Menu can still be used as a **guest**.
 
 ## Sequence
@@ -239,7 +239,8 @@ TODO: Number each important step in the above diagram and create a numbered list
       that explains each step.
 {% endcomment %}
 
-{% include languages.md %}
+This product supports Danish `da-DK`, English (US) `en-US`, Finnish `fi-FI`,
+Norwegian `nb-NO` and Swedish `sv-SE`.
 
 {% include iterator.html next_href="checkin"
                          next_title="Implement Checkin" %}

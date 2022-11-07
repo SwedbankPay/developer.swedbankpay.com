@@ -74,13 +74,15 @@ module.
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
+            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         },
     ]
 }
 ```
+
+## Load The Seamless View
 
 Embed the `href` in a `<script>` element. That script will then load the
 Seamless View.
@@ -190,6 +192,8 @@ window.payex.hostedView.checkout({
     </html>
 ```
 
+## How It Looks
+
 First you will see a Checkin module where the payer can enter their email and
 phone number.
 
@@ -218,17 +222,23 @@ address.
 ![screenshot of the seamless view checkin when entering details][checkin-enter-details-mixed]
 
 After checking in, the payer's contact details and shipping address are shown
-for mixed goods. You can now perform the `GET` on the payment order and display
-the available delivery option(s) to the payer.
+for mixed goods. Note the new "Remember me" checkbox. The first time the checks
+in, the box will appear unchecked. If checked during a purchase, it will appear
+like the screenshot below during future check-ins, with a "Not you?" option in
+the top right corner.
 
-You are in charge of how the delivery options are displayed. This is how they
-appear in our demoshop.
+You can now perform the `GET` on the payment order and display the available
+delivery option(s) to the payer. How the delivery options are displayed is up to
+you, so they are not included in this screenshot.
 
-![screenshot of the seamless view checkin mixed and delivery options][checkin-delivery-options-mixed]
+{:.text-center}
+![screenshot of the seamless view checkin mixed products][checkin-remember-me-mixed]
 
-For digital products only contact details will be shown.
+For digital products, only contact details will be shown. "Remember me" will
+work the same way as with mixed goods.
 
-![screenshot of the seamless view checkin digital and delivery options][checkin-delivery-options-digital]
+{:.text-center}
+![screenshot of the seamless view checkin digital products][checkin-remember-me-digital]
 
 When the payer chooses a delivery option, you can `PATCH` the payment order and
 open the payment menu. The payer can then proceed with the purchase.
@@ -249,8 +259,9 @@ any time.
 
 When implementing **Starter**, you also need to subscribe to the event
 [`onPayerUnidentified`][onpayerunidentified] when you implement
-[`onPayerIdentified`][onpayeridentified]. This is important because the
-"Remember Me" feature (to be released soon) won't work without it.
+[`onPayerIdentified`][onpayeridentified]. This is needed for the "Remember Me"
+feature to work. It is a part of the acceptance criteria, meaning you won't get
+the green light to go live with your **Starter** implementation without it.
 
 You can read more about the different [Seamless View
 Events][seamless-view-events] available in the feature section.
@@ -261,14 +272,14 @@ Events][seamless-view-events] available in the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/starter/features/core/abort
-[checkin-delivery-options-digital]:/assets/img/checkout/checkin-delivery-options-digital.png
-[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-mixed.png
+[checkin-remember-me-digital]:/assets/img/checkout/checkin-remember-me-digital.png
+[checkin-remember-me-mixed]:/assets/img/checkout/checkin-remember-me-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
-[seamless-payment-menu-starter]: /assets/img/checkout/seamless-payment-menu-starter.png
+[seamless-payment-menu-starter]: /assets/img/checkout/checkout-v3-seamless-menu.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
-[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayeridentified
-[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayerunidentified
+[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayeridentified
+[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayerunidentified
 [sequence-diagrams]: /checkout-v3/sequence-diagrams#starter-seamless-view

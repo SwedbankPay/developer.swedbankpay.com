@@ -13,39 +13,65 @@ menu_order: 1500
 ---
 
 {% capture disclaimer %}
-This page is prodived for informational purposes only,
+This page is provided for informational purposes only,
 and is not part of the Mobile SDK documentation proper.
 {% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
 
 ## Quick Fix List
 
 Here is a list of common gotchas. Please read through the whole document, though.
 
 *   On Android, you need to set `webView.settings.javaScriptEnabled = true`
-*   On Android, you need to set `webView.settings.domStorageEnabled = true` (used by some 3D-Secure pages)
-*   Web Views will not launch apps by themselves. You _must_ intercept navigations and launch apps yourself. See [External Applications](#external-applications) for details.
-*   On Android, `@JavascriptInterface` methods only take primitive arguments. You will need to `JSON.stringify` any complex arguments.
-*   Some 3D-Secure pages will not work if you open them in a Web View. This appears to be related to them launching an external application, which, in turn, opens a url in the browser app. See [Dealing with Picky Web Pages](#dealing-with-picky-web-pages) for strategies.
-*   Some pages make use of Javascript dialogs. Web Views do not display these on their own; you must add support by your `WebCromeClient` or `WKUIDelegate`.
+*   On Android, you need to set `webView.settings.domStorageEnabled = true`
+    (used by some 3D-Secure pages)
+*   Web Views will not launch apps by themselves. You _must_ intercept
+    navigations and launch apps yourself. See [External
+    Applications](#external-applications) for details.
+*   On Android, `@JavascriptInterface` methods only take primitive arguments.
+    You will need to `JSON.stringify` any complex arguments.
+*   Some 3D-Secure pages will not work if you open them in a Web View. This
+    appears to be related to them launching an external application, which, in
+    turn, opens a url in the browser app. See [Dealing with Picky Web
+    Pages](#dealing-with-picky-web-pages) for strategies.
+*   Some pages make use of Javascript dialogs. Web Views do not display these on
+    their own; you must add support by your `WebCromeClient` or `WKUIDelegate`.
 *   On Android, remember to call `webView.onResume()` and `webView.onPause()`.
 *   Remember that you can debug Web View contents!
 
 ## The Mobile SDK And You
 
-A major goal for the Mobile SDK is to provide a platform where you can start developing your mobile e-commerce application rapidly, in a regular, native mobile application development workflow. Hence, it is designed to be a fairly self-contained whole, with a prescribed interface between the mobile client side and the backend server side. This, of course, means that to use the SDK, your backend must integrate with the SDK architecture. If you already have a working solution for web pages, this may not be ideal; indeed, you may wish to reuse your existing web page using Checkout or Payments, and expect to embed it inside your mobile application using a web view.
+A major goal for the Mobile SDK is to provide a platform where you can start
+developing your mobile e-commerce application rapidly, in a regular, native
+mobile application development workflow. Hence, it is designed to be a fairly
+self-contained whole, with a prescribed interface between the mobile client side
+and the backend server side. This, of course, means that to use the SDK, your
+backend must integrate with the SDK architecture. If you already have a working
+solution for web pages, this may not be ideal; indeed, you may wish to reuse
+your existing web page using Checkout or Payments, and expect to embed it inside
+your mobile application using a web view.
 
-Indeed, on a high level this is what the SDK mobile client components do, in addition to providing native Swift and Kotlin APIs to the servie. The SDK internally generates a web page that shows the Checkout payment menu, so the developer need not concern themselves with html or other web-specific technologies. An exisiting web implementation would not really benefit from the extra discoverability and quality-of-life improvements of a mobile-native API, so the SDK's value proposition seems to be little benefit for substantial reimplementation work.
+Indeed, on a high level this is what the SDK mobile client components do, in
+addition to providing native Swift and Kotlin APIs to the servie. The SDK
+internally generates a web page that shows the Checkout payment menu, so the
+developer need not concern themselves with html or other web-specific
+technologies. An exisiting web implementation would not really benefit from the
+extra discoverability and quality-of-life improvements of a mobile-native API,
+so the SDK's value proposition seems to be little benefit for substantial
+reimplementation work.
 
-That said, there are important considerations in embedding a Swedbank-Pay-enabled web page in a web view; considerations, which have been taken into account in the development of the SDK. There are currently no plans to offer any first-party components to help with embedding an existing Swedbank Pay web page, but this page shall serve as best-effort documentation for anyone attempting such.
+That said, there are important considerations in embedding a
+Swedbank-Pay-enabled web page in a web view; considerations, which have been
+taken into account in the development of the SDK. There are currently no plans
+to offer any first-party components to help with embedding an existing Swedbank
+Pay web page, but this page shall serve as best-effort documentation for anyone
+attempting such.
 
 ## Basics
 
 Let us assume that the urls of the payment are as follows:
 
-*   `https://example.com/perform-payment` is the page containing the Payment Menu or Payment Seamless View, i.e. the `paymentUrl`
+*   `https://example.com/perform-payment` is the page containing the Payment
+    Menu or Payment Seamless View, i.e. the `paymentUrl`
 *   `https://example.com/payment-completed` is the `completeUrl`
 *   `https://example.com/payment-cancelled` is the `cancelUrl`
 
@@ -90,7 +116,11 @@ Some pages use the DOM Storage API, which must be enabled separately on Android:
     webView.settings.domStorageEnabled = true
 ```
 
-With this setup, you can load to the web view the page that shows the Payment Menu or the Payment Seamless View, and see what happens. You should be able to see the Swedbank Pay payment interface, and in many cases also complete a payment. It is not unlikely, though, that some payment methods will not work as expected. Also, you will be more or less stuck after the payment is complete.
+With this setup, you can load to the web view the page that shows the Payment
+Menu or the Payment Seamless View, and see what happens. You should be able to
+see the Swedbank Pay payment interface, and in many cases also complete a
+payment. It is not unlikely, though, that some payment methods will not work as
+expected. Also, you will be more or less stuck after the payment is complete.
 
 {:.code-view-header}
 **iOS**
@@ -109,11 +139,15 @@ With this setup, you can load to the web view the page that shows the Payment Me
 
 ## Completion
 
-There are two ways of being notified of payment completion: listening for navigations, or using JavaScript hooks. Which one you want to use is partly a matter of taste, but if your existing system does some processing in the `completeUrl` page, it may be easier to use JavaScript hooks.
+There are two ways of being notified of payment completion: listening for
+navigations, or using JavaScript hooks. Which one you want to use is partly a
+matter of taste, but if your existing system does some processing in the
+`completeUrl` page, it may be easier to use JavaScript hooks.
 
-### Listening for Navigations
+## Listening for Navigations
 
-The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be used to listen for navigations, and change their behavior.
+The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be
+used to listen for navigations, and change their behavior.
 
 {:.code-view-header}
 **iOS**
@@ -139,7 +173,8 @@ The iOS `WKNavigationDelegate` protocol and Android `WebViewClient` class can be
     }
 ```
 
-In the simplest case you could listen for a navigation to the `completeUrl` or `cancelUrl`, and intercept it.
+In the simplest case you could listen for a navigation to the `completeUrl` or
+`cancelUrl`, and intercept it.
 
 {:.code-view-header}
 **iOS**
@@ -189,15 +224,28 @@ In the simplest case you could listen for a navigation to the `completeUrl` or `
     }
 ```
 
-If your `completeUrl`, or `cancelUrl` for that matter, do some processing and redirect further, you can adapt these patterns to listen to your custom urls instead.
+If your `completeUrl`, or `cancelUrl` for that matter, do some processing and
+redirect further, you can adapt these patterns to listen to your custom urls
+instead.
 
-### Adding JavaScript Hooks
+## Adding JavaScript Hooks
 
-On both iOS and Android, it is possible to add custom JavaScript interfaces to a web view. These interfaces then result in callbacks to native (Swift/Kotlin/ObjC/Java) methods, where you can execute your application specific actions. To observe payment completion and cancellation this way, you need to modify your `completeUrl` and `cancelUrl` pages to call these mobile-app-specific JavaScript interfaces. How you do this is beyond our scope here.
+On both iOS and Android, it is possible to add custom JavaScript interfaces to a
+web view. These interfaces then result in callbacks to native
+(Swift/Kotlin/ObjC/Java) methods, where you can execute your application
+specific actions. To observe payment completion and cancellation this way, you
+need to modify your `completeUrl` and `cancelUrl` pages to call these
+mobile-app-specific JavaScript interfaces. How you do this is beyond our scope
+here.
 
-#### JavaScript Hooks: iOS
+## JavaScript Hooks: iOS
 
-On iOS, JavaScript interfaces are added through the `WKUserContentController` of the `WKWebView`. The `WKUserContentController` is set by the `WKWebViewConfiguration` used when creating the `WKWebView`; you cannot change the `WKUserContentController` of a `WKWebView`. You can, however, modify the `WKUserContentController` of a live `WKWebView`, if you want more fine-grained control on which interfaces are exposed at what time.
+On iOS, JavaScript interfaces are added through the `WKUserContentController` of
+the `WKWebView`. The `WKUserContentController` is set by the
+`WKWebViewConfiguration` used when creating the `WKWebView`; you cannot change
+the `WKUserContentController` of a `WKWebView`. You can, however, modify the
+`WKUserContentController` of a live `WKWebView`, if you want more fine-grained
+control on which interfaces are exposed at what time.
 
 {:.code-view-header}
 **iOS**
@@ -235,7 +283,10 @@ On iOS, JavaScript interfaces are added through the `WKUserContentController` of
     }
 ```
 
-On iOS, the interfaces added by `WKUserContentController.add(_:name:)` are exposed in JavaScript as `window.webkit.messageHandlers.<name>.postMessage(body)`, so your `completeUrl` and `cancelUrl` pages would need to eventually execute code like
+On iOS, the interfaces added by `WKUserContentController.add(_:name:)` are
+exposed in JavaScript as
+`window.webkit.messageHandlers.<name>.postMessage(body)`, so your `completeUrl`
+and `cancelUrl` pages would need to eventually execute code like
 
 ```js
     window.webkit.messageHandlers.completed.postMessage("success")
@@ -245,11 +296,14 @@ On iOS, the interfaces added by `WKUserContentController.add(_:name:)` are expos
     window.webkit.messageHandlers.cancelled.postMessage()
 ```
 
-#### JavaScript Hooks: Android
+## JavaScript Hooks: Android
 
 {% include alert.html type="warning" icon="warning" header="Security Warning" body="Never use `WebView.addJavascriptInterface` on Android versions earlier than 4.2 (`Build.VERSION_CODES.JELLY_BEAN_MR1`)!" %}
 
-On Android, JavaScript interfaces are added by the `WebView.addJavascriptInterface` method. Any public methods with the `@JavascriptInterface` annotation of the passed-in object are exposed in JavaScript.
+On Android, JavaScript interfaces are added by the
+`WebView.addJavascriptInterface` method. Any public methods with the
+`@JavascriptInterface` annotation of the passed-in object are exposed in
+JavaScript.
 
 {:.code-view-header}
 **Android**
@@ -285,7 +339,11 @@ On Android, JavaScript interfaces are added by the `WebView.addJavascriptInterfa
     }
 ```
 
-On Android, the objects added by `WebView.addJavascriptInterface` are exposed as globals with the specified name, and their `@JavascriptInterface public` methods with their JVM names (N.B! Be careful not to break the JVM names with Proguard or similar). Thus, your `completeUrl` and `cancelUrl` pages would need to eventually execute code like
+On Android, the objects added by `WebView.addJavascriptInterface` are exposed as
+globals with the specified name, and their `@JavascriptInterface public` methods
+with their JVM names (N.B! Be careful not to break the JVM names with Proguard
+or similar). Thus, your `completeUrl` and `cancelUrl` pages would need to
+eventually execute code like
 
 ```js
     callbacks.completed("success")
@@ -297,15 +355,29 @@ On Android, the objects added by `WebView.addJavascriptInterface` are exposed as
 
 ## External Applications
 
-Before starting to implement lauching external applications, you should try to get at least one card payment working. With completion observing in place, you should be able to complete a payment flow, at least using the External Integration environment and its test cards.
+Before starting to implement lauching external applications, you should try to
+get at least one card payment working. With completion observing in place, you
+should be able to complete a payment flow, at least using the External
+Integration environment and its test cards.
 
-Sometimes, a payment flow calls for launching an external application, like BankID or Swish. A web page does this by opening a url that is handled by the app in question. To accommodate for this, we extend the "Listening for Navigations" approach above. If you opted for JavaScript hooks for completion, you will now need to add a navigation listener for external apps.
+Sometimes, a payment flow calls for launching an external application, like
+BankID or Swish. A web page does this by opening a url that is handled by the
+app in question. To accommodate for this, we extend the "Listening for
+Navigations" approach above. If you opted for JavaScript hooks for completion,
+you will now need to add a navigation listener for external apps.
 
-Determining whether a url should launch an external app is straightforward, though on Android it involves a bit of a judgement call. Let us take a look at the arguably simpler iOS case first.
+Determining whether a url should launch an external app is straightforward,
+though on Android it involves a bit of a judgement call. Let us take a look at
+the arguably simpler iOS case first.
 
-### External Applications: iOS
+## External Applications: iOS
 
-You cannot query the system for an arbitrary url to see if it can be opened – this is a deliberate privacy measure. What can be done, and what also happens to be exactly what we want to do, is to attempt to open a url and receive a callback telling us whether it succeeded. Nowadays, the recommended way of opening external applications is to use Universal Links, anyway, which are, on the surface, indistiguishable from web links.
+You cannot query the system for an arbitrary url to see if it can be opened –
+this is a deliberate privacy measure. What can be done, and what also happens to
+be exactly what we want to do, is to attempt to open a url and receive a
+callback telling us whether it succeeded. Nowadays, the recommended way of
+opening external applications is to use Universal Links, anyway, which are, on
+the surface, indistiguishable from web links.
 
 {:.code-view-header}
 **iOS**
@@ -359,19 +431,40 @@ You cannot query the system for an arbitrary url to see if it can be opened – 
     }
 ```
 
-### External Applications: Android
+## External Applications: Android
 
-On Android, web pages attempting to launch external apps happens in one of three ways:
+On Android, web pages attempting to launch external apps happens in one of three
+ways:
 
 *   Custom-scheme links
 *   Http(s) links matching a pattern
 *   Intent-scheme links
 
-Each of these maps into an `Intent`. For custom-scheme and patterned http(s) links, that `Intent` has the original url as its `uri`, an `action` of `android.intent.action.VIEW`, and the categories `android.intent.category.BROWSABLE` and `android.intent.category.DEFAULT`. An `Intent` created from an intent-scheme url can have any `action` and categories, although they too should have an implicit `android.intent.category.BROWSABLE` category. Their `uri` is parsed from the intent-scheme url, but we need not trouble ourselves with the specifics here.
+Each of these maps into an `Intent`. For custom-scheme and patterned http(s)
+links, that `Intent` has the original url as its `uri`, an `action` of
+`android.intent.action.VIEW`, and the categories
+`android.intent.category.BROWSABLE` and `android.intent.category.DEFAULT`. An
+`Intent` created from an intent-scheme url can have any `action` and categories,
+although they too should have an implicit `android.intent.category.BROWSABLE`
+category. Their `uri` is parsed from the intent-scheme url, but we need not
+trouble ourselves with the specifics here.
 
-When the `WebView` navigates to a new page, your app should check if the page url should launch an app instead. The custom-scheme and intent-scheme cases are simple: try to start an Activity with the Intent parsed from the url as described above. If that fails (by throwing an `ActivityNotFoundException`), then a suitable app was not installed. If the navigation was to an intent-scheme url, that url may contain a fallback url that can be substituted. Otherwise, there is little your app can do beyond notifying the user about the missing app.
+When the `WebView` navigates to a new page, your app should check if the page
+url should launch an app instead. The custom-scheme and intent-scheme cases are
+simple: try to start an Activity with the Intent parsed from the url as
+described above. If that fails (by throwing an `ActivityNotFoundException`),
+then a suitable app was not installed. If the navigation was to an intent-scheme
+url, that url may contain a fallback url that can be substituted. Otherwise,
+there is little your app can do beyond notifying the user about the missing app.
 
-When the `WebView` navigates to an http(s) url, your app should not simply start an Activity with the url, as that would usually mean opening the url in the browser. Instead, the Activity should only be started if it is not a browser. Since Android 11 there is an `Intent` [flag][android-flag-non-browser] that does exactly that. On earlier versions, your app must first query the system about which app would be launched. Because of [privacy enhancements][android-package-visibility] in Android 11, it is not possible to use this method on Android 11; you must use the non-browser flag instead.
+When the `WebView` navigates to an http(s) url, your app should not simply start
+an Activity with the url, as that would usually mean opening the url in the
+browser. Instead, the Activity should only be started if it is not a browser.
+Since Android 11 there is an `Intent` [flag][android-flag-non-browser] that does
+exactly that. On earlier versions, your app must first query the system about
+which app would be launched. Because of [privacy
+enhancements][android-package-visibility] in Android 11, it is not possible to
+use this method on Android 11; you must use the non-browser flag instead.
 
 {:.code-view-header}
 **Android**
@@ -451,59 +544,127 @@ When the `WebView` navigates to an http(s) url, your app should not simply start
 
 ## Getting Back from External Applications
 
-In some cases on Android, getting back from the external application requires no further setup. In particular, this is the case with BankID, if the web page launches it in the recommended manner. In other cases, including any scenario on iOS, the external app will attempt to return to the payment by opening the `paymentUrl`. Assuming the `paymentUrl` is an https url, it would normally be opened in the browser application (usually Safari or Chrome), so we need to build a system that gets it back to the application where the payment is being processed in a web view.
+In some cases on Android, getting back from the external application requires no
+further setup. In particular, this is the case with BankID, if the web page
+launches it in the recommended manner. In other cases, including any scenario on
+iOS, the external app will attempt to return to the payment by opening the
+`paymentUrl`. Assuming the `paymentUrl` is an https url, it would normally be
+opened in the browser application (usually Safari or Chrome), so we need to
+build a system that gets it back to the application where the payment is being
+processed in a web view.
 
-### Using a Custom-Scheme paymentUrl
+## Using a Custom-Scheme paymentUrl
 
-Perhaps the simplest way of making `paymentUrl` open in the application is to make it a custom-scheme url rather than an https url. This does come with a few disadvantages, though:
+Perhaps the simplest way of making `paymentUrl` open in the application is to
+make it a custom-scheme url rather than an https url. This does come with a few
+disadvantages, though:
 
-*   On iOS, the system will show a confirmation popup, which cannot be customized, before opening a custom-scheme url
-*   Related to the above, there is no way of making sure your application is the only one installed that handles the scheme
-*   `paymentUrl` is passed to systems outside Swedbank Pay; systems that may only be compatible with http(s) urls
+*   On iOS, the system will show a confirmation popup, which cannot be
+    customized, before opening a custom-scheme url
+*   Related to the above, there is no way of making sure your application is the
+    only one installed that handles the scheme
+*   `paymentUrl` is passed to systems outside Swedbank Pay; systems that may
+    only be compatible with http(s) urls
 
 It is somewhat of a Quick and Dirty solution. We do not recommend this approach.
 
-### iOS: Make paymentUrl a Universal Link
+## iOS: Make paymentUrl A Universal Link
 
-On iOS, the recommended way of assigning urls to apps is to use [Universal Links][ios-universal-links]. This fits our use-case quite well, and indeed it is what the SDK is designed to do too. When an external app executes the `UIApplication.shared.open("https://example.com/perform-payment")`, then, assuming Universal Links are configured correctly, that url will not be opened in Safari, but will instead be opened in the application. You must then examine the url, determine that it is a `paymentUrl` from your app, and reload the `paymentUrl` in your web view. The payment process should then continue normally. Make sure that any navigation listeners and JavaScript hooks are in place before loading the `paymentUrl`.
+On iOS, the recommended way of assigning urls to apps is to use [Universal
+Links][ios-universal-links]. This fits our use-case quite well, and indeed it is
+what the SDK is designed to do too. When an external app executes the
+`UIApplication.shared.open("https://example.com/perform-payment")`, then,
+assuming Universal Links are configured correctly, that url will not be opened
+in Safari, but will instead be opened in the application. You must then examine
+the url, determine that it is a `paymentUrl` from your app, and reload the
+`paymentUrl` in your web view. The payment process should then continue
+normally. Make sure that any navigation listeners and JavaScript hooks are in
+place before loading the `paymentUrl`.
 
-Now, Universal Links depend on correct configuration, and during development you may find yourself with a broken configuration from time to time. But perhaps even more importantly, Universal Links cannot really be 100% guaranteed to work every time. Please see the iOS SDK documentation for some discussion, but also note that even with correct configuration, the system could fail to retrieve your apple-app-site-association file for any given installation, which could render your universal links temporarily inoperable on that device. This means that your `paymentUrl` needs to show some sensible content in case it is opened in Safari. There are a few ways of going at this, but one possibility, assuming you have a working implementation for web in place, is to show your regular payment page, allow the payment to complete there, and then try to launch your application, perhaps by a custom-scheme url, or a universal link to a separate domain. Take a look at [what the SDK does][sdk-paymenturl] to not be trapped by unhappy circumstances.
+Now, Universal Links depend on correct configuration, and during development you
+may find yourself with a broken configuration from time to time. But perhaps
+even more importantly, Universal Links cannot really be 100% guaranteed to work
+every time. Please see the iOS SDK documentation for some discussion, but also
+note that even with correct configuration, the system could fail to retrieve
+your apple-app-site-association file for any given installation, which could
+render your universal links temporarily inoperable on that device. This means
+that your `paymentUrl` needs to show some sensible content in case it is opened
+in Safari. There are a few ways of going at this, but one possibility, assuming
+you have a working implementation for web in place, is to show your regular
+payment page, allow the payment to complete there, and then try to launch your
+application, perhaps by a custom-scheme url, or a universal link to a separate
+domain. Take a look at [what the SDK does][sdk-paymenturl] to not be trapped by
+unhappy circumstances.
 
-Note that the Universal Links documentation is not explicit on which `UIApplicationDelegate` method is called when an application opens a universal link with `UIApplication.open(_:options:completionHandler:)` (i.e. `application(_:open:options:)` or `application(_:continue:restorationHandler:)`). It is probably best to implement both. Universal Links opened from Safari will callback to `application(_:continue:restorationHandler:)`.
+Note that the Universal Links documentation is not explicit on which
+`UIApplicationDelegate` method is called when an application opens a universal
+link with `UIApplication.open(_:options:completionHandler:)` (i.e.
+`application(_:open:options:)` or
+`application(_:continue:restorationHandler:)`). It is probably best to implement
+both. Universal Links opened from Safari will callback to
+`application(_:continue:restorationHandler:)`.
 
-### Android: Add an Intent Filter for paymentUrl
+## Android: Add An Intent Filter For The PaymentUrl
 
-Android has always supported apps handling urls matching a pattern. Therefore, it seems sensible to just create an intent filter matching any `paymentUrl` you might create. As `paymentUrl`s are entirely under your control, you can design a system where they fit a pattern that can be realized as an intent filter. You then receive the url in the relevant app component in the normal manner, and proceed to reload the `paymentUrl` in your web view. The payment process will then continue normally.
+Android has always supported apps handling urls matching a pattern. Therefore,
+it seems sensible to just create an intent filter matching any `paymentUrl` you
+might create. As `paymentUrl`s are entirely under your control, you can design a
+system where they fit a pattern that can be realized as an intent filter. You
+then receive the url in the relevant app component in the normal manner, and
+proceed to reload the `paymentUrl` in your web view. The payment process will
+then continue normally.
 
 The downsides of this are:
 
 *   You are restricted in how you can change the way you form `paymentUrl`s
-*   There are other apps that can also handle the `paymentUrl`, namely the browser
+*   There are other apps that can also handle the `paymentUrl`, namely the
+    browser
 
-Because of the latter, when an external application opens `paymentUrl`, there are three things that can happen:
+Because of the latter, when an external application opens `paymentUrl`, there
+are three things that can happen:
 
 *   `paymentUrl` is opened in your app
 *   `paymentUrl` is opened in another app, e.g. Chrome
 *   an app chooser is shown
 
-The second one is obviously undesirable. The last one is also not great. The user is not expecting to "open a url", and may well make the "wrong" choice here, and it is anyway a bad user experience.
+The second one is obviously undesirable. The last one is also not great. The
+user is not expecting to "open a url", and may well make the "wrong" choice
+here, and it is anyway a bad user experience.
 
-#### Autoverify to the Rescue?
+## Autoverify To The Rescue?
 
-Since Android 6.0 it has been possible to use a [mechanism][android-autoverify] very similar to Apple's Universal Links to "strongly" assing http(s) urls to applications. This works by adding an `android:autoVerify="true"` attribute to the intent filter, plus a `.well-known/assetlinks.json` file to the server. This could solve the problems above, but it has its own issues, namely:
+Since Android 6.0 it has been possible to use a [mechanism][android-autoverify]
+very similar to Apple's Universal Links to "strongly" assing http(s) urls to
+applications. This works by adding an `android:autoVerify="true"` attribute to
+the intent filter, plus a `.well-known/assetlinks.json` file to the server. This
+could solve the problems above, but it has its own issues, namely:
 
 *   Requires Android 6.0
 *   Is really quite cumbersome to setup
 
 The SDK does not use this method.
 
-### Android: Have paymentUrl Redirect to an Intent Url
+## Android: Have PaymentUrl Redirect To An Intent Url
 
-Another option on Android is to allow the https `paymentUrl` to be opened in Chrome normally, but have that url redirect to an [intent url][android-intent-scheme]. That intent url can be made specific to your application, making it so that unless the user has installed an application with the same package id (from a non-Google-Play source, presumably), it will always be opened in your app. This is what the SDK does.
+Another option on Android is to allow the https `paymentUrl` to be opened in
+Chrome normally, but have that url redirect to an [intent
+url][android-intent-scheme]. That intent url can be made specific to your
+application, making it so that unless the user has installed an application with
+the same package id (from a non-Google-Play source, presumably), it will always
+be opened in your app. This is what the SDK does.
 
-The SDK does this by having `paymentUrl` return an html page that immediately redirects. In some cases the redirect will be blocked, so the page also contains a link to the same url, so the user can manually follow the redirect. Now, as here we seem to want to have `paymentUrl` be the url loaded in the WebView, this does not work out-of-the-box. One option is to override `shouldInterceptRequest` in your `WebViewClient`, and special-case the loading of `paymentUrl`. Another solution could be loading `paymentUrl` normally, but adding a script to the page that checks for a JavaScript interface you provide in the WebView, and it is not there, then it would issue the redirect to the intent url.
+The SDK does this by having `paymentUrl` return an html page that immediately
+redirects. In some cases the redirect will be blocked, so the page also contains
+a link to the same url, so the user can manually follow the redirect. Now, as
+here we seem to want to have `paymentUrl` be the url loaded in the WebView, this
+does not work out-of-the-box. One option is to override `shouldInterceptRequest`
+in your `WebViewClient`, and special-case the loading of `paymentUrl`. Another
+solution could be loading `paymentUrl` normally, but adding a script to the page
+that checks for a JavaScript interface you provide in the WebView, and it is not
+there, then it would issue the redirect to the intent url.
 
-For reference, the way the SDK handles `paymentUrl`s on Android looks like this from the perspective of the backend:
+For reference, the way the SDK handles `paymentUrl`s on Android looks like this
+from the perspective of the backend:
 
 {:.code-view-header}
 **Request**
@@ -531,17 +692,47 @@ Content-Type: text/html
 </html>
 ```
 
-It uses an action defined by the SDK, and the package name of the containing application, making sure the intent is routed to the correct application, and to the correct SDK component. Note that the uri of the resulting intent is the `paymentUrl`.
+It uses an action defined by the SDK, and the package name of the containing
+application, making sure the intent is routed to the correct application, and to
+the correct SDK component. Note that the uri of the resulting intent is the
+`paymentUrl`.
 
 ## Dealing with Picky Web Pages
 
-Testing has shown, that on iOS some 3D-Secure pages do not like being opened in a web view. It does seem that this is mostly related to BankID integrations. We believe the problem stems from a configuration that sets a cookie in the browser, launches BankID, then BankID opens a different web page (not the `paymentUrl`), which expects to find that cookie. Now, if the first page was opened in a web view, the cookie is in that web view, but as the second page will be opened in Safari, the cookie will be nowhere to be found. Furthermore, at least in one instance, the original page in the web view will not receive any notification on the BankID process, despite being launched from there. We have not encountered this on Android, but it is quite possible for a similar situation to happen there also.
+Testing has shown, that on iOS some 3D-Secure pages do not like being opened in
+a web view. It does seem that this is mostly related to BankID integrations. We
+believe the problem stems from a configuration that sets a cookie in the
+browser, launches BankID, then BankID opens a different web page (not the
+`paymentUrl`), which expects to find that cookie. Now, if the first page was
+opened in a web view, the cookie is in that web view, but as the second page
+will be opened in Safari, the cookie will be nowhere to be found. Furthermore,
+at least in one instance, the original page in the web view will not receive any
+notification on the BankID process, despite being launched from there. We have
+not encountered this on Android, but it is quite possible for a similar
+situation to happen there also.
 
-Now, all of the above is speculation, and not really worth getting too deep into. The end result, however, is that some 3DS pages must be opened in Safari on iOS. The jury is still out if the same is true on Android. As we already have a way of getting back to the app (ref. `paymentUrl`), the simple thing to do would be to open any url not tested to work in Safari. Unfortunately, matters are further complicated by some pages not working if we do _that_. The two pages found in testing are now added to the list of known good pages (as the do work in the web view), but others may be out there. The current best solution is therefore to open the _current_ page in Safari if it tries to navigate to an unknown page. This is what the SDK does: if it encounters a navigation that does not match the goodlist, it will take the current page url of the web view, and open that with `UIApplication.shared.open(url)` and call the `decisionHandler` with `.cancel`. (It will never happen in practice, but if the payment menu would be the current page in this situation, it will load the new url instead).
+Now, all of the above is speculation, and not really worth getting too deep
+into. The end result, however, is that some 3DS pages must be opened in Safari
+on iOS. The jury is still out if the same is true on Android. As we already have
+a way of getting back to the app (ref. `paymentUrl`), the simple thing to do
+would be to open any url not tested to work in Safari. Unfortunately, matters
+are further complicated by some pages not working if we do _that_. The two pages
+found in testing are now added to the list of known good pages (as the do work
+in the web view), but others may be out there. The current best solution is
+therefore to open the _current_ page in Safari if it tries to navigate to an
+unknown page. This is what the SDK does: if it encounters a navigation that does
+not match the goodlist, it will take the current page url of the web view, and
+open that with `UIApplication.shared.open(url)` and call the `decisionHandler`
+with `.cancel`. (It will never happen in practice, but if the payment menu would
+be the current page in this situation, it will load the new url instead).
 
-The payment will eventually navigate to `paymentUrl` in Safari, and should return to the app. It should be noted, though, that in many cases the initial navigation to `paymentUrl` will be opened in Safari instead of the app in these cases. This acerbates the need for fallback mechanisms.
+The payment will eventually navigate to `paymentUrl` in Safari, and should
+return to the app. It should be noted, though, that in many cases the initial
+navigation to `paymentUrl` will be opened in Safari instead of the app in these
+cases. This acerbates the need for fallback mechanisms.
 
-The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages. Feel free to use this as a resource in your own implementation.
+The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages.
+Feel free to use this as a resource in your own implementation.
 
 {% include iterator.html prev_href="process-diagrams"
                          prev_title="Process Diagrams" %}

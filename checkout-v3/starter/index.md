@@ -20,7 +20,8 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **Services you prefer:** Full Checkout (Starter / Business / Enterprise) or Payments Only (Payments).
+*   **The service you prefer:** Full Checkout (Starter/Business/Enterprise) or
+    Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.
 
@@ -31,9 +32,9 @@ containing the following information:
 
 **Merchant name:** This represents your core business entity with us.
 
-**Payer ID:** This is how we identify you.
+**Payee ID:** This is how we identify you.
 
-**Services:** The services that are activated and ready for testing.
+**Services:** The payment options which are activated and ready for testing.
 
 **Login credentials:** You will receive a temporary password in a separate
 email.
@@ -61,12 +62,13 @@ the key.
 *   Navigate to “Access Tokens” at the top of the page.
 
 *   Choose "Add" and name the token. We suggest you name it according to what
-  environment it is created in.
+    environment it is created in.
 
-*   Your token will only be fully visible upon creation. For security purposes,
-    we will mask it like this `12a3**********bc4de56f`. If you need to keep
-    track of it, please save it externally in a safe place as it will remain
-    encrypted.
+*   Your token will **only** be fully visible upon creation. For security
+    purposes, we will mask it like this: `12a3**********bc4de56f` when it is
+    displayed later. If you need to keep track of it, please copy and save it
+    externally in a safe place. The token will not be visible unmasked in any of
+    our systems, so a lost token must be replaced by a new one.
 
 {% include alert.html type="warning" icon="warning" body="Please note that the
 production and staging environment need separate tokens. " %}

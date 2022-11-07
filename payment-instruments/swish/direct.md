@@ -6,7 +6,7 @@ description: |
   Swish is a one-phase payment instrument supported by the major Swedish banks.
   In the Direct scenario, Swedbank Pay receives the Swish registered mobile
   number directly from the merchant UI. Swedbank Pay performs a payment that
-  the payer confirms using her Swish mobile app.
+  the payer confirms using their Swish mobile app.
 menu_order: 900
 ---
 
@@ -31,11 +31,13 @@ transactions not involving `capture` or `cancellation` operations." %}
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 A `Purchase` payment is created by performing the following request.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Initial Direct Request
 
 {:.code-view-header}
 **Request**
@@ -109,7 +111,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
+| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details. |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |
@@ -129,6 +131,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`enableEcomOnly`    | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                                 |
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+
+## Initial Direct Response
 
 {:.code-view-header}
 **Response**
@@ -184,6 +188,8 @@ scenario. This is managed either by sending a `POST` request as seen below, or
 by directing the payer to the hosted payment pages. Note that the `msisdn`
 value (the payer's mobile number) is required in this request.
 
+## E-Commerce Request
+
 {:.code-view-header}
 **Request**
 
@@ -206,9 +212,11 @@ Content-Type: application/json
 | `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | └➔&nbsp;`msisdn` | `string` | The payer's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
 
+## E-Commerce Response
+
 {% include transaction-response.md transaction="sale" %}
 
-## E-Commerce Purchase Flow
+## E-Commerce Sequence Diagram
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
@@ -258,6 +266,8 @@ by directing the payer to the hosted payment pages. Note that the `msisdn`
 value (the payer's mobile number) is left out in this request. The
 `redirect-app-swish` operation is only present in the m-commerce flow response.
 
+## M-Commerce Request
+
 {:.code-view-header}
 **Request**
 
@@ -277,9 +287,11 @@ Content-Type: application/json
 | :------------ | :------- | :------------------------------------------------------------------- |
 | `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 
+## M-Commerce Response
+
 {% include transaction-response.md transaction="sale" mcom=true %}
 
-## Step 3: Get the payment status
+## Step 3: GET The Payment Status
 
 {:.code-view-header}
 **Request**
@@ -290,6 +302,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Payment Response
 
 {:.code-view-header}
 **Response**
@@ -380,7 +394,7 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## M-Commerce Purchase Flow
+## M-Commerce Sequence Diagram
 
 The sequence diagram below shows the three requests you have to send to
 Swedbank Pay to make a purchase. The Callback response is a simplified example
@@ -430,4 +444,4 @@ next_href="redirect" next_title="Redirect" %}
 
 [complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [callback-url]: /payment-instruments/swish/features/core/callback
-[purchase]: /payment-instruments/swish/direct#m-commerce-purchase-flow
+[purchase]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction

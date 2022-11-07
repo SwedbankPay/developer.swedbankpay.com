@@ -5,14 +5,7 @@
 {% endcapture %}
 {% assign token_url=token_url | strip %}
 
-## Delete {{ token_field_name }}
-
-Payers should be able to delete payment tokens that are associated to
-them. How to delete a `{{ token_field_name }}` is described in the example below.
-Note that the value of `state` must be `Deleted` when deleting the token.
-No other states are supported.
-
-## Delete Token Request
+## Delete {{ token_field_name }} Request
 
 {:.code-view-header}
 **Request**
@@ -29,7 +22,14 @@ Content-Type: application/json
 }
 ```
 
-## Delete Token Response
+## Delete {{ token_field_name }} Response
+
+{% unless token_field_name == "recurrenceToken" %}
+
+The example shows a token connected to a card. The instrument parameters and
+display name will vary depending on the instrument.
+
+{% endunless %}
 
 {:.code-view-header}
 **Response**
@@ -39,7 +39,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {   
-    "token": "{{ page.payment_token }}",{% if token_field_name == "recurrenceToken" %}
+    {% if token_field_name == "paymentToken" %}
+    "paymentToken": "{{ page.payment_token }}",
+    {% else %}
+    "token": "{{ page.payment_token }}",{% endif %} {% if token_field_name == "recurrenceToken" %}
     "isDeleted": true
     {% else %}
     "instrument": "CreditCard",

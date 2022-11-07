@@ -168,7 +168,7 @@ from Swedbank Pay.
 The `Reversals` resource list the reversals transactions (one or more) on a
 specific payment.
 
-## Reversal Sequence
+## Reversal Sequence Diagram
 
 A reversal transcation need to match the Payee reference of a completed
 sales transaction.
@@ -216,7 +216,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                        |
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                     |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of this reversal.                                            |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(35)` | {% include field-description-payee-reference.md %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
 
 ## Reversal Response
 
@@ -246,6 +246,6 @@ Swish does not support `recurring` payments.
 
 [create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
 [payex-admin-portal]: https://admin.payex.com/psp/login/
-[sales-transaction]: #sales
+[sales-transaction]: #create-sales-transactions
 [technical-reference-callback]: /payment-instruments/swish/features/core/callback
 [unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled

@@ -9,7 +9,7 @@ authorized amount. You can do other captures on the same payment later, up to
 the total authorized amount.
 {% endif %}
 
-## Step 1: Create Invoice Capture
+## Step 1: Create The Capture Request
 
 To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
@@ -61,7 +61,7 @@ Content-Type: application/json
 | {% icon check %}︎ | `transaction.activity`         | `string`     | FinancingConsumer.                                                                                                                                                                                                                                                         |
 | {% icon check %}︎ | `transaction.Amount`           | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                                                                                                                  |
 | {% icon check %}︎ | `transaction.vatAmount`        | `integer`    | Amount entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                                                                                                                  |
-| {% icon check %}︎ | `transaction.payeeReference`   | `string(50)` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
+| {% icon check %}︎ | `transaction.payeeReference`   | `string` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
 |                  | `transaction.receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. This reference is used as an invoice/receipt number to supplement `payeeReference`.                                                                                                                        |
 | {% icon check %}︎ | `transaction.description`      | `string`     | A textual description of the capture                                                                                                                                                                                                                                       |
 | {% icon check %}︎ | `itemDescriptions.amount`      | `integer`    | Total price for this order line - entered in the lowest momentary units of the selected currency. E.g. `10000` = `100.00 SEK`, `5000` = `50.00 SEK`.                                                                                                                       |
@@ -80,10 +80,12 @@ Notes on `FinancingConsumer` captures:
 
 {% include transaction-response.md transaction="capture" %}
 
-## Step 2: Inspecting the Captures
+## Step 2: Inspecting The Captures
 
 The `captures` resource lists the capture transactions performed on a
 specific invoice payment.
+
+## GET Capture Request
 
 {:.code-view-header}
 **Request**
@@ -94,6 +96,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Capture Response
 
 {:.code-view-header}
 **Response**

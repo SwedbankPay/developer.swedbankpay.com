@@ -14,7 +14,7 @@ Norwegian banks, making it one of the essential payment instruments for
 merchants operating in Norway. We offer it on our redirect and seamless view
 platforms.
 
-## Purchase flow
+## Purchase Flow
 
 After the payment is created, the payer pushes the payment button on Swedbank
 Pay's payment page (redirect) or in the `iframe` (seamless view).
@@ -65,7 +65,8 @@ Vipps is unfortunately not available in our demoshop at the moment, but it will
 be shortly. The demoshop will use a fakeservice which enables you to test a
 successful purchase without using the Vipps app.
 
-{% include languages.md %}
+This payment instrument supports English (US) `en-US`, Norwegian `nb-NO` and
+Swedish `sv-SE`.
 
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 

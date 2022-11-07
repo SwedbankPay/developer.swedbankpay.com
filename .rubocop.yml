@@ -1,0 +1,16 @@
+require:
+ - rubocop-rake
+AllCops:
+  NewCops: enable
+  Exclude:
+    - Rakefile
+    - _site/**/*
+    - spec/**/*
+    - vendor/**/*
+  TargetRubyVersion: 2.7
+Layout:
+  LineLength: 100
+  IndentationStyle:
+    IndentationWidth: 2
+Metrics/MethodLength:
+  Max: 20

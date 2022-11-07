@@ -2,6 +2,8 @@
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
 
+## Payment Order Request
+
 {:.code-view-header}
 **Request**
 
@@ -27,7 +29,7 @@ Content-Type: application/json
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"{% if include.integration_mode=="redirect" %},
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"{% if include.integration_mode=="redirect" %},
             "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
@@ -36,7 +38,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite",
+            "siteId": "MySiteId"
         },
         "payer": {
             "digitalProducts": false,
@@ -76,10 +79,6 @@ Content-Type: application/json
                 "suspiciousAccountActivity": "01"
             }
         },
-        "swish": {
-            "paymentRestrictedToAgeLimit": 18,
-            "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
-            },
         "orderItems": [
             {
                 "reference": "P1",
@@ -97,22 +96,6 @@ Content-Type: application/json
                 "vatPercent": 2500,
                 "amount": 1500,
                 "vatAmount": 375
-            },
-            {
-                "reference": "I1",
-                "name": "InvoiceFee",
-                "type": "PAYMENT_FEE",
-                "class": "Fees",
-                "description": "Fee for paying with Invoice",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 1900,
-                "vatPercent": 0,
-                "amount": 1900,
-                "vatAmount": 0,
-                "restrictedToInstruments": [
-                    "Invoice-PayExFinancingSe"
-                ]
             }
         ],
         "riskIndicator": {
@@ -151,22 +134,24 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   | {% endif %}
-| {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`]({{ features_url }}/technical-reference/complete-url) for details. |
-|                  | └─➔&nbsp;`cancelUrl`               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
+| {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`]({{ features_url }}/technical-reference/complete-url) for details. |{% if include.integration_mode=="redirect" %}
+|    {% icon check %}  | └─➔&nbsp;`cancelUrl`               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        | {% else %}
+|    | └─➔&nbsp;`cancelUrl`               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        | {% endif %}
 | {% icon check %} | └─➔&nbsp;`callbackUrl`             | `string`     | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`       | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |{% if include.integration_mode=="redirect" %},
-| {% icon check %} | └─➔&nbsp;`logoUrl`                 | `string`     | {% include field-description-logourl.md %}                                                                                                                                                                                                                                                               |{% endif %}
+| | └─➔&nbsp;`logoUrl`                 | `string`     | {% include field-description-logourl.md %}                                                                                                                                                                                                                                                               |{% endif %}
 | {% icon check %} | └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
+| {% icon check %} | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
+|                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used. Must be in the format of `A-Za-z0-9`.                                                                                          |
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | `SiteId` is used for [split settlement][split-settlement] transactions when you, as a merchant, need to specify towards AMEX which sub-merchant the transaction belongs to. Must be in the format of `A-Za-z0-9`.                                                                                           |
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
-| {% icon check %} | └─➔&nbsp;`firstName`                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
+| | └─➔&nbsp;`firstName`                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
+| | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | └─➔&nbsp;`email`                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/3d-secure-2).                                                                             |
 |                  | └─➔&nbsp;`msisdn`                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).            |
 |                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                                                                                                                                                                                            |
@@ -178,14 +163,14 @@ Content-Type: application/json
 | | └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | | └─➔&nbsp;`city`                       | `string` | Payer's city of residence.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | | └─➔&nbsp;`countryCode`                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`.                                                               |
-| {% icon check %}  | `billingAddress`               | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
-| {% icon check %}  | └➔&nbsp;`firstName`            | `string`  | The first name of the payer.                                                                                                                  |
-| {% icon check %}  | └➔&nbsp;`firstName`            | `string`  | The first name of the payer.                                                                                                                  |
-| {% icon check %}︎︎︎︎ ︎ | └➔&nbsp;`streetAddress`        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
+|  | `billingAddress`               | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
+|  | └➔&nbsp;`firstName`            | `string`  | The first name of the payer.                                                                                                                  |
+|  | └➔&nbsp;`firstName`            | `string`  | The first name of the payer.                                                                                                                  |
+|  ︎ | └➔&nbsp;`streetAddress`        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
 |                   | └➔&nbsp;`coAddress`            | `string`  | The CO-address (if used)                                                                                                                                         |
-| {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
-| {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
-| {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | Country code for country of residence, e.g. `SE`, `NO`, or `FI`.                                                                                                                                             |
+|   | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
+|  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
+|  | └➔&nbsp;`countryCode`          | `string`  | Country code for country of residence, e.g. `SE`, `NO`, or `FI`.                                                                                                                                             |
 | | └➔&nbsp;`accountInfo`            | `object` | Object related to the `payer` containing info about the payer's account.               |
 | | └─➔&nbsp;`accountAgeIndicator` | `string` | Indicates the age of the payer's account. <br>`01` (No account, guest checkout) <br>`02` (Created during this transaction) <br>`03` (Less than 30 days old) <br>`04` (30 to 60 days old) <br>`05` (More than 60 days old)             |
 | | └─➔&nbsp;`accountChangeIndicator` | `string` | Indicates when the last account changes occurred. <br>`01` (Changed during this transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
@@ -193,9 +178,6 @@ Content-Type: application/json
 | | └─➔&nbsp;`shippingAddressUsageIndicator` | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
 | | └─➔&nbsp;`shippingNameIndicator` | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
 | | └─➔&nbsp;`suspiciousAccountActivity` | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
-|                  | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
-|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
-|                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`reference`               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`name`                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -212,8 +194,9 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
+
+## Payment Order Response
 
 {:.code-view-header}
 **Response**
@@ -282,13 +265,13 @@ Content-Type: application/json
       "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         },{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
@@ -337,5 +320,7 @@ Content-Type: application/json
 | └➔&nbsp;`cancelled`     | `string`     | The URL to the `cancelled` [resource]({{ features_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
 | └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` [resource]({{ features_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` [resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
-| └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` [resource]({{ features_url }}/technical-reference/resource-sub-models#metadata) where information about the metadata can be retrieved.                                                                                                                            |
+| └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+
+[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

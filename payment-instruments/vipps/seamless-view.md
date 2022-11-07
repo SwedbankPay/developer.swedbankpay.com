@@ -13,7 +13,7 @@ menu_order: 1000
 
 ![steps of the vipps purchase flow][vipps-purchase-flow]{:width="1200px" :height="500px"}
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a `POST` request towards Swedbank Pay with
@@ -27,6 +27,8 @@ will receive a response in which you can find the **JavaScript source** in the
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Seamless View Request
 
 {:.code-view-header}
 **Request**
@@ -98,7 +100,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`hostUrls`               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                         |
-| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
+| {% icon check %} | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`paymentUrl`             | `string`      | The URL that Swedbank Pay will redirect back to when the view-operation needs to be loaded, to inspect and act on the current status of the payment. Only used in Seamless Views. If both `cancelUrl` and `paymentUrl` is sent, the `paymentUrl` will used.                                        |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                              |
@@ -106,7 +108,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`payeeInfo`               | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`payeeId`                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                              |
-| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(50*)` | {% include field-description-payee-reference.md %}                                                                                                                                                                                                                   |
+| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string` | {% include field-description-payee-reference.md %}                                                                                                                                                                                                                   |
 |                  | └─➔&nbsp;`payeeName`              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                            |
 |                  | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                     |
 |                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                            |
@@ -115,6 +117,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`         | `string`      | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
+
+## Seamless View Response
 
 {:.code-view-header}
 **Response**
@@ -177,7 +181,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the payment window
+## Step 2: Display The Payment Window
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the required information in a secure
@@ -190,7 +194,7 @@ steps:
     obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="payment-page-script" src="https://ecom.dev.payex.com/vipps/core/ scripts/client/px.vipps.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/vipps/core/ scripts/client/px.vipps.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -214,6 +218,8 @@ The previous two steps gives this HTML:
 </html>
 ```
 
+## Load The Seamless View
+
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
@@ -235,7 +241,7 @@ This is what the result should look like:
 {:.text-center}
 ![Vipps seamless view][vipps-screenshot-1]{:width="475px" :height="150px"}
 
-## Vipps Seamless View integration flow
+## Vipps Seamless View Sequence Diagram
 
 The sequence diagram below shows the two requests you have to send to
 Swedbank Pay to make a purchase.
@@ -314,7 +320,7 @@ sequenceDiagram
 
 [callback]: /payment-instruments/vipps/features/core/callback
 [cancellations]: /payment-instruments/vipps/features/core/cancel
-[captures]: /payment-instruments/vipps/after-payment#captures
+[captures]: /payment-instruments/vipps/capture
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [create-payment]: /payment-instruments/vipps/features/technical-reference/create-payment
 [price-resource]: /payment-instruments/vipps/features/technical-reference/prices

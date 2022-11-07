@@ -70,13 +70,15 @@ Among the operations in the POST `paymentOrders` response, you will find the
     "operations": [
         {
             "method": "GET",
-            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE",
+            "href": "https://ecom.externalintegration.payex.com/payment/core/js/px.payment.client.js?token=dd728a47e3ec7be442c98eafcfd9b0207377ce04c793407eb36d07faa69a32df&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "contentType": "application/javascript"
         },
     ]
 }
 ```
+
+## Load The Seamless View
 
 Embed the `href` in a `<script>` element. That script will then load the
 Seamless View.
@@ -138,11 +140,13 @@ request.send();
   </html>
 ```
 
+## How It Looks
+
 The payment menu should appear with the payer information displayed above the
 menu. The payer can select their preferred payment instrument and pay.
 
 {:.text-center}
-![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]
+![screenshot of the enterprise implementation seamless view payment menu][payments-only-seamless-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -168,4 +172,4 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-seamless-view
-[seamless-enterprise-menu]: /assets/img/checkout/enterprise-seamless-view.png
+[payments-only-seamless-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png

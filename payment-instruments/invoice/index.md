@@ -36,7 +36,7 @@ menu_order: 400
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-### Important steps before you launch Swedbank Pay Invoice Payments at your website
+### ## Important Steps Before You Launch Invoice At Your Website
 
 Prior to launching Swedbank Pay Invoice Payments at your site, make sure that
 you have done the following:
@@ -58,9 +58,10 @@ options:
 {:.text-center}
 ![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
-{% include languages.md %}
+This payment instrument supports English (US) `en-US`, Norwegian `nb-NO` and
+Swedish `sv-SE`.
 
-## Invoice flow
+## Invoice Flow
 
 This is an example of the Redirect scenario. For other integrations, take a
 look at the respective sections. The sequence diagram below shows the two
@@ -95,7 +96,7 @@ sequenceDiagram
 
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
-[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[financing-consumer]: /payment-instruments/invoice/features/technical-reference/financing-consumer
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [purchase]: /payment-instruments/invoice/features/technical-reference/create-payment
 [setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi

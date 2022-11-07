@@ -7,15 +7,6 @@ description: |
   Let us begin with Android.
 menu_order: 1000
 ---
-{% capture disclaimer %}
-The SDK is at an early stage of development
-and is not supported as of yet by Swedbank Pay. It is provided as a
-convenience to speed up your development, so please feel free to play around.
-However, if you need support, please wait for a future, stable release.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
 
 This guide assumes that you are using the Merchant Backend Configuration and
 your backend implements the Merchant Backend API. If you are using a custom
@@ -42,8 +33,8 @@ the `build.gradle` file:
 
 ```groovy
 dependencies {
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk:3.0.0'
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:3.0.0'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk:4.0.0'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:4.0.0'
 }
 ```
 
@@ -232,13 +223,14 @@ To start a payment, create a `PaymentFragment` and set its arguments according
 to the payment. The
 [`PaymentFragment.ArgumentsBuilder`][dokka-payfrag-argbuilder] class is provided
 to help with creating the argument bundle. In most cases you only need to worry
-about the [`consumer`][dokka-payfrag-argbuilder-consumer] and
-[`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] properties. The payment
-process starts as soon as the `PaymentFragment` is visible.
+about the [`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] property. The
+payment process starts as soon as the `PaymentFragment` is visible. Note that
+checkoutV3 is currently opt-in, so that merchants can upgrade without too much
+breaking changes and start using the new checkoutV3 when ready.
 
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
-    .consumer(consumer)
+    .checkoutV3(true)
     .paymentOrder(paymentOrder)
     .build()
 
@@ -249,6 +241,23 @@ paymentFragment.arguments = arguments
 // You can also make a navigation graph with PaymentFragment
 // and do something like
 // findNavController().navigate(R.id.showPaymentFragment, arguments)
+```
+
+Note that the SDK only supports customer-checkin for version 2, and provides
+fallback for merchants in need of this. Then you need to supply a
+[`consumer`][dokka-payfrag-argbuilder-consumer] and the ckeckoutV3 setting
+becomes irrelevant.
+
+```kotlin
+val arguments = PaymentFragment.ArgumentsBuilder()
+    .consumer(consumer)
+    .paymentOrder(paymentOrder)
+    .build()
+
+val paymentFragment = PaymentFragment()
+paymentFragment.arguments = arguments
+
+// Now handle the fragment the same way as previously.
 ```
 
 To observe the payment process, use the [`PaymentViewModel`][dokka-paymentvm]
@@ -368,7 +377,7 @@ paymentViewModel.richState.observe(this, Observer {
 })
 ```
 
-## Payment URL and External Applications
+## Payment URL And External Applications
 
 The payment process may involve navigating to third-party web pages, or even
 launching external applications. To resume processing the payment in the payment

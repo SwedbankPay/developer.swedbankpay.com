@@ -1,7 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 
-### Operation `paid-payment`
+## Operation `paid-payment`
 
 The `paid-payment` operation confirms that the transaction has been successful
 and that the payment is completed.
@@ -90,6 +90,7 @@ Content-Type: application/json
     }
 }
 ```
+
 {% else %}
 
 {:.code-view-header}
@@ -114,6 +115,7 @@ Content-Type: application/json
     }
 }
 ```
+
 {% endif %}
 
 {:.table .table-striped}
@@ -140,7 +142,7 @@ Content-Type: application/json
 | └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
 
-### Operation `failed-payment`
+## Operation `failed-payment`
 
 The `failed-payment` operation means that something went wrong during the
 payment process. The transaction was not authorized, and no further transactions
@@ -200,7 +202,7 @@ Content-Type: application/json
 
 ```
 
-### Operation `aborted-payment`
+## Operation `aborted-payment`
 
 The `aborted-payment` operation means that the merchant aborted the payment
 before the payer fulfilled the payment process. You can see this under

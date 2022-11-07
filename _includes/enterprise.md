@@ -1,4 +1,5 @@
 {% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
+{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
 
 ## Enterprise
 
@@ -6,7 +7,7 @@
 authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
-{%- if documentation_section != 'checkout-v3/business' %}
+{%- if documentation_section != 'checkout-v3/enterprise' %}
 **Delegated Strong Customer Authentication** (hereby abbreviated as "Delegated
 SCA") is performed as an alternative to [Checkin][checkin] when creating the
 Payment Order upon the initialization of the [Payment Menu][payment-menu]. You
@@ -30,7 +31,7 @@ need a **legal agreement with Swedbank Pay** which mandates that the payer
 identified by the `nationalIdentifier` is authenticated with **Bank ID** prior
 to the request." %}
 
-An abbreviated example of a Enterprise request looks like this:
+An abbreviated example of an **Enterprise** request looks like this:
 
 {:.code-view-header}
 **Request**

@@ -74,22 +74,24 @@ table_content_payments:
 
 ## Choose The Right Implementation For Your Business
 
-The customer journey varies a lot depending on your business vertical. For
-example, if you're selling physical goods - like clothes, shoes or computers,
-you need to collect a delivery address. Unlike if you are selling digital goods,
-where that isn't needed. But this is also a matter of which data you can and/or
-wish to collect and manage yourself.
+The customer journey varies a lot depending on your business vertical. If you're
+selling physical goods like clothes, shoes or computers - you need to collect a
+delivery address - unlike if you are selling digital goods, where that isn't
+needed. But this is also a matter of which data you can and/or wish to collect
+and manage yourself.
 
-Here, you can choose between two main paths. Either you let us provide you with
-a **Full Checkout** solution (including both payer identification and payment
-menu) - meaning the payer themselves can choose how they'd like to pay, or you
-can decide to use the **Payments Only** option. This means that you are in
-charge of collecting and storing the payer data and the payment instruments to
-be presented.
+Here, you can choose between two main paths. Either you let us provide you the
+**Full Checkout** solution (including both payer identification and payment
+menu) - meaning the payer themselves chooses how to pay, or you can use the
+**Payments Only** option. This means that you are in charge of collecting and
+storing the payer data and the payment instruments to be presented.
 
 Regardless of whether you choose to go with the full checkout or payments only,
 we will supply you with a variety of payment instruments and features which
-cater to your business needs.
+cater to your business needs. Somewhat depending on which country or countries
+where you are present, we offer **Apple Pay (on Apple devices), Click to Pay,**
+**card, invoice (incl. monthly payments), MobilePay, Swish, Trustly** and
+**Vipps**.
 
 -   **Authentication:** The process of verifying the payer's identity.
 

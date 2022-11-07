@@ -8,7 +8,7 @@
     {% assign checkout_version = "checkout-v3" %}
 {% endif %}
 
-## Settlement and Reconciliation
+## Settlement And Reconciliation
 
 {% include jumbotron.html body="Reconciliation is an important step in an
 economic transaction. When a payment is reconciled,  captured amounts for the
@@ -28,42 +28,44 @@ transactions list - are available for all merchants using Swedbank Pay.
 Contact [kundsupport@swedbankpay.se][omni-client-email] for further
 inquiries regarding this.
 
-### Settlement
+## Settlement
 
 There are two main alternatives for settlement - either we handle the settlement
 process for you, or you handle the process yourself:
 
-#### Swedbank Pay handles the settlement process
+## If Swedbank Pay Handles The Settlement Process
 
 Swedbank Pay handles the settlement process on your behalf, (_called
 “Redovisningsservice”_). Swedbank Pay transfers the net amount to you directly.
 
-##### Swedbank Pay Checkout
+## Swedbank Pay Checkout
 
 When choosing [Swedbank Pay Checkout][checkout] we always handle the
 settlement process for you, gathering all your eCommerce payments in one place.
 Straighforward and time efficient.
 
-#### You handle the settlement process yourself
+## You Handle The Settlement Process Yourself
 
 If you will handle the settlement yourself, then Swedbank Pay will send you an
 invoice with the relevant fees, in addition to the report and transactions
 lists. Your acquirer will transfer settled funds to you.
 
-#### Balance Report
+## Balance Report
+
+{% include alert-balance-report.md %}
 
 The Balance Report (a _.pdf file_) specifies the total sales for a specific
 period, including fees and VAT. The report contains three parts: a payment
 summary and specifications for sales and for fees.
 
-##### Payment Summary
+## Payment Summary
 
 Provides a summary of the `Amount` sold, `Fees` and `VAT`. **If Swedbank Pay
 handles the settlement process**, the `Transferred``amount` - shown in the
 balance report summary is equivalent to the disbursement on the bank statement
 (the remaining total amount after fees).
 
-##### Sales specification
+## Sales Specification
 
 Provides a specification over sales for the given period. The sales total is
 specified per payment area (`CreditCard`, `Invoice`) and
@@ -71,7 +73,7 @@ underlying payment instruments. Each sales row specify Quantity, Sum sales and
 Amount to pay out, the last one is only eligble **if Swedbank Pay handles the
 Settlement process**.
 
-##### Fees specification
+## Fees Specification
 
 Provides a specification over fees for the given period. The fees total is
 specified per payment area (`CreditCard`, `Invoice`) and
@@ -79,7 +81,7 @@ underlying payment instruments. Each fees row specify `Quantity` (sales),
 `Amount` (sales), `Unit price`, `Provision` and `fee Amount`. **If you handle
 the settlement process yourselves you will receive a separat invoice for fees**.
 
-#### Transactions List
+## Transactions List
 
 The Transaction List (provided in `.xlsx` and `.xml` formats) specifies all
 transactions for a specific period, including a summary of transactions grouped
@@ -92,13 +94,13 @@ Solutions AB) that the merchant has the contract with, and the balance report
 number. The header fields contain a summary of the transactions displayed in the
 body.
 
-##### Header fields
+## Header Fields
 
 {:.table .table-striped}
 | Field         | Type       | Description                                                                |
 | :------------ | :--------- | :------------------------------------------------------------------------- |
 | `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
-| Currency      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
+| `Currency`    | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
 | `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
 | `Service`     | `String`   | The service used (e.g. `Creditcard`).                                      |
 | `NoOfDebet`   | `Decimal`  | Total number of debit transactions for the given service.                  |
@@ -107,7 +109,7 @@ body.
 | `FromDate`    | `ISO 8601` | The earlistest transaction date, `YYYY-MM-DD`.                             |
 | `ToDate`      | `ISO 8601` | The latest transaction date, `YYYY-MM-DD`.                                 |
 
-##### Body fields
+## Body Fields
 
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
@@ -133,11 +135,13 @@ body.
 | `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
 | `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
-### Reconciliation
+## Reconciliation
 
 To do the reconciliation, you need to match the information in your system
 against the information provided by Swedbank Pay in the balance report and
 transaction list. Below is a sequence diagram detailing the interaction.
+
+## Reconciliation Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -227,59 +231,62 @@ report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` 
 {% endif %}
 {% include pba-tables.md operation_title="reversal" %}
 
-### Samples
+## Samples
+
+{% include alert-balance-report-samples.md %}
 
 The content of the files depends on the type of agreement you have made with
 Swedbank Pay. For some payment instruments, only option A is available, while for other
 payment instruments, only option B is available. The sample files can be
 downloaded below.
 
-#### Option A: Swedbank Pay handles the settlement process
+## Option A: Swedbank Pay Handles The Settlement Process
 
 *   **[PDF Balance Report for Swedbank Pay Checkout][attachement-1]**
 *   [PDF Balance Report][balance-report-sbp-pdf]
 *   [XLSX Transaction List][trans-list-sbp-xlsx]
 *   [XML Transaction List][trans-list-sbp-xml]
 
-#### Option B: You will handle the settlement process yourself
+## Option B: You Handle The Settlement Process Yourself
 
 *   [PDF Balance Report][balance-report-pdf]
 *   [XLSX Transaction List][trans-list-xlsx]
 *   [XML Transaction List][trans-list-xml]
 
-### Split Settlement
+## Split Settlement
 
 The split settlement feature is the easy way of doing settlements for companies
-with multiple sub merchants. With a few easy steps, the settlement process
+with multiple sub-merchants. With a few easy steps, the settlement process
 becomes more efficient with regards to invoicing, payouts and setup for both
-your sub merchants and yourself.
+your sub-merchants and yourself.
 
 In short, it is a settlement feature where a company with a website or an app
-can attach specific subsite numbers to sub merchants selling their goods or
+can attach specific subsite numbers to sub-merchants selling their goods or
 services through the company. The subsite number is used to match the
-transactions with the correct sub merchant, so the settlement is automatically
+transactions with the correct sub-merchant, so the settlement is automatically
 split between them. If you run a site selling tickets to concerts, theaters,
 sporting events etc., each venue gets its own subsite number. If you run a
-funeral home, the sub merchants can be everything from flower shops to
+funeral home, the sub-merchants can be everything from flower shops to
 charities.
 
-#### What we need from you as a company
+## What We Need From You As A Company
 
-*   Submit a KYC (Know Your Customer) form for each sub merchant you want to
-    include. We will also do a KYC check on your sub merchants, providing extra
+*   Submit a KYC (Know Your Customer) form for each sub-merchant you want to
+    include. We will also do a KYC check on your sub-merchants, providing extra
     security for you.
-*   Give every sub merchant who sells goods/services through your website or in
-    your app a unique subsite number. This must be included in the KYC form. We
-    recommend using the same customer number they have in your system.
-*   Attach the subsite number to all the goods/services the sub merchant
+*   Give every sub-merchant who sells goods/services through your website or in
+    your app a unique subsite number. It must be in the format of `A-Za-z0-9`.
+    This must be included in the KYC form. We recommend using the same customer
+    number they have in your system.
+*   Attach the subsite number to all the goods/services the sub-merchant
     sells through your website or app, so the goods/services can be matched
     to the correct merchant in our back office system.
 *   A partner agreement is needed for automatic deduction of revenue cuts
     and fees.
 
-#### How it works
+## How It Works
 
-1.  We set up the sub merchant subsite number in our systems.
+1.  We set up the sub-merchant subsite number in our systems.
 2.  That number is added in the requests subsite field in when you
     create the payment for the goods or service.
 3.  The customer selects payment instrument and completes the payment.
@@ -289,11 +296,11 @@ charities.
 6.  The settlement is split and connected to the correct merchant.
 7.  Revenue cuts for the super merchant and fees from Swedbank Pay are deducted
     automatically.
-8.  Payout to the sub merchant is done.
+8.  Payout to the sub-merchant is done.
 
-#### The upsides
+## The Upsides Of Split Settlement
 
-Sub merchants being connected to Swedbank Pay through the super merchant
+sub-merchants being connected to Swedbank Pay through the super merchant
 instead of having separate setups has a lot of pros:
 
 *   You only need one agreement for each payment instrument (credit card, Vipps,
@@ -301,31 +308,31 @@ instead of having separate setups has a lot of pros:
 *   You only need one acquiring agreement.
 *   You only one Vipps or Swish certificate.
 *   You can add more payment instruments easily, as it only has to be done once.
-*   New sub merchants can be set up quickly, as the only thing needed is a KYC
+*   New sub-merchants can be set up quickly, as the only thing needed is a KYC
     form and a subsite number. This shortens the setup time for both you and us
     to a matter of hours.
 *   The automatic settlement split and deduction of fees and revenue cuts
     minimizes the work for your accounting department, as you do not have to
-    invoice your sub merchants.
+    invoice your sub-merchants.
 *   The subsite split is available for all the payment instruments we offer on
     our eCom platform.
 
-#### Good to know
+## Good To Know About Split Settlement
 
 With regards to admin functions, we offer a full integration towards our admin
 system. This way, you do not have to log in to Swedbank Pay Admin to perform
 these operations.
 
-##### Captures and cancels
+## Capture And Cancel
 
 Captures and cancels are done by the super merchant the same way as any other
 normal flow.
 
-##### Reversals
+## Reversal
 
 In cases where you need to do reversals, this will be performed by the super
-merchant. The reversal amount will be charged from the sub merchants subsite
-number. If the sub merchants balance is 0 (zero), the super merchant will be
+merchant. The reversal amount will be charged from the sub-merchants subsite
+number. If the sub-merchants balance is 0 (zero), the super merchant will be
 invoiced. The super merchant will in turn have to invoice this amount to the sub
 merchant.
 

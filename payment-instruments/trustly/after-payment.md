@@ -23,8 +23,6 @@ also be able to see the available `operations` after posting a payment.
 
 ## Reversals
 
-### Create Reversal Transaction
-
 The `create-reversal` operation will reverse a payment and
 refund the amount to the payer. To reverse a payment, perform the
 `create-reversal` operation. The HTTP body of the request should look as
@@ -60,7 +58,7 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`activity`         | `string`     | `FinancingConsumer`.                                                                                                                                                                                                                                                       |
 | {% icon check %}︎ | └➔&nbsp;`amount`           | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                  |
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`        | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference`   | `string(50)` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference`   | `string` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
 |                  | └➔&nbsp;`receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. This reference is used as an invoice/receipt number.                                                                                                                                                       |
 | {% icon check %}︎ | └➔&nbsp;`description`      | `string`     | A textual description of the reversal.                                                                                                                                                                                                                                     |
 
@@ -77,7 +75,7 @@ The `reversals` resource will list the reversal transactions
 successful `sale` operation.
 
 {:.code-view-header}
-***Request***
+**Request**
 
 ```http
 GET /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
@@ -88,7 +86,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="reversal" %}
 
-## Reversal Sequence
+## Reversal Sequence Diagram
 
 `Reversal` can only be done on completed Sales transactions.
 

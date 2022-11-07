@@ -1,9 +1,11 @@
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## Payment And Transaction States
 
 Both payments and transactions can be in several different states during
 the course of a purchase. You can find a short description of each state below.
 
-### Payment States
+## Payment States
 
 *   `ready` means that the payment has been created successfully, and is now
     ready for further transaction operations, like `authorization`, `sale` or
@@ -22,16 +24,11 @@ the course of a purchase. You can find a short description of each state below.
     `initialized` state. See more below. As long as a payment is `pending`, no
     further transactions can be done.
 
-{% capture alert %}
-If you want to inspect the transactional status of a payment, read about the
-[`paid-payment`](#operation-paid-payment),
-[`failed-payment`](#operation-failed-payment) and
-[`aborted-payment`](#operation-aborted-payment) operations.
-{% endcapture %}
+**If you want to inspect the transactional status of a payment, read about**
+**the** [`paid-payment`][paid-payment], [`failed-payment`][failed-payment]
+**and** [`aborted-payment`][aborted-payment] **operations.**
 
-{% include alert.html type="informative" icon="info" body=alert %}
-
-### Transaction States
+## Transaction States
 
 *   `ìntialized` is the transaction state when something unexpected occurred, and
    it is impossible to determine the exact status of the transaction.
@@ -55,3 +52,7 @@ If you want to inspect the transactional status of a payment, read about the
     to do a confirmation or verification. Examples of this can be payment apps
     like Swish, Vipps or MobilePay, or 3-D Secure verifications for card
     payments.
+
+[aborted-payment]: {{ features_url }}/technical-reference/operations#operation-aborted-payment
+[failed-payment]: {{ features_url }}/technical-reference/operations#operation-failed-payment
+[paid-payment]: {{ features_url }}/technical-reference/operations#operation-paid-payment

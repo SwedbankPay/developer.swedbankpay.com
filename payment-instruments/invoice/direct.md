@@ -14,7 +14,7 @@ menu_order: 700
 Direct Invoice is about to be phased out. This section is only for merchants
 who currently have a contract with this integration." %}
 
-## Invoice Direct implementation flow
+## Invoice Direct Implementation Flow
 
 1.  Collect all purchase information and send it in a `POST` request to Swedbank
    Pay. Make sure to include personal information (SSN and postal code).
@@ -42,13 +42,14 @@ the invoice to the payer and the order is ready for shipping." %}
 
 The 3 most important steps in the Invoice Direct flow are shown below.
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
-Our `payment` example below uses the [`FinancingConsumer`][financing-consumer] value.
+Our `payment` example below uses the [`FinancingConsumer`][financing-consumer]
+value.
 
 {% include alert-gdpr-disclaimer.md %}
 
-### Financing Consumer
+## Financing Consumer Request
 
 {:.code-view-header}
 **Request**
@@ -72,7 +73,7 @@ Content-Type: application/json
             }
         ],
         "description": "Test Purchase",
-        "generateRecurrenceToken": false,
+        "generatePaymentToken": false,
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "urls": {
@@ -115,20 +116,22 @@ Content-Type: application/json
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`language`                | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                                     |
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`urls`                    | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`hostUrl`                | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                             |
-| {% icon check %}︎︎︎︎︎ | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                     |
+| {% icon check %}︎︎︎︎︎ | └─➔&nbsp;`completeUrl`            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                     |
 |                  | └─➔&nbsp;`cancelUrl`              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only `cancelUrl` or `paymentUrl` can be used, not both.                                                                                                                |
 |                  | └─➔&nbsp;`callbackUrl`            | `string`      | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                |
 |                  | └─➔&nbsp;`logoUrl`                | `string`      | {% include field-description-logourl.md %}                                                        |
 |                  | └─➔&nbsp;`termsOfServiceUrl`      | `string`      | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                                   |
 | {% icon check %}︎︎︎︎︎ | └➔&nbsp;`payeeInfo`               | `object`      | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                                  |
 | {% icon check %}︎︎︎︎︎ | └─➔&nbsp;`payeeId`                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                  |
-| {% icon check %}︎︎︎︎︎ | └─➔&nbsp;`payeeReference`         | `string(30*)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                               |
+| {% icon check %}︎︎︎︎︎ | └─➔&nbsp;`payeeReference`         | `string` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`payeeName`              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`productCategory`        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                         |
 |                  | └─➔&nbsp;`orderReference`         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`subsite`                | `String(40)`  | {% include field-description-subsite.md %}                                                                                                                                                            |
 |                  | └➔&nbsp;`payer`                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payerReference`         | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
+
+## Financing Consumer Response
 
 {:.code-view-header}
 **Response**
@@ -237,7 +240,11 @@ Content-Type: application/json
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
 
-## Step 2: Get `approvedLegalAddress` confirmation
+## Step 2: Get `approvedLegalAddress` Confirmation
+
+Retrieve the payer's legal address, which is needed to do the next step.
+
+## Approved Legal Address Request
 
 {:.code-view-header}
 **Request**
@@ -255,6 +262,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Approved Legal Address Response
 
 {:.code-view-header}
 **Response**
@@ -276,7 +285,11 @@ Content-Type: application/json
 }
 ```
 
-## Step 3: Complete a Payment
+## Step 3: Complete The Payment
+
+Add the legal address in your complete request.
+
+## Complete Request
 
 {:.code-view-header}
 **Request**
@@ -307,6 +320,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Complete Response
 
 {:.code-view-header}
 **Response**
@@ -347,7 +362,7 @@ The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to Swedbank Pay to create
 an authorized transaction.
 
-## Invoice flow
+## Invoice Flow
 
 ```mermaid
 sequenceDiagram
@@ -383,7 +398,7 @@ sequenceDiagram
     Merchant-->>-Payer: Display result
 ```
 
-## Options after posting a purchase payment
+## Options After Posting A Purchase Payment
 
 Head over to [Capture][capture] to complete the Invoice Direct integration.
 
@@ -395,4 +410,4 @@ next_href="capture" next_title="Capture" %}
 [capture]: /payment-instruments/invoice/capture
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
 [features]: /payment-instruments/invoice/features
-[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[financing-consumer]: /payment-instruments/invoice/features/technical-reference/financing-consumer

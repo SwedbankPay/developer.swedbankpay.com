@@ -38,7 +38,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(30*)` | {% include field-description-payee-reference.md %}                               |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %}                               |
 
 ## Capture Response
 
@@ -109,7 +109,7 @@ Content-Type: application/json
 
 {% include transaction-list-response.md transaction="capture" %}
 
-## Capture Sequence
+## Capture Sequence Diagram
 
 `Capture` can only be done on an authorized transaction. It is possible to do a
 partial capture where you only capture a part of the authorized amount. You can
@@ -123,5 +123,5 @@ sequenceDiagram
   SwedbankPay-->>-Merchant: transaction resource
 ```
 
-[operations]: /payment-instruments/card/features/core#operations
+[operations]: /payment-instruments/card/features/technical-reference/operations
 [transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

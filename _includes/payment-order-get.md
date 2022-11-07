@@ -1,4 +1,5 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
 {% capture product %}
     {% if documentation_section == "payment-menu" %}
@@ -14,6 +15,8 @@ The `paymentorders` resource is used when initiating a payment process through
 object selected by the payer. This will generate a payment that is accessed
 through the sub-resources `payments` and `currentPayment`.
 
+## GET Payment Order Request
+
 {:.code-view-header}
 **Request**
 
@@ -23,6 +26,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Payment Order Response
 
 {:.code-view-header}
 **Response**
@@ -71,13 +76,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -113,8 +118,9 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`payments`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`currentPayment` | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
-| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details](#operations).                                                                                             |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                             |
 
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /{{ documentation_section }}
+[operations]: {{ features_url }}/technical-reference/operations

@@ -1,4 +1,4 @@
-## Co-badge Card Choice for Dankort
+## Co-badge Card Choice For Dankort
 
 Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that
 have more than one payment application, we have developed support for the end

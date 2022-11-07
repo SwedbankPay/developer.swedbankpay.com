@@ -23,5 +23,3 @@ information will be stored.
 [enterprise-enter-ssn]: /assets/img/checkout/enterprise-enter-ssn.png
 [enterprise-redirect]: /checkout-v3/enterprise/redirect#step-1-create-payment-order
 [enterprise-seamless-view]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
-[payments-only-redirect]: /checkout-v3/payments-only/redirect#step-1-create-payment-order
-[payments-only-seamless-view]: /checkout-v3/payments-only/seamless-view#step-1-create-payment-order

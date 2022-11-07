@@ -42,7 +42,7 @@ Content-Type: application/json
     },
     "operations": [
         {
-            "href": "{{ view_payment_order_script_url }}",
+            "href": "{{ view_payment_order_script_url }}&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "method": "GET",
             "contentType": "application/javascript"
@@ -64,7 +64,7 @@ in your system to look up status on the completed payment later.
 
 {% include alert.html type="informative" icon="info" header="URL Storage"
 body="The `id` of the Payment Order should be stored for later retrieval. [Read
-more about URL usage](/introduction#uri-usage)." %}
+more about URL usage](/introduction#url-usage)." %}
 
 Then find the `view-paymentorder` operation and embed its `href` in a `<script>`
 element. That script will then load the Seamless View for the Payment Menu. We

@@ -24,17 +24,19 @@ representative to make a booking. This feature is only supported with the
 `Purchase` operation. See the abbreviated example below on how to implement MOTO
 by setting the `generateMotoPayment` to `true`.
 
+## MOTO Request
+
 {:.code-view-header}
 **Request**
 
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/creditcard/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
 {
-    "{{api_resource_field_name}}": {
+    "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
         "generateMotoPayment": true,
@@ -66,8 +68,10 @@ Content-Type: application/json
 }
 ```
 
+## MOTO Response
+
 To authorize the payment, find the operation with `rel` equal to
-`redirect-{{ api_redirect_rel }}` in the response, and redirect the merchant
+`redirect-authorization` in the response, and redirect the merchant
 employee to the provided `href` to fill out the payer’s card details. You will
 find an abbreviated example of the response provided below.
 
@@ -79,7 +83,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "{{api_resource_field_name}}": {
+  "payment": {
         "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699",
         "number": 40106480687,
         "created": "2021-02-24T12:51:51.0932275Z",
@@ -98,13 +102,13 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "urls": {
-            "id": "/psp/{{ api_resource }}/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/urls"
+            "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/urls"
         },
         "payeeInfo": {
-            "id": "id": "/psp/{{ api_resource }}/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/payeeInfo"
+            "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/payeeInfo"
         },
         "metadata": {
-            "id": "/psp/{{ api_resource }}/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/metadata"
+            "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699/metadata"
         }
     },
        "operations": [

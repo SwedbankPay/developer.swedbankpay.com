@@ -25,7 +25,7 @@ menu_order: 700
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-### Important steps before you launch Swedbank Pay Trustly Payments at your website
+## Important Steps Before You Launch Trustly At Your Website
 
 Prior to launching Trustly Payments at your site, make sure that
 the payment option is displayed with a Trustly logo, corresponding
@@ -42,14 +42,15 @@ operations][after-payment] and the [payment resource][payment-resource].
 
 ## Languages
 
-The displayed languages that we currently support is English (`en-us`), Norwegian (`nb-no`), Swedish (`sv-se`), and Finish (`fi-fi`).
+The languages we currently support are English (`en-us`), Norwegian (`nb-no`),
+Swedish (`sv-se`), and Finish (`fi-fi`).
 
 ## Banks
 
 Trustly is supported by the following Finnish and Swedish banks as of August 14.
 2020.
 
-### Finland {% flag fi %}
+## Finland {% flag fi %}
 
 {:.table .table-striped}
 |        Bank         | Supported in eCom as of August 2020 | Instant Credit Notification |
@@ -65,7 +66,7 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 | Danske Bank (Sampo) |          {% icon check %}           |      {% icon check %}       |
 |  Oma Säästöpankki   |          {% icon check %}           |      {% icon check %}       |
 
-### Sweden {% flag se %}
+## Sweden {% flag se %}
 
 {:.table .table-striped}
 | Bank             | Supported in eCom as of August 2020 | Instant Credit Notification |

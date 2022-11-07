@@ -38,8 +38,8 @@ Content-Type: application/json
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -83,13 +83,13 @@ Content-Type: application/json
     "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         }{% endif %}
@@ -232,8 +232,8 @@ Content-Type: application/json
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -271,13 +271,13 @@ Content-Type: application/json
     "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
@@ -325,15 +325,22 @@ Content-Type: application/json
 | └➔&nbsp;`aborted`     | `string`     | The URL to the `aborted` [resource]({{ features_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
 | └➔&nbsp;`paid`     | `string`     | The URL to the `paid` [resource]({{ features_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
 | └➔&nbsp;`cancelled`     | `string`     | The URL to the `cancelled` [resource]({{ features_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` [resource]({{ features_url }}/technical-reference/resource-sub-models#financialTransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` [resource]({{ features_url }}/technical-reference/resource-sub-models#failedAttempts) where information about the failed attempts can be retrieved.                                                                                                                            |
+| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` [resource]({{ features_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` [resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
 ## Paid
 
-The payment order response with status `Paid`, and the `Paid` resource
-expanded.
+The payment order response with status `paid`, and the `paid` resource expanded.
+Please note that the main code example is of a card payment. We have included
+`paid` resources of the remaining instruments below the main code example.
+Resource examples where details are empty indicate that no details are
+available.
+
+The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
+while MobilePay does return this field, the value present is actually a
+`networkToken`, which **represents** the PAN, but is not a PAN in itself.
 
 {:.code-view-header}
 **Response**
@@ -350,7 +357,11 @@ Content-Type: application/json
         "operation": "Purchase",
         "status": "Paid",
         "currency": "SEK",
+        "transactionType": "Authorization",
         "amount": 1500,
+        "submittedAmount": 1500,
+        "feeAmount: 0,
+        "discountAmount": 0,
         "vatAmount": 375,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
@@ -368,8 +379,8 @@ Content-Type: application/json
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -400,7 +411,20 @@ Content-Type: application/json
             "number": 99101548603,
             "payeeReference": "1641542301",
             "amount": 1500,
-            "details": {}
+            "details": {
+                "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
+                "externalNonPaymentToken" : "1234567890",
+                "cardBrand": "Visa",
+                "cardType": "Credit",
+                "maskedPan": "492500******0004",
+                "expiryDate": "12/2022",
+                "issuerAuthorizationApprovalCode": "L00302",
+                "acquirerTransactionType": "STANDARD",
+                "acquirerStan": "302",
+                "acquirerTerminalId": "70101301389",
+                "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
+                "transactionInitiator": "CARDHOLDER"
+           }
         },
         "cancelled": {
             "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b/cancelled"
@@ -430,19 +454,281 @@ Content-Type: application/json
         },{% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         }{% endif %}
     ]
 }
+```
 
+### Apple Pay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Apple Pay**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "ApplePay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "expiryDate": "12/0023",
+        "issuerAuthorizationApprovalCode": "L00392",
+        "acquirerTransactionType": "WALLET",
+        "acquirerStan": "392",
+        "acquirerTerminalId": "80100001190",
+        "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+        "transactionInitiator": "CARDHOLDER"
+    }
+  }
+}
+```
+
+### Click to Pay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Click to Pay**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "ClickToPay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "expiryDate": "12/0023",
+        "issuerAuthorizationApprovalCode": "L00392",
+        "acquirerTransactionType": "WALLET",
+        "acquirerStan": "392",
+        "acquirerTerminalId": "80100001190",
+        "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+        "transactionInitiator": "CARDHOLDER"
+    }
+  }
+}
+```
+
+### MobilePay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**MobilePay**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paid": {
+    "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
+    "instrument": "MobilePay",
+    "number": 75100106637,
+    "payeeReference": "1662364327",
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {
+        "cardBrand": "Visa",
+        "maskedPan": "489537******1424",
+        "expiryDate": "12/2022",
+        "issuerAuthorizationApprovalCode": "018117",
+        "acquirerTransactionType": "MOBILEPAY",
+        "acquirerStan": "53889",
+        "acquirerTerminalId": "42",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+    }
+  }
+}
+```
+
+### Vipps `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Vipps**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paid": {
+    "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
+    "instrument": "Vipps",
+    "number": 99463794,
+    "payeeReference": "1662366424",
+    "amount": 1500,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {}
+  }
+}
+```
+
+### Swish `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Swish**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+    "paid": {
+    "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
+    "instrument": "Swish",
+    "number": 74100413405,
+    "payeeReference": "1662360831",
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {}
+  }
+}
+```
+
+### Invoice `Paid` Resource
+
+Please note that this is an abbreviated example. See the main `Paid` example for
+more context.
+
+{:.code-view-header}
+**Invoice**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+"paid": {
+    "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
+    "instrument": "Invoice",
+    "number": 71100775379,
+    "payeeReference": "1662360980",
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {}
+  }
+}
+```
+
+### Credit Account `Paid` Resource
+
+Please note that this is an abbreviated example. See the main `Paid` example for
+more context.
+
+{:.code-view-header}
+**CreditAccount**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+"paid": {
+    "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
+    "instrument": "CreditAccount",
+    "number": 77100038000,
+    "payeeReference": "1662361777",
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {}
+  }
+}
+```
+
+### Trustly `Paid` Resource
+
+Please note that this is an abbreviated example. See the main `Paid` example for
+more context.
+
+{:.code-view-header}
+**Trustly**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+"paid": {
+    "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
+    "instrument": "Trustly",
+    "number": 79100113652,
+    "payeeReference": "1662373401",
+    "orderReference": "orderReference",
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
+    "details": {}
+  }
+}
 ```
 
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
@@ -457,8 +743,12 @@ responses:
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
+| └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
 

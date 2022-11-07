@@ -20,7 +20,7 @@ to be undefined. Just adding an event handler for logging purposes is therefore
 not possible, the event handler will have to perform some functionality similar
 to the event handler you are overriding." %}
 
-### `onPaymentPending`
+## `onPaymentPending`
 
 This events triggers when a payment enters a paying state ( `Sale`, `Authorize`,
 `Cancel`etc). The `onPaymentPending` event
@@ -42,7 +42,7 @@ these events below.
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
 
-### `onPaymentPaid`
+## `onPaymentPaid`
 
 This event triggers when a payment has completed successfully.
 The `onPaymentPaid` event is raised with the following event argument
@@ -64,7 +64,7 @@ object:
 | `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a completed payment. |
 
-### `onPaymentAborted`
+## `onPaymentAborted`
 
 This event triggers when the user cancels the payment.
 The `onPaymentAborted` event is raised with the following event argument
@@ -86,7 +86,7 @@ object:
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
-### `onPaymentFailed`
+## `onPaymentFailed`
 
 This event triggers when a payment has failed, disabling further attempts to
 perform a payment. The `onPaymentFailed` event is raised with the following
@@ -108,7 +108,7 @@ event argument object:
 | `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a failed payment. |
 
-### `onTermsOfServiceRequested`
+## `onTermsOfServiceRequested`
 
 This event triggers when the user clicks on the "Display terms and conditions"
 link. The `onTermsOfServiceRequested` event is raised with the following event
@@ -130,7 +130,7 @@ argument object:
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
 
-### `onError`
+## `onError`
 
 This event triggers during terminal errors or if the configuration fails
 validation. The `onError` event will be raised with the following event argument
@@ -157,7 +157,7 @@ object:
 
 {% if documentation_section contains "checkout-v3/starter" %}
 
-### `onPayerIdentified`
+## `onPayerIdentified`
 
 This event triggers when a payer has been identified.
 
@@ -175,7 +175,7 @@ This event triggers when a payer has been identified.
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `bodyType`  | `string` | The type of event that was raised. |
 
-### `onPayerUnidentified`
+## `onPayerUnidentified`
 
 This event triggers when a payer has not been identified (proceeds as guest).
 
@@ -197,7 +197,7 @@ This event triggers when a payer has not been identified (proceeds as guest).
 
 {% unless documentation_section contains "checkout-v3" %}
 
-### `onBillingDetailsAvailable`
+## `onBillingDetailsAvailable`
 
 This event triggers when a consumer has been identified. The
 `onBillingDetailsAvailable` event will be raised with the following event
@@ -219,7 +219,7 @@ argument object:
 | `actionType`  | `string` | The type of event that was raised.                                                  |
 | `url`         | `string` | The URL containing billing details.                                                 |
 
-### `onShippingDetailsAvailable`
+## `onShippingDetailsAvailable`
 
 This event triggers when a consumer has been identified or their shipping
 address has been updated. The `onShippingDetailsAvailable` event will be raised
@@ -245,7 +245,7 @@ with the following event argument object:
 
 {% if api_resource == "paymentorders" %}
 
-### `onApplicationConfigured`
+## `onApplicationConfigured`
 
 This event triggers whenever a reconfiguration leads to resizing of the payment
 menu. No action will be done if callback is not set. The
@@ -266,7 +266,7 @@ object:
 | :-------- | :------- | :------------------------------------------------------------------- |
 | `details` | `string` | The source of the reconfiguration, and the new height of the iframe. |
 
-### `onEventNotification`
+## `onEventNotification`
 
 This event triggers whenever any other public event is called. It does not
 prevent their handling. The `onEventNotification` event is raised with the
@@ -286,7 +286,7 @@ following event argument object:
 | :-------- | :------- | :--------------------------------------------------------- |
 | `details` | `string` | A human readable and descriptive text with the event name. |
 
-### `onInstrumentSelected`
+## `onInstrumentSelected`
 
 This event triggers when a user actively changes payment instrument in the
 Payment Menu. The `onInstrumentSelected` event is raised with the
@@ -309,7 +309,7 @@ following event argument object:
 | `name`       | `string` | The name and identifier of specific instrument instances - i.e. if you deploy more than one type of credit card payments, they would be distinguished by `name`. |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user.                                                                                  |
 
-### `onPaymentCreated`
+## `onPaymentCreated`
 
 This event triggers when a user has selected a payment instrument and actively
 attempts to perform a payment. The `onPaymentCreated` event is raised with the
@@ -331,7 +331,7 @@ following event argument object:
 | `id`         | `string` | {% include field-description-id.md %}                                                           |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
 
-### `onPaymentTransactionFailed`
+## `onPaymentTransactionFailed`
 
 This event triggers when a payment attempt fails, further attempts can be made
 for the payment. An error message will appear in the payment UI, and the
@@ -355,7 +355,7 @@ object:
 | `id`      | `string` | {% include field-description-id.md %}               |
 | `details` | `string` | A human readable and descriptive text of the error. |
 
-### `onOutOfViewRedirect`
+## `onOutOfViewRedirect`
 
 This event triggers when a user is redirected to a separate web page, for
 example 3-D Secure or Bank ID signing. The `onOutOfViewRedirect` event is raised

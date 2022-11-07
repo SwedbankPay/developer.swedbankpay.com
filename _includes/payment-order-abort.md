@@ -18,6 +18,8 @@ in the request body:
 
 {% endif %}
 
+## Abort PATCH Request
+
 {:.code-view-header}
 **Request**
 
@@ -41,6 +43,22 @@ Content-Type: application/json
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | └➔&nbsp;`operation`      | `string`     | `Abort`                                                                                                                                                                                                                |
 | └➔&nbsp;`abortReason`      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
+
+## Abort PATCH Response
+
+{% if documentation_section contains "checkout-v3" %}
+
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, as displayed above, with its
+`status` set to `Aborted`.
+
+{% else %}
+
+The response given when aborting a payment order is equivalent to a `GET`
+request towards the `paymentorders` resource, as displayed above, with its
+`state` set to `Aborted`.
+
+{% endif %}
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -75,8 +93,8 @@ Content-Type: application/json
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
         "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -120,13 +138,13 @@ Content-Type: application/json
     "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         }{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         }{% endif %}
@@ -211,32 +229,18 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api.resource }}/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/{{ api.resource }}/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/{{ api.resource }}/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/{{ api.resource }}/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
     ]
 }
 ```
-
-{% endif %}
-
-{% if documentation_section contains "checkout-v3" %}
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above, with its
-`status` set to `Aborted`.
-
-{% else %}
-
-The response given when aborting a payment order is equivalent to a `GET`
-request towards the `paymentorders` resource, as displayed above, with its
-`state` set to `Aborted`.
 
 {% endif %}

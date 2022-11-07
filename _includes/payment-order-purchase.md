@@ -2,6 +2,8 @@
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
 
+## Payment Order Request
+
 {:.code-view-header}
 **Request**
 
@@ -30,7 +32,7 @@ Content-Type: application/json
             "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf",
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf",
             "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
@@ -48,10 +50,6 @@ Content-Type: application/json
             "workPhoneNumber" : "+4787654321",
             "homePhoneNumber" : "+4776543210"{% endif %}
         },
-        "swish": {
-            "paymentRestrictedToAgeLimit": 18,
-            "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
-            },
         "orderItems": [
             {
                 "reference": "P1",
@@ -62,29 +60,13 @@ Content-Type: application/json
                 "imageUrl": "https://example.com/product123.jpg",
                 "description": "Product 1 description",
                 "discountDescription": "Volume discount",
-                "quantity": 4,
+                "quantity": 5,
                 "quantityUnit": "pcs",
                 "unitPrice": 300,
-                "discountPrice": 200,
+                "discountPrice": 0,
                 "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
-            },
-            {
-                "reference": "I1",
-                "name": "InvoiceFee",
-                "type": "PAYMENT_FEE",
-                "class": "Fees",
-                "description": "Fee for paying with Invoice",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 1900,
-                "vatPercent": 0,
-                "amount": 1900,
-                "vatAmount": 0,
-                "restrictedToInstruments": [
-                    "Invoice-PayExFinancingSe"
-                ]
+                "amount": 1500,
+                "vatAmount": 375
             }
         ],
         "riskIndicator": {
@@ -107,6 +89,8 @@ Content-Type: application/json
     }
 }
 ```
+
+## Payment Order Response
 
 {:.code-view-header}
 **Response**
@@ -180,13 +164,13 @@ Content-Type: application/json
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}",
+            "href": "{{ page.front_end_url }}/paymentmenu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "redirect-paymentorder",
             "contentType": "text/html"
         },
         {
             "method": "GET",
-            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO",
+            "href": "{{ page.front_end_url }}/paymentmenu/core/scripts/client/px.paymentmenu.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-paymentorder",
             "contentType": "application/javascript"
         }
@@ -213,7 +197,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
-| {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][complete-url] for details.  |
+| {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`][complete-url] for details.  |
 |                  | └─➔&nbsp;`cancelUrl`               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`             | `string`     | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
@@ -221,7 +205,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`logoUrl`                 | `string`     | {% include field-description-logourl.md %}                                                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | └─➔&nbsp;`payeeId`                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`payeeReference`          | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
+| {% icon check %} | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
@@ -234,9 +218,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`msisdn`                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).            |
 |                  | └─➔&nbsp;`workPhoneNumber`         | `string`     | The work phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).                                                                                                                                     |
 |                  | └─➔&nbsp;`homePhoneNumber`         | `string`     | The home phone number of the payer. Optional (increased chance for frictionless flow if set) and is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).                                                                                                                                     |
-|                  | └➔&nbsp;`swish`              | `object`      | An object that holds different scenarios for Swish payments.                                                                                                                                                                                                                                       |
-|          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
-|                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                                            |
 | {% icon check %} | └─➔&nbsp;`reference`               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`name`                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -253,7 +234,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
 {:.table .table-striped}
@@ -285,8 +265,8 @@ Content-Type: application/json
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 
 [complete-url]: /{{ documentation_section }}/features/technical-reference/complete-url
-[initiate-consumer-session]: {{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification
+[initiate-consumer-session]: /{{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification
 [one-click-payments]: {{ documentation_section }}/features/#one-click-payments
 [operations]: /{{ documentation_section }}/features/technical-reference/operations
 [settlement-reconciliation]: /{{ documentation_section }}/features/core/settlement-reconciliation
-[split-settlement]: {{ documentation_section }}/features/core/settlement-reconciliation#split-settlement
+[split-settlement]: /{{ documentation_section }}/features/core/settlement-reconciliation#split-settlement

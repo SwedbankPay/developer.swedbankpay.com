@@ -22,14 +22,14 @@ the details stored or not.
 all payment instruments provided by Swedbank Pay support Payer Awareness today."
 %}
 
-### BYO Payment Menu
+## BYO Payment Menu
 
 Payment Menu is versatile and can be configured in such a way that it functions
 like a single payment instrument. In such configuration, it is easy to Bring
 Your Own Payment Menu, i.e. building a customized payment menu in our own user
 interface.
 
-#### Add Stored Payment Instrument Details
+## Add Stored Payment Instrument Details
 
 When building a custom payment menu, features like adding new stored payment
 instrument details (i.e. "Add new card") is something that needs to be provided
@@ -54,7 +54,7 @@ menu and want to show stored payment details, you will need to set the
 get all active payment tokens registered on that payer when building your
 menu.
 
-### GDPR
+## GDPR
 
 Remember that you have the responsibility of enforcing GDPR requirements and
 letting the payer remove active payment tokens when they want. It is up to you
@@ -63,6 +63,8 @@ you need to make it easy to [clean up old data][tokens]. See more below the main
 `paymentOrder` request example, or follow the hyperlink above.
 
 A Payer Aware Payment Menu request can look like this.
+
+## Payer Aware Payment Menu Request
 
 {:.code-view-header}
 **Request**
@@ -92,7 +94,7 @@ Content-Type: application/json
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditoons.pdf"{% if include.integration_mode=="redirect" %},
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"{% if include.integration_mode=="redirect" %},
             "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
@@ -101,7 +103,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3/payments-only" %}
+            "siteId": "MySiteId",{% endif %}
         },
 ,
         "payer": {
@@ -216,18 +219,19 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   | {% endif %}
-| {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`]({{ features_url }}/technical-reference/complete-url) for details. |
+| {% icon check %} | └─➔&nbsp;`completeUrl`             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`]({{ features_url }}/technical-reference/complete-url) for details. |
 |                  | └─➔&nbsp;`cancelUrl`               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`             | `string`     | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`       | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |{% if include.integration_mode=="redirect" %},
 | {% icon check %} | └─➔&nbsp;`logoUrl`                 | `string`     | {% include field-description-logourl.md %}                                                                                                                                                                                                                                                               |{% endif %}
 | {% icon check %} | └➔&nbsp;`payeeInfo`               | `string`     | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`payeeId`                | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
-| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string(30)` | {% include field-description-payee-reference.md documentation_section=include.documentation_section describe_receipt=true %}                                                                                                                                                                             |
+| {% icon check %} | └─➔&nbsp;`payeeReference`         | `string` | {% include field-description-payee-reference.md documentation_section=include.documentation_section describe_receipt=true %}                                                                                                                                                                             |
 |                  | └─➔&nbsp;`payeeName`              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`productCategory`        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-reconciliation] before being used.                                                                                         |
+|                  | └─➔&nbsp;`subsite`                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-reconciliation] before being used. Must be in the format of `A-Za-z0-9`.                                                                                         | {% if documentation_section contains "checkout-v3/payments-only" %}
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | `SiteId` is used for [split settlement][split-settlement] transactions when you, as a merchant, need to specify towards AMEX which sub-merchant the transaction belongs to. Must be in the format of `A-Za-z0-9`.                                                                      | {% endif %}
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | └➔&nbsp;`digitalProducts`                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 | {% icon check %} | └─➔&nbsp;`firstName`                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
@@ -274,8 +278,10 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | `CreditCard`, `Invoice`, `Vipps`, `Swish`, `Trustly` and/or `CreditAccount`. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees, and negative amounts to add discounts.                                                  |
+|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
+
+## Payer Aware Payment Menu Response
 
 {:.code-view-header}
 **Response**
@@ -289,8 +295,9 @@ Content-Type: application/json
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
         "updated": "2020-06-22T10:56:56.4035291Z",
-        "operation": "Purchase",
-        "status": "Initialized",
+        "operation": "Purchase", {% if documentation_section contains "checkout-v3" %}
+        "status": "Initialized", {% else %}
+        "state": "Ready", {% endif %}
         "paymentToken" : "{{ page.payment_token }}",
         "currency": "SEK",
         "vatAmount": 375,
@@ -345,13 +352,13 @@ Content-Type: application/json
       "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         },{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}
@@ -378,8 +385,9 @@ Content-Type: application/json
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
-| └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). |
+| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                              |{% if documentation_section contains "checkout-v3" %}
+| └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). |{% else %}
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. | {% endif %}
 | └➔&nbsp;`paymentToken`   | `string`     | The payment token generated in the initial purchase.                                                                                                |
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
@@ -404,13 +412,15 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
-### Tokens
+## Tokens
 
 It is possible to query for all active payment tokens registered on a specific
 `payerReference`. After doing so, you can either remove all tokens or a subset
 of the tokens registered on the payer. This is the easiest way of cleaning up
 all data for **Payments Only** implementations. It is also possible to [delete a
 single token][delete-tokens] if you wish to do that.
+
+## GET Tokens Request
 
 Querying with a `GET` request will give you a response containing all tokens and
 the operation(s) available for them.
@@ -424,6 +434,8 @@ Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
+
+## GET Tokens Response
 
 {:.code-view-header}
 **Response**
@@ -518,6 +530,8 @@ Content-Type: application/json
 | └➔&nbsp;`instrumentDisplayName`             | `string`     | Payment instrument connected to the token.|
 | └➔&nbsp;`instrumentParameters`             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform regarding the token. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+
+## PATCH Request For Removing Tokens
 
 You can remove the tokens by using the following `PATCH` request.
 

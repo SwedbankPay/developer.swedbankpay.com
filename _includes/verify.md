@@ -8,7 +8,7 @@
 The `Verify` operation lets you post verification payments, which confirm the
 validity of card information without reserving or charging any amount.
 
-## Introduction to Verify
+## Introduction To Verify
 
 This option is commonly used when initiating a subsequent
 {%- if has_one_click %}
@@ -22,7 +22,7 @@ Please note that all boolean credit card attributes involving the rejection of
 certain card types are optional and require enabling on the contract with
 Swedbank Pay." %}
 
-## Verification through Swedbank Pay Payments
+## Verification Through Swedbank Pay Payments
 
 *   When properly set up in your merchant/webshop site, and the payer initiates
     a verification operation, you make a `POST` request towards Swedbank Pay
@@ -59,7 +59,7 @@ Swedbank Pay." %}
     a `unscheduledToken` that can be used for subsequent
     [unscheduled server-to-server based payments][unscheduled-mit].
 
-## Screenshots
+## How It Looks
 
 You will redirect the payer to Swedbank Pay hosted pages to collect
 the credit card information.
@@ -79,17 +79,30 @@ Redirect flow. Adding `paymentUrl` input will generate the response meant for
 Seamless View, which does not include the `redirect-verification`. The request
 below is the Redirect option.
 
+## Verify Request
+
 {:.code-view-header}
 **Request**
 
+{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+
 ```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+POST /psp/{{ api_resource }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json
 
-{
-    "payment": {
+{% else %}
+
+POST /psp/{{ api_resource }}/payments HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+{% endif %}
+
+{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+    "paymentorder": { {% else %}
+    "payment": { {% endif %}
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
@@ -111,7 +124,8 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId", {% endif %}
         },
         "payer": {
             "payerReference": "AB1234",
@@ -126,6 +140,8 @@ Content-Type: application/json
 }
 ```
 
+## Verify Response
+
 {:.code-view-header}
 **Response**
 
@@ -133,8 +149,9 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
-    "payment": {
+{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+    "paymentorder": { {% else %}
+    "payment": { {% endif %}
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -147,12 +164,12 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "userAgent": "Mozilla/5.0",
         "language": "nb-NO",
-        "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
-        "verifications": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/verifications" },
-        "urls" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/urls" },
-        "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
-        "payers": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" },
-        "settings": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/settings" }
+        "transactions": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions" },
+        "verifications": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications" },
+        "urls" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/urls" },
+        "payeeInfo" : { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo" },
+        "payers": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payers" },
+        "settings": { "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/settings" }
     },
     "operations": [
         {
@@ -183,7 +200,7 @@ Content-Type: application/json
 }
 ```
 
-## Verification flow
+## Verification Flow
 
 The sequence diagram below shows the two requests you have to send to Swedbank
 Pay to make a purchase. The links will take you directly to the API description

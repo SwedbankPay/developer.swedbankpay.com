@@ -1,10 +1,10 @@
-## Observing the Payment Process
+## Observing The Payment Process
 
 Your application can observe the state of the payment and react accordingly.
 At a minimum, your application must remove the SDK UI from view when the
 payment is finished.
 
-### Android
+## Android
 
 On Android, observe the `state` or `richState` of `PaymentViewModel`.
 The `PaymentViewModel` of a `PaymentFragment` is stored in its parent
@@ -29,12 +29,18 @@ The process state is available at `richState.state`, which has the following
 cases:
 
 *   `PaymentViewModel.State.IDLE`: Not active
-*   `PaymentViewModel.State.IN_PROGRESS`: Active; waiting for either network response or user interaction
-*   `PaymentViewModel.State.UPDATING_PAYMENT_ORDER`: Updating the payment order (because you called `updatePaymentOrder`)
-*   `PaymentViewModel.State.COMPLETE`: Complete; you should hide the `PaymentFragment` and check the payment status from your application servers
-*   `PaymentViewModel.State.cancelled`: cancelled by the user; you should hide the `PaymentFragment`.
-*   `PaymentViewModel.State.RETRYABLE_ERROR`: Payment could not proceed, but the error is not fatal. See below for options here.
-*   `PaymentViewModel.State.FAILURE`: Payment has failed. You should hide the `PaymentFragment`.
+*   `PaymentViewModel.State.IN_PROGRESS`: Active; waiting for either network
+    response or user interaction
+*   `PaymentViewModel.State.UPDATING_PAYMENT_ORDER`: Updating the payment order
+    (because you called `updatePaymentOrder`)
+*   `PaymentViewModel.State.COMPLETE`: Complete; you should hide the
+    `PaymentFragment` and check the payment status from your application servers
+*   `PaymentViewModel.State.cancelled`: cancelled by the user; you should hide
+    the `PaymentFragment`.
+*   `PaymentViewModel.State.RETRYABLE_ERROR`: Payment could not proceed, but the
+    error is not fatal. See below for options here.
+*   `PaymentViewModel.State.FAILURE`: Payment has failed. You should hide the
+    `PaymentFragment`.
 
 In the retryable error and failure states, the error that caused the failure is
 available at `richState.exception`. The exception is of any type thrown by
@@ -50,7 +56,7 @@ Configuration, you may be interested in the `instrument` and
 `availableInstruments` fields to determine whether to show your instrument
 selection UI.
 
-#### Retryable Errors
+## Retryable Errors
 
 In the retryable error state, the `PaymentFragment` will, by default, show
 an error message with instructions to retry. You may disable this by setting
@@ -61,7 +67,7 @@ provide your own UI for this state, you can call
 retry. A message describing the problem is available at
 `richState.retryableErrorMessage`.
 
-#### Overriding Terms of Service Link
+## Overriding Terms Of Service Link
 
 By default, when the user taps on the Terms of Service link in the Payment
 Menu, a new Activity will be started, which will display the linked web page.
@@ -80,7 +86,7 @@ paymentViewModel.setOnTermsOfServiceClickListener(lifecycleOwner) { paymentFragm
 }
 ```
 
-### iOS
+## iOS
 
 On iOS, set a delegate to the `SwedbankPaySDKController`. The delegate methods
 will be called on state changes.
@@ -134,8 +140,11 @@ Any errors are ones thrown by your Configuration, or, in the case of
 `paymentFailed`, `SwedbankPaySDKController.WebContentError`.
 `SwedbankPaySDKController.WebContentError` has two cases:
 
-* .ScriptLoadingFailure(scriptUrl: URL?): The script failed to load. No error message is available; this is a limitation of WKWebView
-* .ScriptError(SwedbankPaySDK.TerminalFailure?): The script made an `onError` callback. The payload is the [Terminal Failure][terminal-failure] reported by Swedbank Pay.
+*   .ScriptLoadingFailure(scriptUrl: URL?): The script failed to load. No error
+  message is available; this is a limitation of WKWebView
+*   .ScriptError(SwedbankPaySDK.TerminalFailure?): The script made an `onError`
+  callback. The payload is the [Terminal Failure][terminal-failure] reported by
+  Swedbank Pay.
 
 When using the Merchant Backend Configuration, other errors will be of the type
 `SwedbankPaySDK.MerchantBackendError`.

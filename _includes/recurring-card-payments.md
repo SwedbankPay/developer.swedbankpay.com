@@ -1,12 +1,12 @@
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
-## Recurring payments
+## Recurring Payments
 
 {% include jumbotron.html body="A recurring payment enables you to charge a card
 without payer interaction. When an initial payment token is generated,
 subsequent payments are made through server-to-server requests. " %}
 
-### Prerequisites
+## Prerequisites
 
 Prior to making any server-to-server requests, you need to supply the payment
 instrument details and a payment token to Swedbank Pay by initial purchase or
@@ -23,7 +23,7 @@ depending on if you want to make an initial charge or not:
     This is done by creating  a "Verify Payment" and generating a recurrence
     token.
 
-#### Generate RecurrenceToken
+## Generate RecurrenceToken
 
 *   When posting a `Purchase` payment, you need to make sure that the field
     `generateRecurrenceToken` is set to `true`
@@ -38,7 +38,7 @@ depending on if you want to make an initial charge or not:
 *   When posting a `Verify` payment, a payment token will be generated
     automatically.
 
-#### Creating a Payment
+## Creating The Payment
 
 *   You need to `POST` a [Purchase payment][card-payment-purchase] / and
     generate a recurrence token (safekeep for later recurring use).
@@ -46,23 +46,25 @@ depending on if you want to make an initial charge or not:
 *   You need to `POST` a [Verify payment][payment-verify], that will
     automatically generate a recurrence token (for later recurring use).
 
-#### Retrieve Recurrence Token
+## Retrieve The Recurrence Token
 
 You can retrieve the recurrence token by doing a `GET` request against the
 `payment`. You need to store this `recurrenceToken` in your system and keep
 track of the corresponding `payerReference`.
 
-#### Delete Recurrence Token
+## Delete The Recurrence Token
 
 You can delete a created recurrence token. Please see technical reference for
 details [here][card-payments-remove-payment-token].
 
-### Recurring purchases
+## Recurring Purchases
 
 When you have a Recurrence token stored away. You can use the same token in a
-subsequent [`recurring payment`][card-payment-recur] `POST`.
-This will be a server-to-server affair, as we have both payment instrument
-details and recurrence token from the initial payment.
+subsequent [`recurring payment`][card-payment-recur] `POST`. This will be a
+server-to-server affair, as we have both payment instrument details and
+recurrence token from the initial payment.
+
+## Recur Request
 
 {:.code-view-header}
 **Request**
@@ -125,7 +127,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`callbackUrl`         | `string`     | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`payeeInfo`            | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`payeeId`             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`payeeReference`       | `string` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                          |
 |                  | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
 | {% icon check %} | └─➔&nbsp;`payeeName`           | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                               |
 | {% icon check %} | └─➔&nbsp;`productCategory`     | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                        |
@@ -287,10 +289,10 @@ Content-Type: application/json
 <!--lint disable final-definition -->
 
 [payment-verify]: #verify
-[card-payment-purchase]: #create-payment
+[card-payment-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [card-payment-recur]: /payment-instruments/card/features/optional/recur
-[card-payment-capture]: #capture-sequence
-[card-payment-cancel]: #cancel-sequence
+[card-payment-capture]: /payment-instruments/card/capture
+[card-payment-cancel]: /payment-instruments/card/after-payment#cancellations
 [card-payments-remove-payment-token]: {{ features_url }}/optional/delete-token
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement

@@ -4,46 +4,62 @@ estimated_read: 30
 menu_order: 1100
 ---
 
-{% capture disclaimer %}
-The SDK is at an early stage of development
-and is not supported as of yet by Swedbank Pay. It is provided as a
-convenience to speed up your development, so please feel free to play around.
-However, if you need support, please wait for a future, stable release.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Unsupported"
-body=disclaimer %}
-
-This guide assumes that you are using the Merchant Backend Configuration and your backend implements the Merchant Backend API. If you are using a custom backend instead, the meaning of `SwedbankPaySDKController` arguments will be different, as well as any errors reported, but the basic process is the same. The differences will be highlighted in the chapter on custom backends.
+This guide assumes that you are using the Merchant Backend Configuration and
+your backend implements the Merchant Backend API. If you are using a custom
+backend instead, the meaning of `SwedbankPaySDKController` arguments will be
+different, as well as any errors reported, but the basic process is the same.
+The differences will be highlighted in the chapter on custom backends.
 
 ## Installation
 
-The iOS component of the Swedbank Pay Mobile SDK is split into two libraries: `SwedbankPaySDK` contains the core SDK, while `SwedbankPaySDKMerchantBackend` contains utilities for interfacing with the Merchant Backend API. If you are using a custom backend, you to not need to install the `SwedbankPaySDKMerchantBackend` library.
+The iOS component of the Swedbank Pay Mobile SDK is split into two libraries:
+`SwedbankPaySDK` contains the core SDK, while `SwedbankPaySDKMerchantBackend`
+contains utilities for interfacing with the Merchant Backend API. If you are
+using a custom backend, you to not need to install the
+`SwedbankPaySDKMerchantBackend` library.
 
-### Swift Package Manager
+## Swift Package Manager
 
-The SDK is available through the Swift Package Manager. This is the simplest way of adding the SDK to an Xcode project. Follow the [Xcode documentation][xcode-swiftpm] to add a SwiftPM dependency.
+The SDK is available through the Swift Package Manager. This is the simplest way
+of adding the SDK to an Xcode project. Follow the [Xcode
+documentation][xcode-swiftpm] to add a SwiftPM dependency.
 
-The package repository URL for the SDK is [`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo]. Add the `SwedbankPaySDK` library, and the `SwedbankPaySDKMerchantBackend` if needed.
+The package repository URL for the SDK is
+[`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo].
+Add the `SwedbankPaySDK` library, and the `SwedbankPaySDKMerchantBackend` if
+needed.
 
-### CocoaPods
+## CocoaPods
 
-The SDK is also available through [CocoaPods][cocoapods]. There are two pods: [SwedbankPaySDK][sdk-pod] for the core SDK, and `SwedbankPaySDKMerchantBackend` for the Merchant Backend utilities.
+The SDK is also available through [CocoaPods][cocoapods]. There are two pods:
+[SwedbankPaySDK][sdk-pod] for the core SDK, and `SwedbankPaySDKMerchantBackend`
+for the Merchant Backend utilities.
 
 Add the relevant dependencies in your `Podfile`:
 
 ```ruby
-pod 'SwedbankPaySDK', '~> 2.1'
+pod 'SwedbankPaySDK', '~> 3.0'
 ```
+
 ```ruby
-pod 'SwedbankPaySDKMerchantBackend', '~> 2.1'
+pod 'SwedbankPaySDKMerchantBackend', '~> 3.0'
 ```
 
-### Url Scheme and Associated Domain
+## Url Scheme and Associated Domain
 
-The [Payment Url][payment-url] handling in the iOS SDK uses [Universal Links][ios-universal-links], and additionally a [custom url scheme][ios-custom-scheme] as a fallback mechanism. You must therefore set these up in the app before using the SDK.
+The [Payment Url][payment-url] handling in the iOS SDK uses [Universal
+Links][ios-universal-links], and additionally a [custom url
+scheme][ios-custom-scheme] as a fallback mechanism. You must therefore set these
+up in the app before using the SDK.
 
-The easiest way to add a url scheme to your app is to select the project file, go to the `Info` tab, scroll down to `URL Types`, and click the `+` button to add a new scheme. Insert a single **unique** url scheme to the `URL Schemes` field. You can choose the url `Identifier` freely, but remember that that too should be unique. The `Role` for the url type should be `Editor`. Finally, to mark this url type as the Swedbank Pay payment url scheme, open the `Additional url type properties`, and add a property with the key `com.swedbank.SwedbankPaySDK.callback`, type `Boolean`, and value `YES`.
+The easiest way to add a url scheme to your app is to select the project file,
+go to the `Info` tab, scroll down to `URL Types`, and click the `+` button to
+add a new scheme. Insert a single **unique** url scheme to the `URL Schemes`
+field. You can choose the url `Identifier` freely, but remember that that too
+should be unique. The `Role` for the url type should be `Editor`. Finally, to
+mark this url type as the Swedbank Pay payment url scheme, open the `Additional
+url type properties`, and add a property with the key
+`com.swedbank.SwedbankPaySDK.callback`, type `Boolean`, and value `YES`.
 
 ![Payment url scheme added in project Info tab][custom-scheme-1]
 
@@ -51,7 +67,11 @@ You can also edit the `Info.plist` file directly, if you wish.
 
 ![Payment url scheme added in Info.plist editor][custom-scheme-2]
 
-To set up universal links in your application, you first need to [add the Associated Domains capability][xcode-add-cap]. Then, add your Merchant Backend's domain as an [`applinks` associated domain][xcode-add-assoc-domain]. Additionally, your merchant backend must have the appropriate [Apple App Site Association][backend-aasa] file configured.
+To set up universal links in your application, you first need to [add the
+Associated Domains capability][xcode-add-cap]. Then, add your Merchant Backend's
+domain as an [`applinks` associated domain][xcode-add-assoc-domain].
+Additionally, your merchant backend must have the appropriate [Apple App Site
+Association][backend-aasa] file configured.
 
 ![Associated Domains Configured][assoc-domains-entitlement]
 
@@ -136,8 +156,11 @@ sequenceDiagram
     App ->> App: Remove paymentFragment
 ```
 
-*   ① Only pages tested to work with WKWebView are opened inside SwedbankPaySDKController. This list is updated as new pages are verified.
-*   ② Other pages are opened in Safari. See [the section on external applications][ios-payment-url] for details on how the process returns to the SDK afterwards.
+*   ① Only pages tested to work with WKWebView are opened inside
+    SwedbankPaySDKController. This list is updated as new pages are verified.
+*   ② Other pages are opened in Safari. See [the section on external
+    applications][ios-payment-url] for details on how the process returns to the
+    SDK afterwards.
 *   ③ See [the section on external applications][ios-payment-url] for details.
 
 The iOS SDK is contained in the module `SwedbankPaySDK`.
@@ -146,33 +169,48 @@ The iOS SDK is contained in the module `SwedbankPaySDK`.
 import SwedbankPaySDK
 ```
 
-The Merchant Backend utilities are contained in the module `SwedbankPaySDKMerchantBackend`.
+The Merchant Backend utilities are contained in the module
+`SwedbankPaySDKMerchantBackend`.
 
 ```swift
 import SwedbankPaySDKMerchantBackend
 ```
 
-The main component of the SDK is `SwedbankPaySDKController`, a `UIViewController` that handles a single payment order. When initializing a `SwedbankPaySDKController`, you must provide a `SwedbankPaySDKConfiguration` that describes the server environment the `SwedbankPaySDKController` is working with, along with a `SwedbankPaySDK.PaymentOrder`, and, unless making a guest payment, a `SwedbankPaySDK.Consumer`. Providing a `SwedbankPaySDK.Consumer` makes future payments by the same payer easier.
+The main component of the SDK is `SwedbankPaySDKController`, a
+`UIViewController` that handles a single payment order. When initializing a
+`SwedbankPaySDKController`, you must provide a `SwedbankPaySDKConfiguration`
+that describes the server environment the `SwedbankPaySDKController` is working
+with, along with a `SwedbankPaySDK.PaymentOrder`, and, unless making a guest
+payment, a `SwedbankPaySDK.Consumer`. Providing a `SwedbankPaySDK.Consumer`
+makes future payments by the same payer easier.
 
-The `SwedbankPaySDKConfiguration` is, in most cases, static for a given server environment. Therefore, it makes sense to keep it in a convenient constant. The `SwedbankPaySDK.MerchantBackendConfiguration` initializer can determine your application's custom scheme for payment urls automatically, if you have set it up as described above.
+The `SwedbankPaySDKConfiguration` is, in most cases, static for a given server
+environment. Therefore, it makes sense to keep it in a convenient constant. The
+`SwedbankPaySDK.MerchantBackendConfiguration` initializer can determine your
+application's custom scheme for payment urls automatically, if you have set it
+up as described above.
 
 ```swift
 let swedbankPayConfig = SwedbankPaySDK.MerchantBackendConfiguration(
     backendUrl: "https://example.com/swedbank-pay-mobile/",
     headers: [:]
 )
+
+// Make it the default for all SDKControllers
+SwedbankPaySDKController.defaultConfiguration = swedbankPayConfig
 ```
 
-The semantics of `SwedbankPaySDK.Consumer` properties are the same as the fields of the [POST /psp/consumers][checkin-consumer]. There are default values for the `operation` and `language` properties (`.InitiateConsumerSession` and `.English`, respectively).
-
-```swift
-let consumer = SwedbankPaySDK.Consumer(
-    language = .Swedish,
-    shippingAddressRestrictedToCountryCodes: = ["NO", "SE", "DK"]
-)
-```
-
-Similarly, the semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible default values are provided for many of the properties. In a similar fashion to how the Android SDK works, while there is no default value for the `urls` property, there are convenience constructors for the `SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use. Assuming you have the iOS Payment Url Helper endpoint set up with the specified static path relative to your backend url (i.e. `sdk-callback/ios-universal-link`), then using one of the convenience constructors taking a `SwedbankPaySDK.MerchantBackendConfiguration` argument will set the `paymentUrl` correctly.
+The semantics of `SwedbankPaySDK.PaymentOrder` properties are the same as the
+fields of the [POST /psp/paymentorders][checkin-paymentorder] request. Sensible
+default values are provided for many of the properties. In a similar fashion to
+how the Android SDK works, while there is no default value for the `urls`
+property, there are convenience constructors for the
+`SwedbankPaySDK.PaymentOrderUrls` type, which are recommended for general use.
+Assuming you have the iOS Payment Url Helper endpoint set up with the specified
+static path relative to your backend url (i.e.
+`sdk-callback/ios-universal-link`), then using one of the convenience
+constructors taking a `SwedbankPaySDK.MerchantBackendConfiguration` argument
+will set the `paymentUrl` correctly.
 
 ```swift
 let paymentOrder = SwedbankPaySDK.PaymentOrder(
@@ -215,22 +253,55 @@ let paymentOrder = SwedbankPaySDK.PaymentOrder(
 )
 ```
 
-*   ① payeeId and payeeReference are required fields, but default to the empty string. The assumption here is that your Merchant Backend will override the values set here. If your system works better with the Mobile Client setting them instead, they are available here also.
+*   ① payeeId and payeeReference are required fields, but default to the empty
+    string. The assumption here is that your Merchant Backend will override the
+    values set here. If your system works better with the Mobile Client setting
+    them instead, they are available here also.
 
-To start a payment, create a `SwedbankPaySDKController` and display it. The payment process starts as soon as the `SwedbankPaySDKController` is visible.
+To start a payment, create a `SwedbankPaySDKController` and call startPayment.
+You can add it to the view hierarchy any way you like, and here we are using the
+`present` function. Note that this function always uses the new CheckoutV3.
 
 ```swift
-val paymentController = SwedbankPaySDKController(
-    configuration: swedbankPayConfig,
-    consumer: consumer,
-    paymentOrder: paymentOrder
+let paymentController = SwedbankPaySDKController()
+paymentController.startPayment(paymentOrder: payment)
+
+present(paymentController, animated: true, completion: nil)
+```
+
+To start a payment with consumer-checkin, you need to use CheckoutV2 and supply
+a consumer value. This function also allows merchants to remain on V2 while
+updating the SDK, and then to opt-in to V3 when ready.
+
+```swift
+let paymentController = SwedbankPaySDKController()
+paymentController.startPayment(
+    withCheckin: true, 
+    consumer: consumer, 
+    paymentOrder: payment, 
+    userData: nil
 )
 
 present(paymentController, animated: true, completion: nil)
 // There are, of course, many other ways of displaying a view controller
 ```
 
-To observe the payment process, set a `delegate` to the `SwedbankPaySDKController`. When the delegate is informed that the payment process is finished, you should remove the `SwedbankPaySDKController` and inform the user of the result.
+The semantics of `SwedbankPaySDK.Consumer` properties are the same as the fields
+of the [POST /psp/consumers][checkin-consumer]. There are default values for the
+`operation` and `language` properties (`.InitiateConsumerSession` and
+`.English`, respectively).
+
+```swift
+let consumer = SwedbankPaySDK.Consumer(
+    language = .Swedish,
+    shippingAddressRestrictedToCountryCodes: = ["NO", "SE", "DK"]
+)
+```
+
+To observe the payment process, set a `delegate` to the
+`SwedbankPaySDKController`. When the delegate is informed that the payment
+process is finished, you should remove the `SwedbankPaySDKController` and inform
+the user of the result.
 
 ```swift
 paymentController.delegate = self
@@ -254,17 +325,47 @@ func paymentFailed(error: Error) {
 }
 ```
 
-Note that checking the payment status after completion is outside the scope of the Mobile SDK. Your backend should collect any information it needs to perform this check when it services the request to the [Payment Orders endpoint][backend-payment-orders] made by the `SwedbankPaySDKController`.
+Note that checking the payment status after completion is outside the scope of
+the Mobile SDK. Your backend should collect any information it needs to perform
+this check when it services the request to the [Payment Orders
+endpoint][backend-payment-orders] made by the `SwedbankPaySDKController`.
 
 ## Problems
 
-If the payment fails for any reason, the cause will be made available as the argument of the `paymentFailed(error:)` delegate method. The error will be of any type thrown by your `SwedbankPaySDKConfiguration`. In the case of `SwedbankPaySDK.MerchantBackendConfiguration` this means `SwedbankPaySDK.MerchantBackendError`.
+If the payment fails for any reason, the cause will be made available as the
+argument of the `paymentFailed(error:)` delegate method. The error will be of
+any type thrown by your `SwedbankPaySDKConfiguration`. In the case of
+`SwedbankPaySDK.MerchantBackendConfiguration` this means
+`SwedbankPaySDK.MerchantBackendError`.
 
-If errors are encountered in the payment process, the Merchant Backend is expected to respond with a [Problem Details for HTTP APIs (RFC 7807)][rfc-7807] message. If the payment fails because of a problem, the `SwedbankPaySDK.MerchantBackendError` will be `.problem`, the associated value being the problem as parsed from the response. The iOS SDK will parse any RFC 7807 problem, but it has specialized data types for known problem types, namely the [Common Problems][swedbankpay-problems] and the [Merchand Backend Problems][backend-problems].
+If errors are encountered in the payment process, the Merchant Backend is
+expected to respond with a [Problem Details for HTTP APIs (RFC 7807)][rfc-7807]
+message. If the payment fails because of a problem, the
+`SwedbankPaySDK.MerchantBackendError` will be `.problem`, the associated value
+being the problem as parsed from the response. The iOS SDK will parse any RFC
+7807 problem, but it has specialized data types for known problem types, namely
+the [Common Problems][swedbankpay-problems] and the [Merchand Backend
+Problems][backend-problems].
 
-Problems are expressed in Swift as `enum`s with associated values, representing a hierarchy of problem types. At the root of the hierarchy is `enum SwedbankPaySDK.Problem`, with two cases: `.Client` and `.Server`. A `.Client` problem is one caused by client behavior, and is to be fixed by changing the request made to the server. Generally, a `.Client` problem is a programming error, with the possible exception of `.Client(.MobileSDK(.Unauthorized))`. A `.Server` problem is one caused by a malfunction or lack of service in the server evironment. A `.Server` problem is fixed by correcting the behavior of the malfunctioning server, or simply trying again later.
+Problems are expressed in Swift as `enum`s with associated values, representing
+a hierarchy of problem types. At the root of the hierarchy is `enum
+SwedbankPaySDK.Problem`, with two cases: `.Client` and `.Server`. A `.Client`
+problem is one caused by client behavior, and is to be fixed by changing the
+request made to the server. Generally, a `.Client` problem is a programming
+error, with the possible exception of `.Client(.MobileSDK(.Unauthorized))`. A
+`.Server` problem is one caused by a malfunction or lack of service in the
+server evironment. A `.Server` problem is fixed by correcting the behavior of
+the malfunctioning server, or simply trying again later.
 
-Both `.Client` and `.Server` have an associated value, of type `SwedbankPaySDK.ClientProblem` and `SwedbankPaySDK.ServerProblem` respectively, that further classify the problems as `.MobileSDK`, `.SwedbankPay`, `.Unknown` or `.UnexpectedContent`. `MobileSDK` problems are ones with [Merchant Backend problem types][backend-problems], while `SwedbankPay` problems have [Swedbank Pay API problem types][swedbankpay-problems]. `Unknown` problems are of types that the SDK has no knowledge of. `.UnexpectedContent` problems are not proper RFC 7807 problems, but are emitted when the SDK cannot make sense of the response it received from the backend.
+Both `.Client` and `.Server` have an associated value, of type
+`SwedbankPaySDK.ClientProblem` and `SwedbankPaySDK.ServerProblem` respectively,
+that further classify the problems as `.MobileSDK`, `.SwedbankPay`, `.Unknown`
+or `.UnexpectedContent`. `MobileSDK` problems are ones with [Merchant Backend
+problem types][backend-problems], while `SwedbankPay` problems have [Swedbank
+Pay API problem types][swedbankpay-problems]. `Unknown` problems are of types
+that the SDK has no knowledge of. `.UnexpectedContent` problems are not proper
+RFC 7807 problems, but are emitted when the SDK cannot make sense of the
+response it received from the backend.
 
 ```swift
 func paymentFailed(failureReason: SwedbankPaySDKController.FailureReason) {
@@ -299,11 +400,28 @@ func paymentFailed(failureReason: SwedbankPaySDKController.FailureReason) {
 }
 ```
 
-## Payment URL and External Applications
+## Payment URL And External Applications
 
-The payment process may involve navigating to third-party web pages, or even launching external applications. To resume processing the payment in the payment menu, each payment order must have a [Payment Url][payment-url]. Let us now discuss how that payment url is used in the iOS environment. In any case, using the convenience constructors for `SwedbankPaySDK.PaymentOrderUrls` is recommended; they will generate a unique payment url, which will be routed to the application in all cases, assuming the application and the merchant backend are configured correctly.
+The payment process may involve navigating to third-party web pages, or even
+launching external applications. To resume processing the payment in the payment
+menu, each payment order must have a [Payment Url][payment-url]. Let us now
+discuss how that payment url is used in the iOS environment. In any case, using
+the convenience constructors for `SwedbankPaySDK.PaymentOrderUrls` is
+recommended; they will generate a unique payment url, which will be routed to
+the application in all cases, assuming the application and the merchant backend
+are configured correctly.
 
-`SwedbankPaySDKController` internally uses a `WKWebView`, and in many cases third-party pages can be opened inside that web view. In these cases the SDK can intercept the navigation to the payment url and reload the payment menu without further setup. Unfortunately, our testing has revealed that some web pages used in confirmation flows are incompatible with being opened in a web view. Because of these cases, `SwedbankPaySDKController` will only open known-good pages internally, and will open other pages in Safari instead. The SDK contains a list of domain names of pages tested to work in the web view. You can also specify your own list of domains, and there are debugging features available for testin unknown pages in the web view. Pull requests updating the list of good domains in the SDK are welcome.
+`SwedbankPaySDKController` internally uses a `WKWebView`, and in many cases
+third-party pages can be opened inside that web view. In these cases the SDK can
+intercept the navigation to the payment url and reload the payment menu without
+further setup. Unfortunately, our testing has revealed that some web pages used
+in confirmation flows are incompatible with being opened in a web view. Because
+of these cases, `SwedbankPaySDKController` will only open known-good pages
+internally, and will open other pages in Safari instead. The SDK contains a list
+of domain names of pages tested to work in the web view. You can also specify
+your own list of domains, and there are debugging features available for testin
+unknown pages in the web view. Pull requests updating the list of good domains
+in the SDK are welcome.
 
 ```mermaid
 sequenceDiagram
@@ -322,7 +440,8 @@ sequenceDiagram
     end
 ```
 
-Returning to the payment menu from inside the web view is simple: detect the navigation and override it to reload the payment menu instead.
+Returning to the payment menu from inside the web view is simple: detect the
+navigation and override it to reload the payment menu instead.
 
 ```mermaid
 sequenceDiagram
@@ -336,11 +455,32 @@ sequenceDiagram
     SDK ->> SDK: Reload payment menu
 ```
 
-Returning to the payment menu from Safari is more involved. The merchant backend page [explains][ios-paymenturl-helper] the process from the backend perspective; let us now view it from the iOS side.
+Returning to the payment menu from Safari is more involved. The merchant backend
+page [explains][ios-paymenturl-helper] the process from the backend perspective;
+let us now view it from the iOS side.
 
-When the third party page wants to return to the payment menu, it navigates to the payment url. As this navigation is happening inside Safari, the payment url must provide some meaningful respose when Safari makes the request. However, even before that happens, consider the case where the payment url is a [universal link][ios-universal-links] for the application using the SDK. Assuming the [conditions][ios-universal-links-routing] for opening universal links in the registered application are met, then Safari will never actually request the payment url, but will instead open the application, giving it the universal link in its Application Delegate's [`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity] method. Recall that we enabled universal links for the backend url's domain [in the installation instructions](#url-scheme-and-associated-domain). Note that the merchant backend must also be properly configured to [enable universal links][backend-aasa].
+When the third party page wants to return to the payment menu, it navigates to
+the payment url. As this navigation is happening inside Safari, the payment url
+must provide some meaningful respose when Safari makes the request. However,
+even before that happens, consider the case where the payment url is a
+[universal link][ios-universal-links] for the application using the SDK.
+Assuming the [conditions][ios-universal-links-routing] for opening universal
+links in the registered application are met, then Safari will never actually
+request the payment url, but will instead open the application, giving it the
+universal link in its Application Delegate's
+[`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity]
+method. Recall that we enabled universal links for the backend url's domain [in
+the installation instructions](#url-scheme-and-associated-domain). Note that the
+merchant backend must also be properly configured to [enable universal
+links][backend-aasa].
 
-The application delegate is, of course, squarely in the domain of the application; the SDK cannot hook into it automatically. Therefore, you need to implement the [`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity] method, and pass control over to the SDK when a Swedbank Pay SDK Payment Url is passed into it. Do this by calling the `SwedbankPaySDK.continue(userActivity:)` method.
+The application delegate is, of course, squarely in the domain of the
+application; the SDK cannot hook into it automatically. Therefore, you need to
+implement the
+[`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity]
+method, and pass control over to the SDK when a Swedbank Pay SDK Payment Url is
+passed into it. Do this by calling the `SwedbankPaySDK.continue(userActivity:)`
+method.
 
 ```swift
     func application(
@@ -367,13 +507,35 @@ sequenceDiagram
     SDK ->> SDK: Reload payment menu
 ```
 
-Testing has shown, however, that the navigation to the payment url is not always processed as a universal link, and is instead opened in Safari. A major reason for this happening are the conditions placed on routing a universal link to the registered application. A crucial condition to consider is that the navigation must have started from user interaction. It appears that many third party pages involved in verification flows will navigate to the payment url not from user interaction directly, but through e.g. timers. This will, unfortunately, prevent the link from being opened in the application.
+Testing has shown, however, that the navigation to the payment url is not always
+processed as a universal link, and is instead opened in Safari. A major reason
+for this happening are the conditions placed on routing a universal link to the
+registered application. A crucial condition to consider is that the navigation
+must have started from user interaction. It appears that many third party pages
+involved in verification flows will navigate to the payment url not from user
+interaction directly, but through e.g. timers. This will, unfortunately, prevent
+the link from being opened in the application.
 
-As it stands, we need a way to get back to the application even when the payment url is opened in Safari. The simplest way of accomplishing this is to respond with a redirect to a [custom scheme url][ios-custom-scheme]. Doing that will, however, always show an unattractive confirmation alert before the user is directed to the application. Therefore, let us first consider if there is a way to reattempt the universal link navigation, while attempting to maximize the chance of it being routed to the application.
+As it stands, we need a way to get back to the application even when the payment
+url is opened in Safari. The simplest way of accomplishing this is to respond
+with a redirect to a [custom scheme url][ios-custom-scheme]. Doing that will,
+however, always show an unattractive confirmation alert before the user is
+directed to the application. Therefore, let us first consider if there is a way
+to reattempt the universal link navigation, while attempting to maximize the
+chance of it being routed to the application.
 
-Reviewing the [conditions][ios-universal-links-routing] for universal links opening in the registered application, we note two things: Firstly, the navigation must originate from user interaction. Thus, opening the payment url in Safari must produce a page with a control the user can interact with, which must trigger a navigation to the payment url. Secondly, the navigation must be to a domain different to the current page. This means that opening the payment url must redirect to a page on a different domain, so that a navigation back to the payment url from that page is given to the application to handle.
+Reviewing the [conditions][ios-universal-links-routing] for universal links
+opening in the registered application, we note two things: Firstly, the
+navigation must originate from user interaction. Thus, opening the payment url
+in Safari must produce a page with a control the user can interact with, which
+must trigger a navigation to the payment url. Secondly, the navigation must be
+to a domain different to the current page. This means that opening the payment
+url must redirect to a page on a different domain, so that a navigation back to
+the payment url from that page is given to the application to handle.
 
-As explained on the [mechant backend page][ios-paymenturl-helper], we solve this by having the payment url respond with a redirect response to a page with a link to the payment url (but see below).
+As explained on the [mechant backend page][ios-paymenturl-helper], we solve this
+by having the payment url respond with a redirect response to a page with a link
+to the payment url (but see below).
 
 ```mermaid
 sequenceDiagram
@@ -403,9 +565,22 @@ sequenceDiagram
     end
 ```
 
-Finally, to prevent the user being stuck in a situation where universal links fail to work despite our efforts, and to help in the development phase where configurations may end up being broken from time to time, we also have a custom scheme fallback. The way this works is that the when the payment url link is tapped on the page where the payment url redirected to, then in that instance the payment url will redirect to a custom scheme url instead. Now this is, of course, more or less impossible to do, so we relax the requirements of the payment url slightly: In addition to the original payment url, the SDK accepts a payment url with any number of additional query parameters added (note that none may be removed or modified, though). This enables us to alter the behavior of the backend on the "same" payment url.
+Finally, to prevent the user being stuck in a situation where universal links
+fail to work despite our efforts, and to help in the development phase where
+configurations may end up being broken from time to time, we also have a custom
+scheme fallback. The way this works is that the when the payment url link is
+tapped on the page where the payment url redirected to, then in that instance
+the payment url will redirect to a custom scheme url instead. Now this is, of
+course, more or less impossible to do, so we relax the requirements of the
+payment url slightly: In addition to the original payment url, the SDK accepts a
+payment url with any number of additional query parameters added (note that none
+may be removed or modified, though). This enables us to alter the behavior of
+the backend on the "same" payment url.
 
-To forward the custom-scheme payment urls to the SDK, implement the [`application(_:open:options:)`][uiappdelegate-openurl] method in your application delegate, and call `SwedbankPaySDK.open(url: url)` to let the SDK handle the url.
+To forward the custom-scheme payment urls to the SDK, implement the
+[`application(_:open:options:)`][uiappdelegate-openurl] method in your
+application delegate, and call `SwedbankPaySDK.open(url: url)` to let the SDK
+handle the url.
 
 ```swift
     func application(

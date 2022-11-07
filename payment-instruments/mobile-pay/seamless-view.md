@@ -10,7 +10,7 @@ description: |
   must confirm through the MobilePay mobile app.
 menu_order: 700
 ---
-## Step 1: Create a purchase
+## Step 1: Create A purchase
 
 When properly set up in your merchant/webshop site and the payer starts the
 purchase process, you need to make a `POST` request towards Swedbank Pay with
@@ -20,6 +20,8 @@ will receive a response in which you can find the **JavaScript source** in the
 `view-payment` operation.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Seamless View Request
 
 {:.code-view-header}
 **Request**
@@ -100,7 +102,7 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`termsOfServiceUrl`    | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %} | └➔&nbsp;`payeeInfo`             | `object`     | This object contains the identificators of the payee of this payment.                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`payeeId`              | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %} | └─➔&nbsp;`payeeReference`       | `string(50)` | {% include field-description-payee-reference.md %}                                                                                                                                                                     |
+| {% icon check %} | └─➔&nbsp;`payeeReference`       | `string` | {% include field-description-payee-reference.md %}                                                                                                                                                                     |
 |                  | └─➔&nbsp;`payeeName`            | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                               |
 |                  | └─➔&nbsp;`productCategory`      | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`       | `String(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
@@ -179,7 +181,7 @@ steps:
     obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="payment-page-script" src="https://ecom.dev.payex.com/mobilepay/core/ scripts/client/px.mobilepay.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/mobilepay/core/ scripts/client/px.mobilepay.client.js"></script>
 ```
 
 The previous two steps gives this HTML:

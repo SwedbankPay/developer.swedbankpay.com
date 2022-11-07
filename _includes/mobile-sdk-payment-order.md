@@ -1,18 +1,17 @@
 ## Payment Orders
 
-The SDK works in terms of Payment Orders as used in [Checkout][checkout]
-and [Payment Menu][payment-menu]. Therefore, all [features][checkout]
-of payment orders are available in the SDK by using a suitable custom
-configuration.
+The SDK works in terms of Payment Orders as used in [Checkout v3][checkout].
+Therefore, all features of payment orders are available in the SDK by using a
+suitable custom configuration.
 
 The rest of the page illustrates how to use certain Payment Order features
 with the SDK-provided Merchant Backend Configuration. Detailed descriptions
 of the features will not be repeated here; please refer to the
 [Checkout documentation][checkout] instead.
 
-### URLs
+## URLs
 
-A Payment Order created for the SDK must have [`urls`][checkout-urls] the same
+A Payment Order created for the SDK must have [`urls`][urls] the same
 way a Payment Order to be used on a web page would. The SDK context places some
 requirement on these urls.
 
@@ -26,7 +25,7 @@ requirement on these urls.
 | `paymentUrl`        | If opened in a browser, must eventually be delivered to the SDK, bringing the containing app to the foreground. See the Android and iOS specific documentation. |
 | `callbackUrl`       | No special requirements. This is a server-to-server affair.                                                                                                     |
 
-#### Merchant Backend Configuration
+## Merchant Backend Configuration
 
 The SDK-provided Merchant Backend Configuration allows creating a set of `urls`
 that fulfill the above when used with a backend implementing the Merchant
@@ -59,13 +58,14 @@ let urls = SwedbankPaySDK.PaymentOrderUrls(
 )
 ```
 
-### Order Items
+## Order Items
 
-You may want to populate the `orderItems` field of the `paymentOrder` for e.g.
-printing invoices. The SDK offers facilities for working with `orderItems`,
-allowing you to discover the fields of an Order Item in your IDE.
+You may want to populate the [`orderItems`][order-items] field of the
+`paymentOrder` for e.g. printing invoices. The SDK offers facilities for working
+with `orderItems`, allowing you to discover the fields of an Order Item in your
+IDE.
 
-Please refer to the [Checkout documentation][checkout-orderitems] and/or the
+Please refer to the [Checkout documentation][checkout] and/or the
 class documentation for the meaning of the fields.
 
 On Android, `OrderItem` is a data class, so its instances are immutable,
@@ -127,6 +127,5 @@ orderItem.name = "Other Thing"
 ```
 
 [checkout]: /checkout-v3
-[payment-menu]: /payment-menu/
-[checkout-urls]: /checkout-v2/features/technical-reference/urls
-[checkout-orderitems]: /checkout-v2/features/technical-reference/order-items
+[order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
+[urls]: /checkout-v3/payments-only/features/technical-reference/urls

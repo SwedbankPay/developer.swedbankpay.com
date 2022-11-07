@@ -29,7 +29,7 @@ menu_order: 700
     in contrast to a cancelled payment.
 
 The payer is redirected to Swedbank Pay hosted pages and prompted
-to insert her phone number to initiate the sales transaction.
+to insert their phone number to initiate the sales transaction.
 
 Swish is a one-phase payment instrument that is based on sales transactions
 **not** involving `capture` or `cancellation` operations.
@@ -39,12 +39,14 @@ Swish is a one-phase payment instrument that is based on sales transactions
 
 {% include alert-callback-url.md %}
 
-## Step 1: Create a Purchase
+## Step 1: Create A Purchase
 
 All valid options when posting in a payment with operation equal to `Purchase`.
 The `Purchase` example shown below.
 
 {% include alert-gdpr-disclaimer.md %}
+
+## Redirect Request
 
 {:.code-view-header}
 **Request**
@@ -116,7 +118,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`          | `string`      | {% include field-description-user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`language`           | `string`      | {% include field-description-language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | └➔&nbsp;`urls`               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed his or her interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
+| {% icon check %} | └─➔&nbsp;`completeUrl`       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
 |                  | └─➔&nbsp;`cancelUrl`         | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
 |                  | └─➔&nbsp;`callbackUrl`       | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
 |                  | └─➔&nbsp;`logoUrl`           | `string`      | {% include field-description-logourl.md %}                                                                                                                                                                |
@@ -136,6 +138,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`enableEcomOnly`    | `boolean`     | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via in-app payments.                                                                                                                                                            |
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+
+## Redirect Response
 
 {:.code-view-header}
 **Response**
@@ -193,7 +197,7 @@ Content-Type: application/json
 }
 ```
 
-## Redirect Purchase flow
+## Redirect Sequence Diagram
 
 The sequence diagram below shows the requests you have to send to Swedbank Pay
 to make a purchase. The Callback response is a simplified example

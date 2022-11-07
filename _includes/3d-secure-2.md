@@ -50,6 +50,7 @@ fields that should be included in your request when implementing 3-D Secure 2.
 {% else %}
 
 ```json
+{
     "payer": {
         "email": "olivia.nyhuus@payex.com",
         "msisdn": "+4798765432",

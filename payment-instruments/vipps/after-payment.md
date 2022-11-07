@@ -93,7 +93,7 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`termsOfServiceUrl` | `string`     | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                      |
 | {% icon check %}︎ | └➔&nbsp;`payeeInfo`          | `object`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                        |
 | {% icon check %}︎ | └─➔&nbsp;`payeeId`           | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                     |
-| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string(30)` | {% include field-description-payee-reference.md %}                                                                                                                                                                          |
+| {% icon check %}︎ | └─➔&nbsp;`payeeReference`    | `string` | {% include field-description-payee-reference.md %}                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payeeName`         | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                   |
 |                  | └─➔&nbsp;`productCategory`   | `strin`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                            |
 |                  | └─➔&nbsp;`orderReference`    | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                   |
@@ -327,7 +327,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md currency="NOK" %}                         |
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                      |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
 
 ## Reversal Response
 
@@ -344,7 +344,7 @@ Content-Type: application/json
 [abort]: /payment-instruments/vipps/after-payment#abort
 [callback]: /payment-instruments/vipps/features/core/callback
 [cancel]: #cancellations
-[capture]: #captures
+[capture]: /payment-instruments/vipps/features/core//capture
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [expand-parameter]: /introduction#expansion
 [paymenturl]: /payment-instruments/vipps/features/technical-reference/payment-url

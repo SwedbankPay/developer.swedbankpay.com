@@ -16,6 +16,8 @@ representative to make a booking. This feature is only supported with the
 `Purchase` operation. See the example below on how to implement MOTO
 by setting the `generateMotoPayment` to `true`.
 
+## MOTO Request
+
 {:.code-view-header}
 **Request**
 
@@ -51,15 +53,16 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite"
+            "subsite": "MySubsite",
+            "siteId": "MySiteId"
         },
         "payer": {
             "digitalProducts": false,
             "nationalIdentifier": {
                 "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE"
-            }
-            "firstName": "Leia"
+            },
+            "firstName": "Leia",
             "lastName": "Ahlström",
             "email": "leia@payex.com",
             "msisdn": "+46787654321",
@@ -111,22 +114,6 @@ Content-Type: application/json
                 "vatPercent": 2500,
                 "amount": 1500,
                 "vatAmount": 375
-            },
-            {
-                "reference": "I1",
-                "name": "InvoiceFee",
-                "type": "PAYMENT_FEE",
-                "class": "Fees",
-                "description": "Fee for paying with Invoice",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 1900,
-                "vatPercent": 0,
-                "amount": 1900,
-                "vatAmount": 0,
-                "restrictedToInstruments": [
-                    "Invoice-PayExFinancingSe"
-                ]
             }
         ],
         "riskIndicator": {
@@ -150,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-Request field not covered in the common Checkout v3 [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
+Request field not covered in the common Checkout redirect or seamless view
 table:
 
 {:.table .table-striped}
@@ -176,6 +163,8 @@ response provided below.
 
 {% endif %}
 
+## MOTO Response
+
 {:.code-view-header}
 **Response**
 
@@ -198,7 +187,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "availableInstruments": [ "CreditCard" ],
         "implementation": "PaymentsOnly", { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "integration": "HostedView", {% endif %} { {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,
@@ -242,13 +231,13 @@ Content-Type: application/json
       "operations": [ {% if include.integration_mode=="redirect" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}",
+          "href": "{{ page.front_end_url }}/payment/menu/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "redirect-checkout",
           "contentType": "text/html"
         },{% endif %} {% if include.integration_mode=="seamless-view" %}
         {
           "method": "GET",
-          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO",
+          "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
         },{% endif %}

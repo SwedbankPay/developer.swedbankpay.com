@@ -19,8 +19,11 @@ purchase component will be styled by Swedbank Pay.
 
 Read more about the integration by clicking the link below.
 
-This product supports Danish `da-DK`, English (US) `en-US`, Finnish `fi-FI`,
-Norwegian `nb-NO`, and Swedish `sv-SE`.
+While the payment menu supports Danish `da-DK`, English (US) `en-US`, Finnish
+`fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`, our Checkin only supports
+English (US) `en-US`, Norwegian `nb-NO`, and Swedish `sv-SE`. We strongly advise
+you to use a language which is supported in both modules for the best user
+experience.
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"

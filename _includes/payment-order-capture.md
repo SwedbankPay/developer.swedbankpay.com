@@ -4,7 +4,7 @@
 
 {% if documentation_section contains "checkout-v2" %}
 
-## Step 5: Capture the funds
+## Step 5: Capture
 
 {% else %}
 
@@ -28,53 +28,19 @@ and get the status back.
 
 {% if documentation_section contains "checkout-v2" %}
 
-```mermaid
-sequenceDiagram
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
-    end
-```
-
-{% else %}
-
-```mermaid
-sequenceDiagram
-    participant Merchant
-    participant SwedbankPay as Swedbank Pay
-
-    rect rgba(81,43,43,0.1)
-        activate Merchant
-        note left of Payer: Capture
-        Merchant ->>+ SwedbankPay: rel:capture
-        deactivate Merchant
-        SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
-    end
-```
-
-{% endif %}
-
-{% if documentation_section contains "checkout-v2" %}
-
 To capture the authorized payment, we need to perform
 `create-paymentorder-capture` against the accompanying `href` returned in the
 `operations` list. See the abbreviated request and response below:
 
 {% else %}
 
-To capture the authorized payment, we need to perform
-`capture` against the accompanying `href` returned in the
-`operations` list. See the abbreviated request and response below:
+To capture the authorized payment, we need to perform `capture` against the
+accompanying `href` returned in the `operations` list. See the abbreviated
+request and response below:
 
 {% endif %}
+
+## Capture Request
 
 {:.code-view-header}
 **Request**
@@ -135,7 +101,7 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`          | `string`     | The description of the capture transaction.                                                                                                                                                                                                                                           |
 | {% icon check %} | └➔&nbsp;`amount`               | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`vatAmount`            | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
-| {% icon check %} | └➔&nbsp;`payeeReference`       | `string(30)` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
+| {% icon check %} | └➔&nbsp;`payeeReference`       | `string` | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
 |                  | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
 | {% icon check %} | └➔&nbsp;`orderItems`           | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                         |
 | {% icon check %} | └─➔&nbsp;`reference`           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
@@ -169,7 +135,9 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | └─➔&nbsp;`vatAmount`           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
 
-If the capture succeeds, this should be the response:
+## Capture Response
+
+If the capture request succeeds, this should be the response:
 
 {:.code-view-header}
 **Response**
@@ -217,6 +185,44 @@ Content-Type: application/json
 | └─➔&nbsp;`payeeReference`   | `string`     | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                              |
 | └─➔&nbsp;`receiptReference` | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
 {:.table .table-striped}
+
+## Capture Sequence Diagram
+
+{% if documentation_section contains "checkout-v2" %}
+
+```mermaid
+sequenceDiagram
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+    end
+```
+
+{% else %}
+
+```mermaid
+sequenceDiagram
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:capture
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+    end
+```
+
+{% endif %}
 
 <!--lint disable final-definition -->
 

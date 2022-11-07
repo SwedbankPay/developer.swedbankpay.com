@@ -23,7 +23,7 @@ generated payment token to prefill payment details for credit card or
 invoice payments pages - which means that the payer don't need to enter
 these details for every purchase." %}
 
-### Introduction
+## Introduction
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -41,12 +41,12 @@ to enable one-click purchases.
 
 {% endif %}
 
-### API Requests To Generate paymentToken
+### API Requests To Generate The Payment Token
 
 When making the initial purchase request, you need to generate a `paymentToken`.
-You can do this either by by setting the `generatePaymentToken` field to
-`true` (see example below) when doing a card purchase, or set the initial
-operation to [`Verify`][verify].
+You can do this by setting the `generatePaymentToken` field in the request's
+payment object to `true` (see example below) when doing a card purchase, or
+setting the initial operation to [`Verify`][verify].
 
 {:.code-view-header}
 **generatePaymentToken field**
@@ -60,10 +60,10 @@ operation to [`Verify`][verify].
 }
 ```
 
-### Finding paymentToken value
+## Finding The `paymentToken` Value
 
 When the initial purchase is successful, a `paymentToken` is linked to
-the payment.  You can return the value by sending a `GET` request towards the
+the payment. You can return the value by sending a `GET` request towards the
 payment resource (expanding either the authorizations or verifications
 sub-resource), after the payer successfully has completed the purchase. The two
 examples are provided below.
@@ -88,23 +88,31 @@ Authorization: Bearer <AccessToken>
 You need to store the `paymentToken` from the response in your system and keep
 track of the corresponding `payerReference` in your system.
 
-### Returning Purchases
+## Returning Purchases
+
+{% unless documentation_section contains "checkout" or "payment-menu" %}
 
 When a known payer (where you have attained a `payerReference` or similar)
 returns to your system, you can use the `paymentToken`, using already stored
-payment data, to initiate one-click payments. You will need to make a standard
-purchase, following the sequence as specified in the Redirect or Seamless View
-scenarios for [credit card][card] and [financing invoice][invoice]. When
-creating the first `POST` request you insert the `paymentToken` field. This must
-be the `paymentToken` you received in the initial purchase, where you specified
-the `generatePaymentToken` to `true`.
+payment data, to initiate one-click payments.
 
-{% unless documentation_section contains "checkout-v3" %}
+You will need to make a standard purchase, following the sequence as specified
+in the Redirect or Seamless View scenarios for [credit card][card] and
+[financing invoice][invoice]. When creating the first `POST` request you insert
+the `paymentToken` field. This must be the `paymentToken` you received in the
+initial purchase, where you specified the `generatePaymentToken` to `true`.
+
+You can add the field `noCvc` set to `true` in the `creditcard` object, which
+card specific feature fields. This disables the CVC field.
+
+{% if documentation_section contains "payment-instruments" %}
 
 See the Features section for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
 
-{% endunless%}
+{% endif %}
+
+## One-Click Request
 
 Abbreviated code example:
 
@@ -140,14 +148,102 @@ Content-Type: application/json
 |                  | └➔&nbsp;`creditCard`   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |                  | └─➔&nbsp;`noCvc`       | `boolean` | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                 |
 
+{% endunless %}
+
+When a known payer returns to your system, you can use your `payerReference` to
+initiate one-click payments. Either by using the `payerReference` and setting
+`generatePaymentToken` to `true`, or by using `payerReference` and including a
+`paymentToken` in the `paymentToken` field. The `payerReference` is not
+generated by Swedbank Pay, but a reference set by you to identify your customer
+and their returning payments. An example could be to use internal customer
+numbers.
+
+Using `payerReference` and `generatePaymentToken: true` will display all (max 3)
+cards connected to the payerReference.
+
+If you wish to display one specific card only, you can remove
+`generatePaymentToken` and add the field `paymentToken` in it's place. This must be
+the paymentToken generated in the initial purchase.
+
+You can add the field `noCvc` set to `true` in the `creditcard` object,
+containing card specific feature fields. This disables the CVC field.
+
+## One-Click Request Displaying All Cards
+
+{:.code-view-header}
+**Request**
+
+```http
+POST {{ purchase_url }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "generatepaymentToken": "true"
+    },
+    "payer": {
+        "payerReference": "AB1234",
+    },
+    "creditCard": {
+        "noCvc": true
+    }
+}
+```
+
+## One-Click Request Displaying A Specific Card
+
+{:.code-view-header}
+**Request**
+
+```http
+POST {{ purchase_url }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "payment": {
+        "operation": "Purchase",
+        "intent": "Authorization",
+        "paymentToken": "{{ page.payment_token }}"
+    },
+    "payer": {
+        "payerReference": "AB1234",
+    },
+    "creditCard": {
+        "noCvc": true
+    }
+}
+```
+
+{:.table .table-striped}
+|     Required     | Field                  | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :--------------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `payment`              | `object`  | The `payment` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| {% icon check %} | └➔&nbsp;`operation`    | `string`  | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. | {% if documentation_section contains "checkout-v3" %}
+| {% icon check %} | └➔&nbsp;`intent`       | `string`  | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a cancellation or capture of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                     | {% else %}
+| {% icon check %} | └➔&nbsp;`intent`       | `string`  | The intent of the payment identifies how and when the charge will be effectuated. This determine the type transactions used during the payment process.<br> <br>`Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.<br> <br>`AutoCapture`. A one phase-option that enable capture of funds automatically after authorization.                     | {% endif %}
+| {% icon check %} | └➔&nbsp;`paymentToken` | `string`  | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
+|                  | └➔&nbsp;`generatePaymentToken`     | `bool`       | Determines if a payment token should be generated. Default value is `false`.                                               |
+|                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
+|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                                                                                                                                                                                            |
+|                  | └➔&nbsp;`creditCard`   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|                  | └─➔&nbsp;`noCvc`       | `boolean` | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                 |
+
 {% include alert.html type="informative" icon="info" body="
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 
+## How It Looks
+
 {:.text-center}
 ![One click payment page][one-click-image]{:height="510px" width="475px"}
 
-### Delete payment token
+## Delete Payment Token
 
 If you need to delete a `paymentToken`, you have two options. The first is by
 `payerReference`, which deletes all payment, recurrence and/or unscheduled
@@ -170,6 +266,8 @@ deletes a specific token.
 If you want to delete tokens by `payerReference`, the request and response
 should look like this:
 
+## Delete Payment Token Request
+
 {:.code-view-header}
 **Request**
 
@@ -189,6 +287,8 @@ Content-Type: application/json
 TODO: Remove pipes from the above code example and add a field table
       explaining each field here.
 {% endcomment %}
+
+## Delete Payment Token Response
 
 {:.code-view-header}
 **Response**
@@ -228,9 +328,15 @@ Content-Type: application/json
 }
 ```
 
+## Deleting Single Tokens
+
+{% if documentation_section contains "checkout" %}
+
 For single token deletions, the request and response should look like this. In
-this example, the token is connected to a card. If it was an invoice connected
-token, the `instrumentDisplayName` would be the payer's date of birth.
+this example, the token is connected to a card. If it was a token connected to
+an invoice, the `instrumentDisplayName` would be the payer's date of birth.
+
+## Delete Single Token Request For Checkout Integrations
 
 {:.code-view-header}
 **Request**
@@ -246,6 +352,8 @@ Content-Type: application/json
   "comment": "Comment stating why this is being deleted"
 }
 ```
+
+## Delete Single Token Response For Checkout Integrations
 
 {:.code-view-header}
 **Response**
@@ -264,6 +372,58 @@ Content-Type: application/json
     }
 }
 ```
+
+{% else %}
+
+For single token deletions, the request and response should look like this. In
+this example, the token is a payment token and is connected to a card.
+
+## Delete Single Token Request
+
+{:.code-view-header}
+**Request**
+
+```http
+PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+{
+  "state": "Deleted",
+  "comment": "Comment on why the deletion is happening",
+  "tokenType" : "PaymentToken"
+
+}
+}
+```
+
+## Delete Single Token Response
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "instrumentData": {
+    "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
+    "paymentToken": "12345678-1234-1234-1234-123456789000",
+    "payeeId": "61c65499-de5c-454e-bf4c-043f22538d49",
+    "isDeleted": true,
+    "isPayeeToken": false,
+    "cardBrand": "Visa",
+    "maskedPan": "123456xxxxxx1111",
+    "expiryDate": "MM/YYYY",
+    "tokenType" : "PaymentToken"
+  }
+}
+```
+
+{% endif %}
 
 <!--lint disable final-definition -->
 

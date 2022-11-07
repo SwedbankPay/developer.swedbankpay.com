@@ -17,6 +17,8 @@ payment pages seamlessly integrated in an `iframe` on your website. The payer
 does not need to leave your webpage, since we are handling the payment in the
 `iframe` on your page.
 
+## How It Looks
+
 {:.text-center}
 ![screenshot of the seamless view card payment page][seamless-view-card]{:height="255px" width="475px"}
 
@@ -53,7 +55,7 @@ loading the payment page in an `iframe` in our next step.
 
 {% include alert-nested-iframe-unsupported.md %}
 
-## Step 2: Display the Payment
+## Step 2: Display The Payment
 
 You need to embed the script source on your site to create a Seamless View in an
 `iframe`; so that the payer can enter the credit card details in a secure Swedbank Pay
@@ -65,7 +67,7 @@ hosted environment. A simplified integration has these following steps:
    obtained in the `POST` request in the `<script>` element. Example:
 
 ```html
-    <script id="payment-page-script" src="https://ecom.dev.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
+    <script id="payment-page-script" src="https://ecom.externalintegration.payex.com/creditcard/core/ scripts/client/px.creditcard.client.js"></script>
 ```
 
 The previous two steps gives this HTML:
@@ -89,6 +91,8 @@ The previous two steps gives this HTML:
 </html>
 ```
 
+## Load The Seamless View
+
 Lastly, initiate the Seamless View with a JavaScript call to open the `iframe`
 embedded on your website.
 
@@ -104,6 +108,8 @@ embedded on your website.
     }).open();
 </script>
 ```
+
+## Events
 
 When a user actively attempts to perform a payment, the `onPaymentCreated` event
 is raised with the following event argument object:
@@ -124,7 +130,7 @@ is raised with the following event argument object:
 | `id`         | `string` | {% include field-description-id.md %} |
 | `instrument` | `string` | `creditcard`                          |
 
-## Purchase Flow
+## Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -176,7 +182,7 @@ sequenceDiagram
     activate Payer
 ```
 
-### 3-D Secure
+## 3-D Secure
 
 {% include card-general.md %}
 
@@ -194,7 +200,7 @@ card payment:
    decided by the issuing bank. Normally this will be done using BankID or
    Mobile BankID.
 
-### Explanations
+## Explanations
 
 *   ① `rel: view-authorization` is a value in one of the operations, sent as a
   response from Swedbank Pay to the Merchant.
