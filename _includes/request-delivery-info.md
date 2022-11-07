@@ -18,10 +18,10 @@ can also add the field `restrictedToDeliveryInfoInstruments` and setting it to
 `true`. This will leave out all instruments which can't return delivery
 information.
 
-You are currently only able to request delivery information from Apple Pay and MobilePay, but
-we will add support for more payment instruments going forward. No changes are
-required at your (the merchant's) end to be able to offer more instruments at a
-later time.
+You are currently only able to request delivery information from **Apple Pay**,
+**Click to Pay** and **MobilePay**, but we will add support for more payment
+instruments going forward. No changes are required at your (the merchant's) end
+to be able to offer more instruments at a later time.
 
 ## Request Delivery Info Request
 
@@ -272,8 +272,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payeeName`               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`productCategory`         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used.                                                                                         |
-|                  | └─➔&nbsp;`siteId`                 | `String(15)` | This parameter is used when you as a Merchant is using Swedbank Pays ”Split Settlement” and have a need to be able to specify towards AMEX which Merchant that the transaction belongs to.                                                                                      |
+|                  | └─➔&nbsp;`subsite`                 | `String(40)` | The subsite field can be used to perform [split settlement]({{ features_url }}/core/settlement-reconciliation#split-settlement) on the payment. The subsites must be resolved with Swedbank Pay [reconciliation]({{ features_url }}/core/settlement-reconciliation) before being used. Must be in the format of `A-Za-z0-9`.                                                                                        |
+|                  | └─➔&nbsp;`siteId`                 | `String(15)` | `SiteId` is used for [split settlement][split-settlement] transactions when you, as a merchant, need to specify towards AMEX which sub-merchant the transaction belongs to. Must be in the format of `A-Za-z0-9`.                                                                                           |
 |                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                | {% if documentation_section contains "checkout-v3/starter" %}
 |  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Starter, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `false`, and not to be included if it is `true`.                                    | {% endif %}
@@ -342,8 +342,9 @@ Content-Type: application/json
         "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b",
         "created": "2022-01-07T07:58:26.1300282Z",
         "updated": "2022-01-07T08:17:44.6839034Z",
-        "operation": "Purchase",
-        "status": "Initialized",
+        "operation": "Purchase", {% if documentation_section contains "checkout-v3" %}
+        "status": "Initialized", {% else %}
+        "state": "Ready", {% endif %}
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
@@ -371,7 +372,7 @@ Content-Type: application/json
         },
         "orderItems": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
-        },
+        }{% if documentation_section contains "checkout-v3" %},
         "history": {
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
         },
@@ -395,7 +396,7 @@ Content-Type: application/json
         },
         "metadata": {
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
-        }
+        } {% endif %}
       },
     "operations": [ {% if include.integration_mode=="redirect" %}
         {
@@ -434,8 +435,9 @@ Content-Type: application/json
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
-| └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` section for further information]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in the failed section. [Further information here]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the cancel feature section for further information]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the Abort feature section for further information]({{ features_url }}/technical-reference/status-models#aborted). |
+| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                            |{% if documentation_section contains "checkout-v3" %}
+| └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` section for further information]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in the failed section. [Further information here]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the cancel feature section for further information]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the Abort feature section for further information]({{ features_url }}/technical-reference/status-models#aborted). |{% else %}
+| └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. | {% endif %}
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
 | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
@@ -448,13 +450,15 @@ Content-Type: application/json
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Enterprise implementation, this is triggered by not including a `payerReference` or `nationalIdentifier` in the original payment order request.                                                                                                                                                   |
 | └➔&nbsp;`payer`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
-| └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
+| └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "checkout-v3" %}
 | └➔&nbsp;`history`     | `string`     | The URL to the `history` [resource]({{ features_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
 | └➔&nbsp;`failed`     | `string`     | The URL to the `failed` [resource]({{ features_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
 | └➔&nbsp;`aborted`     | `string`     | The URL to the `aborted` [resource]({{ features_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
 | └➔&nbsp;`paid`     | `string`     | The URL to the `paid` [resource]({{ features_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
 | └➔&nbsp;`cancelled`     | `string`     | The URL to the `cancelled` [resource]({{ features_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` [resource]({{ features_url }}/technical-reference/resource-sub-models#financialTransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` [resource]({{ features_url }}/technical-reference/resource-sub-models#failedAttempts) where information about the failed attempts can be retrieved.                                                                                                                            |
-| └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
+| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` [resource]({{ features_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` [resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
+| └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            | {% endif %}
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+
+[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

@@ -45,24 +45,17 @@ To start integrating Swedbank Pay Payments, you need the following:
 Here are our three platform options at a glance. You can read more about the
 integration process by visiting the sections for each payment instrument.
 
-### Seamless View
+## Seamless View
 
 With [Seamless Views][seamless-view] you can initiate the payment process
 directly in an `iframe` on your site. If you prefer that the payer isn't
 redirected away from you, this option enables you to embed our payment page
 seamlessly into your shopping experience.
 
-### Redirect
+## Redirect
 
 The [Redirect][redirect] platform redirects the payer to a Swedbank Pay hosted
 payment page, and back to your page when the payment is completed.
-
-### Direct
-
-[Direct][direct] is the option where you integrate directly using our Direct
-API. This is an integration with the most flexibility and opportunities. If you
-want to offer Card Payments and choose this option, you have to be PCI-DSS
-compliant.
 
 ## The Fundamentals
 
@@ -77,7 +70,7 @@ There are two main payment types, **two-phase** and **one-phase** payments. The
 two seem very similar from a payer's point of view, but there are key
 differences you should know about.
 
-### Two-Phase Payments
+## Two-Phase Payments
 
 A two-phase payment is performed in two steps – an `authorization` which
 reserves the payer's funds, and a `capture` of the funds at a later time,
@@ -95,7 +88,7 @@ The payment instruments that support two-phase payments are:
 *   [MobilePay Online][mobile-pay]
 *   [Vipps][vipps]
 
-### One-Phase Payments
+## One-Phase Payments
 
 There are two types of one-phase payments – `sale` and `autoCapture`.
 

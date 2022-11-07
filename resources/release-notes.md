@@ -11,6 +11,17 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 18 October 2022
+
+### Version 3.1.4
+
+Even with an autumn break (with Swedbank Pay colors everywhere you look), there
+are two important ones this time around. We now offer **Click to Pay** for both
+Redirect and Seamless View in all four [Checkout v3][checkout-v3]
+implementations.  We have also added a new capability called
+[Cross Channel Payments][cross-channel-payments], which we hope you read!
+Apart from that, there are no releases without typo corrections and bug fixes.
+
 ## 20 September 2022
 
 ### Version 3.1.3
@@ -28,7 +39,7 @@ some more bugs and typos.
 We have been picking up steam since our summer break, hitting full throttle as
 September arrived. A smaller release this time around, but there are some
 important additions nonetheless. We have added a
-[siteID][checkout-v3-payments-only-redirect-request] field to checkout v3
+[siteId][checkout-v3-payments-only-redirect-request] field to checkout v3
 implementations, re-worked nearly all
 [headers][checkout-v3-payments-only-seamless] across the portal to make
 navigation easier, added a section on
@@ -690,16 +701,16 @@ integration and the payer.
 [card-unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled
 [card-transaction-states]: /payment-instruments/card/features/technical-reference/payment-transaction-states
 [card]: /payment-instruments/card
-[card-3ds-info]: /payment-instruments/card#purchase-flow
+[card-3ds-info]: /payment-instruments/card#sequence-diagram
 [card-3ds2]: /payment-instruments/card/features/core/3d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
 [card-seamless-view]: /payment-instruments/card/seamless-view
 [checkin]: /checkout-v2/checkin
 [checkout-capture]: /checkout-v2/capture
-[checkout-invoice-capture]: /checkout-v2/capture#invoice
+[checkout-invoice-capture]: /checkout-v2/capture
 [checkout-checkin-front-end]:/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
-[checkout-payment-order-purchase]: /checkout-v2/payment-menu#request
+[checkout-payment-order-purchase]: /checkout-v2/payment-menu#step-3-create-payment-order
 [checkout-payment-url]: /checkout-v2/features/technical-reference/payment-url
 [checkout-create-starter-paymentorder]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /checkout-v2/
@@ -707,6 +718,7 @@ integration and the payer.
 [checkout-items]: /checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
+[checkout-v3]: /checkout-v3/
 [checkout-v3-business]: /checkout-v3/business
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
@@ -715,6 +727,7 @@ integration and the payer.
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
+[cross-channel-payments]: /checkout-v3/payments-only/features/optional/cross-channel-payments
 [data-protection]: /resources/data-protection
 [delete-payment-tokens]: /checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
@@ -740,13 +753,13 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [optional-features]: /checkout-v2/features/optional/
 [payment-orders]: /checkout-v2/payment-menu#step-3-create-payment-order
-[payment-menu-invoice-capture]:/payment-menu/capture#invoice
+[payment-menu-invoice-capture]:/payment-menu/capture
 [payment-menu-items]: /payment-menu/features/technical-reference/items
 [payment-menu-payment-link]: /payment-menu/features/optional/payment-link
 [payments]: /payment-instruments
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /checkout-v2/features/technical-reference/prices
-[update-order-checkout]: /checkout-v2/features#update-order
+[update-order-checkout]: /checkout-v2/features/optional/update
 [recur]: /checkout-v3/payments-only/features/optional/recur
 [resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
@@ -755,8 +768,8 @@ integration and the payer.
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
-[status-models]: /checkout-v3/payments-only/features/technical-reference/status-response-models
-[storing-uri]: /introduction#storing-uris
+[status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
+[storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payment-instruments/swish/direct

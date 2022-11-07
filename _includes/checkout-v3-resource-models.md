@@ -62,7 +62,11 @@ Content-Type: application/json
     "number": 1234567890,
     "payeeReference": "CD123",
     "orderReference": "AB1234",
-    "amount": 1500
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0
     "tokens": [
       {
         "type": "payment",
@@ -96,7 +100,11 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
+| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
+| └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
 | └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`type`  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | └─➔&nbsp;`token`  | `string`   | The token `guid`. |
@@ -551,7 +559,11 @@ Content-Type: application/json
     "number": 1234567890,
     "payeeReference": "CD123",
     "orderReference": "AB1234",
-    "amount": 1500
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0
     "tokens": [
       {
         "type": "payment",
@@ -612,6 +624,41 @@ Content-Type: application/json
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
     "instrument": "ApplePay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "amount": 1500,
+    "details": {
+        "cardBrand": "Visa",
+        "cardType": "Credit",
+        "expiryDate": "12/0023",
+        "issuerAuthorizationApprovalCode": "L00392",
+        "acquirerTransactionType": "WALLET",
+        "acquirerStan": "392",
+        "acquirerTerminalId": "80100001190",
+        "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+        "transactionInitiator": "CARDHOLDER"
+    }
+  }
+}
+```
+
+### Click to Pay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+{:.code-view-header}
+**Clikck to Pay**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "ClickToPay",
     "number": 80100001190,
     "payeeReference": "1662360210",
     "amount": 1500,
@@ -800,8 +847,12 @@ Content-Type: application/json
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
+| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
-| └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
+| └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
+| └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                    |
 | └─➔&nbsp;`type`  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | └─➔&nbsp;`token`  | `string`   | The token `guid`. |
 | └─➔&nbsp;`name`  | `string`   | The name of the token. In the example, a masked version of a card number. |
