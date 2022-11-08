@@ -46,8 +46,7 @@ Content-Type: application/json
             "nationalIdentifier": {
                 "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE"
-            },
-            "restrictedToSocialSecurityNumber": true,
+            }
             "firstName": "Leia"
             "lastName": "Ahlström"
             "email": "leia@payex.com",
@@ -173,7 +172,6 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. |
 |                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
-|                  | └─➔&nbsp;`restrictedToSocialSecurityNumber` | `bool`  | Set to `true` if you want to restrict your payment to a Social Security Number.                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`firstName`                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
 | {% icon check %} | └─➔&nbsp;`lastName`                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | └─➔&nbsp;`email`                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/3d-secure-2).                                                                             |
