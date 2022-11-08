@@ -179,6 +179,6 @@ Content-Type: application/json
 
 ### When the authorization is completed
 
-The authorized amount might be a lower value than the requested amount, known as partial approval. Then the `amount` and `vatAmount` will contain the value that is authorized. In this case, the original submitted amount might be found by requesting `rel:view-consumer-identification` and checking the field `submittedAmount`. The final amount to be paid must be passed in the capture amount, and if the authorized amount is larger than the final amount the rest should be cancelled.
+The authorized amount might be a lower value than the requested amount, known as partial approval. In this case, the original submitted amount might be found by requesting `rel:paid-paymentorder` and checking the field `submittedAmount`. Then the `amount` and `vatAmount` will contain the value that is authorized. The final amount to be paid must be passed in the capture request, and if the authorized amount is larger than the final amount the rest should be cancelled.
 
 [order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
