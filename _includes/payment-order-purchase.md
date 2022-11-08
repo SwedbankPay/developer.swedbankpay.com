@@ -67,22 +67,6 @@ Content-Type: application/json
                 "vatPercent": 2500,
                 "amount": 1500,
                 "vatAmount": 375
-            },
-            {
-                "reference": "I1",
-                "name": "InvoiceFee",
-                "type": "PAYMENT_FEE",
-                "class": "Fees",
-                "description": "Fee for paying with Invoice",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 1900,
-                "vatPercent": 0,
-                "amount": 1900,
-                "vatAmount": 0,
-                "restrictedToInstruments": [
-                    "Invoice-PayExFinancingSe"
-                ]
             }
         ],
         "riskIndicator": {
@@ -250,7 +234,6 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatPercent`              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
-|                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 
 {:.table .table-striped}
@@ -282,8 +265,8 @@ Content-Type: application/json
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
 
 [complete-url]: /{{ documentation_section }}/features/technical-reference/complete-url
-[initiate-consumer-session]: {{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification
+[initiate-consumer-session]: /{{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification
 [one-click-payments]: {{ documentation_section }}/features/#one-click-payments
 [operations]: /{{ documentation_section }}/features/technical-reference/operations
 [settlement-reconciliation]: /{{ documentation_section }}/features/core/settlement-reconciliation
-[split-settlement]: {{ documentation_section }}/features/core/settlement-reconciliation#split-settlement
+[split-settlement]: /{{ documentation_section }}/features/core/settlement-reconciliation#split-settlement

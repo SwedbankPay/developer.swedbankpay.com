@@ -410,4 +410,4 @@ next_href="capture" next_title="Capture" %}
 [capture]: /payment-instruments/invoice/capture
 [complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
 [features]: /payment-instruments/invoice/features
-[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[financing-consumer]: /payment-instruments/invoice/features/technical-reference/financing-consumer

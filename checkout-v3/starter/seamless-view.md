@@ -229,16 +229,16 @@ the top right corner.
 
 You can now perform the `GET` on the payment order and display the available
 delivery option(s) to the payer. How the delivery options are displayed is up to
-you. This is how they appear in our demoshop.
+you, so they are not included in this screenshot.
 
 {:.text-center}
-![screenshot of the seamless view checkin mixed and delivery options][checkin-delivery-options-mixed]
+![screenshot of the seamless view checkin mixed products][checkin-remember-me-mixed]
 
 For digital products, only contact details will be shown. "Remember me" will
 work the same way as with mixed goods.
 
 {:.text-center}
-![screenshot of the seamless view checkin digital and delivery options][checkin-delivery-options-digital]
+![screenshot of the seamless view checkin digital products][checkin-remember-me-digital]
 
 When the payer chooses a delivery option, you can `PATCH` the payment order and
 open the payment menu. The payer can then proceed with the purchase.
@@ -272,14 +272,14 @@ Events][seamless-view-events] available in the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/starter/features/core/abort
-[checkin-delivery-options-digital]:/assets/img/checkout/checkin-delivery-options-remember-me-digital.png
-[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-remember-me-mixed.png
+[checkin-remember-me-digital]:/assets/img/checkout/checkin-remember-me-digital.png
+[checkin-remember-me-mixed]:/assets/img/checkout/checkin-remember-me-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
 [seamless-payment-menu-starter]: /assets/img/checkout/checkout-v3-seamless-menu.png
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
-[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayeridentified
-[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayerunidentified
+[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayeridentified
+[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayerunidentified
 [sequence-diagrams]: /checkout-v3/sequence-diagrams#starter-seamless-view
