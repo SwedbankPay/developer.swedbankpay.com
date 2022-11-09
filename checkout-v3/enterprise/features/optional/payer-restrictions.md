@@ -1,5 +1,5 @@
 ---
-title: Restricted to SSN
+title: Restricted To SSN
 estimated_read: 5
 description: |
   Restricting payments to a specific Social Security Number (SSN)
