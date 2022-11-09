@@ -5,7 +5,7 @@ description: |
     A printable, scannable reference code for payment tracking.
 menu_order: 1300
 icon:
-  content: barcode_scanner
+  content: barcode_reader
   outlined: true
 ---
 
