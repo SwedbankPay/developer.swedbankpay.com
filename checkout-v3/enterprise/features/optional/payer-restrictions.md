@@ -5,7 +5,7 @@ description: |
   Restricting payments to a specific Social Security Number (SSN)
 menu_order: 2400
 icon:
-  content: restricting_ssn
+  content: lock
   outlined: true
 ---
 

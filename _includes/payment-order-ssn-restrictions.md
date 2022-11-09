@@ -5,16 +5,37 @@ endcapture %}
 
 ## Restrict payments to a Social Security Number
 
-Swedbank Pay provides the possibility to restrict payments to a Social Security Number for payment instruments which support this. This can be used when you want to make sure you only accept payment from an already identified individual. You do this by adding the field `restrictedToSocialSecurityNumber` in the Payer node, in your payment order request, and setting it to true. This will leave out all instruments which do not support this feature. It will then use the `socialSecurityNumber` located in the `nationalIdentifier` node which is located in the `payer` node. `nationalIdentifier` must exist to be able to use this feature. Instruments supporting the feature will reject payments that do not match the restriction.
+Swedbank Pay provides the possibility to restrict payments to a Social Security
+Number for payment instruments which support this. This can be used when you
+want to make sure you only accept payment from an already identified individual.
+You do this by adding the field `restrictedToSocialSecurityNumber` in the Payer
+node, in your payment order request, and setting it to true. This will leave out
+all instruments which do not support this feature. It will then use the
+`socialSecurityNumber` located in the `nationalIdentifier` node which is located
+in the `payer` node. `nationalIdentifier` must exist to be able to use this
+feature. Instruments supporting the feature will reject payments that do not
+match the restriction.
 
-{% if documentation_section contains "checkout-v3/enterprise" %}
-If you want to only use the SocialSecurityNumber to restrict a payment and not do a lookup to checkout profile, add the parameter `guestMode` in the `nationalIdentifier` node and set it to `true`. {% endif %}
+{% if documentation_section contains "checkout-v3/enterprise" %} If you want to
+only use the SocialSecurityNumber to restrict a payment and not do a lookup to
+checkout profile, add the parameter `guestMode` in the `nationalIdentifier` node
+and set it to `true`. {% endif %}
 
-You are currently only able to restrict Swish and Trustly payments to a Social Security Number, but we will add support for more payment instruments going forward. No changes are required at your (the merchant’s) end to be able to offer more instruments at a later time.
+You are currently only able to restrict Swish and Trustly payments to a Social
+Security Number, but we will add support for more payment instruments going
+forward. No changes are required at your (the merchant’s) end to be able to
+offer more instruments at a later time.
 
 ## Restrict to Social Security Number Request
 
-The field itself is a `bool` which must be added in the `payer` node of the request. Below is a shortened example of a payment order request. Apart from the new field, the payment request is similar to a standard payment order request. For an example of a payment order request, {% if documentation_section contains "checkout-v3/enterprise" %} [click here](/checkout-v3/enterprise/redirect#payment-order-request) {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %} [click here](/checkout-v3/payments-only/redirect#payment-order-request) {% endif %}
+The field itself is a `bool` which must be added in the `payer` node of the
+request. Below is a shortened example of a payment order request. Apart from the
+new field, the payment request is similar to a standard payment order request.
+For an example of a payment order request, {% if documentation_section contains
+"checkout-v3/enterprise" %} [click
+here.](/checkout-v3/enterprise/redirect#payment-order-request) {% endif %} {% if
+documentation_section contains "checkout-v3/payments-only" %} [click
+here.](/checkout-v3/payments-only/redirect#payment-order-request) {% endif %}
 
 {:.code-view-header}
 **Request**
@@ -27,7 +48,6 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        {% if documentation_section contains "checkout-v3/enterprise" %}
         "payer": {
             "digitalProducts": false,
             "nationalIdentifier": {
@@ -41,21 +61,7 @@ Content-Type: application/json
             "email": "leia@payex.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234"
-        }, {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "payer": {
-            "digitalProducts": false,
-            "nationalIdentifier": {
-                "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
-                "countryCode": "SE",
-                "guestMode": true
-            },
-            "restrictedToSocialSecurityNumber": true,
-            "firstName": "Leia",
-            "lastName": "Ahlström",
-            "email": "leia@payex.com",
-            "msisdn": "+46787654321",
-            "payerReference": "AB1234"
-        }, {% endif %}
+        }
     }
 }
 ```
