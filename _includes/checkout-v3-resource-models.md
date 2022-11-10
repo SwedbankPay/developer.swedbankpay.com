@@ -66,7 +66,7 @@ Content-Type: application/json
     "amount": 1500,
     "submittedAmount": 1500,
     "feeAmount: 0,
-    "discountAmount": 0
+    "discountAmount": 0,
     "tokens": [
       {
         "type": "payment",
@@ -82,8 +82,8 @@ Content-Type: application/json
       }
     ],
     "details": {
-      "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
-      "externalNonPaymentToken" : "1234567890",
+      "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+      "externalNonPaymentToken": "1234567890",
     }
   }
 }
@@ -563,7 +563,7 @@ Content-Type: application/json
     "amount": 1500,
     "submittedAmount": 1500,
     "feeAmount: 0,
-    "discountAmount": 0
+    "discountAmount": 0,
     "tokens": [
       {
         "type": "payment",
@@ -626,7 +626,11 @@ Content-Type: application/json
     "instrument": "ApplePay",
     "number": 80100001190,
     "payeeReference": "1662360210",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
@@ -661,7 +665,11 @@ Content-Type: application/json
     "instrument": "ClickToPay",
     "number": 80100001190,
     "payeeReference": "1662360210",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
@@ -696,7 +704,11 @@ Content-Type: application/json
     "instrument": "MobilePay",
     "number": 75100106637,
     "payeeReference": "1662364327",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "maskedPan": "489537******1424",
@@ -730,7 +742,11 @@ Content-Type: application/json
     "instrument": "Vipps",
     "number": 99463794,
     "payeeReference": "1662366424",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -755,7 +771,11 @@ Content-Type: application/json
     "instrument": "Swish",
     "number": 74100413405,
     "payeeReference": "1662360831",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -780,7 +800,11 @@ Content-Type: application/json
     "instrument": "Invoice",
     "number": 71100775379,
     "payeeReference": "1662360980",
-    "amount": 2000,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -805,7 +829,11 @@ Content-Type: application/json
     "instrument": "CreditAccount",
     "number": 77100038000,
     "payeeReference": "1662361777",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -831,7 +859,11 @@ Content-Type: application/json
     "number": 79100113652,
     "payeeReference": "1662373401",
     "orderReference": "orderReference",
-    "amount": 90361,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
