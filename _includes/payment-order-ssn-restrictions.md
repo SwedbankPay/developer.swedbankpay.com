@@ -39,6 +39,8 @@ For an example of a payment order request, {% if documentation_section contains
 here.](/checkout-v3/enterprise/redirect#payment-order-request) {% endif %} {% if
 documentation_section contains "checkout-v3/payments-only" %} [click
 here.](/checkout-v3/payments-only/redirect#payment-order-request) {% endif %}
+The response will be similar to a standard payment order response, which is also
+documented on the page linked above.
 
 {:.code-view-header}
 **Request**
