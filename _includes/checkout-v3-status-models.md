@@ -741,7 +741,7 @@ responses:
 | └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
 | `paid`                | `object`     | The paid object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations`. |
+| └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
