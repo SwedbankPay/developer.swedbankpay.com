@@ -107,7 +107,7 @@ request.addEventListener('load', function () {
         // Checkin and Payment Menu inside 'checkout-container'.
         payex.hostedView.checkout({
             container: {
-                checkout: "checkout",
+                checkout: "checkout-container",
             },
             culture: 'nb-No',
         }).open();
