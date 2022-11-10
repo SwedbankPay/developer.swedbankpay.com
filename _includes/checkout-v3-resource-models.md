@@ -96,7 +96,7 @@ Content-Type: application/json
 | `cancelled`                | `object`     | The cancel object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`cancelReason`             | `string`     | Why the payment was cancelled. |
-| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
+| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations`. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
@@ -875,11 +875,11 @@ Content-Type: application/json
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `paid`                | `object`     | The paid object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
+| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations`. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
-| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
+| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
