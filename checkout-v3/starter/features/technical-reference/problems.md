@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include problems/problems.md %}
+{% include problems/checkout.md %}
