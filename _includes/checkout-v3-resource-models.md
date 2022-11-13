@@ -1,3 +1,7 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## Aborted
 
 {:.code-view-header}
@@ -862,3 +866,106 @@ Content-Type: application/json
 | └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
 | └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
 | └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
+
+## Payer
+
+{% if documentation_section contains "checkout-v3/payments-only" %}
+
+{
+  "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "payer": {
+    "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers",
+    "reference": "reference to payer from merchant",
+    "name": "Azra Oliveira",
+    "email": "azra@payex.com",
+    "msisdn": "+46722345678",
+    "hashedFields": {
+      "emailHash": "590524589511a9fb08b933ae152548c00ad7e511",
+      "msisdnHash": "d65eafc1e780c88a3fa34b28b02812330e0bfa3d"
+    },
+    "shippingAddress": {
+      "addressee": "firstName + lastName",
+      "coAddress": "coAddress",
+      "streetAddress": "streetAddress",
+      "zipCode": "zipCode",
+      "city": "city",
+      "countryCode": "countryCode"
+    },
+    "device": {
+      "detectionAccuracy": 48,
+      "ipAddress": "127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62",
+      "deviceType": "Desktop",
+      "hardwareFamily": "Emulator",
+      "hardwareName": "Desktop|Emulator",
+      "hardwareVendor": "Unknown",
+      "platformName": "Windows",
+      "platformVendor": "Microsoft",
+      "platformVersion": "10.0",
+      "browserName": "Edge (Chromium) for Windows",
+      "browserVendor": "Microsoft",
+      "browserVersion": "95.0",
+      "browserJavaEnabled": false
+    }
+  }
+}
+
+{% else %}
+
+{
+  "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "payer": {
+    "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers",
+    "reference": "reference to payer (consumerReference if checkout)"
+    "name": "Azra Oliveira",
+    "email": "azra@payex.com",
+    "msisdn": "+46722345678",
+    "gender": "male",
+    "birthYear": "1980",
+    "hashedFields": {
+      "emailHash": "968e23eda8818f8647d15775c939b3bc32ba592e",
+      "msisdnHash": "a23ec9d5b9def87cae2769cfffb0b8a0487a5afd",
+      "socialSecurityNumberHash": "50288c11d79c1ba0671e6426ffddbb4954347ba4"
+    },
+    "shippingAddress": {
+      "addressee": "firstName + lastName",
+      "coAddress": "coAddress",
+      "streetAddress": "streetAddress",
+      "zipCode": "zipCode",
+      "city": "city",
+      "countryCode": "countryCode"
+    },
+    "device": {
+      "detectionAccuracy": 48,
+      "ipAddress": "127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62",
+      "deviceType": "Desktop",
+      "hardwareFamily": "Emulator",
+      "hardwareName": "Desktop|Emulator",
+      "hardwareVendor": "Unknown",
+      "platformName": "Windows",
+      "platformVendor": "Microsoft",
+      "platformVersion": "10.0",
+      "browserName": "Edge (Chromium) for Windows",
+      "browserVendor": "Microsoft",
+      "browserVersion": "95.0",
+      "browserJavaEnabled": false
+    }
+  }
+}
+
+{% endif %}
+
+{:.table .table-striped}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| `paymentorder`           | `object`     | The payment order object.                      |
+| `payer`                | `object`     | The payer object.                     |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`reference`  | `string`   | The array of history objects. |
+| └➔&nbsp;`name`        | `string`     | The ISO-8601 date of when the history event was created.                                 |
+| └➔&nbsp;`email`              | `string`     | Name of the history event. See list below for information.     |
+| └➔&nbsp;`msisdn`        | `string`     | The payment instrument used when the event occurred.       |
+| └➔&nbsp;`gender`              | `string`   | The gender of the payer.                 |
+| └➔&nbsp;`birthYear`              | `string`   | The birth year of the payer.                 |
+| └➔&nbsp;`hashedFields`        | `object`     | The hashedFields object, containing hashed versions of the payer's email, msisdn and, if present, Social Security Number.       |
