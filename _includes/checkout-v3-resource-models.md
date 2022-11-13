@@ -66,7 +66,7 @@ Content-Type: application/json
     "amount": 1500,
     "submittedAmount": 1500,
     "feeAmount: 0,
-    "discountAmount": 0
+    "discountAmount": 0,
     "tokens": [
       {
         "type": "payment",
@@ -82,8 +82,8 @@ Content-Type: application/json
       }
     ],
     "details": {
-      "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
-      "externalNonPaymentToken" : "1234567890",
+      "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+      "externalNonPaymentToken": "1234567890",
     }
   }
 }
@@ -96,7 +96,7 @@ Content-Type: application/json
 | `cancelled`                | `object`     | The cancel object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`cancelReason`             | `string`     | Why the payment was cancelled. |
-| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
+| └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
@@ -563,7 +563,7 @@ Content-Type: application/json
     "amount": 1500,
     "submittedAmount": 1500,
     "feeAmount: 0,
-    "discountAmount": 0
+    "discountAmount": 0,
     "tokens": [
       {
         "type": "payment",
@@ -626,7 +626,11 @@ Content-Type: application/json
     "instrument": "ApplePay",
     "number": 80100001190,
     "payeeReference": "1662360210",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
@@ -661,7 +665,11 @@ Content-Type: application/json
     "instrument": "ClickToPay",
     "number": 80100001190,
     "payeeReference": "1662360210",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
@@ -696,7 +704,11 @@ Content-Type: application/json
     "instrument": "MobilePay",
     "number": 75100106637,
     "payeeReference": "1662364327",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "maskedPan": "489537******1424",
@@ -730,7 +742,11 @@ Content-Type: application/json
     "instrument": "Vipps",
     "number": 99463794,
     "payeeReference": "1662366424",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -755,7 +771,11 @@ Content-Type: application/json
     "instrument": "Swish",
     "number": 74100413405,
     "payeeReference": "1662360831",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -780,7 +800,11 @@ Content-Type: application/json
     "instrument": "Invoice",
     "number": 71100775379,
     "payeeReference": "1662360980",
-    "amount": 2000,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -805,7 +829,11 @@ Content-Type: application/json
     "instrument": "CreditAccount",
     "number": 77100038000,
     "payeeReference": "1662361777",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -831,7 +859,11 @@ Content-Type: application/json
     "number": 79100113652,
     "payeeReference": "1662373401",
     "orderReference": "orderReference",
-    "amount": 90361,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount: 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -843,11 +875,11 @@ Content-Type: application/json
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `paid`                | `object`     | The paid object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
+| └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
-| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
+| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
