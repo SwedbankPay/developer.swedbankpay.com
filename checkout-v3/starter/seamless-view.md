@@ -229,16 +229,16 @@ the top right corner.
 
 You can now perform the `GET` on the payment order and display the available
 delivery option(s) to the payer. How the delivery options are displayed is up to
-you, so they are not included in this screenshot.
+you. This is how they appear in our demoshop.
 
 {:.text-center}
-![screenshot of the seamless view checkin mixed products][checkin-remember-me-mixed]
+![screenshot of the seamless view checkin mixed and delivery options][checkin-delivery-options-mixed]
 
 For digital products, only contact details will be shown. "Remember me" will
 work the same way as with mixed goods.
 
 {:.text-center}
-![screenshot of the seamless view checkin digital products][checkin-remember-me-digital]
+![screenshot of the seamless view checkin digital and delivery options][checkin-delivery-options-digital]
 
 When the payer chooses a delivery option, you can `PATCH` the payment order and
 open the payment menu. The payer can then proceed with the purchase.
@@ -272,8 +272,8 @@ Events][seamless-view-events] available in the feature section.
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/starter/features/core/abort
-[checkin-remember-me-digital]:/assets/img/checkout/checkin-remember-me-digital.png
-[checkin-remember-me-mixed]:/assets/img/checkout/checkin-remember-me-mixed.png
+[checkin-delivery-options-digital]:/assets/img/checkout/checkin-delivery-options-remember-me-digital.png
+[checkin-delivery-options-mixed]:/assets/img/checkout/checkin-delivery-options-remember-me-mixed.png
 [login-checkin]: /assets/img/checkout/checkin.png
 [seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
 [seamless-payment-menu-starter]: /assets/img/checkout/checkout-v3-seamless-menu.png

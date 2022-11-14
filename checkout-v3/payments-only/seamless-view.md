@@ -146,7 +146,7 @@ The payment menu should appear with the payer information displayed above the
 menu. The payer can select their preferred payment instrument and pay.
 
 {:.text-center}
-![screenshot of the enterprise implementation seamless view payment menu][payments-only-seamless-menu]
+![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]
 
 Once the payer has completed the purchase, you can perform a GET towards the
 `paymentOrders` resource to see the purchase state.
@@ -172,4 +172,4 @@ capture and the other options you have after the purchase.
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-seamless-view
-[payments-only-seamless-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
+[seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
