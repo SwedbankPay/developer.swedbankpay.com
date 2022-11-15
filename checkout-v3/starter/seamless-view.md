@@ -167,7 +167,7 @@ Content-Type: application/json
 window.payex.hostedView.checkout({
     container: {
         checkin: "checkin-container",
-        paymentMenu: "paymentMenu-container",
+        paymentMenu: "payment-menu-container",
     },
     culture: 'nb-No',
 }).open("paymentmenu");
