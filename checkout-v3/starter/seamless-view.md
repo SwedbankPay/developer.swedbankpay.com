@@ -182,8 +182,8 @@ window.payex.hostedView.checkout({
             <title>Swedbank Pay Checkout is Awesome!</title>
         </head>
         <body>
-            <div id="checkin"></div>
-            <div id="payment-menu"></div>
+            <div id="checkin-container"></div>
+            <div id="payment-menu-container"></div>
             <!-- Here you can specify your own javascript file -->
             <script src="<Your-JavaScript-File-Here>"></script>
         </body>
