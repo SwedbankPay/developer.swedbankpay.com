@@ -50,7 +50,7 @@ The structure of a problem message will look like this:
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
 
-### Common Problems
+## Common Problems
 
 All common problem types will have a URL in the format
 `https://api.payex.com/psp/errordetail/<error-type>`. The **URL is an
