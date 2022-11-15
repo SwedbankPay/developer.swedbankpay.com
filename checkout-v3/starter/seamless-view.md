@@ -31,10 +31,8 @@ You can find it in the `paymentorder` field. This is required if you want to use
 Checkout v3. If it isn´t included in your request, you won't get the correct
 operations in the response.
 
-When `productName` is set to `checkout3`, `requireConsumerInfo` and
-`digitalProducts` will be set to `false` by default. For the **Starter**
-integration, you must set `requireConsumerInfo` to `true`. If `digitalProducts`
-is set to `false`, you also need to add
+When `productName` is set to `checkout3`, `digitalProducts` will be set to
+`false` by default. If `digitalProducts` is set to `false`, you also need to add
 `shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
 Supported features for this integration are subscriptions (`recur` and
@@ -249,7 +247,7 @@ open the payment menu. The payer can then proceed with the purchase.
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
 
-### Events
+## Events
 
 When integrating Seamless View, especially with **Starter** where it's the only
 option, we strongly recommend that you implement the `onPaid` event, as it will
