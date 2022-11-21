@@ -42,9 +42,11 @@ Content-Type: application/json
 {
     "paymentorder": {
         "restrictedToAgeLimit": true,
-        "items" [
-            "swish": {
-                "restrictedToAgeLimit": 20
+        "items": [
+            {
+                "swish": {
+                    "restrictedToAgeLimit": 20
+                }
             }
         ]
     }
