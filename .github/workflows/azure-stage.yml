@@ -31,14 +31,11 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
 
       - name: deploy
-        uses: azure/CLI@v1.0.7
-        with:
-          azcliversion: 2.9.1
-          inlineScript: |
-            az storage blob upload-batch \
-              --source "_site" \
-              --destination "\$web" \
-              --account-name blobdevportalstage \
-              --overwrite \
-              --validate-content \
-              --debug
+        run: |
+          az storage blob upload-batch \
+            --source "_site" \
+            --destination "\$web" \
+            --account-name blobdevportalstage \
+            --overwrite \
+            --validate-content \
+            --debug
