@@ -1,7 +1,7 @@
 name: Deploy to Azure Stage
 on:
   push:
-    branches: ['develop']
+    branches: ['develop', 'feature/dx-1977_fix_stage_deploy']
 
 jobs:
   deploy:
@@ -17,6 +17,12 @@ jobs:
             portal build \
             --env=production \
             --site-url=https://developer.stage.swedbankpay.com
+
+      - name: upload site
+        uses: actions/upload-artifact@v3
+        with:
+          name: stage-site
+          path: _site
 
       - name: login
         uses: azure/login@v1.4.6
