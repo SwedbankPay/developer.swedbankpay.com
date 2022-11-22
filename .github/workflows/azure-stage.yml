@@ -25,17 +25,16 @@ jobs:
           name: stage-site
           path: _site
 
-      - name: login
+      - name: azure login
         uses: azure/login@v1.4.6
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
 
-      - name: deploy
+      - name: azure deploy
         run: |
           az storage blob upload-batch \
             --source "_site" \
             --destination "\$web" \
             --account-name blobdevportalstage \
             --overwrite \
-            --validate-content \
-            --debug
+            --validate-content
