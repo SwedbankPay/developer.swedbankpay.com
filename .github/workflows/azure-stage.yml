@@ -39,4 +39,5 @@ jobs:
               --source "_site" \
               --destination "\$web" \
               --account-name blobdevportalstage \
-              --overwrite
+              --overwrite \
+              --validate-content
