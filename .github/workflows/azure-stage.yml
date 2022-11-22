@@ -19,12 +19,6 @@ jobs:
             --env=production \
             --site-url=https://developer.stage.swedbankpay.com
 
-      - name: upload site artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: stage-site
-          path: _site
-
       - name: azure login
         uses: azure/login@v1.4.6
         with:
