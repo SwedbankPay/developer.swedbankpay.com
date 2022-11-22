@@ -40,4 +40,5 @@ jobs:
               --destination "\$web" \
               --account-name blobdevportalstage \
               --overwrite \
-              --validate-content
+              --validate-content \
+              --debug
