@@ -111,7 +111,7 @@ request.addEventListener('load', function () {
         window.payex.hostedView.checkout({
             container: {
                 checkin: "checkin-container",
-                paymentMenu: "paymentMenu-container",
+                paymentMenu: "payment-menu-container",
             },
             culture: 'nb-No',
             // If payer is identified
