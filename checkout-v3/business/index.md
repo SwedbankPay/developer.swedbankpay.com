@@ -25,8 +25,7 @@ create an account for you, we need some specific information from your side:
 
 *   **Email address:** To a developer or the CTO.
 
-*   **Organization number**: Your organization number. Our fastest way of seeing
-    if you're already a costumer or not.
+*   **Organization number**: Your organization number.
 
 ## Step 2: Wait For Response
 
