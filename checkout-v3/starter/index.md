@@ -25,6 +25,9 @@ create an account for you, we need some specific information from your side:
 
 *   **Email address:** To a developer or the CTO.
 
+*   **Organization number**: Your organization number. Our fastest way of seeing
+    if you're already a costumer or not.
+
 ## Step 2: Wait For Response
 
 Within 8 working hours we will have created your account and sent you an email
