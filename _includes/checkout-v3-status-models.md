@@ -318,7 +318,7 @@ Content-Type: application/json
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Enterprise implementation, this is triggered by not including a `payerReference` or `nationalIdentifier` in the original payment order request.                                                                                                                                                   |
-| └➔&nbsp;`payer`         | `string`     | The URL to the `payer` resource where information about the payer of the payment order can be retrieved.                                                                                                                |
+| └➔&nbsp;`payer`         | `string`     | The URL to the `payer` [resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                  |
 | └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | └➔&nbsp;`history`     | `string`     | The URL to the `history` [resource]({{ features_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
 | └➔&nbsp;`failed`     | `string`     | The URL to the `failed` [resource]({{ features_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
@@ -360,7 +360,7 @@ Content-Type: application/json
         "transactionType": "Authorization",
         "amount": 1500,
         "submittedAmount": 1500,
-        "feeAmount: 0,
+        "feeAmount": 0,
         "discountAmount": 0,
         "vatAmount": 375,
         "remainingCaptureAmount": 1500,
@@ -490,7 +490,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
@@ -545,7 +545,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
@@ -584,7 +584,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -613,7 +613,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -642,7 +642,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -671,7 +671,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -701,7 +701,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
