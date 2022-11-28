@@ -7,11 +7,22 @@
 {% include alert-agreement-required.md %}
 
 An Automated Fuel Dispenser (AFD) payment is a purchase where the user
-requests an authorization transaction for an automatic fuel dispenser. The request contains the maximum purchase amount, but the issuer can reply with a partial approval to lower the maximum purchase amount. This can be used to stop the fuel dispension at the maximum price.
+requests an authorization transaction for an automatic fuel dispenser. The
+request contains the maximum purchase amount, but the issuer can reply with a
+partial approval to lower the maximum purchase amount. This can be used to stop
+the fuel dispension at the maximum price.
 
-The only supported use case is automated fuel dispensers. To be able to verify this, it is required that the Merchant Category Code `mcc` is passed in the request under `PayeeInfo`. This feature is only supported with the
-`Purchase` operation. This feature is not supported with [order items][order-items]. By default the available instruments and card types will be limited to those which support AFD payments. To enable other payment options for the end user, pass inn `restrictedToAfdInstruments` with the value `false`. See the abbreviated example below on how to implement AFD payments
-by setting the `generateAfdPayment` to `true`.
+The only supported use case is automated fuel dispensers. To be able to verify
+this, it is required that the Merchant Category Code `mcc` is passed in the
+request under `PayeeInfo`. This feature is only supported with the `Purchase`
+operation. It does not support with [order items][order-items].
+
+By default the available instruments and card types will be limited to those
+which support AFD payments. To enable other payment options for the payer, pass
+in `restrictedToAfdInstruments` with the value `false`.
+
+See the abbreviated example below on how to implement AFD payments by setting
+the `generateAfdPayment` to `true`.
 
 {:.code-view-header}
 **Request**
@@ -56,8 +67,9 @@ Content-Type: application/json
 }
 ```
 
-Request field not covered in the common Checkout v3 [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
-table:
+Request fields not covered in the common Checkout v3 [`Initialized`]({{
+features_url }}/technical-reference/status-models#initialized) redirect or
+seamless view table:
 
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
@@ -177,8 +189,13 @@ Content-Type: application/json
       }
 ```
 
-### When the authorization is completed
+## When The Authorization Is Completed
 
-The authorized amount might be a lower value than the requested amount, known as partial approval. In this case, the original submitted amount might be found by requesting `rel:paid-paymentorder` and checking the field `submittedAmount`. Then the `amount` and `vatAmount` will contain the value that is authorized. The final amount to be paid must be passed in the capture request, and if the authorized amount is larger than the final amount the rest should be cancelled.
+The authorized amount might be a lower value than the requested amount, known as
+partial approval. In this case, the original submitted amount might be found by
+requesting `rel:paid-paymentorder` and checking the field `submittedAmount`.
+Then the `amount` and `vatAmount` will contain the value that is authorized. The
+final amount to be paid must be passed in the capture request, and if the
+authorized amount is larger than the final amount the rest should be cancelled.
 
 [order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
