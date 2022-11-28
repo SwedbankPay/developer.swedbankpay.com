@@ -916,8 +916,6 @@ Content-Type: application/json
 }
 ```
 
-{% endif %}
-
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
