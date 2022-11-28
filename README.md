@@ -73,7 +73,7 @@ The Docker installation is recommended for its simplicity.
 1.  Install [docker][docker-install] for your operating system.
 2.  Open up a terminal and `cd` into the directory in which you cloned (your
     possible fork of) this repository.
-3.  Run `docker-compose up`.
+3.  Run `docker compose up`.
 4.  After pulling the required Docker image and building the site, it should be
     accessible on `http://localhost:4000`*.
 

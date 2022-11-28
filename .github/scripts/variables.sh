@@ -15,7 +15,13 @@ initialize() {
     github_context_json="$GITHUB_CONTEXT"
 
     if [[ -z "$github_context_json" ]]; then
-        echo "Missing or empty GITHUB_CONTEXT environment variable." >&2
+        echo "Missing or empty 'GITHUB_CONTEXT' environment variable." >&2
+        echo "$help_message"
+        exit 1
+    fi
+
+    if [[ -z "$GITHUB_OUTPUT" ]]; then
+        echo "Missing or empty 'GITHUB_OUTPUT' environment variable." >&2
         echo "$help_message"
         exit 1
     fi
@@ -59,9 +65,11 @@ generate_variables() {
     echo "Branch:     $branch"
     echo "Release:    $release"
     echo "Repository: $repository_url"
-    echo "::set-output name=branch::$branch"
-    echo "::set-output name=release::$release"
-    echo "::set-output name=repository_url::$repository_url"
+    {
+        echo "branch=$branch"
+        echo "release=$release"
+        echo "repository_url=$repository_url"
+    } >> "$GITHUB_OUTPUT"
 }
 
 main() {
