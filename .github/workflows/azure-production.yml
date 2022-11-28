@@ -11,7 +11,7 @@ jobs:
 
       - name: build
         run: |
-          docker-compose run \
+          docker compose run \
             -e GITHUB_BRANCH=develop \
             -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal build \

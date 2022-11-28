@@ -65,7 +65,7 @@ mvn --projects backend clean compile jib:dockerBuild
 ## Deploy to local docker
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 {% include iterator.html prev_href="security"
