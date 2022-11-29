@@ -932,26 +932,26 @@ Content-Type: application/json
 | └➔&nbsp;`emailHash`              | `string`   | A hashed version of the payer's email. |
 | └➔&nbsp;`msisdnHash`              | `string`   | A hashed version of the payer's email. |  {% unless documentation_section contains "checkout-v3/payments-only" %}
 | └➔&nbsp;`socialSecurityNumberHash`              | `string`   | A hashed version of the payer's social security number. | {% endunless %}
-| | └➔&nbsp;`shippingAddress`            | `object` | The shipping address object related to the `payer`. |
-| | └─➔&nbsp;`addressee`                   | `string` | First and last name of the addressee – the receiver of the shipped goods. |
-| | └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
-| | └─➔&nbsp;`streetAddress`              | `string` | Payer's street address. Maximum 50 characters long. |
-| | └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
-| | └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code. |
-| | └─➔&nbsp;`city`                       | `string` | Payer's city of residence. |
-| | └─➔&nbsp;`countryCode`                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`. |
-| | └─➔&nbsp;`device`                       | `object` | The device detection object. |
-| | └─➔&nbsp;`detectionAccuracy`            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
-| | └─➔&nbsp;`ipAddress`                    | `string` | The IP address of the payer's device. |
-| | └─➔&nbsp;`userAgent`                    | `string` | {% include field-description-user-agent.md %} |
-| | └─➔&nbsp;`deviceType`                   | `string` | The type of device used by the payer. |
-| | └─➔&nbsp;`hardwareFamily`               | `string` | The type of hardware used by the payer. |
-| | └─➔&nbsp;`hardwareName`                 | `string` | The name of the payer's hardware. |
-| | └─➔&nbsp;`hardwareVendor`               | `string` | The vendor of the payer's hardware. |
-| | └─➔&nbsp;`platformName`                 | `string` | Name of the operating system used on the payer's device.  |
-| | └─➔&nbsp;`platformVendor`               | `string` | Vendor of the operating system used on the payer's device. |
-| | └─➔&nbsp;`platformVersion`              | `string` | Version of the operating system used on the payer's device. |
-| | └─➔&nbsp;`browserName`                  | `string` | Name of the browser used on the payer's device. |
-| | └─➔&nbsp;`browserVendor`                | `string` | Vendor of the browser used on the payer's device. |
-| | └─➔&nbsp;`browserVersion`               | `string` | Version of the browser used on the payer's device. |
-| | └─➔&nbsp;`browserJavaEnabled`           | `bool` | Indicates if the browser has Java enabled. Either `true` or `false`. |
+| └➔&nbsp;`shippingAddress`            | `object` | The shipping address object related to the `payer`. |
+| └─➔&nbsp;`addressee`                   | `string` | First and last name of the addressee – the receiver of the shipped goods. |
+| └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
+| └─➔&nbsp;`streetAddress`              | `string` | Payer's street address. Maximum 50 characters long. |
+|  └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
+|  └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code. |
+|  └─➔&nbsp;`city`                       | `string` | Payer's city of residence. |
+|  └─➔&nbsp;`countryCode`                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`. |
+|  └─➔&nbsp;`device`                       | `object` | The device detection object. |
+|  └─➔&nbsp;`detectionAccuracy`            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
+|  └─➔&nbsp;`ipAddress`                    | `string` | The IP address of the payer's device. |
+|  └─➔&nbsp;`userAgent`                    | `string` | {% include field-description-user-agent.md %} |
+|  └─➔&nbsp;`deviceType`                   | `string` | The type of device used by the payer. |
+|  └─➔&nbsp;`hardwareFamily`               | `string` | The type of hardware used by the payer. |
+|  └─➔&nbsp;`hardwareName`                 | `string` | The name of the payer's hardware. |
+|  └─➔&nbsp;`hardwareVendor`               | `string` | The vendor of the payer's hardware. |
+|  └─➔&nbsp;`platformName`                 | `string` | Name of the operating system used on the payer's device.  |
+| └─➔&nbsp;`platformVendor`               | `string` | Vendor of the operating system used on the payer's device. |
+| └─➔&nbsp;`platformVersion`              | `string` | Version of the operating system used on the payer's device. |
+| └─➔&nbsp;`browserName`                  | `string` | Name of the browser used on the payer's device. |
+| └─➔&nbsp;`browserVendor`                | `string` | Vendor of the browser used on the payer's device. |
+| └─➔&nbsp;`browserVersion`               | `string` | Version of the browser used on the payer's device. |
+| └─➔&nbsp;`browserJavaEnabled`           | `bool` | Indicates if the browser has Java enabled. Either `true` or `false`. |
