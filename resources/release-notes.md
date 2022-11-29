@@ -11,15 +11,18 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
-## 18 October 2022
+## 29 November 2022
 
-### Version 3.1.4
+### Version 3.1.5
 
-Even with an autumn break (with Swedbank Pay colors everywhere you look), there
-are two important ones this time around. We now offer **Click to Pay** for both
-Redirect and Seamless View in all four [Checkout v3][checkout-v3]
-implementations.  We have also added a new capability called
-[Cross Channel Payments][cross-channel-payments], which we hope you read!
+Our penultimate release of the year has a few things up its sleeve. The most
+exciting being the new capabilities
+[Cross Channel Payments][cross-channel-payments],
+[Automated Fuel Dispenser Payments][afd-payments], [SSN][ssn-restrictions] and
+[Age][age-restrictions] restrictions. We've also added some new fields in the
+[Paid][resource-model-paid] and [Cancelled][resource-model-cancelled] models, a
+new [Payer][resource-model-payer] resource model. Please note the [organization
+number][v3-setup] added to the essential information for Checkout v3 set ups.
 Apart from that, there are no releases without typo corrections and bug fixes.
 
 ## 20 September 2022
@@ -689,6 +692,8 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[afd-payments]: /checkout-v3/payments-only/features/optional/afd
+[age-restrictions]: /checkout-v3/payments-only/features/optional/age-restrictions
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
 [authorization-timeouts]: /checkout-v2/capture
@@ -761,13 +766,16 @@ integration and the payer.
 [prices]: /checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /checkout-v2/features/optional/update
 [recur]: /checkout-v3/payments-only/features/optional/recur
+[resource-model-cancelled]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#cancelled
 [resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
+[resource-model-payer]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#payer
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
+[ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
@@ -791,6 +799,7 @@ integration and the payer.
 [trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
 [unscheduled-mit]: /checkout-v3/payments-only/features/optional/unscheduled
+[v3-setup]: /checkout-v3/payments-only/#step-1-sign-up-for-a-test-account
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps
