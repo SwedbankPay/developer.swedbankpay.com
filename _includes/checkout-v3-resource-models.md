@@ -1,3 +1,7 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+
 ## Aborted
 
 {:.code-view-header}
@@ -65,7 +69,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "tokens": [
       {
@@ -562,7 +566,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "tokens": [
       {
@@ -629,7 +633,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
@@ -668,7 +672,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
@@ -706,7 +710,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -735,7 +739,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -764,7 +768,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -793,7 +797,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -823,7 +827,7 @@ Content-Type: application/json
     "transactionType": "Authorization",
     "amount": 1500,
     "submittedAmount": 1500,
-    "feeAmount: 0,
+    "feeAmount": 0,
     "discountAmount": 0,
     "details": {}
   }
@@ -862,3 +866,92 @@ Content-Type: application/json
 | └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
 | └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
 | └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
+
+## Payer
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "payer": {
+    "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers",
+    "reference": "reference to payer"
+    "name": "Azra Oliveira",
+    "email": "azra@payex.com",
+    "msisdn": "+46722345678",  {% unless documentation_section contains "checkout-v3/payments-only" %}
+    "gender": "male",
+    "birthYear": "1980", {% endunless %}
+    "hashedFields": {
+      "emailHash": "968e23eda8818f8647d15775c939b3bc32ba592e",
+      "msisdnHash": "a23ec9d5b9def87cae2769cfffb0b8a0487a5afd"  {% unless documentation_section contains "checkout-v3/payments-only" %},
+      "socialSecurityNumberHash": "50288c11d79c1ba0671e6426ffddbb4954347ba4" {% endunless %}
+    },
+    "shippingAddress": {
+      "addressee": "firstName + lastName",
+      "coAddress": "coAddress",
+      "streetAddress": "streetAddress",
+      "zipCode": "zipCode",
+      "city": "city",
+      "countryCode": "countryCode"
+    },
+    "device": {
+      "detectionAccuracy": 48,
+      "ipAddress": "127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36 Edg/97.0.1072.62",
+      "deviceType": "Desktop",
+      "hardwareFamily": "Emulator",
+      "hardwareName": "Desktop|Emulator",
+      "hardwareVendor": "Unknown",
+      "platformName": "Windows",
+      "platformVendor": "Microsoft",
+      "platformVersion": "10.0",
+      "browserName": "Edge (Chromium) for Windows",
+      "browserVendor": "Microsoft",
+      "browserVersion": "95.0",
+      "browserJavaEnabled": false
+    }
+  }
+}
+```
+
+{:.table .table-striped}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| `paymentorder`           | `object`     | The payment order object.                      |
+| `payer`                | `object`     | The payer object.                     |
+| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`reference`  | `string`   | The reference to the payer. In checkout, this will be the `consumerReference`. |
+| └➔&nbsp;`name`        | `string`     | The name of the payer. |
+| └➔&nbsp;`email`              | `string`     | The email address of the payer.     |
+| └➔&nbsp;`msisdn`        | `string`     | The msisdn of the payer.       | {% unless documentation_section contains "checkout-v3/payments-only" %}
+| └➔&nbsp;`gender`              | `string`   | The gender of the payer.                 |
+| └➔&nbsp;`birthYear`              | `string`   | The birth year of the payer. | {% endunless %}
+| └➔&nbsp;`hashedFields`        | `object`     | The `hashedFields` object, containing hashed versions of the payer's email, msisdn and if present, Social Security Number. |
+| └➔&nbsp;`emailHash`              | `string`   | A hashed version of the payer's email. |
+| └➔&nbsp;`msisdnHash`              | `string`   | A hashed version of the payer's email. |  {% unless documentation_section contains "checkout-v3/payments-only" %}
+| └➔&nbsp;`socialSecurityNumberHash`              | `string`   | A hashed version of the payer's social security number. | {% endunless %}
+| | └➔&nbsp;`shippingAddress`            | `object` | The shipping address object related to the `payer`. |
+| | └─➔&nbsp;`addressee`                   | `string` | First and last name of the addressee – the receiver of the shipped goods. |
+| | └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
+| | └─➔&nbsp;`streetAddress`              | `string` | Payer's street address. Maximum 50 characters long. |
+| | └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
+| | └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code. |
+| | └─➔&nbsp;`city`                       | `string` | Payer's city of residence. |
+| | └─➔&nbsp;`countryCode`                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`. |
+| | └─➔&nbsp;`device`                       | `object` | The device detection object. |
+| | └─➔&nbsp;`detectionAccuracy`            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
+| | └─➔&nbsp;`ipAddress`                    | `string` | The IP address of the payer's device. |
+| | └─➔&nbsp;`userAgent`                    | `string` | {% include field-description-user-agent.md %} |
+| | └─➔&nbsp;`deviceType`                   | `string` | The type of device used by the payer. |
+| | └─➔&nbsp;`hardwareFamily`               | `string` | The type of hardware used by the payer. |
+| | └─➔&nbsp;`hardwareName`                 | `string` | The name of the payer's hardware. |
+| | └─➔&nbsp;`hardwareVendor`               | `string` | The vendor of the payer's hardware. |
+| | └─➔&nbsp;`platformName`                 | `string` | Name of the operating system used on the payer's device.  |
+| | └─➔&nbsp;`platformVendor`               | `string` | Vendor of the operating system used on the payer's device. |
+| | └─➔&nbsp;`platformVersion`              | `string` | Version of the operating system used on the payer's device. |
+| | └─➔&nbsp;`browserName`                  | `string` | Name of the browser used on the payer's device. |
+| | └─➔&nbsp;`browserVendor`                | `string` | Vendor of the browser used on the payer's device. |
+| | └─➔&nbsp;`browserVersion`               | `string` | Version of the browser used on the payer's device. |
+| | └─➔&nbsp;`browserJavaEnabled`           | `bool` | Indicates if the browser has Java enabled. Either `true` or `false`. |
