@@ -2,7 +2,7 @@
 title: Status Response Models
 description: |
   Payment order responses with different payment statuses.
-menu_order: 2800
+menu_order: 2600
 icon:
   content: rule
   outlined: true
