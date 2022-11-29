@@ -2,10 +2,10 @@
 title: Automated Fuel Dispenser Payments
 estimated_read: 3
 description: |
-  Payments for Automated Fuel Dispensers.
-menu_order: 1650
+  Payments for automated fuel dispensers.
+menu_order: 1300
 icon:
-  content: dns
+  content: local_gas_station
   outlined: true
 ---
 

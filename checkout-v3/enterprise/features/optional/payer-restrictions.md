@@ -3,7 +3,7 @@ title: Restricted To SSN
 estimated_read: 5
 description: |
   Restricting payments to a specific Social Security Number (SSN)
-menu_order: 2400
+menu_order: 2200
 icon:
   content: lock
   outlined: true
