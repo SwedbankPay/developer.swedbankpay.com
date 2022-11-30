@@ -10,9 +10,9 @@ Number for payment instruments which support this. This can be used when you
 want to make sure you only accept payments from an already identified
 individual.
 
-You do this by adding the field `restrictedToSocialSecurityNumber` in the `payer`
-node, in your payment order request, and setting it to `true`. This will leave out
-all instruments which do not support this feature.
+You do this by adding the field `restrictedToSocialSecurityNumber` in the
+`payer` node, in your payment order request, and setting it to `true`. This will
+leave out all instruments which do not support this feature.
 
 It will then use the `socialSecurityNumber` located in the `nationalIdentifier`
 node (found within the `payer` node). The `nationalIdentifier` must be included

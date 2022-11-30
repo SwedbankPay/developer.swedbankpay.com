@@ -99,17 +99,17 @@ illustrated in the below sequence diagram:
 @enduml
 ```
 
-1. First, the payer makes an HTTP request with their web browser towards the
+1.  First, the payer makes an HTTP request with their web browser towards the
    merchant's website. This HTTP request contains a `User-Agent` header, here
    given the value **`P`** (for "Payer").
-2. The merchant performs an HTTP request towards Swedbank Pay.
-   1. The merchant extracts the **`P`** value of the `User-Agent` header from
+2.  The merchant performs an HTTP request towards Swedbank Pay.
+   1.  The merchant extracts the **`P`** value of the `User-Agent` header from
       the payer's browser and sends it to Swedbank Pay in the `userAgent` field
       in the JSON request body.
-   2. The merchant also composes its own user agent string and sends it to
+   2.  The merchant also composes its own user agent string and sends it to
       Swedbank Pay in the `User-Agent` HTTP request header, here represented as
       the value **`M`** (for "Merchant").
-3. Swedbank Pay receives `"userAgent": "P"` and `User-Agent: M`, stores the
+3.  Swedbank Pay receives `"userAgent": "P"` and `User-Agent: M`, stores the
    values and returns the **`M`** value in the `initiatingSystemUserAgent`
    response JSON field.
 
@@ -152,7 +152,7 @@ most assuredly will break when Swedbank Pay makes updates in the future.
 ### Storing URLs
 
 {% include alert.html type="success" icon="link" header="Storing URLs" body="In
-general, URLs should be **discovered** in responses to previous requets, **not
+general, URLs should be **discovered** in responses to previous requests, **not
 stored**." %}
 
 However, URLs that are used to create new resources can be stored or hard coded.
