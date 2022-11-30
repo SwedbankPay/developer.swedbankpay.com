@@ -7,10 +7,10 @@ endcapture %}
 
 AutoClick is a feature which automatically forwards the payer from the payment
 window when an instrument is selected, just as if they pressed the Pay button.
-It is only available when using **Checkout v3** and the wallet **Click to Pay**.
-Support for more payment instruments will be added going forward. Apart from
-adding the field in your payment order request, no changes are required at your
-(the merchant's) end for AutoClick to work.
+It is only available when using **Checkout v3**, for all wallets **except**
+**Apple Pay**. Support for more payment instruments will be added going forward.
+Apart from adding the field in your payment order request, no changes are
+required at your (the merchant's) end for AutoClick to work.
 
 There are a couple of limitations in place for this feature. First of all, it is
 restricted to payment instruments which require **no input** from the payer
@@ -455,5 +455,3 @@ Content-Type: application/json
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            | {% endif %}
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
-
-[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

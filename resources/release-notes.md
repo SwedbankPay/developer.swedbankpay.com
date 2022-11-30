@@ -42,7 +42,7 @@ some more bugs and typos.
 We have been picking up steam since our summer break, hitting full throttle as
 September arrived. A smaller release this time around, but there are some
 important additions nonetheless. We have added a
-[siteId][checkout-v3-payments-only-redirect-request] field to checkout v3
+[siteID][checkout-v3-payments-only-redirect-request] field to checkout v3
 implementations, re-worked nearly all
 [headers][checkout-v3-payments-only-seamless] across the portal to make
 navigation easier, added a section on
@@ -723,7 +723,6 @@ integration and the payer.
 [checkout-items]: /checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
-[checkout-v3]: /checkout-v3/
 [checkout-v3-business]: /checkout-v3/business
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
@@ -732,7 +731,6 @@ integration and the payer.
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
-[cross-channel-payments]: /checkout-v3/payments-only/features/optional/cross-channel-payments
 [data-protection]: /resources/data-protection
 [delete-payment-tokens]: /checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop

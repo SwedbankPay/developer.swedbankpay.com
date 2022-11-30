@@ -264,4 +264,3 @@ Content-Type: application/json
 |                   | └─➔&nbsp;`amount`                   | `string` | The amount of the specific order line. |
 
 [gpc]: https://www.gs1.org/standards/gpc
-[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
