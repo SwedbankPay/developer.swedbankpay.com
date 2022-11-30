@@ -328,4 +328,4 @@ Content-Type: application/json
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
-split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
+[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

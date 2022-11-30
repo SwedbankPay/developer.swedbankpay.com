@@ -21,9 +21,10 @@ exciting being the new capabilities
 [Automated Fuel Dispenser Payments][afd-payments], [SSN][ssn-restrictions] and
 [Age][age-restrictions] restrictions. We've also added some new fields in the
 [Paid][resource-model-paid] and [Cancelled][resource-model-cancelled] models, a
-new [Payer][resource-model-payer] resource model. Please note the [organization
-number][v3-setup] added to the essential information for Checkout v3 set ups.
-Apart from that, there are no releases without typo corrections and bug fixes.
+new [Payer][resource-model-payer] resource model. Please note the
+[organization number][v3-setup] added to the essential information for Checkout
+v3 set ups. Apart from that, there are no releases without typo corrections and
+bug fixes.
 
 ## 20 September 2022
 
