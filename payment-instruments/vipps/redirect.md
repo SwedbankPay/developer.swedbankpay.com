@@ -395,7 +395,7 @@ purchased products) have to make a [Capture][capture] or
 
 [callback]: /payment-instruments/vipps/features/core/callback
 [cancel]: /payment-instruments/vipps/features/core/cancel
-[capture]: /payment-instruments/vipps/after-payment#captures
+[capture]: /payment-instruments/vipps/capture
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [reference-redirect]: /payment-instruments/vipps/redirect
 [vipps-purchase-flow]: /assets/img/payments/vipps-purchase-flow.png

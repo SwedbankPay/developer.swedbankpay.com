@@ -231,7 +231,7 @@ function guid() {
 [iso-8601]: https://en.wikipedia.org/wiki/ISO_8601
 [oauth-rest-java]: https://github.com/SwedbankPay/vas-payment-api-client/blob/master/backend/src/main/java/com/swedbankpay/vas/demo/config/security/Oauth2RestTemplateConfiguration.java
 [oauth2]: https://oauth.net/2/
-[restful-cookbook-hmac]: http://restcookbook.com/Basics/loggingin/
+[restful-cookbook-hmac]: https://restcookbook.com/Basics/loggingin/
 [spring-security]: https://spring.io/projects/spring-security-oauth
 [test-client]: /gift-cards/test-client
 [uuid]: https://tools.ietf.org/rfc/rfc4122.txt

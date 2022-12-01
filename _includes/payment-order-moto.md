@@ -61,8 +61,8 @@ Content-Type: application/json
             "nationalIdentifier": {
                 "socialSecurityNumber": "{{ page.consumer_ssn_se }}",
                 "countryCode": "SE"
-            }
-            "firstName": "Leia"
+            },
+            "firstName": "Leia",
             "lastName": "Ahlström",
             "email": "leia@payex.com",
             "msisdn": "+46787654321",
@@ -114,22 +114,6 @@ Content-Type: application/json
                 "vatPercent": 2500,
                 "amount": 1500,
                 "vatAmount": 375
-            },
-            {
-                "reference": "I1",
-                "name": "InvoiceFee",
-                "type": "PAYMENT_FEE",
-                "class": "Fees",
-                "description": "Fee for paying with Invoice",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 1900,
-                "vatPercent": 0,
-                "amount": 1900,
-                "vatAmount": 0,
-                "restrictedToInstruments": [
-                    "Invoice-PayExFinancingSe"
-                ]
             }
         ],
         "riskIndicator": {
@@ -153,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-Request field not covered in the common Checkout v3 [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
+Request field not covered in the common Checkout redirect or seamless view
 table:
 
 {:.table .table-striped}

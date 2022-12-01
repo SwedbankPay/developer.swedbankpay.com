@@ -318,15 +318,15 @@ Content-Type: application/json
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
 | └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Enterprise implementation, this is triggered by not including a `payerReference` or `nationalIdentifier` in the original payment order request.                                                                                                                                                   |
-| └➔&nbsp;`payer`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
+| └➔&nbsp;`payer`         | `string`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 |
 | └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
-| └➔&nbsp;`history`     | `string`     | The URL to the `history` [resource]({{ features_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
-| └➔&nbsp;`failed`     | `string`     | The URL to the `failed` [resource]({{ features_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`aborted`     | `string`     | The URL to the `aborted` [resource]({{ features_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`paid`     | `string`     | The URL to the `paid` [resource]({{ features_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`cancelled`     | `string`     | The URL to the `cancelled` [resource]({{ features_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` [resource]({{ features_url }}/technical-reference/resource-sub-models#financialTransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` [resource]({{ features_url }}/technical-reference/resource-sub-models#failedAttempts) where information about the failed attempts can be retrieved.                                                                                                                            |
+| └➔&nbsp;`history`     | `string`     | The URL to the [`history` resource]({{ features_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
+| └➔&nbsp;`failed`     | `string`     | The URL to the [`failed` resource]({{ features_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`aborted`     | `string`     | The URL to the [`aborted` resource]({{ features_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`paid`     | `string`     | The URL to the [`paid` resource]({{ features_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`cancelled`     | `string`     | The URL to the [`cancelled` resource]({{ features_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the [`financialTransactions` resource]({{ features_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
+| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 
@@ -357,7 +357,11 @@ Content-Type: application/json
         "operation": "Purchase",
         "status": "Paid",
         "currency": "SEK",
+        "transactionType": "Authorization",
         "amount": 1500,
+        "submittedAmount": 1500,
+        "feeAmount": 0,
+        "discountAmount": 0,
         "vatAmount": 375,
         "remainingCaptureAmount": 1500,
         "remainingCancellationAmount": 1500,
@@ -483,7 +487,11 @@ Content-Type: application/json
     "instrument": "ApplePay",
     "number": 80100001190,
     "payeeReference": "1662360210",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount": 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
@@ -518,7 +526,11 @@ Content-Type: application/json
     "instrument": "MobilePay",
     "number": 75100106637,
     "payeeReference": "1662364327",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount": 0,
+    "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
         "maskedPan": "489537******1424",
@@ -553,6 +565,11 @@ Content-Type: application/json
     "number": 99463794,
     "payeeReference": "1662366424",
     "amount": 1500,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount": 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -577,7 +594,11 @@ Content-Type: application/json
     "instrument": "Swish",
     "number": 74100413405,
     "payeeReference": "1662360831",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount": 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -602,7 +623,11 @@ Content-Type: application/json
     "instrument": "Invoice",
     "number": 71100775379,
     "payeeReference": "1662360980",
-    "amount": 2000,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount": 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -627,7 +652,11 @@ Content-Type: application/json
     "instrument": "CreditAccount",
     "number": 77100038000,
     "payeeReference": "1662361777",
+    "transactionType": "Authorization",
     "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount": 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -653,7 +682,11 @@ Content-Type: application/json
     "number": 79100113652,
     "payeeReference": "1662373401",
     "orderReference": "orderReference",
-    "amount": 90361,
+    "transactionType": "Authorization",
+    "amount": 1500,
+    "submittedAmount": 1500,
+    "feeAmount": 0,
+    "discountAmount": 0,
     "details": {}
   }
 }
@@ -669,10 +702,14 @@ responses:
 | └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
 | `paid`                | `object`     | The paid object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
+| └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
+| └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
 

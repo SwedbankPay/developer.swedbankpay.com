@@ -31,10 +31,8 @@ You can find it in the `paymentorder` field. This is required if you want to use
 Checkout v3. If it isn´t included in your request, you won't get the correct
 operations in the response.
 
-When `productName` is set to `checkout3`, `requireConsumerInfo` and
-`digitalProducts` will be set to `false` by default. For the **Starter**
-integration, you must set `requireConsumerInfo` to `true`. If `digitalProducts`
-is set to `false`, you also need to add
+When `productName` is set to `checkout3`, `digitalProducts` will be set to
+`false` by default. If `digitalProducts` is set to `false`, you also need to add
 `shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
 Supported features for this integration are subscriptions (`recur` and
@@ -112,8 +110,8 @@ request.addEventListener('load', function () {
         // To open the Checkin
         window.payex.hostedView.checkout({
             container: {
-                checkin: "checkin",
-                paymentMenu: "paymentMenu",
+                checkin: "checkin-container",
+                paymentMenu: "payment-menu-container",
             },
             culture: 'nb-No',
             // If payer is identified
@@ -168,8 +166,8 @@ Content-Type: application/json
 //to open the Payment Menu
 window.payex.hostedView.checkout({
     container: {
-        checkin: "checkin",
-        paymentMenu: "paymentMenu",
+        checkin: "checkin-container",
+        paymentMenu: "payment-menu-container",
     },
     culture: 'nb-No',
 }).open("paymentmenu");
@@ -184,8 +182,8 @@ window.payex.hostedView.checkout({
             <title>Swedbank Pay Checkout is Awesome!</title>
         </head>
         <body>
-            <div id="checkin"></div>
-            <div id="payment-menu"></div>
+            <div id="checkin-container"></div>
+            <div id="payment-menu-container"></div>
             <!-- Here you can specify your own javascript file -->
             <script src="<Your-JavaScript-File-Here>"></script>
         </body>
@@ -249,7 +247,7 @@ open the payment menu. The payer can then proceed with the purchase.
 Once a purchase is complete, you can perform a `GET` towards the `paymentOrders`
 resource to see the purchase state.
 
-### Events
+## Events
 
 When integrating Seamless View, especially with **Starter** where it's the only
 option, we strongly recommend that you implement the `onPaid` event, as it will
@@ -280,6 +278,6 @@ Events][seamless-view-events] available in the feature section.
 [checkin-enter-details-mixed]: /assets/img/checkout/checkin-enter-shipping-address.png
 [checkin-new-payer]: /assets/img/checkout/checkin-new-payer.png
 [checkin-new-payer-ssn]: /assets/img/checkout/checkin-new-payer-ssn.png
-[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayeridentified
-[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events##onpayerunidentified
+[onpayeridentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayeridentified
+[onpayerunidentified]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onpayerunidentified
 [sequence-diagrams]: /checkout-v3/sequence-diagrams#starter-seamless-view

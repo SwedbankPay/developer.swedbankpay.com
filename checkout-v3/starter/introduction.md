@@ -10,8 +10,7 @@ This is the option where Swedbank Pay does it all. Verifying your consumer,
 collecting billing and shipping addresses, storing consumer information and
 providing you with the full range of available payment methods.
 
-The only way of integrating our **Starter** implementation is **Seamless
-View**.
+The only way of integrating our **Starter** implementation is **Seamless View**.
 
 With **Seamless View**, the payer stays at your site, and you initiate the
 Swedbank Pay authentication and purchase module in an iframe. The checkin and

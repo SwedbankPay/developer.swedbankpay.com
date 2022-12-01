@@ -58,7 +58,8 @@ options:
 {:.text-center}
 ![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
-{% include languages.md %}
+This payment instrument supports English (US) `en-US`, Norwegian `nb-NO` and
+Swedish `sv-SE`.
 
 ## Invoice Flow
 
@@ -95,7 +96,7 @@ sequenceDiagram
 
 {% include iterator.html next_href="redirect" next_title="Redirect" %}
 
-[financing-consumer]: /payment-instruments/invoice/other-features#financing-consumer
+[financing-consumer]: /payment-instruments/invoice/features/technical-reference/financing-consumer
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [purchase]: /payment-instruments/invoice/features/technical-reference/create-payment
 [setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi

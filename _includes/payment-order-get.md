@@ -1,4 +1,5 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
 
 {% capture product %}
     {% if documentation_section == "payment-menu" %}
@@ -112,13 +113,14 @@ Content-Type: application/json
 | └➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
 | └➔&nbsp;`urls`           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
 | └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                          |
-| └➔&nbsp;`payers`         | `string`     | The URL to the `payers` resource where information about the payee of the payment order can be retrieved.                                                                                                                 |
+| └➔&nbsp;`payers`         | `string`     | The URL to the `payer` resource where information about the payer can be retrieved.                                                                                                                |
 | └➔&nbsp;`orderItems`     | `string`     | {% include field-description-metadata.md %}                                                                                                                            |
 | └➔&nbsp;`metadata`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`payments`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`currentPayment` | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
-| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details](#operations).                                                                                             |
+| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                             |
 
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /{{ documentation_section }}
+[operations]: {{ features_url }}/technical-reference/operations

@@ -2,7 +2,7 @@
 title: Unscheduled Purchase
 estimated_read: 12
 description: Setting up subscriptions and merchant initiated payments.
-menu_order: 1800
+menu_order: 1900
 icon:
   content: report_problem
   outlined: true

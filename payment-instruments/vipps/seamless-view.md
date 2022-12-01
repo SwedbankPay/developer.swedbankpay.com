@@ -320,7 +320,7 @@ sequenceDiagram
 
 [callback]: /payment-instruments/vipps/features/core/callback
 [cancellations]: /payment-instruments/vipps/features/core/cancel
-[captures]: /payment-instruments/vipps/after-payment#captures
+[captures]: /payment-instruments/vipps/capture
 [complete-url]: /payment-instruments/vipps/features/technical-reference/complete-url
 [create-payment]: /payment-instruments/vipps/features/technical-reference/create-payment
 [price-resource]: /payment-instruments/vipps/features/technical-reference/prices

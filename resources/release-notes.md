@@ -11,6 +11,21 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 29 November 2022
+
+### Version 3.1.5
+
+Our penultimate release of the year has a few things up its sleeve. The most
+exciting being the new capabilities
+[Cross Channel Payments][cross-channel-payments],
+[Automated Fuel Dispenser Payments][afd-payments], [SSN][ssn-restrictions] and
+[Age][age-restrictions] restrictions. We've also added some new fields in the
+[Paid][resource-model-paid] and [Cancelled][resource-model-cancelled] models, a
+new [Payer][resource-model-payer] resource model. Please note the
+[organization number][v3-setup] added to the essential information for Checkout
+v3 set ups. Apart from that, there are no releases without typo corrections and
+bug fixes.
+
 ## 20 September 2022
 
 ### Version 3.1.3
@@ -678,6 +693,8 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[afd-payments]: /checkout-v3/payments-only/features/optional/afd
+[age-restrictions]: /checkout-v3/payments-only/features/optional/age-restrictions
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
 [authorization-timeouts]: /checkout-v2/capture
@@ -690,16 +707,16 @@ integration and the payer.
 [card-unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled
 [card-transaction-states]: /payment-instruments/card/features/technical-reference/payment-transaction-states
 [card]: /payment-instruments/card
-[card-3ds-info]: /payment-instruments/card#purchase-flow
+[card-3ds-info]: /payment-instruments/card#sequence-diagram
 [card-3ds2]: /payment-instruments/card/features/core/3d-secure-2
 [card-redirect]: /payment-instruments/card/redirect
 [card-seamless-view]: /payment-instruments/card/seamless-view
 [checkin]: /checkout-v2/checkin
 [checkout-capture]: /checkout-v2/capture
-[checkout-invoice-capture]: /checkout-v2/capture#invoice
+[checkout-invoice-capture]: /checkout-v2/capture
 [checkout-checkin-front-end]:/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkout-payment-menu-frontend]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
-[checkout-payment-order-purchase]: /checkout-v2/payment-menu#request
+[checkout-payment-order-purchase]: /checkout-v2/payment-menu#step-3-create-payment-order
 [checkout-payment-url]: /checkout-v2/features/technical-reference/payment-url
 [checkout-create-starter-paymentorder]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /checkout-v2/
@@ -715,6 +732,7 @@ integration and the payer.
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
+[cross-channel-payments]: /checkout-v3/payments-only/features/optional/cross-channel-payments
 [data-protection]: /resources/data-protection
 [delete-payment-tokens]: /checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
@@ -740,23 +758,26 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [optional-features]: /checkout-v2/features/optional/
 [payment-orders]: /checkout-v2/payment-menu#step-3-create-payment-order
-[payment-menu-invoice-capture]:/payment-menu/capture#invoice
+[payment-menu-invoice-capture]:/payment-menu/capture
 [payment-menu-items]: /payment-menu/features/technical-reference/items
 [payment-menu-payment-link]: /payment-menu/features/optional/payment-link
 [payments]: /payment-instruments
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /checkout-v2/features/technical-reference/prices
-[update-order-checkout]: /checkout-v2/features#update-order
+[update-order-checkout]: /checkout-v2/features/optional/update
 [recur]: /checkout-v3/payments-only/features/optional/recur
+[resource-model-cancelled]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#cancelled
 [resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
+[resource-model-payer]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#payer
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
-[status-models]: /checkout-v3/payments-only/features/technical-reference/status-response-models
-[storing-uri]: /introduction#storing-uris
+[ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
+[status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
+[storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /payment-instruments/swish/direct
@@ -778,6 +799,7 @@ integration and the payer.
 [trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
 [unscheduled-mit]: /checkout-v3/payments-only/features/optional/unscheduled
+[v3-setup]: /checkout-v3/payments-only/#step-1-sign-up-for-a-test-account
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps
