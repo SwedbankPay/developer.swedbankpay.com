@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include payment-order-moto.md %}
+{% include moto.md %}

@@ -507,23 +507,6 @@ Content-Type: application/json
 }
 ```
 
-    "amount": 1500,
-    "details": {
-        "cardBrand": "Visa",
-        "cardType": "Credit",
-        "expiryDate": "12/0023",
-        "issuerAuthorizationApprovalCode": "L00392",
-        "acquirerTransactionType": "WALLET",
-        "acquirerStan": "392",
-        "acquirerTerminalId": "80100001190",
-        "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
-        "transactionInitiator": "CARDHOLDER"
-    }
-  }
-}
-
-```
-
 ### MobilePay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
