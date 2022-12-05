@@ -88,7 +88,26 @@ storing the payer data and the payment instruments to be presented.
 
 Regardless of whether you choose to go with the full checkout or payments only,
 we will supply you with a variety of payment instruments and features which
-cater to your business needs. Somewhat depending on which country or countries
+cater to your business needs. The different payment instruments available
+in Checkout v3 are:
+
+{:.table .table-plain}
+|        | Payment Instrument |  Starter | Business | Enterprise   |  Payments Only | Region                                    |
+| :--------------------------: | :------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :---------------------------------------- |
+|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
+| {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
+| {% icon insert_drive_file %} | [Swedbank Pay Credit Account][ca] | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![MobilePay][mobilepay-logo] | [MobilePay][mobile-pay]        |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
+| {% icon insert_drive_file %} | [Swedbank Pay Monthly Payments][mp] | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %}                             |
+| ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %}                             |
+| ![MobilePay][mobilepay-logo] | [MobilePay][mobile-pay]        |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
+|   ![Trustly][trustly-logo]   | [Trustly][trustly]              | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
+|   ![Apple Pay][apple-pay-logo]   | [Apple Pay][apple-pay]              | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|   ![Click to Pay][c2p-logo]   | [Click to Pay][click-to-pay]              | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|   ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]              | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+
+Somewhat depending on which country or countries
 where you are present, we offer **Apple Pay (on iOS devices), card, invoice**
 (incl. **monthly payments), MobilePay, Swish, Trustly** and **Vipps**.
 
@@ -202,3 +221,26 @@ full range of payment instruments.
   tab2_intro=tab2_intro
   tab2_content=tab2_content
   %}
+
+[apple-pay]:
+[apple-pay-logo]:
+[c2p-logo]:
+[ca]:
+[card]:
+[card-icon]: /assets/img/icon-card-simple.svg
+[earth-icon]: /assets/img/globe-icon.png
+[envelope-icon]: /assets/img/envelope-icon.png
+[google-pay]:
+[google-pay-logo]:
+[invoice]:
+[invoice-icon]: /assets/img/icon-invoice-simple.svg
+[keypad-icon]: /assets/img/keypad-icon.png
+[mobile-pay]:
+[mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
+[mp]:
+[vipps-logo]: /assets/img/icon-vipps-simple.svg
+[swish]:
+[swish-logo]: /assets/img/icon-swish-simple.svg
+[trustly]:
+[trustly-logo]: /assets/img/icon-trustly-simple.svg
+[vipps]:
