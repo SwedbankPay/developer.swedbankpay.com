@@ -639,13 +639,14 @@ Content-Type: application/json
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
-        "expiryDate": "12/0023",
+        "expiryDate": "12/2023",
         "issuerAuthorizationApprovalCode": "L00392",
         "acquirerTransactionType": "WALLET",
         "acquirerStan": "392",
         "acquirerTerminalId": "80100001190",
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
-        "transactionInitiator": "CARDHOLDER"
+        "transactionInitiator": "CARDHOLDER",
+        "bin": "492500"
     }
   }
 }
@@ -714,7 +715,14 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+        "cardBrand": "Visa",
+        "acquirerTransactionType": "WALLET",
+        "acquirerTerminalId": "99488282",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
+        "transactionInitiator": "CARDHOLDER",
+        "bin": "489537"
+    }
   }
 }
 ```
