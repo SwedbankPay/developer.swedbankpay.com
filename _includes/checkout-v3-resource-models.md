@@ -606,7 +606,8 @@ Content-Type: application/json
       "acquirerStan": "302",
       "acquirerTerminalId": "70101301389",
       "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
-      "transactionInitiator": "CARDHOLDER"
+      "transactionInitiator": "CARDHOLDER",
+      "bin": "492500"
     }
   }
 ```
@@ -682,7 +683,8 @@ Content-Type: application/json
         "acquirerTransactionType": "MOBILEPAY",
         "acquirerStan": "53889",
         "acquirerTerminalId": "42",
-        "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
+        "bin": "489537"
     }
   }
 }
@@ -741,7 +743,9 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+      "misidn": "+46739000001"
+    }
   }
 }
 ```
@@ -866,6 +870,8 @@ Content-Type: application/json
 | └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
 | └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
 | └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`bin` | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`msisdn` | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
 
 ## Payer
 
