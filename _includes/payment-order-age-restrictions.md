@@ -21,7 +21,7 @@ feature will reject payments that do not match the restriction.
 
 ## Restrict Payments To An Age Limit Request
 
-You need to add a `int` field called `restrictedToAgeLimit` in your payment
+You need to add an `int` field called `restrictedToAgeLimit` in your payment
 order request and set it to your desired age limit, i.e. 20.
 
 Below is a shortened example of a payment order request. Apart from the
