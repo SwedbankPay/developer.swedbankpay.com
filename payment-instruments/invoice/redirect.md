@@ -92,7 +92,7 @@ Content-Type: application/json
         },
         "payer": {
             "payerReference": "AB1234",
-        }
+        },
     "invoice": {
         "invoiceType": "PayExFinancingSe"
         }
