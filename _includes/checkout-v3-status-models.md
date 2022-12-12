@@ -423,7 +423,8 @@ Content-Type: application/json
                 "acquirerStan": "302",
                 "acquirerTerminalId": "70101301389",
                 "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
-                "transactionInitiator": "CARDHOLDER"
+                "transactionInitiator": "CARDHOLDER",
+                "bin": "492500"
            }
         },
         "cancelled": {
@@ -539,7 +540,8 @@ Content-Type: application/json
         "acquirerTransactionType": "MOBILEPAY",
         "acquirerStan": "53889",
         "acquirerTerminalId": "42",
-        "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
+        "bin": "489537",
     }
   }
 }
