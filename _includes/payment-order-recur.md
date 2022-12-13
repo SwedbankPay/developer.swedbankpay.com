@@ -240,7 +240,6 @@ Content-Type: application/json
         "description": "Test Purchase",
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
-        "recurrenceToken": "{{ page.payment_id }}",
         "availableInstruments": [
           "CreditCard",
           "Invoice-PayExFinancingSe",
