@@ -49,17 +49,20 @@ is enabled and handled automatically (Swish, Vipps etc). To solve this, it is
 important that the third party app or site understand where to redirect the
 payer back to after the flow on their end is completed.
 
-The `paymentUrl` is the URL Swedbank Pay will provide to the third party for
-handling the redirect back to your site or app. **When receiving the payer**
-**back from the `paymentUrl` either in an app or a web page, it is vital that**
-**you reload the Seamless View payment menu, so the payment flow can be**
-**completed. Failing to do so could lead to issues.** For in-app it is important
-that you either implement the `onPaymentCompleted` event or let the Seamless
-View redirect to the `completeUrl` before intercepting the WebView. If you
-intercept the WebView when the payer's device is redirected to the `paymentUrl`
-it can lead to issues. If you want to handle payment errors in your own code,
-you should also subscribe to other events provided by the Seamless View
-JavaScript and shut down the Seamless View if any of these events occur.
+{% include alert.html type="informative" icon="info" body="The `paymentUrl` is
+the URL Swedbank Pay will provide to the third party for handling the redirect
+back to your site or app. When the payer returns from the `paymentUrl` either in
+an app or a web page, it is vital that you reload the Seamless View payment
+menu, so the payment flow can be completed. Failing to do so could lead to
+issues." %}
+
+For in-app it is important that you either implement the `onPaymentCompleted`
+event or let the Seamless View redirect to the `completeUrl` before intercepting
+the WebView. If you intercept the WebView when the payer's device is redirected
+to the `paymentUrl` it can lead to issues. If you want to handle payment errors
+in your own code, you should also subscribe to other events provided by the
+Seamless View JavaScript and shut down the Seamless View if any of these events
+occur.
 
 Events to subscribe to for full control over the payment flow are can be found
 in {% if technical_reference_url contains "/checkout-v2" %}
