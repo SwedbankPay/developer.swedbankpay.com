@@ -90,7 +90,7 @@ Content-Type: application/json
             "callbackUrl": "https://example.com/payment-callback"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}"
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
@@ -209,7 +209,7 @@ Content-Type: application/json
             "termsOfServiceUrl": "https://example.com/payment-terms.html"
         },
         "payeeInfo": {
-            "payeeId": "{{ page.merchant_id }}"
+            "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "CD1234",
             "payeeName": "Merchant1",
             "productCategory": "A123",
