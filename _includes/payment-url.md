@@ -49,12 +49,12 @@ is enabled and handled automatically (Swish, Vipps etc). To solve this, it is
 important that the third party app or site understand where to redirect the
 payer back to after the flow on their end is completed.
 
-{% include alert.html type="informative" icon="info" body="The `paymentUrl` is
-the URL Swedbank Pay will provide to the third party for handling the redirect
-back to your site or app. When the payer returns from the `paymentUrl` either in
-an app or a web page, it is vital that you reload the Seamless View payment
-menu, so the payment flow can be completed. Failing to do so could lead to
-issues." %}
+{% include alert.html type="informative" icon="info" header="Refresh your
+payment menu after the payer's return!" body="The `paymentUrl` is the URL
+Swedbank Pay will provide to the third party for handling the redirect back to
+your site or app. When the payer returns from the `paymentUrl` either in an app
+or a web page, it is vital that you refresh the Seamless View payment menu so
+the payment flow can be completed. Failing to do so could lead to issues." %}
 
 For in-app it is important that you either implement the `onPaymentCompleted`
 event or let the Seamless View redirect to the `completeUrl` before intercepting
