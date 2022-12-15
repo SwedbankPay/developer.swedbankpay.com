@@ -94,6 +94,7 @@ Content-Type: application/json
 
 {% else %}
 
+```http
 POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
