@@ -11,6 +11,18 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 15 December 2022
+
+### Version 3.1.6
+
+Our last update in 2022 mainly consists of clean-ups and fixes, but the most
+important changes are `bin` and `msidn` fields added (where they are relevant)
+to [Paid resource model][resource-model-paid-swish]
+and [Paid status model][status-model-paid], plus a small rework of
+[Age restrictions][age-restrictions].
+
+Happy holidays, everyone! We look forward to seeing you in 2023!
+
 ## 29 November 2022
 
 ### Version 3.1.5
@@ -768,6 +780,7 @@ integration and the payer.
 [recur]: /checkout-v3/payments-only/features/optional/recur
 [resource-model-cancelled]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#cancelled
 [resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
+[resource-model-paid-swish]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#swish-paid-resource
 [resource-model-payer]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#payer
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
@@ -777,6 +790,7 @@ integration and the payer.
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
+[status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
 [storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
