@@ -3,7 +3,7 @@ title: Developer Portal
 layout: front-page
 front_page:
   ingress: |
-We've compiled a complete toolbox for integrating our payment solutions, so you can familiarize yourself with their various features and functionalities.
+    We've compiled a complete toolbox for integrating our payment solutions, so you can familiarize yourself with their various features and functionalities.
   show_merchants_bar: false
   start_heading: Let's get your e-commerce website up and running with easy, flexible, and safe payments!
 hide_from_sidebar: true
