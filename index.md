@@ -3,18 +3,18 @@ title: Developer Portal
 layout: front-page
 front_page:
   ingress: |
-    Here you'll find the full toolbox for how to integrate our payment solutions, acquaint yourself with their different features and functionalities, and learn how to integrate them.
+We've compiled a complete toolbox for integrating our payment solutions, so you can familiarize yourself with their various features and functionalities.
   show_merchants_bar: false
-  start_heading: Let's get you started with easy, flexible and safe payments on your e-commerce website!
+  start_heading: Let's get your e-commerce website up and running with easy, flexible, and safe payments!
 hide_from_sidebar: true
 ---
 
 {% contentfor intro_cards %}
   {% include card-extended.html
-          title='Get to know Checkout v3'
+          title='Discover Checkout v3'
           no_icon=true
-          button_content='Get started'
-          text='All businesses have their own unique needs. Which is why we have made it possible for you to adapt to a variety of those needs, using only one integration. To help you get started we have made four implementation options to choose from. In that way you can utilize your checkin in just a few configurations, or switch into any other of our stand alone payment methods - if that suits you better. Intrigued yet? Let’s find out more!'
+          button_content="Let's get started"
+          text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created four options to choose from. That way, you can set up your check-in in just a few configurations, or switch to another stand-alone payment method if that suits you better. Ready to learn more? Here's what you need to know!"
           button_type='primary'
           button_alignment='align-self-end'
           to='/checkout-v3/'
