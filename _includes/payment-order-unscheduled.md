@@ -363,7 +363,7 @@ Content-Type: application/json
 
 The token can be retrieved by performing a [`GET` towards
 `paid`][paid-resource-model]. It will be visible under `tokens` in the `paid`
-node.
+field.
 
 {:.code-view-header}
 **Request**
@@ -378,7 +378,7 @@ Content-Type: application/json
 As an alternative, you can also retrieve it by using the expand option when you
 `GET` your payment. The `GET` request should look like the one below, with a
 `?$expand=paid` after the `paymentOrderId`. The response should match the
-initial payment response, but with an expanded `paid` node.
+initial payment response, but with an expanded `paid` field.
 
 {:.code-view-header}
 **Request**
@@ -395,7 +395,7 @@ Content-Type: application/json
 You can retrieve it by using the expand option when you `GET` your payment. The
 `GET` request should look like the one below, with a `?$expand=paid` after the
 `paymentOrderId`. The response should match the initial payment response, but
-with an expanded `paid` node.
+with an expanded `paid` field.
 
 {:.code-view-header}
 **Request**
