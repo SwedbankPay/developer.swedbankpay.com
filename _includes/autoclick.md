@@ -22,7 +22,7 @@ message.
 
 ## Request
 
-The field itself is a `bool` which must be added in the `paymentorder` node of
+The field itself is a `bool` which must be added in the `paymentorder` field of
 the request, like the example below.
 
 {:.code-view-header}

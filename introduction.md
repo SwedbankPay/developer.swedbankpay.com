@@ -279,7 +279,7 @@ GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations H
 Host: {{ page.api_host }}
 ```
 
-To avoid unnecessary overhead, you should only expand the nodes you need info
+To avoid unnecessary overhead, you should only expand the fields you need info
 about.
 
 ## Data Types

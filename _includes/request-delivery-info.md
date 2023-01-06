@@ -8,7 +8,7 @@ endcapture %}
 Swedbank Pay provides the possibility to return delivery information from
 payment instruments which support this. You do this by adding the field
 `requestDeliveryInfo` in your payment order request and setting it to `true`.
-The returned delivery information will appear in the `payer` node after the
+The returned delivery information will appear in the `payer` field after the
 payment has been `paid`, and **not** the initial response. You have to
 perform a GET to see it.
 
@@ -25,8 +25,8 @@ later time.
 
 ## Request Delivery Info Request
 
-The fields themselves are `bool`s which must be added in the `paymentorder` node
-of the request, like the example below.
+The fields themselves are `bool`s which must be added in the `paymentorder`
+field of the request, like the example below.
 
 {:.code-view-header}
 **Request**
