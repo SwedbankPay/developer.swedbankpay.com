@@ -412,8 +412,8 @@ Content-Type: application/json
             "payeeReference": "1641542301",
             "amount": 1500,
             "details": {
-                "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
-                "externalNonPaymentToken" : "1234567890",
+                "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+                "externalNonPaymentToken": "1234567890",
                 "cardBrand": "Visa",
                 "cardType": "Credit",
                 "maskedPan": "492500******0004",
@@ -475,7 +475,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Apple Pay**
+**Apple Pay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -494,6 +494,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "cardType": "Credit",
         "expiryDate": "12/0023",
@@ -503,6 +505,7 @@ Content-Type: application/json
         "acquirerTerminalId": "80100001190",
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
         "transactionInitiator": "CARDHOLDER"
+        "bin": "489537"
     }
   }
 }
@@ -514,7 +517,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**MobilePay**
+**MobilePay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -533,6 +536,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "maskedPan": "489537******1424",
         "expiryDate": "12/2022",
@@ -540,8 +545,8 @@ Content-Type: application/json
         "acquirerTransactionType": "MOBILEPAY",
         "acquirerStan": "53889",
         "acquirerTerminalId": "42",
-        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
-        "bin": "489537",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+        "bin": "489537"
     }
   }
 }
@@ -553,7 +558,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Vipps**
+**Vipps Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -572,7 +577,16 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890"
+        "cardBrand": "Visa",
+        "acquirerTransactionType": "WALLET",
+        "acquirerTerminalId": "99488282",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
+        "transactionInitiator": "CARDHOLDER",
+        "bin": "489537"
+    }
   }
 }
 ```
@@ -583,7 +597,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Swish**
+**Swish Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -601,7 +615,9 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+        "misidn": "+46739000001"
+    }
   }
 }
 ```
@@ -612,7 +628,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**Invoice**
+**Invoice Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -641,7 +657,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**CreditAccount**
+**Credit Account Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -670,7 +686,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**Trustly**
+**Trustly Response**
 
 ```http
 HTTP/1.1 200 OK
