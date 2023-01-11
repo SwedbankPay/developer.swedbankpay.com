@@ -151,6 +151,9 @@ payer shops if they agree to do so.
   button_alignment='align-self-end'
   to='/checkout-v3/enterprise/'
 %}
+
+### Do you have different needs based on the context? 
+We offer the possibility to use different implementations per payment order within the **Full checkout** options. This is especially useful if you need different customer journeys based on the the device used. 
 {% endcapture %}
 
 {% capture tab2_intro %}

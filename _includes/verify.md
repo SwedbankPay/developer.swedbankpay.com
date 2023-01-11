@@ -4,6 +4,7 @@
 {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' or documentation_section == 'invoice' %}
     {% assign has_one_click = true %}
 {%- endunless %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 The `Verify` operation lets you post verification payments, which confirm the
 validity of card information without reserving or charging any amount.
@@ -109,7 +110,8 @@ Content-Type: application/json
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", {% endif %} {% unless documentation_section contains "checkout" %}
+        "productName": "Checkout3", 
+        "implementation": "{{implementation}}", {% endif %} {% unless documentation_section contains "checkout" %}
         "generatePaymentToken": true,{% endunless %} {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}
         "urls": {

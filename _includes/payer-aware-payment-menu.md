@@ -85,7 +85,8 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "generatePaymentToken": true,
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
-        "productName": "Checkout3",{% endif %} {% if documentation_section == "payment-menu" %}
+        "productName": "Checkout3",
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section == "payment-menu" %}
         "instrument": null,{% endif %}
         "disableStoredPaymentDetails": false,
         "urls": {
