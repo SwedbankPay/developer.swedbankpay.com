@@ -2,7 +2,7 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | %}
 
 ## Recur
 
