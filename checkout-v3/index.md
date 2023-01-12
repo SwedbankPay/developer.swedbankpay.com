@@ -82,7 +82,10 @@ There are two main paths you can take here. If you choose the **Full Checkout**
 solution (including payer identification as well as payment options), the payer
 chooses the method of payment. You can also choose the **Payment Only** option.
 In this case, you will collect and store payer data, along with the payment
-instruments you will present to the payer.
+instruments you will present to the payer. It is possible to use different
+implementations per payment order within the **Full checkout** options.
+This is especially useful if you need different customer journeys based on the
+device used.
 
 We offer a variety of payment instruments and features designed to meet your
 business' needs, regardless of whether you choose the **Full Checkout** or
@@ -152,8 +155,6 @@ payer shops if they agree to do so.
   to='/checkout-v3/enterprise/'
 %}
 
-### Do you have different needs based on the context? 
-We offer the possibility to use different implementations per payment order within the **Full checkout** options. This is especially useful if you need different customer journeys based on the the device used. 
 {% endcapture %}
 
 {% capture tab2_intro %}
