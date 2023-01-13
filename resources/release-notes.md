@@ -401,8 +401,6 @@ Other changes:
 *   Updated `orderItems` to be required in all requests and responses.
 *   Clean up of [Swish Payments][swish]
 *   Removed `pageStripDown` in [Vipps Redirect][vipps].
-*   Updated [Card Payments Direct][card-direct] to have a correct integration
-    flow.
 *   Updated the [main page][frontpage] to be more welcoming.
 *   Updated information on [Delegated Strong Customer Authentication][mac-checkout].
 
@@ -463,7 +461,6 @@ This change contains build updates for the page. :octocat:
 
 *   Expanded information about the field `restrictedToInstruments`.
 *   Added information about the field `receiptReference`.
-*   Added information about [direct integration in Credit card][card-direct].
 *   Added and fixed several missing headings in template files.
 *   Expanded information about `verify`.
 *   Created new page for [Checkout Capture][checkout-capture].
@@ -712,7 +709,6 @@ integration and the payer.
 [authorization-timeouts]: /checkout-v2/capture
 [callback]: /checkout-v3/payments-only/features/core/callback
 [card-delete-token]: /payment-instruments/card/features/optional/delete-token
-[card-direct]: /payment-instruments/card/direct
 [card-error-codes]: /payment-instruments/card/features/technical-reference/problems
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
