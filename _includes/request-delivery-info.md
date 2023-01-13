@@ -2,6 +2,7 @@
 {% capture documentation_section %}{% include documentation-section.md %}{%
 endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## Request Delivery Information
 
@@ -49,6 +50,7 @@ Content-Type: application/json
         "requestDeliveryInfo": true,
         "restrictedToDeliveryInfoInstruments": true,
         "productName": "Checkout3",
+        "implementation": "{{implementation}}"
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -257,7 +259,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | | └➔&nbsp;`requestDeliveryInfo`                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. It will be visible in a GET response after the payment has been completed. |
 | | └➔&nbsp;`restrictedToDeliveryInfoInstruments`                       | `bool` | Set to `true` if you want to restrict your payment menu to only include payment instruments which return delivery info.  |
-| {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | └➔&nbsp;`productName`              | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+|                  | └➔&nbsp;`implementation`           | `string`     | Indicates which implementation to use. Valid values are `Enterprise`, `Business` and `Starter`.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   | {% endif %}

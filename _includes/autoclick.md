@@ -2,6 +2,7 @@
 {% capture documentation_section %}{% include documentation-section.md %}{%
 endcapture %}
 {% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## AutoClick
 
@@ -45,6 +46,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "autoClick": true,
         "productName": "Checkout3",
+        "implementation": "{{implementation}}",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -251,8 +253,9 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| | └➔&nbsp;`autoClick`                 | `bool`     | Set to `true` or `false`. Used to indicate if the payer should be automatically redirected from the payment window when selecting supported instruments. If set to `true`, the `termsOfServiceUrl` can't be included in the request.                                                                                                                                                                                                                                                                         |
-| {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+|                  | └➔&nbsp;`autoClick`                | `bool`       | Set to `true` or `false`. Used to indicate if the payer should be automatically redirected from the payment window when selecting supported instruments. If set to `true`, the `termsOfServiceUrl` can't be included in the request.                                                                                                                                                                                                                                                                         |
+| {% icon check %} | └➔&nbsp;`productName`              | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+|                  | └➔&nbsp;`implementation`           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   | {% endif %}
