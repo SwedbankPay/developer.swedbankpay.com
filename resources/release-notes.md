@@ -11,6 +11,22 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 17 January 2023
+
+### Version 3.1.7
+
+We kick off the new year with a new field in our payment order request. Your
+Checkout v3 implementation of choice is now added in the request, and it is
+mandatory for our
+[business implementation][checkout-v3-business-payment-request].
+Version 2 of the balance report and transaction list is our second newcomer this
+release. Head over to [Settlement & Reconciliation][settlement-balance-report]
+to learn more.
+
+We have added a [paid status model][status-model-paid-v2] to Checkout v2 and
+Payment menu, and the [update payment order section][payment-order-update] is
+added to Checkout v3.
+
 ## 15 December 2022
 
 ### Version 3.1.6
@@ -733,6 +749,7 @@ integration and the payer.
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
 [checkout-v3-business]: /checkout-v3/business
+[checkout-v3-business-payment-request]: /checkout-v3/business/redirect#payment-order-request
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [checkout-v3-starter]: /checkout-v3/starter
@@ -766,6 +783,7 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [optional-features]: /checkout-v2/features/optional/
 [payment-orders]: /checkout-v2/payment-menu#step-3-create-payment-order
+[payment-order-update]: /checkout-v3/business/features/optional/update
 [payment-menu-invoice-capture]:/payment-menu/capture
 [payment-menu-items]: /payment-menu/features/technical-reference/items
 [payment-menu-payment-link]: /payment-menu/features/optional/payment-link
@@ -781,12 +799,14 @@ integration and the payer.
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
+[settlement-balance-report]: /payment-instruments/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
+[status-model-paid-v2]: /checkout-v2/features/technical-reference/status-models#paid
 [storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
