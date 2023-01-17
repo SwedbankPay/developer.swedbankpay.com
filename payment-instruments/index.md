@@ -16,15 +16,14 @@ and Invoice? Implement Card and Invoice. Want them all? Have them all. Each
 payment instrument is set up with a separate contract and integration.
 
 With a couple of exceptions, our payment instruments are available on three
-platforms. Choose between our easy-to-use PCI compliant platforms Redirect
-and Seamless View – or use Swedbank Pay Direct API to integrate directly. Our
-payment instruments and their platform availability are listed in the table
-below.
+platforms. Choose between our easy-to-use PCI compliant platforms Redirect or
+Seamless View. Our payment instruments and their platform availability are
+listed in the table below.
 
 {:.table .table-plain}
 |                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                    |
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :---------------------------------------- |
-|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  {% icon check %}  | ![EarthIcon][earth-icon]                  |
+|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  | ![EarthIcon][earth-icon]                  |
 | {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | {% flag no %} {% flag se %} {% flag fi %} |
 |     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | {% flag no %}                             |
 |     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | {% flag se %}                             |
@@ -166,5 +165,4 @@ implementation in action.
 [mobile-pay]: /payment-instruments/mobile-pay
 [seamless-view]: /payment-instruments/card/seamless-view
 [redirect]: /payment-instruments/card/redirect
-[direct]: /payment-instruments/card/direct
 [trustly]: /payment-instruments/trustly

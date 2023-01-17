@@ -519,19 +519,19 @@ Content-Type: application/json
 | `PaymentAttemptAborted`      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
 | `PaymentAttemptFailed`     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
 | `PaymentPaid`      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
-| `PaymentCaptured`      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` node for easy linking.                  |
-| `PaymentPartialCaptured`     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` node for easy linking.               |
+| `PaymentCaptured`      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| `PaymentPartialCaptured`     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
 | `PaymentCancelled`     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
 | `PaymentPartialCancelled`      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
-| `PaymentReversed`    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` node for easy linking.                  |
-| `PaymentPartialReversed`    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` node for easy linking.                  |
+| `PaymentReversed`    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| `PaymentPartialReversed`    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
 
 ## Paid
 
 The payment order response with status `paid`, and the `paid` resource expanded.
-Please note that the main code example is of a card payment. We have included
-`paid` resources of the remaining instruments below the main code example.
-Resource examples where details are empty indicate that no details are
+Please note that the main code example is of a **Card** payment. We have
+included `paid` resources of the remaining instruments below the main code
+example. Resource examples where details are empty indicate that no details are
 available.
 
 The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
@@ -548,8 +548,10 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 ```
 
+### Card `Paid` Resource
+
 {:.code-view-header}
-**Response**
+**Card Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -595,8 +597,8 @@ Content-Type: application/json
       }
     ],
     "details": {
-      "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
-      "externalNonPaymentToken" : "1234567890",
+      "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+      "externalNonPaymentToken": "1234567890",
       "cardBrand": "Visa",
       "cardType": "Credit",
       "maskedPan": "492500******0004",
@@ -612,13 +614,13 @@ Content-Type: application/json
   }
 ```
 
-### Apple Pay `paid` Resource
+### Apple Pay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Apple Pay**
+**Apple Pay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -652,13 +654,13 @@ Content-Type: application/json
 }
 ```
 
-### MobilePay `paid` Resource
+### MobilePay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**MobilePay**
+**MobilePay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -677,6 +679,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "maskedPan": "489537******1424",
         "expiryDate": "12/2022",
@@ -691,13 +695,13 @@ Content-Type: application/json
 }
 ```
 
-### Vipps `paid` Resource
+### Vipps `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Vipps**
+**Vipps Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -716,6 +720,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "acquirerTransactionType": "WALLET",
         "acquirerTerminalId": "99488282",
@@ -727,13 +733,13 @@ Content-Type: application/json
 }
 ```
 
-### Swish `paid` Resource
+### Swish `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Swish**
+**Swish Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -758,13 +764,13 @@ Content-Type: application/json
 }
 ```
 
-### Invoice `paid` Resource
+### Invoice `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Invoice**
+**Invoice Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -787,13 +793,13 @@ Content-Type: application/json
 }
 ```
 
-### Credit Account `paid` Resource
+### Credit Account `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**CreditAccount**
+**CreditAccount Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -816,13 +822,13 @@ Content-Type: application/json
 }
 ```
 
-### Trustly `paid` Resource
+### Trustly `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Trustly**
+**Trustly Response**
 
 ```http
 HTTP/1.1 200 OK

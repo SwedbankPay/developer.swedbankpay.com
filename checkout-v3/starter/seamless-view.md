@@ -35,6 +35,10 @@ When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default. If `digitalProducts` is set to `false`, you also need to add
 `shippingAddressRestrictedToCountryCodes` along with ISO standard country codes.
 
+It is possible to switch to **Enterprise** or **Business** by specifying this in
+the request in `implementation`. If this field is omitted, the implementation
+will default to **Starter** or **Enterprise** based on the configuration.
+
 Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), instrument mode and split settlement (`subsite`).
 
