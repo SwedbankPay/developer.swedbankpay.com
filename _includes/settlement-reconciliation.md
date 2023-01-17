@@ -409,7 +409,7 @@ merchant.
 [omni-client-email]: mailto:kundsupport@swedbankpay.se
 [v2-balance-report-sbp-pdf]: /assets/documents/R1234-0001-Redovisningsservice.pdf
 [v2-trans-list-sbp-xlsx]: /assets/documents/R1234-0001-Redovisningsservice.xlsx
-[v2-trans-list-sbp-xml]: /assets/documents/
+[v2-trans-list-sbp-xml]: /assets/documents/R1234-0001-Redovisningsservice.xml
 [v2-balance-report-pdf]: /assets/documents/R1234-0002-Eget-konto.pdf
 [v2-trans-list-xlsx]: /assets/documents/R1234-0002-Eget-konto.xlsx
 [v2-trans-list-xml]: /assets/documents/R1234-0002-Eget-konto.xml
