@@ -412,4 +412,4 @@ merchant.
 [v2-trans-list-sbp-xml]: /assets/documents/
 [v2-balance-report-pdf]: /assets/documents/R1234-0002-Eget-konto.pdf
 [v2-trans-list-xlsx]: /assets/documents/R1234-0002-Eget-konto.xlsx
-[v2-trans-list-xml]: /assets/documents/
+[v2-trans-list-xml]: /assets/documents/R1234-0002-Eget-konto.xml
