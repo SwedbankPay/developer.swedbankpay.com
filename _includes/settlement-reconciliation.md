@@ -293,7 +293,6 @@ version of the balance report (v1 or v2).
 
 ## V1 Option A: Swedbank Pay Handles The Settlement Process
 
-*   **[PDF Balance Report for Swedbank Pay Checkout][attachment-1]**
 *   [PDF Balance Report][balance-report-sbp-pdf]
 *   [XLSX Transaction List][trans-list-sbp-xlsx]
 *   [XML Transaction List][trans-list-sbp-xml]
@@ -306,7 +305,6 @@ version of the balance report (v1 or v2).
 
 ## V2 Option A: Swedbank Pay Handles The Settlement Process
 
-*   **[PDF Balance Report for Swedbank Pay Checkout][v2-attachment-1]**
 *   [PDF Balance Report][v2-balance-report-sbp-pdf]
 *   [XLSX Transaction List][v2-trans-list-sbp-xlsx]
 *   [XML Transaction List][v2-trans-list-sbp-xml]
@@ -400,7 +398,6 @@ number. If the sub-merchants balance is 0 (zero), the super merchant will be
 invoiced. The super merchant will in turn have to invoice this amount to the sub
 merchant.
 
-[attachment-1]: /assets/documents/testredovisning-payexcheckout.pdf
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
 [checkout]: /{{ checkout_version }}
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
@@ -410,10 +407,9 @@ merchant.
 [trans-list-xlsx]: /assets/documents/transaction-list.xlsx
 [trans-list-xml]: /assets/documents/transaction-list.xml
 [omni-client-email]: mailto:kundsupport@swedbankpay.se
-[v2-attachment-1]: /assets/documents/testredovisning-payexcheckout.pdf
-[v2-balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
-[v2-trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
-[v2-trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
-[v2-balance-report-pdf]: /assets/documents/balance-report.pdf
-[v2-trans-list-xlsx]: /assets/documents/transaction-list.xlsx
-[v2-trans-list-xml]: /assets/documents/transaction-list.xml
+[v2-balance-report-sbp-pdf]: /assets/documents/R1234-0001-Redovisningsservice.pdf
+[v2-trans-list-sbp-xlsx]: /assets/documents/R1234-0001-Redovisningsservice.xlsx
+[v2-trans-list-sbp-xml]: /assets/documents/
+[v2-balance-report-pdf]: /assets/documents/R1234-0002-Eget-konto.pdf
+[v2-trans-list-xlsx]: /assets/documents/R1234-0002-Eget-konto.xlsx
+[v2-trans-list-xml]: /assets/documents/
