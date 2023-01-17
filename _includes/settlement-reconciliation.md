@@ -33,7 +33,7 @@ inquiries regarding this.
 There are two main alternatives for settlement - either we handle the settlement
 process for you, or you handle the process yourself:
 
-## If Swedbank Pay Handles The Settlement Process
+### If Swedbank Pay Handles The Settlement Process
 
 Swedbank Pay handles the settlement process on your behalf, (_called
 “Redovisningsservice”_). Swedbank Pay transfers the net amount to you directly.
@@ -42,7 +42,7 @@ When choosing [Swedbank Pay Checkout][checkout] we will always handle the
 settlement process for you, gathering all your eCommerce payments in one place.
 Straighforward and time efficient.
 
-## You Handle The Settlement Process Yourself
+### You Handle The Settlement Process Yourself
 
 If you will handle the settlement yourself, then Swedbank Pay will send you an
 invoice with the relevant fees, in addition to the report and transactions
@@ -55,7 +55,7 @@ period, including fees and VAT. The report contains three parts: a payment
 summary and specifications for sales and for fees.
 
 Two versions of the balance report are currently in production, **v1** and
-**v2**. **All new customers are set up to with v2**, so if you are a new
+**v2**. **All new customers are set up with v2**, so if you are a new
 customer or have joined us within the last year, the v2 sections should be your
 focus. **V1 will be phased out during 2023.**
 
@@ -87,11 +87,11 @@ instruments. Each fees row specify `Quantity` (sales), `Amount` (sales),
 
 ## Transaction List
 
-The Transaction List (Sales Accounted Transactions) is provided in `.xlsx` and
-`.xml` formats and specifies all transactions for a specific period, including a
-summary of transactions grouped by payment instrument. Both formats contain the
-same information, but the xml file is meant for computer processing, while the
-excel workbook is meant for human interaction.
+The Transaction List (also called Sales Accounted Transactions) is provided in
+`.xlsx` and `.xml` formats and specifies all transactions for a specific period,
+including a summary of transactions grouped by payment instrument. Both formats
+contain the same information, but the xml file is meant for computer processing,
+while the excel workbook is meant for human interaction.
 
 The first row contains the name of the Swedbank Pay company (e.g. Swedbank Pay
 Solutions AB) that the merchant has the contract with, and the balance report
@@ -274,7 +274,9 @@ the reconciliation file.
     `TransactionNo` in reconciliation file.
 
 Below you will see the API mapping tables to the fields in the settlement
-report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` {% endif %} and `Reversal`.
+report for
+{% if documentation_section == "swish" %}`Sale` {% else %} `Capture` {% endif %}
+and `Reversal`.
 
 {% if documentation_section == "swish" %}
 {% include pba-tables.md operation_title="sale" %}
@@ -283,33 +285,33 @@ report for {% if documentation_section == "swish" %}`Sale` {% else %} `Capture` 
 {% endif %}
 {% include pba-tables.md operation_title="reversal" %}
 
-## Samples
+## Report Samples
 
 The content of the files depends on the type of agreement you have made with
 Swedbank Pay. For some payment instruments, only option A is available, while
 for other payment instruments, only option B is available. The sample files can
-be downloaded below. Make sure that you choose the examples from your current
-version of the balance report (v1 or v2).
+be downloaded below. **Make sure that you choose the examples from your**
+**current version of the balance report (v1 or v2).**
 
-## V1 Option A: Swedbank Pay Handles The Settlement Process
+### V1 Option A: Swedbank Pay Handles The Settlement Process
 
 *   [PDF Balance Report][balance-report-sbp-pdf]
 *   [XLSX Transaction List][trans-list-sbp-xlsx]
 *   [XML Transaction List][trans-list-sbp-xml]
 
-## V1 Option B: You Handle The Settlement Process Yourself
+### V1 Option B: You Handle The Settlement Process Yourself
 
 *   [PDF Balance Report][balance-report-pdf]
 *   [XLSX Transaction List][trans-list-xlsx]
 *   [XML Transaction List][trans-list-xml]
 
-## V2 Option A: Swedbank Pay Handles The Settlement Process
+### V2 Option A: Swedbank Pay Handles The Settlement Process
 
 *   [PDF Balance Report][v2-balance-report-sbp-pdf]
 *   [XLSX Transaction List][v2-trans-list-sbp-xlsx]
 *   [XML Transaction List][v2-trans-list-sbp-xml]
 
-## V2 Option B: You Handle The Settlement Process Yourself
+### V2 Option B: You Handle The Settlement Process Yourself
 
 *   [PDF Balance Report][v2-balance-report-pdf]
 *   [XLSX Transaction List][v2-trans-list-xlsx]
