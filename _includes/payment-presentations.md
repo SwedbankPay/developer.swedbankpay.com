@@ -143,7 +143,7 @@ agreement with Swedbank Pay, you can e-mail us it at
 
 MobilePay is the main payment app in Denmark and one of the leading apps in
 Finland, making it essential for merchants operating in these Nordic countries.
-More than 4.4 million Danes and 2 millon Finns use the app. 140,000 stores are
+More than 4.4 million Danes and 2 million Finns use the app. 140,000 stores are
 accepting payments.
 
 {% include iterator.html prev_href="/checkout-v3/"
