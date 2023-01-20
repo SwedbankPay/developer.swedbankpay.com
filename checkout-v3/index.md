@@ -217,8 +217,8 @@ implementation.
   tab2_content=tab2_content
   %}
 
-[apple-pay-logo]:
-[c2p-logo]:
+[apple-pay-logo]:/assets/img/applepay-logo.svg
+[c2p-logo]:/assets/img/clicktopay-logo.svg
 [card-icon]: /assets/img/icon-card-simple.svg
 [earth-icon]: /assets/img/globe-icon.png
 [envelope-icon]: /assets/img/envelope-icon.png
