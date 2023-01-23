@@ -2,7 +2,7 @@
 section: Checkout v3
 title: Get Started
 description: |
-  *This page aims to provide you with a brief introduction to our four options
+  **This page aims to provide you with a brief introduction to our four options
   for implementing our checkout in a way that makes sense for your business.**
 menu_order: 200
 checkout_v3: true
