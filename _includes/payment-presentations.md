@@ -24,7 +24,9 @@ For **Seamless View** integrations, Apple needs to verify your domain as a
 part of Swedbank Pay's set up process. To do this, you need to host a
 verification file on the following web path:
 
+```
 https://[DOMAIN_NAME]/.well-known/apple-developer-merchantid-domain-association
+```
 
 THE FILE IN WHATEVER FORMAT WE CHOOSE TO PRESENT IT!!! **(Not a Word file)**
 
