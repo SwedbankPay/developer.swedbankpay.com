@@ -80,7 +80,7 @@ which data you can and/or wish to collect and manage on your own.
 
 There are two main paths you can take here. If you choose the **Full Checkout**
 solution (including payer identification as well as payment options), the payer
-chooses the method of payment. You can also choose the **Payment Only** option.
+chooses the method of payment. You can also choose the **Payments Only** option.
 In this case, you will collect and store payer data, along with the payment
 instruments you will present to the payer. It is possible to use different
 implementations per payment order within the **Full Checkout** options.
