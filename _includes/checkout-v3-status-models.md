@@ -342,8 +342,10 @@ The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
 `networkToken`, which **represents** the PAN, but is not a PAN in itself.
 
+### Card `Paid` Resource
+
 {:.code-view-header}
-**Response**
+**Card Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -412,8 +414,8 @@ Content-Type: application/json
             "payeeReference": "1641542301",
             "amount": 1500,
             "details": {
-                "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
-                "externalNonPaymentToken" : "1234567890",
+                "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+                "externalNonPaymentToken": "1234567890",
                 "cardBrand": "Visa",
                 "cardType": "Credit",
                 "maskedPan": "492500******0004",
@@ -423,7 +425,8 @@ Content-Type: application/json
                 "acquirerStan": "302",
                 "acquirerTerminalId": "70101301389",
                 "acquirerTransactionTime": "2022-06-15T14:12:55.029Z",
-                "transactionInitiator": "CARDHOLDER"
+                "transactionInitiator": "CARDHOLDER",
+                "bin": "492500"
            }
         },
         "cancelled": {
@@ -474,7 +477,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Apple Pay**
+**Apple Pay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -493,6 +496,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "cardType": "Credit",
         "expiryDate": "12/0023",
@@ -502,6 +507,7 @@ Content-Type: application/json
         "acquirerTerminalId": "80100001190",
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
         "transactionInitiator": "CARDHOLDER"
+        "bin": "489537"
     }
   }
 }
@@ -513,7 +519,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**MobilePay**
+**MobilePay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -532,6 +538,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "maskedPan": "489537******1424",
         "expiryDate": "12/2022",
@@ -540,6 +548,7 @@ Content-Type: application/json
         "acquirerStan": "53889",
         "acquirerTerminalId": "42",
         "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+        "bin": "489537"
     }
   }
 }
@@ -551,7 +560,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Vipps**
+**Vipps Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -570,7 +579,16 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890"
+        "cardBrand": "Visa",
+        "acquirerTransactionType": "WALLET",
+        "acquirerTerminalId": "99488282",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
+        "transactionInitiator": "CARDHOLDER",
+        "bin": "489537"
+    }
   }
 }
 ```
@@ -581,7 +599,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Swish**
+**Swish Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -599,7 +617,9 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+        "misidn": "+46739000001"
+    }
   }
 }
 ```
@@ -610,7 +630,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**Invoice**
+**Invoice Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -639,7 +659,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**CreditAccount**
+**Credit Account Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -668,7 +688,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**Trustly**
+**Trustly Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -711,6 +731,19 @@ responses:
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
+| └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
+| └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+| └-➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
+| └-➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
+| └-➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
+| └─➔&nbsp;`issuerAuthorizationApprovalCode` | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
+| └─➔&nbsp;`acquirerTransactionType` | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
+| └─➔&nbsp;`acquirerStan`            | `string`     | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                                                                                                         |
+| └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
+| └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`bin` | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`msisdn` | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
 
 If there e.g. is a recurrence or an unscheduled (below) token connected to the

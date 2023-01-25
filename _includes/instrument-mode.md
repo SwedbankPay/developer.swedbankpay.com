@@ -1,6 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include documentation-section.md %}{%
 endcapture %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## Instrument Mode
 
@@ -79,7 +80,8 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": "Invoice-PayExFinancingSe", {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", {% endif %}
+        "productName": "Checkout3",
+        "implementation": "{{implementation}}", {% endif %}
         "urls":
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment",

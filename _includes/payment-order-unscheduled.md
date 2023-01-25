@@ -2,6 +2,7 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## Unscheduled Purchase
 
@@ -49,7 +50,8 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "generateUnscheduledToken": true, {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", {% endif %}
+        "productName": "Checkout3", 
+        "implementation": "{{implementation}}", {% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment", // Seamless View only
@@ -158,7 +160,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 |                  | └➔&nbsp;`generateUnscheduledToken`| `boolean`     | `true` or `false`. Set to `true` if you want to generate an `unscheduledToken` for future unscheduled purchases (Merchant Initiated Transactions).       | {% if documentation_section contains "checkout-v3" %}
-| {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              | {% endif %}
+| {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              | 
+|                  | └➔&nbsp;`implementation`                 | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         | {% endif %}
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   |
@@ -363,7 +366,7 @@ Content-Type: application/json
 
 The token can be retrieved by performing a [`GET` towards
 `paid`][paid-resource-model]. It will be visible under `tokens` in the `paid`
-node.
+field.
 
 {:.code-view-header}
 **Request**
@@ -378,7 +381,7 @@ Content-Type: application/json
 As an alternative, you can also retrieve it by using the expand option when you
 `GET` your payment. The `GET` request should look like the one below, with a
 `?$expand=paid` after the `paymentOrderId`. The response should match the
-initial payment response, but with an expanded `paid` node.
+initial payment response, but with an expanded `paid` field.
 
 {:.code-view-header}
 **Request**
@@ -395,7 +398,7 @@ Content-Type: application/json
 You can retrieve it by using the expand option when you `GET` your payment. The
 `GET` request should look like the one below, with a `?$expand=paid` after the
 `paymentOrderId`. The response should match the initial payment response, but
-with an expanded `paid` node.
+with an expanded `paid` field.
 
 {:.code-view-header}
 **Request**
@@ -437,7 +440,8 @@ Content-Type: application/json
         "description": "Test Unscheduled Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO", {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", {% endif %}
+        "productName": "Checkout3", 
+        "implementation": "{{implementation}}", {% endif %}
         "urls": {
             "callbackUrl": "https://example.com/payment-callback"
         },
@@ -488,7 +492,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`          | `string`     | {% include field-description-description.md %}                                                                                                                                                                                     |
 | {% icon check %} | └─➔&nbsp;`userAgent`           | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                  |
 | {% icon check %} | └─➔&nbsp;`language`            | `string`     | {% include field-description-language.md %}                                                                                                                                                     | {% if documentation_section contains "checkout-v3" %}
-| {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              | {% endif %}
+| {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              | 
+|                  | └➔&nbsp;`implementation`                 | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          | {% endif %}
 | {% icon check %} | └─➔&nbsp;`urls`                | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                                                                                          |
 | {% icon check %} | └─➔&nbsp;`callbackUrl`         | `string`     | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][technical-reference-callback] for details.                                                                                                                              |
 | {% icon check %} | └➔&nbsp;`payeeInfo`            | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                          |

@@ -31,7 +31,7 @@ Content-Type: application/json
             "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png",
-            "termsOfServiceUrl": "http://example.com/terms.pdf"
+            "termsOfServiceUrl": "https://example.com/terms.pdf"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",

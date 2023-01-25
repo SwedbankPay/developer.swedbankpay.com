@@ -5,6 +5,7 @@
 {% if api_resource != 'paymentorders' %}
     {% assign api_resource_field_name = 'payment' %}
 {% endif %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## Transaction Risk Analysis Exemption
 
@@ -26,7 +27,8 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", {% endif %}
+        "productName": "Checkout3",
+        "implementation": "{{implementation}}",{% endif %}
         "requestTraExemption": true,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
@@ -169,8 +171,9 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | └➔&nbsp;`userAgent`                | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | └➔&nbsp;`language`                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | └➔&nbsp;`productName`                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
-| {% icon check %} | └➔&nbsp;`requestTraExemption`                       | `bool` | Set to `true` if the merchant requests a TRA exemption. |
+| {% icon check %} | └➔&nbsp;`productName`              | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+|                  | └➔&nbsp;`implementation`           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          |
+| {% icon check %} | └➔&nbsp;`requestTraExemption`      | `bool`       | Set to `true` if the merchant requests a TRA exemption. |
 | {% icon check %} | └➔&nbsp;`urls`                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | └─➔&nbsp;`hostUrls`                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
 |                  | └─➔&nbsp;`paymentUrl`              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   | {% endif %}

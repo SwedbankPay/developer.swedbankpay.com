@@ -113,7 +113,7 @@ somewhat depending on which countries you are operating in.
 -   **Payer Info:** The payer’s personal data e.g. name, address, card number
     etc.
 
--   **PSP:** The service of providing payment instruments in the checkout.
+-   **PSP:** A service that provides payment methods at checkout.
 
 ## What Are You Looking For?
 
@@ -175,6 +175,7 @@ payer shops if they agree to do so.
   button_alignment='align-self-end'
   to='/checkout-v3/enterprise/'
 %}
+
 {% endcapture %}
 
 {% capture tab2_intro %}

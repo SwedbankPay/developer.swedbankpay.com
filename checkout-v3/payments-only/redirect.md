@@ -39,7 +39,7 @@ and the possibility to use your own `logo`.
 There is also a guest mode option for the payers who don't wish to store their
 information. When using **Payments Only**, the way to trigger this is to not
 include the `payerReference` field in your `paymentOrder` request. You can find
-it in the `payer` node in the example below.
+it in the `payer` field in the example below.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
