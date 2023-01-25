@@ -105,7 +105,6 @@ somewhat depending on which countries you are operating in.
 | ![MobilePay][mobilepay-logo] | MobilePay       |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
 |   ![Trustly][trustly-logo]   | Trustly            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
 |   ![Apple Pay][apple-pay-logo]   | Apple Pay           | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
-|   ![Click to Pay][c2p-logo]   | Click to Pay             | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
 
 -   **Authentication:** The process of verifying the payer's identity.
 
