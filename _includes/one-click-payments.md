@@ -105,7 +105,7 @@ You can also perform a GET request towards the `id` of a Payment Order and find 
 paymentToken in its linked `paid` resource.
 
 {:.code-view-header}
-**Request Towards The Payment Resource**
+**Request Towards The Paid Resource**
 
 ```http
 GET /psp/paymentorders/{{ page.payment_id }}/paid HTTP/1.1
