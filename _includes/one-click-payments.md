@@ -97,7 +97,7 @@ payment resource with the `payerReference` included.
 **Request Towards The Payment Resource**
 
 ```http
-GET /psp/paymentorders/payerownedtokens/{payerReference} HTTP/1.1
+GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
 
