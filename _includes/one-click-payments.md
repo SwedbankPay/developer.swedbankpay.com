@@ -101,8 +101,8 @@ GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
 
-You can also send a GET request towards the `paymentOrderId` and find the
-paymentToken in the `paid` resource.
+You can also perform a GET request towards the `id` of a Payment Order and find the
+paymentToken in its linked `paid` resource.
 
 {:.code-view-header}
 **Request Towards The Payment Resource**
