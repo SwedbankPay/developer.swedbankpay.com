@@ -90,7 +90,7 @@ Authorization: Bearer <AccessToken>
 {% else %}
 
 When the initial purchase is successful, a `paymentToken` is linked to
-the payment. You can return the value by sending a `GET` request towards the
+the payment. You can return the value by performing a `GET` request towards the
 payment resource with the `payerReference` included.
 
 {:.code-view-header}
