@@ -1,5 +1,8 @@
 ---
 section: Modules & SDKs
+# sidebar_icon: view_module
+sidebar_icon: extension
+# sidebar_icon: grid_view
 title: Introduction
 redirect_from: /resources/sdk-modules
 estimated_read: 4

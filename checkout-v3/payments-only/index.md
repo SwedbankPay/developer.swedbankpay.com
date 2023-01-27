@@ -1,5 +1,6 @@
 ---
 section: Payments Only
+sidebar_icon: payments
 title: Set Up
 description: |
   **In this section we are going to guide you through setting up your test account

@@ -1,5 +1,6 @@
 ---
 section: Checkout v3
+sidebar_icon: shopping_cart
 title: Get Started
 description: |
   **This page aims to provide you with a brief introduction to our four options

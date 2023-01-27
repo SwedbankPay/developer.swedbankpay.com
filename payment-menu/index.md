@@ -1,5 +1,6 @@
 ---
 section: Payment Menu
+sidebar_icon: menu_book
 redirect_from: /payment-menu/other-features
 estimated_read: 3
 description: |
