@@ -217,7 +217,6 @@ implementation.
   %}
 
 [apple-pay-logo]:/assets/img/applepay-logo.svg
-[card-icon]: /assets/img/icon-card-simple.svg
 [earth-icon]: /assets/img/globe-icon.png
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
