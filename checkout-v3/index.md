@@ -97,6 +97,7 @@ somewhat depending on which countries you are operating in.
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :---------------------------------------- |
 |   ![Apple Pay][apple-pay-logo]   | Apple Pay           | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
 |    {% icon credit_card %}    | Card         | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
+|   ![Click to Pay][c2p-logo]   | Click to Pay             | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
 | ![MobilePay][mobilepay-logo] | MobilePay       |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
 | ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
 | ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
@@ -217,6 +218,7 @@ implementation.
   %}
 
 [apple-pay-logo]:/assets/img/applepay-logo.svg
+[c2p-logo]: /assets/img/clicktopay-logo.svg
 [earth-icon]: /assets/img/globe-icon.png
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
