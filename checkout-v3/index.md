@@ -95,16 +95,15 @@ somewhat depending on which countries you are operating in.
 {:.table .table-plain}
 |        | Payment Instrument |  Starter | Business | Enterprise   |  Payments Only | Region                                    |
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :---------------------------------------- |
-|    {% icon credit_card %}    | Card         | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
-| {% icon insert_drive_file %} | Swedbank Pay Invoice | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
-| {% icon insert_drive_file %} | Swedbank Pay Credit Account | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
-| ![MobilePay][mobilepay-logo] | MobilePay        |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
-| {% icon insert_drive_file %} | Swedbank Pay Monthly Payments | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
-| ![Vipps][vipps-logo]     | Vipps                | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %}                             |
-| ![Swish][swish-logo]     | Swish                 | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %}                             |
-| ![MobilePay][mobilepay-logo] | MobilePay       |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
-|   ![Trustly][trustly-logo]   | Trustly            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
 |   ![Apple Pay][apple-pay-logo]   | Apple Pay           | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|    {% icon credit_card %}    | Card         | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
+| ![MobilePay][mobilepay-logo] | MobilePay       |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![Swish][swish-logo]     | Swish                 | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %}                             |
+|   ![Trustly][trustly-logo]   | Trustly            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
+| ![Vipps][vipps-logo]     | Vipps                | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %}                             |
 
 -   **Authentication:** The process of verifying the payer's identity.
 
@@ -220,10 +219,8 @@ implementation.
 [apple-pay-logo]:/assets/img/applepay-logo.svg
 [card-icon]: /assets/img/icon-card-simple.svg
 [earth-icon]: /assets/img/globe-icon.png
-[envelope-icon]: /assets/img/envelope-icon.png
-[invoice-icon]: /assets/img/icon-invoice-simple.svg
-[keypad-icon]: /assets/img/keypad-icon.png
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
+[swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [trustly-logo]: /assets/img/icon-trustly-simple.svg
