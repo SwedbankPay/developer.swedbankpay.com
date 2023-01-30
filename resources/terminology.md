@@ -36,7 +36,6 @@ menu_order: 1100
 {:.table .table-striped}
 | **Intent**                      | An `intent` is a payment parameter that determine the possible activity states available for a payment option (e.g. Purchase). Intents differ depening on payment instrument. Creating a payment within a [one-phase][fundamentals] payment flow (Swish, Direct debit) must have the intent to create a [Sale][fundamentals]. This is in contrast to a [two-phase][fundamentals] payment flow that have the intent to create an [Authorization][fundamentals]. Card payments also have specific intents that determine whether an [`AutoCapture`][auto-capture] is implemented (the credit card is charged directly like one-phase transaction). |
 
-
 ### M
 
 | **Merchant Portal**          | The Merchant Portal interface where you perform day to day operations on payments processed by Swedbank Pay. The Merchant Portal manual consists of two parts, [Getting Started and Interface and Search.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
