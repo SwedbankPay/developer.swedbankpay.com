@@ -21,7 +21,7 @@ To start integrating Swedbank Pay Payment Menu, you need the following:
 *   [HTTPS][https] enabled web server.
 *   Agreement that includes Swedbank Pay Payment Menu.
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
-    Swedbank Pay Admin.
+    the Merchant Portal.
 
 ## Introduction
 

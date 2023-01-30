@@ -122,7 +122,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 | Field                           | Type       | Description                                                                                                                                               |
 | :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
-| `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                               |
+| `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in the Merchant Portal user interface.                                                               |
 | `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
 | `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                       |
 | `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                        |
@@ -136,7 +136,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                                 |
 | `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                      |
 | `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                                 |
-| `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in Swedbank Pay admin.                                                                                                    |
+| `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in the Merchant Portal.                                                                                                    |
 | `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.     |
 | `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
 | `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
@@ -163,9 +163,9 @@ As with the Balance Report there are two versions of the Transaction List, and
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
 | :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PayExAccountNo`                | `Decimal`  | The Account number given, shown in Swedbank Pay admin..                                                                             |
+| `PayExAccountNo`                | `Decimal`  | The Account number given, shown the Merchant Portal..                                                                             |
 | `OrderIdentity`                 | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
-| `TransactionIdentity`           | `String`   | A unique guid identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                          |
+| `TransactionIdentity`           | `String`   | A unique guid identifier of the transaction, can be traced in the Merchant Portal user interface.                                                          |
 | `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                     |
 | `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                               |
 | `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                        |
@@ -174,7 +174,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                        |
 | `ServiceName`                   | `String`   | The service used (e.g. `Corporate Cards EU`).                                                                                                             |
 | `Provider`                      | `String`   | The service provider (e.g. Swedbank Pay, PayEx, Swish).                                                                                                   |
-| `PayExTransactionNo`            | `Decimal`  | A unique identifier of the transaction, can be traced in Swedbank Pay Admin user interface.                                                               |
+| `PayExTransactionNo`            | `Decimal`  | A unique identifier of the transaction, can be traced in the Merchant Portal user interface.                                                               |
 | `PayExBatchNo`                  | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
 | `Subsite`                       | `String`   | The `Subsite` used for transactions, only eligible if merchant uses subsite.                                                                              |
 | `SubsiteDescription`            | `String`   | Description of the `Subsite`, only eligible if merchant uses subsite.                                                                                     |
@@ -383,9 +383,9 @@ having separate setups has a lot of pros:
 
 ## Split Settlement Admin Functions
 
-With regards to admin functions, we offer a full integration towards our admin
-system. This way, you do not have to log in to Swedbank Pay Admin to perform
-these operations.
+With regards to admin functions, we offer a full integration towards our
+Merchant Portal system. This way, you do not have to log in to the Merchant
+Portal to perform these operations.
 
 ## Capture And Cancel
 

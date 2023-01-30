@@ -18,7 +18,7 @@ payer.
     which was generated when the payment was created.
 *   You can create a reversal transactions by implementing the Reversal request.
     You can also access and reverse a payment through your merchant pages in the
-    [Swedbank Pay admin portal][payex-admin-portal].
+    [Merchant portal][payex-admin-portal].
 
 ## Swish Transactions
 
@@ -245,7 +245,7 @@ Swish does not support `recurring` payments.
     next_title="Features" %}
 
 [create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
-[payex-admin-portal]: https://admin.payex.com/psp/login/
+[payex-admin-portal]: https://merchantportal.externalintegration.swedbankpay.com
 [sales-transaction]: #create-sales-transactions
 [technical-reference-callback]: /payment-instruments/swish/features/core/callback
 [unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled

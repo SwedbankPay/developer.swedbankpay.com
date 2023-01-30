@@ -37,7 +37,7 @@ To start integrating Swedbank Pay Payments, you need the following:
 *   An [HTTPS][https] enabled web server.
 *   An agreement which includes Swedbank Pay Payments.
 *   Credentials (Merchant Access Token) from Swedbank Pay retrieved from
-    Swedbank Pay Admin.
+    the Merchant Portal.
 
 ## Platform Options
 
@@ -141,7 +141,7 @@ Or:
     captured funds. This is achieved by creating a reversal transaction.
 
 All actions after creating the payment can be done by using our APIs, or from
-our admin tool. `abort` is only available when using APIs.
+our Merchant Portal tool. `abort` is only available when using APIs.
 
 Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.

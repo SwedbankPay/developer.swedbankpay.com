@@ -51,7 +51,7 @@ with an access token.
 
 How to generate your access token:
 
-**Log in to:** https://admin.externalintegration.payex.com/psp/beta/login/ - For
+**Log in to:** https://merchantportal.externalintegration.swedbankpay.com - For
 testing environment.
 
 **Merchant details:** Here you will find information about your
