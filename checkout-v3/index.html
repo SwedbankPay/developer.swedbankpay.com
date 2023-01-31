@@ -131,7 +131,7 @@
           <a href="/checkout-v3/">Get Started</a>
         </div>
         <ul class="nav-ul">
-<li class="nav-leaf"><a href="/checkout-v3/#choosing-the-right-implementation-for-your-business">Choosing The Right Implementation For Your Business</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/#choose-the-right-implementation-for-your-business">Choose The Right Implementation For Your Business</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/#what-are-you-looking-for">What Are You Looking For?</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/#full-checkout">Full Checkout</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/#payments-only">Payments Only</a></li>
@@ -7217,7 +7217,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#17-january-2023">17 January 2023</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#31-january-2023">31 January 2023</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#17-january-2023">17 January 2023</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-december-2022">15 December 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#29-november-2022">29 November 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#20-september-2022">20 September 2022</a></li>
@@ -7443,10 +7444,10 @@ for implementing our checkout in a way that makes sense for your business.</stro
 <div class="doc-container normal-padding max-width">
     <article>
         
-            <h2 id="choosing-the-right-implementation-for-your-business">
+            <h2 id="choose-the-right-implementation-for-your-business">
         
         
-          Choosing The Right Implementation For Your Business <a href="#choosing-the-right-implementation-for-your-business" class="header-anchor"></a>
+          Choose The Right Implementation For Your Business <a href="#choose-the-right-implementation-for-your-business" class="header-anchor"></a>
         
         
       </h2>
@@ -7458,18 +7459,120 @@ which data you can and/or wish to collect and manage on your own.</p>
 
 <p>There are two main paths you can take here. If you choose the <strong>Full Checkout</strong>
 solution (including payer identification as well as payment options), the payer
-chooses the method of payment. You can also choose the <strong>Payment Only</strong> option.
+chooses the method of payment. You can also choose the <strong>Payments Only</strong> option.
 In this case, you will collect and store payer data, along with the payment
 instruments you will present to the payer. It is possible to use different
-implementations per payment order within the <strong>Full checkout</strong> options.
+implementations per payment order within the <strong>Full Checkout</strong> options.
 This is especially useful if you need different customer journeys based on the
 device used.</p>
 
 <p>We offer a variety of payment instruments and features designed to meet your
 business’ needs, regardless of whether you choose the <strong>Full Checkout</strong> or
-<strong>Payments Only</strong>. You can choose among <strong>Apple Pay</strong> (on iOS devices),
-<strong>card, invoice (including monthly payments), MobilePay, Swish, Trustly</strong> and
-<strong>Vipps</strong> depending on the country you are in.</p>
+<strong>Payments Only</strong>. You can choose from the following payment instruments,
+somewhat depending on which countries you are operating in.</p>
+
+<table class="table table-plain">
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: left">Payment Instrument</th>
+      <th style="text-align: center">Starter</th>
+      <th style="text-align: center">Business</th>
+      <th style="text-align: center">Enterprise</th>
+      <th style="text-align: center">Payments Only</th>
+      <th style="text-align: left">Region</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/applepay-logo.svg" alt="Apple Pay"></td>
+      <td style="text-align: left">Apple Pay</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><img src="/assets/img/globe-icon.png" alt="EarthIcon"></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/new-card-icon.svg" alt="Card"></td>
+      <td style="text-align: left">Card</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><img src="/assets/img/globe-icon.png" alt="EarthIcon"></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/icon-mobilepay-simple.svg" alt="MobilePay"></td>
+      <td style="text-align: left">MobilePay</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">
+<i class="flag-icon flag-icon-dk "></i> <i class="flag-icon flag-icon-fi "></i>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/swedbank-pay-vertical-black.svg" alt="Swedbank Pay"></td>
+      <td style="text-align: left">Swedbank Pay Credit Account</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><i class="flag-icon flag-icon-se "></i></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/swedbank-pay-vertical-black.svg" alt="Swedbank Pay"></td>
+      <td style="text-align: left">Swedbank Pay Invoice</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">
+<i class="flag-icon flag-icon-no "></i> <i class="flag-icon flag-icon-se "></i>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/swedbank-pay-vertical-black.svg" alt="Swedbank Pay"></td>
+      <td style="text-align: left">Swedbank Pay Monthly Payments</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><i class="flag-icon flag-icon-se "></i></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/icon-swish-simple.svg" alt="Swish"></td>
+      <td style="text-align: left">Swish</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><i class="flag-icon flag-icon-se "></i></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/icon-trustly-simple.svg" alt="Trustly"></td>
+      <td style="text-align: left">Trustly</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left">
+<i class="flag-icon flag-icon-se "></i> <i class="flag-icon flag-icon-fi "></i>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><img src="/assets/img/icon-vipps-simple.svg" alt="Vipps"></td>
+      <td style="text-align: left">Vipps</td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><i class="flag-icon flag-icon-no "></i></td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
   <li>
@@ -7540,7 +7643,10 @@ payer shops if they agree to do so.</p>
     <span class="cards-content">
         <span class="h2">Starter</span>
         
-            <span class="text-box"><p>This is the ultimate implementation pack for anyone new to this, who needs help with all aspects of the checkout process. Besides collecting and verifying payer identity, billing address, and shipping address, we also store payer data. You get everything you need to start accepting payments online.</p>
+            <span class="text-box"><p>This is the ultimate implementation pack for anyone new to this, who
+  needs help with all aspects of the checkout process. Besides collecting and
+  verifying payer identity, billing address, and shipping address, we also store
+  payer data. You get everything you need to start accepting payments online.</p>
 </span>
         
         <div class="d-flex">
@@ -7671,7 +7777,10 @@ payer shops if they agree to do so.</p>
     <span class="cards-content">
         <span class="h2">Business</span>
         
-            <span class="text-box"><p>Do you need someone to manage your payer data as you move forward on your growth journey? We’ve got you covered! Make it easier for returning customers by providing them with the option to store their payment information. Everything you need to grow your business.</p>
+            <span class="text-box"><p>Do you need someone to manage your payer data as you move forward on
+  your growth journey? We’ve got you covered! Make it easier for returning
+  customers by providing them with the option to store their payment
+  information. Everything you need to grow your business.</p>
 </span>
         
         <div class="d-flex">
@@ -7802,7 +7911,9 @@ payer shops if they agree to do so.</p>
     <span class="cards-content">
         <span class="h2">Enterprise</span>
         
-            <span class="text-box"><p>This is the most suitable option if you only need data storage and payment instruments. You collect and verify consumer data, and we handle the rest. Scaling your business has never been easier.</p>
+            <span class="text-box"><p>This is the most suitable option if you only need data storage and
+  payment instruments. You collect and verify consumer data, and we handle the
+  rest. Scaling your business has never been easier.</p>
 </span>
         
         <div class="d-flex">
@@ -7954,9 +8065,13 @@ implementation.</p>
     <span class="cards-content">
         <span class="h2">Payments Only</span>
         
-            <span class="text-box"><p>Basically, if you’re able to collect, verify and store your payer data*, plus the delivery address, this is the option for you. Our PSP lets you choose whether to offer a single payment instrument or the whole thing.</p>
+            <span class="text-box"><p>Basically, if you’re able to collect, verify and store your payer data*,
+  plus the delivery address, this is the option for you. Our PSP lets you choose
+  whether to offer a single payment instrument or the whole thing.</p>
 
-<p>*We’ll store the card data for you, but you own it. So you’ll have to remove data in compliance with GDPR, but you won’t have to worry about handling sensitive card info.</p>
+<p>*We’ll store the card data for you, but you own it. So you’ll have to remove
+  data in compliance with GDPR, but you won’t have to worry about handling
+  sensitive card info.</p>
 </span>
         
         <div class="d-flex">

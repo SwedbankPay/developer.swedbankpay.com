@@ -131,7 +131,7 @@
           <a href="/checkout-v3/">Get Started</a>
         </div>
         <ul class="nav-ul">
-<li class="nav-leaf"><a href="/checkout-v3/#choosing-the-right-implementation-for-your-business">Choosing The Right Implementation For Your Business</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/#choose-the-right-implementation-for-your-business">Choose The Right Implementation For Your Business</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/#what-are-you-looking-for">What Are You Looking For?</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/#full-checkout">Full Checkout</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/#payments-only">Payments Only</a></li>
@@ -7217,7 +7217,8 @@
           <a href="/resources/release-notes">Release Notes</a>
         </div>
         <ul class="nav-ul">
-        <li class="nav-leaf"><a href="/resources/release-notes#17-january-2023">17 January 2023</a></li>
+        <li class="nav-leaf"><a href="/resources/release-notes#31-january-2023">31 January 2023</a></li>
+<li class="nav-leaf"><a href="/resources/release-notes#17-january-2023">17 January 2023</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#15-december-2022">15 December 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#29-november-2022">29 November 2022</a></li>
 <li class="nav-leaf"><a href="/resources/release-notes#20-september-2022">20 September 2022</a></li>
@@ -7455,7 +7456,7 @@
   <tbody>
     <tr>
       <td><strong>Access Token</strong></td>
-      <td>The OAauth 2 Access token needed to access Swedbank Pay eCom APIs. Tokens are generated in Swedbank Pay Admin. Learn how to get started in the Admin Manual. Note that it must follow the regex pattern <code class="language-html highlighter-rouge">[\w-]*</code>.</td>
+      <td>The OAauth 2 Access token needed to access Swedbank Pay eCom APIs. Tokens are generated in the Merchant Portal. Learn how to get started in the Merchant Portal Manual. Note that it must follow the regex pattern <code class="language-html highlighter-rouge">[\w-]*</code>.</td>
     </tr>
     <tr>
       <td><strong>Account Receivable Consumer</strong></td>
@@ -7552,6 +7553,23 @@
     <tr>
       <td><strong>Intent</strong></td>
       <td>An <code class="language-html highlighter-rouge">intent</code> is a payment parameter that determine the possible activity states available for a payment option (e.g. Purchase). Intents differ depening on payment instrument. Creating a payment within a <a href="/payment-instruments#the-fundamentals">one-phase</a> payment flow (Swish, Direct debit) must have the intent to create a <a href="/payment-instruments#the-fundamentals">Sale</a>. This is in contrast to a <a href="/payment-instruments#the-fundamentals">two-phase</a> payment flow that have the intent to create an <a href="/payment-instruments#the-fundamentals">Authorization</a>. Card payments also have specific intents that determine whether an <a href="/payment-instruments/card/features/core/capture"><code class="language-html highlighter-rouge">AutoCapture</code></a> is implemented (the credit card is charged directly like one-phase transaction).</td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h3 id="m">
+        
+        
+          M <a href="#m" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Merchant Portal</strong></td>
+      <td>The Merchant Portal interface where you perform day to day operations on payments processed by Swedbank Pay. The Merchant Portal manual consists of two parts, [Getting Started and Interface and Search.</td>
     </tr>
   </tbody>
 </table>
@@ -7672,10 +7690,6 @@
     <tr>
       <td><strong>SCA</strong></td>
       <td>Strong Customer Authentication, which is a requirement from EU Revised Directive on Payment Services (PSD2). This implements the multi-factor authentication, for stronger security of electronic payments.</td>
-    </tr>
-    <tr>
-      <td><strong>Swedbank Pay Admin</strong></td>
-      <td>The eCommerce Admin interface where you perform day to day operations on payments processed by Swedbank Pay. The Admin manual consists of two parts,[Getting Started and Interface and Search.</td>
     </tr>
     <tr>
       <td><strong>Swedbank Pay Direct API</strong></td>
