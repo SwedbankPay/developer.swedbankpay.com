@@ -142,10 +142,13 @@ Content-Type: application/json
 Request field not covered in the common Checkout redirect or seamless view
 table:
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | └➔&nbsp;`generateMotoPayment`     | `bool`      | Set to `true` if the payment order is a MOTO payment, `false` if not. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% if include.integration_mode=="redirect" %}
 

@@ -54,6 +54,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                            | Type     | Description                                                                                          |
 | :--------------: | :------------------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
@@ -62,6 +63,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
 |                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. Must be part of what you get from your authentication process. |
 |                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 When the payer is authenticated by the merchant, some payment instruments
 will allow a more frictionless payment process. Invoice One-Click Payments does

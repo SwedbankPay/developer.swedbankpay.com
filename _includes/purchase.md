@@ -156,6 +156,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------: | :-------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -240,6 +241,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`no3DSecure`                      | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                            |
 |                  | └➔&nbsp;`noCvc`                           | `boolean`     | `true` if the CVC field should be disabled for this payment in case a stored card is used; otherwise `false` per default. This feature is commonly used when {%- if include.documentation_section == 'card' -%} [One-Click Payments][one-click-payments]{% else %} One-Click Payments{% endif %} is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                          |
 {% endif %}
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Card Payment Response
 
@@ -315,6 +318,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :-------------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -340,6 +344,8 @@ Content-Type: application/json
 | └─➔&nbsp;`method`                 | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`                   | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [callback]: {{ features_url }}/core/callback
 [complete-url]: {{ features_url }}/technical-reference/complete-url

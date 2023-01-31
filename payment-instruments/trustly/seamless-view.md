@@ -86,6 +86,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -119,6 +120,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`prefillInfo`       | `object`      | Object representing information of what the UI text fields should be populated with                                                                                                                                                                                                                |
 |                  | └─➔&nbsp;`firstName`         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`lastName`          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Seamless View Response
 

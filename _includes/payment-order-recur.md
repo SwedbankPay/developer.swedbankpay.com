@@ -144,6 +144,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -219,6 +220,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
 {% include risk-indicator-table.md %}
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Initial Recur Response
 
@@ -318,6 +321,7 @@ Content-Type: application/json
       }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -352,6 +356,8 @@ Content-Type: application/json
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            | {% endif %}
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## GET The Token
 
@@ -488,6 +494,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                          | Type         | Description      |
 | :--------------: | :----------------------------- | :----------- | :---------------------------------- |
@@ -533,6 +540,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                    |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                 |
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 <!--lint disable final-definition -->
 

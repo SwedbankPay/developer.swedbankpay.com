@@ -90,6 +90,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -119,6 +120,8 @@ Content-Type: application/json
 | └➔&nbsp;`payments`       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | └➔&nbsp;`currentPayment` | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 -----------------------------------------
 [payment-menu]: /payment-menu

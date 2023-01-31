@@ -87,10 +87,13 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field           | Type     | Description                                                                  |
 | :-------------- | :------- | :--------------------------------------------------------------------------- |
 | `paymentorders` | `string` | URL of the "paymentorders" endpoint. Resolved against the root endpoint URL. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 N.B! The API as specified allows assigning endpoints to hosts other that the
 root endpoint host. However, as this seen to be an uncommon use case, the mobile
@@ -137,10 +140,13 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field          | Type     | Description                 |
 | :--------------: | :------------- | :------- | :-------------------------- |
 | {% icon check %} | `paymentorder` | `object` | The payment order to create |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 *   ① The contents of `paymentorder` are omitted here. See [Checkout
     Documentation][create-payment-order] for details.
@@ -227,6 +233,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                | Type     | Description                               |
 | :--------------: | :------------------- | :------- | :---------------------------------------- |
@@ -234,6 +241,8 @@ Content-Type: application/json
 | {% icon check %} | `paymentorder`       | `object` | The changes to make to the payment order  |
 | {% icon check %} | └➔&nbsp;`operation`  | `string` | The operation to perform: "SetInstrument" |
 | {% icon check %} | └➔&nbsp;`instrument` | `string` | The instrument to set                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 Merchant Backend will then make a corresponding request to the Swedbank Pay API.
 
@@ -358,10 +367,13 @@ GET /swedbank-pay-mobile/sdk-callback/android-intent?package=your.ecom.app&id=ab
 Host: example.com
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field     | Type     | Description                                                |
 | :--------------: | :-------- | :------- | :--------------------------------------------------------- |
 | {% icon check %} | `package` | `string` | The package name of the Android application to redirect to |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {:.code-view-header}
 **Response**
@@ -502,6 +514,7 @@ GET /swedbank-pay-mobile/sdk-callback/ios-universal-link?scheme=yourecomapp&lang
 Host: example.com
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field      | Type      | Description                                                         |
 | :--------------: | :--------- | :-------- | :------------------------------------------------------------------ |
@@ -509,6 +522,8 @@ Host: example.com
 | {% icon check %} | `language` | `string`  | The language to use in the back-link page                           |
 |                  | `app`      | `string`  | The application name to display in the back-link page               |
 |                  | `fallback` | `boolean` | If `true`, redirect to custom scheme rather than back-link page     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {:.code-view-header}
 **Response**
@@ -533,12 +548,15 @@ GET /externalresourcehost/trampoline?target=https%3A%2F%2Fexample.com%2Fswedbank
 Host: ecom.stage.payex.com
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field      | Type     | Description                                            |
 | :--------------: | :--------- | :------- | :----------------------------------------------------- |
 | {% icon check %} | `target`   | `string` | The link to open when the button on the page is tapped |
 | {% icon check %} | `language` | `string` | The language to use in the page                        |
 |                  | `app`      | `string` | The application name to display in the page            |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {:.code-view-header}
 **Response**
@@ -674,6 +692,7 @@ circumstances; your own implementation is encouraged to do so as well.
 All these Merchant Backend problem types will have a URL in the format
 `https://api.payex.com/psp/errordetail/mobilesdk/<error-type>`.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type             | Status | Description                                                                     |
 | :--------------- | :----: | :------------------------------------------------------------------------------ |
@@ -681,6 +700,8 @@ All these Merchant Backend problem types will have a URL in the format
 | `badgateway`     | `502`  | The Merchant Backend did not understand the response from the Swedbank Pay API. |
 | `unauthorized`   | `401`  | The request did not have proper credentials to perform the operation.           |
 | `badrequest`     | `400`  | The Merchant Backend did not undestand the request.                             |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 Your implementation is encouraged to define its own problem types for any
 domain-specific errors; you should namespace those problem types under a domain

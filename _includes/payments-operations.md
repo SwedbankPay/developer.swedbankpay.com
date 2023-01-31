@@ -118,6 +118,7 @@ Content-Type: application/json
 
 {% endif %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                              | Type         | Description                                                                                                                                                                                                                                                                                          |
 | :--------------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -141,6 +142,8 @@ Content-Type: application/json
 | └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
 | └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Operation `failed-payment`
 

@@ -4,6 +4,7 @@
 
 ## **{{ operation_title_field_name }}**
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | API                                                                                               | XLSX                            | XML                     |
 | :-------------------------------------------------------------------------------------------------| :-------------------------------| :---------------------- |
@@ -28,3 +29,5 @@
 |                                                                                                   | `Sales Channel`                 | `SalesChannel`          |
 |                                                                                                   | `Brand`                         |                         |
 |                                                                                                   | `Point Of Sale`                 |                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

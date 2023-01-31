@@ -84,6 +84,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -132,6 +133,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
 {% include risk-indicator-table.md %}
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Payment Order Response
 
@@ -226,6 +229,7 @@ Content-Type: application/json
       }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -257,5 +261,7 @@ Content-Type: application/json
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

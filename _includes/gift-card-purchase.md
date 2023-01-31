@@ -49,6 +49,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                   | Type      | Description                                                                                                                                                                             |
 | :--------------: | :---------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -79,6 +80,8 @@ Content-Type: application/json
 |                  | `vatRate`               | `number`  | Vat-rate for purchased product (both integer and decimal numbers supported).                                                                                                            |
 |                  | `repeat`                | `boolean` | Notifies this is a repeat message.                                                                                                                                                      |
 |                  | `stan`                  | `string`  | Systems trace audit number.                                                                                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Response
 
@@ -139,7 +142,10 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field   | Type   | Description                                                              |
 | :------ | :----- | :----------------------------------------------------------------------- |
 | `state` | `enum` | `OK`, `FAILED`, `REVERSED` or `DUPLICATE`. The state of the transaction. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

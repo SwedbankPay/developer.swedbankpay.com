@@ -6,6 +6,7 @@ going forward with or canceling a payment session, as well as the callback URL
 that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required      | Field               | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :---------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16,6 +17,8 @@ underlying payments or transaction.
 |                   | `paymentUrl`        | `string` | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`][payment-url] for details.                                                                                                                                                       |
 |                   | `callbackUrl`       | `string` | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
 |                   | `logoUrl`           | `string` | {% include field-description-logourl.md %}                                                                                                                                                                                                               |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 {% include payment-url.md full_reference=true when="selecting the payment
 instrument Vipps or in the 3-D Secure verification for Credit Card Payments" %}
 
@@ -53,6 +56,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                       | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :-------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -66,6 +70,8 @@ Content-Type: application/json
 | └➔&nbsp;`callbackUrl`       | `string` | The URL that Swedbank Pay will perform an HTTP `POST` against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                |
 | └➔&nbsp;`logoUrl`           | `string` | {% include field-description-logourl.md %}                                                                                                                                                                                     |
 | └➔&nbsp;`termsOfServiceUrl` | `string` | {% include field-description-termsofserviceurl.md %}                                                                                                                                                                                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [payment-url]: /checkout-v2/features/technical-reference/payment-url
 [completeurl]: /checkout-v2/features/technical-reference/complete-url

@@ -53,6 +53,7 @@ your website to pay with a payment provider such as Swedbank Pay.
 
 {% include alert-unsupported.md type='modules' %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
@@ -61,6 +62,8 @@ your website to pay with a payment provider such as Swedbank Pay.
 |   ![Magento][magento-icon]   | [Swedbank Pay **Payments** for Magento 2][magento-payments-link] | [`…magento2-payments`][magento-payments-repo] |
 |   ![WooCommerce][woo-icon]   | [Swedbank Pay **Checkout** for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
 |   ![WooCommerce][woo-icon]   | [Swedbank Pay **Payments** for WooCommerce][woo-payments-link]   | [`…woocommerce-payments`][woo-payments-repo]  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Official SDKs
 
@@ -74,6 +77,7 @@ SDKs are often used as a building block to construct a *Module*.
 
 {% include alert-unsupported.md type='SDKs' %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |            Platform      | SDK                                          | Repository                     |
 | :----------------------: | :------------------------------------------- | :----------------------------- |
@@ -82,6 +86,8 @@ SDKs are often used as a building block to construct a *Module*.
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]     | [`…sdk-dotnet`][dotnet-repo]   |
 |     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]         | [`…sdk-php`][php-repo]         |
 |      ![JS][js-icon]      | [Swedban k Pay SDK for JavaScript][js-link]  | [`…sdk-js`][js-repo]           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Official Libraries
 
@@ -90,12 +96,15 @@ SDKs are often used as a building block to construct a *Module*.
 
 {% include alert-unsupported.md type='libraries' %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |            Platform      | Library                                                     | Repository                            |
 | :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
 | ![Magento][magento-icon] | [Swedbank Pay Core plugin for Magento 2][magento-core-link] | [`…magento2-core`][magento-core-repo] |
 | ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]   | [`…woocommerce-core`][woo-core-repo]  |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]         | [`…sdk-dotnet`][dotnet-repo]          |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [android-icon]: /assets/img/logos/android.svg
 [android-link]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk

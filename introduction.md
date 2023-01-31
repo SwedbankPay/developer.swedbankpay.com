@@ -63,6 +63,7 @@ Session-Id: 779da454399742248f2942bb064c4707
 Forwarded: for=82.115.151.177; host=example.com; proto=https
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Header              | Description                                                                                                                                                                                                                                                                    |
 | :--------------: | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -72,6 +73,8 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
 |                  | **`Forwarded`**     | The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the `for` parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### User-Agent
 
@@ -122,11 +125,14 @@ The base URLs of the API Platform are:
 
 {% assign api_url_prod = 'https://api.payex.com/' %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Environment                          | Base URL              |
 | :----------------------------------- | :---------------------|
 | [**Test**]({{ page.api_url }})       | `{{ page.api_url }}/` |
 | [**Production**]({{ api_url_prod }}) | `{{ api_url_prod }}`  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 An important part of REST is its use of **hypermedia**. Instead of having to
 perform complex state management and hard coding URLs and the availability of
@@ -311,12 +317,15 @@ currency. The amount of SEK and NOK are in ören/ører, and EUR is in cents.
 Another way to put it is that the code amount is expressed as if the true
 amount is multiplied by 100.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | True amount | Code amount |
 | ----------: | ----------: |
 |  NOK 100.00 |     `10000` |
 |   SEK 50.00 |      `5000` |
 |     € 10.00 |      `1000` |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Operations
 
@@ -359,12 +368,15 @@ instrument specific operations.
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field    | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URL to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
 | `method` | The HTTP method to use when performing the operation.               |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 **The operations should be performed as described in each response and not as
 described here in the documentation**. Always use the `href` and `method` as

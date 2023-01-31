@@ -6,6 +6,7 @@ following URL structure:
 
 `https://api.payex.com/psp/errordetail/invoice/<error-type>`
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Status | Description                       |
 | :-------------- | :----: | :-------------------------------- |
@@ -18,3 +19,5 @@ following URL structure:
 | `externalerror` | `502`  | `50` - `SystemConfigurationError` |
 | `externalerror` | `502`  | `60` - `SystemError`              |
 | `externalerror` | `502`  | `9999` - `ServerOtherServer`      |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

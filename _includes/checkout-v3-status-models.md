@@ -100,10 +100,13 @@ Content-Type: application/json
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
 responses:
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an aborted payment, the available operations are `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations) |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancelled
 
@@ -136,6 +139,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -153,6 +157,8 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Failed
 
@@ -185,6 +191,7 @@ Content-Type: application/json
             }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description     |
 | `paymentorder`           | `object`     | The payment order object.                      |
@@ -198,6 +205,8 @@ Content-Type: application/json
 | └─➔&nbsp;`problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Initialized
 
@@ -298,6 +307,7 @@ Content-Type: application/json
 
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -329,6 +339,8 @@ Content-Type: application/json
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Paid
 
@@ -715,6 +727,7 @@ Content-Type: application/json
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
 responses:
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------------------ |
@@ -745,6 +758,8 @@ responses:
 | └─➔&nbsp;`bin` | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
 | └─➔&nbsp;`msisdn` | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.
@@ -800,6 +815,7 @@ Content-Type: application/json
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
 responses:
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------------------ |
@@ -808,3 +824,5 @@ responses:
 | └─➔&nbsp;`token`  | `string`   | The token `guid`. |
 | └─➔&nbsp;`name`  | `string`   | The name of the token. In the example, a masked version of a card number. |
 | └─➔&nbsp;`expiryDate`  | `string`   | The expiry date of the token. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

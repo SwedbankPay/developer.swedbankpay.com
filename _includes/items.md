@@ -5,6 +5,7 @@ The `items` field of the `paymentOrder` is an array containing items that will a
 {% include alert.html type="warning" icon="warning" header="MobilePay"
 body="Please note that by adding the `shoplogoUrl` field, the default logo-url configured during contract setup will be overridden for this transaction. If logo-url is missing in the contract setup, it must be provided as an input parameter." %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Required | Field                          | Type      | Description                                                                                                                                           |
 | :------: | :----------------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18,3 +19,5 @@ body="Please note that by adding the `shoplogoUrl` field, the default logo-url c
 |          | └➔&nbsp;`enableEcomOnly`       | `bool`    | `true` to enable Swish in e-commerce view only.                                                                                                |
 |          | `mobilePay`                    | `object`  | The MobilePay object.                                                                                                                                     |
 |          | └➔&nbsp;`shoplogoUrl`       | `string`    | URI to the logo that will be visible at MobilePay Online. For it to be displayed correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available. This URI will override the value configured in the contract setup.                                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

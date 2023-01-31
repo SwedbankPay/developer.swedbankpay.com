@@ -17,6 +17,7 @@ To test a checked-in user in the Demoshop, please use the following test data:
 
 ### Checkout test data for Norway
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Data                         | Description                                                           |
 | :-------------- | :--------------------------- | :-------------------------------------------------------------------- |
@@ -24,9 +25,12 @@ To test a checked-in user in the Demoshop, please use the following test data:
 | `Mobile number` | `+47 98765432`               | The mobile phone number of the payer. Format Norway: `+47 99999999`.  |
 | `SSN`           | `{{ page.consumer_ssn_no }}` | The social security number of the payer. Format Norway: `DDMMYYXXXXX` |
 | `ZipCode`       | `1642`                       | The city zip code. Format Norway: `XXXX`                              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Checkout test data for Sweden
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Data                         | Description                                                             |
 | :-------------- | :--------------------------- | :---------------------------------------------------------------------- |
@@ -34,13 +38,18 @@ To test a checked-in user in the Demoshop, please use the following test data:
 | `Mobile number` | `+46 739000001`              | The mobile phone number of the payer. Format Sweden: `+46 707777777`.   |
 | `SSN`           | `{{ page.consumer_ssn_se }}` | The social security number of the payer. Format Sweden: `YYYYMMDDXXXX`. |
 | `ZipCode`       | `17674`                      | The city zip code. Format Sweden: `XXXXX`                               |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Checkout test data for Denmark
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Data          | Description                                                          |
 | :-------------- | :------------ | :------------------------------------------------------------------- |
 | `Mobile number` | `+4522222222` | The mobile phone number of the payer. Format Denmark: `+45 22222222` |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Credit Card Test Data
 
@@ -53,15 +62,19 @@ institutions.
 
 ### Visa
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number        | Expiry                  | CVC  |
 | :----------------- | :---------------------- | :--- |
 | `4925000000000004` | After the current month | Any  |
 | `4581097032723517` | After the current month | Any  |
 | `4581099940323133` | After the current month | Any  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### MasterCard
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number        | Expiry                  | CVC  |
 | :----------------- | :---------------------- | :--- |
@@ -69,65 +82,91 @@ institutions.
 | `5226603115488031` | After the current month | Any  |
 | `5226604266737382` | After the current month | Any  |
 | `5226600156995650` | After the current month | Any  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### American Express
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number       | Expiry                  | CVC            | Type of test data |
 | :---------------- | :---------------------- | :------------  | :---------------- |
 | `377601000000000` | After the current month | Any (4 digits) | Amex & loopback   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### JCB
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number        | Expiry                  | CVC   |
 | :----------------- | :---------------------- | :---- |
 | `3569990010082211` | After the current month | Any   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Diners
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number     | Expiry                  | CVC   |
 | :-------------- | :---------------------- | :---- |
 | `6148201829798` | After the current month | Any   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Maestro
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `6764429999947470` | After the current month  | Any   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Dankort
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `5019994016316467` | After the current month  | Any   |
 | `5019994001307083` | After the current month  | Any   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Visa/DanKort
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `4571994016401817` | After the current month  | Any   |
 | `4571994016471869` | After the current month  | Any   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Forbrugsforeningen
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card number        | Expiry                   | CVC   |
 | :----------------- | :----------------------- | :---- |
 | `6007220000000004` | After the current month  | Any   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### 3-D Secure
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
 | :--------- | :----------------- | :----------------------- | :-----| :------------------ |
 | Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
 | MasterCard | `5226612199533406` | After the current month  | Any   | 3-D Secure enrolled |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Failure Testing
 
@@ -164,6 +203,7 @@ environment.
 The amounts that can be used to trigger error codes
 (`transactionThirdPartyError`):
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Amount   | Error Code                                | Description                              |
 | :------- | :---------------------------------------- | :--------------------------------------- |
@@ -177,11 +217,14 @@ The amounts that can be used to trigger error codes
 | `900361` | `REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS` | Insufficient funds, response-code: 61    |
 | `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62         |
 | `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Invoice Test Data
 
 ### Invoice test data for Norway
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type    | Data             |
 | :------ | :--------------- |
@@ -189,9 +232,12 @@ The amounts that can be used to trigger error codes
 | Name    | Olivia Nyhuus    |
 | Address | Saltnestoppen 43 |
 | City    | 1642 Saltnes     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Invoice test data for Sweden
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type    | Data            | Alternative data        |
 | :------ | :-------------- | :---------------------- |
@@ -201,9 +247,12 @@ The amounts that can be used to trigger error codes
 | City    | 19792 Bro       | 17674 Järfälla          |
 | MSISDN  |                 | +46739000001            |
 | email   |                 | leia.ahlstrom@payex.com |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Invoice test data for Finland
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type    | Data             |
 | :------ | :--------------- |
@@ -211,6 +260,8 @@ The amounts that can be used to trigger error codes
 | Name    | Järvilehto Kimmo |
 | Address | Kiannonkatu 88   |
 | City    | 90500 Oulu       |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Invoice Service Test Data
 
@@ -225,12 +276,15 @@ fake service with no app involved. To trigger an error message, set the
 `description` value in `POST` Create Payment or `Create` Payment Order to one of
 the following values:
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Description | Simulates                                      |
 | :---------- | :--------------------------------------------- |
 | RF07        | Transaction declined                           |
 | TM01        | Swish timed out before the payment was started |
 | BANKIDCL    | Payer cancelled BankId signing                 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [create-card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png

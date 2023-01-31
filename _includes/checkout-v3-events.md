@@ -43,12 +43,15 @@ It will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                   |
 | `paymentOrder`          | `string` | {% include field-description-id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onCheckoutLoaded`
 
@@ -71,12 +74,15 @@ with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onCheckoutResized`
 
@@ -102,12 +108,15 @@ will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
 | `paymentOrder`     | `string` | {% include field-description-id.md %}                           |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onError`
 
@@ -131,12 +140,15 @@ will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field       | Type     | Description                                                            |
 | :---------- | :------- | :-------------------------------------------------------------         |
 | `event`     | `string` | The name of the event raised.                                          |
 | `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.                    |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onEventNotification`
 
@@ -161,12 +173,15 @@ payment flow at Swedbank Pay.
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                |
 | :--------     | :------- | :--------------------------------------------------------- |
 | `event`     | `string` | The name of the event raised.                                |
 | `paymentOrder`        | `string` | {% include field-description-id.md %}              |
 | `sourceEvent` | `string` | A human readable and descriptive text with the event name. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onInstrumentSelected`
 
@@ -190,6 +205,7 @@ will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
@@ -197,6 +213,8 @@ will be raised with the following event argument object:
 | `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onOutOfViewOpen`
 
@@ -223,12 +241,15 @@ new tab. It will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `openUrl`    | `string` | The external URL where the user will be redirected.                   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onOutOfViewRedirect`
 
@@ -252,12 +273,15 @@ will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaid`
 
@@ -282,12 +306,15 @@ It will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                       |
 | `paymentOrder`          | `string` | {% include field-description-id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% if documentation_section contains "checkout-v3/starter" %}
 
@@ -335,12 +362,15 @@ following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field          | Type     | Description                                                         |
 | :------------- | :------- | :-------------------------------------------------------------      |
 | `event`        | `string` | The name of the event raised.                                       |
 | `paymentOrder` | `string` | {% include field-description-id.md %}                               |
 | `payer`        | `string` | The `url` of the resource containing information about the payer.   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPayerUnidentified`
 
@@ -369,11 +399,14 @@ It will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field           | Type     | Description                                                  |
 | :-------------  | :------- | :------------------------------------------------------      |
 | `event`         | `string` | The name of the event raised.                                |
 | `paymentOrder`  | `string` | {% include field-description-id.md %}                        |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% endif %}
 
@@ -401,9 +434,12 @@ object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                | Type     | Description                                         |
 | :--------            | :------- | :---------------------------------------------------|
 | `event`              | `string` | The name of the event raised.                       |
 | `paymentOrder`       | `string` | {% include field-description-id.md %}               |
 | `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

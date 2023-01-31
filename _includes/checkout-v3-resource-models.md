@@ -30,6 +30,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -37,6 +38,8 @@ Content-Type: application/json
 | `aborted`                | `object`     | The abort object.                     |
 | └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
 | └➔&nbsp;`abortReason`             | `string`     | Why the payment was aborted. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancelled
 
@@ -93,6 +96,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -117,6 +121,8 @@ Content-Type: application/json
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
 | └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Failed
 
@@ -157,6 +163,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description     |
 | `paymentorder`           | `object`     | The payment order object.                      |
@@ -170,6 +177,8 @@ Content-Type: application/json
 | └─➔&nbsp;`problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## FailedAttempts
 
@@ -236,6 +245,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -255,6 +265,8 @@ Content-Type: application/json
 | └─➔&nbsp;`problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## FinancialTransactions
 
@@ -330,6 +342,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -348,6 +361,8 @@ Content-Type: application/json
 | └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
 | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
 | └➔&nbsp;`orderItems`           | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## History
 
@@ -491,6 +506,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -504,7 +520,10 @@ Content-Type: application/json
 | └➔&nbsp;`number`              | `string`   | Payment number associated with the event.                 |
 | └➔&nbsp;`prefill`              | `bool`   | Indicates if payment info was prefilled or not.                 |
 | └➔&nbsp;`initiatedBy`        | `string`     | `Consumer`, `Merchant` or `System`. The party that initiated the event.       |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | History Event Name         | Description  |
 | :----------------------- | :----------- |
@@ -525,6 +544,8 @@ Content-Type: application/json
 | `PaymentPartialCancelled`      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
 | `PaymentReversed`    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
 | `PaymentPartialReversed`    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Paid
 
@@ -852,6 +873,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -886,6 +908,8 @@ Content-Type: application/json
 | └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
 | └─➔&nbsp;`bin` | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
 | └─➔&nbsp;`msisdn` | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Payer
 
@@ -936,6 +960,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -975,3 +1000,5 @@ Content-Type: application/json
 | └─➔&nbsp;`browserVendor`                | `string` | Vendor of the browser used on the payer's device. |
 | └─➔&nbsp;`browserVersion`               | `string` | Version of the browser used on the payer's device. |
 | └─➔&nbsp;`browserJavaEnabled`           | `bool` | Indicates if the browser has Java enabled. Either `true` or `false`. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

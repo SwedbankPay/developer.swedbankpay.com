@@ -41,6 +41,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,6 +49,8 @@ Content-Type: application/json
 | {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. This is required unless `requireShippingAddress` is set to false.                                                           |
 |                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we will not collect a shipping address from the consumer.                                                            |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Checkin Response
 
@@ -76,6 +79,7 @@ When the request has been sent, a response containing an array of operations tha
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                 | Type     | Description                                                                                                                                       |
 | :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -85,6 +89,8 @@ When the request has been sent, a response containing an array of operations tha
 | └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.                                                                                             |
 | └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
 | └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Step 2: Display Swedbank Pay Checkin Module
 

@@ -209,6 +209,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                      |
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
@@ -217,6 +218,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                     |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of this reversal.                                            |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Reversal Response
 

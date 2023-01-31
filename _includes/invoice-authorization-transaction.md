@@ -40,6 +40,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                          | Type     | Description                                                            |
 | :--------------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
@@ -65,6 +66,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`zipCode`              | `string` | The zip code of the billing address adressee.                          |
 |                  | └➔&nbsp;`city`                 | `string` | The city name of the billing address adressee.                         |
 |                  | └➔&nbsp;`countryCode`          | `string` | The country code of the billing address adressee.                      |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Invoice Authorization Response
 
@@ -116,6 +119,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type      | Description                                                                                                                                                                                                  |
 | :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -134,6 +138,8 @@ Content-Type: application/json
 | └➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └➔&nbsp;`isOperational`  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └➔&nbsp;`operations`     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.

@@ -202,6 +202,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -281,6 +282,8 @@ Content-Type: application/json
 | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
 |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Payer Aware Payment Menu Response
 
@@ -379,6 +382,7 @@ Content-Type: application/json
       }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -413,6 +417,8 @@ Content-Type: application/json
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Tokens
 
@@ -519,6 +525,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------- |
@@ -532,6 +539,8 @@ Content-Type: application/json
 | └➔&nbsp;`instrumentDisplayName`             | `string`     | Payment instrument connected to the token.|
 | └➔&nbsp;`instrumentParameters`             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform regarding the token. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## PATCH Request For Removing Tokens
 
@@ -552,11 +561,14 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------- |
 | └➔&nbsp;`state`          | `string`  | The state you want the token to be in.                                                                                     |
 | └➔&nbsp;`comment`          | `string`  | Explanation as to why the token is being deleted.                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 Which will provide this response.
 
@@ -598,6 +610,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------- |
@@ -610,6 +623,8 @@ Content-Type: application/json
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument connected to the token. |
 | └➔&nbsp;`instrumentDisplayName`             | `string`     | Payment instrument connected to the token.|
 | └➔&nbsp;`instrumentParameters`             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation

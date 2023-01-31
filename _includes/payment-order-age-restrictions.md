@@ -53,8 +53,11 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Required         | Field     | Type         | Description   |
 | :--------------: | :-------- | :----------- | :------------ |
 | {% icon check %} | `paymentorder`                         | `object`  | The payment order object.                                                 |
 |                  | └➔&nbsp;`restrictedToAgeLimit`        | `int`    | Used for setting the age you want to restrict the payment to.              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

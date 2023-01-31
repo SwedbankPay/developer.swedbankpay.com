@@ -69,6 +69,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                        | Type         | Description                                                                                                                                                                                                                                               |
 | :--------------: | :--------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -102,6 +103,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`payerReference`    | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`prefillInfo`             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
 |                  | └─➔&nbsp;`msisdn`                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Vipps Response
 
@@ -172,12 +175,15 @@ it will have a set of operations that can be performed on it.
 Which operations are available will vary depending on the state of the
 payment resource, what the access token is authorized to do, etc.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field    | Description                                                         |
 | :------- | :------------------------------------------------------------------ |
 | `href`   | The target URL to perform the operation against.                    |
 | `rel`    | The name of the relation the operation has to the current resource. |
 | `method` | The HTTP method to use when performing the operation.               |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 The operations should be performed as described in each response and not as
 described here in the documentation.
@@ -187,6 +193,7 @@ The only thing that should be hard coded in the client is the value of the
 `rel` and the request that will be sent in the HTTP body of the request for
 the given operation.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation                | Description                                                                      |
 | :----------------------- | :------------------------------------------------------------------------------- |
@@ -195,6 +202,8 @@ the given operation.
 | `create-capture`         | Creates a [`capture`][capture] transaction.                                      |
 | `create-cancellation`    | Creates a [`cancellation`][cancel] transaction.                                  |
 | `create-reversal`        | Creates a [`reversal`][reverse] transaction.                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Vipps Transactions
 
@@ -320,6 +329,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                      |
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
@@ -328,6 +338,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md currency="NOK" %}                      |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Reversal Response
 

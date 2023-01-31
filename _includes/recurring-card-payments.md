@@ -110,6 +110,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
 | :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -136,6 +137,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`payer`                | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | └─➔&nbsp;`payerReference`      | `string`     | {% include field-description-payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | └➔&nbsp;`metadata`             | `object`     | {% include field-description-metadata.md %}                                                                                                                                                 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% include alert.html type="informative" icon="info" body="
 Please note that this `POST`request is made directly on the payment level,

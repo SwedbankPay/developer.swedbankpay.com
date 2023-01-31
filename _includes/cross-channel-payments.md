@@ -77,6 +77,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
@@ -89,3 +90,5 @@ Content-Type: application/json
 | └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
 | └─➔&nbsp;`referenceCode`          | `string` | A 16 digit reference code which can be used for tracking payments.  |
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

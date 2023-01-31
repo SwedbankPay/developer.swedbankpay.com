@@ -6,6 +6,7 @@ to pay with invoice, among other things. `orderItems` is required in all
 requests. It should be specified on both payment order creation as well as on
 [Capture][payment-order-capture].
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                 | Type      | Description                                                                                                                                                                                                                                                                           |
 | :--------------: | :-------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -24,5 +25,7 @@ requests. It should be specified on both payment order creation as well as on
 | {% icon check %} | `vatPercent`          | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | `amount`              | `integer` | {% include field-description-amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | `vatAmount`           | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                                                                                          |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [payment-order-capture]: /checkout-v2/capture

@@ -73,6 +73,7 @@ Request fields not covered in the common Checkout v3 [`Initialized`]({{
 features_url }}/technical-reference/status-models#initialized) redirect or
 seamless view table:
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -80,6 +81,8 @@ seamless view table:
 | └➔&nbsp;`restrictedToAfdInstruments`     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
 | └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
 | └─➔&nbsp;`mcc`     | `integer`      | The merchant category code used for the purchase, 4 digits. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% if include.integration_mode=="redirect" %}
 

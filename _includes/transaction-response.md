@@ -157,6 +157,7 @@ Content-Type: application/json
 
 {% endif %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                             | Type      | Description                                                                                                                                                                                                  |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |{% if documentation_section contains "checkout" or "payment-menu" %}
@@ -194,4 +195,5 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |
-{% include accordion-table.html content=response_table %}
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

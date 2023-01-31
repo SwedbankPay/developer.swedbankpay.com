@@ -385,6 +385,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------------------ |
@@ -441,6 +442,8 @@ Content-Type: application/json
 | └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
 | └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.
@@ -495,6 +498,7 @@ Content-Type: application/json
 
 Response fields introduced in this section:
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------------------ |
@@ -503,3 +507,5 @@ Response fields introduced in this section:
 | └─➔&nbsp;`token`  | `string`   | The token `guid`. |
 | └─➔&nbsp;`name`  | `string`   | The name of the token. In the example, a masked version of a card number. |
 | └─➔&nbsp;`expiryDate`  | `string`   | The expiry date of the token. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

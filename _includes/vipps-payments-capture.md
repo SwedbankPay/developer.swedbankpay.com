@@ -31,6 +31,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                                                   |
 | :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
@@ -39,6 +40,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %}                               |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Capture Response
 

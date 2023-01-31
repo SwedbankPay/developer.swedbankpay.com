@@ -36,10 +36,13 @@ object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field     | Type     | Description                                                          |
 | :-------- | :------- | :------------------------------------------------------------------- |
 | `details` | `string` | The source of the reconfiguration, and the new height of the iframe. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onBillingDetailsAvailable`
 
@@ -57,11 +60,14 @@ argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `actionType`  | `string` | The type of event that was raised.                                                  |
 | `url`         | `string` | The URL containing billing details.                                                 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onError`
 
@@ -80,6 +86,7 @@ object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field       | Type     | Description                                                    |
 | :---------- | :------- | :------------------------------------------------------------- |
@@ -87,6 +94,8 @@ object:
 | `id`        | `string` | {% include field-description-id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onExternalRedirect`
 
@@ -110,12 +119,15 @@ will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
 | `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentAborted`
 
@@ -133,11 +145,14 @@ object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                          |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentCanceled`
 
@@ -163,12 +178,15 @@ It will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                   |
 | `paymentOrder`          | `string` | {% include field-description-id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentCompleted`
 
@@ -193,12 +211,15 @@ It will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                       |
 | `paymentOrder`          | `string` | {% include field-description-id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentCreated`
 
@@ -216,11 +237,14 @@ following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `id`         | `string` | {% include field-description-id.md %}                                                           |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentFailed`
 
@@ -238,11 +262,14 @@ event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                        |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a failed payment. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentInstrumentSelected`
 
@@ -266,6 +293,7 @@ will be raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
@@ -273,6 +301,8 @@ will be raised with the following event argument object:
 | `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentPaid`
 
@@ -290,11 +320,14 @@ object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a completed payment. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentPending`
 
@@ -313,10 +346,13 @@ these events below.
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
 | `id`          | `string` | {% include field-description-id.md %}                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentToS`
 
@@ -334,11 +370,14 @@ argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
 | `openUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onPaymentTransactionFailed`
 
@@ -358,11 +397,14 @@ object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field     | Type     | Description                                         |
 | :-------- | :------- | :-------------------------------------------------- |
 | `id`      | `string` | {% include field-description-id.md %}               |
 | `details` | `string` | A human readable and descriptive text of the error. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## `onShippingDetailsAvailable`
 
@@ -380,11 +422,14 @@ with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
 | `actionType`  | `string` | The type of event that was raised.                                                  |
 | `url`         | `string` | The URL containing shipping details.                                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Updating Payment Menu
 

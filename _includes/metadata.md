@@ -65,10 +65,13 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Parameter            | Type                                                |
 | :------------------- | :-------------------------------------------------- |
 | `metadata`           | `string`, `boolean`, `integer`,`decimal`            |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## GET Request
 

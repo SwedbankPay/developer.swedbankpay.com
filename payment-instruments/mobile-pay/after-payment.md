@@ -45,12 +45,15 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                             |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include field-description-payee-reference.md %} |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancel Response
 
@@ -104,6 +107,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
@@ -112,6 +116,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                  |
 | {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Reversal Response
 

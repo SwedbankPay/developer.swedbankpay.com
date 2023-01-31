@@ -52,6 +52,7 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 
 ## Finland {% flag fi %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |        Bank         | Supported in eCom as of August 2020 | Instant Credit Notification |
 | :-----------------: | :---------------------------------: | :-------------------------: |
@@ -65,9 +66,12 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 |      S-Pankki       |          {% icon check %}           |      {% icon check %}       |
 | Danske Bank (Sampo) |          {% icon check %}           |      {% icon check %}       |
 |  Oma Säästöpankki   |          {% icon check %}           |      {% icon check %}       |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Sweden {% flag se %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Bank             | Supported in eCom as of August 2020 | Instant Credit Notification |
 | :--------------- | :---------------------------------: | :-------------------------: |
@@ -82,6 +86,8 @@ Trustly is supported by the following Finnish and Swedish banks as of August 14.
 | Forex            |                                     |                             |
 | Sparbanken Syd   |          {% icon check %}           |      {% icon check %}       |
 | Marginalen Bank  |          {% icon check %}           |      {% icon check %}       |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 *Danske Bank in Sweden offers instant credit notifications up to SEK 2500.
 

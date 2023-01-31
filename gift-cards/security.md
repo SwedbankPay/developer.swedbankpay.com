@@ -77,6 +77,7 @@ DATE\n
 PAYLOAD\n
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field      | Description                                                                                   |
 | :--------------: | :--------- | :-------------------------------------------------------------------------------------------- |
@@ -85,6 +86,8 @@ PAYLOAD\n
 | {% icon check %} | `NONSE`    | A unique value for each request ([UUID][uuid]                                                 |
 |                  | `DATE`     | Same as `Transmission-Time` if provided as separate header. Uses [ISO8601 standard][iso-8601] |
 |                  | `PAYLOAD`  | The body of request                                                                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 Example request:
 

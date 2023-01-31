@@ -50,12 +50,15 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                              |
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                              |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %}          |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancel Response
 
@@ -92,6 +95,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -111,6 +115,8 @@ Content-Type: application/json
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md %}                                                                                                                              |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## List Cancel Transactions
 
@@ -164,6 +170,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                              |
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
@@ -172,6 +179,8 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %}          |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Reversal Response
 
@@ -208,6 +217,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -228,6 +238,8 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## List Reversal Transactions
 

@@ -8,6 +8,7 @@ the following URL structure:
 
 #### Contractual Problem Types
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                                                    |
 | :----------------------------- | :----: | :----------------------------------------------------------------------------------------------------------------------------- |
@@ -19,9 +20,12 @@ the following URL structure:
 | `frauddetected`                | `403`  | The transaction was fraudulent.                                                                                                |
 | `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.                                                                                           |
 | `velocitycheck`                | `429`  | Indicates that the limit for how  many times a card or different cards can be used for attempting a purchase has been reached. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 #### Acquirer and 3-D Secure Problem Types
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
 | :----------------------------- | :----: | :-------------------------------------------------------------------------------------------- |
@@ -46,3 +50,5 @@ the following URL structure:
 | `acquirergatewayerror`         | `502`  | Problems reaching acquirers gateway. Try again after some time.                                |
 | `badgateway`                   | `502`  | Problems reaching the gateway. Try again after some time.                                |
 | `acquirergatewaytimeout`       | `504`  | Problems reaching acquirers gateway. Try again after some time.                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

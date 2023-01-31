@@ -8,20 +8,27 @@ following URL structure:
 
 #### Problem Types from Vipps (Init-call)
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type          | Status | Note       |
 | :------------ | :----- | :--------- |
 | `vipps_error` | `403`  | All errors |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 #### Problem Types from Vipps (Callback)
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type             | Status | Note                              |
 | :--------------- | :----- | :-------------------------------- |
 | `vipps_declined` | `400`  | Any status that is not successful |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 #### Problem Types from Acquirer
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                          | Status |
 | :---------------------------- | :----- |
@@ -42,3 +49,5 @@ following URL structure:
 | `acquirer_gateway_error`      | `502`  |
 | `bad_gateway`                 | `502`  |
 | `acquirer_gateway_timeout`    | `504`  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

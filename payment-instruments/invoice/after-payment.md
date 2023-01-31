@@ -48,12 +48,15 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                                                              |
 | :--------------: | :--------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction.activity`       | `string`     | `FinancingConsumer`.                                                                                                                                                                                                                  |
 | {% icon check %}︎ | `transaction.payeeReference` | `string`     | The `payeeReference` is the receipt/invoice number, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
 | {% icon check %}︎ | `transaction.description`    | `string(50)` | A textual description for the cancellation.                                                                                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancel Response
 
@@ -126,6 +129,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                      | Type         | Description                                                                                                                                                                                                                                                                |
 | :--------------: | :------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -136,6 +140,8 @@ Content-Type: application/json
 | {% icon check %}︎ | └➔&nbsp;`payeeReference`   | `string` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
 |                  | └➔&nbsp;`receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. This reference is used as an invoice/receipt number.                                                                                                                                                       |
 | {% icon check %}︎ | └➔&nbsp;`description`      | `string`     | A textual description of the reversal.                                                                                                                                                                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Reversal Response
 

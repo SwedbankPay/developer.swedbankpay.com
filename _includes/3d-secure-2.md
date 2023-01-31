@@ -71,6 +71,7 @@ fields that should be included in your request when implementing 3-D Secure 2.
 
 {% if api_resource == "creditcard" %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
@@ -88,9 +89,12 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`zipCode`                    | `string` | Cardholder's zip code.                                           |
 | └─➔&nbsp;`city`                       | `string` | Cardholder's city of residence.                                                                            |
 | └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% else %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
@@ -106,6 +110,8 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code.                                           |
 | └─➔&nbsp;`city`                       | `string` | Payer's city of residence.                                                                            |
 | └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% endif %}
 
@@ -133,6 +139,7 @@ fields that should be included in your request when implementing 3-D Secure 2.
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
@@ -151,3 +158,5 @@ fields that should be included in your request when implementing 3-D Secure 2.
 | └─➔&nbsp;`city`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `city`.                                                                           |
 | └─➔&nbsp;`zipCode`                    | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `zipCode`.                                                                               |
 | └─➔&nbsp;`countryCode`                | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `countryCode`.                                                  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

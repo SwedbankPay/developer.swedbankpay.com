@@ -120,6 +120,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                          | Type      | Description                                                                     |
 | :--------------: | :----------------------------- | :-------- | :------------------------------------------------------------------------------ |
@@ -129,7 +130,10 @@ Content-Type: application/json
 | {% icon check %} | └➔&nbsp;`cardExpiryYear`       | `integer` | Expiry year of the card, printed on the face of the card.                       |
 |                  | └➔&nbsp;`cardVerificationCode` | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | └➔&nbsp;`cardholderName`       | `string`  | Name of the cardholder, usually printed on the face of the card.               |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                             | Type      | Description                                                                                                                                                                                                                                                                                          |
 | :-------------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -162,3 +166,5 @@ Content-Type: application/json
 | └─➔&nbsp;`failedReason`           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                                                                                                            |
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                                                                                                         |
 | └─➔&nbsp;`operations`             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

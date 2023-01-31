@@ -61,12 +61,15 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
 | └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                     |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 The `paymentorder` object is abbreviated since it's just the `id` and
 `operations` we are interested in. Store the `id` of the Payment Order

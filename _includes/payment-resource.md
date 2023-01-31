@@ -119,6 +119,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -140,6 +141,8 @@ Content-Type: application/json
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Operations
 
@@ -155,6 +158,7 @@ for the given operation.
 
 {% when "creditaccount" %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
@@ -162,9 +166,12 @@ for the given operation.
 | `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay payment page containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured, payment.                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% when "swish" %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation              | Description                                                                                                                                                               |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -173,9 +180,12 @@ for the given operation.
 | `redirect-sale`        | Contains the redirect-URL that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
 | `view-sales`           | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
 | `view-payment`         | Contains the URL of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% when "trustly" %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
@@ -183,9 +193,12 @@ for the given operation.
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 | `view-sale`             | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% when "invoice" %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
@@ -196,9 +209,12 @@ for the given operation.
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% else %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
@@ -210,5 +226,7 @@ for the given operation.
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% endcase %}

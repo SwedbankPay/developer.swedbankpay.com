@@ -158,6 +158,7 @@ is given below.
 
 {% endif %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Description |
 | :------------ | :------- | :---------- |
@@ -165,6 +166,8 @@ is given below.
 | `href`        | `string` | The target URL to perform the operation against.                                   |
 | `rel`         | `string` | The name of the relation the operation has to the current resource.                |
 | `contentType` | `string` | The HTTP content type of the resource referenced in the `href` field.              |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 The operations should be performed as described in each response and not as
 described here in the documentation. Always use the `href` and `method` as
@@ -175,6 +178,7 @@ for the given operation.
 
 {% if documentation_section contains "checkout-v3" %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation  | Description   |
 | :--------- | :------------ |
@@ -185,9 +189,12 @@ for the given operation.
 | `reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                     |
 | `redirect-checkout`           | Contains the URL used to redirect the payer to the Swedbank Pay Payments containing the Payment Menu.                                                      |
 | `view-checkout`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% else %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation  | Description  |
 | :----------| :----------- |
@@ -203,5 +210,7 @@ for the given operation.
 | `create-capture`                  | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 | `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
 | `create-cancel`                   | **Deprecated operation. Do not use!**                                                                                                                                                                                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% endif %}

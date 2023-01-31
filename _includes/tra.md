@@ -160,6 +160,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
@@ -265,6 +266,8 @@ Content-Type: application/json
 |                   | └➔&nbsp;`items`            | `object` | Object related to the `riskIndicator`, containing info about the items ordered. Should be added if the GPC codes for the items are available. If the `orderItems` object is used and includes the GPC codes, there is no need to add this field. Should only be used by merchants who don't use the `orderItems` object.                                                                                                                                          |
 |                   | └─➔&nbsp;`gpcNumber`                   | `string` | The specific [GPC Number][gpc] for the order line. |
 |                   | └─➔&nbsp;`amount`                   | `string` | The amount of the specific order line. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [gpc]: https://www.gs1.org/standards/gpc
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

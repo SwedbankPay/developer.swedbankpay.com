@@ -27,6 +27,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field       | Type      | Description                                                                                |
 | :--------------: | :---------- | :-------- | :----------------------------------------------------------------------------------------- |
@@ -34,6 +35,8 @@ Content-Type: application/json
 |                  | `email`     | `string`  | customers email.                                                                           |
 |                  | `msisdn`    | `string`  | customers mobile number.                                                                   |
 |                  | `productId` | `string`  | A product identifier provided by Swedbank Pay.                                        |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {:.code-view-header}
 **Response**
@@ -90,6 +93,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                     | Type      | Description                                                                                                                      |
 | :--------------: | :------------------------ | :-------- | :------------------------------------------------------------------------------------------------------------------------------- |
@@ -102,6 +106,8 @@ Content-Type: application/json
 | {% icon check %} | `accountKey`              | `string`  | Primary Account Number (PAN) for card/account. This is mandatory if ‘track2’ is not present.                                     |
 |                  | `cvc`                     | `string`  | Card Verification Code.                                                                                                          |
 |                  | `expiryDate`              | `string`  | Expiry date on card (only applicable for PaymentInstrumentType ‘creditcard’) where expiry date is printed on card. Format MM/YY. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {:.code-view-header}
 **Response:**

@@ -15,6 +15,7 @@ A Payment Order created for the SDK must have [`urls`][urls] the same
 way a Payment Order to be used on a web page would. The SDK context places some
 requirement on these urls.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field               | SDK Requirements                                                                                                                                                |
 | :------------------ | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,6 +25,8 @@ requirement on these urls.
 | `cancelUrl`         | No special requirements. However, the SDK will intercept the navigation, so `cancelUrl` will not actually be opened in the SDK Web View.                        |
 | `paymentUrl`        | If opened in a browser, must eventually be delivered to the SDK, bringing the containing app to the foreground. See the Android and iOS specific documentation. |
 | `callbackUrl`       | No special requirements. This is a server-to-server affair.                                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Merchant Backend Configuration
 

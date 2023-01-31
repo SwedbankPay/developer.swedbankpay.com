@@ -42,12 +42,15 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                                    |
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
 | {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancel Response
 
@@ -81,6 +84,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -98,6 +102,8 @@ Content-Type: application/json
 | └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancel Sequence Diagram
 

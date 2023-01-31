@@ -45,7 +45,8 @@
          ]
  ```
 
- {:.table .table-striped}
+{% capture collapsible_table %}
+{:.table .table-striped}
  | Field                    | Type         | Description                                                                                                                                                                                                               |
  | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
  | {% icon check %} | └➔&nbsp;`orderItems`               | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                                            |
@@ -65,3 +66,5 @@
  | {% icon check %} | └─➔&nbsp;`amount`                  | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                                                |
  | {% icon check %} | └─➔&nbsp;`vatAmount`               | `integer`    | {% include field-description-vatamount.md %}                                                     |
  |                  | └➔&nbsp;`restrictedToInstruments`  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. The fee or discount applies to all instruments if a restriction is not included. Use of this field requires an agreement with Swedbank Pay.                                    |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

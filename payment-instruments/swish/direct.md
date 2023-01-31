@@ -95,6 +95,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -131,6 +132,8 @@ Content-Type: application/json
 |                  | └─➔&nbsp;`enableEcomOnly`    | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                                 |
 |          | └─➔&nbsp;`paymentRestrictedToAgeLimit`             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | └─➔&nbsp;`paymentRestrictedToSocialSecurityNumber` | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Initial Direct Response
 
@@ -206,11 +209,14 @@ Content-Type: application/json
 
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field            | Type     | Required                                                                                          |
 | :--------------- | :------- | :------------------------------------------------------------------------------------------------ |
 | `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | └➔&nbsp;`msisdn` | `string` | The payer's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## E-Commerce Response
 
@@ -282,10 +288,13 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type     | Required                                                             |
 | :------------ | :------- | :------------------------------------------------------------------- |
 | `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## M-Commerce Response
 
@@ -372,6 +381,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -393,6 +403,8 @@ Content-Type: application/json
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | └─➔&nbsp;`href`          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | └─➔&nbsp;`rel`           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## M-Commerce Sequence Diagram
 

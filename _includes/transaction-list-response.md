@@ -134,6 +134,7 @@ Content-Type: application/json
 
 {% endif %}
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                             | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | {% if documentation_section contains "checkout" or "payment-menu" %}
@@ -156,5 +157,7 @@ Content-Type: application/json
 | └─➔&nbsp;`receiptReference`       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
 | └─➔&nbsp;`isOperational`          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | └─➔&nbsp;`operations`             | `array`   | The array of [operations]({{ operations_url }}) that are possible to perform on the transaction in its current state.                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [operations]: {{ features_url }}/technical-reference/operations

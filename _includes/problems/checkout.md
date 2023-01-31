@@ -33,6 +33,7 @@ The structure of a problem message will look like this:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                 | Type      | Description                                                                                                                                                                                                                                         |
 | :-------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,6 +46,8 @@ The structure of a problem message will look like this:
 | `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Common Problems
 
@@ -54,6 +57,7 @@ identifier** that you can hard-code and implement logic around. It is currently
 not not possible to dereference this URL, although that might be possible in the
 future.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                 | Status | Description                                                                                                                                        |
 | :------------------- | :----: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,6 +66,8 @@ future.
 | `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Card Problems
 
@@ -73,6 +79,7 @@ the following URL structure:
 
 ### Contractual Problem Types
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                                                    |
 | :----------------------------- | :----: | :----------------------------------------------------------------------------------------------------------------------------- |
@@ -84,9 +91,12 @@ the following URL structure:
 | `frauddetected`                | `403`  | The transaction was fraudulent.                                                                                                |
 | `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.                                                                                           |
 | `velocitycheck`                | `429`  | Indicates that the limit for how  many times a card or different cards can be used for attempting a purchase has been reached. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Acquirer and 3-D Secure Problem Types
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                           | Status | Description                                                                                   |
 | :----------------------------- | :----: | :-------------------------------------------------------------------------------------------- |
@@ -111,6 +121,8 @@ the following URL structure:
 | `acquirergatewayerror`         | `502`  | Problems reaching acquirers gateway. Try again after some time.                                |
 | `badgateway`                   | `502`  | Problems reaching the gateway. Try again after some time.                                |
 | `acquirergatewaytimeout`       | `504`  | Problems reaching acquirers gateway. Try again after some time.                                |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Invoice Problems
 
@@ -120,6 +132,7 @@ following URL structure:
 
 `https://api.payex.com/psp/errordetail/invoice/<error-type>`
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Status | Description                       |
 | :-------------- | :----: | :-------------------------------- |
@@ -132,6 +145,8 @@ following URL structure:
 | `externalerror` | `502`  | `50` - `SystemConfigurationError` |
 | `externalerror` | `502`  | `60` - `SystemError`              |
 | `externalerror` | `502`  | `9999` - `ServerOtherServer`      |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Swish Problems
 
@@ -482,10 +497,13 @@ following URL structure:
 
 `https://api.payex.com/psp/errordetail/trustly/<error-type>`
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Status | Description                       |
 | :-------------- | :----: | :-------------------------------- |
 | `systemerror`   | `502`  | Happens if Trustly is experiencing technical difficulties, a contract is configured with bad account name / password, or if the operation (i.e. reversal) is not allowed on the payment due to its current state on Trustly's end. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Vipps Problems
 
@@ -497,20 +515,27 @@ following URL structure:
 
 ### Problem Types from Vipps (Init-call)
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type          | Status | Note       |
 | :------------ | :----- | :--------- |
 | `vipps_error` | `403`  | All errors |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Problem Types from Vipps (Callback)
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type             | Status | Note                              |
 | :--------------- | :----- | :-------------------------------- |
 | `vipps_declined` | `400`  | Any status that is not successful |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ### Problem Types from Acquirer
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                          | Status |
 | :---------------------------- | :----- |
@@ -531,5 +556,7 @@ following URL structure:
 | `acquirer_gateway_error`      | `502`  |
 | `bad_gateway`                 | `502`  |
 | `acquirer_gateway_timeout`    | `504`  |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 [rfc-7807]: https://tools.ietf.org/html/rfc7807

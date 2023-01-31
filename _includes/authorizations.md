@@ -66,6 +66,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Required          | Field                          | Data type | Description                                                                                                                                                      |
 | :---------------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -90,6 +91,8 @@ Content-Type: application/json
 | {% icon check %}  | └➔&nbsp;`zipCode`              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
 | {% icon check %}  | └➔&nbsp;`city`                 | `string`  | The city of the payer.                                                                                                                                        |
 | {% icon check %}  | └➔&nbsp;`countryCode`          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Authorization Response
 

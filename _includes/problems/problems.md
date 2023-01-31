@@ -37,6 +37,7 @@ The structure of a problem message will look like this:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                 | Type      | Description                                                                                                                                                                                                                                         |
 | :-------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,6 +50,8 @@ The structure of a problem message will look like this:
 | `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Common Problems
 
@@ -58,6 +61,7 @@ identifier** that you can hard-code and implement logic around. It is currently
 not not possible to dereference this URL, although that might be possible in the
 future.
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type                 | Status | Description                                                                                                                                        |
 | :------------------- | :----: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -66,6 +70,8 @@ future.
 | `forbidden`          | `403`  | The request was valid, but the server is refusing the action. The necessary permissions to access the resource might be lacking.                   |
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% include {{ problem_include_file }} %}
 

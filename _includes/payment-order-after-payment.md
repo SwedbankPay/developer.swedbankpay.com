@@ -9,12 +9,15 @@ stage. One-phase payments like Swish are settled directly without the option to
 capture or cancel. For a full list of the available operations, see the
 [techincal reference][operations].
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Operation                      | Description                                                                                                                                                                                                                                                                    |
 | :----------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `create-paymentorder-capture`  | The second part of a two-phase transaction where the authorized amount is sent from the payer to the payee. It is possible to do a part-capture on a subset of the authorized amount. Several captures on the same payment are possible, up to the total authorization amount. |
 | `create-paymentorder-cancel`   | Used to cancel authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.                                                                                         |
 | `create-paymentorder-reversal` | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                                                                                                                               |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## GET Request
 
@@ -75,12 +78,15 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
 | └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Cancel
 

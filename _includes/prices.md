@@ -53,6 +53,7 @@ Content-Type: application/json
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                | Type      | Description                                                                                                                                                                                 |
 | :------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -63,6 +64,8 @@ Content-Type: application/json
 | └─➔&nbsp;`type`      | `string`  | The type of the price object.                                                                                                                                                               |
 | └─➔&nbsp;`amount`    | `integer` | {% include field-description-amount.md %}                                                                                                                                                   |
 | └─➔&nbsp;`vatAmount` | `integer` | {% include field-description-vatamount.md %}                                          |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Prices Object Types
 
@@ -83,6 +86,7 @@ types.
 
 #### Card Payments
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Description                                |
 | :-------------- | :----------------------------------------- |
@@ -96,41 +100,55 @@ types.
 | `Jcb`           | JCB                                        |
 | `IkanoFinansDK` | Ikano Finans Denmark                       |
 | `Maestro`       | MasterCard Maestro                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% when "invoice" %}
 
 ## Invoice Payments
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type      | Description    |
 | :-------- | :------------- |
 | `Invoice` | Always Invoice |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% when "mobilepay" %}
 
 ## MobilePay Online Payments
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type        | Description      |
 | :---------- | :--------------- |
 | `Mobilepay` | Always MobilePay |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% when "swish" %}
 
 ## Swish Payments
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type    | Description  |
 | :------ | :----------- |
 | `Swish` | Always Swish |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% when "vipps" %}
 
 ## Vipps Payments
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type    | Description  |
 | :------ | :----------- |
 | `Vipps` | Always Vipps |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {% endcase %}

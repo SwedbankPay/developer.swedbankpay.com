@@ -103,6 +103,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 
 ## V1 Header Fields
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field         | Type       | Description                                                                |
 | :------------ | :--------- | :------------------------------------------------------------------------- |
@@ -115,9 +116,12 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Amount`      | `Decimal`  | Total amount for the given service (e.g 100.00).                           |
 | `FromDate`    | `ISO 8601` | The earliest transaction date, `YYYY-MM-DD`.                               |
 | `ToDate`      | `ISO 8601` | The latest transaction date, `YYYY-MM-DD`.                                 |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## V1 Body Fields
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
 | :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -141,9 +145,12 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
 | `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
 | `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## V2 Header Fields
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                     | Type       | Description                                                                  |
 | :-------------------------| :--------- | :--------------------------------------------------------------------------- |
@@ -157,9 +164,12 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Amount`                  | `Decimal`  | Total amount for the given service (e.g 100.00).                             |
 | `FromDate`                | `ISO 8601` | The earliest transaction date, `YYYY-MM-DD`.                                 |
 | `ToDate`                  | `ISO 8601` | The latest transaction date, `YYYY-MM-DD`.                                   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## V2 Body Fields
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field                           | Type       | Description                                                                                                                                               |
 | :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -186,6 +196,8 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
 | `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
 | `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Reconciliation
 

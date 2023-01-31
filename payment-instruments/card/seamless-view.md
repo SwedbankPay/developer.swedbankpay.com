@@ -124,11 +124,14 @@ is raised with the following event argument object:
 }
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Field        | Type     | Description                           |
 | :----------- | :------- | :------------------------------------ |
 | `id`         | `string` | {% include field-description-id.md %} |
 | `instrument` | `string` | `creditcard`                          |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 ## Sequence Diagram
 

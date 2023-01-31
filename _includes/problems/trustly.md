@@ -6,7 +6,10 @@ following URL structure:
 
 `https://api.payex.com/psp/errordetail/trustly/<error-type>`
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Type            | Status | Description                       |
 | :-------------- | :----: | :-------------------------------- |
 | `systemerror`   | `502`  | Happens if Trustly is experiencing technical difficulties, a contract is configured with bad account name / password, or if the operation (i.e. reversal) is not allowed on the payment due to its current state on Trustly's end. |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}

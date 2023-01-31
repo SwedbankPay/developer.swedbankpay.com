@@ -78,6 +78,7 @@ Content-Type: application/json
 
 ```
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 | Required         | Field                           | Data type    | Description                                                                                                                                                                                                                                               |
 | :--------------- | :------------------------------ | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -112,6 +113,8 @@ Content-Type: application/json
 |                  | └➔&nbsp;`prefillInfo`           | `object`     | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                        |
 |                  | └─➔&nbsp;`msisdn`               | `string`     | Number will be prefilled on MobilePays page, if valid. Only Danish and Finnish phone numbers are supported. The country code prefix is +45 and +358 respectively.                                                                                          |
 |                  | └➔&nbsp;`mobilepay.shoplogoUrl` | `string`     | URI to logo that will be visible at MobilePay Online. For it to display correctly in the MobilePay app, the image must be 250x250 pixels, a png or jpg served over a secure connection using https, and be publicly available. This URI will override the value configured in the contract setup.                            |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 {:.code-view-header}
 **Response**

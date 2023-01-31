@@ -57,12 +57,15 @@ set to value `FinancingConsumer` are listed below.
 
 ### Options Before Posting A Payment
 
+{% capture collapsible_table %}
 {:.table .table-striped}
 |               | Norway {% flag no %} | Finland {% flag fi %} | Sweden {% flag se %} |
 | :------------ | :------------------- | :-------------------- | :------------------- |
 | `operation`   | `FinancingConsumer`  | `FinancingConsumer`   | `FinancingConsumer`  |
 | `currency`    | `NOK`                | `EUR`                 | `SEK`                |
 | `invoiceType` | `PayExFinancingNO`   | `PayExFinancingFI`    | `PayExFinancingSE`   |
+{% endcapture %}
+{% include accordion-table.html content = collapsible_table %}
 
 *   An invoice payment is always two-phased based -  you create an Authorize
   transaction that is followed by a Capture or Cancel request.
