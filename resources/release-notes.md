@@ -11,6 +11,17 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 31 January 2023
+
+### Version 3.1.8
+
+Bigger things are coming up around the bend, so we are stopping by with some
+smaller fixes and a [Checkout v3 matrix][checkout-v3-matrix] giving you a better
+overview over which payment instruments v3 has to offer, and the countries they
+are available.
+
+We'll be back soon!
+
 ## 17 January 2023
 
 ### Version 3.1.7
@@ -750,6 +761,7 @@ integration and the payer.
 [checkout-callback]: /checkout-v2/features/core/callback
 [checkout-v3-business]: /checkout-v3/business
 [checkout-v3-business-payment-request]: /checkout-v3/business/redirect#payment-order-request
+[checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [checkout-v3-starter]: /checkout-v3/starter

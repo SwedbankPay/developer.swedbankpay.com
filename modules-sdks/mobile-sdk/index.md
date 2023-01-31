@@ -39,7 +39,7 @@ To start integrating the Swedbank Pay Mobile SDK, you need the following:
     specifically [Enterprise][checkout-enterprise] or [Payments
     Only][checkout-payments-only].
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
-    Swedbank Pay Admin. Please observe that the Swedbank Pay Checkout v3
+    the Merchant Portal. Please observe that the Swedbank Pay Checkout v3
     implementations currently available encompasses the **`paymentmenu`** scope.
 
 It is important to secure all communication between your app and your servers.
