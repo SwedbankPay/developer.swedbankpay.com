@@ -15,6 +15,7 @@ pull_request_rules:
       - check-success=variables
       - check-success=build
       - check-success=spec
+      - "-body~=swedbank-pay-design-guide-jekyll-theme" # Don't merge if the PR contains the string "swedbank-pay-design-guide-jekyll-theme"
     actions:
       merge:
 
