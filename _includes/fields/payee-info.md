@@ -1,10 +1,14 @@
 {%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
 {%- capture payee_info_url -%}{%- include documentation-section-url.md href="/features/technical-reference/payee-info" -%}{%- endcapture -%}
-{%- capture payee_info -%}
-    The `payeeInfo` object, containing information about the payee (the recipient of the money).
-    See [`payeeInfo`]({{ payee_info_url }}) for details.
+{%- capture text -%}
+The `payeeInfo` object, containing information about the payee (the recipient of
+the money). See [`payeeInfo`]({{ payee_info_url }}) for details.
 {%- endcapture -%}
-{{- payee_info | strip_newlines -}}
+{%- comment -%}
+The following chain of Liquid filters converts newlines to spaces and removes
+extranous spaces.
+{%- endcomment -%}
+{{- text | newline_to_br | strip_newlines | split: '<br />' | join: ' ' | strip -}}
 {%- comment -%}
 The dashes in the Liquid code tags remove output space. More on that here:
 
