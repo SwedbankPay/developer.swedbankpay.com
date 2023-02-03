@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign token_url_without_psp = api_resource %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 

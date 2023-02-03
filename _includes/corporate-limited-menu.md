@@ -1,4 +1,4 @@
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 {% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
 
 ## Corporate Limited Menu

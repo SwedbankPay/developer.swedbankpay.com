@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md fallback="generic" %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md fallback="generic" %}{% endcapture %}
 
 ## Problems
 

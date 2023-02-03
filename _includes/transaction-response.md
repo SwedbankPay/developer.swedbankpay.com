@@ -1,10 +1,10 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {%- capture operations_href -%}
     {%- if documentation_section == nil or documentation_section == empty -%}
         /introduction#operations
     {%- else -%}
-        {%- include documentation-section-url.md href='/features/technical-reference/operations' -%}
+        {%- include utils/documentation-section-url.md href='/features/technical-reference/operations' -%}
     {%- endif -%}
 {%- endcapture -%}
 {% assign transaction = include.transaction | default: "capture" %}

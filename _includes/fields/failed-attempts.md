@@ -1,5 +1,5 @@
 {%- capture url -%}
-    {%- include documentation-section-url.md
+    {%- include utils/documentation-section-url.md
         href='/technical-reference/resource-sub-models#failedattempts' -%}
 {%- endcapture -%}
 {%- capture text -%}

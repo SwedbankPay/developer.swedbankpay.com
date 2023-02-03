@@ -1,7 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{%
+{% capture documentation_section %}{% include utils/documentation-section.md %}{%
 endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## AutoClick

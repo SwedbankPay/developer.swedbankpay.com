@@ -1,4 +1,4 @@
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign callback_href = "/payment-instruments/" | append: documentation_section | append: "/features/core/callback" %}
 
 {% capture body %}

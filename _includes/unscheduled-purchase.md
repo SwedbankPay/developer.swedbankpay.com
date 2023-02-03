@@ -1,4 +1,4 @@
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign seamless_view = include.seamless_view | default: false %}
 {% assign full_reference = include.full_reference | default: false %}
 

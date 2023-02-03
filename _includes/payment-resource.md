@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign show_status_operations = include.show_status_operations | default:
 false %}
 {% case api_resource %}
@@ -90,30 +90,30 @@ Content-Type: application/json
     },
     "operations": [ {%- case api_resource -%}
     {%- when "swish" -%}
-        {% include api-operation.md operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md operation="redirect-sale" %},
-        {% include api-operation.md operation="view-sales" %},
-        {% include api-operation.md operation="view-payment" %},
+        {% include utils/api-operation.md operation="create-sale" href_tail="sales" %},
+        {% include utils/api-operation.md operation="redirect-sale" %},
+        {% include utils/api-operation.md operation="view-sales" %},
+        {% include utils/api-operation.md operation="view-payment" %},
     {%- when "trustly" -%}
-        {% include api-operation.md operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md operation="redirect-sale" %},
-        {% include api-operation.md operation="view-sale" %},
-        {% include api-operation.md operation="update-payment-abort" %},
-        {% include api-operation.md operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md operation="failed-payment" href_tail="failed" %}
+        {% include utils/api-operation.md operation="create-sale" href_tail="sales" %},
+        {% include utils/api-operation.md operation="redirect-sale" %},
+        {% include utils/api-operation.md operation="view-sale" %},
+        {% include utils/api-operation.md operation="update-payment-abort" %},
+        {% include utils/api-operation.md operation="paid-payment" href_tail="paid" %},
+        {% include utils/api-operation.md operation="failed-payment" href_tail="failed" %}
     {%- when "invoice" -%}
-        {% include api-operation.md operation="create-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md operation="redirect-authorization" %},
+        {% include utils/api-operation.md operation="create-authorization" href_tail="operation=authorize" %},
+        {% include utils/api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
+        {% include utils/api-operation.md operation="redirect-authorization" %},
         {% else %},
-        {% include api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md operation="redirect-authorization" %},
+        {% include utils/api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
+        {% include utils/api-operation.md operation="redirect-authorization" %},
     {%- endcase -%}
     {% if show_status_operations %}
-        {% include api-operation.md operation="update-payment-abort" %},
-        {% include api-operation.md operation="create-capture" href_tail="captures" %},
-        {% include api-operation.md operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md operation="failed-payment" href_tail="failed" %}
+        {% include utils/api-operation.md operation="update-payment-abort" %},
+        {% include utils/api-operation.md operation="create-capture" href_tail="captures" %},
+        {% include utils/api-operation.md operation="paid-payment" href_tail="paid" %},
+        {% include utils/api-operation.md operation="failed-payment" href_tail="failed" %}
     {% endif %}
     ]
 }

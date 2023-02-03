@@ -1,9 +1,9 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {% assign header_level = include.header_level | default: 2 %}
 {% assign next_header_level = header_level | plus: 1 %}
 {% capture h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 
 {{ h }} Transactions
 

@@ -1,6 +1,6 @@
-{%- capture documentation_section -%}{%- include documentation-section.md fallback="card" -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md fallback="card" -%}{%- endcapture -%}
 {%- assign describe_receipt = include.describe_receipt | default: false -%}
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {% if documentation_section == "card" %}
   {% assign payee_reference_max_length = 50 %}
 {% else %}
@@ -10,7 +10,7 @@
     {%- if documentation_section == nil or documentation_section == empty -%}
         {%- assign payee_reference_url = "/introduction#payee-reference" -%}
     {%- else -%}
-        {%- include documentation-section-url.md href="/features/technical-reference/payee-reference" -%}
+        {%- include utils/documentation-section-url.md href="/features/technical-reference/payee-reference" -%}
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payee_reference -%}

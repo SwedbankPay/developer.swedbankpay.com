@@ -1,5 +1,5 @@
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 
 {% if documentation_section contains "checkout-v2" %}
