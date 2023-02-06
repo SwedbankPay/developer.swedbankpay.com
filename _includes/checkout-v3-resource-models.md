@@ -646,7 +646,8 @@ Content-Type: application/json
         "acquirerTerminalId": "80100001190",
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
         "transactionInitiator": "CARDHOLDER",
-        "bin": "492500"
+        "bin": "492500",
+        "maskedDPan": "49250000******04",
     }
   }
 }
@@ -678,7 +679,7 @@ Content-Type: application/json
     "discountAmount": 0,
     "details": {
         "cardBrand": "Visa",
-        "maskedPan": "489537******1424",
+        "maskedDPan": "48953700******04",
         "expiryDate": "12/2022",
         "issuerAuthorizationApprovalCode": "018117",
         "acquirerTransactionType": "MOBILEPAY",
@@ -721,7 +722,8 @@ Content-Type: application/json
         "acquirerTerminalId": "99488282",
         "acquirerTransactionTime": "2022-09-05T09:54:05Z",
         "transactionInitiator": "CARDHOLDER",
-        "bin": "489537"
+        "bin": "489537",
+        "maskedDPan": "48953700******04",
     }
   }
 }
@@ -870,7 +872,9 @@ Content-Type: application/json
 | └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
 | └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
-| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
+| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                  |
+| └➔&nbsp;`maskedDPan`               | `string`  | The masked digital PAN number
+of the card. This is present if the payment was done with a tokenized card.                                                                                                                                                                                                                                                                   |
 | └➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
 | └─➔&nbsp;`issuerAuthorizationApprovalCode` | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
 | └─➔&nbsp;`acquirerTransactionType` | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
