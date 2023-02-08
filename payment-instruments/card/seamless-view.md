@@ -127,7 +127,7 @@ is raised with the following event argument object:
 {:.table .table-striped}
 | Field        | Type     | Description                           |
 | :----------- | :------- | :------------------------------------ |
-| `id`         | `string` | {% include field-description-id.md %} |
+| `id`         | `string` | {% include fields/id.md %} |
 | `instrument` | `string` | `creditcard`                          |
 
 ## Sequence Diagram

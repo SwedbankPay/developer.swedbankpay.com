@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 ## Aborted
@@ -149,10 +149,10 @@ Content-Type: application/json
 | └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
+| └─➔&nbsp;`amount`         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
 
 ## Failed
 
@@ -189,7 +189,7 @@ Content-Type: application/json
 | Field                    | Type         | Description     |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `failed`                | `object`     | The failed object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`problem`             | `object`     | The problem object.  |
 | └─➔&nbsp;`type`  | `string`   | The type of problem that occurred. |
 | └─➔&nbsp;`title`  | `string`   | The title of the problem that occurred. |
@@ -302,17 +302,17 @@ Content-Type: application/json
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
 | └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` section for further information]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in the failed section. [Further information here]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the cancel feature section for further information]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the Abort feature section for further information]({{ features_url }}/technical-reference/status-models#aborted). |
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
-| └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
-| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include field-description-initiating-system-user-agent.md %}                                                                                                                                                          |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
+| └➔&nbsp;`amount`         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
+| └➔&nbsp;`vatAmount`      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
+| └➔&nbsp;`description`    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
+| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
+| └➔&nbsp;`language`       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
 | └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
@@ -721,12 +721,12 @@ responses:
 | └➔&nbsp;`remainingCaptureAmount`      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
 | └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
 | `paid`                | `object`     | The paid object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include fields/payee-reference.md %} |
 | └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`amount`                   | `integer`    | {% include fields/amount.md %}                                            |
 | └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |

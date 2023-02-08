@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Aborted
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `aborted`                | `object`     | The abort object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`abortReason`             | `string`     | Why the payment was aborted. |
 
 ## Cancelled
@@ -98,14 +98,14 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `cancelled`                | `object`     | The cancel object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`cancelReason`             | `string`     | Why the payment was cancelled. |
 | └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include fields/payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`amount`                   | `integer`    | {% include fields/amount.md %}                                            |
 | └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
@@ -161,7 +161,7 @@ Content-Type: application/json
 | Field                    | Type         | Description     |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `failed`                | `object`     | The failed object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`problem`             | `object`     | The problem object.  |
 | └─➔&nbsp;`type`  | `string`   | The type of problem that occurred. |
 | └─➔&nbsp;`title`  | `string`   | The title of the problem that occurred. |
@@ -240,7 +240,7 @@ Content-Type: application/json
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
-| └➔&nbsp;`id`  | `string`   | {% include field-description-id.md resource="paymentorder" %} |
+| └➔&nbsp;`id`  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | `failedAttempts`                | `object`     | The failed attempt object.                     |
 | └➔&nbsp;`financialTransactionsList`  | `array`   | The array of failed attempts. |
 | └─➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
@@ -335,19 +335,19 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `financialTransactions`                | `object`     | The financial transactions object.                     |
-| └➔&nbsp;`id`  | `string`   | {% include field-description-id.md resource="paymentorder" %} |
+| └➔&nbsp;`id`  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | └➔&nbsp;`financialTransactionsList`  | `array`   | The array of financial transactions. |
 | └─➔&nbsp;`id`  | `string`   | The id of the financial transaction. |
 | └─➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └─➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └─➔&nbsp;`type`  | `string`   | The type of transaction. `Capture`, `Authorization`, `Cancellation`, `Reversal`, `Sale`. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
-| └─➔&nbsp;`vatAmount`                | `integer`    | {% include field-description-vatamount.md %}                                          |
+| └─➔&nbsp;`amount`                   | `integer`    | {% include fields/amount.md %}                                            |
+| └─➔&nbsp;`vatAmount`                | `integer`    | {% include fields/vat-amount.md %}                                          |
 | └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                         |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include fields/payee-reference.md %} |
 | └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
-| └➔&nbsp;`orderItems`           | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                         |
+| └➔&nbsp;`orderItems`           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
 
 ## History
 
@@ -496,7 +496,7 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `history`                | `object`     | The history object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`historyList`  | `array`   | The array of history objects. |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the history event was created.                                 |
 | └➔&nbsp;`name`              | `string`     | Name of the history event. See list below for information.     |
@@ -528,11 +528,12 @@ Content-Type: application/json
 
 ## Paid
 
-The payment order response with status `paid`, and the `paid` resource expanded.
-Please note that the main code example is of a **Card** payment. We have
-included `paid` resources of the remaining instruments below the main code
-example. Resource examples where details are empty indicate that no details are
-available.
+The payment order response with `status` equal to `Paid`, and the `paid`
+resource expanded. Please note that the main code example is of a card payment.
+
+We have included `paid` resources of the remaining instruments below the main
+code example. Resource examples where details are empty indicate that no details
+are available.
 
 The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
@@ -857,13 +858,13 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `paid`                | `object`     | The paid object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include fields/payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`amount`                   | `integer`    | {% include fields/amount.md %}                                            |
 | └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
@@ -941,7 +942,7 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `payer`                | `object`     | The payer object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`reference`  | `string`   | The reference to the payer. In checkout, this will be the `consumerReference`. |
 | └➔&nbsp;`name`        | `string`     | The name of the payer. |
 | └➔&nbsp;`email`              | `string`     | The email address of the payer.     |
@@ -963,7 +964,7 @@ Content-Type: application/json
 |  └─➔&nbsp;`device`                       | `object` | The device detection object. |
 |  └─➔&nbsp;`detectionAccuracy`            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
 |  └─➔&nbsp;`ipAddress`                    | `string` | The IP address of the payer's device. |
-|  └─➔&nbsp;`userAgent`                    | `string` | {% include field-description-user-agent.md %} |
+|  └─➔&nbsp;`userAgent`                    | `string` | {% include fields/user-agent.md %} |
 |  └─➔&nbsp;`deviceType`                   | `string` | The type of device used by the payer. |
 |  └─➔&nbsp;`hardwareFamily`               | `string` | The type of hardware used by the payer. |
 |  └─➔&nbsp;`hardwareName`                 | `string` | The name of the payer's hardware. |

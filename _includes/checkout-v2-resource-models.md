@@ -329,13 +329,13 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `paid`                | `object`     | The paid object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include fields/payee-reference.md %} |
 | └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`amount`                   | `integer`    | {% include fields/amount.md %}                                            |
 | └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |

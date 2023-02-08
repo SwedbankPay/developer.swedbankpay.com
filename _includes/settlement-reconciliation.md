@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign operation_title = include.operation_title %}
 {% assign checkout = include.checkout %}
 {% if checkout == "checkout-v2" %}

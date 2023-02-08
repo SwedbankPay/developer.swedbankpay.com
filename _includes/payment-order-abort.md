@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 ## Abort
@@ -156,17 +156,17 @@ Content-Type: application/json
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
 | └➔&nbsp;`status`          | `string`     | `Initialized`, `Paid`, `Failed`, `Cancelled` or `Aborted`. Indicates the state of the payment order. |
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
-| └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
-| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include field-description-initiating-system-user-agent.md %}                                                                                                                                                          |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
+| └➔&nbsp;`amount`         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
+| └➔&nbsp;`vatAmount`      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
+| └➔&nbsp;`description`    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
+| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
+| └➔&nbsp;`language`       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
 | └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`.                                                                                                                                                  |
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`.                                                                                                                                                  |
