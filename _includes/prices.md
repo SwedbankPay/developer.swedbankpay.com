@@ -56,13 +56,13 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                | Type      | Description                                                                                                                                                                                 |
 | :------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `payment`            | `string`  | {% include field-description-id.md sub_resource="prices" %}                                                                                                                                 |
+| `payment`            | `string`  | {% include fields/id.md sub_resource="prices" %}                                                                                                                                 |
 | `prices`             | `object`  | The `prices`  resource.                                                                                                                                                                     |
-| └➔&nbsp;`id`         | `string`  | {% include field-description-id.md resource="prices" %}                                                                                                                                     |
+| └➔&nbsp;`id`         | `string`  | {% include fields/id.md resource="prices" %}                                                                                                                                     |
 | └➔&nbsp;`priceList`  | `array`   | The array of price objects. **Note:** Even if you specify  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
 | └─➔&nbsp;`type`      | `string`  | The type of the price object.                                                                                                                                                               |
-| └─➔&nbsp;`amount`    | `integer` | {% include field-description-amount.md %}                                                                                                                                                   |
-| └─➔&nbsp;`vatAmount` | `integer` | {% include field-description-vatamount.md %}                                          |
+| └─➔&nbsp;`amount`    | `integer` | {% include fields/amount.md %}                                                                                                                                                   |
+| └─➔&nbsp;`vatAmount` | `integer` | {% include fields/vat-amount.md %}                                          |
 
 ## Prices Object Types
 

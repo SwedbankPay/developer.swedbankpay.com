@@ -79,7 +79,7 @@ Content-Type: application/json
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
-| └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
+| └➔&nbsp;`id`   | `string` | {% include fields/id.md resource="paymentorder" %}                      |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 ## Cancel

@@ -78,7 +78,7 @@ seamless view table:
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | └➔&nbsp;`generateAfdPayment`     | `bool`      | Set to `true` if the payment order is an AFD payment, `false` if not. |
 | └➔&nbsp;`restrictedToAfdInstruments`     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
-| └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`payeeInfo`                | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | └─➔&nbsp;`mcc`     | `integer`      | The merchant category code used for the purchase, 4 digits. |
 
 {% if include.integration_mode=="redirect" %}
