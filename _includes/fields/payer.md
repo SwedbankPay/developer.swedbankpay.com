@@ -1,10 +1,10 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/technical-reference/resource-sub-models#payer' -%}
+        href='/features/technical-reference/resource-sub-models#payer' -%}
 {%- endcapture -%}
 {%- capture text -%}
-The URL to the [`payer` resource]({{ url }}) where information about the payer
-can be retrieved.
+The URL to the {% clink `payer` resource %}{{ url }}{% endclink %} where
+information about the payer can be retrieved.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

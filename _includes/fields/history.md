@@ -1,10 +1,10 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/technical-reference/resource-sub-models#history' -%}
+        href='/features/technical-reference/resource-sub-models#history' -%}
 {%- endcapture -%}
 {%- capture text -%}
-The URL to the [`history` resource]({{ url }}) where information about the
-payment's history can be retrieved.
+The URL to the {% clink `history` resource %}{{ url }}{% endclink %} where
+information about the payment's history can be retrieved.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes
