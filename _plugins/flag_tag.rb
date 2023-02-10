@@ -3,7 +3,7 @@
 require 'liquid'
 
 # Jekyll module
-module Jekyll
+module SwedbankPay
   # A Liquid tag for rendering flags
   class FlagTag < Liquid::Tag
     def initialize(tag_name, country_code, tokens)
@@ -17,4 +17,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('flag', Jekyll::FlagTag)
+Liquid::Template.register_tag('flag', SwedbankPay::FlagTag)

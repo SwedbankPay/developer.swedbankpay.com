@@ -1,10 +1,10 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/technical-reference/resource-sub-models#aborted' -%}
+        href='/features/technical-reference/resource-sub-models#aborted' -%}
 {%- endcapture -%}
 {%- capture text -%}
-The URL to the [`aborted` resource]({{ url }}) where information about the
-aborted transactions can be retrieved.
+The URL to the {% clink `aborted` resource %}{{ url }}{% endclink %} where
+information about the aborted transactions can be retrieved.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

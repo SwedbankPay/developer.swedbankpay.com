@@ -1,9 +1,10 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/technical-reference/resource-sub-models#failed' -%}
+        href='/features/technical-reference/resource-sub-models#failed' -%}
 {%- endcapture -%}
 {%- capture text -%}
-The URL to the [`failed` resource]({{ features_url }}) where information about the failed transactions can be retrieved.
+The URL to the {% clink `failed` resource %}{{ url }}{% endclink %} where
+information about the failed transactions can be retrieved.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes
