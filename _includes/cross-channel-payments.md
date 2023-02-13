@@ -82,10 +82,10 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------- |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `paid`                | `object`     | The paid object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | Payment instrument used in the cancelled payment. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's a need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include fields/payee-reference.md %} |
+| └➔&nbsp;`amount`                   | `integer`    | {% include fields/amount.md %}                                            |
 | └─➔&nbsp;`referenceCode`          | `string` | A 16 digit reference code which can be used for tracking payments.  |
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
