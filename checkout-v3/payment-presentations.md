@@ -23,16 +23,14 @@ activate Apple Pay for you.
 **Redirect** integrations does not require a domain verification, as it will
 be hosted on Swedbank Pay's domain.
 
-For **Seamless View** integrations, Apple needs to verify your domain as a
-part of Swedbank Pay's set up process. To do this, you need to host a
-verification file on the following web path:
+For **Seamless View** integrations, Apple needs to verify your domain as a part
+of Swedbank Pay's set up process. To do this, you need to host a verification
+file on the following web path:
 
-https://[DOMAIN_NAME]/.well-known/apple-developer-merchantid-domain-association
+https://[YOUR_DOMAIN]/.well-known/apple-developer-merchantid-domain-association
 
-THE FILE IN WHATEVER FORMAT WE CHOOSE TO PRESENT IT!!! **(Not a Word file)**
-
-The verification file consists of a hex string which contains a JSON. Do not
-be alarmed if you read the hex data and find this. It is by design.
+The verification file consists of a hex string which contains a JSON. Do not be
+alarmed if you read the hex data and find this. It is by design.
 
 Opening it is OK, but make sure that you **upload it exactly as it is**. We
 recommend opening it as a text file or something similar, and **not** e.g. in
