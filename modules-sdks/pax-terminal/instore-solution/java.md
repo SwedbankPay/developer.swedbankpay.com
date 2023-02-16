@@ -88,7 +88,6 @@ private void onOpenResult(OpenResult result) {
 
 Call *paymentAsync* or *refundAsync* to start a transaction and wait for response.
 ```java
-
 public void onPayButtonClick() {
   try {
     CompletableFuture<PaymentRequestResult> payment =
@@ -132,6 +131,7 @@ private void showRefundResultMessage(PaymentRequestResult refundResult) {
 ```
 
 ### Get payment instrument
+
 Call *getPaymentInstrumentAsync* to start a transaction when a card needs to be read before amount is known.
 Call either *paymentAsync* or *refundAsync* to proceed the actual payment.
 
@@ -195,6 +195,7 @@ To receive event callbacks from the terminal the following methods need to be im
 in the interface `SwpTrmCallbackInterface`.
 
 ### Terminal Display Event
+
 Get status information and displays from the terminal.
 
 ```java
@@ -205,6 +206,7 @@ public void terminalDisplayEvent(int txtId, String text) {
 ```
 
 ### Terminal Notification Event
+
 The event function is used by Swedbank Pay Payment Application to communicate an ‘out of sequence’ event - the beginning of maintenance for example.
 
 ```java
@@ -215,6 +217,7 @@ public void terminalNotificationEvent(EventToNotifyEnumeration type, String even
 ```
 
 ### Terminal Address Obtained Event
+
 Called when a new terminal is installed.
 
 ```java
@@ -255,6 +258,7 @@ public void requestForConfirmationEvent(String message, ConfirmationResult cashi
 ```
 
 ## Logging
+
 Logging is done through Slf4j. To see what is going on set DEBUG level for the following package `com.swedbankpay`.
 
 When running the application standalone it can be handy to se the communication between the ECR and the terminal.
@@ -270,6 +274,7 @@ private void appender(String text) {
 ```
 
 ## Error handling
+
 When an error occurs either in the terminal or within this codebase, the framework will handle it and always return a result object with the following three fields populated:
 ```text
 result = FAILURE
@@ -284,6 +289,7 @@ There are five cases where the error can occur:
 - `User error` The user has provided faulty input.
 
 ## Receipts
+
 Receipts are created when a payment or reversal has been completed or on the request from the terminal. The receipt contains
 both the raw customer and/or merchant data in json format. It also contains a preformatted printable string for each of the two.
 The preformatted receipts are localised using the locale provided in the terminal config. In the future hopefully we can
