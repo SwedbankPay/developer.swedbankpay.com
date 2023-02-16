@@ -8,7 +8,6 @@ menu_order: 1000
 
 
 ## Installation
-
 The SDK jar file is hosted on maven central. Look up the latest version.
 
 Add the following dependency to you application:
@@ -273,7 +272,7 @@ private void appender(String text) {
 
 ## Error handling
 When an error occurs either in the terminal or within this codebase, the framework will handle it and always return a result object with the following three fields populated:
-```
+```text
 result = FAILURE
 statusCode = 500
 errorCondtion = "The nature of the error"
