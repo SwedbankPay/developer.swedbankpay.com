@@ -26,13 +26,11 @@ following web path:
 
 `https://example.com/.well-known/apple-developer-merchantid-domain-association`
 
-The verification file consists of a hex string which contains a JSON. Do not be
-alarmed if you read the hex data and find this. It is by design.
-
-Opening it is OK, but make sure that you **upload it exactly as it is**. We
-recommend opening it as a text file or something similar, and **not** e.g. in
-Word or an editor, as it could result in unwanted formatting changes if you save
-it. The file does not, and should not, have a file extension.
+The verification file consists of a hex string which contains a JSON. Opening it
+is OK, but make sure that you **upload it exactly as it is**. We recommend
+opening it as a text file or something similar, and **not** e.g. in Word or an
+editor, as it could result in unwanted formatting changes if you save it. The
+file does not, and should not, have a file extension.
 
 To help you validate that your file looks correct, you can
 [compare it to this][payex-domain-file], which is already present on our server.
