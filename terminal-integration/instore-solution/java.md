@@ -6,7 +6,6 @@ description: |
 menu_order: 1000
 ---
 
-
 ## Installation
 The SDK jar file is hosted on maven central. Look up the latest version.
 
