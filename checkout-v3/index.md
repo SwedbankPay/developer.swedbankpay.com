@@ -93,9 +93,9 @@ business' needs, regardless of whether you choose the **Full Checkout** or
 somewhat depending on which countries you are operating in.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
-body="Some of the digital wallets we offer in Checkout v3 require you to do
+body="Some of the digital wallets we offer in Checkout v3 require you to take
 additional steps before we can activate them for you. Please follow the link(s)
-in the matrix below to read more." %}
+in the table below to read more." %}
 
 {:.table .table-plain}
 |        | Payment Instrument |  Starter | Business | Enterprise   |  Payments Only | Region                                    |
