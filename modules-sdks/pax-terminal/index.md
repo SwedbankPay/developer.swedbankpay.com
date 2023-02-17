@@ -31,6 +31,7 @@ not possible. Such transactions regard cards from outside EU for which PIN may
 not be required.
 
 ## Configure the terminal
+
 In order for the terminal to communicate with the ECR the IP address need to be
 set in the admin menu. To enter the admin menu tap 6 times on the swedbank pay
 logo located at the top of the screen. Then enter the pin-code. Set the ECR IP

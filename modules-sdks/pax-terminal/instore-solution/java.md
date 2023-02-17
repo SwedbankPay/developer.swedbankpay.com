@@ -7,9 +7,11 @@ menu_order: 1000
 ---
 
 ## Installation
+
 The SDK jar file is hosted on maven central. Look up the latest version.
 
 Add the following dependency to you application:
+
 ```xml
 <dependency>
     <groupId>com.swedbankpay.pax</groupId>
@@ -19,10 +21,13 @@ Add the following dependency to you application:
 ```
 
 ## How to use
-You need to implement the callback interface `SwpTrmCallbackInterface` to receive asynchronous callbacks from the terminal. This class then need
-to be provided when creating an instance of `SwpTrmInterface`.
 
-Once an instance is created call *start*. Supplied `SaleApplInfo` when calling Start method decides whether to implement a server or just run as a client.
+You need to implement the callback interface `SwpTrmCallbackInterface` to receive
+asynchronous callbacks from the terminal. This class then need to be provided
+when creating an instance of `SwpTrmInterface`.
+
+Once an instance is created call *start*. Supplied `SaleApplInfo` when calling
+Start method decides whether to implement a server or just run as a client.
 
 ```java
 public class PaxController implements SwpTrmCallbackInterface  {
@@ -56,10 +61,12 @@ public class PaxController implements SwpTrmCallbackInterface  {
 }
 ```
 
-There are two ways to call each method, *synchronous* and *asynchronous*. In the synchronous method call
-the program stops and waits until the response arrives. In the asynchronous method call the program continues to perform other
-tasks and when the response arrives the program handels it. The asynchronous call is especially useful for the PaymentRequest
-where the response arrives after the payment process is done.
+There are two ways to call each method, *synchronous* and *asynchronous*. In the
+synchronous method call the program stops and waits until the response arrives.
+In the asynchronous method call the program continues to perform other tasks and
+when the response arrives the program handels it. The asynchronous call is
+especially useful for the PaymentRequest where the response arrives after the
+payment process is done.
 
 ### Open
 
@@ -87,6 +94,7 @@ private void onOpenResult(OpenResult result) {
 ### Payment & refund
 
 Call *paymentAsync* or *refundAsync* to start a transaction and wait for response.
+
 ```java
 public void onPayButtonClick() {
   try {
@@ -127,13 +135,13 @@ private void showRefundResultMessage(PaymentRequestResult refundResult) {
     logOutput("Refund failed: " + refundResult.getErrorCondition() + ", (" + refundResult.getResponseText() + ")");
   }
 }
-
 ```
 
 ### Get payment instrument
 
-Call *getPaymentInstrumentAsync* to start a transaction when a card needs to be read before amount is known.
-Call either *paymentAsync* or *refundAsync* to proceed the actual payment.
+Call *getPaymentInstrumentAsync* to start a transaction when a card needs to be
+read before amount is known. Call either *paymentAsync* or *refundAsync* to
+proceed the actual payment.
 
 ```java
 protected void onPaymentInstrumentButtonClick() {
@@ -155,6 +163,7 @@ private void showPaymentInstrumentResultMessage(PaymentInstrumentResult result) 
 ### Close
 
 Call *close* to send logout.
+
 ```java
 protected void onCloseButtonClick() {
   logOutput("Closing terminal...");
@@ -172,6 +181,7 @@ protected void onCloseButtonClick() {
 ### Abort
 
 Call *abort* to abort a payment transaction.
+
 ```java
 public void onAbortButtonClick() {
   logOutput("Aborting payment...");
@@ -207,7 +217,8 @@ public void terminalDisplayEvent(int txtId, String text) {
 
 ### Terminal Notification Event
 
-The event function is used by Swedbank Pay Payment Application to communicate an ‘out of sequence’ event - the beginning of maintenance for example.
+The event function is used by Swedbank Pay Payment Application to communicate
+an ‘out of sequence’ event - the beginning of maintenance for example.
 
 ```java
 @Override
@@ -229,7 +240,8 @@ public void terminalAddressObtainedEvent(String ipv4, int port) {
 
 ### Print Request
 
-Called when a receipt is to be printed. The print result needs to be confirmed from the ECR.
+Called when a receipt is to be printed. The print result needs to be confirmed
+from the ECR.
 
 ```java
 @Override
@@ -245,8 +257,9 @@ public boolean onPrintRequest(boolean transactionEnded, Receipt receipt) {
 
 ### Request For Confirmation Event
 
-Called when there is a confirmation needed by the cashier, i.e when a signature purchase needs
-to be confirmed. Will soon be deprecated when signature purchase is removed.
+Called when there is a confirmation needed by the cashier, i.e when a signature
+purchase needs to be confirmed. Will soon be deprecated when signature purchase
+is removed.
 
 ```java
 @Override
@@ -259,10 +272,13 @@ public void requestForConfirmationEvent(String message, ConfirmationResult cashi
 
 ## Logging
 
-Logging is done through Slf4j. To see what is going on set DEBUG level for the following package `com.swedbankpay`.
+Logging is done through Slf4j. To see what is going on set DEBUG level for the
+following package `com.swedbankpay`.
 
-When running the application standalone it can be handy to se the communication between the ECR and the terminal.
-To log communication between the ECR and terminal to some text window in the application the following can be used. This can be enabled or disabled runtime. It is disabled by default.
+When running the application standalone it can be handy to se the communication
+between the ECR and the terminal. To log communication between the ECR and
+terminal to some text window in the application the following can be used. This
+can be enabled or disabled runtime. It is disabled by default.
 
 ```java
 paxTerminal.addLoggAppender(this::appender);
@@ -275,12 +291,16 @@ private void appender(String text) {
 
 ## Error handling
 
-When an error occurs either in the terminal or within this codebase, the framework will handle it and always return a result object with the following three fields populated:
+When an error occurs either in the terminal or within this codebase, the
+framework will handle it and always return a result object with the following
+three fields populated:
+
 ```text
 result = FAILURE
 statusCode = 500
 errorCondtion = "The nature of the error"
 ```
+
 There are five cases where the error can occur:
 - `Communication error with the terminal` Ex connection timeout
 - `Terminal error response` There was an error in the terminal resulting in a failure response.
@@ -290,13 +310,17 @@ There are five cases where the error can occur:
 
 ## Receipts
 
-Receipts are created when a payment or reversal has been completed or on the request from the terminal. The receipt contains
-both the raw customer and/or merchant data in json format. It also contains a preformatted printable string for each of the two.
-The preformatted receipts are localised using the locale provided in the terminal config. In the future hopefully we can
-take the locale from the payment response if the customer chooses a different language during the payment process.
+Receipts are created when a payment or reversal has been completed or on the
+request from the terminal. The receipt contains both the raw customer and/or
+merchant data in json format. It also contains a preformatted printable string
+for each of the two. The preformatted receipts are localised using the locale
+provided in the terminal config. In the future hopefully we can
+take the locale from the payment response if the customer chooses a different
+language during the payment process.
 
-There is also the possibility to create your on formatter by extending the class `AbstractReceiptFormatter` and then use
-the `format(...)` method on the `Receipt` object from the payment.
+There is also the possibility to create your on formatter by extending the class
+`AbstractReceiptFormatter` and then use the `format(...)` method on the `Receipt`
+object from the payment.
 
 ```java
 PaymentRequestResult payment = paxTerminal.paymentAsync(...).join();
