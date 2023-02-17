@@ -313,7 +313,7 @@ There are five cases where the error can occur:
 Receipts are created when a payment or reversal has been completed or on the
 request from the terminal. The receipt contains both the raw customer and/or
 merchant data in json format. It also contains a preformatted printable string
-for each of the two. The preformatted receipts are localised using the locale
+for each of the two. The preformatted receipts are localized using the locale
 provided in the terminal config. In the future hopefully we can
 take the locale from the payment response if the customer chooses a different
 language during the payment process.
