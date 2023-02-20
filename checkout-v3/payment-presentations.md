@@ -128,13 +128,109 @@ agreement with Swedbank Pay, you can e-mail us it at
 **agreement@swedbankpay.com** together with **Name**, **Organizational** and
 **Customer number**.
 
+### Implementation Paths
+
+**Which Google Pay documentation and guidelines should you use if you are an**
+**android merchant?**
+[Google Pay Android Developer Documentation][android-googlepay-devdoc],
+[Google Pay Android Integration Checklist][android-googlepay-checklist] and the
+[Google Pay Android Brand Guidelines][android-googlepay-brand-guidelines].
+
+**Which Google Pay documentation and guidelines should you use if you are a**
+**web merchant?**
+[Google Pay Web Developer Documentation][web-googlepay-devdoc],
+[Google Pay Web Integration Checklist][web-googlepay-checklist] and the
+[Google Pay Web Brand Guidelines][web-googlepay-brand-guidelines].
+
+**Do you as a merchant need to take additional steps with regards to the**
+**Google Pay payment button or other hosted components to your website?**
+
+No additional steps are required. Contact Customer Operations after signing up
+with Google with your **Merchant ID** to setup your contract. Once set up, the
+option to pay with Google Pay should appear in your implementation, as long as
+your payer's device supports Google Pay.
+
+Please remember that you do must adhere to Google Pay API's
+[Acceptable Use Policy][acceptable-use-policy] and accept the terms defined in
+the Google Pay API's [Terms of Service][google-pay-tos].
+
+**If your SDK generates an [IsReadyToPayRequest][irtp-request] or a**
+**[PaymentDataRequest][pd-request] on behalf of you as a merchant, Do you need**
+**to take additional steps before the Google Pay functionality is available?**
+
+No additional steps are required. Contact Customer Operations after signing up
+with Google with your **Merchant ID** to setup your contract. Once set up, the
+option to pay with Google Pay should appear in your implementation, as long as
+your payer's device supports Google Pay.
+
+Please remember that you do must adhere to Google Pay API's
+[Acceptable Use Policy][acceptable-use-policy] and accept the terms defined in
+the Google Pay API's [Terms of Service][google-pay-tos].
+
+### Implementation Details
+
+**Do Swedbank Pay support 3-D Secure, and will merchants have to enable it for**
+**`PAN_ONLY` credentials themselves?**
+
+3DS is enabled by default. Merchants will not handle any payment details or
+sensitive data at all during the purchase process. The data is encrypted and
+sent to our PCI zone, where we decrypt and handle processing of the cards.
+Merchants cannot selectively enable/disable what types of authorization methods
+they receive. We handle all kinds on our end.
+
+**How do merchants set the gateway and gatewayMerchantID values?**
+
+Swedbank Pay will handle both **gateway** and **gatewayMerchantID** internally
+during merchant onboarding, and is not an issue you need to address. Please note
+that **Merchant ID** and **gatewayMerchantID** is not the same. The
+**Merchant ID** is given to you in the Google Console. The **gatewayMerchantID**
+is the ID given to a merchant from the gateway.
+
+**Which authorization methods do Swedbank Pay accept?**
+
+We accept both `PAN_ONLY` and `CRYPTOGRAM_3DS` cards in all countries
+where Google Pay is supported.
+
+**Which card networks methods do Swedbank Pay accept?**
+
+We support Visa, Mastercard and Amex in all countries where Google Pay is
+supported.
+
+**Are there any requirements regarding the billing address to be submitted by**
+**the developer for address verification?**
+
+Any merchant onboarded with Swedbank Pay who's been given access to Google Pay,
+can [request the payer to provide billing address][req-con-address] in relation
+to shipping them physical goods. These are encrypted and can only be accessed by
+the merchant that requested the billing details and is deleted after 30 days.
+
+**How do merchants send Google encrypted payment data and transaction data to**
+**Swedbank Pay?**
+
+Merchants will not handle any of the customers payment details. The encrypted
+details are passed on to our backend systems, where we pass them to our internal
+PCI environment for processing. Within the PCI environment, a tokenized
+representation of the card is created, which is then used outside of the PCI
+environment to ensure the customers details are kept safe.
+
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started" %}
 
+[acceptable-use-policy]: https://payments.developers.google.com/terms/aup
+[android-googlepay-brand-guidelines]: https://developers.google.com/pay/api/android/guides/brand-guidelines
+[android-googlepay-checklist]: https://developers.google.com/pay/api/android/guides/test-and-deploy/integration-checklist
+[android-googlepay-devdoc]: https://developers.google.com/pay/api/android/
 [apple-pay-sup-agreement]: /assets/documents/supplementary-agreement-ecommerce.docx
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-verification-file]: /assets/documents/apple-developer-merchantid-domain-association
 [benevity-donation-setup]: https://www.benevity.org
 [google-pay-profile]: https://pay.google.com/business/console/
+[google-pay-tos]: https://payments.developers.google.com/terms/sellertos
+[irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
 [payex-domain-file]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
+[pd-request]: https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest
+[req-con-address]: /checkout-v3/payments-only/features/optional/request-delivery-info
+[web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
+[web-googlepay-checklist]: https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist
+[web-googlepay-devdoc]: https://developers.google.com/pay/api/web/
