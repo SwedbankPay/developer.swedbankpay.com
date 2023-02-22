@@ -95,12 +95,12 @@ with **Name**, **Organizational** and **Customer number**.
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started" %}
 
-## Google Pay
+## Google Pay&trade;
 
-Google Pay enables quicker, safer checkout in apps and websites, and makes it
-easy for customers to pay with their phones. With a simple integration, you can
-access hundreds of millions of cards saved to Google Accounts and open up your
-business for more business.
+Google Pay&trade; enables quicker, safer checkout in apps and websites, and
+makes it easy for customers to pay with their phones. With a simple integration,
+you can access hundreds of millions of cards saved to Google Accounts and open
+up your business for more business.
 
 With a click, the payers can choose any payment method saved in their Google
 Account and check out almost instantly across apps and sites.
@@ -116,12 +116,12 @@ Pay for you.
 
 However, be sure to register your domain/package and submit screenshots of your
 integration for approval. Login to
-[Google Pay & Wallet Console][google-pay-profile], go to the
-**Google Pay API tab** and upload the screenshots and submit your integration
-for approval. The screenshots should be of the entire buyflow process (ex: add
-to cart, checkout, payment, confirmation - if available). Your **Merchant ID**
-will only work in production environment once Google complete their review and
-approve your submitted integration.
+[Google Pay&trade; & Wallet Console][google-pay-profile], go to the
+**Google Pay&trade; API tab** and upload the screenshots and submit your
+integration for approval. The screenshots should be of the entire buyflow
+process (ex: add to cart, checkout, payment, confirmation - if available). Your
+**Merchant ID** will only work in production environment once Google complete
+their review and approve your submitted integration.
 
 Unless you have provided us with your **Merchant ID** as part of signing your
 agreement with Swedbank Pay, you can e-mail us it at
@@ -130,42 +130,43 @@ agreement with Swedbank Pay, you can e-mail us it at
 
 ### Implementation Paths
 
-**Which Google Pay documentation and guidelines should you use if you are an**
-**android merchant?**
+**Which Google Pay&trade; documentation and guidelines should you use if you**
+**are an android merchant?**
 [Google Pay Android Developer Documentation][android-googlepay-devdoc],
 [Google Pay Android Integration Checklist][android-googlepay-checklist] and the
 [Google Pay Android Brand Guidelines][android-googlepay-brand-guidelines].
 
-**Which Google Pay documentation and guidelines should you use if you are a**
-**web merchant?**
+**Which Google Pay&trade; documentation and guidelines should you use if you**
+**are a web merchant?**
 [Google Pay Web Developer Documentation][web-googlepay-devdoc],
 [Google Pay Web Integration Checklist][web-googlepay-checklist] and the
 [Google Pay Web Brand Guidelines][web-googlepay-brand-guidelines].
 
 **Do you as a merchant need to take additional steps with regards to the**
-**Google Pay payment button or other hosted components to your website?**
+**Google Pay&trade; payment button or other hosted components to your website?**
 
 No additional steps are required. Contact Customer Operations after signing up
 with Google with your **Merchant ID** to setup your contract. Once set up, the
-option to pay with Google Pay should appear in your implementation, as long as
-your payer's device supports Google Pay.
+option to pay with Google Pay&trade; should appear in your implementation, as
+long as your payer's device supports Google Pay&trade;.
 
-Please remember that you do must adhere to Google Pay API's
+Please remember that you do must adhere to Google Pay&trade; API's
 [Acceptable Use Policy][acceptable-use-policy] and accept the terms defined in
-the Google Pay API's [Terms of Service][google-pay-tos].
+the Google Pay&trade; API's [Terms of Service][google-pay-tos].
 
-**If your SDK generates an [IsReadyToPayRequest][irtp-request] or a**
-**[PaymentDataRequest][pd-request] on behalf of you as a merchant, Do you need**
-**to take additional steps before the Google Pay functionality is available?**
+**If our SDK generates an [IsReadyToPayRequest][irtp-request] or a**
+**[PaymentDataRequest][pd-request] on behalf of you as a merchant, do you need**
+**to take additional steps before the Google Pay&trade; functionality is**
+**available?**
 
 No additional steps are required. Contact Customer Operations after signing up
 with Google with your **Merchant ID** to setup your contract. Once set up, the
-option to pay with Google Pay should appear in your implementation, as long as
-your payer's device supports Google Pay.
+option to pay with Google Pay&trade; should appear in your implementation, as
+long as your payer's device supports Google Pay&trade;.
 
-Please remember that you do must adhere to Google Pay API's
+Please remember that you do must adhere to Google Pay&trade; API's
 [Acceptable Use Policy][acceptable-use-policy] and accept the terms defined in
-the Google Pay API's [Terms of Service][google-pay-tos].
+the Google Pay&trade; API's [Terms of Service][google-pay-tos].
 
 ### Implementation Details
 
@@ -193,14 +194,15 @@ where Google Pay is supported.
 
 **Which card networks methods do Swedbank Pay accept?**
 
-We support Visa, Mastercard and Amex in all countries where Google Pay is
+We support Visa, Mastercard and Amex in all countries where Google Pay&trade; is
 supported.
 
 **Are there any requirements regarding the billing address to be submitted by**
 **the developer for address verification?**
 
-Any merchant onboarded with Swedbank Pay who's been given access to Google Pay,
-can [request the payer to provide billing address][req-con-address] in relation
+Any merchant onboarded with Swedbank Pay who's been given access to
+Google Pay&trade;, can
+[request the payer to provide billing address][req-con-address] in relation
 to shipping them physical goods. These are encrypted and can only be accessed by
 the merchant that requested the billing details and is deleted after 30 days.
 

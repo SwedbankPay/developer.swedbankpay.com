@@ -693,13 +693,13 @@ Content-Type: application/json
 }
 ```
 
-### Google Pay `paid` Resource
+### Google Pay&trade; `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
  {:.code-view-header}
- **Google Pay Response**
+ **Google Pay&trade; Response**
 
  ```http
 HTTP/1.1 200 OK

@@ -20,9 +20,9 @@ can also add the field `restrictedToDeliveryInfoInstruments` and setting it to
 information.
 
 You are currently only able to request delivery information from **Apple Pay**,
-**Click to Pay**, **Google Pay** and **MobilePay**, but we will add support for
-more payment instruments going forward. No changes are required at your (the
-merchant's) end to be able to offer more instruments at a later time.
+**Click to Pay**, **Google Pay&trade;** and **MobilePay**, but we will add
+support for more payment instruments going forward. No changes are required at
+your (the merchant's) end to be able to offer more instruments at a later time.
 
 ## Request Delivery Info Request
 
