@@ -1,5 +1,5 @@
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 
 ## Cancel
 
@@ -47,7 +47,7 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`     | The transaction object.                                                                        |
 | {% icon check %} | └➔&nbsp;`description`    | `string`     | A textual description of why the transaction is cancelled.                                     |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %} |
 
 ## Cancel Response
 
@@ -94,10 +94,10 @@ Content-Type: application/json
 | └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
+| └─➔&nbsp;`amount`         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
 
 ## Cancel Sequence Diagram
 

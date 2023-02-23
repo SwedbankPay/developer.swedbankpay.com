@@ -1,6 +1,7 @@
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## Automated Fuel Dispenser Payments
 
@@ -45,6 +46,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "productName": "Checkout3",
+        "implementation": "{{implementation}}",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -76,7 +78,7 @@ seamless view table:
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | └➔&nbsp;`generateAfdPayment`     | `bool`      | Set to `true` if the payment order is an AFD payment, `false` if not. |
 | └➔&nbsp;`restrictedToAfdInstruments`     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
-| └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`payeeInfo`                | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | └─➔&nbsp;`mcc`     | `integer`      | The merchant category code used for the purchase, 4 digits. |
 
 {% if include.integration_mode=="redirect" %}
@@ -118,8 +120,8 @@ Content-Type: application/json
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [ "CreditCard" ],
-        "implementation": "PaymentsOnly", { {% if include.integration_mode=="seamless-view" %}
-        "integration": "Seamless View", {% endif %} { {% if include.integration_mode=="redirect" %}
+        "implementation": "PaymentsOnly", {% if include.integration_mode=="seamless-view" %}
+        "integration": "Seamless View", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
         "guestMode": false,

@@ -1,9 +1,3 @@
-queue_rules:
-  - name: default
-    conditions:
-      # Conditions to get out of the queue (= merged)
-      - check-success=build
-
 pull_request_rules:
   - name: Automatic approve on dependabot PR
     conditions:
@@ -15,10 +9,15 @@ pull_request_rules:
   - name: Automatic merge on approval
     conditions:
       - author~=^dependabot(|-preview)\[bot\]$
+      - '#commits-behind=0' # Only merge up to date pull requests
+      - check-success=license/cla
+      - check-success=shellcheck
+      - check-success=variables
+      - check-success=build
+      - check-success=spec
+      - "-body~=swedbank-pay-design-guide-jekyll-theme" # Don't merge if the PR contains the string "swedbank-pay-design-guide-jekyll-theme"
     actions:
-      queue:
-        method: merge
-        name: default
+      merge:
 
   - name: Thank contributor
     conditions:

@@ -16,15 +16,14 @@ and Invoice? Implement Card and Invoice. Want them all? Have them all. Each
 payment instrument is set up with a separate contract and integration.
 
 With a couple of exceptions, our payment instruments are available on three
-platforms. Choose between our easy-to-use PCI compliant platforms Redirect
-and Seamless View – or use Swedbank Pay Direct API to integrate directly. Our
-payment instruments and their platform availability are listed in the table
-below.
+platforms. Choose between our easy-to-use PCI compliant platforms Redirect or
+Seamless View. Our payment instruments and their platform availability are
+listed in the table below.
 
 {:.table .table-plain}
 |                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                    |
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :---------------------------------------- |
-|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  {% icon check %}  | ![EarthIcon][earth-icon]                  |
+|    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  | ![EarthIcon][earth-icon]                  |
 | {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | {% flag no %} {% flag se %} {% flag fi %} |
 |     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | {% flag no %}                             |
 |     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | {% flag se %}                             |
@@ -38,7 +37,7 @@ To start integrating Swedbank Pay Payments, you need the following:
 *   An [HTTPS][https] enabled web server.
 *   An agreement which includes Swedbank Pay Payments.
 *   Credentials (Merchant Access Token) from Swedbank Pay retrieved from
-    Swedbank Pay Admin.
+    the Merchant Portal.
 
 ## Platform Options
 
@@ -142,17 +141,13 @@ Or:
     captured funds. This is achieved by creating a reversal transaction.
 
 All actions after creating the payment can be done by using our APIs, or from
-our admin tool. `abort` is only available when using APIs.
+our Merchant Portal tool. `abort` is only available when using APIs.
 
 Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
 
 [demoshop]: {{ page.front_end_url }}/pspdemoshop
-[card-icon]: /assets/img/icon-card-simple.svg
 [https]: /introduction#connection-and-protocol
-[invoice-icon]: /assets/img/icon-invoice-simple.svg
-[envelope-icon]: /assets/img/envelope-icon.png
-[keypad-icon]: /assets/img/keypad-icon.png
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
@@ -160,11 +155,9 @@ implementation in action.
 [earth-icon]: /assets/img/globe-icon.png
 [card]: /payment-instruments/card
 [invoice]: /payment-instruments/invoice
-[direct-debit]: /payment-instruments/direct-debit
 [vipps]: /payment-instruments/vipps
 [swish]: /payment-instruments/swish
 [mobile-pay]: /payment-instruments/mobile-pay
 [seamless-view]: /payment-instruments/card/seamless-view
 [redirect]: /payment-instruments/card/redirect
-[direct]: /payment-instruments/card/direct
 [trustly]: /payment-instruments/trustly

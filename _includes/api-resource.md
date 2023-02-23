@@ -1,4 +1,4 @@
-{%- capture docsec -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture docsec -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- capture api_resource -%}
     {%- case docsec -%}
     {%- when "payment-instruments" -%}

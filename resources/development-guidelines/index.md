@@ -206,7 +206,7 @@ detail.
 To help with writing release notes, projects can use the tool
 [GitReleaseNotes][git-release-notes].
 
-[apple-app-store]: https://appstore.com/
+[apple-app-store]: https://appstore.com
 [code-of-conduct]: /resources/development-guidelines/code-of-conduct
 [continuous-integration]: https://en.wikipedia.org/wiki/Continuous_integration
 [contributing]: /resources/development-guidelines/contributing

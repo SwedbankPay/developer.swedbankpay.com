@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 ## Aborted
@@ -149,10 +149,10 @@ Content-Type: application/json
 | └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └─➔&nbsp;`state`          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
 | └─➔&nbsp;`number`         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
+| └─➔&nbsp;`amount`         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md describe_receipt=true %}                                                                                         |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
 
 ## Failed
 
@@ -189,7 +189,7 @@ Content-Type: application/json
 | Field                    | Type         | Description     |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `failed`                | `object`     | The failed object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`problem`             | `object`     | The problem object.  |
 | └─➔&nbsp;`type`  | `string`   | The type of problem that occurred. |
 | └─➔&nbsp;`title`  | `string`   | The title of the problem that occurred. |
@@ -302,17 +302,17 @@ Content-Type: application/json
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
 | └➔&nbsp;`status`          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` section for further information]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in the failed section. [Further information here]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the cancel feature section for further information]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the Abort feature section for further information]({{ features_url }}/technical-reference/status-models#aborted). |
 | └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
-| └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
-| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include field-description-initiating-system-user-agent.md %}                                                                                                                                                          |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
+| └➔&nbsp;`amount`         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
+| └➔&nbsp;`vatAmount`      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
+| └➔&nbsp;`description`    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
+| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
+| └➔&nbsp;`language`       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
 | └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
@@ -342,8 +342,10 @@ The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
 `networkToken`, which **represents** the PAN, but is not a PAN in itself.
 
+### Card `Paid` Resource
+
 {:.code-view-header}
-**Response**
+**Card Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -412,8 +414,8 @@ Content-Type: application/json
             "payeeReference": "1641542301",
             "amount": 1500,
             "details": {
-                "nonPaymentToken" : "12345678-1234-1234-1234-1234567890AB",
-                "externalNonPaymentToken" : "1234567890",
+                "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+                "externalNonPaymentToken": "1234567890",
                 "cardBrand": "Visa",
                 "cardType": "Credit",
                 "maskedPan": "492500******0004",
@@ -475,7 +477,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Apple Pay**
+**Apple Pay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -494,6 +496,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "cardType": "Credit",
         "expiryDate": "12/0023",
@@ -503,6 +507,83 @@ Content-Type: application/json
         "acquirerTerminalId": "80100001190",
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
         "transactionInitiator": "CARDHOLDER"
+        "bin": "489537"
+    }
+  }
+}
+```
+
+### Click to Pay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+ {:.code-view-header}
+ **Click to Pay Response**
+
+ ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "ClickToPay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "amount": 1500,
+    "details": {
+      "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+      "externalNonPaymentToken": "1234567890",
+      "cardBrand": "Visa",
+      "cardType": "Credit",
+      "expiryDate": "12/0023",
+      "issuerAuthorizationApprovalCode": "L00392",
+      "acquirerTransactionType": "WALLET",
+      "acquirerStan": "392",
+      "acquirerTerminalId": "80100001190",
+      "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+      "transactionInitiator": "CARDHOLDER"
+      "bin": "489537"
+    }
+  }
+}
+```
+
+### Google Pay&trade; `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+ {:.code-view-header}
+ **Google Pay&trade; Response**
+
+ ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "GooglePay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "amount": 1500,
+    "details": {
+      "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+      "externalNonPaymentToken": "1234567890",
+      "cardBrand": "Visa",
+      "cardType": "Credit",
+      "expiryDate": "12/0023",
+      "issuerAuthorizationApprovalCode": "L00392",
+      "acquirerTransactionType": "WALLET",
+      "acquirerStan": "392",
+      "acquirerTerminalId": "80100001190",
+      "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+      "transactionInitiator": "CARDHOLDER"
+      "bin": "489537"
     }
   }
 }
@@ -514,7 +595,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**MobilePay**
+**MobilePay Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -533,6 +614,8 @@ Content-Type: application/json
     "feeAmount": 0,
     "discountAmount": 0,
     "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "maskedPan": "489537******1424",
         "expiryDate": "12/2022",
@@ -540,8 +623,8 @@ Content-Type: application/json
         "acquirerTransactionType": "MOBILEPAY",
         "acquirerStan": "53889",
         "acquirerTerminalId": "42",
-        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
-        "bin": "489537",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z"
+        "bin": "489537"
     }
   }
 }
@@ -553,7 +636,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Vipps**
+**Vipps Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -572,7 +655,16 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+        "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+        "externalNonPaymentToken": "1234567890"
+        "cardBrand": "Visa",
+        "acquirerTransactionType": "WALLET",
+        "acquirerTerminalId": "99488282",
+        "acquirerTransactionTime": "2022-09-05T09:54:05Z",
+        "transactionInitiator": "CARDHOLDER",
+        "bin": "489537"
+    }
   }
 }
 ```
@@ -583,7 +675,7 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {:.code-view-header}
-**Swish**
+**Swish Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -601,7 +693,9 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+        "misidn": "+46739000001"
+    }
   }
 }
 ```
@@ -612,7 +706,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**Invoice**
+**Invoice Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -641,7 +735,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**CreditAccount**
+**Credit Account Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -670,7 +764,7 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**Trustly**
+**Trustly Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -703,16 +797,29 @@ responses:
 | └➔&nbsp;`remainingCaptureAmount`      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
 | └➔&nbsp;`remainingCancellationAmount`      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
 | `paid`                | `object`     | The paid object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
+| └─➔&nbsp;`payeeReference`          | `string` | {% include fields/payee-reference.md %} |
 | └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
+| └➔&nbsp;`amount`                   | `integer`    | {% include fields/amount.md %}                                            |
 | └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
 | └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
+| └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
+| └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+| └-➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
+| └-➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
+| └-➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
+| └─➔&nbsp;`issuerAuthorizationApprovalCode` | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
+| └─➔&nbsp;`acquirerTransactionType` | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
+| └─➔&nbsp;`acquirerStan`            | `string`     | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                                                                                                         |
+| └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
+| └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`bin` | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
+| └─➔&nbsp;`msisdn` | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
 | └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
 
 If there e.g. is a recurrence or an unscheduled (below) token connected to the

@@ -141,7 +141,7 @@ sequenceDiagram
         end
 ```
 
-{% include iterator.html prev_href="direct" prev_title="Direct"
+{% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="after-payment" next_title="After Payment" %}
 
 [create-payment]: /payment-instruments/card/features/technical-reference/create-payment

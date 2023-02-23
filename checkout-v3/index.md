@@ -71,7 +71,7 @@ table_content_payments:
 
 ---
 
-## Choosing The Right Implementation For Your Business
+## Choose The Right Implementation For Your Business
 
 Each business vertical has a different customer journey. If you are selling
 physical goods like clothes, shoes, or computers, you need to collect a delivery
@@ -80,15 +80,37 @@ which data you can and/or wish to collect and manage on your own.
 
 There are two main paths you can take here. If you choose the **Full Checkout**
 solution (including payer identification as well as payment options), the payer
-chooses the method of payment. You can also choose the **Payment Only** option.
+chooses the method of payment. You can also choose the **Payments Only** option.
 In this case, you will collect and store payer data, along with the payment
-instruments you will present to the payer.
+instruments you will present to the payer. It is possible to use different
+implementations per payment order within the **Full Checkout** options.
+This is especially useful if you need different customer journeys based on the
+device used.
 
 We offer a variety of payment instruments and features designed to meet your
 business' needs, regardless of whether you choose the **Full Checkout** or
-**Payments Only**. You can choose among **Apple Pay** (on iOS devices),
-**card, invoice (including monthly payments), MobilePay, Swish, Trustly** and
-**Vipps** depending on the country you are in.
+**Payments Only**. You can choose from the following payment instruments,
+somewhat depending on which countries you are operating in.
+
+{% include alert.html type="informative" icon="info" header="Digital Wallets"
+body="Some of the digital wallets we offer in Checkout v3 require you to take
+additional steps before we can activate them for you. Please follow the link(s)
+in the table below to read more." %}
+
+{:.table .table-plain}
+|        | Payment Instrument |  Starter | Business | Enterprise   |  Payments Only | Region                                    |
+| :--------------------------: | :------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :---------------------------------------- |
+|   ![Apple Pay][apple-pay-logo]   | [Apple Pay][apple-pay]          | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|    ![Card][card-icon]    | Card         | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
+|   ![Click to Pay][c2p-logo]   | [Click to Pay][click-to-pay]            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|   ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+| ![MobilePay][mobilepay-logo] | MobilePay       |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![Swish][swish-logo]     | Swish                 | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %}                             |
+|   ![Trustly][trustly-logo]   | Trustly            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
+| ![Vipps][vipps-logo]     | Vipps                | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %}                             |
 
 -   **Authentication:** The process of verifying the payer's identity.
 
@@ -119,7 +141,10 @@ payer shops if they agree to do so.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="This is the ultimate implementation pack for anyone new to this, who needs help with all aspects of the checkout process. Besides collecting and verifying payer identity, billing address, and shipping address, we also store payer data. You get everything you need to start accepting payments online."
+  text="This is the ultimate implementation pack for anyone new to this, who
+  needs help with all aspects of the checkout process. Besides collecting and
+  verifying payer identity, billing address, and shipping address, we also store
+  payer data. You get everything you need to start accepting payments online."
   table_content=page.table_content
   header=page.header
   button_type='secondary'
@@ -132,7 +157,10 @@ payer shops if they agree to do so.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="Do you need someone to manage your payer data as you move forward on your growth journey? We’ve got you covered! Make it easier for returning customers by providing them with the option to store their payment information. Everything you need to grow your business."
+  text="Do you need someone to manage your payer data as you move forward on
+  your growth journey? We’ve got you covered! Make it easier for returning
+  customers by providing them with the option to store their payment
+  information. Everything you need to grow your business."
   table_content=page.table_content_business
   header=page.header
   button_type='secondary'
@@ -145,12 +173,15 @@ payer shops if they agree to do so.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="This is the most suitable option if you only need data storage and payment instruments. You collect and verify consumer data, and we handle the rest. Scaling your business has never been easier."
+  text="This is the most suitable option if you only need data storage and
+  payment instruments. You collect and verify consumer data, and we handle the
+  rest. Scaling your business has never been easier."
   table_content=page.table_content_enterprise header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
   to='/checkout-v3/enterprise/'
 %}
+
 {% endcapture %}
 
 {% capture tab2_intro %}
@@ -170,9 +201,13 @@ implementation.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="Basically, if you're able to collect, verify and store your payer data*, plus the delivery address, this is the option for you. Our PSP lets you choose whether to offer a single payment instrument or the whole thing.
+  text="Basically, if you're able to collect, verify and store your payer data*,
+  plus the delivery address, this is the option for you. Our PSP lets you choose
+  whether to offer a single payment instrument or the whole thing.
 
-  *We'll store the card data for you, but you own it. So you'll have to remove data in compliance with GDPR, but you won't have to worry about handling sensitive card info."
+  *We'll store the card data for you, but you own it. So you'll have to remove
+  data in compliance with GDPR, but you won't have to worry about handling
+  sensitive card info."
   table_content=page.table_content_payments
   header=page.header
   button_type='secondary'
@@ -187,3 +222,17 @@ implementation.
   tab2_intro=tab2_intro
   tab2_content=tab2_content
   %}
+
+[apple-pay]: /checkout-v3/payment-presentations#apple-pay
+[apple-pay-logo]:/assets/img/applepay-logo.svg
+[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[c2p-logo]:/assets/img/clicktopay-logo.svg
+[card-icon]: /assets/img/new-card-icon.svg
+[earth-icon]: /assets/img/globe-icon.png
+[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay-logo]: /assets/img/googlepay-logo.svg
+[mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
+[vipps-logo]: /assets/img/icon-vipps-simple.svg
+[swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
+[swish-logo]: /assets/img/icon-swish-simple.svg
+[trustly-logo]: /assets/img/icon-trustly-simple.svg

@@ -37,7 +37,7 @@ We encourage you to keep [Postel's robustness principle][robustness-principle]
 in mind. Build your integration in a way that is resilient to change, wherever
 it may come. Don't confine yourself to the limits of our current documentation
 examples. A `string` looking like a `guid` must still be handled and stored like
-a `string`, not as a guid, as it could be a `URL` in the future. The day our
+a `string`, not as a `guid`, as it could be a `URL` in the future. The day our
 `transactionNumber` ticks past 1,000,000, make sure your integration can handle
 number 1,000,001. If some `fields`, `operations` or `headers` can't be
 understood, you must be able to ignore them. We have built our requests in a way
@@ -66,7 +66,7 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 |     Required     | Header              | Description                                                                                                                                                                                                                                                                    |
 | :--------------: | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}︎ | **`Content-Type`**  | The [content type][content-type] of the body of the HTTP request. Usually set to `application/json`.                                                                                                                                                                           |
-| {% icon check %}︎ | **`Authorization`** | The OAuth 2 Access Token is generated in [Swedbank Pay Admin][admin].                                                                                                                                                                                                          |
+| {% icon check %}︎ | **`Authorization`** | The OAuth 2 Access Token is generated in the [Merchant Portal][admin].                                                                                                                                                                                                          |
 |                  | **`User-Agent`**    | The [user agent][user-agent] of the HTTP client making the HTTP request. Should be set to identify the system performing requests towards Swedbank Pay. The value submitted here will be returned in the response field `initiatingSystemUserAgent`.                           |
 | {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
@@ -378,7 +378,7 @@ specified in the response by finding the appropriate operation based on its
 
 {% include problems/problems.md %}
 
-[admin]: https://admin.externalintegration.payex.com/psp/login
+[admin]: https://merchantportal.externalintegration.swedbankpay.com
 [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 [iso-4217]: https://en.wikipedia.org/wiki/ISO_4217

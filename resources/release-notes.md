@@ -11,6 +11,33 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 31 January 2023
+
+### Version 3.1.8
+
+Bigger things are coming up around the bend, so we are stopping by with some
+smaller fixes and a [Checkout v3 matrix][checkout-v3-matrix] giving you a better
+overview over which payment instruments v3 has to offer, and the countries they
+are available.
+
+We'll be back soon!
+
+## 17 January 2023
+
+### Version 3.1.7
+
+We kick off the new year with a new field in our payment order request. Your
+Checkout v3 implementation of choice is now added in the request, and it is
+mandatory for our
+[business implementation][checkout-v3-business-payment-request].
+Version 2 of the balance report and transaction list is our second newcomer this
+release. Head over to [Settlement & Reconciliation][settlement-balance-report]
+to learn more.
+
+We have added a [paid status model][status-model-paid-v2] to Checkout v2 and
+Payment menu, and the [update payment order section][payment-order-update] is
+added to Checkout v3.
+
 ## 15 December 2022
 
 ### Version 3.1.6
@@ -401,8 +428,6 @@ Other changes:
 *   Updated `orderItems` to be required in all requests and responses.
 *   Clean up of [Swish Payments][swish]
 *   Removed `pageStripDown` in [Vipps Redirect][vipps].
-*   Updated [Card Payments Direct][card-direct] to have a correct integration
-    flow.
 *   Updated the [main page][frontpage] to be more welcoming.
 *   Updated information on [Delegated Strong Customer Authentication][mac-checkout].
 
@@ -463,7 +488,6 @@ This change contains build updates for the page. :octocat:
 
 *   Expanded information about the field `restrictedToInstruments`.
 *   Added information about the field `receiptReference`.
-*   Added information about [direct integration in Credit card][card-direct].
 *   Added and fixed several missing headings in template files.
 *   Expanded information about `verify`.
 *   Created new page for [Checkout Capture][checkout-capture].
@@ -712,7 +736,6 @@ integration and the payer.
 [authorization-timeouts]: /checkout-v2/capture
 [callback]: /checkout-v3/payments-only/features/core/callback
 [card-delete-token]: /payment-instruments/card/features/optional/delete-token
-[card-direct]: /payment-instruments/card/direct
 [card-error-codes]: /payment-instruments/card/features/technical-reference/problems
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
 [card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
@@ -737,6 +760,8 @@ integration and the payer.
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
 [checkout-v3-business]: /checkout-v3/business
+[checkout-v3-business-payment-request]: /checkout-v3/business/redirect#payment-order-request
+[checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [checkout-v3-starter]: /checkout-v3/starter
@@ -770,6 +795,7 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [optional-features]: /checkout-v2/features/optional/
 [payment-orders]: /checkout-v2/payment-menu#step-3-create-payment-order
+[payment-order-update]: /checkout-v3/business/features/optional/update
 [payment-menu-invoice-capture]:/payment-menu/capture
 [payment-menu-items]: /payment-menu/features/technical-reference/items
 [payment-menu-payment-link]: /payment-menu/features/optional/payment-link
@@ -785,12 +811,14 @@ integration and the payer.
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
+[settlement-balance-report]: /payment-instruments/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
+[status-model-paid-v2]: /checkout-v2/features/technical-reference/status-models#paid
 [storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
 [swish-direct-mcom]: /payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction

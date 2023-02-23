@@ -33,10 +33,10 @@ Content-Type: application/json
 |     Required     | Field                    | Type         | Description                                                                           |
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `object`     | Object representing the capture transaction.                                          |
-| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                             |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                          |
+| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include fields/amount.md %}                                             |
+| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include fields/vat-amount.md %}                                          |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture transaction.                                     |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %} |
 
 ## Capture Response
 

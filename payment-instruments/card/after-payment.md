@@ -55,7 +55,7 @@ Content-Type: application/json
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                              |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %}          |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %}          |
 
 ## Cancel Response
 
@@ -105,10 +105,10 @@ Content-Type: application/json
 | └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | └─➔&nbsp;`state`          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
 | └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md %}                                                                                                                              |
+| └─➔&nbsp;`amount`         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
+| └─➔&nbsp;`description`    | `string`  | {% include fields/description.md %}                                                                                                                                  |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
@@ -168,10 +168,10 @@ Content-Type: application/json
 |     Required     | Field                    | Type          | Description                                                                              |
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include field-description-amount.md %}                                                |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include field-description-vatamount.md %}                                             |
+| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include fields/amount.md %}                                                |
+| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include fields/vat-amount.md %}                                             |
 | {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %}          |
+| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %}          |
 
 ## Reversal Response
 
@@ -219,12 +219,12 @@ Content-Type: application/json
 | └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | {% include field-description-state.md %}        |
+| └─➔&nbsp;`state`          | `string`  | {% include fields/state.md %}        |
 | └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
-| └─➔&nbsp;`amount`         | `integer` | {% include field-description-amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include field-description-vatamount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include field-description-description.md %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include field-description-payee-reference.md %}                                                                                                                              |
+| └─➔&nbsp;`amount`         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| └─➔&nbsp;`vatAmount`      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
+| └─➔&nbsp;`description`    | `string`  | {% include fields/description.md %}                                                                                                                                  |
+| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
 | └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
 | └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
