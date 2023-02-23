@@ -64,7 +64,7 @@ public class PaxController implements SwpTrmCallbackInterface  {
 There are two ways to call each method, *synchronous* and *asynchronous*. In the
 synchronous method call the program stops and waits until the response arrives.
 In the asynchronous method call the program continues to perform other tasks and
-when the response arrives the program handels it. The asynchronous call is
+when the response arrives the program handles it. The asynchronous call is
 especially useful for the PaymentRequest where the response arrives after the
 payment process is done.
 
