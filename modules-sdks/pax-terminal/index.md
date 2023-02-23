@@ -13,7 +13,7 @@ Swedbank Pay Payment Application implementation of nexo Retailer allows the
 integrated application to initiate the relevant functions within Swedbank Pay
 Payment Application.
 
-The Swedbank pay SDK contains one implementation for using PAX A30 terminal but
+The Swedbank Pay SDK contains one implementation for using PAX A30 terminal but
 makes it possible to vary the style of use by configuration. There are to major
 styles that is decided by the SalesCapabilities string sent in a LoginRequest:
 
