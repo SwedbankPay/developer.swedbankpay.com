@@ -7,7 +7,7 @@ permalink: /:path/
 menu_order: 700
 ---
 
-Swedbank pay have designed the Swedbank Pay Payment Application solution using
+Swedbank Pay have designed the Swedbank Pay Payment Application solution using
 the nexo Retailer protocol for its API interface to integrated parties. The
 Swedbank Pay Payment Application implementation of nexo Retailer allows the
 integrated application to initiate the relevant functions within Swedbank Pay
