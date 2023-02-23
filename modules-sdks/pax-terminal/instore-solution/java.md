@@ -275,7 +275,7 @@ public void requestForConfirmationEvent(String message, ConfirmationResult cashi
 Logging is done through Slf4j. To see what is going on set DEBUG level for the
 following package `com.swedbankpay`.
 
-When running the application standalone it can be handy to se the communication
+When running the application standalone it can be handy to see the communication
 between the ECR and the terminal. To log communication between the ECR and
 terminal to some text window in the application the following can be used. This
 can be enabled or disabled runtime. It is disabled by default.
