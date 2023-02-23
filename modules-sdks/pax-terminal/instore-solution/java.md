@@ -318,7 +318,7 @@ provided in the terminal config. In the future hopefully we can
 take the locale from the payment response if the customer chooses a different
 language during the payment process.
 
-There is also the possibility to create your on formatter by extending the class
+There is also the possibility to create your own formatter by extending the class
 `AbstractReceiptFormatter` and then use the `format(...)` method on the `Receipt`
 object from the payment.
 
