@@ -24,7 +24,7 @@ The intended default style requires the consumer of the SwpTrmLib to act as both
 a server and a client. The server handles requests from the terminal, such as
 display information, events, and possible input request from the terminal, such
 as a request to confirm that a receipt has been signed if needed. The second
-style is to act as a client only and then loose information from terminal such
+style is to act as a client only and then lose information from terminal such
 as events informing that a card has been inserted or removed or display information
 helping the operator to see what is going on. Transactions that need signing is
 not possible. Such transactions regard cards from outside EU for which PIN may
