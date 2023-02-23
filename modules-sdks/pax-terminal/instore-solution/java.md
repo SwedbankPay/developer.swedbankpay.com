@@ -298,7 +298,7 @@ three fields populated:
 ```text
 result = FAILURE
 statusCode = 500
-errorCondtion = "The nature of the error"
+errorCondition = "The nature of the error"
 ```
 
 There are five cases where the error can occur:
