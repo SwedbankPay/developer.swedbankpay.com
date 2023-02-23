@@ -15,7 +15,7 @@ Payment Application.
 
 The Swedbank Pay SDK contains one implementation for using PAX A30 terminal but
 makes it possible to vary the style of use by configuration. There are to major
-styles that is decided by the SalesCapabilities string sent in a LoginRequest:
+styles that is decided by the SalesCapabilities string sent in as a LoginRequest:
 
 - Act as both server and client
 - Act as client only
