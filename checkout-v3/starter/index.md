@@ -2,9 +2,9 @@
 section: Starter
 title: Set Up
 description: |
-  **In this section we are going to guide you through setting up your test account
-  and how to make an API request for your first test payment. After these steps,
-  you're ready to build your integration!**
+  In this section we are going to guide you through setting up your test
+  account and how to make an API request for your first test payment. After
+  these steps, you're ready to build your integration!**
 checkout_v3: true
 menu_order: 100
 ---
@@ -12,7 +12,7 @@ menu_order: 100
 ## Step 1: Sign Up For A Test Account
 
 A test account gives you access to our unified dashboard for managing your
-account across different platforms. We call this dashboard the Ecom Admin.
+account across different platforms. We call this dashboard the Merchant Portal.
 
 Your test account request should be sent to:
 [testaccount@swedbankpay.com](mailto:testaccount@swedbankpay.com) in order to
@@ -51,7 +51,7 @@ with an access token.
 
 How to generate your access token:
 
-**Log in to:** https://admin.externalintegration.payex.com/psp/beta/login/ - For
+**Log in to:** https://merchantportal.externalintegration.swedbankpay.com - For
 testing environment.
 
 **Merchant details:** Here you will find information about your

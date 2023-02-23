@@ -2,9 +2,8 @@
 section: Checkout v3
 title: Get Started
 description: |
-  **To give you a hint of how to implement our checkout in a matter that will
-  make the most sense for your business, this page aims to give you a brief
-  introduction to our four implementation options.**
+  **This page aims to provide you with a brief introduction to our four options
+  for implementing our checkout in a way that makes sense for your business.**
 menu_order: 200
 checkout_v3: true
 
@@ -74,23 +73,44 @@ table_content_payments:
 
 ## Choose The Right Implementation For Your Business
 
-The customer journey varies a lot depending on your business vertical. If you're
-selling physical goods like clothes, shoes or computers - you need to collect a
-delivery address - unlike if you are selling digital goods, where that isn't
-needed. But this is also a matter of which data you can and/or wish to collect
-and manage yourself.
+Each business vertical has a different customer journey. If you are selling
+physical goods like clothes, shoes, or computers, you need to collect a delivery
+address, unlike if you are selling digital goods. There is also the matter of
+which data you can and/or wish to collect and manage on your own.
 
-Here, you can choose between two main paths. Either you let us provide you the
-**Full Checkout** solution (including both payer identification and payment
-menu) - meaning the payer themselves chooses how to pay, or you can use the
-**Payments Only** option. This means that you are in charge of collecting and
-storing the payer data and the payment instruments to be presented.
+There are two main paths you can take here. If you choose the **Full Checkout**
+solution (including payer identification as well as payment options), the payer
+chooses the method of payment. You can also choose the **Payments Only** option.
+In this case, you will collect and store payer data, along with the payment
+instruments you will present to the payer. It is possible to use different
+implementations per payment order within the **Full Checkout** options.
+This is especially useful if you need different customer journeys based on the
+device used.
 
-Regardless of whether you choose to go with the full checkout or payments only,
-we will supply you with a variety of payment instruments and features which
-cater to your business needs. Somewhat depending on which country or countries
-where you are present, we offer **Apple Pay (on iOS devices), card, invoice**
-(incl. **monthly payments), MobilePay, Swish, Trustly** and **Vipps**.
+We offer a variety of payment instruments and features designed to meet your
+business' needs, regardless of whether you choose the **Full Checkout** or
+**Payments Only**. You can choose from the following payment instruments,
+somewhat depending on which countries you are operating in.
+
+{% include alert.html type="informative" icon="info" header="Digital Wallets"
+body="Some of the digital wallets we offer in Checkout v3 require you to take
+additional steps before we can activate them for you. Please follow the link(s)
+in the table below to read more." %}
+
+{:.table .table-plain}
+|        | Payment Instrument |  Starter | Business | Enterprise   |  Payments Only | Region                                    |
+| :--------------------------: | :------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :---------------------------------------- |
+|   ![Apple Pay][apple-pay-logo]   | [Apple Pay][apple-pay]          | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|    ![Card][card-icon]    | Card         | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
+|   ![Click to Pay][c2p-logo]   | [Click to Pay][click-to-pay]            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|   ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+| ![MobilePay][mobilepay-logo] | MobilePay       |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
+| ![Swish][swish-logo]     | Swish                 | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %}                             |
+|   ![Trustly][trustly-logo]   | Trustly            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
+| ![Vipps][vipps-logo]     | Vipps                | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %}                             |
 
 -   **Authentication:** The process of verifying the payer's identity.
 
@@ -99,7 +119,7 @@ where you are present, we offer **Apple Pay (on iOS devices), card, invoice**
 -   **Payer Info:** The payer’s personal data e.g. name, address, card number
     etc.
 
--   **PSP:** The service of providing payment instruments in the checkout.
+-   **PSP:** A service that provides payment methods at checkout.
 
 ## What Are You Looking For?
 
@@ -107,10 +127,10 @@ where you are present, we offer **Apple Pay (on iOS devices), card, invoice**
 
 ## Full Checkout
 
-With the **Full Checkout**, you will get access to a number of payment
-instruments. selected to support the needs of the local market. We help you
-collect and safely store the payer's data. If the payer agrees, we will store
-their information to have it prefilled the next time they shop.
+The **Full Checkout** allows you to choose from a variety of payment options
+specific to your local market, while we help you collect and safely store payer
+data. Payment information can be stored so it can be prefilled next time the
+payer shops if they agree to do so.
 {:.heading-line}
 {% endcapture %}
 
@@ -121,10 +141,10 @@ their information to have it prefilled the next time they shop.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="The ultimate implementation pack for anyone new to this, who needs support
-  with all parts covering the checkout. We collect and verify the payer's
-  identity, billing and shipping address, and store the payer data.
-  Everything needed to get started with online payments."
+  text="This is the ultimate implementation pack for anyone new to this, who
+  needs help with all aspects of the checkout process. Besides collecting and
+  verifying payer identity, billing address, and shipping address, we also store
+  payer data. You get everything you need to start accepting payments online."
   table_content=page.table_content
   header=page.header
   button_type='secondary'
@@ -137,10 +157,10 @@ their information to have it prefilled the next time they shop.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="On the next level on your growth journey, looking for someone to
-  authenticate and store the payer data you collected? We've got you covered, so the
-payer won't have to fill out their information twice. Simply
-  everything needed for growing your business."
+  text="Do you need someone to manage your payer data as you move forward on
+  your growth journey? We’ve got you covered! Make it easier for returning
+  customers by providing them with the option to store their payment
+  information. Everything you need to grow your business."
   table_content=page.table_content_business
   header=page.header
   button_type='secondary'
@@ -153,23 +173,24 @@ payer won't have to fill out their information twice. Simply
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="If you only need support with data storage and payment instruments - this is
-  the most suitable option for you. You collect and verify the consumer data,
-  and we sort out the rest. Everything you need for scaling your business."
+  text="This is the most suitable option if you only need data storage and
+  payment instruments. You collect and verify consumer data, and we handle the
+  rest. Scaling your business has never been easier."
   table_content=page.table_content_enterprise header=page.header
   button_type='secondary'
   button_alignment='align-self-end'
   to='/checkout-v3/enterprise/'
 %}
+
 {% endcapture %}
 
 {% capture tab2_intro %}
 
 ## Payments Only
 
-With our payments only package, you collect the payer data and have the
-flexibility to build your own checkout flow. This implementation supports our
-full range of payment instruments.
+With our **Payments Only** package, you collect payer data and build your own
+checkout flow. Our full range of payment instruments is supported by this
+implementation.
 {:.heading-line}
 {% endcapture %}
 
@@ -180,14 +201,13 @@ full range of payment instruments.
   icon_content='shopping_cart'
   icon_outlined=true
   button_content='Proceed'
-  text="If you can collect, verify and store your payer data*, and if needed -
-  the delivery address - this is the option for you. With our PSP you can decide
-  if you want to offer a single payment instrument or the full payment offering.
+  text="Basically, if you're able to collect, verify and store your payer data*,
+  plus the delivery address, this is the option for you. Our PSP lets you choose
+  whether to offer a single payment instrument or the whole thing.
 
-  *We will store the **card** data for you, but you will keep the ownership.
-   This means that you will have to facilitate removal of data in accordance
-   with GDPR requirements, but won't have to worry about handling sensitive card
-   data."
+  *We'll store the card data for you, but you own it. So you'll have to remove
+  data in compliance with GDPR, but you won't have to worry about handling
+  sensitive card info."
   table_content=page.table_content_payments
   header=page.header
   button_type='secondary'
@@ -202,3 +222,17 @@ full range of payment instruments.
   tab2_intro=tab2_intro
   tab2_content=tab2_content
   %}
+
+[apple-pay]: /checkout-v3/payment-presentations#apple-pay
+[apple-pay-logo]:/assets/img/applepay-logo.svg
+[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[c2p-logo]:/assets/img/clicktopay-logo.svg
+[card-icon]: /assets/img/new-card-icon.svg
+[earth-icon]: /assets/img/globe-icon.png
+[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay-logo]: /assets/img/googlepay-logo.svg
+[mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
+[vipps-logo]: /assets/img/icon-vipps-simple.svg
+[swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
+[swish-logo]: /assets/img/icon-swish-simple.svg
+[trustly-logo]: /assets/img/icon-trustly-simple.svg

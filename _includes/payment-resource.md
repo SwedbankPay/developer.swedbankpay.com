@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign show_status_operations = include.show_status_operations | default:
 false %}
 {% case api_resource %}
@@ -90,30 +90,30 @@ Content-Type: application/json
     },
     "operations": [ {%- case api_resource -%}
     {%- when "swish" -%}
-        {% include api-operation.md operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md operation="redirect-sale" %},
-        {% include api-operation.md operation="view-sales" %},
-        {% include api-operation.md operation="view-payment" %},
+        {% include utils/api-operation.md operation="create-sale" href_tail="sales" %},
+        {% include utils/api-operation.md operation="redirect-sale" %},
+        {% include utils/api-operation.md operation="view-sales" %},
+        {% include utils/api-operation.md operation="view-payment" %},
     {%- when "trustly" -%}
-        {% include api-operation.md operation="create-sale" href_tail="sales" %},
-        {% include api-operation.md operation="redirect-sale" %},
-        {% include api-operation.md operation="view-sale" %},
-        {% include api-operation.md operation="update-payment-abort" %},
-        {% include api-operation.md operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md operation="failed-payment" href_tail="failed" %}
+        {% include utils/api-operation.md operation="create-sale" href_tail="sales" %},
+        {% include utils/api-operation.md operation="redirect-sale" %},
+        {% include utils/api-operation.md operation="view-sale" %},
+        {% include utils/api-operation.md operation="update-payment-abort" %},
+        {% include utils/api-operation.md operation="paid-payment" href_tail="paid" %},
+        {% include utils/api-operation.md operation="failed-payment" href_tail="failed" %}
     {%- when "invoice" -%}
-        {% include api-operation.md operation="create-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md operation="redirect-authorization" %},
+        {% include utils/api-operation.md operation="create-authorization" href_tail="operation=authorize" %},
+        {% include utils/api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
+        {% include utils/api-operation.md operation="redirect-authorization" %},
         {% else %},
-        {% include api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
-        {% include api-operation.md operation="redirect-authorization" %},
+        {% include utils/api-operation.md operation="view-authorization" href_tail="operation=authorize" %},
+        {% include utils/api-operation.md operation="redirect-authorization" %},
     {%- endcase -%}
     {% if show_status_operations %}
-        {% include api-operation.md operation="update-payment-abort" %},
-        {% include api-operation.md operation="create-capture" href_tail="captures" %},
-        {% include api-operation.md operation="paid-payment" href_tail="paid" %},
-        {% include api-operation.md operation="failed-payment" href_tail="failed" %}
+        {% include utils/api-operation.md operation="update-payment-abort" %},
+        {% include utils/api-operation.md operation="create-capture" href_tail="captures" %},
+        {% include utils/api-operation.md operation="paid-payment" href_tail="paid" %},
+        {% include utils/api-operation.md operation="failed-payment" href_tail="failed" %}
     {% endif %}
     ]
 }
@@ -123,18 +123,18 @@ Content-Type: application/json
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md %}                                                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`id`             | `string`     | {% include fields/id.md %}                                                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`number`         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
 | └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
 | └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                                                                                                                                                                                         |
 | └➔&nbsp;`state`          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
 | └➔&nbsp;`prices`         | `object`     | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                                      |
-| └➔&nbsp;`prices.id`      | `string`     | {% include field-description-id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
-| └➔&nbsp;`description`    | `string`     | {% include field-description-description.md %}                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`userAgent`      | `string`     | {% include field-description-user-agent.md %}                                                                                                                                                                                                                                                                                             |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                                                                                                                                                      |
+| └➔&nbsp;`prices.id`      | `string`     | {% include fields/id.md resource="prices" %}                                                                                                                                                                                                                                                                                                    |
+| └➔&nbsp;`description`    | `string`     | {% include fields/description.md %}                                                                                                                                                                                                                                                                     |
+| └➔&nbsp;`userAgent`      | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                                             |
+| └➔&nbsp;`language`       | `string`     | {% include fields/language.md %}                                                                                                                                                                                                                                                                                      |
 | └➔&nbsp;`urls`           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
-| └➔&nbsp;`payeeInfo`      | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                 |
+| └➔&nbsp;`payeeInfo`      | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
 | └➔&nbsp;`payers`         | `string`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
 | `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | └─➔&nbsp;`method`        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |

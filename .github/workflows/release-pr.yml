@@ -21,7 +21,7 @@ jobs:
     needs: variables
     steps:
       - uses: actions/checkout@v3
-      - uses: repo-sync/pull-request@v2.9
+      - uses: repo-sync/pull-request@v2.12
         with:
           destination_branch: develop
           pr_title: Release ${{ needs.variables.outputs.release }} (develop)
@@ -37,7 +37,7 @@ jobs:
     needs: variables
     steps:
       - uses: actions/checkout@v3
-      - uses: repo-sync/pull-request@v2.9
+      - uses: repo-sync/pull-request@v2.12
         with:
           destination_branch: master
           pr_title: Release ${{ needs.variables.outputs.release }} (master)

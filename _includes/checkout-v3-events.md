@@ -21,12 +21,15 @@ to the event handler you are overriding." %}
 
 ## `onAborted`
 
-This event triggers when the payer aborts the purchase from the payment menu. As
-the Seamless View payment menu doesn't have a cancel button (present in the
+{% include events/on-aborted.md %}
+
+As the Seamless View payment menu doesn't have a cancel button (present in the
 Redirect integration), you need to provide this button for the payer at your
-end. When the payer presses the cancel button, we recommend sending an API
-request aborting the payment so it can't be completed at a later time. When we
-receive the request, an abort event will be raised the next time the UI fetches
+end.
+
+When the payer presses the cancel button, we recommend sending an API request
+aborting the payment so it can't be completed at a later time. When we receive
+the request, an abort event will be raised the next time the UI fetches
 information from the server. Because of that, you should also refresh after
 aborting, as this will trigger the event.
 
@@ -47,12 +50,12 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                   |
-| `paymentOrder`          | `string` | {% include field-description-id.md %}                 |
+| `paymentOrder`          | `string` | {% include fields/id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ## `onCheckoutLoaded`
 
-This event triggers when the payment menu is rendered after being opened.
+{% include events/on-checkout-loaded.md %}
 
 Subscribe to this event if you need total control over the height of Swedbank
 Pay's payment frame. This is the initial height of the frame when loaded.
@@ -75,13 +78,12 @@ with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
+| `paymentOrder`         | `string` | {% include fields/id.md %}                       |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
 ## `onCheckoutResized`
 
-This event triggers every time a reconfiguration leads to resizing of the
-payment menu.
+{% include events/on-checkout-resized.md %}
 
 Subscribe to this event if you need total control over the height of Swedbank
 Pay's payment frame. The payment instruments requires individual heights when
@@ -106,13 +108,12 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`     | `string` | {% include field-description-id.md %}                           |
+| `paymentOrder`     | `string` | {% include fields/id.md %}                           |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
 ## `onError`
 
-This event triggers during terminal errors or if the configuration fails
-validation.
+{% include events/on-error.md %}
 
 Subscribe to this event if you want some action to occur on your site when an
 error happens during the payment.
@@ -135,13 +136,12 @@ will be raised with the following event argument object:
 | Field       | Type     | Description                                                            |
 | :---------- | :------- | :-------------------------------------------------------------         |
 | `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
+| `paymentOrder`        | `string` | {% include fields/id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.                    |
 
 ## `onEventNotification`
 
-This event triggers whenever any other public event is called. It does not
-prevent their handling.
+{% include events/on-event-notification.md %}
 
 Subscribe to this event in order to log actions that are happening in the
 payment flow at Swedbank Pay.
@@ -165,13 +165,12 @@ payment flow at Swedbank Pay.
 | Field         | Type     | Description                                                |
 | :--------     | :------- | :--------------------------------------------------------- |
 | `event`     | `string` | The name of the event raised.                                |
-| `paymentOrder`        | `string` | {% include field-description-id.md %}              |
+| `paymentOrder`        | `string` | {% include fields/id.md %}              |
 | `sourceEvent` | `string` | A human readable and descriptive text with the event name. |
 
 ## `onInstrumentSelected`
 
-This event triggers when a user actively changes payment instrument in the
-Payment Menu.
+{% include events/on-instrument-selected.md %}
 
 Subscribe to this event if actions, e.g. showing an information text, are
 required on your side if the payer changes payment instrument.
@@ -194,16 +193,16 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
+| `paymentOrder`        | `string` | {% include fields/id.md %}                        |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
 
 ## `onOutOfViewOpen`
 
-This event triggers when another tab is opened in the browser, like the
-information page for onboarding of stored cards, or Swedbank Pay's owner TOS. It
-cannot be opened as a modal since the payer needs to see that this is a link on
-Swedbank Pay's domain.
+{% include events/on-out-of-view-open.md %}
+
+The event cannot be opened as a modal since the payer needs to see that this is
+a link on Swedbank Pay's domain.
 
 Subscribe to this event if you do not want the default handling of these links.
 But e.g. want to redirect the payer to a new page, and not just another tab
@@ -227,13 +226,12 @@ new tab. It will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
+| `paymentOrder`         | `string` | {% include fields/id.md %}                       |
 | `openUrl`    | `string` | The external URL where the user will be redirected.                   |
 
 ## `onOutOfViewRedirect`
 
-This event triggers when a user is redirected to a separate web page, like
-3D-Secure or BankID signing.
+{% include events/on-out-of-view-redirect.md %}
 
 Subscribe to this event if it's not possible to redirect the payer directly from
 within Swedbank Pay's payment frame.
@@ -256,13 +254,12 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
+| `paymentOrder`         | `string` | {% include fields/id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
 ## `onPaid`
 
-This event triggers when the payer successfully completes or cancels the
-payment.
+{% include events/on-paid.md %}
 
 Subscribe to this event if actions are needed on you side other than the default
 handling of redirecting the payer to your `completeUrl`. Call GET on the
@@ -286,15 +283,16 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                       |
-| `paymentOrder`          | `string` | {% include field-description-id.md %}                     |
+| `paymentOrder`          | `string` | {% include fields/id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
 {% if documentation_section contains "checkout-v3/starter" %}
 
 ## `onPayerIdentified`
 
-This event triggers when a payer has been identified. This event is required for
-**Starter** to work, and there are two scenarios where it will occur.
+{% include events/on-payer-identified.md %}
+
+There are two scenarios where this event will occur:
 
 *   The **first** is when the payer has finalized checkin, where this is the
 expected merchant behavior:
@@ -339,10 +337,12 @@ following event argument object:
 | Field          | Type     | Description                                                         |
 | :------------- | :------- | :-------------------------------------------------------------      |
 | `event`        | `string` | The name of the event raised.                                       |
-| `paymentOrder` | `string` | {% include field-description-id.md %}                               |
+| `paymentOrder` | `string` | {% include fields/id.md %}                               |
 | `payer`        | `string` | The `url` of the resource containing information about the payer.   |
 
 ## `onPayerUnidentified`
+
+{% include events/on-payer-unidentified.md %}
 
 This event triggers when a payer clicks "Not you" when identified with "Remember
 Me", and it is a mandatory event for **Starter** to work. It is a part of the
@@ -373,14 +373,13 @@ It will be raised with the following event argument object:
 | Field           | Type     | Description                                                  |
 | :-------------  | :------- | :------------------------------------------------------      |
 | `event`         | `string` | The name of the event raised.                                |
-| `paymentOrder`  | `string` | {% include field-description-id.md %}                        |
+| `paymentOrder`  | `string` | {% include fields/id.md %}                        |
 
 {% endif %}
 
 ## `onTermsOfServiceRequested`
 
-This event triggers when the user clicks on the "Display terms and conditions"
-link.
+{% include events/on-terms-of-service-requested.md %}
 
 Subscribe to this event if you don't want the default handling of the
 `termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl`
@@ -405,5 +404,5 @@ object:
 | Field                | Type     | Description                                         |
 | :--------            | :------- | :---------------------------------------------------|
 | `event`              | `string` | The name of the event raised.                       |
-| `paymentOrder`       | `string` | {% include field-description-id.md %}               |
+| `paymentOrder`       | `string` | {% include fields/id.md %}               |
 | `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions. |

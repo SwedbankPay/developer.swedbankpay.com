@@ -32,13 +32,17 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
+It is possible to switch to **Starter** or **Business** by specifying this in
+the request in `implementation`. If this field is omitted, the implementation
+will default to **Starter** or **Enterprise** based on the configuration.
+
 Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), instrument mode and split settlement (`subsite`).
 
 There is also a guest mode option for the payers who don't wish to store their
 information. When using **Enterprise**, the way to trigger
 this is to not include the `payerReference` or `nationalIdentifier` field in
-your `paymentOrder` request. You find them in the `payer` node in the example
+your `paymentOrder` request. You find them in the `payer` field in the example
 below.
 
 Sometimes you might need to abort purchases. An example could be if a payer does

@@ -18,7 +18,7 @@ payer.
     which was generated when the payment was created.
 *   You can create a reversal transactions by implementing the Reversal request.
     You can also access and reverse a payment through your merchant pages in the
-    [Swedbank Pay admin portal][payex-admin-portal].
+    [Merchant portal][payex-admin-portal].
 
 ## Swish Transactions
 
@@ -213,10 +213,10 @@ Content-Type: application/json
 |     Required     | Field                    | Type         | Description                                                                      |
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
 | {% icon check %}︎ | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.          |
-| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                        |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                     |
+| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include fields/amount.md %}                                        |
+| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include fields/vat-amount.md %}                                     |
 | {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of this reversal.                                            |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %} |
+| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %} |
 
 ## Reversal Response
 
@@ -245,7 +245,7 @@ Swish does not support `recurring` payments.
     next_title="Features" %}
 
 [create-payment]: /payment-instruments/swish/features/technical-reference/create-payment
-[payex-admin-portal]: https://admin.payex.com/psp/login/
+[payex-admin-portal]: https://merchantportal.externalintegration.swedbankpay.com
 [sales-transaction]: #create-sales-transactions
 [technical-reference-callback]: /payment-instruments/swish/features/core/callback
 [unscheduled-purchase]: /payment-instruments/card/features/optional/unscheduled

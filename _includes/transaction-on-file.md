@@ -1,6 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign token_url_without_psp = api_resource %}
+{% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 {% unless api_resource == "paymentorders" %}
     {% assign token_url_without_psp = token_url_without_psp | append: '/payments' %}
@@ -58,7 +59,8 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "generateTransactionOnFileToken": true, {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3",{% endif %}
+        "productName": "Checkout3",
+        "implementation": "{{implementation}}",{% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",

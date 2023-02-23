@@ -1,7 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{%
+{% capture documentation_section %}{% include utils/documentation-section.md %}{%
 endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Restrict Payments To A Social Security Number
 
@@ -11,18 +11,18 @@ want to make sure you only accept payments from an already identified
 individual.
 
 You do this by adding the field `restrictedToSocialSecurityNumber` in the
-`payer` node, in your payment order request, and setting it to `true`. This will
-leave out all instruments which do not support this feature.
+`payer` field, in your payment order request, and setting it to `true`. This
+will leave out all instruments which do not support this feature.
 
 It will then use the `socialSecurityNumber` located in the `nationalIdentifier`
-node (found within the `payer` node). The `nationalIdentifier` must be included
-to use this feature. Instruments supporting the feature will reject payments
-that do not match the restriction.
+field (found within the `payer` field). The `nationalIdentifier` must be
+included to use this feature. Instruments supporting the feature will reject
+payments that do not match the restriction.
 
 {% if documentation_section contains "checkout-v3/enterprise" %} If you want to
 use the Social Security Number just for payment restrictions, and not do a
 checkout profile lookup, add the parameter `guestMode` in the
-`nationalIdentifier` node and set it to `true`. {% endif %}
+`nationalIdentifier` field and set it to `true`. {% endif %}
 
 You are currently only able to restrict Swish and Trustly payments to a Social
 Security Number, but we will add support for more payment instruments going
@@ -31,7 +31,7 @@ offer more instruments at a later time.
 
 ## Restrict To Social Security Number Request
 
-The field itself is a `bool` which must be added in the `payer` node of the
+The field itself is a `bool` which must be added in the `payer` field of the
 request. Below is a shortened example of a payment order request. Apart from the
 new field, the payment request is similar to a standard payment order request.
 For an example of a payment order request, {% if documentation_section contains
