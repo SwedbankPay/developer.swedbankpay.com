@@ -1,5 +1,6 @@
 ---
 section: Payment Instruments
+sidebar_icon: credit_card
 title: Introduction
 redirect_from: /payments/
 estimated_read: 5

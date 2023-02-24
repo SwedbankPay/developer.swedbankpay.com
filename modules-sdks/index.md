@@ -1,5 +1,6 @@
 ---
 section: Modules & SDKs
+sidebar_icon: extension
 title: Introduction
 redirect_from: /resources/sdk-modules
 estimated_read: 4
