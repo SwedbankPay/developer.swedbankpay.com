@@ -1,7 +1,6 @@
 ---
 title: After Payment
 redirect_from: /payments/swish/after-payment
-estimated_read: 13
 menu_order: 1000
 ---
 
@@ -213,10 +212,10 @@ Content-Type: application/json
 |     Required     | Field                    | Type         | Description                                                                      |
 | :--------------: | :----------------------- | :----------- | :------------------------------------------------------------------------------- |
 | {% icon check %}︎ | `transaction`            | `object`     | The `transaction` object, containing information about this `reversal`.          |
-| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include fields/amount.md %}                                        |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include fields/vat-amount.md %}                                     |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of this reversal.                                            |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %}︎ | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                        |
+| {% icon check %}︎ | {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                     |
+| {% icon check %}︎ | {% f description %}    | `string`     | A textual description of this reversal.                                            |
+| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
 
 ## Reversal Response
 

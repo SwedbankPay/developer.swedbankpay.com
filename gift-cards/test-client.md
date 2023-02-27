@@ -1,6 +1,5 @@
 ---
 title: Test Client
-estimated_read: 2
 menu_order: 800
 ---
 

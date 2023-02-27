@@ -1,6 +1,5 @@
 ---
 title: Observing The Payment Process
-estimated_read: 4
 description: Helping your app react to different payment states
 menu_order: 1600
 icon:

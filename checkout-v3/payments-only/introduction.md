@@ -1,7 +1,6 @@
 ---
 section: Introduction
 title: Payments Only
-estimated_read: 3
 hide_from_sidebar: false
 description: |
   **Payments Only** is the Checkout for merchants who does everything but the

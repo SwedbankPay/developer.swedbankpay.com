@@ -1,6 +1,5 @@
 ---
 title: Redirect
-estimated_read: 12
 description: |
   Redirect is our simplest integration. The payer will be redirected to a secure
   Swedbank Pay hosted site, authenticate their Checkout profile and choose

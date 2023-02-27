@@ -1,6 +1,5 @@
 ---
 title: Unscheduled Purchase
-estimated_read: 4
 description: |
   Merchant initiated transactions.
 menu_order: 1600

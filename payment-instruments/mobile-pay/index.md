@@ -2,7 +2,6 @@
 section: MobilePay Online
 title: Introduction
 redirect_from: /payments/mobile-pay/
-estimated_read: 3
 description: |
   MobilePay Online is the fast and simple way of paying with your mobile phone,
   reaching more than 4 million users in Denmark and Finland.

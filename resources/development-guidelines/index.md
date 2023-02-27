@@ -2,7 +2,6 @@
 section: Open Source Development Guidelines
 title: Introduction
 permalink: /:path/
-estimated_read: 8
 menu_order: 1200
 ---
 

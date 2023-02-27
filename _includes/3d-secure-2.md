@@ -74,38 +74,38 @@ fields that should be included in your request when implementing 3-D Secure 2.
 {:.table .table-striped}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
-| └➔&nbsp;`cardholder`                  | `object` | Cardholder object that can hold information about a payer (private or company). The information added increases the chance for a frictionless 3-D Secure 2 flow.                                                                                    |
-| └➔&nbsp;`firstname`                   | `string` | Cardholder's first name.                 |
-| └➔&nbsp;`lastname`                    | `string` | Cardholder's last name.                    |
-| └➔&nbsp;`email`                       | `string` | Cardholder's registered email address.                                                  |
-| └➔&nbsp;`msisdn`  | `string` | Cardholder's registered mobile phone number.                                                  |
-| └➔&nbsp;`homePhoneNumber`             | `string` | Cardholder's registered home phone number.                                                               |
-| └➔&nbsp;`workPhoneNumber`             | `string` | Cardholder's registered work phone number.                                                                 |
-| └➔&nbsp;`shippingAddress`             | `object` | The shipping address object related to the `cardholder`.                                                         |
-| └─➔&nbsp;`addressee`                  | `string` | The name of the addressee – the receiver of the shipped goods.                                                      |
-| └─➔&nbsp;`coAddress`                  | `string` | Cardholder's c/o address, if applicable.                                                          |
-| └─➔&nbsp;`streetAddress`              | `string` | Cardholder's street address. Maximum 50 characters long.                                                                         |
-| └─➔&nbsp;`zipCode`                    | `string` | Cardholder's zip code.                                           |
-| └─➔&nbsp;`city`                       | `string` | Cardholder's city of residence.                                                                            |
-| └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
+| {% f cardholder %}                  | `object` | Cardholder object that can hold information about a payer (private or company). The information added increases the chance for a frictionless 3-D Secure 2 flow.                                                                                    |
+| {% f firstname %}                   | `string` | Cardholder's first name.                 |
+| {% f lastname %}                    | `string` | Cardholder's last name.                    |
+| {% f email %}                       | `string` | Cardholder's registered email address.                                                  |
+| {% f msisdn %}  | `string` | Cardholder's registered mobile phone number.                                                  |
+| {% f homePhoneNumber %}             | `string` | Cardholder's registered home phone number.                                                               |
+| {% f workPhoneNumber %}             | `string` | Cardholder's registered work phone number.                                                                 |
+| {% f shippingAddress %}             | `object` | The shipping address object related to the `cardholder`.                                                         |
+| {% f addressee, 2 %}                  | `string` | The name of the addressee – the receiver of the shipped goods.                                                      |
+| {% f coAddress, 2 %}                  | `string` | Cardholder's c/o address, if applicable.                                                          |
+| {% f streetAddress, 2 %}              | `string` | Cardholder's street address. Maximum 50 characters long.                                                                         |
+| {% f zipCode, 2 %}                    | `string` | Cardholder's zip code.                                           |
+| {% f city, 2 %}                       | `string` | Cardholder's city of residence.                                                                            |
+| {% f countryCode, 2 %}                | `string` | Country Code for the country of residence.                                                                      |
 
 {% else %}
 
 {:.table .table-striped}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
-| └➔&nbsp;`payer`                       | `object` | The payer object.        |
-| └➔&nbsp;`email`                       | `string` | Payer's registered email address.                                                  |
-| └➔&nbsp;`msisdn`  | `string` | Payer's registered mobile phone number.                                                  |
-| └➔&nbsp;`homePhoneNumber`             | `string` | Payer's registered home phone number.                                                               |
-| └➔&nbsp;`workPhoneNumber`             | `string` | Payer's registered work phone number.                                                                 |
-| └➔&nbsp;`shippingAddress`             | `object` | The shipping address object related to the `payer`.                                                         |
-| └─➔&nbsp;`addressee`                  | `string` | The name of the addressee – the receiver of the shipped goods.                                                      |
-| └─➔&nbsp;`coAddress`                  | `string` | Payer' s c/o address, if applicable.                                                          |
-| └─➔&nbsp;`streetAddress`              | `string` | Payer's street address. Maximum 50 characters long.                                                                         |
-| └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code.                                           |
-| └─➔&nbsp;`city`                       | `string` | Payer's city of residence.                                                                            |
-| └─➔&nbsp;`countryCode`                | `string` | Country Code for the country of residence.                                                                      |
+| {% f payer %}                       | `object` | The payer object.        |
+| {% f email %}                       | `string` | Payer's registered email address.                                                  |
+| {% f msisdn %}  | `string` | Payer's registered mobile phone number.                                                  |
+| {% f homePhoneNumber %}             | `string` | Payer's registered home phone number.                                                               |
+| {% f workPhoneNumber %}             | `string` | Payer's registered work phone number.                                                                 |
+| {% f shippingAddress %}             | `object` | The shipping address object related to the `payer`.                                                         |
+| {% f addressee, 2 %}                  | `string` | The name of the addressee – the receiver of the shipped goods.                                                      |
+| {% f coAddress, 2 %}                  | `string` | Payer' s c/o address, if applicable.                                                          |
+| {% f streetAddress, 2 %}              | `string` | Payer's street address. Maximum 50 characters long.                                                                         |
+| {% f zipCode, 2 %}                    | `string` | Payer's zip code.                                           |
+| {% f city, 2 %}                       | `string` | Payer's city of residence.                                                                            |
+| {% f countryCode, 2 %}                | `string` | Country Code for the country of residence.                                                                      |
 
 {% endif %}
 
@@ -136,18 +136,18 @@ fields that should be included in your request when implementing 3-D Secure 2.
 {:.table .table-striped}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
-| └➔&nbsp;`riskIndicator`               | `object` | This object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to prompt for a 3-D Secure authentication of the payer when they are authenticating the purchase.                                                                 |
-| └─➔&nbsp;`deliveryEmailAdress`        | `string` | For electronic delivery, the email address to which the merchandise was delivered.                                   |
-| └─➔&nbsp;`deliveryTimeFrameIndicator` | `string` | Indicates the merchandise delivery timeframe. <br>`01` (Electronic Delivery) <br>`02` (Same day shipping) <br>`03` (Overnight shipping) <br>`04` (Two-day or more shipping).                                                 |
-| └─➔&nbsp;`preOrderDate`               | `string` | For a pre-ordered purchase. The expected date that the merchandise will be available. Format: `YYYYMMDD`.                  |
-| └─➔&nbsp;`preOrderPurchaseIndicator`  | `string` | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability).                                                  |
-| └─➔&nbsp;`shipIndicator`              | `string` | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in the `riskIndicator.pickUpAddress` and `payer.shippingAddress` fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service). |
-| └─➔&nbsp;`giftCardPurchase`           | `bool`   | `true` if this is a purchase of a gift card.                                                                 |
-| └─➔&nbsp;`reOrderPurchaseIndicator`   | `string` | Indicates if the cardholder is reordering previously purchased merchandise. <br>`01` (First time ordered) <br>`02` (Reordered).                                               |
-| └➔&nbsp;`pickUpAddress`               | `object`     | If the `shipIndicator` is set to `04`, you can prefill these fields with the payer's `pickUpAddress` of the purchase to decrease the risk factor of the purchase.                                                                      |
-| └─➔&nbsp;`name`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `name`.                                                                           |
-| └─➔&nbsp;`streetAddress`              | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `streetAddress`. Maximum 50 characters long.                                                        |
-| └─➔&nbsp;`coAddress`                  | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `coAddress`.                                                     |
-| └─➔&nbsp;`city`                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `city`.                                                                           |
-| └─➔&nbsp;`zipCode`                    | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `zipCode`.                                                                               |
-| └─➔&nbsp;`countryCode`                | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `countryCode`.                                                  |
+| {% f riskIndicator %}               | `object` | This object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to prompt for a 3-D Secure authentication of the payer when they are authenticating the purchase.                                                                 |
+| {% f deliveryEmailAdress, 2 %}        | `string` | For electronic delivery, the email address to which the merchandise was delivered.                                   |
+| {% f deliveryTimeFrameIndicator, 2 %} | `string` | Indicates the merchandise delivery timeframe. <br>`01` (Electronic Delivery) <br>`02` (Same day shipping) <br>`03` (Overnight shipping) <br>`04` (Two-day or more shipping).                                                 |
+| {% f preOrderDate, 2 %}               | `string` | For a pre-ordered purchase. The expected date that the merchandise will be available. Format: `YYYYMMDD`.                  |
+| {% f preOrderPurchaseIndicator, 2 %}  | `string` | Indicates whether the payer is placing an order for merchandise with a future availability or release date. <br>`01` (Merchandise available) <br>`02` (Future availability).                                                  |
+| {% f shipIndicator, 2 %}              | `string` | Indicates shipping method chosen for the transaction. <br>`01` (Ship to cardholder's billing address) <br>`02` (Ship to another verified address on file with merchant)<br>`03` (Ship to address that is different than cardholder's billing address)<br>`04` (Ship to Store / Pick-up at local store. Store address shall be populated in the `riskIndicator.pickUpAddress` and `payer.shippingAddress` fields)<br>`05` (Digital goods, includes online services, electronic giftcards and redemption codes) <br>`06` (Travel and Event tickets, not shipped) <br>`07` (Other, e.g. gaming, digital service). |
+| {% f giftCardPurchase, 2 %}           | `bool`   | `true` if this is a purchase of a gift card.                                                                 |
+| {% f reOrderPurchaseIndicator, 2 %}   | `string` | Indicates if the cardholder is reordering previously purchased merchandise. <br>`01` (First time ordered) <br>`02` (Reordered).                                               |
+| {% f pickUpAddress %}               | `object`     | If the `shipIndicator` is set to `04`, you can prefill these fields with the payer's `pickUpAddress` of the purchase to decrease the risk factor of the purchase.                                                                      |
+| {% f name, 2 %}                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `name`.                                                                           |
+| {% f streetAddress, 2 %}              | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `streetAddress`. Maximum 50 characters long.                                                        |
+| {% f coAddress, 2 %}                  | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `coAddress`.                                                     |
+| {% f city, 2 %}                       | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `city`.                                                                           |
+| {% f zipCode, 2 %}                    | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `zipCode`.                                                                               |
+| {% f countryCode, 2 %}                | `string`     | If the `shipIndicator` is set to `04`, prefill this with the payer's `countryCode`.                                                  |

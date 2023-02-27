@@ -1,7 +1,6 @@
 ---
 title: Seamless View
 redirect_from: /payments/card/seamless-view
-estimated_read: 10
 description: |
   The Seamless View purchase scenario shows you how to implement the checkin and
   payment menu directly in your webshop.

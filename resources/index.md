@@ -1,7 +1,7 @@
 ---
 section: Resources
+sidebar_icon: description
 title: Introduction
-estimated_read: 1
 description: |
   In this section you find various **resources** for Swedbank Pay's API
   Platform.
