@@ -147,7 +147,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type          | Description                     |
 | :--------------: | :-------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The payment object                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -229,6 +230,8 @@ Content-Type: application/json
 |                  | {% f no3DSecure %}                      | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                            |
 |                  | {% f noCvc %}                           | `boolean`     | `true` if the CVC field should be disabled for this payment in case a stored card is used; otherwise `false` per default. This feature is commonly used when {%- if include.documentation_section == 'card' -%} [One-Click Payments][one-click-payments]{% else %} One-Click Payments{% endif %} is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                          |
 {% endif %}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Initial Response
 
@@ -306,7 +309,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :-------------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% f payment, 0 %}                         | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
@@ -340,6 +344,8 @@ Content-Type: application/json
 
 | {% f settings %}                  | `string`     | The URL to the `settings` resource where the information about the payer can be retrieved.                                                        |
 | {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## GET The Token
 
@@ -435,7 +441,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type          | Description                     |
 | :--------------: | :-------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The payment object                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -465,6 +472,8 @@ Content-Type: application/json
 |                  | {% f subsite, 2 %}                | `String(40)`  | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-reconciliation] before being used.                                                                                                                                                                                                                                                                                                                                                                          |
 |                  | {% f payer %}                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | {% f payerReference, 2 %}         | `string`     | {% include fields/payer-reference.md %}                                                                                                                                                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Unscheduled Response
 
@@ -515,7 +524,6 @@ See the table in the initial purchase response for descriptions.
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [3ds2]: {{ features_url }}/core/3d-secure-2
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
-[payee-reference]: {{ features_url }}/technical-reference/payee-reference
 [paymenturl]: {{ features_url }}/technical-reference/payment-url
 [price-resource]: {{ features_url }}/technical-reference/prices
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation

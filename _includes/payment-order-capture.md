@@ -94,7 +94,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
 | :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                               |
@@ -134,6 +135,8 @@ Content-Type: application/json
 | {% icon check %} | {% f vatPercent, 2 %}          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | {% f amount, 2 %}              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | {% f vatAmount, 2 %}           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Capture Response
 
@@ -166,7 +169,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Property                    | Type         | Description                                                                                                                                                                                                       |
 | :-------------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% f payment, 0 %}                   | `string`     | The relative URL of the payment this capture transaction belongs to.                                                                                                                                              |
@@ -184,7 +188,8 @@ Content-Type: application/json
 | {% f description, 2 %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
 | {% f payeeReference, 2 %}   | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
 | {% f receiptReference, 2 %} | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
-{:.table .table-striped}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Capture Sequence Diagram
 
@@ -228,6 +233,5 @@ sequenceDiagram
 
 [card]: /payment-instruments/card
 [vipps]: /payment-instruments/vipps
-[payee-reference]: {{ features_url }}/technical-reference/payee-reference
 [swish]: /payment-instruments/swish/
 [trustly]: /payment-instruments/trustly/

@@ -85,7 +85,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
@@ -118,6 +119,8 @@ Content-Type: application/json
 |                  | {% f prefillInfo, 2 %}       | `object`      | Object representing information of what the UI text fields should be populated with                                                                                                                                                                                                                |
 |                  | {% f firstName, 2 %}         | `string`      | Prefilled value to put in the first name text box.                                                                                                                                                                                                                                                 |
 |                  | {% f lastName, 2 %}          | `string`      | Prefilled value to put in the last name text box.                                                                                                                                                                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Seamless View Response
 

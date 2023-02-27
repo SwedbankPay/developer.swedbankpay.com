@@ -157,7 +157,8 @@ Content-Type: application/json
 
 {% endif %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Description                                                                                                                                                                                                  |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |{% if documentation_section contains "checkout" or "payment-menu" %}
 | {% f paymentorder, 0 %}                         | `string`  | {% include fields/id.md %}                                                                                                                                                    | {% else %}
@@ -194,4 +195,5 @@ Content-Type: application/json
 | {% f failedReason, 2 %}           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational, 2 %}          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | {% f operations, 2 %}             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |
-{% include accordion-table.html content=response_table %}
+{% endcapture %}
+{% include accordion-table.html content=table %}

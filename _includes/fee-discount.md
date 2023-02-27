@@ -45,7 +45,8 @@
          ]
  ```
 
- {:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
  | Field                    | Type         | Description                                                                                                                                                                                                               |
  | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
  | {% icon check %} | {% f orderItems %}               | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                                            |
@@ -65,3 +66,5 @@
  | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
  | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
  |                  | {% f restrictedToInstruments %}  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. The fee or discount applies to all instruments if a restriction is not included. Use of this field requires an agreement with Swedbank Pay.                                    |
+{% endcapture %}
+{% include accordion-table.html content=table %}

@@ -178,7 +178,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `paymentorder`                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
@@ -235,8 +236,11 @@ Content-Type: application/json
 | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
 {% include risk-indicator-table.md %}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
@@ -263,10 +267,11 @@ Content-Type: application/json
 | {% f payments %}       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | {% f currentPayment %} | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 [complete-url]: /{{ documentation_section }}/features/technical-reference/complete-url
 [initiate-consumer-session]: /{{ documentation_section }}/checkin#step-1-initiate-session-for-consumer-identification
-[one-click-payments]: {{ documentation_section }}/features/#one-click-payments
 [operations]: /{{ documentation_section }}/features/technical-reference/operations
 [settlement-reconciliation]: /{{ documentation_section }}/features/core/settlement-reconciliation
 [split-settlement]: /{{ documentation_section }}/features/core/settlement-reconciliation#split-settlement

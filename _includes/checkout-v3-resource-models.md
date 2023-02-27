@@ -93,7 +93,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
@@ -117,6 +118,8 @@ Content-Type: application/json
 | {% f details %}                   | `integer`    | Details connected to the payment. |
 | {% f nonPaymentToken, 2 %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Failed
 
@@ -157,7 +160,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description     |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
 | {% f failed, 0 %}                | `object`     | The failed object.                     |
@@ -170,6 +174,8 @@ Content-Type: application/json
 | {% f problems, 2 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## FailedAttempts
 
@@ -236,7 +242,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
@@ -255,6 +262,8 @@ Content-Type: application/json
 | {% f problems, 2 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## FinancialTransactions
 
@@ -330,7 +339,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
@@ -348,6 +358,8 @@ Content-Type: application/json
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f receiptReference %}     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
 | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## History
 
@@ -491,7 +503,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
@@ -503,9 +516,11 @@ Content-Type: application/json
 | {% f instrument %}        | `string`     | The payment instrument used when the event occurred.       |
 | {% f number %}              | `string`   | Payment number associated with the event.                 |
 | {% f prefill %}              | `bool`   | Indicates if payment info was prefilled or not.                 |
-| {% f initiatedBy %}        | `string`     | `Consumer`, `Merchant` or `System`. The party that initiated the event.       |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | History Event Name         | Description  |
 | :----------------------- | :----------- |
 | {% f PaymentCreated, 0 %}         | This event will occur as soon as the merchant initiates the payment order.     |
@@ -525,6 +540,8 @@ Content-Type: application/json
 | {% f PaymentPartialCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
 | {% f PaymentReversed, 0 %}    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
 | {% f PaymentPartialReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Paid
 
@@ -931,7 +948,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
@@ -965,6 +983,8 @@ Content-Type: application/json
 | {% f transactionInitatior, 2 %} | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
 | {% f bin, 2 %} | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
 | {% f msisdn, 2 %} | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Payer
 
@@ -1015,7 +1035,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
@@ -1035,22 +1056,24 @@ Content-Type: application/json
 | {% f addressee, 2 %}                   | `string` | First and last name of the addressee – the receiver of the shipped goods. |
 | {% f coAddress, 2 %}                  | `string` | Payer's c/o address, if applicable. |
 | {% f streetAddress, 2 %}              | `string` | Payer's street address. Maximum 50 characters long. |
-|  {% f coAddress, 2 %}                  | `string` | Payer's c/o address, if applicable. |
-|  {% f zipCode, 2 %}                    | `string` | Payer's zip code. |
-|  {% f city, 2 %}                       | `string` | Payer's city of residence. |
-|  {% f countryCode, 2 %}                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`. |
-|  {% f device, 2 %}                       | `object` | The device detection object. |
-|  {% f detectionAccuracy, 2 %}            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
-|  {% f ipAddress, 2 %}                    | `string` | The IP address of the payer's device. |
-|  {% f userAgent, 2 %}                    | `string` | {% include fields/user-agent.md %} |
-|  {% f deviceType, 2 %}                   | `string` | The type of device used by the payer. |
-|  {% f hardwareFamily, 2 %}               | `string` | The type of hardware used by the payer. |
-|  {% f hardwareName, 2 %}                 | `string` | The name of the payer's hardware. |
-|  {% f hardwareVendor, 2 %}               | `string` | The vendor of the payer's hardware. |
-|  {% f platformName, 2 %}                 | `string` | Name of the operating system used on the payer's device.  |
+| {% f coAddress, 2 %}                  | `string` | Payer's c/o address, if applicable. |
+| {% f zipCode, 2 %}                    | `string` | Payer's zip code. |
+| {% f city, 2 %}                       | `string` | Payer's city of residence. |
+| {% f countryCode, 2 %}                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`. |
+| {% f device, 2 %}                       | `object` | The device detection object. |
+| {% f detectionAccuracy, 2 %}            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
+| {% f ipAddress, 2 %}                    | `string` | The IP address of the payer's device. |
+| {% f userAgent, 2 %}                    | `string` | {% include fields/user-agent.md %} |
+| {% f deviceType, 2 %}                   | `string` | The type of device used by the payer. |
+| {% f hardwareFamily, 2 %}               | `string` | The type of hardware used by the payer. |
+| {% f hardwareName, 2 %}                 | `string` | The name of the payer's hardware. |
+| {% f hardwareVendor, 2 %}               | `string` | The vendor of the payer's hardware. |
+| {% f platformName, 2 %}                 | `string` | Name of the operating system used on the payer's device.  |
 | {% f platformVendor, 2 %}               | `string` | Vendor of the operating system used on the payer's device. |
 | {% f platformVersion, 2 %}              | `string` | Version of the operating system used on the payer's device. |
 | {% f browserName, 2 %}                  | `string` | Name of the browser used on the payer's device. |
 | {% f browserVendor, 2 %}                | `string` | Vendor of the browser used on the payer's device. |
 | {% f browserVersion, 2 %}               | `string` | Version of the browser used on the payer's device. |
 | {% f browserJavaEnabled, 2 %}           | `bool` | Indicates if the browser has Java enabled. Either `true` or `false`. |
+{% endcapture %}
+{% include accordion-table.html content=table %}

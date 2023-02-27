@@ -6,7 +6,8 @@ going forward with or canceling a payment session, as well as the callback URL
 that is used to inform the payee (merchant) of changes or updates made to
 underlying payments or transaction.
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required      | Field               | Type     | Description                                                                                                                                                                                                                                                                                              |
 | :---------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of URLs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
@@ -18,6 +19,8 @@ underlying payments or transaction.
 |                   | `logoUrl`           | `string` | {% include fields/logo-url.md %}                                                                                                                                                                                                               |
 {% include payment-url.md full_reference=true when="selecting the payment
 instrument Vipps or in the 3-D Secure verification for Credit Card Payments" %}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ### URLs Resource
 
@@ -26,6 +29,7 @@ contents.
 
 {:.code-view-header}
 Request
+
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
 Host: {{ page.api_host }}
@@ -35,6 +39,7 @@ Content-Type: application/json
 
 {:.code-view-header}
 Response
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json

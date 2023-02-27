@@ -134,7 +134,8 @@ Content-Type: application/json
 
 {% endif %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Required                                                                                                                                                                                                     |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | {% if documentation_section contains "checkout" or "payment-menu" %}
 | {% f paymentorder, 0 %}                         | `string`  | {% include fields/id.md %}                                                                                                                                                    | {% else %}
@@ -156,5 +157,7 @@ Content-Type: application/json
 | {% f receiptReference, 2 %}       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 | {% endif %}
 | {% f isOperational, 2 %}          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | {% f operations, 2 %}             | `array`   | The array of [operations]({{ operations_url }}) that are possible to perform on the transaction in its current state.                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 [operations]: {{ features_url }}/technical-reference/operations

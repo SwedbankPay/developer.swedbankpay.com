@@ -385,7 +385,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------------------ |
 | {% f paymentorder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
@@ -441,6 +442,8 @@ Content-Type: application/json
 | {% f failedAttempts %}     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.
