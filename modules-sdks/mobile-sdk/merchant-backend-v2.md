@@ -1,6 +1,5 @@
 ---
 title: Merchant Backend V2
-estimated_read: 20
 description: |
   This document contains information for the older version of the Backend Merchant of the **Swedbank Pay Mobile SDK**.
 menu_order: 9800
@@ -187,10 +186,10 @@ Content-Type: application/json
 | :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
-| └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
-| └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.                                                                                             |
-| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
-| └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
+| {% f rel %}         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
+| {% f method %}      | `string` | The HTTP method to use when performing the operation.                                                                                             |
+| {% f contentType %} | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
+| {% f href %}        | `string` | The target URL of the operation.                                                                                                                  |
 
 ## Payment Orders Endpoint
 
@@ -345,8 +344,8 @@ Content-Type: application/json
 |     Required     | Field                | Type     | Description                               |
 | :--------------: | :------------------- | :------- | :---------------------------------------- |
 | {% icon check %} | `paymentorder`       | `object` | The changes to make to the payment order  |
-| {% icon check %} | └➔&nbsp;`operation`  | `string` | The operation to perform: "SetInstrument" |
-| {% icon check %} | └➔&nbsp;`instrument` | `string` | The instrument to set                     |
+| {% icon check %} | {% f operation %}  | `string` | The operation to perform: "SetInstrument" |
+| {% icon check %} | {% f instrument %} | `string` | The instrument to set                     |
 
 Merchant Backend will then make a corresponding request to the Swedbank Pay API.
 

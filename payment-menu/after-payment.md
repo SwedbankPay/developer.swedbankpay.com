@@ -1,6 +1,5 @@
 ---
 title: After Payment
-estimated_read: 11
 description: |
   When the payer is **done** interacting with the Payment Menu, you need to
   implement the relevant **after-payment operations** in your order system.

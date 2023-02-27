@@ -3,7 +3,6 @@ section: Payment Instruments
 sidebar_icon: credit_card
 title: Introduction
 redirect_from: /payments/
-estimated_read: 5
 description: |
   Payment Instruments is our off-the-rack assortment of possibilities. Pick the one(s) you like.
   You can pick and choose among them to tailor the instrument package best

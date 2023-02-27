@@ -1,7 +1,6 @@
 ---
 title: After Payment
 redirect_from: /payments/card/after-payment
-estimated_read: 13
 description: |
   Apart from capturing the authorized funds, there are still a couple of options
   available to you after a payment. Authorizations can cancelled, captures can
@@ -54,8 +53,8 @@ Content-Type: application/json
 |     Required     | Field                    | Type          | Description                                                                              |
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the reason for the `cancellation`.                              |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %}          |
+| {% icon check %} | {% f description %}    | `string`      | A textual description of the reason for the `cancellation`.                              |
+| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %}          |
 
 ## Cancel Response
 
@@ -97,20 +96,20 @@ Content-Type: application/json
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URL of the payment this `cancellation` transaction belongs to.                                                                                                                                  |
 | `cancellation`            | `object`  | The `cancellation` resource contains information about the `cancellation` transaction made against a card payment.                                                                                           |
-| └➔&nbsp;`id`              | `string`  | The relative URL of the created `cancellation` transaction.                                                                                                                                                  |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
-| └─➔&nbsp;`id`             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
-| └─➔&nbsp;`number`         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include fields/description.md %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
-| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f id %}              | `string`  | The relative URL of the created `cancellation` transaction.                                                                                                                                                  |
+| {% f transaction %}     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
+| {% f id, 2 %}             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
+| {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| {% f state, 2 %}          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
+| {% f number, 2 %}         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
+| {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
+| {% f description, 2 %}    | `string`  | {% include fields/description.md %}                                                                                                                                  |
+| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
+| {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| {% f operations, 2 %}     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
 ## List Cancel Transactions
 
@@ -168,10 +167,10 @@ Content-Type: application/json
 |     Required     | Field                    | Type          | Description                                                                              |
 | :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- |
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource][transaction-resource]. |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | {% include fields/amount.md %}                                                |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | {% include fields/vat-amount.md %}                                             |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the `reversal`.                                                 |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %}          |
+| {% icon check %} | {% f amount %}         | `integer`     | {% include fields/amount.md %}                                                |
+| {% icon check %} | {% f vatAmount %}      | `integer`     | {% include fields/vat-amount.md %}                                             |
+| {% icon check %} | {% f description %}    | `string`      | A textual description of the `reversal`.                                                 |
+| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %}          |
 
 ## Reversal Response
 
@@ -213,21 +212,21 @@ Content-Type: application/json
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
 | `reversal`                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
-| └➔&nbsp;`id`              | `string`  | The relative URL of the created `reversal`transaction.                                                                                                                                                       |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
-| └─➔&nbsp;`id`             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | {% include fields/state.md %}        |
-| └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
-| └─➔&nbsp;`amount`         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
-| └─➔&nbsp;`vatAmount`      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
-| └─➔&nbsp;`description`    | `string`  | {% include fields/description.md %}                                                                                                                                  |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
-| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f id %}              | `string`  | The relative URL of the created `reversal`transaction.                                                                                                                                                       |
+| {% f transaction %}     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
+| {% f id, 2 %}             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
+| {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| {% f state, 2 %}          | `string`  | {% include fields/state.md %}        |
+| {% f number, 2 %}         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
+| {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
+| {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
+| {% f description, 2 %}    | `string`  | {% include fields/description.md %}                                                                                                                                  |
+| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
+| {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| {% f operations, 2 %}     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
 ## List Reversal Transactions
 

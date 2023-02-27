@@ -1,7 +1,6 @@
 ---
 section: Introduction
 title: Enterprise
-estimated_read: 3
 hide_from_sidebar: false
 description: |
   **Enterprise** is the Checkout for merchants with their

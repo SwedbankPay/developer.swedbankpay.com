@@ -1,6 +1,5 @@
 ---
 title: Status
-estimated_read: 4
 description: The status of a payment order.
 menu_order: 3000
 icon:

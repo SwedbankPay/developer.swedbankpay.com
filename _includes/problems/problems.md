@@ -47,8 +47,8 @@ The structure of a problem message will look like this:
 | `status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
 | `action`              | `string`  | The `action` indicates how the error can be recovered from.                                                                                                                                                                                         |
 | `problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
-| └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+| {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
 
 ## Common Problems
 
