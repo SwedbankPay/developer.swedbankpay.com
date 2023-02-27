@@ -649,7 +649,8 @@ Content-Type: application/json
         "acquirerTerminalId": "80100001190",
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
         "transactionInitiator": "CARDHOLDER",
-        "bin": "492500"
+        "bin": "492500",
+        "maskedDPan": "49250000******04",
     }
   }
 }
@@ -759,7 +760,7 @@ Content-Type: application/json
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
-        "maskedPan": "489537******1424",
+        "maskedDPan": "48953700******04",
         "expiryDate": "12/2022",
         "issuerAuthorizationApprovalCode": "018117",
         "acquirerTransactionType": "MOBILEPAY",
@@ -804,7 +805,8 @@ Content-Type: application/json
         "acquirerTerminalId": "99488282",
         "acquirerTransactionTime": "2022-09-05T09:54:05Z",
         "transactionInitiator": "CARDHOLDER",
-        "bin": "489537"
+        "bin": "489537",
+        "maskedDPan": "48953700******04",
     }
   }
 }
