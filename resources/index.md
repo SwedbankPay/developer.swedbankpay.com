@@ -1,5 +1,6 @@
 ---
 section: Resources
+sidebar_icon: description
 title: Introduction
 estimated_read: 1
 description: |
