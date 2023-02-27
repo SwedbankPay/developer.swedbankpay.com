@@ -124,7 +124,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Required         | Field     | Type         | Description   |
 | :--------------: | :-------- | :----------- | :------------ |
 | {% icon check %} | `paymentorder`                     | `object`     | The payment order object.                                              |
@@ -203,6 +204,8 @@ Content-Type: application/json
 | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
 {% include risk-indicator-table.md %}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Payment Order Response
 
@@ -298,7 +301,8 @@ Content-Type: application/json
       }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
@@ -329,5 +333,7 @@ Content-Type: application/json
 | {% f failedAttempts %}     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement

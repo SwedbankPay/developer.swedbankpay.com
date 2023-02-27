@@ -136,7 +136,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URL of the payment this cancellation transaction belongs to.                                                                                                                                    |
@@ -153,6 +154,8 @@ Content-Type: application/json
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Failed
 
@@ -185,7 +188,8 @@ Content-Type: application/json
             }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description     |
 | `paymentorder`           | `object`     | The payment order object.                      |
 | `failed`                | `object`     | The failed object.                     |
@@ -198,6 +202,8 @@ Content-Type: application/json
 | {% f problems, 2 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
 | {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
 | {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Initialized
 
@@ -298,7 +304,8 @@ Content-Type: application/json
 
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
@@ -329,6 +336,8 @@ Content-Type: application/json
 | {% f failedAttempts %}     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Paid
 
@@ -791,7 +800,8 @@ Content-Type: application/json
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
 responses:
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------------------ |
 | {% f remainingCaptureAmount %}      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
@@ -821,6 +831,8 @@ responses:
 | {% f bin, 2 %} | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
 | {% f msisdn, 2 %} | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
 | {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.

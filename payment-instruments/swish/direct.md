@@ -94,7 +94,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
@@ -130,6 +131,8 @@ Content-Type: application/json
 |                  | {% f enableEcomOnly, 2 %}    | `boolean`     | `true` if to only enable Swish on web based transactions.; otherwise `false` to also enable Swish transactions via in-app payments                                                                                                                                                                 |
 |          | {% f paymentRestrictedToAgeLimit, 2 %}             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | {% f paymentRestrictedToSocialSecurityNumber, 2 %} | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Initial Direct Response
 
@@ -371,7 +374,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
@@ -392,6 +396,8 @@ Content-Type: application/json
 | {% f method, 2 %}        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | {% f href, 2 %}          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | {% f rel, 2 %}           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## M-Commerce Sequence Diagram
 

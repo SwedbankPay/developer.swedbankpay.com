@@ -156,7 +156,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------: | :-------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The payment object                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -240,6 +241,8 @@ Content-Type: application/json
 |                  | {% f no3DSecure %}                      | `boolean`     | `true` if 3-D Secure should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                            |
 |                  | {% f noCvc %}                           | `boolean`     | `true` if the CVC field should be disabled for this payment in case a stored card is used; otherwise `false` per default. This feature is commonly used when {%- if include.documentation_section == 'card' -%} [One-Click Payments][one-click-payments]{% else %} One-Click Payments{% endif %} is enabled. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                          |
 {% endif %}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Card Payment Response
 
@@ -315,7 +318,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                             | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :-------------------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
@@ -340,12 +344,13 @@ Content-Type: application/json
 | {% f method, 2 %}                 | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | {% f href, 2 %}                   | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | {% f rel, 2 %}                    | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 [callback]: {{ features_url }}/core/callback
 [complete-url]: {{ features_url }}/technical-reference/complete-url
 [3ds2]: {{ features_url }}/core/3d-secure-2
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
-[payee-reference]: {{ features_url }}/technical-reference/payee-reference
 [paymenturl]: {{ features_url }}/technical-reference/payment-url
 [price-resource]: {{ features_url }}/technical-reference/prices
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation

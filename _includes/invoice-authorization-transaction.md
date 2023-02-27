@@ -40,7 +40,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                          | Type     | Description                                                            |
 | :--------------: | :----------------------------- | :------- | :--------------------------------------------------------------------- |
 | {% icon check %} | `transaction`                  | `object` | The transaction object.                                                |
@@ -65,6 +66,8 @@ Content-Type: application/json
 |                  | {% f zipCode %}              | `string` | The zip code of the billing address adressee.                          |
 |                  | {% f city %}                 | `string` | The city name of the billing address adressee.                         |
 |                  | {% f countryCode %}          | `string` | The country code of the billing address adressee.                      |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Invoice Authorization Response
 
@@ -116,7 +119,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type      | Description                                                                                                                                                                                                  |
 | :----------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                | `string`  | {% include fields/id.md sub_resource="authorization" %}                                                                                                                                           |
@@ -134,6 +138,8 @@ Content-Type: application/json
 | {% f failedReason %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational %}  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
 | {% f operations %}     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 The `authorization` resource contains information about an authorization
 transaction made towards a payment, as previously described.

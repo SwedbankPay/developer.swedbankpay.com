@@ -96,7 +96,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
 | :--------------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
@@ -126,6 +127,8 @@ Content-Type: application/json
 |                  | {% f payer %}                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | {% f payerReference, 2 %}         | `string`     | {% include fields/payer-reference.md documentation_section="invoice" %}                                                                                                                                                                                                                                                           |
 | {% icon check %} | {% f invoiceType, 2 %}            | `String`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Seamless View Response
 

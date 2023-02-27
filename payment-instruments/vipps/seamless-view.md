@@ -81,7 +81,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :-------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
@@ -116,6 +117,8 @@ Content-Type: application/json
 |                  | {% f payerReference, 2 %}         | `string`      | {% include fields/payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | {% f prefillInfo %}             | `object`      | An object that holds prefill information that can be inserted on the payment page.                                                                                                                                                                                                                 |
 |                  | {% f msisdn, 2 %}                 | `string`      | Number will be prefilled on payment page, if valid. Only Norwegian phone numbers are supported. The country code prefix is +47                                                                                                                                                                     |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Seamless View Response
 

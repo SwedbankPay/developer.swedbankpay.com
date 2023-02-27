@@ -152,7 +152,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                                  | Type         | Description                                                                                                                                                                                                               |
 | :------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`                         | `object`     | The payment order object.                                                                                                                                                                                                 |
@@ -185,6 +186,8 @@ Content-Type: application/json
 | {% f failedAttempts %}               | `string`     | {% include fields/failed-attempts.md %}                                                                                                                             |
 | {% f metadata %}                     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | {% f operations %}                   | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 {% else %}
 

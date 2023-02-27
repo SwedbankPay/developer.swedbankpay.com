@@ -99,7 +99,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                            |
 | :--------------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}︎︎︎︎︎ | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                  |
@@ -129,6 +130,8 @@ Content-Type: application/json
 |                  | {% f subsite, 2 %}                | `String(40)`  | {% include fields/subsite.md %}                                                                                                                                                            |
 |                  | {% f payer %}                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | {% f payerReference, 2 %}         | `string`     | {% include fields/payer-reference.md %}                                                                                                                                                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Financing Consumer Response
 
@@ -217,7 +220,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
@@ -238,6 +242,8 @@ Content-Type: application/json
 | {% f method, 2 %}        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | {% f href, 2 %}          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | {% f rel, 2 %}           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Step 2: Get `approvedLegalAddress` Confirmation
 

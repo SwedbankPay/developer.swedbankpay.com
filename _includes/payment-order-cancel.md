@@ -81,7 +81,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URL of the payment this cancellation transaction belongs to.                                                                                                                                    |
@@ -98,6 +99,8 @@ Content-Type: application/json
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Cancel Sequence Diagram
 

@@ -110,7 +110,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
 | :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `payment`                      | `object`     | The payment object.                                                                                                                                                                                                                                                                  |
@@ -136,6 +137,8 @@ Content-Type: application/json
 |                  | {% f payer %}                | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | {% f payerReference, 2 %}      | `string`     | {% include fields/payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | {% f metadata %}             | `object`     | {% include fields/metadata.md %}                                                                                                                                                 |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 {% include alert.html type="informative" icon="info" body="
 Please note that this `POST`request is made directly on the payment level,

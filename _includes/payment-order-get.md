@@ -90,7 +90,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
@@ -119,6 +120,8 @@ Content-Type: application/json
 | {% f payments %}       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | {% f currentPayment %} | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 -----------------------------------------
 [payment-menu]: /payment-menu

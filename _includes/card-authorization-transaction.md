@@ -130,7 +130,8 @@ Content-Type: application/json
 |                  | {% f cardVerificationCode %} | `string`  | Card verification code (CVC/CVV/CVC2), usually printed on the back of the card. |
 |                  | {% f cardholderName %}       | `string`  | Name of the cardholder, usually printed on the face of the card.               |
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Description                                                                                                                                                                                                                                                                                          |
 | :-------------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                         | `object`  | The payment object.                                                                                                                                                                                                                                                                                  |
@@ -162,3 +163,5 @@ Content-Type: application/json
 | {% f failedReason, 2 %}           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                                                                                                            |
 | {% f isOperational, 2 %}          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                                                                                                         |
 | {% f operations, 2 %}             | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}

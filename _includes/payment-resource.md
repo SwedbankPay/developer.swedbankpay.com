@@ -119,7 +119,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
@@ -140,6 +141,8 @@ Content-Type: application/json
 | {% f method, 2 %}        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | {% f href, 2 %}          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | {% f rel, 2 %}           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Operations
 
@@ -155,17 +158,20 @@ for the given operation.
 
 {% when "creditaccount" %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay payment page containing the card authorization UI. |
 | `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured, payment.                                |
+{% endcapture %}
 
 {% when "swish" %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Operation              | Description                                                                                                                                                               |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                                                                                               |
@@ -173,20 +179,24 @@ for the given operation.
 | `redirect-sale`        | Contains the redirect-URL that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
 | `view-sales`           | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
 | `view-payment`         | Contains the URL of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.                                |
+{% endcapture %}
 
 {% when "trustly" %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
 | `view-sale`             | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
+{% endcapture %}
 
 {% when "invoice" %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
@@ -196,10 +206,12 @@ for the given operation.
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+{% endcapture %}
 
 {% else %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
@@ -210,5 +222,8 @@ for the given operation.
 | `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
 | `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
 | `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+{% endcapture %}
 
 {% endcase %}
+
+{% include accordion-table.html content=table %}

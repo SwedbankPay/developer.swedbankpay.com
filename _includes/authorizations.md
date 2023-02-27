@@ -66,7 +66,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Required          | Field                          | Data type | Description                                                                                                                                                      |
 | :---------------- | :----------------------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}  | `transaction.activity`         | `string`  | `FinancingConsumer`                                                                                                                                              |
@@ -90,6 +91,8 @@ Content-Type: application/json
 | {% icon check %}  | {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                                    |
 | {% icon check %}  | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
 | {% icon check %}  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Authorization Response
 
