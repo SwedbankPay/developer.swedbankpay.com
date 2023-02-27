@@ -1,7 +1,6 @@
 ---
 section: Introduction
 title: Business
-estimated_read: 2
 description: |
   **Business** is the checkout option for merchants who want us to handle
   both consumer authentication and payment.

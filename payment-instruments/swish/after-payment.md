@@ -1,7 +1,6 @@
 ---
 title: After Payment
 redirect_from: /payments/swish/after-payment
-estimated_read: 13
 menu_order: 1000
 ---
 

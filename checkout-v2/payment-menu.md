@@ -1,7 +1,6 @@
 ---
 title: Payment Menu
 redirect_from: /checkout/payment-menu
-estimated_read: 15
 description: |
   **Payment Menu** begins where **Checkin** left off,
   letting the payer complete their purchase.

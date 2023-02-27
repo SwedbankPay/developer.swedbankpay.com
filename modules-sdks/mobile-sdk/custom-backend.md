@@ -1,6 +1,5 @@
 ---
 title: Mobile SDK – Custom Backend
-estimated_read: 20
 description: |
   You can also build a fully custom backend for the **Swedbank Pay Mobile SDK**
 menu_order: 1200

@@ -1,7 +1,6 @@
 ---
 title: Seamless View
 redirect_from: /payments/swish/seamless-view
-estimated_read: 10
 description: |
   The **Seamless View** scenario gives your
   customers the opportunity to pay with Swish directly

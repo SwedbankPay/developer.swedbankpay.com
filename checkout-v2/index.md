@@ -2,7 +2,6 @@
 section: Checkout v2
 sidebar_icon: shopping_cart
 title: Introduction
-estimated_read: 3
 menu_order: 300
 description: |
   **Swedbank Pay Checkout** is a complete reimagination

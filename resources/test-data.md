@@ -1,6 +1,5 @@
 ---
 title: Test Data
-estimated_read: 5
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!

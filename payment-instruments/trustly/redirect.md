@@ -1,7 +1,6 @@
 ---
 title: Redirect
 redirect_from: /payments/trustly/redirect
-estimated_read: 8
 menu_order: 800
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Merchant Backend V3
-estimated_read: 20
 description: |
   To use the **Swedbank Pay Mobile SDK**, you must have a backend server
   that communicates with your Configuration. The fastest way to start

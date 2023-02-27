@@ -1,7 +1,6 @@
 ---
 title: Redirect
 redirect_from: /payments/vipps/redirect
-estimated_read: 9
 description: |
   **Vipps** is a two-phase
   payment instrument supported by the major Norwegian banks. In the redirect

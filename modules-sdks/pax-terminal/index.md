@@ -2,7 +2,6 @@
 section: Pax terminal
 title: Introduction
 redirect_from: /resources/ecom
-estimated_read: 1
 permalink: /:path/
 menu_order: 700
 ---

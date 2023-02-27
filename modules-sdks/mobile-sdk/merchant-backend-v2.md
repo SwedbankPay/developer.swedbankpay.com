@@ -1,6 +1,5 @@
 ---
 title: Merchant Backend V2
-estimated_read: 20
 description: |
   This document contains information for the older version of the Backend Merchant of the **Swedbank Pay Mobile SDK**.
 menu_order: 9800

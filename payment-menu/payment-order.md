@@ -1,6 +1,5 @@
 ---
 title: Payment Order
-estimated_read: 15
 description: |
   **Payment Order** lets the payer complete their purchase.
 menu_order: 300

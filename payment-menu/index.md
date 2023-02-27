@@ -2,7 +2,6 @@
 section: Payment Menu
 sidebar_icon: menu_book
 redirect_from: /payment-menu/other-features
-estimated_read: 3
 description: |
   The **Swedbank Pay Payment Menu** integrates
   seamlessly into the merchant website, allowing the payer to choose between the

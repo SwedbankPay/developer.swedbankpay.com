@@ -1,7 +1,6 @@
 ---
 title: Redirect
 redirect_from: /payments/invoice/redirect
-estimated_read: 7
 menu_order: 500
 ---
 

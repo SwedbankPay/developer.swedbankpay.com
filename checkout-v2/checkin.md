@@ -1,7 +1,6 @@
 ---
 title: Checkout – Checkin
 redirect_from: /checkout/checkin
-estimated_read: 8
 description: |
   Swedbank Pay Checkout consists of two parts:
   **Checkin** and **Payment Menu**. In the sections that follow you'll find
