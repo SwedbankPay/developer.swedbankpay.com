@@ -99,6 +99,17 @@ authentication.
 | 3333       | U                  | 01                       | 01  |  |
 | 4444       | A                  | 01                       | 01  | Qm181okmdyqh6yQmYuq1890QAAA= |
 
+### OTP Transaction Status
+
+{:.table .table-striped}
+| Transaction Status | Transaction Status Description |
+| :----------------- | :----------------------------- |
+| Y                  |  Authentication / Account verification successful |
+| N                  |  Not authenticated / Account not verified; Transaction denied |
+| R                  |  Authentication / Account verification rejected. Issuer is rejecting authentication/verification and request that authorization not be attempted |
+| U                  |  Authentication / Account verification could not be performed; technical or other problem |
+| A                  |  Attempts processing performed; Not authenticated / verified, but a prood of attempt authentication / verification is provided                      |
+
 ### Visa
 
 {:.table .table-striped}
