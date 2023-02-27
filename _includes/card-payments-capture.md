@@ -35,10 +35,10 @@ Content-Type: application/json
 |     Required     | Field                    | Type          | Description                                                                                                   |
 | :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %}                               |
+| {% icon check %} | {% f amount %}         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+| {% icon check %} | {% f vatAmount %}      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+| {% icon check %} | {% f description %}    | `string`      | A textual description of the capture transaction.                                                             |
+| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %}                               |
 
 ## Capture Response
 
@@ -76,21 +76,21 @@ Content-Type: application/json
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `payment`                 | `string`  | The relative URL of the payment this `capture` transaction belongs to.                                                                                                                                       |
 | `capture`                 | `object`  | The `capture` resource contains information about the `capture` transaction made against a card payment.                                                                                                     |
-| └➔&nbsp;`id`              | `string`  | The relative URL of the created `capture` transaction.                                                                                                                                                       |
-| └➔&nbsp;`transaction`     | `object`  | The object representation of the generic [`transaction resource`][transaction-resource].                                                                                                                     |
-| └─➔&nbsp;`id`             | `string`  | The relative URL of the current  `transaction`  resource.                                                                                                                                                    |
-| └─➔&nbsp;`created`        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
-| └─➔&nbsp;`updated`        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
-| └─➔&nbsp;`type`           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
-| └─➔&nbsp;`state`          | `string`  | {% include fields/state.md %} |
-| └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`amount`         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                                         |
-| └─➔&nbsp;`vatAmount`      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
-| └─➔&nbsp;`description`    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
-| └─➔&nbsp;`payeeReference` | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
-| └─➔&nbsp;`failedReason`   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
-| └─➔&nbsp;`isOperational`  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| └─➔&nbsp;`operations`     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f id %}              | `string`  | The relative URL of the created `capture` transaction.                                                                                                                                                       |
+| {% f transaction %}     | `object`  | The object representation of the generic [`transaction resource`][transaction-resource].                                                                                                                     |
+| {% f id, 2 %}             | `string`  | The relative URL of the current  `transaction`  resource.                                                                                                                                                    |
+| {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
+| {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
+| {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
+| {% f state, 2 %}          | `string`  | {% include fields/state.md %} |
+| {% f number, 2 %}         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
+| {% f amount, 2 %}         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                                         |
+| {% f vatAmount, 2 %}      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
+| {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
+| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
+| {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
+| {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
+| {% f operations, 2 %}     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
 
 ## List Capture Transactions
 

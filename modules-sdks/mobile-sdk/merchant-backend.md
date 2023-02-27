@@ -231,8 +231,8 @@ Content-Type: application/json
 | :--------------: | :------------------- | :------- | :---------------------------------------- |
 | {% icon check %} | `href`               | `string` | The href of the Operation                 |
 | {% icon check %} | `paymentorder`       | `object` | The changes to make to the payment order  |
-| {% icon check %} | └➔&nbsp;`operation`  | `string` | The operation to perform: "SetInstrument" |
-| {% icon check %} | └➔&nbsp;`instrument` | `string` | The instrument to set                     |
+| {% icon check %} | {% f operation %}  | `string` | The operation to perform: "SetInstrument" |
+| {% icon check %} | {% f instrument %} | `string` | The instrument to set                     |
 
 Merchant Backend will then make a corresponding request to the Swedbank Pay API.
 

@@ -48,8 +48,8 @@ Content-Type: application/json
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                             |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string(50)` | {% include fields/payee-reference.md %} |
+| {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the reason for the cancellation.                             |
+| {% icon check %}︎ | {% f payeeReference %} | `string(50)` | {% include fields/payee-reference.md %} |
 
 ## Cancel Response
 
@@ -107,10 +107,10 @@ Content-Type: application/json
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `integer`    | The reversal `transaction`.                                                           |
-| {% icon check %}︎ | └➔&nbsp;`amount`         | `integer`    | {% include fields/amount.md %}                                             |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`      | `integer`    | {% include fields/vat-amount.md %}                                          |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the capture                                                  |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md %} |
+| {% icon check %}︎ | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                             |
+| {% icon check %}︎ | {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                          |
+| {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the capture                                                  |
+| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
 
 ## Reversal Response
 
