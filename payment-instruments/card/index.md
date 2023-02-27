@@ -2,7 +2,6 @@
 section: Card
 title: Introduction
 redirect_from: /payments/card/
-estimated_read: 8
 description: |
   **Card** is the most popular, versatile
   and global way to initate a transaction with a customer. Choose between our

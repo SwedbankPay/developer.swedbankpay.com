@@ -1,6 +1,5 @@
 ---
 title: Code Of Conduct
-estimated_read: 2
 menu_order: 1300
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Seamless View
-estimated_read: 10
 description: |
   The Seamless View purchase scenario shows you how to implement the payment
   menu directly in your webshop.

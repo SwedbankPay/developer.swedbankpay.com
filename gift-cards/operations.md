@@ -1,6 +1,5 @@
 ---
 title: Operations
-estimated_read: 2
 menu_order: 600
 ---
 

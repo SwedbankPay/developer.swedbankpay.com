@@ -1,6 +1,5 @@
 ---
 title: Java
-estimated_read: 10
 description: |
     Use the Java SDK to quickly and easy integrate with the terminal from your ECR.
 menu_order: 1000

@@ -1,6 +1,5 @@
 ---
 title: Recur
-estimated_read: 7
 description: |
   Setting up subscriptions and recurring payments.
 menu_order: 1900

@@ -1,6 +1,5 @@
 ---
 title: Payment Order
-estimated_read: 15
 description: |
   **Payment Order** lets the payer complete their purchase.
 menu_order: 300
@@ -55,7 +54,7 @@ Content-Type: application/json
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
-| └➔&nbsp;`id`   | `string` | {% include fields/id.md resource="paymentorder" %}                      |
+| {% f id %}   | `string` | {% include fields/id.md resource="paymentorder" %}                      |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 The `paymentorder` object is abbreviated since it's just the `id` and

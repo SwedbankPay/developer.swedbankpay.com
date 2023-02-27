@@ -145,7 +145,7 @@ table:
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| └➔&nbsp;`generateMotoPayment`     | `bool`      | Set to `true` if the payment order is a MOTO payment, `false` if not. |
+| {% f generateMotoPayment %}     | `bool`      | Set to `true` if the payment order is a MOTO payment, `false` if not. |
 
 {% if include.integration_mode=="redirect" %}
 

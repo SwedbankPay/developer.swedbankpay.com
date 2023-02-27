@@ -58,11 +58,11 @@ Content-Type: application/json
 | :------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `payment`            | `string`  | {% include fields/id.md sub_resource="prices" %}                                                                                                                                 |
 | `prices`             | `object`  | The `prices`  resource.                                                                                                                                                                     |
-| └➔&nbsp;`id`         | `string`  | {% include fields/id.md resource="prices" %}                                                                                                                                     |
-| └➔&nbsp;`priceList`  | `array`   | The array of price objects. **Note:** Even if you specify  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
-| └─➔&nbsp;`type`      | `string`  | The type of the price object.                                                                                                                                                               |
-| └─➔&nbsp;`amount`    | `integer` | {% include fields/amount.md %}                                                                                                                                                   |
-| └─➔&nbsp;`vatAmount` | `integer` | {% include fields/vat-amount.md %}                                          |
+| {% f id %}         | `string`  | {% include fields/id.md resource="prices" %}                                                                                                                                     |
+| {% f priceList %}  | `array`   | The array of price objects. **Note:** Even if you specify  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
+| {% f type, 2 %}      | `string`  | The type of the price object.                                                                                                                                                               |
+| {% f amount, 2 %}    | `integer` | {% include fields/amount.md %}                                                                                                                                                   |
+| {% f vatAmount, 2 %} | `integer` | {% include fields/vat-amount.md %}                                          |
 
 ## Prices Object Types
 

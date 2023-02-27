@@ -41,8 +41,8 @@ Content-Type: application/json
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
-| {% icon check %}︎ | └➔&nbsp;`description`    | `string`     | A textual description of the reason for the cancellation.                             |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference` | `string` | {% include fields/payee-reference.md documentation_section=include.documentation_section %} |
+| {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the reason for the cancellation.                             |
+| {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md documentation_section=include.documentation_section %} |
 {% endcapture %}
 {% include accordion-table.html content = request_table
 %}

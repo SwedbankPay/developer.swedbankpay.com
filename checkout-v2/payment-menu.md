@@ -1,7 +1,6 @@
 ---
 title: Payment Menu
 redirect_from: /checkout/payment-menu
-estimated_read: 15
 description: |
   **Payment Menu** begins where **Checkin** left off,
   letting the payer complete their purchase.
@@ -65,7 +64,7 @@ Content-Type: application/json
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
 | `paymentorder` | `object` | The payment order object.                                                          |
-| └➔&nbsp;`id`   | `string` | {% include fields/id.md resource="paymentorder" %}                     |
+| {% f id %}   | `string` | {% include fields/id.md resource="paymentorder" %}                     |
 | `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 The `paymentorder` object is abbreviated since it's just the `id` and

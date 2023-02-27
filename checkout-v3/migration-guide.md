@@ -52,8 +52,8 @@ is not applicable.
 | Required         | Field                    | Type     | Description                            |
 | :--------------: | :----------------------- | :--------| :------------------------------------- |
 | {% icon check %} | `paymentorder`           | `object` | The payment order object.              |
-| {% icon check %} | └➔&nbsp;`productName`    | `string` | {% include fields/product-name.md %}    |
-| {% icon check %} | └➔&nbsp;`implementation` | `string` | {% include fields/implementation.md %} |
+| {% icon check %} | {% f productName %}    | `string` | {% include fields/product-name.md %}    |
+| {% icon check %} | {% f implementation %} | `string` | {% include fields/implementation.md %} |
 
 ## Response Fields
 
@@ -104,16 +104,16 @@ Instead, you'll find the following new fields in Checkout v3:
 | Field                            | Type     | Description                                    |
 | :------------------------------- | :--------| :--------------------------------------------- |
 | `paymentorder`                   | `object` | The payment order object.                      |
-| └➔&nbsp;`aborted`                | `id`     | {% include fields/aborted.md %}                |
-| └➔&nbsp;`cancelled`              | `id`     | {% include fields/implementation.md %}         |
-| └➔&nbsp;`failed`                 | `id`     | {% include fields/failed.md %}                 |
-| └➔&nbsp;`failedAttempts`         | `id`     | {% include fields/failed-attempts.md %}        |
-| └➔&nbsp;`financialTransactions`  | `id`     | {% include fields/financial-transactions.md %} |
-| └➔&nbsp;`guestMode`              | `bool`   | {% include fields/guest-mode.md %}             |
-| └➔&nbsp;`history`                | `id`     | {% include fields/history.md %}                |
-| └➔&nbsp;`paid`                   | `id`     | {% include fields/paid.md %}                   |
-| └➔&nbsp;`payer`                  | `id`     | {% include fields/payer.md %}                  |
-| └➔&nbsp;`status`                 | `string` | {% include fields/status.md %}                 |
+| {% f aborted %}                | `id`     | {% include fields/aborted.md %}                |
+| {% f cancelled %}              | `id`     | {% include fields/implementation.md %}         |
+| {% f failed %}                 | `id`     | {% include fields/failed.md %}                 |
+| {% f failedAttempts %}         | `id`     | {% include fields/failed-attempts.md %}        |
+| {% f financialTransactions %}  | `id`     | {% include fields/financial-transactions.md %} |
+| {% f guestMode %}              | `bool`   | {% include fields/guest-mode.md %}             |
+| {% f history %}                | `id`     | {% include fields/history.md %}                |
+| {% f paid %}                   | `id`     | {% include fields/paid.md %}                   |
+| {% f payer %}                  | `id`     | {% include fields/payer.md %}                  |
+| {% f status %}                 | `string` | {% include fields/status.md %}                 |
 
 ## Payer
 
@@ -219,8 +219,8 @@ Mode_.
 | Required         | Field            | Type     | Description                            |
 | :--------------: | :--------------- | :--------| :------------------------------------- |
 |                  | `payer`          | `object` | The payment order object.              |
-| {% icon check %} | └➔&nbsp;`email`  | `string` | {% include fields/product-name.md %}   |
-| {% icon check %} | └➔&nbsp;`msisdn` | `string` | {% include fields/implementation.md %} |
+| {% icon check %} | {% f email %}  | `string` | {% include fields/product-name.md %}   |
+| {% icon check %} | {% f msisdn %} | `string` | {% include fields/implementation.md %} |
 
 *[TRA]: Transaction Risk Analysis
 *[MAC]: Merchant-Authenticated Consumer

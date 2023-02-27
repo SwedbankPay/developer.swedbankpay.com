@@ -1,6 +1,5 @@
 ---
 title: Configuration
-estimated_read: 4
 description: |
   Configure the **Swedbank Pay Mobile SDK** to communicate with your backend.
 menu_order: 700
