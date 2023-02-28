@@ -4,6 +4,7 @@ title: Payment Instrument Presentations
 description: |
   **An overview of all the payment instruments Checkout v3 has to offer.**
 checkout_v3: true
+hide_from_sidebar: true
 menu_order: 400
 ---
 
