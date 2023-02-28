@@ -101,8 +101,8 @@ GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
 
-You can also perform a GET request towards the `id` of a Payment Order and find the
-paymentToken in its linked `paid` resource.
+You can also perform a GET request towards the `id` of a Payment Order and find
+the paymentToken in its linked [`paid` resource][paid-resource].
 
 {:.code-view-header}
 **Request Towards The Paid Resource**
@@ -530,4 +530,5 @@ Content-Type: application/json
 [capture]: {{ features_url }}/core/{{ capture_url }}
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
+[paid-resource]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
 [verify]: /payment-instruments/card/features/optional/verify
