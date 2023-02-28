@@ -139,8 +139,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                 | `string`  | The relative URL of the payment this cancellation transaction belongs to.                                                                                                                                    |
-| `cancellation`            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
+| {% f payment, 0 %}                 | `string`  | The relative URL of the payment this cancellation transaction belongs to.                                                                                                                                    |
+| {% f cancellation, 0 %}            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
 | {% f id %}              | `string`  | The relative URL of the cancellation transaction.                                                                                                                                                            |
 | {% f transaction %}     | `object`  | The transaction object, containing information about the current transaction.                                                                                                                                |
 | {% f id, 2 %}             | `string`  | The relative URL of the current `transaction` resource.                                                                                                                                                      |
@@ -187,8 +187,8 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Field                    | Type         | Description     |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `failed`                | `object`     | The failed object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f failed, 0 %}                | `object`     | The failed object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f problem %}             | `object`     | The problem object.  |
 | {% f type, 2 %}  | `string`   | The type of problem that occurred. |
@@ -301,7 +301,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
@@ -796,7 +796,7 @@ responses:
 | :----------------------- | :----------- | :------------------------------ |
 | {% f remainingCaptureAmount %}      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
 | {% f remainingCancellationAmount %}      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| `paid`                | `object`     | The paid object.                     |
+| {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |

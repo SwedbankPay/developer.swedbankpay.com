@@ -33,8 +33,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `aborted`                | `object`     | The abort object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f aborted, 0 %}                | `object`     | The abort object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f abortReason %}             | `string`     | Why the payment was aborted. |
 
@@ -96,8 +96,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `cancelled`                | `object`     | The cancel object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f cancelled, 0 %}                | `object`     | The cancel object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f cancelReason %}             | `string`     | Why the payment was cancelled. |
 | {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
@@ -159,8 +159,8 @@ Content-Type: application/json
 
 {:.table .table-striped}
 | Field                    | Type         | Description     |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `failed`                | `object`     | The failed object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f failed, 0 %}                | `object`     | The failed object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f problem %}             | `object`     | The problem object.  |
 | {% f type, 2 %}  | `string`   | The type of problem that occurred. |
@@ -239,9 +239,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
-| `failedAttempts`                | `object`     | The failed attempt object.                     |
+| {% f failedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
 | {% f financialTransactionsList %}  | `array`   | The array of failed attempts. |
 | {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f instrument, 2 %}             | `string`     | Payment instrument used in the failed payment. |
@@ -333,8 +333,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `financialTransactions`                | `object`     | The financial transactions object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f financialTransactions, 0 %}                | `object`     | The financial transactions object.                     |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f financialTransactionsList %}  | `array`   | The array of financial transactions. |
 | {% f id, 2 %}  | `string`   | The id of the financial transaction. |
@@ -494,8 +494,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `history`                | `object`     | The history object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f history, 0 %}                | `object`     | The history object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f historyList %}  | `array`   | The array of history objects. |
 | {% f created %}        | `string`     | The ISO-8601 date of when the history event was created.                                 |
@@ -508,23 +508,23 @@ Content-Type: application/json
 {:.table .table-striped}
 | History Event Name         | Description  |
 | :----------------------- | :----------- |
-| `PaymentCreated`         | This event will occur as soon as the merchant initiates the payment order.     |
-| `CheckinInitiated`        | Will be set when checkin is started, if checkin is activated for the merchant. The merchant must be configured with ProductPackage=Checkout                  |
-| `PayerDetailsRetrieved`   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
-| `PayerCheckedIn`      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
-| `PaymentInstrumentSet`      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
-| `PaymentLoaded`       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
-| `PaymentInstrumentSelected`       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
-| `PaymentAttemptStarted`      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the instrument for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
-| `PaymentAttemptAborted`      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
-| `PaymentAttemptFailed`     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
-| `PaymentPaid`      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
-| `PaymentCaptured`      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| `PaymentPartialCaptured`     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
-| `PaymentCancelled`     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
-| `PaymentPartialCancelled`      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
-| `PaymentReversed`    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| `PaymentPartialReversed`    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentCreated, 0 %}         | This event will occur as soon as the merchant initiates the payment order.     |
+| {% f CheckinInitiated, 0 %}        | Will be set when checkin is started, if checkin is activated for the merchant. The merchant must be configured with ProductPackage=Checkout                  |
+| {% f PayerDetailsRetrieved, 0 %}   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
+| {% f PayerCheckedIn, 0 %}      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
+| {% f PaymentInstrumentSet, 0 %}      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
+| {% f PaymentLoaded, 0 %}       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
+| {% f PaymentInstrumentSelected, 0 %}       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
+| {% f PaymentAttemptStarted, 0 %}      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the instrument for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
+| {% f PaymentAttemptAborted, 0 %}      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
+| {% f PaymentAttemptFailed, 0 %}     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
+| {% f PaymentPaid, 0 %}      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
+| {% f PaymentCaptured, 0 %}      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartialCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
+| {% f PaymentCancelled, 0 %}     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
+| {% f PaymentPartialCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
+| {% f PaymentReversed, 0 %}    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartialReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
 
 ## Paid
 
@@ -934,8 +934,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `paid`                | `object`     | The paid object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
@@ -1018,8 +1018,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `payer`                | `object`     | The payer object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f payer, 0 %}                | `object`     | The payer object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f reference %}  | `string`   | The reference to the payer. In checkout, this will be the `consumerReference`. |
 | {% f name %}        | `string`     | The name of the payer. |

@@ -122,7 +122,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
+| {% f payment, 0 %}                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
 | {% f id %}             | `string`     | {% include fields/id.md %}                                                                                                                                                                                                                                                                                                                      |
 | {% f number %}         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
@@ -136,7 +136,7 @@ Content-Type: application/json
 | {% f urls %}           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | {% f payeeInfo %}      | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
 | {% f payers %}         | `string`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
-| `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
+| {% f operations, 0 %}             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | {% f method, 2 %}        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | {% f href, 2 %}          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | {% f rel, 2 %}           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
@@ -158,57 +158,57 @@ for the given operation.
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay payment page containing the card authorization UI. |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured, payment.                                |
+| {% f update-payment-abort, 0 %}   | `abort`s the payment order before any financial transactions are performed.                                               |
+| {% f redirect-authorization, 0 %} | Contains the URL that is used to redirect the payer to the Swedbank Pay payment page containing the card authorization UI. |
+| {% f create-capture, 0 %}         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
+| {% f create-cancellation, 0 %}    | Creates a `cancellation` transaction that cancels a created, but not yet captured, payment.                                |
 
 {% when "swish" %}
 
 {:.table .table-striped}
 | Operation              | Description                                                                                                                                                               |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort` | `abort`s the payment order before any financial transactions are performed.                                                                                               |
-| `create-sale`          | Creates a `sales` transaction without redirection to a payment page.                                                                                                      |
-| `redirect-sale`        | Contains the redirect-URL that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
-| `view-sales`           | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
-| `view-payment`         | Contains the URL of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.                                |
+| {% f update-payment-abort, 0 %} | `abort`s the payment order before any financial transactions are performed.                                                                                               |
+| {% f create-sale, 0 %}          | Creates a `sales` transaction without redirection to a payment page.                                                                                                      |
+| {% f redirect-sale, 0 %}        | Contains the redirect-URL that redirects the payer to a Swedbank Pay hosted payment page prior to creating a sales transaction.                                        |
+| {% f view-sales, 0 %}           | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
+| {% f view-payment, 0 %}         | Contains the URL of the JavaScript used to create a Seamless View iframe directly without redirecting the payer to separate payment page.                                |
 
 {% when "trustly" %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
-| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
-| `view-sale`             | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
+| {% f update-payment-abort, 0 %}   | `abort`s the payment order before any financial transactions are performed.                                               |
+| {% f paid-payment, 0 %}           | Returns the information about a payment that has the status `paid`.                                                       |
+| {% f failed-payment, 0 %}         | Returns the information about a payment that has the status `failed`.                                                     |
+| {% f view-sale, 0 %}             | Contains the URL of the JavaScript used to create a Seamless View iframe directly for the `sale` transaction without redirecting the payer to a separate payment page. |
 
 {% when "invoice" %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
-| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
-| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+| {% f update-payment-abort, 0 %}   | `abort`s the payment order before any financial transactions are performed.                                               |
+| {% f redirect-authorization, 0 %} | Contains the URL that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
+| {% f view-authorization, 0 %}     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
+| {% f create-capture, 0 %}         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
+| {% f create-cancellation, 0 %}    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| {% f paid-payment, 0 %}           | Returns the information about a payment that has the status `paid`.                                                       |
+| {% f failed-payment, 0 %}         | Returns the information about a payment that has the status `failed`.                                                     |
 
 {% else %}
 
 {:.table .table-striped}
 | Operation                | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
-| `update-payment-abort`   | `abort`s the payment order before any financial transactions are performed.                                               |
-| `redirect-authorization` | Contains the URL that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
-| `view-authorization`     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
-| `view-payment`           | Contains the URL of the JavaScript to create a Seamless view iframe directly without redirecting the payer to a separate payment page.     |
-| `create-capture`         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
-| `create-cancellation`    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
-| `paid-payment`           | Returns the information about a payment that has the status `paid`.                                                       |
-| `failed-payment`         | Returns the information about a payment that has the status `failed`.                                                     |
+| {% f update-payment-abort, 0 %}   | `abort`s the payment order before any financial transactions are performed.                                               |
+| {% f redirect-authorization, 0 %} | Contains the URL that is used to redirect the payer to the Swedbank Pay Payments containing the card authorization UI. |
+| {% f view-authorization, 0 %}     | Contains the JavaScript `href` that is used to embed the card authorization UI directly on the webshop/merchant site     |
+| {% f view-payment, 0 %}           | Contains the URL of the JavaScript to create a Seamless view iframe directly without redirecting the payer to a separate payment page.     |
+| {% f create-capture, 0 %}         | Creates a `capture` transaction in order to charge the reserved funds from the payer.                                  |
+| {% f create-cancellation, 0 %}    | Creates a `cancellation` transaction that cancels a created, but not yet captured payment.                                |
+| {% f paid-payment, 0 %}           | Returns the information about a payment that has the status `paid`.                                                       |
+| {% f failed-payment, 0 %}         | Returns the information about a payment that has the status `failed`.                                                     |
 
 {% endcase %}

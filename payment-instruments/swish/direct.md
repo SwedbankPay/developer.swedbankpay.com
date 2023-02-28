@@ -208,7 +208,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field            | Type     | Required                                                                                          |
 | :--------------- | :------- | :------------------------------------------------------------------------------------------------ |
-| `transaction`    | `object` | The `transaction` object contains information about the specific transaction.                     |
+| {% f transaction, 0 %}    | `object` | The `transaction` object contains information about the specific transaction.                     |
 | {% f msisdn %} | `string` | The payer's mobile number. It must have a country code prefix and be 8 to 15 digits in length. |
 
 ## E-Commerce Response
@@ -284,7 +284,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field         | Type     | Required                                                             |
 | :------------ | :------- | :------------------------------------------------------------------- |
-| `transaction` | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
+| {% f transaction, 0 %} | `object` | The  `transaction` object is empty for m-commerce sale transactions. |
 
 ## M-Commerce Response
 
@@ -374,7 +374,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                                                                                                                                                                |
 | :----------------------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment`                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
+| {% f payment, 0 %}                | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
 | {% f id %}             | `string`     | {% include fields/id.md %}                                                                                                                                                                                                                                                                                                                      |
 | {% f number %}         | `integer`    | The payment  number , useful when there's need to reference the payment in human communication. Not usable for programmatic identification of the payment, for that  id  should be used instead.                                                                                                                                                           |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
@@ -388,7 +388,7 @@ Content-Type: application/json
 | {% f urls %}           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
 | {% f payeeInfo %}      | `string`     | The URL to the  payeeinfo  resource where the information about the payee of the payment can be retrieved.                                                                                                                                                                                                                                                 |
 | {% f payers %}         | `string`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
-| `operations`             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
+| {% f operations, 0 %}             | `array`      | The array of possible operations to perform                                                                                                                                                                                                                                                                                                                |
 | {% f method, 2 %}        | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | {% f href, 2 %}          | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |
 | {% f rel, 2 %}           | `string`     | The name of the relation the operation has to the current resource.                                                                                                                                                                                                                                                                                        |
