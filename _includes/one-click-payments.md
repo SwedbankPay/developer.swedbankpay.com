@@ -6,10 +6,10 @@
 {% else %}
     {% capture capture_url %}payment-order-capture{% endcapture %}
 {% endif %}
-{% if documentation_section == "payment-menu" %}
+{% if documentation_section == "payment-menu" or "checkout" %}
     {% capture verification_url %}/psp/paymentorders/{{ page.payment_id }}/verifications{% endcapture %}
     {% capture authorization_url %}/psp/paymentorders/{{ page.payment_id }}/authorizations{% endcapture %}
-    {% capture purchase_url %}/psp/paymentorders/{{ page.payment_id }}{% endcapture %}
+    {% capture purchase_url %}/psp/paymentorders{% endcapture %}
 {% else %}
     {% capture verification_url %}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/verifications{% endcapture %}
     {% capture authorization_url %}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations{% endcapture %}
@@ -62,6 +62,8 @@ setting the initial operation to [`Verify`][verify].
 
 ## Finding The `paymentToken` Value
 
+{% if documentation_section contains "payment-instruments" %}
+
 When the initial purchase is successful, a `paymentToken` is linked to
 the payment. You can return the value by sending a `GET` request towards the
 payment resource (expanding either the authorizations or verifications
@@ -84,6 +86,33 @@ Authorization: Bearer <AccessToken>
 GET {{ authorization_url }} HTTP/1.1
 Authorization: Bearer <AccessToken>
 ```
+
+{% else %}
+
+When the initial purchase is successful, a `paymentToken` is linked to
+the payment. You can return the value by performing a `GET` request towards the
+payment resource with the `payerReference` included.
+
+{:.code-view-header}
+**Request Towards The Payment Resource**
+
+```http
+GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
+Authorization: Bearer <AccessToken>
+```
+
+You can also perform a GET request towards the `id` of a Payment Order and find
+the paymentToken in its linked [`paid` resource][paid-resource].
+
+{:.code-view-header}
+**Request Towards The Paid Resource**
+
+```http
+GET /psp/paymentorders/{{ page.payment_id }}/paid HTTP/1.1
+Authorization: Bearer <AccessToken>
+```
+
+{% endif %}
 
 You need to store the `paymentToken` from the response in your system and keep
 track of the corresponding `payerReference` in your system.
@@ -110,8 +139,6 @@ card specific feature fields. This disables the CVC field.
 See the Features section for how to create a [card][create-card-payment]
 and [invoice][create-invoice-payment] payment.
 
-{% endif %}
-
 ## One-Click Request
 
 Abbreviated code example:
@@ -136,6 +163,8 @@ Content-Type: application/json
     }
 }
 ```
+
+{% endif %}
 
 {:.table .table-striped}
 |     Required     | Field                  | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -162,8 +191,10 @@ Using `payerReference` and `generatePaymentToken: true` will display all (max 3)
 cards connected to the payerReference.
 
 If you wish to display one specific card only, you can remove
-`generatePaymentToken` and add the field `paymentToken` in it's place. This must be
-the paymentToken generated in the initial purchase.
+`generatePaymentToken` and add the field `paymentToken` in it's place. This must
+be the paymentToken generated in the initial purchase.
+
+{% if documentation_section contains "payment-instruments" %}
 
 You can add the field `noCvc` set to `true` in the `creditcard` object,
 containing card specific feature fields. This disables the CVC field.
@@ -220,6 +251,56 @@ Content-Type: application/json
 }
 ```
 
+{% else %}
+
+## One-Click Request Displaying All Cards
+
+{:.code-view-header}
+**Request**
+
+```http
+POST {{ purchase_url }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "generatepaymentToken": "true"
+    },
+    "payer": {
+        "payerReference": "AB1234",
+    }
+}
+```
+
+## One-Click Request Displaying A Specific Card
+
+{:.code-view-header}
+**Request**
+
+```http
+POST {{ purchase_url }} HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "Purchase",
+        "paymentToken": "{{ page.payment_token }}"
+    },
+    "payer": {
+        "payerReference": "AB1234",
+    }
+}
+```
+
+{% endif %}
+
+{% if documentation_section contains "payment-instruments" %}
+
 {:.table .table-striped}
 |     Required     | Field                  | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -233,6 +314,20 @@ Content-Type: application/json
 |                  | {% f payerReference, 2 %}                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                                                                                                                                                                                            |
 |                  | {% f creditCard %}   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |                  | {% f noCvc, 2 %}       | `boolean` | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                 |
+
+{% else %}
+
+{:.table .table-striped}
+|     Required     | Field                  | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| :--------------: | ---------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | `paymentorder`              | `object`  | The `paymentorder` object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| {% icon check %} | └➔&nbsp;`operation`    | `string`  | Determines the initial operation, that defines the type card payment created.<br> <br> `Purchase`. Used to charge a card. It is followed up by a capture or cancel operation.<br> <br> `Recur`.Used to charge a card on a recurring basis. Is followed up by a capture or cancel operation (if not Autocapture is used, that is).<br> <br>`Payout`. Used to deposit funds directly to credit card. No more requests are necessary from the merchant side.<br> <br>`Verify`. Used when authorizing a card withouth reserveing any funds.  It is followed up by a verification transaction. |
+| {% icon check %} | └➔&nbsp;`paymentToken` | `string`  | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
+|                  | └➔&nbsp;`generatePaymentToken`     | `bool`       | Determines if a payment token should be generated. Default value is `false`.                                               |
+|                  | └➔&nbsp;`payer`                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
+|                  | └─➔&nbsp;`payerReference`                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                                                                                                                                                                                            |
+
+{% endif %}
 
 {% include alert.html type="informative" icon="info" body="
 When redirecting to Swedbank Pay the payment page will be
@@ -303,8 +398,8 @@ Content-Type: application/json
         "payerReference": "{payerReference}",
         "tokens": [
             {
-                "token": "{paymentToken}",
                 "tokenType": "Payment",
+                "token": "{paymentToken}",
                 "instrument": "Invoice-payexfinancingno",
                 "instrumentDisplayName": "260267*****",
                 "instrumentParameters": {
@@ -314,8 +409,8 @@ Content-Type: application/json
                 }
             },
             {
+                "tokenType": "Payment",
                 "token": "{paymentToken}",
-                "tokenType": "Unscheduled",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "instrumentParameters": {
@@ -435,4 +530,5 @@ Content-Type: application/json
 [capture]: {{ features_url }}/core/{{ capture_url }}
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
+[paid-resource]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
 [verify]: /payment-instruments/card/features/optional/verify
