@@ -78,9 +78,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
-| `paymentorder` | `object` | The payment order object.                                                          |
+| {% f paymentorder, 0 %} | `object` | The payment order object.                                                          |
 | {% f id %}   | `string` | {% include fields/id.md resource="paymentorder" %}                      |
-| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
+| {% f operations, 0 %}   | `array`  | The array of possible operations to perform, given the state of the payment order. |
 
 ## Cancel
 

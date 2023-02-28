@@ -56,8 +56,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                | Type      | Description                                                                                                                                                                                 |
 | :------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `payment`            | `string`  | {% include fields/id.md sub_resource="prices" %}                                                                                                                                 |
-| `prices`             | `object`  | The `prices`  resource.                                                                                                                                                                     |
+| {% f payment, 0 %}            | `string`  | {% include fields/id.md sub_resource="prices" %}                                                                                                                                 |
+| {% f prices, 0 %}             | `object`  | The `prices`  resource.                                                                                                                                                                     |
 | {% f id %}         | `string`  | {% include fields/id.md resource="prices" %}                                                                                                                                     |
 | {% f priceList %}  | `array`   | The array of price objects. **Note:** Even if you specify  `CreditCard`  in the input message the system will return all your configured card brands instead when you expan the priceList. |
 | {% f type, 2 %}      | `string`  | The type of the price object.                                                                                                                                                               |
@@ -86,16 +86,16 @@ types.
 {:.table .table-striped}
 | Type            | Description                                |
 | :-------------- | :----------------------------------------- |
-| `Creditcard`    | Enables all brands activated for merchant  |
-| `Visa`          | Visa                                       |
-| `MasterCard`    | MasterCard                                 |
-| `Amex`          | American Express                           |
-| `Dankort`       | Dankort (only available with currency DKK) |
-| `Diners`        | Diners Club                                |
-| `Finax`         | Finax                                      |
-| `Jcb`           | JCB                                        |
-| `IkanoFinansDK` | Ikano Finans Denmark                       |
-| `Maestro`       | MasterCard Maestro                         |
+| {% f Creditcard, 0 %}    | Enables all brands activated for merchant  |
+| {% f Visa, 0 %}          | Visa                                       |
+| {% f MasterCard, 0 %}    | MasterCard                                 |
+| {% f Amex, 0 %}          | American Express                           |
+| {% f Dankort, 0 %}       | Dankort (only available with currency DKK) |
+| {% f Diners, 0 %}        | Diners Club                                |
+| {% f Finax, 0 %}         | Finax                                      |
+| {% f Jcb, 0 %}           | JCB                                        |
+| {% f IkanoFinansDK, 0 %} | Ikano Finans Denmark                       |
+| {% f Maestro, 0 %}       | MasterCard Maestro                         |
 
 {% when "invoice" %}
 
@@ -104,7 +104,7 @@ types.
 {:.table .table-striped}
 | Type      | Description    |
 | :-------- | :------------- |
-| `Invoice` | Always Invoice |
+| {% f Invoice, 0 %} | Always Invoice |
 
 {% when "mobilepay" %}
 
@@ -113,7 +113,7 @@ types.
 {:.table .table-striped}
 | Type        | Description      |
 | :---------- | :--------------- |
-| `Mobilepay` | Always MobilePay |
+| {% f Mobilepay, 0 %} | Always MobilePay |
 
 {% when "swish" %}
 
@@ -122,7 +122,7 @@ types.
 {:.table .table-striped}
 | Type    | Description  |
 | :------ | :----------- |
-| `Swish` | Always Swish |
+| {% f Swish, 0 %} | Always Swish |
 
 {% when "vipps" %}
 
@@ -131,6 +131,6 @@ types.
 {:.table .table-striped}
 | Type    | Description  |
 | :------ | :----------- |
-| `Vipps` | Always Vipps |
+| {% f Vipps, 0 %} | Always Vipps |
 
 {% endcase %}

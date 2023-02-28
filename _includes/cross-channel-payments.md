@@ -80,8 +80,8 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `paid`                | `object`     | The paid object.                     |
+| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f instrument %}             | `string`     | Payment instrument used in the cancelled payment. |
 | {% f number, 2 %}         | `string`  | The transaction number, useful when there's a need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |

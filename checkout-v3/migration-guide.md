@@ -104,7 +104,7 @@ Instead, you'll find the following new fields in Checkout v3:
 {:.table .table-striped}
 | Field                            | Type     | Description                                    |
 | :------------------------------- | :--------| :--------------------------------------------- |
-| `paymentorder`                   | `object` | The payment order object.                      |
+| {% f paymentorder, 0 %}                   | `object` | The payment order object.                      |
 | {% f aborted %}                | `id`     | {% include fields/aborted.md %}                |
 | {% f cancelled %}              | `id`     | {% include fields/implementation.md %}         |
 | {% f failed %}                 | `id`     | {% include fields/failed.md %}                 |
