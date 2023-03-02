@@ -328,11 +328,11 @@ Content-Type: application/json
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
-| {% f number, 2 %}         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md resource="payment" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
@@ -341,7 +341,7 @@ Content-Type: application/json
 | {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
-| {% f type, 2 %}  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
 | {% f name, 2 %}  | `string`   | The name of the token. In the example, a masked version of a card number. |
 | {% f expiryDate, 2 %}  | `string`   | The expiry date of the token. |

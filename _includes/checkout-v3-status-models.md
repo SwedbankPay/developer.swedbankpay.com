@@ -103,7 +103,7 @@ responses:
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an aborted payment, the available operations are `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations) |
+| {% f operations %}     | `array`      | {% include fields/operations.md %} As this is an aborted payment, the available operations are `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations) |
 
 ## Cancelled
 
@@ -143,13 +143,13 @@ Content-Type: application/json
 | {% f payment, 0 %}                 | `string`  | The relative URL of the payment this cancellation transaction belongs to.                                                                                                                                    |
 | {% f cancellation, 0 %}            | `object`  | The cancellation object, containing information about the cancellation transaction.                                                                                                                          |
 | {% f id %}              | `string`  | The relative URL of the cancellation transaction.                                                                                                                                                            |
-| {% f transaction %}     | `object`  | The transaction object, containing information about the current transaction.                                                                                                                                |
+| {% f transaction %}     | `object`  | {% include fields/transaction.md %}                                                                                                                                |
 | {% f id, 2 %}             | `string`  | The relative URL of the current `transaction` resource.                                                                                                                                                      |
 | {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | {% f state, 2 %}          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| {% f number, 2 %}         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md %} |
 | {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction.                                                                                                                                    |
@@ -191,7 +191,7 @@ Content-Type: application/json
 {% capture table %}
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description     |
-| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f failed, 0 %}                | `object`     | The failed object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f problem %}             | `object`     | The problem object.  |
@@ -308,11 +308,11 @@ Content-Type: application/json
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentorder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | `Purchase`                                                                                                                                                                                                                |
+| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                |
 | {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` section for further information]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in the failed section. [Further information here]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the cancel feature section for further information]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the Abort feature section for further information]({{ features_url }}/technical-reference/status-models#aborted). |
 | {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
@@ -335,7 +335,7 @@ Content-Type: application/json
 | {% f financialTransactions %}     | `string`     | The URL to the [`financialTransactions` resource]({{ features_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
 | {% f failedAttempts %}     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+| {% f operations %}     | `array`      | {% include fields/operations.md %} As this is an initialized payment, the available operations are `abort`, `update-order` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -809,7 +809,7 @@ responses:
 | {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
-| {% f number, 2 %}         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
@@ -830,7 +830,7 @@ responses:
 | {% f transactionInitatior, 2 %} | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
 | {% f bin, 2 %} | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
 | {% f msisdn, 2 %} | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
-| {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
+| {% f operations %}     | `array`      | {% include fields/operations.md %} As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -892,7 +892,7 @@ responses:
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------------------ |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                                   |
-| {% f type, 2 %}  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
 | {% f name, 2 %}  | `string`   | The name of the token. In the example, a masked version of a card number. |
 | {% f expiryDate, 2 %}  | `string`   | The expiry date of the token. |

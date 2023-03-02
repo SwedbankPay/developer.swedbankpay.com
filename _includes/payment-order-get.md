@@ -94,7 +94,7 @@ Content-Type: application/json
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentorder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
@@ -119,11 +119,10 @@ Content-Type: application/json
 | {% f metadata %}       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | {% f payments %}       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
 | {% f currentPayment %} | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
-| {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details][operations].                                                                                             |
+| {% f operations %}     | `array`      | {% include fields/operations.md %}                                                                                             |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
 -----------------------------------------
 [payment-menu]: /payment-menu
 [checkout]: /{{ documentation_section }}
-[operations]: {{ features_url }}/technical-reference/operations

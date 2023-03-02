@@ -50,7 +50,7 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                   |
-| `paymentOrder`          | `string` | {% include fields/id.md %}                 |
+| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ## `onCheckoutLoaded`
@@ -78,7 +78,7 @@ with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include fields/id.md %}                       |
+| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
 ## `onCheckoutResized`
@@ -108,7 +108,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`     | `string` | {% include fields/id.md %}                           |
+| {% f paymentOrder, 0 %}     | `string` | {% include fields/id.md %}                           |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
 ## `onError`
@@ -136,7 +136,7 @@ will be raised with the following event argument object:
 | Field       | Type     | Description                                                            |
 | :---------- | :------- | :-------------------------------------------------------------         |
 | `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include fields/id.md %}                        |
+| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.                    |
 
 ## `onEventNotification`
@@ -165,7 +165,7 @@ payment flow at Swedbank Pay.
 | Field         | Type     | Description                                                |
 | :--------     | :------- | :--------------------------------------------------------- |
 | `event`     | `string` | The name of the event raised.                                |
-| `paymentOrder`        | `string` | {% include fields/id.md %}              |
+| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}              |
 | `sourceEvent` | `string` | A human readable and descriptive text with the event name. |
 
 ## `onInstrumentSelected`
@@ -193,7 +193,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include fields/id.md %}                        |
+| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}                        |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
 
@@ -226,7 +226,7 @@ new tab. It will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include fields/id.md %}                       |
+| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
 | `openUrl`    | `string` | The external URL where the user will be redirected.                   |
 
 ## `onOutOfViewRedirect`
@@ -254,7 +254,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include fields/id.md %}                       |
+| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
 ## `onPaid`
@@ -283,7 +283,7 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                       |
-| `paymentOrder`          | `string` | {% include fields/id.md %}                     |
+| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
 {% if documentation_section contains "checkout-v3/starter" %}
@@ -337,7 +337,7 @@ following event argument object:
 | Field          | Type     | Description                                                         |
 | :------------- | :------- | :-------------------------------------------------------------      |
 | `event`        | `string` | The name of the event raised.                                       |
-| `paymentOrder` | `string` | {% include fields/id.md %}                               |
+| {% f paymentOrder, 0 %} | `string` | {% include fields/id.md %}                               |
 | `payer`        | `string` | The `url` of the resource containing information about the payer.   |
 
 ## `onPayerUnidentified`
@@ -373,7 +373,7 @@ It will be raised with the following event argument object:
 | Field           | Type     | Description                                                  |
 | :-------------  | :------- | :------------------------------------------------------      |
 | `event`         | `string` | The name of the event raised.                                |
-| `paymentOrder`  | `string` | {% include fields/id.md %}                        |
+| {% f paymentOrder, 0 %}  | `string` | {% include fields/id.md %}                        |
 
 {% endif %}
 
@@ -404,5 +404,5 @@ object:
 | Field                | Type     | Description                                         |
 | :--------            | :------- | :---------------------------------------------------|
 | `event`              | `string` | The name of the event raised.                       |
-| `paymentOrder`       | `string` | {% include fields/id.md %}               |
+| {% f paymentOrder, 0 %}       | `string` | {% include fields/id.md %}               |
 | `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions. |

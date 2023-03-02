@@ -98,19 +98,19 @@ Content-Type: application/json
 | {% f payment, 0 %}                 | `string`  | The relative URL of the payment this `cancellation` transaction belongs to.                                                                                                                                  |
 | {% f cancellation, 0 %}            | `object`  | The `cancellation` resource contains information about the `cancellation` transaction made against a card payment.                                                                                           |
 | {% f id %}              | `string`  | The relative URL of the created `cancellation` transaction.                                                                                                                                                  |
-| {% f transaction %}     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
+| {% f transaction %}     | `object`  | {% include fields/transaction.md %}                                                                                                                       |
 | {% f id, 2 %}             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
 | {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | {% f state, 2 %}          | `string`  | Initialized ,  Completed  or  Failed . Indicates the state of the transaction                                                                                                                                |
-| {% f number, 2 %}         | `string`  | The transaction  number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that  id  should be used instead. |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md %} |
 | {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}    | `string`  | {% include fields/description.md %}                                                                                                                                  |
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
 | {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| {% f operations, 2 %}     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f operations, 2 %}     | `array`   | {% include fields/operations.md %}                                                                                                  |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -214,23 +214,23 @@ Content-Type: application/json
 {:.table .table-striped .mb-5}
 | Property                  | Type      | Description                                                                                                                                                                                                  |
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% f payment, 0 %}                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
-| {% f reversal, 0 %}                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
-| {% f id %}              | `string`  | The relative URL of the created `reversal`transaction.                                                                                                                                                       |
-| {% f transaction %}     | `object`  | The object representation of the generic [transaction resource][transaction-resource].                                                                                                                       |
+| {% f payment, 0 %}        | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
+| {% f reversal, 0 %}       | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
+| {% f id %}                | `string`  | The relative URL of the created `reversal`transaction.                                                                                                                                                       |
+| {% f transaction %}       | `object`  | {% include fields/transaction.md %}                                                                                                                       |
 | {% f id, 2 %}             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |
 | {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | {% f state, 2 %}          | `string`  | {% include fields/state.md %}        |
-| {% f number, 2 %}         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
+| {% f number, 2 %}         | `string`  | {% include fields/number.md %}     |
 | {% f amount, 2 %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
 | {% f vatAmount, 2 %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}    | `string`  | {% include fields/description.md %}                                                                                                                                  |
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
 | {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| {% f operations, 2 %}     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f operations, 2 %}     | `array`   | {% include fields/operations.md %}                                                                                                  |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -326,6 +326,5 @@ next_href="features" next_title="Features" %}
 
 [abort]: /payment-instruments/card/after-payment#abort
 [callback]: /payment-instruments/card/features/core/callback
-[operations]: /payment-instruments/card/features/technical-reference/operations
 [reversal]: /payment-instruments/card/features/core/reversal
 [transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

@@ -55,5 +55,5 @@ Content-Type: application/json
 {:.table .table-striped}
 | Required         | Field                        | Type     | Description                                                   |
 | :--------------: | :--------------------------- | :------- | :------------------------------------------------------------ |
-| {% icon check %} | `paymentorder`               | `object` | The payment order object.                                     |
+| {% icon check %} | {% f paymentOrder, 0 %}               | `object` | The payment order object.                                     |
 |                  | {% f restrictedToAgeLimit %} | `int`    | Used for setting the age you want to restrict the payment to. |

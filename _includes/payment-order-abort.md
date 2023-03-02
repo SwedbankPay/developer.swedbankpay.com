@@ -40,7 +40,7 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentorder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f operation %}      | `string`     | `Abort`                                                                                                                                                                                                                |
 | {% f abortReason %}      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
 
@@ -156,7 +156,7 @@ Content-Type: application/json
 {:.table .table-striped .mb-5}
 | Field                                  | Type         | Description                                                                                                                                                                                                               |
 | :------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentorder, 0 %}                         | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f paymentOrder, 0 %}                         | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f id %}                           | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}                      | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}                      | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
@@ -185,7 +185,7 @@ Content-Type: application/json
 | {% f financialTransactions %}        | `string`     | {% include fields/financial-transactions.md %}                                                                                                                            |
 | {% f failedAttempts %}               | `string`     | {% include fields/failed-attempts.md %}                                                                                                                             |
 | {% f metadata %}                     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}                   | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

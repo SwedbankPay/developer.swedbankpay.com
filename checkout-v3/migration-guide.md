@@ -52,7 +52,7 @@ is not applicable.
 {:.table .table-striped}
 | Required         | Field                    | Type     | Description                            |
 | :--------------: | :----------------------- | :--------| :------------------------------------- |
-| {% icon check %} | `paymentorder`           | `object` | The payment order object.              |
+| {% icon check %} | {% f paymentOrder, 0 %}           | `object` | The payment order object.              |
 | {% icon check %} | {% f productName %}    | `string` | {% include fields/product-name.md %}    |
 | {% icon check %} | {% f implementation %} | `string` | {% include fields/implementation.md %} |
 
@@ -104,7 +104,7 @@ Instead, you'll find the following new fields in Checkout v3:
 {:.table .table-striped}
 | Field                            | Type     | Description                                    |
 | :------------------------------- | :--------| :--------------------------------------------- |
-| {% f paymentorder, 0 %}                   | `object` | The payment order object.                      |
+| {% f paymentOrder, 0 %}                   | `object` | The payment order object.                      |
 | {% f aborted %}                | `id`     | {% include fields/aborted.md %}                |
 | {% f cancelled %}              | `id`     | {% include fields/implementation.md %}         |
 | {% f failed %}                 | `id`     | {% include fields/failed.md %}                 |

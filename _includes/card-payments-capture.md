@@ -34,7 +34,7 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                                                   |
 | :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
+| {% icon check %} | `transaction`            | `object`      | {% include fields/transaction.md %}                        |
 | {% icon check %} | {% f amount %}         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | {% f vatAmount %}      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
 | {% icon check %} | {% f description %}    | `string`      | A textual description of the capture transaction.                                                             |
@@ -78,20 +78,20 @@ Content-Type: application/json
 | {% f payment, 0 %}                 | `string`  | The relative URL of the payment this `capture` transaction belongs to.                                                                                                                                       |
 | {% f capture, 0 %}                 | `object`  | The `capture` resource contains information about the `capture` transaction made against a card payment.                                                                                                     |
 | {% f id %}              | `string`  | The relative URL of the created `capture` transaction.                                                                                                                                                       |
-| {% f transaction %}     | `object`  | The object representation of the generic [`transaction resource`][transaction-resource].                                                                                                                     |
+| {% f transaction %}     | `object`  | {% include fields/transaction.md %}                                                                                                                     |
 | {% f id, 2 %}             | `string`  | The relative URL of the current  `transaction`  resource.                                                                                                                                                    |
 | {% f created, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | {% f updated, 2 %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | {% f type, 2 %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | {% f state, 2 %}          | `string`  | {% include fields/state.md %} |
-| {% f number, 2 %}         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md %} |
 | {% f amount, 2 %}         | `integer` | Amount is entered in the lowest momentary units of the selected currency. E.g. 10000 = 100.00 NOK, 5000 = 50.00 SEK.                                                                                         |
 | {% f vatAmount, 2 %}      | `integer` | If the amount given includes VAT, this may be displayed for the user in the payment page (redirect only). Set to 0 (zero) if this is not relevant.                                                           |
 | {% f description, 2 %}    | `string`  | A human readable description of maximum 40 characters of the transaction                                                                                                                                     |
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                                                                                                                              |
 | {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| {% f operations, 2 %}     | `array`   | The array of [operations][operations] that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f operations, 2 %}     | `array`   | {% include fields/operations.md %}                                                                                                  |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -125,6 +125,3 @@ sequenceDiagram
   activate SwedbankPay
   SwedbankPay-->>-Merchant: transaction resource
 ```
-
-[operations]: /payment-instruments/card/features/technical-reference/operations
-[transaction-resource]: /payment-instruments/card/features/technical-reference/transactions

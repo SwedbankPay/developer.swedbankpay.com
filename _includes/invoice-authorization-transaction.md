@@ -130,14 +130,14 @@ Content-Type: application/json
 | {% f updated %}        | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | {% f type %}           | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | {% f state %}          | `string`  | `Initialized`, `Completed` or `Failed`. Indicates the state of the transaction.                                                                                                                              |
-| {% f number %}         | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, for that `id` should be used instead. |
+| {% f number %}         | `integer` | {% include fields/number.md %} |
 | {% f amount %}         | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
 | {% f vatAmount %}      | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description %}    | `string`  | {% include fields/description.md %}                                                                                                                               |
 | {% f payeeReference %} | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                     |
 | {% f failedReason %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational %}  | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| {% f operations %}     | `array`   | The array of operations that are possible to perform on the transaction in its current state.                                                                                                                |
+| {% f operations %}     | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                                |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

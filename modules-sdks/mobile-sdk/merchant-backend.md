@@ -139,7 +139,7 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field          | Type     | Description                 |
 | :--------------: | :------------- | :------- | :-------------------------- |
-| {% icon check %} | `paymentorder` | `object` | The payment order to create |
+| {% icon check %} | {% f paymentOrder, 0 %} | `object` | The payment order to create |
 
 *   ① The contents of `paymentorder` are omitted here. See [Checkout
     Documentation][create-payment-order] for details.
@@ -230,8 +230,8 @@ Content-Type: application/json
 |     Required     | Field                | Type     | Description                               |
 | :--------------: | :------------------- | :------- | :---------------------------------------- |
 | {% icon check %} | `href`               | `string` | The href of the Operation                 |
-| {% icon check %} | `paymentorder`       | `object` | The changes to make to the payment order  |
-| {% icon check %} | {% f operation %}  | `string` | The operation to perform: "SetInstrument" |
+| {% icon check %} | {% f paymentOrder, 0 %}       | `object` | The changes to make to the payment order  |
+| {% icon check %} | {% f operation %}  | `string` | The operation to perform: `SetInstrument` |
 | {% icon check %} | {% f instrument %} | `string` | The instrument to set                     |
 
 Merchant Backend will then make a corresponding request to the Swedbank Pay API.
