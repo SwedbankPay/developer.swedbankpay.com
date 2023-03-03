@@ -15,9 +15,9 @@ this very documentation, not to a version of any APIs described by it." %}
 ### Version 3.2.0
 
 We promised you something big, and here it is. [Click to Pay][click-to-pay] and
-[Google Pay][google-pay] have been added to our arsenal of payment instruments.
-Click on your instrument of choice to see what is needed for you to activate in
-your integration. We have also added information on how to activate
+[Google Pay&trade;][google-pay] have been added to our arsenal of payment
+instruments. Click on your instrument of choice to see what is needed for you to
+activate in your integration. We have also added information on how to activate
 [Apple Pay][apple-pay], which we recommend reading up on.
 
 As you've probably already seen, our new sidebar is finally live too! We have
