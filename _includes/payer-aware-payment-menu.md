@@ -202,11 +202,12 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :-------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `paymentorder`                    | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f operation %}               | `string`     | The operation that the payment order is supposed to perform.                                                                                                                                                                                                                                             |
+| {% icon check %} | {% f paymentOrder, 0 %}                    | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
+| {% icon check %} | {% f operation %}               | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f currency %}                | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f amount %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount %}               | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                             |
@@ -219,10 +220,10 @@ Content-Type: application/json
 | {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |{% endif %}
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
-|                  | {% f paymentUrl, 2 %}              | `string`     | The URL that Swedbank Pay will redirect back to when the payment menu needs to be loaded, to inspect and act on the current status of the payment. See [`paymentUrl`]({{ features_url }}/technical-reference/payment-url) for details.                                                                   | {% endif %}
-| {% icon check %} | {% f completeUrl, 2 %}             | `string`     | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment order to inspect it further. See [`completeUrl`]({{ features_url }}/technical-reference/complete-url) for details. |
+|                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url.md %} | {% endif %}
+| {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
 |                  | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-| {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | The URL to the API endpoint receiving `POST` requests on transaction activity related to the payment order.                                                                                                                                                                                              |
+| {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
 | {% icon check %} | {% f termsOfServiceUrl, 2 %}       | `string`     | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |{% if include.integration_mode=="redirect" %},
 | {% icon check %} | {% f logoUrl, 2 %}                 | `string`     | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                               |{% endif %}
 | {% icon check %} | {% f payeeInfo %}               | `string`     | The `payeeInfo` object, containing information about the payee.                                                                                                                                                                                                                                          |
@@ -231,8 +232,8 @@ Content-Type: application/json
 |                  | {% f payeeName, 2 %}              | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | {% f productCategory, 2 %}        | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | {% f orderReference, 2 %}         | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | {% f subsite, 2 %}                | `String(40)` | The subsite field can be used to perform [split settlement][split-settlement] on the payment. The subsites must be resolved with Swedbank Pay [reconciliation][settlement-reconciliation] before being used. Must be in the format of `A-Za-z0-9`.                                                                                         | {% if documentation_section contains "checkout-v3/payments-only" %}
-|                  | {% f siteId, 2 %}                 | `String(15)` | `SiteId` is used for [split settlement][split-settlement] transactions when you, as a merchant, need to specify towards AMEX which sub-merchant the transaction belongs to. Must be in the format of `A-Za-z0-9`.                                                                      | {% endif %}
+|                  | {% f subsite, 2 %}                | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "checkout-v3/payments-only" %}
+|                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                      | {% endif %}
 |                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 |  | {% f firstName, 2 %}                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
@@ -281,6 +282,8 @@ Content-Type: application/json
 | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
 |                  | {% f restrictedToInstruments %}  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Payer Aware Payment Menu Response
 
@@ -379,10 +382,11 @@ Content-Type: application/json
       }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| {% f paymentorder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
@@ -412,7 +416,9 @@ Content-Type: application/json
 | {% f financialTransactions %}     | `string`     | The URL to the `financialTransactions` resource where information about the financial transactions can be retrieved.                                                                                                                            |
 | {% f failedAttempts %}     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+| {% f operations %}     | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Tokens
 
@@ -519,19 +525,22 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
-| Field                    | Type         | Description    |
-| :----------------------- | :----------- | :------------------- |
-| {% f payerOwnedTokens %}                    | `object`     | The `payerOwnedTokens` object containing information about the payer relevant for the payment order.       |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                   |
-| {% f payerReference, 2 %}                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                  |
-| {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                           |
-| {% f token, 2 %}  | `string`   | The token `guid`. |
-| {% f tokenType, 2 %}  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
-| {% f instrument %}             | `string`     | Payment instrument connected to the token. |
-| {% f instrumentDisplayName %}             | `string`     | Payment instrument connected to the token.|
-| {% f instrumentParameters %}             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
-| {% f operations %}     | `array`      | The array of possible operations to perform regarding the token. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                          | Type      | Description    |
+| :----------------------------- | :-------- | :------------------- |
+| {% f payerOwnedTokens %}       | `object`  | The `payerOwnedTokens` object containing information about the payer relevant for the payment order.       |
+| {% f id %}                     | `string`  | {% include fields/id.md resource="paymentorder" %}                                                   |
+| {% f payerReference, 2 %}      | `string`  | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                  |
+| {% f tokens %}                 | `integer` | A list of tokens connected to the payment.                                           |
+| {% f token, 2 %}               | `string`  | The token `guid`. |
+| {% f tokenType, 2 %}           | `string`  | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| {% f instrument %}             | `string`  | Payment instrument connected to the token. |
+| {% f instrumentDisplayName %}  | `string`  | Payment instrument connected to the token.|
+| {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+| {% f operations %}             | `array`   | {% include fields/operations.md resource="token" %}                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## PATCH Request For Removing Tokens
 
@@ -598,7 +607,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description    |
 | :----------------------- | :----------- | :------------------- |
 | {% f payerOwnedTokens %}                    | `object`     | The `payerOwnedTokens` object containing information about the payer relevant for the payment order.       |
@@ -606,18 +616,16 @@ Content-Type: application/json
 | {% f payerReference, 2 %}                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                  |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                           |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
-| {% f tokenType, 2 %}  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| {% f tokenType, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f instrument %}             | `string`     | Payment instrument connected to the token. |
 | {% f instrumentDisplayName %}             | `string`     | Payment instrument connected to the token.|
 | {% f instrumentParameters %}             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 [split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
-[completeurl]: {{ features_url }}/technical-reference/complete-url
 [delete-tokens]: {{ features_url }}/optional/delete-token
-[payment-url]: {{ features_url }}/technical-reference/payment-url
-[one-click-payments]: {{ features_url }}/optional/one-click-payments
-[recur]: {{ features_url }}/optional/recur
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [instrument-mode]: {{ features_url }}/optional/instrument-mode

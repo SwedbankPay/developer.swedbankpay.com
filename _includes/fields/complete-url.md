@@ -1,15 +1,14 @@
-{%- capture settlement_url -%}
+{%- assign resource=include.resource | default: 'payment order' -%}
+{%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/core/settlement-reconciliation' -%}
+        href='/features/technical-reference/complete-url' -%}
 {%- endcapture -%}
-{%- assign split_settlement_url=settlement_url | append: '#split-settlement' -%}
 {%- capture text -%}
-The `subsite` field can be used to perform {% clink split settlement %}{{
-split_settlement_url }}{% endclink %} on the payment. The different `subsite`
-values must be resolved with Swedbank Pay {% clink reconciliation %}{{
-settlement_url }}{% endclink %} before being used. If you send in an unknown
-`subsite` value, it will be ignored and the payment will be settled using the
-merchant's default settlement account.  Must be in the format of `A-Za-z0-9`.
+The URL that Swedbank Pay will redirect back to when the payer has completed
+their interactions with the payment. This does not indicate a successful
+payment, only that it has reached a final (complete) state. A `GET` request
+needs to be performed on the {{ resource }} to inspect it further. See
+[`completeUrl`]({{ url }}) for details.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

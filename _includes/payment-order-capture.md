@@ -94,7 +94,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                          | Type         | Description                                                                                                                                                                                                                                                                           |
 | :--------------: | :----------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | `transaction`                  | `object`     | The transaction object.                                                                                                                                                                                                                                                               |
@@ -102,7 +103,7 @@ Content-Type: application/json
 | {% icon check %} | {% f amount %}               | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                  |
-|                  | {% f receiptReference %}     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
+|                  | {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
 | {% icon check %} | {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f reference, 2 %}           | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                           |
 | {% icon check %} | {% f name, 2 %}                | `string`     | The name of the order item.                                                                                                                                                                                                                                                           |
@@ -134,6 +135,8 @@ Content-Type: application/json
 | {% icon check %} | {% f vatPercent, 2 %}          | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
 | {% icon check %} | {% f amount, 2 %}              | `integer`    | The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                 |
 | {% icon check %} | {% f vatAmount, 2 %}           | `integer`    | The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. `10000` equals `100.00 NOK` and `500`0 equals `50.00 NOK`.                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Capture Response
 
@@ -166,25 +169,27 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Property                    | Type         | Description                                                                                                                                                                                                       |
 | :-------------------------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% f payment, 0 %}                   | `string`     | The relative URL of the payment this capture transaction belongs to.                                                                                                                                              |
 | {% f capture, 0 %}                   | `object`     | The capture object, containing the information about the capture transaction.                                                                                                                                     |
 | {% f id %}                | `string`     | The relative URL of the created capture transaction.                                                                                                                                                              |
-| {% f transaction %}       | `object`     | The transaction object, containing information about the current transaction.                                                                                                                                     |
+| {% f transaction %}       | `object`     | {% include fields/transaction.md %}                                                                                                                                     |
 | {% f id, 2 %}               | `string`     | The relative URL of the current `transaction` resource.                                                                                                                                                           |
 | {% f created, 2 %}          | `string`     | The ISO-8601 date and time of when the transaction was created.                                                                                                                                                   |
 | {% f updated, 2 %}          | `string`     | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                                   |
 | {% f type, 2 %}             | `string`     | Indicates the transaction type.                                                                                                                                                                                   |
 | {% f state, 2 %}            | `string`     | {% include fields/state.md %}            |
-| {% f number, 2 %}           | `string`     | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead.      |
+| {% f number, 2 %}           | `integer`    | {% include fields/number.md %}      |
 | {% f amount, 2 %}           | `integer`    | {% include fields/amount.md %}                                                                                                                                                                         |
 | {% f vatAmount, 2 %}        | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                      |
 | {% f description, 2 %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
 | {% f payeeReference, 2 %}   | `string`     | {% include fields/payee-reference.md describe_receipt=true %}                                                                                              |
 | {% f receiptReference, 2 %} | `string(30)` | A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement `payeeReference` as an additional receipt number. |
-{:.table .table-striped}
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Capture Sequence Diagram
 
@@ -228,6 +233,5 @@ sequenceDiagram
 
 [card]: /payment-instruments/card
 [vipps]: /payment-instruments/vipps
-[payee-reference]: {{ features_url }}/technical-reference/payee-reference
 [swish]: /payment-instruments/swish/
 [trustly]: /payment-instruments/trustly/

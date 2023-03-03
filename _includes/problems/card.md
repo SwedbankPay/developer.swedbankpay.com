@@ -8,7 +8,8 @@ the following URL structure:
 
 #### Contractual Problem Types
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Type                           | Status | Description                                                                                                                    |
 | :----------------------------- | :----: | :----------------------------------------------------------------------------------------------------------------------------- |
 | `cardbranddisabled`            | `403`  | The card brand is disabled.                                                                                                    |
@@ -19,10 +20,13 @@ the following URL structure:
 | `frauddetected`                | `403`  | The transaction was fraudulent.                                                                                                |
 | `3dsecuredeclined`             | `403`  | 3-D Secure declined the transaction.                                                                                           |
 | `velocitycheck`                | `429`  | Indicates that the limit for how  many times a card or different cards can be used for attempting a purchase has been reached. |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 #### Acquirer and 3-D Secure Problem Types
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Type                           | Status | Description                                                                                   |
 | :----------------------------- | :----: | :-------------------------------------------------------------------------------------------- |
 | `3dsecureerror`                | `400`  | 3-D Secure is not working. Try again after some time.                                              |
@@ -46,3 +50,5 @@ the following URL structure:
 | `acquirergatewayerror`         | `502`  | Problems reaching acquirers gateway. Try again after some time.                                |
 | `badgateway`                   | `502`  | Problems reaching the gateway. Try again after some time.                                |
 | `acquirergatewaytimeout`       | `504`  | Problems reaching acquirers gateway. Try again after some time.                                |
+{% endcapture %}
+{% include accordion-table.html content=table %}

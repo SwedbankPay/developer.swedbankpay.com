@@ -44,12 +44,15 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `string`     | The transaction object contains information about this cancellation.                  |
 | {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the reason for the cancellation.                             |
 | {% icon check %}︎ | {% f payeeReference %} | `string(50)` | {% include fields/payee-reference.md %} |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Cancel Response
 
@@ -103,7 +106,8 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
 | :--------------- | :----------------------- | :----------- | :------------------------------------------------------------------------------------ |
 | {% icon check %}︎ | `transaction`            | `integer`    | The reversal `transaction`.                                                           |
@@ -111,6 +115,8 @@ Content-Type: application/json
 | {% icon check %}︎ | {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                          |
 | {% icon check %}︎ | {% f description %}    | `string`     | A textual description of the capture                                                  |
 | {% icon check %}︎ | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %} |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Reversal Response
 

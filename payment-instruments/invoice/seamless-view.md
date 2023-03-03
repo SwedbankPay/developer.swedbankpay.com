@@ -7,6 +7,10 @@ description: |
 menu_order: 600
 ---
 
+{% assign financing_consumer_url="/payment-instruments/invoice/features/technical-reference/financing-consumer" %}
+{% assign cancel_url="/payment-instruments/invoice/after-payment#cancellations" %}
+{% assign capture_url="/payment-instruments/invoice/capture" %}
+
 {% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
 Seamless View Invoice is about to be phased out. This section is only for
 merchants who currently have a contract with this integration." %}
@@ -37,7 +41,7 @@ transaction.
 An example of an abbreviated `POST` request is provided below. Each individual
 field of the JSON document is described in the following section. An example of
 an expanded `POST` request is available in the [other features
-section][financing-consumer].
+section]({{ financing_consumer_url }}).
 
 When properly set up in your merchant/webshop site and the payer starts the
 invoice process, you need to make a POST request towards Swedbank Pay with your
@@ -96,15 +100,16 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                             | Type          | Description                                                                                                                                                                                                                                                                                                                                    |
 | :--------------: | :-------------------------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `payment`                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f operation %}               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`][financing-consumer] operation is used in our example. |
-| {% icon check %} | {% f intent %}                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation][cancel] or [capture][capture] of funds.                                                                                                                                                                                                                              |
+| {% icon check %} | {% f payment, 0 %}                         | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                          |
+| {% icon check %} | {% f operation %}               | `string`      | The operation that the `payment` is supposed to perform. The [`FinancingConsumer`]({{ financing_consumer_url }}) operation is used in our example. |
+| {% icon check %} | {% f intent %}                  | `string`      | `Authorization`. Reserves the amount, and is followed by a [cancellation]({{ cancel_url }}) or [capture]({{ capture_url }}) of funds.                                                                                                                                                                                                                              |
 | {% icon check %} | {% f currency %}                | `string`      | NOK or SEK.                                                                                                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f prices %}                  | `object`      | The `prices` resource lists the prices related to a specific payment.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f type, 2 %}                   | `string`      | Use the invoice value [See the Prices resource and prices object types for more information][price-resource].                                                                                                                                                                                                                                  |
+| {% icon check %} | {% f type, 2 %}                   | `string`      | {% include fields/prices-type.md kind="Invoice" %}                                                                                                                                                                                                                                  |
 | {% icon check %} | {% f amount, 2 %}                 | `integer`     | {% include fields/amount.md %}                                                                                                                                                                                                                                                                                                      |
 | {% icon check %} | {% f vatAmount, 2 %}              | `integer`     | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f description %}             | `string(40)`  | {% include fields/description.md %}                                                                                                                                                                                                                                                                 |
@@ -113,19 +118,21 @@ Content-Type: application/json
 | {% icon check %} | {% f language %}                | `string`      | {% include fields/language.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f urls %}                    | `object`      | The`urls`resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                           |
 | {% icon check %} | {% f hostUrls, 2 %}               | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                     |
-| {% icon check %} | {% f completeUrl, 2 %}            | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A`GET`request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.                                               |
+| {% icon check %} | {% f completeUrl, 2 %}            | `string`      | {% include fields/complete-url.md resource="payment" %} |
 |                  | {% f cancelUrl, 2 %}              | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with`paymentUrl`; only cancelUrl or`paymentUrl`can be used, not both.                                                                                                                                             |
-|                  | {% f callbackUrl, 2 %}            | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback] for details.                                                                                                                                                                                          |
+|                  | {% f callbackUrl, 2 %}            | `string`      | {% include fields/callback-url.md resource="payment" %}                                                                                                                                                                                          |
 |                  | {% f termsOfServiceUrl, 2 %}      | `string`      | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                                                           |
 | {% icon check %} | {% f payeeInfo %}               | `object`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                                                            |
 | {% icon check %} | {% f payeeId, 2 %}                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f payeeReference, 2 %}         | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                       |
 |                  | {% f payeeName, 2 %}              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                                        |
 |                  | {% f productCategory, 2 %}        | `string`      | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                                                                 |
-|                  | {% f orderReference, 2 %}         | `String(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |
+|                  | {% f orderReference, 2 %}         | `string(50)`  | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                                                        |
 |                  | {% f payer %}                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | {% f payerReference, 2 %}         | `string`     | {% include fields/payer-reference.md documentation_section="invoice" %}                                                                                                                                                                                                                                                           |
-| {% icon check %} | {% f invoiceType, 2 %}            | `String`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
+| {% icon check %} | {% f invoiceType, 2 %}            | `string`      | `PayExFinancingSe`, `PayExFinancingNo` or `PayExFinancingFi` depending on which country you're doing business with Swedbank Pay in. (Other external financing partner names must be agreed upon with Swedbank Pay.)                                                                                                                            |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Seamless View Response
 
@@ -303,10 +310,4 @@ made a `capture` request." %}
 {% include iterator.html prev_href="redirect" prev_title="Redirect"
 next_href="direct" next_title="Direct" %}
 
-[callback]: /payment-instruments/invoice/features/core/callback
-[cancel]: /payment-instruments/invoice/after-payment#cancellations
-[capture]: /payment-instruments/invoice/capture
-[complete-url]: /payment-instruments/invoice/features/technical-reference/complete-url
-[financing-consumer]: /payment-instruments/invoice/features/technical-reference/financing-consumer
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png
-[price-resource]: /payment-instruments/invoice/features/technical-reference/prices

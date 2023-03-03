@@ -1,6 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include utils/documentation-section.md %}{%
-endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Restrict Payments To An Age Limit
@@ -54,7 +53,7 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Required         | Field     | Type         | Description   |
-| :--------------: | :-------- | :----------- | :------------ |
-| {% icon check %} | `paymentorder`                         | `object`  | The payment order object.                                                 |
-|                  | {% f restrictedToAgeLimit %}        | `int`    | Used for setting the age you want to restrict the payment to.              |
+| Required         | Field                        | Type     | Description                                                   |
+| :--------------: | :--------------------------- | :------- | :------------------------------------------------------------ |
+| {% icon check %} | {% f paymentOrder, 0 %}               | `object` | The payment order object.                                     |
+|                  | {% f restrictedToAgeLimit %} | `int`    | Used for setting the age you want to restrict the payment to. |

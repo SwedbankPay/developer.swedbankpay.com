@@ -78,14 +78,14 @@ Content-Type: application/json
 ```
 
 {:.table .table-striped}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------- |
-| {% f paymentorder, 0 %}           | `object`     | The payment order object.                      |
-| {% f paid, 0 %}                | `object`     | The paid object.                     |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | Payment instrument used in the cancelled payment. |
-| {% f number, 2 %}         | `string`  | The transaction number, useful when there's a need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
-| {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f referenceCode, 2 %}          | `string` | A 16 digit reference code which can be used for tracking payments.  |
-| {% f details %}                   | `integer`    | Details connected to the payment. |
+| Field                     | Type      | Description                                                        |
+| :------------------------ | :-------- | :----------------------------------------------------------------- |
+| {% f paymentOrder, 0 %}   | `object`  | The payment order object.                                          |
+| {% f paid, 0 %}           | `object`  | The paid object.                                                   |
+| {% f id %}                | `string`  | {% include fields/id.md resource="paymentorder" %}                 |
+| {% f instrument %}        | `string`  | Payment instrument used in the cancelled payment.                  |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md %}                                     |
+| {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                            |
+| {% f amount %}            | `integer` | {% include fields/amount.md %}                                     |
+| {% f referenceCode, 2 %}  | `string`  | A 16 digit reference code which can be used for tracking payments. |
+| {% f details %}           | `integer` | Details connected to the payment.                                  |

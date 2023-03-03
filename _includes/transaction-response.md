@@ -157,10 +157,11 @@ Content-Type: application/json
 
 {% endif %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                             | Type      | Description                                                                                                                                                                                                  |
 | :-------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |{% if documentation_section contains "checkout" or "payment-menu" %}
-| {% f paymentorder, 0 %}                         | `string`  | {% include fields/id.md %}                                                                                                                                                    | {% else %}
+| {% f paymentOrder, 0 %}                         | `string`  | {% include fields/id.md %}                                                                                                                                                    | {% else %}
 | {% f payment, 0 %}                         | `string`  | {% include fields/id.md sub_resource=plural %}                                                                                                                                                    |
 | `{{ plural }}`                    | `object`  | The current `{{ plural }}` resource.                                                                                                                                                                         | {% endif %}
 | {% f id %}                      | `string`  | {% include fields/id.md resource=transaction %}                                                                                                                                                   | {% if api_resource == "creditcard" %} |
@@ -179,19 +180,20 @@ Content-Type: application/json
 | {% f authenticationStatus %}    | `string`  | `Y`, `A`, `U` or `N`. Indicates the status of the authentication.                                                                                                                                            | {% endif %}                           |
 | {% f itemDescriptions %}        | `object`  | The object representation of the `itemDescriptions` resource.                                                                                                                                                |
 | {% f id, 2 %}                     | `string`  | {% include fields/id.md resource="itemDescriptions" %}                                                                                                                                            |
-| {% f transaction %}             | `object`  | The object representation of the generic transaction resource.                                                                                                                                               |
+| {% f transaction %}             | `object`  | {% include fields/transaction.md %}                                                                                                                                               |
 | {% f id, 2 %}                     | `string`  | {% include fields/id.md resource="transaction" %}                                                                                                                                                 |
 | {% f created, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was created.                                                                                                                                              |
 | {% f updated, 2 %}                | `string`  | The ISO-8601 date and time of when the transaction was updated.                                                                                                                                              |
 | {% f type, 2 %}                   | `string`  | Indicates the transaction type.                                                                                                                                                                              |
 | {% f state, 2 %}                  | `string`  |{% include fields/state.md %}    |
-| {% f number, 2 %}                 | `string`  | The transaction `number`, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where `id` should be used instead. |
+| {% f number, 2 %}                 | `integer` | {% include fields/number.md %} |
 | {% f amount, 2 %}                 | `integer` | {% include fields/amount.md %}                                                                                                                                                                    |
 | {% f vatAmount, 2 %}              | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                 |
 | {% f description, 2 %}            | `string`  | {% include fields/description.md %}                                                                                                                   |
 | {% f payeeReference, 2 %}         | `string`  | {% include fields/payee-reference.md describe_receipt=true %}                                                                                         |
-| {% f receiptReference, 2 %}       | `string`  | A unique reference for the transaction. This reference is used as an invoice/receipt number.                                                                                                                 |
+| {% f receiptReference, 2 %}       | `string`  | {% include fields/receipt-reference.md %}                                                                                                                 |
 | {% f failedReason, 2 %}           | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational, 2 %}          | `bool`    | `true` if the transaction is operational; otherwise `false`.                                                                                                                                                 |
-| {% f operations, 2 %}             | `array`   | The array of [operations]({{ operations_href }}) that are possible to perform on the transaction in its current state.                                                                                                  |
-{% include accordion-table.html content=response_table %}
+| {% f operations, 2 %}             | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                  |
+{% endcapture %}
+{% include accordion-table.html content=table %}

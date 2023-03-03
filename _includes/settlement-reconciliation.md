@@ -106,10 +106,10 @@ As with the Balance Report there are two versions of the Transaction List, and
 {:.table .table-striped}
 | Field         | Type       | Description                                                                |
 | :------------ | :--------- | :------------------------------------------------------------------------- |
-| `Prefix`      | `String`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
+| `Prefix`      | `string`   | The `Prefix` used for transactions, only eligible if merchant uses prefix. |
 | `Currency`    | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                |
-| `ServiceType` | `String`   | The service type of the service used (e.g. `Creditcard`).                  |
-| `Service`     | `String`   | The service used (e.g. `Creditcard`).                                      |
+| `ServiceType` | `string`   | The service type of the service used (e.g. `Creditcard`).                  |
+| `Service`     | `string`   | The service used (e.g. `Creditcard`).                                      |
 | `NoOfDebet`   | `Decimal`  | Total number of debit transactions for the given service.                  |
 | `NoOfCredit`  | `Decimal`  | Total number of credit transactions for the given service.                 |
 | `Amount`      | `Decimal`  | Total amount for the given service (e.g 100.00).                           |
@@ -123,35 +123,35 @@ As with the Balance Report there are two versions of the Transaction List, and
 | :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Swedbank Pay Batch Number`     | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
 | `Transaction Number`            | `Decimal`  | A unique identifier of the transaction, can be traced in the Merchant Portal user interface.                                                               |
-| `Order id`                      | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
+| `Order id`                      | `string`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
 | `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                       |
 | `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                        |
-| `Provider`                      | `String`   | The service provider (e.g. Babs, Swedbank).                                                                                                               |
-| `Type`                          | `String`   | The service type of the related transaction (e.g. `Creditcard`).                                                                                          |
+| `Provider`                      | `string`   | The service provider (e.g. Babs, Swedbank).                                                                                                               |
+| `Type`                          | `string`   | The service type of the related transaction (e.g. `Creditcard`).                                                                                          |
 | `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                     |
 | `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                               |
-| `Product Number`                | `String`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
-| `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
+| `Product Number`                | `string`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
+| `Description`                   | `string`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
 | `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                        |
 | `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                                 |
 | `Credit Card Batch Number`      | `Decimal`  | The reference number from the credit card processor.                                                                                                      |
 | `Reference`                     | `Decimal`  | The transaction reference from processor.                                                                                                                 |
 | `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in the Merchant Portal.                                                                                                    |
 | `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.     |
-| `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
-| `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
-| `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
+| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
+| `Brand`                         | `string`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
+| `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
 ## V2 Header Fields
 
 {:.table .table-striped}
 | Field                     | Type       | Description                                                                  |
 | :-------------------------| :--------- | :--------------------------------------------------------------------------- |
-| `Subsite`                 | `String`   | The `Subsite` used for transactions, only eligible if merchant uses subsite. |
-| `SubsiteDescription`      | `String`   | Description of the `Subsite`, only eligible if merchant uses subsite.        |
+| `Subsite`                 | `string`   | The `Subsite` used for transactions, only eligible if merchant uses subsite. |
+| `SubsiteDescription`      | `string`   | Description of the `Subsite`, only eligible if merchant uses subsite.        |
 | `Currency`                | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                  |
-| `ServiceType`             | `String`   | The service type of the service used (e.g. `Creditcard`).                    |
-| `ServiceName`             | `String`   | The service used (e.g. `Corporate Cards EU`).                                |
+| `ServiceType`             | `string`   | The service type of the service used (e.g. `Creditcard`).                    |
+| `ServiceName`             | `string`   | The service used (e.g. `Corporate Cards EU`).                                |
 | `NoOfDebet`               | `Decimal`  | Total number of debit transactions for the given service.                    |
 | `NoOfCredit`              | `Decimal`  | Total number of credit transactions for the given service.                   |
 | `Amount`                  | `Decimal`  | Total amount for the given service (e.g 100.00).                             |
@@ -164,28 +164,28 @@ As with the Balance Report there are two versions of the Transaction List, and
 | Field                           | Type       | Description                                                                                                                                               |
 | :------------------------------ | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `PayExAccountNo`                | `Decimal`  | The Account number given, shown the Merchant Portal..                                                                             |
-| `OrderIdentity`                 | `String`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
-| `TransactionIdentity`           | `String`   | A unique guid identifier of the transaction, can be traced in the Merchant Portal user interface.                                                          |
+| `OrderIdentity`                 | `string`   | A unique identifier of the order, as sent from the merchant to Swedbank Pay. Transactions that are related to the same order are associated with this ID. |
+| `TransactionIdentity`           | `string`   | A unique guid identifier of the transaction, can be traced in the Merchant Portal user interface.                                                          |
 | `Amount`                        | `Decimal`  | Total amount of the related transaction (e.g 100.00).                                                                                                     |
 | `Currency`                      | `ISO 4217` | Settlement currency (e.g. `SEK, NOK, EUR`).                                                                                                               |
 | `VAT Amount`                    | `Decimal`  | VAT Amount for the given transaction (e.g 100.00).                                                                                                        |
 | `VAT Percentage`                | `Decimal`  | VAT Percentage for the given transaction.                                                                                                                 |
 | `Date Created`                  | `ISO 8601` | Transaction capture date/time. YYYY-MM-DD hh:mm:ss.                                                                                                       |
 | `Date Modified`                 | `ISO 8601` | Transaction settle date/time. YYYY-MM-DD hh:mm:ss.                                                                                                        |
-| `ServiceName`                   | `String`   | The service used (e.g. `Corporate Cards EU`).                                                                                                             |
-| `Provider`                      | `String`   | The service provider (e.g. Swedbank Pay, PayEx, Swish).                                                                                                   |
+| `ServiceName`                   | `string`   | The service used (e.g. `Corporate Cards EU`).                                                                                                             |
+| `Provider`                      | `string`   | The service provider (e.g. Swedbank Pay, PayEx, Swish).                                                                                                   |
 | `PayExTransactionNo`            | `Decimal`  | A unique identifier of the transaction, can be traced in the Merchant Portal user interface.                                                               |
 | `PayExBatchNo`                  | `Decimal`  | A batch number common to all types of transactions processed by Swedbank Pay.                                                                             |
-| `Subsite`                       | `String`   | The `Subsite` used for transactions, only eligible if merchant uses subsite.                                                                              |
-| `SubsiteDescription`            | `String`   | Description of the `Subsite`, only eligible if merchant uses subsite.                                                                                     |
+| `Subsite`                       | `string`   | The `Subsite` used for transactions, only eligible if merchant uses subsite.                                                                              |
+| `SubsiteDescription`            | `string`   | Description of the `Subsite`, only eligible if merchant uses subsite.                                                                                     |
 | `ReferencedTransaction`         | `Decimal`  | Transaction number for the authorization transaction for a two-stage transaction, or the number of the debit transaction if it is a credit transaction.   |
 | `ExternalTransactionReference`  | `Decimal`  | The transaction reference from processor.   |
 | `CreditCardBatchNo`             | `Decimal`  | The reference number from the credit card processor.                                                                                                      |
-| `Description`                   | `String`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
-| `ProductCategory`               | `String`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
-| `Sales Channel`                 | `String`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
-| `Brand`                         | `String`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
-| `Point Of Sale`                 | `String`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
+| `Description`                   | `string`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
+| `ProductCategory`               | `string`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
+| `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
+| `Brand`                         | `string`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
+| `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
 ## Reconciliation
 

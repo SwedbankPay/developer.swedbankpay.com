@@ -114,7 +114,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include fields/id.md %}                       |
+| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
 ## `onPaymentAborted`
@@ -167,7 +167,7 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                   |
-| `paymentOrder`          | `string` | {% include fields/id.md %}                 |
+| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ## `onPaymentCompleted`
@@ -197,7 +197,7 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                       |
-| `paymentOrder`          | `string` | {% include fields/id.md %}                     |
+| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
 ## `onPaymentCreated`
@@ -270,7 +270,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include fields/id.md %}                        |
+| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}                        |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
 

@@ -101,10 +101,11 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 |     Required     | Field                        | Type          | Description                                                                                                                                                                                                                                                                                        |
 | :--------------: | :--------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `payment`                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
+| {% icon check %} | {% f payment, 0 %}                    | `object`      | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                              |
 | {% icon check %} | {% f operation %}          | `string`      | The operation that the `payment` is supposed to perform. The `Purchase` operation is used in our example.                                                                                                                                                                              |
 | {% icon check %} | {% f intent %}             | `string`      | `Sale`.                                                                                                                                                                                                                                                                                            |
 | {% icon check %} | {% f currency %}           | `string`      | `SEK`.                                                                                                                                                                                                                                                                                             |
@@ -117,9 +118,9 @@ Content-Type: application/json
 | {% icon check %} | {% f userAgent %}          | `string`      | {% include fields/user-agent.md %}                                                                                                                                                                                                                               |
 | {% icon check %} | {% f language %}           | `string`      | {% include fields/language.md %}                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f urls %}               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                             |
-| {% icon check %} | {% f completeUrl, 2 %}       | `string`      | The URL that Swedbank Pay will redirect back to when the payer has completed their interactions with the payment. This does not indicate a successful payment, only that it has reached a final (complete) state. A `GET` request needs to be performed on the payment to inspect it further. See [`completeUrl`][complete-url] for details.  |
+| {% icon check %} | {% f completeUrl, 2 %}       | `string`      | {% include fields/complete-url.md resource="payment" %}  |
 |                  | {% f cancelUrl, 2 %}         | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                              |
-|                  | {% f callbackUrl, 2 %}       | `string`      | The URL that Swedbank Pay will perform an HTTP POST against every time a transaction is created on the payment. See [callback][callback-url] for details.                                                                                                                                          |
+|                  | {% f callbackUrl, 2 %}       | `string`      | {% include fields/callback-url.md resource="payment" %}                                                                                                                                          |
 |                  | {% f logoUrl, 2 %}           | `string`      | {% include fields/logo-url.md %}                                                                                                                                                                |
 |                  | {% f termsOfServiceUrl, 2 %} | `string`      | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                               |
 | {% icon check %} | {% f payeeInfo %}          | `object`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                              |
@@ -137,6 +138,8 @@ Content-Type: application/json
 |                  | {% f enableEcomOnly, 2 %}    | `boolean`     | `true` if to only enable Swish on browser based transactions.; otherwise `false` to also enable Swish transactions via in-app payments.                                                                                                                                                            |
 |          | {% f paymentRestrictedToAgeLimit, 2 %}             | `integer`     | Positive number that sets the required age  needed to fulfill the payment. To use this feature it has to be configured in the contract.                                                                                                                                                            |
 |                 | {% f paymentRestrictedToSocialSecurityNumber, 2 %} | `string`      | When provided, the payment will be restricted to a specific social security number to make sure its the same logged in customer who is also the payer. Format: yyyyMMddxxxx. To use this feature it has to be configured in the contract.                                                                                                                             |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Redirect Response
 
@@ -253,5 +256,4 @@ sequenceDiagram
 next_href="seamless-view" next_title="Seamless View" %}
 
 [callback-url]: /payment-instruments/swish/features/core/callback
-[complete-url]: /payment-instruments/swish/features/technical-reference/complete-url
 [swish-redirect-image]: /assets/img/payments/swish-redirect-number-input-en.png

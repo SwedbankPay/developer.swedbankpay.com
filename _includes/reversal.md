@@ -108,7 +108,7 @@ Content-Type: application/json
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md documentation_section=include.documentation_section %}                                                                                                                              |
 | {% f failedReason, 2 %}   | `string`  | The human readable explanation of why the payment failed.                                                                                                                                                    |
 | {% f isOperational, 2 %}  | `boolean` | `true`  if the transaction is operational; otherwise  `false` .                                                                                                                                              |
-| {% f operations, 2 %}     | `array`   | The array of [operations]({{ operations_url }}) that are possible to perform on the transaction in its current state.                                                                                                  |
+| {% f operations, 2 %}     | `array`   | {% include fields/operations.md resource="transaction" %}                                                                                                  |
 {% endcapture %}
 {% include accordion-table.html content = response_table %}
 
