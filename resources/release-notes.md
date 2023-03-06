@@ -12,7 +12,7 @@ this very documentation, not to a version of any APIs described by it." %}
 
 ## 03 March 2023
 
-### Version 3.2.0
+### Version 4.0.0
 
 We promised you something big, and here it is. [Click to Pay][click-to-pay] and
 [Google Pay&trade;][google-pay] have been added to our arsenal of payment
