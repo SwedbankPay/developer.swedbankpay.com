@@ -46,9 +46,7 @@ We'll be back soon!
 ### Version 3.1.7
 
 We kick off the new year with a new field in our payment order request. Your
-Checkout v3 implementation of choice is now added in the request, and it is
-mandatory for our
-[business implementation][checkout-v3-business-payment-request].
+Checkout v3 implementation of choice is now added in the request.
 Version 2 of the balance report and transaction list is our second newcomer this
 release. Head over to [Settlement & Reconciliation][settlement-balance-report]
 to learn more.
@@ -131,8 +129,6 @@ integrations. There are a couple of other new additions as well:
   selected instruments
 *   An eligibility check [eligibility check][eligibility-check] for wallets has
   been added to instrument mode
-*   "Remember me" has been added to Checkout v3 [Starter][checkout-v3-starter]
-  and [Business][checkout-v3-business]
 *   Fixed typos, minor bugs and code examples
 
 ## 04 April 2022
@@ -176,8 +172,8 @@ as always, but since different merchants have different needs, we've made it
 easier for you to get the checkout experience which fits you best. So, what's
 new?
 
-*   Four Checkout implementations tailor-made for different needs and wishes:
-    Starter, Business, Enterprise or Payments Only. We've summed them up to help
+*   Two Checkout implementations tailor-made for different needs and wishes:
+    Enterprise or Payments Only. We've summed them up to help
     you find the right fit and [get started][get-started].
 *   Each implementation starts off with a guide to set up your test account
     quickly.
@@ -780,12 +776,9 @@ integration and the payer.
 [checkout-items]: /checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
-[checkout-v3-business]: /checkout-v3/business
-[checkout-v3-business-payment-request]: /checkout-v3/business/redirect#payment-order-request
 [checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
-[checkout-v3-starter]: /checkout-v3/starter
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /checkout-v2/features/core/
@@ -849,7 +842,7 @@ integration and the payer.
 [swish-features]: /payment-instruments/swish/features
 [swish-redirect]: /payment-instruments/swish/redirect
 [swish-seamless-view]: /payment-instruments/swish/seamless-view
-[seamless-view-events]: /checkout-v3/starter/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [seamless-view-events-onaborted]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /payment-instruments/card/features/technical-reference/seamless-view-events
 [sequence-diagrams]: /checkout-v3/sequence-diagrams
