@@ -1,5 +1,5 @@
-{% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
+{% capture documentation_section_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 
 ## Enterprise
 
@@ -57,11 +57,11 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field                            | Type     | Description                                                                                          |
 | :--------------: | :------------------------------- | :------- | :--------------------------------------------------------------------------------------------------- |
-| {% icon check %} | `paymentorder`                   | `object` | The payment order object.                                                                            |
-|                  | └➔&nbsp;`payer`                  | `object` | The `payer` object containing information about the payer relevant for the payment order.            |
-|                  | └─➔&nbsp;`nationalIdentifier`    | `string` | The national identifier object.                                                                      |
-|                  | └──➔&nbsp;`socialSecurityNumber` | `string` | The payer's social security number. Must be part of what you get from your authentication process. |
-|                  | └──➔&nbsp;`countryCode`          | `string` | The country code of the payer.                                                                     |
+| {% icon check %} | {% f paymentOrder, 0 %}                   | `object` | The payment order object.                                                                            |
+|                  | {% f payer %}                  | `object` | The `payer` object containing information about the payer relevant for the payment order.            |
+|                  | {% f nationalIdentifier, 2 %}    | `string` | The national identifier object.                                                                      |
+|                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. Must be part of what you get from your authentication process. |
+|                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     |
 
 When the payer is authenticated by the merchant, some payment instruments
 will allow a more frictionless payment process. Invoice One-Click Payments does

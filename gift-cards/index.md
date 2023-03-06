@@ -1,8 +1,8 @@
 ---
 section: Gift Cards
+sidebar_icon: redeem
 title: Introduction
 permalink: /:path/
-estimated_read: 1
 menu_order: 600
 ---
 

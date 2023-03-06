@@ -1,6 +1,5 @@
 ---
 title: iOS
-estimated_read: 30
 menu_order: 1100
 ---
 
@@ -276,9 +275,9 @@ updating the SDK, and then to opt-in to V3 when ready.
 ```swift
 let paymentController = SwedbankPaySDKController()
 paymentController.startPayment(
-    withCheckin: true, 
-    consumer: consumer, 
-    paymentOrder: payment, 
+    withCheckin: true,
+    consumer: consumer,
+    paymentOrder: payment,
     userData: nil
 )
 

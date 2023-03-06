@@ -1,6 +1,5 @@
 ---
 title: Merchant Backend V2
-estimated_read: 20
 description: |
   This document contains information for the older version of the Backend Merchant of the **Swedbank Pay Mobile SDK**.
 menu_order: 9800
@@ -131,7 +130,7 @@ Content-Type: application/json
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include fields/language.md %} |
 | {% icon check %} | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using ISO-3166 standard.                                                            |
 
 At this point, the Merchant Backend will make a corresponding request to the
@@ -187,10 +186,10 @@ Content-Type: application/json
 | :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
 | `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
-| └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
-| └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.                                                                                             |
-| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
-| └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
+| {% f rel %}         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
+| {% f method %}      | `string` | The HTTP method to use when performing the operation.                                                                                             |
+| {% f contentType %} | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
+| {% f href %}        | `string` | The target URL of the operation.                                                                                                                  |
 
 ## Payment Orders Endpoint
 
@@ -234,7 +233,7 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field          | Type     | Description                 |
 | :--------------: | :------------- | :------- | :-------------------------- |
-| {% icon check %} | `paymentorder` | `object` | The payment order to create |
+| {% icon check %} | {% f paymentOrder, 0 %} | `object` | The payment order to create |
 
 *   ① The contents of `paymentorder` are omitted here. See [Checkout Documentation][create-payment-order] for details.
 
@@ -344,9 +343,9 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field                | Type     | Description                               |
 | :--------------: | :------------------- | :------- | :---------------------------------------- |
-| {% icon check %} | `paymentorder`       | `object` | The changes to make to the payment order  |
-| {% icon check %} | └➔&nbsp;`operation`  | `string` | The operation to perform: "SetInstrument" |
-| {% icon check %} | └➔&nbsp;`instrument` | `string` | The instrument to set                     |
+| {% icon check %} | {% f paymentOrder, 0 %}       | `object` | The changes to make to the payment order  |
+| {% icon check %} | {% f operation %}  | `string` | The operation to perform: `SetInstrument` |
+| {% icon check %} | {% f instrument %} | `string` | The instrument to set                     |
 
 Merchant Backend will then make a corresponding request to the Swedbank Pay API.
 

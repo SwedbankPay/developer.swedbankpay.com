@@ -1,6 +1,5 @@
 ---
 title: Release Notes
-estimated_read: 10
 description: |
   The latest updates about our releases will be
   published on this page.
@@ -10,6 +9,26 @@ menu_order: 800
 {% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
+
+## 03 March 2023
+
+### Version 4.0.0
+
+We promised you something big, and here it is. [Click to Pay][click-to-pay] and
+[Google Pay&trade;][google-pay] have been added to our arsenal of payment
+instruments. Click on your instrument of choice to see what is needed for you to
+activate in your integration. We have also added information on how to activate
+[Apple Pay][apple-pay], which we recommend reading up on.
+
+As you've probably already seen, our new sidebar is finally live too! We have
+given it a facelift and different levels which we hope make it easier for you to
+navigate. All the content is where it used to be. Check it out (and let us know
+what you think)! You might also wonder where the tables following our code
+examples have gone. We have made them expandable, and given them a facelift as
+well.
+
+We have also added [3DS2 test data][3ds2-test], along with smaller maintenance
+tasks and bug fixes.
 
 ## 31 January 2023
 
@@ -729,10 +748,12 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[3ds2-test]: /resources/test-data#otp-3ds2
 [afd-payments]: /checkout-v3/payments-only/features/optional/afd
 [age-restrictions]: /checkout-v3/payments-only/features/optional/age-restrictions
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
+[apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [authorization-timeouts]: /checkout-v2/capture
 [callback]: /checkout-v3/payments-only/features/core/callback
 [card-delete-token]: /payment-instruments/card/features/optional/delete-token
@@ -765,6 +786,7 @@ integration and the payer.
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [checkout-v3-starter]: /checkout-v3/starter
+[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
@@ -779,6 +801,7 @@ integration and the payer.
 [frontpage]: https://developer.swedbankpay.com/
 [get-started]: /checkout-v3/
 [gift-cards]: /gift-cards
+[google-pay]: /checkout-v3/payment-presentations#google-pay
 [home-technical-information]: /introduction
 [initiate-consumer-session]: /checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payment-instruments/invoice/direct

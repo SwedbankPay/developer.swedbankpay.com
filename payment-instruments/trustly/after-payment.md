@@ -1,7 +1,6 @@
 ---
 title: After Payment
 redirect_from: /payments/trustly/after-payment
-estimated_read: 9
 menu_order: 1000
 ---
 
@@ -55,12 +54,12 @@ Content-Type: application/json
 |     Required     | Field                      | Type         | Description                                                                                                                                                                                                                                                                |
 | :--------------: | :------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %}︎ | `transaction`              | `object`     | The transaction object containing details about the reversal transaction.                                                                                                                                                                                                  |
-| {% icon check %}︎ | └➔&nbsp;`activity`         | `string`     | `FinancingConsumer`.                                                                                                                                                                                                                                                       |
-| {% icon check %}︎ | └➔&nbsp;`amount`           | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                                                                  |
-| {% icon check %}︎ | └➔&nbsp;`vatAmount`        | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                                                                               |
-| {% icon check %}︎ | └➔&nbsp;`payeeReference`   | `string` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
-|                  | └➔&nbsp;`receiptReference` | `string(50)` | The `receiptReference` is a reference from the merchant system. This reference is used as an invoice/receipt number.                                                                                                                                                       |
-| {% icon check %}︎ | └➔&nbsp;`description`      | `string`     | A textual description of the reversal.                                                                                                                                                                                                                                     |
+| {% icon check %}︎ | {% f activity %}         | `string`     | `FinancingConsumer`.                                                                                                                                                                                                                                                       |
+| {% icon check %}︎ | {% f amount %}           | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                  |
+| {% icon check %}︎ | {% f vatAmount %}        | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                               |
+| {% icon check %}︎ | {% f payeeReference %}   | `string` | The `payeeReference` is the receipt/invoice number if `receiptReference` is not defined, which is a **unique** reference with max 50 characters set by the merchant system. This must be unique for each operation and must follow the regex pattern `[\w-]*`. |
+|                  | {% f receiptReference %} | `string(50)` | {% include fields/receipt-reference.md %}                                                                                                                                                       |
+| {% icon check %}︎ | {% f description %}      | `string`     | A textual description of the reversal.                                                                                                                                                                                                                                     |
 
 ## Reversal Response
 

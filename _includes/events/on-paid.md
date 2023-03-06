@@ -1,9 +1,12 @@
-{%- capture text -%}
-Indicates the state of the transaction, usually `initialized`, `completed` or
-`failed`. If a partial {{ transaction }} has been done and further transactions
-are possible, the state will be `awaitingActivity`.
+{%- capture event -%}
+This event triggers when the payer successfully completes or cancels the
+payment.
 {%- endcapture -%}
-{{- text | strip_newlines -}}
+{%- comment -%}
+The following chain of Liquid filters converts newlines to spaces and removes
+extranous spaces.
+{%- endcomment -%}
+{{- event | newline_to_br | strip_newlines | split: '<br />' | join: ' ' | strip -}}
 {%- comment -%}
 The dashes in the Liquid code tags remove output space. More on that here:
 

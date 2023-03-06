@@ -1,6 +1,5 @@
 ---
 title: Test Data
-estimated_read: 5
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
@@ -50,6 +49,65 @@ internal acquirer. This gives us a production-like test environment, while also
 giving us sandbox testing opportunities, such as 3-D Secure card enrollment and
 error scenarios. No payment information will be sent to other acquiring
 institutions.
+
+### 3-D Secure Cards
+
+{:.table .table-striped}
+| Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
+| :--------- | :----------------- | :----------------------- | :-----| :------------------ |
+| Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
+| MasterCard | `5226612199533406` | After the current month  | Any   | 3-D Secure enrolled |
+
+### 3-D Secure
+
+For merchants using 3-D Secure (3DS1), this is the ACS (Access Control Server)
+you will encounter in our test environments. Use the Visa or MasterCard listed
+under 3-D Secure Cards above when doing a card payment. After pressing the
+purchase button you will then be taken to a menu where you can select
+Authentication status.
+
+![3D-Secure Emulator without dropdown menu][3ds-emulator-no-dropdown]{:width="805px" :height="685px"}
+
+![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
+
+In this menu, there are a few different options to choose from. Choose the
+status you want to test, click the Continue button and the status you selected
+will be sent with the payment. After pressing **Continue**, you will be sent
+back to the payment like a normal 3-D Secure authentication.
+
+### OTP (3DS2)
+
+For m©erchants using 3DS2, OTP (One-Time Password) is the ACS (Access Control
+Server) you will encounter. Use the Visa or MasterCard listed under 3-D Secure
+Cards above when doing a card payment. After pressing the purchase button you
+will then be taken to a challenge form where you need to enter a code based
+on the result you wish for. See the list of codes below the screenshot. After
+pressing **Pay** you will be sent back to the payment like a normal 3-D Secure
+authentication.
+
+![OTP challenge form][otp-challenge-form]
+
+### OTP Codes
+
+{:.table .table-striped}
+| OTP Value  | Transaction Status | Transaction Status Reason| ECI | Authentication Value|
+| :--------- | :----------------- | :----------------------- | :-- | :------------------ |
+| 1234       | Y                  |                          | 01  | JAmi21makAifmwqo2120cjq1AAA= |
+| 1111       | N                  | 01                       | 01  |  |
+| 2222       | R                  | 01                       | 01  |  |
+| 3333       | U                  | 01                       | 01  |  |
+| 4444       | A                  | 01                       | 01  | Qm181okmdyqh6yQmYuq1890QAAA= |
+
+### OTP Transaction Status
+
+{:.table .table-striped}
+| Transaction Status | Transaction Status Description |
+| :----------------- | :----------------------------- |
+| Y                  |  Authentication / Account verification successful |
+| N                  |  Not authenticated / Account not verified; Transaction denied |
+| R                  |  Authentication / Account verification rejected. Issuer is rejecting authentication/verification and request that authorization not be attempted |
+| U                  |  Authentication / Account verification could not be performed; technical or other problem |
+| A                  |  Attempts processing performed; Not authenticated / verified, but a prood of attempt authentication / verification is provided                      |
 
 ### Visa
 
@@ -121,37 +179,11 @@ institutions.
 | :----------------- | :----------------------- | :---- |
 | `6007220000000004` | After the current month  | Any   |
 
-### 3-D Secure
-
-{:.table .table-striped}
-| Card type  | Card number        | Expiry                   | CVC   | Type of test data   |
-| :--------- | :----------------- | :----------------------- | :-----| :------------------ |
-| Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
-| MasterCard | `5226612199533406` | After the current month  | Any   | 3-D Secure enrolled |
-
-## Failure Testing
+### Failure Testing Cards
 
 There are two different ways of testing Card Payments error scenarios. You can
 test 3-D Secure errors using our 3-D Secure emulator, or you can use specific
 amounts set to trigger errors in our test environment.
-
-### 3-D Secure Method
-
-First, [create a Card Payment][create-card-purchase] (operation `Purchase`) and
-visit the URL of the returned `redirect-authorization` operation in a web
-browser. Use either the Visa or MasterCard listed under 3-D Secure right above
-this section.
-
-After pressing the purchase button you will then be taken to a menu where you
-can select Authentication status.
-
-![3D-Secure Emulator without dropdown menu][3ds-emulator-no-dropdown]{:width="805px" :height="685px"}
-
-![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
-
-In this menu, there are a few different options to choose from. Choose the
-status you want to test, click the Continue button and the
-status you selected will be sent with the payment.
 
 ### Amount Error Testing Method
 
@@ -235,3 +267,4 @@ the following values:
 [create-card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
 [3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
+[otp-challenge-form]: /assets/img/otp-challenge-form.png

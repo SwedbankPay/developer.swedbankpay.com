@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Aborted
 
@@ -33,10 +33,10 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `aborted`                | `object`     | The abort object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`abortReason`             | `string`     | Why the payment was aborted. |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f aborted, 0 %}                | `object`     | The abort object.                     |
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
+| {% f abortReason %}             | `string`     | Why the payment was aborted. |
 
 ## Cancelled
 
@@ -93,30 +93,33 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `cancelled`                | `object`     | The cancel object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`cancelReason`             | `string`     | Why the payment was cancelled. |
-| └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
-| └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
-| └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
-| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
-| └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
-| └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
-| └─➔&nbsp;`type`  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
-| └─➔&nbsp;`token`  | `string`   | The token `guid`. |
-| └─➔&nbsp;`name`  | `string`   | The name of the token. In the example, a masked version of a card number. |
-| └─➔&nbsp;`expiryDate`  | `string`   | The expiry date of the token. |
-| └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
-| └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
-| └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f cancelled, 0 %}                | `object`     | The cancel object.                     |
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
+| {% f cancelReason %}             | `string`     | Why the payment was cancelled. |
+| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f number, 2 %}         | `integer`  | {% include fields/number.md %} |
+| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
+| {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
+| {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
+| {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
+| {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| {% f token, 2 %}  | `string`   | The token `guid`. |
+| {% f name, 2 %}  | `string`   | The name of the token. In the example, a masked version of a card number. |
+| {% f expiryDate, 2 %}  | `string`   | The expiry date of the token. |
+| {% f details %}                   | `integer`    | Details connected to the payment. |
+| {% f nonPaymentToken, 2 %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
+| {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Failed
 
@@ -157,19 +160,22 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description     |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `failed`                | `object`     | The failed object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`problem`             | `object`     | The problem object.  |
-| └─➔&nbsp;`type`  | `string`   | The type of problem that occurred. |
-| └─➔&nbsp;`title`  | `string`   | The title of the problem that occurred. |
-| └─➔&nbsp;`status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
-| └─➔&nbsp;`detail`              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
-| └─➔&nbsp;`problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
-| └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f failed, 0 %}                | `object`     | The failed object.                     |
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
+| {% f problem %}             | `object`     | The problem object.  |
+| {% f type, 2 %}  | `string`   | The type of problem that occurred. |
+| {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
+| {% f status, 2 %}              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
+| {% f detail, 2 %}              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
+| {% f problems, 2 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
+| {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## FailedAttempts
 
@@ -236,25 +242,28 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| └➔&nbsp;`id`  | `string`   | {% include field-description-id.md resource="paymentorder" %} |
-| `failedAttempts`                | `object`     | The failed attempt object.                     |
-| └➔&nbsp;`financialTransactionsList`  | `array`   | The array of failed attempts. |
-| └─➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| └─➔&nbsp;`instrument`             | `string`     | Payment instrument used in the failed payment. |
-| └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`status`             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
-| └➔&nbsp;`problem`             | `object`     | The problem object.  |
-| └─➔&nbsp;`type`  | `string`   | The type of problem that occurred. |
-| └─➔&nbsp;`title`  | `string`   | The title of the problem that occurred. |
-| └─➔&nbsp;`status`              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
-| └─➔&nbsp;`detail`              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
-| └─➔&nbsp;`problems`            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
-| └➔&nbsp;`name`        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
-| └➔&nbsp;`description` | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
+| {% f failedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
+| {% f financialTransactionsList %}  | `array`   | The array of failed attempts. |
+| {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| {% f instrument, 2 %}             | `string`     | Payment instrument used in the failed payment. |
+| {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
+| {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
+| {% f problem %}             | `object`     | The problem object.  |
+| {% f type, 2 %}  | `string`   | The type of problem that occurred. |
+| {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
+| {% f status, 2 %}              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
+| {% f detail, 2 %}              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
+| {% f problems, 2 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
+| {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## FinancialTransactions
 
@@ -330,24 +339,27 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `financialTransactions`                | `object`     | The financial transactions object.                     |
-| └➔&nbsp;`id`  | `string`   | {% include field-description-id.md resource="paymentorder" %} |
-| └➔&nbsp;`financialTransactionsList`  | `array`   | The array of financial transactions. |
-| └─➔&nbsp;`id`  | `string`   | The id of the financial transaction. |
-| └─➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| └─➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| └─➔&nbsp;`type`  | `string`   | The type of transaction. `Capture`, `Authorization`, `Cancellation`, `Reversal`, `Sale`. |
-| └─➔&nbsp;`number`         | `string`  | The transaction number, useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
-| └─➔&nbsp;`vatAmount`                | `integer`    | {% include field-description-vatamount.md %}                                          |
-| └➔&nbsp;`description`              | `string`     | The description of the payment order.                                                                                                                                                         |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
-| └➔&nbsp;`receiptReference`     | `string(30)` | A unique reference from the merchant system. It is used to supplement `payeeReference` as an additional receipt number.                                                                                                                                                               |
-| └➔&nbsp;`orderItems`           | `array`      | {% include field-description-orderitems.md %}                                                                                                                                                                                                                                         |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f financialTransactions, 0 %}                | `object`     | The financial transactions object.                     |
+| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
+| {% f financialTransactionsList %}  | `array`   | The array of financial transactions. |
+| {% f id, 2 %}  | `string`   | The id of the financial transaction. |
+| {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| {% f updated, 2 %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
+| {% f type, 2 %}  | `string`   | The type of transaction. `Capture`, `Authorization`, `Cancellation`, `Reversal`, `Sale`. |
+| {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
+| {% f amount, 2 %}                   | `integer`    | {% include fields/amount.md %}                                            |
+| {% f vatAmount, 2 %}                | `integer`    | {% include fields/vat-amount.md %}                                          |
+| {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                         |
+| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
+| {% f receiptReference %}     | `string(30)` | {% include fields/receipt-reference.md %}                                                                                                                                                               |
+| {% f orderItems %}           | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                         |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## History
 
@@ -491,48 +503,54 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `history`                | `object`     | The history object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`historyList`  | `array`   | The array of history objects. |
-| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the history event was created.                                 |
-| └➔&nbsp;`name`              | `string`     | Name of the history event. See list below for information.     |
-| └➔&nbsp;`instrument`        | `string`     | The payment instrument used when the event occurred.       |
-| └➔&nbsp;`number`              | `string`   | Payment number associated with the event.                 |
-| └➔&nbsp;`prefill`              | `bool`   | Indicates if payment info was prefilled or not.                 |
-| └➔&nbsp;`initiatedBy`        | `string`     | `Consumer`, `Merchant` or `System`. The party that initiated the event.       |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f history, 0 %}                | `object`     | The history object.                     |
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
+| {% f historyList %}  | `array`   | The array of history objects. |
+| {% f created %}        | `string`     | The ISO-8601 date of when the history event was created.                                 |
+| {% f name %}              | `string`     | Name of the history event. See list below for information.     |
+| {% f instrument %}        | `string`     | The payment instrument used when the event occurred.       |
+| {% f number %}              | `integer`   | Payment number associated with the event.                 |
+| {% f prefill %}              | `bool`   | Indicates if payment info was prefilled or not.                 |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | History Event Name         | Description  |
 | :----------------------- | :----------- |
-| `PaymentCreated`         | This event will occur as soon as the merchant initiates the payment order.     |
-| `CheckinInitiated`        | Will be set when checkin is started, if checkin is activated for the merchant. The merchant must be configured with ProductPackage=Checkout                  |
-| `PayerDetailsRetrieved`   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
-| `PayerCheckedIn`      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
-| `PaymentInstrumentSet`      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
-| `PaymentLoaded`       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
-| `PaymentInstrumentSelected`       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
-| `PaymentAttemptStarted`      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the instrument for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
-| `PaymentAttemptAborted`      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
-| `PaymentAttemptFailed`     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
-| `PaymentPaid`      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
-| `PaymentCaptured`      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| `PaymentPartialCaptured`     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
-| `PaymentCancelled`     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
-| `PaymentPartialCancelled`      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
-| `PaymentReversed`    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| `PaymentPartialReversed`    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentCreated, 0 %}         | This event will occur as soon as the merchant initiates the payment order.     |
+| {% f CheckinInitiated, 0 %}        | Will be set when checkin is started, if checkin is activated for the merchant. The merchant must be configured with ProductPackage=Checkout                  |
+| {% f PayerDetailsRetrieved, 0 %}   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
+| {% f PayerCheckedIn, 0 %}      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
+| {% f PaymentInstrumentSet, 0 %}      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
+| {% f PaymentLoaded, 0 %}       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
+| {% f PaymentInstrumentSelected, 0 %}       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
+| {% f PaymentAttemptStarted, 0 %}      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the instrument for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
+| {% f PaymentAttemptAborted, 0 %}      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
+| {% f PaymentAttemptFailed, 0 %}     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
+| {% f PaymentPaid, 0 %}      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
+| {% f PaymentCaptured, 0 %}      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartialCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
+| {% f PaymentCancelled, 0 %}     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
+| {% f PaymentPartialCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
+| {% f PaymentReversed, 0 %}    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartialReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Paid
 
-The payment order response with status `paid`, and the `paid` resource expanded.
-Please note that the main code example is of a **Card** payment. We have
-included `paid` resources of the remaining instruments below the main code
-example. Resource examples where details are empty indicate that no details are
-available.
+The payment order response with `status` equal to `Paid`, and the `paid`
+resource expanded. Please note that the main code example is of a card payment.
+
+We have included `paid` resources of the remaining instruments below the main
+code example. Resource examples where details are empty indicate that no details
+are available.
 
 The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
@@ -648,7 +666,84 @@ Content-Type: application/json
         "acquirerTerminalId": "80100001190",
         "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
         "transactionInitiator": "CARDHOLDER",
-        "bin": "492500"
+        "bin": "492500",
+        "maskedDPan": "49250000******04",
+    }
+  }
+}
+```
+
+### Click to Pay `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+ {:.code-view-header}
+ **Click to Pay Response**
+
+ ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "ClickToPay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "amount": 1500,
+    "details": {
+      "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+      "externalNonPaymentToken": "1234567890",
+      "cardBrand": "Visa",
+      "cardType": "Credit",
+      "expiryDate": "12/0023",
+      "issuerAuthorizationApprovalCode": "L00392",
+      "acquirerTransactionType": "WALLET",
+      "acquirerStan": "392",
+      "acquirerTerminalId": "80100001190",
+      "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+      "transactionInitiator": "CARDHOLDER"
+      "bin": "489537"
+    }
+  }
+}
+```
+
+### Google Pay&trade; `paid` Resource
+
+Please note that this is an abbreviated example. See the main `paid` example for
+more context.
+
+ {:.code-view-header}
+ **Google Pay&trade; Response**
+
+ ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "paid": {
+    "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
+    "instrument": "GooglePay",
+    "number": 80100001190,
+    "payeeReference": "1662360210",
+    "amount": 1500,
+    "details": {
+      "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
+      "externalNonPaymentToken": "1234567890",
+      "cardBrand": "Visa",
+      "cardType": "Credit",
+      "expiryDate": "12/0023",
+      "issuerAuthorizationApprovalCode": "L00392",
+      "acquirerTransactionType": "WALLET",
+      "acquirerStan": "392",
+      "acquirerTerminalId": "80100001190",
+      "acquirerTransactionTime": "2022-09-05T06:45:40.322Z",
+      "transactionInitiator": "CARDHOLDER"
+      "bin": "489537"
     }
   }
 }
@@ -682,7 +777,7 @@ Content-Type: application/json
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
-        "maskedPan": "489537******1424",
+        "maskedDPan": "48953700******04",
         "expiryDate": "12/2022",
         "issuerAuthorizationApprovalCode": "018117",
         "acquirerTransactionType": "MOBILEPAY",
@@ -727,7 +822,8 @@ Content-Type: application/json
         "acquirerTerminalId": "99488282",
         "acquirerTransactionTime": "2022-09-05T09:54:05Z",
         "transactionInitiator": "CARDHOLDER",
-        "bin": "489537"
+        "bin": "489537",
+        "maskedDPan": "48953700******04",
     }
   }
 }
@@ -752,7 +848,7 @@ Content-Type: application/json
     "instrument": "Swish",
     "number": 74100413405,
     "payeeReference": "1662360831",
-    "transactionType": "Authorization",
+    "transactionType": "Sale",
     "amount": 1500,
     "submittedAmount": 1500,
     "feeAmount": 0,
@@ -842,7 +938,7 @@ Content-Type: application/json
     "number": 79100113652,
     "payeeReference": "1662373401",
     "orderReference": "orderReference",
-    "transactionType": "Authorization",
+    "transactionType": "Sale",
     "amount": 1500,
     "submittedAmount": 1500,
     "feeAmount": 0,
@@ -852,40 +948,43 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `paid`                | `object`     | The paid object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`instrument`             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
-| └─➔&nbsp;`number`         | `string`  | The transaction number , useful when there's need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where id should be used instead. |
-| └─➔&nbsp;`payeeReference`          | `string` | {% include field-description-payee-reference.md %} |
-| └─➔&nbsp;`orderReference`          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
-| └─➔&nbsp;`transactionType`          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
-| └➔&nbsp;`amount`                   | `integer`    | {% include field-description-amount.md %}                                            |
-| └➔&nbsp;`submittedAmount`                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| └➔&nbsp;`feeAmount`                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| └➔&nbsp;`discountAmount`                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
-| └➔&nbsp;`tokens`                   | `integer`    | A list of tokens connected to the payment.                                    |
-| └─➔&nbsp;`type`  | `string`   | `payment`, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
-| └─➔&nbsp;`token`  | `string`   | The token `guid`. |
-| └─➔&nbsp;`name`  | `string`   | The name of the token. In the example, a masked version of a card number. |
-| └─➔&nbsp;`expiryDate`  | `string`   | The expiry date of the token. |
-| └➔&nbsp;`details`                   | `integer`    | Details connected to the payment. |
-| └─➔&nbsp;`nonPaymentToken`         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
-| └─➔&nbsp;`externalNonPaymentToken` | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
-| └➔&nbsp;`cardType`                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
-| └➔&nbsp;`maskedPan`               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
-| └➔&nbsp;`expiryDate`              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
-| └─➔&nbsp;`issuerAuthorizationApprovalCode` | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
-| └─➔&nbsp;`acquirerTransactionType` | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
-| └─➔&nbsp;`acquirerStan`            | `string`     | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                                                                                                         |
-| └─➔&nbsp;`acquirerTerminalId`      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
-| └─➔&nbsp;`acquirerTransactionTime` | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
-| └─➔&nbsp;`transactionInitatior` | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
-| └─➔&nbsp;`bin` | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
-| └─➔&nbsp;`msisdn` | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f paid, 0 %}                | `object`     | The paid object.                     |
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
+| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f number, 2 %}         | `integer` | {% include fields/number.md resource="paymentorder" %} |
+| {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
+| {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
+| {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
+| {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
+| {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
+| {% f token, 2 %}  | `string`   | The token `guid`. |
+| {% f name, 2 %}  | `string`   | The name of the token. In the example, a masked version of a card number. |
+| {% f expiryDate, 2 %}  | `string`   | The expiry date of the token. |
+| {% f details %}                   | `integer`    | Details connected to the payment. |
+| {% f nonPaymentToken, 2 %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
+| {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+| {% f cardType %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
+| {% f maskedPan %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
+| {% f expiryDate %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
+| {% f issuerAuthorizationApprovalCode, 2 %} | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
+| {% f acquirerTransactionType, 2 %} | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
+| {% f acquirerStan, 2 %}            | `string`     | The System Trace Audit Number assigned by the acquirer to uniquely identify the transaction.                                                                                                                                                                                                         |
+| {% f acquirerTerminalId, 2 %}      | `string`     | The ID of the acquirer terminal.                                                                                                                                                                                                                                                                     |
+| {% f acquirerTransactionTime, 2 %} | `string`     | The ISO-8601 date and time of the acquirer transaction.                                                                                                                                                                                                                                              |
+| {% f transactionInitatior, 2 %} | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
+| {% f bin, 2 %} | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
+| {% f msisdn, 2 %} | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Payer
 
@@ -936,42 +1035,45 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
+{% capture table %}
+{:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| `paymentorder`           | `object`     | The payment order object.                      |
-| `payer`                | `object`     | The payer object.                     |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}  |
-| └➔&nbsp;`reference`  | `string`   | The reference to the payer. In checkout, this will be the `consumerReference`. |
-| └➔&nbsp;`name`        | `string`     | The name of the payer. |
-| └➔&nbsp;`email`              | `string`     | The email address of the payer.     |
-| └➔&nbsp;`msisdn`        | `string`     | The msisdn of the payer.       | {% unless documentation_section contains "checkout-v3/payments-only" %}
-| └➔&nbsp;`gender`              | `string`   | The gender of the payer.                 |
-| └➔&nbsp;`birthYear`              | `string`   | The birth year of the payer. | {% endunless %}
-| └➔&nbsp;`hashedFields`        | `object`     | The `hashedFields` object, containing hashed versions of the payer's email, msisdn and if present, Social Security Number. |
-| └➔&nbsp;`emailHash`              | `string`   | A hashed version of the payer's email. |
-| └➔&nbsp;`msisdnHash`              | `string`   | A hashed version of the payer's email. |  {% unless documentation_section contains "checkout-v3/payments-only" %}
-| └➔&nbsp;`socialSecurityNumberHash`              | `string`   | A hashed version of the payer's social security number. | {% endunless %}
-| └➔&nbsp;`shippingAddress`            | `object` | The shipping address object related to the `payer`. |
-| └─➔&nbsp;`addressee`                   | `string` | First and last name of the addressee – the receiver of the shipped goods. |
-| └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
-| └─➔&nbsp;`streetAddress`              | `string` | Payer's street address. Maximum 50 characters long. |
-|  └─➔&nbsp;`coAddress`                  | `string` | Payer's c/o address, if applicable. |
-|  └─➔&nbsp;`zipCode`                    | `string` | Payer's zip code. |
-|  └─➔&nbsp;`city`                       | `string` | Payer's city of residence. |
-|  └─➔&nbsp;`countryCode`                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`. |
-|  └─➔&nbsp;`device`                       | `object` | The device detection object. |
-|  └─➔&nbsp;`detectionAccuracy`            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
-|  └─➔&nbsp;`ipAddress`                    | `string` | The IP address of the payer's device. |
-|  └─➔&nbsp;`userAgent`                    | `string` | {% include field-description-user-agent.md %} |
-|  └─➔&nbsp;`deviceType`                   | `string` | The type of device used by the payer. |
-|  └─➔&nbsp;`hardwareFamily`               | `string` | The type of hardware used by the payer. |
-|  └─➔&nbsp;`hardwareName`                 | `string` | The name of the payer's hardware. |
-|  └─➔&nbsp;`hardwareVendor`               | `string` | The vendor of the payer's hardware. |
-|  └─➔&nbsp;`platformName`                 | `string` | Name of the operating system used on the payer's device.  |
-| └─➔&nbsp;`platformVendor`               | `string` | Vendor of the operating system used on the payer's device. |
-| └─➔&nbsp;`platformVersion`              | `string` | Version of the operating system used on the payer's device. |
-| └─➔&nbsp;`browserName`                  | `string` | Name of the browser used on the payer's device. |
-| └─➔&nbsp;`browserVendor`                | `string` | Vendor of the browser used on the payer's device. |
-| └─➔&nbsp;`browserVersion`               | `string` | Version of the browser used on the payer's device. |
-| └─➔&nbsp;`browserJavaEnabled`           | `bool` | Indicates if the browser has Java enabled. Either `true` or `false`. |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f payer, 0 %}                | `object`     | The payer object.                     |
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
+| {% f reference %}  | `string`   | The reference to the payer. In checkout, this will be the `consumerReference`. |
+| {% f name %}        | `string`     | The name of the payer. |
+| {% f email %}              | `string`     | The email address of the payer.     |
+| {% f msisdn %}        | `string`     | The msisdn of the payer.       | {% unless documentation_section contains "checkout-v3/payments-only" %}
+| {% f gender %}              | `string`   | The gender of the payer.                 |
+| {% f birthYear %}              | `string`   | The birth year of the payer. | {% endunless %}
+| {% f hashedFields %}        | `object`     | The `hashedFields` object, containing hashed versions of the payer's email, msisdn and if present, Social Security Number. |
+| {% f emailHash %}              | `string`   | A hashed version of the payer's email. |
+| {% f msisdnHash %}              | `string`   | A hashed version of the payer's email. |  {% unless documentation_section contains "checkout-v3/payments-only" %}
+| {% f socialSecurityNumberHash %}              | `string`   | A hashed version of the payer's social security number. | {% endunless %}
+| {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. |
+| {% f addressee, 2 %}                   | `string` | First and last name of the addressee – the receiver of the shipped goods. |
+| {% f coAddress, 2 %}                  | `string` | Payer's c/o address, if applicable. |
+| {% f streetAddress, 2 %}              | `string` | Payer's street address. Maximum 50 characters long. |
+| {% f coAddress, 2 %}                  | `string` | Payer's c/o address, if applicable. |
+| {% f zipCode, 2 %}                    | `string` | Payer's zip code. |
+| {% f city, 2 %}                       | `string` | Payer's city of residence. |
+| {% f countryCode, 2 %}                | `string` | Country code for country of residence, e.g. `SE`, `NO`, or `FI`. |
+| {% f device, 2 %}                       | `object` | The device detection object. |
+| {% f detectionAccuracy, 2 %}            | `string` | Indicates the accuracy of the device detection on a scale from 0 to 100. |
+| {% f ipAddress, 2 %}                    | `string` | The IP address of the payer's device. |
+| {% f userAgent, 2 %}                    | `string` | {% include fields/user-agent.md %} |
+| {% f deviceType, 2 %}                   | `string` | The type of device used by the payer. |
+| {% f hardwareFamily, 2 %}               | `string` | The type of hardware used by the payer. |
+| {% f hardwareName, 2 %}                 | `string` | The name of the payer's hardware. |
+| {% f hardwareVendor, 2 %}               | `string` | The vendor of the payer's hardware. |
+| {% f platformName, 2 %}                 | `string` | Name of the operating system used on the payer's device.  |
+| {% f platformVendor, 2 %}               | `string` | Vendor of the operating system used on the payer's device. |
+| {% f platformVersion, 2 %}              | `string` | Version of the operating system used on the payer's device. |
+| {% f browserName, 2 %}                  | `string` | Name of the browser used on the payer's device. |
+| {% f browserVendor, 2 %}                | `string` | Vendor of the browser used on the payer's device. |
+| {% f browserVersion, 2 %}               | `string` | Version of the browser used on the payer's device. |
+| {% f browserJavaEnabled, 2 %}           | `bool` | Indicates if the browser has Java enabled. Either `true` or `false`. |
+{% endcapture %}
+{% include accordion-table.html content=table %}

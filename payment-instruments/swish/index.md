@@ -2,7 +2,6 @@
 section: Swish
 title: Introduction
 redirect_from: /payments/swish/
-estimated_read: 4
 description: |
   Swish is Sweden's main payment app and the
   preferred online payment method with the highest conversion rates.

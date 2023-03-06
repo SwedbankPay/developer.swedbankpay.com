@@ -34,11 +34,11 @@ Content-Type: application/json
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                                                   |
 | :--------------: | :----------------------- | :------------ | :------------------------------------------------------------------------------------------------------------ |
-| {% icon check %} | `transaction`            | `object`      | The object representation of the generic [transaction resource][transaction-resource].                        |
-| {% icon check %} | └➔&nbsp;`amount`         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | └➔&nbsp;`vatAmount`      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
-| {% icon check %} | └➔&nbsp;`description`    | `string`      | A textual description of the capture transaction.                                                             |
-| {% icon check %} | └➔&nbsp;`payeeReference` | `string` | {% include field-description-payee-reference.md %}                               |
+| {% icon check %} | `transaction`            | `object`      | {% include fields/transaction.md %}                        |
+| {% icon check %} | {% f amount %}         | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+| {% icon check %} | {% f vatAmount %}      | `integer`     | Amount Entered in the lowest momentary units of the selected currency. E.g. 10000 100.00 NOK, 5000 50.00 SEK. |
+| {% icon check %} | {% f description %}    | `string`      | A textual description of the capture transaction.                                                             |
+| {% icon check %} | {% f payeeReference %} | `string` | {% include fields/payee-reference.md %}                               |
 
 ## Capture Response
 

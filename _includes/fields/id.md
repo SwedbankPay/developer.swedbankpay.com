@@ -5,13 +5,17 @@
         this `{{ sub_resource }}` belongs to
     {%- endcapture -%}
 {%- endif -%}
-{%- capture id_text -%}
+{%- capture text -%}
     The relative URL and unique identifier of the
     `{{ resource }}` resource {{ sub_resource_text }}.
     Please read about [URL Usage](/introduction#url-usage) to
     understand how this and other URLs should be used in your solution.
 {%- endcapture -%}
-{{- id_text | strip_newlines -}}
+{%- comment -%}
+The following chain of Liquid filters converts newlines to spaces and removes
+extranous spaces.
+{%- endcomment -%}
+{{- text | newline_to_br | strip_newlines | split: '<br />' | join: ' ' | strip -}}
 {%- comment -%}
 The dashes in the Liquid code tags remove output space. More on that here:
 

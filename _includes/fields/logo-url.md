@@ -1,4 +1,4 @@
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- capture logo_description -%}
     {%- if documentation_section == "payment-menu" or documentation_section contains "checkout" -%}
     With permission and activation on your contract, sending in a `logoUrl` will

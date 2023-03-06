@@ -1,5 +1,5 @@
-{% capture documentation_section %}{% include documentation-section.md %}{% endcapture %}
-{% capture documentation_section_url %}{% include documentation-section-url.md %}{% endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
+{% capture documentation_section_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' or documentation_section == 'invoice' %}
     {% assign has_one_click = true %}
@@ -110,7 +110,7 @@ Content-Type: application/json
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", 
+        "productName": "Checkout3",
         "implementation": "{{implementation}}", {% endif %} {% unless documentation_section contains "checkout" %}
         "generatePaymentToken": true,{% endunless %} {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}

@@ -1,6 +1,6 @@
 ---
 title: Introduction
-estimated_read: 15
+sidebar_icon: waving_hand
 menu_order: 1
 description: |
     Read on to learn about the fundamentals and common architectural principles

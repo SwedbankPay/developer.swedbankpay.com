@@ -1,4 +1,4 @@
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 ## Operations
 
@@ -78,9 +78,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |
 | :------------- | :------- | :--------------------------------------------------------------------------------- |
-| `paymentorder` | `object` | The payment order object.                                                          |
-| └➔&nbsp;`id`   | `string` | {% include field-description-id.md resource="paymentorder" %}                      |
-| `operations`   | `array`  | The array of possible operations to perform, given the state of the payment order. |
+| {% f paymentOrder, 0 %} | `object` | The payment order object.                                                          |
+| {% f id %}   | `string` | {% include fields/id.md resource="paymentorder" %}                      |
+| {% f operations, 0 %}   | `array`  | {% include fields/operations.md %} |
 
 ## Cancel
 

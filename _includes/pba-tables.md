@@ -1,4 +1,4 @@
-{%- capture documentation_section -%}{%- include documentation-section.md -%}{%- endcapture -%}
+{%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {% assign operation_title = include.operation_title %}
 {%- assign operation_title_field_name = operation_title | capitalize -%}
 

@@ -1,5 +1,5 @@
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
@@ -76,10 +76,10 @@ seamless view table:
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| └➔&nbsp;`generateAfdPayment`     | `bool`      | Set to `true` if the payment order is an AFD payment, `false` if not. |
-| └➔&nbsp;`restrictedToAfdInstruments`     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
-| └➔&nbsp;`payeeInfo`                | `string`     | {% include field-description-payeeinfo.md %}                                                                                                                                                                                                                                                             |
-| └─➔&nbsp;`mcc`     | `integer`      | The merchant category code used for the purchase, 4 digits. |
+| {% f generateAfdPayment %}     | `bool`      | Set to `true` if the payment order is an AFD payment, `false` if not. |
+| {% f restrictedToAfdInstruments %}     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
+| {% f payeeInfo %}                | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
+| {% f mcc, 2 %}     | `integer`      | The merchant category code used for the purchase, 4 digits. |
 
 {% if include.integration_mode=="redirect" %}
 

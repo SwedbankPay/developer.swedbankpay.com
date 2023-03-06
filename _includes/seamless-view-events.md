@@ -1,5 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 
 {% if api_resource == "paymentorders" %}
     {% assign product="Payment Menu" %}
@@ -84,7 +84,7 @@ object:
 | Field       | Type     | Description                                                    |
 | :---------- | :------- | :------------------------------------------------------------- |
 | `origin`    | `string` | `{{ api_resource }}`, identifies the system that originated the error. |
-| `id`        | `string` | {% include field-description-id.md %}                        |
+| `id`        | `string` | {% include fields/id.md %}                        |
 | `details`   | `string` | A human readable and descriptive text of the error.
 |
 
@@ -114,7 +114,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| `paymentOrder`         | `string` | {% include field-description-id.md %}                       |
+| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
 ## `onPaymentAborted`
@@ -136,7 +136,7 @@ object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                          |
+| `id`          | `string` | {% include fields/id.md %}                          |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ## `onPaymentCanceled`
@@ -167,7 +167,7 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
 | `event`       | `string` | The name of the event raised.                                   |
-| `paymentOrder`          | `string` | {% include field-description-id.md %}                 |
+| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                 |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ## `onPaymentCompleted`
@@ -197,14 +197,14 @@ It will be raised with the following event argument object:
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                       |
-| `paymentOrder`          | `string` | {% include field-description-id.md %}                     |
+| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
 ## `onPaymentCreated`
 
-This event triggers when a user has selected a payment instrument and actively
-attempts to perform a payment. The `onPaymentCreated` event is raised with the
-following event argument object:
+{% include events/on-payment-created.md %}
+
+The `onPaymentCreated` event is raised with the following event argument object:
 
 {:.code-view-header}
 **onPaymentCreated event object**
@@ -219,14 +219,14 @@ following event argument object:
 {:.table .table-striped}
 | Field        | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `id`         | `string` | {% include field-description-id.md %}                                                           |
+| `id`         | `string` | {% include fields/id.md %}                                                           |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
 
 ## `onPaymentFailed`
 
-This event triggers when a payment has failed, disabling further attempts to
-perform a payment. The `onPaymentFailed` event is raised with the following
-event argument object:
+{% include events/on-payment-failed.md %}
+
+The `onPaymentFailed` event is raised with the following event argument object:
 
 {:.code-view-header}
 **onPaymentFailed event object**
@@ -241,7 +241,7 @@ event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                        |
+| `id`          | `string` | {% include fields/id.md %}                        |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a failed payment. |
 
 ## `onPaymentInstrumentSelected`
@@ -270,7 +270,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                          |
-| `paymentOrder`        | `string` | {% include field-description-id.md %}                        |
+| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}                        |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
 the user.                                                                                         |
 
@@ -293,15 +293,14 @@ object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                           |
+| `id`          | `string` | {% include fields/id.md %}                           |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a completed payment. |
 
 ## `onPaymentPending`
 
-This events triggers when a payment enters a paying state ( `Sale`, `Authorize`,
-`Cancel`etc). The `onPaymentPending` event
-will be followed by either `onPaymentPaid`, `onPaymentFailed` or
-`onPaymentTransactionFailed` based on the result of the payment. Read more about
+{% include events/on-payment-pending.md %}
+
+ Read more about
 these events below.
 
 {:.code-view-header}
@@ -316,7 +315,7 @@ these events below.
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | {% include field-description-id.md %}                           |
+| `id`          | `string` | {% include fields/id.md %}                           |
 
 ## `onPaymentToS`
 
@@ -342,11 +341,11 @@ argument object:
 
 ## `onPaymentTransactionFailed`
 
-This event triggers when a payment attempt fails, further attempts can be made
-for the payment. An error message will appear in the payment UI, and the
-payer will be able to try again or choose another payment instrument. The
-`onPaymentTransactionFailed` event is raised with the following event argument
-object:
+{% include events/on-payment-transaction-failed.md %}
+
+An error message will appear in the payment UI, and the payer will be able to
+try again or choose another payment instrument. The `onPaymentTransactionFailed`
+event is raised with the following event argument object:
 
 {:.code-view-header}
 **onPaymentTransactionFailed event object**
@@ -361,7 +360,7 @@ object:
 {:.table .table-striped}
 | Field     | Type     | Description                                         |
 | :-------- | :------- | :-------------------------------------------------- |
-| `id`      | `string` | {% include field-description-id.md %}               |
+| `id`      | `string` | {% include fields/id.md %}               |
 | `details` | `string` | A human readable and descriptive text of the error. |
 
 ## `onShippingDetailsAvailable`

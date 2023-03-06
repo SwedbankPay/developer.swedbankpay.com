@@ -1,7 +1,6 @@
 ---
 title: Checkout – Checkin
 redirect_from: /checkout/checkin
-estimated_read: 8
 description: |
   Swedbank Pay Checkout consists of two parts:
   **Checkin** and **Payment Menu**. In the sections that follow you'll find
@@ -45,7 +44,7 @@ Content-Type: application/json
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
 | :--------------: | :---------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | `operation`                               | `string` | `initiate-consumer-session`, the operation to perform.                                                                                 |
-| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include field-description-language.md %} |
+| {% icon check %} | `language`                                | `string` | Selected language to be used in Checkin. Supported values are {% include fields/language.md %} |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. This is required unless `requireShippingAddress` is set to false.                                                           |
 |                  | `requireShippingAddress` | `bool` | Defaults to true. If set to false we will not collect a shipping address from the consumer.                                                            |
 
@@ -77,14 +76,14 @@ When the request has been sent, a response containing an array of operations tha
 ```
 
 {:.table .table-striped}
-| Field                 | Type     | Description                                                                                                                                       |
-| :-------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `token`               | `string` | A session token used to initiate Checkout UI.                                                                                                     |
-| `operations`          | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
-| └➔&nbsp;`rel`         | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
-| └➔&nbsp;`method`      | `string` | The HTTP method to use when performing the operation.                                                                                             |
-| └➔&nbsp;`contentType` | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
-| └➔&nbsp;`href`        | `string` | The target URL of the operation.                                                                                                                  |
+| Field                   | Type     | Description                                                                                                                                       |
+| :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {% f token, 0 %}        | `string` | A session token used to initiate Checkout UI.                                                                                                     |
+| {% f operations, 0 %}   | `array`  | The array of operation objects to choose from, described in detail in the table below.                                                            |
+| {% f rel %}             | `string` | The relational name of the operation, used as a programmatic identifier to find the correct operation given the current state of the application. |
+| {% f method %}          | `string` | The HTTP method to use when performing the operation.                                                                                             |
+| {% f contentType %}     | `string` | The HTTP content type of the target URL. Indicates what sort of resource is to be found at the URL, how it is expected to be used and behave.     |
+| {% f href %}            | `string` | The target URL of the operation.                                                                                                                  |
 
 ## Step 2: Display Swedbank Pay Checkin Module
 

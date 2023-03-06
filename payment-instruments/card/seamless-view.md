@@ -1,7 +1,6 @@
 ---
 title: Seamless View
 redirect_from: /payments/card/seamless-view
-estimated_read: 10
 description: |
   The Seamless View purchase scenario
   represents the opportunity to implement card payments
@@ -127,7 +126,7 @@ is raised with the following event argument object:
 {:.table .table-striped}
 | Field        | Type     | Description                           |
 | :----------- | :------- | :------------------------------------ |
-| `id`         | `string` | {% include field-description-id.md %} |
+| `id`         | `string` | {% include fields/id.md %} |
 | `instrument` | `string` | `creditcard`                          |
 
 ## Sequence Diagram

@@ -1,5 +1,5 @@
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 {% assign implementation = documentation_section | split: "/" | last | capitalize | remove: "-" %}
 
@@ -145,7 +145,7 @@ table:
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| └➔&nbsp;`generateMotoPayment`     | `bool`      | Set to `true` if the payment order is a MOTO payment, `false` if not. |
+| {% f generateMotoPayment %}     | `bool`      | Set to `true` if the payment order is a MOTO payment, `false` if not. |
 
 {% if include.integration_mode=="redirect" %}
 

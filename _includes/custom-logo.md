@@ -1,5 +1,4 @@
-{% capture documentation_section %}{% include documentation-section.md %}{%
-endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 
 ## Custom Logo
 

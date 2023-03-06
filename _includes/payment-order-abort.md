@@ -1,6 +1,6 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{%- include documentation-section.md -%}{% endcapture %}
-{% capture features_url %}{% include documentation-section-url.md href='/features' %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
 ## Abort
@@ -40,9 +40,9 @@ Content-Type: application/json
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| └➔&nbsp;`operation`      | `string`     | `Abort`                                                                                                                                                                                                                |
-| └➔&nbsp;`abortReason`      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f operation %}      | `string`     | `Abort`                                                                                                                                                                                                                |
+| {% f abortReason %}      | `string`     | `CancelledByConsumer` or `CancelledByCustomer`. Why the payment was aborted.                                                                                                                                                                         |
 
 ## Abort PATCH Response
 
@@ -152,39 +152,42 @@ Content-Type: application/json
 }
 ```
 
-{:.table .table-striped}
-| Field                    | Type         | Description                                                                                                                                                                                                               |
-| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `paymentorder`           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| └➔&nbsp;`id`             | `string`     | {% include field-description-id.md resource="paymentorder" %}                                                                                                                                                             |
-| └➔&nbsp;`created`        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| └➔&nbsp;`updated`        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| └➔&nbsp;`operation`      | `string`     | `Purchase`                                                                                                                                                                                                                |
-| └➔&nbsp;`status`          | `string`     | `Initialized`, `Paid`, `Failed`, `Cancelled` or `Aborted`. Indicates the state of the payment order. |
-| └➔&nbsp;`currency`       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
-| └➔&nbsp;`amount`         | `integer`    | {% include field-description-amount.md %}                                                                                                                                                                                 |
-| └➔&nbsp;`vatAmount`      | `integer`    | {% include field-description-vatamount.md %}                                                                                                                                                                              |
-| └➔&nbsp;`description`    | `string(40)` | {% include field-description-description.md %}                                                                                                                        |
-| └➔&nbsp;`initiatingSystemUserAgent`      | `string`     | {% include field-description-initiating-system-user-agent.md %}                                                                                                                                                          |
-| └➔&nbsp;`language`       | `string`     | {% include field-description-language.md %}                                                                                                                                                  |
-| └➔&nbsp;`availableInstruments`       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
-| └➔&nbsp;`implementation`       | `string`     | The merchant's Checkout v3 implementation type. `Business`, `Enterprise`, `PaymentsOnly` or `Starter`.                                                                                                                                                  |
-| └➔&nbsp;`integration`       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`.                                                                                                                                                  |
-| └➔&nbsp;`instrumentMode`       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
-| └➔&nbsp;`guestMode`       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
-| └➔&nbsp;`orderItems`     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
-| └➔&nbsp;`urls`     | `string`     | The URL to the `urls` resource where information about the urls can be retrieved.                                                                                                                            |
-| └➔&nbsp;`payeeInfo`     | `string`     | The URL to the `payeeInfo` resource where information about the payee (the one who receives the funds) can be retrieved.                                                                                                                            |
-| └➔&nbsp;`payer`         | `string`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 |
-| └➔&nbsp;`history`     | `string`     | The URL to the `history` resource where information about the payment's history can be retrieved.                                                                                                                            |
-| └➔&nbsp;`failed`     | `string`     | The URL to the `failed` resource where information about the failed transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`aborted`     | `string`     | The URL to the `aborted` resource where information about the aborted transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`paid`     | `string`     | The URL to the `paid` resource where information about the paid transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`cancelled`     | `string`     | The URL to the `cancelled` resource where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`financialTransactions`     | `string`     | The URL to the `financialTransactions` resource where information about the financial transactions can be retrieved.                                                                                                                            |
-| └➔&nbsp;`failedAttempts`     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
-| └➔&nbsp;`metadata`     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| └➔&nbsp;`operations`     | `array`      | The array of possible operations to perform, given the state of the payment order. [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                                  | Type         | Description                                                                                                                                                                                                               |
+| :------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {% f paymentOrder, 0 %}                         | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f id %}                           | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
+| {% f created %}                      | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| {% f updated %}                      | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
+| {% f operation %}                    | `string`     | `Purchase`                                                                                                                                                                                                                |
+| {% f status %}                       | `string`     | `Initialized`, `Paid`, `Failed`, `Cancelled` or `Aborted`. Indicates the state of the payment order. |
+| {% f currency %}                     | `string`     | The currency of the payment order.                                                                                                                                                                                        |
+| {% f amount %}                       | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
+| {% f vatAmount %}                    | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
+| {% f description %}                  | `string(40)` | {% include fields/description.md %}                                                                                                                        |
+| {% f initiatingSystemUserAgent %}    | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
+| {% f language %}                     | `string`     | {% include fields/language.md %}                                                                                                                                                  |
+| {% f availableInstruments %}         | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f implementation %}               | `string`     | {% include fields/implementation.md %}                                                                                                                                                  |
+| {% f integration %}                  | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`.                                                                                                                                                  |
+| {% f instrumentMode %}               | `bool`       | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f guestMode %}                    | `bool`       | {% include fields/guest-mode.md %}                                                                                                                                                |
+| {% f orderItems %}                   | `string`     | {% include fields/order-items.md %}                                                                                                                            |
+| {% f urls %}                         | `string`     | The URL to the `urls` resource where information about the urls can be retrieved.                                                                                                                            |
+| {% f payeeInfo %}                    | `string`     | {% include fields/payee-info.md %}                                                                                                                            |
+| {% f payer %}                        | `string`     | {% include fields/payer.md %}                                                                                                                 |
+| {% f history %}                      | `string`     | {% include fields/history.md %}                                                                                                                            |
+| {% f failed %}                       | `string`     | {% include fields/failed.md %}                                                                                                                           |
+| {% f aborted %}                      | `string`     | {% include fields/aborted.md %}                                                                                                                            |
+| {% f paid %}                         | `string`     | {% include fields/paid.md %}                                                                                                                            |
+| {% f cancelled %}                    | `string`     | {% include fields/cancelled.md %}                                                                                                                            |
+| {% f financialTransactions %}        | `string`     | {% include fields/financial-transactions.md %}                                                                                                                            |
+| {% f failedAttempts %}               | `string`     | {% include fields/failed-attempts.md %}                                                                                                                             |
+| {% f metadata %}                     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
+| {% f operations %}                   | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 {% else %}
 

@@ -1,8 +1,8 @@
 ---
 section: Payment Instruments
+sidebar_icon: credit_card
 title: Introduction
 redirect_from: /payments/
-estimated_read: 5
 description: |
   Payment Instruments is our off-the-rack assortment of possibilities. Pick the one(s) you like.
   You can pick and choose among them to tailor the instrument package best
@@ -147,11 +147,7 @@ Please visit our [demoshop][demoshop] to see our Payment Menu and Redirect
 implementation in action.
 
 [demoshop]: {{ page.front_end_url }}/pspdemoshop
-[card-icon]: /assets/img/icon-card-simple.svg
 [https]: /introduction#connection-and-protocol
-[invoice-icon]: /assets/img/icon-invoice-simple.svg
-[envelope-icon]: /assets/img/envelope-icon.png
-[keypad-icon]: /assets/img/keypad-icon.png
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
@@ -159,7 +155,6 @@ implementation in action.
 [earth-icon]: /assets/img/globe-icon.png
 [card]: /payment-instruments/card
 [invoice]: /payment-instruments/invoice
-[direct-debit]: /payment-instruments/direct-debit
 [vipps]: /payment-instruments/vipps
 [swish]: /payment-instruments/swish
 [mobile-pay]: /payment-instruments/mobile-pay

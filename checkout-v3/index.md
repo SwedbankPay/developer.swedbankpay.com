@@ -1,5 +1,6 @@
 ---
 section: Checkout v3
+sidebar_icon: shopping_cart
 title: Get Started
 description: |
   **This page aims to provide you with a brief introduction to our four options
@@ -92,11 +93,18 @@ business' needs, regardless of whether you choose the **Full Checkout** or
 **Payments Only**. You can choose from the following payment instruments,
 somewhat depending on which countries you are operating in.
 
+{% include alert.html type="informative" icon="info" header="Digital Wallets"
+body="Some of the digital wallets we offer in Checkout v3 require you to take
+additional steps before we can activate them for you. Please follow the link(s)
+in the table below to read more." %}
+
 {:.table .table-plain}
 |        | Payment Instrument |  Starter | Business | Enterprise   |  Payments Only | Region                                    |
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :---------------------------------------- |
-|   ![Apple Pay][apple-pay-logo]   | Apple Pay           | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|   ![Apple Pay][apple-pay-logo]   | [Apple Pay][apple-pay]          | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
 |    ![Card][card-icon]    | Card         | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
+|   ![Click to Pay][c2p-logo]   | [Click to Pay][click-to-pay]            | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
+|   ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
 | ![MobilePay][mobilepay-logo] | MobilePay       |  {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
 | ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag se %} |
 | ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% icon check %} | {% icon check %} | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
@@ -216,9 +224,14 @@ implementation.
   tab2_content=tab2_content
   %}
 
+[apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [apple-pay-logo]:/assets/img/applepay-logo.svg
+[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[c2p-logo]:/assets/img/clicktopay-logo.svg
 [card-icon]: /assets/img/new-card-icon.svg
 [earth-icon]: /assets/img/globe-icon.png
+[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay-logo]: /assets/img/googlepay-logo.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg

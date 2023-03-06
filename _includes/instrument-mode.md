@@ -1,6 +1,5 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{% capture documentation_section %}{% include documentation-section.md %}{%
-endcapture %}
+{% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
 
 ## Instrument Mode
@@ -38,8 +37,9 @@ parameter with the specific payment instrument.
 ## Eligibility Check
 
 If you want to **build your own menu** and display **at least** one wallet like
-**Apple Pay** or **Google Pay**, you need to do an eligibility check. This is to
-ensure that the wallet is supported on the payer's device or browser.
+**Apple Pay**, **Click to Pay** or **Google Pay&trade;**, you need to do an
+eligibility check. This is to ensure that the wallet is supported on the payer's
+device or browser.
 
 Swedbank Pay provides a script to do this check, with the URL
 `ecom.<environment>.payex.com/checkout/core/integration.` Environments
