@@ -30,7 +30,7 @@
         } else {
             tocLinks = activeSubgroup.querySelectorAll(".nav-leaf");
         }
-        
+
     } else {
         tocLinks = document.querySelectorAll("nav.sidebar-nav .nav-group.active .nav-leaf");
     }
@@ -39,10 +39,10 @@
         if (el) {
             var parentRect = parent.getBoundingClientRect();
             var elemRect = el.getBoundingClientRect();
-            
+
             return elemRect.top - parentRect.top;
         }
-        
+
         return null;
     };
 
@@ -58,11 +58,11 @@
                 - document.documentElement.scrollTop
                 - document.body.clientHeight
                 - buffer;
-                
-                
+
+
             activeLeaf && !activeLeaf.classList.contains("nav-subgroup-leaf") && activeLeaf.classList.remove("active");
-                
-                
+
+
             if (scrollDistanceFromBottom > 0) {
                 const scrollNumber = [...headings].filter((heading) => getPosition(document.body, heading) <= currentPos).length - 1;
 
@@ -75,7 +75,7 @@
     };
 
     _handleLeafScrollListener();
-    
+
     window.addEventListener("scroll", _handleLeafScrollListener);
 
     // Makes sidebar scroll so that the active element is in view
@@ -91,7 +91,7 @@
     if (activeLeaf) {
         sidebarNav.scrollTop = activeLeaf.offsetTop + activeLeaf.clientHeight - sidebarNav.clientHeight / 2;
     };
-    
+
 })();
 
 // Simple sidebar functionality while dg.js is being loaded
@@ -121,12 +121,124 @@ function _handleSimpleSidebar (e) {
 
 // Remove simple sidebar functionality when proper sidebar functionality is loaded
 (function () {
-    document.addEventListener("DOMContentLoaded", (e) => {
+    document.addEventListener("DOMContentLoaded", function(e) {
         const sidebar = document.querySelector(".sidebar");
 
         sidebar.removeEventListener("click", _handleSimpleSidebar);
     });
 })();
+
+
+// Override the topbar click to show and hide our own sidebar
+(function () {
+    const isLeaf = function(currentUrl) {
+        const path = window.location.pathname;
+        const href = currentUrl || window.location.href;
+        const pathIndex = href.indexOf(path);
+        const relativeUrl = href.substring(pathIndex);
+        const currentSidebarLink = document.querySelector(`.sidebar a[href$="${relativeUrl}"]`);
+        return currentSidebarLink !== null && currentSidebarLink !== "undefined"
+            ? currentSidebarLink.parentElement.classList.contains("nav-leaf")
+            : false;
+    };
+
+    const isHome = function() {
+        return window.location.pathname === "/";
+    };
+
+    const controlVisibility = function(currentUrl) {
+        const sidebar = document.querySelector(".sidebar");
+        const overlay = document.querySelector("#overlay");
+        const topbarButton = document.querySelector(".topbar-btn");
+        const topbarClose = document.querySelector(".topbar-close");
+
+
+        if (isHome() || isLeaf(currentUrl)) {
+            sidebar.classList.remove("visible");
+            overlay.style.display = "none";
+            topbarButton.style.display = "flex";
+            topbarClose.style.display = "none";
+        } else {
+            sidebar.classList.add("visible");
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const topbarButton = document.querySelector(".topbar-btn");
+        const newTopbarButton = topbarButton.cloneNode(true);
+        const sidebar = document.querySelector(".sidebar");
+        const topbarClose = document.querySelector(".topbar-close");
+        const overlay = document.querySelector("#overlay");
+        const searchButton = document.querySelector("#search-btn");
+
+        controlVisibility();
+
+        if (sidebar.classList.contains("visible")) {
+            newTopbarButton.style.display = "none";
+            topbarClose.style.display = "flex";
+            overlay.style.display = "block";
+        }
+
+        newTopbarButton.addEventListener("click", function(e) {
+            if (sidebar.classList.contains("visible")) {
+                sidebar.classList.remove("visible");
+                newTopbarButton.style.display = "flex";
+                topbarClose.style.display = "none";
+                overlay.style.display = "none";
+
+            } else {
+                sidebar.classList.add("visible");
+                newTopbarButton.style.display = "none";
+                topbarClose.style.display = "flex";
+                overlay.style.display = "block";
+            }
+        });
+
+        topbarClose.addEventListener("click", function(e) {
+            if (sidebar.classList.contains("visible")) {
+                sidebar.classList.remove("visible");
+                newTopbarButton.style.display = "flex";
+                topbarClose.style.display = "none";
+                overlay.style.display = "none";
+            } else {
+                sidebar.classList.add("visible");
+                newTopbarButton.style.display = "none";
+                topbarClose.style.display = "flex";
+                overlay.style.display = "block";
+            }
+        });
+
+        overlay.addEventListener("click", function(e) {
+            if (sidebar.classList.contains("visible")) {
+                sidebar.classList.remove("visible");
+                newTopbarButton.style.display = "flex";
+                topbarClose.style.display = "none";
+                overlay.style.display = "none";
+            }
+        });
+
+        document.querySelectorAll(".nav-leaf a").forEach(function(a) {
+            a.addEventListener("click", function(e) {
+                controlVisibility(e.target.href);
+            });
+        });
+
+        topbarButton.parentNode.replaceChild(newTopbarButton, topbarButton);
+
+        searchButton.addEventListener("click", function(e) {
+            const searchInput = document.querySelector(".search-input");
+
+            if (searchInput.style.display !== "block") {
+                searchInput.style.display = "block";
+                searchInput.focus();
+                e.preventDefault();
+            }
+
+            return false;
+        });
+    });
+})();
+
 
 // Initialize Tipue search
 (function() {
