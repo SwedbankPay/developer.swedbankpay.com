@@ -1,5 +1,5 @@
 {%- capture text -%}
-The Checkout v3 implementation type. `Starter`, `Business`, or `Enterprise`.
+The Checkout v3 implementation type.
 Omit if the integration is for _Payments Only_.
 {%- endcapture -%}
 {%- comment -%}

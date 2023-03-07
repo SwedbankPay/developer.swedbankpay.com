@@ -13,9 +13,9 @@ The **Business Redirect** integration consists of three main steps.
 checkin module, and finally **capturing** the funds. In addition, there are
 other post purchase options you need. We get to them later on.
 
-If you want to get an overview before proceeding, you can look at the [sequence
-diagram][sequence-diagrams]. It is also available in the sidebar if you want to
-look at it later. Let´s get going with the two first steps of the integration.
+If you want to get an overview before proceeding, you can look at the diagram.
+It is also available in the sidebar if you want to look at it later. Let´s get
+going with the two first steps of the integration.
 
 ## Step 1: Create Payment Order And Checkin
 
