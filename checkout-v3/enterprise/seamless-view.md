@@ -31,8 +31,6 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
-If the `implementation` field is omitted, it will default to **Enterprise**.
-
 Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), instrument mode and split settlement (`subsite`).
 
