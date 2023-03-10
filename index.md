@@ -14,7 +14,7 @@ hide_from_sidebar: true
           title='Discover Checkout v3'
           no_icon=true
           button_content="Let's get started"
-          text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created four options to choose from. That way, you can set up your check-in in just a few configurations, or switch to another stand-alone payment method if that suits you better. Ready to learn more? Here's what you need to know!"
+          text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created two options to choose from. Ready to learn more? Here's what you need to know!"
           button_type='primary'
           button_alignment='align-self-end'
           to='/checkout-v3/'

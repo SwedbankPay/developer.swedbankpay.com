@@ -31,10 +31,6 @@ operations in the response.
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
 
-It is possible to switch to **Starter** or **Business** by specifying this in
-the request in `implementation`. If this field is omitted, the implementation
-will default to **Starter** or **Enterprise** based on the configuration.
-
 Supported features for this integration are subscriptions (`recur` and
 `unscheduled MIT`), instrument mode and split settlement (`subsite`).
 

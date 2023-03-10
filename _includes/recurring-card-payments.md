@@ -9,24 +9,16 @@ subsequent payments are made through server-to-server requests. " %}
 ## Prerequisites
 
 Prior to making any server-to-server requests, you need to supply the payment
-instrument details and a payment token to Swedbank Pay by initial purchase or
-[card verification][payment-verify].
-
-There are two ways to initiate recurring payments procedures,
-depending on if you want to make an initial charge or not:
+instrument details and a payment token to Swedbank Pay by initial purchase.
 
 *   Initiate a recurring payment flow and **charge the credit card**.
     This is done by creating a "Purchase Payment" and generating a
     recurrence token.
 
-*   Initiate a recurring payment flow **without charging the credit card**.
-    This is done by creating  a "Verify Payment" and generating a recurrence
-    token.
-
 ## Generate RecurrenceToken
 
 *   When posting a `Purchase` payment, you need to make sure that the field
-    `generateRecurrenceToken` is set to `true`
+    `generateRecurrenceToken` is set to `true`.
 
 {:.code-view-header}
 **Field**
@@ -35,16 +27,10 @@ depending on if you want to make an initial charge or not:
 "generateRecurrenceToken": true
 ```
 
-*   When posting a `Verify` payment, a payment token will be generated
-    automatically.
-
 ## Creating The Payment
 
 *   You need to `POST` a [Purchase payment][card-payment-purchase] / and
     generate a recurrence token (safekeep for later recurring use).
-
-*   You need to `POST` a [Verify payment][payment-verify], that will
-    automatically generate a recurrence token (for later recurring use).
 
 ## Retrieve The Recurrence Token
 
@@ -176,10 +162,16 @@ You have the following options after a server-to-server Recur payment `POST`.
 
 ### Verify
 
-A `Verify` payment lets you post verifications to confirm the validity of
-card information, without reserving or charging any amount.
-This option is often used to initiate a recurring payment
-flow where you do not want to charge the payer right away.
+A [card verification][payment-verify] lets you post verifications to confirm the
+validity of card information, without reserving or charging any amount. You can
+use it for generating `paymentToken`s, but do **not** use it when generating
+`recurrenceToken`s.
+
+This is because banks are rejecting recurring transactions where the amount is
+higher than the initial transaction. If the initial transaction `amount` is e.g.
+1000, your subsequent recurring transaction `amount`s can be up to 1000 too, but
+1001 will most likely be rejected. Since `Verify` transaction `amount`s are
+always 0, this can cause issues for you in the future.
 
 {% include alert.html type="informative" icon="info" body="
 Please note that all boolean credit card attributes involving rejection of

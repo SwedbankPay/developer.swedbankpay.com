@@ -6,7 +6,6 @@ description: |
   **In this section we are going to guide you through setting up your test account
   and how to make an API request for your first test payment. After these steps,
   you're ready to build your integration!**
-checkout_v3: true
 menu_order: 400
 ---
 
@@ -21,7 +20,7 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **The service you prefer:** Full Checkout (Starter/Business/Enterprise) or
+*   **The service you prefer:** Full Checkout (Enterprise) or
     Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.
