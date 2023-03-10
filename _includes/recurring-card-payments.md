@@ -168,10 +168,10 @@ use it for generating `paymentToken`s, but do **not** use it when generating
 `recurrenceToken`s.
 
 This is because banks are rejecting recurring transactions where the amount is
-higher than the initial transaction. If the initial transaction is e.g. 1000
-SEK, your subsequent recurring transactions can be up to 1000 SEK, but 1001 will
-most likely be rejected. Since `Verify` transactions are always 0 SEK, this can
-cause issues for you in the future.
+higher than the initial transaction. If the initial transaction `amount` is e.g.
+1000, your subsequent recurring transaction `amount`s can be up to 1000 too, but
+1001 will most likely be rejected. Since `Verify` transaction `amount`s are
+always 0, this can cause issues for you in the future.
 
 {% include alert.html type="informative" icon="info" body="
 Please note that all boolean credit card attributes involving rejection of
