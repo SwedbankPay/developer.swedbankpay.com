@@ -10,6 +10,18 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 10 March 2023
+
+### Version 4.1.0
+
+A lot of changes are happening these days. We've made the decision to focus the
+Checkout v3 offering, so our Starter and Business implementations are no more.
+This means that we can do what we do best: giving you a payment experience
+packed with options. The [Payments Only][checkout-v3-payments-only]
+implementation is still here, and for those of you with a Strong Consumer
+Authentication who want access to our safely stored card data,
+[Enterprise][checkout-v3-enterprise] is still available too.
+
 ## 03 March 2023
 
 ### Version 4.0.0
@@ -777,6 +789,8 @@ integration and the payer.
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
 [checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
+checkout-v3-enterprise]: /checkout-v3/enterprise
+[checkout-v3-payments-only]: /checkout-v3/payments-only
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
