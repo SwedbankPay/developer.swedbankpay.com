@@ -789,7 +789,7 @@ integration and the payer.
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
 [checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
-checkout-v3-enterprise]: /checkout-v3/enterprise
+[checkout-v3-enterprise]: /checkout-v3/enterprise
 [checkout-v3-payments-only]: /checkout-v3/payments-only
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
