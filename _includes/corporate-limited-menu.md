@@ -4,14 +4,14 @@
 ## Corporate Limited Menu
 
 Corporate Limited Menu allows you to limit what payment instruments shows up
-when your customers pays through the menu. Do note that both the instrument in
-question needs to support corporate payment methods and have the feature
+when your customers pays through the menu. Do note that the instrument in
+question needs to support corporate payment instruments **and** have the feature
 enabled during the contract setup to be shown in the menu.
 
-Do note that if you were to not invoke the restriction, every valid payment
-method will show up as usual in the payment menu. Only when you restrict the
-payment menu to corporate-supported instruments AND have instruments set to
-be restricted will other instruments be hidden.
+Also note that if you don't invoke the restriction, every valid payment
+instrument will show up as usual in the payment menu. Only when you restrict the
+payment menu to corporate-supported instruments, **and** have instruments set to
+be restricted, will other instruments be hidden.
 
 ```http
 POST /psp/paymentorders HTTP/1.1
