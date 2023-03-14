@@ -9,8 +9,9 @@ question needs to support corporate payment instruments **and** have the feature
 enabled during the contract setup to be shown in the menu.
 
 If you don't invoke the restriction in your payment order request, every valid
-payment instrument will show up as usual in the payment menu. Done by setting
-`corporateMode` to `true`. In this example the instrument is set to card.
+payment instrument will show up as usual in the payment menu. This is done by
+setting `corporateMode` to `true`. In this example the instrument is set to
+card.
 
 ```http
 POST /psp/paymentorders HTTP/1.1
