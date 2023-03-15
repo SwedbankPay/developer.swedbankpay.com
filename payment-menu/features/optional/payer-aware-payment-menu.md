@@ -2,7 +2,7 @@
 title: Payer Aware Payment Menu
 description: |
   A payment menu tailored to the payer.
-menu_order: 1900
+menu_order: 2000
 icon:
     content: event
     outlined: true
