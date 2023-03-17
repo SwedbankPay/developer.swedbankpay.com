@@ -128,6 +128,13 @@ Based on [*Simplest Client only*][simplest-client] the following runs as a serve
 * Subscribed to the `OnTerminalDisplay` event
 * Added code to the callback `EventNotificationHandler`
 
+{% include alert.html type="informative" icon="info" header="Heads up"
+body="When running as a server the program needs elevated privileges. It may be avoided by entering the following command as administrator:" %}
+{% include alert.html type="informative" body="
+    netsh http add urlacl url=http://*:11000/EPASSaleToPOI/3.1/ user=Everyone" %}
+{% include alert.html type="informative" body="
+    where :11000 is the default port. If listening to another port the command need to change." %}
+
 {:.code-view-header}
 Simplest Client And Server form of implementation - Happy Flow
 
