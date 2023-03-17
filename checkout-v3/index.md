@@ -5,7 +5,7 @@ title: Get Started
 description: |
   **This page aims to provide you with a brief introduction to our two options
   for implementing our checkout in a way that makes sense for your business.**
-menu_order: 200
+menu_order: 2
 
 header:
   - table_header: Data Ownership

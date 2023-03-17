@@ -220,13 +220,13 @@ sequenceDiagram
     URL when the payer has completed the payment.
     [See the Callback API description here][technical-reference-callback].
 
-[abort]: /payment-instruments/card/features/core/abort-reference
+[abort]: /old-implementations/payment-instruments/card/features/core/abort-reference
 [card-payment]: /assets/img/payments/card-payment.png
-[card]: /payment-instruments/card
-[mobilepay]: /payment-instruments/mobile-pay
+[card]: /old-implementations/payment-instruments/card
+[mobilepay]: /old-implementations/payment-instruments/mobile-pay
 [payment-menu]: /payment-menu
-[purchase-flow]: /payment-instruments/card/features/core/purchase
-[swish]: /payment-instruments/swish
-[technical-reference-callback]: /payment-instruments/card/features/core/callback
-[vipps]: /payment-instruments/vipps
-[trustly]: /payment-instruments/trustly
+[purchase-flow]: /old-implementations/payment-instruments/card/features/core/purchase
+[swish]: /old-implementations/payment-instruments/swish
+[technical-reference-callback]: /old-implementations/payment-instruments/card/features/core/callback
+[vipps]: /old-implementations/payment-instruments/vipps
+[trustly]: /old-implementations/payment-instruments/trustly

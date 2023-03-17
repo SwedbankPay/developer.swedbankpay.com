@@ -523,10 +523,10 @@ Content-Type: application/json
 
 <!--lint disable final-definition -->
 
-[card]: /payment-instruments/card
-[invoice]: /payment-instruments/invoice
+[card]: /old-implementations/payment-instruments/card
+[invoice]: /old-implementations/payment-instruments/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
-[create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
-[create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
+[create-card-payment]: /old-implementations/payment-instruments/card/features/technical-reference/create-payment
+[create-invoice-payment]: /old-implementations/payment-instruments/invoice/features/technical-reference/create-payment
 [paid-resource]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
-[verify]: /payment-instruments/card/features/optional/verify
+[verify]: /old-implementations/payment-instruments/card/features/optional/verify
