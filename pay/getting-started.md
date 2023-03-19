@@ -7,7 +7,7 @@ description: |
 menu_order: 300
 ---
 
-The **Payments Only Redirect** integration consists of three main steps.
+The integration consists of three main steps.
 **Creating** the payment order, **displaying** the payment menu, and
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.

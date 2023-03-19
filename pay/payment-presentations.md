@@ -19,7 +19,7 @@ rates and new user adoption that comes with it.
 **Redirect** integrations does not require a domain verification, as it will
 be hosted on Swedbank Pay's domain.
 
-For **Seamless View** integrations, Apple needs to verify also your domain as a
+If you areusing the **Seamless View** feature, Apple needs to verify also your domain as a
 part of Swedbank Pay's set up process. To do this, you need to host this
 [verification file][apple-pay-verification-file] (click to download) on the
 following web path:

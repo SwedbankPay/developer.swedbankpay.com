@@ -74,5 +74,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/pay/"
                          prev_title="Back to Get Started"
-                         next_href="/pay/introduction"
+                         next_href="/pay/getting-started"
                          next_title="Start Integration" %}
