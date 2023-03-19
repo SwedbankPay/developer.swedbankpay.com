@@ -41,7 +41,7 @@ object:
 {:.code-view-header}
 **onConsumerIdentified event object**
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 ```json
 {

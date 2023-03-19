@@ -4,7 +4,7 @@
 
 ## Instrument Mode
 
-{% unless documentation_section contains "checkout-v3/payments-only" %}
+{% unless documentation_section contains "pay/payments-only" %}
 
 {% include alert-agreement-required.md %}
 
@@ -32,7 +32,7 @@ agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
 payer chooses either of these instruments, you should add the `instrument`
 parameter with the specific payment instrument.
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 ## Eligibility Check
 
@@ -79,7 +79,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": "Invoice-PayExFinancingSe", {% if documentation_section contains "checkout-v3" %}
+        "instrument": "Invoice-PayExFinancingSe", {% if documentation_section contains "pay" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}", {% endif %}
         "urls":
@@ -96,7 +96,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "subsite": "MySubsite", {% if documentation_section contains "pay" %}
             "siteId": "MySiteId", {% endif %}
         },
         "payer": {
@@ -162,7 +162,7 @@ Content-Type: application/json
 
 ## Instrument Mode Response
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 Note the implementation options **Seamless View** and **Redirect** (`HostedView`
 or `Redirect` in the response's implementation field). Depending on which it is,
@@ -191,10 +191,10 @@ Content-Type: application/json
         "language": "sv-SE",
         "availableInstruments": [
             "Invoice-PayExFinancingSe"
-        ], {% if documentation_section contains "checkout-v3/enterprise" %}
-        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
-        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        ], {% if documentation_section contains "pay/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "pay/payments-only" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "pay/business" %}
+        "implementation": "Business", {% endif %} {% if documentation_section contains "pay/starter" %}
         "implementation": "Starter",
         "integration": "HostedView|Redirect",
         "instrumentMode": false,
@@ -361,7 +361,7 @@ Content-Type: application/json
 
 ## PATCH Instrument Selection
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 Note the `rel` named `set-instrument`, which appears among the available
 operations in the `paymentOrder` response when instrument mode is applied.

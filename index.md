@@ -11,13 +11,13 @@ hide_from_sidebar: true
 
 {% contentfor intro_cards %}
   {% include card-extended.html
-          title='Discover Checkout v3'
+          title='Get Startet'
           no_icon=true
           button_content="Let's get started"
-          text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created two options to choose from. Ready to learn more? Here's what you need to know!"
+          text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. Ready to learn more? Here's what you need to know!"
           button_type='primary'
           button_alignment='align-self-end'
-          to='/checkout-v3/'
+          to='/pay/'
 
           %}
 

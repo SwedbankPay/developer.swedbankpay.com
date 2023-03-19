@@ -126,6 +126,6 @@ orderItem.reference = "456def"
 orderItem.name = "Other Thing"
 ```
 
-[checkout]: /checkout-v3
-[order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
-[urls]: /checkout-v3/payments-only/features/technical-reference/urls
+[checkout]: /pay
+[order-items]: /pay/payments-only/features/technical-reference/order-items
+[urls]: /pay/payments-only/features/technical-reference/urls

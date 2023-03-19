@@ -70,8 +70,8 @@ follow for each step.
                          next_title="Next: Configuration" %}
 
 [plain-webview]: /modules-sdks/mobile-sdk/plain-webview
-[checkout]: /checkout-v3
-[checkout-enterprise]: /checkout-v3/enterprise
-[checkout-payments-only]: /checkout-v3/payments-only
+[checkout]: /pay
+[checkout-enterprise]: /pay/enterprise
+[checkout-payments-only]: /pay/payments-only
 [https]: /introduction#connection-and-protocol
-[post-purchase-capture]: /checkout-v3/payments-only/post-purchase#capture
+[post-purchase-capture]: /pay/payments-only/post-purchase#capture

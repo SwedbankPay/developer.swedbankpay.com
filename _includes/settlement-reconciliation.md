@@ -5,7 +5,7 @@
 {% if checkout == "checkout-v2" %}
     {% assign checkout_version = "checkout-v2" %}
 {% else %}
-    {% assign checkout_version = "checkout-v3" %}
+    {% assign checkout_version = "pay" %}
 {% endif %}
 
 ## Settlement And Reconciliation

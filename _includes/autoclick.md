@@ -62,7 +62,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite",
             "siteId": "MySiteId"
-        }, {% if documentation_section contains "checkout-v3/business" %}
+        }, {% if documentation_section contains "pay/business" %}
         "payer": {
             "digitalProducts": false,
             "firstName": "Leia",
@@ -99,7 +99,7 @@ Content-Type: application/json
                 "shippingNameIndicator": "01",
                 "suspiciousAccountActivity": "01"
             }
-        }, {% endif %} {% if documentation_section contains "checkout-v3/enterprise" %}
+        }, {% endif %} {% if documentation_section contains "pay/enterprise" %}
         "payer": {
             "digitalProducts": false,
             "nationalIdentifier": {
@@ -141,12 +141,12 @@ Content-Type: application/json
                 "shippingNameIndicator": "01",
                 "suspiciousAccountActivity": "01"
             }
-        }, {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        }, {% endif %} {% if documentation_section contains "pay/starter" %}
         "payer": {
             "requireConsumerInfo": true,
             "digitalProducts": false,
             "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
-        }, {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        }, {% endif %} {% if documentation_section contains "pay/payments-only" %}
         "payer": {
             "digitalProducts": false,
             "firstName": "Leia",
@@ -272,10 +272,10 @@ Content-Type: application/json
 |                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %}                                                                                          |
 |                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                       |
-|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                | {% if documentation_section contains "checkout-v3/starter" %}
+|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                | {% if documentation_section contains "pay/starter" %}
 |  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Starter, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
 |                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `false`, and not to be included if it is `true`.                                    | {% endif %}
-| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% unless documentation_section contains "checkout-v3/starter" %} {% if documentation_section contains "checkout-v3/enterprise" %}
+| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% unless documentation_section contains "pay/starter" %} {% if documentation_section contains "pay/enterprise" %}
 |                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |
 |                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. |
 |                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     | {% endif %}
@@ -283,7 +283,7 @@ Content-Type: application/json
 |  | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/3d-secure-2).                                                                             |
 |                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).            |
-|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/checkout-v3/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
+|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/pay/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
 | | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).                                                                                                                                  |
 | | {% f firstName, 2 %}                   | `string` | The first name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
 | | {% f lastName, 2 %}                   | `string` | The last name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
@@ -342,7 +342,7 @@ Content-Type: application/json
         "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b",
         "created": "2022-01-07T07:58:26.1300282Z",
         "updated": "2022-01-07T08:17:44.6839034Z",
-        "operation": "Purchase", {% if documentation_section contains "checkout-v3" %}
+        "operation": "Purchase", {% if documentation_section contains "pay" %}
         "status": "Initialized", {% else %}
         "state": "Ready", {% endif %}
         "currency": "SEK",
@@ -358,10 +358,10 @@ Content-Type: application/json
             "Swish",
             "CreditAccount",
             "Trustly"
-        ],{% if documentation_section contains "checkout-v3/enterprise" %}
-        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
-        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        ],{% if documentation_section contains "pay/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "pay/payments-only" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "pay/business" %}
+        "implementation": "Business", {% endif %} {% if documentation_section contains "pay/starter" %}
         "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
@@ -372,7 +372,7 @@ Content-Type: application/json
         },
         "orderItems": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
-        }{% if documentation_section contains "checkout-v3" %},
+        }{% if documentation_section contains "pay" %},
         "history": {
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
         },
@@ -436,7 +436,7 @@ Content-Type: application/json
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                      |{% if documentation_section contains "checkout-v3" %}
+| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                      |{% if documentation_section contains "pay" %}
 | {% f status %}          | `string`     | {% include fields/status.md %} | {% else %}
 | {% f state %}          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. | {% endif %}
 | {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
@@ -451,7 +451,7 @@ Content-Type: application/json
 | {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | {% f guestMode %}       | `bool`     | {% include fields/guest-mode.md %}                                                                                                                                                   |
 | {% f payer %}         | `string`     | {% include fields/payer.md %}                                                                                                          |
-| {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "checkout-v3" %}
+| {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "pay" %}
 | {% f history %}     | `string`     | {% include fields/history.md %}                                                                                                                            |
 | {% f failed %}     | `string`     | {% include fields/failed.md %}                                                                                                                            |
 | {% f aborted %}     | `string`     | {% include fields/aborted.md %}                                                                                                                            |

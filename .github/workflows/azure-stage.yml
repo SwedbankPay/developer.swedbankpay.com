@@ -2,7 +2,7 @@ name: Deploy to Azure Stage
 
 on:
   push:
-    branches: ['develop']
+    branches: ['new-beginning']
 
 jobs:
   deploy:
@@ -17,18 +17,18 @@ jobs:
             -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal build \
             --env=production \
-            --site-url=https://developer.stage.swedbankpay.com
+            --site-url=https://ecom.stage.payex.com/developer
 
       - name: azure login
         uses: azure/login@v1.4.6
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
+          creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_STAGE }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_STAGE }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_STAGE }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
       - name: azure deploy
         run: |
           az storage blob upload-batch \
             --source "_site" \
             --destination "\$web" \
-            --account-name blobdevportalstage \
+            --account-name swedbankpaydeveloperstage \
             --overwrite \
             --validate-content

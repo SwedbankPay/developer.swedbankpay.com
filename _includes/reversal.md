@@ -9,7 +9,7 @@ This transaction is used when a captured payment needs to be reversed.
 
 ## Reversal Request
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 The `reversal` operation will reverse a previously captured payment.
 
@@ -41,7 +41,7 @@ Content-Type: application/json
 {% capture request_table%}
 {:.table .table-striped .mb-5}
 |     Required     | Field                    | Type          | Description                                                                              |
-| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- | {% if documentation_section contains "checkout-v3" %}
+| :--------------: | :----------------------- | :------------ | :--------------------------------------------------------------------------------------- | {% if documentation_section contains "pay" %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic transaction resource. | {% else %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). | {% endif %}
 | {% icon check %} | {% f amount %}         | `integer`     | {% include fields/amount.md %}                                                |
@@ -93,7 +93,7 @@ Content-Type: application/json
 | :------------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% f payment, 0 %}                 | `string`  | The relative URL of the payment this `reversal` transaction belongs to.                                                                                                                                      |
 | {% f reversal, 0 %}                | `object`  | The `reversal` resource contains information about the `reversal` transaction made against a card payment.                                                                                                    |
-| {% f id %}              | `string`  | The relative URL of the created `reversal` transaction.                                                                                                                                                       |{% if documentation_section contains "checkout-v3" %}
+| {% f id %}              | `string`  | The relative URL of the created `reversal` transaction.                                                                                                                                                       |{% if documentation_section contains "pay" %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic transaction resource. | {% else %}
 | {% icon check %} | `transaction`            | `object`      | The `object` representation of the generic [transaction resource]({{ transactions_url }}). | {% endif %}
 | {% f id, 2 %}             | `string`  | The relative URL of the current  transaction  resource.                                                                                                                                                      |

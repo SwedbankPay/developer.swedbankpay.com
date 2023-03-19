@@ -26,7 +26,7 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0",
-        "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
+        "language": "sv-SE", {% if documentation_section contains "pay" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}",{% endif %}
         "requestTraExemption": true,
@@ -45,7 +45,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "subsite": "MySubsite", {% if documentation_section contains "pay" %}
             "siteId": "MySiteId", {% endif %}
         },
         "payer": {
@@ -189,7 +189,7 @@ Content-Type: application/json
 |                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | {% f productCategory, 2 %}         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "checkout-v3" %}
+|                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "pay" %}
 |                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                                                    | {% endif %}
 |                   |{% f payer %}                       | `object` | The payer object.       |
 |                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |

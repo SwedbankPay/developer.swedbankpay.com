@@ -17,10 +17,10 @@ this very documentation, not to a version of any APIs described by it." %}
 A lot of changes are happening these days. We've made the decision to focus the
 Checkout v3 offering, so our Starter and Business implementations are no more.
 This means that we can do what we do best: giving you a payment experience
-packed with options. The [Payments Only][checkout-v3-payments-only]
+packed with options. The [Payments Only][pay-payments-only]
 implementation is still here, and for those of you with a Strong Consumer
 Authentication who want access to our safely stored card data,
-[Enterprise][checkout-v3-enterprise] is still available too.
+[Enterprise][pay-enterprise] is still available too.
 
 ## 03 March 2023
 
@@ -47,7 +47,7 @@ tasks and bug fixes.
 ### Version 3.1.8
 
 Bigger things are coming up around the bend, so we are stopping by with some
-smaller fixes and a [Checkout v3 matrix][checkout-v3-matrix] giving you a better
+smaller fixes and a [Checkout v3 matrix][pay-matrix] giving you a better
 overview over which payment instruments v3 has to offer, and the countries they
 are available.
 
@@ -111,9 +111,9 @@ some more bugs and typos.
 We have been picking up steam since our summer break, hitting full throttle as
 September arrived. A smaller release this time around, but there are some
 important additions nonetheless. We have added a
-[siteID][checkout-v3-payments-only-redirect-request] field to checkout v3
+[siteID][pay-payments-only-redirect-request] field to checkout v3
 implementations, re-worked nearly all
-[headers][checkout-v3-payments-only-seamless] across the portal to make
+[headers][pay-payments-only-seamless] across the portal to make
 navigation easier, added a section on
 [deleting payment tokens][delete-payment-tokens], along with the usual batch of
 assorted bug fixes and typos.
@@ -757,13 +757,13 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [3ds2-test]: /resources/test-data#otp-3ds2
-[afd-payments]: /checkout-v3/payments-only/features/optional/afd
-[age-restrictions]: /checkout-v3/payments-only/features/optional/age-restrictions
+[afd-payments]: /pay/payments-only/features/optional/afd
+[age-restrictions]: /pay/payments-only/features/optional/age-restrictions
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
-[apple-pay]: /checkout-v3/payment-presentations#apple-pay
+[apple-pay]: /pay/payment-presentations#apple-pay
 [authorization-timeouts]: /checkout-v2/capture
-[callback]: /checkout-v3/payments-only/features/core/callback
+[callback]: /pay/payments-only/features/core/callback
 [card-delete-token]: /payment-instruments/card/features/optional/delete-token
 [card-error-codes]: /payment-instruments/card/features/technical-reference/problems
 [card-payment-url]: /payment-instruments/card/features/technical-reference/payment-url
@@ -782,33 +782,33 @@ integration and the payer.
 [checkout-payment-menu-frontend]: /checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /checkout-v2/payment-menu#step-3-create-payment-order
 [checkout-payment-url]: /checkout-v2/features/technical-reference/payment-url
-[checkout-create-starter-paymentorder]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
+[checkout-create-starter-paymentorder]: /pay/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /checkout-v2/
 [checkout-v2]: /checkout-v2/
 [checkout-items]: /checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /checkout-v2/features/core/3d-secure-2
 [checkout-callback]: /checkout-v2/features/core/callback
-[checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
-[checkout-v3-enterprise]: /checkout-v3/enterprise
-[checkout-v3-payments-only]: /checkout-v3/payments-only
-[checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
-[checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
-[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[pay-matrix]: /pay/#choose-the-right-implementation-for-your-business
+[pay-enterprise]: /pay/enterprise
+[pay-payments-only]: /pay/payments-only
+[pay-payments-only-redirect-request]: /pay/payments-only/redirect#payment-order-request
+[pay-payments-only-seamless]: /pay/payments-only/seamless-view
+[click-to-pay]: /pay/payment-presentations#click-to-pay
 [co-badge-card]: /payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /checkout-v2/features/core/
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
-[cross-channel-payments]: /checkout-v3/payments-only/features/optional/cross-channel-payments
+[cross-channel-payments]: /pay/payments-only/features/optional/cross-channel-payments
 [data-protection]: /resources/data-protection
-[delete-payment-tokens]: /checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request
+[delete-payment-tokens]: /pay/payments-only/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
-[eligibility-check]: /checkout-v3/payments-only/features/optional/instrument-mode#eligibility-check
+[eligibility-check]: /pay/payments-only/features/optional/instrument-mode#eligibility-check
 [mac]: /checkout-v2/features/optional/mac
 [frontpage]: https://developer.swedbankpay.com/
-[get-started]: /checkout-v3/
+[get-started]: /pay/
 [gift-cards]: /gift-cards
-[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay]: /pay/payment-presentations#google-pay
 [home-technical-information]: /introduction
 [initiate-consumer-session]: /checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /payment-instruments/invoice/direct
@@ -825,29 +825,29 @@ integration and the payer.
 [one-click]: /payment-instruments/card/features/optional/one-click-payments
 [optional-features]: /checkout-v2/features/optional/
 [payment-orders]: /checkout-v2/payment-menu#step-3-create-payment-order
-[payment-order-update]: /checkout-v3/business/features/optional/update
+[payment-order-update]: /pay/business/features/optional/update
 [payment-menu-invoice-capture]:/payment-menu/capture
 [payment-menu-items]: /payment-menu/features/technical-reference/items
 [payment-menu-payment-link]: /payment-menu/features/optional/payment-link
 [payments]: /payment-instruments
-[payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
+[payer-aware-payment-menu]: /pay/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /checkout-v2/features/optional/update
-[recur]: /checkout-v3/payments-only/features/optional/recur
-[resource-model-cancelled]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#cancelled
-[resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
-[resource-model-paid-swish]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#swish-paid-resource
-[resource-model-payer]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#payer
-[resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
-[request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
+[recur]: /pay/payments-only/features/optional/recur
+[resource-model-cancelled]: /pay/payments-only/features/technical-reference/resource-sub-models#cancelled
+[resource-model-paid]: /pay/payments-only/features/technical-reference/resource-sub-models#paid
+[resource-model-paid-swish]: /pay/payments-only/features/technical-reference/resource-sub-models#swish-paid-resource
+[resource-model-payer]: /pay/payments-only/features/technical-reference/resource-sub-models#payer
+[resource-models]: /pay/payments-only/features/technical-reference/resource-sub-models
+[request-delivery-information]: /pay/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
 [settlement-balance-report]: /payment-instruments/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
 [split-settlement]: /payment-instruments/card/features/core/settlement-reconciliation#split-settlement
-[ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
-[status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
-[status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
+[ssn-restrictions]: /pay/payments-only/features/optional/payer-restrictions
+[status-models]: /pay/payments-only/features/technical-reference/status-models
+[status-model-paid]: /pay/payments-only/features/technical-reference/status-models#paid
 [status-model-paid-v2]: /checkout-v2/features/technical-reference/status-models#paid
 [storing-uri]: /introduction#storing-urls
 [swish-api-errors]: /payment-instruments/swish/features/technical-reference/problems
@@ -856,10 +856,10 @@ integration and the payer.
 [swish-features]: /payment-instruments/swish/features
 [swish-redirect]: /payment-instruments/swish/redirect
 [swish-seamless-view]: /payment-instruments/swish/seamless-view
-[seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
-[seamless-view-events-onaborted]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onaborted
+[seamless-view-events]: /pay/payments-only/features/technical-reference/seamless-view-events
+[seamless-view-events-onaborted]: /pay/starter/features/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /payment-instruments/card/features/technical-reference/seamless-view-events
-[sequence-diagrams]: /checkout-v3/sequence-diagrams
+[sequence-diagrams]: /pay/sequence-diagrams
 [swish]: /payment-instruments/swish
 [swish-abort]: /payment-instruments/swish/after-payment#abort
 [technical-reference]: /checkout-v2/features/technical-reference/
@@ -870,8 +870,8 @@ integration and the payer.
 [trustly-payments]: /payment-instruments/trustly
 [trustly-payment-link]: /payment-instruments/trustly/features/optional/payment-link
 [trustly-features]: /payment-instruments/trustly/features
-[unscheduled-mit]: /checkout-v3/payments-only/features/optional/unscheduled
-[v3-setup]: /checkout-v3/payments-only/#step-1-sign-up-for-a-test-account
+[unscheduled-mit]: /pay/payments-only/features/optional/unscheduled
+[v3-setup]: /pay/payments-only/#step-1-sign-up-for-a-test-account
 [vipps-payment-resource]: /payment-instruments/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /payment-instruments/vipps/features/technical-reference/payment-url
 [vipps]: /payment-instruments/vipps

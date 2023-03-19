@@ -5,7 +5,7 @@
 
 ## Abort
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 To abort a payment order, perform the `abort` operation that is returned in the
 payment order response. You need to include the following in the request body:
@@ -46,7 +46,7 @@ Content-Type: application/json
 
 ## Abort PATCH Response
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 The response given when aborting a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource, as displayed above, with its
@@ -60,7 +60,7 @@ request towards the `paymentorders` resource, as displayed above, with its
 
 {% endif %}
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 {:.code-view-header}
 **Response**
@@ -89,10 +89,10 @@ Content-Type: application/json
             "Swish",
             "CreditAccount",
             "Trustly"
-        ], {% if documentation_section contains "checkout-v3/enterprise" %}
-        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
-        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
+        ], {% if documentation_section contains "pay/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "pay/payments-only" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "pay/business" %}
+        "implementation": "Business", {% endif %} {% if documentation_section contains "pay/starter" %}
         "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}

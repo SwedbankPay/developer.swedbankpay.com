@@ -25,7 +25,7 @@ these details for every purchase." %}
 
 ## Introduction
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 For card and invoice payments, the payment flow and implementation varies from
 your default only being the use of a `paymentToken`. The details in this section
@@ -528,5 +528,5 @@ Content-Type: application/json
 [one-click-image]: /assets/img/checkout/one-click.png
 [create-card-payment]: /payment-instruments/card/features/technical-reference/create-payment
 [create-invoice-payment]: /payment-instruments/invoice/features/technical-reference/create-payment
-[paid-resource]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
+[paid-resource]: /pay/payments-only/features/technical-reference/status-models#paid
 [verify]: /payment-instruments/card/features/optional/verify

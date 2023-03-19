@@ -286,7 +286,7 @@ It will be raised with the following event argument object:
 | {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
-{% if documentation_section contains "checkout-v3/starter" %}
+{% if documentation_section contains "pay/starter" %}
 
 ## `onPayerIdentified`
 

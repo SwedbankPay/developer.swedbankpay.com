@@ -98,7 +98,7 @@ menu_order: 1100
 [auto-capture]: /payment-instruments/card/features/core/capture
 [callback-url]:/payment-instruments/card/features/core/callback
 [cancel-url]: /payment-instruments/card/after-payment#cancellations
-[checkout-url]: /checkout-v3
+[checkout-url]: /pay
 [common-headers]: /introduction#headers
 [fundamentals]: /payment-instruments#the-fundamentals
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS

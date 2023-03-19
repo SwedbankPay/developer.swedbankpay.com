@@ -349,7 +349,7 @@ Content-Type: application/json
 
 ## GET The Token
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 The token can be retrieved by performing a [`GET` towards
 `paid`][paid-resource-model]. It will be visible under `tokens`in the `paid`

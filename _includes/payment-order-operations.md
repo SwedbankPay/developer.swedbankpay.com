@@ -9,7 +9,7 @@ instrument and its transactional states, etc. determine the available operations
 before the initial purchase. A list of possible operations and their explanation
 is given below.
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 {:.code-view-header}
 **Operations**
@@ -173,7 +173,7 @@ specified in the response by finding the appropriate operation based on its
 of the `rel` and the request that will be sent in the HTTP body of the request
 for the given operation.
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "pay" %}
 
 {:.table .table-striped}
 | Operation  | Description   |

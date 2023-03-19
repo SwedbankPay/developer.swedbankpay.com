@@ -9,13 +9,13 @@
         mobilepay
     {%- when "checkout-v2" -%}
          paymentorders
-     {%- when "checkout-v3/enterprise" -%}
+     {%- when "pay/enterprise" -%}
          paymentorders
-     {%- when "checkout-v3/starter" -%}
+     {%- when "pay/starter" -%}
          paymentorders
-     {%- when "checkout-v3/business" -%}
+     {%- when "pay/business" -%}
          paymentorders
-     {%- when "checkout-v3/payments-only" -%}
+     {%- when "pay/payments-only" -%}
          paymentorders
     {%- when "payment-menu" -%}
         paymentorders

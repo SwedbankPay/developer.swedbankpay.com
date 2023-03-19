@@ -999,12 +999,12 @@ Content-Type: application/json
     "reference": "reference to payer"
     "name": "Azra Oliveira",
     "email": "azra@payex.com",
-    "msisdn": "+46722345678",  {% unless documentation_section contains "checkout-v3/payments-only" %}
+    "msisdn": "+46722345678",  {% unless documentation_section contains "pay/payments-only" %}
     "gender": "male",
     "birthYear": "1980", {% endunless %}
     "hashedFields": {
       "emailHash": "968e23eda8818f8647d15775c939b3bc32ba592e",
-      "msisdnHash": "a23ec9d5b9def87cae2769cfffb0b8a0487a5afd"  {% unless documentation_section contains "checkout-v3/payments-only" %},
+      "msisdnHash": "a23ec9d5b9def87cae2769cfffb0b8a0487a5afd"  {% unless documentation_section contains "pay/payments-only" %},
       "socialSecurityNumberHash": "50288c11d79c1ba0671e6426ffddbb4954347ba4" {% endunless %}
     },
     "shippingAddress": {
@@ -1045,12 +1045,12 @@ Content-Type: application/json
 | {% f reference %}  | `string`   | The reference to the payer. In checkout, this will be the `consumerReference`. |
 | {% f name %}        | `string`     | The name of the payer. |
 | {% f email %}              | `string`     | The email address of the payer.     |
-| {% f msisdn %}        | `string`     | The msisdn of the payer.       | {% unless documentation_section contains "checkout-v3/payments-only" %}
+| {% f msisdn %}        | `string`     | The msisdn of the payer.       | {% unless documentation_section contains "pay/payments-only" %}
 | {% f gender %}              | `string`   | The gender of the payer.                 |
 | {% f birthYear %}              | `string`   | The birth year of the payer. | {% endunless %}
 | {% f hashedFields %}        | `object`     | The `hashedFields` object, containing hashed versions of the payer's email, msisdn and if present, Social Security Number. |
 | {% f emailHash %}              | `string`   | A hashed version of the payer's email. |
-| {% f msisdnHash %}              | `string`   | A hashed version of the payer's email. |  {% unless documentation_section contains "checkout-v3/payments-only" %}
+| {% f msisdnHash %}              | `string`   | A hashed version of the payer's email. |  {% unless documentation_section contains "pay/payments-only" %}
 | {% f socialSecurityNumberHash %}              | `string`   | A hashed version of the payer's social security number. | {% endunless %}
 | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. |
 | {% f addressee, 2 %}                   | `string` | First and last name of the addressee – the receiver of the shipped goods. |
