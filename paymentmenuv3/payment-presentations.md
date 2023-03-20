@@ -77,7 +77,7 @@ download) in English, and e-mail it to **agreement@swedbankpay.com** together
 with **Name**, **Organizational** and **Customer number**. Your acceptance is
 needed before we can activate Apple Pay for you.
 
-{% include iterator.html prev_href="/pay/"
+{% include iterator.html prev_href="/paymentmenuv3/"
                          prev_title="Back to Get Started" %}
 
 ## Click to Pay
@@ -92,7 +92,7 @@ Unless you have requested Click to Pay as part of signing your agreement with
 Swedbank Pay, you can e-mail a request to **agreement@swedbankpay.com** together
 with **Name**, **Organizational** and **Customer number**.
 
-{% include iterator.html prev_href="/pay/"
+{% include iterator.html prev_href="/paymentmenuv3/"
                          prev_title="Back to Get Started" %}
 
 ## Google Pay&trade;
@@ -215,13 +215,13 @@ PCI environment for processing. Within the PCI environment, a tokenized
 representation of the card is created, which is then used outside of the PCI
 environment to ensure the customers details are kept safe.
 
-{% include iterator.html prev_href="/pay/"
+{% include iterator.html prev_href="/paymentmenuv3/"
                          prev_title="Back to Get Started" %}
 
 [acceptable-use-policy]: https://payments.developers.google.com/terms/aup
-[android-googlepay-brand-guidelines]: https://developers.google.com/pay/api/android/guides/brand-guidelines
-[android-googlepay-checklist]: https://developers.google.com/pay/api/android/guides/test-and-deploy/integration-checklist
-[android-googlepay-devdoc]: https://developers.google.com/pay/api/android/
+[android-googlepay-brand-guidelines]: https://developers.google.com/paymentmenuv3/api/android/guides/brand-guidelines
+[android-googlepay-checklist]: https://developers.google.com/paymentmenuv3/api/android/guides/test-and-deploy/integration-checklist
+[android-googlepay-devdoc]: https://developers.google.com/paymentmenuv3/api/android/
 [apple-pay-sup-agreement]: /assets/documents/supplementary-agreement-ecommerce.docx
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
@@ -229,10 +229,10 @@ environment to ensure the customers details are kept safe.
 [benevity-donation-setup]: https://www.benevity.org
 [google-pay-profile]: https://pay.google.com/business/console/
 [google-pay-tos]: https://payments.developers.google.com/terms/sellertos
-[irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
+[irtp-request]: https://developers.google.com/paymentmenuv3/api/web/reference/request-objects#IsReadyToPayRequest
 [payex-domain-file]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
-[pd-request]: https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest
-[req-con-address]: /pay/payments-only/features/optional/request-delivery-info
-[web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
-[web-googlepay-checklist]: https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist
-[web-googlepay-devdoc]: https://developers.google.com/pay/api/web/
+[pd-request]: https://developers.google.com/paymentmenuv3/api/web/reference/request-objects#PaymentDataRequest
+[req-con-address]: /paymentmenuv3/payments-only/features/optional/request-delivery-info
+[web-googlepay-brand-guidelines]: https://developers.google.com/paymentmenuv3/api/web/guides/brand-guidelines
+[web-googlepay-checklist]: https://developers.google.com/paymentmenuv3/api/web/guides/test-and-deploy/integration-checklist
+[web-googlepay-devdoc]: https://developers.google.com/paymentmenuv3/api/web/

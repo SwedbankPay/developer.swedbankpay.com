@@ -95,6 +95,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /pay/enterprise/features/core/abort
-[sequence-diagram]: /pay/sequence-diagrams#enterprise-redirect
+[abort-feature]: /paymentmenuv3/enterprise/features/core/abort
+[sequence-diagram]: /paymentmenuv3/sequence-diagrams#enterprise-redirect
 [redirect-enterprise-menu]: /assets/img/checkout/pay-redirect-menu.png

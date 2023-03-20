@@ -27,9 +27,9 @@ Below is a shortened example of a payment order request. Apart from the
 new field, the payment request is similar to a standard payment order request.
 For an example of a payment order request, {% if documentation_section contains
 "pay/enterprise" %} [click
-here.](/pay/enterprise/redirect#payment-order-request) {% endif %} {% if
+here.](/paymentmenuv3/enterprise/redirect#payment-order-request) {% endif %} {% if
 documentation_section contains "pay/payments-only" %} [click
-here.](/pay/payments-only/redirect#payment-order-request) {% endif %}
+here.](/paymentmenuv3/payments-only/redirect#payment-order-request) {% endif %}
 
 The response will be similar to a standard payment order response, which is also
 documented on the page linked above.

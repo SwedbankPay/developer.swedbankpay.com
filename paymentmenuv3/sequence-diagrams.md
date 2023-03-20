@@ -86,7 +86,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][enterprise-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/pay/enterprise/redirect"
+{% include iterator.html prev_href="/paymentmenuv3/enterprise/redirect"
                          prev_title="Back to Enterprise Redirect" %}<br/>
 
 ## Enterprise Seamless View
@@ -180,7 +180,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][enterprise-seamless-view-events] for further information.
 *   ② Read more about [callback][enterprise-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/pay/enterprise/seamless-view"
+{% include iterator.html prev_href="/paymentmenuv3/enterprise/seamless-view"
                          prev_title="Back to Enterprise Seamless View" %}
 
 ## Payments Only Redirect
@@ -263,7 +263,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/pay/payments-only/redirect"
+{% include iterator.html prev_href="/paymentmenuv3/payments-only/redirect"
                          prev_title="Back to Payments Only Redirect" %}<br/>
 
 ## Payments Only Seamless View
@@ -357,10 +357,10 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/pay/payments-only/seamless-view"
+{% include iterator.html prev_href="/paymentmenuv3/payments-only/seamless-view"
                          prev_title="Back to Payments Only Seamless View" %}
 
-[enterprise-callback]: /pay/enterprise/features/core/callback
-[payments-callback]: /pay/payments-only/features/core/callback
-[enterprise-seamless-view-events]: /pay/enterprise/features/technical-reference/seamless-view-events
-[payments-seamless-view-events]: /pay/payments-only/features/technical-reference/seamless-view-events
+[enterprise-callback]: /paymentmenuv3/enterprise/features/core/callback
+[payments-callback]: /paymentmenuv3/payments-only/features/core/callback
+[enterprise-seamless-view-events]: /paymentmenuv3/enterprise/features/technical-reference/seamless-view-events
+[payments-seamless-view-events]: /paymentmenuv3/payments-only/features/technical-reference/seamless-view-events

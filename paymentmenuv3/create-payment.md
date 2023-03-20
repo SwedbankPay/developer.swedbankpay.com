@@ -1,8 +1,7 @@
 ---
-title: Getting Started
+title: Create Payment
 description: |
- Here you will learn about creating a payment, redirect the payer to our secure hosted paymentmenu. After the purchase,
- the payer will be redirected back to your website.
+ Here you will learn about creating a payment and redirect the payer to our secure hosted paymentmenu.
 menu_order: 300
 ---
 
@@ -71,6 +70,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /pay/payments-only/features/core/abort
-[sequence-diagram]: /pay/sequence-diagrams#payments-only-redirect
+[abort-feature]: /paymentmenuv3/payments-only/features/core/abort
+[sequence-diagram]: /paymentmenuv3/sequence-diagrams#payments-only-redirect
 [redirect-payments-only-menu]: /assets/img/checkout/pay-redirect-menu.png

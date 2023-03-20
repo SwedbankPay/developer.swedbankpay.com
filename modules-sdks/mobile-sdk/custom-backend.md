@@ -72,7 +72,7 @@ documentation on all the features.
             userData: Any?,
             consumerProfileRef: String?
         ): ViewPaymentOrderInfo {
-            val viewPaymentOrder = post("https://example.com/pay/android")
+            val viewPaymentOrder = post("https://example.com/paymentmenuv3/android")
             return ViewPaymentOrderInfo(
                 webViewBaseUrl = "https://example.com/",
                 viewPaymentOrder = viewPaymentOrder,
@@ -131,7 +131,7 @@ calls are a programing error.
             consumerProfileRef: String?,
             completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void
         ) {
-            post("https://example.com/pay/ios") { result in
+            post("https://example.com/paymentmenuv3/ios") { result in
                 do {
                     let viewPaymentorder = try result.get()
                     let info = ViewPaymentOrderInfo(
@@ -241,7 +241,7 @@ dynamically, and will therefore need to incorporate them to your protocol.
 **SDK Request**
 
 ```http
-POST /pay/android HTTP/1.1
+POST /paymentmenuv3/android HTTP/1.1
 Host: example.com
 ```
 

@@ -1,12 +1,11 @@
 ---
-section: Pay
-sidebar_icon: payments
+section: Enterprise
 title: Set Up
 description: |
   **In this section we are going to guide you through setting up your test account
   and how to make an API request for your first test payment. After these steps,
   you're ready to build your integration!**
-menu_order: 400
+menu_order: 300
 ---
 
 ## Step 1: Sign Up For A Test Account
@@ -19,6 +18,9 @@ Your test account request should be sent to:
 create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
+
+*   **The service you prefer:** Full Checkout (Enterprise) or
+    Payments Only (Payments).
 
 *   **Email address:** To a developer or the CTO.
 
@@ -72,7 +74,7 @@ the key.
 {% include alert.html type="warning" icon="warning" body="Please note that the
 production and staging environment need separate tokens. " %}
 
-{% include iterator.html prev_href="/pay/"
+{% include iterator.html prev_href="/paymentmenuv3/"
                          prev_title="Back to Get Started"
-                         next_href="/pay/getting-started"
+                         next_href="/paymentmenuv3/enterprise/introduction"
                          next_title="Start Integration" %}

@@ -158,6 +158,6 @@ Mode_.
 *[MAC]: Merchant-Authenticated Consumer
 *[SCA]: Strong Customer Authentication
 
-[enterprise]: /pay/enterprise
-[payments-only]: /pay/payments-only
-[starter]: /pay/starter
+[enterprise]: /paymentmenuv3/enterprise
+[payments-only]: /paymentmenuv3/payments-only
+[starter]: /paymentmenuv3/starter

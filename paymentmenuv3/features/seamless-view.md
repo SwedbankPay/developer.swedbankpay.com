@@ -168,7 +168,7 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /pay/payments-only/features/core/abort
-[seamless-view-events]: /pay/payments-only/features/technical-reference/seamless-view-events
-[sequence-diagram]: /pay/sequence-diagrams#payments-only-seamless-view
+[abort-feature]: /paymentmenuv3/payments-only/features/core/abort
+[seamless-view-events]: /paymentmenuv3/payments-only/features/technical-reference/seamless-view-events
+[sequence-diagram]: /paymentmenuv3/sequence-diagrams#payments-only-seamless-view
 [seamless-enterprise-menu]: /assets/img/checkout/pay-seamless-menu.png

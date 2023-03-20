@@ -30,7 +30,7 @@ Read more about our two integration alternatives by clicking the links below.
 This product supports Danish `da-DK`, English (US) `en-US`, Finnish `fi-FI`,
 Norwegian `nb-NO`, and Swedish `sv-SE`.
 
-{% include iterator.html prev_href="/pay/"
+{% include iterator.html prev_href="/paymentmenuv3/"
                          prev_title="Back to Get Started"
                          next_href="redirect"
                          next_title="Integrate Redirect" %}
