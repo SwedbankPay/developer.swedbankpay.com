@@ -46,5 +46,5 @@ Content-Type: application/json
 | {% icon check %} | {% f intent %}      | `string` | {% include fields/intent.md %} |
 
 [purchase]: {{ features_url }}/core/purchase
-[recur]: /old-implementations/payment-instruments/card/features/optional/recur
-[verify]: /old-implementations/payment-instruments/card/features//optional/verify
+[recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
+[verify]: /old-implementations/payment-instruments-v1/card/features//optional/verify

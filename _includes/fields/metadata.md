@@ -3,7 +3,7 @@
    {%- if documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
         /{{documentation_section}}/features/technical-reference/metadata
     {%- else -%}
-        /old-implementations/payment-instruments/{{documentation_section}}/features/technical-reference/metadata
+        /old-implementations/payment-instruments-v1/{{documentation_section}}/features/technical-reference/metadata
     {%- endif -%}
 {%- endcapture -%}
 {%- capture metadata -%}

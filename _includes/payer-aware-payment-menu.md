@@ -24,10 +24,10 @@ all payment instruments provided by Swedbank Pay support Payer Awareness today."
 
 ## BYO Payment Menu
 
-Payment Menu is versatile and can be configured in such a way that it functions
-like a single payment instrument. In such configuration, it is easy to Bring
-Your Own Payment Menu, i.e. building a customized payment menu in our own user
-interface.
+Payment Menu v2 is versatile and can be configured in such a way that it
+functions like a single payment instrument. In such configuration, it is easy to
+Bring Your Own Payment Menu, i.e. building a customized payment menu in our own
+user interface.
 
 ## Add Stored Payment Instrument Details
 

@@ -231,7 +231,7 @@ sequenceDiagram
 
 <!--lint disable final-definition -->
 
-[card]: /old-implementations/payment-instruments/card
-[vipps]: /old-implementations/payment-instruments/vipps
-[swish]: /old-implementations/payment-instruments/swish/
-[trustly]: /old-implementations/payment-instruments/trustly/
+[card]: /old-implementations/payment-instruments-v1/card
+[vipps]: /old-implementations/payment-instruments-v1/vipps
+[swish]: /old-implementations/payment-instruments-v1/swish/
+[trustly]: /old-implementations/payment-instruments-v1/trustly/

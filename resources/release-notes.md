@@ -64,7 +64,7 @@ release. Head over to [Settlement & Reconciliation][settlement-balance-report]
 to learn more.
 
 We have added a [paid status model][status-model-paid-v2] to Checkout v2 and
-Payment menu, and the [update payment order section][payment-order-update] is
+Payment Menu v2, and the [update payment order section][payment-order-update] is
 added to Checkout v3.
 
 ## 15 December 2022
@@ -217,7 +217,7 @@ new?
 
 ### Version 2.2.2
 
-*   Added payment link for [Payment Menu][payment-menu-payment-link]
+*   Added payment link for [Payment Menu v2][payment-menu-payment-link]
 *   Renamed [Merchant Authenticated Consumer][mac-checkout] section (previously Delegated Strong Authenticated Consumer)
 *   Updated [Unscheduled Merchant Initiated Transaction][unscheduled-mit]
 *   Fixed typos, minor bugs and code examples
@@ -228,7 +228,7 @@ new?
 
 *   Added payment link option for [Trustly][trustly-payment-link]
 *   Added information about invoice capture in [Checkout v2][checkout-invoice-capture] and [Payment Menu][payment-menu-invoice-capture]
-*   Added MobilePay `shoplogoUrl` in the [Checkout v2][checkout-items] and [Payment Menu][payment-menu-items] items section
+*   Added MobilePay `shoplogoUrl` in the [Checkout v2][checkout-items] and [Payment Menu v2][payment-menu-items] items section
 *   Added [Delete Token section][card-delete-token] in Card's technical reference
 *   Fixed minor typos and bugs
 
@@ -764,17 +764,17 @@ integration and the payer.
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [authorization-timeouts]: /checkout-v2/capture
 [callback]: /checkout-v3/payments-only/features/core/callback
-[card-delete-token]: /old-implementations/payment-instruments/card/features/optional/delete-token
-[card-error-codes]: /old-implementations/payment-instruments/card/features/technical-reference/problems
-[card-payment-url]: /old-implementations/payment-instruments/card/features/technical-reference/payment-url
-[card-purchase]: /old-implementations/payment-instruments/card/redirect#step-1-create-a-purchase
-[card-unscheduled-purchase]: /old-implementations/payment-instruments/card/features/optional/unscheduled
-[card-transaction-states]: /old-implementations/payment-instruments/card/features/technical-reference/payment-transaction-states
-[card]: /old-implementations/payment-instruments/card
-[card-3ds-info]: /old-implementations/payment-instruments/card#sequence-diagram
-[card-3ds2]: /old-implementations/payment-instruments/card/features/core/3d-secure-2
-[card-redirect]: /old-implementations/payment-instruments/card/redirect
-[card-seamless-view]: /old-implementations/payment-instruments/card/seamless-view
+[card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
+[card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
+[card-payment-url]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-url
+[card-purchase]: /old-implementations/payment-instruments-v1/card/redirect#step-1-create-a-purchase
+[card-unscheduled-purchase]: /old-implementations/payment-instruments-v1/card/features/optional/unscheduled
+[card-transaction-states]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-transaction-states
+[card]: /old-implementations/payment-instruments-v1/card
+[card-3ds-info]: /old-implementations/payment-instruments-v1/card#sequence-diagram
+[card-3ds2]: /old-implementations/payment-instruments-v1/card/features/core/3d-secure-2
+[card-redirect]: /old-implementations/payment-instruments-v1/card/redirect
+[card-seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
 [checkin]: /old-implementations/checkout-v2/checkin
 [checkout-capture]: /old-implementations/checkout-v2/capture
 [checkout-invoice-capture]: /old-implementations/checkout-v2/capture
@@ -794,10 +794,10 @@ integration and the payer.
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
-[co-badge-card]: /old-implementations/payment-instruments/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
+[co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
-[credit-card-abort]: /old-implementations/payment-instruments/card/after-payment#abort
-[credit]: /old-implementations/payment-instruments/card
+[credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
+[credit]: /old-implementations/payment-instruments-v1/card
 [cross-channel-payments]: /checkout-v3/payments-only/features/optional/cross-channel-payments
 [data-protection]: /resources/data-protection
 [delete-payment-tokens]: /checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request
@@ -811,24 +811,24 @@ integration and the payer.
 [google-pay]: /checkout-v3/payment-presentations#google-pay
 [home-technical-information]: /introduction
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[invoice-direct]: /old-implementations/payment-instruments/invoice/direct
-[invoice]: /old-implementations/payment-instruments/invoice
+[invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
+[invoice]: /old-implementations/payment-instruments-v1/invoice
 [ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
 [ios-sdk-documentation]: /modules-sdks/mobile-sdk/ios
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
-[mobile-card-payments]: /old-implementations/payment-instruments/card/mobile-card-payments
-[mobile-pay]: /old-implementations/payment-instruments/mobile-pay
-[mobilepay-seamless-view]: /old-implementations/payment-instruments/mobile-pay/seamless-view
-[mobilepay-capture]: /old-implementations/payment-instruments/mobile-pay/capture
+[mobile-card-payments]: /old-implementations/payment-instruments-v1/card/mobile-card-payments
+[mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
+[mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
+[mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
 [modules-sdks]: /modules-sdks
-[moto-payment-card]: /old-implementations/payment-instruments/card/features/optional/moto
-[one-click]: /old-implementations/payment-instruments/card/features/optional/one-click-payments
+[moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
+[one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [payment-order-update]: /checkout-v3/business/features/optional/update
-[payment-menu-invoice-capture]:/old-implementations/payment-menu/capture
-[payment-menu-items]: /old-implementations/payment-menu/features/technical-reference/items
-[payment-menu-payment-link]: /old-implementations/payment-menu/features/optional/payment-link
+[payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
+[payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
+[payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /payment-instruments
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
@@ -841,37 +841,37 @@ integration and the payer.
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [resources]: /resources/
-[settlement-balance-report]: /old-implementations/payment-instruments/card/features/core/settlement-reconciliation#balance-report
-[settlement-reconcilitation]: /old-implementations/payment-instruments/card/features/core/settlement-reconciliation
+[settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
+[settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
-[split-settlement]: /old-implementations/payment-instruments/card/features/core/settlement-reconciliation#split-settlement
+[split-settlement]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
 [status-model-paid-v2]: /old-implementations/checkout-v2/features/technical-reference/status-models#paid
 [storing-uri]: /introduction#storing-urls
-[swish-api-errors]: /old-implementations/payment-instruments/swish/features/technical-reference/problems
-[swish-direct-mcom]: /old-implementations/payment-instruments/swish/direct#step-2b-create-m-commerce-sale-transaction
-[swish-direct]: /old-implementations/payment-instruments/swish/direct
-[swish-features]: /old-implementations/payment-instruments/swish/features
-[swish-redirect]: /old-implementations/payment-instruments/swish/redirect
-[swish-seamless-view]: /old-implementations/payment-instruments/swish/seamless-view
+[swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
+[swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
+[swish-direct]: /old-implementations/payment-instruments-v1/swish/direct
+[swish-features]: /old-implementations/payment-instruments-v1/swish/features
+[swish-redirect]: /old-implementations/payment-instruments-v1/swish/redirect
+[swish-seamless-view]: /old-implementations/payment-instruments-v1/swish/seamless-view
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [seamless-view-events-onaborted]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onaborted
-[seamless-view-events-card]: /old-implementations/payment-instruments/card/features/technical-reference/seamless-view-events
+[seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/features/technical-reference/seamless-view-events
 [sequence-diagrams]: /checkout-v3/sequence-diagrams
-[swish]: /old-implementations/payment-instruments/swish
-[swish-abort]: /old-implementations/payment-instruments/swish/after-payment#abort
+[swish]: /old-implementations/payment-instruments-v1/swish
+[swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
 [terminology]: /resources/terminology
 [test-data]: /resources/test-data
-[transaction-on-file]: /old-implementations/payment-instruments/card/features/optional/transaction-on-file
+[transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
-[trustly-payments]: /old-implementations/payment-instruments/trustly
-[trustly-payment-link]: /old-implementations/payment-instruments/trustly/features/optional/payment-link
-[trustly-features]: /old-implementations/payment-instruments/trustly/features
+[trustly-payments]: /old-implementations/payment-instruments-v1/trustly
+[trustly-payment-link]: /old-implementations/payment-instruments-v1/trustly/features/optional/payment-link
+[trustly-features]: /old-implementations/payment-instruments-v1/trustly/features
 [unscheduled-mit]: /checkout-v3/payments-only/features/optional/unscheduled
 [v3-setup]: /checkout-v3/payments-only/#step-1-sign-up-for-a-test-account
-[vipps-payment-resource]: /old-implementations/payment-instruments/vipps/features/technical-reference/payment-resource
-[vipps-payment-url]: /old-implementations/payment-instruments/vipps/features/technical-reference/payment-url
-[vipps]: /old-implementations/payment-instruments/vipps
+[vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
+[vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
+[vipps]: /old-implementations/payment-instruments-v1/vipps

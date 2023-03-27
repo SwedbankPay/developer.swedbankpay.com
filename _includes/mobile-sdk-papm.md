@@ -241,6 +241,6 @@ val paymentOrder = PaymentOrder(
 paymentOrder.disableStoredPaymentDetails = true
 ```
 
-[add-stored-details]: /old-implementations/payment-menu/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
+[add-stored-details]: /old-implementations/payment-menu-v2/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
 [enterprise-payer-ref]: https://developer.swedbankpay.com/checkout-v3/enterprise/features/optional/enterprise-payer-reference
 [expanding_properties]: https://developer.swedbankpay.com/introduction#expansion

@@ -3,7 +3,7 @@
 
 {% capture product %}
     {% if documentation_section == "payment-menu" %}
-        [Payment Menu][payment-menu]
+        [Payment Menu v2][payment-menu]
     {% else %}
         [Swedbank Pay Checkout][checkout]
     {% endif %}
