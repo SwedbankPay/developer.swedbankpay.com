@@ -829,7 +829,7 @@ integration and the payer.
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
 [payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
-[payments]: /payment-instruments
+[payments]: old-implementations/payment-instruments-v1
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/optional/update
