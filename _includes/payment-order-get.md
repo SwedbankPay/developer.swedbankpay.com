@@ -124,5 +124,5 @@ Content-Type: application/json
 {% include accordion-table.html content=table %}
 
 -----------------------------------------
-[payment-menu]: /payment-menu
+[payment-menu]: /old-implementations/payment-menu-v2
 [checkout]: /{{ documentation_section }}

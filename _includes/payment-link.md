@@ -224,7 +224,7 @@ sequenceDiagram
 [card-payment]: /assets/img/payments/card-payment.png
 [card]: /old-implementations/payment-instruments-v1/card
 [mobilepay]: /old-implementations/payment-instruments-v1/mobile-pay
-[payment-menu]: /payment-menu
+[payment-menu]: /old-implementations/payment-menu-v2
 [purchase-flow]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [swish]: /old-implementations/payment-instruments-v1/swish
 [technical-reference-callback]: /old-implementations/payment-instruments-v1/card/features/core/callback
