@@ -99,7 +99,7 @@ menu_order: 1100
 [cancel-url]: /old-implementations/payment-instruments-v1/card/after-payment#cancellations
 [checkout-url]: /checkout-v3
 [common-headers]: /introduction#headers
-[fundamentals]: old-implementations/payment-instruments-v1/#the-fundamentals
+[fundamentals]: /old-implementations/payment-instruments-v1/#the-fundamentals
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS
 [invoice-url]: /old-implementations/payment-instruments-v1/invoice/
 [recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
