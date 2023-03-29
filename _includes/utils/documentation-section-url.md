@@ -1,6 +1,6 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- capture documentation_section_url -%}
-    {%- unless documentation_section contains 'payment-menu' or documentation_section contains 'checkout' -%}
+    {%- unless documentation_section contains 'payment-menu-v2' or documentation_section contains 'checkout-v2' or documentation_section contains 'checkout-v3' -%}
         /payment-instruments
     {%- endunless -%}
 
