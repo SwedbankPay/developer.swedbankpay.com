@@ -1,8 +1,8 @@
 ---
 section: NET
 title: Introduction and Overview
+permalink: /:path/
 redirect_from: /modules-sdks/pax-terminal/instore-solution/NET
-permlink: /:path/
 description: |
     Use the .NET SDK to quickly and easy integrate with the terminal from your POS solution. The aim of the SDK is to minimize the work effort for both users and Swedbank Pay.
 menu_order: 1500
@@ -46,29 +46,57 @@ To make a transaction from scratch it takes only a few method calls.
 * [Start][start-method] - Initialises the instance and starts a listener for terminal if that mode is chosen
 * [OpenAsync][openasync] - Starts a Login Session with the terminal. The session remains until Close or a new Open call
 * [PaymentAsync][paymentasync] - Starts a payment transaction for supplied amount.
-* RefundAsync - Starts a refund transaction for supplied amount.
-* Close - Finnish the terminal session and allows for terminal maintenance. At least once a day
+* [RefundAsync][refundasync] - Starts a refund transaction for supplied amount.
+* [CloseAsync][closeasync] - Finnish the terminal session and allows for terminal maintenance. At least once a day
 
 ## Handy Methods
 
 To get more than just payments and refunds
 
 * [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card befor amount is known
-* SetPaymentInstrument - Send a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
-* RequestToDisplayAsync - Send message to be displayed on terminal
-* RequestCustomerConfirmationAsync - Display a yes/no question on the terminal and receive the result.
+* [SetPaymentInstrument][setpaymentasync] - Send a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
+* [RequestToDisplayAsync][requesttodisplayasync] - Send message to be displayed on terminal
+* [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Display a yes/no question on the terminal and receive the result.
 
 ## Other Available Methods
 
 * [AbortAsync][abortasync] - Abort something ongoing
-* ReverseLastAsync - Reverse last transaction if it was approved
+* [ReverseLastAsync][reverselastasync] - Reverse last transaction if it was approved
 * AdminAsync - Ask terminal to see if is any parameter update pending
 
-[create-method]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/create
-[start-method]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/start
-[openasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/openasync
-[paymentasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/paymentasync
-[getpaymentinstrumentasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/getpaymentinstrumentasync
-[abortasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/abortasync
-[default-style]: /modules-sdks/pax-terminal/instore-solution/NET/CodeExamples/#as-client-and-server
-[client-style]: /modules-sdks/pax-terminal/instore-solution/NET/CodeExamples/#as-client-only
+## Events
+
+The events are only used if running as a server.
+
+* [OnTerminalDisplay][onterminaldisplay]
+* [OnNewStatus][onnewstatus]
+* [OnTerminalAddressObtained][onterminaladdressobtained]
+
+## Callbacks
+
+### ISwpTrmCallbackInterface
+
+The callback are only used if running as a server.
+
+* [ConfirmationHandler][confirmationhandler]
+* [EventNotificationHandler][eventnotificationhandler]
+
+[create-method]: ./Methods/create
+[start-method]: ./Methods/start
+[openasync]: ./Methods/openasync
+[paymentasync]: ./Methods/paymentasync
+[getpaymentinstrumentasync]: ./Methods/getpaymentinstrumentasync
+[abortasync]: ./Methods/abortasync
+[default-style]: ./CodeExamples/#as-client-and-server
+[client-style]: ./CodeExamples/#as-client-only
+[refundasync]: ./Methods/refundasync
+[closeasync]: ./Methods/closeasync
+[setpaymentasync]: ./Methods/setpaymentasync
+[reverselastasync]: ./Methods/reverselastasync
+[requesttodisplayasync]: ./Methods/requesttodisplayasync
+[requestcustomerconfirmation]: ./Methods/requestcustomerconfirmation
+[onterminaldisplay]:./Events/index/#onterminaldisplay
+[onnewstatus]:./Events/index/#onnewstatus
+[onterminaladdressobtained]:./Events/index/#onterminaladdressobtained
+[confirmationhandler]: ./ISwpTrmCallbackInterface/index/#confirmationhandler
+[eventnotificationhandler]: ./ISwpTrmCallbackInterface/index/#eventnotificationhandler

@@ -1,0 +1,26 @@
+---
+title: ISwpTrmCallbackInterface
+---
+
+The callbacks are only called if running as a server. However the Create method requires a ISwpTrmCallbackInterface, so just implement them without code if not running server mode.
+[Sample code runing client only][clientonly].
+
+## ConfirmationHandler
+
+    void ConfirmationHandler(string text,IConfirmationResult callback);
+
+## EventNotificationHandler
+
+    void EventNotificationHandler(NexoTypes.EventToNotifyEnumeration type, string text);
+
+### EventTiNotifyEnumeration
+
+```c#
+  public enum EventToNotifyEnumeration
+  {
+   BeginMaintenance, EndMaintenance, Shutdown, Initialised, OutOfOrder, Completed, Abort, SaleWakeUp, SaleAdmin, CustomerLanguage, KeyPressed,
+   SecurityAlarm, StopAssistance, CardInserted, CardRemoved, Reject
+  };
+```
+
+[clientonly]: ../CodeExamples/index/#as-client-only

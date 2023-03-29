@@ -1,22 +1,21 @@
 ---
 title: Create Method
+description: Create(SwpIfConfig)
 ---
-
-## Create
 
 Create is a static method that creates an instance and returns an `ISwpTrmIf` interface.
 This is the first call to make. At the moment there is only one class available, PAXTrmImp_1.
 
-## Parameters
+### Parameters
 
-* SwpIfConfig - instance of a config object.
-* ISwpTrmCallbackInterface - reference to an instance that handles available callbacks
+* [SwpIfConfig][swpifconfig] - instance of a config object.
+* [ISwpTrmCallbackInterface][iswptrmcallbackinterface] - reference to an instance that handles available callbacks
 
-## Returns
+### Returns
 
-A reference to an instance implementing the `ISwpTrmIf` interface.
+A reference to an instance implementing the `ISwpTrmIf_1` interface.
 
-## Example
+### Example
 
 {:.code-view-header}
 Create an instance to get an interface
@@ -50,3 +49,23 @@ public class MyImplementation : ISwpTrmCallbackInterface
  {}
 }
 ```
+
+## SwpIfConfig
+
+SwpIfConfig is only used when calling Create method. There are default values and the most relevant to change is possibly LogPath and TerminalRxPort. TerminalRxPort is only used in for server mode.
+The `DraftCapture` implies other changes as well that are not documented here and should therefore be left as is.
+
+```c#
+public class SwpIfConfig
+{
+    public string LogPath { get; set; } = ".\\";
+    public int TerminalRxPort { get; set; } = 11000;
+    public NLog.LogLevel LogLevel { get; set; } = NLog.LogLevel.Debug;
+    public string UICulture { get; set; } = CultureInfo.CurrentCulture.Name;
+    public bool DraftCapture { get; set; } = false;
+    public bool LogTerminalHandler { get; set; } = false;
+}
+```
+
+[swpifconfig]: #swpifconfig
+[iswptrmcallbackinterface]: ../ISwpTrmCallbackInterface/index
