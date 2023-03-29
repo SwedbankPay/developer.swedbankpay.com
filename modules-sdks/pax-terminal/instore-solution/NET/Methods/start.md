@@ -1,5 +1,6 @@
 ---
 title: Start Method
+description: void Start(SaleApplInfo appinfo=null)
 ---
 The Start method is initializes the created instance with, among other parameters, the very essential `POIID`.
 The `POIID` is received from Swedbank Pay and is an identifier of the Point Of Interaction. Its value should stay the same at all time. Through this id the terminal knows what parameters to fetch from the TMS. This makes it easy to replace a terminal with another since it will retrieve the same parameters that were used by the replaced terminal.
@@ -11,7 +12,7 @@ With this call it is also decided whether to start a listener for terminal reque
         ApplicationName = "Quick Demo",
         ProviderIdentification = "SwP",
         SoftwareVersion = "0.1",
-        POIID = "AJACQH28",
+        POIID = "A-TEST-POIID",
         SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString() // Client only mode!
     });
 ```
