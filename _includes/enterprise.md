@@ -79,6 +79,6 @@ the merchant. In the bottom image, the last 4/5 digits of the SSN are required.
 ![Payments with SSN][enterprise-with-ssn]{:width="475" height="460"}
 
 [checkin]: {{ documentation_section_url }}/checkin
-[payment-menu]: {{ documentation_section_url }}/payment-menu
+[payment-menu]: {{ documentation_section_url }}/payment-menu-v2
 [enterprise-no-ssn]: /assets/img/checkout/enterprise-no-ssn.png
 [enterprise-with-ssn]: /assets/img/checkout/enterprise-with-ssn.png
