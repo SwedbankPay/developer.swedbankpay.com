@@ -54,7 +54,7 @@ To make a transaction from scratch it takes only a few method calls.
 To get more than just payments and refunds
 
 * [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card befor amount is known
-* [SetPaymentInstrument][setpaymentasync] - Send a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
+* [SetPaymentInstrument][setpaymentinstrument] - Send a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
 * [RequestToDisplayAsync][requesttodisplayasync] - Send message to be displayed on terminal
 * [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Display a yes/no question on the terminal and receive the result.
 
@@ -91,7 +91,7 @@ The callback are only used if running as a server.
 [client-style]: ./CodeExamples/#as-client-only
 [refundasync]: ./Methods/refundasync
 [closeasync]: ./Methods/closeasync
-[setpaymentasync]: ./Methods/setpaymentasync
+[setpaymentinstrument]: ./Methods/setpaymentinstrument
 [reverselastasync]: ./Methods/reverselastasync
 [requesttodisplayasync]: ./Methods/requesttodisplayasync
 [requestcustomerconfirmation]: ./Methods/requestcustomerconfirmation

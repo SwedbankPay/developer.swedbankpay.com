@@ -1,11 +1,13 @@
 ---
 title: ReverseLastAsync
-description: Task\<ReverseRequestResult\> ReverseLastAsync
+description: Task\<ReversalRequestResult\> ReverseLastAsync()
 ---
 
 ReverseLastAsync will reverse last transaction made if it was approved.
 
 ### Returns
+
+A **ReversalRequestResult**
 
 ```c#
 public class NexoRequestResult
