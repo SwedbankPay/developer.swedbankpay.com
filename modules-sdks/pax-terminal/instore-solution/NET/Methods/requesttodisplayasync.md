@@ -8,7 +8,7 @@ The displayed message stays until next request.
 
 ### Returns
 
-NexoRequestResult
+A **NexoRequestResult**
 
 ```c#
 public class NexoRequestResult

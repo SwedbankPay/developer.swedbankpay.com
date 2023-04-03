@@ -9,4 +9,4 @@ Prefix och supplied PAN must be registred in the terminal setup an may not be a 
 
 ### Parameter
 
-string PaymentInstrument - format is pan and expiry date separated by an equal sign. "PAN=MMYY"
+`string` PaymentInstrument - format is pan and expiry date separated by an equal sign. "PAN=MMYY"

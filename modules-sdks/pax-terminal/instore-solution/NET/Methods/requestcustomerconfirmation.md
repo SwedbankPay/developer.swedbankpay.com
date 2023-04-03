@@ -7,7 +7,7 @@ Call RequestCustomerAsync to ask customer a yes/no question. The message will be
 
 ### Returns
 
-### CustomerConfirmationResult
+A **CustomerConfirmationResult**
 
 * `bool` **Confirmation** - Response from customer. True if yes and false if no.
 * **NexoRequestResult**

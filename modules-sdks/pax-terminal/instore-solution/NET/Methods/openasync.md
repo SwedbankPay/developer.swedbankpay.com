@@ -17,7 +17,7 @@ body= "To change POIID for a terminal a Logout or terminal reboot need to be per
 
 ### Returns
 
-OpenResult object.
+A **OpenResult** object.
 
 ```c#
 public class OpenResult
