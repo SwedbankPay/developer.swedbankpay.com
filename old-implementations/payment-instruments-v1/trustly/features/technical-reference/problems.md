@@ -8,4 +8,4 @@ icon:
   outlined: true
 ---
 
-{% include problems/old-implementations/problems.md %}
+{% include problems/problems.md %}
