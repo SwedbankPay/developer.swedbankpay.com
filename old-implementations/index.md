@@ -23,7 +23,7 @@ to find your section.
 
 {% include iterator.html next_href="/old-implementations/checkout-v2/"
                          next_title="Checkout v2" %}
-{% include iterator.html next_href="old-implementations/payment-instruments-v1/"
+{% include iterator.html next_href="/old-implementations/payment-instruments-v1/"
                          next_title="Payment Instruments v1" %}
 {% include iterator.html next_href="/old-implementations/payment-menu-v2/"
                          next_title="Payment Menu v2" %}

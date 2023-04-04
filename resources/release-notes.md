@@ -762,7 +762,7 @@ integration and the payer.
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
-[authorization-timeouts]: old-implementations/checkout-v2/capture
+[authorization-timeouts]: /old-implementations/checkout-v2/capture
 [callback]: /checkout-v3/payments-only/features/core/callback
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
 [card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
