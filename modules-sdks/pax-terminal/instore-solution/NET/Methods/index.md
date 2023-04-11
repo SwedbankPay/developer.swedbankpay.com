@@ -30,7 +30,7 @@ Call [RefundAsync][refundasync] to make a refund transaction when the amount is 
 
 ### AbortAsync
 
-A call to [AbortAsync][abortasync] aborts an ongoing request. The AbortRequest itself is not responded to by the terminal and the response of the aborted request ends up as a result of the aborted request.
+A call to [AbortAsync][abortasync] aborts an ongoing request. The AbortRequest itself is not responded to by the terminal, and the response of the aborted request ends up as a result of the aborted request.
 
 ### ReverseLastAsync
 
