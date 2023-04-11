@@ -34,7 +34,7 @@ A call to [AbortAsync][abortasync] aborts an ongoing request. The AbortRequest i
 
 ### ReverseLastAsync
 
-Call [ReverseLastAsync][reverselastasync] to reverse the last transaction. The reversal is only possible for the last transaction made and ofcource if it was successful.
+Call [ReverseLastAsync][reverselastasync] to reverse the last transaction. The reversal is only possible for the last transaction made, given that it was successful.
 
 ### GetPaymentInstrumentAsync
 
