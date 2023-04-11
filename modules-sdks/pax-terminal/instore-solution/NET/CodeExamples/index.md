@@ -318,7 +318,7 @@ Other that creating the *Members* which is a list of strings, there are only cha
 The important addition is the call to `RequestCustomerConfirmationAsync`. It requests the terminal to show a message and ask for a yes/no response. The member `CustomerConfirmation` of the result is true or false.
 
 {% include alert.html type="warning" icon="warning" header="Note!"
-body= "The delay before a new request after a finnished transaction is needed. If delay is not made the request will get a failure due to terminal being busy"
+body= "The delay before a new request after a finished transaction is needed. If the delay is not added, the request will get a failure due to terminal being busy"
 %}
 {% include alert.html type="informative" icon="info" header="Remember"
 body= "to add List<*string*> Member; "
