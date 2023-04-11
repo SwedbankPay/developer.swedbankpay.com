@@ -26,7 +26,7 @@ enum TrmStatus { Initialized, Open, WaitForPaymentInstrument, CustomerKnown, Pay
 
 ## OnTerminalAddressObtained
 
-OnTerminalAddressObtained occurs when the save button has been pressed in the terminals's admin menu. The purpose is to inform the sale system of the terminal's IP address and port. This way it is possible to configure the address to the terminal without logging in to the sale system.
+OnTerminalAddressObtained occurs when the save button has been pressed in the terminal's admin menu. The purpose is to inform the sale system of the terminal's IP address and port. This way it is possible to configure the address to the terminal without logging in to the sale system.
 The event is only relevant when runnign as a server.
 
 `delegate void TerminalAddressEventHandler(string ip4, int port)`
