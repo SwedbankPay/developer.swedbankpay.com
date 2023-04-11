@@ -56,7 +56,7 @@ To get more than just payments and refunds
 * [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card befor amount is known
 * [SetPaymentInstrument][setpaymentinstrument] - Sends a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
 * [RequestToDisplayAsync][requesttodisplayasync] - Sends a message to be displayed on terminal
-* [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Display a yes/no question on the terminal and receive the result.
+* [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Displays a yes/no question on the terminal and receive the result.
 
 ## Other Available Methods
 
