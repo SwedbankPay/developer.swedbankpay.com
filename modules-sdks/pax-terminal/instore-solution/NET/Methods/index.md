@@ -10,7 +10,7 @@ The [Create method][create-method] is the first method to be called.
 
 ### Start
 
-The [Start method][start-method] initializes the created instance
+The [Start method][start-method] initializes the created instance.
 
 ### OpenAsync
 
