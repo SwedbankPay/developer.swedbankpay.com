@@ -54,7 +54,7 @@ To make a transaction from scratch it takes only a few method calls.
 To get more than just payments and refunds
 
 * [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card befor amount is known
-* [SetPaymentInstrument][setpaymentinstrument] - Send a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
+* [SetPaymentInstrument][setpaymentinstrument] - Sends a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
 * [RequestToDisplayAsync][requesttodisplayasync] - Send message to be displayed on terminal
 * [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Display a yes/no question on the terminal and receive the result.
 
