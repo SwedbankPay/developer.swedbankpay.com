@@ -8,7 +8,7 @@ description: Events are mainly when the terminal sends request to the sale syste
 
 ## OnTerminalDisplay
 
-OnTerminalDisplay occurs when the terminal sends a display request to the sale system. The event is only relavant if running as a server.
+OnTerminalDisplay occurs when the terminal sends a display request to the sale system. The event is only relevant if running as a server.
 DisplayRequest are simply the a message indicating what is showing in the terminal display with purpose of helping the oparator to understand what is happening.
 
 `delegate void TerminalDisplayEventHandler(string message)`
