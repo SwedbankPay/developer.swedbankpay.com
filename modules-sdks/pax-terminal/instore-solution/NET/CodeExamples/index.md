@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
 
 ## As Client and Server
 
-Based on [*Simplest Client only*][simplest-client] the following runs as a server too. The differnce is:
+Based on [*Simplest Client only*][simplest-client] the following runs as a server too. The difference is:
 
 * Removed SalesCapabilites in call to Start
 * Subscribed to the `OnTerminalDisplay` event
