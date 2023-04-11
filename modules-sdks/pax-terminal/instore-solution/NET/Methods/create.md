@@ -9,7 +9,7 @@ This is the first call to make. At the moment there is only one class available,
 ### Parameters
 
 * [SwpIfConfig][swpifconfig] - instance of a config object.
-* [ISwpTrmCallbackInterface][iswptrmcallbackinterface] - reference to an instance that handles available callbacks
+* [ISwpTrmCallbackInterface][iswptrmcallbackinterface] - reference to an instance that handles available callbacks.
 
 ### Returns
 
@@ -52,8 +52,8 @@ public class MyImplementation : ISwpTrmCallbackInterface
 
 ## SwpIfConfig
 
-SwpIfConfig is only used when calling Create method. There are default values and the most relevant to change is possibly LogPath and TerminalRxPort. TerminalRxPort is only used in for server mode.
-The `DraftCapture` implies other changes as well that are not documented here and should therefore be left as is.
+SwpIfConfig is only used when calling the Create method. There are default values and the most relevant to change is possibly LogPath and TerminalRxPort. TerminalRxPort is only used in server mode.
+The `DraftCapture` implies other changes that are not documented here as well, and should therefore be left as is.
 
 ```c#
 public class SwpIfConfig

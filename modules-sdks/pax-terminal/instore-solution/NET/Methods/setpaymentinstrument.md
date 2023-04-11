@@ -5,7 +5,7 @@ description: bool SetPaymentInstrument(string paymentInstrument)
 
 SetPaymentInstrument starts a payment for supplied paymentInstrument. This method has to be called before PaymentAsync or RefundAsync and cannot be combined with GetPaymentInstrument.
 
-Prefix och supplied PAN must be registred in the terminal setup an may not be a PCI regulated card. The normal usage is for giftcards or card numbers that are created on site such as financing.
+Prefix and supplied PAN must be registred in the terminal setup and may not be a PCI regulated card. The normal usage is for giftcards or card numbers that are created on site such as financing.
 
 ### Parameter
 

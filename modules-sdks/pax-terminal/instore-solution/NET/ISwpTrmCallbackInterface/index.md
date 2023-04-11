@@ -2,7 +2,7 @@
 title: ISwpTrmCallbackInterface
 ---
 
-The callbacks are only called if running as a server. However the Create method requires a ISwpTrmCallbackInterface, so just implement them without code if not running server mode.
+The callbacks are only used if running as a server. However the Create method requires a ISwpTrmCallbackInterface, so only implement them without code if you are not running server mode.
 [Sample code runing client only][clientonly].
 
 ## ConfirmationHandler
