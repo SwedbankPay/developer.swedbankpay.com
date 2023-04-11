@@ -16,7 +16,7 @@ A DisplayRequest is simply the message indicating what is shown in the terminal 
 ## OnNewStatus
 
 OnNewStatus occurs when status changes according to **TrmStatus** shown below or if a **CardInsterted** or **CardRemoved** event notification is sent from terminal. When using Async calls these statuses are not really needed.
-Event notifications from terminal is only relevant if running as a server.
+Event notifications from terminal are only relevant if running as a server.
 
 `delegate void NewStatusEventHandler(**TrmStatus** status)`
 
