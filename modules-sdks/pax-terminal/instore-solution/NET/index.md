@@ -61,7 +61,7 @@ To get more than just payments and refunds
 ## Other Available Methods
 
 * [AbortAsync][abortasync] - Aborts something ongoing
-* [ReverseLastAsync][reverselastasync] - Reverse last transaction if it was approved
+* [ReverseLastAsync][reverselastasync] - Reverses the last transaction if it was approved
 * AdminAsync - Ask terminal to see if is any parameter update pending
 
 ## Events
