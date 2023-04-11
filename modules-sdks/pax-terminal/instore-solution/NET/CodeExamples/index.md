@@ -311,7 +311,7 @@ Get to know the customer before deciding amount - Happy Flow
 
 ## Handle Loyalty - Ask For Membership
 
-Based on the version [Get CNA For Cusotomer][getcna] let's see if CNA exisits in database and if so give the customer a better price and if not a member, ask customer to join and get a better price next time.
+Based on the version [Get CNA For Customer][getcna], let's see if CNA exists in the database and if so, give the customer a better price. If the costumer is not a member, ask them to join so they can get a better price next time.
 
 Only change is to create a list of members and add CNA to that list if customer wants to join.
 Other that creating the *Members* which is a lit of strings, there are only changes in the button1_click.
