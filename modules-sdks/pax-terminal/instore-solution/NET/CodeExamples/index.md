@@ -16,7 +16,7 @@ The only methods used are [Create][create-method], [Start][start-method], [OpenA
 body= "The IP address to terminal needs to be changed"
 %}
 {% include alert.html type="informative" icon="info" header="Heads up"
-body= "First time will fail, since OpenAsync is successful but the terminal starts communicating with its host. Click button again to start the payment."
+body= "The first attempt will fail, since OpenAsync is successful but the terminal starts communicating with its host. Click the button again to start the payment."
 %}
 
 {:.code-view-header}
