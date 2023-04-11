@@ -314,7 +314,7 @@ Get to know the customer before deciding amount - Happy Flow
 Based on the version [Get CNA For Customer][getcna], let's see if CNA exists in the database and if so, give the customer a better price. If the costumer is not a member, ask them to join so they can get a better price next time.
 
 Only change is to create a list of members and add CNA to that list if customer wants to join.
-Other that creating the *Members* which is a lit of strings, there are only changes in the button1_click.
+Other that creating the *Members* which is a list of strings, there are only changes in the button1_click.
 The important addition is the call to `RequestCustomerConfirmationAsync`. It requests the terminal to show a message and ask for a yes/no response. The member `CustomerConfirmation` of the result is true or false.
 
 {% include alert.html type="warning" icon="warning" header="Note!"
