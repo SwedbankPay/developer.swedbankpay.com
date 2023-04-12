@@ -2,7 +2,7 @@
 title: Corporate Limited Menu
 description: Limit the selectable instruments to those that support
     corporate payment methods.
-menu_order: 1600
+menu_order: 1500
 icon:
   content: link
   outlined: true

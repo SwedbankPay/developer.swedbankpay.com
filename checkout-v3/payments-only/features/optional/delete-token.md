@@ -1,7 +1,7 @@
 ---
 title: Delete Token
 description: How to delete tokens.
-menu_order: 1700
+menu_order: 1800
 icon:
   content: delete_sweep
   outlined: true
