@@ -24,7 +24,7 @@ part of Swedbank Pay's set up process. To do this, you need to host this
 [verification file][apple-pay-verification-file] (click to download) on the
 following web path:
 
-`https://example.com/.well-known/apple-developer-merchantid-domain-association`
+`https://example.com/.well-known/apple-ecom`
 
 The verification file consists of a hex string which contains a JSON. Opening it
 is OK, but make sure that you **upload it exactly as it is**. We recommend
@@ -225,12 +225,12 @@ environment to ensure the customers details are kept safe.
 [apple-pay-sup-agreement]: /assets/documents/supplementary-agreement-ecommerce.docx
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
-[apple-pay-verification-file]: /assets/documents/apple-developer-merchantid-domain-association
+[apple-pay-verification-file]: /assets/documents/apple-ecom
 [benevity-donation-setup]: https://www.benevity.org
 [google-pay-profile]: https://pay.google.com/business/console/
 [google-pay-tos]: https://payments.developers.google.com/terms/sellertos
 [irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
-[payex-domain-file]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
+[payex-domain-file]: https://ecom.payex.com/.well-known/apple-ecom
 [pd-request]: https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest
 [req-con-address]: /checkout-v3/payments-only/features/optional/request-delivery-info
 [web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
