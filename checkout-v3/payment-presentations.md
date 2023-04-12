@@ -225,7 +225,7 @@ environment to ensure the customers details are kept safe.
 [apple-pay-sup-agreement]: /assets/documents/supplementary-agreement-ecommerce.docx
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
-[apple-pay-verification-file]: /assets/documents/apple-developer-merchantid-domain-association
+[apple-pay-verification-file]: /assets/documents/apple-ecom
 [benevity-donation-setup]: https://www.benevity.org
 [google-pay-profile]: https://pay.google.com/business/console/
 [google-pay-tos]: https://payments.developers.google.com/terms/sellertos
