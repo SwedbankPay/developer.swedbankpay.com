@@ -1,9 +1,9 @@
 ---
 section: Code Examples
 redirect_from: /modules-sdks/pax-terminal/instore-solution/NET/CodeExamples
-title: C# code examples
+title: C# Code Examples
 description: |
-    Simple code examples without aim of being state of the art. The code works and feel free to copy and test.
+    Simple code examples without the aim of being state of the art. The code works, so feel free to copy and test.
 menu_order: 1540
 ---
 
@@ -16,7 +16,7 @@ The only methods used are [Create][create-method], [Start][start-method], [OpenA
 body= "The IP address to terminal needs to be changed"
 %}
 {% include alert.html type="informative" icon="info" header="Heads up"
-body= "First time will fail, since OpenAsync is successful but the terminal starts communicating with its host. Click button again to start the payment."
+body= "The first attempt will fail, since OpenAsync is successful but the terminal starts communicating with its host. Click the button again to start the payment."
 %}
 
 {:.code-view-header}
@@ -122,7 +122,7 @@ namespace WindowsFormsApp1
 
 ## As Client and Server
 
-Based on [*Simplest Client only*][simplest-client] the following runs as a server too. The differnce is:
+Based on [*Simplest Client only*][simplest-client] the following runs as a server too. The difference is:
 
 * Removed SalesCapabilites in call to Start
 * Subscribed to the `OnTerminalDisplay` event
@@ -133,7 +133,7 @@ body="When running as a server the program needs elevated privileges. It may be 
 {% include alert.html type="informative" body="
     netsh http add urlacl url=http://*:11000/EPASSaleToPOI/3.1/ user=Everyone" %}
 {% include alert.html type="informative" body="
-    where :11000 is the default port. If listening to another port the command need to change." %}
+    where :11000 is the default port. If listening to another port the command must be changed." %}
 
 {:.code-view-header}
 Simplest Client And Server form of implementation - Happy Flow
@@ -273,7 +273,7 @@ public void EventNotificationHandler(EventToNotifyEnumeration type, string text)
 
 ## Get CNA For Customer
 
-Based on any of [Simplest Client][simplest-client] or [Client And Server][clientnserver] let's take it a bit further and find out who the customer is before starting the actual purchase transaction. The only change is in the button1_click where `GetPaymentInstrumentAsync` is called. The result contains among other `masked PAN`, `CNA - CardNumberAlias`.
+Based on either [Simplest Client][simplest-client] or [Client And Server][clientnserver], let's take it a bit further and find out who the customer is before starting the actual purchase transaction. The only change is in the button1_click where `GetPaymentInstrumentAsync` is called. The result contains among others `masked PAN` and `CNA - CardNumberAlias`.
 
 This is a very simple way to handle members. The CNA will be the same in all our PAX terminals.
 
@@ -311,14 +311,14 @@ Get to know the customer before deciding amount - Happy Flow
 
 ## Handle Loyalty - Ask For Membership
 
-Based on the version [Get CNA For Cusotomer][getcna] let's see if CNA exisits in database and if so give the customer a better price and if not a member, ask customer to join and get a better price next time.
+Based on the version [Get CNA For Customer][getcna], let's see if CNA exists in the database and if so, give the customer a better price. If the costumer is not a member, ask them to join so they can get a better price next time.
 
-Only change is to create a list of members and add CNA to that list if customer wants to join.
-Other that creating the *Members* which is a lit of strings, there are only changes in the button1_click.
-The important addition is the call to `RequestCustomerConfirmationAsync`. It requests the terminal to show a message and ask for a yes/no response. The member `CustomerConfirmation` of the result is true or false.
+The only change is to create a list of members and add CNA to that list if the customer wants to join.
+Other that creating the *Members* which is a list of strings, there are only changes in the button1_click.
+The important addition is the call to `RequestCustomerConfirmationAsync`. It requests the terminal to show a message and asks for a yes/no response. The member `CustomerConfirmation` of the result is true or false.
 
 {% include alert.html type="warning" icon="warning" header="Note!"
-body= "The delay before a new request after a finnished transaction is needed. If delay is not made the request will get a failure due to terminal being busy"
+body= "The delay before a new request after a finished transaction is needed. If the delay is not added, the request will get a failure due to terminal being busy"
 %}
 {% include alert.html type="informative" icon="info" header="Remember"
 body= "to add List<*string*> Member; "

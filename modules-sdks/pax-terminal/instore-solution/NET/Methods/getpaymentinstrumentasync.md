@@ -3,7 +3,7 @@ title: GetPaymentIntrumentAsync
 description: async Task\<GetPaymentInstrumentResult\> GetPaymentInstrumentAsync(Nexo.PaymentTypes type= Nexo.PaymentTypes.Normal)
 ---
 
-Use GetPaymentInstrumentAsync to read a card before the amount is known. The call starts a payment transaction and the card read will be held by the terminal until PaymentAsync or RefundAsync is called. After a result a new  card may be read and the last payment card read is the one that gets charged.
+Use GetPaymentInstrumentAsync to read a card before the amount is known. The call starts a payment transaction, and the card read will be held by the terminal until PaymentAsync or RefundAsync is called. When you have the response, a new card may be read. The last payment card read is the one that gets charged.
 
 ### Returns
 

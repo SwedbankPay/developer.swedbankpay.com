@@ -6,23 +6,23 @@ description: async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount
 The PaymentAsync should be called when the amount is known. It opens all available readers and waits for a payment instrument. If Alternative Payment Methods are activated it will open for that too.
 
 {% include alert.html type="warning" icon="warning" header="Heads up"
-body="After PaymentAsync returns there has to be a delay before next request can be made. If no delay the next request will fail, indicating busy and retries have to be made."
+body="After PaymentAsync returns there has to be a delay before next request can be made. If there is no delay the next request will fail, indicating busy and retries have to be made."
 %}
 
 ### Parameters
 
 * **totalamount** - includes possible cashback amount
 * **cashback** - part of total amount that will be handed to customer
-* **currency** - currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. Default "SEK".
+* **currency** - currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".
 
 ### Returns
 
 A **PaymentRequestResult**
 
 A `PayementRequestResult.ResponseResult` of value `Success` means transaction approved.
-If `ResponseResult` is `Failure` there is an `ErrorCondition`. If `ErrorCondition` is `Busy` wait awhile and try again.
+If `ResponseResult` is `Failure` there is an `ErrorCondition`. If `ErrorCondition` is `Busy`, wait awhile and try again.
 
-Make sure to always print the customer receipt when available. For an aborted PaymentAsync there might not be one available.
+Make sure to always print the customer's receipt when available. For an aborted PaymentAsync there might not be one available.
 
 ```c#
 public class NexoRequestResult

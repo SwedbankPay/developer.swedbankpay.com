@@ -18,14 +18,14 @@ It offers asynchronous methods and for the [simplest form of implementation][cli
 
 As of now the terminal is not prepared for a cloud connection, but by using this SDK it is possible to quickly make a small proxy service that makes whichever cloud connection that is desired.
 
-In the future there may be other variants of the interface and usage within the SDK, but this version will stay the same and once an implementation has been made it should not have to be changed unless new requirements or new functionallity is desired.
+In the future there may be other variants of the interface and usage within the SDK, but this version will stay the same and once an implementation has been made, it should not have to be changed unless new requirements or new functionality is desired.
 
 The aim of the SDK is to minimize the total work effort for both users and Swedbank Pay.
 
 ## Usage
 
-The SwpTrmLib contains at the moment one implementation for using a PAX terminal from Swedbank Pay, but makes it possible to vary the style of use
-by configuration. There are to major styles that is decided by the `SalesCapabilities` string sent in a `LoginRequest`:
+The SwpTrmLib only contains one implementation for using a PAX terminal from Swedbank Pay at the moment, but makes it possible to vary the style of use
+by configuration. There are two major styles that is decided by the `SalesCapabilities` string sent in a `LoginRequest`:
 
 * Act as both server and client - [see code example for default style][default-style]
 * Act as client only - [see code example for client only][client-style]
@@ -40,28 +40,28 @@ transactions regard cards from outside EU for which PIN may not be required.
 
 ## Essential Methods
 
-To make a transaction from scratch it takes only a few method calls.
+Making a transaction from scratch only takes a few method calls.
 
 * [Create][create-method] - Creates an instance and returns an interface
-* [Start][start-method] - Initialises the instance and starts a listener for terminal if that mode is chosen
+* [Start][start-method] - Initializes the instance and starts a listener for terminal if that mode is chosen
 * [OpenAsync][openasync] - Starts a Login Session with the terminal. The session remains until Close or a new Open call
 * [PaymentAsync][paymentasync] - Starts a payment transaction for supplied amount.
 * [RefundAsync][refundasync] - Starts a refund transaction for supplied amount.
-* [CloseAsync][closeasync] - Finnish the terminal session and allows for terminal maintenance. At least once a day
+* [CloseAsync][closeasync] - Finishes the terminal session and allows for terminal maintenance. At least once a day.
 
 ## Handy Methods
 
 To get more than just payments and refunds
 
-* [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card befor amount is known
-* [SetPaymentInstrument][setpaymentinstrument] - Send a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
-* [RequestToDisplayAsync][requesttodisplayasync] - Send message to be displayed on terminal
-* [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Display a yes/no question on the terminal and receive the result.
+* [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card before amount is known
+* [SetPaymentInstrument][setpaymentinstrument] - Sends a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
+* [RequestToDisplayAsync][requesttodisplayasync] - Sends a message to be displayed on terminal
+* [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Displays a yes/no question on the terminal and receive the result.
 
 ## Other Available Methods
 
-* [AbortAsync][abortasync] - Abort something ongoing
-* [ReverseLastAsync][reverselastasync] - Reverse last transaction if it was approved
+* [AbortAsync][abortasync] - Aborts something ongoing
+* [ReverseLastAsync][reverselastasync] - Reverses the last transaction if it was approved
 * AdminAsync - Ask terminal to see if is any parameter update pending
 
 ## Events
@@ -76,7 +76,7 @@ The events are only used if running as a server.
 
 ### ISwpTrmCallbackInterface
 
-The callback are only used if running as a server.
+The callbacks are only used if running as a server.
 
 * [ConfirmationHandler][confirmationhandler]
 * [EventNotificationHandler][eventnotificationhandler]
