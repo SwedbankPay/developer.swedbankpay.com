@@ -63,7 +63,6 @@ options:
 
 *   [Purchase][purchase]
 *   [Recur][recur]
-*   [Payout][payout]
 *   [Verify][verify]
 *   [Unscheduled Purchase][unscheduled-purchase]
 
@@ -179,7 +178,6 @@ sequenceDiagram
 
 [card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /payment-instruments/card/features/technical-reference/create-payment
-[payout]: /payment-instruments/card/features/optional/payout
 [purchase]: /payment-instruments/card/features/core/purchase
 [recur]: /payment-instruments/card/features/optional/recur
 [redirect]: /payment-instruments/card/redirect
