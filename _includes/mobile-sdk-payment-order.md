@@ -127,5 +127,5 @@ orderItem.name = "Other Thing"
 ```
 
 [checkout]: /pay
-[order-items]: /paymentmenuv3/payments-only/features/technical-reference/order-items
-[urls]: /paymentmenuv3/payments-only/features/technical-reference/urls
+[order-items]: /paymetnmenu/payments-only/features/technical-reference/order-items
+[urls]: /paymetnmenu/payments-only/features/technical-reference/urls

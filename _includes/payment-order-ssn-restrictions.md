@@ -35,9 +35,9 @@ request. Below is a shortened example of a payment order request. Apart from the
 new field, the payment request is similar to a standard payment order request.
 For an example of a payment order request, {% if documentation_section contains
 "pay/enterprise" %} [click
-here.](/paymentmenuv3/enterprise/redirect#payment-order-request) {% endif %} {% if
+here.](/paymetnmenu/enterprise/redirect#payment-order-request) {% endif %} {% if
 documentation_section contains "pay/payments-only" %} [click
-here.](/paymentmenuv3/payments-only/redirect#payment-order-request) {% endif %}
+here.](/paymetnmenu/payments-only/redirect#payment-order-request) {% endif %}
 The response will be similar to a standard payment order response, which is also
 documented on the page linked above.
 
@@ -85,6 +85,6 @@ Content-Type: application/json
 | {% icon check %} | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/3d-secure-2).                                                                             |
 |                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/3d-secure-2).            |
-|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/paymentmenuv3/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
+|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/paymetnmenu/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
 {% endcapture %}
 {% include accordion-table.html content=table %}
