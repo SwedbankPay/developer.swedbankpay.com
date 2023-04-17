@@ -8,4 +8,4 @@ icon:
   outlined: true
 ---
 
-{% include problems/problems.md %}
+{% include problems/old-implementations/payment-instruments-v1/problems.md %}

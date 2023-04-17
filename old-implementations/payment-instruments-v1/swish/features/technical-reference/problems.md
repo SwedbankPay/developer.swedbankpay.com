@@ -8,4 +8,4 @@ icon:
   outlined: true
 ---
 
-{% include problems/problems.md documentation_section="swish" %}
+{% include problems/old-implementations/payment-instruments-v1/problems.md documentation_section="swish" %}
