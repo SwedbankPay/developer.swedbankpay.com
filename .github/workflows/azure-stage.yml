@@ -29,6 +29,6 @@ jobs:
           az storage blob upload-batch \
             --source "_site" \
             --destination "\$web" \
-            --account-name swedbankpaydeveloperstage \
+            --account-name stageecomdocs \
             --overwrite \
             --validate-content
