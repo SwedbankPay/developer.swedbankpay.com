@@ -227,7 +227,7 @@ PCI environment for processing. Within the PCI environment, a tokenized
 representation of the card is created, which is then used outside of the PCI
 environment to ensure the customers details are kept safe.
 
-{% include iterator.html prev_href="/paymetnmenu/"
+{% include iterator.html prev_href="/docs/products/"
                          prev_title="Back to Get Started" %}
 
 [acceptable-use-policy]: https://payments.developers.google.com/terms/aup

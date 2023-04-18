@@ -2,7 +2,7 @@
 title: Migration Guide
 description: |
   Migrating from _Checkout v2_, _Payment Menu_ and _Payment Instruments_ to
-  _Pay_.
+  _PaymentMenu_.
 menu_order: 1600
 ---
 
@@ -155,7 +155,3 @@ Mode_.
 *[TRA]: Transaction Risk Analysis
 *[MAC]: Merchant-Authenticated Consumer
 *[SCA]: Strong Customer Authentication
-
-[enterprise]: /paymetnmenu/enterprise
-[payments-only]: /paymetnmenu/payments-only
-[starter]: /paymetnmenu/starter

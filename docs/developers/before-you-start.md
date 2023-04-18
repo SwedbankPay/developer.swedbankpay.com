@@ -401,5 +401,5 @@ specified in the response by finding the appropriate operation based on its
 [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
 
 
-{% include iterator.html prev_href="index"
+{% include iterator.html prev_href="docs/index"
                          prev_title="Developer Guides" %}

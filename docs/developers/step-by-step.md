@@ -83,7 +83,7 @@ with payer information and a `completeUrl`.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
-have `abort`, which you can read about in the [core features][abort-feature].
+have `abort`, which you can read about in the [products][core-concepts][abort-feature].
 You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`.
 

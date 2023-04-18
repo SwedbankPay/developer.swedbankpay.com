@@ -17,7 +17,7 @@ hide_from_sidebar: true
           text="Discover our versatile ecommerce solutions designed to streamline online transactions. Explore our secure payment gateway, including cross channel payments, subscription payments, and more. Dive into the documentation to learn about each product's features and how they can enhance your business operations."
           button_type='primary'
           button_alignment='align-self-end'
-          to='/products/'
+          to='/docs/products/'
 
           %}
   {% include card-extended.html
@@ -27,7 +27,7 @@ hide_from_sidebar: true
           text="Jumpstart your integration with our developer-friendly resources, including comprehensive API documentation and SDKs. Follow our step-by-step guides to seamlessly incorporate our PSP solutions into your e-commerce platform. Empower your business with secure and efficient payment processing by starting your development journey today"
           button_type='primary'
           button_alignment='align-self-end'
-          to='/developers/'
+          to='/docs/developers/'
 
           %}
 
@@ -59,14 +59,14 @@ hide_from_sidebar: true
           {% include card.html title='Test data'
               text='Get the required data for testing in our interfaces'
               icon_content='content_paste'
-              to='/resources/test-data'
+              to='/docs/resources/test-data'
           %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Terminology'
               text='Get a better understanding of the terms we use'
               icon_content='menu_book'
-              to='/resources/terminology'
+              to='/docs/resources/terminology'
           %}
       </div>
       <div class="{{ card_col_class }}">
@@ -74,14 +74,14 @@ hide_from_sidebar: true
               text='Data Protection rules to follow'
               icon_content='account_circle'
               icon_outlined=true
-              to='/resources/data-protection'
+              to='/docs/resources/data-protection'
           %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='See all resources (6)'
               text='Data protection, public migration key etc'
               no_icon=true
-              to='/resources/'
+              to='/docs/resources/'
           %}
       </div>
   </div>
