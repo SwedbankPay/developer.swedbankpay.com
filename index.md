@@ -27,7 +27,7 @@ hide_from_sidebar: true
           text="Jumpstart your integration with our developer-friendly resources, including comprehensive API documentation and SDKs. Follow our step-by-step guides to seamlessly incorporate our PSP solutions into your e-commerce platform. Empower your business with secure and efficient payment processing by starting your development journey today"
           button_type='primary'
           button_alignment='align-self-end'
-          to='/developer/'
+          to='/developers/'
 
           %}
 

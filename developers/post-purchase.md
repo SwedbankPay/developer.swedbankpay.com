@@ -4,7 +4,7 @@ description: |
   When the payer has **completed** the purchase and have been redirected back to you, you need to perform the correct post-payment operation based on the state of the payment.
   You need to implement the relevant **post purchase operations** in your order system. These operations,
   and how they are executed, are described below.
-menu_order: 500
+menu_order: 700
 ---
 
 {% include alert-two-phase-payments.md %}

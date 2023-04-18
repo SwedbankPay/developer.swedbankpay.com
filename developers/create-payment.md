@@ -2,7 +2,7 @@
 title: Create Payment
 description: |
  Here you will learn about creating a payment and redirect the payer to our secure hosted paymentmenu.
-menu_order: 300
+menu_order: 600
 ---
 
 The integration consists of three main steps.

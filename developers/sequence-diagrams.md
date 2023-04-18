@@ -2,11 +2,13 @@
 title: Sequence Diagrams
 hide_from_sidebar: false
 description: |
-    The sequence diagrams for Checkout v3 integrations
+    The sequence diagrams for SwedbankPay Ecommerce
 menu_order: 600
 ---
 
-## Enterprise Redirect
+### TODO cleanup sequence diagrams
+
+## Redirect
 
 {% include alert.html type="informative" icon="info" body="
 Note that in this diagram, the Payer refers to the merchant front-end

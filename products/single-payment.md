@@ -2,7 +2,7 @@
 title: Single Payment
 description: |
   Explore the advantages and capabilities of our Single Payment product offering, tailored for merchants with their own payment menu who use multiple PSPs for different payment instruments.
-menu_order: 800
+menu_order: 600
 ---
 
 # Single Payment
@@ -18,7 +18,7 @@ Single Payment is designed for merchants who already have their own payment menu
 
 ## Getting Started
 
-To begin integrating the Single Payment solution into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](/api-reference) page.
+To begin integrating the Single Payment solution into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](developer/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](developer/api-reference) page.
 
 ## Support and Assistance
 

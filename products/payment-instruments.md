@@ -1,11 +1,23 @@
 ---
-section: Checkout v3
-title: Payment Instrument Presentations
+title: Payment Instruments
 description: |
-  **An overview of all the payment instruments Checkout v3 has to offer.**
-hide_from_sidebar: true
-menu_order: 400
+  **An overview of all the payment instruments we have to offer.**
+menu_order: 700
 ---
+
+## Card
+
+## Swish
+
+## Vipps
+
+## MobilePay
+
+## Trustly
+
+## Invoice
+
+## Buy Now Pay Later
 
 ## Apple Pay
 

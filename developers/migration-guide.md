@@ -1,11 +1,9 @@
 ---
 title: Migration Guide
-hide_from_sidebar: false
 description: |
   Migrating from _Checkout v2_, _Payment Menu_ and _Payment Instruments_ to
   _Pay_.
-hide_from_sidebar: true
-menu_order: 900
+menu_order: 1600
 ---
 
 Pay provides a more stream-lined, refined payment experience for both

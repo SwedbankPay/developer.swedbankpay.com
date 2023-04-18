@@ -1,7 +1,6 @@
 ---
-title: Introduction
-sidebar_icon: waving_hand
-menu_order: 1
+title: Before You Start
+menu_order: 100
 description: |
     Read on to learn about the fundamentals and common architectural principles
     of the Swedbank Pay API Platform.
@@ -400,3 +399,7 @@ specified in the response by finding the appropriate operation based on its
 [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
 [user-agent]: https://en.wikipedia.org/wiki/User_agent
 [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
+
+
+{% include iterator.html prev_href="index"
+                         prev_title="Developer Guides" %}
