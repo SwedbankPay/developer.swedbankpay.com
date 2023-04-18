@@ -18,8 +18,8 @@ Single Payment is designed for merchants who already have their own payment menu
 
 ## Getting Started
 
-To begin integrating the Single Payment solution into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](/docs/developer/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](/docs/developer/api-reference) page.
+To begin integrating the Single Payment solution into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](developer/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](developer/api-reference) page.
 
 ## Support and Assistance
 
-If you need assistance or have questions, don't hesitate to reach out to our dedicated support team. Visit the [Support and Contact Information](/docs/resources/support) page for details on how to get in touch.
+If you need assistance or have questions, don't hesitate to reach out to our dedicated support team. Visit the [Support and Contact Information](/support) page for details on how to get in touch.

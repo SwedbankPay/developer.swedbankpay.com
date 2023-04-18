@@ -66,7 +66,7 @@ You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="./"
-                         prev_title="Developer Guide"
+                         prev_title="Introduction"
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
