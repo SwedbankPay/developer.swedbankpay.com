@@ -6,7 +6,7 @@
 {% else %}
     {% capture capture_url %}payment-order-capture{% endcapture %}
 {% endif %}
-{% if documentation_section == "payment-menu" or "checkout" %}
+{% if documentation_section contains "payment-menu" or "checkout" %}
     {% capture verification_url %}/psp/paymentorders/{{ page.payment_id }}/verifications{% endcapture %}
     {% capture authorization_url %}/psp/paymentorders/{{ page.payment_id }}/authorizations{% endcapture %}
     {% capture purchase_url %}/psp/paymentorders{% endcapture %}

@@ -2,7 +2,7 @@
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 {% capture product %}
-    {% if documentation_section == "payment-menu" %}
+    {% if documentation_section contains "payment-menu" %}
         [Payment Menu v2][payment-menu]
     {% else %}
         [Swedbank Pay Checkout][checkout]

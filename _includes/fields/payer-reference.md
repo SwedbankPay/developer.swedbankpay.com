@@ -1,11 +1,11 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- capture payer_aware_payment_menu_url -%}
-   {%- if documentation_section == "payment-menu" -%}
+   {%- if documentation_section contains "payment-menu" -%}
         /{{ documentation_section }}/features/optional/payer-aware-payment-menu
     {%- endif -%}
 {%- endcapture -%}
 {%- capture payer_reference -%}
-    {%- if documentation_section == "payment-menu" -%}
+    {%- if documentation_section contains "payment-menu" -%}
         The reference to the payer from the merchant system, like e-mail
         address, mobile number, customer number etc. Also used in
         [Payer Aware Payment Menu]({{payer_aware_payment_menu_url}}).
