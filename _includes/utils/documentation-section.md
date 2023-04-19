@@ -1,17 +1,17 @@
 {%- capture sections -%}
-    old-implementations/checkout-v2,
+    checkout-v2,
     checkout-v3/enterprise,
     checkout-v3/starter,
     checkout-v3/business,
     checkout-v3/payments-only,
-    old-implementations/payment-menu-v2,
+    payment-menu-v2,
     gift-cards,
-    old-implementations/payment-instruments-v1/card,
-    old-implementations/payment-instruments-v1/invoice,
-    old-implementations/payment-instruments-v1/mobile-pay,
-    old-implementations/payment-instruments-v1/swish,
-    old-implementations/payment-instruments-v1/trustly,
-    old-implementations/payment-instruments-v1/vipps
+    card,
+    invoice,
+    mobile-pay,
+    swish,
+    trustly,
+    vipps
 {%- endcapture -%}
 {%- assign sections = sections | strip_newlines | strip | split: "," -%}
 {%- for s in sections -%}
