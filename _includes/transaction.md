@@ -5,7 +5,7 @@
 {% capture top_h %}{% for i in (1..header_level) %}#{% endfor %}{% endcapture %}
 {% capture sub_h %}{% for i in (1..next_header_level) %}#{% endfor %}{% endcapture %}
 
-{% if documentation_section contains "checkout" or documentation_section == "payment-menu" %}
+{% if documentation_section contains "checkout" or documentation_section contains "payment-menu" %}
     {% assign this_documentation_url = documentation_section %}
 {% else %}
     {% assign this_documentation_url = "payment-instruments/" | append: documentation_section %}
