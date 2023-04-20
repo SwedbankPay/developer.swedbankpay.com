@@ -193,9 +193,7 @@ Content-Type: application/json
             "Invoice-PayExFinancingSe"
         ], {% if documentation_section contains "checkout-v3/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
-        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter",
+        "implementation": "PaymentsOnly", {% endif %}
         "integration": "HostedView|Redirect",
         "instrumentMode": false,
         "guestMode": false,

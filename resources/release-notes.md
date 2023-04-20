@@ -825,7 +825,7 @@ integration and the payer.
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[payment-order-update]: /checkout-v3/business/features/optional/update
+[payment-order-update]: /checkout-v3/payments-only/features/optional/update
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
 [payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
@@ -857,7 +857,7 @@ integration and the payer.
 [swish-redirect]: /old-implementations/payment-instruments-v1/swish/redirect
 [swish-seamless-view]: /old-implementations/payment-instruments-v1/swish/seamless-view
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
-[seamless-view-events-onaborted]: /checkout-v3/starter/features/technical-reference/seamless-view-events#onaborted
+[seamless-view-events-onaborted]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/features/technical-reference/seamless-view-events
 [sequence-diagrams]: /checkout-v3/sequence-diagrams
 [swish]: /old-implementations/payment-instruments-v1/swish

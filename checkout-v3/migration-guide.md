@@ -229,4 +229,3 @@ Mode_.
 
 [enterprise]: /checkout-v3/enterprise
 [payments-only]: /checkout-v3/payments-only
-[starter]: /checkout-v3/starter
