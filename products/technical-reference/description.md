@@ -6,6 +6,7 @@ menu_order: 1500
 icon:
   content: assignment
   outlined: true
+permalink: /docs/products/technical-reference/description
 ---
 
 {% include description.md %}

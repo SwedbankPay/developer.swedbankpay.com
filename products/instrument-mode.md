@@ -3,6 +3,7 @@ title: Instrument Mode
 description: |
   Explore the advantages and capabilities of our Instrument Mode product offering, tailored for merchants with their own payment menu who use multiple PSPs for different payment instruments.
 menu_order: 600
+permalink: /docs/products/instrument-mode
 ---
 
 # Instrument Mode

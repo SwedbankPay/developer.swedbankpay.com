@@ -5,6 +5,7 @@ title: Product Offerings
 description: |
   **Discover the benefits and capabilities of our two primary product offerings, Payment Menu and Instrument Mode. Catering to different merchant needs, these solutions streamline online transactions while offering a seamless and secure payment experience. Browse the details below to understand the distinct advantages of each product offering and make an informed decision on the best fit for your business.**
 menu_order: 400
+permalink: /docs/products/
 ---
 
 {% include card-extended.html

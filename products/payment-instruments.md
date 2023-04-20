@@ -3,6 +3,7 @@ title: Payment Instruments
 description: |
   **An overview of all the payment instruments we have to offer.**
 menu_order: 700
+permalink: /docs/products/payment-instrument
 ---
 
 ## Card

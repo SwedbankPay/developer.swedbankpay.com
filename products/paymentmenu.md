@@ -1,8 +1,9 @@
 ---
-title: PaymentMenu
+title: Payment Menu
 description: |
   Discover the advantages and capabilities of our PaymentMenu product offering, designed to simplify online transactions for merchants and provide a seamless payment experience for customers.
 menu_order: 500
+permalink: /docs/products/paymentmenu
 ---
 
 # PaymentMenu
