@@ -38,5 +38,5 @@ details [here][trustly-remove-payment-token].
 
 <!--lint disable final-definition -->
 
-[trustly-remove-payment-token]: /payment-menu/features/optional/delete-token
-[trustly-paymentorder-create]: /payment-menu/payment-order
+[trustly-remove-payment-token]: /old-implementations/payment-menu-v2/features/optional/delete-token
+[trustly-paymentorder-create]: /old-implementations/payment-menu-v2/payment-order

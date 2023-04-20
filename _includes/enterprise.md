@@ -7,15 +7,6 @@
 authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
-{%- if documentation_section != 'checkout-v3/enterprise' %}
-**Delegated Strong Customer Authentication** (hereby abbreviated as "Delegated
-SCA") is performed as an alternative to [Checkin][checkin] when creating the
-Payment Order upon the initialization of the [Payment Menu][payment-menu]. You
-can only use Delegated SCA if you have an agreement with Swedbank Pay. The
-additional `nationalIdentifier` field described below should be added to the
-`paymentorder.payer` object already in the Payment Order creation request, as an
-alternative to `consumerProfileRef`.
-{%- else %}
 **Delegated Strong Customer Authentication** (hereby abbreviated as "Delegated
 SCA") is performed as an alternative to `Checkin` when creating the
 Payment Order upon the initialization of the `Payment Menu`. You
@@ -23,7 +14,6 @@ can only use Delegated SCA if you have an agreement with Swedbank Pay. The
 additional `nationalIdentifier` field described below should be added to the
 `paymentorder.payer` object already in the Payment Order creation request, as an
 alternative to `consumerProfileRef`.
-{%- endif %}
 
 {% include alert.html type="warning" icon="warning" header="Bank ID
 authentication required" body="In order to use the Enterprise feature, you
@@ -79,6 +69,6 @@ the merchant. In the bottom image, the last 4/5 digits of the SSN are required.
 ![Payments with SSN][enterprise-with-ssn]{:width="475" height="460"}
 
 [checkin]: {{ documentation_section_url }}/checkin
-[payment-menu]: {{ documentation_section_url }}/payment-menu
+[payment-menu]: {{ documentation_section_url }}/payment-menu-v2
 [enterprise-no-ssn]: /assets/img/checkout/enterprise-no-ssn.png
 [enterprise-with-ssn]: /assets/img/checkout/enterprise-with-ssn.png

@@ -284,10 +284,10 @@ Content-Type: application/json
 <!--lint disable final-definition -->
 
 [payment-verify]: #verify
-[card-payment-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
-[card-payment-recur]: /payment-instruments/card/features/optional/recur
-[card-payment-capture]: /payment-instruments/card/capture
-[card-payment-cancel]: /payment-instruments/card/after-payment#cancellations
+[card-payment-purchase]: /old-implementations/payment-instruments-v1/card/redirect#step-1-create-a-purchase
+[card-payment-recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
+[card-payment-capture]: /old-implementations/payment-instruments-v1/card/capture
+[card-payment-cancel]: /old-implementations/payment-instruments-v1/card/after-payment#cancellations
 [card-payments-remove-payment-token]: {{ features_url }}/optional/delete-token
 [settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement

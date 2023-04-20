@@ -1,6 +1,6 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- capture logo_description -%}
-    {%- if documentation_section == "payment-menu" or documentation_section contains "checkout" -%}
+    {%- if documentation_section contains "payment-menu" or documentation_section contains "checkout" -%}
     With permission and activation on your contract, sending in a `logoUrl` will
     replace the Swedbank Pay logo with the logo sent in. If you do not send in a
     `logoUrl`, then no logo and no text is shown. Without permission or activation

@@ -264,7 +264,7 @@ the following values:
 | TM01        | Swish timed out before the payment was started |
 | BANKIDCL    | Payer cancelled BankId signing                 |
 
-[create-card-purchase]: /payment-instruments/card/redirect#step-1-create-a-purchase
+[create-card-purchase]: /old-implementations/payment-instruments-v1/card/redirect#step-1-create-a-purchase
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
 [3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
 [otp-challenge-form]: /assets/img/otp-challenge-form.png

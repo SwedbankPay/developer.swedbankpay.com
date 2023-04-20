@@ -1,7 +1,7 @@
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% capture documentation_section_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' or documentation_section == 'invoice' %}
+{%- unless documentation_section contains 'checkout' or documentation_section contains 'payment-menu' or documentation_section == 'invoice' %}
     {% assign has_one_click = true %}
 {%- endunless %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
@@ -31,11 +31,11 @@ Swedbank Pay." %}
     unique `id`. You either receive a Redirect URL to a hosted page or a
     JavaScript source in response.
 *   You need to
-    {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' %}
+    {%- unless documentation_section contains 'checkout' or documentation_section contains 'payment-menu' %}
     [redirect][redirect] the payer's browser to that specified URL, or
     {%- endunless %}
     embed the script source on your site to create a
-    {%- unless documentation_section contains 'checkout' or documentation_section == 'payment-menu' %}
+    {%- unless documentation_section contains 'checkout' or documentation_section contains 'payment-menu' %}
     [Seamless View][seamless-view]
     {%- else -%}
     Seamless View
@@ -85,7 +85,7 @@ below is the Redirect option.
 {:.code-view-header}
 **Request**
 
-{% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+{% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
 
 ```http
 POST /psp/{{ api_resource }} HTTP/1.1
@@ -102,7 +102,7 @@ Authorization: Bearer <AccessToken>
 Content-Type: application/json
 {% endif %}
 
-{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
     "paymentorder": { {% else %}
     "payment": { {% endif %}
         "operation": "Verify",
@@ -112,7 +112,7 @@ Content-Type: application/json
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}", {% endif %} {% unless documentation_section contains "checkout" %}
-        "generatePaymentToken": true,{% endunless %} {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+        "generatePaymentToken": true,{% endunless %} {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
@@ -152,7 +152,7 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{ {% if documentation_section == "payment-menu" or documentation_section contains "checkout" %}
+{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
     "paymentorder": { {% else %}
     "payment": { {% endif %}
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",

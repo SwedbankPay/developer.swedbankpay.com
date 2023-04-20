@@ -395,7 +395,7 @@ specified in the response by finding the appropriate operation based on its
 [rfc-7329]: https://tools.ietf.org/html/rfc7329
 [robustness-principle]: https://en.wikipedia.org/wiki/Robustness_principle
 [ruby-tls]: https://stackoverflow.com/a/11059873/61818
-[settlement]: /payment-instruments/invoice/features/core/settlement-reconciliation
+[settlement]: /old-implementations/payment-instruments-v1/invoice/features/core/settlement-reconciliation
 [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
 [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

@@ -2,8 +2,8 @@
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 
 {% capture product %}
-    {% if documentation_section == "payment-menu" %}
-        [Payment Menu][payment-menu]
+    {% if documentation_section contains "payment-menu" %}
+        [Payment Menu v2][payment-menu]
     {% else %}
         [Swedbank Pay Checkout][checkout]
     {% endif %}
@@ -124,5 +124,5 @@ Content-Type: application/json
 {% include accordion-table.html content=table %}
 
 -----------------------------------------
-[payment-menu]: /payment-menu
+[payment-menu]: /old-implementations/payment-menu-v2
 [checkout]: /{{ documentation_section }}

@@ -86,7 +86,7 @@ with the following event argument object:
 {% include events/on-checkout-resized.md %}
 
 Subscribe to this event if you need total control over the height of Swedbank
-Pay's payment frame. The payment instruments requires individual heights when
+Pay's payment frame. The payment instruments require individual heights when
 rendering their content. This event triggers each time the iframe needs resizing
 during a payment.
 
