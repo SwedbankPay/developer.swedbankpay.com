@@ -8,7 +8,7 @@
 {% if documentation_section contains "checkout" or documentation_section contains "payment-menu" %}
     {% assign this_documentation_url = documentation_section %}
 {% else %}
-    {% assign this_documentation_url = "payment-instruments/" | append: documentation_section %}
+    {% assign this_documentation_url = "/old-instruments/payment-instruments-v1/" | append: documentation_section %}
 {% endif %}
 
 {{ top_h }} Transaction
