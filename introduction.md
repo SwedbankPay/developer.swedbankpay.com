@@ -376,6 +376,8 @@ specified in the response by finding the appropriate operation based on its
 
 {% include callback.md %}
 
+{% include problems/problems.md %}
+
 [admin]: https://merchantportal.externalintegration.swedbankpay.com
 [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2

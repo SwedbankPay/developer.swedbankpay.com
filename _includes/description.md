@@ -59,7 +59,7 @@ Content-Type: application/json
                 "vatAmount": 0
             }
         ],{% endif %}
-        "description": "Test Description",{% if documentation_section == "payment_menu" %}
+        "description": "Test Description",{% if documentation_section == "payment-menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
