@@ -141,8 +141,6 @@ details of these changes will be explained in the below table.
 | `onOutOfViewOpen`             | `onExternalRedirect`              | {% include events/on-out-of-view-open.md %}                            |
 | `onOutOfViewRedirect`         | `onExternalRedirect`              | {% include events/on-out-of-view-redirect.md %}                        |
 | `onPaid`                      | `onPaymentCompleted`              | {% include events/on-paid.md %}                                        |
-| `onPayerIdentified`           | `onShippingDetailsAvailable`      | {% include events/on-payer-identified.md %}                            |
-| `onPayerUnidentified`         |                                   | **New in v3**. {% include events/on-payer-unidentified.md %}           |
 |                               | `onPaymentCreated`                | **Deprecated**. {% include events/on-payment-created.md %}             |
 |                               | `onPaymentFailed`                 | **Deprecated**. {% include events/on-payment-failed.md %}              |
 |                               | `onPaymentPending`                | **Deprecated**. {% include events/on-payment-pending.md %}             |
