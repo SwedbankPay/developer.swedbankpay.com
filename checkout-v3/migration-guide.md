@@ -149,8 +149,8 @@ details of these changes will be explained in the below table.
 
 ## Checkout v3 Starter
 
-[Checkout v3 Starter][starter] should be the default choice for most merchants
-coming from v2.
+Checkout v3 Starter should be the default choice for most merchants coming from
+v2.
 
 The most significant difference between Checkout v2 and _Checkout v3 Starter_ is
 that we have sewn the Seamless Views better together so the communication
