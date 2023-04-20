@@ -448,4 +448,3 @@ sequenceDiagram
 next_href="redirect" next_title="Redirect" %}
 
 [callback-url]: /old-implementations/payment-instruments-v1/swish/features/core/callback
-[purchase]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
