@@ -756,7 +756,7 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
-[3ds2-test]: /resources/test-data#otp-3ds2
+[3ds2-test]: resources/test-data#otp-3ds2
 [afd-payments]: /paymetnmenu/payments-only/features/optional/afd
 [age-restrictions]: /paymetnmenu/payments-only/features/optional/age-restrictions
 [android-configuration]: /modules-sdks/mobile-sdk/configuration#android
@@ -799,7 +799,7 @@ integration and the payer.
 [credit-card-abort]: /payment-instruments/card/after-payment#abort
 [credit]: /payment-instruments/card
 [cross-channel-payments]: /paymetnmenu/payments-only/features/optional/cross-channel-payments
-[data-protection]: /resources/data-protection
+[data-protection]: resources/data-protection
 [delete-payment-tokens]: /paymetnmenu/payments-only/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
@@ -840,7 +840,7 @@ integration and the payer.
 [resource-model-payer]: /paymetnmenu/payments-only/features/technical-reference/resource-sub-models#payer
 [resource-models]: /paymetnmenu/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /paymetnmenu/payments-only/features/optional/request-delivery-info
-[resources]: /resources/
+[resources]: resources/
 [settlement-balance-report]: /payment-instruments/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /payment-instruments/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
@@ -863,8 +863,8 @@ integration and the payer.
 [swish]: /payment-instruments/swish
 [swish-abort]: /payment-instruments/swish/after-payment#abort
 [technical-reference]: /checkout-v2/features/technical-reference/
-[terminology]: /resources/terminology
-[test-data]: /resources/test-data
+[terminology]: resources/terminology
+[test-data]: resources/test-data
 [transaction-on-file]: /payment-instruments/card/features/optional/transaction-on-file
 [tra-exemption]: /checkout-v2/features/optional/tra
 [trustly-payments]: /payment-instruments/trustly

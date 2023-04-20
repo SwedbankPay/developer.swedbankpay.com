@@ -244,7 +244,7 @@ environment to ensure the customers details are kept safe.
 [irtp-request]: https://developers.google.com/paymetnmenu/api/web/reference/request-objects#IsReadyToPayRequest
 [payex-domain-file]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
 [pd-request]: https://developers.google.com/paymetnmenu/api/web/reference/request-objects#PaymentDataRequest
-[req-con-address]: /paymetnmenu/payments-only/features/optional/request-delivery-info
+[req-con-address]: paymetnmenu/payments-only/features/optional/request-delivery-info
 [web-googlepay-brand-guidelines]: https://developers.google.com/paymetnmenu/api/web/guides/brand-guidelines
 [web-googlepay-checklist]: https://developers.google.com/paymetnmenu/api/web/guides/test-and-deploy/integration-checklist
 [web-googlepay-devdoc]: https://developers.google.com/paymetnmenu/api/web/
