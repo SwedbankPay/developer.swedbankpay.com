@@ -3,7 +3,7 @@ section: Products
 sidebar_icon: payments
 title: Product Offerings
 description: |
-  **Discover the benefits and capabilities of our two primary product offerings, PaymentMenu and Single Payment. Catering to different merchant needs, these solutions streamline online transactions while offering a seamless and secure payment experience. Browse the details below to understand the distinct advantages of each product offering and make an informed decision on the best fit for your business.**
+  **Discover the benefits and capabilities of our two primary product offerings, Payment Menu and Instrument Mode. Catering to different merchant needs, these solutions streamline online transactions while offering a seamless and secure payment experience. Browse the details below to understand the distinct advantages of each product offering and make an informed decision on the best fit for your business.**
 menu_order: 400
 ---
 
@@ -18,11 +18,11 @@ menu_order: 400
 %}
 
 {% include card-extended.html
-  title='Single Payment'
+  title='Instrument Mode'
   no_icon=true
   button_content=""
-  text="Single Payment is tailored for merchants who already have their own payment menu and use multiple PSPs for different payment instruments. This product offering enables seamless integration with our PSP's API, allowing businesses to expand their payment options without disrupting their existing payment infrastructure. By adopting the Single Payment solution, merchants can streamline payment processing and enhance their customers' payment experience across different channels."
+  text="Instrument Mode is tailored for merchants who already have their own payment menu and use multiple PSPs for different payment instruments. This product offering enables seamless integration with our PSP's API, allowing businesses to expand their payment options without disrupting their existing payment infrastructure. By adopting the Instrument Mode solution, merchants can streamline payment processing and enhance their customers' payment experience across different channels."
   button_type='primary'
   button_alignment='align-self-end'
-  to='/products/singlepayment'
+  to='/products/instrumentmode'
 %}
