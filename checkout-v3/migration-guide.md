@@ -24,7 +24,7 @@ packages is provided in the table below.
 {:.table .table-striped}
 | Legacy feature or product   | Recommended v3 package                                         |
 | --------------------------: | :------------------------------------------------------------- |
-| Regular Checkout v2         | [Checkout v3 _Starter_][starter]                               |
+| Regular Checkout v2         | [Checkout v3 _Enterprise_][enterprise]                         |
 | MAC, SCA                    | [Checkout v3 _Enterprise_][enterprise]                         |
 | Payment Menu v2             | [Checkout v3 _Payments Only_][payments-only]                   |
 | Checkout v2 without Checkin | [Checkout v3 _Payments Only_][payments-only]                   |
