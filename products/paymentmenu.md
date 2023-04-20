@@ -34,7 +34,7 @@ We offers a range of additional features that can enhance your payment experienc
 
 ## Getting Started
 
-To begin integrating the PaymentMenu into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](/developer/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](/developer/api-reference) page.
+To begin integrating the PaymentMenu into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](/developers/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](/developers/api-reference) page.
 
 ## Support and Assistance
 
