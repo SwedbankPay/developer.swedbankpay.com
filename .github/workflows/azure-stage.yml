@@ -28,7 +28,7 @@ jobs:
         run: |
           az storage blob upload-batch \
             --source "_site" \
-            --destination "\$web" \
+            --destination "\$web/docs" \
             --account-name stageecomdocs \
             --overwrite \
             --validate-content

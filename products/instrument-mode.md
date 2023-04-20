@@ -18,8 +18,8 @@ Instrument Mode is designed for merchants who already have their own payment men
 
 ## Getting Started
 
-To begin integrating the Instrument Mode solution into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](developers/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](developers/api-reference) page.
+To begin integrating the Instrument Mode solution into your business, follow our step-by-step guides and tutorials available in the [Integration Guides](docs/developers/integration-guides) section. For comprehensive API documentation and technical details, visit our [API Reference](docs/developers/api-reference) page.
 
 ## Support and Assistance
 
-If you need assistance or have questions, don't hesitate to reach out to our dedicated support team. Visit the [Support and Contact Information](resources/support) page for details on how to get in touch.
+If you need assistance or have questions, don't hesitate to reach out to our dedicated support team. Visit the [Support and Contact Information](docs/resources/support) page for details on how to get in touch.
