@@ -115,6 +115,6 @@ Content-Type: application/json
 In the event that a transaction is `failed`, the `transaction` response will
 contain a `problem` property as seen in the example below. To view all the
 problems that can occur due to an unsuccessful transaction, head over to the
-[problems section]({{ this_documentation_url }}/features/technical-reference/problems).
+[problems section](/{{ this_documentation_url }}/features/technical-reference/problems).
 
 {% include transaction-response.md transaction="transaction" %}
