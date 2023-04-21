@@ -3,7 +3,7 @@ section: Gift Cards
 sidebar_icon: redeem
 title: Introduction
 permalink: /:path/
-menu_order: 600
+menu_order: 4
 ---
 
 ## Overview

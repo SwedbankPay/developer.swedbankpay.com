@@ -3,10 +3,10 @@
 
 ## Introduction
 
-Payment Link is available for our payment menu and the payment instruments
+Payment Link is available for Payment Menu v2 and the payment instruments
 listed below, using the redirect platform and Swedbank Pay hosted payment page.
 
-*   [Payment Menu][payment-menu]
+*   [Payment Menu v2][payment-menu]
 *   [Card][card]
 *   [MobilePay Online][mobilepay]
 *   [Swish][swish]
@@ -220,13 +220,13 @@ sequenceDiagram
     URL when the payer has completed the payment.
     [See the Callback API description here][technical-reference-callback].
 
-[abort]: /payment-instruments/card/features/core/abort-reference
+[abort]: /old-implementations/payment-instruments-v1/card/features/core/abort-reference
 [card-payment]: /assets/img/payments/card-payment.png
-[card]: /payment-instruments/card
-[mobilepay]: /payment-instruments/mobile-pay
-[payment-menu]: /payment-menu
-[purchase-flow]: /payment-instruments/card/features/core/purchase
-[swish]: /payment-instruments/swish
-[technical-reference-callback]: /payment-instruments/card/features/core/callback
-[vipps]: /payment-instruments/vipps
-[trustly]: /payment-instruments/trustly
+[card]: /old-implementations/payment-instruments-v1/card
+[mobilepay]: /old-implementations/payment-instruments-v1/mobile-pay
+[payment-menu]: /old-implementations/payment-menu-v2
+[purchase-flow]: /old-implementations/payment-instruments-v1/card/features/core/purchase
+[swish]: /old-implementations/payment-instruments-v1/swish
+[technical-reference-callback]: /old-implementations/payment-instruments-v1/card/features/core/callback
+[vipps]: /old-implementations/payment-instruments-v1/vipps
+[trustly]: /old-implementations/payment-instruments-v1/trustly

@@ -9,7 +9,6 @@ the following kind of payments:
 {% if documentation_section == 'card' %}
 
 *   [Purchase][purchase]
-*   [Payout][payout]
 *   [Recurrence][recur]
 *   [Verification][verify]
 {% else %}
@@ -47,6 +46,5 @@ Content-Type: application/json
 | {% icon check %} | {% f intent %}      | `string` | {% include fields/intent.md %} |
 
 [purchase]: {{ features_url }}/core/purchase
-[payout]: /payment-instruments/card/features/optional/payout
-[recur]: /payment-instruments/card/features/optional/recur
-[verify]: /payment-instruments/card/features//optional/verify
+[recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
+[verify]: /old-implementations/payment-instruments-v1/card/features//optional/verify

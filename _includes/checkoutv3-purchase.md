@@ -236,7 +236,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if documentation_section == "payment-menu" %}
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if documentation_section contains "payment-menu" %}
         "instrument": "CreditCard",
         "paymentToken" : "{{ page.payment_token }}",{% endif %}
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -316,7 +316,7 @@ Content-Type: application/json
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |{% if documentation_section == "payment-menu" %}
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |{% if documentation_section contains "payment-menu" %}
 | {% f instrument %}     | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ features_url }}/optional/instrument-mode).                                                                                                           |
 | {% f paymentToken %}   | `string`     | The payment token created for the purchase used in the authorization to create [One Click Payments]({{ documentation_section }}/features/#one-click-payments).                                                                                                  | {% endif %}                                              |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |

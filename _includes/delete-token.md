@@ -46,7 +46,7 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{   {% if documentation_section == "payment-menu" %}
+{   {% if documentation_section contains "payment-menu" %}
     "token": "{{ page.payment_token }}",
     "isDeleted": true
     {% else %}

@@ -725,9 +725,9 @@ specify the allowed custom scheme, you can conform to
                          next_href="other-features"
                          next_title="Next: Other Features" %}
 
-[initiate-consumer-session]: /checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /checkout-v2/payment-menu#step-3-create-payment-order
-[payment-url]: /checkout-v2/features/technical-reference/payment-url
+[initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
+[create-payment-order]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
+[payment-url]: /old-implementations/checkout-v2/features/technical-reference/payment-url
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [rfc-7807]: https://tools.ietf.org/html/rfc7807

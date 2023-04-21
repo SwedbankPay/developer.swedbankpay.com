@@ -86,7 +86,7 @@ with the following event argument object:
 {% include events/on-checkout-resized.md %}
 
 Subscribe to this event if you need total control over the height of Swedbank
-Pay's payment frame. The payment instruments requires individual heights when
+Pay's payment frame. The payment instruments require individual heights when
 rendering their content. This event triggers each time the iframe needs resizing
 during a payment.
 
@@ -285,97 +285,6 @@ It will be raised with the following event argument object:
 | `event`       | `string` | The name of the event raised.                                       |
 | {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
-
-{% if documentation_section contains "checkout-v3/starter" %}
-
-## `onPayerIdentified`
-
-{% include events/on-payer-identified.md %}
-
-There are two scenarios where this event will occur:
-
-*   The **first** is when the payer has finalized checkin, where this is the
-expected merchant behavior:
-
-*   Merchant calls GET on the `paymentOrder` to receive payer data (shipping
-    address).
-
-*   Merchant activates shipping cost calculation.
-
-*   When shipping cost is calculated, update the payment order with new price
-  and open Payment Menu.
-
-*   The **second** is when the payer has added or edited a shipping address. In
-  those cases, this is the expected merchant behavior:
-
-*   Merchant needs to decide if payment menu should be closed (the menu is
-  already open).
-
-*   Merchant calls GET on `paymentOrder` again to receive new payer data
-    (shipping address).
-
-*   Merchant activates shipping cost calculation if required.
-
-*   If a new shipping cost is calculated, update the payment order with the new
-    price and open the Payment Menu.
-
-It will be raised with the
-following event argument object:
-
-{:.code-view-header}
-**onPayerIdentified event object**
-
-```json
-{
-    "event": "OnPayerIdentified",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "payer": "/psp/paymentorders/{{ page.payment_id }}/payers",
-}
-```
-
-{:.table .table-striped}
-| Field          | Type     | Description                                                         |
-| :------------- | :------- | :-------------------------------------------------------------      |
-| `event`        | `string` | The name of the event raised.                                       |
-| {% f paymentOrder, 0 %} | `string` | {% include fields/id.md %}                               |
-| `payer`        | `string` | The `url` of the resource containing information about the payer.   |
-
-## `onPayerUnidentified`
-
-{% include events/on-payer-unidentified.md %}
-
-This event triggers when a payer clicks "Not you" when identified with "Remember
-Me", and it is a mandatory event for **Starter** to work. It is a part of the
-acceptance criteria, meaning you won't get the green light to go live with your
-implementation without it.
-
-Expected merchant behavior when it occurs is:
-
-*   Merchant needs to close/hide/disable the payment menu iframe.
-
-*   Merchant needs to close shipping calculation until a new `onPayerIdentified`
-  is received, as the payer's shipping address could be updated after next
-  checkin.
-
-It will be raised with the following event argument object:
-
-{:.code-view-header}
-**onPayerUnidentified event object**
-
-```json
-{
-    "event": "OnPayerUnidentified",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-}
-```
-
-{:.table .table-striped}
-| Field           | Type     | Description                                                  |
-| :-------------  | :------- | :------------------------------------------------------      |
-| `event`         | `string` | The name of the event raised.                                |
-| {% f paymentOrder, 0 %}  | `string` | {% include fields/id.md %}                        |
-
-{% endif %}
 
 ## `onTermsOfServiceRequested`
 

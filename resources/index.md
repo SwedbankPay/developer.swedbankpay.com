@@ -6,7 +6,7 @@ description: |
   In this section you find various **resources** for Swedbank Pay's API
   Platform.
 permalink: /:path/
-menu_order: 800
+menu_order: 6
 ---
 
 ## Test Data
