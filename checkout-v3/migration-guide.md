@@ -24,7 +24,7 @@ packages is provided in the table below.
 {:.table .table-striped}
 | Legacy feature or product   | Recommended v3 package                                         |
 | --------------------------: | :------------------------------------------------------------- |
-| Regular Checkout v2         | [Checkout v3 _Starter_][starter]                               |
+| Regular Checkout v2         | [Checkout v3 _Enterprise_][enterprise]                         |
 | MAC, SCA                    | [Checkout v3 _Enterprise_][enterprise]                         |
 | Payment Menu v2             | [Checkout v3 _Payments Only_][payments-only]                   |
 | Checkout v2 without Checkin | [Checkout v3 _Payments Only_][payments-only]                   |
@@ -141,8 +141,6 @@ details of these changes will be explained in the below table.
 | `onOutOfViewOpen`             | `onExternalRedirect`              | {% include events/on-out-of-view-open.md %}                            |
 | `onOutOfViewRedirect`         | `onExternalRedirect`              | {% include events/on-out-of-view-redirect.md %}                        |
 | `onPaid`                      | `onPaymentCompleted`              | {% include events/on-paid.md %}                                        |
-| `onPayerIdentified`           | `onShippingDetailsAvailable`      | {% include events/on-payer-identified.md %}                            |
-| `onPayerUnidentified`         |                                   | **New in v3**. {% include events/on-payer-unidentified.md %}           |
 |                               | `onPaymentCreated`                | **Deprecated**. {% include events/on-payment-created.md %}             |
 |                               | `onPaymentFailed`                 | **Deprecated**. {% include events/on-payment-failed.md %}              |
 |                               | `onPaymentPending`                | **Deprecated**. {% include events/on-payment-pending.md %}             |
@@ -151,8 +149,8 @@ details of these changes will be explained in the below table.
 
 ## Checkout v3 Starter
 
-[Checkout v3 Starter][starter] should be the default choice for most merchants
-coming from v2.
+Checkout v3 Starter should be the default choice for most merchants coming from
+v2.
 
 The most significant difference between Checkout v2 and _Checkout v3 Starter_ is
 that we have sewn the Seamless Views better together so the communication
@@ -229,4 +227,3 @@ Mode_.
 
 [enterprise]: /checkout-v3/enterprise
 [payments-only]: /checkout-v3/payments-only
-[starter]: /checkout-v3/starter

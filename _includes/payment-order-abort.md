@@ -91,9 +91,7 @@ Content-Type: application/json
             "Trustly"
         ], {% if documentation_section contains "checkout-v3/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
-        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,
