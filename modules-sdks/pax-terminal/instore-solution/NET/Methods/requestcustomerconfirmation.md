@@ -24,4 +24,4 @@ public class NexoRequestResult
 
 [Example when used][handle-loyalty-ask-for-membership]
 
-[handle-loyalty-ask-for-membership]: ../CodeExamples/index.md/#handle-loyalty---ask-for-membership
+[handle-loyalty-ask-for-membership]: ../CodeExamples/index/#handle-loyalty---ask-for-membership

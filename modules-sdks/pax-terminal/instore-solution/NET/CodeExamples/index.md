@@ -384,4 +384,4 @@ private async void button1_Click(object sender, EventArgs e)
 [create-method]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/create
 [start-method]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/start
 [openasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/openasync
-[paymentasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/paymentsync
+[paymentasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/paymentasync

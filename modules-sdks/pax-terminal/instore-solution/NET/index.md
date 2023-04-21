@@ -95,8 +95,8 @@ The callbacks are only used if running as a server.
 [reverselastasync]: ./Methods/reverselastasync
 [requesttodisplayasync]: ./Methods/requesttodisplayasync
 [requestcustomerconfirmation]: ./Methods/requestcustomerconfirmation
-[onterminaldisplay]:./Events/index/#onterminaldisplay
-[onnewstatus]:./Events/index/#onnewstatus
-[onterminaladdressobtained]:./Events/index/#onterminaladdressobtained
+[onterminaldisplay]: ./Events/index/#onnewstatus
+[onnewstatus]: ./Events/index/#onnewstatus
+[onterminaladdressobtained]: ./Events/index/#onterminaladdressobtained
 [confirmationhandler]: ./ISwpTrmCallbackInterface/index/#confirmationhandler
 [eventnotificationhandler]: ./ISwpTrmCallbackInterface/index/#eventnotificationhandler
