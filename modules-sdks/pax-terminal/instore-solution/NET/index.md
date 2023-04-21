@@ -27,8 +27,8 @@ The aim of the SDK is to minimize the total work effort for both users and Swedb
 The SwpTrmLib only contains one implementation for using a PAX terminal from Swedbank Pay at the moment, but makes it possible to vary the style of use
 by configuration. There are two major styles that is decided by the `SalesCapabilities` string sent in a `LoginRequest`:
 
-* Act as both server and client - [see code example for default style][default-style]
-* Act as client only - [see code example for client only][client-style]
+*   Act as both server and client - [see code example for default style][default-style]
+*   Act as client only - [see code example for client only][client-style]
 
 The intended default style requires the consumer of the SwpTrmLib to act as both a server and a client. The server
 handles requests from the terminal, such as display information, events, and possible input request from the terminal,
@@ -42,35 +42,35 @@ transactions regard cards from outside EU for which PIN may not be required.
 
 Making a transaction from scratch only takes a few method calls.
 
-* [Create][create-method] - Creates an instance and returns an interface
-* [Start][start-method] - Initializes the instance and starts a listener for terminal if that mode is chosen
-* [OpenAsync][openasync] - Starts a Login Session with the terminal. The session remains until Close or a new Open call
-* [PaymentAsync][paymentasync] - Starts a payment transaction for supplied amount.
-* [RefundAsync][refundasync] - Starts a refund transaction for supplied amount.
-* [CloseAsync][closeasync] - Finishes the terminal session and allows for terminal maintenance. At least once a day.
+*   [Create][create-method] - Creates an instance and returns an interface
+*   [Start][start-method] - Initializes the instance and starts a listener for terminal if that mode is chosen
+*   [OpenAsync][openasync] - Starts a Login Session with the terminal. The session remains until Close or a new Open call
+*   [PaymentAsync][paymentasync] - Starts a payment transaction for supplied amount.
+*   [RefundAsync][refundasync] - Starts a refund transaction for supplied amount.
+*   [CloseAsync][closeasync] - Finishes the terminal session and allows for terminal maintenance. At least once a day.
 
 ## Handy Methods
 
 To get more than just payments and refunds
 
-* [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card before amount is known
-* [SetPaymentInstrument][setpaymentinstrument] - Sends a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
-* [RequestToDisplayAsync][requesttodisplayasync] - Sends a message to be displayed on terminal
-* [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Displays a yes/no question on the terminal and receive the result.
+*   [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card before amount is known
+*   [SetPaymentInstrument][setpaymentinstrument] - Sends a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
+*   [RequestToDisplayAsync][requesttodisplayasync] - Sends a message to be displayed on terminal
+*   [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Displays a yes/no question on the terminal and receive the result.
 
 ## Other Available Methods
 
-* [AbortAsync][abortasync] - Aborts something ongoing
-* [ReverseLastAsync][reverselastasync] - Reverses the last transaction if it was approved
-* AdminAsync - Ask terminal to see if is any parameter update pending
+*   [AbortAsync][abortasync] - Aborts something ongoing
+*   [ReverseLastAsync][reverselastasync] - Reverses the last transaction if it was approved
+*   AdminAsync - Ask terminal to see if is any parameter update pending
 
 ## Events
 
 The events are only used if running as a server.
 
-* [OnTerminalDisplay][onterminaldisplay]
-* [OnNewStatus][onnewstatus]
-* [OnTerminalAddressObtained][onterminaladdressobtained]
+*   [OnTerminalDisplay][onterminaldisplay]
+*   [OnNewStatus][onnewstatus]
+*   [OnTerminalAddressObtained][onterminaladdressobtained]
 
 ## Callbacks
 
@@ -78,8 +78,8 @@ The events are only used if running as a server.
 
 The callbacks are only used if running as a server.
 
-* [ConfirmationHandler][confirmationhandler]
-* [EventNotificationHandler][eventnotificationhandler]
+*   [ConfirmationHandler][confirmationhandler]
+*   [EventNotificationHandler][eventnotificationhandler]
 
 [create-method]: ./Methods/create
 [start-method]: ./Methods/start
@@ -95,8 +95,8 @@ The callbacks are only used if running as a server.
 [reverselastasync]: ./Methods/reverselastasync
 [requesttodisplayasync]: ./Methods/requesttodisplayasync
 [requestcustomerconfirmation]: ./Methods/requestcustomerconfirmation
-[onterminaldisplay]: ./Events/index/#onnewstatus
-[onnewstatus]: ./Events/index/#onnewstatus
-[onterminaladdressobtained]: ./Events/index/#onterminaladdressobtained
-[confirmationhandler]: ./ISwpTrmCallbackInterface/index/#confirmationhandler
-[eventnotificationhandler]: ./ISwpTrmCallbackInterface/index/#eventnotificationhandler
+[onterminaldisplay]: ./Events/index.md/#onterminaldisplay
+[onnewstatus]: ./Events/index.md/#onnewstatus
+[onterminaladdressobtained]: ./Events/index.md/#onterminaladdressobtained
+[confirmationhandler]: ./ISwpTrmCallbackInterface/index.md/#confirmationhandler
+[eventnotificationhandler]: ./ISwpTrmCallbackInterface/index.md/#eventnotificationhandler

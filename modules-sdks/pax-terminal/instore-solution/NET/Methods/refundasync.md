@@ -22,4 +22,4 @@ A **PaymentRequestResult** - [Detailed description][paymentrequestresult]
 A `PayementRequestResult.ResponseResult` of value `Success` means transaction approved.
 If `ResponseResult` is `Failure` there is an `ErrorCondition`. If `ErrorCondition` is `Busy` wait awhile and try again.
 
-[paymentrequestresult]: ./paymentasync/#returns
+[paymentrequestresult]: ./paymentasync.md/#returns
