@@ -66,7 +66,7 @@ be inferred from the URL. See [URL usage][url-usage] for more information.
 
 ```json
 {
-    "paymentorder": {
+    "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
     },
