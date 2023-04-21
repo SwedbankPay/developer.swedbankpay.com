@@ -23,4 +23,4 @@ The callbacks are only used if running as a server. However the Create method re
   };
 ```
 
-[clientonly]: ../CodeExamples/index.md/#as-client-only
+[clientonly]: ../CodeExamples/#as-client-only
