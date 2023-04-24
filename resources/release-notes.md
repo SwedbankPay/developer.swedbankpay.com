@@ -10,6 +10,16 @@ menu_order: 800
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 24 April 2023
+
+### Version 4.2.0
+
+The keen observer might spot some changes in our menu. The Checkout v2, Payment
+Menu and Payment Instruments have been moved to
+[Old Implementations][old-implementations]. You can still find everything you
+want and need, so no need to worry. A new [.NET SDK][pax-net-sdk] section has
+also been added, in addition to the usual bugs and small fixes.
+
 ## 10 March 2023
 
 ### Version 4.1.0
@@ -822,6 +832,7 @@ integration and the payer.
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
 [modules-sdks]: /modules-sdks
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
+[old-implementations]: old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
@@ -831,6 +842,7 @@ integration and the payer.
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /old-implementations/payment-instruments-v1/
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
+[pax-net-sdk]: https://developer.stage.swedbankpay.com/modules-sdks/pax-terminal/instore-solution/NET/
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/optional/update
 [recur]: /checkout-v3/payments-only/features/optional/recur
