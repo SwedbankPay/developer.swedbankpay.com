@@ -832,7 +832,7 @@ integration and the payer.
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
 [modules-sdks]: /modules-sdks
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
-[old-implementations]: old-implementations/
+[old-implementations]: /old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
