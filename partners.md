@@ -1,0 +1,37 @@
+---
+title: Partners
+menu_order: 7
+sidebar_icon: handshake
+hide_from_sidebar: true
+description: |
+    We have a lot of partners who help us deliver the best payment experience.
+    Select a country to see who we are collaborating with in your market(s).
+---
+
+{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
+
+  <h2 id="front-page-extra-resources" class="heading-line">Partners</h2>
+  <div class="row mt-4">
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Denmark'
+              text='Our Danish partners'
+              icon_content='email'
+              icon_outlined=true
+              to='https://www.swedbankpay.dk/partners'
+          %}
+      </div>
+            <div class="{{ card_col_class }}">
+          {% include card.html title='Norway'
+              text='Our Norwegian partners'
+              icon_content='email'
+              to='https://www.swedbankpay.no/partners'
+          %}
+      </div>
+            <div class="{{ card_col_class }}">
+          {% include card.html title='Swedish'
+              text='Our Swedish partners'
+              icon_content='email'
+              to='https://www.swedbankpay.se/partners'
+          %}
+      </div>
+  </div>
