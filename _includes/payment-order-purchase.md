@@ -21,7 +21,7 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",{% if documentation_section == "payment-menu" %}
+        "language": "sv-SE",{% if documentation_section contains "payment-menu" %}
         "instrument": null,
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},
@@ -101,7 +101,7 @@ Content-Type: application/json
 
 {
     "paymentorder": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if documentation_section == "payment-menu" %}
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}",{% if documentation_section contains "payment-menu" %}
         "instrument": "CreditCard",
         "paymentToken" : "{{ page.payment_token }}",{% endif %}
         "recurrenceToken": {{ page.recurrence_token }},
@@ -188,8 +188,8 @@ Content-Type: application/json
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount %}                | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f instrument %}               | `string`     | The payment instrument used. Selected by using the {% if documentation_section == "payment-menu" %}[Instrument Mode]({{ features_url }}/optional/instrument-mode){% else %}Instrument Mode{% endif %}.                                                                                                   |
-{% if documentation_section == "payment-menu" -%}
+| {% icon check %} | {% f instrument %}               | `string`     | The payment instrument used. Selected by using the {% if documentation_section contains "payment-menu" %}[Instrument Mode]({{ features_url }}/optional/instrument-mode){% else %}Instrument Mode{% endif %}.                                                                                                   |
+{% if documentation_section contains "payment-menu" -%}
 |                  | {% f generatePaymentToken %}     | `bool`       | Determines if a payment token should be generated. A payment token is used to enable future [one-click payments]({{ features_url }}/optional/one-click-payments) – with the same token. Default value is `false`.                                               |
 {% endif -%}
 |                  | {% f generateRecurrenceToken %}  | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ features_url }}/optional/recur) – with the same token – through server-to-server calls. Default value is `false`.                                               |
@@ -244,7 +244,7 @@ Content-Type: application/json
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
-| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |{% if documentation_section == "payment-menu" %}
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |{% if documentation_section contains "payment-menu" %}
 | {% f instrument %}     | `string`     | The payment instrument used. Selected by using the [Instrument Mode]({{ features_url }}/optional/instrument-mode).                                                                                                           |
 | {% f paymentToken %}   | `string`     | The payment token created if `generatePaymentToken: true` was used. Enables future [one-click payments]({{ features_url }}/optional/one-click-payments) – with the same token.                                                                                                  | {% endif %}                                              |
 | {% f recurrenceToken %}   | `string`     | The recurrence token created if `generateRecurrenceToken: true` was used. Enables future [recurring payments]({{ features_url }}/optional/recur) – with the same token.                                                                                                  |

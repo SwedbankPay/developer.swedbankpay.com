@@ -692,7 +692,7 @@ name under your control – usually the host name of the Merchant Backend.
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
-[payment-url]: /payment-menu/features/technical-reference/payment-url
+[payment-url]: /old-implementations/payment-menu-v2/features/technical-reference/payment-url
 [create-payment-order]: /checkout-v3/payments-only/seamless-view#step-1-create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
@@ -701,4 +701,4 @@ name under your control – usually the host name of the Merchant Backend.
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /introduction#problems
-[instrument-mode]: /payment-menu/features/optional/instrument-mode
+[instrument-mode]: /old-implementations/payment-menu-v2/features/optional/instrument-mode

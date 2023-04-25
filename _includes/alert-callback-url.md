@@ -1,5 +1,5 @@
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
-{% assign callback_href = "/payment-instruments/" | append: documentation_section | append: "/features/core/callback" %}
+{% assign callback_href = "/old-implementations/payment-instruments-v1/" | append: documentation_section | append: "/features/core/callback" %}
 
 {% capture body %}
 It is mandatory to set a [`callbackUrl`]({{ callback_href }}) in the `POST`

@@ -193,9 +193,7 @@ Content-Type: application/json
             "Invoice-PayExFinancingSe"
         ], {% if documentation_section contains "checkout-v3/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
-        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter",
+        "implementation": "PaymentsOnly", {% endif %}
         "integration": "HostedView|Redirect",
         "instrumentMode": false,
         "guestMode": false,
@@ -248,7 +246,7 @@ Content-Type: application/json
           "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
           "rel": "view-checkout",
           "contentType": "application/javascript"
-        },{% endif %}
+        },
         {
           "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
           "rel":"update-order",
@@ -354,10 +352,12 @@ Content-Type: application/json
         "href": "https://ecom.stage.payex.com/paymentmenu/core/client/paymentmenu/23ef8b8f5088711f6f2cdbc55ad4dad673fee24a70c7788a5dc8f50c6c7ba835?culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
         "rel": "view-paymentorder",
         "contentType": "application/javascript"
-        } {% endif %}
+        }
     ]
 }
 ```
+
+{% endif %}
 
 ## PATCH Instrument Selection
 

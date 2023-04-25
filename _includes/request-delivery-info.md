@@ -66,44 +66,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite",
             "siteId": "MySiteId"
-        }, {% if documentation_section contains "checkout-v3/business" %}
-        "payer": {
-            "digitalProducts": false,
-            "firstName": "Leia",
-            "lastName": "Ahlström",
-            "email": "leia@payex.com",
-            "msisdn": "+46787654321",
-            "shippingAddress": {
-                "firstName": "firstname/companyname",
-                "lastName": "lastname",
-                "email": "karl.anderssson@mail.se",
-                "msisdn": "+46759123456",
-                "streetAddress": "Helgestavägen 9",
-                "coAddress": "",
-                "city": "Solna",
-                "zipCode": "17674",
-                "countryCode": "SE"
-            },
-            "billingAddress": {
-                "firstName": "firstname/companyname",
-                "lastName": "lastname",
-                "email": "karl.anderssson@mail.se",
-                "msisdn": "+46759123456",
-                "streetAddress": "Helgestavägen 9",
-                "coAddress": "",
-                "city": "Solna",
-                "zipCode": "17674",
-                "countryCode": "SE"
-            },
-            "accountInfo": {
-                "accountAgeIndicator": "04",
-                "accountChangeIndicator": "04",
-                "accountPwdChangeIndicator": "01",
-                "shippingAddressUsageIndicator": "01",
-                "shippingNameIndicator": "01",
-                "suspiciousAccountActivity": "01"
-            }
-        }, {% endif %} {% if documentation_section contains "checkout-v3/enterprise" %}
+        },  {% if documentation_section contains "checkout-v3/enterprise" %}
         "payer": {
             "digitalProducts": false,
             "nationalIdentifier": {
@@ -145,11 +108,6 @@ Content-Type: application/json
                 "shippingNameIndicator": "01",
                 "suspiciousAccountActivity": "01"
             }
-        }, {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "payer": {
-            "requireConsumerInfo": true,
-            "digitalProducts": false,
-            "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
         }, {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "payer": {
             "digitalProducts": false,
@@ -277,10 +235,8 @@ Content-Type: application/json
 |                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
 |                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} |
 |                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                           |
-|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                | {% if documentation_section contains "checkout-v3/starter" %}
-|  {% icon check %} | `requireConsumerInfo` | `string` | Must be set to `true` by merchants using Starter, as they receive profile information from Swedbank Pay. This applies both when the merchant needs `email` and/or `msisdn` for digital goods, and when full shipping address is needed.                             |
-|                  | `shippingAddressRestrictedToCountryCodes` | `string` | List of supported shipping countries for merchant. Using [ISO-3166] standard. Mandatory if `digitalProducts` is set to `false`, and not to be included if it is `true`.                                    | {% endif %}
-| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% unless documentation_section contains "checkout-v3/starter" %} {% if documentation_section contains "checkout-v3/enterprise" %}
+|                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
+| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% if documentation_section contains "checkout-v3/enterprise" %}
 |                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |
 |                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. |
 |                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     | {% endif %}
@@ -311,7 +267,7 @@ Content-Type: application/json
 | | {% f accountChangePwdIndicator, 2 %} | `string` | Indicates when the account's password was last changed. <br>`01` (No changes) <br>`02` (Changed during this transaction) <br>`03` (Less than 30 days ago) <br>`04` (30 to 60 days ago) <br>`05` (More than 60 days old) |
 | | {% f shippingAddressUsageIndicator, 2 %} | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
 | | {% f shippingNameIndicator, 2 %} | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
-| | {% f suspiciousAccountActivity, 2 %} | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) | {% endunless %}
+| | {% f suspiciousAccountActivity, 2 %} | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
 | {% icon check %} | {% f orderItems %}               | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                                            |
 | {% icon check %} | {% f reference, 2 %}               | `string`     | A reference that identifies the order item.                                                                                                                                                                                                                                                              |
 | {% icon check %} | {% f name, 2 %}                    | `string`     | The name of the order item.                                                                                                                                                                                                                                                                              |
@@ -365,9 +321,7 @@ Content-Type: application/json
             "Trustly"
         ],{% if documentation_section contains "checkout-v3/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "checkout-v3/business" %}
-        "implementation": "Business", {% endif %} {% if documentation_section contains "checkout-v3/starter" %}
-        "implementation": "Starter", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,

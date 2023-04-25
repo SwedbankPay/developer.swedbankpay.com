@@ -149,4 +149,4 @@ Any errors are ones thrown by your Configuration, or, in the case of
 When using the Merchant Backend Configuration, other errors will be of the type
 `SwedbankPaySDK.MerchantBackendError`.
 
-[terminal-failure]: /checkout-v2/features/technical-reference/payment-menu-events#onerror
+[terminal-failure]: /old-implementations/checkout-v2/features/technical-reference/payment-menu-events#onerror

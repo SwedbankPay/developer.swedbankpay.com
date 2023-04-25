@@ -17,9 +17,9 @@ information (if desired).
 ```swift
 var paymentOrder = ...
 payment.payer = .init(
-    consumerProfileRef: nil, 
-    email: "leia.ahlstrom@payex.com", 
-    msisdn: "+46739000001", 
+    consumerProfileRef: nil,
+    email: "leia.ahlstrom@payex.com",
+    msisdn: "+46739000001",
     payerReference: unique-identifier
 )
 
@@ -33,7 +33,7 @@ payment.payer = .init(
 val paymentOrder = PaymentOrder(
     ...
     payer = PaymentOrderPayer(
-        email = "leia.ahlstrom@payex.com", 
+        email = "leia.ahlstrom@payex.com",
         msisdn = "+46739000001",
         payerReference = unique-identifier
     ),
@@ -93,18 +93,18 @@ purchase.
 // ExpandResponse is a struct you define to match the response from your server, since you will want to adapt it to your needs.
 
 let request = configuration.expandOperation(paymentId: paymentId, expand: [.paid], endpoint: "expand") { (result: Result<ExpandResponse, Error>) in
-    
+
     if case .success(let success) = result, let token = success.paymentOrder.paid?.tokens.first?.token {
-        
+
         // Now save the token for the next purchase.
         // Notice that the backend never needs to respond with the complete expanded PaymentOrder.
         // This is just an illustration of how expansion can work
     } else {
-        
+
         //handle failure
     }
 }
-                        
+
 ```
 
 {:.code-view-header}
@@ -117,16 +117,16 @@ let request = configuration.expandOperation(paymentId: paymentId, expand: [.paid
 try {
     var result: ExpandedPaymentOrder = merchantConfiguration.expandOperation(
         context,
-        paymentId, 
-        arrayOf("paid"), 
+        paymentId,
+        arrayOf("paid"),
         "expand",
         ExpandedPaymentOrder::class.java
     )
-    
+
     return expandedOrder.paid?.tokens?.first()?.token
-    
+
 } catch (error: UnexpectedResponseException) {
-    
+
     //handle error
 }
 ```
@@ -241,6 +241,6 @@ val paymentOrder = PaymentOrder(
 paymentOrder.disableStoredPaymentDetails = true
 ```
 
-[add-stored-details]: /payment-menu/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
+[add-stored-details]: /old-implementations/payment-menu-v2/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
 [enterprise-payer-ref]: https://developer.swedbankpay.com/checkout-v3/enterprise/features/optional/enterprise-payer-reference
 [expanding_properties]: https://developer.swedbankpay.com/introduction#expansion

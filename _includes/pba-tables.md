@@ -21,8 +21,8 @@
 |{% unless operation_title == "sale" %} `transaction.vatAmount` {% endunless %}                     | `VAT Amount`                    | `VATAmount`             |
 |                                                                                                   |  `VAT Percentage`               | `VatoPercentage`        |
 |                                                                                                   | `Credit Card Batch Number`      | `CreditCardBatchNo`     |
-|{% if documentation_section == "card" or documentation_section == "payment-menu" or documentation_section == "checkout" %}`transaction.number` if DirectDebit {% endif%}| `Direct Debit Bank Reference`   | `DirectDebitbankRef`    |                                                            |
-|{% if documentation_section == "card" or documentation_section == "payment-menu" or documentation_section == "checkout" %}`transaction.number` if DirectDebit {%endif%}| `Reference`                     | `Reference`             |                                                             |
+|{% if documentation_section == "card" or documentation_section contains "payment-menu" or documentation_section contains "checkout" %}`transaction.number` if DirectDebit {% endif%}| `Direct Debit Bank Reference`   | `DirectDebitbankRef`    |                                                            |
+|{% if documentation_section == "card" or documentation_section contains "payment-menu" or documentation_section contains "checkout" %}`transaction.number` if DirectDebit {%endif%}| `Reference`                     | `Reference`             |                                                             |
 |                                                                                                   | `Swedbank Account Number`       | `SwedbankAccountNo`     |
 |{% unless operation_title == "reversal" %}`transaction.number` if reversed later{% endunless %}      | `Referenced Transaction Number` |`ReferencedTransaction`  |
 |                                                                                                   | `Sales Channel`                 | `SalesChannel`          |

@@ -28,4 +28,4 @@ requests. It should be specified on both payment order creation as well as on
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-[payment-order-capture]: /checkout-v2/capture
+[payment-order-capture]: /old-implementations/checkout-v2/capture

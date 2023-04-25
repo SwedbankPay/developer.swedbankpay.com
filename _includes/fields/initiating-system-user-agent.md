@@ -1,6 +1,6 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
 {%- assign api_resource = "Payment" -%}
-{%- if documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
+{%- if documentation_section contains "checkout" or documentation_section contains "payment-menu" -%}
     {%- assign api_resource = "Payment Order" -%}
 {%- endif -%}
 {%- capture initiating_system_user_agent -%}

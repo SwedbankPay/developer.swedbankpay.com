@@ -1,7 +1,7 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md fallback="card" -%}{%- endcapture -%}
 {%- assign description_url = documentation_section | prepend: "/" | append: "/features/technical-reference/description" -%}
-{%- unless documentation_section contains "checkout" or documentation_section == "payment-menu" -%}
-    {%- assign description_url = description_url | prepend: "/payment-instruments" -%}
+{%- unless documentation_section contains "checkout" or documentation_section contains "payment-menu" -%}
+    {%- assign description_url = description_url | prepend: "/old-implementations/payment-instruments-v1" -%}
 {%- endunless -%}
 {%- capture description -%}
     A 40 character length textual [description]({{ description_url }}) of the purchase.

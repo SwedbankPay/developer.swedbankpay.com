@@ -5,7 +5,7 @@ title: Get Started
 description: |
   **This page aims to provide you with a brief introduction to our two options
   for implementing our checkout in a way that makes sense for your business.**
-menu_order: 200
+menu_order: 2
 
 header:
   - table_header: Data Ownership
@@ -68,6 +68,11 @@ somewhat depending on which countries you are operating in.
 body="Some of the digital wallets we offer in Checkout v3 require you to take
 additional steps before we can activate them for you. Please follow the link(s)
 in the table below to read more." %}
+
+{% include alert.html type="informative" icon="info" header="Credit Account"
+body="Swedbank Pay Credit Account will be renamed Swedbank Pay Installment
+Account during Q2 2023. The renaming will not have any technical
+consequences, so you do not have to change anything in you integration." %}
 
 {:.table .table-plain}
 |        | Payment Instrument | Enterprise   |  Payments Only | Region                                    |

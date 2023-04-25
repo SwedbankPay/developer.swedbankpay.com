@@ -12,9 +12,9 @@ Checkout v3 provides a more stream-lined, refined checkout experience for both
 the payer and the merchant. The response models have been reduced in size and
 complexity to simplify integration.
 
-Where Checkout v2 and Payment Instruments were offered more as a mix and match
-package, Checkout v3 is more conveniently divided into four distinct packages:
-_Starter_, _Business_, _Enterprise_, and _Payments Only_.
+Where Checkout v2 and Payment Instruments v1 were offered more as a mix and
+match package, Checkout v3 is more conveniently divided into four distinct
+packages: _Starter_, _Business_, _Enterprise_, and _Payments Only_.
 
 Which v3 package you should choose when migrating from Checkout v2 and Payment
 Instruments to Checkout v3 depends on which legacy features you are using. A
@@ -24,11 +24,11 @@ packages is provided in the table below.
 {:.table .table-striped}
 | Legacy feature or product   | Recommended v3 package                                         |
 | --------------------------: | :------------------------------------------------------------- |
-| Regular Checkout v2         | [Checkout v3 _Starter_][starter]                               |
+| Regular Checkout v2         | [Checkout v3 _Enterprise_][enterprise]                         |
 | MAC, SCA                    | [Checkout v3 _Enterprise_][enterprise]                         |
-| Payment Menu                | [Checkout v3 _Payments Only_][payments-only]                   |
+| Payment Menu v2             | [Checkout v3 _Payments Only_][payments-only]                   |
 | Checkout v2 without Checkin | [Checkout v3 _Payments Only_][payments-only]                   |
-| Payment Instruments         | [Checkout v3 _Payments Only_][payments-only] (Instrument Mode) |
+| Payment Instruments v1      | [Checkout v3 _Payments Only_][payments-only] (Instrument Mode) |
 
 ## Request Fields
 
@@ -141,8 +141,6 @@ details of these changes will be explained in the below table.
 | `onOutOfViewOpen`             | `onExternalRedirect`              | {% include events/on-out-of-view-open.md %}                            |
 | `onOutOfViewRedirect`         | `onExternalRedirect`              | {% include events/on-out-of-view-redirect.md %}                        |
 | `onPaid`                      | `onPaymentCompleted`              | {% include events/on-paid.md %}                                        |
-| `onPayerIdentified`           | `onShippingDetailsAvailable`      | {% include events/on-payer-identified.md %}                            |
-| `onPayerUnidentified`         |                                   | **New in v3**. {% include events/on-payer-unidentified.md %}           |
 |                               | `onPaymentCreated`                | **Deprecated**. {% include events/on-payment-created.md %}             |
 |                               | `onPaymentFailed`                 | **Deprecated**. {% include events/on-payment-failed.md %}              |
 |                               | `onPaymentPending`                | **Deprecated**. {% include events/on-payment-pending.md %}             |
@@ -151,8 +149,8 @@ details of these changes will be explained in the below table.
 
 ## Checkout v3 Starter
 
-[Checkout v3 Starter][starter] should be the default choice for most merchants
-coming from v2.
+Checkout v3 Starter should be the default choice for most merchants coming from
+v2.
 
 The most significant difference between Checkout v2 and _Checkout v3 Starter_ is
 that we have sewn the Seamless Views better together so the communication
@@ -190,8 +188,8 @@ _Instrument Mode_ you also have the possibility to draw your own UI for the
 Payment Menu.
 
 If you are currently using the Checkout v2 _Payment Menu_ or have integrated
-directly with the Payment Instruments APIs, _Payments Only_ is the package most
-suited to your current needs.
+directly with the Payment Instruments v1 APIs, _Payments Only_ is the package
+most suited to your current needs.
 
 ### Checkout v3 Payments Only – Payer
 
@@ -229,4 +227,3 @@ Mode_.
 
 [enterprise]: /checkout-v3/enterprise
 [payments-only]: /checkout-v3/payments-only
-[starter]: /checkout-v3/starter

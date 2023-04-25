@@ -1,10 +1,8 @@
 {%- capture sections -%}
-    checkout-v2,
+    old-implementations/checkout-v2,
     checkout-v3/enterprise,
-    checkout-v3/starter,
-    checkout-v3/business,
     checkout-v3/payments-only,
-    payment-menu,
+    old-implementations/payment-menu-v2,
     gift-cards,
     card,
     invoice,

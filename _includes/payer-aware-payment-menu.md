@@ -24,10 +24,10 @@ all payment instruments provided by Swedbank Pay support Payer Awareness today."
 
 ## BYO Payment Menu
 
-Payment Menu is versatile and can be configured in such a way that it functions
-like a single payment instrument. In such configuration, it is easy to Bring
-Your Own Payment Menu, i.e. building a customized payment menu in our own user
-interface.
+Payment Menu v2 is versatile and can be configured in such a way that it
+functions like a single payment instrument. In such configuration, it is easy to
+Bring Your Own Payment Menu, i.e. building a customized payment menu in your own
+user interface.
 
 ## Add Stored Payment Instrument Details
 
@@ -86,7 +86,7 @@ Content-Type: application/json
         "generatePaymentToken": true,
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
         "productName": "Checkout3",
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section == "payment-menu" %}
+        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "payment-menu" %}
         "instrument": null,{% endif %}
         "disableStoredPaymentDetails": false,
         "urls": {
@@ -211,7 +211,7 @@ Content-Type: application/json
 | {% icon check %} | {% f currency %}                | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f amount %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount %}               | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f description %}             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if include.documentation_section == "payment-menu" %}
+| {% icon check %} | {% f description %}             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if include.documentation_section contains "payment-menu" %}
 | {% icon check %} | {% f instrument %}              | `string`     | The payment instrument used. Selected by using the [Instrument Mode][instrument-mode].                                                                                                                                                                                          | {% endif %}                                              |
 |                  | {% f disableStoredPaymentDetails %} | `bool` | Set to `false` by default. Switching to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
 | {% icon check %} | {% f userAgent %}               | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
