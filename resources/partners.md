@@ -9,7 +9,7 @@ description: |
 
 {% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
 
-  <h2 id="front-page-extra-resources" class="heading-line">Partners</h2>
+  <h2 id="partners" class="heading-line">Partners</h2>
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
           {% include card.html title='Denmark'

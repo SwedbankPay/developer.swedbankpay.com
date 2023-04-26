@@ -37,7 +37,7 @@ hide_from_sidebar: true
 {% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
 
 {% contentfor extras %}
-  <h2 id="front-page-extra-resources" class="heading-line">Contact & Partners</h2>
+  <h2 id="front-page-contact-partners" class="heading-line">Contact & Partners</h2>
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
           {% include card.html title='Contact Us'
