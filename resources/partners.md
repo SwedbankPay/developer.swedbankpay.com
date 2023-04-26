@@ -19,7 +19,7 @@ description: |
               to='https://www.swedbankpay.dk/partners'
           %}
       </div>
-            <div class="{{ card_col_class }}">
+      <div class="{{ card_col_class }}">
           {% include card.html title='Norway'
               text='Our Norwegian partners'
               icon_content='email'
@@ -27,7 +27,7 @@ description: |
               to='https://www.swedbankpay.no/partners'
           %}
       </div>
-            <div class="{{ card_col_class }}">
+      <div class="{{ card_col_class }}">
           {% include card.html title='Sweden'
               text='Our Swedish partners'
               icon_content='email'
