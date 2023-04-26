@@ -423,6 +423,8 @@ When you are ready to perform the unscheduled purchase, simply add the
 value. Your request should look like the example below, and the response will
 match the `paymentOrder` response from the initial purchase.
 
+## After The Unscheduled Purchase
+
 It is important to remember that this will reserve the amount, but not charge
 it. You will (i.e. when you are ready to ship purchased physical products) have
 to perform a [Capture][payment-order-capture] request later on to complete the
