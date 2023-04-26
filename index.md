@@ -41,7 +41,7 @@ hide_from_sidebar: true
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
           {% include card.html title='Contact Us'
-              text='Before you get started, you can get in touch with our Sales department to get the perfect fit for you needs'
+              text='Before you start, you can get in touch with our Sales department to get the perfect solution for your needs'
               icon_content='email'
               icon_outlined=true
               to="mailto:sales.swedbankpay@swedbank.se"
@@ -51,7 +51,7 @@ hide_from_sidebar: true
           {% include card.html title='Partners'
               text='A lot of partners help us deliver the best payment experience. Get to know them all here'
               icon_content='handshake'
-              to='/partners/'
+              to='resources/partners'
           %}
       </div>
   </div>
