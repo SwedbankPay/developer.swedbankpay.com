@@ -559,8 +559,8 @@ Content-Type: application/json
 
 [delete-token]: {{ features_url }}/optional/delete-token
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
-[old-payment-order-cancel]: {{ features_url }}//after-payment#cancel
-[old-payment-order-capture]: {{ features_url }}/capture
-[payment-order-cancel]: {{ features_url }}/post-purchase#cancel
-[payment-order-capture]: {{ features_url }}/post-purchase#capture
+[old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
+[old-payment-order-capture]: /old-implementations/checkout-v2/capture
+[payment-order-cancel]: /checkout-v3/payments-only/post-purchase#cancel
+[payment-order-capture]: /checkout-v3/payments-only/post-purchase#capture
 [verify]: {{ features_url }}/optional/verify
