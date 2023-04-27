@@ -134,7 +134,7 @@ and will not create a payment order." %}
 
 You have the following options after a server-to-server Recur payment `POST`.
 
-##### Autorization (intent)
+##### Authorization (intent)
 
 *   **Authorization (two-phase):** If you want the credit card to reserve the
     amount, you will have to specify that the intent of the purchase is
