@@ -423,6 +423,8 @@ When you are ready to perform the unscheduled purchase, simply add the
 value. Your request should look like the example below, and the response will
 match the `paymentOrder` response from the initial purchase.
 
+{% if documentation_section contains "checkout-v3" %}
+
 ## After The Unscheduled Purchase
 
 Please remember that the `unscheduled` request will reserve the amount, but not
@@ -430,6 +432,18 @@ charge it. You will (i.e. when you are ready to ship purchased physical
 products) have to perform a [Capture][payment-order-capture] request later on to
 complete the unscheduled purchase. You can also [Cancel][payment-order-cancel]
 it if needed.
+
+{% else %}
+
+## After The Unscheduled Purchase
+
+Please remember that the `unscheduled` request will reserve the amount, but not
+charge it. You will (i.e. when you are ready to ship purchased physical
+products) have to perform a [Capture][old-payment-order-capture] request later
+on to complete the unscheduled purchase. You can also
+[Cancel][old-payment-order-cancel] it if needed.
+
+{% endif %}
 
 ## Unscheduled Request
 
@@ -545,6 +559,8 @@ Content-Type: application/json
 
 [delete-token]: {{ features_url }}/optional/delete-token
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
+[old-payment-order-cancel]: {{ features_url }}//after-payment#cancel
+[old-payment-order-capture]: {{ features_url }}/capture
 [payment-order-cancel]: {{ features_url }}/post-purchase#cancel
 [payment-order-capture]: {{ features_url }}/post-purchase#capture
 [verify]: {{ features_url }}/optional/verify
