@@ -418,7 +418,7 @@ match the `paymentOrder` response from the initial purchase.
 
 ## After The Recurring Purchase
 
-It is important to remember that this will reserve the amount, but not charge
+Please remember that the `recur` request will reserve the amount, but not charge
 it. You will (i.e. when you are ready to ship purchased physical products) have
 to perform a [Capture][payment-order-capture] request later on to complete the
 recurring purchase. You can also [Cancel][payment-order-cancel] it if needed.
