@@ -1,7 +1,6 @@
 ---
-title: Introduction
-sidebar_icon: waving_hand
-menu_order: 1
+title: Fundamental Principles
+menu_order: 900
 description: |
     Read on to learn about the fundamentals and common architectural principles
     of the Swedbank Pay API Platform.
@@ -71,49 +70,6 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
 |                  | **`Forwarded`**     | The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the `for` parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
-
-### User-Agent
-
-The term [user agent][user-agent] is used for both the web browser used by the
-payer as well as the system making HTTP requests towards Swedbank Pay's APIs.
-The difference between these two and how they relate to each other is
-illustrated in the below sequence diagram:
-
-```plantuml
-@startuml "User Agents"
-    $participant("payer", "Payer") as Payer
-    $participant("merchant", "Merchant") as Merchant
-    $participant("server", "Swedbank Pay") as SwedbankPay
-
-    Payer -> Merchant: $code("User-Agent: P") <b>①</b>
-    activate Payer
-        activate SwedbankPay
-            Merchant -> SwedbankPay: $code('User-Agent: M { userAgent: "P" }') <b>②</b>
-            activate Merchant
-                SwedbankPay --> SwedbankPay: Store request data
-                SwedbankPay --> Merchant: $code('{ "initiatingSystemUserAgent": "M" }') <b>③</b>
-            deactivate Merchant
-        deactivate SwedbankPay
-        Merchant --> Payer
-    deactivate Payer
-@enduml
-```
-
-1.  First, the payer makes an HTTP request with their web browser towards the
-    merchant's website. This HTTP request contains a `User-Agent` header, here
-    given the value **`P`** (for "Payer").
-2.  The merchant performs an HTTP request towards Swedbank Pay.
-    1.  The merchant extracts the **`P`** value of the `User-Agent` header from
-      the payer's browser and sends it to Swedbank Pay in the `userAgent` field
-      in the JSON request body.
-    2.  The merchant also composes its own user agent string and sends it to
-      Swedbank Pay in the `User-Agent` HTTP request header, here represented as
-      the value **`M`** (for "Merchant").
-3.  Swedbank Pay receives `"userAgent": "P"` and `User-Agent: M`, stores the
-    values and returns the **`M`** value in the `initiatingSystemUserAgent`
-    response JSON field.
-
-The user agent strings are used for statistical purposes by Swedbank Pay.
 
 ## URL Usage
 

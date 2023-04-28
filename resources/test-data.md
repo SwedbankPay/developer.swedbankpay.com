@@ -3,7 +3,7 @@ title: Test Data
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
-menu_order: 1000
+menu_order: 1200
 ---
 
 ## Swedbank Pay Checkout Test Data
