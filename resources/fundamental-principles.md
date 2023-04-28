@@ -273,67 +273,6 @@ amount is multiplied by 100.
 |   SEK 50.00 |      `5000` |
 |     € 10.00 |      `1000` |
 
-## Operations
-
-When a resource is created and during its lifetime, it will have a set of
-operations that can be performed on it. Which operations that are available
-in a given state varies depending on payment instrument used, what the access
-token is authorized to do, etc. A subset of possible operations are described
-below. Visit the technical reference page of a payment instrument for
-instrument specific operations.
-
-{:.code-view-header}
-**JSON with Operations**
-
-```json
-{
-    "payment": {},
-    "operations": [
-        {
-            "href": "http://{{ page.api_host }}/psp/creditcard/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort",
-            "method": "PATCH"
-        },
-        {
-            "href": "{{ page.front_end_url }}/creditcard/payments/authorize/{{ page.payment_token }}",
-            "rel": "redirect-authorization",
-            "method": "GET"
-        },
-        {
-            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-            "rel": "view-payment",
-            "method": "GET",
-            "contentType": "application/javascript"
-        },
-        {
-            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}/captures",
-            "rel": "create-capture",
-            "method": "POST"
-        }
-    ]
-}
-```
-
-{:.table .table-striped}
-| Field    | Description                                                         |
-| :------- | :------------------------------------------------------------------ |
-| `href`   | The target URL to perform the operation against.                    |
-| `rel`    | The name of the relation the operation has to the current resource. |
-| `method` | The HTTP method to use when performing the operation.               |
-
-**The operations should be performed as described in each response and not as
-described here in the documentation**. Always use the `href` and `method` as
-specified in the response by finding the appropriate operation based on its
-`rel` value.
-
-{% include payee-reference.md %}
-
-[Read more about the settlement process here][settlement].
-
-{% include callback.md %}
-
-{% include problems/problems.md %}
-
 [admin]: https://merchantportal.externalintegration.swedbankpay.com
 [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
