@@ -40,3 +40,5 @@ illustrated in the below sequence diagram:
     response JSON field.
 
 The user agent strings are used for statistical purposes by Swedbank Pay.
+
+[user-agent]: https://en.wikipedia.org/wiki/User_agent
