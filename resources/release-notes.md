@@ -819,7 +819,7 @@ integration and the payer.
 [get-started]: /checkout-v3/
 [gift-cards]: /gift-cards
 [google-pay]: /checkout-v3/payment-presentations#google-pay
-[home-technical-information]: /introduction
+[home-technical-information]: /resources/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
