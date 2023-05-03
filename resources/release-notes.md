@@ -3,7 +3,7 @@ title: Release Notes
 description: |
   The latest updates about our releases will be
   published on this page.
-menu_order: 800
+menu_order: 1200
 ---
 
 {% include alert.html type="informative" icon="info" header="Version numbers"
@@ -819,7 +819,7 @@ integration and the payer.
 [get-started]: /checkout-v3/
 [gift-cards]: /gift-cards
 [google-pay]: /checkout-v3/payment-presentations#google-pay
-[home-technical-information]: /introduction
+[home-technical-information]: /resources/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
@@ -861,7 +861,7 @@ integration and the payer.
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
 [status-model-paid-v2]: /old-implementations/checkout-v2/features/technical-reference/status-models#paid
-[storing-uri]: /introduction#storing-urls
+[storing-uri]: /resources/fundamental-principles#storing-urls
 [swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /old-implementations/payment-instruments-v1/swish/direct

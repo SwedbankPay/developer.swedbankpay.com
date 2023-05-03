@@ -700,5 +700,5 @@ name under your control – usually the host name of the Merchant Backend.
 [ios-universal-links-routing]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
-[swedbankpay-problems]: /introduction#problems
+[swedbankpay-problems]: /checkout-v3/payments-only/features/technical-reference/problems
 [instrument-mode]: /old-implementations/payment-menu-v2/features/optional/instrument-mode

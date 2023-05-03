@@ -98,10 +98,10 @@ menu_order: 1100
 [callback-url]:/old-implementations/payment-instruments-v1/card/features/core/callback
 [cancel-url]: /old-implementations/payment-instruments-v1/card/after-payment#cancellations
 [checkout-url]: /checkout-v3
-[common-headers]: /introduction#headers
+[common-headers]: /resources/fundamental-principles#headers
 [fundamentals]: /old-implementations/payment-instruments-v1/#the-fundamentals
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS
 [invoice-url]: /old-implementations/payment-instruments-v1/invoice/
 [recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
-[restful-api]: /introduction#connection-and-protocol
+[restful-api]: /resources/fundamental-principles#connection-and-protocol
 [verify-url]: /old-implementations/payment-instruments-v1/card/features/optional/verify

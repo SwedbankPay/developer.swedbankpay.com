@@ -1,7 +1,6 @@
 ---
-title: Introduction
-sidebar_icon: waving_hand
-menu_order: 1
+title: Fundamental Principles
+menu_order: 900
 description: |
     Read on to learn about the fundamentals and common architectural principles
     of the Swedbank Pay API Platform.
@@ -71,49 +70,6 @@ Forwarded: for=82.115.151.177; host=example.com; proto=https
 | {% icon check %}︎ | **`Accept`**        | The [content type][content-type] accepted by the client. Usually set to `application/json` and `application/problem+json` so both regular responses as well as errors can be received properly.                                                                                |
 |                  | **`Session-Id`**    | A trace identifier used to trace calls through the API Platform (ref [RFC 7329][rfc-7329]). Each request must mint a new [GUID/UUID][uuid]. If no `Session-Id` is provided, Swedbank Pay will generate one for the request.                                                    |
 |                  | **`Forwarded`**     | The IP address of the payer as well as the host and protocol of the payer-facing web page. When the header is present, only the `for` parameter containing the payer's IP address is required, the other parameters are optional. See [RFC 7239][rfc-7239] for details. |
-
-### User-Agent
-
-The term [user agent][user-agent] is used for both the web browser used by the
-payer as well as the system making HTTP requests towards Swedbank Pay's APIs.
-The difference between these two and how they relate to each other is
-illustrated in the below sequence diagram:
-
-```plantuml
-@startuml "User Agents"
-    $participant("payer", "Payer") as Payer
-    $participant("merchant", "Merchant") as Merchant
-    $participant("server", "Swedbank Pay") as SwedbankPay
-
-    Payer -> Merchant: $code("User-Agent: P") <b>①</b>
-    activate Payer
-        activate SwedbankPay
-            Merchant -> SwedbankPay: $code('User-Agent: M { userAgent: "P" }') <b>②</b>
-            activate Merchant
-                SwedbankPay --> SwedbankPay: Store request data
-                SwedbankPay --> Merchant: $code('{ "initiatingSystemUserAgent": "M" }') <b>③</b>
-            deactivate Merchant
-        deactivate SwedbankPay
-        Merchant --> Payer
-    deactivate Payer
-@enduml
-```
-
-1.  First, the payer makes an HTTP request with their web browser towards the
-    merchant's website. This HTTP request contains a `User-Agent` header, here
-    given the value **`P`** (for "Payer").
-2.  The merchant performs an HTTP request towards Swedbank Pay.
-    1.  The merchant extracts the **`P`** value of the `User-Agent` header from
-      the payer's browser and sends it to Swedbank Pay in the `userAgent` field
-      in the JSON request body.
-    2.  The merchant also composes its own user agent string and sends it to
-      Swedbank Pay in the `User-Agent` HTTP request header, here represented as
-      the value **`M`** (for "Merchant").
-3.  Swedbank Pay receives `"userAgent": "P"` and `User-Agent: M`, stores the
-    values and returns the **`M`** value in the `initiatingSystemUserAgent`
-    response JSON field.
-
-The user agent strings are used for statistical purposes by Swedbank Pay.
 
 ## URL Usage
 
@@ -317,67 +273,6 @@ amount is multiplied by 100.
 |   SEK 50.00 |      `5000` |
 |     € 10.00 |      `1000` |
 
-## Operations
-
-When a resource is created and during its lifetime, it will have a set of
-operations that can be performed on it. Which operations that are available
-in a given state varies depending on payment instrument used, what the access
-token is authorized to do, etc. A subset of possible operations are described
-below. Visit the technical reference page of a payment instrument for
-instrument specific operations.
-
-{:.code-view-header}
-**JSON with Operations**
-
-```json
-{
-    "payment": {},
-    "operations": [
-        {
-            "href": "http://{{ page.api_host }}/psp/creditcard/payments/{{ page.payment_id }}",
-            "rel": "update-payment-abort",
-            "method": "PATCH"
-        },
-        {
-            "href": "{{ page.front_end_url }}/creditcard/payments/authorize/{{ page.payment_token }}",
-            "rel": "redirect-authorization",
-            "method": "GET"
-        },
-        {
-            "href": "{{ page.front_end_url }}/swish/core/scripts/client/px.swish.client.js?token={{ page.payment_token }}",
-            "rel": "view-payment",
-            "method": "GET",
-            "contentType": "application/javascript"
-        },
-        {
-            "href": "{{ page.api_url }}/psp/creditcard/payments/{{ page.payment_id }}/captures",
-            "rel": "create-capture",
-            "method": "POST"
-        }
-    ]
-}
-```
-
-{:.table .table-striped}
-| Field    | Description                                                         |
-| :------- | :------------------------------------------------------------------ |
-| `href`   | The target URL to perform the operation against.                    |
-| `rel`    | The name of the relation the operation has to the current resource. |
-| `method` | The HTTP method to use when performing the operation.               |
-
-**The operations should be performed as described in each response and not as
-described here in the documentation**. Always use the `href` and `method` as
-specified in the response by finding the appropriate operation based on its
-`rel` value.
-
-{% include payee-reference.md %}
-
-[Read more about the settlement process here][settlement].
-
-{% include callback.md %}
-
-{% include problems/problems.md %}
-
 [admin]: https://merchantportal.externalintegration.swedbankpay.com
 [content-type]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
 [iso-3166]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
@@ -395,7 +290,6 @@ specified in the response by finding the appropriate operation based on its
 [rfc-7329]: https://tools.ietf.org/html/rfc7329
 [robustness-principle]: https://en.wikipedia.org/wiki/Robustness_principle
 [ruby-tls]: https://stackoverflow.com/a/11059873/61818
-[settlement]: /old-implementations/payment-instruments-v1/invoice/features/core/settlement-reconciliation
 [ssllabs]: https://www.ssllabs.com/ssltest/analyze.html?d=api.payex.com
 [the-rest-and-then-some]: https://www.youtube.com/watch?v=QIv9YR1bMwY
 [user-agent]: https://en.wikipedia.org/wiki/User_agent

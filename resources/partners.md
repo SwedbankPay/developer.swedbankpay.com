@@ -1,6 +1,6 @@
 ---
 title: Partners
-menu_order: 7
+menu_order: 1000
 sidebar_icon: handshake
 description: |
     We have a lot of partners who help us create the best payment experience.

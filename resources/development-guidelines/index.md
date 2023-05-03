@@ -2,7 +2,7 @@
 section: Open Source Development Guidelines
 title: Introduction
 permalink: /:path/
-menu_order: 1200
+menu_order: 800
 ---
 
 Swedbank Pay is committed to creating a vibrant community around its open

@@ -1,6 +1,6 @@
 ---
 title: Contributing
-menu_order: 1400
+menu_order: 1000
 ---
 
 To make it clear exactly how outside contributors should provide their

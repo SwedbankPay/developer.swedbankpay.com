@@ -1,6 +1,6 @@
 ---
 title: License
-menu_order: 1700
+menu_order: 1200
 ---
 
 ## Licensing

@@ -1,6 +1,6 @@
 ---
 title: Code Of Conduct
-menu_order: 1300
+menu_order: 900
 ---
 
 <!--alex disable sexual attacks-->

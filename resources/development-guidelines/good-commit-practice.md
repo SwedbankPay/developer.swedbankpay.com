@@ -1,6 +1,6 @@
 ---
 title: Good Commit Practice
-menu_order: 1600
+menu_order: 1100
 ---
 
 The following document is a fork of
