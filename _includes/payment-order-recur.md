@@ -416,6 +416,27 @@ When you are ready to perform the recurring purchase, simply add the
 value. Your request should look like the example below, and the response will
 match the `paymentOrder` response from the initial purchase.
 
+{% if documentation_section contains "checkout-v3" %}
+
+## After The Recurring Purchase
+
+Please remember that the `recur` request will reserve the amount, but not charge
+it. You will (i.e. when you are ready to ship purchased physical products) have
+to perform a [Capture][payment-order-capture] request later on to complete the
+recurring purchase. You can also [Cancel][payment-order-cancel] it if needed.
+
+{% else %}
+
+## After The Recurring Purchase
+
+Please remember that the `recur` request will reserve the amount, but not charge
+it. You will (i.e. when you are ready to ship purchased physical products) have
+to perform a [Capture][old-payment-order-capture] request later on to complete
+the recurring purchase. You can also [Cancel][old-payment-order-cancel] it if
+needed.
+
+{% endif %}
+
 ## Recur Request
 
 {:.code-view-header}
@@ -545,3 +566,7 @@ Content-Type: application/json
 
 [delete-token]: {{ features_url }}/optional/delete-token
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
+[old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
+[old-payment-order-capture]: /old-implementations/checkout-v2/capture
+[payment-order-cancel]: /checkout-v3/payments-only/post-purchase#cancel
+[payment-order-capture]: /checkout-v3/payments-only/post-purchase#capture
