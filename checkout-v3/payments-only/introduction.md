@@ -11,7 +11,7 @@ menu_order: 200
 **Payments Only** is where you get to be in charge of everything. You handle
 the consumer verification with a strong customer authentication, collect the
 consumer information needed to calculate shipping costs, and store the
-information yourself. We provide you with our full range of payment methods.
+information yourself. We provide you with our full range of payment instruments.
 
 There are two ways of integrating the **Payments Only** implementation.
 **Redirect** and **Seamless View**.

@@ -3,10 +3,18 @@ section: Checkout v3
 sidebar_icon: shopping_cart
 title: Get Started
 description: |
-  **This page aims to provide you with a brief introduction to implementing
-  Checkout v3.**
+  **A brief introduction to implementing Checkout v3.**
 menu_order: 1
 ---
+
+With Checkout v3, you need to be able to collect, verify and store the payer
+data, including delivery address, and build your own checkout flow. We'll store
+the card data for you, but you own it. This means that you have to remove data
+in compliance with GDPR, but you won't have to worry about handling sensitive
+card info.
+
+Our PSP lets you choose whether to offer a single payment instrument or a
+payment menu consisting of all the instruments you wish to include.
 
 We offer a variety of payment instruments and features designed to meet your
 business needs. You can choose from the following payment instruments, somewhat
@@ -37,17 +45,8 @@ consequences, so you do not have to change anything in you integration." %}
 |   ![Trustly][trustly-logo]   | Trustly            |{% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
 | ![Vipps][vipps-logo]     | Vipps                | {% icon check %} | {% icon check %} | {% flag no %}                             |
 
-## Payments Only
-
-With our **Payments Only** package, you collect payer data and build your own
-checkout flow. You need to able to collect, verify and store your payer data*,
-plus the delivery address, this is the option for you. Our PSP lets you choose
-whether to offer a single payment instrument or a payment menu consisting of all
-the instruments you wish to include.
-
-*We'll store the card data for you, but you own it. So you'll have to remove
-data in compliance with GDPR, but you won't have to worry about handling
-sensitive card info.
+{% include iterator.html next_href="/checkout-v3/payments-only"
+                         next_title="Set Up & Integration" %}
 
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [apple-pay-logo]:/assets/img/applepay-logo.svg

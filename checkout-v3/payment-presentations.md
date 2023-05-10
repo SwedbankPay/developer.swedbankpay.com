@@ -1,7 +1,8 @@
 ---
 title: Payment Instrument Presentations
 description: |
-  **An overview of all the payment instruments Checkout v3 has to offer.**
+  **An overview of the payment instruments Checkout v3 has to offer, and a list
+  of additional steps you must complete to activate them.**
 menu_order: 400
 ---
 
