@@ -98,6 +98,12 @@ with **Name**, **Organizational** and **Customer number**.
 
 ## Google Pay&trade;
 
+{% include alert.html type="informative" icon="info" header="Google Pay&trade;
+in apps" body="We do not currently support launching Google Pay&trade; within an
+in-app solution. If you want to implement Google Pay&trade; in your web-view
+application, you will need to open it in a browser and open the Checkout from
+there." %}
+
 Google Pay&trade; enables quicker, safer checkout in apps and websites, and
 makes it easy for customers to pay with their phones. With a simple integration,
 you can access hundreds of millions of cards saved to Google Accounts and open
