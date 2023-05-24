@@ -17,6 +17,10 @@ transaction, naturally excluding one-phase payment instruments like
 [Swish][swish] and [Trustly][trustly]. Two-phase payment instruments like
 [Card][card] and [Vipps][vipps] however, require a `Capture` to be completed.
 
+Please note that you have a maximum of 5 **consecutive** failed attempts at a
+capture. The payment will be locked after this, and you need to contact us for
+another attempt.
+
 In addition to full captures, it is possible to do partial captures of a part of
 the authorized amount. You can do other captures on the same payment later, up
 to the total authorized amount. Useful for when you have to split orders into
