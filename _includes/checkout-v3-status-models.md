@@ -422,6 +422,7 @@ Content-Type: application/json
                 "cardBrand": "Visa",
                 "cardType": "Credit",
                 "maskedPan": "492500******0004",
+                "maskedDPan": "49250000******04",
                 "expiryDate": "12/2022",
                 "issuerAuthorizationApprovalCode": "L00302",
                 "acquirerTransactionType": "STANDARD",
@@ -503,6 +504,7 @@ Content-Type: application/json
         "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
         "cardType": "Credit",
+        "maskedDPan": "49250000******04",
         "expiryDate": "12/0023",
         "issuerAuthorizationApprovalCode": "L00392",
         "acquirerTransactionType": "WALLET",
@@ -541,6 +543,8 @@ Content-Type: application/json
       "externalNonPaymentToken": "1234567890",
       "cardBrand": "Visa",
       "cardType": "Credit",
+      "maskedPan": "492500******0004",
+      "maskedDPan": "49250000******04",
       "expiryDate": "12/0023",
       "issuerAuthorizationApprovalCode": "L00392",
       "acquirerTransactionType": "WALLET",
@@ -579,6 +583,8 @@ Content-Type: application/json
       "externalNonPaymentToken": "1234567890",
       "cardBrand": "Visa",
       "cardType": "Credit",
+      "maskedPan": "492500******0004",
+      "maskedDPan": "49250000******04",
       "expiryDate": "12/0023",
       "issuerAuthorizationApprovalCode": "L00392",
       "acquirerTransactionType": "WALLET",
@@ -620,7 +626,8 @@ Content-Type: application/json
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
         "cardBrand": "Visa",
-        "maskedPan": "489537******1424",
+        "maskedPan": "492500******0004",
+        "maskedDPan": "49250000******04",
         "expiryDate": "12/2022",
         "issuerAuthorizationApprovalCode": "018117",
         "acquirerTransactionType": "MOBILEPAY",
@@ -662,6 +669,7 @@ Content-Type: application/json
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890"
         "cardBrand": "Visa",
+        "maskedDPan": "49250000******04",
         "acquirerTransactionType": "WALLET",
         "acquirerTerminalId": "99488282",
         "acquirerTransactionTime": "2022-09-05T09:54:05Z",
@@ -815,6 +823,7 @@ responses:
 | {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
 | {% f cardType, 2 %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
 | {% f maskedPan, 2 %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
+| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment instrument is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
 | {% f expiryDate, 2 %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
 | {% f issuerAuthorizationApprovalCode, 2 %} | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
 | {% f acquirerTransactionType, 2 %} | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
