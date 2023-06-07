@@ -20,6 +20,9 @@ We offer a variety of payment instruments and features designed to meet your
 business needs. You can choose from the following payment instruments, somewhat
 depending on which countries you are operating in.
 
+The Checkout is available in Danish `da-DK`, English (US) `en-US`, Finnish
+`fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`.
+
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
 body="Some of the digital wallets we offer in Checkout v3 require you to take
 additional steps before we can activate them for you. Please follow the link(s)
@@ -31,19 +34,19 @@ Account during Q2 2023. The renaming will not have any technical
 consequences, so you do not have to change anything in you integration." %}
 
 {:.table .table-plain}
-|        | Payment Instrument | Enterprise   |  Payments Only | Region                                    |
-| :--------------------------: | :--------------: | :--------------: | :--------------: | :---------------------------------------- |
-|   ![Apple Pay][apple-pay-logo]   | [Apple Pay][apple-pay]          | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
-|    ![Card][card-icon]    | Card         | {% icon check %} | {% icon check %} | ![EarthIcon][earth-icon]                  |
-|   ![Click to Pay][c2p-logo]   | [Click to Pay][click-to-pay]            | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
-|   ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          | {% icon check %} | {% icon check %} |  ![EarthIcon][earth-icon]             |
-| ![MobilePay][mobilepay-logo] | MobilePay       | {% icon check %} | {% icon check %} | {% flag dk %} {% flag fi %}               |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% icon check %} | {% icon check %} | {% flag se %} |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% icon check %} | {% icon check %} | {% flag no %} {% flag se %} |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% icon check %} | {% icon check %} | {% flag se %} |
-| ![Swish][swish-logo]     | Swish                 | {% icon check %} | {% icon check %} | {% flag se %}                             |
-|   ![Trustly][trustly-logo]   | Trustly            |{% icon check %} | {% icon check %} | {% flag se %} {% flag fi %}               |
-| ![Vipps][vipps-logo]     | Vipps                | {% icon check %} | {% icon check %} | {% flag no %}                             |
+|        | Payment Instrument | Region                                    |
+| :--------------------------: | :--------------: | :---------------------------------------- |
+|   ![Apple Pay][apple-pay-logo]   | [Apple Pay][apple-pay]          |  ![EarthIcon][earth-icon]             |
+|    ![Card][card-icon]    | Card         | ![EarthIcon][earth-icon]                  |
+|   ![Click to Pay][c2p-logo]   | [Click to Pay][click-to-pay]            |  ![EarthIcon][earth-icon]             |
+|   ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          |  ![EarthIcon][earth-icon]             |
+| ![MobilePay][mobilepay-logo] | MobilePay       | {% flag dk %} {% flag fi %}               |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% flag no %} {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% flag se %} |
+| ![Swish][swish-logo]     | Swish                 | {% flag se %}                             |
+|   ![Trustly][trustly-logo]   | Trustly            | {% flag se %} {% flag fi %}               |
+| ![Vipps][vipps-logo]     | Vipps                | {% flag no %}                             |
 
 {% include iterator.html next_href="/checkout-v3/payments-only"
                          next_title="Set Up & Integration" %}

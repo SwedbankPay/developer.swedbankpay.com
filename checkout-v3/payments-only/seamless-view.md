@@ -1,61 +1,11 @@
 ---
 title: Seamless View
 description: |
-  The Seamless View purchase scenario shows you how to implement the payment
-  menu directly in your webshop.
+  How to display the Seamless View UI in your webshop.
 menu_order: 400
 ---
 
-The **Payments Seamless View** integration consists of three main steps.
-**Creating** the payment order, **displaying** the payment menu in an iframe,
-and **capturing** the funds. In addition, there are other post purchase options
-you need. We get to them later on.
-
-If you want to get an overview before proceeding, you can look at the [sequence
-diagram][sequence-diagram]. It is also available in the sidebar if you want to
-look at it later. Let´s get going with the two first steps of the integration.
-
-## Step 1: Create Payment Order
-
-When the payer has been checked in and the purchase initiated, you need to
-create a payment order.
-
-Start by performing a `POST` request towards the `paymentorder` resource
-with payer information and a `completeUrl`.
-
-We have added `productName` to the payment order request in this integration.
-You can find it in the `paymentorder` field. This is required if you want to use
-Checkout v3. If it isn´t included in your request, you won't get the correct
-operations in the response.
-
-When `productName` is set to `checkout3`, `digitalProducts` will be set to
-`false` by default.
-
-Supported features for this integration are subscriptions (`recur`, `one-click`
-and `unscheduled MIT`), `MOTO`, instrument mode and split settlement
-(`subsite`).
-
-There is also a guest mode option for the payers who don't wish to store their
-information. When using **Payments Only**, the way to trigger this is to not
-include the `payerReference` field in your `paymentOrder` request. You can find
-it in the `payer` field in the example below.
-
-Sometimes you might need to abort purchases. An example could be if a payer does
-not complete the purchase within a reasonable timeframe. For those instances we
-have `abort`, which you can read about in the [core features][abort-feature].
-You can only use `abort` if the payer **has not** completed an `authorize` or a
-`sale`.
-
-{% include payment-url.md when="selecting the payment instrument Vipps or in the
-3-D Secure verification for Card Payments" %}
-
-{% include alert-risk-indicator.md %}
-
-{% include alert-gdpr-disclaimer.md %}
-
-{% include payment-order-checkout-payments-only.md integration_mode="seamless-view" %}
-
-## Step 2: Display Payment Menu
+## Display Seamless View
 
 Among the operations in the POST `paymentOrders` response, you will find the
 `view-checkout`. This is the one you need to display the purchase module.
@@ -139,7 +89,7 @@ request.send();
   </html>
 ```
 
-## How It Looks
+## How Seamless View Looks
 
 The payment menu should appear with the payer information displayed above the
 menu. The payer can select their preferred payment instrument and pay.
@@ -157,18 +107,115 @@ When integrating Seamless View, we strongly recommend that you implement the
 you need to check the payment status towards our APIs, as the payer can make
 changes in the browser at any time.
 
-You can read more about the different [Seamless View
-Events][seamless-view-events] available in the feature section.
+You can read more about the different
+[Seamless View Events][seamless-view-events] available in the feature section.
 
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
 
-{% include iterator.html prev_href="./"
-                         prev_title="Introduction"
+## Seamless View Sequence Diagram
+
+{% include alert.html type="informative" icon="info" body="
+Note that in this diagram, the Payer refers to the merchant front-end
+(website) while Merchant refers to the merchant back-end." %}
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant 3rdParty
+
+        rect rgba(238, 112, 35, 0.05)
+            activate Payer
+            Payer ->>+ Merchant: Initiate Purchase
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (hostUrls, paymentUrl, payer information)
+            deactivate Merchant
+            SwedbankPay -->>+ Merchant: rel:view-checkout
+            deactivate SwedbankPay
+                        Merchant -->>- Payer: Display SwedbankPay Payment Menu on Merchant Page
+    activate Payer
+    Payer ->> Payer: Initiate Purchase step
+    deactivate Payer
+    activate SwedbankPay
+        SwedbankPay ->>+ Payer: Do purchase logic
+    Payer ->> SwedbankPay: Do purchase logic
+    deactivate Payer
+    deactivate SwedbankPay
+
+                opt Payer performs purchase out of iFrame
+                    activate Payer
+                    Payer ->> Payer: Redirect to 3rd party
+                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    deactivate Payer
+                    3rdParty -->>+ Payer: Redirect back to paymentUrl (merchant)
+                    deactivate 3rdParty
+                    Payer ->> Payer: Initiate Payment Menu Seamless View (open iframe)
+                    Payer ->>+ SwedbankPay: Show Payment UI page in iframe
+                    deactivate Payer
+                end
+
+                activate SwedbankPay
+                SwedbankPay -->> Payer: Purchase status
+                deactivate SwedbankPay
+
+            alt If purchase is completed
+            activate Payer
+            Payer ->> Payer: Event: onPaid ①
+            Payer ->>+ Merchant: Check purchase status
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            deactivate Merchant
+            SwedbankPay ->>+ Merchant: Status: Paid
+            deactivate SwedbankPay
+            end
+
+            activate Merchant
+Merchant -->>- Payer: Show Purchase complete
+            end
+
+                alt If purchase is failed
+                Merchant ->>+ SwedbankPay: GET {paymentorder.id}
+                deactivate Merchant
+                SwedbankPay -->>+ Merchant: Status: Failed
+                deactivate SwedbankPay
+                activate Merchant
+                Merchant -->>- Payer: Display SwedbankPay Payment Menu on merchant page
+                end
+
+                opt PaymentOrder Callback (if callbackUrls is set) ②
+                activate SwedbankPay
+                SwedbankPay ->> Merchant: POST Purchase Callback
+                deactivate SwedbankPay
+         end
+
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:capture
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        end
+```
+
+*   ① See [seamless view events][payments-seamless-view-events] for further information.
+*   ② Read more about [callback][payments-callback] handling in the technical reference.
+
+
+{% include iterator.html prev_href="/checkout-v3/payments-only/checkout-payment-request"
+                         prev_title="Create Request"
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
+[features]: /checkout-v3/payments-only/features/
+[frictionless]: /checkout-v3/payments-only/features/core/3d-secure-2
+[order-items]: /checkout-v3/payments-only/features/optional/order-items
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-seamless-view
 [seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
+[payments-callback]: /checkout-v3/payments-only/features/core/callback
+[payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events

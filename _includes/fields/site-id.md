@@ -1,6 +1,6 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/core/settlement-reconciliation#split-settlement' -%}
+        href='/features/optional/split-settlement' -%}
 {%- endcapture -%}
 {%- capture text -%}
 `siteId` is used for {% clink split settlement %}{{ url }}{% endclink %}

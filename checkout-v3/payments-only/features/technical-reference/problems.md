@@ -2,7 +2,7 @@
 title: Problems
 description: |
   Information when something goes wrong.
-menu_order: 2300
+menu_order: 2100
 icon:
   content: report
   outlined: true

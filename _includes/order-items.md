@@ -6,6 +6,28 @@ to pay with invoice, among other things. `orderItems` is required in all
 requests. It should be specified on both payment order creation as well as on
 [Capture][payment-order-capture].
 
+```json
+        "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/products/123",
+                "imageUrl": "https://example.com/product123.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 5,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 0,
+                "vatPercent": 2500,
+                "amount": 1500,
+                "vatAmount": 375
+            }
+        ],
+```
+
 {% capture table %}
 {:.table .table-striped .mb-5}
 |     Required     | Field                 | Type      | Description                                                                                                                                                                                                                                                                           |
