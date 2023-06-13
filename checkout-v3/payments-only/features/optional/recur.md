@@ -2,7 +2,7 @@
 title: Recur
 description: |
   Setting up subscriptions and recurring payments.
-menu_order: 2500
+menu_order: 2600
 icon:
   content: cached
   outlined: true

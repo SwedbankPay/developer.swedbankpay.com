@@ -2,7 +2,7 @@
 title: PayeeInfo
 description: |
   Payment specific merchant information.
-menu_order: 1900
+menu_order: 1800
 icon:
   content: account_box
   outlined: true

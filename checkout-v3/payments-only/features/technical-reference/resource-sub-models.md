@@ -2,7 +2,7 @@
 title: Resource Models
 description: |
   GET responses for the payment order resources.
-menu_order: 2400
+menu_order: 2200
 icon:
   content: send_time_extension
   outlined: true

@@ -520,6 +520,6 @@ See the table in the initial purchase response for descriptions.
 
 [delete-token]: {{ features_url }}/optional/delete-token
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
-[3ds2]: {{ features_url }}/core/3d-secure-2
+[3ds2]: {{ features_url }}/core/frictionless-payments
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [verify]: {{ features_url }}/optional/verify

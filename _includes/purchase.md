@@ -347,5 +347,5 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-[3ds2]: {{ features_url }}/core/3d-secure-2
+[3ds2]: {{ features_url }}/core/frictionless-payments
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
