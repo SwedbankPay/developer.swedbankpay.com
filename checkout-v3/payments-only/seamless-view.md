@@ -204,7 +204,6 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
-
 {% include iterator.html prev_href="/checkout-v3/payments-only/checkout-payment-request"
                          prev_title="Create Request"
                          next_href="post-purchase"
@@ -212,7 +211,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
 [features]: /checkout-v3/payments-only/features/
-[frictionless]: /checkout-v3/payments-only/features/core/3d-secure-2
+[frictionless]: /checkout-v3/payments-only/features/core/frictionless-payments
 [order-items]: /checkout-v3/payments-only/features/optional/order-items
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-seamless-view
