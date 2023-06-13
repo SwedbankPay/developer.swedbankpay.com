@@ -25,7 +25,7 @@ requests. It should be specified on both payment order creation as well as on
                 "amount": 1500,
                 "vatAmount": 375
             }
-        ],
+        ]
 ```
 
 {% capture table %}
