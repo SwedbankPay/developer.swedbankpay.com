@@ -378,7 +378,9 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+      "trustlyOrderId": 123456789
+    }
   }
 }
 ```
