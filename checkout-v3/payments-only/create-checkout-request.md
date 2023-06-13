@@ -12,10 +12,6 @@ The **Payments Only** integration consists of three main steps.
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.
 
-If you want to get an overview before proceeding, you can look at the [sequence
-diagram][sequence-diagram]. It is also available in the sidebar if you want to
-look at it later. Let´s get going with the two first steps of the integration.
-
 ## Step 1: Create Payment Order
 
 When your customer has initiated a purchase, you need to create a payment order.
@@ -86,5 +82,3 @@ about these by following the corresponding link.
 [features]: /checkout-v3/payments-only/features/
 [frictionless]: /checkout-v3/payments-only/features/core/frictionless-payments
 [order-items]: /checkout-v3/payments-only/features/optional/order-items
-[sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-redirect
-[redirect-payments-only-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png

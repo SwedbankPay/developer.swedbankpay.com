@@ -209,12 +209,7 @@ Merchant -->>- Payer: Show Purchase complete
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments-only/features/core/abort
-[features]: /checkout-v3/payments-only/features/
-[frictionless]: /checkout-v3/payments-only/features/core/frictionless-payments
-[order-items]: /checkout-v3/payments-only/features/optional/order-items
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
-[sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-seamless-view
 [seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
 [payments-callback]: /checkout-v3/payments-only/features/core/callback
 [payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events

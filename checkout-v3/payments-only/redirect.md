@@ -144,10 +144,5 @@ Merchant -->>- Payer: Show Purchase complete
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments-only/features/core/abort
-[features]: /checkout-v3/payments-only/features/
-[frictionless]: /checkout-v3/payments-only/features/core/frictionless-payments
-[order-items]: /checkout-v3/payments-only/features/optional/order-items
-[sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-redirect
 [redirect-payments-only-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png
 [payments-callback]: /checkout-v3/payments-only/features/core/callback
