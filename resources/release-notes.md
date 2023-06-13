@@ -798,10 +798,10 @@ integration and the payer.
 [checkout-items]: /old-implementations/checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /old-implementations/checkout-v2/features/core/frictionless-payments
 [checkout-callback]: /old-implementations/checkout-v2/features/core/callback
-[checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
+[checkout-v3-matrix]: /checkout-v3
 [checkout-v3-enterprise]: /checkout-v3/enterprise
 [checkout-v3-payments-only]: /checkout-v3/payments-only
-[checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
+[checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/create-checkout-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
@@ -855,7 +855,7 @@ integration and the payer.
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
-[split-settlement]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#split-settlement
+[split-settlement]: /old-implementations/payment-instruments-v1/card/features/optional/split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
