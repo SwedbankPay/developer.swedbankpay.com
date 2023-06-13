@@ -1,10 +1,10 @@
 ---
-title: Trustly Payout
+title: Payout
 description: Paying out funds to the consumer's account.
-menu_order: 2700
+menu_order: 2300
 icon:
   content: euro_symbol
   outlined: true
 ---
 
-{% include trustly-payout.md %}
+{% include payout.md %}
