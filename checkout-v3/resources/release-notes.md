@@ -836,7 +836,7 @@ integration and the payer.
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /old-implementations/payment-instruments-v1/
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
-[pax-net-sdk]: https://developer.stage.swedbankpay.com/checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/
+[pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/optional/update
 [recur]: /checkout-v3/payments-only/features/optional/recur

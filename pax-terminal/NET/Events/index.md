@@ -1,6 +1,6 @@
 ---
 section: Events
-redirect_from: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Events
+redirect_from: /pax-terminal/NET/Events
 title: Events of ISwpTrmIf_1
 permalink: /:path/
 description: Events are mainly when the terminal sends request to the sale system.

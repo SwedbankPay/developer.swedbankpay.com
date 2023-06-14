@@ -51,7 +51,7 @@ hide_from_sidebar: true
           {% include card.html title='Partners'
               text='A lot of partners help us deliver the best payment experience. Get to know them all here'
               icon_content='handshake'
-              to='resources/partners'
+              to='/checkout-v3/resources/partners'
           %}
       </div>
   </div>

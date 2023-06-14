@@ -1,6 +1,6 @@
 ---
 section: Code Examples
-redirect_from: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/CodeExamples
+redirect_from: /pax-terminal/NET/CodeExamples
 title: C# Code Examples
 description: |
     Simple code examples without the aim of being state of the art. The code works, so feel free to copy and test.
@@ -124,9 +124,9 @@ namespace WindowsFormsApp1
 
 Based on [*Simplest Client only*][simplest-client] the following runs as a server too. The difference is:
 
-* Removed SalesCapabilites in call to Start
-* Subscribed to the `OnTerminalDisplay` event
-* Added code to the callback `EventNotificationHandler`
+*   Removed SalesCapabilites in call to Start
+*   Subscribed to the `OnTerminalDisplay` event
+*   Added code to the callback `EventNotificationHandler`
 
 {% include alert.html type="informative" icon="info" header="Heads up"
 body="When running as a server the program needs elevated privileges. It may be avoided by entering the following command as administrator:" %}
@@ -381,7 +381,7 @@ private async void button1_Click(object sender, EventArgs e)
 [simplest-client]: #as-client-only
 [clientnserver]: #as-client-and-server
 [getcna]: #get-cna-for-customer
-[create-method]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/create
-[start-method]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/start
-[openasync]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/openasync
-[paymentasync]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/paymentasync
+[create-method]: /pax-terminal/NET/Methods/create
+[start-method]: /pax-terminal/NET/Methods/start
+[openasync]: /pax-terminal/NET/Methods/openasync
+[paymentasync]: /pax-terminal/NET/Methods/paymentasync
