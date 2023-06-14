@@ -1,7 +1,7 @@
 ---
 title: Verify
 description: Validating the payer's payment details.
-menu_order: 2100
+menu_order: 2000
 icon:
   content: verified_user
   outlined: true
