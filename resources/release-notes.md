@@ -589,8 +589,6 @@ All sections have been released. :trophy:
 
 ### Version 1.6.0
 
-*   [Credit Payments][credit] (née "Credit Account") sections have been deleted
-    from the Swedbank Pay Developer Portal.
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] have received a few
     updates and are now ready for another round of review.
 *   [MobilePay Online Payments][mobile-pay] is now ready for review.
@@ -610,9 +608,6 @@ All sections have been released. :trophy:
     to release.
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
     review.
-*   The Direct Debit, [MobilePay Online Payments][mobile-pay] and
-    [Credit Payments][credit] (née "Credit Account") sections have received a few
-    updates, inching them all closer to review.
 
 ## 09 Jan 2020
 

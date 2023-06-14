@@ -28,11 +28,6 @@ body="Some of the digital wallets we offer in Checkout v3 require you to take
 additional steps before we can activate them for you. Please follow the link(s)
 in the table below to read more." %}
 
-{% include alert.html type="informative" icon="info" header="Credit Account"
-body="Swedbank Pay Credit Account will be renamed Swedbank Pay Installment
-Account during Q2 2023. The renaming will not have any technical
-consequences, so you do not have to change anything in you integration." %}
-
 {:.table .table-plain}
 |        | Payment Instrument | Region                                    |
 | :--------------------------: | :--------------: | :---------------------------------------- |
@@ -41,7 +36,7 @@ consequences, so you do not have to change anything in you integration." %}
 |   ![Click to Pay][c2p-logo]   | [Click to Pay][click-to-pay]            |  ![EarthIcon][earth-icon]             |
 |   ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          |  ![EarthIcon][earth-icon]             |
 | ![MobilePay][mobilepay-logo] | MobilePay       | {% flag dk %} {% flag fi %}               |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Credit Account | {% flag se %} |
+| ![Swedbank Pay][swp-logo] | Swedbank Pay Installment Account | {% flag se %} |
 | ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% flag no %} {% flag se %} |
 | ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% flag se %} |
 | ![Swish][swish-logo]     | Swish                 | {% flag se %}                             |

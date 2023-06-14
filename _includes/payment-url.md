@@ -14,7 +14,7 @@
 For our Seamless Views, the field called `paymentUrl` will be used when the
 payer is redirected out of the Seamless View (the `iframe`). The payer is
 redirected out of frame when selecting payment instruments which trigger SCA.
-This includes 3-D Secure card payments, credit account, invoice, MobilePay,
+This includes 3-D Secure card payments, installment account, invoice, MobilePay,
 monthly invoice payments, Trustly and Vipps.
 
 The URL should represent the page of where the {{ entity }} Seamless View was
