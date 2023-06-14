@@ -418,7 +418,7 @@ Other changes:
 
 ### Version 1.10.0
 
-*   Added a new [Gift Cards][gift-cards] section with descriptions of our Gift Cards API.
+*   Added a new gift card section with descriptions of our Gift Cards API.
 *   Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
     [Card Payments][card-payment-url].
 
@@ -782,7 +782,7 @@ integration and the payer.
 [card-transaction-states]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-transaction-states
 [card]: /old-implementations/payment-instruments-v1/card
 [card-3ds-info]: /old-implementations/payment-instruments-v1/card#sequence-diagram
-[card-3ds2]: /old-implementations/payment-instruments-v1/card/features/core/3d-secure-2
+[card-3ds2]: /old-implementations/payment-instruments-v1/card/features/core/frictionless-payments
 [card-redirect]: /old-implementations/payment-instruments-v1/card/redirect
 [card-seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
 [checkin]: /old-implementations/checkout-v2/checkin
@@ -796,12 +796,12 @@ integration and the payer.
 [checkout]: /old-implementations/checkout-v2/
 [checkout-v2]: /old-implementations/checkout-v2/
 [checkout-items]: /old-implementations/checkout-v2/features/technical-reference/items
-[checkout-3ds2]: /old-implementations/checkout-v2/features/core/3d-secure-2
+[checkout-3ds2]: /old-implementations/checkout-v2/features/core/frictionless-payments
 [checkout-callback]: /old-implementations/checkout-v2/features/core/callback
-[checkout-v3-matrix]: /checkout-v3/#choose-the-right-implementation-for-your-business
+[checkout-v3-matrix]: /checkout-v3
 [checkout-v3-enterprise]: /checkout-v3/enterprise
 [checkout-v3-payments-only]: /checkout-v3/payments-only
-[checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/redirect#payment-order-request
+[checkout-v3-payments-only-redirect-request]: /checkout-v3/payments-only/create-checkout-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/payments-only/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
@@ -817,7 +817,6 @@ integration and the payer.
 [mac]: /old-implementations/checkout-v2/features/optional/mac
 [frontpage]: https://developer.swedbankpay.com/
 [get-started]: /checkout-v3/
-[gift-cards]: /gift-cards
 [google-pay]: /checkout-v3/payment-presentations#google-pay
 [home-technical-information]: /resources/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
@@ -856,7 +855,7 @@ integration and the payer.
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-modules]: /modules-sdks
-[split-settlement]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#split-settlement
+[split-settlement]: /old-implementations/payment-instruments-v1/card/features/optional/split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid

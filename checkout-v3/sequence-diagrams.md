@@ -1,6 +1,6 @@
 ---
 title: Sequence Diagrams
-hide_from_sidebar: false
+hide_from_sidebar: true
 description: |
     The sequence diagrams for Checkout v3 integrations
 menu_order: 600

@@ -1,60 +1,30 @@
 ---
 title: Redirect
 description: |
- Redirect is our simplest integration. The payer will be redirected to a secure
- Swedbank Pay hosted site and choose payment instrument. After the purchase,
- the payer will be redirected back to your website.
+  How to display the Seamless View UI in your webshop.
 menu_order: 300
 ---
 
-The **Payments Only Redirect** integration consists of three main steps.
-**Creating** the payment order, **displaying** the payment menu, and
-**capturing** the funds. In addition, there are other post purchase options you
-need. We get to them later on.
+## Step 2: Display Redirect
 
-If you want to get an overview before proceeding, you can look at the [sequence
-diagram][sequence-diagram]. It is also available in the sidebar if you want to
-look at it later. Let´s get going with the two first steps of the integration.
+There are a couple of decisions to be made when you are presenting your payment
+UI. You have the choice between a payment menu with all the payment instruments
+you want to offer, or to present the `paymentOrder` with a single available
+payment instrument using instrument mode.
 
-## Step 1: Create Payment Order
+Regardless of the number of instruments available to the payer, you also need to
+choose between `Redirect` and `Seamless View`.
 
-When the purchase is initiated, you need to create a payment order.
+With `Redirect`, the payer is sent to a Swedbank Pay page where we handle the
+purchase process. The payer is redirected back to you when the purchase is
+completed or if the payer aborts the purchase. The page will be styled by
+Swedbank Pay.
 
-Start by performing a `POST` request towards the `paymentorder` resource
-with payer information and a `completeUrl`.
+With `Seamless View`, the payer stays at your site and you initiate the
+Swedbank Pay purchase module in an iframe. The purchase component will be styled
+by Swedbank Pay.
 
-We have added `productName` to the payment order request in this integration.
-You can find it in the `paymentorder` field. This is required if you want to use
-Checkout v3. If it isn´t included in your request, you won't get the correct
-operations in the response.
-
-When `productName` is set to `checkout3`, `digitalProducts` will be set to
-`false` by default.
-
-Supported features for this integration are subscriptions (`recur`, `one-click`
-and `unscheduled MIT`), `MOTO`, instrument mode, split settlement (`subsite`)
-and the possibility to use your own `logo`.
-
-There is also a guest mode option for the payers who don't wish to store their
-information. When using **Payments Only**, the way to trigger this is to not
-include the `payerReference` field in your `paymentOrder` request. You can find
-it in the `payer` field in the example below.
-
-Sometimes you might need to abort purchases. An example could be if a payer does
-not complete the purchase within a reasonable timeframe. For those instances we
-have `abort`, which you can read about in the [core features][abort-feature].
-You can only use `abort` if the payer **has not** completed an `authorize` or a
-`sale`.
-
-{% include alert-risk-indicator.md %}
-
-{% include alert-gdpr-disclaimer.md %}
-
-{% include payment-order-checkout-payments-only.md integration_mode="redirect" %}
-
-## Step 2: Display Payment Menu
-
-Among the operations in the POST `paymentOrders` response, you will find the
+Among the operations in the POST `paymentOrder`s response, you will find the
 `redirect-checkout`. This is the one you need to display payment menu.
 
 {:.code-view-header}
@@ -74,7 +44,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
 }
 ```
 
-## How It Looks
+## How Redirect Looks
 
 The redirect link opens the payment menu on a new page with the payer
 information displayed above the menu. The payer can select their preferred
@@ -89,11 +59,90 @@ Once the payer has completed the purchase, you can perform a `GET` towards the
 You are now ready to capture the funds. Follow the link below to read more about
 capture and the other options you have after the purchase.
 
-{% include iterator.html prev_href="./"
-                         prev_title="Introduction"
+## Redirect Sequence Diagram
+
+{% include alert.html type="informative" icon="info" body="
+Note that in this diagram, the Payer refers to the merchant front-end
+(website) while Merchant refers to the merchant back-end." %}
+
+```mermaid
+sequenceDiagram
+    participant Payer
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+    participant 3rdParty
+
+        rect rgba(238, 112, 35, 0.05)
+            activate Payer
+            Payer ->>+ Merchant: Initiate Purchase
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: POST /psp/paymentorders (completeUrl, payer information)
+            deactivate Merchant
+            SwedbankPay -->>+ Merchant: rel:redirect-checkout
+            deactivate SwedbankPay
+            Merchant -->>- Payer: Redirect payer to SwedbankPay purchase page.
+    activate SwedbankPay
+    activate Payer
+    Payer ->> Payer: Initiate Purchase step
+
+    deactivate Payer
+    SwedbankPay ->>+ Payer: Do purchase logic
+    Payer ->> SwedbankPay: Do purchase logic
+    deactivate Payer
+    deactivate SwedbankPay
+
+                    opt Payer perform purchase out of iFrame
+                    activate Payer
+                    Payer ->> Payer: Redirect to 3rd party
+                    Payer ->>+ 3rdParty: Redirect to 3rdPartyUrl URL
+                    deactivate Payer
+                    3rdParty -->>+ Payer: Redirect back to SwedbankPay
+                    deactivate 3rdParty
+                    Payer ->> Payer: Initiate Payment Menu
+                    Payer ->>+ SwedbankPay: Show Purchase UI page in iframe
+                    deactivate Payer
+                end
+
+                activate SwedbankPay
+                SwedbankPay -->> Payer: Purchase status
+                deactivate SwedbankPay
+
+            alt If Purchase is completed
+            activate Payer
+            Payer ->> Payer: Redirect back to CompleteUrl
+            Payer ->>+ Merchant: Check Purchase status
+            deactivate Payer
+            Merchant ->>+ SwedbankPay: GET <paymentorder.id>
+            deactivate Merchant
+            SwedbankPay ->>+ Merchant: Status: Paid
+            deactivate SwedbankPay
+            end
+
+activate Merchant
+Merchant -->>- Payer: Show Purchase complete
+         opt PaymentOrder Callback (if callbackUrls is set) ①
+                activate SwedbankPay
+                SwedbankPay ->> Merchant: POST Purchase Callback
+                deactivate SwedbankPay
+         end
+         end
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant ->>+ SwedbankPay: rel:capture
+        deactivate Merchant
+        SwedbankPay -->>- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        end
+```
+
+*   ① Read more about [callback][payments-callback] handling in the technical reference.
+
+{% include iterator.html prev_href="/checkout-v3/payments-only/create-checkout-request"
+                         prev_title="Create Request"
                          next_href="post-purchase"
                          next_title="Post Purchase" %}
 
-[abort-feature]: /checkout-v3/payments-only/features/core/abort
-[sequence-diagram]: /checkout-v3/sequence-diagrams#payments-only-redirect
 [redirect-payments-only-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png
+[payments-callback]: /checkout-v3/payments-only/features/core/callback

@@ -1,8 +1,8 @@
 ---
-section: Checkout v3
 title: Payment Instrument Presentations
 description: |
-  **An overview of all the payment instruments Checkout v3 has to offer.**
+  **An overview of the payment instruments Checkout v3 has to offer, and a list
+  of additional steps you must complete to activate them.**
 menu_order: 400
 ---
 
@@ -97,6 +97,12 @@ with **Name**, **Organizational** and **Customer number**.
                          prev_title="Back to Get Started" %}
 
 ## Google Pay&trade;
+
+{% include alert.html type="informative" icon="info" header="Google Pay&trade;
+in apps" body="We do not currently support launching Google Pay&trade; within an
+in-app solution. If you want to implement Google Pay&trade; in your web-view
+application, you will need to open it in a browser and open the Checkout from
+there." %}
 
 Google Pay&trade; enables quicker, safer checkout in apps and websites, and
 makes it easy for customers to pay with their phones. With a simple integration,

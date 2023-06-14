@@ -5,6 +5,10 @@ the payer. This step usually takes place when the product has exchanged
 possession. You must first do a `GET` request on the payment to find the
 `create-capture` operation.
 
+Please note that you have a maximum of 5 **consecutive** failed attempts at a
+reversal. The payment will be locked after this, and you need to contact us for
+another attempt.
+
 ## Create Capture Transaction
 
 To create a `capture` transaction to withdraw money from the payer's Vipps

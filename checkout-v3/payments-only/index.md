@@ -20,9 +20,6 @@ create an account for you, we need some specific information from your side:
 
 *   **Company name:** Your company name.
 
-*   **The service you prefer:** Full Checkout (Enterprise) or
-    Payments Only (Payments).
-
 *   **Email address:** To a developer or the CTO.
 
 *   **Organization number**: Your organization number.
@@ -51,7 +48,7 @@ with an access token.
 
 How to generate your access token:
 
-**Log in to:** https://merchantportal.externalintegration.swedbankpay.com - For
+**Log in to:** [The External Integration Merchant Portal](https://merchantportal.externalintegration.swedbankpay.com ) - For
 testing environment.
 
 **Merchant details:** Here you will find information about your
@@ -77,5 +74,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="/checkout-v3/payments-only/introduction"
+                         next_href="/checkout-v3/payments-only/create-checkout-request"
                          next_title="Start Integration" %}

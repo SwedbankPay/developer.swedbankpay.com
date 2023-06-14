@@ -12,11 +12,11 @@ underlying payments or transaction.
 | :---------------: | :------------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} ︎︎︎︎︎ | `hostUrls`          | `array`  | The array of URLs valid for embedding of Swedbank Pay Hosted Views.                                                                                                                                                                                                                                      |
 | {% icon check %}  | `completeUrl`       | `string` | {% include fields/complete-url.md resource="payment" %}  |
-| {% icon check %}  | `termsOfServiceUrl` | `string` | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |
 |                   | `cancelUrl`         | `string` | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 |                   | `paymentUrl`        | `string` | {% include fields/payment-url.md %}                                                                                                                                                       |
 |                   | `callbackUrl`       | `string` | {% include fields/callback-url.md %}                                                                                                                                                                                              |
 |                   | `logoUrl`           | `string` | {% include fields/logo-url.md %}                                                                                                                                                                                                               |
+| {% icon check %}  | `termsOfServiceUrl` | `string` | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |
 {% include payment-url.md full_reference=true when="selecting the payment
 instrument Vipps or in the 3-D Secure verification for Credit Card Payments" %}
 {% endcapture %}
@@ -53,7 +53,7 @@ Content-Type: application/json
         "paymentUrl": "https://example.com/perform-payment",
         "callbackUrl": "http://api.example.com/payment-callback",
         "logoUrl": "http://merchant.com/path/to/logo.png",
-        "termsOfServiceUrl": "http://merchant.com/path/to/tems"
+        "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"
     }
 }
 ```

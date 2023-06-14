@@ -2,7 +2,7 @@
 title: PaymentUrl
 description: |
   Redirecting the payer back to your site.
-menu_order: 2100
+menu_order: 2000
 icon:
   content: link
   outlined: true
