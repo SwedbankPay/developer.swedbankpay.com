@@ -201,7 +201,6 @@ new?
     quickly.
 *   Want to see the new implementations in action? Head over to the
     [demoshop][demoshop].
-*   We've put the [sequence diagrams][sequence-diagrams] in a separate section.
 *   The [Seamless View events][seamless-view-events] have been re-worked to make
     the integration smoother for you.
 *   Renamed and gathered the Post Purchase options on one page. The rest of the
@@ -824,7 +823,7 @@ integration and the payer.
 [mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
-[modules-sdks]: /modules-sdks
+[modules-sdks]: /checkout-v3/modules-sdks
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
 [old-implementations]: /old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
@@ -865,7 +864,6 @@ integration and the payer.
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [seamless-view-events-onaborted]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/features/technical-reference/seamless-view-events
-[sequence-diagrams]: /checkout-v3/sequence-diagrams
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
