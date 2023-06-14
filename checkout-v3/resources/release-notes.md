@@ -829,7 +829,7 @@ integration and the payer.
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[payment-order-update]: /checkout-v3/payments-only/features/optional/update
+[payment-order-update]: /checkout-v3/payments-only/features/core/update
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
 [payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
@@ -837,7 +837,7 @@ integration and the payer.
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
-[update-order-checkout]: /old-implementations/checkout-v2/features/optional/update
+[update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/payments-only/features/optional/recur
 [resource-model-cancelled]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#cancelled
 [resource-model-paid]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#paid
