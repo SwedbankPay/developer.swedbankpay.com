@@ -11,10 +11,6 @@ the payment order, **displaying** the payment menu in an iframe, and
 **capturing** the funds. In addition, there are other post purchase options you
 need. We get to them later on.
 
-If you want to get an overview before proceeding, you can look at the [sequence
-diagram][sequence-diagram]. It is also available in the sidebar if you want to
-look at it later. Let´s get going with the two first steps of the integration.
-
 ## Step 1: Create Payment Order
 
 When the payer has been checked in and the purchase initiated, you need to
@@ -170,5 +166,4 @@ capture and the other options you have after the purchase.
 
 [abort-feature]: /checkout-v3/enterprise/features/core/abort
 [seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events
-[sequence-diagram]: /checkout-v3/sequence-diagrams#enterprise-seamless-view
 [seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png

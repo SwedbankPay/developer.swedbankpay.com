@@ -6,7 +6,7 @@ description: |
   In this section you find various **resources** for Swedbank Pay's API
   Platform.
 permalink: /:path/
-menu_order: 4
+menu_order: 3
 ---
 
 A small library of tools that might come in handy on your journey through our

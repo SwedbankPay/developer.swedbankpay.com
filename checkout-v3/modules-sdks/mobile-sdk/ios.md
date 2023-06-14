@@ -646,4 +646,4 @@ sequenceDiagram
 [checkin-consumer]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkin-paymentorder]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [backend-payment-orders]: merchant-backend#payment-orders-endpoint
-[ios-payment-url]: /modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
+[ios-payment-url]: /checkout-v3/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications

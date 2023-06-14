@@ -201,7 +201,6 @@ new?
     quickly.
 *   Want to see the new implementations in action? Head over to the
     [demoshop][demoshop].
-*   We've put the [sequence diagrams][sequence-diagrams] in a separate section.
 *   The [Seamless View events][seamless-view-events] have been re-worked to make
     the integration smoother for you.
 *   Renamed and gathered the Post Purchase options on one page. The rest of the
@@ -761,11 +760,11 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
-[3ds2-test]: /resources/test-data#otp-3ds2
+[3ds2-test]: /checkout-v3/resources/test-data#otp-3ds2
 [afd-payments]: /checkout-v3/payments-only/features/optional/afd
 [age-restrictions]: /checkout-v3/payments-only/features/optional/age-restrictions
-[android-configuration]: /modules-sdks/mobile-sdk/configuration#android
-[android-sdk-documentation]: /modules-sdks/mobile-sdk/android
+[android-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#android
+[android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [callback]: /checkout-v3/payments-only/features/core/callback
@@ -804,7 +803,7 @@ integration and the payer.
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [credit]: /old-implementations/payment-instruments-v1/card
 [cross-channel-payments]: /checkout-v3/payments-only/features/optional/cross-channel-payments
-[data-protection]: /resources/data-protection
+[data-protection]: /checkout-v3/resources/data-protection
 [delete-payment-tokens]: /checkout-v3/payments-only/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
@@ -813,18 +812,18 @@ integration and the payer.
 [frontpage]: https://developer.swedbankpay.com/
 [get-started]: /checkout-v3/
 [google-pay]: /checkout-v3/payment-presentations#google-pay
-[home-technical-information]: /resources/fundamental-principles
+[home-technical-information]: /checkout-v3/resources/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
-[ios-configuration]: /modules-sdks/mobile-sdk/configuration#ios
-[ios-sdk-documentation]: /modules-sdks/mobile-sdk/ios
+[ios-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#ios
+[ios-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/ios
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
 [mobile-card-payments]: /old-implementations/payment-instruments-v1/card/mobile-card-payments
 [mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
-[modules-sdks]: /modules-sdks
+[modules-sdks]: /checkout-v3/modules-sdks
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
 [old-implementations]: /old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
@@ -836,7 +835,7 @@ integration and the payer.
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /old-implementations/payment-instruments-v1/
 [payer-aware-payment-menu]: /checkout-v3/payments-only/features/optional/payer-aware-payment-menu
-[pax-net-sdk]: https://developer.stage.swedbankpay.com/modules-sdks/pax-terminal/instore-solution/NET/
+[pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/optional/update
 [recur]: /checkout-v3/payments-only/features/optional/recur
@@ -846,16 +845,16 @@ integration and the payer.
 [resource-model-payer]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models#payer
 [resource-models]: /checkout-v3/payments-only/features/technical-reference/resource-sub-models
 [request-delivery-information]: /checkout-v3/payments-only/features/optional/request-delivery-info
-[resources]: /resources/
+[resources]: /checkout-v3/resources/
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
-[sdk-modules]: /modules-sdks
+[sdk-modules]: /checkout-v3/modules-sdks
 [split-settlement]: /old-implementations/payment-instruments-v1/card/features/optional/split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
 [status-model-paid-v2]: /old-implementations/checkout-v2/features/technical-reference/status-models#paid
-[storing-uri]: /resources/fundamental-principles#storing-urls
+[storing-uri]: /checkout-v3/resources/fundamental-principles#storing-urls
 [swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /old-implementations/payment-instruments-v1/swish/direct
@@ -865,12 +864,11 @@ integration and the payer.
 [seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
 [seamless-view-events-onaborted]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/features/technical-reference/seamless-view-events
-[sequence-diagrams]: /checkout-v3/sequence-diagrams
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
-[terminology]: /resources/terminology
-[test-data]: /resources/test-data
+[terminology]: /checkout-v3/resources/terminology
+[test-data]: /checkout-v3/resources/test-data
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly

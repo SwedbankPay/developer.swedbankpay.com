@@ -29,7 +29,7 @@ public class OpenResult
         public string SoftwareVersion { get; set; }
         public string SerialNumber { get; set; }
         public TerminalEnvironment Environment { get; set; }
-    } 
+    }
 ```
 
 ```c#

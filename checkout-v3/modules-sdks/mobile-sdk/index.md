@@ -69,9 +69,9 @@ follow for each step.
 {% include iterator.html next_href="configuration"
                          next_title="Next: Configuration" %}
 
-[plain-webview]: /modules-sdks/mobile-sdk/plain-webview
+[plain-webview]: /checkout-v3/modules-sdks/mobile-sdk/plain-webview
 [checkout]: /checkout-v3
 [checkout-enterprise]: /checkout-v3/enterprise
 [checkout-payments-only]: /checkout-v3/payments-only
-[https]: /resources/fundamental-principles#connection-and-protocol
+[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
 [post-purchase-capture]: /checkout-v3/payments-only/post-purchase#capture
