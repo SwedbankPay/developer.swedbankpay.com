@@ -848,7 +848,7 @@ integration and the payer.
 [resources]: /checkout-v3/resources/
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
-[sdk-modules]: checkout-v3/modules-sdks
+[sdk-modules]: /checkout-v3/modules-sdks
 [split-settlement]: /old-implementations/payment-instruments-v1/card/features/optional/split-settlement
 [ssn-restrictions]: /checkout-v3/payments-only/features/optional/payer-restrictions
 [status-models]: /checkout-v3/payments-only/features/technical-reference/status-models
