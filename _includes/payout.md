@@ -1,3 +1,8 @@
+{% capture api_resource %}{% include api-resource.md %}{% endcapture %}
+{% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
+{% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
+{% assign operation_status_bool = include.operation_status_bool | default: "false" %}
+
 ## Introduction
 
 At the moment, our payout offering consists of Trustly Payout only, but this
@@ -497,7 +502,7 @@ Content-Type: application/json
 
 ## GET Payment Order
 
-A GET performed after the callback is recieved on a `paymentOrder` with status
+A GET performed after the callback is received on a `paymentOrder` with status
 `Paid`. A field called `trustlyOrderId` will appear among the `details` in the
 `Paid` node. This can be used for support correspondance.
 
