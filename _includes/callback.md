@@ -130,4 +130,4 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-[url-usage]: /resources/fundamental-principles#url-usage
+[url-usage]: /checkout-v3/resources/fundamental-principles#url-usage

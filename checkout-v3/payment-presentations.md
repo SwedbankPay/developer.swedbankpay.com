@@ -1,7 +1,8 @@
 ---
-title: Payment Instrument Presentations
+title: Digital Wallets
+hide_from_sidebar: true
 description: |
-  **An overview of the payment instruments Checkout v3 has to offer, and a list
+  **An overview of the Digital Wallets Checkout v3 has to offer, and a list
   of additional steps you must complete to activate them.**
 menu_order: 400
 ---

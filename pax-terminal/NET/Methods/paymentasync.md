@@ -11,9 +11,9 @@ body="After PaymentAsync returns there has to be a delay before next request can
 
 ### Parameters
 
-* **totalamount** - includes possible cashback amount
-* **cashback** - part of total amount that will be handed to customer
-* **currency** - currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".
+*   **totalamount** - includes possible cashback amount
+*   **cashback** - part of total amount that will be handed to customer
+*   **currency** - currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".
 
 ### Returns
 
@@ -157,40 +157,40 @@ public class PaymentRequestResult : NexoRequestResult
         <OutputText>eyJDYXJkaG9sZGVyIjp7Ik1hbmRhdG9yeSI6eyJBY3F1aXJlciI6eyJDYXJkQWNjZXB0b3JOdW1iZXIiOiIxMDAyMDAwMSIsIlRlcm1pbmFsSUQiOiI4Nzc4ODgifSwiQ2FyZEFjY2VwdG9yIjp7IkFkZHJlc3MxIjoiSMOkbGxlc2vDpXJhbiAyOCIsIkJhbmtBZ2VudE5hbWUiOiJiYW5reS1iYW5rIiwiTmFtZSI6IkrDpHJvbGRzIEdvb2RpZXMiLCJPcmdhbmlzYXRpb25OdW1iZXIiOiI1NTY1NjcxLTYxNjUiLCJQb3N0WmlwQ29kZSI6IjUwNTAiLCJUb3duQ2l0eSI6Im1lcmNoYW50LUJhc2UyNC1DaXR5In0sIkNhcmREZXRhaWxzIjp7IkFwcGxpY2F0aW9uSWRlbnRpZmllciI6IkEwMDAwMDAwMDMxMDEwIiwiQ2FyZFNjaGVtZU5hbWUiOnsiQXBwbGljYXRpb25MYWJlbCI6IlZpc2EgRGViaXQifSwiUHJpbWFyeUFjY291bnROdW1iZXIiOiIqKioqKioqKioqKio0NTY1IiwiVGVybWluYWxWZXJpZmljYXRpb25SZXN1bHQiOiIwMDgwMDA4MDAwIiwiVHJhbnNhY3Rpb25TdGF0dXNJbmZvcm1hdGlvbiI6IkU4MDAifSwiT3V0Y29tZSI6eyJBcHByb3ZhbENvZGUiOiI5NDI5MzIiLCJBdXRob3Jpc2F0aW9uUmVzcG9uZGVyIjoiOSIsIkF1dGhvcmlzYXRpb25SZXNwb25zZUNvZGUiOiIwMCIsIkRlYml0U3RhdHVzIjoiMDAifSwiUGF5bWVudCI6eyJBdXRob3Jpc2F0aW9uQ2hhbm5lbCI6IjEiLCJDYXJkaG9sZGVyVmVyaWZpY2F0aW9uTWV0aG9kIjoiYSIsIkN1cnJlbmN5IjoiU0VLIiwiRmluYW5jaWFsSW5zdGl0dXRpb24iOiJTV0UiLCJQYXltZW50QW1vdW50IjoiNDEsMDAiLCJSZWNlaXB0TnVtYmVyIjoiODc3ODg4MDI0MSIsIlNpZ25hdHVyZUJsb2NrIjpmYWxzZSwiVG90YWxBbW91bnQiOiI0MSwwMCIsIlRyYW5zYWN0aW9uU291cmNlIjoiQyIsIlRyYW5zYWN0aW9uVHlwZSI6IjAwIn0sIlRpbWVTdGFtcCI6eyJEYXRlT2ZQYXltZW50IjoiMjAyMy0wMy0xNiIsIlRpbWVPZlBheW1lbnQiOiIxODowMSJ9fSwiT3B0aW9uYWwiOnsiQ2FyZEFjY2VwdG9yIjp7IkNvdW50cnlOYW1lIjoiNzUyIiwiUGhvbmVOdW1iZXIiOiIrNDY4NDA1MTAwMCJ9LCJDYXJkRGV0YWlscyI6eyJDYXJkU2NoZW1lTmFtZSI6eyJBcHBsaWNhdGlvbkxhYmVsIjoiVmlzYSBEZWJpdCJ9fSwiUGF5bWVudCI6eyJSZWZlcmVuY2UiOiIxODAxMDQyIn19fX0=</OutputText>
       </OutputContent>
     </PaymentReceipt>
-  </PaymentResponse> 
+  </PaymentResponse>
 </SaleToPOIResponse>
 ```
 
 ### ReceiptBlob - Fast Forward To Well Formatted Receipt Information
 
 ```text
-Demo shop               
-Kungsgatan 36           
+Demo shop
+Kungsgatan 36
 5050
  merchant-Base24-City
-Org nr: 5565671-6165    
-                        
+Org nr: 5565671-6165
+
 Butiksnr.:      10020001
 Termid:           877888
 2023-03-16         18:01
-                        
-          KÖP           
-                        
+
+          KÖP
+
 SEK                41,00
 Total:             41,00
-                        
-Personlig kod           
-************4565        
-Visa Debit              
-                        
-                        
-Ca1 9 00 942932         
-                        
+
+Personlig kod
+************4565
+Visa Debit
+
+
+Ca1 9 00 942932
+
 Ref.nr:       8778880241
 AID:      A0000000031010
 TVR:          0080008000
 TSI:                E800
-                        
-     SPARA KVITTOT      
-      KUNDENS EX. 
+
+     SPARA KVITTOT
+      KUNDENS EX.
 ```

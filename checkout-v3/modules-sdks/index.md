@@ -2,12 +2,12 @@
 section: Modules & SDKs
 sidebar_icon: extension
 title: Introduction
-redirect_from: /resources/sdk-modules
+redirect_from: /checkout-v3/resources/sdk-modules
 description: |
   We have multiple Open Source-based SDKs and Modules to use with
   Swedbank Pay APIs.
 permalink: /:path/
-menu_order: 3
+menu_order: 2
 ---
 
 Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as

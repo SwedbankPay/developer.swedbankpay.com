@@ -206,9 +206,9 @@ To help with writing release notes, projects can use the tool
 [GitReleaseNotes][git-release-notes].
 
 [apple-app-store]: https://appstore.com
-[code-of-conduct]: /resources/development-guidelines/code-of-conduct
+[code-of-conduct]: /checkout-v3/resources/development-guidelines/code-of-conduct
 [continuous-integration]: https://en.wikipedia.org/wiki/Continuous_integration
-[contributing]: /resources/development-guidelines/contributing
+[contributing]: /checkout-v3/resources/development-guidelines/contributing
 [domain-driven-design]: https://martinfowler.com/tags/domain%20driven%20design.html
 [git-release-notes]: https://github.com/GitTools/GitReleaseNotes
 [git-version]: https://github.com/GitTools/GitVersion
@@ -219,4 +219,4 @@ To help with writing release notes, projects can use the tool
 [principles-of-object-oriented-design]: https://wiki.c2.com/?PrinciplesOfObjectOrientedDesign
 [sans-25]: https://www.sans.org/top25-software-errors/
 [semantic-versioning]: https://semver.org/
-[software-license]: /resources/development-guidelines/license
+[software-license]: /checkout-v3/resources/development-guidelines/license

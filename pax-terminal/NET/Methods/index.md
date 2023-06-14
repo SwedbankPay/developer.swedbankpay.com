@@ -1,6 +1,6 @@
 ---
 section: Methods
-redirect_from: /modules-sdks/pax-terminal/instore-solution/NET/Methods
+redirect_from: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods
 permalink: /:path/
 title: ISwpTrmIf_1 Methods
 ---

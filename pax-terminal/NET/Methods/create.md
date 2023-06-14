@@ -8,8 +8,8 @@ This is the first call to make. At the moment there is only one class available,
 
 ### Parameters
 
-* [SwpIfConfig][swpifconfig] - instance of a config object.
-* [ISwpTrmCallbackInterface][iswptrmcallbackinterface] - reference to an instance that handles available callbacks.
+*   [SwpIfConfig][swpifconfig] - instance of a config object.
+*   [ISwpTrmCallbackInterface][iswptrmcallbackinterface] - reference to an instance that handles available callbacks.
 
 ### Returns
 
@@ -42,7 +42,7 @@ public class MyImplementation : ISwpTrmCallbackInterface
  // Requires the implementation to run as a server.
  void ConfirmationHandler(string text, IConfirmationResult callback)
  {}
- // EventNotificationHandler occurs for some events that may be useful to 
+ // EventNotificationHandler occurs for some events that may be useful to
  // act upon
  // Requires the implementation to run as a server.
  void EventNotificationHandler(EventToNotifyEnumeration type, string text)

@@ -1,6 +1,6 @@
 ---
 section: Code Examples
-redirect_from: /modules-sdks/pax-terminal/instore-solution/NET/CodeExamples
+redirect_from: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/CodeExamples
 title: C# Code Examples
 description: |
     Simple code examples without the aim of being state of the art. The code works, so feel free to copy and test.
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1
         }
 
         private void CreatePAXInstance()
-        { 
+        {
             PAX = PAXTrmImp_1.Create(new SwpIfConfig(), this);
 
             PAX.Start(new SaleApplInfo()
@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
             });
         }
         private async void LoginToTerminal()
-        { 
+        {
             if (PAX == null)
             {
                 CreatePAXInstance();
@@ -183,7 +183,7 @@ namespace WindowsFormsApp1
         }
 
         private void CreatePAXInstance()
-        { 
+        {
             PAX = PAXTrmImp_1.Create(new SwpIfConfig(), this);
 
             PAX.Start(new SaleApplInfo()
@@ -192,19 +192,19 @@ namespace WindowsFormsApp1
                 ProviderIdentification = "SwP",
                 SoftwareVersion = "0.1",
                 POIID = "A-TEST-POIID",
-                //SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString() 
+                //SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString()
             });
 
             PAX.OnTerminalDisplay += PAX_OnTerminalDisplay;
         }
-        // A DisplayRequest from the terminal 
+        // A DisplayRequest from the terminal
         private void PAX_OnTerminalDisplay(string message)
         {
             textBox1.AppendText(message + Environment.NewLine);
         }
 
         private async void LoginToTerminal()
-        { 
+        {
             if (PAX == null)
             {
                 CreatePAXInstance();
@@ -256,7 +256,7 @@ namespace WindowsFormsApp1
         ProviderIdentification = "SwP",
         SoftwareVersion = "0.1",
         POIID = "AJACQH28",
-        //SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString() 
+        //SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString()
     });
 
     PAX.OnTerminalDisplay += PAX_OnTerminalDisplay;
@@ -381,7 +381,7 @@ private async void button1_Click(object sender, EventArgs e)
 [simplest-client]: #as-client-only
 [clientnserver]: #as-client-and-server
 [getcna]: #get-cna-for-customer
-[create-method]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/create
-[start-method]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/start
-[openasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/openasync
-[paymentasync]: /modules-sdks/pax-terminal/instore-solution/NET/Methods/paymentasync
+[create-method]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/create
+[start-method]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/start
+[openasync]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/openasync
+[paymentasync]: /checkout-v3/modules-sdks/pax-terminal/instore-solution/NET/Methods/paymentasync
