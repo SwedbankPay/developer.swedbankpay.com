@@ -2,7 +2,7 @@
 title: Redirect
 description: |
   How to display the Seamless View UI in your webshop.
-menu_order: 300
+menu_order: 400
 ---
 
 ## Step 2: Display Redirect
@@ -139,10 +139,10 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/payments-only/create-checkout-request"
-                         prev_title="Create Request"
-                         next_href="post-purchase"
+{% include iterator.html prev_href="/checkout-v3/display-payment-UI"
+                         prev_title="Display Payment UI"
+                         next_href="/checkout-v3/post-purchase"
                          next_title="Post Purchase" %}
 
 [redirect-payments-only-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png
-[payments-callback]: /checkout-v3/payments-only/features/core/callback
+[payments-callback]: /checkout-v3/features/core/callback

@@ -1,6 +1,5 @@
 ---
-section: Checkout Request
-title: Payments Only
+title: Payment Request
 hide_from_sidebar: false
 description: |
   How to create payments when using our Checkout.
@@ -72,11 +71,9 @@ choose between the display options `Redirect` and `Seamless View`. Read more
 about these by following the corresponding link.
 
 {% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Get Started"
-                         next_href="redirect"
-                         next_title="Integrate Redirect" %}
-{% include iterator.html next_href="seamless-view"
-                         next_title="Integrate Seamless View" %}
+                         prev_title="Back to Introduction"
+                         next_href="/checkout-v3/display-payment-ui"
+                         next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/payments-only/features/core/abort
 [features]: /checkout-v3/payments-only/features/

@@ -1,6 +1,5 @@
 ---
 title: Migration Guide
-hide_from_sidebar: false
 description: |
   Migrating from _Checkout v2_, _Payment Menu_ and _Payment Instruments_ to
   _Checkout v3_.

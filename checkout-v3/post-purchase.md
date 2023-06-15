@@ -19,8 +19,5 @@ the payer wants to return goods? For these instances, we have `cancel` and
 
 {% include payment-order-reversal.md %}
 
-{% include iterator.html prev_href="redirect"
-                         prev_title="Implement Redirect" %}
-
-{% include iterator.html prev_href="seamless-view"
-                         prev_title="Implement Seamless View" %}
+{% include iterator.html next_href="/checkout-v3/features"
+                         next_title="Expand Your Payment Request" %}
