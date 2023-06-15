@@ -2,7 +2,7 @@
 title: Redirect
 description: |
   How to display the Seamless View UI in your webshop.
-menu_order: 400
+menu_order: 4
 ---
 
 ## Step 2: Display Redirect

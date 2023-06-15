@@ -225,4 +225,4 @@ Mode_.
 *[SCA]: Strong Customer Authentication
 
 [enterprise]: /checkout-v3/enterprise
-[payments-only]: /checkout-v3/payments-only
+[payments-only]: /checkout-v3

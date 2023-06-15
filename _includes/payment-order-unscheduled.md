@@ -561,6 +561,6 @@ Content-Type: application/json
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture
-[payment-order-cancel]: /checkout-v3/payments-only/post-purchase#cancel
-[payment-order-capture]: /checkout-v3/payments-only/post-purchase#capture
+[payment-order-cancel]: /checkout-v3/post-purchase#cancel
+[payment-order-capture]: /checkout-v3/post-purchase#capture
 [verify]: {{ features_url }}/optional/verify

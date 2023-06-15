@@ -72,6 +72,6 @@ follow for each step.
 [plain-webview]: /checkout-v3/modules-sdks/mobile-sdk/plain-webview
 [checkout]: /checkout-v3
 [checkout-enterprise]: /checkout-v3/enterprise
-[checkout-payments-only]: /checkout-v3/payments-only
+[checkout-payments-only]: /checkout-v3
 [https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
-[post-purchase-capture]: /checkout-v3/payments-only/post-purchase#capture
+[post-purchase-capture]: /checkout-v3/post-purchase#capture

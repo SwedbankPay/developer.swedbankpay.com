@@ -4,7 +4,7 @@ description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post purchase operations** in your order system. These operations,
   and how they are executed, are described below.
-menu_order: 500
+menu_order: 4
 ---
 
 {% include alert-two-phase-payments.md %}

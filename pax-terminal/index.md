@@ -4,7 +4,7 @@ sidebar_icon: point_of_sale
 title: Introduction
 redirect_from: /checkout-v3/resources/ecom
 permalink: /:path/
-menu_order: 300
+menu_order: 3
 ---
 
 Swedbank Pay have designed the Swedbank Pay Payment Application solution using

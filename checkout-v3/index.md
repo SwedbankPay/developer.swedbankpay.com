@@ -4,7 +4,7 @@ sidebar_icon: shopping_cart
 title: Introduction
 description: |
   **A brief introduction to implementing Checkout v3.**
-menu_order: 100
+menu_order: 1
 ---
 
 With Checkout v3, you need to be able to collect, verify and store the payer
@@ -43,10 +43,10 @@ in the table below to read more." %}
 |   ![Trustly][trustly-logo]   | Trustly            | {% flag se %} {% flag fi %}               |
 | ![Vipps][vipps-logo]     | Vipps                | {% flag no %}                             |
 
-{% include iterator.html next_href="/checkout-v3/setup"
-                         next_title="Set Up A Test Account" %}
 {% include iterator.html next_href="/checkout-v3/payment-request"
                          next_title="Start Integrating" %}
+{% include iterator.html next_href="/checkout-v3/setup"
+                         next_title="Set Up A Test Account" %}
 
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [apple-pay-logo]:/assets/img/applepay-logo.svg

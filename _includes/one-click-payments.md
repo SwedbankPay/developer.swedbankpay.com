@@ -528,5 +528,5 @@ Content-Type: application/json
 [one-click-image]: /assets/img/checkout/one-click.png
 [create-card-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment
 [create-invoice-payment]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/create-payment
-[paid-resource]: /checkout-v3/payments-only/features/technical-reference/status-models#paid
+[paid-resource]: /checkout-v3/features/technical-reference/status-models#paid
 [verify]: /old-implementations/payment-instruments-v1/card/features/optional/verify
