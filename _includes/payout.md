@@ -580,9 +580,7 @@ Content-Type: application/json
             "id": "/psp/paymentorders/3c265183-e7ee-438b-a5f4-08db68bc1d08/metadata"
         }
     },
-    "operations": [
-        {}
-    ]
+    "operations": []
 }
 ```
 
