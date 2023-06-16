@@ -28,4 +28,4 @@ to find your section.
 {% include iterator.html next_href="/old-implementations/payment-menu-v2/"
                          next_title="Payment Menu v2" %}
 
-[payments-only]: /checkout-v3/payments-only
+[payments-only]: /checkout-v3

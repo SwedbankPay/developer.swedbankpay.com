@@ -1,16 +1,14 @@
 ---
-section: Checkout Request
-title: Payments Only
+title: Payment Request
 hide_from_sidebar: false
 description: |
   How to create payments when using our Checkout.
-menu_order: 200
+menu_order: 2
 ---
 
-The **Payments Only** integration consists of three main steps.
-**Creating** the payment order, **displaying** the payment menu, and
-**capturing** the funds. In addition, there are other post purchase options you
-need. We get to them later on.
+The integration consists of three main steps. **Creating** the payment order,
+**displaying** the payment menu, and **capturing** the funds. In addition, there
+are other post purchase options you need. We get to them later on.
 
 ## Step 1: Create Payment Order
 
@@ -60,25 +58,12 @@ or provide risk indicators and information about the payer to
 Read more about possible additions to the request in our
 [feature section][features].
 
-## Step 2: Display Payment UI
-
-There are a couple of decisions to be made when you are presenting your payment
-UI. You have the choice between a payment menu with all the payment instruments
-you want to offer, or to present the `paymentOrder` with a single available
-payment instrument using instrument mode.
-
-Regardless of the number of instruments available to the payer, you also need to
-choose between the display options `Redirect` and `Seamless View`. Read more
-about these by following the corresponding link.
-
 {% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Get Started"
-                         next_href="redirect"
-                         next_title="Integrate Redirect" %}
-{% include iterator.html next_href="seamless-view"
-                         next_title="Integrate Seamless View" %}
+                         prev_title="Back to Introduction"
+                         next_href="/checkout-v3/display-payment-ui"
+                         next_title="Display Payment UI" %}
 
-[abort-feature]: /checkout-v3/payments-only/features/core/abort
-[features]: /checkout-v3/payments-only/features/
-[frictionless]: /checkout-v3/payments-only/features/core/frictionless-payments
-[order-items]: /checkout-v3/payments-only/features/optional/order-items
+[abort-feature]: /checkout-v3/features/core/abort
+[features]: /checkout-v3/features/
+[frictionless]: /checkout-v3/features/core/frictionless-payments
+[order-items]: /checkout-v3/features/optional/order-items

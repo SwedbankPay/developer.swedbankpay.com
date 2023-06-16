@@ -2,7 +2,7 @@
 title: Seamless View
 description: |
   How to display the Seamless View UI in your webshop.
-menu_order: 400
+menu_order: 5
 ---
 
 ## Display Seamless View
@@ -204,12 +204,12 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/payments-only/create-checkout-request"
-                         prev_title="Create Request"
-                         next_href="post-purchase"
+{% include iterator.html prev_href="/checkout-v3/display-payment-ui"
+                         prev_title="Display Payment UI"
+                         next_href="/checkout-v3/post-purchase"
                          next_title="Post Purchase" %}
 
-[seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
+[seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
 [seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
-[payments-callback]: /checkout-v3/payments-only/features/core/callback
-[payments-seamless-view-events]: /checkout-v3/payments-only/features/technical-reference/seamless-view-events
+[payments-callback]: /checkout-v3/features/core/callback
+[payments-seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events

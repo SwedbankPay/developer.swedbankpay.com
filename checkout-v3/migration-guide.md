@@ -1,6 +1,5 @@
 ---
 title: Migration Guide
-hide_from_sidebar: false
 description: |
   Migrating from _Checkout v2_, _Payment Menu_ and _Payment Instruments_ to
   _Checkout v3_.
@@ -226,4 +225,4 @@ Mode_.
 *[SCA]: Strong Customer Authentication
 
 [enterprise]: /checkout-v3/enterprise
-[payments-only]: /checkout-v3/payments-only
+[payments-only]: /checkout-v3

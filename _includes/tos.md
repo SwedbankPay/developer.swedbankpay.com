@@ -5,9 +5,6 @@ approve during the payment process, you can do this by adding a
 The url will appear as a clickable hyperlink below the pay button in the
 payment UI. The terms of service open in a separate tab when clicked.
 
-{:.text-center}
-![screenshot of payment UI with added terms of service][tos-payment]
-
 {:.code-view-header}
 **Request**
 
@@ -35,5 +32,3 @@ Content-Type: application/json
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f termsOfServiceUrl, 2 %}       | `string`     | {% include fields/terms-of-service-url.md %}                               |
-
-[tos-payment]: /assets/img/checkout/tos-payment-ui.png

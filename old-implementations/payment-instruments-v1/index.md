@@ -23,7 +23,7 @@ table below.
 |                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                    |
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :---------------------------------------- |
 |    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  | ![EarthIcon][earth-icon]                  |
-| {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | {% flag no %} {% flag se %} {% flag fi %} |
+| {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | {% flag no %} {% flag se %} |
 |     ![Vipps][vipps-logo]     | [Vipps][vipps]                  | {% icon check %} | {% icon check %} |                    | {% flag no %}                             |
 |     ![Swish][swish-logo]     | [Swish][swish]                  | {% icon check %} | {% icon check %} | {% icon check %}  ︎ | {% flag se %}                             |
 | ![MobilePay][mobilepay-logo] | [Mobile Pay][mobile-pay]        |                  | {% icon check %} |                    | {% flag dk %} {% flag fi %}               |

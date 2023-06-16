@@ -1,7 +1,7 @@
 ---
 section: Checkout v3
 sidebar_icon: shopping_cart
-title: Get Started
+title: Introduction
 description: |
   **A brief introduction to implementing Checkout v3.**
 menu_order: 1
@@ -43,8 +43,10 @@ in the table below to read more." %}
 |   ![Trustly][trustly-logo]   | Trustly            | {% flag se %} {% flag fi %}               |
 | ![Vipps][vipps-logo]     | Vipps                | {% flag no %}                             |
 
-{% include iterator.html next_href="/checkout-v3/payments-only"
-                         next_title="Set Up & Integration" %}
+{% include iterator.html next_href="/checkout-v3/payment-request"
+                         next_title="Start Integrating" %}
+{% include iterator.html next_href="/checkout-v3/setup"
+                         next_title="Set Up A Test Account" %}
 
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [apple-pay-logo]:/assets/img/applepay-logo.svg

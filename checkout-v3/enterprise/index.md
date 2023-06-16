@@ -6,7 +6,7 @@ description: |
   **In this section we are going to guide you through setting up your test account
   and how to make an API request for your first test payment. After these steps,
   you're ready to build your integration!**
-menu_order: 300
+menu_order: 1500
 ---
 
 ## Step 1: Sign Up For A Test Account

@@ -4,7 +4,7 @@ description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post purchase operations** in your order system. These operations,
   and how they are executed, are described below.
-menu_order: 500
+menu_order: 4
 ---
 
 {% include alert-two-phase-payments.md %}
@@ -19,8 +19,5 @@ the payer wants to return goods? For these instances, we have `cancel` and
 
 {% include payment-order-reversal.md %}
 
-{% include iterator.html prev_href="redirect"
-                         prev_title="Implement Redirect" %}
-
-{% include iterator.html prev_href="seamless-view"
-                         prev_title="Implement Seamless View" %}
+{% include iterator.html next_href="/checkout-v3/features"
+                         next_title="Expand Your Payment Request" %}

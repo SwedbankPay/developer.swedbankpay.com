@@ -641,7 +641,7 @@ sequenceDiagram
 [xcode-add-cap]: https://help.apple.com/xcode/mac/current/#/dev88ff319e7
 [xcode-add-assoc-domain]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001207
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
-[swedbankpay-problems]: /checkout-v3/payments-only/features/technical-reference/problems
+[swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
 [backend-problems]: merchant-backend#problems
 [checkin-consumer]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkin-paymentorder]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
