@@ -102,14 +102,13 @@ in this flow.
 8.  It must have `status=Paid` if the payout was successful.
 9.  You can now inform the payer that the payout was successful.
 
-If something failed in the payout process this flow will happen. In
-some rare cases, it can also happen after you have received a `Paid` status.
+If something failed in the payout process this flow will happen.
 
-5.  If the payout failed, you will get a callback.
-6.  You will need to answer the callback with an acknowledge message.
-7.  You need to do a GET on the `PaymentOrder` to check the status.
-8.  It will have `status=Aborted` or `status=Reversed` if the payout failed.
-9.  You can now inform the payer that the payout has failed and that you will
+1.  If the payout failed, you will get a callback.
+2.  You will need to answer the callback with an acknowledge message.
+3.  You need to do a GET on the `PaymentOrder` to check the status.
+4.  It will have `status=Aborted` if the payout failed.
+5.  You can now inform the payer that the payout has failed and that you will
     try to do the payout again.
 
 ## Verify Request
@@ -581,14 +580,7 @@ Content-Type: application/json
             "id": "/psp/paymentorders/3c265183-e7ee-438b-a5f4-08db68bc1d08/metadata"
         }
     },
-    "operations": [
-        {
-            "method": "POST",
-            "href": "https://api.stage.payex.com/psp/paymentorders/3c265183-e7ee-438b-a5f4-08db68bc1d08/reversals",
-            "rel": "reversal",
-            "contentType": "application/json"
-        }
-    ]
+    "operations": []
 }
 ```
 
