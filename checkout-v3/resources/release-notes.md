@@ -203,7 +203,7 @@ new?
     [demoshop][demoshop].
 *   The [Seamless View events][seamless-view-events] have been re-worked to make
     the integration smoother for you.
-*   Renamed and gathered the Post Purchase options on one page. The rest of the
+*   Renamed and gathered the Post-Purchase options on one page. The rest of the
     features are still where they used to be.
 *   We've given the [front page][frontpage] a touch up, and given the new
     sections a slightly different look to distinguish them.
