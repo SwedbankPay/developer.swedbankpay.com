@@ -796,7 +796,7 @@ integration and the payer.
 [checkout-v3-enterprise]: /checkout-v3/enterprise
 [checkout-v3-payments-only]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payment-request
-[checkout-v3-payments-only-seamless]: /checkout-v3/seamless-view
+[checkout-v3-payments-only-seamless]: /checkout-v3/display-payment-ui/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
@@ -875,7 +875,7 @@ integration and the payer.
 [trustly-payment-link]: /old-implementations/payment-instruments-v1/trustly/features/optional/payment-link
 [trustly-features]: /old-implementations/payment-instruments-v1/trustly/features
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
-[v3-setup]: /checkout-v3/#step-1-sign-up-for-a-test-account
+[v3-setup]: /checkout-v3/setup
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps

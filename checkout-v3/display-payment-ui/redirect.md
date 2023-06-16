@@ -139,7 +139,7 @@ Merchant -->>- Payer: Show Purchase complete
 
 *   ① Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/display-payment-UI"
+{% include iterator.html prev_href="/checkout-v3/display-payment-ui"
                          prev_title="Display Payment UI"
                          next_href="/checkout-v3/post-purchase"
                          next_title="Post Purchase" %}
