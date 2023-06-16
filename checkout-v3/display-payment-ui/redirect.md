@@ -142,7 +142,7 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/display-payment-ui"
                          prev_title="Display Payment UI"
                          next_href="/checkout-v3/post-purchase"
-                         next_title="Post Purchase" %}
+                         next_title="Post-Purchase" %}
 
 [redirect-payments-only-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png
 [payments-callback]: /checkout-v3/features/core/callback

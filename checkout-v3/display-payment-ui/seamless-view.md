@@ -207,7 +207,7 @@ Merchant -->>- Payer: Show Purchase complete
 {% include iterator.html prev_href="/checkout-v3/display-payment-ui"
                          prev_title="Display Payment UI"
                          next_href="/checkout-v3/post-purchase"
-                         next_title="Post Purchase" %}
+                         next_title="Post-Purchase" %}
 
 [seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
 [seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png

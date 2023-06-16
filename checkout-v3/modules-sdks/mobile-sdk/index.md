@@ -58,7 +58,7 @@ a mobile application. The integrating application must set a Configuration,
 which is responsible for making the necessary calls to your backend. A
 Configuration for a server implementing the Merchant Backend API is bundled with
 the SDK, but it is simple to implement a Configuration for your custom server.
-The [Post Purchase][post-purchase-capture] part is the same as when using
+The [Post-Purchase][post-purchase-capture] part is the same as when using
 Checkout on a web page, and is thus intentionally left out of the scope of the
 SDK.
 

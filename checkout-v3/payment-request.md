@@ -8,7 +8,7 @@ menu_order: 2
 
 The integration consists of three main steps. **Creating** the payment order,
 **displaying** the payment menu, and **capturing** the funds. In addition, there
-are other post purchase options you need. We get to them later on.
+are other post-purchase options you need. We get to them later on.
 
 ## Step 1: Create Payment Order
 

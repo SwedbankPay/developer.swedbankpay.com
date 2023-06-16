@@ -8,7 +8,7 @@ menu_order: 400
 
 The **Enterprise Seamless View** integration consists of three main steps. **Creating**
 the payment order, **displaying** the payment menu in an iframe, and
-**capturing** the funds. In addition, there are other post purchase options you
+**capturing** the funds. In addition, there are other post-purchase options you
 need. We get to them later on.
 
 ## Step 1: Create Payment Order
@@ -162,7 +162,7 @@ capture and the other options you have after the purchase.
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
                          next_href="post-purchase"
-                         next_title="Post Purchase" %}
+                         next_title="Post-Purchase" %}
 
 [abort-feature]: /checkout-v3/enterprise/features/core/abort
 [seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events

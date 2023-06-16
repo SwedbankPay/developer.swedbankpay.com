@@ -1,8 +1,8 @@
 ---
-title: Post Purchase
+title: Post-Purchase
 description: |
   When the payer has **completed** the purchase, you need to implement the
-  relevant **post purchase operations** in your order system. These operations,
+  relevant **post-purchase operations** in your order system. These operations,
   and how they are executed, are described below.
 menu_order: 500
 ---
