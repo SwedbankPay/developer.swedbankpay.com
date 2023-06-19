@@ -2,10 +2,13 @@
     {%- include utils/documentation-section-url.md
         href='/features/core/settlement-reconciliation' -%}
 {%- endcapture -%}
-{%- assign split_settlement_url=settlement_url | append: '#split-settlement' -%}
+{%- capture split_url -%}
+    {%- include utils/documentation-section-url.md
+        href='/features/optional/split-settlement' -%}
+{%- endcapture -%}
 {%- capture text -%}
 The `subsite` field can be used to perform {% clink split settlement %}{{
-split_settlement_url }}{% endclink %} on the payment. The different `subsite`
+split_url }}{% endclink %} on the payment. The different `subsite`
 values must be resolved with Swedbank Pay {% clink reconciliation %}{{
 settlement_url }}{% endclink %} before being used. If you send in an unknown
 `subsite` value, it will be ignored and the payment will be settled using the

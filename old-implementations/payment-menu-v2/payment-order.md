@@ -63,7 +63,7 @@ in your system to look up status on the completed payment later.
 
 {% include alert.html type="informative" icon="info" header="URL Storage"
 body="The `id` of the Payment Order should be stored for later retrieval. [Read
-more about URL usage](/introduction#url-usage)." %}
+more about URL usage](/checkout-v3/resources/fundamental-principles#url-usage)." %}
 
 Then find the `view-paymentorder` operation and embed its `href` in a `<script>`
 element. That script will then load the Seamless View for the Payment Menu. We
@@ -269,6 +269,6 @@ rect rgba(138, 205, 195, 0.1)
                          next_href="capture"
                          next_title="Capture" %}
 
-[guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu-450x850.png
-[login-payment-menu-image]: /assets/img/checkout/logged-in-payment-menu-450x900.png
+[guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
+[login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations

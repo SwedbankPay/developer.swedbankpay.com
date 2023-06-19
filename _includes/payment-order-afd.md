@@ -200,4 +200,4 @@ Then the `amount` and `vatAmount` will contain the value that is authorized. The
 final amount to be paid must be passed in the capture request, and if the
 authorized amount is larger than the final amount the rest should be cancelled.
 
-[order-items]: /checkout-v3/payments-only/features/technical-reference/order-items
+[order-items]: /checkout-v3/features/optional/order-items

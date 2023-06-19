@@ -36,4 +36,4 @@ you have Swedbank Pay Payment Menu v2.
                          next_title="Payment Order" %}
 
 [after-payment-capture]: /old-implementations/payment-menu-v2/capture
-[https]: /introduction#connection-and-protocol
+[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol

@@ -1,8 +1,9 @@
 ---
-section: Checkout v3
-title: Payment Instrument Presentations
+title: Digital Wallets
+hide_from_sidebar: true
 description: |
-  **An overview of all the payment instruments Checkout v3 has to offer.**
+  **An overview of the Digital Wallets Checkout v3 has to offer, and a list
+  of additional steps you must complete to activate them.**
 menu_order: 400
 ---
 
@@ -97,6 +98,12 @@ with **Name**, **Organizational** and **Customer number**.
                          prev_title="Back to Get Started" %}
 
 ## Google Pay&trade;
+
+{% include alert.html type="informative" icon="info" header="Google Pay&trade;
+in apps" body="We do not currently support launching Google Pay&trade; within an
+in-app solution. If you want to implement Google Pay&trade; in your web-view
+application, you will need to open it in a browser and open the Checkout from
+there." %}
 
 Google Pay&trade; enables quicker, safer checkout in apps and websites, and
 makes it easy for customers to pay with their phones. With a simple integration,
@@ -233,7 +240,7 @@ environment to ensure the customers details are kept safe.
 [irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
 [payex-domain-file]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
 [pd-request]: https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest
-[req-con-address]: /checkout-v3/payments-only/features/optional/request-delivery-info
+[req-con-address]: /checkout-v3/features/optional/request-delivery-info
 [web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
 [web-googlepay-checklist]: https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist
 [web-googlepay-devdoc]: https://developers.google.com/pay/api/web/

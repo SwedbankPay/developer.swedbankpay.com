@@ -2,6 +2,7 @@
     old-implementations/checkout-v2,
     checkout-v3/enterprise,
     checkout-v3/payments-only,
+    checkout-v3,
     old-implementations/payment-menu-v2,
     gift-cards,
     card,

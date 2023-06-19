@@ -9,12 +9,8 @@ menu_order: 300
 
 The **Enterprise Redirect** integration consists of three
 main steps. **Creating** the payment order, **displaying** the payment menu, and
-**capturing** the funds. In addition, there are other post purchase options you
+**capturing** the funds. In addition, there are other post-purchase options you
 need. We get to them later on.
-
-If you want to get an overview before proceeding, you can look at the [sequence
-diagram][sequence-diagram]. It is also available in the sidebar if you want to
-look at it later. Let´s get going with the two first steps of the integration.
 
 ## Step 1: Create Payment Order
 
@@ -93,8 +89,7 @@ capture and the other options you have after the purchase.
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
                          next_href="post-purchase"
-                         next_title="Post Purchase" %}
+                         next_title="Post-Purchase" %}
 
 [abort-feature]: /checkout-v3/enterprise/features/core/abort
-[sequence-diagram]: /checkout-v3/sequence-diagrams#enterprise-redirect
 [redirect-enterprise-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png

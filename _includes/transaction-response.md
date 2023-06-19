@@ -2,7 +2,7 @@
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {%- capture operations_href -%}
     {%- if documentation_section == nil or documentation_section == empty -%}
-        /introduction#operations
+        /checkout-v3/resources/fundamental-principles#operations
     {%- else -%}
         {%- include utils/documentation-section-url.md href='/features/technical-reference/operations' -%}
     {%- endif -%}

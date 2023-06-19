@@ -8,8 +8,8 @@
 {%- capture text -%}
     The relative URL and unique identifier of the
     `{{ resource }}` resource {{ sub_resource_text }}.
-    Please read about [URL Usage](/introduction#url-usage) to
-    understand how this and other URLs should be used in your solution.
+    Please read about [URL Usage](/checkout-v3/resources/fundamental-principles#url-usage)
+    to understand how this and other URLs should be used in your solution.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

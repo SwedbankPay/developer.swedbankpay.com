@@ -324,13 +324,13 @@ Content-Type: application/json
 }
 ```
 
-### Credit Account `Paid` Resource
+### Installment Account `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {:.code-view-header}
-**Credit Account Response**
+**Installment Account Response**
 
 ```http
 HTTP/1.1 200 OK
@@ -378,7 +378,9 @@ Content-Type: application/json
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
-    "details": {}
+    "details": {
+      "trustlyOrderId": 1234567890
+    }
   }
 }
 ```
