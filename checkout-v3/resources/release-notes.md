@@ -10,6 +10,46 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 19 June 2023
+
+### Version 4.3.0
+
+You spoke, we listened! We have worked a lot on making the portal easier to
+navigate. The main menu has been slimmed down, where we have removed the
+Introduction (but you can still read the main points under
+[fundamental principles][fundamental-principles]). If you are looking for the
+[Resources][resources] and [Modules & SDK][modules-sdks] sections, they have
+found a new home under Checkout v3.
+
+Speaking of Checkout v3[Checkout v3][checkout-v3], we've cleaned that up as
+well, and hope it will make things easier for you. The
+[payment request example][payment-request] now contains what you need to create
+a payment order. Adding more to it is up to you and the [features][features]
+section. The common implementations steps have been merged to avoid duplicate
+information, only sending you separate places when it's time to
+[display the ui][display-ui].
+
+A new [terminal section][pax-terminal] has been added. Exciting things are
+coming, so we will make sure it grows and develops going forward.
+
+Other highlights and important changes include:
+
+*   A new [Payout section][payout], currently supporting Trustly.
+*   An important field related to Network Tokenization has been added to the
+  [Paid models][resource-model-paid]
+*   A separate [split settlement section][split-settlement], previously a part
+    of settlement & reconciliation
+*   Links to our [partner pages][partners]
+*   How to contact us before you get started [how to contact us before you get
+  started][contact us]
+*   3DS2 is now named Frictionless Payments [Frictionless
+  payments][frictionless-payments]
+*   [Order items][order-items] have been moved to optional features.
+*   Terms of Service [Terms of Service][tos-url] has gotten its own optional
+  feature.
+
+Plus the usual handful of bug fixes and smaller changes.
+
 ## 24 April 2023
 
 ### Version 4.2.0
@@ -795,9 +835,11 @@ integration and the payer.
 [checkout-v3-matrix]: /checkout-v3
 [checkout-v3-enterprise]: /checkout-v3/enterprise
 [checkout-v3-payments-only]: /checkout-v3
+[checkout-v3]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payment-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/display-payment-ui/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[contact-us]: /#front-page-contact-partners
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
@@ -809,7 +851,10 @@ integration and the payer.
 [design-guide]: https://design.swedbankpay.com/
 [eligibility-check]: /checkout-v3/features/optional/instrument-mode#eligibility-check
 [mac]: /old-implementations/checkout-v2/features/optional/mac
+[features]: /checkout-v3/features
+[frictionless-payments]: /checkout-v3/features/core/frictionless-payments
 [frontpage]: https://developer.swedbankpay.com/
+[fundamental-principles]: /checkout-v3/resources/fundamental-principles
 [get-started]: /checkout-v3/
 [google-pay]: /checkout-v3/payment-presentations#google-pay
 [home-technical-information]: /checkout-v3/resources/fundamental-principles
@@ -828,14 +873,19 @@ integration and the payer.
 [old-implementations]: /old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
+[order-items]: /checkout-v3/features/optional/order-items
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [payment-order-update]: /checkout-v3/features/core/update
+[payment-request]: /checkout-v3/payment-request
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
 [payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
 [payments]: /old-implementations/payment-instruments-v1/
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
+[payout]: /checkout-v3/features/optional/payout
+[partners]: /checkout-v3/resources/partners
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
+[pax-terminal]: /pax-terminal/
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
@@ -844,12 +894,13 @@ integration and the payer.
 [resource-model-paid-swish]: /checkout-v3/features/technical-reference/resource-sub-models#swish-paid-resource
 [resource-model-payer]: /checkout-v3/features/technical-reference/resource-sub-models#payer
 [resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
+[resources]: /checkout-v3/resources/
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
 [resources]: /checkout-v3/resources/
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-modules]: /checkout-v3/modules-sdks
-[split-settlement]: /old-implementations/payment-instruments-v1/card/features/optional/split-settlement
+[split-settlement]: /checkout-v3/features/optional/split-settlement
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
 [status-models]: /checkout-v3/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/features/technical-reference/status-models#paid
@@ -869,6 +920,7 @@ integration and the payer.
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
 [terminology]: /checkout-v3/resources/terminology
 [test-data]: /checkout-v3/resources/test-data
+[tos-url]: /checkout-v3/features/optional/tos
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
