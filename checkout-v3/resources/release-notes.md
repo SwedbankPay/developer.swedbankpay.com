@@ -36,15 +36,14 @@ Other highlights and important changes include:
 
 *   A new [Payout section][payout], currently supporting Trustly.
 *   An important field related to Network Tokenization has been added to the
-  [Paid models][resource-model-paid]
+  [Paid models][resource-model-paid].
 *   A separate [split settlement section][split-settlement], previously a part
-    of settlement & reconciliation
-*   Links to our [partner pages][partners]
-*   [How to contact us before you get started][contact-us]
-*   3DS2 is now named [Frictionless payments][frictionless-payments]
+    of settlement & reconciliation.
+*   Links to our [partner pages][partners].
+*   [How to contact us before you get started][contact-us].
+*   3DS2 is now named [Frictionless payments][frictionless-payments].
 *   [Order items][order-items] have been moved to optional features.
-*   Terms of Service [Terms of Service][tos-url] has gotten its own optional
-  feature.
+*   [Terms of Service][tos-url] has gotten its own optional feature.
 
 Plus the usual handful of bug fixes and smaller changes.
 
