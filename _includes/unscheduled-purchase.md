@@ -11,12 +11,12 @@ is a payment which uses a `paymentToken` generated through a previous payment in
 order to charge the same card at a later time. They are done by the merchant
 without the cardholder being present.
 
-Unscheduled purchases can be used in cases where you have an agreement with
-your customer that handles both recurring orders and singular transactions.
+`Unscheduled purchase`s can be used in cases where you have an agreement with
+your customer which handles both recurring orders and singular transactions.
 Observe - it’s important that the Terms of Service clearly and understandably
 states how the payment will be done towards your customer.  Example use cases
 are car rental companies charging the payer’s card for toll road expenses after
-the rental period or different subscription services and recurring orders.
+the rental period, or different subscription services and recurring orders.
 
 ## Generating The Token
 
