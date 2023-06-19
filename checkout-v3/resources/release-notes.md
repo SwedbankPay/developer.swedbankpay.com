@@ -21,8 +21,8 @@ Introduction (but you can still read the main points under
 [Resources][resources] and [Modules & SDK][modules-sdks] sections, they have
 found a new home under Checkout v3.
 
-Speaking of Checkout v3[Checkout v3][checkout-v3], we've cleaned that up as
-well, and hope it will make things easier for you. The
+Speaking of [Checkout v3][checkout-v3], we've cleaned that up as well, and hope
+it will make things easier for you. The
 [payment request example][payment-request] now contains what you need to create
 a payment order. Adding more to it is up to you and the [features][features]
 section. The common implementations steps have been merged to avoid duplicate
@@ -40,10 +40,8 @@ Other highlights and important changes include:
 *   A separate [split settlement section][split-settlement], previously a part
     of settlement & reconciliation
 *   Links to our [partner pages][partners]
-*   How to contact us before you get started [how to contact us before you get
-  started][contact us]
-*   3DS2 is now named Frictionless Payments [Frictionless
-  payments][frictionless-payments]
+*   [How to contact us before you get started][contact-us]
+*   3DS2 is now named [Frictionless payments][frictionless-payments]
 *   [Order items][order-items] have been moved to optional features.
 *   Terms of Service [Terms of Service][tos-url] has gotten its own optional
   feature.
@@ -849,6 +847,7 @@ integration and the payer.
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
+[display-ui]: /checkout-v3/display-payment-ui/
 [eligibility-check]: /checkout-v3/features/optional/instrument-mode#eligibility-check
 [mac]: /old-implementations/checkout-v2/features/optional/mac
 [features]: /checkout-v3/features
