@@ -562,6 +562,8 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
+{% include payment-order-capture.md %}
+
 <!--lint disable final-definition -->
 
 [delete-token]: {{ features_url }}/optional/delete-token
