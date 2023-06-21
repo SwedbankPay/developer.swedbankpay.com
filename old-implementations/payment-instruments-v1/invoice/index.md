@@ -40,11 +40,9 @@ menu_order: 400
 Prior to launching Swedbank Pay Invoice Payments at your site, make sure that
 you have done the following:
 
-1.  Sent a merchant logo in .JPG format to the [Swedish
-    setup][setup-mail-sweden], [Norwegian setup][setup-mail-norway] or [Finnish
-    setup][setup-mail-finland], depending on your country. The logo will be
-    displayed on all your invoices. Minimum accepted size is 600x200 pixels, and
-    at least 300 DPI.
+1. Sent a merchant logo in .JPG format to the
+  [Norwegian setup][setup-mail-norway]. The logo will be displayed on all your
+  invoices. Minimum accepted size is 600x200 pixels, and at least 300 DPI.
 2.  Included a link to "Terms and Conditions" for Invoice.
 
 ## API Requests
@@ -98,6 +96,5 @@ sequenceDiagram
 [financing-consumer]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/financing-consumer
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png
 [purchase]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/create-payment
-[setup-mail-finland]: mailto:verkkokauppa.setup@swedbankpay.fi
 [setup-mail-norway]: mailto:ehandelsetup@swedbankpay.no
 [setup-mail-sweden]: mailto:ehandelsetup@swedbankpay.se
