@@ -13,6 +13,9 @@ As the name implies, these payments are used for transactions which happen on a
 recurring basis. Common use cases could be subscriptions for magazines,
 newspapers or streaming services.
 
+Please note that you need to do a capture after sending the recur request.
+We have added a capture section at the end of this page for that reason.
+
 ## Generating The Token
 
 First, you need an initial transaction where the `recurrenceToken` is generated

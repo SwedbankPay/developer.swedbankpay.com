@@ -18,6 +18,10 @@ states how the payment will be done towards your customer.  Example use cases
 are car rental companies charging the payer’s card for toll road expenses after
 the rental period, or different subscription services and recurring orders.
 
+Please note that you need to do a capture after sending the unscheduled request.
+We have added a capture section at the end of this page for that reason.
+
+
 ## Generating The Token
 
 First, you need an initial transaction where the `unscheduledToken` is generated
