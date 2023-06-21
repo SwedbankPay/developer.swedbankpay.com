@@ -131,8 +131,9 @@ in the Redirect or Seamless View scenarios for [credit card][card] and
 the `paymentToken` field. This must be the `paymentToken` you received in the
 initial purchase, where you specified the `generatePaymentToken` to `true`.
 
-You can add the field `noCvc` set to `true` in the `creditcard` object, which
-card specific feature fields. This disables the CVC field.
+You can add the field `noCvc` set to `false` in the `creditcard` object to make
+the CVC field present. This feature needs to be enabled in your contract.
+Otherwise it will be `true`.
 
 {% if documentation_section contains "payment-instruments" %}
 
@@ -174,7 +175,7 @@ Content-Type: application/json
 | {% icon check %} | {% f intent %}       | `string`  | {% include fields/intent.md %} |
 | {% icon check %} | {% f paymentToken %} | `string`  | The `paymentToken` value received in `GET` response towards the Payment Resource is the same `paymentToken` generated in the initial purchase request. The token allow you to use already stored card data to initiate one-click payments.                                                                                                                                                                                                                                                                                                                                                |
 |                  | {% f creditCard %}   | `object`  | An object that holds different scenarios for card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|                  | {% f noCvc, 2 %}       | `boolean` | `true` if the CVC field should be disabled for this payment in the case a stored card is used; otherwise `false` per default. To use this feature it has to be enabled on the contract with Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                 |
+|                  | {% f noCvc, 2 %}       | `boolean` | To use this feature it has to be enabled on the contract with Swedbank Pay. The CVC field is not required in the UI, but you can set it to `false` if you want to show it. Otherwise it will be set to `true`.                                                                                                                                                                                                                                                                                                                                                                               |
 
 {% endunless %}
 
