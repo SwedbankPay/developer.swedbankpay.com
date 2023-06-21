@@ -281,6 +281,8 @@ Content-Type: application/json
 }
 ```
 
+{% include capture.md %}
+
 <!--lint disable final-definition -->
 
 [payment-verify]: #verify
