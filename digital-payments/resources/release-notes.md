@@ -895,7 +895,6 @@ integration and the payer.
 [resource-models]: /digital-payments/features/technical-reference/resource-sub-models
 [resources]: /digital-payments/resources/
 [request-delivery-information]: /digital-payments/features/optional/request-delivery-info
-[resources]: /digital-payments/resources/
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-modules]: /digital-payments/modules-sdks
