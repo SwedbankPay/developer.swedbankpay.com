@@ -75,7 +75,7 @@ paymentOrder.payer = PaymentOrderPayer(
 )
 ```
 
-## Token Retrieval Checkout V3
+## Token Retrieval Digital Payments
 
 Retrieve the token by expanding the "paid" property of a previous successful
 payment. To see this in action, the example merchant backend has an endpoint
@@ -242,5 +242,5 @@ paymentOrder.disableStoredPaymentDetails = true
 ```
 
 [add-stored-details]: /old-implementations/payment-menu-v2/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
-[enterprise-payer-ref]: https://developer.swedbankpay.com/checkout-v3/enterprise/features/optional/enterprise-payer-reference
-[expanding_properties]: https://developer.swedbankpay.com/checkout-v3/resources/fundamental-principles#expansion
+[enterprise-payer-ref]: https://developer.swedbankpay.com/digital-payments/enterprise/features/optional/enterprise-payer-reference
+[expanding_properties]: https://developer.swedbankpay.com/digital-payments/resources/fundamental-principles#expansion

@@ -146,7 +146,7 @@ Please visit our [demoshop][demoshop] to see Payment Menu v2 and Payment
 Instruments v1 in action.
 
 [demoshop]: {{ page.front_end_url }}/pspdemoshop
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
+[https]: /digital-payments/resources/fundamental-principles#connection-and-protocol
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg

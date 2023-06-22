@@ -11,13 +11,13 @@ hide_from_sidebar: true
 
 {% contentfor intro_cards %}
   {% include card-extended.html
-          title='Discover Checkout v3'
+          title='Discover Digital Payments'
           no_icon=true
           button_content="Let's get started"
           text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created two options to choose from. Ready to learn more? Here's what you need to know!"
           button_type='primary'
           button_alignment='align-self-end'
-          to='/checkout-v3/'
+          to='/digital-payments/'
 
           %}
 
@@ -51,7 +51,7 @@ hide_from_sidebar: true
           {% include card.html title='Partners'
               text='A lot of partners help us deliver the best payment experience. Get to know them all here'
               icon_content='handshake'
-              to='/checkout-v3/resources/partners'
+              to='/digital-payments/resources/partners'
           %}
       </div>
   </div>
@@ -60,7 +60,7 @@ hide_from_sidebar: true
 {% contentfor release_notes %}
   <h2 id="front-page-release-notes" class="heading-line heading-line-green">What's new in the documentation</h2>
   {% include release_notes.html num_dates=3 %}
-  <a href="/checkout-v3/resources/release-notes">See full release notes</a>
+  <a href="/digital-payments/resources/release-notes">See full release notes</a>
 {% endcontentfor %}
 
 {% contentfor extras %}
@@ -71,28 +71,28 @@ hide_from_sidebar: true
               text='This is how we create an inclusive environment'
               icon_content='account_circle'
               icon_outlined=true
-              to='/checkout-v3/resources/development-guidelines'
+              to='/digital-payments/resources/development-guidelines'
           %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Test data'
               text='Get the required data for testing in our interfaces'
               icon_content='content_paste'
-              to='/checkout-v3/resources/test-data'
+              to='/digital-payments/resources/test-data'
           %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Terminology'
               text='Get a better understanding of the terms we use'
               icon_content='menu_book'
-              to='/checkout-v3/resources/terminology'
+              to='/digital-payments/resources/terminology'
           %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='See all resources (7)'
               text='Data protection, public migration key etc'
               no_icon=true
-              to='/checkout-v3/resources/'
+              to='/digital-payments/resources/'
           %}
       </div>
   </div>
