@@ -66,7 +66,7 @@ Content-Type: application/json
             "orderReference": "or-123456",
             "subsite": "MySubsite",
             "siteId": "MySiteId"
-        },  {% if documentation_section contains "checkout-v3/enterprise" %}
+        },  {% if documentation_section contains "digital-payments/enterprise" %}
         "payer": {
             "digitalProducts": false,
             "nationalIdentifier": {
@@ -108,7 +108,7 @@ Content-Type: application/json
                 "shippingNameIndicator": "01",
                 "suspiciousAccountActivity": "01"
             }
-        }, {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        }, {% endif %} {% if documentation_section contains "digital-payments/payments-only" %}
         "payer": {
             "digitalProducts": false,
             "firstName": "Leia",
@@ -217,7 +217,7 @@ Content-Type: application/json
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | | {% f requestDeliveryInfo %}                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. It will be visible in a GET response after the payment has been completed. |
 | | {% f restrictedToDeliveryInfoInstruments %}                       | `bool` | Set to `true` if you want to restrict your payment menu to only include payment instruments which return delivery info.  |
-| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                               |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
@@ -236,7 +236,7 @@ Content-Type: application/json
 |                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} |
 |                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                           |
 |                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% if documentation_section contains "checkout-v3/enterprise" %}
+| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% if documentation_section contains "digital-payments/enterprise" %}
 |                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |
 |                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. |
 |                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     | {% endif %}
@@ -244,7 +244,7 @@ Content-Type: application/json
 |  | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments).                                                                             |
 |                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/frictionless-payments).            |
-|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/checkout-v3/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
+|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/digital-payments/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
 | | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2]({{ features_url }}/core/frictionless-payments).                                                                                                                                  |
 | | {% f firstName, 2 %}                   | `string` | The first name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
 | | {% f lastName, 2 %}                   | `string` | The last name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
@@ -303,7 +303,7 @@ Content-Type: application/json
         "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b",
         "created": "2022-01-07T07:58:26.1300282Z",
         "updated": "2022-01-07T08:17:44.6839034Z",
-        "operation": "Purchase", {% if documentation_section contains "checkout-v3" %}
+        "operation": "Purchase", {% if documentation_section contains "digital-payments" %}
         "status": "Initialized", {% else %}
         "state": "Ready", {% endif %}
         "currency": "SEK",
@@ -319,8 +319,8 @@ Content-Type: application/json
             "Swish",
             "CreditAccount",
             "Trustly"
-        ],{% if documentation_section contains "checkout-v3/enterprise" %}
-        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+        ],{% if documentation_section contains "digital-payments/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "digital-payments/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
@@ -331,7 +331,7 @@ Content-Type: application/json
         },
         "orderItems": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
-        }{% if documentation_section contains "checkout-v3" %},
+        }{% if documentation_section contains "digital-payments" %},
         "history": {
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
         },
@@ -395,7 +395,7 @@ Content-Type: application/json
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | `Purchase`                                                                                                                                            |{% if documentation_section contains "checkout-v3" %}
+| {% f operation %}      | `string`     | `Purchase`                                                                                                                                            |{% if documentation_section contains "digital-payments" %}
 | {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` section for further information]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in the failed section. [Further information here]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the cancel feature section for further information]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the Abort feature section for further information]({{ features_url }}/technical-reference/status-models#aborted). |{% else %}
 | {% f state %}          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. | {% endif %}
 | {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
@@ -405,12 +405,12 @@ Content-Type: application/json
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
-| {% f implementation %}       | `string`     | The merchant's Checkout v3 implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
+| {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
+| {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
 | {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Enterprise implementation, this is triggered by not including a `payerReference` or `nationalIdentifier` in the original payment order request.                                                                                                                                                   |
 | {% f payer %}         | `string`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                  |
-| {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "checkout-v3" %}
+| {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "digital-payments" %}
 | {% f history %}     | `string`     | The URL to the [`history` resource]({{ features_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
 | {% f failed %}     | `string`     | The URL to the [`failed` resource]({{ features_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
 | {% f aborted %}     | `string`     | The URL to the [`aborted` resource]({{ features_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |

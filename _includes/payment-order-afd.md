@@ -69,7 +69,7 @@ Content-Type: application/json
 }
 ```
 
-Request fields not covered in the common Checkout v3 [`Initialized`]({{
+Request fields not covered in the common Digital Payments [`Initialized`]({{
 features_url }}/technical-reference/status-models#initialized) redirect or
 seamless view table:
 
@@ -200,4 +200,4 @@ Then the `amount` and `vatAmount` will contain the value that is authorized. The
 final amount to be paid must be passed in the capture request, and if the
 authorized amount is larger than the final amount the rest should be cancelled.
 
-[order-items]: /checkout-v3/features/optional/order-items
+[order-items]: /digital-payments/features/optional/order-items

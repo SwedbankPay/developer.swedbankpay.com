@@ -53,7 +53,7 @@ topbar:
     title: Payments
   - url: /gift-cards/
     title: Gift Cards
-  - url: /checkout-v3/resources/
+  - url: /digital-payments/resources/
     title: Resources
 google_analytics:
   tracking_id: UA-156582708-1

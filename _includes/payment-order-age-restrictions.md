@@ -26,10 +26,10 @@ order request and set it to your desired age limit, i.e. 20.
 Below is a shortened example of a payment order request. Apart from the
 new field, the payment request is similar to a standard payment order request.
 For an example of a payment order request, {% if documentation_section contains
-"checkout-v3/enterprise" %} [click
-here.](/checkout-v3/enterprise/redirect#payment-order-request) {% endif %} {% if
-documentation_section contains "checkout-v3/payments-only" %} [click
-here.](/checkout-v3/payment-request) {% endif %}
+"digital-payments/enterprise" %} [click
+here.](/digital-payments/enterprise/redirect#payment-order-request) {% endif %} {% if
+documentation_section contains "digital-payments/payments-only" %} [click
+here.](/digital-payments/payment-request) {% endif %}
 
 The response will be similar to a standard payment order response, which is also
 documented on the page linked above.
