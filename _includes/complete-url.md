@@ -1,7 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 
-{% if documentation_section contains "digital-payments" %}
+{% if documentation_section contains "checkout-v3" %}
 
 ## CompleteUrl
 

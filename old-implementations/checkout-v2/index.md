@@ -246,4 +246,4 @@ Norwegian `nb-NO` and Swedish `sv-SE`.
 
 [after-payment-capture]: /old-implementations/checkout-v2/capture
 [callback]: /old-implementations/checkout-v2/features/core/callback
-[https]: /digital-payments/resources/fundamental-principles#connection-and-protocol
+[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol

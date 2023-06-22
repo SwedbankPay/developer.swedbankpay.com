@@ -1,9 +1,9 @@
 ## Cross Channel Payments
 
-Swedbank Pay's Digital Payments API is built in a way that depends on that you,
-as a merchant, is able to store the `paymentOrderId`. The `paymentOrderId` is a
-URL which points to the specific instance of a payment order resource, but in
-some cases it will be hard to use it as a payment reference.
+Swedbank Pay's Checkout v3 API is built in a way that depends on that you, as a
+merchant, is able to store the `paymentOrderId`. The `paymentOrderId` is a URL
+which points to the specific instance of a payment order resource, but in some
+cases it will be hard to use it as a payment reference.
 
 To help you keep track of the transaction easier, we provide a unique
 identification called `referenceCode` in all v3 implementations. The code can

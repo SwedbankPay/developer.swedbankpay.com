@@ -1,5 +1,5 @@
 {%- capture text -%}
-The Digital Payments implementation type.
+The Checkout v3 implementation type.
 Omit if the integration is for _Payments Only_.
 {%- endcapture -%}
 {%- comment -%}

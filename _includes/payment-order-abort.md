@@ -5,7 +5,7 @@
 
 ## Abort
 
-{% if documentation_section contains "digital-payments" %}
+{% if documentation_section contains "checkout-v3" %}
 
 To abort a payment order, perform the `abort` operation that is returned in the
 payment order response. You need to include the following in the request body:
@@ -46,7 +46,7 @@ Content-Type: application/json
 
 ## Abort PATCH Response
 
-{% if documentation_section contains "digital-payments" %}
+{% if documentation_section contains "checkout-v3" %}
 
 The response given when aborting a payment order is equivalent to a `GET`
 request towards the `paymentorders` resource, as displayed above, with its
@@ -60,7 +60,7 @@ request towards the `paymentorders` resource, as displayed above, with its
 
 {% endif %}
 
-{% if documentation_section contains "digital-payments" %}
+{% if documentation_section contains "checkout-v3" %}
 
 {:.code-view-header}
 **Response**
@@ -89,8 +89,8 @@ Content-Type: application/json
             "Swish",
             "CreditAccount",
             "Trustly"
-        ], {% if documentation_section contains "digital-payments/enterprise" %}
-        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "digital-payments/payments-only" %}
+        ], {% if documentation_section contains "checkout-v3/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
@@ -168,7 +168,7 @@ Content-Type: application/json
 | {% f language %}                     | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | {% f availableInstruments %}         | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
 | {% f implementation %}               | `string`     | {% include fields/implementation.md %}                                                                                                                                                  |
-| {% f integration %}                  | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe.                                                                                                                               |
+| {% f integration %}                  | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe.                                                                                                                               |
 | {% f instrumentMode %}               | `bool`       | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
 | {% f guestMode %}                    | `bool`       | {% include fields/guest-mode.md %}                                                                                                                                                |
 | {% f orderItems %}                   | `string`     | {% include fields/order-items.md %}                                                                                                                            |

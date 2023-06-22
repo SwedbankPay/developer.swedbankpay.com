@@ -72,6 +72,6 @@ More info on [unscheduled purchases][unscheduled].
 
 More info on [recurring purchases][recur].
 
-[expanding_properties]: https://developer.swedbankpay.com/digital-payments/resources/fundamental-principles#expansion
-[unscheduled]: https://developer.swedbankpay.com/digital-payments/features/optional/unscheduled
-[recur]: https://developer.swedbankpay.com/digital-payments/features/optional/recur
+[expanding_properties]: https://developer.swedbankpay.com/checkout-v3/resources/fundamental-principles#expansion
+[unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
+[recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
