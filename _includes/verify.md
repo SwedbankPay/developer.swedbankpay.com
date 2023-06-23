@@ -109,7 +109,7 @@ Content-Type: application/json
         "currency": "NOK",
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",  {% if documentation_section contains "digital-payments" %}
+        "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}", {% endif %} {% unless documentation_section contains "checkout" %}
         "generatePaymentToken": true,{% endunless %} {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
@@ -127,7 +127,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite", {% if documentation_section contains "digital-payments" %}
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
             "siteId": "MySiteId", {% endif %}
         },
         "payer": {

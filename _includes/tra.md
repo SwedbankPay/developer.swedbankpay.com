@@ -26,7 +26,7 @@ Content-Type: application/json
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0",
-        "language": "sv-SE", {% if documentation_section contains "digital-payments" %}
+        "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}",{% endif %}
         "requestTraExemption": true,
@@ -45,7 +45,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite", {% if documentation_section contains "digital-payments" %}
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
             "siteId": "MySiteId", {% endif %}
         },
         "payer": {
@@ -172,7 +172,7 @@ Content-Type: application/json
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f requestTraExemption %}      | `bool`       | Set to `true` if the merchant requests a TRA exemption. |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
@@ -189,7 +189,7 @@ Content-Type: application/json
 |                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | {% f productCategory, 2 %}         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "digital-payments" %}
+|                  | {% f subsite, 2 %}                 | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "checkout-v3" %}
 |                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                                                    | {% endif %}
 |                   |{% f payer %}                       | `object` | The payer object.       |
 |                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |

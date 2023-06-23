@@ -9,9 +9,9 @@
         mobilepay
     {%- when "checkout-v2" -%}
          paymentorders
-     {%- when "digital-payments/enterprise" -%}
+     {%- when "checkout-v3/enterprise" -%}
          paymentorders
-     {%- when "digital-payments/payments-only" -%}
+     {%- when "checkout-v3/payments-only" -%}
          paymentorders
     {%- when "payment-menu" -%}
         paymentorders

@@ -58,7 +58,7 @@ Content-Type: application/json
         "description": "Create TransactionOnFileToken",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
-        "generateTransactionOnFileToken": true, {% if documentation_section contains "digital-payments" %}
+        "generateTransactionOnFileToken": true, {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}",{% endif %}
         "urls": {
@@ -74,7 +74,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite", {% if documentation_section contains "digital-payments" %}
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
             "siteId": "MySiteId", {% endif %}
         },
         "payer": {

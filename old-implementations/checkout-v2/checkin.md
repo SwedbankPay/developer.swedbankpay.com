@@ -295,6 +295,6 @@ and its duration.
 [checkin-options]: /assets/img/checkout/checkin-options.png
 [checkin-ssn]: /assets/img/checkout/checkin-ssn.png
 [checkin-events]: /old-implementations/checkout-v2/features/technical-reference/checkin-events
-[data-protection]: /digital-payments/resources/data-protection#paymentorder-consumer-data
+[data-protection]: /checkout-v3/resources/data-protection#paymentorder-consumer-data
 [payment-menu]: payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html

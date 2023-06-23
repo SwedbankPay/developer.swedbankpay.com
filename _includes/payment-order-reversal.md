@@ -3,7 +3,7 @@
 {% assign operations_url = '/operations' | prepend: techref_url %}
 {% capture documentation_section %}{%- include utils/documentation-section.md -%}{% endcapture %}
 
-{% if documentation_section contains "digital-payments" %}
+{% if documentation_section contains "checkout-v3" %}
 
 ## Reversal
 

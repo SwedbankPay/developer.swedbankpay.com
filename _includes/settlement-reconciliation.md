@@ -33,9 +33,9 @@ process for you, or you handle the process yourself:
 Swedbank Pay handles the settlement process on your behalf, (_called
 “Redovisningsservice”_). Swedbank Pay transfers the net amount to you directly.
 
-{% if documentation_section contains "digital-payments" %}
+{% if documentation_section contains "checkout-v3" %}
 
-When choosing [Swedbank Pay Checkout][digital-payments] we will always handle the
+When choosing [Swedbank Pay Checkout][checkout-v3] we will always handle the
 settlement process for you, gathering all your eCommerce payments in one place.
 Straighforward and time efficient.
 
@@ -324,7 +324,7 @@ be downloaded below. **Make sure that you choose the examples from your**
 
 [balance-report-sbp-pdf]: /assets/documents/r1234-0001-redov.service.pdf
 [checkout-v2]: /old-implementations/{{ checkout_version }}
-[digital-payments]: /{{ checkout_version }}
+[checkout-v3]: /{{ checkout_version }}
 [trans-list-sbp-xlsx]: /assets/documents/transaktionsstatistik-redovisningsservice.xlsx
 [trans-list-sbp-xml]: /assets/documents/transaktionsstatistik-redovisningsservice.xml
 [transaction-list]: #transaction-list
