@@ -10,6 +10,17 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 23 June 2023
+
+### Version 4.3.1
+
+A small batch of changes which barely missed the last deadline. We've done a few
+additions and corrections, most notably more information regarding the
+[Eligibility Check][eligibility-check], and the availability of
+[Invoice][invoice] for **Swedish** merchants, where the payment instrument
+integrations have been removed. You have to go through an implementation using
+[payment order][checkout-v3] to offer this in **Sweden**.
+
 ## 19 June 2023
 
 ### Version 4.3.0
