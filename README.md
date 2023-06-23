@@ -230,8 +230,8 @@ agreement][cla].
 [coc]: ./CODE_OF_CONDUCT.md
 [codacy-badge]: https://app.codacy.com/project/badge/Grade/2dcec08155e142e2935eb54605d933ce
 [codacy]: https://www.codacy.com/gh/SwedbankPay/developer.swedbankpay.com/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SwedbankPay/developer.swedbankpay.com&amp;utm_campaign=Badge_Grade
-[config-yml]: _config.yml
-[dev-guidelines]: https://developer.swedbankpay.com/checkout-v3/resources/development-guidelines
+[config-yml]:_config.yml
+[dev-guidelines]: https://developer.swedbankpay.com/digital-payments/resources/development-guidelines
 [dev-portal]: https://developer.swedbankpay.com/
 [docker-install]: https://www.docker.com/
 [docker]: #docker

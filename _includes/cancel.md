@@ -5,7 +5,7 @@ specific payment.
 
 ## Create Cancel Transaction
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "digital-payments" %}
 
 Perform the `cancel` operation to cancel a previously created payment.
 You can only cancel a payment - or part of payment - not yet captured.

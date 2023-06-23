@@ -1,8 +1,8 @@
 {%- capture sections -%}
     old-implementations/checkout-v2,
-    checkout-v3/enterprise,
-    checkout-v3/payments-only,
-    checkout-v3,
+    digital-payments/enterprise,
+    digital-payments/payments-only,
+    digital-payments,
     old-implementations/payment-menu-v2,
     gift-cards,
     card,

@@ -55,7 +55,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "generateUnscheduledToken": true, {% if documentation_section contains "checkout-v3" %}
+        "generateUnscheduledToken": true, {% if documentation_section contains "digital-payments" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}", {% endif %}
         "urls": {
@@ -73,7 +73,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite",  {% if documentation_section contains "checkout-v3" %}
+            "subsite": "MySubsite",  {% if documentation_section contains "digital-payments" %}
             "siteId": "MySiteId", {% endif %}
         },
         "payer": {
@@ -166,8 +166,8 @@ Content-Type: application/json
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |                                                 |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-|                  | {% f generateUnscheduledToken %}| `boolean`     | `true` or `false`. Set to `true` if you want to generate an `unscheduledToken` for future unscheduled purchases (Merchant Initiated Transactions).       | {% if documentation_section contains "checkout-v3" %}
-| {% icon check %} | {% f productName %}                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+|                  | {% f generateUnscheduledToken %}| `boolean`     | `true` or `false`. Set to `true` if you want to generate an `unscheduledToken` for future unscheduled purchases (Merchant Initiated Transactions).       | {% if documentation_section contains "digital-payments" %}
+| {% icon check %} | {% f productName %}                 | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}                 | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         | {% endif %}
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
@@ -183,7 +183,7 @@ Content-Type: application/json
 |                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | {% f productCategory, 2 %}         | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                                           |
 |                  | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                                                  |
-|                  | {% f subsite, 2 %}                | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "checkout-v3" %}
+|                  | {% f subsite, 2 %}                | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "digital-payments" %}
 |                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                                                                                          | {% endif %}
 |                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 | | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
@@ -249,7 +249,7 @@ Content-Type: application/json
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
         "updated": "2020-06-22T10:56:56.4035291Z",
-        "operation": "Purchase", {% if documentation_section contains "checkout-v3" %}
+        "operation": "Purchase", {% if documentation_section contains "digital-payments" %}
         "status": "Initialized", {% else %}
         "state": "Ready", {% endif %}
         "currency": "SEK",
@@ -265,8 +265,8 @@ Content-Type: application/json
           "Invoice-PayMonthlyInvoiceSe",
           "Swish",
           "CreditAccount",
-          "Trustly" ],{% if documentation_section contains "checkout-v3/enterprise" %}
-        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
+          "Trustly" ],{% if documentation_section contains "digital-payments/enterprise" %}
+        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "digital-payments/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %}
         "integration": "HostedView", //For Seamless View integrations
         "integration": "Redirect", //For Redirect integrations
@@ -277,7 +277,7 @@ Content-Type: application/json
         },
         "orderItems": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
-        }{% if documentation_section contains "checkout-v3" %},
+        }{% if documentation_section contains "digital-payments" %},
         "history": {
         "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
         },
@@ -340,7 +340,7 @@ Content-Type: application/json
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | `Purchase`                                                                                                                                     | {% if documentation_section contains "checkout-v3" %}
+| {% f operation %}      | `string`     | `Purchase`                                                                                                                                     | {% if documentation_section contains "digital-payments" %}
 | {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). | {% else %}
 | {% f state %}          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. | {% endif %}
 | {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
@@ -350,14 +350,14 @@ Content-Type: application/json
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | {% f unscheduledToken %}     | `string`     | The generated unscheduledToken, if `operation: Verify`, `operation: UnscheduledPurchase` or `generateUnscheduledToken: true` was used.                                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   | {% if documentation_section contains "checkout-v3" %}
-| {% f implementation %}       | `string`     | The merchant's Checkout v3 implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
-| {% f integration %}       | `string`     | The merchant's Checkout v3 integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           | {% endif %}
+| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   | {% if documentation_section contains "digital-payments" %}
+| {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
+| {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           | {% endif %}
 | {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
-| {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |{% if documentation_section contains "checkout-v3" %}
+| {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |{% if documentation_section contains "digital-payments" %}
 | {% f payer %}         | `string`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 | {% else %}
 | {% f payer %}         | `string`     | The URL to the `payer` resource where information about the payer can be retrieved. | {% endif %}
-| {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "checkout-v3" %}
+| {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "digital-payments" %}
 | {% f history %}     | `string`     | The URL to the [`history` resource]({{ features_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
 | {% f failed %}     | `string`     | The URL to the [`failed` resource]({{ features_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
 | {% f aborted %}     | `string`     | The URL to the [`aborted` resource]({{ features_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
@@ -372,7 +372,7 @@ Content-Type: application/json
 
 ## GET The Token
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "digital-payments" %}
 
 The token can be retrieved by performing a [`GET` towards
 `paid`][paid-resource-model]. It will be visible under `tokens` in the `paid`
@@ -429,7 +429,7 @@ When you are ready to perform the unscheduled purchase, simply add the
 value. Your request should look like the example below, and the response will
 match the `paymentOrder` response from the initial purchase.
 
-{% if documentation_section contains "checkout-v3" %}
+{% if documentation_section contains "digital-payments" %}
 
 ## After The Unscheduled Purchase
 
@@ -471,7 +471,7 @@ Content-Type: application/json
         "vatAmount": 0,
         "description": "Test Unscheduled Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO", {% if documentation_section contains "checkout-v3" %}
+        "language": "nb-NO", {% if documentation_section contains "digital-payments" %}
         "productName": "Checkout3",
         "implementation": "{{implementation}}", {% endif %}
         "urls": {
@@ -483,7 +483,7 @@ Content-Type: application/json
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "subsite": "MySubsite", {% if documentation_section contains "digital-payments" %}
             "siteId": "MySiteId", {% endif %}
         },
         "payer": {
@@ -524,8 +524,8 @@ Content-Type: application/json
 | {% icon check %} | {% f vatAmount %}            | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f description %}          | `string`     | {% include fields/description.md %}                                                                                                                                                                                     |
 | {% icon check %} | {% f userAgent, 2 %}           | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                  |
-| {% icon check %} | {% f language, 2 %}            | `string`     | {% include fields/language.md %}                                                                                                                                                     | {% if documentation_section contains "checkout-v3" %}
-| {% icon check %} | {% f productName %}                 | `string`     | Used to tag the payment as Checkout v3. Mandatory for Checkout v3, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              | {% endif %}
+| {% icon check %} | {% f language, 2 %}            | `string`     | {% include fields/language.md %}                                                                                                                                                     | {% if documentation_section contains "digital-payments" %}
+| {% icon check %} | {% f productName %}                 | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              | {% endif %}
 |                  | {% f implementation %}                 | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f urls, 2 %}                | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                                                                                          |
 | {% icon check %} | {% f callbackUrl, 2 %}         | `string`     | {% include fields/callback-url.md %}                                                                                                                              |
@@ -536,7 +536,7 @@ Content-Type: application/json
 | {% icon check %} | {% f payeeName, 2 %}           | `string`     | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                               |
 | {% icon check %} | {% f productCategory, 2 %}     | `string`     | A product category or number sent in from the payee/merchant. This is not validated by Swedbank Pay, but will be passed through the payment process and may be used in the settlement process.                                                                                        |
 | {% icon check %} | {% f orderReference, 2 %}      | `string(50)` | The order reference should reflect the order reference found in the merchant's systems.                                                                                                                                                                                               |
-| {% icon check %} | {% f subsite, 2 %}             | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "checkout-v3" %}
+| {% icon check %} | {% f subsite, 2 %}             | `string(40)` | {% include fields/subsite.md %} | {% if documentation_section contains "digital-payments" %}
 |                  | {% f siteId, 2 %}                 | `string(15)` | {% include fields/site-id.md %}                    | {% endif %}
 |                  | {% f payer %}                | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | {% f payerReference, 2 %}      | `string`     | {% include fields/payer-reference.md %}                                                                                                                                                                                                                                                           |
@@ -569,6 +569,6 @@ Content-Type: application/json
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture
-[payment-order-cancel]: /checkout-v3/post-purchase#cancel
-[payment-order-capture]: /checkout-v3/post-purchase#capture
+[payment-order-cancel]: /digital-payments/post-purchase#cancel
+[payment-order-capture]: /digital-payments/post-purchase#capture
 [verify]: {{ features_url }}/optional/verify
