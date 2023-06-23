@@ -12,11 +12,12 @@ payment in order to charge the same card at a later time. They are done by the
 merchant without the cardholder being present.
 
 `Unscheduled purchase`s can be used in cases where you have an agreement with
-your customer which handles both recurring orders and singular transactions.
+your customer which handles both recurring orders and/or singular transactions.
 Observe - it’s important that the Terms of Service clearly and understandably
-states how the payment will be done towards your customer.  Example use cases
-are car rental companies charging the payer’s card for toll road expenses after
-the rental period, or different subscription services and recurring orders.
+states how the payment will be done towards your customer. Example use cases are
+car rental companies charging the payer’s card for toll road expenses after the
+rental period, or different subscription services and recurring orders where the
+periodicity and/or amount varies.
 
 Please note that you need to do a capture after sending the unscheduled request.
 We have added a capture section at the end of this page for that reason.
