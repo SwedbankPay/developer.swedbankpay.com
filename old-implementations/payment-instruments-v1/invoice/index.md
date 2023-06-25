@@ -35,12 +35,12 @@ menu_order: 400
                       The payment process will be executed in an `iframe` on
                       your page." %}
 
-### ## Important Steps Before You Launch Invoice At Your Website
+## Important Steps Before You Launch Invoice At Your Website
 
 Prior to launching Swedbank Pay Invoice Payments at your site, make sure that
 you have done the following:
 
-1. Sent a merchant logo in .JPG format to the
+1.  Sent a merchant logo in .JPG format to the
   [Norwegian setup][setup-mail-norway]. The logo will be displayed on all your
   invoices. Minimum accepted size is 600x200 pixels, and at least 300 DPI.
 2.  Included a link to "Terms and Conditions" for Invoice.

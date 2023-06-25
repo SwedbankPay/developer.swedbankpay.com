@@ -75,7 +75,7 @@ paymentOrder.payer = PaymentOrderPayer(
 )
 ```
 
-## Token Retrieval Checkout V3
+## Token Retrieval Digital Payments
 
 Retrieve the token by expanding the "paid" property of a previous successful
 payment. To see this in action, the example merchant backend has an endpoint

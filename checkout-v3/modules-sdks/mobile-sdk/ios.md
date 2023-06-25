@@ -259,7 +259,8 @@ let paymentOrder = SwedbankPaySDK.PaymentOrder(
 
 To start a payment, create a `SwedbankPaySDKController` and call startPayment.
 You can add it to the view hierarchy any way you like, and here we are using the
-`present` function. Note that this function always uses the new CheckoutV3.
+`present` function. Note that this function always uses the new Digital
+Payments.
 
 ```swift
 let paymentController = SwedbankPaySDKController()

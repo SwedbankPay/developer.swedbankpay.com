@@ -11,7 +11,7 @@ hide_from_sidebar: true
 
 {% contentfor intro_cards %}
   {% include card-extended.html
-          title='Discover Checkout v3'
+          title='Discover Digital Payments'
           no_icon=true
           button_content="Let's get started"
           text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created two options to choose from. Ready to learn more? Here's what you need to know!"

@@ -224,8 +224,8 @@ to the payment. The
 to help with creating the argument bundle. In most cases you only need to worry
 about the [`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] property. The
 payment process starts as soon as the `PaymentFragment` is visible. Note that
-checkoutV3 is currently opt-in, so that merchants can upgrade without too much
-breaking changes and start using the new checkoutV3 when ready.
+Digital Payments is currently opt-in, so that merchants can upgrade without too
+much breaking changes and start using the new Digital Payments when ready.
 
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
