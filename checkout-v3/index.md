@@ -1,17 +1,17 @@
 ---
-section: Checkout v3
+section: Digital Payments
 sidebar_icon: shopping_cart
 title: Introduction
 description: |
-  **A brief introduction to implementing Checkout v3.**
+  **A brief introduction to implementing Digital Payments.**
 menu_order: 1
 ---
 
-With Checkout v3, you need to be able to collect, verify and store the payer
-data, including delivery address, and build your own checkout flow. We'll store
-the card data for you, but you own it. This means that you have to remove data
-in compliance with GDPR, but you won't have to worry about handling sensitive
-card info.
+With Digital Payments, you need to be able to collect, verify and store the
+payer data, including delivery address, and build your own checkout flow. We'll
+store the card data for you, but you own it. This means that you have to remove
+data in compliance with GDPR, but you won't have to worry about handling
+sensitive card info.
 
 Our PSP lets you choose whether to offer a single payment instrument or a
 payment menu consisting of all the instruments you wish to include.
@@ -24,9 +24,9 @@ The Checkout is available in Danish `da-DK`, English (US) `en-US`, Finnish
 `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
-body="Some of the digital wallets we offer in Checkout v3 require you to take
-additional steps before we can activate them for you. Please follow the link(s)
-in the table below to read more." %}
+body="Some of the digital wallets we offer require you to take additional steps
+before we can activate them for you. Please follow the link(s) in the table
+below to read more." %}
 
 {:.table .table-plain}
 |        | Payment Instrument | Region                                    |

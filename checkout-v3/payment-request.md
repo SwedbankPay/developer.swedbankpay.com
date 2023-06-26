@@ -19,8 +19,8 @@ with payer information and a `completeUrl`.
 
 We have added `productName` to the payment order request in this integration.
 You can find it in the `paymentorder` field. This is required if you want to use
-Checkout v3. If it isn´t included in your request, you won't get the correct
-operations in the response.
+Digital Payments. If it isn´t included in your request, you won't get the
+correct operations in the response.
 
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
@@ -60,7 +60,7 @@ Read more about possible additions to the request in our
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction"
-                         next_href="/checkout-v3/display-payment-ui"
+                         next_href="/checkout-v3/display-payment-ui/"
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/core/abort

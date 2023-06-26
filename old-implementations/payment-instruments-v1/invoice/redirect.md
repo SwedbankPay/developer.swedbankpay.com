@@ -8,9 +8,10 @@ menu_order: 500
 {% assign cancel_url="/old-implementations/payment-instruments-v1/invoice/after-payment#cancellations" %}
 {% assign capture_url="/old-implementations/payment-instruments-v1/invoice/capture" %}
 
-{% include alert.html type="warning" icon="report_problem" body="**Disclaimer**:
-Redirect Invoice is about to be phased out. This section is only for merchants
-who currently have a contract with this integration." %}
+{% include alert.html type="warning" icon="report_problem" body="**Availability**:
+Note that this invoice integration is no longer available in Sweden. If you are
+a Swedish merchant and wish to offer invoice as a payment option, this has to be
+done through our payment order implementation." %}
 
 ## Introduction
 

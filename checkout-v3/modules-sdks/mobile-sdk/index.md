@@ -3,7 +3,7 @@ section: Mobile SDK
 title: Introduction
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
-  Checkout v3 to your Android and iOS applications.
+  Digital Payments to your Android and iOS applications.
   The Mobile SDK consists of three components: An Android library, an iOS
   library, and a backend component with example implementations in Node.js
   and Java.
@@ -34,11 +34,11 @@ of information about showing Checkout or Payments in a Web View][plain-webview].
 To start integrating the Swedbank Pay Mobile SDK, you need the following:
 
 *   An [HTTPS][https] enabled web server.
-*   An agreement that includes [Swedbank Pay Checkout v3][checkout],
+*   An agreement that includes [Swedbank Pay Digital Payments][checkout],
     specifically [Enterprise][checkout-enterprise] or [Payments
     Only][checkout-payments-only].
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
-    the Merchant Portal. Please observe that the Swedbank Pay Checkout v3
+    the Merchant Portal. Please observe that the Swedbank Pay Digital Payments
     implementations currently available encompasses the **`paymentmenu`** scope.
 
 It is important to secure all communication between your app and your servers.
@@ -47,12 +47,13 @@ your server, an example implementation is provided for Node.js and for Java.
 
 ## Introduction
 
-As the Mobile SDK is built on top of [Checkout v3][checkout]. It is a good idea
-to familiarize yourself with it first, as the rest of this document will assume
-some familiarity with Checkout concepts. Note, however, that you need not build
-a working Checkout v3 example with web technologies to use the Mobile SDK.
+As the Mobile SDK is built on top of [Digital Payments][checkout]. It is a good
+idea to familiarize yourself with it first, as the rest of this document will
+assume some familiarity with Checkout concepts. Note, however, that you need not
+build a working Digital Payments example with web technologies to use the Mobile
+SDK.
 
-The Mobile SDK currently provides a mobile component to show Checkout v3
+The Mobile SDK currently provides a mobile component to show Digital Payments
 [Enterprise][checkout-enterprise] or [Payments Only][checkout-payments-only] in
 a mobile application. The integrating application must set a Configuration,
 which is responsible for making the necessary calls to your backend. A

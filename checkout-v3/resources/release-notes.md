@@ -10,6 +10,21 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 26 June 2023
+
+### Version 4.3.2
+
+A small batch of changes which barely missed the last deadline. We've done a few
+correction and some major changes, most notably the renaming of **Checkout v3**
+to **Digital Payments** and **Pax Terminal** to **Payment Terminal**. The
+changes are in name only, the structure stays the same.
+
+We have also added information regarding the
+[Eligibility Check][eligibility-check], and the availability of
+[invoice][invoice] for **Swedish** merchants, where the payment instrument
+integrations have been removed. You have to go through
+[an implementation using payment order][checkout-v3] to offer this in Sweden.
+
 ## 19 June 2023
 
 ### Version 4.3.0
@@ -19,10 +34,10 @@ navigate. The main menu has been slimmed down, where we have removed the
 Introduction (but you can still read the main points under
 [fundamental principles][fundamental-principles]). If you are looking for the
 [Resources][resources] and [Modules & SDK][modules-sdks] sections, they have
-found a new home under Checkout v3.
+found a new home under Digital Payments.
 
-Speaking of [Checkout v3][checkout-v3], we've cleaned that up as well, and hope
-it will make things easier for you. The
+Speaking of [Digital Payments][checkout-v3], we've cleaned that up as well, and
+hope it will make things easier for you. The
 [payment request example][payment-request] now contains what you need to create
 a payment order. Adding more to it is up to you and the [features][features]
 section. The common implementations steps have been merged to avoid duplicate
@@ -62,7 +77,7 @@ also been added, in addition to the usual bugs and small fixes.
 ### Version 4.1.0
 
 A lot of changes are happening these days. We've made the decision to focus the
-Checkout v3 offering, so our Starter and Business implementations are no more.
+Digital Payments offering, so our Starter and Business implementations are no more.
 This means that we can do what we do best: giving you a payment experience
 packed with options. The [Payments Only][checkout-v3-payments-only]
 implementation is still here, and for those of you with a Strong Consumer
@@ -94,9 +109,9 @@ tasks and bug fixes.
 ### Version 3.1.8
 
 Bigger things are coming up around the bend, so we are stopping by with some
-smaller fixes and a [Checkout v3 matrix][checkout-v3-matrix] giving you a better
-overview over which payment instruments v3 has to offer, and the countries they
-are available.
+smaller fixes and a [Digital Payments matrix][checkout-v3-matrix] giving you a
+better overview over which payment instruments v3 has to offer, and the
+countries they are available.
 
 We'll be back soon!
 
@@ -105,14 +120,14 @@ We'll be back soon!
 ### Version 3.1.7
 
 We kick off the new year with a new field in our payment order request. Your
-Checkout v3 implementation of choice is now added in the request.
+Digital Payments implementation of choice is now added in the request.
 Version 2 of the balance report and transaction list is our second newcomer this
 release. Head over to [Settlement & Reconciliation][settlement-balance-report]
 to learn more.
 
 We have added a [paid status model][status-model-paid-v2] to Checkout v2 and
 Payment Menu v2, and the [update payment order section][payment-order-update] is
-added to Checkout v3.
+added to Digital Payments.
 
 ## 15 December 2022
 
@@ -145,11 +160,11 @@ bug fixes.
 
 ### Version 3.1.3
 
-Another small one. We've added Checkout v3 paid responses for all instruments in
-both [status][status-models] and [resource-models][resource-models], finished up
-the headers which was missing, added MobilePay to
-[Request Delivery Information][request-delivery-information] and done away with
-some more bugs and typos.
+Another small one. We've added Digital Payments `paid` responses for all
+instruments in both [status][status-models] and
+[resource-models][resource-models], finished up the headers which was missing,
+added MobilePay to [Request Delivery Information][request-delivery-information]
+and done away with some more bugs and typos.
 
 ## 02 September 2022
 
@@ -158,7 +173,7 @@ some more bugs and typos.
 We have been picking up steam since our summer break, hitting full throttle as
 September arrived. A smaller release this time around, but there are some
 important additions nonetheless. We have added a
-[siteID][checkout-v3-payments-only-redirect-request] field to checkout v3
+[siteID][checkout-v3-payments-only-redirect-request] field to Digital Payments
 implementations, re-worked nearly all
 [headers][checkout-v3-payments-only-seamless] across the portal to make
 navigation easier, added a section on
@@ -180,10 +195,10 @@ summer!
 
 Summer has finally arrived, and we have quite a treat waiting in our final
 release before the vacation pulse kicks in. Without further ado: We now proudly
-offer **Apple Pay**! It is available in all our Checkout v3 implementations and
-integrations. There are a couple of other new additions as well:
+offer **Apple Pay**! It is available in all our Digital Payments implementations
+and integrations. There are a couple of other new additions as well:
 
-*   Our [SDKs][sdk-modules] have been updated to support Checkout v3
+*   Our [SDKs][sdk-modules] have been updated to support Digital Payments
 *   You can now [request delivery information][request-delivery-information] for
   selected instruments
 *   An eligibility check [eligibility check][eligibility-check] for wallets has
@@ -208,7 +223,8 @@ integrations. There are a couple of other new additions as well:
 *   Re-wrote [Payer Aware Payment Menu][payer-aware-payment-menu]
 *   Clarified [`OnAborted` Seamless View event][seamless-view-events-onaborted]
 *   Elaborated user agent fields in requests.
-*   Added links to resource models in [Checkout v3 response tables][checkout-create-starter-paymentorder]
+*   Added links to resource models in
+    [Digital Payments response tables][checkout-create-starter-paymentorder]
 
 ## 24 February 2022
 
@@ -216,7 +232,7 @@ integrations. There are a couple of other new additions as well:
 
 *   Added descriptive card icons
 *   Added [Payer Aware Payment Menu][payer-aware-payment-menu]
-*   Added new screenshots for Checkout v3 implementations
+*   Added new screenshots for Digital Payments implementations
 *   Rewrote instrument mode section
 *   Reorganized features in the sidebar
 *   Fixed internal links

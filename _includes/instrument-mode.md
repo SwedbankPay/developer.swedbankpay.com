@@ -39,7 +39,11 @@ parameter with the specific payment instrument.
 If you want to **build your own menu** and display **at least** one wallet like
 **Apple Pay**, **Click to Pay** or **Google Pay&trade;**, you need to do an
 eligibility check. This is to ensure that the wallet is supported on the payer's
-device or browser.
+device or browser. The check helps you streamline the process, removing
+instruments that would give the payer an error message or not be displayed in
+the menu.
+
+### Using The Script
 
 Swedbank Pay provides a script to do this check, with the URL
 `ecom.<environment>.payex.com/checkout/core/integration.` Environments
@@ -48,9 +52,22 @@ integration between `checkout` and `paymentmenu`. Follow these links for [test
 environment][test-env] and [production environment][prod-env] **Checkout**
 scripts.
 
-Add the script tag to your website and do an `await payex.getAcceptedWallets()`.
-We will return a string array with the wallets eligible for that purchase. The
-format will e.g. be `["applepay"]`.
+Add the script tag to your website and perform the javascript call
+`await payex.getAcceptedWallets()`. We will return a string array with the
+wallets eligible for that purchase. The format will e.g. be
+`["applepay", "googlepay"]`.
+
+The check should be done as close as possible to the moment the payer wants to
+open the payment UI. If the payer is in a situation where they may change their
+browser and/or device between the check is done to the payment UI is opened,
+the eligibility check may not be accurate to what the UI is displaying.
+
+### Additional Details
+
+We **strongly** advice against using your own script to perform eligibility
+checks. Using our check will ensure that what we will display in the menu
+matches what you offer to the payer. If you do use your own, make sure that it
+is stricter than the one we provide.
 
 If you are not building your own menu or don't offer these wallets, there is no
 need to run the script to do the check.

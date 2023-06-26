@@ -204,7 +204,7 @@ Merchant -->>- Payer: Show Purchase complete
 *   ① See [seamless view events][payments-seamless-view-events] for further information.
 *   ② Read more about [callback][payments-callback] handling in the technical reference.
 
-{% include iterator.html prev_href="/checkout-v3/display-payment-ui"
+{% include iterator.html prev_href="/checkout-v3/display-payment-ui/"
                          prev_title="Display Payment UI"
                          next_href="/checkout-v3/post-purchase"
                          next_title="Post-Purchase" %}

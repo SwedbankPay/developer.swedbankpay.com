@@ -1,8 +1,8 @@
 ## Payment Orders
 
-The SDK works in terms of Payment Orders as used in [Checkout v3][checkout].
-Therefore, all features of payment orders are available in the SDK by using a
-suitable custom configuration.
+The SDK works in terms of Payment Orders as used in
+[Digital Payments][checkout]. Therefore, all features of payment orders are
+available in the SDK by using a suitable custom configuration.
 
 The rest of the page illustrates how to use certain Payment Order features
 with the SDK-provided Merchant Backend Configuration. Detailed descriptions

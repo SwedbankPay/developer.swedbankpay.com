@@ -69,7 +69,7 @@ Content-Type: application/json
 }
 ```
 
-Request fields not covered in the common Checkout v3 [`Initialized`]({{
+Request fields not covered in the common Digital Payments [`Initialized`]({{
 features_url }}/technical-reference/status-models#initialized) redirect or
 seamless view table:
 

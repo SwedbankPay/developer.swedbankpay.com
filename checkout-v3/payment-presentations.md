@@ -2,8 +2,8 @@
 title: Digital Wallets
 hide_from_sidebar: true
 description: |
-  **An overview of the Digital Wallets Checkout v3 has to offer, and a list
-  of additional steps you must complete to activate them.**
+  **An overview of the Digital Wallets we offer, and a list of additional steps
+  you must complete to activate them.**
 menu_order: 400
 ---
 

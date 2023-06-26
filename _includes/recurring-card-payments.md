@@ -50,6 +50,9 @@ subsequent [`recurring payment`][card-payment-recur] `POST`. This will be a
 server-to-server affair, as we have both payment instrument details and
 recurrence token from the initial payment.
 
+Please note that you need to do a capture after sending the recur request.
+We have added a capture section at the end of this page for that reason.
+
 ## Recur Request
 
 {:.code-view-header}
@@ -280,6 +283,8 @@ Content-Type: application/json
     ]
 }
 ```
+
+{% include capture.md %}
 
 <!--lint disable final-definition -->
 
