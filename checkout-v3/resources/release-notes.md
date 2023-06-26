@@ -10,6 +10,21 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 26 June 2023
+
+### Version 4.3.2
+
+A small batch of changes which barely missed the last deadline. We've done a few
+correction and some major changes, most notably the renaming of **Checkout v3**
+to **Digital Payments** and **Pax Terminal** to **Payment Terminal**. The
+changes are in name only, the structure stays the same.
+
+We have also added information regarding the
+[Eligibility Check][eligibility-check], and the availability of
+[invoice][invoice] for **Swedish** merchants, where the payment instrument
+integrations have been removed. You have to go through
+[an implementation using payment order][checkout-v3] to offer this in Sweden.
+
 ## 19 June 2023
 
 ### Version 4.3.0
