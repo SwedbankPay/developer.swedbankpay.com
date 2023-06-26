@@ -43,9 +43,9 @@ below to read more." %}
 |   ![Trustly][trustly-logo]   | Trustly            | {% flag se %} {% flag fi %}               |
 | ![Vipps][vipps-logo]     | Vipps                | {% flag no %}                             |
 
-{% include iterator.html next_href="/checkout-v3/payment-request"
+{% include iterator.html next_href="/checkout-v3/payment-request/"
                          next_title="Start Integrating" %}
-{% include iterator.html next_href="/checkout-v3/setup"
+{% include iterator.html next_href="/checkout-v3/setup/"
                          next_title="Set Up A Test Account" %}
 
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
