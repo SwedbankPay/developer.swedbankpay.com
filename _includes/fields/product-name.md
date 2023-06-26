@@ -1,6 +1,6 @@
 {%- capture field -%}
-Indicates a Checkout v3 compliant client. Required to enable Checkout v3
-functionality and operations.
+Indicates a Digital Payments compliant client. Required to enable Digital
+Payments functionality and operations.
 {%- endcapture -%}
 {{- field | strip_newlines -}}
 {%- comment -%}
