@@ -130,7 +130,7 @@ Content-Type: application/json
      "restrictedToPayoutInstruments": true,
      "generateUnscheduledToken": true,
      "description": "Bank account verification",
-     "userAgent": "{{clientUserAgent}}",
+     "userAgent": "Mozilla/5.0...",
      "language": "sv-SE",
      "urls": {
        "hostUrls": ["http://testmerchant.url"],
@@ -147,7 +147,7 @@ Content-Type: application/json
        "firstName": "Example",
        "lastName": "Name",
        "nationalIdentifier": {
-       "socialSecurityNumber": "197901311234"
+       "socialSecurityNumber": "199710202392",
        "countryCode": "SE"
      },
      "email": "test@payex.com",
@@ -313,7 +313,156 @@ Content-Type: application/json
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
-| {% f operation %}      | `string`     | `Purchase`                                                                                                                                                                                                                |
+| {% f operation %}      | `string`     | `Verify`                                                                                                                                                                                                                |
+| {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). |
+| {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
+| {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
+| {% f vatAmount %}      | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                              |
+| {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
+| {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
+| {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
+| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
+| {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
+| {% f urls %}           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
+| {% f payeeInfo %}      | `string`     | {% include fields/payee-info.md %}                                                                                                          |
+| {% f payer %}         | `string`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                  |
+| {% f history %}     | `string`     | The URL to the [`history` resource]({{ features_url }}/technical-reference/resource-sub-models#history) where information about the payment's history can be retrieved.                                                                                                                            |
+| {% f failed %}     | `string`     | The URL to the [`failed` resource]({{ features_url }}/technical-reference/resource-sub-models#failed) where information about the failed transactions can be retrieved.                                                                                                                            |
+| {% f aborted %}     | `string`     | The URL to the [`aborted` resource]({{ features_url }}/technical-reference/resource-sub-models#aborted) where information about the aborted transactions can be retrieved.                                                                                                                            |
+| {% f paid %}     | `string`     | The URL to the [`paid` resource]({{ features_url }}/technical-reference/resource-sub-models#paid) where information about the paid transactions can be retrieved.                                                                                                                            |
+| {% f cancelled %}     | `string`     | The URL to the [`cancelled` resource]({{ features_url }}/technical-reference/resource-sub-models#cancelled) where information about the cancelled transactions can be retrieved.                                                                                                                            |
+| {% f financialTransactions %}     | `string`     | The URL to the [`financialTransactions` resource]({{ features_url }}/technical-reference/resource-sub-models#financialtransactions) where information about the financial transactions can be retrieved.                                                                                                                            |
+| {% f failedAttempts %}     | `string`     | The URL to the [`failedAttempts` resource]({{ features_url }}/technical-reference/resource-sub-models#failedattempts) where information about the failed attempts can be retrieved.                                                                                                                            |
+| {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
+| {% f operations %}     | `array`      | {% include fields/operations.md %}                                                                                              |
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+## PATCH Verify Request
+
+The PATCH request towards the `verify-trustly` operation, containing the bank
+account details.
+
+```http
+PATCH /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+
+{
+    "paymentorder": {
+        "operation": "VerifyTrustly",
+        "clearingHouse": "SWEDEN",
+        "bankNumber": "6112",
+        "accountNumber": "69706212"
+    }
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                |
+| {% f clearingHouse %}      | `string`     | The clearing house of the recipient's bank account. Typically the name of a country in uppercase letters.                                                                                                                                                                                                               |
+| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example in our request or [the bank number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format).                                                                                                                                                                                                       |
+| {% f accountNumber %}      | `string`     | The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See [the account number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format) for further information.                                                                                                                                                                                        |
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+## PATCH Verify Response
+
+Note that the status in the response has changed to `Paid`, with the correlating
+disappearance of `PATCH` operations.
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "paymentOrder": {
+        "id": "/psp/paymentorders/<id>",
+        "created": "2023-07-06T05:42:07.7531238Z",
+        "updated": "2023-07-06T05:42:14.6086749Z",
+        "operation": "Verify",
+        "status": "Paid",
+        "currency": "SEK",
+        "amount": 510,
+        "vatAmount": 0,
+        "description": "Test Verification",
+        "initiatingSystemUserAgent": "PostmanRuntime/7.32.3",
+        "language": "nb-NO",
+        "availableInstruments": [
+            "Trustly"
+        ],
+        "implementation": "Enterprise",
+        "integration": "Direct",
+        "instrumentMode": false,
+        "guestMode": true,
+        "urls": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/urls"
+        },
+        "payeeInfo": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/payeeinfo"
+        },
+        "payer": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/payers"
+        },
+        "history": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/history"
+        },
+        "failed": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/failed"
+        },
+        "aborted": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/aborted"
+        },
+        "paid": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/paid"
+        },
+        "cancelled": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/cancelled"
+        },
+        "financialTransactions": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/financialtransactions"
+        },
+        "failedAttempts": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/failedattempts"
+        },
+        "metadata": {
+            "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/metadata"
+        }
+    },
+    "operations":     "operations": [
+        {
+            "method": "GET",
+            "href": "https://ecom.stage.payex.com/checkout/a8ff4fa9821b500dbb657bcba68422e20b9ba8dd2652bbc3f0f456b93774023f?_tc_tid=96f4d7cef4984a84b380e5478b7f6632",
+            "rel": "redirect-checkout",
+            "contentType": "text/html"
+        },
+        {
+            "method": "GET",
+            "href": "https://ecom.stage.payex.com/checkout/core/client/checkout/a8ff4fa9821b500dbb657bcba68422e20b9ba8dd2652bbc3f0f456b93774023f?culture=nb-NO&_tc_tid=96f4d7cef4984a84b380e5478b7f6632",
+            "rel": "view-checkout",
+            "contentType": "application/javascript"
+        }
+    ]
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
+| {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}                                                                                                                                                             |
+| {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
+| {% f operation %}      | `string`     | `Verify`                                                                                                                                                                                                                |
 | {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). |
 | {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
@@ -356,9 +505,9 @@ Content-Type: application/json
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 0,
-    "unscheduledToken": {{unscheduledToken}},
+    "unscheduledToken": "{{unscheduledToken}}",
     "description": "Bank account verification",
-    "userAgent": "{{clientUserAgent}}",
+    "userAgent": "Mozilla/5.0...",
     "language": "sv-SE",
     "urls": {
       "callbackUrl": "http://callback.url"
@@ -649,3 +798,5 @@ Content-Type: application/json
 
 [register-flow]: /assets/img/checkout/RegisterAccount-Flow.png
 [select-flow]: /assets/img/checkout/SelectAccount-Flow.png
+
+(https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)
