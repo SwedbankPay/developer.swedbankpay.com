@@ -346,9 +346,6 @@ Content-Type: application/json
 The PATCH request towards the `verify-trustly` operation, containing the bank
 account details.
 
-Note that the status in the response has changed to `Paid`, with the correlating
-disappearance of `PATCH` operations.
-
 ```http
 PATCH /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
@@ -372,13 +369,15 @@ Content-Type: application/json
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                |
 | {% f clearingHouse %}      | `string`     | The clearing house of the recipient's bank account. Typically the name of a country in uppercase letters.                                                                                                                                                                                                               |
-| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example above or [the bank number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)..                                                                                                                                                                                                       |
-| {% f accountNumber %}      | `string`     | The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See
-[the account number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format) for further information.                                                                                                                                                                                        |
+| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example above or [the bank number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format).                                                                                                                                                                                                       |
+| {% f accountNumber %}      | `string`     | The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See [the account number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format) for further information.                                                                                                                                                                                        |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
 ## PATCH Verify Response
+
+Note that the status in the response has changed to `Paid`, with the correlating
+disappearance of `PATCH` operations.
 
 ```http
 HTTP/1.1 200 OK
@@ -438,7 +437,7 @@ Content-Type: application/json
             "id": "/psp/paymentorders/1e7e8e00-dc76-4ea5-0d7d-08db7c962a83/metadata"
         }
     },
-    "operations":     "operations": [
+    "operations": [
         {
             "method": "GET",
             "href": "https://ecom.stage.payex.com/checkout/a8ff4fa9821b500dbb657bcba68422e20b9ba8dd2652bbc3f0f456b93774023f?_tc_tid=96f4d7cef4984a84b380e5478b7f6632",
