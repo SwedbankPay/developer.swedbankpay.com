@@ -346,9 +346,6 @@ Content-Type: application/json
 The PATCH request towards the `verify-trustly` operation, containing the bank
 account details.
 
-Note that the status in the response has changed to `Paid`, with the correlating
-disappearance of `PATCH` operations.
-
 ```http
 PATCH /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
@@ -372,13 +369,15 @@ Content-Type: application/json
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                |
 | {% f clearingHouse %}      | `string`     | The clearing house of the recipient's bank account. Typically the name of a country in uppercase letters.                                                                                                                                                                                                               |
-| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example above or [the bank number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)..                                                                                                                                                                                                       |
-| {% f accountNumber %}      | `string`     | The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See
-[the account number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format) for further information.                                                                                                                                                                                        |
+| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example in our request or [the bank number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format).                                                                                                                                                                                                       |
+| {% f accountNumber %}      | `string`     | The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See [the account number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format) for further information.                                                                                                                                                                                        |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
 ## PATCH Verify Response
+
+Note that the status in the response has changed to `Paid`, with the correlating
+disappearance of `PATCH` operations.
 
 ```http
 HTTP/1.1 200 OK
