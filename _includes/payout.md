@@ -372,9 +372,9 @@ Content-Type: application/json
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                                                                                                                                                                                                 |
 | {% f operation %}      | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                |
 | {% f clearingHouse %}      | `string`     | The clearing house of the recipient's bank account. Typically the name of a country in uppercase letters.                                                                                                                                                                                                               |
-| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example above or [the bank number format table][account-format]..                                                                                                                                                                                                       |
+| {% f bankNumber %}      | `string`     | The bank number identifying the recipient's bank in the given clearing house. For bank accounts in IBAN format you should just provide an empty string (""). For non-IBAN, see the example above or [the bank number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)..                                                                                                                                                                                                       |
 | {% f accountNumber %}      | `string`     | The account number, identifying the recipient's account in the bank. Can be either IBAN or country-specific format. See
-[the account number format table][account-format] for further information.                                                                                                                                                                                        |
+[the account number format table](https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format) for further information.                                                                                                                                                                                        |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -799,4 +799,5 @@ Content-Type: application/json
 
 [register-flow]: /assets/img/checkout/RegisterAccount-Flow.png
 [select-flow]: /assets/img/checkout/SelectAccount-Flow.png
-[account-format]: https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format
+
+(https://eu.developers.trustly.com/doc/reference/registeraccount#accountnumber-format)
