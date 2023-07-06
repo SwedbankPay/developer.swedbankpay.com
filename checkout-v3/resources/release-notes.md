@@ -10,6 +10,16 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 06 July 2023
+
+### Version 4.3.3
+
+We had time for one more before we clock out for summer, so we added
+[a PATCH example to our payout feature section][payout-patch]. Go check it out
+if you are on your way to implementing it.
+
+Have a great summer!
+
 ## 26 June 2023
 
 ### Version 4.3.2
@@ -897,6 +907,7 @@ integration and the payer.
 [payments]: /old-implementations/payment-instruments-v1/
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
 [payout]: /checkout-v3/features/optional/payout
+[payout-patch]: /checkout-v3/features/optional/payout#patch-verify-request
 [partners]: /checkout-v3/resources/partners
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
