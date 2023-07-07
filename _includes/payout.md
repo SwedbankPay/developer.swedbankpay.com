@@ -399,8 +399,8 @@ Content-Type: application/json
         "availableInstruments": [
             "Trustly"
         ],
-        "implementation": "Enterprise",
-        "integration": "Direct",
+        "implementation": "PaymentsOnly",
+        "integration": "",
         "instrumentMode": false,
         "guestMode": true,
         "urls": {
