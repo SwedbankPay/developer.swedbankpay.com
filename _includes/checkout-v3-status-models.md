@@ -419,6 +419,7 @@ Content-Type: application/json
             "details": {
                 "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
                 "externalNonPaymentToken": "1234567890",
+                "paymentAccountReference": "43f6b6d2cbd30c36627ec02247259",
                 "cardBrand": "Visa",
                 "cardType": "Credit",
                 "maskedPan": "492500******0004",
@@ -822,7 +823,8 @@ responses:
 | {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
 | {% f details %}                   | `integer`    | Details connected to the payment. |
 | {% f nonPaymentToken, 2 %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
-| {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
+| {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions will be populated with the `paymentAccountReference`. |
+| {% f paymentAccountReference, 2 %} | `string`     | The result of an external tokenization. The value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, the `paymentAccountReference` will also populate the externalNonPaymentToken field. |
 | {% f cardType, 2 %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
 | {% f maskedPan, 2 %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
 | {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment instrument is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
