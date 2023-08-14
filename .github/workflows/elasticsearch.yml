@@ -1,4 +1,4 @@
-name: Deploy to Azure Stage
+name: Deploy to documents to Elasticsearch
 
 on:
   push:
@@ -19,28 +19,16 @@ jobs:
             --env=production \
             --site-url=https://developer.stage.swedbankpay.com
           
+      - name: Install Nokogiri gem
+        run: gem install nokogiri
+
       - name: Index Processed HTML files to Elasticsearch
         run: |
           echo "Environment prefix is dev"
           echo "Version is 1"
           for html_file in $(find ./_site -name "*.html")
           do
-            # Extract content and metadata from the processed HTML files
-            # You may need to adjust the selectors based on your HTML structure
-            TITLE=$(pup 'title text{}' < $html_file)
-            CONTENT=$(pup 'body text{}' < $html_file)
-            # Add extraction for other fields as necessary
-            
-            # Construct the URL
-            URL_PATH="${html_file#./_site}"  # Strips the ./_site prefix
-            
-            # Create a JSON payload
-            JSON_PAYLOAD=$(jq -n \
-                              --arg id "$html_file" \
-                              --arg url "$URL_PATH" \
-                              --arg text "$CONTENT" \
-                              --arg title "$TITLE" \
-                              '{id: $id, url: $url, text: $text, title: $title}')
+            JSON_PAYLOAD=$(ruby .github/scripts/parse_html.rb $html_file)
             
             # Define the Elasticsearch URL
             URL="https://${{ secrets.ELASTICSEARCH_HOST }}/dev-developer-1/_doc"
@@ -48,9 +36,6 @@ jobs:
             echo "Indexing $html_file to $URL"
             curl --fail-with-body -X POST "$URL" \
             -H 'Content-Type: application/json' \
-            -H 'Authorization: ApiKey ${{ secrets.ELASTICSEARCH_API_KEY }}' \
+            -H 'Authorization: ApiKey ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}' \
             -d "$JSON_PAYLOAD" || exit $?
           done
-        env:
-          PUP_PATH: "/path/to/pup"  # Set this to the path of the pup binary if it's not in the PATH by default
-          
