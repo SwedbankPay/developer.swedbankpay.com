@@ -20,7 +20,10 @@ jobs:
             --site-url=https://developer.stage.swedbankpay.com
           
       - name: Install Nokogiri gem
-        run: gem install nokogiri
+        run: |
+          gem install nokogiri --user-install
+          echo "PATH=$PATH:$(ruby -e 'puts Gem.user_dir')/bin" >> $GITHUB_ENV
+          
 
       - name: Index Processed HTML files to Elasticsearch
         run: |
