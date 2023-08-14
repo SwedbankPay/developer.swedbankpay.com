@@ -28,10 +28,10 @@ jobs:
       - name: Index Processed HTML files to Elasticsearch
         run: |
           echo "Environment prefix is dev"
-          echo "Version is 1"
+          echo "Version is 2"
           for html_file in $(find ./_site -name "*.html")
           do
-            JSON_PAYLOAD=$(ruby .github/scripts/parse_html.rb $html_file)
+            ruby .github/scripts/parse_html.rb $html_file > temp_payload.json
             
             # Define the Elasticsearch URL
             URL="https://${{ secrets.ELASTICSEARCH_HOST }}/data-ecom-developer-1/_doc"
@@ -40,5 +40,6 @@ jobs:
             curl --fail-with-body -X POST "$URL" \
             -H 'Content-Type: application/json' \
             -H 'Authorization: ApiKey ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}' \
-            -d "$JSON_PAYLOAD" || exit $?
+            --data-binary @temp_payload.json || exit $?
+            rm temp_payload.json
           done
