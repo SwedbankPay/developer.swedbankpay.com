@@ -1,5 +1,6 @@
 # parse_html.rb
 require 'nokogiri'
+require 'json'
 
 html_file_path = ARGV[0]
 
