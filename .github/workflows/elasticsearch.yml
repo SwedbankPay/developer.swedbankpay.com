@@ -34,7 +34,7 @@ jobs:
             JSON_PAYLOAD=$(ruby .github/scripts/parse_html.rb $html_file)
             
             # Define the Elasticsearch URL
-            URL="https://${{ secrets.ELASTICSEARCH_HOST }}/dev-developer-1/_doc"
+            URL="https://${{ secrets.ELASTICSEARCH_HOST }}/data-ecom-developer-1/_doc"
             
             echo "Indexing $html_file to $URL"
             curl --fail-with-body -X POST "$URL" \
