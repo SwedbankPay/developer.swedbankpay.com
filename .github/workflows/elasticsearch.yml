@@ -1,46 +1,39 @@
-name: Deploy to documents to Elasticsearch
+name: Jekyll Build and Elasticsearch Indexing
 
 on:
   push:
     branches: ['index-to-elasticsearch']
-
 jobs:
-  deploy:
+  build-and-index:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: jekyll build
-        run: |
-          docker compose run \
-            -e GITHUB_BRANCH=develop \
-            -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
-            portal build \
-            --env=production \
-            --site-url=https://developer.stage.swedbankpay.com
-          
-      - name: Install Nokogiri gem
-        run: |
-          gem install nokogiri --user-install
-          echo "PATH=$PATH:$(ruby -e 'puts Gem.user_dir')/bin" >> $GITHUB_ENV
-          
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
 
-      - name: Index Processed HTML files to Elasticsearch
-        run: |
-          echo "Environment prefix is dev"
-          echo "Version is 2"
-          for html_file in $(find ./_site -name "*.html")
-          cat $html_file
-          do
-            ruby .github/scripts/parse_html.rb $html_file > temp_payload.json
-            
-            # Define the Elasticsearch URL
-            URL="https://${{ secrets.ELASTICSEARCH_HOST }}/data-ecom-developer-1/_doc"
-            
-            echo "Indexing $html_file to $URL"
-            curl --fail-with-body -X POST "$URL" \
-            -H 'Content-Type: application/json' \
-            -H 'Authorization: ApiKey ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}' \
-            --data-binary @temp_payload.json || exit $?
-            rm temp_payload.json
-          done
+    - name: Configure Elasticsearch for Jekyll
+      run: |
+        echo "elasticsearch:" >> _config.yml
+        echo "  url: ${{ secrets.ELASTICSEARCH_HOST }}" >> _config.yml
+        echo "  api_key: ${{ secrets.ELASTICSEARCH_API_KEY }}" >> _config.yml
+        echo "  number_of_shards: 1" >> _config.yml
+        echo "  number_of_replicas: 1" >> _config.yml
+        echo "  index_name: 'data-ecom.developer-1'" >> _config.yml
+        echo "  default_type: 'post'" >> _config.yml
+
+    - name: Install searchyll and Build Jekyll Site
+      run: |
+        echo "group :jekyll_plugins do" >> Gemfile
+        echo "  gem 'searchyll'" >> Gemfile
+        echo "end" >> Gemfile
+        bundle install
+        bundle exec jekyll build
+      env:
+        ELASTICSEARCH_URL: ${{ secrets.ELASTICSEARCH_HOST }}
+        # Add other environment variables if required by your Elasticsearch setup
+
