@@ -2,8 +2,7 @@ name: Jekyll Build and Elasticsearch Indexing
 
 on:
   push:
-    branches:
-      - main
+    branches: ['index-to-elasticsearch']
 
 jobs:
   build-and-index:
