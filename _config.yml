@@ -55,8 +55,6 @@ topbar:
     title: Gift Cards
   - url: /checkout-v3/resources/
     title: Resources
-google_analytics:
-  tracking_id: UA-156582708-1
 defaults:
   - values:
       layout: default
