@@ -5,7 +5,7 @@ require 'json'
 # Elasticsearch Configuration
 es_host = ENV['ELASTICSEARCH_URL']
 es_api_key = ENV['ELASTICSEARCH_API_KEY']
-index_name = 'data-ecom.developer-4' # or another name if you prefer
+index_name = 'data-ecom.developer-5' # or another name if you prefer
 
 # Setup Elasticsearch client
 client = Elasticsearch::Client.new(
@@ -30,7 +30,7 @@ def extract_content_from_html(html_content)
 end
 
 # Iterate over generated HTML files and index them
-Dir.glob('./_site/**/*.html').each do |html_file|
+Dir.glob('./_site/checkout-v3/**/*.html').each do |html_file|
   doc_content = File.read(html_file)
   title = Nokogiri::HTML(doc_content).at_css('title')&.text || "Unknown Title"
   content = extract_content_from_html(doc_content)
