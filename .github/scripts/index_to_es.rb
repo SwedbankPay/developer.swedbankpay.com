@@ -5,14 +5,15 @@ require 'json'
 # Elasticsearch Configuration
 es_host = ENV['ELASTICSEARCH_URL']
 es_api_key = ENV['ELASTICSEARCH_API_KEY']
-index_name = 'jekyll' # or another name if you prefer
+index_name = 'data-ecom.developer-3' # or another name if you prefer
 
 # Setup Elasticsearch client
 client = Elasticsearch::Client.new(
   url: es_host,
   transport_options: {
     headers: { Authorization: "ApiKey #{es_api_key}" }
-  }
+  },
+  verify_elasticsearch: false
 )
 
 # Ensure the index exists
@@ -26,8 +27,12 @@ end
 Dir.glob('./_site/**/*.html').each do |html_file|
   doc = Nokogiri::HTML(File.read(html_file))
 
-  title = doc.at_css('title').text
-  content = doc.at_css('body').text.strip
+  title_element = doc.at_css('title')
+  content_element = doc.at_css('body')
+
+  # Check if the elements are not nil before extracting text
+  title = title_element ? title_element.text : "Unknown Title"
+  content = content_element ? content_element.text.strip : "No Content"
 
   document = {
     id: html_file,
