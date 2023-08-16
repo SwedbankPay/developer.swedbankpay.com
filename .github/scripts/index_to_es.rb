@@ -10,9 +10,7 @@ index_name = 'data-ecom.developer-4' # or another name if you prefer
 # Setup Elasticsearch client
 client = Elasticsearch::Client.new(
   url: es_host,
-  transport_options: {2
-    headers: { Authorization: "ApiKey #{es_api_key}" }
-  },
+  headers: { Authorization: "ApiKey #{es_api_key}" },
   verify_elasticsearch: false
 )
 
