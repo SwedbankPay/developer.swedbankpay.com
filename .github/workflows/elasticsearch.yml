@@ -30,6 +30,7 @@ jobs:
           echo "Environment prefix is dev"
           echo "Version is 2"
           for html_file in $(find ./_site -name "*.html")
+          cat $html_file
           do
             ruby .github/scripts/parse_html.rb $html_file > temp_payload.json
             
