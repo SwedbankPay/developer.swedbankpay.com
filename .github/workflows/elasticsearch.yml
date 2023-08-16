@@ -29,5 +29,5 @@ jobs:
     - name: Index Processed HTML files to Elasticsearch
       run: ruby .github/scripts/index_to_es.rb
       env:
-        ELASTICSEARCH_URL: ${{ secrets.ELASTICSEARCH_HOST }}
+        ELASTICSEARCH_URL: https://${{ secrets.ELASTICSEARCH_HOST }}
         ELASTICSEARCH_API_KEY: ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}
