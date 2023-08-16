@@ -5,12 +5,12 @@ require 'json'
 # Elasticsearch Configuration
 es_host = ENV['ELASTICSEARCH_URL']
 es_api_key = ENV['ELASTICSEARCH_API_KEY']
-index_name = 'jekyll' # or another name if you prefer
+index_name = 'data-ecom.developer-4' # or another name if you prefer
 
 # Setup Elasticsearch client
 client = Elasticsearch::Client.new(
   url: es_host,
-  transport_options: {
+  transport_options: {2
     headers: { Authorization: "ApiKey #{es_api_key}" }
   },
   verify_elasticsearch: false
