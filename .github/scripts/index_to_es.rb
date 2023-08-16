@@ -5,7 +5,7 @@ require 'json'
 # Elasticsearch Configuration
 es_host = ENV['ELASTICSEARCH_URL']
 es_api_key = ENV['ELASTICSEARCH_API_KEY']
-index_name = 'data-ecom.developer-3' # or another name if you prefer
+index_name = 'jekyll' # or another name if you prefer
 
 # Setup Elasticsearch client
 client = Elasticsearch::Client.new(
@@ -23,16 +23,17 @@ rescue Elasticsearch::Transport::Transport::Errors::BadRequest => e
   puts "Index already exists, skipping creation."
 end
 
+def extract_content_from_html(html_content)
+  nokogiri_doc = Nokogiri::HTML(html_content)
+  content = nokogiri_doc.xpath('//article//text()').to_s.gsub(/\s+/, ' ')
+  content
+end
+
 # Iterate over generated HTML files and index them
 Dir.glob('./_site/**/*.html').each do |html_file|
-  doc = Nokogiri::HTML(File.read(html_file))
-
-  title_element = doc.at_css('title')
-  content_element = doc.at_css('body')
-
-  # Check if the elements are not nil before extracting text
-  title = title_element ? title_element.text : "Unknown Title"
-  content = content_element ? content_element.text.strip : "No Content"
+  doc_content = File.read(html_file)
+  title = Nokogiri::HTML(doc_content).at_css('title')&.text || "Unknown Title"
+  content = extract_content_from_html(doc_content)
 
   document = {
     id: html_file,
