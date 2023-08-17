@@ -14,7 +14,7 @@ group :jekyll_plugins do
   gem 'kramdown', '>= 2.3'
   gem 'kramdown-plantuml', '>= 1.3'
   gem 'rouge', '>= 4.0.1'
-  gem 'swedbank-pay-design-guide-jekyll-theme', '2.1.7.only.search.v3.d0001'
+  gem 'swedbank-pay-design-guide-jekyll-theme', '2.1.7.pre.beta.1'
 end
 
 group :test do
