@@ -1,9 +1,17 @@
 ---
-title: RequestToDisplayAsync
-description: Task\<NexoRequestResult\> RequestToDisplayAsync(string message)
+title: RequestToDisplay
+description: |
+    Call RequestToDisplay / RequestToDispalyAsync to display a message on the terminal.
 ---
+### Method Signatures
 
-Call RequestToDispalyAsync to display a message on the terminal. The method may only be called before or after a PaymentRequest has been sent to the terminal, which means it may be sent after a GetPaymentInstrument but not during the actual payment which in general starts when the amount is known.
+#### RequestToDisplay(string message)
+
+#### Task\<NexoRequestResult\> RequestToDisplayAsync(string message)
+
+### Description
+
+Call RequestToDisplay / RequestToDisplayAsync to display a message on the terminal. The method may only be called before or after a PaymentRequest has been sent to the terminal, which means it may be sent after a GetPaymentInstrument but not during the actual payment which in general starts when the amount is known.
 The displayed message stays until next request.
 
 ### Returns

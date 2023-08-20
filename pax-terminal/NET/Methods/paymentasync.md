@@ -1,7 +1,16 @@
 ---
-title: PaymentAsync
-description: async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,[decimal cashback=0], [string currency="SEK"])
+title: Payment
+description: |
+  The Payment / PaymentAsync should be called when the amount is known.
+
 ---
+### Method Signatures
+
+#### void Payment(decimal totalamount,[decimal cashback=0], [string currency="SEK"])
+
+#### async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,[decimal cashback=0], [string currency="SEK"])
+
+### Description
 
 The PaymentAsync should be called when the amount is known. It opens all available readers and waits for a payment instrument. If Alternative Payment Methods are activated it will open for that too.
 

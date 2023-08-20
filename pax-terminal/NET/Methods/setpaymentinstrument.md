@@ -1,7 +1,13 @@
 ---
 title: SetPaymentInstrument
-description: bool SetPaymentInstrument(string paymentInstrument)
+description: |
+    SetPaymentInstrument starts a payment for supplied paymentInstrument.
 ---
+### Method Signature
+
+#### bool SetPaymentInstrument(string paymentInstrument)
+
+### Description
 
 SetPaymentInstrument starts a payment for supplied paymentInstrument. This method has to be called before PaymentAsync or RefundAsync and cannot be combined with GetPaymentInstrument.
 

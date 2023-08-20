@@ -14,7 +14,7 @@ SwpTrmLib is a Net Standard 2.0 nuget package that may be used when integrating 
 package makes it simple and easy to get started.
 It has high abstraction and even if the actual protocol to the terminal changes this interface can stay the same.
 
-It offers asynchronous methods and for the [simplest form of implementation][client-style] it just takes a few calls to make a transaction.
+It offers both synchronous and asynchronous methods and for the [simplest form of implementation][client-style] it just takes a few calls to make a transaction.
 
 As of now the terminal is not prepared for a cloud connection, but by using this SDK it is possible to quickly make a small proxy service that makes whichever cloud connection that is desired.
 
@@ -35,8 +35,16 @@ handles requests from the terminal, such as display information, events, and pos
 such as a request to confirm that a receipt has been signed if needed.
 
 The second style is to act as a client only and then loose information from terminal such as events informing that a card has been inserted or removed or display
-information helping the operator to see what is going on. Transactions that need signing is not possible. Such
+information helping the operator to see what is going on. Transactions that need signing is not possible but will be in a later terminal version. Such
 transactions regard cards from outside EU for which PIN may not be required.
+
+### Synchronous methods
+
+Most available methods have an asynchronous and a synchronous version. Note that the synchronous versions internally renders a call to the asynchronous version. All results genereated due to synchronous calls are received in one callback method, [SyncRequestResult][syncrequestresult], which parameter is the same result as described for the asynchronous version.
+
+{% include alert.html type="warning" icon="warning" header="Warning"
+body= "Do not wrap the synchronous calls in async await since the methods themselves call async methods."
+%}
 
 ## Essential Methods
 
@@ -44,24 +52,24 @@ Making a transaction from scratch only takes a few method calls.
 
 *   [Create][create-method] - Creates an instance and returns an interface
 *   [Start][start-method] - Initializes the instance and starts a listener for terminal if that mode is chosen
-*   [OpenAsync][openasync] - Starts a Login Session with the terminal. The session remains until Close or a new Open call
-*   [PaymentAsync][paymentasync] - Starts a payment transaction for supplied amount.
-*   [RefundAsync][refundasync] - Starts a refund transaction for supplied amount.
-*   [CloseAsync][closeasync] - Finishes the terminal session and allows for terminal maintenance. At least once a day.
+*   [Open/OpenAsync][openasync] - Starts a Login Session with the terminal. The session remains until Close or a new Open call
+*   [Payment/PaymentAsync][paymentasync] - Starts a payment transaction for supplied amount.
+*   [Refund/RefundAsync][refundasync] - Starts a refund transaction for supplied amount.
+*   [Close/CloseAsync][closeasync] - Finishes the terminal session and allows for terminal maintenance. At least once a day.
 
 ## Handy Methods
 
 To get more than just payments and refunds
 
-*   [GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card before amount is known
+*   [GetPaymentInstrument/GetPaymentInstrumentAsync][getpaymentinstrumentasync] - Opens card readers to read card before amount is known
 *   [SetPaymentInstrument][setpaymentinstrument] - Sends a payment instrument (card number) to the terminal. Note! Only non PCI regulated cards.
-*   [RequestToDisplayAsync][requesttodisplayasync] - Sends a message to be displayed on terminal
-*   [RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Displays a yes/no question on the terminal and receive the result.
+*   [RequestToDisplay/RequestToDisplayAsync][requesttodisplayasync] - Sends a message to be displayed on terminal
+*   [RequestCustomerConfirmation/RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Displays a yes/no question on the terminal and receive the result.
 
 ## Other Available Methods
 
-*   [AbortAsync][abortasync] - Aborts something ongoing
-*   [ReverseLastAsync][reverselastasync] - Reverses the last transaction if it was approved
+*   [Abort/AbortAsync][abortasync] - Aborts something ongoing
+*   [ReverseLast/ReverseLastAsync][reverselastasync] - Reverses the last transaction if it was approved
 *   AdminAsync - Ask terminal to see if is any parameter update pending
 
 ## Events
@@ -76,10 +84,11 @@ The events are only used if running as a server.
 
 ### ISwpTrmCallbackInterface
 
-The callbacks are only used if running as a server.
+The callbacks needed if running as a server or using the synchronous method calls.
 
 *   [ConfirmationHandler][confirmationhandler]
 *   [EventNotificationHandler][eventnotificationhandler]
+*   [SyncRequestResult][syncrequestresult]
 
 [create-method]: ./Methods/create
 [start-method]: ./Methods/start
@@ -100,3 +109,4 @@ The callbacks are only used if running as a server.
 [onterminaladdressobtained]: Events/#onterminaladdressobtained
 [confirmationhandler]: ISwpTrmCallbackInterface/#confirmationhandler
 [eventnotificationhandler]: ISwpTrmCallbackInterface/#eventnotificationhandler
+[syncrequestresult]: ISwpTrmCallbackInterface/#syncrequestresult

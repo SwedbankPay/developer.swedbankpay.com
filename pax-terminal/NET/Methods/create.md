@@ -1,10 +1,16 @@
 ---
-title: Create Method
-description: Create(SwpIfConfig)
+title: Create
+description: |
+    Create is a static method that creates an instance and returns an `ISwpTrmIf` interface
 ---
+### Method Signature
+
+#### ISwpTrmIf Create(SwpIfConfig)
+
+### Description
 
 Create is a static method that creates an instance and returns an `ISwpTrmIf` interface.
-This is the first call to make. At the moment there is only one class available, PAXTrmImp_1.
+This is the first call to make. At the moment there is only one class available, PAXTrmImp_1. If more than one terminal will be used create one instance per terminal.
 
 ### Parameters
 
@@ -46,6 +52,10 @@ public class MyImplementation : ISwpTrmCallbackInterface
  // act upon
  // Requires the implementation to run as a server.
  void EventNotificationHandler(EventToNotifyEnumeration type, string text)
+ {}
+ // SyncRequestResult is called when a synchronous method has been called and
+ // the terminal has responded.
+ void SyncRequestResult(object result)
  {}
 }
 ```
