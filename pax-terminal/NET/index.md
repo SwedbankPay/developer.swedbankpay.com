@@ -52,7 +52,7 @@ Making a transaction from scratch only takes a few method calls.
 
 *   [Create][create-method] - Creates an instance and returns an interface
 *   [Start][start-method] - Initializes the instance and starts a listener for terminal if that mode is chosen
-*   [Open/OpenAsync][openasync] - Starts a Login Session with the terminal. The session remains until Close or a new Open call
+*   [Open/OpenAsync][openasync] - Starts a Login Session with the terminal. The session is valid until Close or a new Open call
 *   [Payment/PaymentAsync][paymentasync] - Starts a payment transaction for supplied amount.
 *   [Refund/RefundAsync][refundasync] - Starts a refund transaction for supplied amount.
 *   [Close/CloseAsync][closeasync] - Finishes the terminal session and allows for terminal maintenance. At least once a day.

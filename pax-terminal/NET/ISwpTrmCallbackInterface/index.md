@@ -33,7 +33,7 @@ The EventNotificationHandler callback occurs when running as a server and the te
 
 ### void SyncRequestResult(object result)
 
-This callback occurs when a syncronous method call has been used and that call has resulted in a response from the terminal.
+This callback occurs when a synchronous method call has been used and that call has resulted in a response from the terminal.
 
 e.g. A call to Payment() will eventually result in this callback method with `PaymentRequestResult` as the result parameter.
 

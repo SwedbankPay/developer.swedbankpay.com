@@ -5,9 +5,8 @@ description: |
 ---
 ### Method Signatures
 
-#### void UpdateTerminal()
-
-#### Task\<UpdateTerminalRequestResult\> UpdateTerminalAsync()
+*   void UpdateTerminal()
+*   Task\<UpdateTerminalRequestResult\> UpdateTerminalAsync()
 
 ### Description
 

@@ -3,11 +3,11 @@ title: Abort
 description: |
     The Abort/AbortAsync method will send an AbortRequest for the last issued request to the terminal.
 ---
-### Method Signatures
 
-#### void Abort()
+### Signatures
 
-#### async Task\<AbortRequestResult\> AbortAsync()
+*   void Abort()
+*   async Task\<AbortRequestResult\> AbortAsync()
 
 ### Description
 
