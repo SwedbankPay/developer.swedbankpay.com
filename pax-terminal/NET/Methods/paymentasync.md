@@ -6,9 +6,8 @@ description: |
 ---
 ### Method Signatures
 
-#### void Payment(decimal totalamount,[decimal cashback=0], [string currency="SEK"])
-
-#### async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,[decimal cashback=0], [string currency="SEK"])
+*   void Payment(decimal totalamount,decimal cashback=0, string currency="SEK")
+*   async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="SEK")
 
 ### Description
 

@@ -5,9 +5,8 @@ description: |
 ---
 ### Method Signatures
 
-#### void Open(string POIID=null)
-
-#### async Task\<OpenResult\> OpenAsync(string POIID=null)
+*   void Open(string POIID=null)
+*   async Task\<OpenResult\> OpenAsync(string POIID=null)
 
 ### Description
 

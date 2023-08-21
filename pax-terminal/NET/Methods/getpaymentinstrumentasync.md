@@ -5,9 +5,8 @@ description: |
 ---
 ### Method Signatures
 
-#### void GetPaymentInstrument()
-
-#### async Task\<GetPaymentInstrumentResult\> GetPaymentInstrumentAsync(Nexo.PaymentTypes type= Nexo.PaymentTypes.Normal)
+*   void GetPaymentInstrument()
+*   async Task\<GetPaymentInstrumentResult\> GetPaymentInstrumentAsync(Nexo.PaymentTypes type= Nexo.PaymentTypes.Normal)
 
 ### Description
 

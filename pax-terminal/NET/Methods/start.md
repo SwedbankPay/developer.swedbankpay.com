@@ -5,7 +5,7 @@ description: |
 ---
 ### Method Signature
 
-#### void Start(SaleApplInfo appinfo=null)
+*   void Start(SaleApplInfo appinfo=null)
 
 ### Description
 

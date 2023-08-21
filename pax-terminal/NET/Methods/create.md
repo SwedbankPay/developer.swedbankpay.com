@@ -5,7 +5,7 @@ description: |
 ---
 ### Method Signature
 
-#### ISwpTrmIf Create(SwpIfConfig)
+*   ISwpTrmIf Create(SwpIfConfig)
 
 ### Description
 

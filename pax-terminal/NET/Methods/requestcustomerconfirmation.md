@@ -5,9 +5,8 @@ description: |
 ---
 ### Method Signatures
 
-#### void  RequestCustomerConfirmation(string message);
-
-#### Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)
+*   void  RequestCustomerConfirmation(string message);
+*   Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)
 
 ### Description
 
