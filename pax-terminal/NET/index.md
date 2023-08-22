@@ -115,7 +115,7 @@ The events are only used if running as a server.
 [eventnotificationhandler]: ISwpTrmCallbackInterface/#eventnotificationhandler
 [syncrequestresult]: ISwpTrmCallbackInterface/#syncrequestresult
 [continue]: ./Methods/continue.md
-[getlasttransactionresult]: ./Methods/getlasttransactionresult.md
-[requestcustomerdigitstring]: ./Methods/requestcustomerdigitstring.md
-[eventcallback]: ./ISwpTrmCallbackInterface/#EventCallback
-[updateterminal]: ./Methods/updateterminalasync.md
+[getlasttransactionresult]: ./Methods/getlasttransactionresult
+[requestcustomerdigitstring]: ./Methods/requestcustomerdigitstring
+[eventcallback]: ./ISwpTrmCallbackInterface/##EventCallback
+[updateterminal]: ./Methods/updateterminalasync
