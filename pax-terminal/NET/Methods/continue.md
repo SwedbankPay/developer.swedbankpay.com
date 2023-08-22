@@ -5,7 +5,7 @@ description: |
 ---
 ### Method Signature
 
-*   void Continue()
+*   **void Continue()**
 
 ### Description
 

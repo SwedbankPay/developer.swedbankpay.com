@@ -5,8 +5,9 @@ description: |
 ---
 ### Method Signatures
 
-*   void  RequestCustomerConfirmation(string message);
-*   Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)
+*   **void  RequestCustomerConfirmation(string message)**
+
+*   **Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)**
 
 ### Description
 
@@ -16,8 +17,15 @@ Call RequestCustomerConfirmation / RequestCustomerConfirmationAsync to ask custo
 
 A **CustomerConfirmationResult**
 
-*   `bool` Confirmation - Response from customer. True if yes and false if no.
-*   `NexoRequestResult`
+```c#
+public class CustomerConfirmationResult : NexoRequestResult
+    {
+        public CustomerConfirmationResult();
+
+        public bool Confirmation { get; set; }
+        public override string ResponseContent { get; set; }
+    }
+```
 
 ```c#
 public class NexoRequestResult

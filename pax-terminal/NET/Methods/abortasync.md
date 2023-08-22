@@ -6,8 +6,9 @@ description: |
 
 ### Signatures
 
-*   void Abort()
-*   async Task\<AbortRequestResult\> AbortAsync()
+*   **void Abort()**
+
+*   **async Task\<AbortRequestResult\> AbortAsync()**
 
 ### Description
 
@@ -19,7 +20,24 @@ body="The result from AbortAsync will always have the ResponseResult \"Failure\"
 
 ### Returns
 
-AbortRequestResult
+A **AbortRequestResult**
+
+```c#
+    public class AbortRequestResult : NexoRequestResult
+    {
+        public AbortRequestResult();
+    }
+```
+
+```c#
+    public class NexoRequestResult
+    {
+        public string ResponseContent
+        public NexoResponseResult ResponseResult { get; set; }
+        public string ErrorCondition { get; set; }
+        public string ResponseText { get; set; }
+    };
+```
 
 *   `string` ErrorCondition;
 *   `string` ResponseContent;

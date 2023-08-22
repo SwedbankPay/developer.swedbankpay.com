@@ -5,7 +5,7 @@ description: |
 ---
 ### Method Signature
 
-*   bool SetPaymentInstrument(string paymentInstrument)
+*   **bool SetPaymentInstrument(string paymentInstrument)**
 
 ### Description
 

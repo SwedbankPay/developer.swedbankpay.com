@@ -5,36 +5,48 @@ description: |
 ---
 ### Signatures
 
-*   void GetLastTransactionResult()
-*   Task\<TransactionStatusResult\> GetLastTransactionResultAsync()
+*   **void GetLastTransactionResult()**
+
+*   **Task\<TransactionStatusResult\> GetLastTransactionResultAsync()**
 
 ### Returns
 
 A **TransactionStatusResult**
 
-*   `NexoResponseResult` - **ResponseResult**. `Success` or `Failure`
-*   `string` **ResponseContent** - Complete response message from terminal.
-*   `string` **ErrorCondition** - Valid if ResponseResult is failure
-*   `string` **ResponseText** - Valid if ResponseResult is failure.
-*   `JObject` [**CustomerReceiptData**][samplecustomerreceiptdata] - Raw JSON object with receiptinformation delivered from the terminal.
-*   `JObject` **MerchantReceiptData** - Raw JSON object with receiptinformation delivered from the terminal.
-*   `string` **FormattedReceipt** - An array of formatted receipt rows.
-*   `string` [**ReceiptBlob**][samplereceiptblob] - A well formatted receipt to be printed.
-*   `JObject` **SettlementData** - Obsolete
-*   `XElement` **OriginalTransaction** - Used internally.
-*   `string` **UICulture**
-*   `decimal` **TipAmount** - Tip given by the customer
-*   `string` **APMReference** - If alternatice payment, this is a reference to the transaction and is used when making a refund.
-*   `string` **APMType** - If alternative payment, this is an indicater of which type of APM that was used.
-*   `string` **ResponseContent** - The complete XML response message from the terminal.
-*   `TransactionResults` **TransactionResult** - Transaction outcome.
+```c#
+public class TransactionStatusResult : PaymentRequestResult
+{
+    public TransactionStatusResult();
+
+    public TransactionResults TransactionResult { get; }
+    public override string ResponseContent { get; set; }
+
+    public enum TransactionResults
+    {
+        PaymentApproved = 0,
+        RefundApporved = 1,
+        PaymentRejected = 2,
+        RefundRejected = 3,
+        ReversalMade = 4,
+        ReversalRejected = 5
+    }
+}
+```
 
 ```c#
-public enum TransactionResults { 
-            PaymentApproved, RefundApporved, PaymentRejected, RefundRejected, 
-            ReversalMade, ReversalRejected 
-        };
+public class PaymentRequestResult : NexoRequestResult
+{
+    public JObject CustomerReceiptData { get; set; }
+    public JObject MerchantReceiptData { get; set; }
+    public string FormattedReceipt { get; set; }
+    public string ReceiptBlob { get; set; }
+    public JObject SettlementData { get; set; }
+    public XElement OriginalTransaction { get; set; }
+    public string UICulture { get; set; }
+    public override string ResponseContent { get; set; }
+}
 ```
+
 
 [samplecustomerreceiptdata]: ./paymentasync/#customerreceiptdata---json-object
 [samplereceiptblob]: ./paymentasync/#receiptblob---fast-forward-to-well-formatted-receipt-information

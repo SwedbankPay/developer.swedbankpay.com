@@ -5,8 +5,9 @@ description: |
 ---
 ### Method Signatures
 
-*   void Refund(decimal amount,string apmreference="", string currency="SEK")
-*   async Task\<PaymentRequestResult\> RefundAsync(decimal amount,string apmreference="", string currency="SEK")
+*   **void Refund(decimal amount,string apmreference="", string currency="SEK")**
+
+*   **async Task\<PaymentRequestResult\> RefundAsync(decimal amount,string apmreference="", string currency="SEK")**
 
 ### Description
 

@@ -59,4 +59,23 @@ public void SyncRequestResult(object result)
           .
 ```
 
+```c#
+public enum RequestResultTypes
+    {
+        OpenResult = 0,
+        PaymentRequestResult = 1,
+        CustomerConfirmationResult = 2,
+        GetPaymentInstrumentResult = 3,
+        AbortRequestResult = 4,
+        NexoResponseResult = 5,
+        UpdateTerminalRequestResult = 6,
+        ClearSnFRequestResult = 7,
+        ReversalRequestResult = 8,
+        TransactionStatusResult = 9,
+        CustomerDigitStringResult = 10,
+        NexoRequestResult = 11,
+        PaymentInstrumentResult = 12
+    }
+```
+
 [clientonly]: ../CodeExamples/#as-client-only
