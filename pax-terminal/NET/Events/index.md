@@ -8,7 +8,7 @@ description: |
 menu_order: 1550
 ---
 
-# Events
+## Events
 
 The events may be replaced by the [EventCallback][eventcallback]
 
@@ -37,4 +37,4 @@ The event is only relevant when running as a server.
 
 `delegate void TerminalAddressEventHandler(string ip4, int port)`
 
-[eventcallback]: ../ISwpTrmCallbackInterface/##EventCallback
+[eventcallback]: ../ISwpTrmCallbackInterface
