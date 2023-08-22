@@ -1,15 +1,79 @@
 ---
 title: ISwpTrmCallbackInterface
+description: |
+  
 ---
 
 The callbacks are used if running as a server or using the synchronous methods.
 [Sample code running client only][clientonly].
+
+```c#
+  public interface ISwpTrmCallbackInterface
+    {
+        void ConfirmationHandler(string text, IConfirmationResult callback);
+        void EventCallback(EventCallbackObject eventObject);
+        void EventNotificationHandler(EventToNotifyEnumeration type, string text);
+        void SyncRequestResult(object result);
+    }
+```
 
 ## ConfirmationHandler
 
 ### void ConfirmationHandler(string text,IConfirmationResult callback);
 
 This callback occurs only if when running as a server to receive requests from the terminal and happens when a transaction needs to be signed by the cardholder.
+
+```c#
+  public void ConfirmationHandler(string text, IConfirmationResult callback)
+  {
+    bool response = ShowMessageAndGetResponseFromOperator(text);
+    callback->Confirmation(response);
+  }
+```
+
+```c#
+  public interface IConfirmationResult
+  {
+    void Confirmation(bool flag);
+  }
+```
+
+## EventCallback
+
+The EventCallback replaces the events that may be subscribed to from the ISwpTrmIf_1 interface. If there is a subcription to an event this callback will not be used for that event. The EventCallback is essential if using more than one terminal where each terminal has its own instance.
+
+### void EventCallback(EventCallbackObject eventObject)
+
+```c#
+  public void EventCallback(EventCallbackObject eventObject)
+    {
+        switch (eventObject.type)
+        {
+            case EventCallbackTypes.DisplayEventCallback:
+                var d = eventObject as DisplayEventCallback ;
+                break;
+            case EventCallbackTypes.NewStatusEventCallback:
+                var s = eventObject as NewStatusEventCallback;
+                // Do something useful
+                break;
+            case EventCallbackTypes.PrintRequestEventCallback:
+                var p = eventObject as PrintRequestEventCallback;
+                // print receipt
+                break;
+
+        }
+    } 
+```
+
+```c#
+public enum EventCallbackTypes
+    {
+        DisplayEventCallback = 0,
+        NewStatusEventCallback = 1,
+        TerminalAddressObtainedEventCallback = 2,
+        PrintRequestEventCallback = 3
+    }
+```
 
 ## EventNotificationHandler
 

@@ -17,7 +17,7 @@ The Open/OpenAsync call is the first method call that actually communicates with
 body= "Even if the Open is successful, some action towards the host will occur and possibly cause the next method call to fail."
 %}
 {% include alert.html type="informative" icon="info" header="Reset terminal state"
-body= "A LoginRequest that happens when calling OpenAsync, should reset states in the terminal. A login session remains until next open, close or reboot."
+body= "A LoginRequest that happens when calling OpenAsync, should reset states in the terminal. A login session lasts until next open, close or reboot."
 %}
 {% include alert.html type="informative" icon="info" header="POIID cannot change during login session"
 body= "To change POIID for a terminal a Logout or terminal reboot needs to be performed"

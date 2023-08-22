@@ -3,9 +3,14 @@ section: Events
 redirect_from: /pax-terminal/NET/Events
 title: Events of ISwpTrmIf_1
 permalink: /:path/
-description: Events are mainly when the terminal sends request to the sale system.
+description: |
+    Events are mainly when the terminal sends request to the sale system. See also the callback EventCallback
 menu_order: 1550
 ---
+
+# Events
+
+The events may be replaced by the [EventCallback][eventcallback]
 
 ## OnTerminalDisplay
 
@@ -31,3 +36,5 @@ OnTerminalAddressObtained occurs when the save button has been pressed in the te
 The event is only relevant when running as a server.
 
 `delegate void TerminalAddressEventHandler(string ip4, int port)`
+
+[eventcallback]: ../ISwpTrmCallbackInterface/#EventCallback 

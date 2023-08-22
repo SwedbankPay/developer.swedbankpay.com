@@ -16,7 +16,7 @@ With this call it is also decided whether to start a listener for terminal reque
 If using more than one terminal methods Create and Start must be called for each instance. However, there will only be one listener started.
 
 {% include alert.html type="informative" icon="informative" header="Note"
-body= "If several terminals are used, there is only one listener and all terminals call the same port."
+body="If several terminals are used, there is only one listener and all terminals call the same port."
 %}
 
 ```c#

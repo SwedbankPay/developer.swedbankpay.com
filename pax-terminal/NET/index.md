@@ -73,7 +73,18 @@ To get more than just payments and refunds
 *   [Abort/AbortAsync][abortasync] - Aborts something ongoing
 *   [Continue][continue] - May be used after `GetPaymentInstrument` to make terminal proceed with PIN dialog before amount is known
 *   [ReverseLast/ReverseLastAsync][reverselastasync] - Reverses the last transaction if it was approved
-*   AdminAsync - Ask terminal to see if is any parameter update pending
+*   [UpdateTerminal/UpdateTerminalAsync][updateterminal] - Ask terminal to see if is any parameter update pending
+
+## Callbacks
+
+### ISwpTrmCallbackInterface
+
+The callbacks needed if running as a server, using the synchronous method calls or using the EventCallback rather than subscribing to the available Events.
+
+*   [ConfirmationHandler][confirmationhandler] - When the terminal requests a  Yes/No from operator (Verify signed receipt)
+*   [EventCallback][eventcallback] - replaces subscribing to events.
+*   [EventNotificationHandler][eventnotificationhandler] - Reception of EventNotification messages from the terminal
+*   [SyncRequestResult][syncrequestresult] - Results from various synchrounous methods
 
 ## Events
 
@@ -82,16 +93,6 @@ The events are only used if running as a server.
 *   [OnTerminalDisplay][onterminaldisplay]
 *   [OnNewStatus][onnewstatus]
 *   [OnTerminalAddressObtained][onterminaladdressobtained]
-
-## Callbacks
-
-### ISwpTrmCallbackInterface
-
-The callbacks needed if running as a server or using the synchronous method calls.
-
-*   [ConfirmationHandler][confirmationhandler]
-*   [EventNotificationHandler][eventnotificationhandler]
-*   [SyncRequestResult][syncrequestresult]
 
 [create-method]: ./Methods/create
 [start-method]: ./Methods/start
@@ -116,3 +117,5 @@ The callbacks needed if running as a server or using the synchronous method call
 [continue]: ./Methods/continue.md
 [getlasttransactionresult]: ./Methods/getlasttransactionresult.md
 [requestcustomerdigitstring]: ./Methods/requestcustomerdigitstring.md
+[eventcallback]: ./ISwpTrmCallbackInterface/#EventCallback
+[updateterminal]: ./Methods/updateterminalasync.md

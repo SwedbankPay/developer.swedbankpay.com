@@ -9,6 +9,10 @@ description: |
 
 *   **Task\<TransactionStatusResult\> GetLastTransactionResultAsync()**
 
+### Description
+
+Requests a copy of the result for the last transaction, which is useful if the original result has been lost for some reason.
+
 ### Returns
 
 A **TransactionStatusResult**
@@ -46,7 +50,3 @@ public class PaymentRequestResult : NexoRequestResult
     public override string ResponseContent { get; set; }
 }
 ```
-
-
-[samplecustomerreceiptdata]: ./paymentasync/#customerreceiptdata---json-object
-[samplereceiptblob]: ./paymentasync/#receiptblob---fast-forward-to-well-formatted-receipt-information
