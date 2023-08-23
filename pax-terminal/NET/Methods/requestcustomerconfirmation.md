@@ -1,16 +1,31 @@
 ---
-title: RequestCustomerConfirmationAsync
-description: Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)
+title: RequestCustomerConfirmation
+description: |
+    Call RequestCustomerConfirmation / RequestCustomerAsync to ask the customer a yes/no question.
 ---
+### Method Signatures
 
-Call RequestCustomerAsync to ask customer a yes/no question. The message will be shown on the terminal's display together with a green and read button for yes and no. The method may only be called before or after a PaymentRequest has been sent to the terminal, which means it may be sent after a GetPaymentInstrument, but not during the actual payment which in general starts when the amount is known.
+*   **void  RequestCustomerConfirmation(string message)**
+
+*   **Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)**
+
+### Description
+
+Call RequestCustomerConfirmation / RequestCustomerConfirmationAsync to ask customer a yes/no question. The message will be shown on the terminal's display together with a green and read button for yes and no. The method may only be called before or after a PaymentRequest has been sent to the terminal, which means it may be sent after a GetPaymentInstrument, but not during the actual payment which in general starts when the amount is known.
 
 ### Returns
 
 A **CustomerConfirmationResult**
 
-* `bool` **Confirmation** - Response from customer. True if yes and false if no.
-* **NexoRequestResult**
+```c#
+public class CustomerConfirmationResult : NexoRequestResult
+    {
+        public CustomerConfirmationResult();
+
+        public bool Confirmation { get; set; }
+        public override string ResponseContent { get; set; }
+    }
+```
 
 ```c#
 public class NexoRequestResult
