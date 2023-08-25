@@ -3,7 +3,7 @@
 {% include alert.html type="warning" icon="warning" body="Please note that this
 feature is only available through Payment Order, and the service is asynchronous
 which will require a compatible implementation. Using a similar implementation
-to Credit Card Recur will therefore not work." %}
+to Credit Card Unscheduled will therefore not work." %}
 
 An `unscheduled purchase`, also called a Merchant Initiated Transaction (MIT),
 is a payment which uses a `paymentToken` generated through a previous payment in
@@ -18,8 +18,7 @@ to make sure the `email` field is set, as this is a required parameter. If the
 payments menu.
 
 If you enable `callbackEnabled` and send a `callbackUrl`, you can expect to get
-a callback when the payment is finised. The alternative is setting up polling to
-poll for a state.
+a callback when the payment is finished.
 
 ## Creating The Payment
 
