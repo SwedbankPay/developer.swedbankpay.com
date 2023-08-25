@@ -83,7 +83,7 @@ these Network Tokenization related fields.
 | {% f expiryDate, 2 %}      | `string`  | The expiry date of the card currently connected to the network token.                                  |
 | {% f cardBrand, 2 %}                 | `string` | The brand of the card currently connected to the network token.                                          |
 | {% f lastFourPan, 2 %}               | `string`  | The last four digits of the PAN connected to the network token. |
-| {% f lastFourDpan, 2 %}                 | `string` | The masked version of the PAN connectd to the network token.                                           |
+| {% f lastFourDpan, 2 %}                 | `string` | The last four digits of the digital PAN connected to the network token.                                           |
 | {% f issuerName, 2 %}               | `string`  | The name of the issuer. |
 
 *   If you do **not** display updated card information to your end-user, you are
@@ -97,11 +97,11 @@ providing said card.
 to end the service with the you. This is to avoid unnecessary cost on your end,
 as you are invoiced monthly for each active token.
 
-*   Please note the new field `maskedDpan` are present when using Network
-Tokenization. The end-user will not normally know what `maskedDpan` is or that
-it's being used, but you as a merchant need to keep track of it. It is a masked
-version of the network token representing the card, and will only appear if the
-card is tokenized by Visa or Mastercard. See the
+*   Please note the new field `maskedDpan` (masked Digital Pan) are present when
+using Network Tokenization. The end-user will not normally know what
+`maskedDpan` is or that it's being used, but you as a merchant need to keep
+track of it. It is a masked version of the network token representing the card,
+and will only appear if the card is tokenized by Visa or Mastercard. See the
 [Paid resource for cards][paid-resource-model].
 
 [card]: https://developer.swedbankpay.com/old-implementations/payment-instruments-v1/card/
