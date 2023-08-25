@@ -21,10 +21,10 @@
  **Request**
 
  ```http
- POST /psp/paymentorders HTTP/1.1
- Host: {{ page.api_host }}
- Authorization: Bearer <AccessToken>
- Content-Type: application/json
+POST /psp/paymentorders HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
       "orderItems": [
              {
                  "reference": "I1",
