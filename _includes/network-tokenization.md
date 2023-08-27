@@ -38,17 +38,19 @@ your merchant. When we get confirmation from Visa and Mastercard, it will be
 enabled.
 
 Once the setup is completed, the transactions themselves run as normal
-unscheduled or recurring purchases. The difference is that the token will be
-created by the network instead of Swedbank Pay.
+unscheduled or recurring purchases. The difference is that Network Tokenization
+replaces the card number behind the token.
 
 ## Recommendations To You As A Merchant
 
-*   Since you have access to information regarding "last four" digits, we highly
-recommend refreshing these numbers when an update has been done, so the end-user
-has the correct information when card information is displayed. Retrieving the
-updated card information is done using `payerOwnedTokens`, and should be done
-when the end-user logs in, go to "My cards" or at a similar point that makes
-sense in your portal.
+*   If you are displaying the “last four” digits of the card number for your
+    customers stored cards, we highly recommend refreshing these numbers when a
+    card has been updated/replaced by the issuer. This would help the customer
+    to understand that the new and valid card is stored. It is also recommended
+    that you add some information that the card has been updated automatically
+    by the issuer. Retrieving the updated card information is done using
+    `payerOwnedTokens`, and should be done when the end-user logs in, goes to
+    “My cards” or at a similar point that makes sense in your portal.
 
 The `GET` request to retrieve these should look similar to this.
 
@@ -83,26 +85,19 @@ these Network Tokenization related fields.
 | {% f expiryDate, 2 %}      | `string`  | The expiry date of the card currently connected to the network token.                                  |
 | {% f cardBrand, 2 %}                 | `string` | The brand of the card currently connected to the network token.                                          |
 | {% f lastFourPan, 2 %}               | `string`  | The last four digits of the PAN connected to the network token. |
-| {% f lastFourDpan, 2 %}                 | `string` | The last four digits of the digital PAN connected to the network token.                                           |
+| {% f lastFourDpan, 2 %}                 | `string` | The last four digits of the DPAN (Network Token).                                           |
 | {% f issuerName, 2 %}               | `string`  | The name of the issuer. |
 
-*   If you do **not** display updated card information to your end-user, you are
-running the risk of them believing they need to update cards at their end.
+*   We advise you to implement automatic deletion of tokens when end-users
+choose to end the service with the you. This is to avoid unnecessary cost on
+your end, as you are invoiced monthly for each active token.
 
-*   If you **do** show updated card information, you should also emphasize to the
-end-user that the information is updated automatically by the card network
-providing said card.
-
-*   We advise you to implement automatic deletion of tokens when end-users choose
-to end the service with the you. This is to avoid unnecessary cost on your end,
-as you are invoiced monthly for each active token.
-
-*   Please note the new field `maskedDpan` (masked Digital Pan) are present when
-using Network Tokenization. The end-user will not normally know what
-`maskedDpan` is or that it's being used, but you as a merchant need to keep
-track of it. It is a masked version of the network token representing the card,
-and will only appear if the card is tokenized by Visa or Mastercard. See the
-[Paid resource for cards][paid-resource-model].
+*   Please note the new field `maskedDpan` is present when using Network
+Tokenization. DPAN is the Network token representing the card and thus,
+`maskedDpan` is a masked version of the network token. It will only appear if
+the card is tokenized by Visa or Mastercard. The end-user will not normally know
+what `maskedDpan` is or that it’s being used, but you as a merchant need to keep
+track of it. See the [Paid resource for cards][paid-resource-model].
 
 [card]: https://developer.swedbankpay.com/old-implementations/payment-instruments-v1/card/
 [paid-resource-model]: https://developer.swedbankpay.com/checkout-v3/features/technical-reference/resource-sub-models#card-paid-resource
