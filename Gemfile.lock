@@ -202,7 +202,7 @@ DEPENDENCIES
   rspec (>= 3)
   rubocop (>= 1)
   rubocop-rake (>= 0.6)
-  swedbank-pay-design-guide-jekyll-theme (= 2.1.7.pre.beta.1)
+  swedbank-pay-design-guide-jekyll-theme (= 2.1.7.pre.beta.2)
 
 RUBY VERSION
    ruby 2.7.2p137
