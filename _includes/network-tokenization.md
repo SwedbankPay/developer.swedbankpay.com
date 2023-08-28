@@ -28,18 +28,22 @@ one-click services.
 
 This functionality is available through both our
 [payment order implementations][payment-order] and [card implementation][card]
-for [recurring transactions][recur] and [unscheduled purchases][unscheduled]. We
-strongly recommend `paymentOrder` to ensure that you get access to capabilities
-coming in later deliveries, such as card art, shared tokens and notifications.
-It is only available with Swedbank as aqcuirer for the time being.
+for [recurring transactions][recur], [one-click][one-click] and
+[unscheduled purchases][unscheduled]. We strongly recommend `paymentOrder` to
+ensure that you get access to capabilities coming in later deliveries, such as
+card art, shared tokens and notifications. It is only available with Swedbank as
+aqcuirer for the time being.
 
 When you choose to add this functionality, we activate Network Tokenization for
-your merchant. When we get confirmation from Visa and Mastercard, it will be
-enabled.
+your merchant account and initiate onboarding towards VISA and Mastercard. Once
+we get onboarding confirmation from Visa and Mastercard, Network Tokenization
+will be enabled and used for future card storage and stored card processing.
+Cards that have previously been stored with card details only, will be network
+tokenized next time they are charged.
 
 Once the setup is completed, the transactions themselves run as normal
-unscheduled or recurring purchases. The difference is that Network Tokenization
-replaces the card number behind the token.
+unscheduled, one-click or recurring purchases. The difference is that Network
+Tokenization replaces the card number behind the token.
 
 ## Recommendations To You As A Merchant
 
@@ -101,6 +105,7 @@ track of it. See the [Paid resource for cards][paid-resource-model].
 
 [card]: https://developer.swedbankpay.com/old-implementations/payment-instruments-v1/card/
 [paid-resource-model]: https://developer.swedbankpay.com/checkout-v3/features/technical-reference/resource-sub-models#card-paid-resource
+[one-click]: https://developer.swedbankpay.com/checkout-v3/features/optional/one-click
 [unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
 [recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
 [payment-order]: /checkout-v3/payment-request
