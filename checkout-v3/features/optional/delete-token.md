@@ -19,3 +19,5 @@ deleting the token. No other states are supported.
 {% include delete-payment-order-token.md token_field_name="unscheduledToken" %}
 
 {% include delete-payment-order-token.md token_field_name="paymentToken" %}
+
+{% include delete-payment-order-token.md token_field_name="payerOwnedToken" %}
