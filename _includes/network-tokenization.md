@@ -31,8 +31,8 @@ This functionality is available through both our
 for [recurring transactions][recur], [one-click][one-click] and
 [unscheduled purchases][unscheduled]. We strongly recommend `paymentOrder` to
 ensure that you get access to capabilities coming in later deliveries, such as
-card art, shared tokens and notifications. It is only available with Swedbank as
-aqcuirer for the time being.
+card art, shared tokens and notifications. It is only available with Swedbank
+Pay as acquirer for the time being.
 
 When you choose to add this functionality, we activate Network Tokenization for
 your merchant account and initiate onboarding towards VISA and Mastercard. Once
