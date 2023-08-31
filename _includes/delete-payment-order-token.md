@@ -38,7 +38,10 @@ display name will vary depending on the instrument.
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{   
+{
+    {% if token_field_name == "payerOwnedToken" %}
+    "tokenType": "Unscheduled",
+    {% endif %}
     {% if token_field_name == "paymentToken" %}
     "paymentToken": "{{ page.payment_token }}",
     {% else %}
