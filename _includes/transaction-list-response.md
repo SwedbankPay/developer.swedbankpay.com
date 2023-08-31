@@ -16,7 +16,7 @@ towards the specific transaction's `id`.
 
 ## Transaction List Response
 
-{% if documentation_section contains "checkout" or "payment-menu" %}
+{% if documentation_section contains "checkout-v2" or "checkout-v3" or "payment-menu-v2" %}
 
 {:.code-view-header}
 **Response**

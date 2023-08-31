@@ -1,9 +1,18 @@
 ---
-title: ReverseLastAsync
-description: Task\<ReversalRequestResult\> ReverseLastAsync()
----
+title: ReverseLast
+description: |
+    ReverseLast / ReverseLastAsync will reverse the last transaction made if it was approved.
 
-ReverseLastAsync will reverse the last transaction made if it was approved.
+---
+### Method Signatures
+
+*   **void ReversLast()**
+
+*   **Task\<ReversalRequestResult\> ReverseLastAsync()**
+
+### Description
+
+ReverseLast / ReverseLastAsync will reverse the last transaction made if it was approved.
 
 ### Returns
 

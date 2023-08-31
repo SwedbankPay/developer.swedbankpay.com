@@ -1,7 +1,16 @@
 ---
-title: PaymentAsync
-description: async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,[decimal cashback=0], [string currency="SEK"])
+title: Payment
+description: |
+  The Payment / PaymentAsync should be called when the amount is known.
+
 ---
+### Method Signatures
+
+*   **void Payment(decimal totalamount,decimal cashback=0, string currency="SEK")**
+
+*   **async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="SEK")**
+
+### Description
 
 The PaymentAsync should be called when the amount is known. It opens all available readers and waits for a payment instrument. If Alternative Payment Methods are activated it will open for that too.
 
@@ -22,6 +31,18 @@ A **PaymentRequestResult**
 A `PayementRequestResult.ResponseResult` of value `Success` means transaction approved.
 If `ResponseResult` is `Failure` there is an `ErrorCondition`. If `ErrorCondition` is `Busy`, wait awhile and try again.
 
+```c#
+  var r = await Pax?.PaymentAsync(total, cashBack);
+  if (r.ResponseResult == NexoResponseResult.Success)
+  {
+      textBox1.AppendText("Approved" + Environment.NewLine);
+  }
+  else
+  {
+      textBox1.AppendText("Not Approved" + Environment.NewLine);
+  }
+```
+
 Make sure to always print the customer's receipt when available. For an aborted PaymentAsync there might not be one available.
 
 ```c#
@@ -35,20 +56,69 @@ public class NexoRequestResult
 
 public class PaymentRequestResult : NexoRequestResult
 {
-  public JObject CustomerReceiptData { get; set; }
-  public JObject MerchantReceiptData { get; set; }
-  public string FormattedReceipt { get; set; }
-  public string ReceiptBlob { get; set; }
-  public JObject SettlementData { get; set; }
-  public XElement OriginalTransaction { get; set; }
-  public string UICulture { get; set; }
-  public override string ResponseContent { get; set; }
+    public PaymentRequestResult();
+
+    public JObject CustomerReceiptData { get; set; }
+    public JObject MerchantReceiptData { get; set; }
+    public string FormattedReceipt { get; set; }
+    public string ReceiptBlob { get; set; }
+    public JObject SettlementData { get; set; }
+    public XElement OriginalTransaction { get; set; }
+    public string UICulture { get; set; }
+    public decimal TipAmount { get; set; }
+    public string APMReference { get; set; }
+    public string APMType { get; set; }
+    public override string ResponseContent { get; set; }
 }
+```
 
+### ResponseContent - The Complete Nexo Response Message
 
+ResponseContent contains the complete nexo response message from the terminal and looks as follows.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SaleToPOIResponse>
+ <MessageHeader MessageClass="Service" MessageCategory="Payment" MessageType="Response" ServiceID="3" SaleID="1" POIID="AJACQH28"/>
+ <PaymentResponse>
+  <Response Result="Success"/>
+  <SaleData>
+   <SaleTransactionID TransactionID="0839247" TimeStamp="2023-08-23T08:39:24+02:00"/>
+  </SaleData>
+  <POIData>
+   <POITransactionID TransactionID="8778880003" TimeStamp="2023-08-23T06:39:26.382Z"/>
+  </POIData>
+  <PaymentResult PaymentType="Normal">
+   <PaymentInstrumentData PaymentInstrumentType="Card">
+    <CardData PaymentBrand="01,Mastercard Debit" MaskedPAN="516815******9659" EntryMode="Contactless">
+     <PaymentToken TokenRequestedType="Customer" TokenValue="6FD955C23A48A041D881003CDBF836DC59F89CE0ECA8288129696CDF9BB8B8DD67F233"/>
+    </CardData>
+   </PaymentInstrumentData>
+   <AmountsResp Currency="SEK" AuthorizedAmount="125" CashBackAmount="0.00"/>
+   <PaymentAcquirerData MerchantID="10020001" AcquirerPOIID="877888">
+    <ApprovalCode>902428</ApprovalCode>
+   </PaymentAcquirerData>
+  </PaymentResult>
+  <PaymentReceipt DocumentQualifier="CashierReceipt">
+   <OutputContent OutputFormat="Text">
+    <OutputText>eyJNZXJjaGFudCI6eyJNYW5kYXRvcnkiOnsiQWNxdWlyZXIiOnsiQ2FyZEFjY2VwdG9yTnVtYmVyIjoiMTAwMjAwMDEiLCJUZXJtaW5hbElEIjoiODc3ODg4In0sIkNhcmRBY2NlcHRvciI6eyJBZGRyZXNzMSI6IkjDpGxsZXNrw6VyYW4gMjkiLCJCYW5rQWdlbnROYW1lIjoiYmFua3ktYmFuayIsIk5hbWUiOiJUZXN0IHNob3AiLCJPcmdhbmlzYXRpb25OdW1iZXIiOiI1NTY1NjcxLTYxNjUiLCJQb3N0WmlwQ29kZSI6IjUwNTAiLCJUb3duQ2l0eSI6Im1lcmNoYW50LUJhc2UyNC1DaXR5In0sIkNhcmREZXRhaWxzIjp7IkFwcGxpY2F0aW9uSWRlbnRpZmllciI6IkEwMDAwMDAwMDQxMDEwIiwiQ2FyZFNjaGVtZU5hbWUiOnsiQXBwbGljYXRpb25MYWJlbCI6Ik1hc3RlcmNhcmQifSwiUHJpbWFyeUFjY291bnROdW1iZXIiOiI1MTY4MTUqKioqKio5NjU5IiwiVGVybWluYWxWZXJpZmljYXRpb25SZXN1bHQiOiIwMDAwMDA4MDAxIiwiVHJhbnNhY3Rpb25TdGF0dXNJbmZvcm1hdGlvbiI6IjAwMDAifSwiT3V0Y29tZSI6eyJBcHByb3ZhbENvZGUiOiI5MDI0MjgiLCJBdXRob3Jpc2F0aW9uUmVzcG9uZGVyIjoiMyIsIkF1dGhvcmlzYXRpb25SZXNwb25zZUNvZGUiOiIwMCIsIkRlYml0U3RhdHVzIjoiMDAifSwiUGF5bWVudCI6eyJBdXRob3Jpc2F0aW9uQ2hhbm5lbCI6IjEiLCJDYXJkaG9sZGVyVmVyaWZpY2F0aW9uTWV0aG9kIjoiLyIsIkN1cnJlbmN5IjoiU0VLIiwiRmluYW5jaWFsSW5zdGl0dXRpb24iOiJTV0UiLCJQYXltZW50QW1vdW50IjoiMTI1LDAwIiwiUmVjZWlwdE51bWJlciI6Ijg3Nzg4ODAwMDMiLCJTaWduYXR1cmVCbG9jayI6ZmFsc2UsIlRvdGFsQW1vdW50IjoiMTI1LDAwIiwiVHJhbnNhY3Rpb25Tb3VyY2UiOiJLIiwiVHJhbnNhY3Rpb25UeXBlIjoiMDAifSwiVGltZVN0YW1wIjp7IkRhdGVPZlBheW1lbnQiOiIyMDIzLTA4LTIzIiwiVGltZU9mUGF5bWVudCI6IjA4OjM5In19LCJPcHRpb25hbCI6eyJDYXJkQWNjZXB0b3IiOnsiQ291bnRyeU5hbWUiOiI3NTIiLCJQaG9uZU51bWJlciI6Iis0Njg0MDUxMDAwIn0sIkNhcmREZXRhaWxzIjp7IkNhcmRTY2hlbWVOYW1lIjp7IkFwcGxpY2F0aW9uTGFiZWwiOiJNYXN0ZXJjYXJkIn19LCJQYXltZW50Ijp7IlJlZmVyZW5jZSI6IjA4MzkyNDcifSwiUmVjZWlwdFN0cmluZyI6WyJUZXN0IHNob3AiLCJIw6RsbGVza8OlcmFuIDI5IiwiNTA1MCBtZXJjaGFudC1CYXNlMjQtQ2l0eSIsIjIwMjMtMDgtMjMgMDg6MzkiLCIiLCJNYXN0ZXJjYXJkIiwiQ29udGFjdGxlc3MiLCI1MTY4MTUqKioqKio5NjU5IiwiIiwiSy8xIDMgMDAgU1dFIiwiQUlEOiBBMDAwMDAwMDA0MTAxMCIsIlRWUjogMDAwMDAwODAwMSIsIlRTSTogMDAwMCIsIlJSTjogODc3ODg4MDAwMyIsIkF1dGggY29kZTogOTAyNDI4IiwiQVJDOiAwMCIsIiIsIkvDllA6ICAgICAgICAxMjUsMDAgU0VLIiwiR29ka8OkbmQiLCIiLCIiLCIiLCJGw7Zyc8OkbGphcmVucyBrdml0dG8iXX19fQ==</OutputText>
+   </OutputContent>
+  </PaymentReceipt>
+  <PaymentReceipt DocumentQualifier="CustomerReceipt">
+   <OutputContent OutputFormat="Text">
+    <OutputText>eyJDYXJkaG9sZGVyIjp7Ik1hbmRhdG9yeSI6eyJBY3F1aXJlciI6eyJDYXJkQWNjZXB0b3JOdW1iZXIiOiIxMDAyMDAwMSIsIlRlcm1pbmFsSUQiOiI4Nzc4ODgifSwiQ2FyZEFjY2VwdG9yIjp7IkFkZHJlc3MxIjoiSMOkbGxlc2vDpXJhbiAyOSIsIkJhbmtBZ2VudE5hbWUiOiJiYW5reS1iYW5rIiwiTmFtZSI6IlRlc3Qgc2hvcCIsIk9yZ2FuaXNhdGlvbk51bWJlciI6IjU1NjU2NzEtNjE2NSIsIlBvc3RaaXBDb2RlIjoiNTA1MCIsIlRvd25DaXR5IjoibWVyY2hhbnQtQmFzZTI0LUNpdHkifSwiQ2FyZERldGFpbHMiOnsiQXBwbGljYXRpb25JZGVudGlmaWVyIjoiQTAwMDAwMDAwNDEwMTAiLCJDYXJkU2NoZW1lTmFtZSI6eyJBcHBsaWNhdGlvbkxhYmVsIjoiTWFzdGVyY2FyZCJ9LCJQcmltYXJ5QWNjb3VudE51bWJlciI6IioqKioqKioqKioqKjk2NTkiLCJUZXJtaW5hbFZlcmlmaWNhdGlvblJlc3VsdCI6IjAwMDAwMDgwMDEiLCJUcmFuc2FjdGlvblN0YXR1c0luZm9ybWF0aW9uIjoiMDAwMCJ9LCJPdXRjb21lIjp7IkFwcHJvdmFsQ29kZSI6IjkwMjQyOCIsIkF1dGhvcmlzYXRpb25SZXNwb25kZXIiOiIzIiwiQXV0aG9yaXNhdGlvblJlc3BvbnNlQ29kZSI6IjAwIiwiRGViaXRTdGF0dXMiOiIwMCJ9LCJQYXltZW50Ijp7IkF1dGhvcmlzYXRpb25DaGFubmVsIjoiMSIsIkNhcmRob2xkZXJWZXJpZmljYXRpb25NZXRob2QiOiIvIiwiQ3VycmVuY3kiOiJTRUsiLCJGaW5hbmNpYWxJbnN0aXR1dGlvbiI6IlNXRSIsIlBheW1lbnRBbW91bnQiOiIxMjUsMDAiLCJSZWNlaXB0TnVtYmVyIjoiODc3ODg4MDAwMyIsIlNpZ25hdHVyZUJsb2NrIjpmYWxzZSwiVG90YWxBbW91bnQiOiIxMjUsMDAiLCJUcmFuc2FjdGlvblNvdXJjZSI6IksiLCJUcmFuc2FjdGlvblR5cGUiOiIwMCJ9LCJUaW1lU3RhbXAiOnsiRGF0ZU9mUGF5bWVudCI6IjIwMjMtMDgtMjMiLCJUaW1lT2ZQYXltZW50IjoiMDg6MzkifX0sIk9wdGlvbmFsIjp7IkNhcmRBY2NlcHRvciI6eyJDb3VudHJ5TmFtZSI6Ijc1MiIsIlBob25lTnVtYmVyIjoiKzQ2ODQwNTEwMDAifSwiQ2FyZERldGFpbHMiOnsiQ2FyZFNjaGVtZU5hbWUiOnsiQXBwbGljYXRpb25MYWJlbCI6Ik1hc3RlcmNhcmQifX0sIlBheW1lbnQiOnsiUmVmZXJlbmNlIjoiMDgzOTI0NyJ9LCJSZWNlaXB0U3RyaW5nIjpbIlRlc3Qgc2hvcCIsIkjDpGxsZXNrw6VyYW4gMjkiLCI1MDUwIG1lcmNoYW50LUJhc2UyNC1DaXR5IiwiMjAyMy0wOC0yMyAwODozOSIsIiIsIk1hc3RlcmNhcmQiLCJDb250YWN0bGVzcyIsIioqKioqKioqKioqKjk2NTkiLCIiLCJLLzEgMyAwMCBTV0UiLCJBSUQ6IEEwMDAwMDAwMDQxMDEwIiwiVFZSOiAwMDAwMDA4MDAxIiwiVFNJOiAwMDAwIiwiUlJOOiA4Nzc4ODgwMDAzIiwiQXV0aCBjb2RlOiA5MDI0MjgiLCJBUkM6IDAwIiwiIiwiS8OWUDogICAgICAgIDEyNSwwMCBTRUsiLCJHb2Rrw6RuZCIsIiIsIiIsIiIsIktvcnRpbm5laGF2YXJlbnMga3ZpdHRvIl19fX0=</OutputText>
+   </OutputContent>
+  </PaymentReceipt>
+ </PaymentResponse>
+</SaleToPOIResponse>
 ```
 
 ### CustomerReceiptData - Json object
+
+The following is a sample of the CustomerReceiptData member of the result. This is the content of the Base64 encoded CustomerReceipt in `ResponseContent`.
+
+{% include alert.html type="informative" icon="info" header="Note"
+body="Use the ReceiptBlob of the result rather than the ReceiptString of the JSON. They will eventually be the same in later versions of the SDK." %}
 
 ```json
 {
@@ -59,43 +129,43 @@ public class PaymentRequestResult : NexoRequestResult
     "TerminalID": "877888"
    },
    "CardAcceptor": {
-    "Address1": "Kungsgatan 36",
+    "Address1": "Hälleskåran 29",
     "BankAgentName": "banky-bank",
-    "Name": "Demo shop",
+    "Name": "Test shop",
     "OrganisationNumber": "5565671-6165",
     "PostZipCode": "5050",
     "TownCity": "merchant-Base24-City"
    },
    "CardDetails": {
-    "ApplicationIdentifier": "A0000000031010",
+    "ApplicationIdentifier": "A0000000041010",
     "CardSchemeName": {
-     "ApplicationLabel": "Visa Debit"
+     "ApplicationLabel": "Mastercard"
     },
-    "PrimaryAccountNumber": "************4565",
-    "TerminalVerificationResult": "0080008000",
-    "TransactionStatusInformation": "E800"
+    "PrimaryAccountNumber": "************5828",
+    "TerminalVerificationResult": "0000008001",
+    "TransactionStatusInformation": "0000"
    },
    "Outcome": {
-    "ApprovalCode": "942932",
-    "AuthorisationResponder": "9",
+    "ApprovalCode": "708376",
+    "AuthorisationResponder": "3",
     "AuthorisationResponseCode": "00",
     "DebitStatus": "00"
    },
    "Payment": {
     "AuthorisationChannel": "1",
-    "CardholderVerificationMethod": "a",
+    "CardholderVerificationMethod": "/",
     "Currency": "SEK",
     "FinancialInstitution": "SWE",
-    "PaymentAmount": "41,00",
-    "ReceiptNumber": "8778880241",
+    "PaymentAmount": "25,00",
+    "ReceiptNumber": "8778880180",
     "SignatureBlock": false,
-    "TotalAmount": "41,00",
-    "TransactionSource": "C",
+    "TotalAmount": "25,00",
+    "TransactionSource": "K",
     "TransactionType": "00"
    },
    "TimeStamp": {
-    "DateOfPayment": "2023-03-16",
-    "TimeOfPayment": "18:01"
+    "DateOfPayment": "2023-08-22",
+    "TimeOfPayment": "14:45"
    }
   },
   "Optional": {
@@ -105,12 +175,37 @@ public class PaymentRequestResult : NexoRequestResult
    },
    "CardDetails": {
     "CardSchemeName": {
-     "ApplicationLabel": "Visa Debit"
+     "ApplicationLabel": "Mastercard"
     }
    },
    "Payment": {
-    "Reference": "1801042"
-   }
+    "Reference": "1445280"
+   },
+   "ReceiptString": [
+    "Test shop",
+    "Hälleskåran 29",
+    "5050 merchant-Base24-City",
+    "2023-08-22 14:45",
+    "",
+    "Mastercard",
+    "Contactless",
+    "************5828",
+    "",
+    "K/1 3 00 SWE",
+    "AID: A0000000041010",
+    "TVR: 0000008001",
+    "TSI: 0000",
+    "RRN: 8778880180",
+    "Auth code: 708376",
+    "ARC: 00",
+    "",
+    "KÖP:         25,00 SEK",
+    "Godkänd",
+    "",
+    "",
+    "",
+    "Kortinnehavarens kvitto"
+   ]
   }
  }
 }
@@ -118,79 +213,43 @@ public class PaymentRequestResult : NexoRequestResult
 
 ### FromattedRececipt - array of lines
 
-```text
-[{"Text":"Demo shop              "},{"Text":"Kungsgatan 36           "},{"Text":"5050 merchant-Base24-City"},{"Text":"Org nr: 5565671-6165    "},{"Text":"                        "},{"Text":"Butiksnr.:      10020001"},{"Text":"Termid:           877888"},{"Text":"2023-03-16         18:01"},{"Text":"                        "},{"Text":"          KÖP           "},{"Text":"                        "},{"Text":"SEK                41,00"},{"Text":"Total:             41,00"},{"Text":"                        "},{"Text":"Personlig kod           "},{"Text":"************4565        "},{"Text":"Visa Debit              "},{"Text":"                        "},{"Text":"                        "},{"Text":"Ca1 9 00 942932         "},{"Text":"                        "},{"Text":"Ref.nr:       8778880241"},{"Text":"AID:      A0000000031010"},{"Text":"TVR:          0080008000"},{"Text":"TSI:                E800"},{"Text":"                        "},{"Text":"     SPARA KVITTOT      "},{"Text":"      KUNDENS EX.       "}]
-```
-
-### ResponseContent - The Complete Nexo Response Message
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<SaleToPOIResponse>
-  <MessageHeader POIID="AJACQH28" SaleID="1" ServiceID="12" MessageType="Response" MessageCategory="Payment" MessageClass="Service"/>
-  <PaymentResponse>
-    <Response Result="Success"/>
-    <SaleData>
-      <SaleTransactionID TimeStamp="2023-03-16T18:01:04+01:00" TransactionID="1801042"/>
-    </SaleData>
-    <POIData>
-      <POITransactionID TimeStamp="2023-03-16T17:00:56.684Z" TransactionID="8778880241"/>
-    </POIData>
-    <PaymentResult PaymentType="Normal">
-      <PaymentInstrumentData PaymentInstrumentType="Card">
-        <CardData EntryMode="ICC" MaskedPAN="458109******4565" PaymentBrand="01,Visa Debit">
-          <PaymentToken TokenValue="6FD955BEFC750A42A6AFC46E7679ACE20E89FD18E740D3F32F97D5F2D29BA2100A8898" TokenRequestedType="Customer"/>
-        </CardData>
-      </PaymentInstrumentData>
-      <AmountsResp CashBackAmount="0.00" AuthorizedAmount="41.00" Currency="SEK"/>
-      <PaymentAcquirerData AcquirerPOIID="877888" MerchantID="10020001">
-        <ApprovalCode>942932</ApprovalCode>
-      </PaymentAcquirerData>
-    </PaymentResult>
-    <PaymentReceipt DocumentQualifier="CashierReceipt">
-      <OutputContent OutputFormat="Text">
-        <OutputText>eyJNZXJjaGFudCI6eyJNYW5kYXRvcnkiOnsiQWNxdWlyZXIiOnsiQ2FyZEFjY2VwdG9yTnVtYmVyIjoiMTAwMjAwMDEiLCJUZXJtaW5hbElEIjoiODc3ODg4In0sIkNhcmRBY2NlcHRvciI6eyJBZGRyZXNzMSI6IkjDpGxsZXNrw6VyYW4gMjgiLCJCYW5rQWdlbnROYW1lIjoiYmFua3ktYmFuayIsIk5hbWUiOiJKw6Ryb2xkcyBHb29kaWVzIiwiT3JnYW5pc2F0aW9uTnVtYmVyIjoiNTU2NTY3MS02MTY1IiwiUG9zdFppcENvZGUiOiI1MDUwIiwiVG93bkNpdHkiOiJtZXJjaGFudC1CYXNlMjQtQ2l0eSJ9LCJDYXJkRGV0YWlscyI6eyJBcHBsaWNhdGlvbklkZW50aWZpZXIiOiJBMDAwMDAwMDAzMTAxMCIsIkNhcmRTY2hlbWVOYW1lIjp7IkFwcGxpY2F0aW9uTGFiZWwiOiJWaXNhIERlYml0In0sIlByaW1hcnlBY2NvdW50TnVtYmVyIjoiNDU4MTA5KioqKioqNDU2NSIsIlRlcm1pbmFsVmVyaWZpY2F0aW9uUmVzdWx0IjoiMDA4MDAwODAwMCIsIlRyYW5zYWN0aW9uU3RhdHVzSW5mb3JtYXRpb24iOiJFODAwIn0sIk91dGNvbWUiOnsiQXBwcm92YWxDb2RlIjoiOTQyOTMyIiwiQXV0aG9yaXNhdGlvblJlc3BvbmRlciI6IjkiLCJBdXRob3Jpc2F0aW9uUmVzcG9uc2VDb2RlIjoiMDAiLCJEZWJpdFN0YXR1cyI6IjAwIn0sIlBheW1lbnQiOnsiQXV0aG9yaXNhdGlvbkNoYW5uZWwiOiIxIiwiQ2FyZGhvbGRlclZlcmlmaWNhdGlvbk1ldGhvZCI6ImEiLCJDdXJyZW5jeSI6IlNFSyIsIkZpbmFuY2lhbEluc3RpdHV0aW9uIjoiU1dFIiwiUGF5bWVudEFtb3VudCI6IjQxLDAwIiwiUmVjZWlwdE51bWJlciI6Ijg3Nzg4ODAyNDEiLCJTaWduYXR1cmVCbG9jayI6ZmFsc2UsIlRvdGFsQW1vdW50IjoiNDEsMDAiLCJUcmFuc2FjdGlvblNvdXJjZSI6IkMiLCJUcmFuc2FjdGlvblR5cGUiOiIwMCJ9LCJUaW1lU3RhbXAiOnsiRGF0ZU9mUGF5bWVudCI6IjIwMjMtMDMtMTYiLCJUaW1lT2ZQYXltZW50IjoiMTg6MDEifX0sIk9wdGlvbmFsIjp7IkNhcmRBY2NlcHRvciI6eyJDb3VudHJ5TmFtZSI6Ijc1MiIsIlBob25lTnVtYmVyIjoiKzQ2ODQwNTEwMDAifSwiQ2FyZERldGFpbHMiOnsiQ2FyZFNjaGVtZU5hbWUiOnsiQXBwbGljYXRpb25MYWJlbCI6IlZpc2EgRGViaXQifX0sIlBheW1lbnQiOnsiUmVmZXJlbmNlIjoiMTgwMTA0MiJ9fX19</OutputText>
-      </OutputContent>
-    </PaymentReceipt>
-    <PaymentReceipt DocumentQualifier="CustomerReceipt">
-      <OutputContent OutputFormat="Text">
-        <OutputText>eyJDYXJkaG9sZGVyIjp7Ik1hbmRhdG9yeSI6eyJBY3F1aXJlciI6eyJDYXJkQWNjZXB0b3JOdW1iZXIiOiIxMDAyMDAwMSIsIlRlcm1pbmFsSUQiOiI4Nzc4ODgifSwiQ2FyZEFjY2VwdG9yIjp7IkFkZHJlc3MxIjoiSMOkbGxlc2vDpXJhbiAyOCIsIkJhbmtBZ2VudE5hbWUiOiJiYW5reS1iYW5rIiwiTmFtZSI6IkrDpHJvbGRzIEdvb2RpZXMiLCJPcmdhbmlzYXRpb25OdW1iZXIiOiI1NTY1NjcxLTYxNjUiLCJQb3N0WmlwQ29kZSI6IjUwNTAiLCJUb3duQ2l0eSI6Im1lcmNoYW50LUJhc2UyNC1DaXR5In0sIkNhcmREZXRhaWxzIjp7IkFwcGxpY2F0aW9uSWRlbnRpZmllciI6IkEwMDAwMDAwMDMxMDEwIiwiQ2FyZFNjaGVtZU5hbWUiOnsiQXBwbGljYXRpb25MYWJlbCI6IlZpc2EgRGViaXQifSwiUHJpbWFyeUFjY291bnROdW1iZXIiOiIqKioqKioqKioqKio0NTY1IiwiVGVybWluYWxWZXJpZmljYXRpb25SZXN1bHQiOiIwMDgwMDA4MDAwIiwiVHJhbnNhY3Rpb25TdGF0dXNJbmZvcm1hdGlvbiI6IkU4MDAifSwiT3V0Y29tZSI6eyJBcHByb3ZhbENvZGUiOiI5NDI5MzIiLCJBdXRob3Jpc2F0aW9uUmVzcG9uZGVyIjoiOSIsIkF1dGhvcmlzYXRpb25SZXNwb25zZUNvZGUiOiIwMCIsIkRlYml0U3RhdHVzIjoiMDAifSwiUGF5bWVudCI6eyJBdXRob3Jpc2F0aW9uQ2hhbm5lbCI6IjEiLCJDYXJkaG9sZGVyVmVyaWZpY2F0aW9uTWV0aG9kIjoiYSIsIkN1cnJlbmN5IjoiU0VLIiwiRmluYW5jaWFsSW5zdGl0dXRpb24iOiJTV0UiLCJQYXltZW50QW1vdW50IjoiNDEsMDAiLCJSZWNlaXB0TnVtYmVyIjoiODc3ODg4MDI0MSIsIlNpZ25hdHVyZUJsb2NrIjpmYWxzZSwiVG90YWxBbW91bnQiOiI0MSwwMCIsIlRyYW5zYWN0aW9uU291cmNlIjoiQyIsIlRyYW5zYWN0aW9uVHlwZSI6IjAwIn0sIlRpbWVTdGFtcCI6eyJEYXRlT2ZQYXltZW50IjoiMjAyMy0wMy0xNiIsIlRpbWVPZlBheW1lbnQiOiIxODowMSJ9fSwiT3B0aW9uYWwiOnsiQ2FyZEFjY2VwdG9yIjp7IkNvdW50cnlOYW1lIjoiNzUyIiwiUGhvbmVOdW1iZXIiOiIrNDY4NDA1MTAwMCJ9LCJDYXJkRGV0YWlscyI6eyJDYXJkU2NoZW1lTmFtZSI6eyJBcHBsaWNhdGlvbkxhYmVsIjoiVmlzYSBEZWJpdCJ9fSwiUGF5bWVudCI6eyJSZWZlcmVuY2UiOiIxODAxMDQyIn19fX0=</OutputText>
-      </OutputContent>
-    </PaymentReceipt>
-  </PaymentResponse>
-</SaleToPOIResponse>
-```
-
-### ReceiptBlob - Fast Forward To Well Formatted Receipt Information
+The following shows the content of the FormattedReceipt array of the same result as above.
 
 ```text
-Demo shop
-Kungsgatan 36
+[{"Text":"Test shop               "},{"Text":"Hälleskåran 29          "},{"Text":"5050 merchant-Base24-City"},{"Text":"Org nr: 5565671-6165    "},{"Text":"                        "},{"Text":"Butiksnr.:      10020001"},{"Text":"Termid:           877888"},{"Text":"2023-08-23         08:39"},{"Text":"                        "},{"Text":"          KÖP           "},{"Text":"                        "},{"Text":"SEK               125,00"},{"Text":"Total:            125,00"},{"Text":"                        "},{"Text":"************9659        "},{"Text":"Mastercard              "},{"Text":"Kontaktlös              "},{"Text":"                        "},{"Text":"                        "},{"Text":"K/1 3 00 902428         "},{"Text":"                        "},{"Text":"Ref.nr:       8778880003"},{"Text":"AID:      A0000000041010"},{"Text":"TVR:          0000008001"},{"Text":"TSI:                0000"},{"Text":"                        "},{"Text":"     SPARA KVITTOT      "},{"Text":"      KUNDENS EX.       "}
+```
+
+### ReceiptBlob - Fast forward to well formatted approved receipt information
+
+```text
+Test shop               
+Hälleskåran 29          
 5050
  merchant-Base24-City
-Org nr: 5565671-6165
-
+Org nr: 5565671-6165    
+                        
 Butiksnr.:      10020001
 Termid:           877888
-2023-03-16         18:01
+2023-08-23         08:39
+                        
+          KÖP           
+                        
+SEK               125,00
+Total:            125,00
+                        
+************9659        
+Mastercard              
+Kontaktlös              
+                        
+                        
+K/1 3 00 902428         
+                        
+Ref.nr:       8778880003
+AID:      A0000000041010
+TVR:          0000008001
+TSI:                0000
+                        
+     SPARA KVITTOT      
+      KUNDENS EX.       
 
-          KÖP
-
-SEK                41,00
-Total:             41,00
-
-Personlig kod
-************4565
-Visa Debit
-
-
-Ca1 9 00 942932
-
-Ref.nr:       8778880241
-AID:      A0000000031010
-TVR:          0080008000
-TSI:                E800
-
-     SPARA KVITTOT
-      KUNDENS EX.
 ```

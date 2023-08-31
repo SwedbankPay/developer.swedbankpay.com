@@ -88,7 +88,7 @@ below is the Redirect option.
 {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
 
 ```http
-POST /psp/{{ api_resource }} HTTP/1.1
+POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json

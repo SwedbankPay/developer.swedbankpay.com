@@ -32,6 +32,25 @@ Content-Type: application/json
             "callbackUrl": "https://api.example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png" //Redirect only
         },
+                "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/products/123",
+                "imageUrl": "https://example.com/product123.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 5,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 0,
+                "vatPercent": 2500,
+                "amount": 1500,
+                "vatAmount": 375
+            }
+        ]
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
@@ -63,6 +82,22 @@ Content-Type: application/json
 | {% icon check %} | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 | {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
 |                  | {% f logoUrl, 2 %}                 | `string`     | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                               |
+| {% icon check %} | {% f orderItems %}               | `array`      | {% include fields/order-items.md %}                                                                                                                                                                                                                                                            |
+| {% icon check %} | {% f reference, 2 %}          | `string`  | A reference that identifies the order item.                                                                                                                                                                                                                                           |
+| {% icon check %} | {% f name, 2 %}               | `string`  | The name of the order item.                                                                                                                                                                                                                                                           |
+| {% icon check %} | {% f type, 2 %}               | `enum`    | `PRODUCT`, `SERVICE`, `SHIPPING_FEE`, `DISCOUNT`, `VALUE_CODE`, or `OTHER`. The type of the order item.                                                                                                                                                                               |
+| {% icon check %} | {% f class, 2 %}              | `string`  | The classification of the order item. Can be used for assigning the order item to a specific product category, such as `MobilePhone`. Note that `class` cannot contain spaces and must follow the regex pattern `[\w-]*`. Swedbank Pay may use this field for statistics. |
+|                  | {% f itemUrl, 2 %}           | `string`  | The URL to a page that can display the purchased item, such as a product page                                                                                                                                                                                                         |
+|                  | {% f imageUrl, 2 %}          | `string`  | The URL to an image of the order item.                                                                                                                                                                                                                                                |
+|                  | {% f description, 2 %}       | `string`  | The human readable description of the order item.                                                                                                                                                                                                                                     |
+|                  | {% f discountDescription, 2 %}| `string`  | The human readable description of the possible discount.                                                                                                                                                                                                                              |
+| {% icon check %} | {% f quantity, 2 %}         | `number` | The 4 decimal precision quantity of order items being purchased.                                                                                                                                                                                                                      |
+| {% icon check %} | {% f quantityUnit, 2 %}       | `string`  | The unit of the quantity, such as `pcs`, `grams`, or similar.                                                                                                                                                                                                                         |
+| {% icon check %} | {% f unitPrice, 2 %}        | `integer` | The price per unit of order item, including VAT.                                                                                                                                                                                                                                      |
+|                  | {% f discountPrice, 2 %}    | `integer` | If the order item is purchased at a discounted price. This field should contain that price, including VAT.                                                                                                                                                                            |
+| {% icon check %} | {% f vatPercent, 2 %}        | `integer` | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                              |
+| {% icon check %} | {% f amount, 2 %}            | `integer` | {% include fields/amount.md %}                                                                                                                                                                                                                                             |
+| {% icon check %} | {% f vatAmount, 2 %}          | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f payeeInfo %}                | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f payeeId, 2 %}                 | `string`     | The ID of the payee, usually the merchant ID.                                                                                                                                                                                                                                                            |
 | {% icon check %} | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md describe_receipt=true %}                                                                                                                                                                                                                                 |

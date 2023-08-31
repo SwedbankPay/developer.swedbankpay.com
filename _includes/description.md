@@ -1,7 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% assign documentation_section_title = documentation_section | capitalize %}
-{% unless api_resource == "paymentorder" %}
+{% unless api_resource == "paymentorders" %}
   {% assign documentation_section_title = documentation_section_title | append: " Payments" %}
 {% endunless %}
 

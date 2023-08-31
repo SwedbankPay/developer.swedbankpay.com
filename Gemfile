@@ -14,8 +14,7 @@ group :jekyll_plugins do
   gem 'kramdown', '>= 2.3'
   gem 'kramdown-plantuml', '>= 1.3'
   gem 'rouge', '>= 4.0.1'
-  gem 'searchyll', git: 'https://github.com/SwedbankPay/searchyll.git'
-  gem 'swedbank-pay-design-guide-jekyll-theme', '2.1.6'
+  gem 'swedbank-pay-design-guide-jekyll-theme', '2.1.8'
 end
 
 group :test do

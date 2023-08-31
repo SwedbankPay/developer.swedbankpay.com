@@ -12,33 +12,33 @@ The [Create method][create-method] is the first method to be called.
 
 The [Start method][start-method] initializes the created instance.
 
-### OpenAsync
+### Open/OpenAsync
 
-The [OpenAsync method][openasync] call is the first method call that actually communicates with the terminal.
+The [Open method][open] call is the first method call that actually communicates with the terminal.
 
-### CloseAsync
+### Close/CloseAsync
 
-The [CloseAsync][closeasync] call is used to terminate a login session and allow for maintenance. The terminal will be shown as closed.
+The [Close][close] call is used to terminate a login session and allow for maintenance. The terminal will be shown as closed.
 
-### PaymentAsync
+### Payment/PaymentAsync
 
-Call [PaymentAsync][paymentasync] to make a purchase transaction when the amount is known. To read the card before the amount is known, use [GetPaymentInstrumentAsync][getpaymentinstrumentasync] instead.
+Call [Payment][payment] to make a purchase transaction when the amount is known. To read the card before the amount is known, use [GetPaymentInstrument][getpaymentinstrument] instead.
 
-### RefundAsync
+### Refund/RefundAsync
 
-Call [RefundAsync][refundasync] to make a refund transaction when the amount is known. To read the card before the amount is known, use [GetPaymentInstrumentAsync][getpaymentinstrumentasync] instead. RefundAsync has the exact same results as PaymentAsync.
+Call [Refund][refund] to make a refund transaction when the amount is known. To read the card before the amount is known, use [GetPaymentInstrument][getpaymentinstrument] instead. RefundAsync has the exact same results as PaymentAsync.
 
-### AbortAsync
+### Abort/AbortAsync
 
-A call to [AbortAsync][abortasync] aborts an ongoing request. The AbortRequest itself is not responded to by the terminal, and the response of the aborted request ends up as a result of the aborted request.
+A call to [Abort][abort] aborts an ongoing request. The AbortRequest itself is not responded to by the terminal, and the response of the aborted request ends up as a result of the aborted request.
 
-### ReverseLastAsync
+### ReverseLast/ReverseLastAsync
 
-Call [ReverseLastAsync][reverselastasync] to reverse the last transaction. The reversal is only possible for the last transaction made, given that it was successful.
+Call [ReverseLast][reverselast] to reverse the last transaction. The reversal is only possible for the last transaction made, given that it was successful.
 
-### GetPaymentInstrumentAsync
+### GetPaymentInstrument/GetPaymentInstrumentAsync
 
-Call [GetPaymentInstrumentAsync][getpaymentinstrumentasync] to initiate a purchase before the amount is known.
+Call [GetPaymentInstrument][getpaymentinstrument] to initiate a purchase before the amount is known.
 
 ### SetPaymentInstrument
 
@@ -46,11 +46,11 @@ With [SetPaymentInstrument][setpaymentinstrument], it is possible to send a NON 
 
 [create-method]: ./create
 [start-method]: ./start
-[openasync]: ./openasync
-[paymentasync]: paymentasync
-[getpaymentinstrumentasync]: ./getpaymentinstrumentasync
-[abortasync]: ./abortasync
-[refundasync]: ./refundasync
-[closeasync]: ./closeasync
+[open]: ./openasync
+[payment]: paymentasync
+[getpaymentinstrument]: ./getpaymentinstrumentasync
+[abort]: ./abortasync
+[refund]: ./refundasync
+[close]: ./closeasync
 [setpaymentinstrument]: ./setpaymentinstrument
-[reverselastasync]: ./reverselastasync
+[reverselast]: ./reverselastasync

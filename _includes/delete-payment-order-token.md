@@ -1,7 +1,7 @@
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
 {% assign token_field_name = include.token_field_name %}
 {% capture token_url %}
-    /psp/{{ api_resource }}/{{ token_field_name }}s/{{- page.payment_token -}}
+    /psp/paymentorders/{{ token_field_name }}s/{{- page.payment_token -}}
 {% endcapture %}
 {% assign token_url=token_url | strip %}
 
@@ -38,7 +38,7 @@ display name will vary depending on the instrument.
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-{   
+{
     {% if token_field_name == "paymentToken" %}
     "paymentToken": "{{ page.payment_token }}",
     {% else %}
