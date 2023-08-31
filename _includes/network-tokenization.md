@@ -70,16 +70,19 @@ Among the response fields for the relevant token, you should be able to find
 these Network Tokenization related fields.
 
 {:.code-view-header}
-**GET Tokens Request**
+**GET Tokens Response**
 
 ```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
 "instrumentParameters": {
        "expiryDate": "12/2025",
        "cardBrand": "Visa",
        "lastFourPan": "6981",
        "lastFourDPan": "8188",
        "issuerName": "BankName"
-}
+    }
 ```
 
 {:.table .table-striped .mb-5}
