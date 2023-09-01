@@ -10,6 +10,21 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 01 September 2023
+
+### Version 4.4.1
+
+The wheels are picking up traction going into the autumn. Our first release
+after getting back is mostly maintenance and small fixes, but an important new
+addition is a section on [Network Tokenization][nwt], which is a fantastic way
+of processing cards. Get to know it, and put it to use!
+
+We have also adjusted our search results somewhat. Now we only display results
+from the sections Digital Payments and Payment Terminals. We hope it gives you
+an easier time finding the right result in the correct section.
+
+Big things are coming up around the bend. Stay tuned!
+
 ## 31 August 2023
 
 ### Version 4.4.0
