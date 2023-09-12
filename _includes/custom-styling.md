@@ -1,75 +1,74 @@
 {% include alert.html type="warning" icon="warning" body="This feature is only
 available for merchants who have a specific agreement with Swedbank Pay." %}
 
-Custom styling allows you to make adjustments to the payment UI for an even
-better fit with your company's profile. The arrival of our WCAG compliant
-payment UI (LINK TO PRESENTATION PAGE) gives you fewer customization options
-than before, but there are still some adjustments you can do.
+Custom styling allows you to make adjustments to the payment UI so it fits your
+company profile even better. It is available for all implementations, but only
+when using Seamless View. After the arrival of our
+[WCAG compliant payment UI][wcag-presentation], the elements you can adjust are
+listed in the section below.
 
-WHICH IMPLEMENTATIONS SUPPORT CUSTOM STYLING??
+Please note that you are responsible for making sure that the payment UI is
+still WCAG compliant with your custom styling in use.
 
 ## Customizable Elements
 
 *   **The background color of the primary button**
 
-The primary button has several different states with different colors during the
+The primary button has three different states with different colors during the
 payment process. They are all adjustable.
 
 The states are **disabled** (before the payer has entered all their (valid)
-details), **enabled** (after all details have been entered and they are valid),
-**hover** (when the payer hovers above the button), **enabled-focus** (similar
-to enabled, but with a border) and **enabled-loading-focus** (when the button is
-in focus and clicked, so the payment is processing).
+details), **enabled** (after all details have been entered and they are valid)
+and **hover** (when the payer hovers above the enabled button).
 
-(HIGH RES SCREENSHOT OF BUTTONS)
-
-The default color will be light gray for **disabled**, and
-**enabled-loading-focus**, black for **enabled** and **enabled-focus**, and
-light brown for **hover**. Your styling options are limited to... (NEEDS
-VERIFICATION FOR BOTH COLORS AND LIMITATIONS)
+The default color will be light gray for **disabled**, black for **enabled** and
+light brown for **hover**.
 
 *   **Primary button text color**
 
 You can also change the button text so it blends well with the new button color.
-
-The default is white (gray for disabled), and your are limited to.... (NEEDS
-VERIFICATION FOR BOTH COLORS AND LIMITATIONS)
-
-(HIGH RES SCREENSHOT OF TEXT COLORS)
+The default is white (light gray for disabled).
 
 *   **Border radius of the buttons**
 
 The border radius of the buttons are adjustable to make it a harder rectangle or
-a softer rounded shape, so it fits better with your company profile.
+a softer rounded shape, to better match with your company profile.
 
-The default value will be 8px, the minimum is 0px, and the maximum is 30px,
-giving these results respectively.
+The default value will be 8px, the minimum is 0px, and the maximum is 30px. We
+also allow different values for each corner of the button.
 
-(HIGH RES SCREENSHOT)
-
-We also allow different values for the same button, so the result can look like
-this.
-
-(HIGH RES SCREENSHOT)
-
-Please note that we do not allow percentages as input. The value has to be in px
-(rem or em). ("REM OR EM" MUST BE EXPLAINED)
+Please note that we do not allow percentages as input. The value has to be in
+`px`, `rem` or `em`.
 
 ## How To Customize
 
-Contact us (CONTACT/MAIL LINK) to get the agreement needed to do custom styling.
+[Contact us][contact] to get the agreement needed to do custom styling.
 
-When that is done, all you have to do is make the adjustments you want in the
-styling object below and include it in your request. Do you want to see the
-changes live before you put them to use? Stop by our playground (LINK TO
-PLAYGROUND) and have a go!
+When that is done, you can make the adjustments you want in the `style` object
+and include it in the style node of the script that loads the UI.
 
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Do you want to see the changes live before you put them to use? Stop by the
+[Swedbank Pay Playground][playground] and give it a go!
 
+{:.code-view-header}
+**Payment UI loading script**
+
+```javascript
+script.onload = function () {
+     payex.hostedView.checkout({
+          container: {
+            checkout: '<<your-container-id>>'
+          },
+          culture: '<<your-culture>>',
+          style: <<your-style-object>>
+     }).open();
+};
+```
+
+{:.code-view-header}
+**Custom styling object**
+
+```javascript
 {
   "style": {
     "button": {
@@ -107,3 +106,7 @@ Content-Type: application/json
   }
 }
 ```
+
+[contact]: mailto:sales.swedbankpay@swedbank.se
+[playground]: placeholder-url.com
+[wcag-presentation]: placeholder-url.com

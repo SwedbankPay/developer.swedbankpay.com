@@ -1,7 +1,7 @@
 ---
 title: Enterprise
 description: The Checkin alternative.
-menu_order: 1600
+menu_order: 1700
 icon:
   content: verified
   outlined: true
