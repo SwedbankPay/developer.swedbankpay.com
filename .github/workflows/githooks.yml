@@ -6,14 +6,14 @@ jobs:
   shellcheck:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Shellcheck
       uses: bewuethr/shellcheck-action@v2.1
 
   commit-msg:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Valid commit messages
       shell: bash
       run: bash ./.github/scripts/commit-msg-test.sh
@@ -21,7 +21,7 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Valid branch names
       shell: bash
