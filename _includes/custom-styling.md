@@ -1,18 +1,16 @@
-{% include alert.html type="warning" icon="warning" body="This feature is only
-available for merchants who have a specific agreement with Swedbank Pay." %}
-
 Custom styling allows you to make adjustments to the payment UI so it fits your
 company profile even better. It is available for all implementations, but only
-when using Seamless View. After the arrival of our
-[WCAG compliant payment UI][wcag-presentation], the elements you can adjust are
-listed in the section below.
+when using Seamless View.
 
-Please note that you are responsible for making sure that the payment UI is
-still WCAG compliant with your custom styling in use.
+Please note that it is your responsibility that a custom styled payment UI is
+still WCAG compliant.
 
 ## Customizable Elements
 
-*   **The background color of the primary button**
+After the arrival of our [WCAG compliant payment UI][wcag-presentation], the
+elements you can adjust are listed below.
+
+### The background color of the primary button
 
 The primary button has three different states with different colors during the
 payment process. They are all adjustable.
@@ -24,12 +22,12 @@ and **hover** (when the payer hovers above the enabled button).
 The default color will be light gray for **disabled**, black for **enabled** and
 light brown for **hover**.
 
-*   **Primary button text color**
+### Primary button text color
 
-You can also change the button text so it blends well with the new button color.
-The default is white (light gray for disabled).
+You can also change the button text so it blends well with the new background
+color. The default is white (light gray for disabled).
 
-*   **Border radius of the buttons**
+### Border radius of the buttons
 
 The border radius of the buttons are adjustable to make it a harder rectangle or
 a softer rounded shape, to better match with your company profile.
@@ -42,10 +40,8 @@ Please note that we do not allow percentages as input. The value has to be in
 
 ## How To Customize
 
-[Contact us][contact] to get the agreement needed to do custom styling.
-
-When that is done, you can make the adjustments you want in the `style` object
-and include it in the style node of the script that loads the UI.
+You can make the adjustments you want in the `style` object and include it in
+the `style` node of the script that loads the UI.
 
 Do you want to see the changes live before you put them to use? Stop by the
 [Swedbank Pay Playground][playground] and give it a go!
