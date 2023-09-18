@@ -7,21 +7,29 @@ description: |
 menu_order: 1
 ---
 
+Digital Payments is our easy and powerful e-commerce implementation, with a lot
+of flexibility for you as a merchant. You can choose if you want to display all
+the payment instruments enabled in your merchant setup, restrict the menu to a
+selection of instruments, or display a single payment instrument.
+
+Critical to the ........ is the paid resource model, where you...
+
+Our brand new WCAG compliant payment UI can be displayed as a redirect
+integration, where the payer is redirected to a page hosted by us, or seamless
+view, where the payment UI is embedded in an iframe on your website. It is
+developed to be mobile first, but works great regardless of browser and device.
+
 With Digital Payments, you need to be able to collect, verify and store the
 payer data, including delivery address, and build your own checkout flow. We'll
 store the card data for you, but you own it. This means that you have to remove
 data in compliance with GDPR, but you won't have to worry about handling
 sensitive card info.
 
-Our PSP lets you choose whether to offer a single payment instrument or a
-payment menu consisting of all the instruments you wish to include.
-
-We offer a variety of payment instruments and features designed to meet your
-business needs. You can choose from the following payment instruments, somewhat
-depending on which countries you are operating in.
-
-The Checkout is available in Danish `da-DK`, English (US) `en-US`, Finnish
+This integration is available in Danish `da-DK`, English (US) `en-US`, Finnish
 `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`.
+
+You can choose the contents of your payment UI from the following payment
+instruments, somewhat depending on which countries you are operating in.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
 body="Some of the digital wallets we offer require you to take additional steps
@@ -42,6 +50,49 @@ below to read more." %}
 | ![Swish][swish-logo]     | Swish                 | {% flag se %}                             |
 |   ![Trustly][trustly-logo]   | Trustly            | {% flag se %} {% flag fi %}               |
 | ![Vipps][vipps-logo]     | Vipps                | {% flag no %}                             |
+
+{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
+
+{% contentfor release_notes %}
+  <h2 id="front-page-release-notes" class="heading-line heading-line-green">What's new in the documentation</h2>
+  {% include release_notes.html num_dates=3 %}
+  <a href="/checkout-v3/resources/release-notes">See full release notes</a>
+{% endcontentfor %}
+
+{% contentfor extras %}
+  <h2 id="front-page-extra-resources" class="heading-line">Extra resources</h2>
+  <div class="row mt-4">
+      <div class="{{ card_col_class }}">
+          {% include card.html title='OS development guidelines'
+              text='This is how we create an inclusive environment'
+              icon_content='account_circle'
+              icon_outlined=true
+              to='/checkout-v3/resources/development-guidelines'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Test data'
+              text='Get the required data for testing in our interfaces'
+              icon_content='content_paste'
+              to='/checkout-v3/resources/test-data'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Terminology'
+              text='Get a better understanding of the terms we use'
+              icon_content='menu_book'
+              to='/checkout-v3/resources/terminology'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='See all resources (7)'
+              text='Data protection, public migration key etc'
+              no_icon=true
+              to='/checkout-v3/resources/'
+          %}
+      </div>
+  </div>
+{% endcontentfor %}
 
 {% include iterator.html next_href="/checkout-v3/payment-request"
                          next_title="Start Integrating" %}

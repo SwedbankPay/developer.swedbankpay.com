@@ -2,35 +2,46 @@
 title: Developer Portal
 layout: front-page
 front_page:
-  ingress: |
-    We've compiled a complete toolbox for integrating our payment solutions, so you can familiarize yourself with their various features and functionalities.
   show_merchants_bar: false
-  start_heading: Let's get your e-commerce website up and running with easy, flexible, and safe payments!
+  start_heading: The complete toolbox for integrating our easy and safe omni-channel payment solutions Let's get started with easy, flexible, and safe payments!
 hide_from_sidebar: true
 ---
 
-{% contentfor intro_cards %}
-  {% include card-extended.html
-          title='Discover Digital Payments'
-          no_icon=true
-          button_content="Let's get started"
-          text="Every business has its own unique needs. That's why we made it possible to fit a variety of needs with just one integration. To help you get started, we've created two options to choose from. Ready to learn more? Here's what you need to know!"
-          button_type='primary'
-          button_alignment='align-self-end'
-          to='/checkout-v3/'
+{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
 
+{% contentfor extras %}
+  <h2 id="front-page-contact-partners" class="heading-line">Products</h2>
+  <div class="row mt-4">
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Digital Payments'
+              text='An integration guide to our   '
+              icon_content='shopping_cart'
+              icon_outlined=true
+              to="/checkout-v3/"
           %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Payment Terminals'
+              text='Getting started with or upgrading our payment terminals? This is the place for you!'
+              icon_content='point_of_sale'
+              to='/pax-terminal/'
+          %}
+      </div>
+  </div>
+{% endcontentfor %}
+
+{% contentfor intro_cards %}
 
       {% include card-extended.html
           title='Want to try it yourself?'
           no_icon=true
-          button_content='Visit our Demoshop'
-          text='Experience what it would be like to pay as a customer of yours in our demoshop.'
+          button_content='Head to the playground'
+          text='Experience our brand new WCAG compliant payment UI in the Swedbank Pay Playground.'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true
           container_content='![demoshop](/assets/img/demoshop-image.svg)'
-          to='https://ecom.externalintegration.payex.com/pspdemoshop'
+          to='https://playground.dev.swedbankpay.com'
           %}
 {% endcontentfor %}
 
@@ -41,7 +52,7 @@ hide_from_sidebar: true
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
           {% include card.html title='Contact Us'
-              text='Before you start, you can get in touch with our Sales department to get the perfect solution for your needs'
+              text='Before you start, you can get in touch with our Sales department to find the perfect solution for your needs'
               icon_content='email'
               icon_outlined=true
               to="mailto:sales.swedbankpay@swedbank.se"
@@ -52,47 +63,6 @@ hide_from_sidebar: true
               text='A lot of partners help us deliver the best payment experience. Get to know them all here'
               icon_content='handshake'
               to='/checkout-v3/resources/partners'
-          %}
-      </div>
-  </div>
-{% endcontentfor %}
-
-{% contentfor release_notes %}
-  <h2 id="front-page-release-notes" class="heading-line heading-line-green">What's new in the documentation</h2>
-  {% include release_notes.html num_dates=3 %}
-  <a href="/checkout-v3/resources/release-notes">See full release notes</a>
-{% endcontentfor %}
-
-{% contentfor extras %}
-  <h2 id="front-page-extra-resources" class="heading-line">Extra resources</h2>
-  <div class="row mt-4">
-      <div class="{{ card_col_class }}">
-          {% include card.html title='OS development guidelines'
-              text='This is how we create an inclusive environment'
-              icon_content='account_circle'
-              icon_outlined=true
-              to='/checkout-v3/resources/development-guidelines'
-          %}
-      </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='Test data'
-              text='Get the required data for testing in our interfaces'
-              icon_content='content_paste'
-              to='/checkout-v3/resources/test-data'
-          %}
-      </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='Terminology'
-              text='Get a better understanding of the terms we use'
-              icon_content='menu_book'
-              to='/checkout-v3/resources/terminology'
-          %}
-      </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='See all resources (7)'
-              text='Data protection, public migration key etc'
-              no_icon=true
-              to='/checkout-v3/resources/'
           %}
       </div>
   </div>
