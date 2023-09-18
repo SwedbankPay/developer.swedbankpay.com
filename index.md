@@ -3,7 +3,7 @@ title: Developer Portal
 layout: front-page
 front_page:
   show_merchants_bar: false
-  start_heading: The complete toolbox for integrating our easy and safe omni-channel payment solutions Let's get started with easy, flexible, and safe payments!
+  start_heading: The complete toolbox for integrating our easy and safe omni-channel payment solutions. Let's get started with easy, flexible, and safe payments!
 hide_from_sidebar: true
 ---
 
