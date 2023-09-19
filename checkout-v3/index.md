@@ -51,48 +51,10 @@ below to read more." %}
 | ![Trustly][trustly-logo]  | Trustly               | {% flag se %} {% flag fi %}               |
 | ![Vipps][vipps-logo]      | Vipps                | {% flag no %}                             |
 
-{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
-
 ## What's new in the documentation
 
   {% include release_notes.html num_dates=3 %}
   <a href="/checkout-v3/resources/release-notes">See full release notes</a>
-
-{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
-
-{% contentfor extras %}
-<div class="row mt-4">
-      <div class="{{ card_col_class }}">
-          {% include card.html title='OS development guidelines'
-              text='This is how we create an inclusive environment'
-              icon_content='account_circle'
-              icon_outlined=true
-              to='/resources/development-guidelines'
-          %}
-      </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='Test data'
-              text='Get the required data for testing in our interfaces'
-              icon_content='content_paste'
-              to='/resources/test-data'
-          %}
-      </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='Terminology'
-              text='Get a better understanding of the terms we use'
-              icon_content='menu_book'
-              to='/resources/terminology'
-          %}
-      </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='See all resources (7)'
-              text='Data protection, public migration key etc'
-              no_icon=true
-              to='/resources/'
-          %}
-      </div>
-  </div>
-{% endcontentfor %}
 
 {% include iterator.html next_href="/checkout-v3/payment-request"
                          next_title="Start Integrating" %}

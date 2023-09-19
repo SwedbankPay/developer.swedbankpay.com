@@ -2,8 +2,8 @@
 title: Developer Portal
 layout: front-page
 front_page:
+  ingress: The complete toolbox for integrating our easy and safe omni-channel payment solutions.
   show_merchants_bar: false
-  start_heading: The complete toolbox for integrating our easy and safe omni-channel payment solutions.
 hide_from_sidebar: true
 ---
 
@@ -63,6 +63,43 @@ hide_from_sidebar: true
               text='A lot of partners help us deliver the best payment experience. Get to know them all here'
               icon_content='handshake'
               to='/checkout-v3/resources/partners'
+          %}
+      </div>
+  </div>
+{% endcontentfor %}
+
+{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
+
+{% contentfor extras %}
+<h2 id="front-page-extra-resources" class="heading-line">Digital Payments Resources</h2>
+<div class="row mt-4">
+      <div class="{{ card_col_class }}">
+          {% include card.html title='OS Development Guidelines'
+              text='This is how we create an inclusive environment'
+              icon_content='account_circle'
+              icon_outlined=true
+              to='/resources/development-guidelines'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Test Data'
+              text='Get the required data for testing in our interfaces'
+              icon_content='content_paste'
+              to='/resources/test-data'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Terminology'
+              text='Get a better understanding of the terms we use'
+              icon_content='menu_book'
+              to='/resources/terminology'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='See All Resources (7)'
+              text='Data protection, public migration key etc'
+              no_icon=true
+              to='/resources/'
           %}
       </div>
   </div>
