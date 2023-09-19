@@ -8,7 +8,7 @@ description: |
 ## Swedbank Pay Nexo Retailer
 
 The interface is based on Nexo Retailer version 3.1 and uses XML message formats over HTTP/TCP.
-For reference it may be a good idea to download the Nexo specifications from www.nexo-standards.org, but the essentials will be descibed here.
+For reference it may be a good idea to download the Nexo specifications from www.nexo-standards.org, but the essentials will be described here.
 Remember that Nexo Retailer is huge and we are far from giving support for everything.
 
 *   **nexo Sale to POI Protocol Specifications Version 3.1**

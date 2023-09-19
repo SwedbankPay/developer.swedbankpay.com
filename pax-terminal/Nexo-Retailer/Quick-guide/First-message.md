@@ -36,6 +36,6 @@ A LoginRequest starts a so called `Login Session` in the terminal. A `Login Sess
 |   | ProviderIdentification | POS producer name |
 |   | SoftwareVersion | Important that this value changes if the software is updated. This helps us to track possible problem if they occur. |
 | SaleTerminalData | TerminalEnvironment | Only supported value is `Attended` |
-| SaleCapabilities | | The values in this field affects the behaviour of the terminal. If only `PrinterReceipt` is included the terminal won't send any request to the POS system. Your application will work as a client-only. |
+| SaleCapabilities | | The values in this field affects the behavior of the terminal. If only `PrinterReceipt` is included the terminal won't send any request to the POS system. Your application will work as a client-only. |
 
 {% include iterator.html next_href="make-payment" next_title="Next" %}
