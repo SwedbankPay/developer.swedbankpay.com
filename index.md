@@ -3,18 +3,18 @@ title: Developer Portal
 layout: front-page
 front_page:
   show_merchants_bar: false
-  start_heading: The complete toolbox for integrating our easy and safe omni-channel payment solutions. Let's get started with easy, flexible and safe payments!
+  start_heading: The complete toolbox for integrating our easy and safe omni-channel payment solutions.
 hide_from_sidebar: true
 ---
 
 {% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
 
-{% contentfor extras %}
+{% contentfor intro_cards %}
   <h2 id="front-page-contact-partners" class="heading-line">Products</h2>
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
           {% include card.html title='Digital Payments'
-              text='An integration guide to our   '
+              text='A guide through our digital payments'
               icon_content='shopping_cart'
               icon_outlined=true
               to="/checkout-v3/"
@@ -22,7 +22,7 @@ hide_from_sidebar: true
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Payment Terminals'
-              text='Getting started with or upgrading our payment terminals? This is the place for you!'
+              text='A guide through our payment terminals'
               icon_content='point_of_sale'
               to='/pax-terminal/'
           %}
@@ -33,10 +33,10 @@ hide_from_sidebar: true
 {% contentfor intro_cards %}
 
       {% include card-extended.html
-          title='Want to try it yourself?'
+          title='Want to give Digital Payments a try?'
           no_icon=true
           button_content='Head to the playground'
-          text='Experience our brand new WCAG compliant payment UI in the Swedbank Pay Playground.'
+          text='Experience our brand new WCAG compliant payment UI in the Swedbank Pay Playground'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true
