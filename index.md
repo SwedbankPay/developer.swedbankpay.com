@@ -2,7 +2,7 @@
 title: Developer Portal
 layout: front-page
 front_page:
-  ingress: The complete toolbox for integrating our easy and safe omni-channel payment solutions.
+  ingress: The complete toolbox for integrating our easy and safe omnichannel payment solutions.
   show_merchants_bar: false
 hide_from_sidebar: true
 ---
