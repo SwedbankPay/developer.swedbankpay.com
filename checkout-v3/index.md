@@ -78,6 +78,6 @@ below to read more." %}
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [trustly-logo]: /assets/img/icon-trustly-simple.svg
-[wcag-presentation]: https://swedbankpay.com
+[wcag-presentation]: https://www.swedbankpay.com/information/wcag
 [paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
 [instrument-mode]: /checkout-v3/features/optional/instrument-mode
