@@ -172,7 +172,7 @@ Happy holidays, everyone! We look forward to seeing you in 2023!
 
 Our penultimate release of the year has a few things up its sleeve. The most
 exciting being the new capabilities
-[Cross Channel Payments][cross-channel-payments],
+[Integrated Commerce][integrated-commerce],
 [Automated Fuel Dispenser Payments][afd-payments], [SSN][ssn-restrictions] and
 [Age][age-restrictions] restrictions. We've also added some new fields in the
 [Paid][resource-model-paid] and [Cancelled][resource-model-cancelled] models, a
@@ -882,7 +882,7 @@ integration and the payer.
 [core-features]: /old-implementations/checkout-v2/features/core/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [credit]: /old-implementations/payment-instruments-v1/card
-[cross-channel-payments]: /checkout-v3/features/optional/cross-channel-payments
+[integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /checkout-v3/resources/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
