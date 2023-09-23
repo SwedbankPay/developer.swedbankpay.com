@@ -21,5 +21,5 @@ information will be stored.
 ![Payer is presented with SSN input or continue as guest][enterprise-enter-ssn]
 
 [enterprise-enter-ssn]: /assets/img/checkout/enterprise-enter-ssn.png
-[enterprise-redirect]: /checkout-v3/enterprise/redirect#step-1-create-payment-order
-[enterprise-seamless-view]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
+[enterprise-redirect]: /old-implementations/enterprise/redirect#step-1-create-payment-order
+[enterprise-seamless-view]: /old-implementations/enterprise/seamless-view#step-1-create-payment-order

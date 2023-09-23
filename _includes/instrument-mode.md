@@ -208,7 +208,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "availableInstruments": [
             "Invoice-PayExFinancingSe"
-        ], {% if documentation_section contains "checkout-v3/enterprise" %}
+        ], {% if documentation_section contains "old-implementations/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %}
         "integration": "HostedView|Redirect",
