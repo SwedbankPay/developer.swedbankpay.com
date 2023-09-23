@@ -164,6 +164,6 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post-Purchase" %}
 
-[abort-feature]: /checkout-v3/enterprise/features/core/abort
-[seamless-view-events]: /checkout-v3/enterprise/features/technical-reference/seamless-view-events
+[abort-feature]: /old-implementations/enterprise/features/core/abort
+[seamless-view-events]: /old-implementations/enterprise/features/technical-reference/seamless-view-events
 [seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png

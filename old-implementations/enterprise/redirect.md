@@ -91,5 +91,5 @@ capture and the other options you have after the purchase.
                          next_href="post-purchase"
                          next_title="Post-Purchase" %}
 
-[abort-feature]: /checkout-v3/enterprise/features/core/abort
+[abort-feature]: /old-implementations/enterprise/features/core/abort
 [redirect-enterprise-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png

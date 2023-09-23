@@ -864,14 +864,14 @@ integration and the payer.
 [checkout-payment-menu-frontend]: /old-implementations/checkout-v2/checkin#step-2-display-swedbank-pay-checkin-module
 [checkout-payment-order-purchase]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [checkout-payment-url]: /old-implementations/checkout-v2/features/technical-reference/payment-url
-[checkout-create-starter-paymentorder]: /checkout-v3/enterprise/seamless-view#step-1-create-payment-order
+[checkout-create-starter-paymentorder]: /old-implementations/enterprise/seamless-view#step-1-create-payment-order
 [checkout]: /old-implementations/checkout-v2/
 [checkout-v2]: /old-implementations/checkout-v2/
 [checkout-items]: /old-implementations/checkout-v2/features/technical-reference/items
 [checkout-3ds2]: /old-implementations/checkout-v2/features/core/frictionless-payments
 [checkout-callback]: /old-implementations/checkout-v2/features/core/callback
 [checkout-v3-matrix]: /checkout-v3
-[checkout-v3-enterprise]: /checkout-v3/enterprise
+[checkout-v3-enterprise]: /old-implementations/enterprise
 [checkout-v3-payments-only]: /checkout-v3
 [checkout-v3]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payment-request

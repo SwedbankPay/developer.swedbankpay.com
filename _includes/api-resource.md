@@ -11,7 +11,7 @@
          paymentorders
     {%- when "checkout-v3" -%}
          paymentorders
-    {%- when "checkout-v3/enterprise" -%}
+    {%- when "old-implementations/enterprise" -%}
          paymentorders
     {%- when "checkout-v3/payments-only" -%}
          paymentorders

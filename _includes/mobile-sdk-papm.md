@@ -242,5 +242,5 @@ paymentOrder.disableStoredPaymentDetails = true
 ```
 
 [add-stored-details]: /old-implementations/payment-menu-v2/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
-[enterprise-payer-ref]: https://developer.swedbankpay.com/checkout-v3/enterprise/features/optional/enterprise-payer-reference
+[enterprise-payer-ref]: https://developer.swedbankpay.com/old-implementations/enterprise/features/optional/enterprise-payer-reference
 [expanding_properties]: https://developer.swedbankpay.com/checkout-v3/resources/fundamental-principles#expansion
