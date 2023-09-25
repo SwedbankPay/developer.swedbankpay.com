@@ -1,3 +1,6 @@
+{% include alert.html type="warning" icon="warning" body="This feature is only
+available for merchants who have a specific agreement with Swedbank Pay." %}
+
 Custom styling allows you to make adjustments to the payment UI so it fits your
 company profile even better. It is available for all implementations, but only
 when using Seamless View.

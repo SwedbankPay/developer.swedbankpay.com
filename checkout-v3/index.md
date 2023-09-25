@@ -13,11 +13,12 @@ the payment instruments enabled in your merchant setup, restrict the menu to a
 selection of instruments, or
 [display a single payment instrument][instrument-mode].
 
-Our brand new [WCAG compliant payment UI][wcag-presentation] can be displayed as
-a redirect integration, where the payer is redirected to a page hosted by us, or
-seamless view, where the payment UI is embedded in an iframe in your shop. It
-is developed to be mobile first, but works great regardless of browser and
-device.
+To become WCAG compliant, we have re-worked our payment UI. Click here to
+[learn more about WCAG and the changes we have done][wcag-presentation]. The
+payment UI can be displayed as a redirect integration, where the payer is
+redirected to a page hosted by us, or seamless view, where the payment UI is
+embedded in an iframe in your shop. It is developed to be mobile first, but
+works great regardless of browser and device.
 
 We have made it easier for you to retrieve payment data in a standardized format
 by using the [Paid resource][paid], which we highly recommend for smoother
