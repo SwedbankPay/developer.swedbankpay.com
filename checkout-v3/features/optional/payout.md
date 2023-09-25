@@ -1,7 +1,7 @@
 ---
 title: Payout
 description: Paying out funds to the consumer's account.
-menu_order: 2800
+menu_order: 2900
 icon:
   content: euro_symbol
   outlined: true
