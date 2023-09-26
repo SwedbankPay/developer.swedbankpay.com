@@ -238,4 +238,4 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-[instrument-mode]: checkout-v3/features/optional/instrument-mode
+[instrument-mode]: /checkout-v3/features/optional/instrument-mode
