@@ -1,21 +1,23 @@
 {% include alert.html type="warning" icon="warning" body="This feature is only
 available for merchants who have a specific agreement with Swedbank Pay." %}
 
-Custom styling allows you to make adjustments to the payment UI so it fits your
-company profile even better. It is available for all implementations, but only
-when using Seamless View.
+Custom styling allows you to make adjustments to the payment UI so it blends
+with your online store's existing design. It is available for all
+implementations, but only when using Seamless View.
 
-Please note that it is your responsibility that a custom styled payment UI is
-still WCAG compliant.
+Please note that it is your responsibility that a custom styled payment UI still
+meets the accessability requirements (read more about WCAG by clicking the link
+below).
 
 ## Customizable Elements
 
-After the arrival of our [WCAG compliant payment UI][wcag-presentation], the
-elements you can adjust are listed below.
+With the arrival of our [accessability compliant payment UI][wcag-presentation],
+the elements you can adjust are related to the CTA button. Here's what you can
+do!
 
-### The background color of the primary button
+### The background color of the CTA button
 
-The primary button has three different states with different colors during the
+The CTA button has three different states with different colors during the
 payment process. They are all adjustable.
 
 The states are **disabled** (before the payer has entered all their (valid)
@@ -25,15 +27,15 @@ and **hover** (when the payer hovers above the enabled button).
 The default color will be light gray for **disabled**, black for **enabled** and
 light brown for **hover**.
 
-### Primary button text color
+### CTA button text color
 
 You can also change the button text so it blends well with the new background
 color. The default is white (light gray for disabled).
 
 ### Border radius of the buttons
 
-The border radius of the buttons are adjustable to make it a harder rectangle or
-a softer rounded shape, to better match with your company profile.
+The border radius of the buttons are adjustable to create a harder rectangle or
+a softer rounded shape, and better match your existing design.
 
 The default value will be 8px, the minimum is 0px, and the maximum is 30px. We
 also allow different values for each corner of the button.

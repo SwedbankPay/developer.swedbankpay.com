@@ -33,10 +33,10 @@ hide_from_sidebar: true
 {% contentfor intro_cards %}
 
       {% include card-extended.html
-          title='Want to give Digital Payments a try?'
+          title='Want to give Digital Payments a go?'
           no_icon=true
           button_content='Head to the playground'
-          text='Experience our brand new WCAG compliant payment UI in the Swedbank Pay Playground'
+          text='Experience our brand new accessability compliant payment UI in the Swedbank Pay Playground'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true
