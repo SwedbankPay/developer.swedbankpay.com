@@ -5,7 +5,7 @@ description: |
 menu_order: 8
 ---
 
-We always strive to enhance and modernise our digital solution, so we have
+We always strive to enhance and modernize our digital solution, so we have
 developed a fresh visual User Interface (UI) design for our Digital Payments.
 It will be released October 19th.
 
