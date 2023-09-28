@@ -1,7 +1,7 @@
 ---
 title: Styling
 description: |
-  Information about accessability and WCAG
+  Information about accessibility and WCAG
 menu_order: 8
 ---
 

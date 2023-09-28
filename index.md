@@ -36,7 +36,7 @@ hide_from_sidebar: true
           title='Want to give Digital Payments a go?'
           no_icon=true
           button_content='Head to the playground'
-          text='Experience our brand new accessability compliant payment UI in the Swedbank Pay Playground'
+          text='Experience our brand new accessibility compliant payment UI in the Swedbank Pay Playground'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true
