@@ -10,6 +10,28 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 28 September 2023
+
+### Version 4.5.0
+
+If you are reading these notes, you have probably noticed some changes already!
+As the **Payment Terminals** section is growing bigger, we have moved most of
+the **Digital Payments** related content away from the front page. The release
+notes can now be found where you are reading this, and the resources at the
+bottom of the front page will follow suit shortly.
+
+The biggest news is the arrival of the [Swedbank Pay Playground][spp], where you
+can experience our payment solutions both as a payer and – since we give you
+access to the toolbox – a merchant. Play around with amounts, different menu
+setups (full menu, selected instruments or a single instrument) and styling. It
+is also a great opportunity to see the upcoming accessibility compliant UI,
+which is going live in October. Read more about
+[accessibility changes here][wcag]. With that in mind, we have also written a
+section regarding [custom styling][custom-styling] of your payment UI.
+
+If you are looking for **Cross Channel Payments** and can’t find it, that is
+because we have renamed it [Integrated Commerce][int-com].
+
 ## 31 August 2023
 
 ### Version 4.4.0
@@ -882,6 +904,7 @@ integration and the payer.
 [core-features]: /old-implementations/checkout-v2/features/core/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [credit]: /old-implementations/payment-instruments-v1/card
+[custom-styling]: /checkout-v3/features/optional/custom-styling
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /checkout-v3/resources/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
@@ -900,6 +923,7 @@ integration and the payer.
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
+[int-com]: /checkout-v3/features/optional/integrated-commerce
 [ios-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#ios
 [ios-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/ios
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
@@ -942,6 +966,7 @@ integration and the payer.
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-modules]: /checkout-v3/modules-sdks
 [split-settlement]: /checkout-v3/features/optional/split-settlement
+[spp]: https://playground.swedbankpay.com
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
 [status-models]: /checkout-v3/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/features/technical-reference/status-models#paid
@@ -972,3 +997,4 @@ integration and the payer.
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps
+[wcag]: https://www.swedbankpay.com/information/wcag
