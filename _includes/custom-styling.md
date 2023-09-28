@@ -109,5 +109,5 @@ script.onload = function () {
 ```
 
 [contact]: mailto:sales.swedbankpay@swedbank.se
-[playground]: https://playground.externalintegration.swedbankpay.com
+[playground]: https://playground.swedbankpay.com
 [wcag-presentation]: https://www.swedbankpay.com/information/wcag

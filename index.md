@@ -41,7 +41,7 @@ hide_from_sidebar: true
           button_alignment='align-self-start'
           card_container=true
           container_content='![demoshop](/assets/img/demoshop-image.svg)'
-          to='https://playground.externalintegration.swedbankpay.com'
+          to='https://playground.swedbankpay.com'
           %}
 {% endcontentfor %}
 
