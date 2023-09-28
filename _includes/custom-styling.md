@@ -6,12 +6,12 @@ with your online store's existing design. It is available for all
 implementations, but only when using Seamless View.
 
 Please note that it is your responsibility that a custom styled payment UI still
-meets the accessability requirements (read more about WCAG by clicking the link
+meets the accessibility requirements (read more about WCAG by clicking the link
 below).
 
 ## Customizable Elements
 
-With the arrival of our [accessability compliant payment UI][wcag-presentation],
+With the arrival of our [accessibility compliant payment UI][wcag-presentation],
 the elements you can adjust are related to the CTA button. Here's what you can
 do!
 
@@ -109,5 +109,5 @@ script.onload = function () {
 ```
 
 [contact]: mailto:sales.swedbankpay@swedbank.se
-[playground]: https://playground.externalintegration.swedbankpay.com
+[playground]: https://playground.swedbankpay.com
 [wcag-presentation]: https://www.swedbankpay.com/information/wcag
