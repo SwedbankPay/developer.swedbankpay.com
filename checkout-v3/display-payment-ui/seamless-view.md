@@ -210,6 +210,6 @@ Merchant -->>- Payer: Show Purchase complete
                          next_title="Post-Purchase" %}
 
 [seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
-[seamless-enterprise-menu]: /assets/img/checkout/checkout-v3-seamless-menu.png
+[seamless-enterprise-menu]: /assets/img/wcag-seamless.png
 [payments-callback]: /checkout-v3/features/core/callback
 [payments-seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events

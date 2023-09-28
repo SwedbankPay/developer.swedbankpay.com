@@ -255,7 +255,7 @@ Content-Type: application/json
           "Invoice-PayMonthlyInvoiceSe",
           "Swish",
           "CreditAccount",
-          "Trustly" ],{% if documentation_section contains "checkout-v3/enterprise" %}
+          "Trustly" ],{% if documentation_section contains "old-implementations/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}

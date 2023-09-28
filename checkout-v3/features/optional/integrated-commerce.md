@@ -1,10 +1,10 @@
 ---
-title: Cross Channel Payments
+title: Integrated Commerce
 description: A printable, scannable reference code for payment tracking.
-menu_order: 1500
+menu_order: 2100
 icon:
   content: document_scanner
   outlined: true
 ---
 
-{% include cross-channel-payments.md %}
+{% include integrated-commerce.md %}

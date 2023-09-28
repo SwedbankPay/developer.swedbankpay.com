@@ -144,5 +144,5 @@ Merchant -->>- Payer: Show Purchase complete
                          next_href="/checkout-v3/post-purchase"
                          next_title="Post-Purchase" %}
 
-[redirect-payments-only-menu]: /assets/img/checkout/checkout-v3-redirect-menu.png
+[redirect-payments-only-menu]: /assets/img/redirect-wcag.png
 [payments-callback]: /checkout-v3/features/core/callback

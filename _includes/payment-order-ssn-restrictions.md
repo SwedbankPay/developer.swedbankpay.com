@@ -18,7 +18,7 @@ field (found within the `payer` field). The `nationalIdentifier` must be
 included to use this feature. Instruments supporting the feature will reject
 payments that do not match the restriction.
 
-{% if documentation_section contains "checkout-v3/enterprise" %} If you want to
+{% if documentation_section contains "old-implementations/enterprise" %} If you want to
 use the Social Security Number just for payment restrictions, and not do a
 checkout profile lookup, add the parameter `guestMode` in the
 `nationalIdentifier` field and set it to `true`. {% endif %}
@@ -34,8 +34,8 @@ The field itself is a `bool` which must be added in the `payer` field of the
 request. Below is a shortened example of a payment order request. Apart from the
 new field, the payment request is similar to a standard payment order request.
 For an example of a payment order request, {% if documentation_section contains
-"checkout-v3/enterprise" %} [click
-here.](/checkout-v3/enterprise/redirect#payment-order-request) {% endif %} {% if
+"old-implementations/enterprise" %} [click
+here.](/old-implementations/enterprise/redirect#payment-order-request) {% endif %} {% if
 documentation_section contains "checkout-v3/payments-only" %} [click
 here.](/checkout-v3/payment-request) {% endif %}
 The response will be similar to a standard payment order response, which is also
@@ -75,7 +75,7 @@ Content-Type: application/json
 | Required         | Field     | Type         | Description   |
 | :--------------: | :-------- | :----------- | :------------ |
 |                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
-| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% if documentation_section contains "checkout-v3/enterprise" %}
+| | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. | {% if documentation_section contains "old-implementations/enterprise" %}
 |                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object.                                                                      |
 |                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. |
 |                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     |
@@ -85,6 +85,6 @@ Content-Type: application/json
 | {% icon check %} | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments).                                                                             |
 |                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/frictionless-payments).            |
-|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/checkout-v3/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
+|                  | {% f payerReference, 2 %}                     | `string`     | A reference used in Enterprise integrations to recognize the payer in the absence of SSN and/or a secure login. Read more about this in the [payerReference](/old-implementations/enterprise/features/optional/enterprise-payer-reference) feature section.                                                                                                                                                                                                                       |
 {% endcapture %}
 {% include accordion-table.html content=table %}

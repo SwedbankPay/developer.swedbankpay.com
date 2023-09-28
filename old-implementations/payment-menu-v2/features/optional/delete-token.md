@@ -1,7 +1,7 @@
 ---
 title: Delete Token
 description: How to delete tokens.
-menu_order: 1500
+menu_order: 1600
 icon:
   content: assignment
   outlined: true

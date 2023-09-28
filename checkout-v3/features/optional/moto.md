@@ -2,7 +2,7 @@
 title: MOTO
 description: |
   Mail Order / Telephone Order transactions.
-menu_order: 2100
+menu_order: 2200
 icon:
   content: dns
   outlined: true
