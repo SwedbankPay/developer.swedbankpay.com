@@ -24,10 +24,9 @@ The biggest news is the arrival of the [Swedbank Pay Playground][spp], where you
 can experience our payment solutions both as a payer and – since we give you
 access to the toolbox – a merchant. Play around with amounts, different menu
 setups (full menu, selected instruments or a single instrument) and styling. It
-is also a great opportunity to see the upcoming accessibility compliant UI,
-which is going live in October. Read more about
-[accessibility changes here][wcag]. With that in mind, we have also written a
-section regarding [custom styling][custom-styling] of your payment UI.
+is also a great opportunity to see the upcoming accessibility compliant UI. Read
+more about [accessibility changes here][wcag]. With that in mind, we have also
+written a section regarding [custom styling][custom-styling] of your payment UI.
 
 If you are looking for **Cross Channel Payments** and can’t find it, that is
 because we have renamed it [Integrated Commerce][int-com].
