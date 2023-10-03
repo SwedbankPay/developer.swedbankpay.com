@@ -7,7 +7,6 @@ menu_order: 8
 
 We always strive to enhance and modernize our digital solution, so we have
 developed a fresh visual User Interface (UI) design for our Digital Payments.
-It will be released October 19th.
 
 Our design aims to elevate both the user experience and the visual appeal of our
 checkout web application. We incorporate the most current stylistic trends and
