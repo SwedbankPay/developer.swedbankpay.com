@@ -31,3 +31,15 @@ AbortRequest may be sent for any ongoing request.
 {% include alert.html type="warning" icon="warning" header="warning"
 body= "The AbortRequest does not give a Nexo message response. The Http status code will be 204-No content, but the actual request that is aborted will get a response with Result Failure."
 %}
+
+```mermaid
+sequenceDiagram
+participant POS
+participant Terminal
+    POS->>+Terminal: Http POST PaymentRequest
+    POS->>+Terminal: Http POST AbortRequest
+    Terminal->>-POS: rsp 204 - no content
+    Terminal->>-POS: rsp 200 PaymentResponse Failure
+```
+
+{% include iterator.html prev_href="make-payment" prev_title="Back" %}

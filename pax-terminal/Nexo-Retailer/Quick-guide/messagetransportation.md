@@ -15,9 +15,9 @@ Content-Length: 700
 
 ```
 
-Make sure to only send one request at a time. The exception to that rule is AbortRequest, LoginRequest and TransactionStatusRequest.
+Make sure to only send one request at a time. The exception to that rule is AbortRequest, LoginRequest and TransactionStatusRequest, which may be sent when there is an unaswered request ongoing.
 
-A Nexo response is received in the Http Response for the request. Http status code is 200 - OK, for any Http Response carrying a Nexo Response message. Http status 204 - No Content, is received when there is no Nexo message response to a request.
+A Nexo response is received in the Http Response for the request. Http status code is `200 - OK`, for any Http Response carrying a Nexo Response message. Http status `204 - No Content`, is received when there is no Nexo message response to a request.
 
 {% include alert.html type="warning" icon="warning" header="warning"
 body="Make sure to wait for the http response long enough. If the socket drops during a PaymentRequest, the terminal is still able to make a transaction but the response cannot be sent. In that perticular case you need to make TransactionStatusRequest. "
