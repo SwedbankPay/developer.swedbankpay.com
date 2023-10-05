@@ -15,7 +15,7 @@ participant Terminal
     Terminal->>POS: rsp 200 PaymentResponse Success
     POS->>Terminal: Http POST ReversalRequest
     Terminal->>POS: rsp 200 ReversalResponse Success
-    note over POS,Terminal: But fails if payment reponse was not approved
+    note over POS,Terminal: But fails if payment response was not approved
     POS->>Terminal: Http POST PaymentRequest
     Terminal->>POS: rsp 200 PaymentResponse Failure
     POS->>Terminal: Http POST ReversalRequest
