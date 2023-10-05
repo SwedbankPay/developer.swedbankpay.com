@@ -2,68 +2,88 @@
 title: Quick Guide
 menu_order: 10
 ---
-## Message Format
+## Simplest Form of Integration
 
-All messages are wrapped in either `SaleToPOIRequest` or `SaleToPOIResponse`.
-Each of thoose contain two major elements. A `MessageHeader` and the element carrying the actual request or response.
-
-## Message Header
-
-All messages have a `MessageHeader` element with the following attributes:
-
-{:.table .table-striped .mb-5}
-| Attributes | Description |
-| :------------- | :-------------- |
-|   ProtocolVersion | Text string "3.1"  |
-|   MessageClass | Enumeration: `Service` or `Device`           |
-|   MessageCategory | Enumeration: `Login`, `Logout`, `Payment`, `Abort` e.t.c |
-|   MessageType | Enumeration: `Request`, `Response` or `Event`  |
-|   ServiceID   |  Unique per terminal for each `Service` message within a login session and identifies the request response message pair. Echoed back in the response. Make it simple. Use hours, minute and second for the Login and then increment by one for each message.  |
-|   DeviceID    |  Unique per terminal for each `Device` message within a login session and identifies the request response message pair. Echoed back in the response |
-|   POIID   | A unique ID of the Point of Interaction within an organization, that is known and registered in TMS. This id decides the configuration of the terminal. Prefere to use the same id as for the actual POS. This is decided by the POS and makes sure the correct configuration is used by the terminal. The POIID is also used in communication with the supporting staff.|
-|   SaleID  | An ID of less interest but should be the same through out a login session  |
-
-Concatenate the `MessageCategory` with the `MessageType` to find the actual message element. The following has `Login` and `Response` and the essential element is `LoginResponse`.
+Depending on the solution one wants to build, to make a payment just takes two request and their responses. A `LoginRequest` and a `PaymentRequest` with a happy flow that gives a successful `LoginResponse` and an apporved payment that gives a successful `PaymentResponse` with the receipt data.
+To make it a little more acceptable one probably wants to be able to abort using an `AbortRequest`, and ask for a transaction status with a `TransactionStatus` request.
 
 {:.code-view-header}
-**Sample message LoginResponse**
+**Typical Happy Flow simple integration**
 
-```xml
-<?xml version='1.0' encoding='UTF-8'?>
-<SaleToPOIResponse>
- <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="Login" MessageType="Response" ServiceID="533" SaleID="1" POIID="A-POIID"/>
- <LoginResponse>
-  <Response Result="Success"/>
-  <POISystemData>
-   <DateTime>2023-09-06T07:48:52.02Z</DateTime>
-   <POISoftware ProviderIdentification="Optomany" ApplicationName="axept® PRO" SoftwareVersion="1.2.17.0"/>
-   <POITerminalData TerminalEnvironment="Attended" POISerialNumber="1710000520">
-    <POICapabilities>CustomerDisplay CustomerError CustomerInput MagStripe ICC EMVContactless</POICapabilities>
-   </POITerminalData>
-   <POIStatus GlobalStatus="OK" SecurityOKFlag="true" PEDOKFlag="true" CardReaderOKFlag="true" CommunicationOKFlag="true"/>
-  </POISystemData>
- </LoginResponse>
-</SaleToPOIResponse>
+```mermaid
+sequenceDiagram
+participant POS
+participant Terminal
+    POS->>+Terminal: Http POST LoginRequest
+    Terminal->>-POS: rsp 200 LoginResponse
+
+    loop Login session until logout or new login
+        note right of POS: Login session started
+        POS->>+Terminal: Http POST PaymentRequest
+        Terminal->>-POS: rsp 200 PaymentResponse
+        note left of Terminal: Success or Failure
+    end
+
+    POS->>+Terminal: Http POST LogoutRequest
+    Terminal->>-POS: rsp 200 LogoutResponse
+    note right of POS: Login session ended
 ```
 
-## Message Responses
+## Intended Form of Integration
 
-All Nexo message responses carry a `Response` element with the attribute `Result` which contain the value `Success` or `Failure`.
-If **Failure**, the the Response element will also have the attribute `ErrorCondition` and a child element, `AdditionalResponse` with a somewhat describing text of the failure.
+The intended form of integration, full integration, includes a listener on the POS side as well. This makes it possible for the terminal to send requests to the POS. Those requests are mostly display messages letting the POS operator to see what is going on on the terminal. In case a receipt needs to be signed by the customer, the terminal sends an input request together with a print request. The input request will ask for a confirmation from the operator that the signature is ok. When implementing a listener there will also be event notification messages such as `card inserted`, `card removed`, `maintenance required`, `maintenance completed` etc.
+The decision of having the terminal to send requests or not is made when sending the [`LoginRequest`][loginrequest] message.
 
 {:.code-view-header}
-**Sample message response with Failure**
+**Typical Happy Flow full integration**
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<SaleToPOIResponse>
-    <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="Login" MessageType="Response" ServiceID="2" SaleID="1" POIID="SthlmBA"/>
-    <LoginResponse>
-        <Response Result="Failure" ErrorCondition="Busy">
-            <AdditionalResponse>POI Terminal Temporarily Unavailable: New Poi ID detected, updating parameters</AdditionalResponse>
-        </Response>
-    </LoginResponse>
-</SaleToPOIResponse>
+```mermaid
+sequenceDiagram
+participant POS
+participant Terminal
+    POS->>+Terminal: Http POST LoginRequest
+    Terminal->>-POS: rsp 200 LoginResponse Success
+    loop Login session started
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Please wait"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Welcome"
+        POS->>Terminal: rsp 204
+        POS->>+Terminal: Http POST PaymentRequest
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Present card"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Enter PIN"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Enter PIN: *"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Enter PIN: **"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Enter PIN: ***"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Enter PIN: ****"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Authorizing"
+        POS->>Terminal: rsp 204
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Approved"
+        POS->>Terminal: rsp 204
+        Terminal->>-POS: rsp 200 PaymentResponse Success/Failure
+        Terminal->>POS: Http POST DisplayRequest
+        note over Terminal: "Welcome"
+        POS->>Terminal: rsp 204
+    end
+    POS->>+Terminal: Http POST LogoutRequest
+    Terminal->>-POS: rsp 200 LogoutResponse Success
 ```
 
-{% include iterator.html next_href="messagetransportation" next_title="Next" %}
+{% include iterator.html next_href="messageformat" next_title="Next" %}
+
+[loginrequest]: ./first-message

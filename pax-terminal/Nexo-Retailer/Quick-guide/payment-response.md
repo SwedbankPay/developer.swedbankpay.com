@@ -4,7 +4,7 @@ description: |
  Payment response holds the receipt data
 menu_order: 45
 ---
-A payment is approved if the `Result` attribute of the `/PaymentResponse/Respons` element is `Success`.
+A payment is approved if the `Result` attribute of the `/PaymentResponse/Response` element is `Success`.
 For all unapproved payments the same attribute is `Failure` and the actual response code is found in the receipt data if wanted.
 Depending on why a payment is unapproved the response may not contain a receipt. However, make sure to always make a payment terminal receipt available if a card has been used.
 
@@ -12,12 +12,12 @@ The payment response carries both a merchant receipt and a customer receipt. The
 The receiptdata is a Base64 encoded JSON structure.
 
 {:.code-view-header }
-**Sample Payment Response for approved payment**
+**Sample Payment Response for approved payment with physical payment card**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <SaleToPOIResponse>
- <MessageHeader MessageClass="Service" MessageCategory="Payment" MessageType="Response" ServiceID="3" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader MessageClass="Service" MessageCategory="Payment" MessageType="Response" ServiceID="3" SaleID="1" POIID="A-POIID"/>
  <PaymentResponse>
   <Response Result="Success"/>
   <SaleData>
@@ -50,3 +50,171 @@ The receiptdata is a Base64 encoded JSON structure.
  </PaymentResponse>
 </SaleToPOIResponse>
 ```
+
+## PaymentResponse in Detail
+
+{:.table .table-striped}
+| Name | Lev | Attributes | Description |
+| :------------- | :---: | :-------------- |:--------------- |
+| PaymentResponse | 1 | | |
+| Response | 2 | Result | **Success** or **Failure** |
+| | | ErrorCondition | Only present if Failure: Common values are `Busy`- wait and try again, `Refusal`- Request not accepted |
+| AdditionalResponse| 3 | | Only present if Failure and should be a describing text |
+| SaleData | 2 | | |
+| SaleTransactionID | 3 | TransactionID | ID of transaction provided by the sale system and may be seen in PosPay reports. Information will not be past to clearing and is not seen in Merchant Portal |
+| | | TimeStamp | Timestamp set by sale system for when the transaction is started. Note that the format is local time |
+| POIData | 2 | | |
+| POITransactionID | 3 | TransactionID | ID of transaction set by the terminal. This is seen in PosPay reports as well as on Merchant Portal. The complete element is needed if the transaction needs to be reversed |
+| | | TimeStamp | Timestamp set by terminal when the transaction is started. Note that the format is UTC |
+| PaymentResult | 2 | PaymentType | Values: `Normal` for purchase and `Refund` for refund |
+| PaymentInstrumentData | 3 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment method made via the terminal |
+| CardData | 4 | PaymentBrand | Comma separated string where the first part is card type. `01`-payment card. `02`-Combined payment and Loyalty, `03`-Loyalty. Second part is the product name |
+| | | MaskedPAN | |
+| | | EntryMode | `ICC`, `Contactless`, `Magstripe` |
+| PaymentToken | 5 | TokenRequestedType | `Customer` |
+| | | TokenValue | An irreversible 70 byte hash computed locally in the terminal. A specific card will get the same CNA in all SwedbankPay PAX terminals |
+| AmountsResp | 3 | Currency | Needs to be configured in the terminal. Available `DKK`, `EUR`, `NOK`, `SEK` |
+| | | AuthorizedAmount | Total amount for transaction |
+| | | CashBackAmount | Amount included in AuthorizedAmount |
+| | | TipAmount | Tip included in AuthorizedAmount |
+| PaymentAquirerData | 3 | MerchantID | Id of merchant set by Swedbank Pay |
+| | | AquirerPOIID | A terminal id within Swedbank Pay |
+| ApprovalCode | 4 | | Authorization approval code. Only present if Result is Success |
+| PaymentReceipt | 2 | DocumentQualifier | `CashierReceipt`- Merchant copy. `CustomerReceipt`- receipt information for customer. Note! This element appears twice. |
+| OutputContent | 3 | OutputFormat | Only value `Text` |
+| OutputText | 4 | | A Base64 encoded JSON structure with information for the receipt |
+
+## PaymentReceipt in Detail
+
+```json
+{
+    "Cardholder": {
+        "Mandatory": {
+            "Acquirer": {
+                "CardAcceptorNumber": "10020001",
+                "TerminalID": "877888"
+            },
+            "CardAcceptor": {
+                "Address1": "Hälleskåran 29",
+                "BankAgentName": "banky-bank",
+                "Name": "Test shop",
+                "OrganisationNumber": "5565671-6165",
+                "PostZipCode": "5050",
+                "TownCity": "merchant-Base24-City"
+            },
+            "CardDetails": {
+                "ApplicationIdentifier": "A0000000041010",
+                "CardSchemeName": {
+                    "ApplicationLabel": "Mastercard"
+                },
+                "PrimaryAccountNumber": "************9659",
+                "TerminalVerificationResult": "0000008001",
+                "TransactionStatusInformation": "0000"
+            },
+            "Outcome": {
+                "ApprovalCode": "611506",
+                "AuthorisationResponder": "3",
+                "AuthorisationResponseCode": "00",
+                "DebitStatus": "00"
+            },
+            "Payment": {
+                "AuthorisationChannel": "1",
+                "CardholderVerificationMethod": "/",
+                "Currency": "SEK",
+                "FinancialInstitution": "SWE",
+                "PaymentAmount": "56,00",
+                "ReceiptNumber": "8778880185",
+                "SignatureBlock": false,
+                "TotalAmount": "56,00",
+                "TransactionSource": "K",
+                "TransactionType": "00"
+            },
+            "TimeStamp": {
+                "DateOfPayment": "2023-08-24",
+                "TimeOfPayment": "17:06"
+            }
+        },
+        "Optional": {
+            "CardAcceptor": {
+                "CountryName": "752",
+                "PhoneNumber": "+4684051000"
+            },
+            "CardDetails": {
+                "CardSchemeName": {
+                    "ApplicationLabel": "Mastercard"
+                }
+            },
+            "Payment": {
+                "Reference": "1703372"
+            },
+            "ReceiptString": [
+                "Test shop",
+                "Hälleskåran 29",
+                "5050 merchant-Base24-City",
+                "2023-08-24 17:06",
+                "",
+                "Mastercard",
+                "Contactless",
+                "************9659",
+                "",
+                "K/1 3 00 SWE",
+                "AID: A0000000041010",
+                "TVR: 0000008001",
+                "TSI: 0000",
+                "RRN: 8778880185",
+                "Auth code: 611506",
+                "ARC: 00",
+                "",
+                "KÖP:         56,00 SEK",
+                "Godkänd",
+                "",
+                "",
+                "",
+                "Kortinnehavarens kvitto"
+            ]
+        }
+    }
+}
+```
+
+## For CVM method Signature
+
+If the full integration is made, the following sequence diagram shows how a purchase that is apporoved with a card holder signature would look like.
+
+```mermaid
+sequenceDiagram
+POS->>+Terminal: Http POST PaymentRequest
+Terminal->>POS: Http POST DisplayRequest
+POS->>Terminal: rsp 204 - no content
+Terminal->>POS: Http POST DisplayRequest
+Note over Terminal: "Please wait"
+POS->>Terminal: rsp 204 - no content
+Terminal->>POS: Http POST DisplayRequest
+Note over Terminal: "Authorizing"
+POS->>Terminal: rsp 204 - no content
+Terminal->>POS: Http POST PrintRequest
+Note over Terminal: Merchant receipt
+POS->>Terminal: rsp 204 - no content
+Terminal->>POS: Http POST InputRequest Confirmation
+Note over Terminal: Is signature OK?
+alt 
+    Note right of POS: Approve signature
+    POS->>Terminal: rsp 200 InputResponse True
+    Terminal->>POS: Http POST DisplayRequest
+    Note over Terminal: "Approved"
+    POS->>Terminal: rsp 204 - no content
+else 
+    Note right of POS: Disapprove signature
+    POS->>Terminal: rsp 200 InputResponse False
+    Terminal->>POS: Http POST DisplayRequest
+    Note over Terminal: "Disapproved"
+    POS->>Terminal: rsp 204 - no content
+end 
+Terminal->>-POS: rsp 200 PaymentResponse Success/Failure
+Terminal->>POS: Http POST DisplayRequest
+Note over Terminal: "Welcome"
+POS->>Terminal: rsp 204 - no content
+```
+
+{% include iterator.html prev_href="make-payment" prev_title="Back" %}
+{% include iterator.html next_href="reversal" next_title="Reverse successful transaction" %}

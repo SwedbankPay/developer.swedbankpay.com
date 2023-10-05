@@ -1,7 +1,7 @@
 ---
 title: Make a Payment
 description: |
- Once there is a Login Session it is possible to make a Payment transaction
+ Once there is a Login Session it is possible to make a Payment transaction. The PaymentRequest is used for purchase as well as refund.
 menu_order: 40
 ---
 ## PaymentRequest
@@ -25,16 +25,21 @@ Make sure to save the `MessageHeader` since that is needed if abort is needed.
 ```
 
 {:.table .table-striped}
-| Name | Attributes | Description |
-| :------------- | :-------------- |:--------------- |
-| SaleData | TokenRequestedType | This will give a token for the card used. Only value available is `Customer` which gives a Card Number Alias which is a one way hash. |
-| SaleTransactionID | TimeStamp| Request timestamp local time with offset from GMT |
-|   | TransactionID | ID of the transaction set by the POS. This value is sent to the PosPay server, but is unfortunately not forwarded to clearing.|
-| AmountsReq | RequestedAmount | The total amount of transaction as a decimal value. Use a **'.'** for decimal point if needed |
-|   | Currency | As a 3 letter abbrivation. Available are `SEK`, `NOK`, `DKK`, `EUR`.|
-|  | CashBackAmount | As `whereof`value. Is included in `RequestedAmount` |
-| PaymentData | PaymentType | Type of transaction that is requested. Availabel values are `Normal`, which is a payment and `Refund` |
+| Name | Lev | Attributes | Description |
+| :------------- | :--: | :-------------- |:--------------- |
+| PaymentRequest | 1 | | |
+| SaleData | 2 | TokenRequestedType | This will give a token for the card used. Only value available is `Customer` which gives a Card Number Alias which is a one way hash computed locally in the terminal. The CNA is the same for a specific card in all SwedbankPay terminals. |
+| SaleTransactionID | 3 | TimeStamp| Request timestamp local time with offset from GMT |
+|   | | TransactionID | ID of the transaction set by the POS. This value is sent to the PosPay server, but is unfortunately not forwarded to clearing.|
+| PaymentTransaction | 2 | | |
+| AmountsReq | | RequestedAmount | The total amount of transaction as a decimal value. Use a **'.'** for decimal point if needed |
+|   | | Currency | As a 3 letter abbrivation - ISO-4217. Available are `SEK`, `NOK`, `DKK`, `EUR`.|
+|  | | CashBackAmount | As `whereof`value. Is included in `RequestedAmount` |
+| PaymentData | 2 | PaymentType | Type of transaction that is requested. Availabel values are `Normal`, which is a payment and `Refund` |
 
-{% include iterator.html next_href="abortpayment" next_title="Abort payment" %}
-{% include iterator.html next_href="payment-response" next_title="Payment response" %}
-{% include iterator.html next_href="make-payment" next_title="Transaction status" %}
+## Following a PaymentRequest
+
+{% include iterator.html next_href="payment-response" next_title="Payment response is received" %}
+{% include iterator.html next_href="abortpayment" next_title="Abort payment with an AbortRequest" %}
+{% include iterator.html next_href="transactionstatus" next_title="Transaction status is asked for" %}
+{% include iterator.html next_href="first-message" next_title="LoginRequest if all else fail" %}
