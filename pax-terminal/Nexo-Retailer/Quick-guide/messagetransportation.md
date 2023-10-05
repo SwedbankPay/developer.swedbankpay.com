@@ -23,4 +23,4 @@ A Nexo response is received in the Http Response for the request. Http status co
 body="Make sure to wait for the http response long enough. If the socket drops during a PaymentRequest, the terminal is still able to make a transaction but the response cannot be sent. In that perticular case you need to make TransactionStatusRequest. "
 %}
 
-{% include iterator.html next_href="First-message" next_title="Next" %}
+{% include iterator.html next_href="first-message" next_title="Next" %}
