@@ -1,4 +1,4 @@
-e---
+---
 title: Event Notifications
 description: Event Notifications are sent from the terminal in a few special occasions
 menu_order: 90
