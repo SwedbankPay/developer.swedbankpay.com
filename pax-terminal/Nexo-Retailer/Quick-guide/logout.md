@@ -1,6 +1,6 @@
 ---
 title: Logout
-description: Logout is needed to let the terminal update its paramters
+description: Logout is needed to let the terminal update its parameters
 menu_order: 80
 ---
 ## LogoutRequest
