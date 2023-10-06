@@ -1,7 +1,7 @@
 ---
 title: Ask for transaction status
 description: Ask for result of last transaction or for any previously made transaction in near time. 
-menu-order: 60
+menu_order: 60
 ---
 
 ## TransactionStatus
