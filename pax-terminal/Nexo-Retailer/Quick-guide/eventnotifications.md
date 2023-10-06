@@ -1,4 +1,4 @@
----
+e---
 title: Event Notifications
 description: Event Notifications are sent from the terminal in a few special occasions
 menu_order: 90
@@ -7,7 +7,7 @@ menu_order: 90
 
 Event notifications are sent from the terminal to the POS to inform the POS about different things. They do not require a response message and it is not a must to implement any handeling of them, but it may be helpful and make a nice solution. They will only appear if the implementation has a listener for terminal requests.
 
-The most commonly used event notifications are those informing about paramter updates.
+The most commonly used event notifications are those informing about parameter updates.
 
 ```xml
 <SaleToPOIRequest>
