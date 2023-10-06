@@ -21,7 +21,7 @@ The most commonly used event notifications are those informing about parameter u
 {:.table .table-striped}
 | Name | Lev | Attribute | Description |
 | :------------- | :--: | :-------------- |:--------------- |
-| EventNotification | 1 | TimeStamp | Local time when the event occured |
+| EventNotification | 1 | TimeStamp | Local time when the event occurred |
 | | | EventToNotify | The essential attribute informing what it is about. Enumeration: `SaleAdmin`, `BeginMaintenance`, `EndMaintenance`, `Reject`, `CardInserted`, `CardRemoved` |
 | | | MaintenanceRequired | true or false. If true, there are updates that will be implemented at next logout if maintenance allowed is set.|
 | EventDetails | 2 |  | Informational text about the event. Note! not always present |
