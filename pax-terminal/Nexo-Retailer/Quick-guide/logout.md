@@ -9,7 +9,7 @@ Logout request terminates the login session and makes it possible for parameter 
 If a logout is needed during business hours but updates are not desired, there is an attribute `MaintenanceAllowed` that may be set False.
 
 {% include alert.html type="warning" icon="warning" header="warning"
-body= "Make sure to have the terminal logged out with maintenance allowed at least one hour every day, to let it update paramters and possibly software."
+body= "Make sure to have the terminal logged out with maintenance allowed at least one hour every day, to let it update parameters and possibly software."
 %}
 
 ```xml
