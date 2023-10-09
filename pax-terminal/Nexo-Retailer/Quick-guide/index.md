@@ -4,7 +4,7 @@ menu_order: 10
 ---
 ## Simplest Form of Integration
 
-Depending on the solution one wants to build, to make a payment just takes two request and their responses. A `LoginRequest` and a `PaymentRequest` with a happy flow that gives a successful `LoginResponse` and an apporved payment that gives a successful `PaymentResponse` with the receipt data.
+Depending on the solution one wants to build, to make a payment just takes two requests and their responses. A `LoginRequest` and a `PaymentRequest` with a happy flow that gives a successful `LoginResponse` and an approved payment that gives a successful `PaymentResponse` with the receipt data.
 To make it a little more acceptable one probably wants to be able to abort using an `AbortRequest`, and ask for a transaction status with a `TransactionStatus` request.
 
 {:.code-view-header}
@@ -31,7 +31,12 @@ participant Terminal
 
 ## Intended Form of Integration
 
-The intended form of integration, full integration, includes a listener on the POS side as well. This makes it possible for the terminal to send requests to the POS. Those requests are mostly display messages letting the POS operator to see what is going on on the terminal. In case a receipt needs to be signed by the customer, the terminal sends an input request together with a print request. The input request will ask for a confirmation from the operator that the signature is ok. When implementing a listener there will also be event notification messages such as `card inserted`, `card removed`, `maintenance required`, `maintenance completed` etc.
+When sending a `LoginRequest` message it is feasible to choose from two styles:
+
+*   Default integration, where POS act as both server and client
+*   Light integration, where POS acts as a client only
+
+The default form of integration, full integration, includes a listener on the POS side as well. This makes it possible for the terminal to send requests to the POS. Those requests are mostly display messages letting the POS operator to see what is happening on the terminal. In case a receipt needs to be signed by the customer, the terminal sends an input request together with a print request. The input request will ask for a confirmation from the operator that the signature is ok. When implementing a listener there will also be event notification messages such as `card inserted`, `card removed`, `maintenance required`, `maintenance completed` etc.
 The decision of having the terminal to send requests or not is made when sending the [`LoginRequest`][loginrequest] message.
 
 {:.code-view-header}
