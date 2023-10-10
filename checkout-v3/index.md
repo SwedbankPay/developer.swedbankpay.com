@@ -44,17 +44,17 @@ below to read more." %}
 {:.table .table-plain}
 |        | Payment Instrument | Region                                    |
 | :--------------------------: | :--------------: | :---------------------------------------- |
-| ![Apple Pay][apple-pay-logo] | [Apple Pay][apple-pay]  |  ![EarthIcon][earth-icon]          |
-| ![Card][card-icon]           | Card                    |  ![EarthIcon][earth-icon]          |
-| ![Click to Pay][c2p-logo]    | [Click to Pay][click-to-pay]            |  ![EarthIcon][earth-icon]             |
-| ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          |  ![EarthIcon][earth-icon]             |
-| ![MobilePay][mobilepay-logo] | MobilePay       | {% flag dk %} {% flag fi %}               |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Installment Account | {% flag se %} |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% flag no %} {% flag se %} |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% flag se %} |
-| ![Swish][swish-logo]      | Swish                 | {% flag se %}                             |
-| ![Trustly][trustly-logo]  | Trustly               | {% flag se %} {% flag fi %}               |
-| ![Vipps][vipps-logo]      | Vipps                | {% flag no %}                             |
+| ![Apple Pay][apple-pay-logo]     | [Apple Pay][apple-pay]           |  ![EarthIcon][earth-icon]    |
+| ![Card][card-icon]               | Card                             |  ![EarthIcon][earth-icon]    |
+| ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
+| ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
+| ![MobilePay][mobilepay-logo]     | MobilePay                        | {% flag dk %} {% flag fi %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %}                |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
+| ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
+| ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
+| ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
 
 ## What's new in the documentation
 
@@ -81,4 +81,5 @@ below to read more." %}
 [trustly-logo]: /assets/img/icon-trustly-simple.svg
 [wcag-presentation]: https://www.swedbankpay.com/information/wcag
 [paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
+[trustly]: /checkout-v3/payment-presentations#trustly
 [instrument-mode]: /checkout-v3/features/optional/instrument-mode
