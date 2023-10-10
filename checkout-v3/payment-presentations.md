@@ -226,9 +226,17 @@ environment to ensure the customers details are kept safe.
 ## Trustly
 
 As a part of our Trustly offering, Trustly Express provides an even swifter
-payment process. While Trustly Express works mostly the same way as the
-[payer aware payment menu][papm], we have two recommendations to make the
-experience as smooth as possible.
+payment process.
+
+Trustly Express is supported by a range of European banks, and the following
+in Sweden and Finland.
+
+**Sweden**: Danske Bank, Handelsbanken, Länsförsäkringar and Nordea.
+**Finland**: Danske Bank, Handelsbanken, Nordea, OmaSP, OP, POP Pankki,
+S-Pankki, Säästöpankki and Ålandsbanken.
+
+While it works mostly the same way as the [payer aware payment menu][papm], we
+have two recommendations to make the experience as smooth as possible.
 
 Add the payer's SSN and enable [SSN restriction][restrict].
 
