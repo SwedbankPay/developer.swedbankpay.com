@@ -1,9 +1,9 @@
 ---
-title: Digital Wallets
+title: Payment Presentations
 hide_from_sidebar: true
 description: |
-  **An overview of the Digital Wallets we offer, and a list of additional steps
-  you must complete to activate them.**
+  **An overview of what the payment menu has to offer, and additional steps
+  you may have to complete to activate them.**
 menu_order: 400
 ---
 
@@ -223,8 +223,28 @@ PCI environment for processing. Within the PCI environment, a tokenized
 representation of the card is created, which is then used outside of the PCI
 environment to ensure the customers details are kept safe.
 
+## Trustly
+
+As a part of our Trustly offering, Trustly Express provides an even swifter
+payment process.
+
+Trustly Express is supported by a range of European banks, and the following
+in Sweden and Finland.
+
+**Sweden**: Danske Bank, Handelsbanken, Länsförsäkringar and Nordea.
+**Finland**: Danske Bank, Handelsbanken, Nordea, OmaSP, OP, POP Pankki,
+S-Pankki, Säästöpankki and Ålandsbanken.
+
+While it works mostly the same way as the [payer aware payment menu][papm], we
+have two recommendations to make the experience as smooth as possible.
+
+Add the payer's SSN and enable [SSN restriction][restrict].
+
+We also ask you to include the first and last name of the payer in the `payer`
+object.
+
 {% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Get Started" %}
+                         prev_title="Back to Introduction" %}
 
 [acceptable-use-policy]: https://payments.developers.google.com/terms/aup
 [android-googlepay-brand-guidelines]: https://developers.google.com/pay/api/android/guides/brand-guidelines
@@ -240,6 +260,8 @@ environment to ensure the customers details are kept safe.
 [irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
 [payex-domain-file]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
 [pd-request]: https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest
+[papm]: /checkout-v3/features/optional/payer-aware-payment-menu
+[restrict]: /checkout-v3/features/optional/payer-restrictions
 [req-con-address]: /checkout-v3/features/optional/request-delivery-info
 [web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
 [web-googlepay-checklist]: https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist
