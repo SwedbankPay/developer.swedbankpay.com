@@ -232,15 +232,16 @@ Trustly Express is supported by a range of European banks, and the following
 in Sweden and Finland.
 
 **Sweden**: Danske Bank, Handelsbanken, Länsförsäkringar and Nordea.
+
 **Finland**: Danske Bank, Handelsbanken, Nordea, OmaSP, OP, POP Pankki,
 S-Pankki, Säästöpankki and Ålandsbanken.
 
 While it works mostly the same way as the [payer aware payment menu][papm], we
 have two recommendations to make the experience as smooth as possible.
 
-Add the payer's SSN and enable [SSN restriction][restrict].
+* Add the payer's SSN and enable [SSN restriction][restrict].
 
-We also ask you to include the first and last name of the payer in the `payer`
+* Include the first and last name of the payer in the `payer`
 object.
 
 {% include iterator.html prev_href="/checkout-v3/"
