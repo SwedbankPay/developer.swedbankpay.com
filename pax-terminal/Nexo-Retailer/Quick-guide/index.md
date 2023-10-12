@@ -4,7 +4,7 @@ menu_order: 10
 ---
 ## Simplest Form of Integration
 
-Depending on the solution one wants to build, to make a payment just takes two requests and their responses. A `LoginRequest` and a `PaymentRequest` with a happy flow that gives a successful `LoginResponse` and an approved payment that gives a successful `PaymentResponse` with the receipt data.
+Depending on the solution one wants to build, to make a payment just takes two requests with corresponding responses. A `LoginRequest` and a `PaymentRequest` with a happy flow that gives a successful `LoginResponse` and an approved payment that gives a successful `PaymentResponse` with the receipt data.
 To make it a little more acceptable one probably wants to be able to abort using an `AbortRequest`, and ask for a transaction status with a `TransactionStatus` request.
 
 {:.code-view-header}
