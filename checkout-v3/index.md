@@ -13,6 +13,12 @@ the payment instruments enabled in your merchant setup, restrict the menu to a
 selection of instruments, or
 [display a single payment instrument][instrument-mode].
 
+There are two versions available in production at the moment. If you are a new
+merchant, you should implement v3.1. If you are an existing merchant, we highly
+recommend a migration to v3.1, but you are still able to use v3.0. Unless stated
+otherwise by having a separate v3.1 page, there are no difference between the
+two alternatives.
+
 To meet accessibility requirements, we have re-worked our payment UI. Click here
 to [learn more about WCAG and the changes we have done][wcag-presentation]. The
 payment UI can be displayed as a redirect integration, where the payer is
@@ -49,7 +55,7 @@ below to read more." %}
 | ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
 | ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
 | ![MobilePay][mobilepay-logo]     | MobilePay                        | {% flag dk %} {% flag fi %}  |
-| ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %}                |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %} {% flag no %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
 | ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
@@ -62,7 +68,9 @@ below to read more." %}
   <a href="/checkout-v3/resources/release-notes">See full release notes</a>
 
 {% include iterator.html next_href="/checkout-v3/payment-request"
-                         next_title="Start Integrating" %}
+                         next_title="Start Integrating v3.0" %}
+{% include iterator.html next_href="/checkout-v3/landing-page-3-1"
+                         next_title="Start Integrating v3.1" %}
 {% include iterator.html next_href="/checkout-v3/setup"
                          next_title="Set Up A Test Account" %}
 
