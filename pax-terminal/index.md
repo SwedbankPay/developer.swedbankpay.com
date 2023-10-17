@@ -44,6 +44,6 @@ set in the admin menu. To enter the admin menu tap 6 times on the Swedbank Pay
 logo located at the bottom of the screen. Then enter the code. Set the ECR IP
 address and then press the save button.
 
-[nexoretailer]: ./Nexo-Retailer
-[dotnetsdk]: ./NET
-[javasdk]: ./java
+[nexoretailer]: /pax-terminal/Nexo-Retailer/
+[dotnetsdk]: /pax-terminal/NET/
+[javasdk]: /pax-terminal/java
