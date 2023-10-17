@@ -7,6 +7,9 @@ menu_order: 10
 All messages are wrapped in either `SaleToPOIRequest` or `SaleToPOIResponse`.
 Each of thoose contain two major elements. A `MessageHeader` and the element carrying the actual request or response.
 
+{% include alert.html type="warning" icon="warning" header="Heads up!" body=
+" The XML parser in the terminal requires that elements are in the same order as in the schema definition. All examples on this site has the correct order." %}
+
 ### Message Header
 
 All messages have a `MessageHeader` element with the following attributes:
