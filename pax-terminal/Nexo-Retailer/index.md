@@ -22,13 +22,4 @@ The terminals are communicating over IP LAN or WLAN and the intended style is
 that both the integrating party and the terminal implements a server and a client.
 There is however, a solution to let the sale system act as a client only.
 
-{% include card-extended.html
-          title='Quick Guide to Implement The Nexo Retailer'
-          no_icon=true
-          button_content="Let's get started"
-          text="This quick guide will take you through the essentials and hopefully speed up the process of getting your solution ready for the real action. It will show the basics and how a transaction is made and what the response looks like. It will also show how to abort and how to retrieve result of a priviously made transaction."
-          button_type='primary'
-          button_alignment='align-self-end'
-          to='./Quick-guide/'
-
-          %}
+{% include card-list.html %}
