@@ -47,6 +47,7 @@ Content-Type: application/json
     {% else %}
     "instrument": "CreditCard",
     "instrumentDisplayName": "123456xxxxxx1111"
+    "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
     "instrumentParameters": {
         "cardBrand": "Visa",
         "expiryDate": "MM/YYYY"

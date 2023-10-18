@@ -462,6 +462,7 @@ Content-Type: application/json
                 "tokenType": "Payment",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2022",
                     "cardBrand": "Visa"
@@ -480,6 +481,7 @@ Content-Type: application/json
                 "tokenType": "Payment",
                 "instrument": "Invoice-payexfinancingno",
                 "instrumentDisplayName": "260267*****",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "email": "hei@hei.no",
                     "msisdn": "+4798765432",
@@ -499,6 +501,7 @@ Content-Type: application/json
                 "tokenType": "Unscheduled",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2020",
                     "cardBrand": "Visa"
@@ -537,6 +540,7 @@ Content-Type: application/json
 | {% f tokenType, 2 %}           | `string`  | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f instrument %}             | `string`  | Payment instrument connected to the token. |
 | {% f instrumentDisplayName %}  | `string`  | Payment instrument connected to the token.|
+| {% f correlationId %}  | `string`  | A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to. |
 | {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 | {% f operations %}             | `array`   | {% include fields/operations.md resource="token" %}                                                                                              |
 {% endcapture %}
@@ -586,6 +590,7 @@ Content-Type: application/json
                 "tokenType": "Payment",
                 "instrument": "Invoice-payexfinancingno",
                 "instrumentDisplayName": "260267*****",
+
                 "instrumentParameters": {
                     "email": "hei@hei.no",
                     "msisdn": "+4798765432",
@@ -597,6 +602,7 @@ Content-Type: application/json
                 "tokenType": "Unscheduled",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2020",
                     "cardBrand": "Visa"
@@ -619,6 +625,7 @@ Content-Type: application/json
 | {% f tokenType, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f instrument %}             | `string`     | Payment instrument connected to the token. |
 | {% f instrumentDisplayName %}             | `string`     | Payment instrument connected to the token.|
+| {% f correlationId %}  | `string`  | A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to. |
 | {% f instrumentParameters %}             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 {% endcapture %}
 {% include accordion-table.html content=table %}

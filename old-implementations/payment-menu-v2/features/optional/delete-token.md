@@ -49,6 +49,7 @@ Content-Type: application/json
                 "token": "{paymentToken}",
                 "instrument": "Invoice-payexfinancingno",
                 "instrumentDisplayName": "260267*****",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "email": "hei@hei.no",
                     "msisdn": "+4798765432",
@@ -60,6 +61,7 @@ Content-Type: application/json
                 "token": "{paymentToken}",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2020",
                     "cardBrand": "Visa"
