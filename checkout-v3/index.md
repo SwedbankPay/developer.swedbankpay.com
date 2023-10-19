@@ -68,6 +68,70 @@ below to read more." %}
   {% include release_notes.html num_dates=3 %}
   <a href="/checkout-v3/resources/release-notes">See full release notes</a>
 
+## Resources
+
+<div class="row mt-4">
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+       <a href="/resources/development-guidelines" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons-outlined">
+                account_circle
+            </i>
+         </span>
+         <span class="dx-card-content">
+            <span class="h4">OS Development Guidelines</span>
+            <span><p>This is how we create an inclusive environment</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/resources/test-data" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                content_paste
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">Test Data</span>
+           <span><p>Get the required data for testing in our interfaces</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/resources/terminology" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                menu_book
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">Terminology</span>
+           <span><p>Get a better understanding of the terms we use</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/resources/" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                format_list_bulleted
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">See All Resources (7)</span>
+           <span><p>A guide through our payment terminals</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+</div>
 
 {% include iterator.html next_href="/checkout-v3/payment-request"
                          next_title="Start Integrating v3.0" %}
