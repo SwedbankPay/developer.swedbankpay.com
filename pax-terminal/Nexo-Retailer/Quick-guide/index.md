@@ -1,8 +1,8 @@
 ---
 title: Quick Guide
-description: Fast track to go through the essentials for making a payment
+description: Start here. Fast track to go through the essentials for making a payment
 icon:
-    content: start
+    content: play_circle
     outlined: true
 menu_order: 10
 ---
