@@ -1,8 +1,14 @@
 ---
 title: Quick Guide
+description: Start here. Fast track to go through the essentials for making a payment
+icon:
+    content: play_circle
+    outlined: true
 menu_order: 10
 ---
 ## Simplest Form of Integration
+
+This quick guide will take you through the essentials and hopefully speed up the process of getting your solution ready for the real action. It will show the basics and how a transaction is made and  what the response looks like. It will also show how to abort and how to retrieve result of a priviously made transaction.
 
 Depending on the solution one wants to build, to make a payment just takes two requests with corresponding responses. A `LoginRequest` and a `PaymentRequest` with a happy flow that gives a successful `LoginResponse` and an approved payment that gives a successful `PaymentResponse` with the receipt data.
 To make it a little more acceptable one probably wants to be able to abort using an `AbortRequest`, and ask for a transaction status with a `TransactionStatus` request.
