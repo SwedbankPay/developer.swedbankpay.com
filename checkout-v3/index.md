@@ -13,11 +13,12 @@ the payment instruments enabled in your merchant setup, restrict the menu to a
 selection of instruments, or
 [display a single payment instrument][instrument-mode].
 
-There are two versions available in production at the moment. If you are a new
-merchant, you should implement v3.1. If you are an existing merchant, we highly
-recommend a migration to v3.1, but you are still able to use v3.0. Unless stated
-otherwise by having a separate v3.1 page, there are no difference between the
-two alternatives.
+There are two versions of Digital Payments available in production at the
+moment. If you are a new merchant, you should implement v3.1. If you are an
+existing merchant, we recommend migrating to v3.1, but you are still able to use
+v3.0. Reach out to your technical contact person for guidance regarding this.
+Unless stated otherwise by the presence of a separate v3.1 page, there are no
+differences between the two alternatives.
 
 To meet accessibility requirements, we have re-worked our payment UI. Click here
 to [learn more about WCAG and the changes we have done][wcag-presentation]. The
@@ -67,9 +68,10 @@ below to read more." %}
   {% include release_notes.html num_dates=3 %}
   <a href="/checkout-v3/resources/release-notes">See full release notes</a>
 
+
 {% include iterator.html next_href="/checkout-v3/payment-request"
                          next_title="Start Integrating v3.0" %}
-{% include iterator.html next_href="/checkout-v3/landing-page-3-1"
+{% include iterator.html next_href="/checkout-v3/payment-request-3-1"
                          next_title="Start Integrating v3.1" %}
 {% include iterator.html next_href="/checkout-v3/setup"
                          next_title="Set Up A Test Account" %}

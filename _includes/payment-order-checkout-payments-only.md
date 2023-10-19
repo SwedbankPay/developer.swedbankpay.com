@@ -33,25 +33,6 @@ Content-Type: application/json
             "callbackUrl": "https://api.example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png" //Redirect only
         },
-                "orderItems": [
-            {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://example.com/products/123",
-                "imageUrl": "https://example.com/product123.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 5,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 0,
-                "vatPercent": 2500,
-                "amount": 1500,
-                "vatAmount": 375
-            }
-        ]
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
