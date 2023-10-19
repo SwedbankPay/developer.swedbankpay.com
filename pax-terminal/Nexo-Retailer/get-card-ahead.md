@@ -7,7 +7,7 @@ icon:
 menu_order: 30
 ---
 
-The possibility to read one or more cards before the payment is actually made, makes it possible to know the customer and give a discount on the sale being made. With the possibilty comes just a little bit more complexity and logic around messages.
+The possibility to read one or more cards before the payment is actually made, makes it possible to know the customer and give a discount on the sale being made. With the possibility comes just a little bit more complexity and logic around messages.
 
 {% include alert.html type="warning" icon="warning" header="Heads up!" body="To use this feature the POS side needs to implement a server. Print request might be generated when aborting."%}
 
@@ -54,7 +54,7 @@ participant Terminal
     Note left of Terminal: Terminal goes to idle state
 ```
 
-The enabled service Transaction state remains from the EnableService response until it is aborted or a PaymentRequest is sent. During that state several cardacquisitions may be issued, but if abort is desired after a card acquisition response there is no ongoing request and the state is terminated by the `EnableServiceRequest AbortTransaction`
+The enabled service Transaction state lasts from the EnableService response until it is aborted or a PaymentRequest is sent. During that state several cardacquisitions may be issued, but if abort is desired after a card acquisition response there is no ongoing request and the state is terminated by the `EnableServiceRequest AbortTransaction`
 
 {:.code-vie-header}
 **Abort sequence after card has been read**

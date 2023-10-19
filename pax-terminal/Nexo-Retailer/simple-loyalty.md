@@ -21,7 +21,7 @@ The generated token is rececived in the payment response and with that you may s
 
 {% include alert.html type="warning" icon="warning" header="Heads up! " body="The token is generated locally in the terminal and if the customer is using phone or any IoT wearable or is using the physical card, there will be three different tokens."  %}
 
-{% include alert.html type="informative" icon="info" header="Note" body="Allow more than one token as a referens to a customer. Later the centrally generated PAR token will be available and to have possibly more than one token makes a smooth transition"%}
+{% include alert.html type="informative" icon="info" header="Note" body="Allow more than one token as a reference to a customer. Later the centrally generated PAR token will be available and to have possibly more than one token makes a smooth transition"%}
 
 ## PaymentResponse
 
