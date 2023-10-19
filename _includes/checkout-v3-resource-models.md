@@ -249,11 +249,87 @@ Content-Type: application/json
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f failedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
-| {% f financialTransactionsList %}  | `array`   | The array of failed attempts. |
+| {% f failedAttemptList %}  | `array`   | The array of failed attempts. |
 | {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f instrument, 2 %}             | `string`     | Payment instrument used in the failed payment. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
 | {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
+| {% f problem %}             | `object`     | The problem object.  |
+| {% f type, 2 %}  | `string`   | The type of problem that occurred. |
+| {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
+| {% f status, 2 %}              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
+| {% f detail, 2 %}              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
+| {% f problems, 2 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
+| {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+## FailedPostPurchaseAttempts (3.1 only)
+
+{:.code-view-header}
+**Request**
+
+```http
+GET /psp/paymentorders/{{ page.payment_order_id }}/failedpostpurchaseattempts HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json
+```
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "postpurchaseFailedAttempts": {
+    "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/postpurchasefailedattempts",
+    "postpurchaseFailedAttemptList": [
+      {
+        "created": "2020-03-03T07:21:01.1893466Z",
+        "status": "Failed",
+        "type": "Capture",
+        "problem": {
+          "type": "https://api.payex.com/psp/errordetail/creditcard/badrequest",
+          "title": "Operation failed",
+          "status": 400,
+          "detail": "Unable to complete CreateCapture operation, look at problem node!",
+          "problems": [
+            {
+              "name":"Entitynotfound",
+              "description":"Capture with identifier f1c8c67b-88cb-407c-98fb-08db6f56295e could not be found"
+            },
+            {
+              "name":"Component",
+              "description":"pospay-ecommerce-financial-service"
+            },
+            {
+              "name":"Method",
+              "description":"N/A"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f postpurchasefailedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
+| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
+| {% f postpurchaseFailedAttemptList %}  | `array`   | The array of failed attempts. |
+| {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
+| {% f type, 2 %}  | `string`   | The type of post-purchase transaction. |
 | {% f problem %}             | `object`     | The problem object.  |
 | {% f type, 2 %}  | `string`   | The type of problem that occurred. |
 | {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
