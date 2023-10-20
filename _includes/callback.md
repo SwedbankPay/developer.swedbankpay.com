@@ -66,6 +66,7 @@ Menu v1), it is critical that you do **not** use the `paymentId` or
 the `paymentOrderId`.
 
 {% if api_resource == "paymentorders" %}
+
 {:.code-view-header}
 **Payment Order Callback**
 
@@ -82,6 +83,21 @@ the `paymentOrderId`.
     "transaction": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
+    }
+}
+```
+
+If you have implemented v3.1, the callback will only contain the `paymentOrder`
+node.
+
+{:.code-view-header}
+**Payment Order v3.1 Callback**
+
+```json
+{
+    "paymentOrder": {
+        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
+        "instrument": "{{ api_resource }}"
     }
 }
 ```

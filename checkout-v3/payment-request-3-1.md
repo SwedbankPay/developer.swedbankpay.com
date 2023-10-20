@@ -3,7 +3,7 @@ title: Payment Request v3.1
 hide_from_sidebar: false
 description: |
   How to create payments when using Digital Payments v3.1.
-menu_order: 2
+menu_order: 3
 ---
 
 The integration consists of three main steps. **Creating** the payment order,

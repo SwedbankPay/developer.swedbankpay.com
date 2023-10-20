@@ -72,7 +72,7 @@ below to read more." %}
 
 <div class="row mt-4">
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-       <a href="/resources/development-guidelines" class="dx-card">
+       <a href="/checkout-v3/resources/development-guidelines" class="dx-card">
          <span class="dx-card-icon">
             <i class="material-icons-outlined">
                 account_circle
@@ -87,7 +87,7 @@ below to read more." %}
       </a>
     </div>
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/resources/test-data" class="dx-card">
+      <a href="/checkout-v3/resources/test-data" class="dx-card">
          <span class="dx-card-icon">
             <i class="material-icons">
                 content_paste
@@ -102,7 +102,7 @@ below to read more." %}
       </a>
     </div>
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/resources/terminology" class="dx-card">
+      <a href="/checkout-v3/resources/terminology" class="dx-card">
          <span class="dx-card-icon">
             <i class="material-icons">
                 menu_book
@@ -117,7 +117,7 @@ below to read more." %}
       </a>
     </div>
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/resources/" class="dx-card">
+      <a href="/checkout-v3/resources/" class="dx-card">
          <span class="dx-card-icon">
             <i class="material-icons">
                 format_list_bulleted
