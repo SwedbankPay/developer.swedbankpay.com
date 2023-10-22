@@ -17,22 +17,33 @@ When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
-We have added `productName` to the payment order request in this integration.
-You can find it in the `paymentorder` field. This is required if you want to use
-Digital Payments. If it isn´t included in your request, you won't get the
-correct operations in the response.
+The `productName` field has been removed as a mandatory field in v3.1, and you
+identify the `paymentOrder` version as v3.1 in the header instead.
 
-When `productName` is set to `checkout3`, `digitalProducts` will be set to
-`false` by default.
+`POST`, `PATCH` and `PUT` requests use this header:
+
+`Content-Type: application/json;version=3.1`
+
+`GET` requests use this header:
+
+`Accept: application/json;version=3.1`
+
+Valid versions are **3.1**, **3.0** and **2.0**. If you do not add a version,
+the request will default to **2.0**. Using the `productName` and setting it to
+`checkout3` will default to **3.0**
+
+To acompany the new basic request, we have also added a
+[v3.1 post-purchase section][post-31], [v3.1 callback][callback-31] and a new
+[resource model for `failedPostPurchaseAttempts`][fppa].
 
 Supported features for this integration are subscriptions (`recur`, `one-click`
 and `unscheduled MIT`), `MOTO`, instrument mode, split settlement (`subsite`)
 and the possibility to use your own `logo`.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Payments Only**, the way to trigger this is to not
-include the `payerReference` field in your `paymentOrder` request. You can find
-it in the `payer` field in the example below.
+information. The way to trigger this is to not include the `payerReference`
+field in your `paymentOrder` request. If the `payer` field is included in your
+request, you can find the `payerReference` there.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
@@ -64,6 +75,9 @@ Read more about possible additions to the request in our
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/core/abort
+[callback-31]: /checkout-v3/features/core/callback
 [features]: /checkout-v3/features/
+[fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts-31-only
 [frictionless]: /checkout-v3/features/core/frictionless-payments
 [order-items]: /checkout-v3/features/optional/order-items
+[post-31]: /checkout-v3/post-purchase-3-1
