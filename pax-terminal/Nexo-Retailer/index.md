@@ -1,12 +1,12 @@
 ---
-section: Nexo Retailer
-title: Swedbank Pay Nexo Retailer v3.1
+section: nexo Retailer
+title: Swedbank Pay nexo Retailer v3.1
 description: |
-    Use the Nexo Retailer integration if you are unable to use .NET or Java SDK. This interface requires a greater effort for both users and Swedbank Pay.
+    Use the nexo Retailer integration if you are unable to use .NET or Java SDK. This interface requires a greater effort for both users and Swedbank Pay.
 ---
-The interface is based on Nexo Retailer version 3.1 and uses XML message formats over HTTP/TCP.
-For reference it may be a good idea to download the Nexo specifications from `www.nexo-standards.org`, but the essentials will be described here.
-Remember that Nexo Retailer is huge and we are far from giving support for everything.
+The interface is based on nexo Retailer version 3.1 and uses XML message formats over HTTP/TCP.
+For reference it may be a good idea to download the nexo specifications from `www.nexo-standards.org`, but the essentials will be described here.
+Keep in mind that nexo Retailer is a large protocol standard and we do not currently support every aspect of it.
 
 *   **nexo Sale to POI Protocol Specifications Version 3.1**
 *   **nexo Sale to POI Transport Protocols v3.1**

@@ -1,6 +1,6 @@
 ---
 title: Loyalty The Easy Way
-description: The simplest form om loyalty implementation using CNA from PaymentResponse
+description: The simplest form of loyalty implementation using CNA from PaymentResponse
 icon:
   content: card_membership
   outlined: true

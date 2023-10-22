@@ -54,7 +54,7 @@ A successful reversal response contains receipt information as a base64 encoded 
 
 ```xml
 <SaleToPOIResponse>
- <MessageHeader MessageClass="Service" MessageCategory="Reversal" MessageType="Response" ServiceID="7" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader MessageClass="Service" MessageCategory="Reversal" MessageType="Response" ServiceID="7" SaleID="1" POIID="A-POIID"/>
  <ReversalResponse>
   <Response Result="Success"/>
   <POIData>
@@ -171,3 +171,6 @@ A successful reversal response contains receipt information as a base64 encoded 
     }
 }
 ```
+
+{% include iterator.html prev_href="payment-response"
+                         prev_title="Back to PaymentResponse" %}

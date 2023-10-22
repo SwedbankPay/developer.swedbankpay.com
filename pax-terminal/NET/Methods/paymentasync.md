@@ -72,14 +72,14 @@ public class PaymentRequestResult : NexoRequestResult
 }
 ```
 
-### ResponseContent - The Complete Nexo Response Message
+### ResponseContent - The Complete nexo Response Message
 
 ResponseContent contains the complete nexo response message from the terminal and looks as follows.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <SaleToPOIResponse>
- <MessageHeader MessageClass="Service" MessageCategory="Payment" MessageType="Response" ServiceID="3" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader MessageClass="Service" MessageCategory="Payment" MessageType="Response" ServiceID="3" SaleID="1" POIID="A-POIID"/>
  <PaymentResponse>
   <Response Result="Success"/>
   <SaleData>

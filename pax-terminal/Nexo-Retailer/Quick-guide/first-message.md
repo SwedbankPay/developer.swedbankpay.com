@@ -15,7 +15,7 @@ A LoginRequest starts a so called `Login Session` in the terminal. A `Login Sess
 
 ```xml
 <SaleToPOIRequest>
- <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="Login" MessageType="Request" ServiceID="5" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="Login" MessageType="Request" ServiceID="5" SaleID="1" POIID="A-POIID"/>
  <LoginRequest OperatorLanguage="sv">
   <DateTime>2023-09-26T13:57:31+02:00</DateTime>
   <SaleSoftware ProviderIdentification="Demo" ApplicationName="Test SwpIf - SwpTrmLib.PAXTrmImp_1" SoftwareVersion="1.0 - 1.1.23264.1309"/>
@@ -48,7 +48,7 @@ Login response with result `Success` is needed before any other message may be s
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <SaleToPOIResponse>
- <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="Login" MessageType="Response" ServiceID="5" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader ProtocolVersion="3.1" MessageClass="Service" MessageCategory="Login" MessageType="Response" ServiceID="5" SaleID="1" POIID="A-POIID"/>
  <LoginResponse>
   <Response Result="Success"/>
   <POISystemData>

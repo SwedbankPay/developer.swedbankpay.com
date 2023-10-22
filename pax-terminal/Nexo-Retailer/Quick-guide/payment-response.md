@@ -52,5 +52,5 @@ Note over Terminal: "Welcome"
 POS->>Terminal: rsp 204 - no content
 ```
 
-{% include iterator.html prev_href="make-payment" prev_title="Back" %}
+{% include iterator.html prev_href="make-payment" prev_title="Back to PaymentRequest" %}
 {% include iterator.html next_href="reversal" next_title="Reverse successful transaction" %}
