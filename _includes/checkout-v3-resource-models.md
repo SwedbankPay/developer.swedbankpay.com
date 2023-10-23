@@ -265,7 +265,7 @@ Content-Type: application/json
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-## FailedPostPurchaseAttempts (3.1 only)
+## FailedPostPurchaseAttempts
 
 {:.code-view-header}
 **Request**
@@ -274,7 +274,7 @@ Content-Type: application/json
 GET /psp/paymentorders/{{ page.payment_order_id }}/failedpostpurchaseattempts HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Accept: application/json;version=3.1
 ```
 
 {:.code-view-header}
@@ -282,7 +282,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1
+api-supported-versions: 3.0, 3.1
 
 {
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
