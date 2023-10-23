@@ -22,7 +22,7 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": false,
+        "instrument": null,
         "productName": "Checkout3",
         "implementation": "PaymentsOnly",
         "urls": {

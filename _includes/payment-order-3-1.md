@@ -22,8 +22,7 @@ Content-Type: application/json;version=3.1
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": false,
-        "implementation": "PaymentsOnly",
+        "instrument": null,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
             "paymentUrl": "https://example.com/perform-payment",
@@ -94,7 +93,8 @@ Content-Type: application/json;version=3.1
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1
+api-supported-versions: 2.0, 3.0, 3.1
 
 {
     "paymentorder": {

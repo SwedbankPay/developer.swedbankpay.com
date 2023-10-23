@@ -65,6 +65,8 @@ Menu v1), it is critical that you do **not** use the `paymentId` or
 `transactionId` when performing a `GET` to retrieve the payment's status. Use
 the `paymentOrderId`.
 
+## Callback Example
+
 {% if api_resource == "paymentorders" %}
 
 {:.code-view-header}
@@ -86,6 +88,8 @@ the `paymentOrderId`.
     }
 }
 ```
+
+## Callback Example v3.1
 
 If you have implemented v3.1, the callback will only contain the `paymentOrder`
 node.

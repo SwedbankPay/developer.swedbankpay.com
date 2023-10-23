@@ -9,15 +9,15 @@ menu_order: 6
 
 {% include alert-two-phase-payments.md %}
 
-{% include payment-order-capture.md %}
+{% include payment-order-capture-3-1.md %}
 
 The purchase should now be complete. But what if the purchase is cancelled or
 the payer wants to return goods? For these instances, we have `cancel` and
 `reversal`.
 
-{% include payment-order-cancel.md %}
+{% include payment-order-cancel-3-1.md %}
 
-{% include payment-order-reversal.md %}
+{% include payment-order-reversal-3-1.md %}
 
 {% include iterator.html next_href="/checkout-v3/features/"
                          next_title="Add To Your Payment Request" %}

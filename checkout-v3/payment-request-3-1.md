@@ -13,9 +13,8 @@ are other post-purchase options you need. We get to them later on.
 ## Step 1: Create Payment Order
 
 When your customer has initiated a purchase, you need to create a payment order.
-
-Start by performing a `POST` request towards the `paymentorder` resource
-with payer information and a `completeUrl`.
+Start by performing a `POST` request towards the `paymentorder` resource with
+payer information and a `completeUrl`.
 
 The `productName` field has been removed as a mandatory field in v3.1, and you
 identify the `paymentOrder` version as v3.1 in the header instead.
@@ -30,9 +29,9 @@ identify the `paymentOrder` version as v3.1 in the header instead.
 
 Valid versions are **3.1**, **3.0** and **2.0**. If you do not add a version,
 the request will default to **2.0**. Using the `productName` and setting it to
-`checkout3` will default to **3.0**
+`checkout3` will default to **3.0**.
 
-To acompany the new basic request, we have also added a
+To accompany the new version, we have also added a
 [v3.1 post-purchase section][post-31], [v3.1 callback][callback-31] and a new
 [resource model for `failedPostPurchaseAttempts`][fppa].
 
@@ -49,13 +48,14 @@ Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
 have `abort`, which you can read about in the [core features][abort-feature].
 You can only use `abort` if the payer **has not** completed an `authorize` or a
-`sale`.
+`sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
+Swish or Vipps apps, `abort` is unavailable.
 
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-payments-only.md %}
+{% include payment-order-3-1.md %}
 
 ## Adding To Your Request
 
