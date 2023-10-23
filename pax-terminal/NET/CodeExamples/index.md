@@ -255,7 +255,7 @@ namespace WindowsFormsApp1
         ApplicationName = "Quick Demo",
         ProviderIdentification = "SwP",
         SoftwareVersion = "0.1",
-        POIID = "AJACQH28",
+        POIID = "A-POIID",
         //SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString()
     });
 

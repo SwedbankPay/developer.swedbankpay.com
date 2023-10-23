@@ -51,7 +51,7 @@ Note that when the InputRequest is responded to the terminal goes back to displa
 
 ```xml
 <SaleToPOIRequest>
- <MessageHeader ProtocolVersion="3.1" MessageClass="Device" MessageCategory="Input" MessageType="Request" ServiceID="45" DeviceID="45" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader ProtocolVersion="3.1" MessageClass="Device" MessageCategory="Input" MessageType="Request" ServiceID="45" DeviceID="45" SaleID="1" POIID="A-POIID"/>
  <InputRequest>
   <DisplayOutput Device="CustomerDisplay" InfoQualify="Display">
    <OutputContent OutputFormat="Text">
@@ -65,7 +65,7 @@ Note that when the InputRequest is responded to the terminal goes back to displa
 
 ## InputResponse
 
-Worth noting about an InputResponse is that it has two results with a `Result` attribute. One for OutputResult and one for InputResult. This differs
+Worth mentioning about an InputResponse is that it has two results with a `Result` attribute. One for OutputResult and one for InputResult. This differs
 from other responses.
 The InputResult is the essential of this message. If the `Result` attribute is `Failure` the `ConfirmedFlag` is empty. A failure is probably due to abort from POS system.  
 
@@ -74,7 +74,7 @@ The InputResult is the essential of this message. If the `Result` attribute is `
 
 ```xml
 <SaleToPOIResponse>
- <MessageHeader MessageClass="Device" MessageCategory="Input" MessageType="Response" ServiceID="45" DeviceID="45" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader MessageClass="Device" MessageCategory="Input" MessageType="Response" ServiceID="45" DeviceID="45" SaleID="1" POIID="A-POIID"/>
  <InputResponse>
   <OutputResult Device="CustomerDisplay" InfoQualify="Display">
    <Response Result="Success"/>
@@ -96,7 +96,7 @@ The InputResult is the essential of this message. If the `Result` attribute is `
 
 ```xml
 <SaleToPOIResponse>
- <MessageHeader MessageClass="Device" MessageCategory="Input" MessageType="Response" ServiceID="52" DeviceID="52" SaleID="1" POIID="AJACQH28"/>
+ <MessageHeader MessageClass="Device" MessageCategory="Input" MessageType="Response" ServiceID="52" DeviceID="52" SaleID="1" POIID="A-POIID"/>
  <InputResponse>
   <OutputResult Device="CustomerDisplay" InfoQualify="Display">
    <Response Result="Success"/>

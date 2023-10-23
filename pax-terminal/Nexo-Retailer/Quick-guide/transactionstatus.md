@@ -64,4 +64,4 @@ An earlier transaction may be found if still in the database of the terminal. Ad
 
 ```
 
-{% include iterator.html prev_href="make-payment" prev_title="Back" %}
+{% include iterator.html prev_href="make-payment" prev_title="Back to PaymentRequest" %}

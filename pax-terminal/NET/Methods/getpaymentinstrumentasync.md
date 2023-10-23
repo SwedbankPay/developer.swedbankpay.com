@@ -39,7 +39,7 @@ public enum CardTypes { Payment=1, Combined=2,Loyalty=3,Unspecified=4 };
 
 ### Example nexo response
 
-The actual Nexo message response looks as follows.
+The actual nexo message response looks as follows.
 
 ```xml
 <SaleToPOIResponse>

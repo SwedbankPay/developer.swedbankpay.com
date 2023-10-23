@@ -21,9 +21,9 @@ All messages have a `MessageHeader` element with the following attributes:
 |   MessageClass | Enumeration: `Service`, `Device` or `Event`           |
 |   MessageCategory | Enumeration: `Event`, `Login`, `Logout`, `Payment`, `Abort`, `EnableService`, `CardAcquisition`, `TransactionStatus`,`Reversal`, `Input`, `Display`, `Admin` |
 |   MessageType | Enumeration: `Request`, `Response` or `Notification`  |
-|   ServiceID   |  Unique per terminal for each `Service` message within a login session and identifies the request response message pair. Echoed back in the response. Make it simple. Use hours, minute and second for the Login and then increment by one for each message.  |
+|   ServiceID   |  Max length 10 bytes. Unique per terminal for each `Service` message within a login session and identifies the request response message pair. Echoed back in the response. Make it simple. Use hours, minute and second for the Login and then increment by one for each message.  |
 |   DeviceID    |  Unique per terminal for each `Device` message within a login session and identifies the request response message pair. Echoed back in the response |
-|   POIID   | A unique ID of the Point of Interaction within an organization, that is known and registered in TMS. This id decides the configuration of the terminal. Prefere to use the same id as for the actual POS. This is decided by the POS and makes sure the correct configuration is used by the terminal. The POIID is also used in communication with the supporting staff.|
+|   POIID   | Max length 32 bytes. A unique ID of the Point of Interaction within an organization, that is known and registered in TMS. This id decides the configuration of the terminal. Prefere to use the same id as for the actual POS. This is decided by the POS and makes sure the correct configuration is used by the terminal. The POIID is also used in communication with the supporting staff.|
 |   SaleID  | An ID of less interest but should be the same through out a login session  |
 
 Concatenate the `MessageCategory` with the `MessageType` to find the actual message element. The following has `Login` and `Response` and the essential element is `LoginResponse`.
@@ -51,7 +51,7 @@ Concatenate the `MessageCategory` with the `MessageType` to find the actual mess
 
 ### Message Responses
 
-All Nexo message responses carry a `Response` element with the attribute `Result` which contain the value `Success` or `Failure`.
+All nexo message responses carry a `Response` element with the attribute `Result` which contains the value `Success` or `Failure`.
 If **Failure**, the the Response element will also have the attribute `ErrorCondition` and a child element, `AdditionalResponse` with a somewhat describing text of the failure.
 
 {:.code-view-header}
