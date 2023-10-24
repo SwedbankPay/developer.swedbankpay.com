@@ -25,9 +25,9 @@ Content-Type: application/json;version=3.1
         "instrument": null,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
-            "paymentUrl": "https://example.com/perform-payment",
+            "paymentUrl": "https://example.com/perform-payment", //Seamless View only
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-cancelled",
+            "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
             "callbackUrl": "https://api.example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png" //Redirect only
         },
