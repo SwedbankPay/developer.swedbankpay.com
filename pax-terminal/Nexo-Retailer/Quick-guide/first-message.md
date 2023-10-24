@@ -32,13 +32,13 @@ A LoginRequest starts a so called `Login Session` in the terminal. A `Login Sess
 {:.table .table-striped}
 | Name | Lev | Attribute | Description |
 | :------------- | :---: | :-------------- |:--------------- |
-| LoginRequest | 1 | OperatorLanguage |  Language used in the POS system. Supported: `sv`,`no`,`fi`,`da` |
-| DateTime | 2 |  | Local time when request is made with time zone offset |
-| SaleSoftware | 3 |    | Important information for SwedbankPay to be able to get an understanding of how different setups work |
-|   | | ApplicationName | Name of the POS application or the module communicating with the terminal |
-|   | | ProviderIdentification | POS producer name |
+| LoginRequest | 1 | OperatorLanguage |  Language used in the POS system. Supported: `sv`,`no`,`fi`,`da`. |
+| DateTime | 2 |  | Local time when request is made with time zone offset. |
+| SaleSoftware | 3 |    | Important information for SwedbankPay to be able to get an understanding of how different setups work. |
+|   | | ApplicationName | Name of the POS application or the module communicating with the terminal. |
+|   | | ProviderIdentification | POS producer name. |
 |   | | SoftwareVersion | Important that this value changes if the software is updated. This helps us to track possible problem if they occur. |
-| SaleTerminalData | 2 | TerminalEnvironment | Only supported value is `Attended` |
+| SaleTerminalData | 2 | TerminalEnvironment | Only supported value is `Attended`. |
 | SaleCapabilities | 3 |  | The values in this field affects the behavior of the terminal. If only `PrinterReceipt` is included the terminal won't send any request to the POS system. Your application will work as a client-only. |
 
 ## LoginResponse

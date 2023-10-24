@@ -22,11 +22,11 @@ AbortRequest may be sent for any ongoing request.
 {:.table .table-striped}
 | Name | Attributes | Description |
 | :------------- | :-------------- |:--------------- |
-| MessageReference | MessageCategory | Category of the request being aborted |
-| | POIID | POIID used in the request that is being aborted |
-| | SaleID | SaleID that was used in the request that is being aborted |
-| | ServiceID | ServiceID in the request that is being aborted |
-| AbortReason | | Text explaining the reason for the abortion |
+| MessageReference | MessageCategory | Category of the request being aborted. |
+| | POIID | POIID used in the request that is being aborted. |
+| | SaleID | SaleID that was used in the request that is being aborted. |
+| | ServiceID | ServiceID in the request that is being aborted. |
+| AbortReason | | Text explaining the reason for the abortion. |
 
 {% include alert.html type="warning" icon="warning" header="warning"
 body= "The AbortRequest does not give a nexo message response. The Http status code will be 204-No content, but the actual request that is aborted will get a response with Result Failure."

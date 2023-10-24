@@ -39,11 +39,11 @@ participant Terminal
 {:.table .table-striped}
 | Name | Lev | Attribute | Description |
 | :------------- | :---: | :-------------- |:--------------- |
-| ReversalRequest | 1 | ReversalReason |  `MerchantCancel` when manually operation by POS operator, `Malfunction` if automatically made by software due to some problem  |
-| OriginalPOITransaction | 2 | SaleID | SaleID used for transaction being reversed |
-|   |   | POIID | POIID used for transaction being reversed |
-| POITransactionID | 3 | TransactionID | Copied form POITransactionID received in response for transaction being reversed |
-| | | TimeStamp | Copied form POITransactionID received in response for transaction being reversed |
+| ReversalRequest | 1 | ReversalReason |  `MerchantCancel` when manually operation by POS operator, `Malfunction` if automatically made by software due to some problem. |
+| OriginalPOITransaction | 2 | SaleID | SaleID used for transaction being reversed. |
+|   |   | POIID | POIID used for transaction being reversed. |
+| POITransactionID | 3 | TransactionID | Copied form POITransactionID received in response for transaction being reversed. |
+| | | TimeStamp | Copied form POITransactionID received in response for transaction being reversed. |
 
 ## Reversal Response
 
