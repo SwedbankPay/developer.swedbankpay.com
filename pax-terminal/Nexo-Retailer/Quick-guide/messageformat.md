@@ -17,14 +17,14 @@ All messages have a `MessageHeader` element with the following attributes:
 {:.table .table-striped .mb-5}
 | Attributes | Description |
 | :------------- | :-------------- |
-|   ProtocolVersion | Text string "3.1"  |
-|   MessageClass | Enumeration: `Service`, `Device` or `Event`           |
-|   MessageCategory | Enumeration: `Event`, `Login`, `Logout`, `Payment`, `Abort`, `EnableService`, `CardAcquisition`, `TransactionStatus`,`Reversal`, `Input`, `Display`, `Admin` |
-|   MessageType | Enumeration: `Request`, `Response` or `Notification`  |
+|   ProtocolVersion | Text string "3.1".  |
+|   MessageClass | Enumeration: `Service`, `Device` or `Event`.           |
+|   MessageCategory | Enumeration: `Event`, `Login`, `Logout`, `Payment`, `Abort`, `EnableService`, `CardAcquisition`, `TransactionStatus`,`Reversal`, `Input`, `Display`, `Admin`. |
+|   MessageType | Enumeration: `Request`, `Response` or `Notification`.  |
 |   ServiceID   |  Max length 10 bytes. Unique per terminal for each `Service` message within a login session and identifies the request response message pair. Echoed back in the response. Make it simple. Use hours, minute and second for the Login and then increment by one for each message.  |
-|   DeviceID    |  Unique per terminal for each `Device` message within a login session and identifies the request response message pair. Echoed back in the response |
+|   DeviceID    |  Unique per terminal for each `Device` message within a login session and identifies the request response message pair. Echoed back in the response. |
 |   POIID   | Max length 32 bytes. A unique ID of the Point of Interaction within an organization, that is known and registered in TMS. This id decides the configuration of the terminal. Prefere to use the same id as for the actual POS. This is decided by the POS and makes sure the correct configuration is used by the terminal. The POIID is also used in communication with the supporting staff.|
-|   SaleID  | An ID of less interest but should be the same through out a login session  |
+|   SaleID  | An ID of less interest but should be the same through out a login session.  |
 
 Concatenate the `MessageCategory` with the `MessageType` to find the actual message element. The following has `Login` and `Response` and the essential element is `LoginResponse`.
 

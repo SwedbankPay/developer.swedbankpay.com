@@ -95,8 +95,8 @@ participant Terminal
 {:.table .table-striped}
 | Name | Lev | Attribute | Description |
 | :------------- | :---: | :-------------- |:--------------- |
-| EnableServiceRequest | 1 | TransactionAction | StartTransaction or AbortTransaction |
-| ServiceEnabled | 2 | | Only value used is CardAcquisition |
+| EnableServiceRequest | 1 | TransactionAction | StartTransaction or AbortTransaction. |
+| ServiceEnabled | 2 | | Only value used is CardAcquisition. |
 
 {:.code-view-header }
 **Response**

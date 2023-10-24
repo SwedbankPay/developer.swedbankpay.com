@@ -37,13 +37,13 @@ Note that when the InputRequest is responded to the terminal goes back to displa
 | Name | Lev | Attribute | Description
 |:---|:--:|:--|:--|
 | InputRequest | 1 | | |
-| DisplayOutput | 2 | Device | Only value is `CustomerDisplay` |
-| | | InfoQuality | Only value is `Display` |
-| OutputContent | 3 | OutputFormat | Only value is `Text` |
-| OutputText | 4 | | Question to be asked to the customer |
-| InputData | 2 | Device | Only value is `CustomerInput` |
-| | | InfoQualify | Only value is `Input` |
-| | | InputCommand | Either `GetConfirmation` or `DigitString` |
+| DisplayOutput | 2 | Device | Only value is `CustomerDisplay`. |
+| | | InfoQuality | Only value is `Display`. |
+| OutputContent | 3 | OutputFormat | Only value is `Text`. |
+| OutputText | 4 | | Question to be asked to the customer. |
+| InputData | 2 | Device | Only value is `CustomerInput`. |
+| | | InfoQualify | Only value is `Input`. |
+| | | InputCommand | Either `GetConfirmation` or `DigitString`. |
 |---|---|---|---|
 
 {:.code-view-header}

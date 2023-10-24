@@ -44,32 +44,32 @@
 | Name | Lev | Attributes | Description |
 | :------------- | :---: | :-------------- |:--------------- |
 | PaymentResponse | 1 | | |
-| Response | 2 | Result | **Success** or **Failure** |
-| | | ErrorCondition | Only present if Failure: Common values are `Busy`- wait and try again, `Refusal`- Request not accepted |
-| AdditionalResponse| 3 | | Only present if Failure and should be a describing text |
+| Response | 2 | Result | **Success** or **Failure**. |
+| | | ErrorCondition | Only present if Failure: Common values are `Busy`- wait and try again, `Refusal`- Request not accepted. |
+| AdditionalResponse| 3 | | Only present if Failure and should be a describing text. |
 | SaleData | 2 | | |
-| SaleTransactionID | 3 | TransactionID | ID of transaction provided by the sale system and may be seen in PosPay reports. Information will not be past to clearing and is not seen in Merchant Portal |
-| | | TimeStamp | Timestamp set by sale system for when the transaction is started. Note that the format is local time |
+| SaleTransactionID | 3 | TransactionID | ID of transaction provided by the sale system and may be seen in PosPay reports. Information will not be past to clearing and is not seen in Merchant Portal. |
+| | | TimeStamp | Timestamp set by sale system for when the transaction is started. Note that the format is local time. |
 | POIData | 2 | | |
-| POITransactionID | 3 | TransactionID | ID of transaction set by the terminal. This is seen in PosPay reports as well as on Merchant Portal. The complete element is needed if the transaction needs to be reversed |
-| | | TimeStamp | Timestamp set by terminal when the transaction is started. Note that the format is UTC |
-| PaymentResult | 2 | PaymentType | Values: `Normal` for purchase and `Refund` for refund |
-| PaymentInstrumentData | 3 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment method made via the terminal |
-| CardData | 4 | PaymentBrand | Comma separated string where the first part is card type. `01`-payment card. `02`-Combined payment and Loyalty, `03`-Loyalty, `04`-Neither. May be used instead of 03 for controlling the dialog in the terminal. Second part is the product name |
+| POITransactionID | 3 | TransactionID | ID of transaction set by the terminal. This is seen in PosPay reports as well as on Merchant Portal. The complete element is needed if the transaction needs to be reversed. |
+| | | TimeStamp | Timestamp set by terminal when the transaction is started. Note that the format is UTC. |
+| PaymentResult | 2 | PaymentType | Values: `Normal` for purchase and `Refund` for refund. |
+| PaymentInstrumentData | 3 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment method made via the terminal. |
+| CardData | 4 | PaymentBrand | Comma separated string where the first part is card type. `01`-payment card. `02`-Combined payment and Loyalty, `03`-Loyalty, `04`-Neither. May be used instead of 03 for controlling the dialog in the terminal. Second part is the product name. |
 | | | MaskedPAN | |
-| | | EntryMode | `ICC`, `Contactless`, `Magstripe` |
-| PaymentToken | 5 | TokenRequestedType | `Customer` |
-| | | TokenValue | An irreversible 70 byte hash computed locally in the terminal. A specific card will get the same CNA in all SwedbankPay PAX terminals |
-| AmountsResp | 3 | Currency | Needs to be configured in the terminal. Available `DKK`, `EUR`, `NOK`, `SEK` |
-| | | AuthorizedAmount | Total amount for transaction |
-| | | CashBackAmount | Amount included in AuthorizedAmount |
-| | | TipAmount | Tip included in AuthorizedAmount |
-| PaymentAquirerData | 3 | MerchantID | Id of merchant set by Swedbank Pay |
-| | | AquirerPOIID | A terminal id within Swedbank Pay |
-| ApprovalCode | 4 | | Authorization approval code. Only present if Result is Success |
+| | | EntryMode | `ICC`, `Contactless`, `Magstripe`. |
+| PaymentToken | 5 | TokenRequestedType | `Customer`. |
+| | | TokenValue | An irreversible 70 byte hash computed locally in the terminal. A specific card will get the same CNA in all SwedbankPay PAX terminals. |
+| AmountsResp | 3 | Currency | Needs to be configured in the terminal. Available `DKK`, `EUR`, `NOK`, `SEK`. |
+| | | AuthorizedAmount | Total amount for transaction. |
+| | | CashBackAmount | Amount included in AuthorizedAmount. |
+| | | TipAmount | Tip included in AuthorizedAmount. |
+| PaymentAquirerData | 3 | MerchantID | Id of merchant set by Swedbank Pay. |
+| | | AquirerPOIID | A terminal id within Swedbank Pay. |
+| ApprovalCode | 4 | | Authorization approval code. Only present if Result is Success. |
 | PaymentReceipt | 2 | DocumentQualifier | `CashierReceipt`- Merchant copy. `CustomerReceipt`- receipt information for customer. Note! This element appears twice. |
-| OutputContent | 3 | OutputFormat | Only value `Text` |
-| OutputText | 4 | | A Base64 encoded JSON structure with information for the receipt |
+| OutputContent | 3 | OutputFormat | Only value `Text`. |
+| OutputText | 4 | | A Base64 encoded JSON structure with information for the receipt. |
 
 ### PaymentReceipt in Detail
 
