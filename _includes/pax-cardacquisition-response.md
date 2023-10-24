@@ -28,15 +28,15 @@
 | Name | Lev | Attribute | Description |
 | :------------- | :---: | :-------------- |:--------------- |
 | CardAcquisitionResponse | 1 | | |
-| Response | 2 | Result | `Success` or `Failure` |
-| SaleData | 2 | | Echoed from request |
+| Response | 2 | Result | `Success` or `Failure`. |
+| SaleData | 2 | | Echoed from request. |
 | POIData | 2 | | |
-| POITransactionID | 3 | TransactionID | ID of transaction set by the terminal. This is seen in PosPay reports as well as on Merchant Portal. The complete element is needed if the transaction needs to be reversed |
-| | | TimeStamp | Timestamp set by terminal when the transaction is started. Note that the format is UTC |
-| PaymentInstrumentData | 2 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment method made via the terminal |
-| CardData | 3 | PaymentBrand | Comma separated string where the first part is card type. `01`-payment card. `02`-Combined payment and Loyalty, `03`-Loyalty, `04`-Neither. May be used instead of 03 for controlling the dialog in the terminal. Second part is the product name |
+| POITransactionID | 3 | TransactionID | ID of transaction set by the terminal. This is seen in PosPay reports as well as on Merchant Portal. The complete element is needed if the transaction needs to be reversed. |
+| | | TimeStamp | Timestamp set by terminal when the transaction is started. Note that the format is UTC. |
+| PaymentInstrumentData | 2 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment method made via the terminal. |
+| CardData | 3 | PaymentBrand | Comma separated string where the first part is card type. `01`-payment card. `02`-Combined payment and Loyalty, `03`-Loyalty, `04`-Neither. May be used instead of 03 for controlling the dialog in the terminal. Second part is the product name. |
 | | | MaskedPAN | |
-| | | EntryMode | `ICC`, `Contactless`, `Magstripe` |
-| PaymentToken | 4 | TokenRequestedType | `Customer` |
-| | | TokenValue | An irreversible 70 byte hash computed locally in the terminal. A specific card will get the same CNA in all SwedbankPay PAX terminals |
-| LoyaltyAccount | 2 | | Should only be present for card type 03 |
+| | | EntryMode | `ICC`, `Contactless`, `Magstripe`. |
+| PaymentToken | 4 | TokenRequestedType | `Customer`. |
+| | | TokenValue | An irreversible 70 byte hash computed locally in the terminal. A specific card will get the same CNA in all SwedbankPay PAX terminals. |
+| LoyaltyAccount | 2 | | Should only be present for card type 03. |

@@ -123,10 +123,10 @@ A display request is executed immediately and cannot be aborted. There will howe
 | Name | Lev | Attribute | Description
 |:---|:--:|:--|:--|
 | DisplayRequest | 1 | | |
-| DisplayOutput | 2 | Device | Only value is `CustomerDisplay` |
-| | | InfoQuality | Only value is `Display` |
-| OutputContent | 3 | OutputFormat | Only value is `Text` |
-| OutputText | 4 | | Message to display. Center alignment. Long lines will wrap. To control line breaks, make one OutputText per line |
+| DisplayOutput | 2 | Device | Only value is `CustomerDisplay`. |
+| | | InfoQuality | Only value is `Display`. |
+| OutputContent | 3 | OutputFormat | Only value is `Text`. |
+| OutputText | 4 | | Message to display. Center alignment. Long lines will wrap. To control line breaks, make one OutputText per line. |
 
 {:.code-view-header}
 **Example of a DisplayRequest with several lines**
