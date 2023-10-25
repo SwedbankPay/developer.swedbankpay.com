@@ -7,20 +7,22 @@ menu_order: 800
 ## Introduction
 
 *   When properly set up in your merchant/webshop site and the payer starts the
-    purchase process, you need to make a `POST` request towards Swedbank Pay with
-    your Purchase information. This will generate a `payment` resource with a unique
-    `id`. You will receive a **redirect URL** to a Swedbank Pay payment
+    purchase process, you need to make a `POST` request towards Swedbank Pay
+    with your Purchase information. This will generate a `payment` resource with
+    a unique `id`. You will receive a **redirect URL** to a Swedbank Pay payment
     page (`redirect-sale` operation).
 *   You need to redirect the payer's browser to that specified URL so that the
     payer can enter the payment details in a secure Swedbank Pay environment.
 *   Swedbank Pay will redirect the payer's browser to one of two specified URLs,
     depending on whether the payment session is followed through completely.
-    Please note that both a successful and rejected payment
-    reach completion.
+    Please note that both a successful and rejected payment reach completion.
 *   When you detect that the payer reach your `completeUrl`, you need to do a
     `GET` request to receive the state of the transaction, containing the
     `id` URL generated in the first step, to receive the state of the
     transaction.
+*   The Trustly window will open inside the same frame, even for the redirect
+    integration. This means that you wont have to think about your payer being
+    redirected to another site, and hense no need to redirect them back.
 
 ## Step 1: Create A Payment
 
