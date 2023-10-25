@@ -147,9 +147,9 @@ Content-Type: application/json
        "firstName": "Example",
        "lastName": "Name",
        "nationalIdentifier": {
-        "socialSecurityNumber": "199710202392",
-        "countryCode": "SE"
-        },
+            "socialSecurityNumber": "199710202392",
+            "countryCode": "SE"
+            },
      "email": "test@payex.com",
      "msisdn": "+46709876543",
      "address": {
@@ -172,8 +172,8 @@ Content-Type: application/json
 | {% icon check %} | {% f operation %}                | `string`     | Must be set to `Verify`    .                                                                                                                                                                                                                                     |
 | {% icon check %} | {% f productName %}                | `string`     | Must be set to `Checkout3`    .                                                                                                                                                                                                                                     |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| | {% f restrictedToInstruments %}                       | `bool` | Set to `true` to only show Payout enabled instruments (Trustly). |
-| | {% f generateUnscheduledToken %}                       | `bool` | Set to `true`. |
+| {% icon check %} | {% f restrictedToInstruments %}                       | `bool` | Set to `true` to only show Payout enabled instruments (Trustly). |
+| {% icon check %} | {% f generateUnscheduledToken %}                       | `bool` | Set to `true`. |
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |

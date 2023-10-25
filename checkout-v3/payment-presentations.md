@@ -251,10 +251,11 @@ S-Pankki, Säästöpankki and Ålandsbanken.
 While it works mostly the same way as the [payer aware payment menu][papm], we
 have two recommendations to make the experience as smooth as possible.
 
-* Add the payer's SSN and enable [SSN restriction][restrict].
+*   Include the first and last name of the payer in the `payer`
+  object.
 
-* Include the first and last name of the payer in the `payer`
-object.
+*   Add the payer's SSN. If you provide it in the `payerReference` field, the SSN
+  has to be hashed.
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction" %}
