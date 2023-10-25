@@ -225,6 +225,18 @@ environment to ensure the customers details are kept safe.
 
 ## Trustly
 
+Useful information regarding Trustly in our payment menu.
+
+### Overlay
+
+When using a payment menu integration (including Instrument Mode), Trustly will
+now be opened in a modal. (This is unlike the Trustly instrument implementation
+where it opens inside the same frame). The modal will close once the interaction
+at Trustly is finished. `PaymentUrl` is still required in the request, but this
+means that you will **not** have to reload the UI any longer.
+
+### Trustly Express
+
 As a part of our Trustly offering, Trustly Express provides an even swifter
 payment process.
 

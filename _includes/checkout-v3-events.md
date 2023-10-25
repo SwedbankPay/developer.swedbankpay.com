@@ -286,6 +286,79 @@ It will be raised with the following event argument object:
 | {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
+## `onPaymentAttemptAborted`
+
+This event mirrors `onPaymentAborted` from Checkout v2. Subscribe to it if you
+want to know when a user cancels their payment. The `onPaymentAttemptAborted`
+event is raised with the following event argument object:
+
+{:.code-view-header}
+**onPaymentAttemptAborted event object**
+
+```json
+{
+    "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
+    "redirectUrl": "https://example.com/cancelled"
+}
+```
+
+{:.table .table-striped}
+| Field         | Type     | Description                                                    |
+| :------------ | :------- | :------------------------------------------------------------- |
+| `id`          | `string` | {% include fields/id.md %}                                     |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment.|
+
+## `onPaymentAttemptFailed`
+
+This event mirrors `onPaymentTransactionFailed` from Checkout v2. Subscribe to
+it if you want to know when a payment attempt fails, and further attempts can be
+made for the payment.
+
+An error message will appear in the payment UI, and the payer will be able to
+try again or choose another payment instrument. The `onPaymentAttemptFailed`
+event is raised with the following event argument object:
+
+{:.code-view-header}
+**onPaymentAttemptFailed event object**
+
+```json
+{
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "details": "[HttpCode ProblemTitle]"
+}
+```
+
+{:.table .table-striped}
+| Field     | Type     | Description                                         |
+| :-------- | :------- | :-------------------------------------------------- |
+| `id`      | `string` | {% include fields/id.md %}               |
+| `details` | `string` | A human readable and descriptive text of the error. |
+
+## `onPaymentAttemptStarted`
+
+This event mirrors `onPaymentCreated` from Checkout v2. Subscribe to it if you
+want to know when a payer has selected their payment instrument and actively
+attempts to perform a payment.
+
+The `onPaymentAttemptStarted` event is raised with the following event argument
+object:
+
+{:.code-view-header}
+**onPaymentAttemptStarted event object**
+
+```json
+{
+    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "instrument": "creditcard",
+}
+```
+
+{:.table .table-striped}
+| Field        | Type     | Description                                                                                     |
+| :----------- | :------- | :---------------------------------------------------------------------------------------------- |
+| `id`         | `string` | {% include fields/id.md %}                                                           |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
+
 ## `onTermsOfServiceRequested`
 
 {% include events/on-terms-of-service-requested.md %}
