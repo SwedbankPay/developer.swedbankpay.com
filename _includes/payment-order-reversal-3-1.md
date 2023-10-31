@@ -46,40 +46,7 @@ Content-Type: application/json;version=3.1
         "description": "Reversal of captured transaction",
         "amount": 1500,
         "vatAmount": 375,
-        "payeeReference": "ABC123",
-        "receiptReference": "ABC122",
-        "orderItems": [
-            {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://example.com/products/123",
-                "imageUrl": "https://example.com/product123.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 4,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 200,
-                "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
-            },
-            {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
-            }
-        ]
+        "payeeReference": "ABC123"
     }
 }
 ```
@@ -135,9 +102,8 @@ api-supported-versions: 3.1
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 375,
-    "remainingCaptureAmount": 0,
-    "remainingCancellationAmount": 0,
-    "remainingReversalAmount": 0,
+    "remainingCaptureAmount": 0, // Only present after a partial reversal
+    "remainingReversalAmount": 0, // Only present after a partial reversal
     "description": "Test Purchase",
     "initiatingSystemUserAgent": "<should be set by the system calling POST:/psp/paymentorders>",
     "language": "sv-SE",

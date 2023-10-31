@@ -43,39 +43,7 @@ Content-Type: application/json;version=3.1
         "amount": 1500,
         "vatAmount": 375,
         "payeeReference": "AB832",
-        "receiptReference": "AB831",
-        "orderItems": [
-            {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://example.com/products/123",
-                "imageUrl": "https://example.com/product123.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 4,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 200,
-                "vatPercent": 2500,
-                "amount": 1000,
-                "vatAmount": 250
-            },
-            {
-                "reference": "P2",
-                "name": "Product2",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "description": "Product 2 description",
-                "quantity": 1,
-                "quantityUnit": "pcs",
-                "unitPrice": 500,
-                "vatPercent": 2500,
-                "amount": 500,
-                "vatAmount": 125
-            }
-        ]
+        "receiptReference": "AB831"
     }
 }
 ```
@@ -146,8 +114,8 @@ api-supported-versions: 3.1
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 375,
-    "remainingCaptureAmount": 0,
-    "remainingCancellationAmount": 0,
+    "remainingCaptureAmount": 0, // Only present after a partial capture
+    "remainingCancellationAmount": 0, // Only present after a partial capture
     "remainingReversalAmount": 1500,
     "description": "Test Purchase",
     "initiatingSystemUserAgent": "<should be set by the system calling POST:/psp/paymentorders>",
