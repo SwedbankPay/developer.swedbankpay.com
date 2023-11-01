@@ -556,23 +556,62 @@ Content-Type: application/json
       },
       {
         "created": "2020-03-05T02:01:01.01Z",
-        "name": "PaymentPartialCaptured",
+        "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123459,
         "initiatedBy" "Merchant"
       },
       {
         "created": "2020-03-06T02:01:01.01Z",
-        "name": "PaymentPartialCaptured",
+        "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123460,
         "initiatedBy" "Merchant"
       },
       {
         "created": "2020-03-07T02:01:01.01Z",
-        "name": "PaymentPartialReversed",
+        "name": "PaymentPartiallyReversed",
         "instrument": "CreditCard"
         "number": 123461,
+        "initiatedBy" "Merchant"
+      },
+      {
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentCapturedFailed",
+        "instrument": "CreditCard",
+        "number": 123462,
+        "initiatedBy" "Merchant"
+      },
+            {
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentPartiallyCapturedFailed",
+        "instrument": "CreditCard",
+        "number": 123463,
+        "initiatedBy" "Merchant"
+      },
+            {
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentReversedFailed",
+        "instrument": "CreditCard",
+        "number": 123464,
+        "initiatedBy" "Merchant"
+      },
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentPartiallyReversedFailed",
+        "instrument": "CreditCard",
+        "number": 123465,
+        "initiatedBy" "Merchant"
+      },
+              "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentCancelledFailed",
+        "instrument": "CreditCard",
+        "number": 123466,
+        "initiatedBy" "Merchant"
+      },
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentPartiallyCancelledFailed",
+        "instrument": "CreditCard",
+        "number": 123467,
         "initiatedBy" "Merchant"
       }
     ]
@@ -612,11 +651,17 @@ Content-Type: application/json
 | {% f PaymentAttemptFailed, 0 %}     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
 | {% f PaymentPaid, 0 %}      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
 | {% f PaymentCaptured, 0 %}      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| {% f PaymentPartialCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
+| {% f PaymentPartiallyCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
 | {% f PaymentCancelled, 0 %}     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
-| {% f PaymentPartialCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
+| {% f PaymentPartiallyCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
 | {% f PaymentReversed, 0 %}    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| {% f PaymentPartialReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartiallyReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentCapturedFailed, 0 %}      | Will occur when the merchant has tried - but failed - to do a **full** capture of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.              |
+| {% f PaymentPartiallyCapturedFailed, 0 %}     | Will occur when the merchant has tried - but failed - to do a **partial** capture of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.              |
+| {% f PaymentReversedFailed, 0 %}    | Will occur when the merchant has tried - but failed - to do a reversal of the **fully** captured authorization amount. The number parameter might be available on this event. If present, it will point to a number in the `financialTransaction` field for easy linking.   |
+| {% f PaymentPartiallyReversedFailed, 0 %}    | Will occur when the merchant has tried - but failed - to do a partial reversal of the captured authorization amount. The number parameter might be available on this event. If present, it will point to a number in the `financialTransaction` field for easy linking.   |
+| {% f PaymentCancelledFailed, 0 %}     | Will occur when the merchant has tried - but failed - to do a **full** cancel of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.                     |
+| {% f PaymentPartiallyCancelledFailed, 0 %}      | Will occur when the merchant has tried - but failed - to cancel the remaing (uncaptured) parts of authorizated amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.         |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
