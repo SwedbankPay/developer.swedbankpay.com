@@ -32,8 +32,9 @@ the request will default to **2.0**. Using the `productName` and setting it to
 `checkout3` will default to **3.0**.
 
 To accompany the new version, we have also added a
-[v3.1 post-purchase section][post-31], [v3.1 callback][callback-31] and a new
-[resource model for `failedPostPurchaseAttempts`][fppa].
+[v3.1 post-purchase section][post-31], [v3.1 callback][callback-31], a new
+resource model for [`failedPostPurchaseAttempts`][fppa] and additions to the
+[`history`][history] resource model.
 
 Supported features for this integration are subscriptions (`recur`, `one-click`
 and `unscheduled MIT`), `MOTO`, instrument mode, split settlement (`subsite`)
@@ -79,5 +80,6 @@ Read more about possible additions to the request in our
 [features]: /checkout-v3/features/
 [fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts-31-only
 [frictionless]: /checkout-v3/features/core/frictionless-payments
+[history]: /checkout-v3/features/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items
 [post-31]: /checkout-v3/post-purchase-3-1
