@@ -661,7 +661,7 @@ Content-Type: application/json
 | {% f PaymentReversedFailed, 0 %}    | Will occur when the merchant has tried - but failed - to do a reversal of the **fully** captured authorization amount. The number parameter might be available on this event. If present, it will point to a number in the `financialTransaction` field for easy linking.   |
 | {% f PaymentPartiallyReversedFailed, 0 %}    | Will occur when the merchant has tried - but failed - to do a partial reversal of the captured authorization amount. The number parameter might be available on this event. If present, it will point to a number in the `financialTransaction` field for easy linking.   |
 | {% f PaymentCancelledFailed, 0 %}     | Will occur when the merchant has tried - but failed - to do a **full** cancel of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.                     |
-| {% f PaymentPartiallyCancelledFailed, 0 %}      | Will occur when the merchant has tried - but failed - to cancel the remaing (uncaptured) parts of authorizated amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.         |
+| {% f PaymentPartiallyCancelledFailed, 0 %}      | Will occur when the merchant has tried - but failed - to cancel the remaining (uncaptured) parts of authorizated amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.         |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
