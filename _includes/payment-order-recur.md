@@ -36,7 +36,7 @@ The initial request should look like this:
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 
 {
@@ -49,7 +49,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "generateRecurrenceToken": true, {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3",
+        "productName": "Checkout3", // Can be excluded if version is added in header
         "implementation": "{{implementation}}", {% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
@@ -233,7 +233,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentorder": {
@@ -375,7 +376,7 @@ field.
 GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
 
 As an alternative, you can also retrieve it by using the expand option when you
@@ -390,7 +391,7 @@ initial payment response, but with an expanded `paid` field.
 GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
 
 {% else %}
@@ -407,7 +408,7 @@ with an expanded `paid` field.
 GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
 
 {% endif %}
@@ -449,7 +450,7 @@ needed.
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "paymentorder": {
@@ -461,7 +462,7 @@ Content-Type: application/json
         "description": "Test Recurrence",
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", {% endif %}
+        "productName": "Checkout3", // Can be excluded if version is added in header {% endif %}
         "urls": {
             "callbackUrl": "https://example.com/payment-callback"
         },

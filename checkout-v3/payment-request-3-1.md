@@ -19,11 +19,11 @@ payer information and a `completeUrl`.
 The `productName` field has been removed as a mandatory field in v3.1, and you
 identify the `paymentOrder` version as v3.1 in the header instead.
 
-`POST`, `PATCH` and `PUT` requests use this header:
+`POST`, `PATCH`, `GET` and `PUT` requests use this header:
 
 `Content-Type: application/json;version=3.1`
 
-`GET` requests use this header:
+`GET` requests can also use this header:
 
 `Accept: application/json;version=3.1`
 

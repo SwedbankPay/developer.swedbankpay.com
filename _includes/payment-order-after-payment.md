@@ -26,7 +26,9 @@ against the URL of `paymentorder.id`:
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
 
 ## GET Response
@@ -40,7 +42,8 @@ below:
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentorder": {
