@@ -5,13 +5,27 @@ description: |
 ---
 ### Method Signatures
 
-*   **void GetPaymentInstrument()**
+Synchronous
 
-*   **async Task\<GetPaymentInstrumentResult\> GetPaymentInstrumentAsync(Nexo.PaymentTypes type= Nexo.PaymentTypes.Normal)**
+*   void GetPaymentInstrument(Nexo.PaymentTypes type= Nexo.PaymentTypes.Normal)
+*   void GetPaymentInstrument(`TransactionSetup` setup)
+
+Asynchronous
+
+*   async Task\<GetPaymentInstrumentResult\> GetPaymentInstrumentAsync(Nexo.PaymentTypes type= Nexo.PaymentTypes.Normal)
+*   async Task\<GetPaymentInstrumentResult\> GetPaymentInstrumentAsync(`TransactionSetup` setup)
 
 ### Description
 
 Use GetPaymentInstrumentAsync to read a card before the amount is known. The call starts a payment transaction, and the card read will be held by the terminal until PaymentAsync or RefundAsync is called. When you have the response, a new card may be read. The last payment card read is the one that gets charged.
+
+### Parameters
+
+*   **type** - `Nexo.PaymentTypes.Normal` or `Nexo.PaymentTypes.Refund`
+
+or
+
+*   **setup** - [`TransactionSetup`][transactionsetup]. Use this to set a transacion id to track the transaction.
 
 ### Returns
 
@@ -65,4 +79,5 @@ The actual nexo message response looks as follows.
 </SaleToPOIResponse>
 ```
 
+[transactionsetup]: /pax-terminal/NET/transactionsetup
 [getpaymentinstrument-sample-code]: ../CodeExamples/#get-cna-for-customer

@@ -5,7 +5,7 @@ description: |
 ---
 ### Method Signature
 
-*   **bool SetPaymentInstrument(string paymentInstrument)**
+*   bool SetPaymentInstrument(string paymentInstrument)
 
 ### Description
 
@@ -16,3 +16,6 @@ Prefix and supplied PAN must be registred in the terminal setup and may not be a
 ### Parameter
 
 `string` PaymentInstrument - format is pan and expiry date separated by an equal sign. "PAN=MMYY"
+
+{% include alert.html type="informative" icon="info" header="There is an alternative"
+body="It also possible to pass the payment instrument when calling Payment and passing a `TransactionSetup` object" %}

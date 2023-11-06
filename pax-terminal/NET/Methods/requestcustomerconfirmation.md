@@ -5,9 +5,9 @@ description: |
 ---
 ### Method Signatures
 
-*   **void  RequestCustomerConfirmation(string message)**
+*   void  RequestCustomerConfirmation(string message)
 
-*   **Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)**
+*   Task\<CustomerConfirmationResult\> RequestCustomerConfirmationAsync(string message)
 
 ### Description
 
@@ -20,8 +20,6 @@ A **CustomerConfirmationResult**
 ```c#
 public class CustomerConfirmationResult : NexoRequestResult
     {
-        public CustomerConfirmationResult();
-
         public bool Confirmation { get; set; }
         public override string ResponseContent { get; set; }
     }
