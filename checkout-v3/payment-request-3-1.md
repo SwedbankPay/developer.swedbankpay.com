@@ -16,8 +16,8 @@ When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource with
 payer information and a `completeUrl`.
 
-The `productName` field has been removed as a mandatory field in v3.1, and you
-identify the `paymentOrder` version as v3.1 in the header instead.
+The `productName` field has been removed in v3.1, and you identify the
+`paymentOrder` version as v3.1 in the header instead.
 
 `POST`, `PATCH`, `GET` and `PUT` requests use this header:
 
@@ -51,6 +51,9 @@ have `abort`, which you can read about in the [core features][abort-feature].
 You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
+
+To avoid unnecessary calls, we recommend doing a `GET` on your `paymentOrder` to
+check if `abort` is an available operation before performing it.
 
 {% include alert-risk-indicator.md %}
 

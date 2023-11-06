@@ -125,7 +125,7 @@ Content-Type: application/json
 {
    "paymentorder": {
      "operation": "Verify",
-     "productName": "Checkout3", // Can be excluded if version is added in header
+     "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
      "currency": "SEK",
      "restrictedToPayoutInstruments": true,
      "generateUnscheduledToken": true,
@@ -501,7 +501,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 {
   "paymentorder": {
     "operation": "Payout",
-    "productName": "Checkout3", // Can be excluded if version is added in header
+    "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 0,

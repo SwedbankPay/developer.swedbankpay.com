@@ -23,7 +23,7 @@ Content-Type: application/json;version=3.0     // Version optional
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": null,
-        "productName": "Checkout3", // Can be excluded if version is added in header
+        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "implementation": "PaymentsOnly",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
