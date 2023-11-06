@@ -5,9 +5,9 @@ description: |
 ---
 ### Signatures
 
-*   **void GetLastTransactionResult()**
+*   void GetLastTransactionResult()
 
-*   **Task\<TransactionStatusResult\> GetLastTransactionResultAsync()**
+*   Task\<TransactionStatusResult\> GetLastTransactionResultAsync()
 
 ### Description
 

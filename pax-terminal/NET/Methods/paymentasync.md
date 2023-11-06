@@ -6,23 +6,45 @@ description: |
 ---
 ### Method Signatures
 
-*   **void Payment(decimal totalamount,decimal cashback=0, string currency="SEK")**
+Synchronous versions
 
-*   **async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="SEK")**
+*   void Payment(decimal totalamount,decimal cashback=0, string currency="SEK")
+*   void Payment(`TransactionSetup` setup)
+
+Asynchronous versions
+
+*   async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="SEK")
+*   async Task\<PaymentRequestResult\> PaymentAsync(`TransactionSetup` setup)
 
 ### Description
 
 The PaymentAsync should be called when the amount is known. It opens all available readers and waits for a payment instrument. If Alternative Payment Methods are activated it will open for that too.
 
-{% include alert.html type="warning" icon="warning" header="Heads up"
-body="After PaymentAsync returns there has to be a delay before next request can be made. If there is no delay the next request will fail, indicating busy and retries have to be made."
-%}
+Use parameter of type `TransactionSetup` if a reference need to be set to track the transaction.
 
 ### Parameters
 
-*   **totalamount** - includes possible cashback amount
-*   **cashback** - part of total amount that will be handed to customer
-*   **currency** - currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".
+{:.table .table-striped}
+|:-------- |:-------------- |:--------------- |
+| decimal |**totalamount**|Includes possible cashback amount.|
+| decimal |**cashback**|Part of total amount that will be handed to customer.|
+| string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".|
+| or | |
+|[TransactionSetup][transactionsetup]|**setup**| Object holding several parameters to be used for transaction. Default values for all members. Only populate what is relevant.|
+
+{:.code-view-header}
+**Example calling async function with a TransactionSetup object as parameter**
+
+```c#
+  var r = await Pax?.PaymentAsync(new TransactionSetup() { 
+    Amount = total,
+    CashBack = cashBack,
+    TransactionID = IdForThisTransaction
+    });
+  if (r.ResponseResult == NexoResponseResult.Success) 
+    { textBox1.AppendText("Approved" + Environment.NewLine); }
+  else { textBox1.AppendText("Not Approved" + Environment.NewLine); }
+```
 
 ### Returns
 
@@ -31,19 +53,11 @@ A **PaymentRequestResult**
 A `PayementRequestResult.ResponseResult` of value `Success` means transaction approved.
 If `ResponseResult` is `Failure` there is an `ErrorCondition`. If `ErrorCondition` is `Busy`, wait awhile and try again.
 
-```c#
-  var r = await Pax?.PaymentAsync(total, cashBack);
-  if (r.ResponseResult == NexoResponseResult.Success)
-  {
-      textBox1.AppendText("Approved" + Environment.NewLine);
-  }
-  else
-  {
-      textBox1.AppendText("Not Approved" + Environment.NewLine);
-  }
-```
-
 Make sure to always print the customer's receipt when available. For an aborted PaymentAsync there might not be one available.
+
+{% include alert.html type="warning" icon="warning" header="Heads up"
+body="After PaymentAsync returns there has to be a delay before next request can be made. If there is no delay the next request will fail, indicating busy and retries have to be made."
+%}
 
 ```c#
 public class NexoRequestResult
@@ -62,6 +76,7 @@ public class PaymentRequestResult : NexoRequestResult
     public JObject MerchantReceiptData { get; set; }
     public string FormattedReceipt { get; set; }
     public string ReceiptBlob { get; set; }
+    public string ReceiptBlobNoHeader {get; set; } 
     public JObject SettlementData { get; set; }
     public XElement OriginalTransaction { get; set; }
     public string UICulture { get; set; }
@@ -253,3 +268,35 @@ TSI:                0000
       KUNDENS EX.       
 
 ```
+
+### ReceiptBlobNoHeader - ReceiptBlob but no header
+
+```text
+                        
+Butiksnr.:      10020001
+Termid:           877888
+2023-08-23         08:39
+                        
+          KÖP           
+                        
+SEK               125,00
+Total:            125,00
+                        
+************9659        
+Mastercard              
+Kontaktlös              
+                        
+                        
+K/1 3 00 902428         
+                        
+Ref.nr:       8778880003
+AID:      A0000000041010
+TVR:          0000008001
+TSI:                0000
+                        
+     SPARA KVITTOT      
+      KUNDENS EX.       
+
+```
+
+[transactionsetup]: /pax-terminal/NET/transactionsetup

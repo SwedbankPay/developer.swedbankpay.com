@@ -6,9 +6,9 @@ description: |
 
 ### Signatures
 
-*   **void Abort()**
+*   void Abort()
 
-*   **async Task\<AbortRequestResult\> AbortAsync()**
+*   async Task\<AbortRequestResult\> AbortAsync()
 
 ### Description
 

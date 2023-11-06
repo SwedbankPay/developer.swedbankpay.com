@@ -1,15 +1,15 @@
 ---
 title: Create
 description: |
-    Create is a static method that creates an instance and returns an `ISwpTrmIf` interface
+    Create is a static method that creates an instance and returns an **ISwpTrmIf_1** interface
 ---
 ### Method Signature
 
-*   **ISwpTrmIf Create(SwpIfConfig)**
+*   ISwpTrmIf_1 Create(SwpIfConfig)
 
 ### Description
 
-Create is a static method that creates an instance and returns an `ISwpTrmIf` interface.
+Create is a static method that creates an instance and returns an `ISwpTrmIf_1` interface.
 This is the first call to make. At the moment there is only one class available, PAXTrmImp_1. If more than one terminal will be used create one instance per terminal.
 
 ### Parameters

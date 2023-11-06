@@ -5,9 +5,9 @@ description: |
 ---
 ### Method Signatures
 
-*   **void RequestToDisplay(string message)**
+*   void RequestToDisplay(string message)
 
-*   **Task\<NexoRequestResult\> RequestToDisplayAsync(string message)**
+*   Task\<NexoRequestResult\> RequestToDisplayAsync(string message)
 
 ### Description
 
