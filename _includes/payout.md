@@ -125,7 +125,7 @@ Content-Type: application/json
 {
    "paymentorder": {
      "operation": "Verify",
-     "productName": "Checkout3",
+     "productName": "Checkout3", // Can be excluded if version is added in header
      "currency": "SEK",
      "restrictedToPayoutInstruments": true,
      "generateUnscheduledToken": true,
@@ -496,12 +496,12 @@ Content-Type: application/json
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
   "paymentorder": {
     "operation": "Payout",
-    "productName": "Checkout3",
+    "productName": "Checkout3", // Can be excluded if version is added in header
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 0,
@@ -553,7 +553,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentOrder": {

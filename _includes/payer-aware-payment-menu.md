@@ -73,7 +73,7 @@ A Payer Aware Payment Menu request can look like this.
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "paymentorder": {
@@ -85,7 +85,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "generatePaymentToken": true,
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
-        "productName": "Checkout3",
+        "productName": "Checkout3", // Can be excluded if version is added in header
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "payment-menu" %}
         "instrument": null,{% endif %}
         "disableStoredPaymentDetails": false,
@@ -292,7 +292,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentorder": {
@@ -440,7 +441,7 @@ the operation(s) available for them.
 GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
 
 ## GET Tokens Response
@@ -450,7 +451,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
   "payerOwnedTokens": {
@@ -557,7 +559,7 @@ You can remove the tokens by using the following `PATCH` request.
 PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
   "state": "Deleted",
@@ -578,7 +580,8 @@ Which will provide this response.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
   "payerOwnedTokens": {

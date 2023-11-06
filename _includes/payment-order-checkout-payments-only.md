@@ -11,7 +11,7 @@
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.0     // Version optional
 
 {
     "paymentorder": {
@@ -23,7 +23,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "instrument": null,
-        "productName": "Checkout3",
+        "productName": "Checkout3", // Can be excluded if version is added in header
         "implementation": "PaymentsOnly",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
@@ -96,7 +96,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.0
+api-supported-versions: 3.0
 
 {
     "paymentorder": {

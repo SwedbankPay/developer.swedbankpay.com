@@ -53,7 +53,7 @@ request and response below:
 POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.0/2.0      // Version optional
 
 {
     "transaction": {
@@ -151,7 +151,8 @@ If the capture request succeeds, this should be the response:
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.0/2.0
+api-supported-versions: 3.0/2.0
 
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
