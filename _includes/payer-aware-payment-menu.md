@@ -22,6 +22,20 @@ the details stored or not.
 all payment instruments provided by Swedbank Pay support Payer Awareness today."
 %}
 
+## Trustly Express
+
+If you are offering Trustly Express through our payment aware payment menu, we
+have two recommendations to make the experience as smooth as possible.
+
+*   Include the first and last name of the payer in the `payer`
+  object.
+
+*   Add the payer's SSN. If you provide it in the `payerReference` field, the
+  SSN has to be hashed.
+
+If you want to read about Trustly Express and the banks who offer it, you can
+find more information [here][trustly-presentation].
+
 ## BYO Payment Menu
 
 The payment UI is versatile and can be configured in such a way that it
@@ -110,8 +124,8 @@ CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for
 ,
         "payer": {
             "digitalProducts": false,
-            "firstName": "Leia"
-            "lastName": "Ahlström"
+            "firstName": "Leia",
+            "lastName": "Ahlström",
             "email": "leia@payex.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234",
@@ -639,3 +653,4 @@ api-supported-versions: 3.1/3.0/2.0
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [instrument-mode]: {{ features_url }}/optional/instrument-mode
+[trustly-presentation]: /checkout-v3/payment-presentations#trustly
