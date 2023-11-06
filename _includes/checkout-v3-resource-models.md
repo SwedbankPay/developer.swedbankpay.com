@@ -219,10 +219,24 @@ Content-Type: application/json
           ]
         }
       },
+            {
+        "created": "2020-03-03T07:21:01.1893466Z",
+        "instrument": "Vipps",
+        "number": 123457,
+        "status": "Failed",
+        "operationalFee": false,
+        "problem": {
+          "type": "https://api.payex.com/psp/errordetail/vipps/vippsdeclined",
+          "title": "Operation failed",
+          "status": 403,
+          "detail": "Unable to complete Vipps transaction. failedReason: VippsPaymentCancel,ErrorDescription: Received status USER_CANCEL from Vipps",
+          "problems": []
+        }
+      },
       {
         "created": "2020-03-03T07:22:21.1893466Z",
         "instrument": "CreditCard",
-        "number": 123457,
+        "number": 123458,
         "status": "Failed",
         "problem": {
           "type": "https://api.payex.com/psp/errordetail/creditcard/3dsecureacquirergatewayerror",
@@ -254,6 +268,7 @@ Content-Type: application/json
 | {% f instrument, 2 %}             | `string`     | Payment instrument used in the failed payment. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
 | {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
+| {% f operationalFee, 2 %}             | `bool`     | A field specific for Vipps. Set to `true` if an operational fee for receiving card information from Vipps has been generated. Set to `false` if no such fee has been generated. |
 | {% f problem %}             | `object`     | The problem object.  |
 | {% f type, 2 %}  | `string`   | The type of problem that occurred. |
 | {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
