@@ -232,8 +232,7 @@ Useful information regarding Trustly in our payment menu.
 When using a payment menu integration (including Instrument Mode), Trustly will
 now be opened in a modal. (This is unlike the Trustly instrument implementation
 where it opens inside the same frame). The modal will close once the interaction
-at Trustly is finished. `PaymentUrl` is still required in the request, but this
-means that you will **not** have to reload the UI any longer.
+at Trustly is finished.
 
 ### Trustly Express
 
@@ -254,8 +253,8 @@ have two recommendations to make the experience as smooth as possible.
 *   Include the first and last name of the payer in the `payer`
   object.
 
-*   Add the payer's SSN. If you provide it in the `payerReference` field, the SSN
-  has to be hashed.
+*   Add the payer's SSN. If you provide it in the `payerReference` field, the
+  SSN has to be hashed.
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction" %}
