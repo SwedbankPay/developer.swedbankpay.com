@@ -17,12 +17,12 @@ this very documentation, not to a version of any APIs described by it." %}
 Today, we go live with Payment Order v3.1, which has some changes in the
 [request][3-1], the [post-purchase operations][pp-3-1] and the
 [callback][callback-3-1]. We have also added a new resource model called
-[failedPostPurchaseAttempts][fppa]. Go check it out!
+[`failedPostPurchaseAttempts`][fppa]. Go check it out!
 
 There is a new section regarding [Trustly in Digital Payments][trustly-pres],
 with important information regarding overlay and Trustly Express.
 
-There is also a new Vipps field for fees in the [failedAttempts][fa] resource
+There is also a new Vipps field for fees in the [`failedAttempts`][fa] resource
 model, and the [quick links to test data and other resources][quick-links] have
 been moved from the front page to Digital Payments.
 
