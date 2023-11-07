@@ -105,9 +105,19 @@ original `POST` when you created the `paymentOrder`.
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
+        "number": 12345678
     }
 }
 ```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
+| {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |
+| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
 
 {% else %}
 {:.code-view-header}

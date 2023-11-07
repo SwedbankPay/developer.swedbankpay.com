@@ -309,6 +309,7 @@ api-supported-versions: 3.0, 3.1
         "created": "2020-03-03T07:21:01.1893466Z",
         "status": "Failed",
         "type": "Capture",
+        "number": 12345678,
         "problem": {
           "type": "https://api.payex.com/psp/errordetail/creditcard/badrequest",
           "title": "Operation failed",
@@ -346,6 +347,7 @@ api-supported-versions: 3.0, 3.1
 | {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
 | {% f type, 2 %}  | `string`   | The type of post-purchase transaction. |
+| {% f number, 2 %}  | `string`   | The attempt number of the post-purchase operation. |
 | {% f problem %}             | `object`     | The problem object.  |
 | {% f type, 2 %}  | `string`   | The type of problem that occurred. |
 | {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
