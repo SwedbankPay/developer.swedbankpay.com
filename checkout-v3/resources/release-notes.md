@@ -10,6 +10,22 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 07 Nov 23
+
+### Version 4.6.0
+
+Today, we go live with Payment Order v3.1, which has some changes in the
+[request][3-1], the [post-purchase operations][pp-3-1] and the
+[callback][callback-3-1]. We have also added a new resource model called
+[failedPostPurchaseAttempts][fppa]. Go check it out!
+
+There is a new section regarding [Trustly in Digital Payments][trustly-pres],
+with important information regarding overlay and Trustly Express.
+
+There is also a new Vipps field for fees in the [failedAttempts][fa] resource
+model, and the [quick links to test data and other resources][quick-links] have
+been moved from the front page to Digital Payments.
+
 ## 28 September 2023
 
 ### Version 4.5.0
@@ -859,6 +875,7 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[3-1]: /checkout-v3/payment-request-3-1
 [3ds2-test]: /checkout-v3/resources/test-data#otp-3ds2
 [afd-payments]: /checkout-v3/features/optional/afd
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
@@ -867,6 +884,7 @@ integration and the payer.
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [callback]: /checkout-v3/features/core/callback
+[callback-3-1]: /checkout-v3/features/core/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
 [card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
 [card-payment-url]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-url
@@ -912,7 +930,9 @@ integration and the payer.
 [display-ui]: /checkout-v3/display-payment-ui/
 [eligibility-check]: /checkout-v3/features/optional/instrument-mode#eligibility-check
 [mac]: /old-implementations/checkout-v2/features/optional/mac
+[fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
 [features]: /checkout-v3/features
+[fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
 [frictionless-payments]: /checkout-v3/features/core/frictionless-payments
 [frontpage]: https://developer.swedbankpay.com/
 [fundamental-principles]: /checkout-v3/resources/fundamental-principles
@@ -950,7 +970,9 @@ integration and the payer.
 [partners]: /checkout-v3/resources/partners
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
+[pp-3-1]: /checkout-v3/post-purchase-3-1
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
+[quick-links]: /checkout-v3/#resources
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
 [resource-model-cancelled]: /checkout-v3/features/technical-reference/resource-sub-models#cancelled
@@ -986,6 +1008,7 @@ integration and the payer.
 [terminology]: /checkout-v3/resources/terminology
 [test-data]: /checkout-v3/resources/test-data
 [tos-url]: /checkout-v3/features/optional/tos
+[trustly-pres]: /checkout-v3/payment-presentations#trustly
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
