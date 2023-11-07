@@ -13,13 +13,19 @@ Swedbank Pay Payment Application implementation of nexo Retailer allows the
 integrated application to initiate the relevant functions within Swedbank Pay
 Payment Application.
 
-The Swedbank Pay SDK contains one implementation for using PAX A30 terminal but
+There are three options for integrating the Swedbank Pay terminals to a sale system.
+
+*   [nexo Retailer][nexoretailer] - As implemented by Swedbank Pay.
+*   [.Net SDK][dotnetsdk] - abstract interface implementing the nexo Retailer.
+*   [Java SDK][javasdk] - abstract interface implementing the nexo Retailer.
+
+The Swedbank Pay SDK contains one implementation for using PAX A30 or A35 terminal but
 makes it possible to vary the style of use by configuration. There are two major
 styles that is decided by the SalesCapabilities string sent in as a
 LoginRequest:
 
--   Act as both server and client
--   Act as client only
+*   Act as both server and client
+*   Act as client only
 
 The intended default style requires the consumer of the SwpTrmLib to act as both
 a server and a client. The server handles requests from the terminal, such as
@@ -28,7 +34,7 @@ as a request to confirm that a receipt has been signed if needed. The second
 style is to act as a client only and then lose information from terminal such as
 events informing that a card has been inserted or removed or display information
 helping the operator to see what is going on. Transactions that need signing is
-not possible. Such transactions regard cards from outside EU for which PIN may
+not possible at the moment but will be in the near future. Such transactions regard cards from outside EU for which PIN may
 not be required.
 
 ## Configure the terminal
@@ -37,3 +43,7 @@ In order for the terminal to communicate with the ECR the IP address need to be
 set in the admin menu. To enter the admin menu tap 6 times on the Swedbank Pay
 logo located at the bottom of the screen. Then enter the code. Set the ECR IP
 address and then press the save button.
+
+[nexoretailer]: /pax-terminal/Nexo-Retailer/
+[dotnetsdk]: /pax-terminal/NET/
+[javasdk]: /pax-terminal/java

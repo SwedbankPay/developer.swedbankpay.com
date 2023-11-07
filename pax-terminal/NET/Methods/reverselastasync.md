@@ -6,9 +6,9 @@ description: |
 ---
 ### Method Signatures
 
-*   **void ReversLast()**
+*   void ReversLast()
 
-*   **Task\<ReversalRequestResult\> ReverseLastAsync()**
+*   Task\<ReversalRequestResult\> ReverseLastAsync()
 
 ### Description
 

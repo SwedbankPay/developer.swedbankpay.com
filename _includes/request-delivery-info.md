@@ -35,7 +35,7 @@ field of the request, like the example below.
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "paymentorder": {
@@ -48,7 +48,7 @@ Content-Type: application/json
         "language": "sv-SE",
         "requestDeliveryInfo": true,
         "restrictedToDeliveryInfoInstruments": true,
-        "productName": "Checkout3",
+        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "implementation": "{{implementation}}"
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
@@ -296,7 +296,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentOrder": {

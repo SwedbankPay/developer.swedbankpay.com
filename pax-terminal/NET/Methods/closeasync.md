@@ -5,9 +5,9 @@ description: |
 ---
 ### Method Signatures
 
-*   **void Close(bool MaintenanceAllowed = true)**
+*   void Close(bool MaintenanceAllowed = true)
 
-*   **async Task CloseAsync(bool MaintenanceAllowed = true)**
+*   async Task CloseAsync(bool MaintenanceAllowed = true)
 
 ### Description
 

@@ -12,14 +12,16 @@ specific payment.
 
 To cancel a previously created payment, you must perform the `cancel` operation
 against the accompanying `href` returned in the `operations` list. You can only
-cancel a payment - or part of a payment - which has not been captured yet.
+cancel a payment - or part of a payment - which has not been captured yet. If
+you cancel before any capture has been done, no captures can be performed later.
 
 {% else %}
 
 To cancel a previously created payment, you must perform the
 `create-paymentorder-cancel` operation against the accompanying `href` returned
 in the `operations` list. You can only cancel a payment - or part of a payment -
-which has not been captured yet.
+which has not been captured yet. If you cancel before any capture has been done,
+no captures can be performed later.
 
 {% endif %}
 
@@ -32,7 +34,7 @@ which has not been captured yet.
 POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.0/2.0      // Version optional
 
 {
     "transaction": {
@@ -59,7 +61,8 @@ example below:
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.0/2.0
+api-supported-versions: 3.0/2.0
 
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
@@ -104,8 +107,11 @@ Content-Type: application/json
 
 ## Cancel Sequence Diagram
 
-Cancel can only be done on a authorized transaction. If you perform a cancel
-after doing a partial capture, you will cancel the remaining authorized amount.
+Cancel can only be done on an authorized transaction. As a cancellation does not
+have an amount associated with it, it will release the entire reserved amount.
+If your intention is to make detailed handling, such as only capturing a partial
+amount of the transaction, you must start with the capture on the desired amount
+before performing a cancel for the remaining reserved funds.
 
 ```mermaid
 sequenceDiagram

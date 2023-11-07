@@ -5,9 +5,9 @@ description: |
 ---
 ### Method Signatures
 
-*   **void RequestCustomerDigitString(string message)**
+*   void RequestCustomerDigitString(string message)
 
-*   **Task\<CustomerDigitStringResult\> RequestCustomerDigitString(string message)**
+*   Task\<CustomerDigitStringResult\> RequestCustomerDigitString(string message)
 
 ### Description
 
@@ -21,8 +21,6 @@ A **CustomerDigitStringResult**
 ```c#
  public class CustomerDigitStringResult : NexoRequestResult
     {
-        public CustomerDigitStringResult();
-
         public string DigitString { get; set; }
         public override string ResponseContent { get; set; }
     }

@@ -60,6 +60,16 @@ setting the initial operation to [`Verify`][verify].
 }
 ```
 
+{% capture table %}
+{:.table .table-striped .mb-5}
+|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
+| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  | {% f generatePaymentToken, 0 %}                     | `bool`     | Determines if a payment token should be generated. Default value is `false`.                                                                                                                                                                                                                                             |
+| | {% f payer, 0 %}                | `object`     | The payer object                                                                                                                                                                                                                                           |
+| | {% f payerReference, 0 %}                 | `string`     | A reference used to recognize the payer when no SSN is stored.                                                                                                                                                                                                                                                                            |
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
 ## Finding The `paymentToken` Value
 
 {% if documentation_section contains "payment-instruments" %}
@@ -404,6 +414,7 @@ Content-Type: application/json
                 "token": "{paymentToken}",
                 "instrument": "Invoice-payexfinancingno",
                 "instrumentDisplayName": "260267*****",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "email": "hei@hei.no",
                     "msisdn": "+4798765432",
@@ -415,6 +426,7 @@ Content-Type: application/json
                 "token": "{paymentToken}",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2020",
                     "cardBrand": "Visa"
@@ -463,6 +475,7 @@ Content-Type: application/json
   "paymentToken": "{{paymentToken}}",
     "instrument": "CreditCard",
     "instrumentDisplayName": "492500******0004",
+    "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
     "instrumentParameters": {
         "expiryDate": "12/2022",
         "cardBrand": "Visa"

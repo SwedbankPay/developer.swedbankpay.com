@@ -13,6 +13,13 @@ the payment instruments enabled in your merchant setup, restrict the menu to a
 selection of instruments, or
 [display a single payment instrument][instrument-mode].
 
+There are two versions of Digital Payments available in production at the
+moment. If you are a new merchant, you should implement v3.1. If you are an
+existing merchant, we recommend migrating to v3.1, but you are still able to use
+v3.0. Reach out to your technical contact person for guidance regarding this.
+Unless stated otherwise by the presence of a separate v3.1 page, there are no
+differences between the two alternatives.
+
 To meet accessibility requirements, we have re-worked our payment UI. Click here
 to [learn more about WCAG and the changes we have done][wcag-presentation]. The
 payment UI can be displayed as a redirect integration, where the payer is
@@ -44,25 +51,92 @@ below to read more." %}
 {:.table .table-plain}
 |        | Payment Instrument | Region                                    |
 | :--------------------------: | :--------------: | :---------------------------------------- |
-| ![Apple Pay][apple-pay-logo] | [Apple Pay][apple-pay]  |  ![EarthIcon][earth-icon]          |
-| ![Card][card-icon]           | Card                    |  ![EarthIcon][earth-icon]          |
-| ![Click to Pay][c2p-logo]    | [Click to Pay][click-to-pay]            |  ![EarthIcon][earth-icon]             |
-| ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;          |  ![EarthIcon][earth-icon]             |
-| ![MobilePay][mobilepay-logo] | MobilePay       | {% flag dk %} {% flag fi %}               |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Installment Account | {% flag se %} |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Invoice | {% flag no %} {% flag se %} |
-| ![Swedbank Pay][swp-logo] | Swedbank Pay Monthly Payments | {% flag se %} |
-| ![Swish][swish-logo]      | Swish                 | {% flag se %}                             |
-| ![Trustly][trustly-logo]  | Trustly               | {% flag se %} {% flag fi %}               |
-| ![Vipps][vipps-logo]      | Vipps                | {% flag no %}                             |
+| ![Apple Pay][apple-pay-logo]     | [Apple Pay][apple-pay]           |  ![EarthIcon][earth-icon]    |
+| ![Card][card-icon]               | Card                             |  ![EarthIcon][earth-icon]    |
+| ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
+| ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
+| ![MobilePay][mobilepay-logo]     | MobilePay                        | {% flag dk %} {% flag fi %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %} {% flag no %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
+| ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
+| ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
+| ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
+| ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
 
 ## What's new in the documentation
 
   {% include release_notes.html num_dates=3 %}
   <a href="/checkout-v3/resources/release-notes">See full release notes</a>
 
+## Resources
+
+<div class="row mt-4">
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+       <a href="/checkout-v3/resources/development-guidelines/" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons-outlined">
+                account_circle
+            </i>
+         </span>
+         <span class="dx-card-content">
+            <span class="h4">OS Development Guidelines</span>
+            <span><p>This is how we create an inclusive environment</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/checkout-v3/resources/test-data" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                content_paste
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">Test Data</span>
+           <span><p>Get the required data for testing in our interfaces</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/checkout-v3/resources/terminology" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                menu_book
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">Terminology</span>
+           <span><p>Get a better understanding of the terms we use</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/checkout-v3/resources/" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                format_list_bulleted
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">See All Resources (7)</span>
+           <span><p>A guide through our payment terminals</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+</div>
+
 {% include iterator.html next_href="/checkout-v3/payment-request"
-                         next_title="Start Integrating" %}
+                         next_title="Start Integrating v3.0" %}
+{% include iterator.html next_href="/checkout-v3/payment-request-3-1"
+                         next_title="Start Integrating v3.1" %}
 {% include iterator.html next_href="/checkout-v3/setup"
                          next_title="Set Up A Test Account" %}
 
@@ -81,4 +155,5 @@ below to read more." %}
 [trustly-logo]: /assets/img/icon-trustly-simple.svg
 [wcag-presentation]: https://www.swedbankpay.com/information/wcag
 [paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
+[trustly]: /checkout-v3/payment-presentations#trustly
 [instrument-mode]: /checkout-v3/features/optional/instrument-mode

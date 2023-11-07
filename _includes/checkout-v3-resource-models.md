@@ -219,10 +219,24 @@ Content-Type: application/json
           ]
         }
       },
+            {
+        "created": "2020-03-03T07:21:01.1893466Z",
+        "instrument": "Vipps",
+        "number": 123457,
+        "status": "Failed",
+        "operationalFee": false,
+        "problem": {
+          "type": "https://api.payex.com/psp/errordetail/vipps/vippsdeclined",
+          "title": "Operation failed",
+          "status": 403,
+          "detail": "Unable to complete Vipps transaction. failedReason: VippsPaymentCancel,ErrorDescription: Received status USER_CANCEL from Vipps",
+          "problems": []
+        }
+      },
       {
         "created": "2020-03-03T07:22:21.1893466Z",
         "instrument": "CreditCard",
-        "number": 123457,
+        "number": 123458,
         "status": "Failed",
         "problem": {
           "type": "https://api.payex.com/psp/errordetail/creditcard/3dsecureacquirergatewayerror",
@@ -249,11 +263,91 @@ Content-Type: application/json
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f failedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
-| {% f financialTransactionsList %}  | `array`   | The array of failed attempts. |
+| {% f failedAttemptList %}  | `array`   | The array of failed attempts. |
 | {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f instrument, 2 %}             | `string`     | Payment instrument used in the failed payment. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
 | {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
+| {% f operationalFee, 2 %}             | `bool`     | A field specific for Vipps. Set to `true` if an operational fee for receiving card information from Vipps has been generated. Set to `false` if no such fee has been generated. |
+| {% f problem %}             | `object`     | The problem object.  |
+| {% f type, 2 %}  | `string`   | The type of problem that occurred. |
+| {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
+| {% f status, 2 %}              | `integer` | The HTTP status code that the problem was served with.                                                                                                                                                                                              |
+| {% f detail, 2 %}              | `string`  | A detailed, human readable description of the error.                                                                                                                                                                |
+| {% f problems, 2 %}            | `array`   | The array of problem detail objects.                                                                                                                                                                                                                |
+| {% f name %}        | `string`  | The name of the field, header, object, entity or likewise that was erroneous.                                                                                                                                                                       |
+| {% f description %} | `string`  | The human readable description of what was wrong with the field, header, object, entity or likewise identified by `name`.                                                                                                                           |
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+## FailedPostPurchaseAttempts
+
+{:.code-view-header}
+**Request**
+
+```http
+GET /psp/paymentorders/{{ page.payment_order_id }}/failedpostpurchaseattempts HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Accept: application/json;version=3.1
+```
+
+{:.code-view-header}
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.1
+api-supported-versions: 3.0, 3.1
+
+{
+  "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
+  "postpurchaseFailedAttempts": {
+    "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/postpurchasefailedattempts",
+    "postpurchaseFailedAttemptList": [
+      {
+        "created": "2020-03-03T07:21:01.1893466Z",
+        "status": "Failed",
+        "type": "Capture",
+        "number": 12345678,
+        "problem": {
+          "type": "https://api.payex.com/psp/errordetail/creditcard/badrequest",
+          "title": "Operation failed",
+          "status": 400,
+          "detail": "Unable to complete CreateCapture operation, look at problem node!",
+          "problems": [
+            {
+              "name":"Entitynotfound",
+              "description":"Capture with identifier f1c8c67b-88cb-407c-98fb-08db6f56295e could not be found"
+            },
+            {
+              "name":"Component",
+              "description":"pospay-ecommerce-financial-service"
+            },
+            {
+              "name":"Method",
+              "description":"N/A"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f postpurchasefailedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
+| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
+| {% f postpurchaseFailedAttemptList %}  | `array`   | The array of failed attempts. |
+| {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
+| {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
+| {% f type, 2 %}  | `string`   | The type of post-purchase transaction. |
+| {% f number, 2 %}  | `string`   | The attempt number of the post-purchase operation. |
 | {% f problem %}             | `object`     | The problem object.  |
 | {% f type, 2 %}  | `string`   | The type of problem that occurred. |
 | {% f title, 2 %}  | `string`   | The title of the problem that occurred. |
@@ -479,23 +573,62 @@ Content-Type: application/json
       },
       {
         "created": "2020-03-05T02:01:01.01Z",
-        "name": "PaymentPartialCaptured",
+        "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123459,
         "initiatedBy" "Merchant"
       },
       {
         "created": "2020-03-06T02:01:01.01Z",
-        "name": "PaymentPartialCaptured",
+        "name": "PaymentPartiallyCaptured",
         "instrument": "CreditCard"
         "number": 123460,
         "initiatedBy" "Merchant"
       },
       {
         "created": "2020-03-07T02:01:01.01Z",
-        "name": "PaymentPartialReversed",
+        "name": "PaymentPartiallyReversed",
         "instrument": "CreditCard"
         "number": 123461,
+        "initiatedBy" "Merchant"
+      },
+      {
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentCapturedFailed",
+        "instrument": "CreditCard",
+        "number": 123462,
+        "initiatedBy" "Merchant"
+      },
+            {
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentPartiallyCapturedFailed",
+        "instrument": "CreditCard",
+        "number": 123463,
+        "initiatedBy" "Merchant"
+      },
+            {
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentReversedFailed",
+        "instrument": "CreditCard",
+        "number": 123464,
+        "initiatedBy" "Merchant"
+      },
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentPartiallyReversedFailed",
+        "instrument": "CreditCard",
+        "number": 123465,
+        "initiatedBy" "Merchant"
+      },
+              "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentCancelledFailed",
+        "instrument": "CreditCard",
+        "number": 123466,
+        "initiatedBy" "Merchant"
+      },
+        "created": "2020-03-04T02:01:01.01Z",
+        "name": "PaymentPartiallyCancelledFailed",
+        "instrument": "CreditCard",
+        "number": 123467,
         "initiatedBy" "Merchant"
       }
     ]
@@ -535,11 +668,17 @@ Content-Type: application/json
 | {% f PaymentAttemptFailed, 0 %}     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
 | {% f PaymentPaid, 0 %}      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
 | {% f PaymentCaptured, 0 %}      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| {% f PaymentPartialCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
+| {% f PaymentPartiallyCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
 | {% f PaymentCancelled, 0 %}     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
-| {% f PaymentPartialCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
+| {% f PaymentPartiallyCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
 | {% f PaymentReversed, 0 %}    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| {% f PaymentPartialReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartiallyReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentCapturedFailed, 0 %}      | Will occur when the merchant has tried - but failed - to do a **full** capture of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.              |
+| {% f PaymentPartiallyCapturedFailed, 0 %}     | Will occur when the merchant has tried - but failed - to do a **partial** capture of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.              |
+| {% f PaymentReversedFailed, 0 %}    | Will occur when the merchant has tried - but failed - to do a reversal of the **fully** captured authorization amount. The number parameter might be available on this event. If present, it will point to a number in the `financialTransaction` field for easy linking.   |
+| {% f PaymentPartiallyReversedFailed, 0 %}    | Will occur when the merchant has tried - but failed - to do a partial reversal of the captured authorization amount. The number parameter might be available on this event. If present, it will point to a number in the `financialTransaction` field for easy linking.   |
+| {% f PaymentCancelledFailed, 0 %}     | Will occur when the merchant has tried - but failed - to do a **full** cancel of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.                     |
+| {% f PaymentPartiallyCancelledFailed, 0 %}      | Will occur when the merchant has tried - but failed - to cancel the remaining (uncaptured) parts of authorizated amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.         |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

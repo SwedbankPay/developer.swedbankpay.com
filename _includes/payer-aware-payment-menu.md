@@ -22,6 +22,20 @@ the details stored or not.
 all payment instruments provided by Swedbank Pay support Payer Awareness today."
 %}
 
+## Trustly Express
+
+If you are offering Trustly Express through our payment aware payment menu, we
+have two recommendations to make the experience as smooth as possible.
+
+*   Include the first and last name of the payer in the `payer`
+  object.
+
+*   Add the payer's SSN. If you provide it in the `payerReference` field, the
+  SSN has to be hashed.
+
+If you want to read about Trustly Express and the banks who offer it, you can
+find more information [here][trustly-presentation].
+
 ## BYO Payment Menu
 
 The payment UI is versatile and can be configured in such a way that it
@@ -73,7 +87,7 @@ A Payer Aware Payment Menu request can look like this.
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "paymentorder": {
@@ -85,7 +99,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "generatePaymentToken": true,
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
-        "productName": "Checkout3",
+        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "payment-menu" %}
         "instrument": null,{% endif %}
         "disableStoredPaymentDetails": false,
@@ -110,8 +124,8 @@ Content-Type: application/json
 ,
         "payer": {
             "digitalProducts": false,
-            "firstName": "Leia"
-            "lastName": "Ahlström"
+            "firstName": "Leia",
+            "lastName": "Ahlström",
             "email": "leia@payex.com",
             "msisdn": "+46787654321",
             "payerReference": "AB1234",
@@ -292,7 +306,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentorder": {
@@ -440,7 +455,7 @@ the operation(s) available for them.
 GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
 
 ## GET Tokens Response
@@ -450,7 +465,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
   "payerOwnedTokens": {
@@ -462,6 +478,7 @@ Content-Type: application/json
                 "tokenType": "Payment",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2022",
                     "cardBrand": "Visa"
@@ -480,6 +497,7 @@ Content-Type: application/json
                 "tokenType": "Payment",
                 "instrument": "Invoice-payexfinancingno",
                 "instrumentDisplayName": "260267*****",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "email": "hei@hei.no",
                     "msisdn": "+4798765432",
@@ -499,6 +517,7 @@ Content-Type: application/json
                 "tokenType": "Unscheduled",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2020",
                     "cardBrand": "Visa"
@@ -537,6 +556,7 @@ Content-Type: application/json
 | {% f tokenType, 2 %}           | `string`  | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f instrument %}             | `string`  | Payment instrument connected to the token. |
 | {% f instrumentDisplayName %}  | `string`  | Payment instrument connected to the token.|
+| {% f correlationId %}  | `string`  | A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to. |
 | {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 | {% f operations %}             | `array`   | {% include fields/operations.md resource="token" %}                                                                                              |
 {% endcapture %}
@@ -553,7 +573,7 @@ You can remove the tokens by using the following `PATCH` request.
 PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
   "state": "Deleted",
@@ -574,7 +594,8 @@ Which will provide this response.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
   "payerOwnedTokens": {
@@ -586,6 +607,7 @@ Content-Type: application/json
                 "tokenType": "Payment",
                 "instrument": "Invoice-payexfinancingno",
                 "instrumentDisplayName": "260267*****",
+
                 "instrumentParameters": {
                     "email": "hei@hei.no",
                     "msisdn": "+4798765432",
@@ -597,6 +619,7 @@ Content-Type: application/json
                 "tokenType": "Unscheduled",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2020",
                     "cardBrand": "Visa"
@@ -619,6 +642,7 @@ Content-Type: application/json
 | {% f tokenType, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f instrument %}             | `string`     | Payment instrument connected to the token. |
 | {% f instrumentDisplayName %}             | `string`     | Payment instrument connected to the token.|
+| {% f correlationId %}  | `string`  | A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to. |
 | {% f instrumentParameters %}             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 {% endcapture %}
 {% include accordion-table.html content=table %}
@@ -629,3 +653,4 @@ Content-Type: application/json
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
 [instrument-mode]: {{ features_url }}/optional/instrument-mode
+[trustly-presentation]: /checkout-v3/payment-presentations#trustly

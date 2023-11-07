@@ -11,7 +11,7 @@
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.0     // Version optional
 
 {
     "paymentorder": {
@@ -22,36 +22,17 @@ Content-Type: application/json
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": false,
-        "productName": "Checkout3",
+        "instrument": null,
+        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "implementation": "PaymentsOnly",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
-            "paymentUrl": "https://example.com/perform-payment",
+            "paymentUrl": "https://example.com/perform-payment", //Seamless View only
             "completeUrl": "https://example.com/payment-completed",
-            "cancelUrl": "https://example.com/payment-cancelled",
+            "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
             "callbackUrl": "https://api.example.com/payment-callback",
             "logoUrl": "https://example.com/logo.png" //Redirect only
         },
-                "orderItems": [
-            {
-                "reference": "P1",
-                "name": "Product1",
-                "type": "PRODUCT",
-                "class": "ProductGroup1",
-                "itemUrl": "https://example.com/products/123",
-                "imageUrl": "https://example.com/product123.jpg",
-                "description": "Product 1 description",
-                "discountDescription": "Volume discount",
-                "quantity": 5,
-                "quantityUnit": "pcs",
-                "unitPrice": 300,
-                "discountPrice": 0,
-                "vatPercent": 2500,
-                "amount": 1500,
-                "vatAmount": 375
-            }
-        ]
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
@@ -115,7 +96,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.0
+api-supported-versions: 3.0
 
 {
     "paymentorder": {

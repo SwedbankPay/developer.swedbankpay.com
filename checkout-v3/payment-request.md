@@ -18,9 +18,19 @@ Start by performing a `POST` request towards the `paymentorder` resource
 with payer information and a `completeUrl`.
 
 We have added `productName` to the payment order request in this integration.
-You can find it in the `paymentorder` field. This is required if you want to use
-Digital Payments. If it isn´t included in your request, you won't get the
-correct operations in the response.
+You can find it in the `paymentorder` field. This is no longer required, but is
+still an option to use v3.0 of Digital Payments. To use `productName`, simply
+put `Checkout3` as the value in that field in the request. You can also specify
+version by adding it in the header instead. If you use this option, you can
+leave out the `productName` field.
+
+`POST`, `PATCH` and `PUT` requests use this header:
+
+`Content-Type: application/json;version=3.0`
+
+`GET` requests use this header:
+
+`Accept: application/json;version=3.0`
 
 When `productName` is set to `checkout3`, `digitalProducts` will be set to
 `false` by default.
@@ -30,15 +40,16 @@ and `unscheduled MIT`), `MOTO`, instrument mode, split settlement (`subsite`)
 and the possibility to use your own `logo`.
 
 There is also a guest mode option for the payers who don't wish to store their
-information. When using **Payments Only**, the way to trigger this is to not
-include the `payerReference` field in your `paymentOrder` request. You can find
-it in the `payer` field in the example below.
+information. The way to trigger this is to not include the `payerReference`
+field in your `paymentOrder` request. If the `payer` field is included in your
+request, you can find the `payerReference` there.
 
 Sometimes you might need to abort purchases. An example could be if a payer does
 not complete the purchase within a reasonable timeframe. For those instances we
 have `abort`, which you can read about in the [core features][abort-feature].
 You can only use `abort` if the payer **has not** completed an `authorize` or a
-`sale`.
+`sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
+Swish or Vipps apps, `abort` is unavailable.
 
 {% include alert-risk-indicator.md %}
 

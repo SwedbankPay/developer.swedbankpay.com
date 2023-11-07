@@ -14,7 +14,7 @@
 PATCH {{ token_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "state": "Deleted",
@@ -36,7 +36,8 @@ display name will vary depending on the instrument.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     {% if token_field_name == "paymentToken" %}
@@ -47,6 +48,7 @@ Content-Type: application/json
     {% else %}
     "instrument": "CreditCard",
     "instrumentDisplayName": "123456xxxxxx1111"
+    "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
     "instrumentParameters": {
         "cardBrand": "Visa",
         "expiryDate": "MM/YYYY"

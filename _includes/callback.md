@@ -65,7 +65,10 @@ Menu v1), it is critical that you do **not** use the `paymentId` or
 `transactionId` when performing a `GET` to retrieve the payment's status. Use
 the `paymentOrderId`.
 
+## Callback Example
+
 {% if api_resource == "paymentorders" %}
+
 {:.code-view-header}
 **Payment Order Callback**
 
@@ -85,6 +88,38 @@ the `paymentOrderId`.
     }
 }
 ```
+
+## Callback Example v3.1
+
+If you have implemented v3.1, the callback will only contain the `paymentOrder`
+node.
+
+This response format will only be triggered if you used `version=3.1` in the
+original `POST` when you created the `paymentOrder`.
+
+{:.code-view-header}
+**Payment Order v3.1 Callback**
+
+```json
+{
+    "paymentOrder": {
+        "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
+        "instrument": "{{ api_resource }}"
+        "number": 12345678
+    }
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+| Field                    | Type         | Description                                                                                                                                                                                                               |
+| :----------------------- | :----------- | :------------------- |
+| {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
+| {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
+| {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |
+| {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 {% else %}
 {:.code-view-header}

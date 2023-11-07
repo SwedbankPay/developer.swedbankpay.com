@@ -125,7 +125,7 @@ Content-Type: application/json
 {
    "paymentorder": {
      "operation": "Verify",
-     "productName": "Checkout3",
+     "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
      "currency": "SEK",
      "restrictedToPayoutInstruments": true,
      "generateUnscheduledToken": true,
@@ -147,9 +147,9 @@ Content-Type: application/json
        "firstName": "Example",
        "lastName": "Name",
        "nationalIdentifier": {
-       "socialSecurityNumber": "199710202392",
-       "countryCode": "SE"
-     },
+            "socialSecurityNumber": "199710202392",
+            "countryCode": "SE"
+            },
      "email": "test@payex.com",
      "msisdn": "+46709876543",
      "address": {
@@ -172,8 +172,8 @@ Content-Type: application/json
 | {% icon check %} | {% f operation %}                | `string`     | Must be set to `Verify`    .                                                                                                                                                                                                                                     |
 | {% icon check %} | {% f productName %}                | `string`     | Must be set to `Checkout3`    .                                                                                                                                                                                                                                     |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
-| | {% f restrictedToInstruments %}                       | `bool` | Set to `true` to only show Payout enabled instruments (Trustly). |
-| | {% f generateUnscheduledToken %}                       | `bool` | Set to `true`. |
+| {% icon check %} | {% f restrictedToInstruments %}                       | `bool` | Set to `true` to only show Payout enabled instruments (Trustly). |
+| {% icon check %} | {% f generateUnscheduledToken %}                       | `bool` | Set to `true`. |
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
@@ -187,10 +187,10 @@ Content-Type: application/json
 |                  | {% f payeeName, 2 %}               | `string`     | The name of the payee, usually the name of the merchant.                                                                                                                                                                                                                                                 |
 |                  | {% f payer %}                    | `object`     | The `payer` object containing information about the payer relevant for the payment order.                                                                                                                                                                                                                |
 |                  | {% f payerReference, 2 %}                     | `string`     | The merchant’s unique reference to the payer.                                                                                                                |
-| | {% f firstName, 2 %}                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f firstName, 2 %}                    | `string`     | The first name of the payer or the company name.                                                                                                                                                                                                                                                                              |
 | | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
 |                  | {% f nationalIdentifier, 2 %}    | `object` | The national identifier object. This is required when using the `restrictedToSocialSecurityNumber` parameter.                                                                      |
-| {% icon check %}            | {% f socialSecurityNumber, 2 %} | `string` | The payer's social security number. |
+|          | {% f socialSecurityNumber, 2 %} | `string` | The payer's social security number. |
 | | {% f countryCode, 2 %}                | `string` | Country code of the payer.                                                          |
 |                  | {% f email %}                   | `string`     | The e-mail address of the payer.                                                       |
 |                  | {% f msisdn %}                  | `string`     | The mobile phone number of the Payer. The mobile number must have a country code prefix and be 8 to 15 digits in length.             |
@@ -496,12 +496,12 @@ Content-Type: application/json
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
   "paymentorder": {
     "operation": "Payout",
-    "productName": "Checkout3",
+    "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
     "currency": "SEK",
     "amount": 1500,
     "vatAmount": 0,
@@ -553,7 +553,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentOrder": {
