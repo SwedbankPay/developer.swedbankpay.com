@@ -118,6 +118,8 @@ original `POST` when you created the `paymentOrder`.
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |
 | {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 {% else %}
 {:.code-view-header}
