@@ -1,4 +1,4 @@
-name: Deploy Pos Developer Branch to Azure Stage
+name: Deploy Ecom Developer Branch to Azure Stage
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
             -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal build \
             --env=production \
-            --site-url=https://developer-pos.stage.swedbankpay.com
+            --site-url=https://developer.stage.swedbankpay.com
 
       - name: azure login
         uses: azure/login@v1.4.7

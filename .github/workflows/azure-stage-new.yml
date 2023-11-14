@@ -1,8 +1,8 @@
-name: Deploy to Azure Stage
+name: Deploy Pos Developer Branch to Azure Stage
 
 on:
   push:
-    branches: ['develop']
+    branches: ['develop-pos']
 
 jobs:
   deploy:
@@ -17,7 +17,7 @@ jobs:
             -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal build \
             --env=production \
-            --site-url=https://developer.stage.swedbankpay.com
+            --site-url=https://developer-pos.stage.swedbankpay.com
 
       - name: azure login
         uses: azure/login@v1.4.7
@@ -29,6 +29,6 @@ jobs:
           az storage blob upload-batch \
             --source "_site" \
             --destination "\$web" \
-            --account-name stagedeveloperpossa1 \
+            --account-name stagedeveloperecomsa1 \
             --overwrite \
             --validate-content
