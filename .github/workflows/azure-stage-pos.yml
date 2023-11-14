@@ -22,7 +22,7 @@ jobs:
       - name: azure login
         uses: azure/login@v1.4.7
         with:
-          creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_STAGE }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_STAGE }}","subscriptionId":"${{ vars.SUBSCRIPTION_ID_STAGE }}","tenantId":"${{ secrets.TENANT_ID }}"}'
+          creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_STAGE }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_STAGE }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_STAGE }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
       - name: azure deploy
         run: |
