@@ -2,7 +2,7 @@
 title: Styling
 description: |
   Information about accessibility and WCAG
-menu_order: 11
+menu_order: 12
 ---
 
 We always strive to enhance and modernize our digital solution, so we have
