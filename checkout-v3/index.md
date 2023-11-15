@@ -15,10 +15,10 @@ selection of instruments, or
 
 There are two versions of Digital Payments available in production at the
 moment. If you are a new merchant, you should implement v3.1. If you are an
-existing merchant, we recommend migrating to v3.1, but you are still able to use
-v3.0. Reach out to your technical contact person for guidance regarding this.
-Unless stated otherwise by the presence of a separate v3.1 page, there are no
-differences between the two alternatives.
+existing merchant, we recommend [migrating to v3.1][migration-guide], but you
+are still able to use v3.0. Reach out to your technical contact person for
+guidance regarding this. Unless stated otherwise by the presence of a separate
+v3.1 page, there are no differences between the two alternatives.
 
 To meet accessibility requirements, we have re-worked our payment UI. Click here
 to [learn more about WCAG and the changes we have done][wcag-presentation]. The
@@ -37,11 +37,47 @@ store the card data for you, but you own it. This means that you have to remove
 data in compliance with GDPR, but you won't have to worry about handling
 sensitive card info.
 
-This implementation is available in Danish `da-DK`, English (US) `en-US`,
-Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`.
+## Use Cases & Migration
 
-You can choose the contents of your payment UI from the following payment
-instruments, somewhat depending on which countries you are operating in.
+<div class="row mt-4">
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+       <a href="/checkout-v3/use-cases" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="dx-card-content">
+            <span class="h4">Use Cases</span>
+            <span><p>How our offering can match your needs</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/checkout-v3/resources/migration-guide" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                hiking
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">Migration Guide</span>
+           <span><p>A step by step guide to our newest version</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+</div>
+
+## Availability
+
+This implementation is available in Danish `da-DK`, English (US) `en-US`,
+Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
+contents of your payment UI from the following payment instruments, somewhat
+depending on which countries you are operating in.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
 body="Some of the digital wallets we offer require you to take additional steps
@@ -157,3 +193,4 @@ below to read more." %}
 [paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
 [trustly]: /checkout-v3/payment-presentations#trustly
 [instrument-mode]: /checkout-v3/features/optional/instrument-mode
+[migration-guide]: /checkout-v3/resources/migration-guide
