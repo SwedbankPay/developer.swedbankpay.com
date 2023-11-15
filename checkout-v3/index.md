@@ -41,7 +41,7 @@ sensitive card info.
 
 <div class="row mt-4">
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-       <a href="/checkout-v3/use-cases" class="dx-card">
+       <a href="/checkout-v3/use-cases/" class="dx-card">
          <span class="dx-card-icon">
             <i class="material-icons-outlined">
                 storefront
