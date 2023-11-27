@@ -64,7 +64,7 @@ For merchants using 3-D Secure (3DS1), this is the ACS (Access Control Server)
 you will encounter in our test environments. Use the Visa or MasterCard listed
 under 3-D Secure Cards above when doing a card payment. After pressing the
 purchase button you will then be taken to a menu where you can select
-Authentication status.
+authentication status.
 
 ![3D-Secure Emulator without dropdown menu][3ds-emulator-no-dropdown]{:width="805px" :height="685px"}
 
@@ -77,37 +77,12 @@ back to the payment like a normal 3-D Secure authentication.
 
 ### OTP (3DS2)
 
-For m©erchants using 3DS2, OTP (One-Time Password) is the ACS (Access Control
+For merchants using 3DS2, OTP (One-Time Password) is the ACS (Access Control
 Server) you will encounter. Use the Visa or MasterCard listed under 3-D Secure
-Cards above when doing a card payment. After pressing the purchase button you
-will then be taken to a challenge form where you need to enter a code based
-on the result you wish for. See the list of codes below the screenshot. After
-pressing **Pay** you will be sent back to the payment like a normal 3-D Secure
-authentication.
+Cards above when doing a card payment. Click approved or cancel to select
+authentication status.
 
-![OTP challenge form][otp-challenge-form]
-
-### OTP Codes
-
-{:.table .table-striped}
-| OTP Value  | Transaction Status | Transaction Status Reason| ECI | Authentication Value|
-| :--------- | :----------------- | :----------------------- | :-- | :------------------ |
-| 1234       | Y                  |                          | 01  | JAmi21makAifmwqo2120cjq1AAA= |
-| 1111       | N                  | 01                       | 01  |  |
-| 2222       | R                  | 01                       | 01  |  |
-| 3333       | U                  | 01                       | 01  |  |
-| 4444       | A                  | 01                       | 01  | Qm181okmdyqh6yQmYuq1890QAAA= |
-
-### OTP Transaction Status
-
-{:.table .table-striped}
-| Transaction Status | Transaction Status Description |
-| :----------------- | :----------------------------- |
-| Y                  |  Authentication / Account verification successful |
-| N                  |  Not authenticated / Account not verified; Transaction denied |
-| R                  |  Authentication / Account verification rejected. Issuer is rejecting authentication/verification and request that authorization not be attempted |
-| U                  |  Authentication / Account verification could not be performed; technical or other problem |
-| A                  |  Attempts processing performed; Not authenticated / verified, but a prood of attempt authentication / verification is provided                      |
+![otp-challenge-form][otp-challenge-form]
 
 ### Visa
 
@@ -266,4 +241,4 @@ the following values:
 
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
 [3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
-[otp-challenge-form]: /assets/img/otp-challenge-form.png
+[otp-challenge-form]: /assets/img/new-otp-challenge-form.png
