@@ -56,7 +56,7 @@ sensitive card info.
       </a>
     </div>
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/checkout-v3/resources/migration-guide" class="dx-card">
+      <a href="/checkout-v3/resources/migration-guide/" class="dx-card">
          <span class="dx-card-icon">
             <i class="material-icons">
                 hiking

@@ -1,15 +1,18 @@
 
 ## Supported Payment Instruments
 
-Looking to get started with subscription services? They are supported through
-Cards and Trustly (bank payments).
+Looking to get started with subscription services? They are currently supported
+in Digital Payments using these instruments:
+
+*   Card payments
+*   Trustly payments
 
 ## Step 1: Create a Payment Order
 
-To initiate subscription services, create a Payment Order with Swedbank Pay.
+To initiate subscription services, create a payment order with Swedbank Pay.
 This can be done by making an initial purchase, storing user details along with
-the transaction, or performing a "Verify" operation for account verification.
-"Verify" is a zero-sum operation used solely for registering details for future
+the transaction, or performing a `Verify` operation for account verification.
+`Verify` is a zero-sum operation used solely for registering details for future
 use.
 
 ## Step 2: Choose Subscription Model and Token

@@ -302,7 +302,7 @@ api-supported-versions: 3.0, 3.1
 
 {
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
-  "postpurchaseFailedAttempts": {
+  "postPurchaseFailedAttempts": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/postpurchasefailedattempts",
     "postpurchaseFailedAttemptList": [
       {

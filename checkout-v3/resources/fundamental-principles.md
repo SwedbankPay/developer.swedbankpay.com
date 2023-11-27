@@ -53,7 +53,7 @@ All requests against the API Platform should have a few common headers:
 
 ```http
 POST /some/resource HTTP/1.1
-Content-Type: application/json; charset=utf-8
+Content-Type: application/json;version=3.1/3.0/2.0  charset=utf-8  // Version optional except for 3.1
 Authorization: "Bearer 123456781234123412341234567890AB"
 User-Agent: swedbankpay-sdk-dotnet/3.0.1
 Accept: application/problem+json; q=1.0, application/json; q=0.9
@@ -141,7 +141,7 @@ field.
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0  // Version optional except for 3.1
 
 {
     "payment": {
@@ -168,7 +168,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "payment": {
