@@ -145,7 +145,7 @@ api-supported-versions: 3.1
     "failedAttempts": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"
     },
-    "postpurchaseFailedAttempts": {
+    "postPurchaseFailedAttempts": {
       "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/postpurchasefailedattempts"
     },
     "metadata": {
@@ -183,7 +183,7 @@ api-supported-versions: 3.1
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | {% f urls %}           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
-| {% f payeeInfo %}      | `string`     | {% include fields/payee-info.md %}                                                                                                          |
+| {% f payeeInfo %}      | `object`     | {% include fields/payee-info.md %}                                                                                                          |
 | {% f payer %}         | `string`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 |
 | {% f history %}     | `string`     | The URL to the `history` resource where information about the payment's history can be retrieved.                                                                                                                            |
 | {% f failed %}     | `string`     | The URL to the `failed` resource where information about the failed transactions can be retrieved.                                                                                                                            |
@@ -192,7 +192,7 @@ api-supported-versions: 3.1
 | {% f cancelled %}     | `string`     | The URL to the `cancelled` resource where information about the cancelled transactions can be retrieved.                                                                                                                            |
 | {% f financialTransactions %}     | `string`     | The URL to the `financialTransactions` resource where information about the financial transactions can be retrieved.                                                                                                                            |
 | {% f failedAttempts %}     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
-| {% f postpurchaseFailedAttempts %}     | `string`     | The URL to the `postpurchaseFailedAttempts` resource where information about the failed capture, cancel or reversal attempts can be retrieved.                                                                                                                            |
+| {% f postPurchaseFailedAttempts %}     | `string`     | The URL to the `postPurchaseFailedAttempts` resource where information about the failed capture, cancel or reversal attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | {% f operations %}     | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
