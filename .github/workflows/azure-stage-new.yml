@@ -17,7 +17,7 @@ jobs:
             -e GITHUB_REPOSITORY_URL=https://github.com/SwedbankPay/developer.swedbankpay.com \
             portal build \
             --env=production \
-            --site-url=https://developer-pos.stage.swedbankpay.com
+            --site-url=https://developer.stage.swedbankpay.com
 
       - name: azure login
         uses: azure/login@v1.5.0

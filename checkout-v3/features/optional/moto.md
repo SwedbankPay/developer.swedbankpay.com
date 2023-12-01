@@ -1,6 +1,6 @@
 ---
 title: MOTO
-permalink: /:path/moto
+permalink: /:path/moto/
 description: |
   Mail Order / Telephone Order transactions.
 menu_order: 2200
