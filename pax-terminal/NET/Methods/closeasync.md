@@ -1,5 +1,6 @@
 ---
 title: Close
+permalink: /:path/closeasync/
 description: |
     The Close/CloseAsync method sends a LogoutRequest to terminate the login session and allow for maintenance.
 ---

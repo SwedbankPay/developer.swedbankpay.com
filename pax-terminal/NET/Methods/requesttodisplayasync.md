@@ -1,5 +1,6 @@
 ---
 title: RequestToDisplay
+permalink: /:path/requesttodisplayasync/
 description: |
     Call RequestToDisplay / RequestToDispalyAsync to display a message on the terminal.
 ---

@@ -1,5 +1,6 @@
 ---
 title: License
+permalink: /:path/license/
 menu_order: 1200
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Status
+permalink: /:path/status/
 description: The status of a payment order.
 menu_order: 2500
 icon:

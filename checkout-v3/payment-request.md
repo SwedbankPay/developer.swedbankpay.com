@@ -1,5 +1,6 @@
 ---
 title: Payment Request
+permalink: /:path/payment-request/
 hide_from_sidebar: false
 description: |
   How to create payments when using our Checkout.

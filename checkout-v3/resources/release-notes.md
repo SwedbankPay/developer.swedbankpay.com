@@ -1,5 +1,6 @@
 ---
 title: Release Notes
+permalink: /:path/release-notes/
 description: |
   The latest updates about our releases will be
   published on this page.

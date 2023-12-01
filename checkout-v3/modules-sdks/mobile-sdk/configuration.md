@@ -1,5 +1,6 @@
 ---
 title: Configuration
+permalink: /:path/configuration/
 description: |
   Configure the **Swedbank Pay Mobile SDK** to communicate with your backend.
 menu_order: 700

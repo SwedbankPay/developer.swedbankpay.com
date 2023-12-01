@@ -1,5 +1,6 @@
 ---
 title: Login
+permalink: /:path/first-message/
 description: The first message to be sent to the terminal is the LoginRequest
 menu_order: 30
 ---

@@ -1,5 +1,6 @@
 ---
 title: Message Transport
+permalink: /:path/messagetransportation/
 description: Messages are sent using HTTP/1.1 Post 
 menu_order: 20
 ---

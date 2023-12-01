@@ -1,5 +1,6 @@
 ---
 title: Test Data
+permalink: /:path/test-data/
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!

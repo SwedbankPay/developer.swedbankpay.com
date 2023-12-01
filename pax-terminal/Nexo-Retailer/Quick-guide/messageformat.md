@@ -1,5 +1,6 @@
 ---
 title: Message Format
+permalink: /:path/messageformat/
 menu_order: 10
 ---
 ### Message Format
