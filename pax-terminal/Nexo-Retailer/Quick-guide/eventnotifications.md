@@ -1,5 +1,6 @@
 ---
 title: Event Notifications
+permalink: /:path/eventnotification/
 description: Event Notifications are sent from the terminal in a few special occasions
 menu_order: 90
 ---

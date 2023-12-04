@@ -1,5 +1,6 @@
 ---
 title: Android
+permalink: /:path/android/
 description: |
   With a Merchant Backend in place, we can start developing a mobile application
   with Swedbank Pay payments.

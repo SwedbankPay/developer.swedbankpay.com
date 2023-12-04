@@ -1,5 +1,6 @@
 ---
 title: Public Migration Key
+permalink: /:path/public-migration-key/
 description: |
   In order to send sensitive credit card data to Swedbank Pay, you need to use
   our **Public Migration Key** to encrypt the data in transmission.

@@ -1,5 +1,6 @@
 ---
 title: Reversal
+permalink: /:path/reversal/
 description: A reversal may be done on the last transaction if it was successful
 menu_order: 70
 ---

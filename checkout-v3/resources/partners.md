@@ -1,5 +1,6 @@
 ---
 title: Partners
+permalink: /:path/partners/
 menu_order: 1000
 sidebar_icon: handshake
 description: |

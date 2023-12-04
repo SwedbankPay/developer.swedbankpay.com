@@ -1,5 +1,6 @@
 ---
 title: Make a Payment
+permalink: /:path/make-payment/
 description: |
  Once there is a Login Session it is possible to make a Payment transaction. The PaymentRequest is used for purchase as well as refund.
 menu_order: 40

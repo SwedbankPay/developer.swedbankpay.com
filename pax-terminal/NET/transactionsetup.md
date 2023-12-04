@@ -1,4 +1,5 @@
 ---
+permalink: /:path/transactionsetup/
 description: TransactionSetup may be used as a parameter when starting a transaction.
 ---
 TransactionSetup holds properties for a transaction and may be passed as an input parameter to functions that start a transaction sequence. All properties are not relevant depending on which function that is called.
