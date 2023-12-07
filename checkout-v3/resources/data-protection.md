@@ -1,5 +1,6 @@
 ---
 title: Data Protection
+permalink: /:path/data-protection/
 menu_order: 700
 ---
 

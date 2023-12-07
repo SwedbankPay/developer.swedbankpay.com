@@ -1,5 +1,6 @@
 ---
 title: Fundamental Principles
+permalink: /:path/fundamental-principles/
 menu_order: 900
 description: |
     Read on to learn about the fundamentals and common architectural principles

@@ -1,5 +1,6 @@
 ---
 title: iOS
+permalink: /:path/ios/
 menu_order: 1100
 ---
 

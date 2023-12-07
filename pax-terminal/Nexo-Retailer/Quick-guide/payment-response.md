@@ -1,5 +1,6 @@
 ---
 title: PaymentResponse
+permalink: /:path/payment-response/
 description: |
  Payment response holds the receipt data
 menu_order: 45

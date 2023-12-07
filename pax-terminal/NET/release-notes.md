@@ -1,5 +1,6 @@
 ---
 title: What's new
+permalink: /:path/release-notes/
 description: |
   The latest updates about the .Net SDK and documentation will be
   published on this page.

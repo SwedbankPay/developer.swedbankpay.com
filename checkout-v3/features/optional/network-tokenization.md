@@ -1,5 +1,6 @@
 ---
 title: Network Tokenization
+permalink: /:path/network-tokenization/
 description: Stored cards made easier
 menu_order: 2300
 icon:

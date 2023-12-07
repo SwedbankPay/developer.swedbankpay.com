@@ -1,5 +1,6 @@
 ---
 title: Payment
+permalink: /:path/paymentasync/
 description: |
   The Payment / PaymentAsync should be called when the amount is known.
 

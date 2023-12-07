@@ -1,5 +1,6 @@
 ---
 title: Plain Webview
+permalink: /:path/plain-webview/
 description: |
   The **Swedbank Pay Mobile SDK** aims to provide an easy way of integrating
   Swedbank Pay Checkout into a mobile application.
