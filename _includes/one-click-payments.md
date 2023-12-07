@@ -19,25 +19,25 @@
 ## One-Click Payments
 
 {% include jumbotron.html body="One-Click Payments utilize a previously
-generated payment token to prefill payment details for credit card or
-invoice payments pages - which means that the payer don't need to enter
-these details for every purchase." %}
+generated payment token to prefill payment details for credit card payments
+pages - which means that the payer don't need to enter these details for every
+purchase." %}
 
 ## Introduction
 
 {% if documentation_section contains "checkout-v3" %}
 
-For card, Trustly and invoice payments, the payment flow and implementation
-varies from your default only being the use of a `paymentToken`. The details in
-this section describe explicitly the parameters that must be set to enable
-one-click purchases.
+For card and Trustly payments, the payment flow and implementation varies from
+your default only being the use of a `paymentToken`. The details in this section
+describe explicitly the parameters that must be set to enable one-click
+purchases.
 
 {% else %}
 
-For [card][card] and [invoice][invoice] payments, the payment flow and
-implementation varies from your default only being the use of a `paymentToken`.
-The details in this section describe explicitly the parameters that must be set
-to enable one-click purchases.
+For [card][card] payments, the payment flow and implementation varies from your
+default only being the use of a `paymentToken`. The details in this section
+describe explicitly the parameters that must be set to enable one-click
+purchases.
 
 {% endif %}
 
@@ -140,10 +140,10 @@ returns to your system, you can use the `paymentToken`, using already stored
 payment data, to initiate one-click payments.
 
 You will need to make a standard purchase, following the sequence as specified
-in the Redirect or Seamless View scenarios for [credit card][card] and
-[financing invoice][invoice]. When creating the first `POST` request you insert
-the `paymentToken` field. This must be the `paymentToken` you received in the
-initial purchase, where you specified the `generatePaymentToken` to `true`.
+in the Redirect or Seamless View scenarios for [credit card][card]. When
+creating the first `POST` request you insert the `paymentToken` field. This must
+be the `paymentToken` you received in the initial purchase, where you specified
+the `generatePaymentToken` to `true`.
 
 You can add the field `noCvc` set to `false` in the `creditcard` object to make
 the CVC field present. This feature needs to be enabled in your contract.
@@ -152,7 +152,7 @@ Otherwise it will be `true`.
 {% if documentation_section contains "payment-instruments" %}
 
 See the Features section for how to create a [card][create-card-payment]
-and [invoice][create-invoice-payment] payment.
+payment.
 
 ## One-Click Request
 
@@ -416,18 +416,6 @@ api-supported-versions: 2.0, 3.0, 3.1
             {
                 "tokenType": "Payment",
                 "token": "{paymentToken}",
-                "instrument": "Invoice-payexfinancingno",
-                "instrumentDisplayName": "260267*****",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
-                "instrumentParameters": {
-                    "email": "hei@hei.no",
-                    "msisdn": "+4798765432",
-                    "zipCode": "1642"
-                }
-            },
-            {
-                "tokenType": "Payment",
-                "token": "{paymentToken}",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
@@ -446,9 +434,8 @@ api-supported-versions: 2.0, 3.0, 3.1
 {% if documentation_section contains "checkout" %}
 
 For single token deletions, the request and response should look like this. In
-this example, the token is connected to a card. If the token is connected to
-an invoice, the `instrumentDisplayName` will be the payer's date of birth. For
-Trustly transactions, it will be a masked account number.
+this example, the token is connected to a card. For Trustly transactions, it
+will be a masked account number.
 
 ## Delete Single Token Request For Checkout Integrations
 
@@ -544,9 +531,7 @@ Content-Type: application/json
 <!--lint disable final-definition -->
 
 [card]: /old-implementations/payment-instruments-v1/card
-[invoice]: /old-implementations/payment-instruments-v1/invoice
 [one-click-image]: /assets/img/checkout/one-click.png
 [create-card-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment
-[create-invoice-payment]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/create-payment
 [paid-resource]: /checkout-v3/features/technical-reference/status-models#paid
 [verify]: /checkout-v3/features/optional/verify

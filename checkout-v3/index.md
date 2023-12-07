@@ -15,10 +15,10 @@ selection of instruments, or
 
 There are two versions of Digital Payments available in production at the
 moment. If you are a new merchant, you should implement v3.1. If you are an
-existing merchant, we recommend [migrating to v3.1][migration-guide], but you
-are still able to use v3.0. Reach out to your technical contact person for
-guidance regarding this. Unless stated otherwise by the presence of a separate
-v3.1 page, there are no differences between the two alternatives.
+existing merchant, we recommend migrating to v3.1, but you are still able to use
+v3.0. Reach out to your technical contact person for guidance regarding this.
+Unless stated otherwise by the presence of a separate v3.1 page, there are no
+differences between the two alternatives.
 
 To meet accessibility requirements, we have re-worked our payment UI. Click here
 to [learn more about WCAG and the changes we have done][wcag-presentation]. The
@@ -36,41 +36,6 @@ payer data, including delivery address, and build your own checkout flow. We'll
 store the card data for you, but you own it. This means that you have to remove
 data in compliance with GDPR, but you won't have to worry about handling
 sensitive card info.
-
-## Use Cases & Migration
-
-<div class="row mt-4">
-    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-       <a href="/checkout-v3/use-cases/" class="dx-card">
-         <span class="dx-card-icon">
-            <i class="material-icons-outlined">
-                storefront
-            </i>
-         </span>
-         <span class="dx-card-content">
-            <span class="h4">Use Cases</span>
-            <span><p>How our offering can match your needs</p>
-            </span>
-         </span>
-         <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/checkout-v3/resources/migration-guide/" class="dx-card">
-         <span class="dx-card-icon">
-            <i class="material-icons">
-                hiking
-            </i>
-         </span>
-         <span class="dx-card-content">
-           <span class="h4">Migration Guide</span>
-           <span><p>A step by step guide to our newest version</p>
-           </span>
-         </span>
-        <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-</div>
 
 ## Availability
 

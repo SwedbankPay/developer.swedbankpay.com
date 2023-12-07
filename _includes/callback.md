@@ -102,6 +102,7 @@ original `POST` when you created the `paymentOrder`.
 
 ```json
 {
+    "orderReference": "549213",
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
@@ -114,6 +115,7 @@ original `POST` when you created the `paymentOrder`.
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
+| {% f orderReference %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |
