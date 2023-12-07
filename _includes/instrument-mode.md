@@ -99,7 +99,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         "instrument": "Invoice-PayExFinancingSe", {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "implementation": "{{implementation}}", {% endif %}
-        "urls":
+        "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment",
             "completeUrl": "https://example.com/payment-completed",
@@ -114,12 +114,25 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             "productCategory": "A123",
             "orderReference": "or-123456",
             "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
-            "siteId": "MySiteId", {% endif %}
+            "siteId": "MySiteId" {% endif %}
         },
         "payer": {
-            "requireConsumerInfo": true,
             "digitalProducts": false,
-            "shippingAddressRestrictedToCountryCodes": [ "NO", "US" ]
+            "firstName": "Leia",
+            "lastName": "Ahlström",
+            "email": "leia@payex.com",
+            "msisdn": "+46787654321",
+            "payerReference": "AB1234",
+            "shippingAddress": {
+                "firstName": "firstname/companyname",
+                "lastName": "lastname",
+                "email": "karl.anderssson@mail.se",
+                "msisdn": "+46759123456",
+                "streetAddress": "string",
+                "coAddress": "string",
+                "city": "Solna",
+                "zipCode": "17674",
+                "countryCode": "SE"
         },
         "orderItems": [
             {
