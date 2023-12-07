@@ -15,6 +15,11 @@ in the failed section. [Further information here]({{ url }}#failed). `Cancelled`
 is returned when an authorized amount has been fully cancelled. [See the cancel
 feature section for further information]({{ url }}#cancelled).
 
+Reversed is returned when the full amount of a sale transaction or a captured
+transaction has been reversed. The transaction will now have status `Reversed`
+instead of `Paid`.
+[See the `Reversed` section for further information]({{ url }}#reversed).
+
 It will contain fields from both the cancelled description and paid section.
 `Aborted` is returned when the merchant has aborted the payment or if the payer
 cancelled the payment in the redirect integration (on the redirect page). [See

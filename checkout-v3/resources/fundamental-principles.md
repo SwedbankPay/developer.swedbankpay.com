@@ -216,9 +216,10 @@ number of necessary `GET` requests.
 
 The payment resource contain the ID of related sub-resources in its response
 properties. These sub-resources can be expanded inline by using the request
-parameter `expand`. This is an effective way to limit the number of necessary
-calls to the API, as you return several properties related to a Payment
-resource in a single request.
+parameter `expand`. The `Paid` resource would for example be expanded by adding
+`?$expand=paid` after the `paymentOrderId`. This is an effective way to limit
+the number of necessary calls to the API, as you return several properties
+related to a Payment resource in a single request.
 
 Note that the `expand` parameter is available to all API requests but only
 applies to the request response. This means that you can use the expand
@@ -258,7 +259,8 @@ combine dates, time and timezone data into a string, e.g.
 ### Locale
 
 When defining locale, we use the combination of [language][iso-639-1]
-and [country codes][iso-3166], e.g. `nb-NO`, `sv-SE`, `en-US`.
+and [country codes][iso-3166]. Our payment menu UI is currently limited to
+`nb-NO`, `sv-SE`, `da-DK` `fi-FI` and `en-US`.
 
 ### Monetary Amounts
 
