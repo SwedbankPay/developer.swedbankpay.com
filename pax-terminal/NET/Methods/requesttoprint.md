@@ -55,7 +55,7 @@ void MyTestOfA920proPrinter()
     });
    
     textToPrint.Add(new OutputText() {
-        Content = "This text is\x0a devided on several\x0a lines with the\x0a same formatting",
+        Content = "This text is\x0a divided on several\x0a lines with the\x0a same formatting",
         Alignment = Alignments.Justified
     });
     

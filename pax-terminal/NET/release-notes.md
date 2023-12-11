@@ -20,7 +20,7 @@ ReceiptBlobNoHeader has been added to PaymentRequestResult.
 
 ### .Net SDK Version 1.3
 
-Extended interface with funtion [RequestToPrint][requesttoprint].
+Extended interface with function [RequestToPrint][requesttoprint].
 
 Extended [TransactionSetup][transactionsetup] with a list of SaleItem to be used with fuel functionality.
 

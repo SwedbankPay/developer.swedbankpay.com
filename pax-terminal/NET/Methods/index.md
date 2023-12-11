@@ -79,5 +79,3 @@ Call [RequestToPrint][requesttoprint] to use the printer on the integrated A920p
 [requestcustomerdigitstring]: ./requestcustomerdigitstring
 [requesttodisplay]: ./requesttodisplayasync
 [requesttoprint]: ./requesttoprint
-
-
