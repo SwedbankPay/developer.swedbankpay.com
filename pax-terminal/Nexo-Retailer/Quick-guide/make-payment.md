@@ -13,7 +13,7 @@ Make sure to save the `MessageHeader` since that is needed if abort is needed.
 
 ## Following a PaymentRequest
 
-{% include iterator.html next_href="payment-response" next_title="Payment response is received" %}
-{% include iterator.html next_href="abortpayment" next_title="Abort payment with an AbortRequest" %}
-{% include iterator.html next_href="transactionstatus" next_title="Transaction status is asked for" %}
-{% include iterator.html next_href="first-message" next_title="LoginRequest if all else fail" %}
+{% include iterator.html next_href="./payment-response" next_title="Payment response is received" %}
+{% include iterator.html next_href="./abortpayment" next_title="Abort payment with an AbortRequest" %}
+{% include iterator.html next_href="./transactionstatus" next_title="Transaction status is asked for" %}
+{% include iterator.html next_href="./first-message" next_title="LoginRequest if all else fail" %}

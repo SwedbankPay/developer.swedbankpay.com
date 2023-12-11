@@ -1,5 +1,6 @@
 ---
 title: Payment Presentations
+permalink: /:path/payment-presentations/
 hide_from_sidebar: true
 description: |
   **An overview of what the payment menu has to offer, and additional steps

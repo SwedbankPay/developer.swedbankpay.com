@@ -1,5 +1,6 @@
 ---
 title: Code Of Conduct
+permalink: /:path/code-of-conduct/
 menu_order: 900
 ---
 

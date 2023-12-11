@@ -1,5 +1,6 @@
 ---
 title: Process Diagrams
+permalink: /:path/process-diagrams/
 description: |
   The previous pages have dealt with each component. This page contains
   flowcharts that illustrate the entire process, taking into account all the

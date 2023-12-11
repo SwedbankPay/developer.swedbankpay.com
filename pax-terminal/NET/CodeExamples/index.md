@@ -1,10 +1,9 @@
 ---
-section: Code Examples
 redirect_from: /pax-terminal/NET/CodeExamples
 title: C# Code Examples
 description: |
     Simple code examples without the aim of being state of the art. The code works, so feel free to copy and test.
-menu_order: 1540
+menu_order: 40
 ---
 
 ## As Client Only

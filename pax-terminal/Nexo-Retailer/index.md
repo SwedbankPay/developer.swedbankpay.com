@@ -1,5 +1,6 @@
 ---
 section: nexo Retailer
+permalink: /:path/
 title: Swedbank Pay nexo Retailer v3.1
 description: |
     Use the nexo Retailer integration if you are unable to use .NET or Java SDK. This interface requires a greater effort for both users and Swedbank Pay.

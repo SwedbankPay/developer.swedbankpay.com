@@ -33,9 +33,7 @@ display information, events, and possible input request from the terminal, such
 as a request to confirm that a receipt has been signed if needed. The second
 style is to act as a client only and then lose information from terminal such as
 events informing that a card has been inserted or removed or display information
-helping the operator to see what is going on. Transactions that need signing is
-not possible at the moment but will be in the near future. Such transactions regard cards from outside EU for which PIN may
-not be required.
+helping the operator to see what is going on.
 
 ## Configure the terminal
 

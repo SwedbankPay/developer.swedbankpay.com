@@ -1,5 +1,6 @@
 ---
 title: Refund
+permalink: /:path/refundasync/
 description: |
     The Refund / RefundAsync should be called when the amount is known.
 ---

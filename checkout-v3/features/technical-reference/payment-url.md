@@ -1,5 +1,6 @@
 ---
 title: PaymentUrl
+permalink: /:path/paymenturl/
 description: |
   Redirecting the payer back to your site.
 menu_order: 2000

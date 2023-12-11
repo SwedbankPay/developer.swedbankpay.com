@@ -1,5 +1,6 @@
 ---
 title: ReverseLast
+permalink: /:path/reversalastasync/
 description: |
     ReverseLast / ReverseLastAsync will reverse the last transaction made if it was approved.
 

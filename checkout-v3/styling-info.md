@@ -1,5 +1,6 @@
 ---
 title: Styling
+permalink: /:path/styling-info/
 description: |
   Information about accessibility and WCAG
 menu_order: 12

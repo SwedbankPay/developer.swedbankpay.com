@@ -1,5 +1,6 @@
 ---
 title: Payment Request v3.1
+permalink: /:path/payment-request-3-1/
 hide_from_sidebar: false
 description: |
   How to create payments when using Digital Payments v3.1.

@@ -1,5 +1,6 @@
 ---
 title: RequestCustomerDigitString
+permalink: /:path/requestcustomerdigitstring/
 description: |
     RequestCustomerDigitString / RequestCustomerDigitStringAsync ask customer to enter a string of digits
 ---

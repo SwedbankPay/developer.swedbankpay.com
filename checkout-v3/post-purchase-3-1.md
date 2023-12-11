@@ -1,5 +1,6 @@
 ---
 title: Post-Purchase v3.1
+permalink: /:path/post-purchase-3-1/
 description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post-purchase operations** in your order system. These operations,

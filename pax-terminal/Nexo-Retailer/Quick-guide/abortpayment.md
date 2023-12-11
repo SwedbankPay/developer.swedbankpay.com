@@ -1,5 +1,6 @@
 ---
 title: AbortRequest
+permalink: /:path/abortpayment/
 description: Any request may be aborted using AbortRequest
 menu_order: 50
 ---

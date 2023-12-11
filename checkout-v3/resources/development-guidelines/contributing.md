@@ -1,5 +1,6 @@
 ---
 title: Contributing
+permalink: /:path/contributing/
 menu_order: 1000
 ---
 
