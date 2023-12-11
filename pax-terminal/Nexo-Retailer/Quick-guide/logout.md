@@ -1,6 +1,5 @@
 ---
 title: Logout
-permalink: /:path/logout/
 description: Logout is needed to let the terminal update its parameters
 menu_order: 80
 ---

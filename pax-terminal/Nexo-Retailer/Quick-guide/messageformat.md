@@ -1,6 +1,5 @@
 ---
 title: Message Format
-permalink: /:path/messageformat/
 menu_order: 10
 ---
 ### Message Format
@@ -74,4 +73,4 @@ If **Failure**, the the Response element will also have the attribute `ErrorCond
 
 Some messages optionally require a response. E.g a display request from the terminal has a `ResponseRequired` boolean flag, a `PrintRequest` has a `ResponseMode` attribute and there may be other messages as well. Make sure to consider those values from the beginning so that the implementation stays robust even if the value may change in the future.
 
-{% include iterator.html next_href="messagetransportation" next_title="Next" %}
+{% include iterator.html next_href="./messagetransportation" next_title="Next" %}

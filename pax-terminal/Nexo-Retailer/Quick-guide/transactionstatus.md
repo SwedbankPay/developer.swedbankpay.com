@@ -1,6 +1,5 @@
 ---
 title: Ask for transaction status
-permalink: /:path/transactionstatus/
 description: Ask for result of last transaction or for any previously made transaction in near time. 
 menu_order: 60
 ---

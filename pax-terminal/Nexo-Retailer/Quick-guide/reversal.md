@@ -1,6 +1,5 @@
 ---
 title: Reversal
-permalink: /:path/reversal/
 description: A reversal may be done on the last transaction if it was successful
 menu_order: 70
 ---
@@ -173,5 +172,5 @@ A successful reversal response contains receipt information as a base64 encoded 
 }
 ```
 
-{% include iterator.html prev_href="payment-response"
+{% include iterator.html prev_href="./payment-response"
                          prev_title="Back to PaymentResponse" %}

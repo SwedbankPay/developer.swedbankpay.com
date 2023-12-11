@@ -35,8 +35,7 @@ handles requests from the terminal, such as display information, events, and pos
 such as a request to confirm that a receipt has been signed if needed.
 
 The second style is to act as a client only and then loose information from terminal such as events informing that a card has been inserted or removed or display
-information helping the operator to see what is going on. Transactions that need signing is not possible but will be in a later terminal version. Such
-transactions regard cards from outside EU for which PIN may not be required.
+information helping the operator to see what is going on. Transaction that need customer signing the receipt are done a bit differently.
 
 ### Synchronous methods
 
@@ -67,6 +66,7 @@ To get more than just payments and refunds
 *   [RequestToDisplay/RequestToDisplayAsync][requesttodisplayasync] - Sends a message to be displayed on terminal
 *   [RequestCustomerConfirmation/RequestCustomerConfirmationAsync][requestcustomerconfirmation] - Displays a yes/no question on the terminal and receive the result.
 *   [RequestCustomerDigitString/RequestCustomerDigitStringAsync][requestcustomerdigitstring] - Displays a message and ask customer to enter a digit string.
+*   [RequestToPrint/RequestToPrintAsync][requesttoprint] - (A920pro only) Possibility to use the terminal's printer.
 
 ## Other Available Methods
 
@@ -119,3 +119,4 @@ The events are only used if running as a server.
 [requestcustomerdigitstring]: ./Methods/requestcustomerdigitstring
 [eventcallback]: ./ISwpTrmCallbackInterface
 [updateterminal]: ./Methods/updateterminalasync
+[requesttoprint]: ./Methods/requesttoprint

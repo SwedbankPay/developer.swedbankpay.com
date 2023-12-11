@@ -16,6 +16,18 @@ SDK for .Net has extended its interface with new methods for [GetPaymentInstrume
 
 ReceiptBlobNoHeader has been added to PaymentRequestResult.
 
+## 11 December 2023
+
+### .Net SDK Version 1.3
+
+Extended interface with funtion [RequestToPrint][requesttoprint].
+
+Extended [TransactionSetup][transactionsetup] with a list of SaleItem to be used with fuel functionality.
+
+ReceiptBlob and ReceiptBlobNoHeader has been shortened and compressed.
+
 [getpaymentinstrument]:/pax-terminal/NET/Methods/getpaymentinstrumentasync
 [payment]: /pax-terminal/NET/Methods/paymentasync
 [refund]: /pax-terminal/NET/Methods/refundasync
+[requesttoprint]: /pax-terminal/NET/Methods/requesttoprint
+[transactionsetup]: /pax-terminal/NET/transactionsetup
