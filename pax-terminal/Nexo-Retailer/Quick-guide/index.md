@@ -96,6 +96,6 @@ participant Terminal
     Terminal->>-POS: rsp 200 LogoutResponse Success
 ```
 
-{% include iterator.html next_href="./messageformat" next_title="Next" %}
+{% include iterator.html next_href="/pax-terminal/Nexo-Retailer/Quick-guide/messageformat" next_title="Next" %}
 
 [loginrequest]: ./first-message

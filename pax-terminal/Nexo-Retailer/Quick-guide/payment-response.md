@@ -1,5 +1,6 @@
 ---
 title: PaymentResponse
+permalink: /:path/payment-response/
 description: |
  Payment response holds the receipt data
 menu_order: 45
@@ -76,5 +77,5 @@ end
 Note over Terminal: Ready for new request
 ```
 
-{% include iterator.html prev_href="./make-payment" prev_title="Back to PaymentRequest" %}
-{% include iterator.html next_href="./reversal" next_title="Reverse successful transaction" %}
+{% include iterator.html prev_href="/pax-terminal/Nexo-Retailer/Quick-guide/make-payment" prev_title="Back to PaymentRequest" %}
+{% include iterator.html next_href="/pax-terminal/Nexo-Retailer/Quick-guide/reversal" next_title="Reverse successful transaction" %}
