@@ -1,5 +1,6 @@
 ---
 title: Subscriptions
+hide_from_sidebar: true
 permalink: /:path/subscriptions/
 description: |
   Getting started with Swedbank Pay subscription services

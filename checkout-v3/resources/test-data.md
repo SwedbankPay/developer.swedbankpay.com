@@ -59,24 +59,7 @@ institutions.
 | Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
 | MasterCard | `5226612199533406` | After the current month  | Any   | 3-D Secure enrolled |
 
-### 3-D Secure
-
-For merchants using 3-D Secure (3DS1), this is the ACS (Access Control Server)
-you will encounter in our test environments. Use the Visa or MasterCard listed
-under 3-D Secure Cards above when doing a card payment. After pressing the
-purchase button you will then be taken to a menu where you can select
-authentication status.
-
-![3D-Secure Emulator without dropdown menu][3ds-emulator-no-dropdown]{:width="805px" :height="685px"}
-
-![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
-
-In this menu, there are a few different options to choose from. Choose the
-status you want to test, click the Continue button and the status you selected
-will be sent with the payment. After pressing **Continue**, you will be sent
-back to the payment like a normal 3-D Secure authentication.
-
-### OTP (3DS2)
+### 3-D Secure 2
 
 For merchants using 3DS2, OTP (One-Time Password) is the ACS (Access Control
 Server) you will encounter. Use the Visa or MasterCard listed under 3-D Secure
