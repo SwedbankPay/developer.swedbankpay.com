@@ -22,3 +22,7 @@ Documentation about fuel functionality.
 Updates for the [.Net SDK][dotnetrelease].
 
 [dotnetrelease]: /pax-terminal/NET/release-notes
+
+## 15 December 2023
+
+Updates for the [.Ned SDK][dotnetrelease]

@@ -19,7 +19,7 @@ body= "The first attempt will fail, since OpenAsync is successful but the termin
 %}
 
 {:.code-view-header}
-Simplest form of implementation - Happy Flow
+Simplest form of implementation, Client Only - Happy Flow
 
 ```c#
 using System;
@@ -100,15 +100,40 @@ namespace WindowsFormsApp1
                 textBox1.AppendText(res.Text + Environment.NewLine);
             }
         }
+        // Occurs when customer need to sign the receipt
         public void ConfirmationHandler(string text, IConfirmationResult callback)
         {
+            // Cashier needs to confirm the acceptance of signature and ID
+            DialogResult result = MessageBox.Show(text, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes) 
+                callback.Confirmation(true); 
+            else callback.Confirmation(false);
+        }
+        public void EventCallback(EventCallbackObject eventObject)
+        {
+            switch (eventObject.type)
+            {
+                case EventCallbackTypes.PrintRequestEventCallback:
+                    PrintRequestEventCallback po = (eventObject as PrintRequestEventCallback);
+                    { /*
+                    Code for printing the Cashier Receipt that needs to be signed
+                    by the card holder
+                    */}
+                    break;
+            }
+        }
+        public void EventNotificationHandler(EventToNotifyEnumeration type, string text)
+        {
+            /* Won't happen in Client Only mode */
+            throw new NotImplementedException();
+        }
+        public void SyncRequestResult(object result)
+        {
+            /* Won't if using the awaitable functions */
             throw new NotImplementedException();
         }
 
-        public void EventNotificationHandler(EventToNotifyEnumeration type, string text)
-        {
-            throw new NotImplementedException();
-        }
 
         private async void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -193,8 +218,6 @@ namespace WindowsFormsApp1
                 POIID = "A-TEST-POIID",
                 //SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString()
             });
-
-            PAX.OnTerminalDisplay += PAX_OnTerminalDisplay;
         }
         // A DisplayRequest from the terminal
         private void PAX_OnTerminalDisplay(string message)
@@ -226,20 +249,44 @@ namespace WindowsFormsApp1
         }
         public void ConfirmationHandler(string text, IConfirmationResult callback)
         {
-            throw new NotImplementedException();
-        }
+            DialogResult result = MessageBox.Show(text, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+                callback.Confirmation(true);
+            else callback.Confirmation(false);
+        }
+        public void EventCallback(EventCallbackObject eventObject)
+        {
+            switch (eventObject.type)
+            {
+                case EventCallbackTypes.PrintRequestEventCallback:
+                    PrintRequestEventCallback po = (eventObject as PrintRequestEventCallback);
+                    { /*
+                    Code for printing the Cashier Receipt that needs to be signed
+                    by the card holder
+                    */}
+                    break;
+                case EventCallbackTypes.DisplayEventCallback:
+                    textBox1.AppendText((eventObject as DisplayEventCallback).Text + Environment.NewLine);
+                    break;
+
+            }
+        }
         public void EventNotificationHandler(EventToNotifyEnumeration type, string text)
         {
             textBox1.AppendText($"Event: {type} - {text}" + Environment.NewLine);
         }
-
+        public void SyncRequestResult(object result)
+        {
+            /* won't happen when using the awaiatable functions */
+            throw new NotImplementedException();
+        }
         private async void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (PAX != null)
             {
-                await PAX.CloseAsync();
                 PAX.Stop();
+                await PAX.CloseAsync();
             }
         }
     }
@@ -247,6 +294,9 @@ namespace WindowsFormsApp1
 ```
 
 ### Changes From Client Only
+
+{:.code-view-header}
+**Use default values in SaleCapabilities**
 
 ```c#
     PAX.Start(new SaleApplInfo()
@@ -257,11 +307,19 @@ namespace WindowsFormsApp1
         POIID = "A-POIID",
         //SaleCapabilities = SaleCapabilitiesEnum.PrinterReceipt.ToString()
     });
-
-    PAX.OnTerminalDisplay += PAX_OnTerminalDisplay;
 ```
 
-and
+{:.code-view-header}
+**Show the display messages from the terminal (optional)**
+
+```c#
+            case EventCallbackTypes.DisplayEventCallback:
+                textBox1.AppendText((eventObject as DisplayEventCallback).Text + Environment.NewLine);
+                break;
+```
+
+{:.code-view-header}
+**Implement some code for Event messages from the terminal (optional)**
 
 ```c#
 public void EventNotificationHandler(EventToNotifyEnumeration type, string text)
@@ -270,9 +328,67 @@ public void EventNotificationHandler(EventToNotifyEnumeration type, string text)
 }
 ```
 
+## Using Synchronous Calls
+
+When using the synchronous calls the code is pretty much the same except that the results are receivied in the `SyncRequestResult` callback instead.
+
+{:.code-view-header}
+**Code when using asynchronous calls**
+
+```c#
+    private async Task LoginToTerminal()
+    {
+        var res = await PAX.OpenAsync();
+        if (res.Result == ResponseResult.Success)
+            { /* Ready to use */}
+        else { /* unable to login to terminal */}
+    }
+    private async Task MakePayment()
+    {
+        var res = await PAX.PaymentAsync(amount);
+        if (res.ResponseResult == NexoResponseResult.Success)
+            {  /* Handle successful payment */ }
+        else { /* Handle refused payment */ }
+    }
+
+```
+
+{:.code-view-header}
+**Same result but using synchronous calls**
+
+```c#
+    private void LoginToTerminal()
+    {
+        PAX.Open();
+    }
+    private void MakePayment()
+    {
+        PAX.Payment(amount);
+    }
+    public void SyncRequestResult(object result)
+    {
+        switch (Enum.Parse(typeof(RequestResultTypes), result.GetType().Name))
+        {
+            case RequestResultTypes.OpenResult: 
+                OpenResult or = result as OpenResult;
+                if (or.Result == ResponseResult.Success)
+                    {/* Ready to use*/ }
+                else { /* unable to login to terminal */}
+            break;
+            case RequestResultTypes.PaymentRequestResult: 
+                PaymentRequestResult pr = result as PaymentRequestResult;
+                if (pr.ResponseResult == NexpResponseResult.Success)
+                    {  /* Handle successful payment */ }
+                else { /* Handle refused payment */ }
+                break;
+        }
+    }
+
+```
+
 ## Get CNA For Customer
 
-Based on either [Simplest Client][simplest-client] or [Client And Server][clientnserver], let's take it a bit further and find out who the customer is before starting the actual purchase transaction. The only change is in the button1_click where `GetPaymentInstrumentAsync` is called. The result contains among others `masked PAN` and `CNA - CardNumberAlias`.
+Based on either [Client Only][simplest-client] or [Client And Server][clientnserver], let's take it a bit further and find out who the customer is before starting the actual purchase transaction. The only change is in the button1_click where `GetPaymentInstrumentAsync` is called. The result contains among others `masked PAN` and `CNA - CardNumberAlias`.
 
 This is a very simple way to handle members. The CNA will be the same in all our PAX terminals.
 

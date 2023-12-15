@@ -26,8 +26,20 @@ Extended [TransactionSetup][transactionsetup] with a list of SaleItem to be used
 
 ReceiptBlob and ReceiptBlobNoHeader has been shortened and compressed.
 
+## 15 December 2023
+
+### .Net SDK version 1.3.23348
+
+*   CVM signature transaction works just the same for Client Only mode as for default Client and Server mode.
+*   [`ConfirmationHandler`][confirmationhandler] callback is a must even for Client Only mode.
+*   [`EventCallback`][eventcallback] for `PrintRequestEventCallback` is a must even for Client Only mode.
+*   [Code Examples][codeexamples] updated.
+
 [getpaymentinstrument]:/pax-terminal/NET/Methods/getpaymentinstrumentasync
 [payment]: /pax-terminal/NET/Methods/paymentasync
 [refund]: /pax-terminal/NET/Methods/refundasync
 [requesttoprint]: /pax-terminal/NET/Methods/requesttoprint
 [transactionsetup]: /pax-terminal/NET/transactionsetup
+[confirmationhandler]: /pax-terminal/NET/ISwpTrmCallbackInterface
+[eventcallback]: /pax-terminal/NET/ISwpTrmCallbackInterface/
+[codeexamples]: /pax-terminal/NET/CodeExamples
