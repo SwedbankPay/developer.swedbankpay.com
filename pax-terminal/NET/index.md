@@ -34,8 +34,7 @@ The intended default style requires the consumer of the SwpTrmLib to act as both
 handles requests from the terminal, such as display information, events, and possible input request from the terminal,
 such as a request to confirm that a receipt has been signed if needed.
 
-The second style is to act as a client only and then loose information from terminal such as events informing that a card has been inserted or removed or display
-information helping the operator to see what is going on. Transaction that need customer signing the receipt are done a bit differently.
+The second style is to act as a client only and then loose information from terminal such as events informing that a card has been inserted or removed or display information helping the operator to see what is going on. Transaction that need customer signing the receipt are under the hood done a bit differently, but have the exact same behavior as when using the default integration style.
 
 ### Synchronous methods
 
@@ -79,16 +78,16 @@ To get more than just payments and refunds
 
 ### ISwpTrmCallbackInterface
 
-The callbacks needed if running as a server, using the synchronous method calls or using the EventCallback rather than subscribing to the available Events.
+Callbacks need to be implemented at all times. The use of them depends on the implementation mode, but two of them are a **must**.
 
-*   [ConfirmationHandler][confirmationhandler] - When the terminal requests a  Yes/No from operator (Verify signed receipt)
-*   [EventCallback][eventcallback] - replaces subscribing to events.
+*   [ConfirmationHandler][confirmationhandler] - **Must be implemented**. When the terminal requests a  Yes/No from operator (Verify signed receipt)
+*   [EventCallback][eventcallback] - replaces the subscribing to events. **Must be implemented** for the `PrintRequestEventCallback`.
 *   [EventNotificationHandler][eventnotificationhandler] - Reception of EventNotification messages from the terminal
 *   [SyncRequestResult][syncrequestresult] - Results from various synchrounous methods
 
 ## Events
 
-The events are only used if running as a server.
+The events are only used if running as a server. Consider to use the EventCallback instead.
 
 *   [OnTerminalDisplay][onterminaldisplay]
 *   [OnNewStatus][onnewstatus]
