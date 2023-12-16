@@ -11,9 +11,9 @@ menu_order: 1200
 
 During a Swedbank Pay Checkout implementation, you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout
-in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
+in action, please visit the [Playground][playground].
 
-To test a checked-in user in the Demoshop, please use the following test data:
+To test a checked-in user in the Playground, please use the following test data:
 
 ### Checkout test data for Norway
 
@@ -67,6 +67,55 @@ Cards above when doing a card payment. Click approved or cancel to select
 authentication status.
 
 ![otp-challenge-form][otp-challenge-form]
+
+### Network Tokenization
+
+When testing Network Tokenization you can use one of the cards listed below,
+depending on if you want to use MasterCard or Visa, and if you want a
+frictionless flow or a challenge flow. These cards are test `FPAN`s (Funding
+PAN, an actual card number). Make sure that your merchant contract is configured
+towards our internal acquirer (loopback), as they won't work as intended if you
+are configured towards other acquirers.
+
+Each `FPAN` is connected to a `DPAN` (forklaring på hva DPAN står for), which
+again is connected to a list of 10 `FPAN`s. Use your `FPAN` of choice to
+initiate a regular [unscheduled][unscheduled] or [recur][recur] transaction. The
+`DPAN` will **not** appear in the initial transaction response. It will only be
+displayed when you run the next transaction with the stored token.
+
+Note that in the response, the 6 first digits of the `PAN` will be shown in the
+`BIN` field. The `maskedPan` will only contain the last 4 digits.
+
+Once it has been enrolled, you will enter into a loop where the `DPAN` is
+updated with a new `FPAN` through a batch run happening every night. The loop
+will run indefinitely, but the initial `FPAN` won't appear again as it is not a
+part of the `DPAN`s set of cards.
+
+The four `FPAN`s can be used again every day to store a card and initiate a
+fresh update loop.
+
+Error testing can be performed using the four bottom cards. They will all be
+rejected during tokenization.
+
+If you want to test Network Tokenization without card updates, simply use one of
+our other MasterCard or Visa test cards. You still need to be configured against
+our internal acquirer (loopback).
+
+{:.table .table-striped}
+| Card type  | Card number        | Expiry | CVC   | Type of test data   |
+| :--------- | :----------------- | :----  | :---- | :------------------ |
+| MasterCard | `5510000000001232` | 04/35  | Any   | Frictionless        |
+| MasterCard | `5510000000002347` | 06/35  | Any   | Challenge           |
+| Visa       | `4111112000003211` | 09/35  | Any   | Frictionless        |
+| Visa       | `4111112000006545` | 11/35  | Any   | Challenge           |
+
+{:.table .table-striped}
+| Card type  | Card number        | Expiry | CVC   | Type of test data   |
+| :--------- | :----------------- | :----  | :---- | :------------------ |
+| MasterCard | `5510000000009631` | 08/35  | Any   | Rejected during tokenization |
+| MasterCard | `5510000000005431` | 02/35  | Any   | Rejected during tokenization |
+| Visa       | `4111112000004565` | 07/35  | Any   | Rejected during tokenization |
+| Visa       | `4111112000007899` | 12/35  | Any   | Rejected during tokenization |
 
 ### Visa
 
@@ -226,3 +275,7 @@ the following values:
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
 [3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
+[playground]: https://playground.swedbankpay.com
+[recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
+[unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
+[test-data]: https://developer.swedbankpay.com/checkout-v3/resources/test-data/network-tokenization

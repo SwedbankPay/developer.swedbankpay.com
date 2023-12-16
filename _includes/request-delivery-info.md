@@ -49,7 +49,6 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         "requestDeliveryInfo": true,
         "restrictedToDeliveryInfoInstruments": true,
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        "implementation": "{{implementation}}"
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -320,9 +319,7 @@ api-supported-versions: 3.1/3.0/2.0
             "Swish",
             "CreditAccount",
             "Trustly"
-        ],{% if documentation_section contains "old-implementations/enterprise" %}
-        "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
-        "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
+        ], {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
         "integration": "Redirect", {% endif %}
         "instrumentMode": false,

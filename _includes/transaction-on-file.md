@@ -60,7 +60,7 @@ Content-Type: application/json
         "language": "nb-NO",
         "generateTransactionOnFileToken": true, {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        "implementation": "{{implementation}}",{% endif %}
+        {% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",

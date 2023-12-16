@@ -40,6 +40,8 @@ three example scenarios of why this is important:
     must be made on the payment or on the transaction. The retrieved payment or
     transaction resource will give you the necessary information about the
     recent change/update.
+*   For unscheduled and recur transactions, no callback will be given for card
+    transactions, only Trustly.
 *   As it isn't scaled to be a primary source of updates, no given response time
     can be guaranteed, and a callback might fail. It will be retried if that
     should happen. Below are the retry timings, in seconds from the initial
@@ -115,7 +117,7 @@ original `POST` when you created the `paymentOrder`.
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
 | :----------------------- | :----------- | :------------------- |
-| {% f orderReference %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
+| {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
 | {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |

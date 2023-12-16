@@ -22,7 +22,8 @@ while MobilePay does return this field, the value present is actually a
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
     "paymentOrder": {
@@ -152,7 +153,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -194,7 +196,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -235,7 +238,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -274,7 +278,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -305,7 +310,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -334,7 +340,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -363,7 +370,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -450,7 +458,8 @@ payment, it will appear like this.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
         "paid": {
@@ -474,7 +483,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0
 
 {
         "paid": {

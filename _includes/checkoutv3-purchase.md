@@ -24,7 +24,6 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        "implementation": "{{implementation}}",
         "urls": { {% if include.integration_mode=="seamless-view" %}
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment", {% endif %}

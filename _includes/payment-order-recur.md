@@ -50,7 +50,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         "language": "sv-SE",
         "generateRecurrenceToken": true, {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        "implementation": "{{implementation}}", {% endif %}
+        {% endif %}
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -167,7 +167,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 |                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url.md %} | {% endif %}
 | {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
 |                  | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
-| {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
+| {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %} For recurring transactions, the callback will only be sent for Trustly transactions, not card.                                                                                                                                                                                             |
 | {% icon check %} | {% f termsOfServiceUrl, 2 %}       | `string`     | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                     |{% if include.integration_mode=="redirect" %},
 | {% icon check %} | {% f logoUrl, 2 %}                 | `string`     | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                               |{% endif %}
 | {% icon check %} | {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
@@ -533,7 +533,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 | {% icon check %} | {% f productName %}                 | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                |
 |                  | {% f implementation %}       | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         | {% endif %}
 | {% icon check %} | {% f urls, 2 %}                | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                               |
-| {% icon check %} | {% f callbackUrl, 2 %}         | `string`     | {% include fields/callback-url.md %}                    |
+| | {% f callbackUrl, 2 %}         | `string`     | {% include fields/callback-url.md %} For recurring transactions, the callback will only be sent for Trustly transactions, not card.                    |
 | {% icon check %} | {% f payeeInfo %}            | `object`     | {% include fields/payee-info.md %}                                               |
 | {% icon check %} | {% f payeeId, 2 %}             | `string`     | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.          |
 | {% icon check %} | {% f payeeReference %}       | `string` | {% include fields/payee-reference.md describe_receipt=true %}                   |

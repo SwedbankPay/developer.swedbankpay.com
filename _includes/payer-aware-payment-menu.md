@@ -100,7 +100,7 @@ CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for
         "generatePaymentToken": true,
         "language": "sv-SE", {% if documentation_section contains "checkout-v3/payments-only" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        "implementation": "PaymentsOnly", {% endif %} {% if documentation_section contains "payment-menu" %}
+        {% endif %} {% if documentation_section contains "payment-menu" %}
         "instrument": null,{% endif %}
         "disableStoredPaymentDetails": false,
         "urls": {

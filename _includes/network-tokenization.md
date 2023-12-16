@@ -45,6 +45,9 @@ Once the setup is completed, the transactions themselves run as normal
 unscheduled, one-click or recurring purchases. The difference is that Network
 Tokenization replaces the card number behind the token.
 
+Do you want to try it out? Test cards and a guide can is in the
+[test data][test-data] section.
+
 ## Recommendations To You As A Merchant
 
 *   If you are displaying the “last four” digits of the card number for your
@@ -112,3 +115,4 @@ track of it. See the [Paid resource for cards][paid-resource-model].
 [unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
 [recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
 [payment-order]: /checkout-v3/payment-request
+[test-data]: https://developer.swedbankpay.com/checkout-v3/resources/test-data/network-tokenization

@@ -23,7 +23,6 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0",
         "language": "sv-SE",
         "productName": "Checkout3",
-        "implementation": "Enterprise",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
