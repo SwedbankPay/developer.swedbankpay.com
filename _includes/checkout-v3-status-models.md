@@ -12,7 +12,8 @@ A payment order response with the status `Aborted`.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
     "paymentOrder": {
@@ -112,7 +113,8 @@ The `cancel` response is not yet converted to the new standard.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
     "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
@@ -164,7 +166,8 @@ The failed response is not yet converted to the new standard.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
     "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
@@ -210,7 +213,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
     "paymentOrder": {
@@ -354,7 +358,8 @@ while MobilePay does return this field, the value present is actually a
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
     "paymentOrder": {
@@ -486,7 +491,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -529,7 +535,8 @@ more context.
 
  ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -569,7 +576,8 @@ more context.
 
  ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -609,7 +617,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -651,7 +660,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -691,7 +701,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -722,7 +733,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -751,7 +763,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -780,7 +793,8 @@ more context.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -846,7 +860,8 @@ payment, it will appear like this.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
         "paid": {
@@ -870,7 +885,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0
+api-supported-versions: 3.1/3.0
 
 {
         "paid": {
