@@ -1,6 +1,7 @@
 ---
 title: Quick Guide
 description: Start here. Fast track to go through the essentials for making a payment
+permalink: /:path/
 icon:
     content: play_circle
     outlined: true
@@ -24,15 +25,15 @@ participant Terminal
     Terminal->>-POS: rsp 200 LoginResponse
 
     loop Login session until logout or new login
-        note right of POS: Login session started
+        Note right of POS: Login session started
         POS->>+Terminal: Http POST PaymentRequest
         Terminal->>-POS: rsp 200 PaymentResponse
-        note left of Terminal: Success or Failure
+        Note left of Terminal: Success or Failure
     end
 
     POS->>+Terminal: Http POST LogoutRequest
     Terminal->>-POS: rsp 200 LogoutResponse
-    note right of POS: Login session ended
+    Note right of POS: Login session ended
 ```
 
 ## Intended Form of Integration
@@ -95,6 +96,6 @@ participant Terminal
     Terminal->>-POS: rsp 200 LogoutResponse Success
 ```
 
-{% include iterator.html next_href="messageformat" next_title="Next" %}
+{% include iterator.html next_href="/pax-terminal/Nexo-Retailer/Quick-guide/messageformat" next_title="Next" %}
 
 [loginrequest]: ./first-message

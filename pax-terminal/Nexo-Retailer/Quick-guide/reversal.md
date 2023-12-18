@@ -173,5 +173,5 @@ A successful reversal response contains receipt information as a base64 encoded 
 }
 ```
 
-{% include iterator.html prev_href="payment-response"
+{% include iterator.html prev_href="/pax-terminal/Nexo-Retailer/Quick-guide/payment-response"
                          prev_title="Back to PaymentResponse" %}

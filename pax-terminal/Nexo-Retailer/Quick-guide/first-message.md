@@ -80,4 +80,4 @@ Login response with result `Success` is needed before any other message may be s
 | POICapabilities | 4 | | Shows the capabilities of the terminal |
 | POIStatus | 3 | | Different statuses |
 
-{% include iterator.html next_href="make-payment" next_title="Next" %}
+{% include iterator.html next_href="/pax-terminal/Nexo-Retailer/Quick-guide/make-payment" next_title="Next" %}

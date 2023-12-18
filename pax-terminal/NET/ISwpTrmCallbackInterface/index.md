@@ -1,10 +1,11 @@
 ---
 title: ISwpTrmCallbackInterface
-description: |
-  
+description: 
+menu_order: 20
 ---
 
-The callbacks are used if running as a server or using the synchronous methods.
+The callbacks are mostly used if running as a server or using the synchronous methods. There are however two callbacks that always need to be implemented and are used when the customer need to sign the receipt. Those two are `ConfirmationHandler` and `EventCallback` for the `PrintRequestEventCallback`.
+
 [Sample code running client only][clientonly].
 
 ```c#
@@ -21,7 +22,7 @@ The callbacks are used if running as a server or using the synchronous methods.
 
 ### void ConfirmationHandler(string text,IConfirmationResult callback);
 
-This callback occurs only if when running as a server to receive requests from the terminal and happens when a transaction needs to be signed by the cardholder.
+This callback **must** be implemented and occurs when a transaction receipt needs to be signed by the cardholder.
 
 ```c#
   public void ConfirmationHandler(string text, IConfirmationResult callback)
@@ -41,6 +42,8 @@ This callback occurs only if when running as a server to receive requests from t
 ## EventCallback
 
 The EventCallback replaces the events that may be subscribed to from the ISwpTrmIf_1 interface. If there is a subcription to an event this callback will not be used for that event. The EventCallback is essential if using more than one terminal where each terminal has its own instance.
+
+{%include alert.html header="A MUST" type="warning" body="The `PrintRequestEventCallback` must be implemented since it occurs for a transaction that needs customer signing."%}
 
 ### void EventCallback(EventCallbackObject eventObject)
 
