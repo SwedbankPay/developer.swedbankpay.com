@@ -33,7 +33,7 @@ from a regular `GET` request.
 GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
 
 ## QUERY Request
@@ -45,7 +45,7 @@ Content-Type: application/json
 QUERY /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
   "referenceCode": 1717224235360011
@@ -59,7 +59,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",

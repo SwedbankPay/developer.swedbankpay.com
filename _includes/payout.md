@@ -120,7 +120,7 @@ If something failed in the payout process this flow will happen.
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
    "paymentorder": {
@@ -214,7 +214,8 @@ request.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentOrder": {
@@ -350,7 +351,7 @@ account details.
 PATCH /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "paymentorder": {
@@ -381,7 +382,8 @@ disappearance of `PATCH` operations.
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "paymentOrder": {
@@ -657,7 +659,7 @@ A GET performed after the callback is received on a `paymentOrder` with status
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "paymentOrder": {

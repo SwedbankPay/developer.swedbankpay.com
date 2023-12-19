@@ -211,32 +211,6 @@ in the initial purchase.
 You can add the field `noCvc` set to `true` in the `creditcard` object,
 containing card specific feature fields. This disables the CVC field.
 
-## One-Click Request Displaying All Cards
-
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "payment": {
-        "operation": "Purchase",
-        "intent": "Authorization",
-        "generatepaymentToken": "true"
-    },
-    "payer": {
-        "payerReference": "AB1234",
-    },
-    "creditCard": {
-        "noCvc": true
-    }
-}
-```
-
 ## One-Click Request Displaying A Specific Card
 
 {:.code-view-header}
@@ -350,7 +324,7 @@ prefilled with the payer's card details. See example below." %}
 ## How It Looks
 
 {:.text-center}
-![One click payment page][one-click-image]{:height="510px" width="475px"}
+![One click payment page][one-click-image]
 
 ## Delete Payment Token
 
@@ -530,7 +504,7 @@ Content-Type: application/json
 <!--lint disable final-definition -->
 
 [card]: /old-implementations/payment-instruments-v1/card
-[one-click-image]: /assets/img/checkout/one-click.png
+[one-click-image]: /assets/img/checkout/new-one-click.png
 [create-card-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment
 [paid-resource]: /checkout-v3/features/technical-reference/status-models#paid
 [verify]: /checkout-v3/features/optional/verify

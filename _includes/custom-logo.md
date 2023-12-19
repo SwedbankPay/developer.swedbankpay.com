@@ -21,7 +21,7 @@ example below with `logoUrl` present in the `paymentOrder` request's `urls`.
 POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "paymentorder": {
