@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000">
+        <meta name="application-name" content="Normal-purchase-response – PayEx Design Guide theme for Jekyll">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="Normal-purchase-response – PayEx Design Guide theme for Jekyll">
+        <meta name="msapplication-TileColor" content="#000">
+        <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+        <meta property="og:type" value="website" />
+        <meta property="og:url" value="https://developer.swedbankpay.com/pax-terminal/resources/normal-purchase-response/" />
+        <meta property="og:title" value="Normal-purchase-response – PayEx Design Guide theme for Jekyll" />
+        <meta name="title" content="Normal-purchase-response – PayEx Design Guide theme for Jekyll" />
+        <meta property="og:description" value="Swedbank Pay Developer Portal" />
+        <meta name="description" content="Swedbank Pay Developer Portal" />
+        <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png" />
+        <title>Normal-purchase-response – PayEx Design Guide theme for Jekyll</title>
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/10.7.1/styles/swedbankpay.css" />
+        <link rel="stylesheet" href="https://design.swedbankpay.com/v/10.7.1/styles/documentation-swedbankpay.css" />
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/pygments-autumn.css">
+        <link rel="shortcut icon" href="https://design.swedbankpay.com/v/10.7.1/icons/favicon.ico">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://design.swedbankpay.com/v/10.7.1/icons/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://design.swedbankpay.com/v/10.7.1/icons/favicon-32x32.png">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="">
+<link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-167x167.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-icon-1024x1024.png">
+<!-- lint disable no-undefined-references --><link rel="apple-touch-startup-image"
+    media="(device-width: 640px) and (device-height: 1136px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-640x1136.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 750px) and (device-height: 1334px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-750x1334.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 828px) and (device-height: 1792px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-828x1792.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1125px) and (device-height: 2436px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1125x2436.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1136px) and (device-height: 640px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1136x640.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1242px) and (device-height: 2208px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1242x2208.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1242px) and (device-height: 2688px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1242x2688.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1334px) and (device-height: 750px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1334x750.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1536px) and (device-height: 2048px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1536x2048.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1620px) and (device-height: 2160px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1620x2160.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1668px) and (device-height: 2224px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1668x2224.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1668px) and (device-height: 2388px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1668x2388.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 1792px) and (device-height: 828px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-1792x828.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2048px) and (device-height: 1536px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2048x1536.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2048px) and (device-height: 2732px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2048x2732.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2160px) and (device-height: 1620px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2160x1620.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2208px) and (device-height: 1242px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2208x1242.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2224px) and (device-height: 1668px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2224x1668.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2388px) and (device-height: 1668px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2388x1668.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2436px) and (device-height: 1125px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2436x1125.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2688px) and (device-height: 1242px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2688x1242.png">
+<link rel="apple-touch-startup-image"
+    media="(device-width: 2732px) and (device-height: 2048px) and  (-webkit-device-pixel-ratio: 1)"
+    href="https://design.swedbankpay.com/v/10.7.1/icons/apple-touch-startup-image-2732x2048.png">
+<script src="/assets/js/mermaid.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_content.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch_set.js"></script>
+        <script src="/assets/tipuesearch/tipuesearch.min.js"></script>
+    </head>
+
+    <body>
+        <div id="overlay"></div>
+        <div id="designguide">
+            <header id="dg-topbar" class="topbar topbar-max-md-sticky d-md-flex d-lg-none">
+                    <button type="button" class="topbar-btn" aria-label="Open menu" aria-haspopup="menu" aria-expanded="false" aria-controls="topbar-nav">
+                        <i class="material-icons topbar-btn-icon">menu</i>
+                    </button><button type="button" class="topbar-close" aria-label="Close menu">
+                        <i class="material-icons topbar-btn-icon">close</i>
+                    </button>
+                    <a class="topbar-logo" href="/" aria-label="To homepage">
+                        <img src="https://design.swedbankpay.com/v/10.7.1/designguide/assets/swedbankpay-logo-v.svg" alt="swedbankpay logo" class="logotype-vertical logotype-sm" />
+                    </a>
+            </header>
+            <div class="documentation">
+                <div class="search-box search-expander">
+                    
+                    <form class="search d-flex"
+                        method="get" action="/search">
+                        <input name="q" type="text" id="tipue_search_input"
+                            class="search-input"
+                            placeholder="Search in documentation"
+                            onfocus="this.placeholder=''"
+                            onblur="this.placeholder='Search in documentation'"
+                            pattern=".{3,}"
+                            title="At least 3 characters">
+                        <button id="search-btn"class="btn btn-primary btn-icon-lg" type="submit" aria-label="Search button">
+                            <i class="material-icons-outlined" aria-hidden="true">search</i>
+                        </button>
+                    </form>
+                    
+                </div>
+                <div class="d-md-flex">
+                        <div id="dg-sidebar" class="sidebar dg-sidebar has-secondary-nav">
+                            <nav class="sidebar-main-nav">
+                                <div class="sidebar-logo">
+                                    <a href="/" class="sidebar-header">
+                                        <img src="https://design.swedbankpay.com/v/10.7.1/designguide/assets/swedbankpay-logo-v.svg"
+                                        alt="Swedbank Pay vertical logo" class="logotype-vertical logotype-lg"/>
+                                    </a>
+                                </div>
+                                <ul id="dx-sidebar-main-nav-ul" class="main-nav-ul">
+                                </ul>
+                            </nav>
+                        </div>
+                <main class="doc-view">
+                    
+                        
+
+
+
+
+
+
+    <div class="title-header">
+
+        <div class="title-header-container max-width">
+            
+
+            <h1></h1>
+
+            
+            
+                <div class="title-header-estimated-read">
+                    <i class="material-icons">schedule</i>
+                    1 min read
+                </div>
+            
+
+            
+                <p><p>Normal Purchase Response</p>
+</p>
+            
+        </div>
+
+        
+
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/pax-terminal/resources/normal-purchase-response.md"
+    id="github" target="_blank"
+    rel="noopener noreferrer" title="Edit '' on GitHub">
+    <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <title id="simpleicons-github-icon">Edit "" on GitHub</title>
+        <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </svg>
+</a>
+
+    </div>
+
+                    
+                    
+
+<div class="doc-container normal-padding max-width">
+    <article>
+        
+            <p class="code-view-header"><strong>Sample Payment Response for approved payment with physical payment card</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr><td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="code-view-code"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SaleToPOIResponse&gt;</span>
+ <span class="nt">&lt;MessageHeader</span> <span class="na">MessageClass=</span><span class="s">"Service"</span> <span class="na">MessageCategory=</span><span class="s">"Payment"</span> <span class="na">MessageType=</span><span class="s">"Response"</span> <span class="na">ServiceID=</span><span class="s">"3"</span> <span class="na">SaleID=</span><span class="s">"1"</span> <span class="na">POIID=</span><span class="s">"A-POIID"</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;PaymentResponse&gt;</span>
+  <span class="nt">&lt;Response</span> <span class="na">Result=</span><span class="s">"Success"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;SaleData&gt;</span>
+   <span class="nt">&lt;SaleTransactionID</span> <span class="na">TransactionID=</span><span class="s">"1703372"</span> <span class="na">TimeStamp=</span><span class="s">"2023-08-24T17:03:37+02:00"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/SaleData&gt;</span>
+  <span class="nt">&lt;POIData&gt;</span>
+   <span class="nt">&lt;POITransactionID</span> <span class="na">TransactionID=</span><span class="s">"8778880185"</span> <span class="na">TimeStamp=</span><span class="s">"2023-08-24T15:04:00.498Z"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/POIData&gt;</span>
+  <span class="nt">&lt;PaymentResult</span> <span class="na">PaymentType=</span><span class="s">"Normal"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;PaymentInstrumentData</span> <span class="na">PaymentInstrumentType=</span><span class="s">"Card"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;CardData</span> <span class="na">PaymentBrand=</span><span class="s">"01,Mastercard Debit"</span> <span class="na">MaskedPAN=</span><span class="s">"516815******9659"</span> <span class="na">EntryMode=</span><span class="s">"Contactless"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;PaymentToken</span> <span class="na">TokenRequestedType=</span><span class="s">"Customer"</span> <span class="na">TokenValue=</span><span class="s">"6FD955C23A48A041D881003CDBF836DC59F89CE0ECA8288129696CDF9BB8B8DD67F233"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/CardData&gt;</span>
+   <span class="nt">&lt;/PaymentInstrumentData&gt;</span>
+   <span class="nt">&lt;AmountsResp</span> <span class="na">Currency=</span><span class="s">"SEK"</span> <span class="na">AuthorizedAmount=</span><span class="s">"56"</span> <span class="na">CashBackAmount=</span><span class="s">"0.00"</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;PaymentAcquirerData</span> <span class="na">MerchantID=</span><span class="s">"10020001"</span> <span class="na">AcquirerPOIID=</span><span class="s">"877888"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ApprovalCode&gt;</span>611506<span class="nt">&lt;/ApprovalCode&gt;</span>
+   <span class="nt">&lt;/PaymentAcquirerData&gt;</span>
+  <span class="nt">&lt;/PaymentResult&gt;</span>
+  <span class="nt">&lt;PaymentReceipt</span> <span class="na">DocumentQualifier=</span><span class="s">"CashierReceipt"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;OutputContent</span> <span class="na">OutputFormat=</span><span class="s">"Text"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;OutputText&gt;</span>eyJNZXJjaGFudCI6eyJNYW5kYXRvcnkiOnsiQWNxdWlyZXIiOnsiQ2FyZEFjY2VwdG9yTnVtYmVyIjoiMTAwMjAwMDEiLCJUZXJtaW5hbElEIjoiODc3ODg4In0sIkNhcmRBY2NlcHRvciI6eyJBZGRyZXNzMSI6IkjDpGxsZXNrw6VyYW4gMjkiLCJCYW5rQWdlbnROYW1lIjoiYmFua3ktYmFuayIsIk5hbWUiOiJUZXN0IHNob3AiLCJPcmdhbmlzYXRpb25OdW1iZXIiOiI1NTY1NjcxLTYxNjUiLCJQb3N0WmlwQ29kZSI6IjUwNTAiLCJUb3duQ2l0eSI6Im1lcmNoYW50LUJhc2UyNC1DaXR5In0sIkNhcmREZXRhaWxzIjp7IkFwcGxpY2F0aW9uSWRlbnRpZmllciI6IkEwMDAwMDAwMDQxMDEwIiwiQ2FyZFNjaGVtZU5hbWUiOnsiQXBwbGljYXRpb25MYWJlbCI6Ik1hc3RlcmNhcmQifSwiUHJpbWFyeUFjY291bnROdW1iZXIiOiI1MTY4MTUqKioqKio5NjU5IiwiVGVybWluYWxWZXJpZmljYXRpb25SZXN1bHQiOiIwMDAwMDA4MDAxIiwiVHJhbnNhY3Rpb25TdGF0dXNJbmZvcm1hdGlvbiI6IjAwMDAifSwiT3V0Y29tZSI6eyJBcHByb3ZhbENvZGUiOiI2MTE1MDYiLCJBdXRob3Jpc2F0aW9uUmVzcG9uZGVyIjoiMyIsIkF1dGhvcmlzYXRpb25SZXNwb25zZUNvZGUiOiIwMCIsIkRlYml0U3RhdHVzIjoiMDAifSwiUGF5bWVudCI6eyJBdXRob3Jpc2F0aW9uQ2hhbm5lbCI6IjEiLCJDYXJkaG9sZGVyVmVyaWZpY2F0aW9uTWV0aG9kIjoiLyIsIkN1cnJlbmN5IjoiU0VLIiwiRmluYW5jaWFsSW5zdGl0dXRpb24iOiJTV0UiLCJQYXltZW50QW1vdW50IjoiNTYsMDAiLCJSZWNlaXB0TnVtYmVyIjoiODc3ODg4MDE4NSIsIlNpZ25hdHVyZUJsb2NrIjpmYWxzZSwiVG90YWxBbW91bnQiOiI1NiwwMCIsIlRyYW5zYWN0aW9uU291cmNlIjoiSyIsIlRyYW5zYWN0aW9uVHlwZSI6IjAwIn0sIlRpbWVTdGFtcCI6eyJEYXRlT2ZQYXltZW50IjoiMjAyMy0wOC0yNCIsIlRpbWVPZlBheW1lbnQiOiIxNzowNiJ9fSwiT3B0aW9uYWwiOnsiQ2FyZEFjY2VwdG9yIjp7IkNvdW50cnlOYW1lIjoiNzUyIiwiUGhvbmVOdW1iZXIiOiIrNDY4NDA1MTAwMCJ9LCJDYXJkRGV0YWlscyI6eyJDYXJkU2NoZW1lTmFtZSI6eyJBcHBsaWNhdGlvbkxhYmVsIjoiTWFzdGVyY2FyZCJ9fSwiUGF5bWVudCI6eyJSZWZlcmVuY2UiOiIxNzAzMzcyIn0sIlJlY2VpcHRTdHJpbmciOlsiVGVzdCBzaG9wIiwiSMOkbGxlc2vDpXJhbiAyOSIsIjUwNTAgbWVyY2hhbnQtQmFzZTI0LUNpdHkiLCIyMDIzLTA4LTI0IDE3OjA2IiwiIiwiTWFzdGVyY2FyZCIsIkNvbnRhY3RsZXNzIiwiNTE2ODE1KioqKioqOTY1OSIsIiIsIksvMSAzIDAwIFNXRSIsIkFJRDogQTAwMDAwMDAwNDEwMTAiLCJUVlI6IDAwMDAwMDgwMDEiLCJUU0k6IDAwMDAiLCJSUk46IDg3Nzg4ODAxODUiLCJBdXRoIGNvZGU6IDYxMTUwNiIsIkFSQzogMDAiLCIiLCJLw5ZQOiAgICAgICAgIDU2LDAwIFNFSyIsIkdvZGvDpG5kIiwiIiwiIiwiIiwiRsO2cnPDpGxqYXJlbnMga3ZpdHRvIl19fX0=<span class="nt">&lt;/OutputText&gt;</span>
+   <span class="nt">&lt;/OutputContent&gt;</span>
+  <span class="nt">&lt;/PaymentReceipt&gt;</span>
+  <span class="nt">&lt;PaymentReceipt</span> <span class="na">DocumentQualifier=</span><span class="s">"CustomerReceipt"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;OutputContent</span> <span class="na">OutputFormat=</span><span class="s">"Text"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;OutputText&gt;</span>eyJDYXJkaG9sZGVyIjp7Ik1hbmRhdG9yeSI6eyJBY3F1aXJlciI6eyJDYXJkQWNjZXB0b3JOdW1iZXIiOiIxMDAyMDAwMSIsIlRlcm1pbmFsSUQiOiI4Nzc4ODgifSwiQ2FyZEFjY2VwdG9yIjp7IkFkZHJlc3MxIjoiSMOkbGxlc2vDpXJhbiAyOSIsIkJhbmtBZ2VudE5hbWUiOiJiYW5reS1iYW5rIiwiTmFtZSI6IlRlc3Qgc2hvcCIsIk9yZ2FuaXNhdGlvbk51bWJlciI6IjU1NjU2NzEtNjE2NSIsIlBvc3RaaXBDb2RlIjoiNTA1MCIsIlRvd25DaXR5IjoibWVyY2hhbnQtQmFzZTI0LUNpdHkifSwiQ2FyZERldGFpbHMiOnsiQXBwbGljYXRpb25JZGVudGlmaWVyIjoiQTAwMDAwMDAwNDEwMTAiLCJDYXJkU2NoZW1lTmFtZSI6eyJBcHBsaWNhdGlvbkxhYmVsIjoiTWFzdGVyY2FyZCJ9LCJQcmltYXJ5QWNjb3VudE51bWJlciI6IioqKioqKioqKioqKjk2NTkiLCJUZXJtaW5hbFZlcmlmaWNhdGlvblJlc3VsdCI6IjAwMDAwMDgwMDEiLCJUcmFuc2FjdGlvblN0YXR1c0luZm9ybWF0aW9uIjoiMDAwMCJ9LCJPdXRjb21lIjp7IkFwcHJvdmFsQ29kZSI6IjYxMTUwNiIsIkF1dGhvcmlzYXRpb25SZXNwb25kZXIiOiIzIiwiQXV0aG9yaXNhdGlvblJlc3BvbnNlQ29kZSI6IjAwIiwiRGViaXRTdGF0dXMiOiIwMCJ9LCJQYXltZW50Ijp7IkF1dGhvcmlzYXRpb25DaGFubmVsIjoiMSIsIkNhcmRob2xkZXJWZXJpZmljYXRpb25NZXRob2QiOiIvIiwiQ3VycmVuY3kiOiJTRUsiLCJGaW5hbmNpYWxJbnN0aXR1dGlvbiI6IlNXRSIsIlBheW1lbnRBbW91bnQiOiI1NiwwMCIsIlJlY2VpcHROdW1iZXIiOiI4Nzc4ODgwMTg1IiwiU2lnbmF0dXJlQmxvY2siOmZhbHNlLCJUb3RhbEFtb3VudCI6IjU2LDAwIiwiVHJhbnNhY3Rpb25Tb3VyY2UiOiJLIiwiVHJhbnNhY3Rpb25UeXBlIjoiMDAifSwiVGltZVN0YW1wIjp7IkRhdGVPZlBheW1lbnQiOiIyMDIzLTA4LTI0IiwiVGltZU9mUGF5bWVudCI6IjE3OjA2In19LCJPcHRpb25hbCI6eyJDYXJkQWNjZXB0b3IiOnsiQ291bnRyeU5hbWUiOiI3NTIiLCJQaG9uZU51bWJlciI6Iis0Njg0MDUxMDAwIn0sIkNhcmREZXRhaWxzIjp7IkNhcmRTY2hlbWVOYW1lIjp7IkFwcGxpY2F0aW9uTGFiZWwiOiJNYXN0ZXJjYXJkIn19LCJQYXltZW50Ijp7IlJlZmVyZW5jZSI6IjE3MDMzNzIifSwiUmVjZWlwdFN0cmluZyI6WyJUZXN0IHNob3AiLCJIw6RsbGVza8OlcmFuIDI5IiwiNTA1MCBtZXJjaGFudC1CYXNlMjQtQ2l0eSIsIjIwMjMtMDgtMjQgMTc6MDYiLCIiLCJNYXN0ZXJjYXJkIiwiQ29udGFjdGxlc3MiLCIqKioqKioqKioqKio5NjU5IiwiIiwiSy8xIDMgMDAgU1dFIiwiQUlEOiBBMDAwMDAwMDA0MTAxMCIsIlRWUjogMDAwMDAwODAwMSIsIlRTSTogMDAwMCIsIlJSTjogODc3ODg4MDE4NSIsIkF1dGggY29kZTogNjExNTA2IiwiQVJDOiAwMCIsIiIsIkvDllA6ICAgICAgICAgNTYsMDAgU0VLIiwiR29ka8OkbmQiLCIiLCIiLCIiLCJLb3J0aW5uZWhhdmFyZW5zIGt2aXR0byJdfX19<span class="nt">&lt;/OutputText&gt;</span>
+   <span class="nt">&lt;/OutputContent&gt;</span>
+  <span class="nt">&lt;/PaymentReceipt&gt;</span>
+ <span class="nt">&lt;/PaymentResponse&gt;</span>
+<span class="nt">&lt;/SaleToPOIResponse&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+      <h3 id="paymentresponse-in-detail">
+        
+        
+          PaymentResponse in Detail <a href="#paymentresponse-in-detail" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: center">Lev</th>
+      <th style="text-align: left">Attributes</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">PaymentResponse</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Response</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left">Result</td>
+      <td style="text-align: left"><strong>Success</strong> or <strong>Failure</strong>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">ErrorCondition</td>
+      <td style="text-align: left">Only present if Failure: Common values are <code class="language-html highlighter-rouge">Busy</code>- wait and try again, <code class="language-html highlighter-rouge">Refusal</code>- Request not accepted.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">AdditionalResponse</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">Only present if Failure and should be a describing text.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">SaleData</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">SaleTransactionID</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">TransactionID</td>
+      <td style="text-align: left">ID of transaction provided by the sale system and may be seen in PosPay reports. Information will not be past to clearing and is not seen in Merchant Portal.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">TimeStamp</td>
+      <td style="text-align: left">Timestamp set by sale system for when the transaction is started. Note that the format is local time.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">POIData</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">POITransactionID</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">TransactionID</td>
+      <td style="text-align: left">ID of transaction set by the terminal. This is seen in PosPay reports as well as on Merchant Portal. The complete element is needed if the transaction needs to be reversed.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">TimeStamp</td>
+      <td style="text-align: left">Timestamp set by terminal when the transaction is started. Note that the format is UTC.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PaymentResult</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left">PaymentType</td>
+      <td style="text-align: left">Values: <code class="language-html highlighter-rouge">Normal</code> for purchase and <code class="language-html highlighter-rouge">Refund</code> for refund.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PaymentInstrumentData</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">PaymentInstrumentType</td>
+      <td style="text-align: left">Values: <code class="language-html highlighter-rouge">Card</code> for any transaction made by the terminal with a card or any consumer device. <code class="language-html highlighter-rouge">Mobile</code> for an alternative payment method made via the terminal.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">CardData</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: left">PaymentBrand</td>
+      <td style="text-align: left">Comma separated string where the first part is card type. <code class="language-html highlighter-rouge">01</code>-payment card. <code class="language-html highlighter-rouge">02</code>-Combined payment and Loyalty, <code class="language-html highlighter-rouge">03</code>-Loyalty, <code class="language-html highlighter-rouge">04</code>-Neither. May be used instead of 03 for controlling the dialog in the terminal. Second part is the product name.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">MaskedPAN</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">EntryMode</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">ICC</code>, <code class="language-html highlighter-rouge">Contactless</code>, <code class="language-html highlighter-rouge">Magstripe</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PaymentToken</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: left">TokenRequestedType</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">Customer</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">TokenValue</td>
+      <td style="text-align: left">An irreversible 70 byte hash computed locally in the terminal. A specific card will get the same CNA in all SwedbankPay PAX terminals.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">AmountsResp</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">Currency</td>
+      <td style="text-align: left">Needs to be configured in the terminal. Available <code class="language-html highlighter-rouge">DKK</code>, <code class="language-html highlighter-rouge">EUR</code>, <code class="language-html highlighter-rouge">NOK</code>, <code class="language-html highlighter-rouge">SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">AuthorizedAmount</td>
+      <td style="text-align: left">Total amount for transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">CashBackAmount</td>
+      <td style="text-align: left">Amount included in AuthorizedAmount.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">TipAmount</td>
+      <td style="text-align: left">Tip included in AuthorizedAmount.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PaymentAquirerData</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">MerchantID</td>
+      <td style="text-align: left">Id of merchant set by Swedbank Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left">AquirerPOIID</td>
+      <td style="text-align: left">A terminal id within Swedbank Pay.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ApprovalCode</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">Authorization approval code. Only present if Result is Success.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PaymentReceipt</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: left">DocumentQualifier</td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">CashierReceipt</code>- Merchant copy. <code class="language-html highlighter-rouge">CustomerReceipt</code>- receipt information for customer. Note! This element appears twice.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">OutputContent</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: left">OutputFormat</td>
+      <td style="text-align: left">Only value <code class="language-html highlighter-rouge">Text</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">OutputText</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">A Base64 encoded JSON structure with information for the receipt.</td>
+    </tr>
+  </tbody>
+</table>
+    
+      <h3 id="paymentreceipt-in-detail">
+        
+        
+          PaymentReceipt in Detail <a href="#paymentreceipt-in-detail" class="header-anchor"></a>
+        
+        
+      </h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr><td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+</pre></td><td class="code-view-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"Cardholder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Mandatory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Acquirer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"CardAcceptorNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10020001"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TerminalID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"877888"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"CardAcceptor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"Address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hälleskåran 29"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"BankAgentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banky-bank"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test shop"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"OrganisationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5565671-6165"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"PostZipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5050"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TownCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant-Base24-City"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"CardDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ApplicationIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A0000000041010"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"CardSchemeName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ApplicationLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mastercard"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"PrimaryAccountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************9659"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TerminalVerificationResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000008001"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TransactionStatusInformation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"Outcome"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"ApprovalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"611506"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"AuthorisationResponder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"AuthorisationResponseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"DebitStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"AuthorisationChannel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"CardholderVerificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"FinancialInstitution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SWE"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"PaymentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56,00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ReceiptNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8778880185"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"SignatureBlock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56,00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TransactionSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"K"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"TimeStamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"DateOfPayment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-24"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"TimeOfPayment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17:06"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"Optional"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"CardAcceptor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"CountryName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"752"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"PhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+4684051000"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"CardDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"CardSchemeName"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"ApplicationLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mastercard"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"Payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"Reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1703372"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"ReceiptString"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Test shop"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Hälleskåran 29"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"5050 merchant-Base24-City"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"2023-08-24 17:06"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Mastercard"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Contactless"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"************9659"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"K/1 3 00 SWE"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"AID: A0000000041010"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"TVR: 0000008001"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"TSI: 0000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"RRN: 8778880185"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Auth code: 611506"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ARC: 00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"KÖP:         56,00 SEK"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Godkänd"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Kortinnehavarens kvitto"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+        
+    </article>
+</div>
+
+                </main>
+                </div>
+            </div>
+        </div>
+        <script src="https://design.swedbankpay.com/v/10.7.1/scripts/dg.js" global="true" autoload="true"></script>
+        <script src="/assets/js/swedbank-pay-design-guide-theme.js"></script>
+    </body>
+
+</html>
