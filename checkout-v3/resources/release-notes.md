@@ -11,6 +11,20 @@ menu_order: 1200
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 19 Dec 23
+
+### Version 4.6.1
+
+The last release of 2023 is finding its way down the chimney, and is mainly
+consisting of maintenance and small fixes.
+
+There is however, one quite important update among the small ones. We have added
+a [test data section for Network Tokenization][nwt-test], with both test cards
+and useful information. Head to the [Network Tokenization feature section][nwt]
+if you want to learn more about what it is.
+
+From all of us, to all of you: Merry Christmas!
+
 ## 07 Nov 23
 
 ### Version 4.6.0
@@ -954,6 +968,7 @@ integration and the payer.
 [modules-sdks]: /checkout-v3/modules-sdks
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
 [nwt]: /checkout-v3/features/optional/network-tokenization
+[nwt-test]: /checkout-v3/resources/test-data/#network-tokenization
 [old-implementations]: /old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
