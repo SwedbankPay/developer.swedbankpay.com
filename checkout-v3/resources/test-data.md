@@ -74,25 +74,22 @@ When testing Network Tokenization you can use one of the cards listed below,
 depending on if you want to use MasterCard or Visa, and if you want a
 frictionless flow or a challenge flow. These cards are test `FPAN`s (Funding
 PAN, an actual card number). Make sure that your merchant contract is configured
-towards our internal acquirer (loopback), as they won't work as intended if you
-are configured towards other acquirers.
+towards our internal acquirer (loopback), since they won't work as intended if
+you are configured towards other acquirers.
 
-Each `FPAN` is connected to a `DPAN` (forklaring på hva DPAN står for), which
-again is connected to a list of 10 `FPAN`s. Use your `FPAN` of choice to
-initiate a regular [unscheduled][unscheduled] or [recur][recur] transaction. The
-`DPAN` will **not** appear in the initial transaction response. It will only be
-displayed when you run the next transaction with the stored token.
+Each `FPAN` is connected to a `DPAN` (Network Token). The `DPAN` will **not**
+appear in the initial transaction response. It will only be displayed when you
+run the next transaction with the stored token.
+
+Once your card has been enrolled, you will enter into a rotation where the
+`DPAN` is updated with a new `FPAN` every 24h. This way you can notice the
+changes easily. The rotation consists of 10 cards and will run indefinitely, but
+the initial `FPAN` won't appear again, as it is not a part of the `DPAN`s set of
+cards. The four `FPAN`s can be used again every day to store a card and initiate
+a fresh rotation.
 
 Note that in the response, the 6 first digits of the `PAN` will be shown in the
 `BIN` field. The `maskedPan` will only contain the last 4 digits.
-
-Once it has been enrolled, you will enter into a loop where the `DPAN` is
-updated with a new `FPAN` through a batch run happening every night. The loop
-will run indefinitely, but the initial `FPAN` won't appear again as it is not a
-part of the `DPAN`s set of cards.
-
-The four `FPAN`s can be used again every day to store a card and initiate a
-fresh update loop.
 
 Error testing can be performed using the four bottom cards. They will all be
 rejected during tokenization.
