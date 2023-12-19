@@ -1,5 +1,6 @@
 ---
 title: Dialog with customer
+permalink: /:path/dialog-in-terminal/
 menu_order: 40
 description: Possibility to display message or ask customer for information
 icon:

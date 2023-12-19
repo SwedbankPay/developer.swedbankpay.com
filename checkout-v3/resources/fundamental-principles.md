@@ -1,5 +1,6 @@
 ---
 title: Fundamental Principles
+permalink: /:path/fundamental-principles/
 menu_order: 900
 description: |
     Read on to learn about the fundamentals and common architectural principles
@@ -53,7 +54,7 @@ All requests against the API Platform should have a few common headers:
 
 ```http
 POST /some/resource HTTP/1.1
-Content-Type: application/json; charset=utf-8
+Content-Type: application/json;version=3.1/3.0/2.0  charset=utf-8  // Version optional except for 3.1
 Authorization: "Bearer 123456781234123412341234567890AB"
 User-Agent: swedbankpay-sdk-dotnet/3.0.1
 Accept: application/problem+json; q=1.0, application/json; q=0.9
@@ -141,7 +142,7 @@ field.
 ```http
 POST /psp/creditcard/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0  // Version optional except for 3.1
 
 {
     "payment": {
@@ -168,7 +169,8 @@ Content-Type: application/json
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
 {
     "payment": {
@@ -215,9 +217,10 @@ number of necessary `GET` requests.
 
 The payment resource contain the ID of related sub-resources in its response
 properties. These sub-resources can be expanded inline by using the request
-parameter `expand`. This is an effective way to limit the number of necessary
-calls to the API, as you return several properties related to a Payment
-resource in a single request.
+parameter `expand`. The `Paid` resource would for example be expanded by adding
+`?$expand=paid` after the `paymentOrderId`. This is an effective way to limit
+the number of necessary calls to the API, as you return several properties
+related to a Payment resource in a single request.
 
 Note that the `expand` parameter is available to all API requests but only
 applies to the request response. This means that you can use the expand
@@ -257,7 +260,8 @@ combine dates, time and timezone data into a string, e.g.
 ### Locale
 
 When defining locale, we use the combination of [language][iso-639-1]
-and [country codes][iso-3166], e.g. `nb-NO`, `sv-SE`, `en-US`.
+and [country codes][iso-3166]. Our payment menu UI is currently limited to
+`nb-NO`, `sv-SE`, `da-DK` `fi-FI` and `en-US`.
 
 ### Monetary Amounts
 

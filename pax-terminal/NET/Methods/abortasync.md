@@ -1,5 +1,6 @@
 ---
 title: Abort
+permalink: /:path/abortasync/
 description: |
     The Abort/AbortAsync method will send an AbortRequest for the last issued request to the terminal.
 ---

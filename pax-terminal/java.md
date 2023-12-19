@@ -1,5 +1,6 @@
 ---
 title: Java
+permalink: /:path/java/
 description: |
     Use the Java SDK to quickly and easy integrate with the terminal from your ECR.
 menu_order: 1000

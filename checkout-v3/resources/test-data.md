@@ -1,5 +1,6 @@
 ---
 title: Test Data
+permalink: /:path/test-data/
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
@@ -10,9 +11,9 @@ menu_order: 1200
 
 During a Swedbank Pay Checkout implementation, you can use the test data related
 to the different payment instruments listed below. To see Swedbank Pay Checkout
-in action, please visit our [demoshop]({{ page.front_end_url }}/pspdemoshop)
+in action, please visit the [Playground][playground].
 
-To test a checked-in user in the Demoshop, please use the following test data:
+To test a checked-in user in the Playground, please use the following test data:
 
 ### Checkout test data for Norway
 
@@ -58,24 +59,7 @@ institutions.
 | Visa       | `4761739001010416` | After the current month  | Any   | 3-D Secure enrolled |
 | MasterCard | `5226612199533406` | After the current month  | Any   | 3-D Secure enrolled |
 
-### 3-D Secure
-
-For merchants using 3-D Secure (3DS1), this is the ACS (Access Control Server)
-you will encounter in our test environments. Use the Visa or MasterCard listed
-under 3-D Secure Cards above when doing a card payment. After pressing the
-purchase button you will then be taken to a menu where you can select
-authentication status.
-
-![3D-Secure Emulator without dropdown menu][3ds-emulator-no-dropdown]{:width="805px" :height="685px"}
-
-![3D-Secure Emulator with dropdown menu][3ds-emulator-with-dropdown]{:width="805px" :height="685px"}
-
-In this menu, there are a few different options to choose from. Choose the
-status you want to test, click the Continue button and the status you selected
-will be sent with the payment. After pressing **Continue**, you will be sent
-back to the payment like a normal 3-D Secure authentication.
-
-### OTP (3DS2)
+### 3-D Secure 2
 
 For merchants using 3DS2, OTP (One-Time Password) is the ACS (Access Control
 Server) you will encounter. Use the Visa or MasterCard listed under 3-D Secure
@@ -83,6 +67,52 @@ Cards above when doing a card payment. Click approved or cancel to select
 authentication status.
 
 ![otp-challenge-form][otp-challenge-form]
+
+### Network Tokenization
+
+When testing Network Tokenization you can use one of the cards listed below,
+depending on if you want to use MasterCard or Visa, and if you want a
+frictionless flow or a challenge flow. These cards are test `FPAN`s (Funding
+PAN, an actual card number). Make sure that your merchant contract is configured
+towards our internal acquirer (loopback), since they won't work as intended if
+you are configured towards other acquirers.
+
+Each `FPAN` is connected to a `DPAN` (Network Token). The `DPAN` will **not**
+appear in the initial transaction response. It will only be displayed when you
+run the next transaction with the stored token.
+
+Once your card has been enrolled, you will enter into a rotation where the
+`DPAN` is updated with a new `FPAN` every 24h. This way you can notice the
+changes easily. The rotation consists of 10 cards and will run indefinitely, but
+the initial `FPAN` won't appear again, as it is not a part of the `DPAN`s set of
+cards. The four `FPAN`s can be used again every day to store a card and initiate
+a fresh rotation.
+
+Note that in the response, the 6 first digits of the `PAN` will be shown in the
+`BIN` field. The `maskedPan` will only contain the last 4 digits.
+
+Error testing can be performed using the four bottom cards. They will all be
+rejected during tokenization.
+
+If you want to test Network Tokenization without card updates, simply use one of
+our other MasterCard or Visa test cards. You still need to be configured against
+our internal acquirer (loopback).
+
+{:.table .table-striped}
+| Card type  | Card number        | Expiry | CVC   | Type of test data   |
+| :--------- | :----------------- | :----  | :---- | :------------------ |
+| MasterCard | `5510000000001232` | 04/35  | Any   | Frictionless        |
+| MasterCard | `5510000000002347` | 06/35  | Any   | Challenge           |
+| Visa       | `4111112000003211` | 09/35  | Any   | Frictionless        |
+| Visa       | `4111112000006545` | 11/35  | Any   | Challenge           |
+
+{:.table .table-striped}
+| Card type  | Card number        | Expiry | CVC   | Type of test data   |
+| :--------- | :----------------- | :----  | :---- | :------------------ |
+| MasterCard | `5510000000009631` | 08/35  | Any   | Rejected during tokenization |
+| MasterCard | `5510000000005431` | 02/35  | Any   | Rejected during tokenization |
+| Visa       | `4111112000004565` | 07/35  | Any   | Rejected during tokenization |
+| Visa       | `4111112000007899` | 12/35  | Any   | Rejected during tokenization |
 
 ### Visa
 
@@ -242,3 +272,7 @@ the following values:
 [3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
 [3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
+[playground]: https://playground.swedbankpay.com
+[recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
+[unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
+[test-data]: https://developer.swedbankpay.com/checkout-v3/resources/test-data/network-tokenization

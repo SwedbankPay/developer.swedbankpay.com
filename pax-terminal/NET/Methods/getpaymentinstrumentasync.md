@@ -1,5 +1,6 @@
 ---
 title: GetPaymentIntrument
+permalink: /:path/getpaymentinstrumentasync/
 description: |
     Use GetPaymentInstrument/GetPaymentInstrumentAsync to read a card before the amount is known.
 ---

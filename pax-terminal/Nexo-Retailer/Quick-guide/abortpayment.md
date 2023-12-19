@@ -1,5 +1,6 @@
 ---
 title: AbortRequest
+permalink: /:path/abortpayment/
 description: Any request may be aborted using AbortRequest
 menu_order: 50
 ---
@@ -42,4 +43,4 @@ participant Terminal
     Terminal->>-POS: rsp 200 PaymentResponse Failure
 ```
 
-{% include iterator.html prev_href="make-payment" prev_title="Back to PaymentRequest" %}
+{% include iterator.html prev_href="/pax-terminal/Nexo-Retailer/Quick-guide/make-payment" prev_title="Back to PaymentRequest" %}

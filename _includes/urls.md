@@ -28,21 +28,22 @@ It is possible to perform a `GET` request on the `urls` resource to retrieve its
 contents.
 
 {:.code-view-header}
-Request
+**Request**
 
 ```http
 GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/3.0/2.0     // Version optional for 3.0 and 2.0
 ```
 
 {:.code-view-header}
-Response
+**Response**
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 {
     "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
     "urls": {

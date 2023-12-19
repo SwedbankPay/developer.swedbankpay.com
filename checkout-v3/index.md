@@ -37,11 +37,12 @@ store the card data for you, but you own it. This means that you have to remove
 data in compliance with GDPR, but you won't have to worry about handling
 sensitive card info.
 
-This implementation is available in Danish `da-DK`, English (US) `en-US`,
-Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`.
+## Availability
 
-You can choose the contents of your payment UI from the following payment
-instruments, somewhat depending on which countries you are operating in.
+This implementation is available in Danish `da-DK`, English (US) `en-US`,
+Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
+contents of your payment UI from the following payment instruments, somewhat
+depending on which countries you are operating in.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
 body="Some of the digital wallets we offer require you to take additional steps
@@ -157,3 +158,4 @@ below to read more." %}
 [paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
 [trustly]: /checkout-v3/payment-presentations#trustly
 [instrument-mode]: /checkout-v3/features/optional/instrument-mode
+[migration-guide]: /checkout-v3/resources/migration-guide

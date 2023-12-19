@@ -1,5 +1,6 @@
 ---
 title: Ask for transaction status
+permalink: /:path/transactionstatus/
 description: Ask for result of last transaction or for any previously made transaction in near time. 
 menu_order: 60
 ---
@@ -64,4 +65,4 @@ An earlier transaction may be found if still in the database of the terminal. Ad
 
 ```
 
-{% include iterator.html prev_href="make-payment" prev_title="Back to PaymentRequest" %}
+{% include iterator.html prev_href="/pax-terminal/Nexo-Retailer/Quick-guide/make-payment" prev_title="Back to PaymentRequest" %}

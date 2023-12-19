@@ -1,5 +1,6 @@
 ---
 title: Good Commit Practice
+permalink: /:path/good-commit-practice/
 menu_order: 1100
 ---
 

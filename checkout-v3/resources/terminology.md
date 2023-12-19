@@ -1,5 +1,6 @@
 ---
 title: Terminology
+permalink: /:path/terminology/
 menu_order: 1100
 ---
 

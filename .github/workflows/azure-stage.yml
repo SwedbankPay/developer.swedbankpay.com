@@ -20,7 +20,7 @@ jobs:
             --site-url=https://developer.stage.swedbankpay.com
 
       - name: azure login
-        uses: azure/login@v1.4.7
+        uses: azure/login@v1.5.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS_DEV }}
 

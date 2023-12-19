@@ -1,5 +1,6 @@
 ---
 title: Payment
+permalink: /:path/paymentasync/
 description: |
   The Payment / PaymentAsync should be called when the amount is known.
 
@@ -9,18 +10,18 @@ description: |
 Synchronous versions
 
 *   void Payment(decimal totalamount,decimal cashback=0, string currency="SEK")
-*   void Payment(`TransactionSetup` setup)
+*   void Payment([`TransactionSetup`][transactionsetup] setup)
 
 Asynchronous versions
 
 *   async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="SEK")
-*   async Task\<PaymentRequestResult\> PaymentAsync(`TransactionSetup` setup)
+*   async Task\<PaymentRequestResult\> PaymentAsync([`TransactionSetup`][transactionsetup] setup)
 
 ### Description
 
 The PaymentAsync should be called when the amount is known. It opens all available readers and waits for a payment instrument. If Alternative Payment Methods are activated it will open for that too.
 
-Use parameter of type `TransactionSetup` if a reference need to be set to track the transaction.
+Use parameter of type `TransactionSetup` if a reference need to be set to track the transaction or if fuel functionality is implemented and product codes and other details need to be sent to the terminal.
 
 ### Parameters
 
@@ -29,7 +30,7 @@ Use parameter of type `TransactionSetup` if a reference need to be set to track 
 | decimal |**totalamount**|Includes possible cashback amount.|
 | decimal |**cashback**|Part of total amount that will be handed to customer.|
 | string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".|
-| or | |
+| **Alternatively**| |
 |[TransactionSetup][transactionsetup]|**setup**| Object holding several parameters to be used for transaction. Default values for all members. Only populate what is relevant.|
 
 {:.code-view-header}
@@ -86,6 +87,10 @@ public class PaymentRequestResult : NexoRequestResult
     public override string ResponseContent { get; set; }
 }
 ```
+
+{%include alert.html type="warning" icon="warning" header="Client Only Mode"
+body="If Login was made without SaleCapabilites `CashierInput`, the cashier receipt json object indicates
+ if a receipt need to be signed by customer. If SignatureBlock is true, the customer need to sign the receipt."%}
 
 ### ResponseContent - The Complete nexo Response Message
 
@@ -244,25 +249,17 @@ Hälleskåran 29
 Org nr: 5565671-6165    
                         
 Butiksnr.:      10020001
-Termid:           877888
-2023-08-23         08:39
+2023-12-06         08:39
                         
-          KÖP           
-                        
-SEK               125,00
-Total:            125,00
+KÖP            125,00SEK
                         
 ************9659        
 Mastercard              
 Kontaktlös              
-                        
-                        
 K/1 3 00 902428         
-                        
 Ref.nr:       8778880003
 AID:      A0000000041010
 TVR:          0000008001
-TSI:                0000
                         
      SPARA KVITTOT      
       KUNDENS EX.       
@@ -274,29 +271,20 @@ TSI:                0000
 ```text
                         
 Butiksnr.:      10020001
-Termid:           877888
-2023-08-23         08:39
+2023-12-06         08:39
                         
-          KÖP           
-                        
-SEK               125,00
-Total:            125,00
+KÖP            125,00SEK
                         
 ************9659        
 Mastercard              
 Kontaktlös              
-                        
-                        
 K/1 3 00 902428         
-                        
 Ref.nr:       8778880003
 AID:      A0000000041010
 TVR:          0000008001
-TSI:                0000
                         
      SPARA KVITTOT      
       KUNDENS EX.       
-
 ```
 
 [transactionsetup]: /pax-terminal/NET/transactionsetup

@@ -1,5 +1,6 @@
 ---
 title: Advanced loyalty
+permalink: /:path/get-card-ahead/
 description: Possibility to read one or more cards prior to payment request, makes it possible to give a discount for members at time of payment
 icon:
   content: credit_card

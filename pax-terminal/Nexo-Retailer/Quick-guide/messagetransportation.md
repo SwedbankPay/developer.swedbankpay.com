@@ -1,5 +1,6 @@
 ---
 title: Message Transport
+permalink: /:path/messagetransportation/
 description: Messages are sent using HTTP/1.1 Post 
 menu_order: 20
 ---
@@ -23,4 +24,4 @@ A nexo response is received in the Http Response for the request. Http status co
 body="Make sure to wait for the http response long enough. If the socket drops during a PaymentRequest, the terminal is still able to make a transaction but the response cannot be sent. In that perticular case you need to make TransactionStatusRequest. "
 %}
 
-{% include iterator.html next_href="first-message" next_title="Next" %}
+{% include iterator.html next_href="/pax-terminal/Nexo-Retailer/Quick-guide/first-message" next_title="Next" %}

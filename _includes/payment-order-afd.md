@@ -46,7 +46,6 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        "implementation": "{{implementation}}",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -78,7 +77,7 @@ seamless view table:
 | :----------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | {% f generateAfdPayment %}     | `bool`      | Set to `true` if the payment order is an AFD payment, `false` if not. |
 | {% f restrictedToAfdInstruments %}     | `bool`      | Set to `true` if the payment menu should show only payment options that support AFD, `false` to show all options. Default is true when using `generateAfdPayment`. |
-| {% f payeeInfo %}                | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
+| {% f payeeInfo %}                | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                             |
 | {% f mcc, 2 %}     | `integer`      | The merchant category code used for the purchase, 4 digits. |
 
 {% if include.integration_mode=="redirect" %}

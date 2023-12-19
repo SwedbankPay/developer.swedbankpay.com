@@ -1,7 +1,8 @@
 ## Order Items
 
 The `orderItems` field of the `paymentOrder` is an array containing information
-about the items being purchased. It is no longer mandatory, so feel free to
+about the items being purchased. **It is mandatory for v3.0 and older**
+**implementations, but voluntary for payment order v3.1**, so feel free to
 remove it from your requests if you want. If you offer invoice as a payment
 option, the field is still recommended as it are used for the product details on
 the customer's invoice. If they are not present, `orderItems` will be generated

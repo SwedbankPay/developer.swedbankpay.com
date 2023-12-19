@@ -1,5 +1,6 @@
 ---
 title: Post-Purchase
+permalink: /:path/post-purchase/
 description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post-purchase operations** in your order system. These operations,

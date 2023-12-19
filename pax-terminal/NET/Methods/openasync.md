@@ -1,5 +1,6 @@
 ---
 title: Open
+permalink: /:path/openasync/
 description: |
     The Open / OpenAsync call is the first method call that actually communicates with the terminal.
 ---

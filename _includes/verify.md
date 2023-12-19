@@ -111,7 +111,7 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        "implementation": "{{implementation}}", {% endif %} {% unless documentation_section contains "checkout" %}
+        {% endif %} {% unless documentation_section contains "checkout" %}
         "generatePaymentToken": true,{% endunless %} {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
         "generateUnscheduledToken": true,{% endif %}
         "urls": {

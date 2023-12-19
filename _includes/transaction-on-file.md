@@ -59,8 +59,8 @@ Content-Type: application/json
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
         "generateTransactionOnFileToken": true, {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3",
-        "implementation": "{{implementation}}",{% endif %}
+        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
+        {% endif %}
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",

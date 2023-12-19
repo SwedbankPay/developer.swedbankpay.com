@@ -36,7 +36,7 @@ If we want to reverse a previously captured amount, we need to perform
 POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.0/2.0      // Version optional for 3.0 and 2.0
 
 {
     "transaction": {
@@ -119,8 +119,8 @@ If the reversal request succeeds, the response should be similar to the example 
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+Content-Type: application/json; charset=utf-8; version=3.0/2.0
+api-supported-versions: 3.0/2.0
 
 {
     "payment": "/psp/creditcard/payments/{{ page.payment_order_id }}",
