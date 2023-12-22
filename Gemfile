@@ -6,7 +6,7 @@ ruby '~> 2.7'
 
 group :jekyll_plugins do
   # Necessary to prevent Jekyll errors. See https://github.com/github/personal-website/issues/166
-  gem 'faraday', '~> 2.7.0'
+  gem 'faraday', '~> 2.8.1'
   gem 'jekyll', '~> 4.3'
   gem 'jekyll-material-icon-tag'
   gem 'jekyll-redirect-from'
