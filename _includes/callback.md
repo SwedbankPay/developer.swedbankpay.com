@@ -100,7 +100,7 @@ This response format will only be triggered if you used `version=3.1` in the
 original `POST` when you created the `paymentOrder`.
 
 {:.code-view-header}
-**Payment Order v3.1 Callback**
+**Payment Order Callback v3.1**
 
 ```json
 {
