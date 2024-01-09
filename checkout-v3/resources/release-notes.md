@@ -1,8 +1,8 @@
 ---
-title: Release Notes
+title: Digital Payments Release Notes
 permalink: /:path/release-notes/
 description: |
-  The latest updates about our releases will be
+  The latest updates about our Digital Payments releases will be
   published on this page.
 menu_order: 1200
 ---
