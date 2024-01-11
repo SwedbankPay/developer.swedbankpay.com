@@ -37,6 +37,40 @@ store the card data for you, but you own it. This means that you have to remove
 data in compliance with GDPR, but you won't have to worry about handling
 sensitive card info.
 
+## Use Cases & Migration
+<div class="row mt-4">
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+       <a href="/checkout-v3/use-cases/" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="dx-card-content">
+            <span class="h4">Use Cases</span>
+            <span><p>How our offering can match your needs</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
+      <a href="/checkout-v3/resources/migration-guide/" class="dx-card">
+         <span class="dx-card-icon">
+            <i class="material-icons">
+                hiking
+            </i>
+         </span>
+         <span class="dx-card-content">
+           <span class="h4">Migration Guide</span>
+           <span><p>A step by step guide to our newest version</p>
+           </span>
+         </span>
+        <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+</div>
+
 ## Availability
 
 This implementation is available in Danish `da-DK`, English (US) `en-US`,
