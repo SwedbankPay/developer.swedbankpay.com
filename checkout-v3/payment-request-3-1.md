@@ -11,7 +11,7 @@ The integration consists of three main steps. **Creating** the payment order,
 **displaying** the payment menu, and **capturing** the funds. In addition, there
 are other post-purchase options you need. We get to them later on.
 
-## Step 1: Create Payment Order
+## Create Payment Order
 
 When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource with
