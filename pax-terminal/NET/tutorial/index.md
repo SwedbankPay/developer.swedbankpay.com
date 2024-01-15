@@ -6,4 +6,4 @@ menu_order: 50
 ---
 Here you find the quick guide and some use case that may speed up the development process.
 
-{%include card-list.html%}
+{% include card-list.html %}
