@@ -52,26 +52,14 @@ namespace SwpTrmLib
     //     SaleApplInfo is information used in the LoginRequest towards the terminal.
     public class SaleApplInfo
     {
-        private string saleCapabilities;
         public string ProviderIdentification { get; set; }
         public string ApplicationName { get; set; }
         public string SoftwareVersion { get; set; }
         public string POIID { get; set; }
-        //
         // Summary:
-        //     Default SaleCapabilities will implement and start a listener on configured port.
-        //     To use Client Only Mode use onlye value PrinterReceipt.
+        //     Default SaleCapabilities will result in a listener being started on a configured port.
+        //     To use Client Only Mode use only the value SaleCapabilitiesEnum.PrinterReceipt.
         public string SaleCapabilities
-        {
-            get
-            {
-                return (saleCapabilities != null) ? saleCapabilities : ($"{SaleCapabilitiesEnum.CashierStatus} {SaleCapabilitiesEnum.CashierError} {SaleCapabilitiesEnum.CashierDisplay} " + $"{SaleCapabilitiesEnum.POIReplication} {SaleCapabilitiesEnum.CustomerAssistance} {SaleCapabilitiesEnum.CashierInput} {SaleCapabilitiesEnum.CustomerDisplay} " + $"{SaleCapabilitiesEnum.PrinterReceipt} {SaleCapabilitiesEnum.CustomerError}");
-            }
-            set
-            {
-                saleCapabilities = value;
-            }
-        }
         public SaleTerminalEnvironment SaleTerminalEnvironment { get; set; }
     }
 }

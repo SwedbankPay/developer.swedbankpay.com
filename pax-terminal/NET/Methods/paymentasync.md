@@ -9,12 +9,12 @@ description: |
 
 Synchronous versions
 
-*   void Payment(decimal totalamount,decimal cashback=0, string currency="SEK")
+*   void Payment(decimal totalamount,decimal cashback=0, string currency="")
 *   void Payment([`TransactionSetup`][transactionsetup] setup)
 
 Asynchronous versions
 
-*   async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="SEK")
+*   async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="")
 *   async Task\<PaymentRequestResult\> PaymentAsync([`TransactionSetup`][transactionsetup] setup)
 
 ### Description
@@ -29,7 +29,7 @@ Use parameter of type `TransactionSetup` if a reference need to be set to track 
 |:-------- |:-------------- |:--------------- |
 | decimal |**totalamount**|Includes possible cashback amount.|
 | decimal |**cashback**|Part of total amount that will be handed to customer.|
-| string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".|
+| string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is the currency of the UICulture specified in call to [`Create`][create] method".|
 | **Alternatively**| |
 |[TransactionSetup][transactionsetup]|**setup**| Object holding several parameters to be used for transaction. Default values for all members. Only populate what is relevant.|
 
@@ -288,3 +288,4 @@ TVR:          0000008001
 ```
 
 [transactionsetup]: /pax-terminal/NET/transactionsetup
+[create]: /pax-terminal/NET/Methods/create

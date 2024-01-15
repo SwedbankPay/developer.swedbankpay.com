@@ -102,7 +102,7 @@ The EventNotificationHandler callback occurs when running as a server and the te
 
 This callback occurs when a synchronous method call has been used and that call has resulted in a response from the terminal.
 
-e.g. A call to Payment() will eventually result in this callback method with `PaymentRequestResult` as the result parameter.
+e.g. A call to Payment() will eventually result in this callback method with [`PaymentRequestResult`][paymentrequestresult] as the result parameter.
 
 ```c#
 public void SyncRequestResult(object result)
@@ -146,3 +146,4 @@ public enum RequestResultTypes
 ```
 
 [clientonly]: ../CodeExamples/#as-client-only
+[paymentrequestresult]: /pax-terminal/NET/paymentrequestresult

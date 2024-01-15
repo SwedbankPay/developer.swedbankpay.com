@@ -26,7 +26,7 @@ The Refund / RefundAsync should be called when the amount is known. It opens all
 |:-------- |:-------------- |:--------------- |
 | decimal |**amount**|Amount to refund.|
 | string |**apmreference**|A reference if the transaction was made using APM. When this reference is not null, APM is assumed.|
-| string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".|
+| string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is the currency of the UICulture specified in call to [`Create`][create] method".
 | or | |
 |[TransactionSetup][transactionsetup]|**setup**| Object holding several parameters to be used for transaction. Default values for all members. Only populate what is relevant.|
 
@@ -55,4 +55,5 @@ body="After RefundAsync returns there has to be a delay before next request can 
 %}
 
 [transactionsetup]: /pax-terminal/NET/transactionsetup
-[paymentrequestresult]: ./paymentasync
+[paymentrequestresult]: /pax-terminal/NET/Methods/paymentasync
+[create]: /pax-terminal/NET/Methods/create

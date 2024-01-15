@@ -26,12 +26,12 @@ Before call to Open make sure to provide the ip address and port of the terminal
         .
         .
         .
-        public async Task OpenTerminalForUse(string poiid=string.Emtpy)
+        public async Task OpenTerminalForUse()
         {
             if (TerminalAddressAndPort != string.Empty && PAX != null)
             {
                 PAX.TerminalAddress = TerminalAddressAndPort;
-                OpenResult result = await PAX.OpenAsync(poiid);
+                OpenResult result = await PAX.OpenAsync();
                 if (result.Result == ResponseResult.Success)
                 {
                     // A login session with the terminal has now been established and the terminal may be used.
@@ -53,17 +53,16 @@ Before call to Open make sure to provide the ip address and port of the terminal
     class PaxImplementation : ISwpTrmCallbackInterface
     {
         public ISwpTrmIf_1 PAX = {get; internal set; } = null;
-        public string Poiid = string.Empty;
         public string TerminalAddressAndPort {get; set; } // <ip>:<port>
         .
         .
         .
-        public async Task OpenTerminalForUse(string poiid=string.Emtpy)
+        public void OpenTerminalForUse()
         {
             if (TerminalAddressAndPort != string.Empty && PAX != null)
             {
                 PAX.TerminalAddress = TerminalAddressAndPort;
-                PAX.Open(poiid);
+                PAX.Open();
             }
         }
 

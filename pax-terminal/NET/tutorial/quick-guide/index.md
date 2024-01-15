@@ -2,12 +2,12 @@
 title: Quick Guide
 description: Quick guide to get going from scratch making a transaction
 permalink: /:path/
-menu_order: 10
+menu_order: 60
 icon:
     content: play_circle
     outlined: true
 ---
-### Create an instance of PAXTrmImp_1
+## Create an instance of PAXTrmImp_1
 
 PAXTrmImp_1 is the main class used and is created by calling the static method [create][create] which returns an interface, ISwpTrmIf_1, to the created instance. The create method requires a reference to an [`ISwpTrmCallbackInterface`][iswptrmcallbackinterface] which in this case is implemented in the PaxImplementation class.
 
@@ -36,6 +36,11 @@ public class PaxImplementation : ISwpTrmCallBackInterface
 .
 
 ```
+
+{%include alert.html type="warning" header="Important!" icon="warning"
+body="Remember that EventCallback and PrintRequestEventCallback must be implemented together with the ConfirmationHandler. They are needed in case a transaction need signature approval." %}
+
+## Closer look at SwpIfConfig
 
 {:.code-view-header}
 **A peek at SwpIfConfig and the defaults**

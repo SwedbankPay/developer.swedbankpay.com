@@ -9,9 +9,14 @@ menu_order: 30
 
 ### Payment
 
-During a login session you may make several payments. There are synchronous and asynchronous versions for starting a [payment][payment] but there are two function signatures the variants. A normal payment may be started just supplying one parameter, amount. To that call it is actually three parameters, amount, cashback and currency, but they are default. The cashback is included in amount and is zero if not. Currency is "SEK" default, but will in next version of the SDK be default the local currency.
+During a login session you may make several payments. There are synchronous and asynchronous versions for starting a [payment][payment] but there are two function signatures for both versions. A normal payment may be started just supplying one parameter, amount. To that call it is actually three parameters, amount, cashback and currency, but they are default. The cashback is included in the amount and is zero if not. The default currency is the currency of the culture provided in the call to the [`Create`][create] method.
 
 It is also possible to start a payment supplying a [`TransactionSetup`][transactionsetup] object which opens up for other variants, such as fuel, refund of APM transaction, or just supplying a transaction id the may be tracked in reports.
+
+Regardless how the payment is done the result is always deliverd as a [`PaymentRequestResult`][paymentrequestresult].
+
+{%include alert.html type="warning" icon="warning" header="Heads up!"
+body="Make sure to always print the terminal receipt when it is included in the result."%}
 
 {:.code-view-header}
 **Using PaymentAsync and just the amount.**
@@ -24,7 +29,7 @@ It is also possible to start a payment supplying a [`TransactionSetup`][transact
         .
         .
         // PAX is an instance of PAXTrmImp_1
-        private void SomewhereInYourCode(decimal total)
+        private async Task SomewhereInYourCode(decimal total)
         {
             PaymentRequestResult result = await PAX.PaymentAsync(total);
 
@@ -54,8 +59,12 @@ It is also possible to start a payment supplying a [`TransactionSetup`][transact
         }
 ```
 
-{%include alert.html type="warning" header="Heads up!" body="Make sure to check ErrorCondition if `NexoRequestResult.Failure`.
+{%include alert.html type="warning" icon="warning" header="Heads up!" body="Make sure to check ErrorCondition if `NexoRequestResult.Failure`.
 NotAllowed means most likely that a login is required and Busy that you need to retry. After a payment response the terminal is busy for approximately three seconds."%}
+
+### Synchronous version of Payment
+
+When using the synchronous the result is received in the callback `SyncRequestResult`. Since all synchronous calls returns the result in the same callback, the type of result has to be decided by checking the object type name.
 
 {:.code-view-header}
 **Using synchronous Payment and just the amount.**
@@ -111,3 +120,5 @@ NotAllowed means most likely that a login is required and Busy that you need to 
 
 [payment]: /pax-terminal/NET/Methods/paymentasync
 [transactionsetup]: /pax-terminal/NET/transactionsetup
+[paymentrequestresult]: /pax-terminal/NET/paymentrequestresult
+[create]: /pax-terminal/NET/tutorial/quick-guide/
