@@ -2,8 +2,9 @@
 title: Payment
 description: |
  Once there is a login session it is possible to make payment or refund.
-permalink: /:path/payment/
-redirect_from: /:path/payment
+permalink: /pax-terminal/NET/tutorial/quick-guide/payment/
+hide_from_sidebar: true
+redirect_from: /pax-terminal/NET/tutorial/quick-guide/payment
 menu_order: 30
 ---
 
@@ -117,6 +118,8 @@ When using the synchronous the result is received in the callback `SyncRequestRe
             }
         }
 ```
+
+{% include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/" prev_title="Back" %}
 
 [payment]: /pax-terminal/NET/Methods/paymentasync
 [transactionsetup]: /pax-terminal/NET/transactionsetup

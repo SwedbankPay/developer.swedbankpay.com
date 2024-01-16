@@ -1,9 +1,12 @@
 ---
-redirect_from: /pax-terminal/NET/Methods
+redirect_from: /pax-terminal/NET/SwpTrmLib/Methods
 permalink: /:path/
 title: ISwpTrmIf_1 Methods
 menu_order: 10
 ---
+
+{% include card-list.html %}
+
 ### Create
 
 The [Create method][create-method] is the first method to be called.
