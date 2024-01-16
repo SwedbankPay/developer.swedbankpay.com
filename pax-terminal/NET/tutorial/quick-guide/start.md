@@ -1,7 +1,8 @@
 ---
 title: Start
 description: Start is the first function to call after Create.
-permalink: /:path/start
+permalink: /pax-terminal/NET/tutorial/quick-guide/start
+hide_from_sidebar: true
 menu_order: 10
 ---
 
@@ -65,5 +66,5 @@ namespace SwpTrmLib
 }
 ```
 
-{% include iterator.html next_href="/pax-terminal/NET/tutorial/Quick-guide/open" next_title="Next" %}
-{% include iterator.html prev_href="/pax-terminal/NET/tutorial/Quick-guide/" prev_title="Back" %}
+{% include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/open" next_title="Next" %}
+{% include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/" prev_title="Back" %}

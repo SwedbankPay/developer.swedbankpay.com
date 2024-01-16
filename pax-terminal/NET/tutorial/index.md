@@ -1,9 +1,8 @@
 ---
-title: Quick Guide and Use Cases
-description: Step by step guidance and differnet use cases 
+title: Tutorials and Use Cases
 permalink: /:path/
-menu_order: 50
+description: Easy understanding with tutorials. Quick guide to get started.
 ---
-Here you find the quick guide and some use case that may speed up the development process.
+### Click on cards to get detailed information
 
 {% include card-list.html %}

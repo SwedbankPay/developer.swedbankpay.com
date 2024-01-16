@@ -1,7 +1,8 @@
 ---
 title: Quick Guide
 description: Quick guide to get going from scratch making a transaction
-permalink: /:path/
+permalink: /pax-terminal/NET/tutorial/quick-guide/
+hide_from_sidebar: true
 menu_order: 60
 icon:
     content: play_circle
