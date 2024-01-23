@@ -38,6 +38,7 @@ data in compliance with GDPR, but you won't have to worry about handling
 sensitive card info.
 
 ## Use Cases
+
 <div class="row mt-4">
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
        <a href="/checkout-v3/use-cases/recurring" class="dx-card">
@@ -82,11 +83,6 @@ below to read more." %}
 | ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
-
-## What's new in the documentation
-
-  {% include release_notes.html num_dates=3 %}
-  <a href="/checkout-v3/resources/release-notes">See full release notes</a>
 
 ## Resources
 
