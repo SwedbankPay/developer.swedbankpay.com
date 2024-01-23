@@ -1,26 +1,27 @@
 
 ## Supported Payment Instruments
 
-Looking to get started with subscription services? They are currently supported
+Looking to get started with recurring services? They are currently supported
 in Digital Payments using these instruments:
 
 *   Card payments
-*   Trustly payments
 
 ## Step 1: Create a Payment Order
 
-To initiate subscription services, create a payment order with Swedbank Pay.
+To initiate recurring services, create a payment order with Swedbank Pay.
 This can be done by making an initial purchase, storing user details along with
 the transaction, or performing a `Verify` operation for account verification.
 `Verify` is a zero-sum operation used solely for registering details for future
 use.
 
-## Step 2: Choose Subscription Model and Token
+## Step 2: Choose Recurring Model and Token
 
-Identify the subscription model and token type based on your needs. We support
-both dynamic and static prices and intervals. Use the `RecurrenceToken` flow for
-constant price and interval subscriptions, and the `UnscheduledToken` flow for
-variable services or goods.
+Identify the recurring model and token type based on your needs. We support both
+dynamic and static prices and intervals. Use the `RecurrenceToken` flow for
+recurring payments with a constant price and interval, and the
+`UnscheduledToken` flow for variable services or goods. We **highly** recommend
+using the `Unscheduled` option, as it gives you flexibility regarding changes
+in amount and interval.
 
 From a technical standpoint, both flows work identically, with the differences
 lying in usage areas and limitations set for merchants and expectations from
@@ -51,8 +52,8 @@ Content-Type: application/json;version=3.1/3.0/2.0
 "userAgent": "Mozilla/5.0...",
 "language": "sv-SE",
 "productName": "Checkout3",
-"generateRecurrenceToken": "true | false",
-"generateUnscheduledToken": "true | false"
+"generateUnscheduledToken": "true | false",
+"generateRecurrenceToken": "true | false"
     }
 }
 ```
@@ -81,8 +82,8 @@ Content-Type: application/json;version=3.1/3.0/2.0
 "userAgent": "Mozilla/5.0...",
 "language": "sv-SE",
 "productName": "Checkout3",
-"generateRecurrenceToken": "true | false",
-"generateUnscheduledToken": "true | false"
+"generateUnscheduledToken": "true | false",
+"generateRecurrenceToken": "true | false"
     }
 }
 ```
@@ -107,13 +108,13 @@ api-supported-versions: 3.1/3.0/2.0
     "number": 40126707630, // Transaction number associated with the action
     "tokens":[
         {
-          "type": "recurrence",
+          "type": "unscheduled",
           "token": "e9e61882-7655-4023-adb1-a46b52e786b4",
           "name": "522661******3406",
           "expiryDate": "12/2033"
         },
         {
-          "type": "unscheduled",
+          "type": "recurrence",
           "token": "812db58a-a10e-4a96-80f2-8247ce2bc8d9",
           "name": "522661******3406",
           "expiryDate": "12/2033"
@@ -129,9 +130,9 @@ Now that your customer has stored their details and you've retrieved their
 token, you are ready to start charging based on the agreed-upon details (price &
 interval). Modify the parameters in the `Purchase`/`Verify` request as follows:
 
-*   Operation: Use either `Recur` or `UnscheduledPurchase` based on the stored
-    token. Modify the parameter `generateRecurrenceToken` or
-    `generateUnscheduledToken` into `recurrenceToken` or `unscheduledToken`:
+*   Operation: Use either `UnscheduledPurchase` or `Recur` based on the stored
+    token. Modify the parameter `generateUnscheduledToken` or
+    `generateRecurrenceToken` into `unscheduledToken` or `recurrenceToken`:
     "{{ insert-token-here }}".
 
 *   URL: `CallbackUrl` is mandatory and will send you an asynchronous `POST` to
@@ -153,7 +154,7 @@ interval). Modify the parameters in the `Purchase`/`Verify` request as follows:
 
 *   Deletion of a singular token:
 
-Use the URL `/psp/paymentorders/recurrenceTokens/<TokenValue>`.
+Use the URL `/psp/paymentorders/unscheduledTokens/<TokenValue>`.
 
 *   Both scenarios generate the same response.
 
@@ -185,8 +186,8 @@ api-supported-versions: 3.1/3.0/2.0
 If you would like to read more in depth about each specific instance, we have
 compiled relevant documentation below.
 
-*   Generation of tokens (with value): [Recur][recur],
-    [Unscheduled][unscheduled]
+*   Generation of tokens (with value): [Unscheduled][unscheduled],
+    [Recur][recur]
 
 *   [Verify][verify] (operation to store details with no sum).
 
