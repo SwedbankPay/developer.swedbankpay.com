@@ -938,7 +938,7 @@ integration and the payer.
 [credit]: /old-implementations/payment-instruments-v1/card
 [custom-styling]: /checkout-v3/features/optional/custom-styling
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
-[data-protection]: /checkout-v3/resources/data-protection
+[data-protection]: /old-implementations/checkout-v2/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
