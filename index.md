@@ -52,17 +52,34 @@ hide_from_sidebar: true
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
           {% include card.html title='Contact Us'
-              text='Before you start, you can get in touch with our Sales department to find the perfect solution for your needs'
+              text='Get in touch with our sales department to make sure that your needs are covered'
               icon_content='email'
               icon_outlined=true
               to="mailto:sales.swedbankpay@swedbank.se"
           %}
       </div>
-      <div class="{{ card_col_class }}">
-          {% include card.html title='Partners'
-              text='A lot of partners help us deliver the best payment experience. Get to know them all here'
+            <div class="{{ card_col_class }}">
+          {% include card.html title='Denmark'
+              text='Get to know the Danish partners who help us deliver the best payment experience'
               icon_content='handshake'
-              to='/checkout-v3/resources/partners'
+              icon_outlined=true
+              to='https://www.swedbankpay.dk/partners'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Norway'
+              text='Get to know the Norwegian partners who help us deliver the best payment experience'
+              icon_content='handshake'
+              icon_outlined=true
+              to='https://www.swedbankpay.no/partners'
+          %}
+      </div>
+      <div class="{{ card_col_class }}">
+          {% include card.html title='Sweden'
+              text='Get to know the Swedish partners who help us deliver the best payment experience'
+              icon_content='handshake'
+              icon_outlined=true
+              to='https://www.swedbankpay.se/partners'
           %}
       </div>
   </div>
