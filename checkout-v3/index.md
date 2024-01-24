@@ -88,7 +88,7 @@ below to read more." %}
 
 <div class="row mt-4">
     <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-       <a href="/checkout-v3/resources/development-guidelines/" class="dx-card">
+       <a href="/checkout-v3/modules-sdks/development-guidelines/" class="dx-card">
          <span class="dx-card-icon">
             <i class="material-icons-outlined">
                 account_circle

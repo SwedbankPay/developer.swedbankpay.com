@@ -42,10 +42,10 @@ If you choose option 3 (forking the repository), then please read on.
 *   [Push][push] the branch to your [forked repository (remote)][remote].
 *   Submit a pull request for the pushed branch.
 
-[coc]: /checkout-v3/resources/development-guidelines/code-of-conduct
+[coc]: /checkout-v3/modules-sdks/development-guidelines/code-of-conduct
 [github]: https://github.com/join
 [branching]: https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
 [commit]: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
-[commit-practice]: /checkout-v3/resources/development-guidelines/good-commit-practice
+[commit-practice]: /checkout-v3/modules-sdks/development-guidelines/good-commit-practice
 [push]: https://git-scm.com/docs/git-push
 [remote]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
