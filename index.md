@@ -7,7 +7,7 @@ front_page:
 hide_from_sidebar: true
 ---
 
-{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
+{% assign card_col_class="col-xl-6 col-lg-6" %}
 
 {% contentfor intro_cards %}
   <h2 id="front-page-contact-partners" class="heading-line">Products</h2>
@@ -45,7 +45,7 @@ hide_from_sidebar: true
           %}
 {% endcontentfor %}
 
-{% assign card_col_class="col-xxl-3 col-xl-6 col-lg-6" %}
+{% assign card_col_class="col-xl-6 col-lg-6" %}
 
 {% contentfor extras %}
   <h2 id="front-page-contact-partners" class="heading-line">Contact & Partners</h2>
