@@ -119,7 +119,7 @@ below to read more." %}
     </div>
     <div class="col-xl-6 col-lg-6 d-flex">
       <a href="/checkout-v3/resources/terminology" class="cards cards-primary">
-         <span class="cards-iconn">
+         <span class="cards-icon">
             <i class="material-icons">
                 menu_book
             </i>
