@@ -75,7 +75,6 @@ SDKs are often used as a building block to construct a *Module*.
 |     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]         | [`…sdk-ios`][ios-repo]         |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]     | [`…sdk-dotnet`][dotnet-repo]   |
 |     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]         | [`…sdk-php`][php-repo]         |
-|      ![JS][js-icon]      | [Swedban k Pay SDK for JavaScript][js-link]  | [`…sdk-js`][js-repo]           |
 
 ## Official Libraries
 
@@ -87,7 +86,6 @@ SDKs are often used as a building block to construct a *Module*.
 {:.table .table-striped}
 |            Platform      | Library                                                     | Repository                            |
 | :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
-| ![Magento][magento-icon] | [Swedbank Pay Core plugin for Magento 2][magento-core-link] | [`…magento2-core`][magento-core-repo] |
 | ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]   | [`…woocommerce-core`][woo-core-repo]  |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]         | [`…sdk-dotnet`][dotnet-repo]          |
 
