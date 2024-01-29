@@ -35,8 +35,10 @@ Before call to Open make sure to provide the ip address and port of the terminal
                 OpenResult result = await PAX.OpenAsync();
                 if (result.Result == ResponseResult.Success)
                 {
-                    // A login session with the terminal has now been established and the terminal may be used.
-                    // Serialnumber prefix may be used to identify what type of terminal 171=A30/229=A35/185=A920
+                    // A login session with the terminal has now been established
+                    // and the terminal may be used. Serialnumber prefix may be 
+                    // used to identify what type of terminal 171=A30/229=A35/185=A920
+                    // 
                     
                 }
                 else
@@ -91,4 +93,4 @@ Before call to Open make sure to provide the ip address and port of the terminal
 {%include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/payment" next_title="Next"%}
 {%include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/start" prev_title="Back"%}
 
-[open]: /pax-terminal/NET/Methods/openasync.md
+[open]: /pax-terminal/NET/swptrmlib/openasync.md

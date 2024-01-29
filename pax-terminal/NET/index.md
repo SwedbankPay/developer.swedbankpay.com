@@ -2,7 +2,6 @@
 section: NET
 title: Introduction and Overview
 permalink: /:path/
-redirect_from: /pax-terminal/NET
 description: |
     Use the .NET SDK to quickly and easy integrate with the terminal from your POS solution. The aim of the SDK is to minimize the work effort for both users and Swedbank Pay.
 menu_order: 1500
@@ -45,6 +44,6 @@ body= "Do not wrap the synchronous calls in async await since the methods themse
 
 {% include card-list.html %}
 
-[default-style]: /pax-terminal/NET/CodeExamples/#as-client-and-server
-[client-style]: /pax-terminal/NET/CodeExamples/#as-client-only
-[syncrequestresult]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/#syncrequestresult
+[default-style]: /pax-terminal/NET/codeexamples/#as-client-and-server
+[client-style]: /pax-terminal/NET/codeexamples/#as-client-only
+[syncrequestresult]: /pax-terminal/NET/swptrmlib/iswptrmcallbackinterface/#syncrequestresult

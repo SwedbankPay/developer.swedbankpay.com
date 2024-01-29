@@ -64,5 +64,5 @@ namespace SwpTrmLib
 {% include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/start" next_title="Next" %}
 {%include iterator.html prev_href="/pax-terminal/NET/tutorial/" prev_title="Back"%}
 
-[create]: /pax-terminal/NET/Methods/create
-[iswptrmcallbackinterface]: /pax-terminal/NET/ISwpTrmCallbackInterface
+[create]: /pax-terminal/NET/swptrmlib/methods/create
+[iswptrmcallbackinterface]: /pax-terminal/NET/swptrmlib/iswptrmcallbackinterface

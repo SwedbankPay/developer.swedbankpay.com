@@ -121,7 +121,7 @@ When using the synchronous the result is received in the callback `SyncRequestRe
 
 {% include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/" prev_title="Back" %}
 
-[payment]: /pax-terminal/NET/Methods/paymentasync
-[transactionsetup]: /pax-terminal/NET/transactionsetup
-[paymentrequestresult]: /pax-terminal/NET/paymentrequestresult
-[create]: /pax-terminal/NET/tutorial/quick-guide/
+[payment]: /pax-terminal/NET/swptrmlib/Methods/paymentasync
+[transactionsetup]: /pax-terminal/NET/includes/transactionsetup
+[paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult
+[create]: /pax-terminal/NET/swptrmlib/methods/create

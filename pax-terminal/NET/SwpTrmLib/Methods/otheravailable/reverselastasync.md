@@ -1,9 +1,12 @@
 ---
 title: ReverseLast
-permalink: /:path/reversalastasync/
+permalink: /:path/reversalastasync
 description: |
-    ReverseLast / ReverseLastAsync will reverse the last transaction made if it was approved.
-
+    ReverseLast will reverse the last transaction made if it was approved.
+icon:
+    content: undo
+    outlined: true
+menu_order: 100
 ---
 ### Method Signatures
 
