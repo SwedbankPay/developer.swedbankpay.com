@@ -1,8 +1,11 @@
 ---
 title: RequestToDisplay
-permalink: /:path/requesttodisplayasync/
+permalink: /:path/requesttodisplayasync
 description: |
-    Call RequestToDisplay / RequestToDispalyAsync to display a message on the terminal.
+    This method makes it possible to display a message in the terminal display.
+icon:
+    content: capture
+    outlined: true
 ---
 ### Method Signatures
 

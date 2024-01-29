@@ -1,10 +1,14 @@
 ---
-redirect_from: /pax-terminal/NET/Events
+redirect_from: /pax-terminal/NET/events
 title: Events of ISwpTrmIf_1
 permalink: /:path/
 description: |
     Events are mainly when the terminal sends request to the sale system. See also the callback EventCallback
+hide_from_sidebar: true
 menu_order: 30
+icon:
+  content: flash_on
+  outlined: true
 ---
 
 ## Events
@@ -36,4 +40,4 @@ The event is only relevant when running as a server.
 
 `delegate void TerminalAddressEventHandler(string ip4, int port)`
 
-[eventcallback]: ../ISwpTrmCallbackInterface
+[eventcallback]: ../iswptrmcallbackinterface

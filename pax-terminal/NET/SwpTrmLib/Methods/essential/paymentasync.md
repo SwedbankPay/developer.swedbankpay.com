@@ -1,20 +1,23 @@
 ---
 title: Payment
-permalink: /:path/paymentasync/
+permalink: /:path/paymentasync
 description: |
-  The Payment / PaymentAsync should be called when the amount is known.
-
+  The Payment method is called to make a purchase transaction when the amount is known.
+icon:
+    content: credit_card
+    outlined: true
+menu_order: 60
 ---
 ### Method Signatures
 
 Synchronous versions
 
-*   void Payment(decimal totalamount,decimal cashback=0, string currency="SEK")
+*   void Payment(decimal totalamount,decimal cashback=0, string currency="")
 *   void Payment([`TransactionSetup`][transactionsetup] setup)
 
 Asynchronous versions
 
-*   async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="SEK")
+*   async Task\<PaymentRequestResult\> PaymentAsync(decimal totalamount,decimal cashback=0, string currency="")
 *   async Task\<PaymentRequestResult\> PaymentAsync([`TransactionSetup`][transactionsetup] setup)
 
 ### Description
@@ -29,7 +32,7 @@ Use parameter of type `TransactionSetup` if a reference need to be set to track 
 |:-------- |:-------------- |:--------------- |
 | decimal |**totalamount**|Includes possible cashback amount.|
 | decimal |**cashback**|Part of total amount that will be handed to customer.|
-| string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is "SEK".|
+| string |**currency**|Currency code as a string representing ISO-4217 3 letter code. Has to be available in the terminal setup. The default is the currency of the UICulture specified in call to [`Create`][create] method".|
 | **Alternatively**| |
 |[TransactionSetup][transactionsetup]|**setup**| Object holding several parameters to be used for transaction. Default values for all members. Only populate what is relevant.|
 
@@ -56,41 +59,14 @@ If `ResponseResult` is `Failure` there is an `ErrorCondition`. If `ErrorConditio
 
 Make sure to always print the customer's receipt when available. For an aborted PaymentAsync there might not be one available.
 
-{% include alert.html type="warning" icon="warning" header="Heads up"
-body="After PaymentAsync returns there has to be a delay before next request can be made. If there is no delay the next request will fail, indicating busy and retries have to be made."
+{% include alert.html type="informative" icon="info" header="Note"
+body="The SDK will automatically make three retries when the terminal responds busy."
 %}
 
-```c#
-public class NexoRequestResult
-{
-  public virtual string ResponseContent { get; set; }
-  public NexoResponseResult ResponseResult { get; set; }
-  public string ErrorCondition { get; set; }
-  public string ResponseText { get; set; }
-}
+{% include pax-paymentrequestresult.md %}
 
-public class PaymentRequestResult : NexoRequestResult
-{
-    public PaymentRequestResult();
-
-    public JObject CustomerReceiptData { get; set; }
-    public JObject MerchantReceiptData { get; set; }
-    public string FormattedReceipt { get; set; }
-    public string ReceiptBlob { get; set; }
-    public string ReceiptBlobNoHeader {get; set; } 
-    public JObject SettlementData { get; set; }
-    public XElement OriginalTransaction { get; set; }
-    public string UICulture { get; set; }
-    public decimal TipAmount { get; set; }
-    public string APMReference { get; set; }
-    public string APMType { get; set; }
-    public override string ResponseContent { get; set; }
-}
-```
-
-{%include alert.html type="warning" icon="warning" header="Client Only Mode"
-body="If Login was made without SaleCapabilites `CashierInput`, the cashier receipt json object indicates
- if a receipt need to be signed by customer. If SignatureBlock is true, the customer need to sign the receipt."%}
+{% include alert.html type="warning" icon="warning" header="Client Only Mode" body="If Login was made without SaleCapabilites `CashierInput`, the cashier receipt json object indicates
+ if a receipt need to be signed by customer. Make sure to check if IsCVMSignature is true, then customer needs to sign the receipt." %}
 
 ### ResponseContent - The Complete nexo Response Message
 
@@ -287,4 +263,5 @@ TVR:          0000008001
       KUNDENS EX.       
 ```
 
-[transactionsetup]: /pax-terminal/NET/transactionsetup
+[transactionsetup]: /pax-terminal/NET/includes/transactionsetup
+[create]: /pax-terminal/NET/Methods/create

@@ -1,7 +1,12 @@
 ---
 title: ISwpTrmCallbackInterface
-description: 
+permalink: /:path/
+description: Two callbacks are a must to implement in order to pass tests for a signature verified transaction.
+hide_from_sidebar: true
 menu_order: 20
+icon:
+  content: reply
+  outlined: true
 ---
 
 The callbacks are mostly used if running as a server or using the synchronous methods. There are however two callbacks that always need to be implemented and are used when the customer need to sign the receipt. Those two are `ConfirmationHandler` and `EventCallback` for the `PrintRequestEventCallback`.
@@ -102,7 +107,7 @@ The EventNotificationHandler callback occurs when running as a server and the te
 
 This callback occurs when a synchronous method call has been used and that call has resulted in a response from the terminal.
 
-e.g. A call to Payment() will eventually result in this callback method with `PaymentRequestResult` as the result parameter.
+e.g. A call to Payment() will eventually result in this callback method with [`PaymentRequestResult`][paymentrequestresult] as the result parameter.
 
 ```c#
 public void SyncRequestResult(object result)
@@ -145,4 +150,5 @@ public enum RequestResultTypes
     }
 ```
 
-[clientonly]: ../CodeExamples/#as-client-only
+[clientonly]: /pax-terminal/NET/codeexamples/#as-client-only
+[paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult
