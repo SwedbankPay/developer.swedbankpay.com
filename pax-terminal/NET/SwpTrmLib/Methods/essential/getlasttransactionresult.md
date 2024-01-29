@@ -1,8 +1,12 @@
 ---
 title: GetLastTransactionResult
-permalink: /:path/getlasttransactionresult/
+permalink: /:path/getlasttransactionresult
 description: |
     GetLastTransactionResult / GetLastTransactionResultAsync is useful if the original payment or refund response is lost
+icon:
+    content: replay
+    outlined: true
+menu_order: 80
 ---
 ### Signatures
 

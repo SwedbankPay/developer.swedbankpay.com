@@ -1,8 +1,12 @@
 ---
 title: Start
-permalink: /:path/start/
+permalink: /:path/start
 description: |
-    The Start method initializes the created instance and starts a listener if desired and if not already started.  
+    The Start method initializes the created instance and starts a listener if desired and if not already started.
+icon:
+    content: flag
+    outlined: true
+menu_order: 15
 ---
 ### Method Signature
 

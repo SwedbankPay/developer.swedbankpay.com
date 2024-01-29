@@ -1,8 +1,12 @@
 ---
 title: Close
-permalink: /:path/closeasync/
+permalink: /:path/closeasync
 description: |
-    The Close/CloseAsync method sends a LogoutRequest to terminate the login session and allow for maintenance.
+    This method sends a LogoutRequest to terminate the login session and allow for maintenance.
+icon:
+    content: disabled_by_default
+    outlined: true
+menu_order: 90
 ---
 ### Method Signatures
 

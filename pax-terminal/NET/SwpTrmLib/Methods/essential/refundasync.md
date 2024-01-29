@@ -1,8 +1,12 @@
 ---
 title: Refund
-permalink: /:path/refundasync/
+permalink: /:path/refundasync
 description: |
-    The Refund / RefundAsync should be called when the amount is known.
+    The Refund method sends a PaymentRequest for refund and should be called when the amount is known.
+icon:
+    content: credit_card
+    outlined: true
+menu_order: 70
 ---
 ### Method Signatures
 
@@ -50,10 +54,10 @@ A **PaymentRequestResult** - [Detailed description][paymentrequestresult]
 A `PayementRequestResult.ResponseResult` of value `Success` means transaction approved.
 If `ResponseResult` is `Failure` there is an `ErrorCondition`. If `ErrorCondition` is `Busy` wait awhile and try again.
 
-{% include alert.html type="warning" icon="warning" header="Heads up"
-body="After RefundAsync returns there has to be a delay before next request can be made. If there is no delay the next request will fail, indicating that the terminal is busy and retries have to be made."
+{% include alert.html type="informative" icon="info" header="Note"
+body="The SDK will automatically make three retries when the terminal responds busy."
 %}
 
-[transactionsetup]: /pax-terminal/NET/transactionsetup
-[paymentrequestresult]: /pax-terminal/NET/Methods/paymentasync
-[create]: /pax-terminal/NET/Methods/create
+[transactionsetup]: /pax-terminal/NET/includes/transactionsetup
+[paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult
+[create]: /pax-terminal/NET/swptrmlib/methods/create

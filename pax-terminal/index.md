@@ -2,7 +2,6 @@
 section: Payment Terminals
 sidebar_icon: point_of_sale
 title: Introduction
-redirect_from: /checkout-v3/resources/ecom
 permalink: /:path/
 menu_order: 3
 ---

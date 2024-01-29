@@ -44,11 +44,11 @@ namespace SwpTrmLib {
 | APMType | Name of APM that was chosen. |
 | ApprovalCode | Approval code for the card authorisation. |
 | CNA | Card Number Alias - a one way hash of the card number. Always the same for a specific card number. May be used for loyalty and digital receipts or such to identify and store a card. |
-| CustomerReceiptData | Json object as returned from terminal, containing receipt data. |
+| CustomerReceiptData | Json object as returned from terminal, containing receipt data. Prefere using the ReceiptBlob.|
 | ErrorCondition | Is valid if `ResponseResult` is `Failure` and describes the reason for failure.
 | FormattedReceipt | comma separated strings with receipt lines that may be used. |
 | IsCVMSignature | Indicates whether the receipt need customer signing or not. |
-| MerchantReceiptData | Json object as returned from terminal, containing receipt data. |
+| MerchantReceiptData | Json object as returned from terminal, containing receipt data. Prefere using the ReceiptBlob.|
 | OriginalTransaction | Identifier to for the transaction to be used if reversal must be made. |
 | PAN | Masked card number. |
 | PaymentType | Indicates if result regards a payment, refund. |
