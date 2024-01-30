@@ -1,7 +1,8 @@
 ---
 title: Quick Guide
 description: Quick guide to get going from scratch making a transaction
-permalink: /pax-terminal/NET/tutorial/quick-guide/
+permalink: /:path/
+redirect_from: /:path/
 hide_from_sidebar: true
 menu_order: 60
 icon:
@@ -64,5 +65,5 @@ namespace SwpTrmLib
 {% include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/start" next_title="Next" %}
 {%include iterator.html prev_href="/pax-terminal/NET/tutorial/" prev_title="Back"%}
 
-[create]: /pax-terminal/NET/swptrmlib/methods/create
+[create]: /pax-terminal/NET/swptrmlib/methods/essential/create
 [iswptrmcallbackinterface]: /pax-terminal/NET/swptrmlib/iswptrmcallbackinterface

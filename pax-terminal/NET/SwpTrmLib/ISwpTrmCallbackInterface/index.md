@@ -1,6 +1,7 @@
 ---
 title: ISwpTrmCallbackInterface
 permalink: /:path/
+redirect_from: /:path/
 description: Two callbacks are a must to implement in order to pass tests for a signature verified transaction.
 hide_from_sidebar: true
 menu_order: 20

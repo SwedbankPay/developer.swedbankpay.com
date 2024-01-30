@@ -2,6 +2,7 @@
 redirect_from: /pax-terminal/NET/events
 title: Events of ISwpTrmIf_1
 permalink: /:path/
+redirect_from: /:path/
 description: |
     Events are mainly when the terminal sends request to the sale system. See also the callback EventCallback
 hide_from_sidebar: true
