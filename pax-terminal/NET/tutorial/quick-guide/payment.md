@@ -2,9 +2,9 @@
 title: Payment
 description: |
  Once there is a login session it is possible to make payment or refund.
-permalink: /pax-terminal/NET/tutorial/quick-guide/payment/
+permalink: /:path/payment/
 hide_from_sidebar: true
-redirect_from: /pax-terminal/NET/tutorial/quick-guide/payment
+redirect_from: /:path/payment/
 menu_order: 30
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Start
 description: Start is the first function to call after Create.
-permalink: /pax-terminal/NET/tutorial/quick-guide/start
+permalink: /:path/start/
 hide_from_sidebar: true
 menu_order: 10
 ---
