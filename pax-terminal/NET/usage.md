@@ -30,4 +30,4 @@ body= "Do not wrap the synchronous calls in async await since the methods themse
 
 [default-style]: /pax-terminal/NET/codeexamples/#as-client-and-server
 [client-style]: /pax-terminal/NET/codeexamples/#as-client-only
-[syncrequestresult]: /pax-terminal/NET/swptrmlib/iswptrmcallbackinterface/#syncrequestresult
+[syncrequestresult]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/#syncrequestresult
