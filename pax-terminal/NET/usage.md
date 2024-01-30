@@ -1,6 +1,7 @@
 ---
 title: Basic Information
 description: Thing to know before you start
+permalink: /:path/usage/
 icon:
     content: info
     outlined: true
