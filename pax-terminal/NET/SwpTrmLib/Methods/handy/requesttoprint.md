@@ -1,6 +1,6 @@
 ---
 title: RequestToPrint
-permalink: /:path/requesttoprint
+permalink: /:path/requesttoprint/
 description: |
     Call RequestToPrint / RequestToPrintAsync to use the A920pro printer.
 icon:

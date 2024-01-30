@@ -45,4 +45,4 @@ TransactionSetup holds properties for a transaction and may be passed as an inpu
 
 ```
 
-[saleitem]: /pax-terminal/NET/saleitem
+[saleitem]: /pax-terminal/NET/includes/saleitem

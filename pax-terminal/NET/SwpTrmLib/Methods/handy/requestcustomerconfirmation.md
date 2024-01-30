@@ -1,6 +1,6 @@
 ---
 title: RequestCustomerConfirmation
-permalink: /:path/requestcustomerconfirmation
+permalink: /:path/requestcustomerconfirmation/
 description: |
     Call RequestCustomerConfirmation / RequestCustomerAsync to ask the customer a yes/no question.
 icon:

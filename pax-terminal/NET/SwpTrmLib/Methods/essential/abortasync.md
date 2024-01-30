@@ -1,6 +1,6 @@
 ---
 title: Abort
-permalink: /:path/abortasync
+permalink: /:path/abortasync/
 description: |
     This method will send an AbortRequest for the last issued request to the terminal.
 icon:

@@ -1,6 +1,6 @@
 ---
 title: Payment
-permalink: /:path/paymentasync
+permalink: /:path/paymentasync/
 description: |
   The Payment method is called to make a purchase transaction when the amount is known.
 icon:
