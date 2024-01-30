@@ -1,6 +1,6 @@
 ---
 title: Refund
-permalink: /:path/refundasync
+permalink: /:path/refundasync/
 description: |
     The Refund method sends a PaymentRequest for refund and should be called when the amount is known.
 icon:

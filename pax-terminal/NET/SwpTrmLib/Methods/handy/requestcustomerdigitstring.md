@@ -1,6 +1,6 @@
 ---
 title: RequestCustomerDigitString
-permalink: /:path/requestcustomerdigitstring
+permalink: /:path/requestcustomerdigitstring/
 description: |
     Use this method to ask the customer to enter a string of digits
 icon:

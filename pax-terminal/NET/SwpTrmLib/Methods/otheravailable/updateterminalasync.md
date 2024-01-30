@@ -1,6 +1,6 @@
 ---
 title: UpdateTerminal
-permalink: /:path/updateterminalasync
+permalink: /:path/updateterminalasync/
 description: |
     The UpdateTerminalAsync method sends a status report to TMS to trigger possible program or parameter fetching    
 ---

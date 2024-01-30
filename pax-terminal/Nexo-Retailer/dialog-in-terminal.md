@@ -35,7 +35,7 @@ The InputRequest has two parts. One for what to be displayed and one for the typ
 Note that when the InputRequest is responded to the terminal goes back to display what was displayed before the request.
 
 {:table .table.striped}
-| Name | Lev | Attribute | Description
+| Name | Lev | Attribute | Description |
 |:---|:--:|:--|:--|
 | InputRequest | 1 | | |
 | DisplayOutput | 2 | Device | Only value is `CustomerDisplay`. |
