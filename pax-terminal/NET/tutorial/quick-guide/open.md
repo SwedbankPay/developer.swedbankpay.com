@@ -3,7 +3,7 @@ title: Open
 description: |
  Open is the first function that actually communicates with the terminal. 
  It sends a LoginRequest which is needed before sending any other message.
-permalink: /pax-terminal/NET/tutorial/quick-guide/open
+permalink: /:path/start/
 hide_from_sidebar: true
 menu_order: 20
 ---
