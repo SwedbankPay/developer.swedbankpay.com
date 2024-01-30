@@ -121,7 +121,7 @@ A display request is executed immediately and cannot be aborted. There will howe
 {% include alert.html type="warning" icon="warning" header="Heads up" body="Sending any request immediately after a PaymentResponse will result in `Failure` and error condition `Busy`. Wait awhile before retry." %}
 
 {:table .table.striped}
-| Name | Lev | Attribute | Description
+| Name | Lev | Attribute | Description |
 |:---|:--:|:--|:--|
 | DisplayRequest | 1 | | |
 | DisplayOutput | 2 | Device | Only value is `CustomerDisplay`. |

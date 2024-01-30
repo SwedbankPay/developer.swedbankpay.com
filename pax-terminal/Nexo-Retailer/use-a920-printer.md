@@ -10,7 +10,7 @@ menu_order: 50
 ---
 When using an A920pro as an integrated payment terminal it is possible to use the printer by sending a `PrintRequest` to the terminal. Typically this would be to print the sale receipt on the A920pro printer.
 
-The `PrintRequest` may be sent at any time during a `login session` when no other request is ongoing. 
+The `PrintRequest` may be sent at any time during a `login session` when no other request is ongoing.
 
 ```mermaid
 sequenceDiagram
@@ -31,7 +31,7 @@ Note left of A920pro: Containing several OutputTexts<br/>with data to print.
 The PrintRequest message may holds attributes for some formatting. The attributes are optinal and if no attributes are set the default settings will be used.
 
 {:table .table.striped}
-| Name | Lev | Attribute | Description
+| Name | Lev | Attribute | Description |
 |:---|:--:|:--|:--|
 | PrintRequest | 1 | | |
 | PrintOutput | 2 | DocumentQualifier | Value: SaleReceipt |
