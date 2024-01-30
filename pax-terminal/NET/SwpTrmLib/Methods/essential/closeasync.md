@@ -1,6 +1,6 @@
 ---
 title: Close
-permalink: /:path/closeasync
+permalink: /:path/closeasync/
 description: |
     This method sends a LogoutRequest to terminate the login session and allow for maintenance.
 icon:

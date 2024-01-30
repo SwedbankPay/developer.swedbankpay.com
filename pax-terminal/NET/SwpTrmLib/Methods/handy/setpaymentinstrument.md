@@ -1,6 +1,6 @@
 ---
 title: SetPaymentInstrument
-permalink: /:path/setpaymentinstrument
+permalink: /:path/setpaymentinstrument/
 description: |
     SetPaymentInstrument starts a payment for supplied paymentInstrument.
 icon:

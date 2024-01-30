@@ -1,6 +1,6 @@
 ---
 title: RequestToDisplay
-permalink: /:path/requesttodisplayasync
+permalink: /:path/requesttodisplayasync/
 description: |
     This method makes it possible to display a message in the terminal display.
 icon:
