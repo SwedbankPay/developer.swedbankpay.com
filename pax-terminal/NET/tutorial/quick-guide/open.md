@@ -93,4 +93,4 @@ Before call to Open make sure to provide the ip address and port of the terminal
 {%include iterator.html next_href="/pax-terminal/NET/tutorial/quick-guide/payment" next_title="Next"%}
 {%include iterator.html prev_href="/pax-terminal/NET/tutorial/quick-guide/start" prev_title="Back"%}
 
-[open]: /pax-terminal/NET/swptrmlib/openasync.md
+[open]: /pax-terminal/NET/swptrmlib/methods/essential/openasync

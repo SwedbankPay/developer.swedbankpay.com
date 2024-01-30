@@ -5,7 +5,7 @@ description: |
   published on this page.
 menu_order: 1
 icon:
-    content: add_circle
+    content: feed
     outlined: true
 
 ---

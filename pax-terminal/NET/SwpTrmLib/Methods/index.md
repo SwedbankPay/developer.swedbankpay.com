@@ -1,6 +1,7 @@
 ---
 redirect_from: /pax-terminal/NET/swptrmlib/methods
 permalink: /:path/
+redirect_from: /:path/
 title: ISwpTrmIf_1 Methods
 description: Several methods are available but of different importance. Find out what needs to be implemented.
 hide_from_sidebar: true
