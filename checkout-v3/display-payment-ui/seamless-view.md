@@ -3,7 +3,7 @@ title: Seamless View
 permalink: /:path/seamless-view/
 description: |
   How to display the Seamless View UI in your webshop.
-menu_order: 5
+menu_order: 6
 ---
 
 ## Display Seamless View
