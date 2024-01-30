@@ -28,6 +28,6 @@ Most available methods have an asynchronous and a synchronous version. Note that
 body= "Do not wrap the synchronous calls in async await since the methods themselves call async methods."
 %}
 
-[default-style]: /pax-terminal/NET/codeexamples/#as-client-and-server
-[client-style]: /pax-terminal/NET/codeexamples/#as-client-only
+[default-style]: /pax-terminal/NET/CodeEexamples/#as-client-and-server
+[client-style]: /pax-terminal/NET/CodeExamples/#as-client-only
 [syncrequestresult]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/#syncrequestresult
