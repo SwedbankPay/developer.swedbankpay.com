@@ -63,6 +63,68 @@ future.
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                 |
 
+## Token Problems
+
+We will be making a change in the error messages that are given in response in
+the eCommerce API if the requested `Payment`/`One-Click`/`Recur`/`Unscheduled`
+token does not exist or is deleted.
+
+The following new `errorType` will be introduced (only for Payment Order):
+https://api.payex.com/psp/errordetail/paymenttokeninactive
+
+In addition to the one currently in use for both Payment Instruments and Payment
+Order:
+https://api.payex.com/psp/errordetail/inputerror
+
+First, a check is made to verify if the token exists or not. If it does not
+exist, the API returns an error of the type `InputError`. If, however, the token
+exists but is deleted, the API will return the error `TokenInactive`.
+
+Examples of the error messages are presented below.
+
+`InputError`, in this instance for a `RecurrenceToken`:
+
+```json
+{
+   "type":"https://api.payex.com/psp/errordetail/inputerror",
+   "title":"Error in input data",
+   "status":404,
+   "instance":"https://api.payex.com/psp/probleminstance/00-e53deef0eb5e47bcb5ba1739bdd9086c-
+    b5512dfc02b74f07-01",
+   "detail":"Input validation failed, error description in problems node!",
+   "problems":
+   [
+      {
+         "name":"RecurrenceToken",
+         "description":"The given RecurrenceToken does not exist."
+      }
+   ]
+}
+```
+
+`TokenInactive`, in this instance for an `UnscheduledToken`:
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/paymenttokeninactive",
+    "title": "Payment token is inactive",
+    "status": 422,
+    "instance": "https://api.payex.com/psp/probleminstance/00-2fc18bd40743401596bf2de3b51ab16d-
+     bfebd4ae81ea8423-01",
+    "detail": "The given UnscheduledToken is inactive.",
+    "problems":
+     [
+       {
+           "name": "UnscheduledToken",
+           "description": "The given UnscheduledToken is inactive."
+        }
+    ]
+}
+```
+
+If you have questions regarding the new error types, do not hesitate to contact
+us through the ordinary support channels.
+
 ## Card Problems
 
 There are a few problems specific to the `creditcard` resource that you may want
