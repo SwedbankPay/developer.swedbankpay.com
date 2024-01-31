@@ -277,7 +277,7 @@ The `onPaymentFailed` event is raised with the following event argument object:
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}        |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a failed payment. |
 
-## `onPaymentInstrumentSelected`
+## `onPaymentMenuInstrumentSelected`
 
 This event triggers when a user actively changes payment instrument in the
 Payment Menu.
@@ -289,7 +289,7 @@ If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
 
 {:.code-view-header}
-**onPaymentInstrumentSelected event object**
+**onPaymentMenuInstrumentSelected event object**
 
 ```json
 {
