@@ -5,7 +5,7 @@ description: |
 permalink: /:path/cvm-signature/
 hide_from_sidebar: true
 icon:
-    content: signature
+    content: draw
     outlined: true
 menu_order: 90
 ---
