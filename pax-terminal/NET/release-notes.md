@@ -50,12 +50,12 @@ SDK for .Net has extended its interface with new methods for [GetPaymentInstrume
 
 ReceiptBlobNoHeader has been added to PaymentRequestResult.
 
-[getpaymentinstrument]:/pax-terminal/NET/Methods/getpaymentinstrumentasync
-[payment]: /pax-terminal/NET/Methods/paymentasync
-[refund]: /pax-terminal/NET/Methods/refundasync
-[requesttoprint]: /pax-terminal/NET/Methods/requesttoprint
-[transactionsetup]: /pax-terminal/NET/transactionsetup
-[confirmationhandler]: /pax-terminal/NET/ISwpTrmCallbackInterface
-[eventcallback]: /pax-terminal/NET/ISwpTrmCallbackInterface/
+[getpaymentinstrument]:/pax-terminal/NET/SwpTrmLib/Methods/handy/getpaymentinstrumentasync
+[payment]: /pax-terminal/NET/SwpTrmLib/Methods/essential/paymentasync
+[refund]: /pax-terminal/NET/SwpTrmLib/Methods/essential/refundasync
+[requesttoprint]: /pax-terminal/NET/SwpTrmLib/Methods/handy/requesttoprint
+[transactionsetup]: /pax-terminal/NET/includes/transactionsetup
+[confirmationhandler]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface
+[eventcallback]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/
 [codeexamples]: /pax-terminal/NET/CodeExamples
 [paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult

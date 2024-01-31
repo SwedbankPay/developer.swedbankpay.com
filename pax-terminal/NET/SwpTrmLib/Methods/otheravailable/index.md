@@ -8,3 +8,5 @@ icon:
   outlined: true
 menu_order: 40
 ---
+
+{%include card-list.html %}

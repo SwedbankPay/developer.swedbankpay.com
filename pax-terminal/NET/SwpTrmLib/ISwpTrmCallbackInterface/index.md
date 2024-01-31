@@ -151,5 +151,5 @@ public enum RequestResultTypes
     }
 ```
 
-[clientonly]: /pax-terminal/NET/codeexamples/#as-client-only
+[clientonly]: /pax-terminal/NET/CodeExamples/#as-client-only
 [paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult

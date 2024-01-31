@@ -499,7 +499,7 @@ private async void button1_Click(object sender, EventArgs e)
 [simplest-client]: #as-client-only
 [clientnserver]: #as-client-and-server
 [getcna]: #get-cna-for-customer
-[create-method]: /pax-terminal/NET/Methods/create
-[start-method]: /pax-terminal/NET/Methods/start
-[openasync]: /pax-terminal/NET/Methods/openasync
-[paymentasync]: /pax-terminal/NET/Methods/paymentasync
+[create-method]: /pax-terminal/NET/SwpTrmLib/Methods/essential/create
+[start-method]: /pax-terminal/NET/SwpTrmLib/Methods/essential/start
+[openasync]: /pax-terminal/NET/SwpTrmLib/Methods/essential/openasync
+[paymentasync]: /pax-terminal/NET/SwpTrmLib/Methods/essential/paymentasync

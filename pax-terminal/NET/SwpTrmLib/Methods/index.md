@@ -1,5 +1,4 @@
 ---
-redirect_from: /pax-terminal/NET/swptrmlib/methods
 permalink: /:path/
 redirect_from: /:path/
 title: ISwpTrmIf_1 Methods
