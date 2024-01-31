@@ -24,7 +24,7 @@ Prefix and supplied PAN must be registred in the terminal setup and may not be a
 `string` PaymentInstrument - format is pan and expiry date separated by an equal sign. "PAN=MMYY"
 
 {% include alert.html type="informative" icon="info" header="There is an alternative"
-body="It also possible to pass the payment instrument when calling Payment and passing a `TransactionSetup` object" %}
+body="It is also possible to pass the payment instrument in a `TransactionSetup` object when calling Payment" %}
 
 [transactionsetup]: /pax-terminal/NET/includes/transactionsetup
 [payment]: /pax-terminal/NET/SwpTrmLib/Methods/essential/paymentasync
