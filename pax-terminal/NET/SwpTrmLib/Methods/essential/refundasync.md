@@ -60,4 +60,4 @@ body="The SDK will automatically make three retries when the terminal responds b
 
 [transactionsetup]: /pax-terminal/NET/includes/transactionsetup
 [paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult
-[create]: /pax-terminal/NET/swptrmlib/methods/create
+[create]: /pax-terminal/NET/SwpTrmLib/Methods/essential/create

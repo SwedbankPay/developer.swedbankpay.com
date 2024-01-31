@@ -1,8 +1,8 @@
 ---
-title: RequestCustomerConfirmation
+title: Request Customer Confirmation
 permalink: /:path/requestcustomerconfirmation/
 description: |
-    Call RequestCustomerConfirmation / RequestCustomerAsync to ask the customer a yes/no question.
+    Use this method to ask the customer a yes/no question.
 icon:
     content: support_agent
     outlined: true

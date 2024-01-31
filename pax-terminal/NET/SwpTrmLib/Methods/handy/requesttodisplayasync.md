@@ -1,10 +1,10 @@
 ---
-title: RequestToDisplay
+title: Request To Display
 permalink: /:path/requesttodisplayasync/
 description: |
-    This method makes it possible to display a message in the terminal display.
+    This method makes it possible to display a message on the terminal display.
 icon:
-    content: capture
+    content: cast
     outlined: true
 ---
 ### Method Signatures

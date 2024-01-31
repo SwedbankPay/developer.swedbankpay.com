@@ -23,4 +23,4 @@ The aim of the SDK is to minimize the total work effort for both users and Swedb
 
 {% include card-list.html %}
 
-[client-style]: /pax-terminal/NET/codeexamples/#as-client-only
+[client-style]: /pax-terminal/NET/CodeExamples/#as-client-only

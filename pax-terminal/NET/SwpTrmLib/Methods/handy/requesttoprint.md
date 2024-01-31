@@ -1,8 +1,8 @@
 ---
-title: RequestToPrint
+title: Request To Print
 permalink: /:path/requesttoprint/
 description: |
-    Call RequestToPrint / RequestToPrintAsync to use the A920pro printer.
+    Call this method to use the A920pro printer for printing.
 icon:
     content: print
     outlined: true
