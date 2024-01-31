@@ -11,13 +11,22 @@ icon:
 
 ---
 
+## February 1 2024
+
+*   Documentation updated to reflect SDK release.
+*   Use case section, apm transaction, apm refund, cvm signtature and fuel card transaction.
+
 ## January 25 2024
 
-*   RequestToDisplay and UpdateTerminal have now correced results.
+### .Net SDK 1.3.24025
+
+*   RequestToDisplay and UpdateTerminal have now corrected results.
 *   ReverseLast now automatically makes retries if the terminal responds busy.
 *   OnTerminalAddressObtainedEventCallback now with correct access modifier to be able to access Ipv4 and Port properties.
 
 ## January 16 2024
+
+### .Net SDK 1.3.24016
 
 *   CardAcquisitionReference is now a copy of POITransactionID. Earlier time was converted to local time and caused problem when an other timezone was used.
 *   [PaymentRequetsResult][paymentrequestresult] has now a lot of properties to make values easily available.

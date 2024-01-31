@@ -37,11 +37,11 @@ NetSDK->>-POS: PaymentRequestResult
 Note over NetSDK: Success or Failure depending on above<br>call. Always print the customer receipt
 ```
 
-You must respond by using the callback and you may not call Abort.
+You must respond by using the callback and you must not call Abort.
 
-If synchronous calls are used the flow is the same but the PaymentRequestResult will appear in the [`SyncRequestResult`][syncrequestresultcallback] callback.
+If synchronous calls are used the flow is the same but the `PaymentRequestResult` will appear in the [`SyncRequestResult`][syncrequestresultcallback] callback.
 
-The flow works for both `Client Only` mode and when implementing the `default mode`. When Client Only mode, the SDK will fake the print request and input requets from the terminal to make the flow identical. However when refusing in that case generates a `ReversalRequest` and the customer receipt will indicate the transaction was cancelled.
+The flow works for both `Client Only` mode and when implementing the `default mode`. When Client Only mode, the SDK will fake the print- and input- requests from the terminal to make the flow identical. However when refusing the signature in `Client Only` mode a `ReversalRequest` is made and the customer receipt will indicate that the transaction was cancelled.
 
 [printrequesteventcallback]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/#eventcallback
 [confirmationhandler]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/#confirmationhandler
