@@ -134,32 +134,6 @@ new tab. It will be raised with the following event argument object:
 | `openUrl`    | `string` | The external URL where the user will be redirected.                   |
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                |
 
-## `onPaymentAborted`
-
-This event triggers when the user cancels the payment.
-The `onPaymentAborted` event is raised with the following event argument
-object:
-
-{:.code-view-header}
-**onPaymentAborted event object**
-
-```json
-{
-    "actionType": "OnPaymentAborted",
-    "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
-    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
-    "redirectUrl": "https://example.com/cancelled"
-}
-```
-
-{:.table .table-striped}
-| Field         | Type     | Description                                                    |
-| :------------ | :------- | :------------------------------------------------------------- |
-| `actionType` | `string` | The type of event that was raised.                               |
-| `id`         | `string` | {% include fields/id.md %}                                       |
-| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}           |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
-
 ## `onPaymentCanceled`
 
 This event triggers when the payer aborts the purchase from the payment menu. As
