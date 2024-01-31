@@ -18,7 +18,7 @@ Synchronous
 Asynchronous
 
 *   async Task\<PaymentRequestResult\> RefundAsync(decimal amount,string apmreference="", string currency="SEK")
-*   async Task\<PaymentRequestResult\> RefundAsync(`TranactionSetup` setup)
+*   async Task\<PaymentRequestResult\> RefundAsync(`TransactionSetup` setup)
 
 ### Description
 
