@@ -1,7 +1,6 @@
 ---
 title: Tutorials and Use Cases
 permalink: /:path/
-redirect_from: /:path/
 description: Easy understanding with tutorials. Quick guide to get started.
 menu_order: 10
 icon:
