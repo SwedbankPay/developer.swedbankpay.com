@@ -1,6 +1,6 @@
 ---
 section: NET
-title: Introduction and Overview
+title: .Net SDK
 permalink: /:path/
 description: |
     Use the .NET SDK to quickly and easy integrate with the terminal from your POS solution. The aim of the SDK is to minimize the work effort for both users and Swedbank Pay.
