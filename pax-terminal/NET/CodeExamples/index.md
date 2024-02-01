@@ -2,7 +2,7 @@
 title: C# Code Examples
 description: |
     Simple code examples without the aim of being state of the art. The code works, so feel free to copy and test.
-permalink: /:Path/
+permalink: /:path/
 menu_order: 90
 icon:
   content: code
