@@ -1,5 +1,5 @@
 ---
-title: Essetial Methods
+title: Essential Methods
 description: These messages are the least that needs to be implemented.
 permalink: /:path/
 hide_from_sidebar: true
