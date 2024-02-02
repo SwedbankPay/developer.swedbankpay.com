@@ -51,7 +51,7 @@ void MyTestOfA920proPrinter()
         Content = "Space before this text",
         Alignment = Alignments.Right
     });
-    // Text devided left and right using tab and alignment
+    // Text divided left and right using tab and alignment
     textToPrint.Add(new OutputText() {
         Content = "Left\tRight",
         Alignment = Alignments.Justified
