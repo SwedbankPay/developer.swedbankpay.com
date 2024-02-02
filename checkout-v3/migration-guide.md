@@ -52,7 +52,7 @@ In Checkout v3.1, response fields have been restructured.
 Fields removed since v2 include: `currentPayment`,`instrument`, `payments` and
 `state`.
 
- ```
+ ```json
     "paymentorder": {
         "currentPayment": /* Removed in Checkout v3.1 */,
         "instrument":  /* Removed in Checkout v3.1 */,
@@ -70,7 +70,7 @@ Instead, new fields including "history," "failed," "aborted," "paid," and
 others, have been introduced. An example of the complete array of selections is
 provided below.
 
- ```
+ ```json
         "urls": {
         "id": "/psp/paymentorders/{{ page.payment_id }}/urls"
         "payeeInfo": {
@@ -217,7 +217,7 @@ You will find the following fields present in your new response.
 {:.code-view-header}
 **Response fields excerpt**
 
-```http
+```json
 "implementation": "PaymentsOnly",
 "integration": "",
 "instrumentMode": false,
@@ -229,7 +229,7 @@ types or implementation styles adopted by our customers, we have introduced
 these fields. They do not directly affect your responsibilities as an integrator
 and can be disregarded.
 
-A quick explanation of the fields and their values:
+### A quick explanation of the fields and their values
 
 **"implementation"**
 
@@ -269,8 +269,7 @@ in the `amount` parameter.
 
 ## Events available in V3.1
 
-Further reading available in the Events section:
-https://developer.swedbankpay.com/checkout-v3/features/technical-reference/seamless-view-events#payment-menu-events
+Further reading available in the [Events section][sv-events].
 
 `onCheckoutLoaded`
 
@@ -330,7 +329,8 @@ according to the information displayed here.
 
 `onPaymentAttemptFailed`
 
-Triggered when a payment has failed, disabling further attempts to perform a payment.
+Triggered when a payment has failed, disabling further attempts to perform a
+payment.
 
 `onInstrumentSelected`
 
@@ -368,9 +368,9 @@ consumer. Failure to correctly identify and provide the appropriate reference
 for a consumer may lead to the display of another customer's details or trigger
 the creation of a new profile, activating `guestMode`.
 
-For more detailed information, you can refer to our documentation at https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu.
+For more detailed information, see the [payer aware payment menu section][papm].
 
-## Post Purchase Changes
+## Post-Purchase Changes
 
 `Captures`, `Reversals`, and `Cancellations` will now be returned with the
 intended response template provided by us. The information structure remains
@@ -381,14 +381,16 @@ actions.
 
 The new response will not naturally include the same instrument data as it did
 with v2. However, you can extend the information by adding
-"?$expand=financialtransactions" to the request path (URL). If you require even
+`?$expand=financialtransactions` to the request path (URL). If you require even
 more data in your responses, you can continue extending the output by adding a
-"," followed by the node you desire to be included. As an example,
-"?$expand=financialtransactions,paid" would give you both the node for the
-initial "Purchase" and the node for the Capture/Reversal operation.
+`,` followed by the node you desire to be included. As an example,
+`?$expand=financialtransactions,paid` would give you both the node for the
+initial `Purchase` and the node for the Capture/Reversal operation.
 
-Example of the data given in existing implementation.
+{:.code-view-header}
+**Response example from existing versions**
 
+```
 {
     "payment": "/psp/creditcard/payments/b2409f06-4944-4b2b-78d8-08dbf7d4b7e9",
     "capture": {
@@ -409,9 +411,12 @@ Example of the data given in existing implementation.
         }
     }
 }
+```
 
-Example of the data given in v3.1 (Capture with no expansions).
+{:.code-view-header}
+**Response Example from v3.1 (Capture with no expansions)**
 
+```json
 {
     "paymentOrder": {
         "id": "/psp/paymentorders/a8d963ee-4749-4b3c-9f31-08dbf62d5f1c",
@@ -504,10 +509,12 @@ Example of the data given in v3.1 (Capture with no expansions).
         }
     ]
 }
+```
 
-Example of the data given in v3.1 (Capture with expansions of `Paid` and
-`FinancialTransactions`).
+{:.code-view-header}
+**Response Example from v3.1 (Capture with Paid and FinancialTransactions expanded)**
 
+```json
 {
     "paymentOrder": {
         "id": "/psp/paymentorders/d4c5684f-c2dc-4c18-680d-08dbf62de407",
@@ -639,6 +646,7 @@ Example of the data given in v3.1 (Capture with expansions of `Paid` and
         }
     ]
 }
+```
 
 ## Callback Information
 
@@ -649,8 +657,10 @@ on the `paymentOrderId` provided. If information has been included in the
 reported, allowing you to easily identify the transaction associated with a
 Callback. Note that the `payment` and `transaction` fields have been removed.
 
-Example Callback in v3.1
+{:.code-view-header}
+**Callback Example v3.1**
 
+```
 {
    "orderReference":"ABC123",
    "paymentOrder": {
@@ -658,10 +668,14 @@ Example Callback in v3.1
       "instrument":"Swish"
    }
 }
+```
 
-Example Callback in previous versions.
+{:.code-view-header}
+**Callback Example Previous Versions**
 
-{   “orderReference”:”ABC123”,
+```json
+{
+    “orderReference”:”ABC123”,
     "paymentOrder": {
         "id": "/psp/paymentorders/c3ac1392-35b0-43a6-8f27-08dbce43b47c",
         "instrument": "paymentorders"
@@ -675,16 +689,25 @@ Example Callback in previous versions.
         "number": 333333333
     }
 }
+```
 
 ## Sources
 
 For a more in-depth understanding of each specific instance, we have compiled
 relevant documentation below.
 
-Standard v3.1 documentationhttps://developer.swedbankpay.com/checkout-v3/payment-request-3-1Post-purchase documentationhttps://developer.swedbankpay.com/checkout-v3/post-purchase-3-1
+[Standard v3.1 documentation][3-1]
 
-Callback (asynchronous update)https://developer.swedbankpay.com/checkout-v3/features/core/callbackhttps://developer.swedbankpay.com/checkout-v3/features/core/callback.html#callback-example-v31
+[Post-purchase documentation][post-purchase]
 
-Payer identification (Payer Aware Menu)https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu
+[Callback (asynchronous update)][callback]
 
-Events for Seamless View (Embedded menu)https://developer.swedbankpay.com/checkout-v3/features/technical-reference/seamless-view-events
+[Payer identification (Payer Aware Menu)][papm]
+
+[Seamless view events (Embedded menu)][sv-events]
+
+[3-1]: https://developer.swedbankpay.com/checkout-v3/payment-request-3-1
+[callback]: https://developer.swedbankpay.com/checkout-v3/features/core/callbackhttps://developer.swedbankpay.com/checkout-v3/features/core/callback.html#callback-example-v31
+[papm]: https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu
+[post-purchase]: https://developer.swedbankpay.com/checkout-v3/post-purchase-3-1
+[sv-events]: https://developer.swedbankpay.com/checkout-v3/features/technical-reference/seamless-view-events
