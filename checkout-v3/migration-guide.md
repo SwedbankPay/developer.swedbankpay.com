@@ -66,7 +66,7 @@ Fields removed since v2 include: `currentPayment`,`instrument`, `payments` and
         "nonPaymentToken": /* Moved into the `paid` resource in Checkout v3.1 */,        "externalNonPaymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */,        "paymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */
  ```
 
-Instead, new fields including "history," "failed," "aborted," "paid," and
+Instead, new fields including `history`, `failed`, `aborted`, `paid`, and
 others, have been introduced. An example of the complete array of selections is
 provided below.
 
@@ -120,7 +120,7 @@ completion.
 *   Failed
 
 MIT transactions, denoting "Merchant Initiated Transactions," are exclusively
-presented here if they result in a "Failed" status, along with the corresponding
+presented here if they result in a `Failed` status, along with the corresponding
 failure reason.
 
 *   Aborted
@@ -132,29 +132,29 @@ with the request in this section.
 
 In the event of a successful transaction, details about the utilized instrument,
 its associated references, and related information will be available here. As a
-point of reference, this serves as the replacement for "currentPayment."
+point of reference, this serves as the replacement for `currentPayment`.
 
 *   Cancelled
 
 Information will be available under this node exclusively when a PaymentOrder
-has been completely canceled and has received the status "Canceled."
+has been completely canceled and has received the status `Canceled`.
 
 *   FinancialTransactions
 
-All «post-purchase» actions and their references, such as Captures and
-Reversals, can be accessed here. This section also serves as the replacement for
-/currentPayment
+All post-purchase actions and their references, such as captures and reversals,
+can be accessed here. This section also serves as the replacement for
+/`currentPayment`
 
 *   FailedAttempts
 
-All instances of PaymentOrders marked as "Failed" will be in this section.
+All instances of `PaymentOrder`s marked as `Failed` will be in this section.
 Currently, this pertains specifically to transactions utilizing S2S
 (server-to-server) functionality, with subscriptions (Recur & Unscheduled
 Purchase) serving as an example.
 
 *   PostPurchaseFailedAttempts
 
-All failed attempts made by the Payer at a third-party will be documented in
+All failed attempts made by the `Payer` at a third-party will be documented in
 this section. For instance, if the Payer is denied due to reasons like
 "Insufficient funds," such instances will be recorded here.
 
@@ -165,8 +165,8 @@ back to you in this section.
 
 ## Status Parameter
 
-In v3.1, we have updated the parameter formerly named "state" from v2 to
-"status," also expanding the range of values that are given to reflect more
+In v3.1, we have updated the parameter formerly named `state` from v2 to
+`status`, also expanding the range of values that are given to reflect more
 accurately what stage the transaction is in.
 
 **Initialized**
@@ -286,18 +286,18 @@ The payment instruments require individual heights when rendering their content.
 `onError`
 
 This event will be triggered during terminal errors or if the configuration
-fails validation.Subscribe to this event if you want some action to occur on
+fails validation. Subscribe to this event if you want some action to occur on
 your site when an error happens during the payment.
 
 `onOutOfViewRedirect`
 
 Triggered when a user is redirected to a separate web page, like 3-D Secure or
-BankID signing.Subscribe to this event if it is not possible to redirect the
+BankID signing. Subscribe to this event if it is not possible to redirect the
 payer directly from within Swedbank Pay’s payment frame.
 
 `onAborted`
 
-This will be triggered when the payer clicks the «Abort» button. This is only
+This will be triggered when the payer clicks the "Abort" button. This is only
 present in the Redirect-implementation and if you have integrated Seamless View
 (menu embedded), you will need to supply this button/action. When the payer
 presses your cancel button, we recommend sending an API request aborting the
@@ -322,8 +322,8 @@ to perform a payment.
 `onPaid`
 
 This event triggers when the payer successfully completes their interaction with
-us.Subscribe to this event if actions are needed on you side other than the
-default handling of redirecting the payer to your «completeUrl». Call GET on the
+us. Subscribe to this event if actions are needed on you side other than the
+default handling of redirecting the payer to your `completeUrl`. Call GET on the
 paymentOrder to receive the actual payment status and take appropriate actions
 according to the information displayed here.
 
