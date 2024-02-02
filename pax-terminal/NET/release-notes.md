@@ -11,10 +11,10 @@ icon:
 
 ---
 
-## February 1 2024
+## February 6 2024
 
 *   Documentation updated to reflect SDK release.
-*   Use case section, apm transaction, apm refund, cvm signtature and fuel card transaction.
+*   Use case section, apm transaction, apm refund, cvm signtature and fuel card transaction and auto configuration of terminal IP in the POS.
 
 ## January 25 2024
 
