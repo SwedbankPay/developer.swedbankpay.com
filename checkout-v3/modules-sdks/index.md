@@ -43,17 +43,14 @@ how it tastes.
 ## Official Modules
 
 **Modules, extensions and plugins** are typically used as a way to extend
-webshop platforms such as [WooCommerce][woocommerce] and
-[Magento][magento]{:data-proofer-ignore=''} with functionality that isn't
-provided in the core platform. Such functionality may be to allow visitors of
-your website to pay with a payment provider such as Swedbank Pay.
-
-{% include alert-unsupported.md type='modules' %}
+webshop platforms such as [WooCommerce][woocommerce]{:data-proofer-ignore=''}
+with functionality that isn't provided in the core platform. Such functionality
+may be to allow visitors of your website to pay with a payment provider such as
+Swedbank Pay.
 
 {:.table .table-striped}
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
-| ![Episerver][episerver-icon] | [Swedbank Pay **Checkout** for Episerver][episerver-link]        | [`…episerver-checkout`][episerver-repo]       |
 |   ![WooCommerce][woo-icon]   | [Swedbank Pay **Checkout** for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
 
 ## Official SDKs
