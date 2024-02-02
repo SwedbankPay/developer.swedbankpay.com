@@ -9,13 +9,8 @@ permalink: /:path/
 menu_order: 10
 ---
 
-A small library of tools that might come in handy on your journey through our
-Developer Portal, from [test data][test-data],
-[developer guidelines][guidelines], [public migration key][pmk] to
-[terminology][terminology] and a list of our [partners][partners].
+A small library of tools you might need on your journey through our Developer
+Portal, like [fundamental principles][funprin] and [terminology][terminology].
 
-[test-data]: test-data
-[guidelines]: development-guidelines
-[pmk]: public-migration-key
+[funprin]: fundamental-principles
 [terminology]: terminology
-[partners]: partners
