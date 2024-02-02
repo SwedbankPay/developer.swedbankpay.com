@@ -1,7 +1,7 @@
 ---
 title: Send Card Data
 description: Possibility to send a non-PCI regulated "card number" to the terminal
-permaling: /:path/keyin-paymentinstrument/
+permalink: /:path/keyin-paymentinstrument/
 icon:
   content: keyboard
   outlined: true
