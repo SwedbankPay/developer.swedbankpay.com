@@ -10,6 +10,7 @@ menu_order: 100
 
 *   [Manually entered Payment Instrument explained][keyinpaymentinstrument].
 *   [Automatic configuration of terminal address in POS][autoconfig].
+*   [Auto configuration when using .Net SDK][autoconfignet].
 *   Structural changes of documentation for [.Net SDK][dotnetrelease].
 *   Updates for the [.Net SDK][dotnetrelease]
 
@@ -34,3 +35,4 @@ menu_order: 100
 [dotnetrelease]: /pax-terminal/NET/release-notes
 [keyinpaymentinstrument]: /pax-terminal/Nexo-Retailer/keyin-paymentinstrument
 [autoconfig]: /pax-terminal/Nexo-Retailer/auto-configure-ecr-2-terminal
+[autoconfignet]: /pax-terminal/NET/tutorial/autoconfigurepos

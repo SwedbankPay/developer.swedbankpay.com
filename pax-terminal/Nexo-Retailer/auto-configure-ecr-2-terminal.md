@@ -38,7 +38,7 @@ The DestinationAddress and port 15022 indicates it is a configuration message an
 }</Message>
 ```
 
-Pick up ipV4Address and ipPort and use it for connectint the terminal.
+Pick up ipV4Address and ipPort and use it for connecting the terminal.
 
 {%include alert.html type="informative" icon="info" header="DHCP"
 body="If the terminal receives a new address a configuration message is sent automatically
