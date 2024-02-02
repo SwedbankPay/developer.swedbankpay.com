@@ -1,5 +1,6 @@
 ---
 title: Checkout – Checkin
+permalink: /:path/checkin/
 redirect_from: /checkout/checkin
 description: |
   Swedbank Pay Checkout consists of two parts:

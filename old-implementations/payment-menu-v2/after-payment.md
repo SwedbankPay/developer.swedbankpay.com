@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 description: |
   When the payer is **done** interacting with the Payment Menu, you need to
   implement the relevant **after-payment operations** in your order system.

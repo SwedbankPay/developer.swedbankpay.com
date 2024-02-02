@@ -1,5 +1,6 @@
 ---
 title: Capture
+permalink: /:path/capture/
 menu_order: 400
 ---
 

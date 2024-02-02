@@ -1,5 +1,6 @@
 ---
 title: After Payment
+permalink: /:path/after-payment/
 redirect_from: /checkout/after-payment
 description: |
   When the consumer has **completed** the entire

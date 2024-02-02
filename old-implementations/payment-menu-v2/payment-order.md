@@ -1,5 +1,6 @@
 ---
 title: Payment Order
+permalink: /:path/payment-order/
 description: |
   **Payment Order** lets the payer complete their purchase.
 menu_order: 300

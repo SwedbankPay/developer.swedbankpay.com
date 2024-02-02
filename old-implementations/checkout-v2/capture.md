@@ -1,5 +1,6 @@
 ---
 title: Capture
+permalink: /:path/capture/
 redirect_from: /checkout/capture
 menu_order: 500
 ---

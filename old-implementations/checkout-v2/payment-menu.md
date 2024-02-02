@@ -1,5 +1,6 @@
 ---
 title: Payment Menu
+permalink: /:path/payment-menu/
 redirect_from: /checkout/payment-menu
 description: |
   **Payment Menu** begins where **Checkin** left off,
