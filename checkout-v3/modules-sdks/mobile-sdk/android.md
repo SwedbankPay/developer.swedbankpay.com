@@ -435,13 +435,13 @@ using the browser for third-party sites, please file a bug on the Android SDK.
 [checkin-paymentorder]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [dokka-paymentorderurls-init]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order-urls/-payment-order-urls.md
 [dokka-activity-paymentvm]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/payment-view-model.md
-[backend-payment-orders]: merchant-backend#payment-orders-endpoint
+[backend-payment-orders]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint
 [dokka-problem-exception]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [dokka-problem-exception-problem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [dokka-unexpected-exception]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
-[backend-problems]: merchant-backend#problems
+[backend-problems]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#problems
 [dokka-problem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/index.md
 [dokka-problem-client]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/index.md
 [dokka-problem-client-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/-swedbank-pay/index.md
@@ -450,5 +450,5 @@ using the browser for third-party sites, please file a bug on the Android SDK.
 [dokka-problem-server-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md
 [dokka-swedbankpayproblem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md
 [paymenturl]: /old-implementations/checkout-v2/features/technical-reference/payment-url
-[android-helper]: merchant-backend#android-payment-url-helper
+[android-helper]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#android-payment-url-helper
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
