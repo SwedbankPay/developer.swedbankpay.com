@@ -83,4 +83,4 @@ public class SwpIfConfig
 ```
 
 [swpifconfig]: #swpifconfig
-[iswptrmcallbackinterface]: ../ISwpTrmCallbackInterface/index
+[iswptrmcallbackinterface]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface

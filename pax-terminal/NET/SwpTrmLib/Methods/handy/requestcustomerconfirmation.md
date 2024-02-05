@@ -41,4 +41,4 @@ public class NexoRequestResult
 
 [Example when used][handle-loyalty-ask-for-membership]
 
-[handle-loyalty-ask-for-membership]: ../CodeExamples/#handle-loyalty---ask-for-membership
+[handle-loyalty-ask-for-membership]: /pax-terminal/NET/CodeExamples/#handle-loyalty---ask-for-membership
