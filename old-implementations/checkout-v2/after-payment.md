@@ -13,7 +13,7 @@ menu_order: 500
 
 {% include payment-order-after-payment.md %}
 
-{% include iterator.html prev_href="capture"
+{% include iterator.html prev_href="/old-implementations/checkout-v2/capture"
                          prev_title="Capture"
-                         next_href="features"
+                         next_href="/old-implementations/checkout-v2/features"
                          next_title="Features" %}
