@@ -163,7 +163,7 @@ card payment:
    Mobile BankID.
 
 {% include iterator.html prev_href="./" prev_title="Introduction"
-next_href="seamless-view" next_title="Seamless View" %}
+next_href="/old-implementations/payment-instruments-v1/card/seamless-view" next_title="Seamless View" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
 [payment-transaction-states]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-transaction-states

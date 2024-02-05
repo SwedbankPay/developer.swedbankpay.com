@@ -142,10 +142,6 @@ Or:
 All actions after creating the payment can be done by using our APIs, or from
 our Merchant Portal tool. `abort` is only available when using APIs.
 
-Please visit our [demoshop][demoshop] to see Payment Menu v2 and Payment
-Instruments v1 in action.
-
-[demoshop]: {{ page.front_end_url }}/pspdemoshop
 [https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg

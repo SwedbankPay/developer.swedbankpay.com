@@ -211,8 +211,8 @@ card payment:
   that both successful and rejected payments reach completion, in contrast to a
   cancelled payment.
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="capture" next_title="Capture" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/card/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/card/capture" next_title="Capture" %}
 
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [seamless-view-card]: /assets/img/payments/seamless-view-card.png

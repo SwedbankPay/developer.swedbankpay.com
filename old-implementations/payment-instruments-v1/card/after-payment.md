@@ -321,8 +321,8 @@ Content-Type: application/json
 }
 ```
 
-{% include iterator.html prev_href="mobile-card-payments" prev_title="Mobile Card Payments"
-next_href="features" next_title="Features" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/card/mobile-card-payments" prev_title="Mobile Card Payments"
+next_href="/old-implementations/payment-instruments-v1/card/features" next_title="Features" %}
 
 [abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [callback]: /old-implementations/payment-instruments-v1/card/features/core/callback
