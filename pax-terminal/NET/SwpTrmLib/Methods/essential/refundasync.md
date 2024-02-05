@@ -12,7 +12,7 @@ menu_order: 70
 
 Synchronous
 
-*   void Refund(decimal amount,string apmreference="", string currency="SEK")
+*   void Refund(decimal amount,string apmreference="", string currency="")
 *   void Refund(`TransactionSetup` setup)
 
 Asynchronous

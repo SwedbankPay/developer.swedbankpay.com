@@ -14,6 +14,7 @@ icon:
 ## February 6 2024
 
 *   Documentation updated to reflect SDK release.
+*   Text updated for [`TransactionSetup`][transactionsetup]
 *   Use case section, apm transaction, apm refund, cvm signtature and fuel card transaction and auto configuration of terminal IP in the POS.
 
 ## January 25 2024
