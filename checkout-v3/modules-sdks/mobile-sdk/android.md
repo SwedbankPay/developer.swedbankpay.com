@@ -404,9 +404,9 @@ application case. Using this argument should not be necessary, however. If you
 do find a case that does not work inside the PaymentFragment, but does work when
 using the browser for third-party sites, please file a bug on the Android SDK.
 
-{% include iterator.html prev_href="merchant-backend-sample-code"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code"
                          prev_title="Merchant Backend Sample Code"
-                         next_href="ios"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
                          next_title="iOS" %}
 
 [maven-group]: https://search.maven.org/search?q=g:com.swedbankpay.mobilesdk
