@@ -891,7 +891,7 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [3-1]: /checkout-v3/payment-request-3-1
-[3ds2-test]: /checkout-v3/resources/test-data#otp-3ds2
+[3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
 [android-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#android
@@ -968,7 +968,7 @@ integration and the payer.
 [modules-sdks]: /checkout-v3/modules-sdks
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
 [nwt]: /checkout-v3/features/optional/network-tokenization
-[nwt-test]: /checkout-v3/resources/test-data/#network-tokenization
+[nwt-test]: /checkout-v3/test-data/#network-tokenization
 [old-implementations]: /old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
 [optional-features]: /old-implementations/checkout-v2/features/optional/
@@ -988,7 +988,7 @@ integration and the payer.
 [pax-terminal]: /pax-terminal/
 [pp-3-1]: /checkout-v3/post-purchase-3-1
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
-[quick-links]: /checkout-v3/#resources
+[quick-links]: /checkout-v3/resources
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
 [resource-model-cancelled]: /checkout-v3/features/technical-reference/resource-sub-models#cancelled
