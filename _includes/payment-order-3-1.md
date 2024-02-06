@@ -217,4 +217,4 @@ api-supported-versions: 2.0, 3.0, 3.1
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-[instrument-mode]: /checkout-v3/features/optional/instrument-mode
+[instrument-mode]: https://developer.swedbankpay.com/checkout-v3/features/optional/instrument-mode/
