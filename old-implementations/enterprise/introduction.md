@@ -1,6 +1,7 @@
 ---
 section: Introduction
 title: Enterprise
+permalink: /:path/introduction/
 hide_from_sidebar: false
 description: |
   **Enterprise** is the Checkout for merchants with their
