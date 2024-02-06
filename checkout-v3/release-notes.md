@@ -983,7 +983,7 @@ integration and the payer.
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
 [payout]: /checkout-v3/features/optional/payout
 [payout-patch]: /checkout-v3/features/optional/payout#patch-verify-request
-[partners]: /checkout-v3/resources/partners
+[partners]: /#front-page-contact-partners
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
 [pp-3-1]: /checkout-v3/post-purchase-3-1
