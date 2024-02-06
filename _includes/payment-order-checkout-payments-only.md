@@ -219,4 +219,4 @@ api-supported-versions: 3.0
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-[instrument-mode]: /checkout-v3/features/optional/instrument-mode/
+[instrument-mode]: /checkout-v3/features/optional/instrument-mode
