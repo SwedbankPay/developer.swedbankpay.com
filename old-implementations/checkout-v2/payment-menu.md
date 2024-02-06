@@ -299,7 +299,7 @@ finalizing the payment in the [After Payment section][after-payment].
                          next_href="/old-implementations/checkout-v2/capture"
                          next_title="Capture" %}
 
-[after-payment]: after-payment
+[after-payment]: /old-implementations/checkout-v2/after-payment
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
 [swedish-login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations
