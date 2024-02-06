@@ -263,7 +263,7 @@ to see what you can do when a payment is completed.
 Here you will also find info on `Cancel`, and `Reversal`.
 
 {% include iterator.html prev_href="./" prev_title="Introduction"
-next_href="seamless-view" next_title="Seamless View" %}
+next_href="/old-implementations/payment-instruments-v1/invoice/seamless-view" next_title="Seamless View" %}
 
 [after-payment]: /old-implementations/payment-instruments-v1/invoice/after-payment
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png

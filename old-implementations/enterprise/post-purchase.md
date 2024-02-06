@@ -1,5 +1,6 @@
 ---
 title: Post-Purchase
+permalink: /:path/post-purchase/
 description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post-purchase operations** in your order system. These operations,
@@ -19,8 +20,8 @@ the payer wants to return goods? For these instances, we have `cancel` and
 
 {% include payment-order-reversal.md %}
 
-{% include iterator.html prev_href="redirect"
+{% include iterator.html prev_href="/old-implementations/enterprise/redirect"
                          prev_title="Implement Redirect" %}
 
-{% include iterator.html prev_href="seamless-view"
+{% include iterator.html prev_href="/old-implementations/enterprise/seamless-view"
                          prev_title="Implement Seamless View" %}

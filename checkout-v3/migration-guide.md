@@ -1,9 +1,8 @@
 ---
 title: Migration Guide
 permalink: /:path/migration-guide/
-hide_from_sidebar: true
 description: |
-  How to migrate to our newest Digital Payments version
+  How to migrate from Checkout v2 to Digital Payments v3.1
 menu_order: 1400
 ---
 
@@ -62,8 +61,9 @@ Fields removed since v2 include: `currentPayment`,`instrument`, `payments` and
         "nonPaymentToken": /* Moved into the `paid` resource in Checkout v3.1 */,
         "recurrenceToken": /* Moved into the `paid` resource in Checkout v3.1 */,
         "unscheduledToken": /* Moved into the `paid` resource in Checkout v3.1 */,
+        "paymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */,
+        "externalNonPaymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */,
         "transactionsOnFileToken": /* Moved into the `paid` resource in Checkout v3.1 */,
-        "nonPaymentToken": /* Moved into the `paid` resource in Checkout v3.1 */,        "externalNonPaymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */,        "paymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */
  ```
 
 Instead, new fields including `history`, `failed`, `aborted`, `paid`, and
@@ -390,7 +390,7 @@ initial `Purchase` and the node for the Capture/Reversal operation.
 {:.code-view-header}
 **Response example from existing versions**
 
-```
+```json
 {
     "payment": "/psp/creditcard/payments/b2409f06-4944-4b2b-78d8-08dbf7d4b7e9",
     "capture": {
@@ -660,12 +660,13 @@ Callback. Note that the `payment` and `transaction` fields have been removed.
 {:.code-view-header}
 **Callback Example v3.1**
 
-```
+```json
 {
-   "orderReference":"ABC123",
-   "paymentOrder": {
-      "id":"/psp/paymentorders/c3ac1392-35b0-43a6-8f27-08dbce43b47c",
-      "instrument":"Swish"
+   "orderReference":"PO-638423890947905216",
+   "paymentOrder":{
+      "id":"/psp/paymentorders/a9bd5ea2-d2b0-48d1-59c8-08dc230b04ba",
+      "instrument":"CreditCard",
+      "number":40129161258
    }
 }
 ```

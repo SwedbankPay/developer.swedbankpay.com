@@ -91,7 +91,7 @@ sequenceDiagram
     Merchant-->>-Payer: display purchase result
 ```
 
-{% include iterator.html next_href="redirect" next_title="Redirect" %}
+{% include iterator.html next_href="/old-implementations/payment-instruments-v1/invoice/redirect" next_title="Redirect" %}
 
 [financing-consumer]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/financing-consumer
 [fincon-invoice-redirect]: /assets/img/payments/fincon-invoice-redirect-first-en.png

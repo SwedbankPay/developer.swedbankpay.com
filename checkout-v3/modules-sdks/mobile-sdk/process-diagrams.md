@@ -456,9 +456,9 @@ sequenceDiagram
     App ->> User: Report payment result
 ```
 
-{% include iterator.html prev_href="other-features"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
                          prev_title="Back: Other Features"
-                         next_href="plain-webview"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview"
                          next_title="Using a Web View Instead" %}
 
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents

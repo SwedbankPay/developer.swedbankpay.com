@@ -276,4 +276,4 @@ the following values:
 [playground]: https://playground.swedbankpay.com
 [recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
 [unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
-[test-data]: https://developer.swedbankpay.com/checkout-v3/resources/test-data/network-tokenization
+[test-data]: https://developer.swedbankpay.com/checkout-v3/test-data/network-tokenization

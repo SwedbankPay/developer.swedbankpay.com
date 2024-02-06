@@ -1,5 +1,6 @@
 ---
 title: Redirect
+permalink: /:path/redirect/
 description: |
  Redirect is our simplest integration. The payer will be redirected to a secure
  Swedbank Pay hosted site and choose payment instrument. After the purchase,
@@ -88,7 +89,7 @@ capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="post-purchase"
+                         next_href="/old-implementations/enterprise/post-purchase"
                          next_title="Post-Purchase" %}
 
 [abort-feature]: /old-implementations/enterprise/features/core/abort

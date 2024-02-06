@@ -265,9 +265,9 @@ rect rgba(138, 205, 195, 0.1)
             end
 ```
 
-{% include iterator.html prev_href="index"
+{% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="capture"
+                         next_href="/old-implementations/payment-menu-v2/capture"
                          next_title="Capture" %}
 
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png

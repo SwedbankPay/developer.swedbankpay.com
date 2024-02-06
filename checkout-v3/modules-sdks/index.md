@@ -51,7 +51,7 @@ Swedbank Pay.
 {:.table .table-striped}
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
-|   ![WooCommerce][woo-icon]   | [Swedbank Pay **Checkout** for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
+|   ![WooCommerce][woo-icon]   | [Swedbank Pay Payment Menu for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
 
 ## Official SDKs
 
