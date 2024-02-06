@@ -294,9 +294,9 @@ rect rgba(138, 205, 195, 0.1)
 Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].
 
-{% include iterator.html prev_href="checkin"
+{% include iterator.html prev_href="/old-implementations/checkout-v2/checkin"
                          prev_title="Checkin"
-                         next_href="capture"
+                         next_href="/old-implementations/checkout-v2/capture"
                          next_title="Capture" %}
 
 [after-payment]: after-payment

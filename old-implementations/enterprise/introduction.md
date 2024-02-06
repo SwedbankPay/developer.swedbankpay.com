@@ -32,7 +32,7 @@ Norwegian `nb-NO`, and Swedish `sv-SE`.
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Get Started"
-                         next_href="redirect"
+                         next_href="/old-implementations/enterprise/redirect"
                          next_title="Integrate Redirect" %}
-{% include iterator.html next_href="seamless-view"
+{% include iterator.html next_href="/old-implementations/enterprise/seamless-view"
                          next_title="Integrate Seamless View" %}

@@ -1022,7 +1022,7 @@ integration and the payer.
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
 [terminology]: /checkout-v3/resources/terminology
-[test-data]: /checkout-v3/resources/test-data
+[test-data]: /checkout-v3/test-data
 [tos-url]: /checkout-v3/features/optional/tos
 [trustly-pres]: /checkout-v3/payment-presentations#trustly
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
