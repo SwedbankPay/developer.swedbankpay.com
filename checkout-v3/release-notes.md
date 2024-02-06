@@ -11,6 +11,37 @@ menu_order: 10
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 06 Jan 24
+
+### Version 4.7.0
+
+We spent some time building up steam after new years, but we have lots of treats
+lined up.
+
+Are you looking to get started with recurring payments, but not really sure
+where to start? We have compiled everything you need in a [use case][ruc], and
+walk you through it all.
+
+Or are you maybe looking to upgrade to our newest Digital Payments version? See
+how easy it is in our [migration guide][mig-guide].
+
+A new `errorType` goes live any day now, so a preview in the developer portal
+seems fitting. The aim is to give you clearer feedback when a token has become
+inactive. Read more about it in the [problems section][token-problems].
+
+We have also made improvements to the [domain verification][dom-ver] steps of
+our Apple Pay documentation.
+
+The **Resources** are being split up. We have moved the [test-data][test-data]
+and release notes up a level for convenience. Development guidelines are moved
+to [Modules & SDKs][sdk-guidelines] if you need them. The [partners][partners]
+are now on our front page and Data Protection can be found in
+[Checkout v2][data-protection].
+
+In addition to the usual handful of improvements and bug fixes, of course.
+
+Until next time!
+
 ## 19 Dec 23
 
 ### Version 4.6.1
@@ -943,6 +974,7 @@ integration and the payer.
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/display-payment-ui/
+[dom-ver]: /checkout-v3/payment-presentations#domain-verification
 [eligibility-check]: /checkout-v3/features/optional/instrument-mode#eligibility-check
 [mac]: /old-implementations/checkout-v2/features/optional/mac
 [fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
@@ -961,6 +993,7 @@ integration and the payer.
 [ios-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#ios
 [ios-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/ios
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
+[mig-guide]: /checkout-v3/migration-guide/
 [mobile-card-payments]: /old-implementations/payment-instruments-v1/card/mobile-card-payments
 [mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
 [mobilepay-seamless-view]: /old-implementations/payment-instruments-v1/mobile-pay/seamless-view
@@ -999,8 +1032,10 @@ integration and the payer.
 [resources]: /checkout-v3/resources/
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
 [resources]: /checkout-v3/resources/
+[ruc]: /checkout-v3/use-cases/recurring
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
+[sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
 [sdk-modules]: /checkout-v3/modules-sdks
 [split-settlement]: /checkout-v3/features/optional/split-settlement
 [spp]: https://playground.swedbankpay.com
@@ -1023,6 +1058,7 @@ integration and the payer.
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
 [terminology]: /checkout-v3/resources/terminology
 [test-data]: /checkout-v3/test-data
+[token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/optional/tos
 [trustly-pres]: /checkout-v3/payment-presentations#trustly
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
