@@ -194,6 +194,6 @@ api-supported-versions: 3.1
 | {% f failedAttempts %}     | `id`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
 | {% f postPurchaseFailedAttempts %}     | `id`     | The URL to the `postPurchaseFailedAttempts` resource where information about the failed capture, cancel or reversal attempts can be retrieved.                                                                                                                            |
 | {% f metadata %}     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
-| {% f operations %}     | `array`      | {% include fields/operations.md %                                                                                              |
+| {% f operations %}     | `array`      | {% include fields/operations.md %}                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
