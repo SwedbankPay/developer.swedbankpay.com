@@ -98,6 +98,7 @@ The response may contain several `AllowedProductCode` elements. One for each all
  <PaymentResponse>
   <Response ErrorCondition="PaymentRestriction" Result="Failure">
     <AdditionalResponse>Some Products not Payable by the TheBestFuelCard</AdditionalResponse>
+  </Response>
   <SaleData>
    <SaleTransactionID TimeStamp="2023-09-08T16:17:32.9834651+02:00" TransactionID="1524253496"/>
   </SaleData>
