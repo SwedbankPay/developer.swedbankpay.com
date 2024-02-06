@@ -688,7 +688,7 @@ name under your control – usually the host name of the Merchant Backend.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="merchant-backend-sample-code"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code"
                          next_title="Merchant Backend Sample Code" %}
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml

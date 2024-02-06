@@ -3,30 +3,13 @@ title: Redirect
 permalink: /:path/redirect/
 description: |
   How to display the Seamless View UI in your webshop.
-menu_order: 4
+menu_order: 5
 ---
 
-## Step 2: Display Redirect
-
-There are a couple of decisions to be made when you are presenting your payment
-UI. You have the choice between a payment menu with all the payment instruments
-you want to offer, or to present the `paymentOrder` with a single available
-payment instrument using instrument mode.
-
-Regardless of the number of instruments available to the payer, you also need to
-choose between `Redirect` and `Seamless View`.
-
-With `Redirect`, the payer is sent to a Swedbank Pay page where we handle the
-purchase process. The payer is redirected back to you when the purchase is
-completed or if the payer aborts the purchase. The page will be styled by
-Swedbank Pay.
-
-With `Seamless View`, the payer stays at your site and you initiate the
-Swedbank Pay purchase module in an iframe. The purchase component will be styled
-by Swedbank Pay.
+## Display Redirect
 
 Among the operations in the POST `paymentOrder`s response, you will find the
-`redirect-checkout`. This is the one you need to display payment menu.
+`redirect-checkout`. This is the one you need to display the payment UI.
 
 {:.code-view-header}
 **Response**

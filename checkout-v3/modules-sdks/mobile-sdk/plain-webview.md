@@ -734,7 +734,7 @@ cases. This acerbates the need for fallback mechanisms.
 The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages.
 Feel free to use this as a resource in your own implementation.
 
-{% include iterator.html prev_href="process-diagrams"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/process-diagrams"
                          prev_title="Process Diagrams" %}
 
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

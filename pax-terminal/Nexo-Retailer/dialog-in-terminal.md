@@ -35,7 +35,7 @@ The InputRequest has two parts. One for what to be displayed and one for the typ
 Note that when the InputRequest is responded to the terminal goes back to display what was displayed before the request.
 
 {:table .table.striped}
-| Name | Lev | Attribute | Description
+| Name | Lev | Attribute | Description |
 |:---|:--:|:--|:--|
 | InputRequest | 1 | | |
 | DisplayOutput | 2 | Device | Only value is `CustomerDisplay`. |
@@ -121,7 +121,7 @@ A display request is executed immediately and cannot be aborted. There will howe
 {% include alert.html type="warning" icon="warning" header="Heads up" body="Sending any request immediately after a PaymentResponse will result in `Failure` and error condition `Busy`. Wait awhile before retry." %}
 
 {:table .table.striped}
-| Name | Lev | Attribute | Description
+| Name | Lev | Attribute | Description |
 |:---|:--:|:--|:--|
 | DisplayRequest | 1 | | |
 | DisplayOutput | 2 | Device | Only value is `CustomerDisplay`. |

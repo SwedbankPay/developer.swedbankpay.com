@@ -49,9 +49,9 @@ It will be raised with the following event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
-| `event`       | `string` | The name of the event raised.                                   |
-| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                 |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
+| `event`       | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment.          |
 
 ## `onCheckoutLoaded`
 
@@ -76,10 +76,10 @@ with the following event argument object:
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                               |
-| `event`      | `string` | The name of the event raised.                                         |
-| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
-| `bodyHeight` | `string` | The height of the client's iframe content.                            |
+| :----------- | :------- | :--------------------------------------                                  |
+| `event`      | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}         | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `bodyHeight` | `string` | The height of the client's iframe content.                               |
 
 ## `onCheckoutResized`
 
@@ -108,7 +108,7 @@ will be raised with the following event argument object:
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
 | `event`      | `string` | The name of the event raised.                                         |
-| {% f paymentOrder, 0 %}     | `string` | {% include fields/id.md %}                           |
+| {% f paymentOrder.id, 0 %}     | `string` | {% include fields/id.md resource="paymentOrder" %}  |
 | `bodyHeight` | `string` | The height of the client's iframe content.                            |
 
 ## `onError`
@@ -135,9 +135,9 @@ will be raised with the following event argument object:
 {:.table .table-striped}
 | Field       | Type     | Description                                                            |
 | :---------- | :------- | :-------------------------------------------------------------         |
-| `event`     | `string` | The name of the event raised.                                          |
-| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}                        |
-| `details`   | `string` | A human readable and descriptive text of the error.                    |
+| `event`     | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `details`   | `string` | A human readable and descriptive text of the error.                      |
 
 ## `onEventNotification`
 
@@ -164,9 +164,9 @@ payment flow at Swedbank Pay.
 {:.table .table-striped}
 | Field         | Type     | Description                                                |
 | :--------     | :------- | :--------------------------------------------------------- |
-| `event`     | `string` | The name of the event raised.                                |
-| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}              |
-| `sourceEvent` | `string` | A human readable and descriptive text with the event name. |
+| `event`     | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `sourceEvent` | `string` | A human readable and descriptive text with the event name.             |
 
 ## `onInstrumentSelected`
 
@@ -192,10 +192,9 @@ will be raised with the following event argument object:
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
-| `event`     | `string` | The name of the event raised.                                          |
-| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}                        |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
-the user.                                                                                         |
+| `event`     | `string` | The name of the event raised.                                                    |
+| {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %}         |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user. |
 
 ## `onOutOfViewOpen`
 
@@ -225,9 +224,9 @@ new tab. It will be raised with the following event argument object:
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
-| `event`      | `string` | The name of the event raised.                                         |
-| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
-| `openUrl`    | `string` | The external URL where the user will be redirected.                   |
+| `event`      | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}         | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `openUrl`    | `string` | The external URL where the user will be redirected.                      |
 
 ## `onOutOfViewRedirect`
 
@@ -252,10 +251,10 @@ will be raised with the following event argument object:
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                               |
-| `event`      | `string` | The name of the event raised.                                         |
-| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
-| `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
+| :----------- | :------- | :--------------------------------------                                  |
+| `event`      | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}         | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `redirectUrl` | `string` | The external URL where the user will be redirected.                     |
 
 ## `onPaid`
 
@@ -282,9 +281,9 @@ It will be raised with the following event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
-| `event`       | `string` | The name of the event raised.                                       |
-| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
-| `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
+| `event`       | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.       |
 
 ## `onPaymentAttemptAborted`
 
@@ -297,7 +296,8 @@ event is raised with the following event argument object:
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
+    "event": "OnPaymentAttemptAborted",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/cancelled"
 }
 ```
@@ -305,8 +305,9 @@ event is raised with the following event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                    |
 | :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | {% include fields/id.md %}                                     |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment.|
+| `event`       | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment.          |
 
 ## `onPaymentAttemptFailed`
 
@@ -323,7 +324,8 @@ event is raised with the following event argument object:
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "event": "OnPaymentAttemptFailed",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "details": "[HttpCode ProblemTitle]"
 }
 ```
@@ -331,8 +333,9 @@ event is raised with the following event argument object:
 {:.table .table-striped}
 | Field     | Type     | Description                                         |
 | :-------- | :------- | :-------------------------------------------------- |
-| `id`      | `string` | {% include fields/id.md %}               |
-| `details` | `string` | A human readable and descriptive text of the error. |
+| `event`       | `string` | The name of the event raised.                                            |
+| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `details` | `string` | A human readable and descriptive text of the error.                          |
 
 ## `onPaymentAttemptStarted`
 
@@ -348,7 +351,8 @@ object:
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "event": "OnPaymentAttemptStarted",
+    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "instrument": "creditcard",
 }
 ```
@@ -356,7 +360,8 @@ object:
 {:.table .table-striped}
 | Field        | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `id`         | `string` | {% include fields/id.md %}                                                           |
+| `event`       | `string` | The name of the event raised.                                                                  |
+| {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %}                       |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
 
 ## `onTermsOfServiceRequested`
@@ -385,6 +390,6 @@ object:
 {:.table .table-striped}
 | Field                | Type     | Description                                         |
 | :--------            | :------- | :---------------------------------------------------|
-| `event`              | `string` | The name of the event raised.                       |
-| {% f paymentOrder, 0 %}       | `string` | {% include fields/id.md %}               |
-| `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions. |
+| `event`              | `string` | The name of the event raised.                                  |
+| {% f paymentOrder.id, 0 %}       | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `termsOfServiceUrl`  | `string` | The URL containing Terms of Service and conditions.            |

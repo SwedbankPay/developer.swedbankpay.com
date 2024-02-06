@@ -23,9 +23,9 @@ The samples provide a fully functioning API for the SDK, but the implementations
 are, of course, devoid of any business logic. They should, nevertheless, provide
 a good starting point toward integration with your business systems.
 
-{% include iterator.html prev_href="merchant-backend"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend"
                          prev_title="Merchant Backend"
-                         next_href="android"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/android"
                          next_title="Android" %}
 
 [backend-samples]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant

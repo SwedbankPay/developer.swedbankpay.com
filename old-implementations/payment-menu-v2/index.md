@@ -32,7 +32,7 @@ payment. You can either capture the total amount, or do a part-capture (as
 described under [After Payment][after-payment-capture]). Connect these steps and
 you have Swedbank Pay Payment Menu v2.
 
-{% include iterator.html next_href="payment-order"
+{% include iterator.html next_href="/old-implementations/payment-menu-v2/payment-order"
                          next_title="Payment Order" %}
 
 [after-payment-capture]: /old-implementations/payment-menu-v2/capture

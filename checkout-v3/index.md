@@ -37,6 +37,26 @@ store the card data for you, but you own it. This means that you have to remove
 data in compliance with GDPR, but you won't have to worry about handling
 sensitive card info.
 
+## Use Cases
+
+<div class="row mt-4">
+    <div class="col-xl-6 col-lg-6 d-flex">
+       <a href="/checkout-v3/use-cases/recurring" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">Recurring Payments</span>
+            <span><p>How to get started with recurring payments</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+</div>
+
 ## Availability
 
 This implementation is available in Danish `da-DK`, English (US) `en-US`,
@@ -64,76 +84,6 @@ below to read more." %}
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
 
-## What's new in the documentation
-
-  {% include release_notes.html num_dates=3 %}
-  <a href="/checkout-v3/resources/release-notes">See full release notes</a>
-
-## Resources
-
-<div class="row mt-4">
-    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-       <a href="/checkout-v3/resources/development-guidelines/" class="dx-card">
-         <span class="dx-card-icon">
-            <i class="material-icons-outlined">
-                account_circle
-            </i>
-         </span>
-         <span class="dx-card-content">
-            <span class="h4">OS Development Guidelines</span>
-            <span><p>This is how we create an inclusive environment</p>
-            </span>
-         </span>
-         <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/checkout-v3/resources/test-data" class="dx-card">
-         <span class="dx-card-icon">
-            <i class="material-icons">
-                content_paste
-            </i>
-         </span>
-         <span class="dx-card-content">
-           <span class="h4">Test Data</span>
-           <span><p>Get the required data for testing in our interfaces</p>
-           </span>
-         </span>
-        <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/checkout-v3/resources/terminology" class="dx-card">
-         <span class="dx-card-icon">
-            <i class="material-icons">
-                menu_book
-            </i>
-         </span>
-         <span class="dx-card-content">
-           <span class="h4">Terminology</span>
-           <span><p>Get a better understanding of the terms we use</p>
-           </span>
-         </span>
-        <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-    <div class="col-xxl-3 col-xl-6 col-lg-6 d-flex">
-      <a href="/checkout-v3/resources/" class="dx-card">
-         <span class="dx-card-icon">
-            <i class="material-icons">
-                format_list_bulleted
-            </i>
-         </span>
-         <span class="dx-card-content">
-           <span class="h4">See All Resources (7)</span>
-           <span><p>A guide through our payment terminals</p>
-           </span>
-         </span>
-        <i class="material-icons">arrow_forward</i>
-      </a>
-    </div>
-</div>
-
 {% include iterator.html next_href="/checkout-v3/payment-request"
                          next_title="Start Integrating v3.0" %}
 {% include iterator.html next_href="/checkout-v3/payment-request-3-1"
@@ -158,4 +108,3 @@ below to read more." %}
 [paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
 [trustly]: /checkout-v3/payment-presentations#trustly
 [instrument-mode]: /checkout-v3/features/optional/instrument-mode
-[migration-guide]: /checkout-v3/resources/migration-guide

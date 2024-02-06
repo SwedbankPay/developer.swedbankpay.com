@@ -1,9 +1,12 @@
 ---
-redirect_from: /pax-terminal/NET/CodeExamples
 title: C# Code Examples
 description: |
     Simple code examples without the aim of being state of the art. The code works, so feel free to copy and test.
-menu_order: 40
+permalink: /:path/
+menu_order: 90
+icon:
+  content: code
+  outlined: true
 ---
 
 ## As Client Only
@@ -496,7 +499,7 @@ private async void button1_Click(object sender, EventArgs e)
 [simplest-client]: #as-client-only
 [clientnserver]: #as-client-and-server
 [getcna]: #get-cna-for-customer
-[create-method]: /pax-terminal/NET/Methods/create
-[start-method]: /pax-terminal/NET/Methods/start
-[openasync]: /pax-terminal/NET/Methods/openasync
-[paymentasync]: /pax-terminal/NET/Methods/paymentasync
+[create-method]: /pax-terminal/NET/SwpTrmLib/Methods/essential/create
+[start-method]: /pax-terminal/NET/SwpTrmLib/Methods/essential/start
+[openasync]: /pax-terminal/NET/SwpTrmLib/Methods/essential/openasync
+[paymentasync]: /pax-terminal/NET/SwpTrmLib/Methods/essential/paymentasync

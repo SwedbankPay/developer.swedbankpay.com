@@ -2,7 +2,6 @@
 section: Payment Terminals
 sidebar_icon: point_of_sale
 title: Introduction
-redirect_from: /checkout-v3/resources/ecom
 permalink: /:path/
 menu_order: 3
 ---
@@ -13,16 +12,17 @@ Swedbank Pay Payment Application implementation of nexo Retailer allows the
 integrated application to initiate the relevant functions within Swedbank Pay
 Payment Application.
 
-There are three options for integrating the Swedbank Pay terminals to a sale system.
+There are three options for integrating the Swedbank Pay terminals to a sale
+system.
 
 *   [nexo Retailer][nexoretailer] - As implemented by Swedbank Pay.
 *   [.Net SDK][dotnetsdk] - abstract interface implementing the nexo Retailer.
 *   [Java SDK][javasdk] - abstract interface implementing the nexo Retailer.
 
-The Swedbank Pay SDK contains one implementation for using PAX A30 or A35 terminal but
-makes it possible to vary the style of use by configuration. There are two major
-styles that is decided by the SalesCapabilities string sent in as a
-LoginRequest:
+The Swedbank Pay SDK contains one implementation for using PAX A30 or A35
+terminal but makes it possible to vary the style of use by configuration. There
+are two major styles that is decided by the SalesCapabilities string sent in as
+a LoginRequest:
 
 *   Act as both server and client
 *   Act as client only

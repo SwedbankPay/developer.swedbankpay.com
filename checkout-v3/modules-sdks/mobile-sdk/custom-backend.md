@@ -721,9 +721,9 @@ specify the allowed custom scheme, you can conform to
     }
 ```
 
-{% include iterator.html prev_href="ios"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
                          prev_title="Back: iOS"
-                         next_href="other-features"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
                          next_title="Next: Other Features" %}
 
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification

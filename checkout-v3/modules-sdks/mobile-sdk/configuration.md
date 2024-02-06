@@ -140,7 +140,7 @@ platform specific chapters.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"
-                         next_href="merchant-backend"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend"
                          next_title="Next: Merchant Backend" %}
 
 [dokka-config]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-configuration/index.md

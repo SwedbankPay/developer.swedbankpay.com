@@ -308,7 +308,7 @@ sequenceDiagram
 Note that the invoice will not be created/distributed before you have
 made a `capture` request." %}
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="direct" next_title="Direct" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/invoice/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/invoice/direct" next_title="Direct" %}
 
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png

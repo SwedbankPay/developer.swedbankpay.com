@@ -176,7 +176,7 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="capture" prev_title="Capture"
-next_href="features" next_title="Features" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/invoice/capture" prev_title="Capture"
+next_href="/old-implementations/payment-instruments-v1/invoice/features" next_title="Features" %}
 
 [callback-request]: /old-implementations/payment-instruments-v1/invoice/features/core/callback

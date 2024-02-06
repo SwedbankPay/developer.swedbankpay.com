@@ -1,5 +1,6 @@
 ---
 title: Checkout – Checkin
+permalink: /:path/checkin/
 redirect_from: /checkout/checkin
 description: |
   Swedbank Pay Checkout consists of two parts:
@@ -287,7 +288,7 @@ and its duration.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="payment-menu"
+                         next_href="/old-implementations/checkout-v2/payment-menu"
                          next_title="Payment Menu" %}
 
 [checkin-address]: /assets/img/checkout/checkin-address.png
@@ -295,6 +296,6 @@ and its duration.
 [checkin-options]: /assets/img/checkout/checkin-options.png
 [checkin-ssn]: /assets/img/checkout/checkin-ssn.png
 [checkin-events]: /old-implementations/checkout-v2/features/technical-reference/checkin-events
-[data-protection]: /checkout-v3/resources/data-protection#paymentorder-consumer-data
-[payment-menu]: payment-menu
+[data-protection]: /old-implementations/checkout-v2/data-protection#paymentorder-consumer-data
+[payment-menu]: /old-implementations/checkout-v2/payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html
