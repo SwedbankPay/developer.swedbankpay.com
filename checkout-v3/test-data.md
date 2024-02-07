@@ -1,7 +1,7 @@
 ---
 title: Test Data
 permalink: /:path/test-data/
-redirect_from: /checkout-v3/resources/test-data
+redirect_from: /checkout-v3/resources/test-data/
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
@@ -270,10 +270,5 @@ the following values:
 | TM01        | Swish timed out before the payment was started |
 | BANKIDCL    | Payer cancelled BankId signing                 |
 
-[3ds-emulator-no-dropdown]: /assets/img/3DS-emulator-no-dropdown.png
-[3ds-emulator-with-dropdown]: /assets/img/3DS-emulator-with-dropdown.png
 [otp-challenge-form]: /assets/img/new-otp-challenge-form.png
 [playground]: https://playground.swedbankpay.com
-[recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
-[unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
-[test-data]: https://developer.swedbankpay.com/checkout-v3/test-data/network-tokenization
