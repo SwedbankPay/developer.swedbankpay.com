@@ -43,18 +43,15 @@ how it tastes.
 ## Official Modules
 
 **Modules, extensions and plugins** are typically used as a way to extend
-webshop platforms such as [WooCommerce][woocommerce] and
-[Magento][magento]{:data-proofer-ignore=''} with functionality that isn't
-provided in the core platform. Such functionality may be to allow visitors of
-your website to pay with a payment provider such as Swedbank Pay.
-
-{% include alert-unsupported.md type='modules' %}
+webshop platforms such as [WooCommerce][woocommerce]{:data-proofer-ignore=''}
+with functionality that isn't provided in the core platform. Such functionality
+may be to allow visitors of your website to pay with a payment provider such as
+Swedbank Pay.
 
 {:.table .table-striped}
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
-| ![Episerver][episerver-icon] | [Swedbank Pay **Checkout** for Episerver][episerver-link]        | [`…episerver-checkout`][episerver-repo]       |
-|   ![WooCommerce][woo-icon]   | [Swedbank Pay **Checkout** for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
+|   ![WooCommerce][woo-icon]   | [Swedbank Pay Payment Menu for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
 
 ## Official SDKs
 
@@ -75,7 +72,6 @@ SDKs are often used as a building block to construct a *Module*.
 |     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]         | [`…sdk-ios`][ios-repo]         |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]     | [`…sdk-dotnet`][dotnet-repo]   |
 |     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]         | [`…sdk-php`][php-repo]         |
-|      ![JS][js-icon]      | [Swedban k Pay SDK for JavaScript][js-link]  | [`…sdk-js`][js-repo]           |
 
 ## Official Libraries
 
@@ -87,7 +83,6 @@ SDKs are often used as a building block to construct a *Module*.
 {:.table .table-striped}
 |            Platform      | Library                                                     | Repository                            |
 | :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
-| ![Magento][magento-icon] | [Swedbank Pay Core plugin for Magento 2][magento-core-link] | [`…magento2-core`][magento-core-repo] |
 | ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]   | [`…woocommerce-core`][woo-core-repo]  |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]         | [`…sdk-dotnet`][dotnet-repo]          |
 

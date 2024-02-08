@@ -174,7 +174,7 @@ sequenceDiagram
         end
 ```
 
-{% include iterator.html next_href="redirect" next_title="Redirect" %}
+{% include iterator.html next_href="/old-implementations/payment-instruments-v1/card/redirect" next_title="Redirect" %}
 
 [card-payment]: /assets/img/payments/card-payment.png
 [create-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment

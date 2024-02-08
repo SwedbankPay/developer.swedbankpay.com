@@ -1,5 +1,6 @@
 ---
 title: Seamless View
+permalink: /:path/seamless-view/
 description: |
   The Seamless View purchase scenario shows you how to implement the payment
   menu directly in your webshop.
@@ -161,7 +162,7 @@ capture and the other options you have after the purchase.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="post-purchase"
+                         next_href="/old-implementations/enterprise/post-purchase"
                          next_title="Post-Purchase" %}
 
 [abort-feature]: /old-implementations/enterprise/features/core/abort

@@ -32,36 +32,20 @@ object:
 
 ```json
 {
-    "details": "source: "PaymentMenuClient", bodyHeight: "[clientHeight of iframe content]""
+    "actionType": "OnApplicationConfigured",
+    "bodyHeight": "[clientHeight of iframe content]",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
+    "source": "PaymentMenuCore"
 }
 ```
 
 {:.table .table-striped}
 | Field     | Type     | Description                                                          |
 | :-------- | :------- | :------------------------------------------------------------------- |
-| `details` | `string` | The source of the reconfiguration, and the new height of the iframe. |
-
-## `onBillingDetailsAvailable`
-
-This event triggers when a consumer has been identified. The
-`onBillingDetailsAvailable` event will be raised with the following event
-argument object:
-
-{:.code-view-header}
-**onBillingDetailsAvailable event object**
-
-```json
-{
-    "actionType": "OnBillingDetailsAvailable",
-    "url": "/psp/consumers/{{ConsumerProfileRef}}/billing-details",
-}
-```
-
-{:.table .table-striped}
-| Field     | Type     | Description                                                                             |
-| :-------- | :------- | :-------------------------------------------------------------------------------------- |
-| `actionType`  | `string` | The type of event that was raised.                                                  |
-| `url`         | `string` | The URL containing billing details.                                                 |
+| `actionType` | `string` | The type of event that was raised.                                  |
+| `bodyHeight` | `string` | The height of the client's iframe content.                          |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}              |
+| `source` | `string` | The source of the reconfiguration                                       |
 
 ## `onError`
 
@@ -74,19 +58,20 @@ object:
 
 ```json
 {
+    "bodyType": "OnError",
+    "details": "English descriptive text of the error",
     "origin": "{{ api_resource }}",
-    "id": "/psp/paymentorders/{{ page.payment_id }}",
-    "details": "English descriptive text of the error"
+    "paymentOrderId:": "/psp/paymentorders/{{ page.payment_id }}"
 }
 ```
 
 {:.table .table-striped}
 | Field       | Type     | Description                                                    |
 | :---------- | :------- | :------------------------------------------------------------- |
+| `bodyType` | `string` | The type of event that was raised.                                      |
+| `details`   | `string` | A human readable and descriptive text of the error.                    |
 | `origin`    | `string` | `{{ api_resource }}`, identifies the system that originated the error. |
-| `id`        | `string` | {% include fields/id.md %}                        |
-| `details`   | `string` | A human readable and descriptive text of the error.
-|
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                |
 
 ## `onExternalRedirect`
 
@@ -104,8 +89,8 @@ will be raised with the following event argument object:
 
 ```json
 {
-    "event": "OnExternalRedirect",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "actionType": "OnExternalRedirect",
+    "paymentOrderId:": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/external"
 }
 ```
@@ -113,31 +98,41 @@ will be raised with the following event argument object:
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
 | :----------- | :------- | :--------------------------------------                               |
-| `event`      | `string` | The name of the event raised.                                         |
-| {% f paymentOrder, 0 %}         | `string` | {% include fields/id.md %}                       |
+| `actionType` | `string` | The type of event that was raised.                                    |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                |
 | `redirectUrl` | `string` | The external URL where the user will be redirected.                  |
 
-## `onPaymentAborted`
+## `onOutOfViewOpen`
 
-This event triggers when the user cancels the payment.
-The `onPaymentAborted` event is raised with the following event argument
-object:
+{% include events/on-out-of-view-open.md %}
+
+The event cannot be opened as a modal since the payer needs to see that this is
+a link on Swedbank Pay's domain.
+
+Subscribe to this event if you do not want the default handling of these links.
+But e.g. want to redirect the payer to a new page, and not just another tab
+within the same browser.
+
+If no callback method is set, the url will be opened in a
+new tab. It will be raised with the following event argument object:
 
 {:.code-view-header}
-**onPaymentAborted event object**
+**onOutOfViewOpen event object**
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}payments/{{ page.payment_id }}",
-    "redirectUrl": "https://example.com/cancelled"
+    "actionType": "OnOutOfViewOpen",
+    "openUrl": "https://example.com/external",
+    "paymentOrderId:": "/psp/paymentorders/{{ page.payment_id }}"
 }
 ```
 
 {:.table .table-striped}
-| Field         | Type     | Description                                                    |
-| :------------ | :------- | :------------------------------------------------------------- |
-| `id`          | `string` | {% include fields/id.md %}                          |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
+| Field        | Type     | Description                                                           |
+| :----------- | :------- | :--------------------------------------                               |
+| `actionType` | `string` | The type of event that was raised.                                    |
+| `openUrl`    | `string` | The external URL where the user will be redirected.                   |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                |
 
 ## `onPaymentCanceled`
 
@@ -157,8 +152,9 @@ It will be raised with the following event argument object:
 
 ```json
 {
-    "event": "OnPaymentCanceled",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "actionType": "OnPaymentCanceled",
+    "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/cancelled"
 }
 ```
@@ -166,8 +162,9 @@ It will be raised with the following event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------  |
-| `event`       | `string` | The name of the event raised.                                   |
-| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                 |
+| `actionType` | `string` | The type of event that was raised.                               |
+| `id`         | `string` | {% include fields/id.md %}                                       |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}           |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment. |
 
 ## `onPaymentCompleted`
@@ -187,8 +184,9 @@ It will be raised with the following event argument object:
 
 ```json
 {
-    "event": "OnPaymentCompleted",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
+    "actionType": "OnPaymentCompleted",
+    "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/success"
 }
 ```
@@ -196,8 +194,9 @@ It will be raised with the following event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                         |
 | :------------ | :------- | :-------------------------------------------------------------      |
-| `event`       | `string` | The name of the event raised.                                       |
-| {% f paymentOrder, 0 %}          | `string` | {% include fields/id.md %}                     |
+| `actionType` | `string` | The type of event that was raised.                                   |
+| `id`         | `string` | {% include fields/id.md %}                                           |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}               |
 | `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.  |
 
 ## `onPaymentCreated`
@@ -211,16 +210,20 @@ The `onPaymentCreated` event is raised with the following event argument object:
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "bodyType": "OnPaymentCreated",
+    "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}"
 }
 ```
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
-| `id`         | `string` | {% include fields/id.md %}                                                           |
+| `bodyType` | `string` | The type of event that was raised.                                                                |
+| `id`         | `string` | {% include fields/id.md %}                                                                      |
 | `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                                          |
 
 ## `onPaymentFailed`
 
@@ -233,7 +236,9 @@ The `onPaymentFailed` event is raised with the following event argument object:
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "actionType": "OnPaymentFailed",
+    "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/failed"
 }
 ```
@@ -241,10 +246,12 @@ The `onPaymentFailed` event is raised with the following event argument object:
 {:.table .table-striped}
 | Field         | Type     | Description                                                  |
 | :------------ | :------- | :----------------------------------------------------------- |
-| `id`          | `string` | {% include fields/id.md %}                        |
+| `actionType` | `string` | The type of event that was raised.                            |
+| `id`         | `string` | {% include fields/id.md %}                                    |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}        |
 | `redirectUrl` | `string` | The URL the user will be redirect to after a failed payment. |
 
-## `onPaymentInstrumentSelected`
+## `onPaymentMenuInstrumentSelected`
 
 This event triggers when a user actively changes payment instrument in the
 Payment Menu.
@@ -256,45 +263,22 @@ If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
 
 {:.code-view-header}
-**onPaymentInstrumentSelected event object**
+**onPaymentMenuInstrumentSelected event object**
 
 ```json
 {
-    "event": "OnPaymentInstrumentSelected",
-    "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
-    "instrument": "creditcard | vipps | swish | invoice",
+    "bodyType": "OnPaymentMenuInstrumentSelected",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
+    "instrument": "creditcard | vipps | swish | invoice"
 }
 ```
 
 {:.table .table-striped}
-| Field        | Type     | Description                                                           |
-| :----------- | :------- | :--------------------------------------                               |
-| `event`     | `string` | The name of the event raised.                                          |
-| {% f paymentOrder, 0 %}        | `string` | {% include fields/id.md %}                        |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by
-the user.                                                                                         |
-
-## `onPaymentPaid`
-
-This event triggers when a payment has completed successfully.
-The `onPaymentPaid` event is raised with the following event argument
-object:
-
-{:.code-view-header}
-**onPaymentPaid event object**
-
-```json
-{
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
-    "redirectUrl": "https://example.com/complete"
-}
-```
-
-{:.table .table-striped}
-| Field         | Type     | Description                                                     |
-| :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | {% include fields/id.md %}                           |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a completed payment. |
+| Field        | Type     | Description                                                                     |
+| :----------- | :------- | :-----------------------------------------------------------------------------  |
+| `bodyType` | `string` | The type of event that was raised.                                                |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                          |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user. |
 
 ## `onPaymentPending`
 
@@ -308,14 +292,18 @@ these events below.
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}"
+    "bodyType": "OnPaymentPending",
+    "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}"
 }
 ```
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
 | :------------ | :------- | :-------------------------------------------------------------- |
-| `id`          | `string` | {% include fields/id.md %}                           |
+| `bodyType` | `string` | The type of event that was raised.                                 |
+| `id`          | `string` | {% include fields/id.md %}                                      |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}           |
 
 ## `onPaymentToS`
 
@@ -328,16 +316,20 @@ argument object:
 
 ```json
 {
-    "origin": "owner",
-    "openUrl": "https://example.com/terms-of-service"
+    "actionType": "OnPaymentToS",
+    "openUrl": "https://example.com/terms-of-service",
+    "origin": "Merchant",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}"
 }
 ```
 
 {:.table .table-striped}
 | Field     | Type     | Description                                                                             |
 | :-------- | :------- | :-------------------------------------------------------------------------------------- |
-| `origin`  | `string` | `owner`, `merchant`. The value is always `merchant` unless Swedbank Pay hosts the view. |
+| `actionType` | `string` | The type of event that was raised.                                                   |
 | `openUrl` | `string` | The URL containing Terms of Service and conditions.                                     |
+| `origin`  | `string` | `owner`, `merchant`. The value is always `Merchant` unless Swedbank Pay hosts the view. |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                               |
 
 ## `onPaymentTransactionFailed`
 
@@ -352,7 +344,9 @@ event is raised with the following event argument object:
 
 ```json
 {
-    "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
+    "bodyType": "OnPaymentTransactionFailed",
+    "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
+    "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "details": "[HttpCode ProblemTitle]"
 }
 ```
@@ -360,30 +354,10 @@ event is raised with the following event argument object:
 {:.table .table-striped}
 | Field     | Type     | Description                                         |
 | :-------- | :------- | :-------------------------------------------------- |
-| `id`      | `string` | {% include fields/id.md %}               |
-| `details` | `string` | A human readable and descriptive text of the error. |
-
-## `onShippingDetailsAvailable`
-
-This event triggers when a consumer has been identified or their shipping
-address has been updated. The `onShippingDetailsAvailable` event will be raised
-with the following event argument object:
-
-{:.code-view-header}
-**onShippingDetailsAvailable event object**
-
-```json
-{
-    "actionType": "OnShippingDetailsAvailable",
-    "url": "/psp/consumers/{{ConsumerProfileRef}}/shipping-details",
-}
-```
-
-{:.table .table-striped}
-| Field     | Type     | Description                                                                             |
-| :-------- | :------- | :-------------------------------------------------------------------------------------- |
-| `actionType`  | `string` | The type of event that was raised.                                                  |
-| `url`         | `string` | The URL containing shipping details.                                                |
+| `bodyType` | `string` | The type of event that was raised.                       |
+| `id`          | `string` | {% include fields/id.md %}                            |
+| `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %} |
+| `details` | `string` | A human readable and descriptive text of the error.       |
 
 ## Updating Payment Menu
 

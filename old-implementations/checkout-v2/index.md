@@ -241,7 +241,7 @@ TODO: Number each important step in the above diagram and create a numbered list
 This product supports Danish `da-DK`, English (US) `en-US`, Finnish `fi-FI`,
 Norwegian `nb-NO` and Swedish `sv-SE`.
 
-{% include iterator.html next_href="checkin"
+{% include iterator.html next_href="/old-implementations/checkout-v2/checkin"
                          next_title="Implement Checkin" %}
 
 [after-payment-capture]: /old-implementations/checkout-v2/capture

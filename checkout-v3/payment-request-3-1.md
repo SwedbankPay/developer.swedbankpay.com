@@ -11,7 +11,7 @@ The integration consists of three main steps. **Creating** the payment order,
 **displaying** the payment menu, and **capturing** the funds. In addition, there
 are other post-purchase options you need. We get to them later on.
 
-## Step 1: Create Payment Order
+## Create Payment Order
 
 When your customer has initiated a purchase, you need to create a payment order.
 Start by performing a `POST` request towards the `paymentorder` resource with
@@ -82,7 +82,7 @@ Read more about possible additions to the request in our
 [abort-feature]: /checkout-v3/features/core/abort
 [callback-31]: /checkout-v3/features/core/callback
 [features]: /checkout-v3/features/
-[fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts-31-only
+[fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
 [frictionless]: /checkout-v3/features/core/frictionless-payments
 [history]: /checkout-v3/features/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items

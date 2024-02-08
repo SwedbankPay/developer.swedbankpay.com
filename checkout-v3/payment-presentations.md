@@ -17,32 +17,41 @@ rates and new user adoption that comes with it.
 
 ### Domain Verification
 
-**Redirect** integrations does not require a domain verification, as it will
-be hosted on Swedbank Pay's domain.
+To ensure that we can enable ApplePay for you, there are a few steps you need to
+take. If you're using a Redirect integration, you are all set and can skip this
+step. If you're using a Seamless View integration, you need to do the following:
 
-For **Seamless View** integrations, Apple needs to verify also your domain as a
-part of Swedbank Pay's set up process. To do this, you need to host a
-verification file on the following web path:
+1.  Download the [domain file][payex-domain-file] (right click and "Save as").
+    -   Make sure you do not change, edit or manipulate the file in any way,
+    shape or form.
+    -   The file should have **NO EXTENSION**, meaning there should not be any
+    ".txt", ".doc", ".mp4" or any other extension to the file.
 
-`https://example.com/.well-known/apple-developer-merchantid-domain-association`
+2.  Upload the file to the following web path:
+    _https://[DOMAIN-NAME]/.well-known/apple-developer-merchantid-domain-association_
+    -   Replace [DOMAIN-NAME] with your own domain.
+    -   If your website is https://example.com, then the site would be
+    _https://example.com/.well-known/apple-developer-merchantid-domain-association_
+    -   If you want to activate ApplePay on multiple domains, for example
+    _https://ecom.payex.com_ and _https://developer.swedbankpay.com_), you need
+    to upload the file to all of the unique domains.
 
-To make sure your file looks correct, you can copy
-[our domain file][payex-domain-file] which is already present on our server.
+3.  Verify that the file has been uploaded correctly by opening the site. You
+    should see a series of letters and numbers.
+    -   You can compare it to our own verification file, found on
+    [this site][swp-file-site].
+    -   If done correctly, they should look identical.
 
-The verification file consists of a hex string which contains a JSON. Opening it
-is OK, but make sure that you **upload it exactly as it is**. We recommend
-opening it as a text file or something similar, and **not** e.g. in Word or an
-editor, as it could result in unwanted formatting changes if you save it. The
-file does not, and should not, have a file extension.
+If you're using our **iOS SDK**, make sure that the **WebViewBaseURL** is set to
+the same domain as where you host the file. If not, it may fail to validate,
+making it so payments with Apple Pay may not function.
 
-To help you validate that your file looks correct, you can
-[compare it to this][payex-domain-file], which is already present on our server.
-
-**If you are using our iOS SDK**, you need to ensure that the **WebViewBaseURL**
-is set to the exact same domain as where you host the file. Otherwise, it will
-not validate.
-
-This file must be in place before we can activate Apple Pay for you.
+Once the previous steps have been completed, get in touch with us to activate
+Apple Pay. The verification file is a hex string that contains a **JSON**. If
+the file is modified or the file is saved in a different format, this may cause
+the validation to fail. If you have further questions about how to upload the
+file and make it available, contact your domain administrator or provider for
+further instructions and assistance.
 
 ### Accepting Donations
 
@@ -251,10 +260,10 @@ S-Pankki, Säästöpankki and Ålandsbanken.
 While it works mostly the same way as the [payer aware payment menu][papm], we
 have two recommendations to make the experience as smooth as possible.
 
-*   Include the first and last name of the payer in the `payer`
+-   Include the first and last name of the payer in the `payer`
   object.
 
-*   Add the payer's SSN. If you provide it in the `payerReference` field, the
+-   Add the payer's SSN. If you provide it in the `payerReference` field, the
   SSN has to be hashed.
 
 {% include iterator.html prev_href="/checkout-v3/"
@@ -277,6 +286,7 @@ have two recommendations to make the experience as smooth as possible.
 [papm]: /checkout-v3/features/optional/payer-aware-payment-menu
 [restrict]: /checkout-v3/features/optional/payer-restrictions
 [req-con-address]: /checkout-v3/features/optional/request-delivery-info
+[swp-file-site]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
 [web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
 [web-googlepay-checklist]: https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist
 [web-googlepay-devdoc]: https://developers.google.com/pay/api/web/

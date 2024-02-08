@@ -71,7 +71,7 @@ provides shipping address via the `onShippingDetailsAvailable` event." %}
 
 ```json
 {
-  "actionType": "OnBillingDetailsAvailable",
+  "actionType": "OnShippingDetailsAvailable",
   "url": "/psp/consumers/{{ page.payment_token }}/shipping-details"
 }
 ```

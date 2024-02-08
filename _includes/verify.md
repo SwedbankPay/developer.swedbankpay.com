@@ -1,7 +1,7 @@
 {% capture documentation_section %}{% include utils/documentation-section.md %}{% endcapture %}
 {% capture documentation_section_url %}{% include utils/documentation-section-url.md %}{% endcapture %}
 {% capture api_resource %}{% include api-resource.md %}{% endcapture %}
-{%- unless documentation_section contains 'checkout' or documentation_section contains 'payment-menu' or documentation_section == 'invoice' %}
+{%- unless documentation_section contains 'checkout' or documentation_section contains 'payment-menu' or documentation_section contains 'enterprise' or documentation_section == 'invoice' %}
     {% assign has_one_click = true %}
 {%- endunless %}
 {% assign implementation = documentation_section | split: "/"  | last | capitalize | remove: "-" %}
