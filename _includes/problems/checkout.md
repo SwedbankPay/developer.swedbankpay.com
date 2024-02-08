@@ -70,11 +70,11 @@ the eCommerce API if the requested `Payment`/`One-Click`/`Recur`/`Unscheduled`
 token does not exist or is deleted.
 
 The following new `errorType` will be introduced (only for Payment Order):
-https://api.payex.com/psp/errordetail/paymenttokeninactive
+`https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive`
 
 In addition to the one currently in use for both Payment Instruments and Payment
 Order:
-https://api.payex.com/psp/errordetail/inputerror
+`https://api.payex.com/psp/errordetail/paymentorders/inputerror`
 
 First, a check is made to verify if the token exists or not. If it does not
 exist, the API returns an error of the type `InputError`. If, however, the token
@@ -86,7 +86,7 @@ Examples of the error messages are presented below.
 
 ```json
 {
-   "type":"https://api.payex.com/psp/errordetail/inputerror",
+   "type":"https://api.payex.com/psp/errordetail/paymentorders/inputerror",
    "title":"Error in input data",
    "status":404,
    "instance":"https://api.payex.com/psp/probleminstance/00-e53deef0eb5e47bcb5ba1739bdd9086c-
@@ -106,7 +106,7 @@ Examples of the error messages are presented below.
 
 ```json
 {
-    "type": "https://api.payex.com/psp/errordetail/paymenttokeninactive",
+    "type": "https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive",
     "title": "Payment token is inactive",
     "status": 422,
     "instance": "https://api.payex.com/psp/probleminstance/00-2fc18bd40743401596bf2de3b51ab16d-
