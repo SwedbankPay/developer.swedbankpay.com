@@ -5613,11 +5613,11 @@ the eCommerce API if the requested <code class="language-html highlighter-rouge"
 token does not exist or is deleted.</p>
 
 <p>The following new <code class="language-html highlighter-rouge">errorType</code> will be introduced (only for Payment Order):
-https://api.payex.com/psp/errordetail/paymenttokeninactive</p>
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive</code></p>
 
 <p>In addition to the one currently in use for both Payment Instruments and Payment
 Order:
-https://api.payex.com/psp/errordetail/inputerror</p>
+<code class="language-html highlighter-rouge">https://api.payex.com/psp/errordetail/paymentorders/inputerror</code></p>
 
 <p>First, a check is made to verify if the token exists or not. If it does not
 exist, the API returns an error of the type <code class="language-html highlighter-rouge">InputError</code>. If, however, the token
@@ -5645,7 +5645,7 @@ exists but is deleted, the API will return the error <code class="language-html 
 15
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-   </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"https://api.payex.com/psp/errordetail/inputerror"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"https://api.payex.com/psp/errordetail/paymentorders/inputerror"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"title"</span><span class="p">:</span><span class="s2">"Error in input data"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">404</span><span class="p">,</span><span class="w">
    </span><span class="nl">"instance"</span><span class="p">:</span><span class="s2">"https://api.payex.com/psp/probleminstance/00-e53deef0eb5e47bcb5ba1739bdd9086c-
@@ -5682,7 +5682,7 @@ exists but is deleted, the API will return the error <code class="language-html 
 15
 </pre></td>
 <td class="code-view-code"><pre><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail/paymenttokeninactive"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment token is inactive"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">422</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/probleminstance/00-2fc18bd40743401596bf2de3b51ab16d-
