@@ -118,10 +118,9 @@ CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3/payments-only" %}
-            "siteId": "MySiteId",{% endif %}
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId"{% endif %}
         },
-,
         "payer": {
             "digitalProducts": false,
             "firstName": "Leia",
@@ -157,7 +156,7 @@ CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for
                 "accountPwdChangeIndicator": "01",
                 "shippingAddressUsageIndicator": "01",
                 "shippingNameIndicator": "01",
-                "suspiciousAccountActivity": "01",
+                "suspiciousAccountActivity": "01"
             }
         },
         "orderItems": [
