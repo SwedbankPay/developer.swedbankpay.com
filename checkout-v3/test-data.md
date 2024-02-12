@@ -191,7 +191,7 @@ There are two different ways of testing Card Payments error scenarios. You can
 test 3-D Secure errors using our 3-D Secure emulator, or you can use specific
 amounts set to trigger errors in our test environment.
 
-### Amount Error Testing Method
+### Magic Amounts (Error Testing Using Amounts)
 
 We have some preset amounts that will trigger error codes. While creating a
 payment (operation `purchase`), enter one of the amounts from the list below in
@@ -205,6 +205,7 @@ The amounts that can be used to trigger error codes
 {:.table .table-striped}
 | Amount   | Error Code                                | Description                              |
 | :------- | :---------------------------------------- | :--------------------------------------- |
+| `900305` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded |
 | `900313` | `REJECTED_BY_ACQUIRER_INVALID_AMOUNT`     | Invalid amount, response-code: 13        |
 | `900330` | `REJECTED_BY_ACQUIRER_FORMAT_ERROR`       | Format error, response-code: 30          |
 | `900334` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 34        |
@@ -215,6 +216,14 @@ The amounts that can be used to trigger error codes
 | `900361` | `REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS` | Insufficient funds, response-code: 61    |
 | `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62         |
 | `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91 |
+| `952400` | `DONOTRETRY`                              | Transaction declined, do not retry       |
+| `952501` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
+| `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded |
+
+The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
+`MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The
+`SuspensionWarning` response message appears when the two limit exceeds have
+5 attempts left (i.e. after 5 daily or 10 monthly attempts).
 
 ## Invoice Test Data
 
