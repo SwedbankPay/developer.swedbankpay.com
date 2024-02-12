@@ -49,7 +49,24 @@ sensitive card info.
          </span>
          <span class="cards-content">
             <span class="h4">Recurring Payments</span>
-            <span><p>How to get started with recurring payments</p>
+            <span><p>Start getting that steady cash flow with our subscription services.</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-xl-6 col-lg-6 d-flex">
+       <a href="/checkout-v3/use-cases/one-click" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">One-Click Payments</span>
+            <span><p>Save your customer's details and make their checkout faster.</p>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
