@@ -41,7 +41,7 @@ purchases.
 
 {% endif %}
 
-### API Requests To Generate The Payment Token
+## API Requests To Generate The Payment Token
 
 When making the initial purchase request, you need to generate a `paymentToken`.
 You can do this by setting the `generatePaymentToken` field in the request's
@@ -69,6 +69,43 @@ setting the initial operation to [`Verify`][verify].
 | | {% f payerReference, 0 %}                 | `string`     | A reference used to recognize the payer when no SSN is stored.                                                                                                                                                                                                                                                                            |
 {% endcapture %}
 {% include accordion-table.html content=table %}
+
+{% if documentation_section contains "checkout-v3" %}
+
+## Enable Payment Details Consent Checkbox
+
+Use the same basic initial payment order request, and add the new field
+`enablePaymentDetailsConsentCheckbox` in the `paymentOrder` node. Set it to
+`true` to show the checkbox used to store payment details for card payments.
+Remember to also set `disableStoredPaymentDetails` to `true`.
+
+This option will not work with `Verify`, and will result in a validation error
+if you try.
+
+{:.code-view-header}
+**generatePaymentToken field**
+
+```json
+{
+ "paymentorder": {
+    "enablePaymentDetailsConsentCheckbox": true,
+    "disableStoredPaymentDetails": true,
+  }
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
+| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
+|  | {% f EnablePaymentDetailsConsentCheckbox %}                     | `bool`     | Set to `true` or `false`. Used to determine if the checkbox used to save payment details is shown or not. Will only work if the parameter `disableStoredPaymentDetails` is set to `true`.                                                                                                                                                                                                                                                                                 |
+|  | {% f disableStoredPaymentDetails %}                     | `bool`     | Set to `true` or `false`. Must be set to `true` for `enablePaymentDetailsConsentCheckbox` to work.                                                                                                                                                                                                                                           |
+
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+{% endif %}
 
 ## Finding The `paymentToken` Value
 
