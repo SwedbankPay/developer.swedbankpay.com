@@ -149,6 +149,29 @@ Examples of the error messages are presented below.
 If you have questions regarding the new error types, do not hesitate to contact
 us through the ordinary support channels.
 
+## Payment Details Problems
+
+In order to use the new parameter `EnablePaymentDetailsConsentCheckbox` – which
+determines whether or not to show the checkbox used to save payment details –
+the `DisableStoredPaymentDetails` parameter must be set to `true`. Otherwise you
+will get a validation error.
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/paymentorders/inputerror",
+    "title": "Error in input data",
+    "status": 400,
+    "instance": "https://api.payex.com/psp/probleminstance/00-f75cfaedb1eb467bbefd4917c67a7664-b25fb23de26682e9-01",
+    "detail": "Input validation failed, error description in problems node!",
+    "problems": [
+        {
+            "name": "PaymentOrder.EnablePaymentDetailsConsentCheckbox",
+            "description": "EnablePaymentDetailsConsentCheckbox cannot be used without DisableStoredPaymentDetails."
+        }
+    ]
+}
+```
+
 ## Card Problems
 
 There are a few problems specific to the `creditcard` resource that you may want
