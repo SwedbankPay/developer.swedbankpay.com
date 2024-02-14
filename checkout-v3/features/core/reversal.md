@@ -9,8 +9,4 @@ icon:
   outlined: true
 ---
 
-Please note the difference between v3.1 and older versions.
-
-{% include payment-order-reversal.md %}
-
-{% include payment-order-reversal-3-1.md %}
+{% include payment-order-reversal-combined.md %}
