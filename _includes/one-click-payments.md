@@ -83,7 +83,7 @@ This option will not work with `Verify`, and will result in a validation error
 if you try.
 
 {:.code-view-header}
-**generatePaymentToken field**
+**Payment Details Consent Checkbox**
 
 ```json
 {
