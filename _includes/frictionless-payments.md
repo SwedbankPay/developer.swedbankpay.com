@@ -75,6 +75,8 @@ the better.
     "payer": {
         "email": "olivia.nyhuus@payex.com",
         "msisdn": "+4798765432",
+        "firstName": "Olivia",
+        "lastName": "Nyhuus",
         "workPhoneNumber" : "+4787654321",
         "homePhoneNumber" : "+4776543210",
         "shippingAddress": {
@@ -152,7 +154,9 @@ the better.
 | :---- | :--- | :---------- |
 | {% f payer %}                       | `object` | The payer object.        |
 | {% f email %}                       | `string` | Payer's registered email address.                                                  |
-| {% f msisdn %}  | `string` | Payer's registered mobile phone number.                                                  |
+| {% f msisdn %}                      | `string` | Payer's registered mobile phone number.                                                  |
+| {% f firstname %}                   | `string` | Payers's first name. Please note that this is not the `addressee` or from `shippingAddress`, as they might not be the same as the payer.                 |
+| {% f lastname %}                    | `string` | Payers's last name. Please note that this is not the `addressee` or `lastName` from `shippingAddress`, as they might not be the same as the payer.                 |                   |
 | {% f homePhoneNumber %}             | `string` | Payer's registered home phone number.                                                               |
 | {% f workPhoneNumber %}             | `string` | Payer's registered work phone number.                                                                 |
 | {% f shippingAddress %}             | `object` | The shipping address object related to the `payer`.                                                         |
@@ -162,6 +166,14 @@ the better.
 | {% f zipCode, 2 %}                    | `string` | Payer's zip code.                                           |
 | {% f city, 2 %}                       | `string` | Payer's city of residence.                                                                            |
 | {% f countryCode, 2 %}                | `string` | Country Code for the country of residence.                                                                      |
+|   {% f billingAddress %}              | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
+|    {% f firstName %}            | `string`  | The payer's first name.                                                                                                                  |
+|    {% f lastName %}            | `string`  | The payer's last name.                                                                                                                  |
+|  ︎  {% f streetAddress %}        | `string`  | The payer'a street address. Maximum 50 characters long.                                                                                                   |
+|                    {% f coAddress %}            | `string`  | The payer's CO-address (if used).                                                                                                                                         |
+|   {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                  |
+|    {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
+|   {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
 {% endif %}
 
