@@ -10,6 +10,18 @@ icon:
     outlined: true
 
 ---
+## Febuary 27 2024
+
+### .Net SDK 1.3.24047
+
+*   PaymentRequestResult now populates ProductName and PAN even if PaymentInstrumentData is missing.
+*   Possibility to use OpenEx or OpenExAsync to set OperatorID and ShiftNumber that will be forwarded and seen in reports.
+*   Possibility to attach purchase order Id by setting in in TransactionSetup when starting a payment.
+*   Setting up the logfile will only be made once even if new instances is created. Filter is removed when calling Stop.
+*   Calling Stop will stop and remove the listener
+*   SplitPayment may be indicated in TranactionSetup and is sent to terminal to be forwarded to host.
+*   Property type of TransactionSetup is always overridden and set to Refund if Refund or RefundAsync is called.
+*   Default currency fixed when using TransactionSetup
 
 ## February 6 2024
 
