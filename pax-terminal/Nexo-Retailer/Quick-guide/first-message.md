@@ -34,6 +34,8 @@ A LoginRequest starts a so called `Login Session` in the terminal. A `Login Sess
 | Name | Lev | Attribute | Description |
 | :------------- | :---: | :-------------- |:--------------- |
 | LoginRequest | 1 | OperatorLanguage |  Language used in the POS system. Supported: `sv`,`no`,`fi`,`da`. |
+|   |   | ShiftNumber | This is forwarded to the Pospay server. |
+|   |   | OperatorID | This is not used as of now. |
 | DateTime | 2 |  | Local time when request is made with time zone offset. |
 | SaleSoftware | 3 |    | Important information for SwedbankPay to be able to get an understanding of how different setups work. |
 |   | | ApplicationName | Name of the POS application or the module communicating with the terminal. |
