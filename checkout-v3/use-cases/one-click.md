@@ -1,7 +1,7 @@
 ---
 title: One Click
 hide_from_sidebar: true
-permalink: /:path/recurring/
+permalink: /:path/one-click/
 description: |
   Getting started with Swedbank Pay recurring services
 menu_order: 200
