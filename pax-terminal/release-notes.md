@@ -6,7 +6,7 @@ description: |
   published on this page.
 menu_order: 100
 ---
-## Febuary 27 2024
+## February 27 2024
 
 *   ShiftNumber in LoginRequest forwarded to Pospay server.
 *   Purchase order number may be included in payment and forwarded to Pospay.

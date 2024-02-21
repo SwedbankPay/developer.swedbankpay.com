@@ -10,7 +10,7 @@ icon:
     outlined: true
 
 ---
-## Febuary 27 2024
+## February 27 2024
 
 ### .Net SDK 1.3.24047
 
