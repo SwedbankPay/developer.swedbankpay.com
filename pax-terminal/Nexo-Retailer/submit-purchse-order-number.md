@@ -10,6 +10,7 @@ icon:
 There is a possibility to forward information to the host by using the `SaleToAquirerData` of `PaymentRequest` - `SaleData`. The data must be a JSON object that is Base64 encoded.
 
 {:.code-view-header}
+
 Eg. PurchaseRequest with purchase order in SaleToAquirerData
 
 ```xml
