@@ -2,6 +2,7 @@
 title: Include Purchase Order Number
 description: |
  A Purchase Order Number may be included in the PaymentRequest and will be forwarded to the aquirer host.
+permalink: /:path/submit-purchse-order-number
 menu_order: 65
 icon:
     content: bookmark_add

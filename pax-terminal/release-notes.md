@@ -8,7 +8,6 @@ menu_order: 100
 ---
 ## February 27 2024
 
-*   ShiftNumber in LoginRequest forwarded to Pospay server.
 *   Purchase order number may be included in payment and forwarded to Pospay.
 *   Updates for the [.Net SDK][dotnetrelease]
 
