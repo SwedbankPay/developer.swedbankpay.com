@@ -79,50 +79,15 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
 api-supported-versions: 3.1/3.0/2.0
 
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
+
 {
   "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
         "payerReference": "{payerReference}",
         "tokens": [
-            {
-                "token": "{paymentToken}",
-                "tokenType": "Payment",
-                "instrument": "CreditCard",
-                "instrumentDisplayName": "492500******0004",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
-                "instrumentParameters": {
-                    "expiryDate": "12/2022",
-                    "cardBrand": "Visa"
-                },
-                "operations": [
-                    {
-                        "method": "PATCH",
-                        "href": "https://api.internaltest.payex.com/psp/paymentorders/paymenttokens/0ecf804f-e68f-404e-8ae6-adeb43052559",
-                        "rel": "delete-paymenttokens",
-                        "contentType": "application/json"
-                    }
-                ]
-            },
-            {
-                "token": "{paymentToken}",
-                "tokenType": "Payment",
-                "instrument": "Invoice-payexfinancingno",
-                "instrumentDisplayName": "260267*****",
-                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
-                "instrumentParameters": {
-                    "email": "hei@hei.no",
-                    "msisdn": "+4798765432",
-                    "zipCode": "1642"
-                },
-                "operations": [
-                    {
-                        "method": "PATCH",
-                        "href": "https://api.internaltest.payex.com/psp/paymentorders/paymenttokens/dd9c1103-3e0f-492a-95a3-a39bb32a6b59",
-                        "rel": "delete-paymenttokens",
-                        "contentType": "application/json"
-                    }
-                ]
-            },
             {
                 "token": "{token}",
                 "tokenType": "Unscheduled",
@@ -130,8 +95,11 @@ api-supported-versions: 3.1/3.0/2.0
                 "instrumentDisplayName": "492500******0004",
                 "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
-                    "expiryDate": "12/2020",
-                    "cardBrand": "Visa"
+                    "expiryDate": "12/2025",
+                    "cardBrand": "Visa",
+                    "lastFourPan": "0004",
+                    "lastFourDPan": "8188",
+                    "issuerName": "BankName"
                 },
                 "operations": [
                     {
