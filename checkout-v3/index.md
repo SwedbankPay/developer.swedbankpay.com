@@ -55,8 +55,6 @@ sensitive card info.
          <i class="material-icons">arrow_forward</i>
       </a>
     </div>
-</div>
-<div class="row mt-4">
     <div class="col-xl-6 col-lg-6 d-flex">
        <a href="/checkout-v3/use-cases/one-click" class="cards cards-primary">
          <span class="cards-icon">
