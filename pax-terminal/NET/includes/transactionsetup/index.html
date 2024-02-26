@@ -217,36 +217,42 @@
 13
 14
 15
-</pre></td><td class="code-view-code"><pre>    <span class="k">public</span> <span class="k">class</span> <span class="nc">TransactionSetup</span>
+</pre></td><td class="code-view-code"><pre> <span class="k">public</span> <span class="k">interface</span> <span class="nc">ITransactionSetup</span>
     <span class="p">{</span>
-        <span class="k">public</span> <span class="n">Nexo</span><span class="p">.</span><span class="n">PaymentTypes</span> <span class="n">type</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span>  <span class="n">Nexo</span><span class="p">.</span><span class="n">PaymentTypes</span><span class="p">.</span><span class="n">Normal</span><span class="p">;</span>
-        <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Amount</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-        <span class="k">public</span> <span class="kt">decimal</span> <span class="n">CashBack</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-        <span class="k">public</span> <span class="kt">string</span> <span class="n">Currency</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
-        <span class="k">public</span> <span class="kt">string</span> <span class="n">TransactionID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
-        <span class="k">public</span> <span class="kt">string</span> <span class="n">APMReference</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
-        <span class="k">public</span> <span class="kt">string</span> <span class="n">PaymentInstrument</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
-        <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SaleItem</span><span class="p">&gt;</span> <span class="n">SaleItems</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span> <span class="p">=</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SaleItem</span><span class="p">&gt;();</span>
-        <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span> 
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="s">$"</span><span class="p">{</span><span class="n">type</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">Amount</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">CashBack</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">Currency</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">TransactionID</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">APMReference</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">PaymentInstrument</span><span class="p">}</span><span class="s">"</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span class="kt">string</span> <span class="n">AcquirerData</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">decimal</span> <span class="n">Amount</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">string</span> <span class="n">APMReference</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">decimal</span> <span class="n">CashBack</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">string</span> <span class="n">Currency</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">string</span> <span class="n">PaymentInstrument</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">List</span><span class="p">&lt;</span><span class="n">SaleItem</span><span class="p">&gt;</span> <span class="n">SaleItems</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">bool</span> <span class="n">SplitPayment</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">string</span> <span class="n">TransactionID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">PaymentTypes</span> <span class="n">type</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="kt">string</span> <span class="nf">ToString</span><span class="p">();</span>
     <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <table class="table table-striped">
   <tbody>
     <tr>
-      <td>Nexo.PaymentTypes</td>
-      <td>type</td>
-      <td>Normal or Refund</td>
-      <td>Mandatory if used with <code class="language-html highlighter-rouge">GetPaymentInstrument</code> or <code class="language-html highlighter-rouge">GetPaymentInstrumentAsync</code>. Overridden when used with <code class="language-html highlighter-rouge">Refund</code> or <code class="language-html highlighter-rouge">RefundAsync</code></td>
+      <td>string</td>
+      <td>AcquirerData</td>
+      <td>Additional data to be sent to host. Used for PurchaseOrderNumber. JSON format</td>
+      <td>Optional</td>
     </tr>
     <tr>
       <td>decimal</td>
       <td>Amount</td>
       <td>Total amount</td>
       <td>Mandatory</td>
+    </tr>
+    <tr>
+      <td>string</td>
+      <td>APMReference</td>
+      <td>Used only if refund of a transaction made using alternative payment method. The reference originates from the response of the APM transaction</td>
+      <td>Only for Refund of APM transaction</td>
     </tr>
     <tr>
       <td>decimal</td>
@@ -262,18 +268,6 @@
     </tr>
     <tr>
       <td>string</td>
-      <td>TransactionID</td>
-      <td>A transaction id that may be set by sale system for tracking. If a transaction is started by calling <code class="language-html highlighter-rouge">GetPayementInstrument</code>, the transaction id must be set in that call and cannot be changed when later calling <code class="language-html highlighter-rouge">Payment</code> or <code class="language-html highlighter-rouge">Refund</code></td>
-      <td>Optional</td>
-    </tr>
-    <tr>
-      <td>string</td>
-      <td>APMReference</td>
-      <td>Used only if refund of a transaction made using alternative payment method. The reference originates from the response of the APM transaction</td>
-      <td>Only for Refund of APM transaction</td>
-    </tr>
-    <tr>
-      <td>string</td>
       <td>PaymentInstrument</td>
       <td>A non PCI regulated payment instrument. Prefix and supplied PAN must be registred in the terminal setup. The normal usage is for giftcards or card numbers that are created on site such as financing.</td>
       <td>Optional</td>
@@ -283,6 +277,24 @@
       <td>SaleItems</td>
       <td>Product details for fuel functionality</td>
       <td>Optional</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td>SplitPayment</td>
+      <td>Just a flag sent to host to indicate this sale in part of a complete sale made in the sale system. Does only make sense for certain host.</td>
+      <td>Optional</td>
+    </tr>
+    <tr>
+      <td>string</td>
+      <td>TransactionID</td>
+      <td>A transaction id that may be set by sale system for tracking. If a transaction is started by calling <code class="language-html highlighter-rouge">GetPayementInstrument</code>, the transaction id must be set in that call and cannot be changed when later calling <code class="language-html highlighter-rouge">Payment</code> or <code class="language-html highlighter-rouge">Refund</code></td>
+      <td>Optional</td>
+    </tr>
+    <tr>
+      <td>Nexo.PaymentTypes</td>
+      <td>type</td>
+      <td>Normal or Refund</td>
+      <td>Mandatory if used with <code class="language-html highlighter-rouge">GetPaymentInstrument</code> or <code class="language-html highlighter-rouge">GetPaymentInstrumentAsync</code>. Overridden when used with <code class="language-html highlighter-rouge">Refund</code> or <code class="language-html highlighter-rouge">RefundAsync</code></td>
     </tr>
   </tbody>
 </table>
