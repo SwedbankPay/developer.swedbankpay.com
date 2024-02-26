@@ -118,10 +118,9 @@ CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-123456",
-            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3/payments-only" %}
-            "siteId": "MySiteId",{% endif %}
+            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
+            "siteId": "MySiteId"{% endif %}
         },
-,
         "payer": {
             "digitalProducts": false,
             "firstName": "Leia",
@@ -157,7 +156,7 @@ CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for
                 "accountPwdChangeIndicator": "01",
                 "shippingAddressUsageIndicator": "01",
                 "shippingNameIndicator": "01",
-                "suspiciousAccountActivity": "01",
+                "suspiciousAccountActivity": "01"
             }
         },
         "orderItems": [
@@ -434,6 +433,43 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f operations %}     | `array`      | {% include fields/operations.md %} [See Operations for details]({{ features_url }}/technical-reference/operations).                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
+
+{% if documentation_section contains "checkout-v3" %}
+
+## Enable Payment Details Consent Checkbox
+
+Use the same basic initial payment order request, and add the new field
+`enablePaymentDetailsConsentCheckbox` in the `paymentOrder` node. Set it to
+`true` to show the checkbox used to store payment details for card payments.
+Remember to also set `disableStoredPaymentDetails` to `true`.
+
+This option will not work with `Verify`, and will result in a validation error
+if you try.
+
+{:.code-view-header}
+**Payment Details Consent Checkbox**
+
+```json
+{
+ "paymentorder": {
+    "enablePaymentDetailsConsentCheckbox": true,
+    "disableStoredPaymentDetails": true,
+  }
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
+| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
+|  | {% f EnablePaymentDetailsConsentCheckbox %}                     | `bool`     | Set to `true` or `false`. Used to determine if the checkbox used to save payment details is shown or not. Will only work if the parameter `disableStoredPaymentDetails` is set to `true`.                                                                                                                                                                                                                                                                                 |
+|  | {% f disableStoredPaymentDetails %}                     | `bool`     | Set to `true` or `false`. Must be set to `true` for `enablePaymentDetailsConsentCheckbox` to work.                                                                                                                                                                                                                                           |
+
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+{% endif %}
 
 ## Tokens
 

@@ -82,7 +82,9 @@ exists but is deleted, the API will return the error `TokenInactive`.
 
 Examples of the error messages are presented below.
 
-`InputError`, in this instance for a `RecurrenceToken`:
+### InputError
+
+`InputError` for a `RecurrenceToken`:
 
 ```json
 {
@@ -102,7 +104,9 @@ Examples of the error messages are presented below.
 }
 ```
 
-`TokenInactive`, in this instance for an `UnscheduledToken`:
+### TokenInactive
+
+`TokenInactive` example with `UnscheduledToken`:
 
 ```json
 {
@@ -122,8 +126,51 @@ Examples of the error messages are presented below.
 }
 ```
 
+`TokenInactive` example with a `RecurrenceToken`:
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive",
+    "title": "Payment token is inactive",
+    "status": 422,
+    "instance": "https://api.payex.com/psp/probleminstance/00-2fc18bd40743401596bf2de3b51ab16d-
+     bfebd4ae81ea8423-01",
+    "detail": "The given RecurrenceToken is inactive.",
+    "problems":
+     [
+       {
+           "name": "UnscheduledToken",
+           "description": "The given RecurrenceToken is inactive."
+        }
+    ]
+}
+```
+
 If you have questions regarding the new error types, do not hesitate to contact
 us through the ordinary support channels.
+
+## Payment Details Problems
+
+In order to use the new parameter `EnablePaymentDetailsConsentCheckbox` – which
+determines whether or not to show the checkbox used to save payment details –
+the `DisableStoredPaymentDetails` parameter must be set to `true`. Otherwise you
+will get a validation error.
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/paymentorders/inputerror",
+    "title": "Error in input data",
+    "status": 400,
+    "instance": "https://api.payex.com/psp/probleminstance/00-f75cfaedb1eb467bbefd4917c67a7664-b25fb23de26682e9-01",
+    "detail": "Input validation failed, error description in problems node!",
+    "problems": [
+        {
+            "name": "PaymentOrder.EnablePaymentDetailsConsentCheckbox",
+            "description": "EnablePaymentDetailsConsentCheckbox cannot be used without DisableStoredPaymentDetails."
+        }
+    ]
+}
+```
 
 ## Card Problems
 
@@ -174,6 +221,178 @@ the following URL structure:
 | `badgateway`                   | `502`  | Problems reaching the gateway. Try again after some time.                                |
 | `acquirergatewaytimeout`       | `504`  | Problems reaching acquirers gateway. Try again after some time.                                |
 
+### Creditcard Payments MIT - Do Not Try Again & Excessive Reattempts
+
+In accordance with directives from Visa and Mastercard, we will be implementing
+2 different types of limitations in the amount of successive reattempts of a
+previously failed transaction using either a `recurrence`- or `unscheduledToken`
+that can be done using card based payment instruments. This limitation has up
+until now been handled by Swedbank Pay Acquiring, but will now be handled
+earlier in the transaction process - enabling us to provide better and clearer
+response messages through the eCommerce-api.
+
+To test these response messages, we have added new magic amounts in the
+[test data section][test-data]. The new amounts are for `DAILYLIMITEXCEEDED`,
+`MONTHLYLIMITEXCEEDED`, `DONOTRETRY` and `MODIFICATIONSREQUIRED`.
+SuspensionWarning can be tested by using the `limit exceeded` amounts.
+
+One such limitation will be limiting the amount of successive reattempts of a
+previously failed transaction that can be done using creditcard based payment
+method within a specified period The limitation in question varies based on the
+card brand:
+
+*   MasterCard - 10 failed payment attempts allowed during a period of **24 hours**.
+*   Visa - 15 failed payment attempts allowed during a period of **30 days**.
+
+Note that all of the attempts has to get a failed response to be added to the
+limit quota - if a transaction goes through successfully, the quota will reset.
+
+The other limitation that will be implemented is in the case that Visa or
+Mastercard gives such a response that is flagged as "Do Not Retry" in accordance
+to Visa and MasterCard regulations. This response is given in the cases that
+they deem the transaction to never be possible to be valid - as an example, if
+the card no longer exists, and thus there is no point in retrying.
+
+In these cases, the card will be blocked immediately and no further attempts are
+allowed.
+
+Both of these limitations are based on the combination of the acquiring
+agreement that the transaction was initiated from, and the PAN of the card that
+was used. That is, a card might be blocked because of "Excessive Reattempts" at
+a particular merchant, while being allowed more reattempts at another. Please
+note that in the case a new card is issued in place of an old expired one, the
+new card usually keeps the same PAN - meaning that if the old card was blocked,
+the new one will be as well (until the period resets). This marks the importance
+of having such a logic in place that limits reattempts before the block actually
+takes place - this is where the new, clearer response messages will help.
+
+When it comes to Excessive Reattempts, the new response messages will be
+returned if the quota for the period gets to 5 attempts remaining, as follows:
+
+{:.code-view-header}
+**5 Attempts Remaining**
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/creditcard/suspensionwarning",
+    "title": "SuspensionWarning. The card might be blocked.",
+    "status": 403,
+    "detail": "5 attempts left before the card is blocked.",
+    "problems": [{
+            "name": "ExternalResponse",
+            "description": "Forbidden-AuthenticationRequired"
+        }, {
+            "name": "SuspensionWarning",
+            "description": "5 attempts left before the card is blocked."
+        }, {
+            "name": "AUTHENTICATION_REQUIRED",
+            "description": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5"
+        }, {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ]
+}
+```
+
+Should more attempts be tried, and the transaction fail, the number of remaining
+attempts will update accordingly. Once the card is blocked, the following
+responses will be given, depending on if the card in question is Visa or
+MasterCard:
+
+{:.code-view-header}
+**MasterCard**
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/creditcard/dailylimitexceeded",
+    "title": "Daily attempt limit is exceeded.",
+    "status": 403,
+    "detail": "The attempt is rejected after trying multiple times with same token.",
+    "problems": [{
+            "name": "REJECTED_BY_POSPAY_DAILY_LIMIT",
+            "description": "Intent with intentId 85ac3576-1e69-4aef-a066-84a0e6dcfa61, agreementId 80d0244c-2b15-4719-8ab1-ed83eddfee61 was suspended after exceeding the rolling 24 hour constraint of 10 attempts"
+        },
+  {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ]
+}
+```
+
+{:.code-view-header}
+**Visa**
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/creditcard/monthlylimitexceeded",
+    "title": "Monthly attempt limit is exceeded.",
+    "status": 403,
+    "detail": "The attempt is rejected after trying multiple times with same token.",
+    "problems": [{
+            "name": "REJECTED_BY_POSPAY_MONTHLY_LIMIT",
+            "description": "Intent with intentId 80456a1d-1cb1-429b-bf4e-8e1313362800, agreementId 3a47c702-7963-4915-9567-e1bce06d20dd was suspended after exceeding the rolling 30 day constraint of 15 attempts"
+        },
+  {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ]
+}
+```
+
+The new responses for "Do Not Retry" will be as follows:
+
+{:.code-view-header}
+**Blocked card, no further attempts allowed**
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererrordonotretry",
+    "title": "Do not retry.",
+    "status": 403,
+    "detail": "The attempt is rejected.",
+    "problems": [{
+            "name": "ExternalResponse",
+            "description": "Forbidden-AcquirerErrorDoNotRetry"
+        }, {
+            "name": "REJECTED_BY_ACQUIRER_DO_NOT_RETRY",
+            "description": "TOKEN04.ERR_FLG received in response, response-code: 05"
+        }, {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ]
+}
+```
+
+Furthermore, a new response is added, being returned in cases where the
+transaction is declined, but might be accepted after modifications:
+
+{:.code-view-header}
+**Transaction declined, modifications required**
+
+```json
+{
+    "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererrormodificationsrequired",
+    "title": "Modifications required.",
+    "status": 403,
+    "detail": "The attempt is rejected. Modifications required.",
+    "problems": [{
+            "name": "ExternalResponse",
+            "description": "Forbidden-AcquirerErrorModificationsRequired"
+        }, {
+            "name": "REJECTED_BY_ACQUIRER_MODIFICATIONS_REQUIRED",
+            "description": "TOKEN04.ERR_FLG received in response, response-code: 05"
+        }, {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ]
+}
+```
+
 ## Invoice Problems
 
 There are a few problems specific to the `invoice` resource that you may want to
@@ -207,7 +426,7 @@ following URL structure:
 
 Caused By:
 
--   The payer's BankID is already in use
+*   The payer's BankID is already in use
 
 {:.code-view-header}
 Example response bankidalreadyinuse
@@ -230,7 +449,7 @@ Content-Type: application/json
 
 Caused By:
 
--   The payer cancelled BankID authorization.
+*   The payer cancelled BankID authorization.
 
 {:.code-view-header}
 Example response bankidcancelled
@@ -253,7 +472,7 @@ Content-Type: application/json
 
 Caused By:
 
--   Something went wrong with the payer's BankID authorization.
+*   Something went wrong with the payer's BankID authorization.
 
 {:.code-view-header}
 Example response bankiderror
@@ -276,16 +495,16 @@ Content-Type: application/json
 
 Caused By:
 
--   Payee alias is missing or not correct.
--   PaymentReference is invalid.
--   Amount value is missing or not a valid number.
--   Amount is less than agreed minimum.
--   Amount value is too large.
--   Invalid or missing currency.
--   Wrong formatted message.
--   Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
--   Counterpart is not activated.
--   Payee not enrolled.
+*   Payee alias is missing or not correct.
+*   PaymentReference is invalid.
+*   Amount value is missing or not a valid number.
+*   Amount is less than agreed minimum.
+*   Amount value is too large.
+*   Invalid or missing currency.
+*   Wrong formatted message.
+*   Amount value is too large, or amount exceeds the amount of the original payment minus any previous refunds.
+*   Counterpart is not activated.
+*   Payee not enrolled.
 
 {:.code-view-header}
 Example response configerror
@@ -308,8 +527,8 @@ Content-Type: application/json
 
 Caused By:
 
--   MSISDN is invalid.
--   Payer's MSISDN is not enrolled at Swish.
+*   MSISDN is invalid.
+*   Payer's MSISDN is not enrolled at Swish.
 
 {:.code-view-header}
 Example response inputerror
@@ -332,7 +551,7 @@ Content-Type: application/json
 
 Caused By:
 
--   The payer does not meet the payment's age limit.
+*   The payer does not meet the payment's age limit.
 
 {:.code-view-header}
 Example response paymentagelimitnotmet
@@ -355,7 +574,7 @@ Content-Type: application/json
 
 Caused By:
 
--   The payer's social security number does not match with the one required by this payment.
+*   The payer's social security number does not match with the one required by this payment.
 
 {:.code-view-header}
 Example response socialsecuritynumbermismatch
@@ -378,7 +597,7 @@ Content-Type: application/json
 
 Caused By:
 
--   The payer's Swish is already in use.
+*   The payer's Swish is already in use.
 
 {:.code-view-header}
 Example response swishalreadyinuse
@@ -401,11 +620,11 @@ Content-Type: application/json
 
 Caused By:
 
--   Original payment not found or original payment is more than than 13 months old.
--   It appears that merchant's organization number has changed since sale was made.
--   The MSISDN of the original payer seems to have changed owner.
--   Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
--   Payment request not cancellable.
+*   Original payment not found or original payment is more than than 13 months old.
+*   It appears that merchant's organization number has changed since sale was made.
+*   The MSISDN of the original payer seems to have changed owner.
+*   Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
+*   Payment request not cancellable.
 
 {:.code-view-header}
 Example response swishdeclined
@@ -428,8 +647,8 @@ Content-Type: application/json
 
 Caused By:
 
--   Bank system processing error.
--   Swish timed out waiting for an answer from the banks after payment was started.
+*   Bank system processing error.
+*   Swish timed out waiting for an answer from the banks after payment was started.
 
 {:.code-view-header}
 Example response swisherror
@@ -452,7 +671,7 @@ Content-Type: application/json
 
 Caused By:
 
--   During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
+*   During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
 
 {:.code-view-header}
 Example response swishgatewaytimeout
@@ -475,7 +694,7 @@ Content-Type: application/json
 
 Caused By:
 
--   Swish timed out before the payment was started.
+*   Swish timed out before the payment was started.
 
 {:.code-view-header}
 Example response swishtimeout
@@ -517,7 +736,7 @@ Content-Type: application/json
 
 Caused By:
 
--   The payer cancelled the payment in the Swish app.
+*   The payer cancelled the payment in the Swish app.
 
 {:.code-view-header}
 Example response usercancelled
@@ -595,3 +814,4 @@ following URL structure:
 | `acquirer_gateway_timeout`    | `504`  |
 
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
+[test-data]: /checkout-v3/test-data/#magic-amounts-error-testing-using-amounts

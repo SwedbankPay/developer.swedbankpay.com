@@ -734,6 +734,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "tokens": [
       {
         "type": "payment",
@@ -805,6 +806,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
@@ -843,6 +845,7 @@ api-supported-versions: 3.1/3.0/2.0
     "number": 80100001190,
     "payeeReference": "1662360210",
     "amount": 1500,
+    "paymentTokenGenerated": false,
     "details": {
       "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
       "externalNonPaymentToken": "1234567890",
@@ -884,6 +887,7 @@ api-supported-versions: 3.1/3.0/2.0
     "number": 80100001190,
     "payeeReference": "1662360210",
     "amount": 1500,
+    "paymentTokenGenerated": false,
     "details": {
       "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
       "externalNonPaymentToken": "1234567890",
@@ -929,6 +933,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
@@ -971,6 +976,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
@@ -1011,6 +1017,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
       "misidn": "+46739000001"
     }
@@ -1043,6 +1050,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {}
   }
 }
@@ -1073,6 +1081,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {}
   }
 }
@@ -1104,6 +1113,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
       "trustlyOrderId": 123456789
     }
@@ -1127,6 +1137,7 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
 | {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
 | {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f paymentTokenGenerated %}                | `bool`       | Set to `true` or `false`. Used to show if a payment token has been generated or not. Will be set to `true` if the checkbox enabled by `EnablePaymentDetailsConsentCheckbox` has been checked by the payer during a payment, otherwise `false`.                                           |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |

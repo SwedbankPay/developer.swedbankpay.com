@@ -66,26 +66,61 @@ The `GET` request to retrieve these should look similar to this.
 
 ```http
 GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
 ```
-
-Among the response fields for the relevant token, you should be able to find
-these Network Tokenization related fields.
 
 {:.code-view-header}
 **GET Tokens Response**
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
 
-"instrumentParameters": {
-       "expiryDate": "12/2025",
-       "cardBrand": "Visa",
-       "lastFourPan": "6981",
-       "lastFourDPan": "8188",
-       "issuerName": "BankName"
-    }
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0
+
+{
+  "payerOwnedTokens": {
+        "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
+        "payerReference": "{payerReference}",
+        "tokens": [
+            {
+                "token": "{token}",
+                "tokenType": "Unscheduled",
+                "instrument": "CreditCard",
+                "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
+                "instrumentParameters": {
+                    "expiryDate": "12/2025",
+                    "cardBrand": "Visa",
+                    "lastFourPan": "0004",
+                    "lastFourDPan": "8188",
+                    "issuerName": "BankName"
+                },
+                "operations": [
+                    {
+                        "method": "PATCH",
+                        "href": "https://api.internaltest.payex.com/psp/paymentorders/unscheduledtokens/e2f06785-805d-4605-bf40-426a725d313d",
+                        "rel": "delete-unscheduledtokens",
+                        "contentType": "application/json"
+                    }
+                ]
+            }
+        ]
+    },
+    "operations": [
+        {
+            "method": "PATCH",
+            "href": "https://api.internaltest.payex.com/psp/paymentorders/payerOwnedPaymentTokens/{payerReference}",
+            "rel": "delete-payerownedtokens",
+            "contentType": "application/json"
+        }
+    ]
+}
 ```
 
 {:.table .table-striped .mb-5}
