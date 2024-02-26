@@ -11,6 +11,28 @@ menu_order: 10
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 26 February 2024
+
+### Version 4.8.0
+
+A handful of changes in the pipeline this time around, with the biggest being
+the introduction of better error codes for excessive re-attempts. Read all about
+[the error codes and how to test them here][token04].
+
+Are you in the market for One-Click payments? We have a new [use case][1cuc]
+written about that. Give it a read!
+
+Due to new directives from card companies regarding frictionless payments, we
+have [re-introduced name fields in the payer object][frictionless-payments]. Go
+see the fields you should include now.
+
+We have also added the possibility to display a [consent box][consent-box] for
+saving payment details. When displayed by you and checked by the payer, we have
+also added a new field in the [paid response][resource-model-paid], confirming
+that a token has been created.
+
+Big changes are coming up next time. Stay tuned!
+
 ## 06 Jan 24
 
 ### Version 4.7.0
@@ -921,6 +943,7 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
+[1cuc]: /checkout-v3/use-cases/one-click
 [3-1]: /checkout-v3/payment-request-3-1
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
@@ -962,6 +985,7 @@ integration and the payer.
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/payment-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/display-payment-ui/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[consent-box]: /checkout-v3/features/optional/one-click-payments/#enable-payment-details-consent-checkbox
 [contact-us]: /#front-page-contact-partners
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
@@ -1058,6 +1082,7 @@ integration and the payer.
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
 [terminology]: /checkout-v3/resources/terminology
 [test-data]: /checkout-v3/test-data
+[token04]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/optional/tos
 [trustly-pres]: /checkout-v3/payment-presentations#trustly
