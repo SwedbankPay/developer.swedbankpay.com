@@ -228,15 +228,6 @@ function _handleSimpleSidebar (e) {
         searchButton.addEventListener("click", function(e) {
             const searchInput = document.querySelector(".search-input");
             const searchBtn = document.querySelector("#search-btn");
-
-            if (searchInput.style.display !== "block") {
-                searchInput.style.display = "block";
-                searchBtn.style.borderTopLeftRadius  = "0";
-                searchBtn.style.borderBottomLeftRadius  = "0";
-                searchInput.focus();
-                e.preventDefault();
-            }
-
             return false;
         });
     });
