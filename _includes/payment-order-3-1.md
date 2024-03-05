@@ -4,16 +4,12 @@
 
 ## Payment Order Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1
+Content-Type: application/json;version=3.1{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
@@ -38,8 +34,13 @@ Content-Type: application/json;version=3.1
             "orderReference": "or-123456"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -72,15 +73,11 @@ Content-Type: application/json;version=3.1
 
 ## Payment Order Response
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 2.0, 3.0, 3.1
+api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -110,43 +107,43 @@ api-supported-versions: 2.0, 3.0, 3.1
         "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
         },
         "urls": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/urls"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
         },
         "payeeInfo": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payeeinfo"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo"
         },
         "payer": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers"
         },
         "history": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/history"
         },
         "failed": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failed"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failed"
         },
         "aborted": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/aborted"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/aborted"
         },
         "paid": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/paid"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/paid"
         },
         "cancelled": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/cancelled"
         },
         "reversed": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/reversed"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversed"
         },
         "financialTransactions": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/financialtransactions"
         },
         "failedAttempts": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
         },
         "postPurchaseFailedAttempts": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
         },
         "metadata": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata"
         }
       },
     "operations": [
@@ -163,20 +160,25 @@ api-supported-versions: 2.0, 3.0, 3.1
           "contentType": "application/javascript"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
           "rel":"update-order",
           "method":"PATCH",
           "contentType":"application/json"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
         }
        ]
-      }
-```
+      }{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
