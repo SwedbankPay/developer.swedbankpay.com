@@ -5,7 +5,7 @@ description: |
 permalink: /:path/autoconfigurepos/
 hide_from_sidebar: true
 icon:
-    content: settings_ethernet
+    content: settings_suggest
     outlined: true
 menu_order: 65
 ---
