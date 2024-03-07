@@ -10,28 +10,12 @@ menu_order: 2
 
 ## Foundation
 
-The **Swedbank Pay API Platform** is built using the [REST architectural
-style][rest] and the request and responses come in the [JSON] format. The API
-has predictable, resource-oriented URLs and use default HTTP features, like HTTP
-authentication (using OAuth 2), HTTP methods and headers. These techniques are
-widely used and understood by most HTTP client libraries.
-
-## Prerequisites
-
 To start integrating Swedbank Pay Digital Payments, you need the following:
 
 *   [HTTPS][https] enabled web server.
 *   Agreement that includes Swedbank Pay Checkout.
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
     the Merchant Portal.
-
-## Start Your Journey
-
-*   WOW
-*   POINTS
-*   NEEDED!
-
-Start by setting up a test account and let's go!
 
 The **basic payment integration** consists of 4 main steps. **Creating** the
 payment, **displaying** the payment UI, **verifying** the payment status and
@@ -50,23 +34,16 @@ FANCY STEP ILLUSTRATION NEEDED!
 ## Get Ready To Go Live
 
 A few more steps remain before your integration is ready to run in a production
-environment. They require some human contact.
+environment. Our technical onboarding managers are ready to assist you.
 
-*   Acceptance tests - Our technical onboarding managers will help you
+*   Acceptance tests
 
-*   Contract details - Our sales department will help you
+*   Contract details
 
-*   Settlement and Reconciliation - in order to balance your financial books
+*   Settlement and reconciliation
 
-No need to worry about them just yet. We will walk you through everything when
-we get there.
-
-## Sequence Diagram
-
-FANCY SEQUENCE DIAGRAM!
-
-{% include iterator.html next_href="/checkout-v3/get-started/payment-lifecycle/payment-request"
-                         next_title="Start Integrating v3.0" %}
+No need to worry about these steps just yet. We will walk you through everything
+when we get there.
 
 [https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
 [json]: https://www.json.org/
