@@ -4,7 +4,7 @@ permalink: /:path/auto-configure-ecr-2-terminal/
 description: |
     Easier configuration of POS by picking up the terminal address from the configuration message sent from the terminal when pressing **Save** in terminal's admin menu.
 icon:
-    content: settings_ethernet
+    content: settings_suggest
     outlined: true
 menu_order: 15
 ---
