@@ -86,7 +86,7 @@
     "remark-preset-lint-recommended": "^6.1.3",
     "remark-retext": "^6.0.0",
     "remark-squeeze-paragraphs": "^6.0.0",
-    "remark-textr": "^6.0.0",
+    "remark-textr": "^6.1.0",
     "retext-english": "^5.0.0",
     "retext-repeated-words": "^5.0.0",
     "retext-sentence-spacing": "^6.0.0",
