@@ -4,7 +4,7 @@ permalink: /:path/release-notes/
 description: |
   The latest updates about our Digital Payments releases will be
   published on this page.
-menu_order: 10
+menu_order: 7
 ---
 
 {% include alert.html type="informative" icon="info" header="Version numbers"

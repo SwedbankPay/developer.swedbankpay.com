@@ -1,7 +1,7 @@
 ---
 title: Terminology
 permalink: /:path/terminology/
-menu_order: 1100
+menu_order: 7
 ---
 
 ### A

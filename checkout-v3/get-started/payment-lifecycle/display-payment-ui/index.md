@@ -3,7 +3,7 @@ title: Display Payment UI
 hide_from_sidebar: false
 description: |
   How to display the checkout payment UI.
-menu_order: 4
+menu_order: 6
 ---
 
 ## Display Payment UI

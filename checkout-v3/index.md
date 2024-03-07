@@ -41,7 +41,7 @@ sensitive card info.
 
 <div class="row mt-4">
     <div class="col-xl-6 col-lg-6 d-flex">
-       <a href="/checkout-v3/use-cases/recurring" class="cards cards-primary">
+       <a href="/checkout-v3/get-started/recurring" class="cards cards-primary">
          <span class="cards-icon">
             <i class="material-icons-outlined">
                 storefront
@@ -56,7 +56,7 @@ sensitive card info.
       </a>
     </div>
     <div class="col-xl-6 col-lg-6 d-flex">
-       <a href="/checkout-v3/use-cases/one-click" class="cards cards-primary">
+       <a href="/checkout-v3/get-started/one-click" class="cards cards-primary">
          <span class="cards-icon">
             <i class="material-icons-outlined">
                 storefront
@@ -99,12 +99,8 @@ below to read more." %}
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
 | ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
 
-{% include iterator.html next_href="/checkout-v3/payment-request"
-                         next_title="Start Integrating v3.0" %}
-{% include iterator.html next_href="/checkout-v3/payment-request-3-1"
-                         next_title="Start Integrating v3.1" %}
-{% include iterator.html next_href="/checkout-v3/setup"
-                         next_title="Set Up A Test Account" %}
+{% include iterator.html next_href="/checkout-v3/get-started/"
+                         next_title="Get Started" %}
 
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [apple-pay-logo]:/assets/img/applepay-logo.svg

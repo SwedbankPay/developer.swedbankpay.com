@@ -4,7 +4,7 @@ permalink: /:path/payment-request/
 hide_from_sidebar: false
 description: |
   How to create payments when using our Checkout.
-menu_order: 2
+menu_order: 4
 ---
 
 The integration consists of three main steps. **Creating** the payment order,

@@ -4,7 +4,7 @@ permalink: /:path/payment-request-3-1/
 hide_from_sidebar: false
 description: |
   How to create payments when using Digital Payments v3.1.
-menu_order: 3
+menu_order: 5
 ---
 
 The integration consists of three main steps. **Creating** the payment order,
