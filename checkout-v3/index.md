@@ -17,8 +17,16 @@ menu_order: 1
 *   Enjoy uninterrupted service
 *   Get started quickly
 
-Digital Payments is our easy and powerful e-commerce implementation, with a lot
-of flexibility for you as a merchant.
+There are three ways of implementing our digital payments, depending on what
+suits you best. The native implementation, which goes directly towards our APIs,
+modules (WooCommerce) or SDKs (.NET or Java).
+
+The modules and SDKs have their [own section][modules-sdks], which is where you
+need to go if you are planning on using them. A bit less flexible than the
+native API option, but a lower threshold to get going.
+
+If you are looking for the native implementation, we have everything you need in
+this section. We recommend [getting started here][get-started].
 
 ## API Platform Use Cases
 
@@ -98,4 +106,5 @@ below to read more." %}
 [wcag-presentation]: https://www.swedbankpay.com/information/wcag
 [paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
 [trustly]: /checkout-v3/payment-presentations#trustly
-[instrument-mode]: /checkout-v3/features/optional/instrument-mode
+[get-started]: /checkout-v3/get-started/
+[modules-sdks]: /checkout-v3/modules-sdks/

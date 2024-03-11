@@ -51,26 +51,26 @@ hide_from_sidebar: true
   <h2 id="front-page-contact-partners" class="heading-line">Contact & Partners</h2>
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
-          {% include card.html title='Contact Us'
-              text='Get in touch with our sales department to make sure that your needs are covered'
+          {% include card.html title='Talk To Us'
+              text='Improve your payment solutions. Connect with our sales team to see all that we can offer. Contact us.'
               to="mailto:sales.swedbankpay@swedbank.se"
           %}
       </div>
             <div class="{{ card_col_class }}">
           {% include card.html title='Denmark'
-              text='Get to know the Danish partners who help us deliver the best payment experience'
+              text='Discover our Danish payment solutions and partners. Dive in.'
               to='https://www.swedbankpay.dk/partners'
           %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Norway'
-              text='Get to know the Norwegian partners who help us deliver the best payment experience'
+              text='Power up your payments through our Norwegian partnerships. Get started.'
               to='https://www.swedbankpay.no/partners'
           %}
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Sweden'
-              text='Get to know the Swedish partners who help us deliver the best payment experience'
+              text='Explore partnerships in Sweden for better payment experiences. Learn more.'
               to='https://www.swedbankpay.se/partners'
           %}
       </div>
