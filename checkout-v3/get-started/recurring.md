@@ -1,13 +1,13 @@
 ---
-title: One Click
+title: Recurring
 hide_from_sidebar: true
-permalink: /:path/one-click/
+permalink: /:path/recurring/
 description: |
   Getting started with Swedbank Pay recurring services
-menu_order: 200
+menu_order: 5
 icon:
   content: subscriptions
   outlined: true
 ---
 
-{% include use-case-one-click.md %}
+{% include use-case-recurring.md %}

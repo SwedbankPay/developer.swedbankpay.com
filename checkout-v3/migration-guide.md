@@ -3,7 +3,7 @@ title: Migration Guide
 permalink: /:path/migration-guide/
 description: |
   How to migrate from Checkout v2 to Digital Payments v3.1
-menu_order: 1400
+menu_order: 5
 ---
 
 ## Introduction to v3.1
@@ -707,8 +707,8 @@ relevant documentation below.
 
 [Seamless view events (Embedded menu)][sv-events]
 
-[3-1]: https://developer.swedbankpay.com/checkout-v3/payment-request-3-1
+[3-1]: https://developer.swedbankpay.com/checkout-v3/get-started/payment-request-3-1
 [callback]: https://developer.swedbankpay.com/checkout-v3/features/core/callbackhttps://developer.swedbankpay.com/checkout-v3/features/core/callback.html#callback-example-v31
 [papm]: https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu
-[post-purchase]: https://developer.swedbankpay.com/checkout-v3/post-purchase-3-1
+[post-purchase]: https://developer.swedbankpay.com/checkout-v3/get-started/post-purchase-3-1
 [sv-events]: https://developer.swedbankpay.com/checkout-v3/features/technical-reference/seamless-view-events

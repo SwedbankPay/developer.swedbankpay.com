@@ -74,5 +74,5 @@ follow for each step.
 [checkout]: /checkout-v3
 [checkout-enterprise]: /old-implementations/enterprise
 [checkout-payments-only]: /checkout-v3
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
-[post-purchase-capture]: /checkout-v3/post-purchase#capture
+[https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
+[post-purchase-capture]: /checkout-v3/get-started/post-purchase#capture

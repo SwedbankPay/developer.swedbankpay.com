@@ -1,7 +1,7 @@
 ---
 title: Fundamental Principles
 permalink: /:path/fundamental-principles/
-menu_order: 900
+menu_order: 10
 description: |
     Read on to learn about the fundamentals and common architectural principles
     of the Swedbank Pay API Platform.

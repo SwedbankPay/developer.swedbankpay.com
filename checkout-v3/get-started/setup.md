@@ -6,7 +6,7 @@ description: |
   **In this section we are going to guide you through setting up your test account
   and how to make an API request for your first test payment. After these steps,
   you're ready to build your integration!**
-menu_order: 9
+menu_order: 3
 ---
 
 ## Step 1: Sign Up For A Test Account
@@ -74,5 +74,5 @@ production and staging environment need separate tokens. " %}
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction"
-                         next_href="/checkout-v3/payment-request"
+                         next_href="/checkout-v3/get-started/payment-request"
                          next_title="Start Integrating" %}

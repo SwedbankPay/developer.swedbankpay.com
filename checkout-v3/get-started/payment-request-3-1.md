@@ -1,10 +1,10 @@
 ---
-title: Payment Request
-permalink: /:path/payment-request/
+title: Payment Request v3.1
+permalink: /:path/payment-request-3-1/
 hide_from_sidebar: false
 description: |
-  How to create payments when using our Checkout.
-menu_order: 2
+  How to create payments when using Digital Payments v3.1.
+menu_order: 5
 ---
 
 The integration consists of three main steps. **Creating** the payment order,
@@ -14,27 +14,28 @@ are other post-purchase options you need. We get to them later on.
 ## Create Payment Order
 
 When your customer has initiated a purchase, you need to create a payment order.
+Start by performing a `POST` request towards the `paymentorder` resource with
+payer information and a `completeUrl`.
 
-Start by performing a `POST` request towards the `paymentorder` resource
-with payer information and a `completeUrl`.
+The `productName` field has been removed in v3.1, and you identify the
+`paymentOrder` version as v3.1 in the header instead.
 
-We have added `productName` to the payment order request in this integration.
-You can find it in the `paymentorder` field. This is no longer required, but is
-still an option to use v3.0 of Digital Payments. To use `productName`, simply
-put `Checkout3` as the value in that field in the request. You can also specify
-version by adding it in the header instead. If you use this option, you can
-leave out the `productName` field.
+`POST`, `PATCH`, `GET` and `PUT` requests use this header:
 
-`POST`, `PATCH` and `PUT` requests use this header:
+`Content-Type: application/json;version=3.1`
 
-`Content-Type: application/json;version=3.0`
+`GET` requests can also use this header:
 
-`GET` requests use this header:
+`Accept: application/json;version=3.1`
 
-`Accept: application/json;version=3.0`
+Valid versions are **3.1**, **3.0** and **2.0**. If you do not add a version,
+the request will default to **2.0**. Using the `productName` and setting it to
+`checkout3` will default to **3.0**.
 
-When `productName` is set to `checkout3`, `digitalProducts` will be set to
-`false` by default.
+To accompany the new version, we have also added a
+[v3.1 post-purchase section][post-31], [v3.1 callback][callback-31], a new
+resource model for [`failedPostPurchaseAttempts`][fppa] and additions to the
+[`history`][history] resource model.
 
 Supported features for this integration are subscriptions (`recur`, `one-click`
 and `unscheduled MIT`), `MOTO`, instrument mode, split settlement (`subsite`)
@@ -52,11 +53,14 @@ You can only use `abort` if the payer **has not** completed an `authorize` or a
 `sale`. If the payer is performing an action at a 3rd party, like the MobilePay,
 Swish or Vipps apps, `abort` is unavailable.
 
+To avoid unnecessary calls, we recommend doing a `GET` on your `paymentOrder` to
+check if `abort` is an available operation before performing it.
+
 {% include alert-risk-indicator.md %}
 
 {% include alert-gdpr-disclaimer.md %}
 
-{% include payment-order-checkout-payments-only.md %}
+{% include payment-order-3-1.md %}
 
 ## Adding To Your Request
 
@@ -72,10 +76,14 @@ Read more about possible additions to the request in our
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction"
-                         next_href="/checkout-v3/display-payment-ui/"
+                         next_href="/checkout-v3/get-started/display-payment-ui/"
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/core/abort
+[callback-31]: /checkout-v3/features/core/callback
 [features]: /checkout-v3/features/
+[fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
 [frictionless]: /checkout-v3/features/core/frictionless-payments
+[history]: /checkout-v3/features/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items
+[post-31]: /checkout-v3/get-started/post-purchase-3-1
