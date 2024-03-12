@@ -72,7 +72,7 @@ Read more about possible additions to the request in our
 
 {% include iterator.html prev_href="/checkout-v3/"
                          prev_title="Back to Introduction"
-                         next_href="/checkout-v3/display-payment-ui/"
+                         next_href="/checkout-v3/get-started/display-payment-ui/"
                          next_title="Display Payment UI" %}
 
 [abort-feature]: /checkout-v3/features/core/abort

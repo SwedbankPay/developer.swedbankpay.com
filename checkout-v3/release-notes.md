@@ -91,8 +91,7 @@ There is a new section regarding [Trustly in Digital Payments][trustly-pres],
 with important information regarding overlay and Trustly Express.
 
 There is also a new Vipps field for fees in the [`failedAttempts`][fa] resource
-model, and the [quick links to test data and other resources][quick-links] have
-been moved from the front page to Digital Payments.
+model.
 
 ## 28 September 2023
 
@@ -163,8 +162,8 @@ You spoke, we listened! We have worked a lot on making the portal easier to
 navigate. The main menu has been slimmed down, where we have removed the
 Introduction (but you can still read the main points under
 [fundamental principles][fundamental-principles]). If you are looking for the
-[Resources][resources] and [Modules & SDK][modules-sdks] sections, they have
-found a new home under Digital Payments.
+Modules & SDK][modules-sdks] section, it has found a new home under Digital
+Payments.
 
 Speaking of [Digital Payments][checkout-v3], we've cleaned that up as well, and
 hope it will make things easier for you. The
@@ -508,7 +507,7 @@ Other changes:
 *   Updated `instrument` description in [Checkout][checkout].
 *   Updated `payeeReference` description.
 *   Clarified `msisdn` and `shoplogoUrl` in [MobilePay Online Payments][mobile-pay].
-*   Updated [Test data][test-data] in [Resources][resources].
+*   Updated [Test data][test-data].
 *   Documented problems in [Trustly Payments][trustly-payments].
 *   Added an alert for two-phase payments in Capture pages.
 
@@ -943,7 +942,7 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
-[1cuc]: /checkout-v3/use-cases/one-click
+[1cuc]: /checkout-v3/get-started/one-click
 [3-1]: /checkout-v3/get-started/payment-request-3-1
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
@@ -983,7 +982,7 @@ integration and the payer.
 [checkout-v3-payments-only]: /checkout-v3
 [checkout-v3]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
-[checkout-v3-payments-only-seamless]: /checkout-v3/display-payment-ui/seamless-view
+[checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
 [consent-box]: /checkout-v3/features/optional/one-click-payments/#enable-payment-details-consent-checkbox
 [contact-us]: /#front-page-contact-partners
@@ -997,7 +996,7 @@ integration and the payer.
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
-[display-ui]: /checkout-v3/display-payment-ui/
+[display-ui]: /checkout-v3/get-started/display-payment-ui/
 [dom-ver]: /checkout-v3/payment-presentations#domain-verification
 [eligibility-check]: /checkout-v3/features/optional/instrument-mode#eligibility-check
 [mac]: /old-implementations/checkout-v2/features/optional/mac
@@ -1045,7 +1044,6 @@ integration and the payer.
 [pax-terminal]: /pax-terminal/
 [pp-3-1]: /checkout-v3/get-started/post-purchase-3-1
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
-[quick-links]: /checkout-v3/resources
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
 [resource-model-cancelled]: /checkout-v3/features/technical-reference/resource-sub-models#cancelled
@@ -1053,10 +1051,8 @@ integration and the payer.
 [resource-model-paid-swish]: /checkout-v3/features/technical-reference/resource-sub-models#swish-paid-resource
 [resource-model-payer]: /checkout-v3/features/technical-reference/resource-sub-models#payer
 [resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
-[resources]: /checkout-v3/resources/
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
-[resources]: /checkout-v3/resources/
-[ruc]: /checkout-v3/use-cases/recurring
+[ruc]: /checkout-v3/get-started/recurring
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
