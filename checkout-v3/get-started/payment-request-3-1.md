@@ -86,4 +86,4 @@ Read more about possible additions to the request in our
 [frictionless]: /checkout-v3/features/core/frictionless-payments
 [history]: /checkout-v3/features/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items
-[post-31]: /checkout-v3/post-purchase-3-1
+[post-31]: /checkout-v3/get-started/post-purchase-3-1

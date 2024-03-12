@@ -944,7 +944,7 @@ paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
 [1cuc]: /checkout-v3/use-cases/one-click
-[3-1]: /checkout-v3/payment-request-3-1
+[3-1]: /checkout-v3/get-started/payment-request-3-1
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
@@ -982,7 +982,7 @@ integration and the payer.
 [checkout-v3-enterprise]: /old-implementations/enterprise
 [checkout-v3-payments-only]: /checkout-v3
 [checkout-v3]: /checkout-v3
-[checkout-v3-payments-only-redirect-request]: /checkout-v3/payment-request
+[checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/display-payment-ui/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
 [consent-box]: /checkout-v3/features/optional/one-click-payments/#enable-payment-details-consent-checkbox
@@ -1006,10 +1006,10 @@ integration and the payer.
 [fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
 [frictionless-payments]: /checkout-v3/features/core/frictionless-payments
 [frontpage]: https://developer.swedbankpay.com/
-[fundamental-principles]: /checkout-v3/resources/fundamental-principles
+[fundamental-principles]: /checkout-v3/get-started/fundamental-principles
 [get-started]: /checkout-v3/
 [google-pay]: /checkout-v3/payment-presentations#google-pay
-[home-technical-information]: /checkout-v3/resources/fundamental-principles
+[home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
@@ -1032,7 +1032,7 @@ integration and the payer.
 [order-items]: /checkout-v3/features/optional/order-items
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [payment-order-update]: /checkout-v3/features/core/update
-[payment-request]: /checkout-v3/payment-request
+[payment-request]: /checkout-v3/get-started/payment-request
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
 [payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
@@ -1043,7 +1043,7 @@ integration and the payer.
 [partners]: /#front-page-contact-partners
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
-[pp-3-1]: /checkout-v3/post-purchase-3-1
+[pp-3-1]: /checkout-v3/get-started/post-purchase-3-1
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
 [quick-links]: /checkout-v3/resources
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
@@ -1067,7 +1067,7 @@ integration and the payer.
 [status-models]: /checkout-v3/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/features/technical-reference/status-models#paid
 [status-model-paid-v2]: /old-implementations/checkout-v2/features/technical-reference/status-models#paid
-[storing-uri]: /checkout-v3/resources/fundamental-principles#storing-urls
+[storing-uri]: /checkout-v3/get-started/fundamental-principles#storing-urls
 [swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /old-implementations/payment-instruments-v1/swish/direct
@@ -1080,7 +1080,7 @@ integration and the payer.
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
-[terminology]: /checkout-v3/resources/terminology
+[terminology]: /checkout-v3/get-started/terminology
 [test-data]: /checkout-v3/test-data
 [token04]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
@@ -1092,7 +1092,7 @@ integration and the payer.
 [trustly-payment-link]: /old-implementations/payment-instruments-v1/trustly/features/optional/payment-link
 [trustly-features]: /old-implementations/payment-instruments-v1/trustly/features
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
-[v3-setup]: /checkout-v3/setup
+[v3-setup]: /checkout-v3/get-started/setup
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps

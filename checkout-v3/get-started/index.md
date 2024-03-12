@@ -58,7 +58,7 @@ No need to worry about these steps just yet. We will walk you through everything
 when we get there.
 
 [basic-implementation]: /assets/img/basic-implementation.svg
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
+[https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [json]: https://www.json.org/
 [modules-sdks]: /checkout-v3/modules-sdks/
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer

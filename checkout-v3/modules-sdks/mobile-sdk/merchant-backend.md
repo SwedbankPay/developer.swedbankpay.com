@@ -694,7 +694,7 @@ name under your control – usually the host name of the Merchant Backend.
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /old-implementations/payment-menu-v2/features/technical-reference/payment-url
-[create-payment-order]: /checkout-v3/payment-request
+[create-payment-order]: /checkout-v3/get-started/payment-request
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

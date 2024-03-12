@@ -149,5 +149,5 @@ track of it. See the [Paid resource for cards][paid-resource-model].
 [one-click]: https://developer.swedbankpay.com/checkout-v3/features/optional/one-click
 [unscheduled]: https://developer.swedbankpay.com/checkout-v3/features/optional/unscheduled
 [recur]: https://developer.swedbankpay.com/checkout-v3/features/optional/recur
-[payment-order]: /checkout-v3/payment-request
+[payment-order]: /checkout-v3/get-started/payment-request
 [test-data]: https://developer.swedbankpay.com/checkout-v3/test-data/network-tokenization
