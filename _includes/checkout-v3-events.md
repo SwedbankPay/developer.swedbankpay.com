@@ -260,9 +260,9 @@ will be raised with the following event argument object:
 
 {% include events/on-paid.md %}
 
-Subscribe to this event if actions are needed on you side other than the default
-handling of redirecting the payer to your `completeUrl`. Call GET on the
-`paymentOrder` to receive the actual payment status, and take appropriate
+Subscribe to this event if actions are needed on your side other than the
+default handling of redirecting the payer to your `completeUrl`. Call `GET` on
+the `paymentOrder` to receive the actual payment status, and take appropriate
 actions according to it.
 
 It will be raised with the following event argument object:
@@ -283,7 +283,7 @@ It will be raised with the following event argument object:
 | :------------ | :------- | :-------------------------------------------------------------      |
 | `event`       | `string` | The name of the event raised.                                            |
 | {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `redirectUrl` | `string` | The URL the user will be redirect to after completing the payment.       |
+| `redirectUrl` | `string` | The URL the user will be redirected to after completing the payment.       |
 
 ## `onPaymentAttemptAborted`
 
@@ -307,7 +307,7 @@ event is raised with the following event argument object:
 | :------------ | :------- | :------------------------------------------------------------- |
 | `event`       | `string` | The name of the event raised.                                            |
 | {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %} |
-| `redirectUrl` | `string` | The URL the user will be redirect to after a cancelled payment.          |
+| `redirectUrl` | `string` | The URL the user will be redirected to after a cancelled payment.          |
 
 ## `onPaymentAttemptFailed`
 
