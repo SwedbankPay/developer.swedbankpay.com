@@ -38,9 +38,9 @@ integration support.
 
 {:.table .table-plain}
 | ----------: | ----------: |
-| Initiate a payment | The first step is to initiate a payment. You have a selection of setups and use cases depending on your business model, like recurring and one-click payments - but for now we'll stick to the basic payment. |
+| Initiate a Payment | The first step is to initiate a payment. You have a selection of setups and use cases depending on your business model, like recurring and one-click payments - but for now we'll stick to the basic payment. |
 | Display UI         | Present a UI for your end user and customize for your needs. The main choice you have to make is between the seamless view or redirect integration. There are pros and cons to both. |
-| Validate status    | Validate the status of the purchase in order to take the right action before acting on the payment response. |
+| Validate Status    | Validate the status of the purchase in order to take the right action before acting on the payment response. |
 | Capture            |  Capture the funds from a successful payment. |
 
 ## Get Ready To Go Live
