@@ -100,6 +100,12 @@ The examples are abbreviated where needed.
 }
 ```
 
+Here is an example image of what the menu looks like with two previously stored
+cards. <<Insert Image PAM1>>
+
+{:.text-center}
+![payment menu with two previously stored cards][pam1]
+
 ### One-Click for Future Transactions
 
 {:.code-view-header}
@@ -121,6 +127,12 @@ The examples are abbreviated where needed.
   }
 }
 ```
+
+Here is an example image of what it would look like when forcibly loading a
+specific set of details with “OneClick”. Insert <<OC1>>
+
+{:.text-center}
+![one-click with a specific set of details][oc1]
 
 By following these steps and structures, you can seamlessly integrate our
 features “Payer Aware Menu” and “One-Click” to reduce friction and enhance the
@@ -159,3 +171,6 @@ Both scenarios generate the same response:
 * Your agreement with your customer has been terminated or expired.
 * Error codes pertaining to permanent causes. Example of these can be
   `Card Expired (54)` or `Card stolen (43)`
+
+[oc1]: /assets/img/OC1.png
+[pam1]: /assets/img/PAM1.png
