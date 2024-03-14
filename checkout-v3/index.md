@@ -7,15 +7,23 @@ description: |
 menu_order: 1
 ---
 
-## Why Swedbank Pay?
-
-*   Get all your payment needs from one provider
-*   Manage all digital sales channels through one platform
-*   Customize your payment menu
-*   Ensure ease of use for everyone with the latest accessibility standards (WCAG)
-*   Simplify your financial management with one payout and one report
-*   Enjoy uninterrupted service
-*   Get started quickly
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Why Swedbank Pay?</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body">
+ <ul>
+ <li>Get all your payment needs from one provider</li>
+ <li>Manage all digital sales channels through one platform</li>
+ <li>Customize your payment menu</li>
+ <li>Ensure ease of use for everyone with the latest accessibility standards (WCAG)</li>
+ <li>Simplify your financial management with one payout and one report</li>
+ <li>Enjoy uninterrupted service</li>
+ <li>Get started quickly</li>
+ </ul>
+ </div>
+</section>
 
 There are three ways of implementing our digital payments, depending on what
 suits you best. The native implementation, which goes directly towards our APIs,
@@ -28,7 +36,7 @@ native API option, but a lower threshold to get going.
 If you are looking for the native implementation, we have everything you need in
 this section. We recommend [getting started here][get-started].
 
-## API Platform Use Cases
+### API Platform Use Cases
 
 <div class="row mt-4">
     <div class="col-xl-6 col-lg-6 d-flex">
@@ -63,7 +71,7 @@ this section. We recommend [getting started here][get-started].
     </div>
 </div>
 
-## Availability
+### Availability
 
 This implementation is available in Danish `da-DK`, English (US) `en-US`,
 Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
