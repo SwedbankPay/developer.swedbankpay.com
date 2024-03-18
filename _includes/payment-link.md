@@ -7,6 +7,9 @@ Payment Link is available for Digital Payments, Checkout v2, Payment Menu v1 and
 the payment instruments listed below, using the redirect platform and Swedbank
 Pay hosted payment page.
 
+*   [Checkout 3.1][checkout-v31]
+*   [Checkout 3.0][checkout-v3]
+*   [Checkout 2.0][checkout-v2]
 *   [Payment Menu v2][payment-menu]
 *   [Card][card]
 *   [MobilePay Online][mobilepay]
@@ -16,7 +19,8 @@ Pay hosted payment page.
 
 When the payer starts the purchase process in your merchant or webshop site, you
 need to make a `POST` request towards Swedbank Pay with your *Purchase*
-information. You receive a Payment Link (same as redirect URL) in response.
+information. You receive a Payment Link (same as redirect URL) in response. The
+link will be active for **28 days**.
 
 You have to distribute the Payment Link to the payer through your order
 system, using channels like e-mail or SMS.
@@ -224,6 +228,9 @@ sequenceDiagram
 [abort]: /old-implementations/payment-instruments-v1/card/features/core/abort-reference
 [card-payment]: /assets/img/payments/card-payment.png
 [card]: /old-implementations/payment-instruments-v1/card
+[checkout-v2]: /old-implementations/checkout-v2/
+[checkout-v3]: /checkout-v3/payment-request/
+[checkout-v31]: /checkout-v3/payment-request-3-1/
 [mobilepay]: /old-implementations/payment-instruments-v1/mobile-pay
 [payment-menu]: /old-implementations/payment-menu-v2
 [purchase-flow]: /old-implementations/payment-instruments-v1/card/features/core/purchase
