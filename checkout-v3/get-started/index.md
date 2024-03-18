@@ -34,7 +34,7 @@ payment, **displaying** the payment UI, **verifying** the payment status and
 **capturing** the funds. Don't hesitate with contacting us for further
 integration support.
 
-![Implementation steps][basic-implementation]
+![Implementation steps][basic-implementation]{:class="mt-4 mb-5"}
 
 {:.table .table-plain}
 | ----------: | ----------: |
