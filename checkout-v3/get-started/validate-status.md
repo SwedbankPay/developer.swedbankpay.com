@@ -1,20 +1,25 @@
 ---
-title: Verify Status
-permalink: /:path/verify-status/
+title: Validate Status
+permalink: /:path/validate-status/
 hide_from_sidebar: false
 description: |
-  How to verify the status of a payment
+  How to validate the status of a payment
 menu_order: 7
 ---
 
 After the payer has completed their payment and returned to the `CompleteUrl`,
-you need to verify that the payment has the status `Paid` so you are able to
+you need to validate that the payment has the status `Paid` so you are able to
 capture funds.
+
+First of all, you need to find out if the transaction type needs to be captured
+or not. `Authorization`s need to be captured (2-phase transactions),
+ `Sale`s do not (1-phase transactions).
 
 ## Perform the GET
 
-You can do this by perfoming a `GET` on your payment. The status field should
-simply have the status `Paid`. As long as this is the case, you are good to go
+You can do this by perfoming a `GET` on your payment.
+
+The status field should simply have the status `Paid`. As long as this is the case, you are good to go
 and proceed to doing the [capture][pp-capture].
 
 We also recommend adding an expansion of the `paid` node. Do this by adding
