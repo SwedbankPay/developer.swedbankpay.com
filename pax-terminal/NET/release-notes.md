@@ -12,6 +12,10 @@ icon:
 ---
 ## March 6 2024
 
+*   Updated command for avoiding privilege elevation.
+*   Use case for easier configuration of terminal and POS system.
+*   Update of [TransactionSetup][transactionsetup] and property [AcquirerData][acquirerdata].
+
 ### .Net SDK 1.3.24066
 
 *   New package ID. SwedbankPay.Pax.Sdk. Still the same namespaces and dll name.
@@ -91,3 +95,4 @@ ReceiptBlobNoHeader has been added to PaymentRequestResult.
 [eventcallback]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/
 [codeexamples]: /pax-terminal/NET/CodeExamples
 [paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult
+[acquirerdata]: /pax-terminal/NET/includes/acquirerdata
