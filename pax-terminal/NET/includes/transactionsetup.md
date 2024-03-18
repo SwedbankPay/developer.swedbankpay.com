@@ -23,8 +23,8 @@ TransactionSetup holds properties for a transaction and may be passed as an inpu
 ```
 
 {:.table .table-striped}
-| :------------- | :-------------- |:--------------- |:---|
-| string |AcquirerData | Additional data to be sent to host. Used for PurchaseOrderNumber. JSON format | Optional |
+| :--- | :--- |:--- |:--- |
+| string |[AcquirerData][acquirerdata] | Additional data to be sent to host. Used for sending special data to PosPay and that may be forwarded to other systems for customer purpose. JSON format. Content need to be agreed on | Optional |
 | decimal |Amount |Total amount | Mandatory |
 | string |APMReference |Used only if refund of a transaction made using alternative payment method. The reference originates from the response of the APM transaction | Only for Refund of APM transaction |
 | decimal |CashBack |included in Amount | Optional |
@@ -48,3 +48,4 @@ string |TransactionID |A transaction id that may be set by sale system for track
 ```
 
 [saleitem]: /pax-terminal/NET/includes/saleitem
+[acquirerdata]: /pax-terminal/NET/includes/acquirerdata

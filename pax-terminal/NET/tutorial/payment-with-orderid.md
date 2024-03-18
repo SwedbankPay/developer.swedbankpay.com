@@ -24,7 +24,7 @@ class PaxImplementation : ISwpTrmCallbackInterface
 
 public async Task CreatePayment()
 {
-    var pr = Pax.PaymentAsync(new TransactionSetup() {
+    var pr = await Pax.PaymentAsync(new TransactionSetup() {
         AcquirerData = JsonSerializer.Serialize(new { purchaseOrderNumber = "123456789"}),
         Amount = (decimal)120
     };
