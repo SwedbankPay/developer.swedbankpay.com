@@ -1,7 +1,8 @@
 By using the field `restrictedToInstruments`, you can customize in what order
-the payment instruments are listed in your payment UI. This gives you, as a
-merchant, the opportunity to promote selected payment instruments, or
-tailor the payment UI specifically for your customers.
+the payment instruments are listed in your payment UI, in addition to using it
+to restrict which instruments you want to display. This gives you, as a
+merchant, the opportunity to promote selected payment instruments, or tailor the
+payment UI specifically for your customers.
 
 If you detect that the customer is on a mobile, make their payment easier by
 having the digital wallets on top. On an Android phone? Lead with Google Pay. On
@@ -15,9 +16,9 @@ Choosing the order is very easy. You simply add the `array` field
 `restrictedToInstruments`, and the order you enter the payment instruments is
 the order they will appear in the menu.
 
-Please note that `restrictToInstruments` both sorts and restricts. Only the
-payment instruments included in the array will appear, so it is crucial that you
-include all the instruments you want to offer.
+Please remember that `restrictToInstruments` both sorts and restricts. Only the
+payment instruments included in the `array` will appear, so it is crucial that
+you include all the instruments you want to offer.
 
 I.e. if you populate the field with ["Swish","CreditCard","Trustly"], Swish will
 appear as the first option, card as the second and Trustly third. In this
@@ -26,13 +27,6 @@ active contract for a fourth payment instrument.
 
 If you do not include an `array` in your request, the payment UI will be
 presented in the default order.
-
-## Expand the First Instrument
-
-A useful addition to sorting the order in the payment menu, is auto expanding
-the first instrument. This is done by adding the `boolean` field
-`expandFirstInstrument` and set it to `true`. The top instrument will be
-expanded when the payment UI is loaded.
 
 ## Input Values
 
@@ -54,11 +48,21 @@ following, depending on which payments instruments you have active.
 | Trustly | "Trustly" |
 | Vipps | "Vipps" |
 
+## Expand the First Instrument
+
+A useful addition to sorting the order in the payment menu, is auto expanding
+the first instrument. This is done by adding the `boolean` field
+`expandFirstInstrument` and set it to `true`. The top instrument will be
+expanded when the payment UI is loaded. This is not mandatory, and can also be
+used as a stand-alone without sorting the order of the menu.
+
 ## Request Example
 
+The request with both fields included should look like the example below.
+
 Neither `expandFirstInstrument` or `restrictToInstruments` will be visible in
-the **response**, so we will not include that here. The request with both fields
-included should look like this.
+the **response**, so we will not include it here. The response will look like
+a basic `paymentOrder` response.
 
 {:.code-view-header}
 **Request**
