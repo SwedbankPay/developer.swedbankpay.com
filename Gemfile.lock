@@ -119,7 +119,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.9.0)
     rexml (3.2.6)
-    rouge (4.2.0)
+    rouge (4.2.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
