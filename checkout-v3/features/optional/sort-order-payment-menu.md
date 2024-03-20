@@ -1,5 +1,5 @@
 ---
-title: Sort Order Of Payment Menu
+title: Sort And Restrict Order Of Payment Menu
 permalink: /:path/sort-order-payment-menu/
 description: |
   Customize the order of options in your payment menu

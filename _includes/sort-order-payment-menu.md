@@ -10,15 +10,15 @@ an Apple device? Put Apple Pay first. Use the `Paid` resource to find what
 instrument the customer used to pay, and let it be the first option next time
 they visit you.
 
-## Sort The Payment Menu Order
+## Sort And Restrict The Payment Menu Order
 
 Choosing the order is very easy. You simply add the `array` field
 `restrictedToInstruments`, and the order you enter the payment instruments is
 the order they will appear in the menu.
 
-Please remember that `restrictToInstruments` both sorts and restricts. Only the
-payment instruments included in the `array` will appear, so it is crucial that
-you include all the instruments you want to offer.
+Please remember that `restrictedToInstruments` both sorts and restricts. Only
+the payment instruments included in the `array` will appear, so it is crucial
+that you include all the instruments you want to offer.
 
 I.e. if you populate the field with ["Swish","CreditCard","Trustly"], Swish will
 appear as the first option, card as the second and Trustly third. In this
@@ -60,7 +60,7 @@ used as a stand-alone without sorting the order of the menu.
 
 The request with both fields included should look like the example below.
 
-Neither `expandFirstInstrument` or `restrictToInstruments` will be visible in
+Neither `expandFirstInstrument` or `restrictedToInstruments` will be visible in
 the **response**, so we will not include it here. The response will look like
 a basic `paymentOrder` response.
 
