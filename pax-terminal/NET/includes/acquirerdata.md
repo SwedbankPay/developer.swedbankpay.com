@@ -3,7 +3,6 @@ title: AcquirerData
 description: |
  The content is base64 encoded and sent to the terminal i SaleToAcquirerData in a PaymentRequest
 permalink: /:path/acquirerdata/
-hide_from_sidebar: true
 ---
 ### Special data sent to host
 

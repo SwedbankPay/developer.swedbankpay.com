@@ -3,7 +3,6 @@ title: Make Payment Including Order Number
 description: |
  A payment may include an order id that is forwarded to the acquirer host.
 permalink: /:path/payment-with-orderid/
-hide_from_sidebar: true
 icon:
     content: bookmark_add
     outlined: true
