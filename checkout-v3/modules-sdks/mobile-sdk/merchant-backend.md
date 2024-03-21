@@ -3,8 +3,8 @@ title: Merchant Backend V3
 permalink: /:path/merchant-backend/
 description: |
   To use the **Swedbank Pay Mobile SDK**, you must have a backend server
-  that communicates with your Configuration. The fastest way to start
-  developing is to use the Merchant Backend API.
+  that communicates with your Configuration. One way to start developing
+  is to use the Merchant Backend API.
 menu_order: 1200
 ---
 

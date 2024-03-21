@@ -118,9 +118,9 @@ provided if you need to implement your Configuration in Java instead.
 
 As the mobile application cannot talk directly to Swedbank Pay servers, you will
 need your own backend to make those requests on the behalf of your
-Configuration. You are free to design your backend as best suits you, but the
-next chapter will detail one possible implementation, which also has a
-bundled-in Configuration implementation available in the SDK.
+Configuration. You are free to design your backend as best suits you, but there
+is also a chapter that will detail one possible example implementation, which
+also has a bundled-in Configuration implementation available in the SDK.
 
 One thing you should keep in mind while designing your backend is that the
 `paymentUrl` of your payment order needs special consideration in order to work
@@ -132,11 +132,8 @@ This can be accomplished by having `paymentUrl` return a redirect response; the
 details of that redirect will be discussed in the platform-specific pages. It is
 recommneded that `paymentUrl` be unique to each payment order that you create.
 
-The next chapter will go over the Merchant Backend API. It will also explore in
-detail how `paymentUrl` is handled on a server implementing the Merchant Backend
-API. The SDK comes ready with a Configuration suitable for a server implementing
-the Merchant Backend API, which will be discussed in detail in the client
-platform specific chapters.
+The next chapter will go over a custom backend implementation. It will also
+detail how `paymentUrl` should be handled.
 
 {% include iterator.html prev_href="./"
                          prev_title="Back: Introduction"

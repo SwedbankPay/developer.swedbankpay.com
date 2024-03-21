@@ -2,26 +2,26 @@
 title: Custom Backend
 permalink: /:path/custom-backend/
 description: |
-  You can also build a fully custom backend for the **Swedbank Pay Mobile SDK**
+  Implementing a custom backend for the **Swedbank Pay Mobile SDK**
 menu_order: 900
 ---
 
 In this chapter we explore how to integrate the mobile SDK with a fully custom
-backend server. It is recommended that you first read through the previous
-chapters and gain an understanding of how the SDK works with a backend
-implementing the Merchant Backend API.
+backend server. It is recommended that you also read through the chapters 
+covering the example Merchant Backend API and gain an understanding of how the
+SDK works with that as backend.
 
 ## Basic Backend Requirements
 
 To support the SDK, your backend must be capable of at least [creating a payment
 order][create-payment-order]. If you wish to use consumer identification, it
 must also be able to [start an identification
-session][initiate-consumer-session]. In addition to these, your backend must
+session][initiate-consumer-session]. In addition to these, your backend should
 serve the appropriate html documents at urls used for the
 [`paymentUrl`][payment-url]; the content of these html documents will be
 discussed below, but it is noteworthy that they are different for payments from
 Android applications and those from iOS applications. Further, the urls used for
-as `paymentUrl` on iOS must be [configured as universal links for your iOS
+as `paymentUrl` on iOS should be [configured as universal links for your iOS
 application][ios-aasa].
 
 ## Android Configuration
