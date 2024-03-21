@@ -65,10 +65,6 @@ The [Post-Purchase][post-purchase-capture] part is the same as when using
 Checkout on a web page, and is thus intentionally left out of the scope of the
 SDK.
 
-See below for a sequence diagram of a payment made using the Mobile SDK. This is
-a high-level diagram. More detailed views highlighting platform differences will
-follow for each step.
-
 {% include iterator.html next_href="configuration"
                          next_title="Next: Configuration" %}
 

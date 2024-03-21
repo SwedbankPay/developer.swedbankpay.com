@@ -56,7 +56,6 @@ protocol. The protocol has two required methods:
             userData: Any?,
             consumerProfileRef: String?,
             completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void
-
         ) {
            // code
         }
@@ -130,7 +129,7 @@ will, in some cases, be opened in the browser application, and at that point we
 must take some measures to return to your application to continue the payment.
 This can be accomplished by having `paymentUrl` return a redirect response; the
 details of that redirect will be discussed in the platform-specific pages. It is
-recommneded that `paymentUrl` be unique to each payment order that you create.
+recommended that `paymentUrl` be unique to each payment order that you create.
 
 The next chapter will go over a custom backend implementation. It will also
 detail how `paymentUrl` should be handled.
