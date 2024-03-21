@@ -461,5 +461,5 @@ sequenceDiagram
                          next_href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview"
                          next_title="Using a Web View Instead" %}
 
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

@@ -739,7 +739,7 @@ Feel free to use this as a resource in your own implementation.
 
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
 [sdk-paymenturl]: /checkout-v3/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
-[android-autoverify]: https://developer.android.com/training/app-links/verify-site-associations
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[android-autoverify]: https://developer.android.com/training/app-links/verify-android-applinks
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [android-package-visibility]: https://developer.android.com/training/package-visibility
 [android-flag-non-browser]: https://developer.android.com/reference/android/content/Intent#FLAG_ACTIVITY_REQUIRE_NON_BROWSER
