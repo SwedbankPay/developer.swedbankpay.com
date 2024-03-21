@@ -33,8 +33,8 @@ the `build.gradle` file:
 
 ```groovy
 dependencies {
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk:4.0.0'
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:4.0.0'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}'
 }
 ```
 
