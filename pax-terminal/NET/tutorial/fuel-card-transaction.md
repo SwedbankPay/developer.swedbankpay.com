@@ -1,9 +1,8 @@
 ---
 title: Fuel Functionality
 description: |
-  Fuel functionality is about handling cards that has various restrictions. Product codes and prices need to be sent to the terminal, and allowed products are returned if any is not accepted.
+  Fuel functionality is about handling cards that has various restrictions. 
 permalink: /:path/fuel-card-functionality/
-hide_from_sidebar: true
 icon:
     content: local_gas_station
     outlined: true
