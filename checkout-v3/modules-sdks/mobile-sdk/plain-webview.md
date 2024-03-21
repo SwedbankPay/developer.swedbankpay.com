@@ -9,7 +9,7 @@ description: |
   Experience from developing the SDK may still be valuable for integrators
   wishing to show Payments pages in a Web View inside a mobile application.
   This page serves as a repository of that experience.
-menu_order: 1500
+menu_order: 1600
 ---
 
 {% capture disclaimer %}
@@ -735,7 +735,7 @@ The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages.
 Feel free to use this as a resource in your own implementation.
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/process-diagrams"
-                         prev_title="Process Diagrams" %}
+                         prev_title="Back: Process Diagrams" %}
 
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
 [sdk-paymenturl]: /checkout-v3/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications

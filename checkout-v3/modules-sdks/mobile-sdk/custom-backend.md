@@ -1,9 +1,9 @@
 ---
-title: Mobile SDK – Custom Backend
+title: Custom Backend
 permalink: /:path/custom-backend/
 description: |
   You can also build a fully custom backend for the **Swedbank Pay Mobile SDK**
-menu_order: 1200
+menu_order: 900
 ---
 
 In this chapter we explore how to integrate the mobile SDK with a fully custom
@@ -721,10 +721,10 @@ specify the allowed custom scheme, you can conform to
     }
 ```
 
-{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
-                         prev_title="Back: iOS"
-                         next_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
-                         next_title="Next: Other Features" %}
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation"
+                         prev_title="Back: Bare Minimum Implementation"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/android"
+                         next_title="Next: Android" %}
 
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [create-payment-order]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
