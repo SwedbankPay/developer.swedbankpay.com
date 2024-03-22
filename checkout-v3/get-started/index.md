@@ -1,7 +1,7 @@
 ---
 section: Get Started
 sidebar_icon: description
-title: Introduction
+title: The Basics
 description: |
   Everything you need to set up a basic payment integration
 permalink: /:path/

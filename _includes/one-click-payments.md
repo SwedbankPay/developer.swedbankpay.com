@@ -319,11 +319,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 
 {% if documentation_section contains "checkout-v3" %}
 
-## Consent Checkbox For Instrument Mode And Custom Menu Selections
+## Disable Store Details and Toggle Consent Checkbox
+
+This is a feature intended for instrument mode and or custom menus.
 
 If you have built your own interface to display previously stored details and
 generate transactions using them ("One-Click Request Displaying A Specific
-Card"), you will have the need to include an option for them to store new
+Card"), you will also  have the need to include an option for them to store new
 details. This can be performed using either a `Purchase` or `Verify` operation.
 
 For `Purchase` operations aiming to store new details simultaneously, you will
@@ -375,7 +377,6 @@ in a validation error.
 {% endif %}
 
 ## How It Looks
-
 
 {% include alert.html type="informative" icon="info" body="
 When redirecting to Swedbank Pay the payment page will be

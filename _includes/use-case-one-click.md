@@ -4,11 +4,11 @@
 Looking to get started with One-Click or "Payer Aware Menu" to reduce
 friction? These are the supported instruments:
 
-* Cards: Masked PAN, Expiration Date and CVC
-* Swish: MSIDSN – Only for eCom-flow
-* Vipps: MSIDSN
-* Invoice: Email and MSIDSN
-* Trustly: Preferred bank account
+*   Cards: Masked PAN, Expiration Date and CVC
+*   Swish: MSIDSN – Only for eCom-flow
+*   Vipps: MSIDSN
+*   Invoice: Email and MSIDSN
+*   Trustly: Preferred bank account
 
 ## Introduction
 
@@ -32,17 +32,20 @@ To enable storing details for future purchases using the Payer Aware Menu,
 follow these steps:
 
 1.  Parameter `generatePaymentToken`:
-* Set to `true` inside the payment order request.
-* This value remains `true` by default for all transactions unless you wish to
+
+*   Set to `true` inside the payment order request.
+*   This value remains `true` by default for all transactions unless you wish to
   force “Guest mode”; in that case, send `false`.
 
 2.  Payer Object:
-* Include the parameter `payerReference`. Assign a unique value that can be sent
+
+*   Include the parameter `payerReference`. Assign a unique value that can be sent
 with every future transaction. Failure to send in the same reference may result
 in wrong details being displayed or defaulting to creating a new profile.
 
 3.  Optional Enhancements:
-* Expand the `Payer` object with additional information such as first and last
+
+*   Expand the `Payer` object with additional information such as first and last
 name, phone number and email address. This data will pre-populate relevant
 fields, providing a seamless experience for customers.
 
@@ -54,14 +57,17 @@ Menu documentation.
 To get started with One-Click payments, follow these steps:
 
 1.  Parameter `generatePaymentToken`:
-* Set to `true` inside the payment order request for initial storing of details.
+
+*   Set to `true` inside the payment order request for initial storing of details.
 
 2.  For Future Transactions:
-* Modify the `generatePaymentToken` parameter into `paymentToken` instead and
+
+*   Modify the `generatePaymentToken` parameter into `paymentToken` instead and
 replace the value `true` with the GUID (tokenized reference of the card) value.
 
 3.  Optional Enhancements:
-* Just like with “Payer Aware Menu”, you can enhance the payment experience by
+
+*   Just like with “Payer Aware Menu”, you can enhance the payment experience by
 submitting relevant fields in the `Payer` object to pre-populate relevant
 fields.
 
@@ -144,13 +150,13 @@ When certain conditions arise, such as encountering specific error codes or
 receiving requests from the payer to remove their details, it becomes necessary
 to initiate the deletion of associated tokens. Here are two methods:
 
-* Deletion of all Tokens:
+*   Deletion of all Tokens:
 Send a `PATCH` call to the base URL with the endpoint
 `/psp/paymentorders/payerOwnedTokens/<payerReference>`.
 
 This operation is only available for “Payer Aware Menu”.
 
-* Deletion of a singular Token:
+*   Deletion of a singular Token:
 Use the URL `/psp/paymentorders/paymenttokens/<TokenValue>`.
 
 Both scenarios generate the same response:
@@ -167,10 +173,10 @@ Both scenarios generate the same response:
 
 ## Common causes that triggers the need for deletion
 
-* Your customer requests their information to be removed.
-* Your agreement with your customer has been terminated or expired.
-* Error codes pertaining to permanent causes. Example of these can be
+*   Your customer requests their information to be removed.
+*   Your agreement with your customer has been terminated or expired.
+*   Error codes pertaining to permanent causes. Example of these can be
   `Card Expired (54)` or `Card stolen (43)`
 
-[oc1]: /assets/img/OC1.png
-[pam1]: /assets/img/PAM1.png
+[oc1]: /assets/img/OC1.JPG
+[pam1]: /assets/img/PAM1.JPG

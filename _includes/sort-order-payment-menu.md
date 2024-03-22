@@ -10,7 +10,7 @@ an Apple device? Put Apple Pay first. Use the `Paid` resource to find what
 instrument the customer used to pay, and let it be the first option next time
 they visit you.
 
-## Sort And Restrict The Payment Menu Order
+## Sort Or Restrict The Payment Menu Order
 
 Choosing the order is very easy. You simply add the `array` field
 `restrictedToInstruments`, and the order you enter the payment instruments is
@@ -30,8 +30,9 @@ presented in the default order.
 
 ## Input Values
 
-The list of possible values to include in `restrictedToInstruments` are the
-following, depending on which payments instruments you have active.
+The complete list of possible values to include in `restrictedToInstruments` are
+the following. You can find the instruments activated for your merchant
+under `availableInstruments` in the initial `paymentOrder` response.
 
 {:.table .table-striped}
 | Payment Instrument    | Input             |
@@ -63,9 +64,6 @@ The request with both fields included should look like the example below.
 Neither `expandFirstInstrument` or `restrictedToInstruments` will be visible in
 the **response**, so we will not include it here. The response will look like
 a basic `paymentOrder` response.
-
-{:.code-view-header}
-**Request**
 
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}

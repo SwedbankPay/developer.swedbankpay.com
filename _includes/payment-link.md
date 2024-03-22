@@ -229,8 +229,8 @@ sequenceDiagram
 [card-payment]: /assets/img/payments/card-payment.png
 [card]: /old-implementations/payment-instruments-v1/card
 [checkout-v2]: /old-implementations/checkout-v2/
-[checkout-v3]: /checkout-v3/payment-request/
-[checkout-v31]: /checkout-v3/payment-request-3-1/
+[checkout-v3]: /checkout-v3/get-started/payment-request/
+[checkout-v31]: /checkout-v3/get-started/payment-request-3-1/
 [mobilepay]: /old-implementations/payment-instruments-v1/mobile-pay
 [payment-menu]: /old-implementations/payment-menu-v2
 [purchase-flow]: /old-implementations/payment-instruments-v1/card/features/core/purchase

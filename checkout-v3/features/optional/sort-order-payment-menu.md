@@ -1,9 +1,9 @@
 ---
-title: Sort And Restrict Order Of Payment Menu
+title: Customize Order Of Payment Menu
 permalink: /:path/sort-order-payment-menu/
 description: |
-  Customize the order of options in your payment menu
-menu_order: 3200
+  Sort the order of and restrict your payment menu
+menu_order: 1800
 icon:
   content: format_list_numbered
   outlined: true

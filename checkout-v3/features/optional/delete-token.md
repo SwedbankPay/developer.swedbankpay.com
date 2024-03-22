@@ -2,7 +2,7 @@
 title: Delete Token
 permalink: /:path/delete-token/
 description: How to delete tokens.
-menu_order: 1800
+menu_order: 1900
 icon:
   content: delete_sweep
   outlined: true
