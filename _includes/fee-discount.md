@@ -9,8 +9,8 @@
  match the total payment order amount.
 
  Restricting the fee or discount to certain instruments is also possible. Simply
- add the `restrictToInstruments` field and which instruments the fee or discount
- applies to. This is currently available for invoice only.
+ add the `restrictedToInstruments` field and which instruments the fee or
+ discount applies to. This is currently available for invoice only.
 
  The example below shows a fee which only applies to Swedish invoices. Other
  options for some of the fields are in the table at the bottom.

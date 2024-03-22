@@ -10,6 +10,20 @@ icon:
     outlined: true
 
 ---
+## March 6 2024
+
+*   Updated command for avoiding privilege elevation.
+*   Use case for easier configuration of terminal and POS system.
+*   Update of [TransactionSetup][transactionsetup] and property [AcquirerData][acquirerdata].
+
+### .Net SDK 1.3.24066
+
+*   New package ID. SwedbankPay.Pax.Sdk. Still the same namespaces and dll name.
+*   Fix for display messages from fuel app that lacks text id.
+*   Added support for AdminRequest with service identification OM02, OM03 and OM04, regarding the Store-And-Forward
+*   Fixed bug for PrintRequest with DocumentQualifier other other than CashierReceipt or CustomerReceipt.
+*   Possibility for Net Framework 4.0. Now supports Netstandard2.0, net framework 4.5 and 4.0.
+
 ## February 27 2024
 
 ### .Net SDK 1.3.24047
@@ -81,3 +95,4 @@ ReceiptBlobNoHeader has been added to PaymentRequestResult.
 [eventcallback]: /pax-terminal/NET/SwpTrmLib/ISwpTrmCallbackInterface/
 [codeexamples]: /pax-terminal/NET/CodeExamples
 [paymentrequestresult]: /pax-terminal/NET/includes/paymentrequestresult
+[acquirerdata]: /pax-terminal/NET/includes/acquirerdata

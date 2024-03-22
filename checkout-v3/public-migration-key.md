@@ -1,12 +1,13 @@
 ---
 title: Public Migration Key
 permalink: /:path/public-migration-key/
+hide_from_sidebar: true
 description: |
   In order to send sensitive credit card data to Swedbank Pay, you need to use
   our *Public Migration Key* to encrypt the data in transmission.
   Contact our support at support.ecom@payex.com
   for more information regarding this procedure.
-menu_order: 1100
+menu_order: 8
 ---
 
 *   **Key size**: 4096 bits

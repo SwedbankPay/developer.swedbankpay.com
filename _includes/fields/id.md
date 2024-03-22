@@ -8,7 +8,7 @@
 {%- capture text -%}
     The relative URL and unique identifier of the
     `{{ resource }}` resource {{ sub_resource_text }}.
-    Please read about [URL Usage](/checkout-v3/resources/fundamental-principles#url-usage)
+    Please read about [URL Usage](/checkout-v3/get-started/fundamental-principles#url-usage)
     to understand how this and other URLs should be used in your solution.
 {%- endcapture -%}
 {%- comment -%}

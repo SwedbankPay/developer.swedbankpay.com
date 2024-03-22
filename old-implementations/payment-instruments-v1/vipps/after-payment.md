@@ -346,5 +346,5 @@ Content-Type: application/json
 [abort]: /old-implementations/payment-instruments-v1/vipps/after-payment#abort
 [cancel]: #cancellations
 [capture]: /old-implementations/payment-instruments-v1/vipps/features/core//capture
-[expand-parameter]: /checkout-v3/resources/fundamental-principles#expansion
+[expand-parameter]: /checkout-v3/get-started/fundamental-principles#expansion
 [reverse]: #reversals

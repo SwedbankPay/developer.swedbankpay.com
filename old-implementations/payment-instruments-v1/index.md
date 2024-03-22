@@ -142,7 +142,7 @@ Or:
 All actions after creating the payment can be done by using our APIs, or from
 our Merchant Portal tool. `abort` is only available when using APIs.
 
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
+[https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg

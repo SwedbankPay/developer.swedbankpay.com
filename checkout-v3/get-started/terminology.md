@@ -1,7 +1,7 @@
 ---
 title: Terminology
 permalink: /:path/terminology/
-menu_order: 1100
+menu_order: 9
 ---
 
 ### A
@@ -99,10 +99,10 @@ menu_order: 1100
 [callback-url]:/old-implementations/payment-instruments-v1/card/features/core/callback
 [cancel-url]: /old-implementations/payment-instruments-v1/card/after-payment#cancellations
 [checkout-url]: /checkout-v3
-[common-headers]: /checkout-v3/resources/fundamental-principles#headers
+[common-headers]: /checkout-v3/get-started/fundamental-principles#headers
 [fundamentals]: /old-implementations/payment-instruments-v1/#the-fundamentals
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS
 [invoice-url]: /old-implementations/payment-instruments-v1/invoice/
 [recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
-[restful-api]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
+[restful-api]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [verify-url]: /old-implementations/payment-instruments-v1/card/features/optional/verify

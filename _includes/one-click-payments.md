@@ -70,43 +70,6 @@ setting the initial operation to [`Verify`][verify].
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-{% if documentation_section contains "checkout-v3" %}
-
-## Enable Payment Details Consent Checkbox
-
-Use the same basic initial payment order request, and add the new field
-`enablePaymentDetailsConsentCheckbox` in the `paymentOrder` node. Set it to
-`true` to show the checkbox used to store payment details for card payments.
-Remember to also set `disableStoredPaymentDetails` to `true`.
-
-This option will not work with `Verify`, and will result in a validation error
-if you try.
-
-{:.code-view-header}
-**Payment Details Consent Checkbox**
-
-```json
-{
- "paymentorder": {
-    "enablePaymentDetailsConsentCheckbox": true,
-    "disableStoredPaymentDetails": true,
-  }
-}
-```
-
-{% capture table %}
-{:.table .table-striped .mb-5}
-|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
-| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-|  | {% f EnablePaymentDetailsConsentCheckbox %}                     | `bool`     | Set to `true` or `false`. Used to determine if the checkbox used to save payment details is shown or not. Will only work if the parameter `disableStoredPaymentDetails` is set to `true`.                                                                                                                                                                                                                                                                                 |
-|  | {% f disableStoredPaymentDetails %}                     | `bool`     | Set to `true` or `false`. Must be set to `true` for `enablePaymentDetailsConsentCheckbox` to work.                                                                                                                                                                                                                                           |
-
-{% endcapture %}
-{% include accordion-table.html content=table %}
-
-{% endif %}
-
 ## Finding The `paymentToken` Value
 
 {% if documentation_section contains "payment-instruments" %}
@@ -354,11 +317,70 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 
 {% endif %}
 
+{% if documentation_section contains "checkout-v3" %}
+
+## Disable Store Details and Toggle Consent Checkbox
+
+This is a feature intended for instrument mode and or custom menus.
+
+If you have built your own interface to display previously stored details and
+generate transactions using them ("One-Click Request Displaying A Specific
+Card"), you will also  have the need to include an option for them to store new
+details. This can be performed using either a `Purchase` or `Verify` operation.
+
+For `Purchase` operations aiming to store new details simultaneously, you will
+need to utilize the `disableStoredPaymentDetails` parameter. This is because the
+payer has already made the decision not to use any stored details in your
+interface. By including this parameter, you effectively eliminate the need for
+confirmation in our UI, due to how the combination of `generatePaymentToken` and
+`payerReference` works in our API.
+
+By employing this parameter, you as the Merchant will assume the responsibility
+of colllecting the payer's consent for purpose of storing their details. If you
+do not want this responsibility and would like for us to help you out, you can
+combine `disableStoredPaymentDetails` along with
+`enablePaymentDetailsConsentCheckbox` and flag them both as `true`. That will
+enable our handler for collecting consent from the payer for you inside our
+Swedbank Pay UI. When the choice has been made and transaction is completed, we
+will relay that information to you. We will do this by setting the flag
+`paymentTokenGenerated` in the subsequent `GET` call towards the `PaymentOrder`
+to either `true` or `false`.
+
+`Verify` operations do not require the use of these additional parameters, as
+they do not display any previously stored details based on your supplied
+reference, thereby avoiding redundancy. Including them in a `Verify` will result
+in a validation error.
+
+{:.code-view-header}
+**generatePaymentToken field**
+
+```json
+{
+ "paymentorder": {
+    "enablePaymentDetailsConsentCheckbox": true,
+    "disableStoredPaymentDetails": true,
+  }
+}
+```
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
+| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
+|  | {% f EnablePaymentDetailsConsentCheckbox %}                     | `bool`     | Set to `true` or `false`. Used to determine if the checkbox used to save payment details is shown or not. Will only work if the parameter `disableStoredPaymentDetails` is set to `true`.                                                                                                                                                                                                                                                                                 |
+|  | {% f disableStoredPaymentDetails %}                     | `bool`     | Set to `true` or `false`. Must be set to `true` for `enablePaymentDetailsConsentCheckbox` to work.                                                                                                                                                                                                                                           |
+
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+{% endif %}
+
+## How It Looks
+
 {% include alert.html type="informative" icon="info" body="
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
-
-## How It Looks
 
 {:.text-center}
 ![One click payment page][one-click-image]

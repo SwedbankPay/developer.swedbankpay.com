@@ -5,7 +5,7 @@ redirect_from: /checkout-v3/resources/test-data/
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
-menu_order: 11
+menu_order: 6
 ---
 
 ## Swedbank Pay Checkout Test Data

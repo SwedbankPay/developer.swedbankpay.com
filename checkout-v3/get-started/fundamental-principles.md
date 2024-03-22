@@ -1,7 +1,7 @@
 ---
 title: Fundamental Principles
 permalink: /:path/fundamental-principles/
-menu_order: 900
+menu_order: 10
 description: |
     Read on to learn about the fundamentals and common architectural principles
     of the Swedbank Pay API Platform.
@@ -224,7 +224,7 @@ related to a Payment resource in a single request.
 
 Note that the `expand` parameter is available to all API requests but only
 applies to the request response. This means that you can use the expand
-parameter on a `POST`  or `PATCH`request to get a response containing the
+parameter on a `POST`  or `PATCH` request to get a response containing the
 target resource including expanded properties.
 
 This example below add the `urls` and `authorizations` field inlines to the

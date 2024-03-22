@@ -3,7 +3,7 @@ title: Display Payment UI
 hide_from_sidebar: false
 description: |
   How to display the checkout payment UI.
-menu_order: 4
+menu_order: 6
 ---
 
 ## Display Payment UI
@@ -25,8 +25,7 @@ With `Seamless View`, the payer stays at your site and you initiate the
 Swedbank Pay purchase module in an iframe. The purchase component will be styled
 by Swedbank Pay.
 
-
- Read about how you integrate them by following the links.
+Read about how you integrate them by following the links.
 
 {% include iterator.html next_href="redirect"
                          next_title="Redirect" %}

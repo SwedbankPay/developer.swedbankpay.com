@@ -174,4 +174,4 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-[url-usage]: /checkout-v3/resources/fundamental-principles#url-usage
+[url-usage]: /checkout-v3/get-started/fundamental-principles#url-usage

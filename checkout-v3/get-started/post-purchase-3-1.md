@@ -1,11 +1,11 @@
 ---
-title: Post-Purchase
-permalink: /:path/post-purchase/
+title: Post-Purchase v3.1
+permalink: /:path/post-purchase-3-1/
 description: |
   When the payer has **completed** the purchase, you need to implement the
   relevant **post-purchase operations** in your order system. These operations,
   and how they are executed, are described below.
-menu_order: 5
+menu_order: 8
 ---
 
 {% include alert-two-phase-payments.md %}
@@ -16,15 +16,15 @@ an error message in the response in the form of a problem `json`." %}
 
 See examples of the `jsons` in the [problems section][problems].
 
-{% include payment-order-capture.md %}
+{% include payment-order-capture-3-1.md %}
 
 The purchase should now be complete. But what if the purchase is cancelled or
 the payer wants to return goods? For these instances, we have `cancel` and
 `reversal`.
 
-{% include payment-order-cancel.md %}
+{% include payment-order-cancel-3-1.md %}
 
-{% include payment-order-reversal.md %}
+{% include payment-order-reversal-3-1.md %}
 
 {% include iterator.html next_href="/checkout-v3/features/"
                          next_title="Add To Your Payment Request" %}

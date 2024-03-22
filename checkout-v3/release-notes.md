@@ -4,12 +4,31 @@ permalink: /:path/release-notes/
 description: |
   The latest updates about our Digital Payments releases will be
   published on this page.
-menu_order: 10
+menu_order: 7
 ---
 
 {% include alert.html type="informative" icon="info" header="Version numbers"
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
+
+## 21 March 2024
+
+### Version 5.0.0
+
+We strive to make the implementation process as easy as possible, and in that
+regard, a [Get Started section][get-started] has been introduced. This now
+includes the basic requests and responses, how to display the UI, post-purchase
+options and other useful information when doing a basic integration. The newest
+addition is an explanation on how to [validate the status][validate-status] of
+the payment.
+
+A new feature for those of you who want to [customize the order of your payment
+menu][sort-order] has also seen the light of day, together with the possibility
+to expand the top instrument. They can be used independently, but work great
+together.
+
+We also did a handful of bug fixes and corrections to improve usability and
+readability.
 
 ## 26 February 2024
 
@@ -91,8 +110,7 @@ There is a new section regarding [Trustly in Digital Payments][trustly-pres],
 with important information regarding overlay and Trustly Express.
 
 There is also a new Vipps field for fees in the [`failedAttempts`][fa] resource
-model, and the [quick links to test data and other resources][quick-links] have
-been moved from the front page to Digital Payments.
+model.
 
 ## 28 September 2023
 
@@ -163,8 +181,8 @@ You spoke, we listened! We have worked a lot on making the portal easier to
 navigate. The main menu has been slimmed down, where we have removed the
 Introduction (but you can still read the main points under
 [fundamental principles][fundamental-principles]). If you are looking for the
-[Resources][resources] and [Modules & SDK][modules-sdks] sections, they have
-found a new home under Digital Payments.
+Modules & SDK][modules-sdks] section, it has found a new home under Digital
+Payments.
 
 Speaking of [Digital Payments][checkout-v3], we've cleaned that up as well, and
 hope it will make things easier for you. The
@@ -508,7 +526,7 @@ Other changes:
 *   Updated `instrument` description in [Checkout][checkout].
 *   Updated `payeeReference` description.
 *   Clarified `msisdn` and `shoplogoUrl` in [MobilePay Online Payments][mobile-pay].
-*   Updated [Test data][test-data] in [Resources][resources].
+*   Updated [Test data][test-data].
 *   Documented problems in [Trustly Payments][trustly-payments].
 *   Added an alert for two-phase payments in Capture pages.
 
@@ -943,8 +961,8 @@ creation of the payment or payment order needs to be performed again. With
 paymentUrl in place, the retry process becomes much more convenient for both the
 integration and the payer.
 
-[1cuc]: /checkout-v3/use-cases/one-click
-[3-1]: /checkout-v3/payment-request-3-1
+[1cuc]: /checkout-v3/get-started/one-click
+[3-1]: /checkout-v3/get-started/payment-request-3-1
 [3ds2-test]: /checkout-v3/test-data#3-d-secure-cards
 [afd-payments]: /checkout-v3/features/optional/afd
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
@@ -982,10 +1000,10 @@ integration and the payer.
 [checkout-v3-enterprise]: /old-implementations/enterprise
 [checkout-v3-payments-only]: /checkout-v3
 [checkout-v3]: /checkout-v3
-[checkout-v3-payments-only-redirect-request]: /checkout-v3/payment-request
-[checkout-v3-payments-only-seamless]: /checkout-v3/display-payment-ui/seamless-view
+[checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
+[checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
-[consent-box]: /checkout-v3/features/optional/one-click-payments/#enable-payment-details-consent-checkbox
+[consent-box]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [contact-us]: /#front-page-contact-partners
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
@@ -997,7 +1015,7 @@ integration and the payer.
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
-[display-ui]: /checkout-v3/display-payment-ui/
+[display-ui]: /checkout-v3/get-started/display-payment-ui/
 [dom-ver]: /checkout-v3/payment-presentations#domain-verification
 [eligibility-check]: /checkout-v3/features/optional/instrument-mode#eligibility-check
 [mac]: /old-implementations/checkout-v2/features/optional/mac
@@ -1006,10 +1024,10 @@ integration and the payer.
 [fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
 [frictionless-payments]: /checkout-v3/features/core/frictionless-payments
 [frontpage]: https://developer.swedbankpay.com/
-[fundamental-principles]: /checkout-v3/resources/fundamental-principles
-[get-started]: /checkout-v3/
+[fundamental-principles]: /checkout-v3/get-started/fundamental-principles
+[get-started]: /checkout-v3/get-started
 [google-pay]: /checkout-v3/payment-presentations#google-pay
-[home-technical-information]: /checkout-v3/resources/fundamental-principles
+[home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
@@ -1032,7 +1050,7 @@ integration and the payer.
 [order-items]: /checkout-v3/features/optional/order-items
 [payment-orders]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [payment-order-update]: /checkout-v3/features/core/update
-[payment-request]: /checkout-v3/payment-request
+[payment-request]: /checkout-v3/get-started/payment-request
 [payment-menu-invoice-capture]:/old-implementations/payment-menu-v2/capture
 [payment-menu-items]: /old-implementations/payment-menu-v2/features/technical-reference/items
 [payment-menu-payment-link]: /old-implementations/payment-menu-v2/features/optional/payment-link
@@ -1043,9 +1061,8 @@ integration and the payer.
 [partners]: /#front-page-contact-partners
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
-[pp-3-1]: /checkout-v3/post-purchase-3-1
+[pp-3-1]: /checkout-v3/get-started/post-purchase-3-1
 [prices]: /old-implementations/checkout-v2/features/technical-reference/prices
-[quick-links]: /checkout-v3/resources
 [update-order-checkout]: /old-implementations/checkout-v2/features/core/update
 [recur]: /checkout-v3/features/optional/recur
 [resource-model-cancelled]: /checkout-v3/features/technical-reference/resource-sub-models#cancelled
@@ -1053,21 +1070,20 @@ integration and the payer.
 [resource-model-paid-swish]: /checkout-v3/features/technical-reference/resource-sub-models#swish-paid-resource
 [resource-model-payer]: /checkout-v3/features/technical-reference/resource-sub-models#payer
 [resource-models]: /checkout-v3/features/technical-reference/resource-sub-models
-[resources]: /checkout-v3/resources/
 [request-delivery-information]: /checkout-v3/features/optional/request-delivery-info
-[resources]: /checkout-v3/resources/
-[ruc]: /checkout-v3/use-cases/recurring
+[ruc]: /checkout-v3/get-started/recurring
 [settlement-balance-report]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation#balance-report
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
 [sdk-modules]: /checkout-v3/modules-sdks
+[sort-order]: /checkout-v3/features/optional/sort-order-payment-menu
 [split-settlement]: /checkout-v3/features/optional/split-settlement
 [spp]: https://playground.swedbankpay.com
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
 [status-models]: /checkout-v3/features/technical-reference/status-models
 [status-model-paid]: /checkout-v3/features/technical-reference/status-models#paid
 [status-model-paid-v2]: /old-implementations/checkout-v2/features/technical-reference/status-models#paid
-[storing-uri]: /checkout-v3/resources/fundamental-principles#storing-urls
+[storing-uri]: /checkout-v3/get-started/fundamental-principles#storing-urls
 [swish-api-errors]: /old-implementations/payment-instruments-v1/swish/features/technical-reference/problems
 [swish-direct-mcom]: /old-implementations/payment-instruments-v1/swish/direct#step-2b-create-m-commerce-sale-transaction
 [swish-direct]: /old-implementations/payment-instruments-v1/swish/direct
@@ -1080,7 +1096,7 @@ integration and the payer.
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
-[terminology]: /checkout-v3/resources/terminology
+[terminology]: /checkout-v3/get-started/terminology
 [test-data]: /checkout-v3/test-data
 [token04]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
@@ -1092,7 +1108,8 @@ integration and the payer.
 [trustly-payment-link]: /old-implementations/payment-instruments-v1/trustly/features/optional/payment-link
 [trustly-features]: /old-implementations/payment-instruments-v1/trustly/features
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
-[v3-setup]: /checkout-v3/setup
+[v3-setup]: /checkout-v3/get-started/setup
+[validate-status]: /checkout-v3/get-started/validate-status
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps

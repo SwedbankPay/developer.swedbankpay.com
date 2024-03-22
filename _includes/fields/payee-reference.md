@@ -8,7 +8,7 @@
 {% endif %}
 {%- capture payee_reference_url -%}
     {%- if documentation_section == nil or documentation_section == empty -%}
-        {%- assign payee_reference_url = "/checkout-v3/resources/fundamental-principles#payee-reference" -%}
+        {%- assign payee_reference_url = "/checkout-v3/get-started/fundamental-principles#payee-reference" -%}
     {%- else -%}
         {%- include utils/documentation-section-url.md href="/features/technical-reference/payee-reference" -%}
     {%- endif -%}

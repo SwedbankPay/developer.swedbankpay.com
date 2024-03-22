@@ -1,11 +1,10 @@
 ---
 title: Automatically Configure POS for Terminal
 description: |
-    Easier configuration of POS by picking up the terminal address from the configuration message sent from the terminal when pressing **Save** in terminal's admin menu.
+    Easier configuration of POS by picking up the terminal address from the configuration message 
 permalink: /:path/autoconfigurepos/
-hide_from_sidebar: true
 icon:
-    content: settings_ethernet
+    content: settings_suggest
     outlined: true
 menu_order: 65
 ---
