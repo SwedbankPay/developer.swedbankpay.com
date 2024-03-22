@@ -4,9 +4,51 @@
   max-width: 24px;
 }
 
+.code-view-copy {
+  display: flex;
+  font-family: Akkurat Mono, monospace;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #493c3b;
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.code-view-copy:hover {
+  text-decoration: none;
+}
+
 .code-view .code-view-table .code-view-code .nc,
 .code-view .code-view-table .code-view-code .nf {
   color: #9c6;
+}
+
+.language-http .code-view .code-view-table .code-view-numbers {
+  display: none;
+}
+.language-http .code-view .code-view-table .code-view-code {
+  padding-left: 1rem;
+}
+
+.language-http:has(+ .language-js) .language-http:has(+ .language-json),
+.language-http:has(+ .language-jsonc) {
+  margin-bottom: 0 !important;
+}
+.language-http:has(+ .language-js) .language-http:has(+ .language-json) .code-view,
+.language-http:has(+ .language-jsonc) .code-view {
+  margin-bottom: 0;
+}
+.language-http:has(+ .language-js) .language-http:has(+ .language-json) .code-view .code-view-table,
+.language-http:has(+ .language-jsonc) .code-view .code-view-table {
+  border-radius: 0px;
+}
+.language-http:has(+ .language-js) .language-http:has(+ .language-json) .code-view .code-view-table pre,
+.language-http:has(+ .language-jsonc) .code-view .code-view-table pre {
+  margin-bottom: 0;
 }
 
 .front-page {
