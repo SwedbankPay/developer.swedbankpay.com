@@ -11,6 +11,25 @@ menu_order: 7
 body="The version numbers used in headers on this page refers to the version of
 this very documentation, not to a version of any APIs described by it." %}
 
+## 21 March 2024
+
+### Version 5.0.0
+
+We strive to make the implementation process as easy as possible, and in that
+regard, a [Get Started section][get-started] has been introduced. This now
+includes the basic requests and responses, how to display the UI, post-purchase
+options and other useful information when doing a basic integration. The newest
+addition is an explanation on how to [validate the status][validate-status] of
+the payment.
+
+A new feature for those of you who want to [customize the order of your payment
+menu][sort-order] has also seen the light of day, together with the possibility
+to expand the top instrument. They can be used independently, but work great
+together.
+
+We also did a handful of bug fixes and corrections to improve usability and
+readability.
+
 ## 26 February 2024
 
 ### Version 4.8.0
@@ -1006,7 +1025,7 @@ integration and the payer.
 [frictionless-payments]: /checkout-v3/features/core/frictionless-payments
 [frontpage]: https://developer.swedbankpay.com/
 [fundamental-principles]: /checkout-v3/get-started/fundamental-principles
-[get-started]: /checkout-v3/
+[get-started]: /checkout-v3/get-started
 [google-pay]: /checkout-v3/payment-presentations#google-pay
 [home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
@@ -1057,6 +1076,7 @@ integration and the payer.
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
 [sdk-modules]: /checkout-v3/modules-sdks
+[sort-order]: /checkout-v3/features/optional/sort-order-payment-menu
 [split-settlement]: /checkout-v3/features/optional/split-settlement
 [spp]: https://playground.swedbankpay.com
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
@@ -1089,6 +1109,7 @@ integration and the payer.
 [trustly-features]: /old-implementations/payment-instruments-v1/trustly/features
 [unscheduled-mit]: /checkout-v3/features/optional/unscheduled
 [v3-setup]: /checkout-v3/get-started/setup
+[validate-status]: /checkout-v3/get-started/validate-status
 [vipps-payment-resource]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-resource
 [vipps-payment-url]: /old-implementations/payment-instruments-v1/vipps/features/technical-reference/payment-url
 [vipps]: /old-implementations/payment-instruments-v1/vipps
