@@ -178,5 +178,5 @@ Both scenarios generate the same response:
 *   Error codes pertaining to permanent causes. Example of these can be
   `Card Expired (54)` or `Card stolen (43)`
 
-[oc1]: /assets/img/OC1.jpg
-[pam1]: /assets/img/PAM1.jpg
+[oc1]: /assets/img/OC1.JPG
+[pam1]: /assets/img/PAM1.JPG

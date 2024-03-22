@@ -984,7 +984,7 @@ integration and the payer.
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui/seamless-view
 [click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
-[consent-box]: /checkout-v3/features/optional/one-click-payments/#enable-payment-details-consent-checkbox
+[consent-box]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [contact-us]: /#front-page-contact-partners
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
