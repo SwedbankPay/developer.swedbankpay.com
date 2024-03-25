@@ -81,7 +81,11 @@ Content-Type: application/json;version=3.1,3.0{% endcapture %}
         "language": "sv-SE",
         "instrument": null,
         "expandFirstInstrument": true,
-        "restrictedToInstruments": ["Swish", "CreditCard", "Trustly"]
+        "restrictedToInstruments": [
+            "Swish",
+            "CreditCard",
+            "Trustly"
+        ],
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
             "paymentUrl": "https://example.com/perform-payment", //Seamless View only
