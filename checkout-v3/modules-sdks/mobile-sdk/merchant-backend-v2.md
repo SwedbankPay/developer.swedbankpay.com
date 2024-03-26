@@ -799,17 +799,12 @@ All these Merchant Backend problem types will have a URL in the format
 
 Your implementation is encouraged to define its own problem types for any domain-specific errors; you should namespace those problem types under a domain name under your control – usually the host name of the Merchant Backend.
 
-{% include iterator.html prev_href="./"
-                         prev_title="Introduction"
-                         next_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code"
-                         next_title="Merchant Backend Sample Code" %}
-
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /old-implementations/payment-menu-v2/features/technical-reference/payment-url
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [create-payment-order]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
 [ios-universal-links-routing]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753
