@@ -48,7 +48,7 @@
     "remark-lint-list-item-indent": "^4.0.0",
     "remark-lint-maximum-heading-length": "^4.0.0",
     "remark-lint-no-auto-link-without-protocol": "^3.1.2",
-    "remark-lint-no-blockquote-without-marker": "^5.1.2",
+    "remark-lint-no-blockquote-without-marker": "^6.0.0",
     "remark-lint-no-consecutive-blank-lines": "^5.0.0",
     "remark-lint-no-duplicate-definitions": "^4.0.0",
     "remark-lint-no-duplicate-headings": "^4.0.0",
