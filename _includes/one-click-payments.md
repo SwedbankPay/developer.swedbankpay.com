@@ -83,7 +83,7 @@ examples are provided below.
 
 {% capture request_header %}GET  {{ verification_url }} HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
+Authorization: Bearer <AccessToken>{% endcapture %}
 
 {% include code-example.html
     title='Request'
