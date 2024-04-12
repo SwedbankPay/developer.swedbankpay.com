@@ -69,7 +69,7 @@ Content-Type: application/json{% endcapture %}
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "authorization": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
