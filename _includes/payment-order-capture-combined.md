@@ -30,16 +30,12 @@ request and response below:
 
 ## Capture Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0/2.0      // Version optional
+Content-Type: application/json;version=3.0/2.0      // Version optional{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Capturing the authorized payment",
         "amount": 1500,
@@ -79,8 +75,13 @@ Content-Type: application/json;version=3.0/2.0      // Version optional
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -130,15 +131,11 @@ Content-Type: application/json;version=3.0/2.0      // Version optional
 
 If the capture request succeeds, this should be the response:
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.0/2.0
-api-supported-versions: 3.0/2.0
+api-supported-versions: 3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "capture": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
@@ -155,8 +152,13 @@ api-supported-versions: 3.0/2.0
             "receiptReference": "AB831"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -182,16 +184,12 @@ api-supported-versions: 3.0/2.0
 
 ## Capture Request v3.1
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1
+Content-Type: application/json;version=3.1{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Capturing the authorized payment",
         "amount": 1500,
@@ -199,8 +197,13 @@ Content-Type: application/json;version=3.1
         "payeeReference": "AB832",
         "receiptReference": "AB831"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -250,15 +253,11 @@ Content-Type: application/json;version=3.1
 
 If the capture request succeeds, this should be the response:
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 3.1
+api-supported-versions: 3.1{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": {
     "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d",
     "created": "2020-03-03T07:19:27.5636519Z",
@@ -327,8 +326,13 @@ api-supported-versions: 3.1
       "contentType": "application/json"
     },
   ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

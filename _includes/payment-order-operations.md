@@ -11,11 +11,7 @@ is given below.
 
 {% if documentation_section contains "checkout-v3" %}
 
-{:.code-view-header}
-**Operations**
-
-```js
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     },
@@ -63,16 +59,17 @@ is given below.
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Operations'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Operations**
-
-```js
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     },
@@ -153,8 +150,13 @@ is given below.
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Operations'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 

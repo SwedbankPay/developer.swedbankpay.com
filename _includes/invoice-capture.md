@@ -14,13 +14,12 @@ the total authorized amount.
 To capture a `FinancingConsumer` invoice payment, perform the `create-capture`
 operation with the following request body:
 
-```http
-POST /psp/invoice/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer",
         "amount": 13500,
@@ -51,8 +50,13 @@ Content-Type: application/json
           }
         ]
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture request_table %}
 {:.table .table-striped .mb-5}
@@ -87,26 +91,23 @@ specific invoice payment.
 
 ## GET Capture Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/invoice/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}GET /psp/invoice/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Capture Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "captures": [{
         "itemDescriptions": {
@@ -130,8 +131,13 @@ Content-Type: application/json
             "operations": []
         }
     }]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Capture Flow
 

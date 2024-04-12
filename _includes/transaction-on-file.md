@@ -37,21 +37,17 @@ their card information.
 ### API Requests
 
 The API requests are displayed in the flow below. The generated token will be
-returned in the parameter 'transactionOnFileToken'. For more information
+returned in the parameter `transactionOnFileToken`. For more information
 regarding the flow, see Verify.
 
 ## Transaction On File Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ token_url }} HTTP/1.1
+{% capture request_header %}POST {{ token_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Verify",
         "currency": "NOK",
@@ -81,8 +77,13 @@ Content-Type: application/json
             "payerReference": "AB1234",
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Transaction On File Response
 

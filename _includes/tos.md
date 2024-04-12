@@ -5,15 +5,12 @@ approve during the payment process, you can do this by adding a
 The url will appear as a clickable hyperlink below the pay button in the
 payment UI. The terms of service open in a separate tab when clicked.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
+{% capture request_content %}
 {
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
@@ -24,8 +21,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             "logoUrl": "https://example.com/logo.png"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped .mb-5}
 | Field                    | Type         | Description       |

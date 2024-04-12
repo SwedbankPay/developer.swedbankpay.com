@@ -82,27 +82,22 @@ below is the Redirect option.
 
 ## Verify Request
 
-{:.code-view-header}
-**Request**
-
 {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
 
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% else %}
 
-```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+{% capture request_header %}POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 {% endif %}
 
-{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
+{% capture request_content %}{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
     "paymentorder": { {% else %}
     "payment": { {% endif %}
         "operation": "Verify",
@@ -140,23 +135,24 @@ Content-Type: application/json
         "rejectConsumerCards": false,
         "rejectCorporateCards": false
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Verify Response
 
-{:.code-view-header}
-**Response**
-
-```http
-{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
-HTTP/1.1 200 OK
+{% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0 {% else %}
-HTTP/1.1 200 OK
-Content-Type: application/json {% endif %}
+api-supported-versions: 3.1/3.0/2.0{% endcapture %} {% else %}
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %} {% endif %}
 
-{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
+{% capture response_content %}{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
     "paymentorder": { {% else %}
     "payment": { {% endif %}
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
@@ -204,8 +200,13 @@ Content-Type: application/json {% endif %}
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Verification Flow
 

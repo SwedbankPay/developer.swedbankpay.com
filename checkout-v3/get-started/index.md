@@ -46,7 +46,7 @@ integration support.
 ## Get Ready To Go Live
 
 A few more steps remain before your integration is ready to run in a production
-environment. Our technical onboarding managers are ready to assist you.
+environment. Our teams are ready to assist you.
 
 *   Acceptance tests
 

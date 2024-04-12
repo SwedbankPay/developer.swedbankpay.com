@@ -14,16 +14,12 @@ example below with `logoUrl` present in the `paymentOrder` request's `urls`.
 
 *   If the configuration is deactivated, adding a `logoUrl` has no effect.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ],
@@ -35,5 +31,10 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             "logoUrl": "https://example.com/logo.png"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}

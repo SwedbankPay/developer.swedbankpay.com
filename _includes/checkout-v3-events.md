@@ -35,16 +35,17 @@ aborting, as this will trigger the event.
 
 It will be raised with the following event argument object:
 
-{:.code-view-header}
-**onAborted event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnAborted",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/cancelled"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onAborted event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
@@ -63,16 +64,17 @@ Pay's payment frame. This is the initial height of the frame when loaded.
 If no callback method is set, no handling action will be done. It will be raised
 with the following event argument object:
 
-{:.code-view-header}
-**onCheckoutLoaded event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnCheckoutLoaded",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onCheckoutLoaded event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
@@ -93,16 +95,17 @@ during a payment.
 If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
 
-{:.code-view-header}
-**onCheckoutResized event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnCheckoutResized",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "bodyHeight": "[clientHeight of iframe content]"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onCheckoutResized event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
@@ -121,16 +124,17 @@ error happens during the payment.
 If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
 
-{:.code-view-header}
-**onError event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnError",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "details": "English descriptive text of the error"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onError event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field       | Type     | Description                                                            |
@@ -148,18 +152,19 @@ payment flow at Swedbank Pay.
 
 `onEventNotification` is raised with the following event argument object:
 
-{:.code-view-header}
-**onEventNotification event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnEventNotification",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "sourceEvent": "OnCheckoutLoaded | OnCheckoutResized | OnError |
      OnPayerIdentified | OnInstrumentSelected | OnPaid | OnAborted |
      OnOutOfViewRedirect | OnTermsOfServiceRequested | OnOutOfViewOpen"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onEventNotification event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                |
@@ -178,16 +183,17 @@ required on your side if the payer changes payment instrument.
 If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
 
-{:.code-view-header}
-**onInstrumentSelected event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnInstrumentSelected",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "instrument": "creditcard | vipps | swish | invoice",
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onInstrumentSelected event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
@@ -210,16 +216,17 @@ within the same browser.
 If no callback method is set, the url will be opened in a
 new tab. It will be raised with the following event argument object:
 
-{:.code-view-header}
-**onOutOfViewOpen event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnOutOfViewOpen",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "openUrl": "https://example.com/external"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onOutOfViewOpen event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
@@ -238,16 +245,17 @@ within Swedbank Pay's payment frame.
 If no callback method is set, you will be redirected to the relevant url. It
 will be raised with the following event argument object:
 
-{:.code-view-header}
-**onOutOfViewRedirect event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnOutOfViewRedirect",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/external"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onOutOfViewRedirect event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
@@ -267,16 +275,17 @@ actions according to it.
 
 It will be raised with the following event argument object:
 
-{:.code-view-header}
-**onPaid event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnPaid",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/success"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaid event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                         |
@@ -291,16 +300,17 @@ This event mirrors `onPaymentAborted` from Checkout v2. Subscribe to it if you
 want to know when a user cancels their payment. The `onPaymentAttemptAborted`
 event is raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentAttemptAborted event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnPaymentAttemptAborted",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "redirectUrl": "https://example.com/cancelled"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentAttemptAborted event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                    |
@@ -319,16 +329,17 @@ An error message will appear in the payment UI, and the payer will be able to
 try again or choose another payment instrument. The `onPaymentAttemptFailed`
 event is raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentAttemptFailed event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnPaymentAttemptFailed",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "details": "[HttpCode ProblemTitle]"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentAttemptFailed event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field     | Type     | Description                                         |
@@ -346,16 +357,17 @@ attempts to perform a payment.
 The `onPaymentAttemptStarted` event is raised with the following event argument
 object:
 
-{:.code-view-header}
-**onPaymentAttemptStarted event object**
-
-```json
-{
+{% capture response_content %}{
     "event": "OnPaymentAttemptStarted",
     "paymentOrder": { "id": "/psp/paymentorders/{{ page.payment_id }}" },
     "instrument": "creditcard",
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentAttemptStarted event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                                                     |
@@ -376,16 +388,17 @@ If no callback method is set, terms and conditions will be displayed in an
 overlay or a new tab. It will be raised with the following event argument
 object:
 
-{:.code-view-header}
-**onTermsOfServiceRequested event object**
-
-```json
-{
+{% capture response_content %}{
 "event": "OnTermsOfServiceRequested",
 "paymentOrder": { "id": "/psp/paymentorders/<paymentorderId>"},
 "termsOfServiceUrl": "https://example.org/terms.html"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onTermsOfServiceRequested event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                | Type     | Description                                         |

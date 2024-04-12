@@ -19,8 +19,8 @@ or not. `Authorization`s need to be captured (2-phase transactions),
 
 You can do this by perfoming a `GET` on your payment.
 
-The status field should simply have the status `Paid`. As long as this is the case, you are good to go
-and proceed to doing the [capture][pp-capture].
+The status field should simply have the status `Paid`. As long as this is the
+case, you are good to go and proceed to doing the [capture][pp-capture].
 
 We also recommend adding an expansion of the `paid` node. Do this by adding
 `?$expand=paid` after the `paymentOrderId`. This way, you can retrieve more

@@ -115,6 +115,10 @@ our internal acquirer (loopback).
 | Visa       | `4111112000004565` | 07/35  | Any   | Rejected during tokenization |
 | Visa       | `4111112000007899` | 12/35  | Any   | Rejected during tokenization |
 
+### Misc Cards
+
+A selection of cards not connected to Network Tokenization or 3D-Secure.
+
 ### Visa
 
 {:.table .table-striped}
@@ -151,9 +155,9 @@ our internal acquirer (loopback).
 ### Diners
 
 {:.table .table-striped}
-| Card number     | Expiry                  | CVC   |
-| :-------------- | :---------------------- | :---- |
-| `6148201829798` | After the current month | Any   |
+| Card number      | Expiry                  | CVC   |
+| :--------------  | :---------------------- | :---- |
+| `61482018297982` | After the current month | Any   |
 
 ### Maestro
 
@@ -185,7 +189,7 @@ our internal acquirer (loopback).
 | :----------------- | :----------------------- | :---- |
 | `6007220000000004` | After the current month  | Any   |
 
-### Failure Testing Cards
+## Failure Testing Cards
 
 There are two different ways of testing Card Payments error scenarios. You can
 test 3-D Secure errors using our 3-D Secure emulator, or you can use specific
@@ -248,16 +252,6 @@ The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 | City    | 19792 Bro       | 17674 Järfälla          |
 | MSISDN  |                 | +46739000001            |
 | email   |                 | leia.ahlstrom@payex.com |
-
-### Invoice test data for Finland
-
-{:.table .table-striped}
-| Type    | Data             |
-| :------ | :--------------- |
-| SSN     | 100584-451P      |
-| Name    | Järvilehto Kimmo |
-| Address | Kiannonkatu 88   |
-| City    | 90500 Oulu       |
 
 ## Invoice Service Test Data
 

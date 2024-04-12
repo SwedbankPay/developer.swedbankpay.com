@@ -48,17 +48,18 @@ You can do this by setting the `generatePaymentToken` field in the request's
 payment object to `true` (see example below) when doing a card purchase, or
 setting the initial operation to [`Verify`][verify].
 
-{:.code-view-header}
-**generatePaymentToken field**
-
-```json
-{
+{% capture request_content %}{
     "generatePaymentToken": true,
     "payer": {
     "payerReference": "AB1234",
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='generatePaymentToken field'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -80,22 +81,15 @@ payment resource (expanding either the authorizations or verifications
 sub-resource), after the payer successfully has completed the purchase. The two
 examples are provided below.
 
-{:.code-view-header}
-**Request Towards Authorizations Resource**
-
-```http
-GET  {{ verification_url }} HTTP/1.1
+{% capture request_header %}GET  {{ verification_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-```
 
-{:.code-view-header}
-**Request Towards Verifications Resource**
-
-```http
-GET {{ authorization_url }} HTTP/1.1
-Authorization: Bearer <AccessToken>
-```
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% else %}
 
@@ -103,28 +97,30 @@ When the initial purchase is successful, a `paymentToken` is linked to
 the payment. You can return the value by performing a `GET` request towards the
 payment resource with the `payerReference` included.
 
-{:.code-view-header}
-**Request Towards The Payment Resource**
-
-```http
-GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Get Request Payment Resource'
+    header=request_header
+    json= request_content
+    %}
 
 You can also perform a GET request towards the `id` of a Payment Order and find
 the paymentToken in its linked [`paid` resource][paid-resource].
 
-{:.code-view-header}
-**Request Towards The Paid Resource**
-
-```http
-GET /psp/paymentorders/{{ page.payment_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='GET Request Paid Resource'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -158,16 +154,12 @@ payment.
 
 Abbreviated code example:
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -176,8 +168,13 @@ Content-Type: application/json
     "creditCard": {
         "noCvc": true
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -213,16 +210,12 @@ containing card specific feature fields. This disables the CVC field.
 
 ## One-Click Request Displaying A Specific Card
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -234,23 +227,24 @@ Content-Type: application/json
     "creditCard": {
         "noCvc": true
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request Displaying A Specific Card'
+    header=request_header
+    json= request_content
+    %}
 
 {% else %}
 
 ## One-Click Request Displaying All Cards
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "generatepaymentToken": "true"
@@ -258,21 +252,22 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
     "payer": {
         "payerReference": "AB1234",
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request Displaying All Cards'
+    header=request_header
+    json= request_content
+    %}
 
 ## One-Click Request Displaying A Specific Card
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "paymentToken": "{{ page.payment_token }}"
@@ -280,8 +275,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
     "payer": {
         "payerReference": "AB1234",
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request Displaying A Specific Card'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -351,17 +351,18 @@ they do not display any previously stored details based on your supplied
 reference, thereby avoiding redundancy. Including them in a `Verify` will result
 in a validation error.
 
-{:.code-view-header}
-**generatePaymentToken field**
-
-```json
-{
+{% capture request_content %}{
  "paymentorder": {
     "enablePaymentDetailsConsentCheckbox": true,
     "disableStoredPaymentDetails": true,
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='generatePaymentToken field'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -410,20 +411,21 @@ should look like this:
 
 ## Delete Payment Token Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "state": "Deleted",
   "comment": "Comment stating why this is being deleted"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% comment %}
 TODO: Remove pipes from the above code example and add a field table
@@ -432,15 +434,11 @@ TODO: Remove pipes from the above code example and add a field table
 
 ## Delete Payment Token Response
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 2.0, 3.0, 3.1
+api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
 
-{
+{% capture response_content %}{
   "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
         "payerReference": "{payerReference}",
@@ -458,8 +456,13 @@ api-supported-versions: 2.0, 3.0, 3.1
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Deleting Single Tokens
 
@@ -471,32 +474,29 @@ will be a masked account number.
 
 ## Delete Single Token Request For Checkout Integrations
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/paymenttokens/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders/paymenttokens/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0 // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0 // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "state": "Deleted",
   "comment": "Comment stating why this is being deleted"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Delete Single Token Response For Checkout Integrations
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 2.0, 3.0, 3.1
+api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentToken": "{{paymentToken}}",
     "instrument": "CreditCard",
     "instrumentDisplayName": "492500******0004",
@@ -505,8 +505,13 @@ api-supported-versions: 2.0, 3.0, 3.1
         "expiryDate": "12/2022",
         "cardBrand": "Visa"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
@@ -515,35 +520,29 @@ this example, the token is a payment token and is connected to a card.
 
 ## Delete Single Token Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
-{
+{% capture request_content %}{
   "state": "Deleted",
   "comment": "Comment on why the deletion is happening",
   "tokenType" : "PaymentToken"
+}{% endcapture %}
 
-}
-}
-```
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Delete Single Token Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "instrumentData": {
     "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
     "paymentToken": "12345678-1234-1234-1234-123456789000",
@@ -555,8 +554,13 @@ Content-Type: application/json
     "expiryDate": "MM/YYYY",
     "tokenType" : "PaymentToken"
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 

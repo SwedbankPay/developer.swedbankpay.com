@@ -7,15 +7,11 @@
 
 A payment order response with the status `Aborted`.
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd",
         "created": "2022-01-24T10:54:05.6243371Z",
@@ -93,8 +89,13 @@ api-supported-versions: 3.1/3.0
           "contentType": "application/javascript"
         }{% endif %}
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
 responses:
@@ -108,15 +109,11 @@ responses:
 
 The `cancel` response is not yet converted to the new standard.
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
     "cancellation": {
         "id": "/psp/paymentorders/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
@@ -133,8 +130,13 @@ api-supported-versions: 3.1/3.0
             "payeeReference": "AB123"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -161,15 +163,11 @@ api-supported-versions: 3.1/3.0
 
 The failed response is not yet converted to the new standard.
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
         "failed": {
             "id": "/psp/paymentorders/bc2832a7-0e0f-45f2-57d6-08d9ea4cff66/failed",
@@ -186,8 +184,13 @@ api-supported-versions: 3.1/3.0
                   ]
                 }
               }
-            }
-```
+            }{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -208,15 +211,11 @@ api-supported-versions: 3.1/3.0
 
 ## Initialized
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b",
         "created": "2022-01-07T07:58:26.1300282Z",
@@ -300,9 +299,13 @@ api-supported-versions: 3.1/3.0
           "contentType": "application/json"
         }
     ]
-}
+}{% endcapture %}
 
-```
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -353,15 +356,11 @@ while MobilePay does return this field, the value present is actually a
 
 ### Card `Paid` Resource
 
-{:.code-view-header}
-**Card Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b",
         "created": "2022-01-07T07:58:26.1300282Z",
@@ -479,23 +478,24 @@ api-supported-versions: 3.1/3.0
           "contentType": "application/javascript"
         }{% endif %}
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Card Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Apple Pay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Apple Pay Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -524,23 +524,24 @@ api-supported-versions: 3.1/3.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Apple Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Click to Pay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
- {:.code-view-header}
- **Click to Pay Response**
-
- ```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -566,23 +567,24 @@ api-supported-versions: 3.1/3.0
       "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Click to Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Google Pay&trade; `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
- {:.code-view-header}
- **Google Pay&trade; Response**
-
- ```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -608,23 +610,24 @@ api-supported-versions: 3.1/3.0
       "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Google Pay&trade; Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### MobilePay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**MobilePay Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
@@ -652,8 +655,13 @@ api-supported-versions: 3.1/3.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='MobilePay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Vipps `paid` Resource
 
@@ -663,12 +671,11 @@ more context.
 {:.code-view-header}
 **Vipps Response**
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
@@ -694,23 +701,24 @@ api-supported-versions: 3.1/3.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Vipps Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Swish `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Swish Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
@@ -727,23 +735,24 @@ api-supported-versions: 3.1/3.0
         "misidn": "+46739000001"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Swish Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Invoice `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{:.code-view-header}
-**Invoice Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}TTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
@@ -758,23 +767,24 @@ api-supported-versions: 3.1/3.0
     "paymentTokenGenerated": false,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Invoice Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Installment Account `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{:.code-view-header}
-**Installment Account Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
@@ -789,23 +799,24 @@ api-supported-versions: 3.1/3.0
     "paymentTokenGenerated": false,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Installment Account Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Trustly `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{:.code-view-header}
-**Trustly Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
@@ -823,8 +834,13 @@ api-supported-versions: 3.1/3.0
       "trustlyOrderId": 123456789
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Trustly Response'
+    header=response_header
+    json= response_content
+    %}
 
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
 responses:
@@ -869,12 +885,11 @@ responses:
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
         "paid": {
             "id": "/psp/paymentorders/91c3ca0d-3710-40f0-0f78-08d9d133750b/paid",
             "instrument": "CreditCard",
@@ -891,15 +906,19 @@ api-supported-versions: 3.1/3.0
             ],
             "details": {}
         }
-}
-```
+}{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
+{% include code-example.html
+    title='Recurrence Token Response'
+    header=response_header
+    json= response_content
+    %}
+
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
+api-supported-versions: 3.1/3.0{% endcapture %}
 
-{
+{% capture response_content %}{
         "paid": {
             "id": "/psp/paymentorders/9f786139-3537-4a8b-0f79-08d9d133750b/paid",
             "instrument": "CreditCard",
@@ -916,8 +935,13 @@ api-supported-versions: 3.1/3.0
             ],
             "details": {}
         }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Unscheduled Token Response'
+    header=response_header
+    json= response_content
+    %}
 
 Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
 responses:

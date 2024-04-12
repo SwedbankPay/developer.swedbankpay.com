@@ -32,22 +32,24 @@ you want to make an initial charge or not:
 *   When posting a `Purchase` payment, you need to make sure that the field
     `generateRecurrenceToken` is set to `true`.
 
-{:.code-view-header}
-**Field**
+{% capture request_content %}"generateRecurrenceToken": true{% endcapture %}
 
-```json
-"generateRecurrenceToken": true
-```
+{% include code-example.html
+    title='Generate Recurrence Token Field - Purchase'
+    header=request_header
+    json= request_content
+    %}
 
 *   When posting a `Verify` payment, you need to make sure that the the field
     `generateRecurrenceToken` is set to `true`.
 
-{:.code-view-header}
-**Field**
+{% capture request_content %}"generateRecurrenceToken": true{% endcapture %}
 
-```json
-"generateRecurrenceToken": true
-```
+{% include code-example.html
+    title='Generate Recurrence Token Field - Verify'
+    header=request_header
+    json= request_content
+    %}
 
 ## Creating The Payment
 
