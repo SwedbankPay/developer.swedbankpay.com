@@ -100,7 +100,7 @@ Content-Type: application/json{% endcapture %}
 {% else %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
 {% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
