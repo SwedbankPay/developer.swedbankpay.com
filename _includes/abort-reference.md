@@ -19,22 +19,23 @@ returned in the payment request.
 
 ## Abort Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/{{ api_resource }}/payments/{{ page.payment_id }} HTTP/1.1
+{% capture request_header %}PATCH /psp/{{ api_resource }}/payments/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
   "payment": {
     "operation": "Abort",
     "abortReason": "CancelledByConsumer"
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Abort Response
 

@@ -17,26 +17,23 @@ a corporation etc) related to a specific payment.
 
 ## GET Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo",
@@ -46,8 +43,13 @@ Content-Type: application/json
         "productCategory": "EF1234",
         "orderReference": "or-123456"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                     | Type                 | Description                                                                                                                                                                                                                                                                       |

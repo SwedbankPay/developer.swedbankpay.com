@@ -81,13 +81,12 @@ An example with invoice as the instrument of choice.
 {:.code-view-header}
 **Request**
 
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
@@ -173,8 +172,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             }
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Instrument Mode Response
 
@@ -185,15 +189,11 @@ or `Redirect` in the response's implementation field). Depending on which it is,
 either `view-checkout` (Seamless View) or `redirect-checkout` will appear in the
 response. Never both at the same time.
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd",
         "created": "2022-01-24T10:54:05.6243371Z",
@@ -283,8 +283,13 @@ api-supported-versions: 3.1/3.0/2.0
           "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
@@ -292,14 +297,10 @@ Depending on which implementation you are using, either `view-paymentorder`
 (Seamless View) or `redirect-paymentorder` will appear in the response. Never
 both at the same time.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/4dec0b0f-a385-452a-cc38-08d9f53bb7a8",
         "created": "2022-02-23T12:59:10.9600933Z",
@@ -371,8 +372,13 @@ Content-Type: application/json
         "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
@@ -394,19 +400,23 @@ applied.
 To switch instrument after the `paymentOrder` has been created, you can use the
 following `PATCH` request, here with Swish as an example.
 
-```http
-PATCH /psp/{{ include.api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
+{% capture request_header %}PATCH /psp/{{ include.api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "paymentorder": {
     "operation": "SetInstrument",
     "instrument": "Swish"
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Available Instruments
 
@@ -415,13 +425,17 @@ The valid instruments for the `paymentOrder` can be retrieved from the
 merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
 `availableInstruments` will look like this:
 
-```json
-        "availableInstruments": [
+{% capture response_content %}"availableInstruments": [
             "CreditCard",
             "Invoice-PayExFinancingSe",
             "Swish"
-        ]
-```
+        ]{% endcapture %}
+
+{% include code-example.html
+    title='Available Instruments'
+    header=response_header
+    json= response_content
+    %}
 
 [prod-env]: https://ecom.payex.com/checkout/core/integration
 [test-env]: https://ecom.externalintegration.payex.com/checkout/core/integration

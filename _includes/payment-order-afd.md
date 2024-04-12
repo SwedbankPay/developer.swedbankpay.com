@@ -25,16 +25,12 @@ in `restrictedToAfdInstruments` with the value `false`.
 See the abbreviated example below on how to implement AFD payments by setting
 the `generateAfdPayment` to `true`.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
@@ -65,8 +61,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         },
         "orderItems": null
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 Request fields not covered in the common Digital Payments [`Initialized`]({{
 features_url }}/technical-reference/status-models#initialized) redirect or
@@ -98,15 +99,11 @@ response provided below.
 
 {% endif %}
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -188,8 +185,13 @@ api-supported-versions: 3.1/3.0/2.0
           "contentType": "application/json"
         }
        ]
-      }
-```
+      }{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## When The Authorization Is Completed
 

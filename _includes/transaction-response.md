@@ -23,15 +23,11 @@ The created `{{ transaction }}` resource contains information about the
 
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
     "{{ transaction }}": {
         "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",{% if api_resource == "creditcard" %}
@@ -85,20 +81,20 @@ api-supported-versions: 3.1/3.0/2.0
             ]{% endunless %}
         }
     }
-}
+}{% endcapture %}
 
-```
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "{{ transaction }}": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/{{ plural }}/{{ page.transaction_id }}",{% if api_resource == "creditcard" %}
@@ -152,9 +148,13 @@ Content-Type: application/json
             ]{% endunless %}
         }
     }
-}
+}{% endcapture %}
 
-```
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 

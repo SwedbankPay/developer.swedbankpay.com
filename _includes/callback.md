@@ -74,8 +74,7 @@ the `paymentOrderId`.
 {:.code-view-header}
 **Payment Order Callback**
 
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
@@ -88,8 +87,13 @@ the `paymentOrderId`.
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback'
+    header=response_header
+    json= response_content
+    %}
 
 ## Callback Example v3.1
 
@@ -99,19 +103,20 @@ node.
 This response format will only be triggered if you used `version=3.1` in the
 original `POST` when you created the `paymentOrder`.
 
-{:.code-view-header}
-**Payment Order Callback v3.1**
-
-```json
-{
+{% capture response_content %}{
     "orderReference": "549213",
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
         "number": 12345678
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback v3.1'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -126,11 +131,8 @@ original `POST` when you created the `paymentOrder`.
 {% include accordion-table.html content=table %}
 
 {% else %}
-{:.code-view-header}
-**Payment Instrument Callback**
 
-```json
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
@@ -139,8 +141,13 @@ original `POST` when you created the `paymentOrder`.
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Instrument Callback'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 

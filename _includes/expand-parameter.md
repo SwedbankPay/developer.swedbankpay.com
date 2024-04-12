@@ -17,13 +17,14 @@ resource including expanded properties." %}
 This example below add the `urls` and `authorizations` field inlines to the
 response, enabling you to access information from these sub-resources.
 
-{:.code-view-header}
-**Expansion**
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
+Host: {{ page.api_host }}{% endcapture %}
 
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
-Host: {{ page.api_host }}
-```
+{% include code-example.html
+    title='Expansion'
+    header=request_header
+    json= request_content
+    %}
 
 To avoid unnecessary overhead, you should only expand the fields you need info
 about.

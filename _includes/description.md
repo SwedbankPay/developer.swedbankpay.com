@@ -40,15 +40,11 @@ shown in the payment window, but it is still required in the initial request."
 
 ## Description Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+{% capture request_header %}POST /psp/{{ api_resource }}/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "{{ api_resource_field_name }}": {
         "operation": "Purchase",
         "intent": {% if api_resource == "trustly" or api_resource == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
@@ -67,8 +63,13 @@ Content-Type: application/json
         "urls":
             "hostUrls": ["https://example.com"]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## How It Looks
 

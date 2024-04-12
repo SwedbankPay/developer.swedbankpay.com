@@ -13,13 +13,12 @@ payment instrument will show up as usual in the payment menu. This is done by
 setting `corporateMode` to `true`. In this example the instrument is set to
 card.
 
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
@@ -42,8 +41,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             "payeeReference": "AB832"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
