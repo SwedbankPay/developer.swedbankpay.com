@@ -49,7 +49,7 @@ When you feel ready and have made transactions with all of your selected payment
 methods, there are a few more steps that remain before your integration is
 cleared to run in a production environment. Our teams are ready to assist you.
 
-*   Acceptance tests
+#### Acceptance tests
 
 We need access to your test environment in order to perform transactions.
 Before we do acceptance tests you need to make sure the following is in place:
@@ -66,17 +66,17 @@ subscriptions - make sure you display the correct information, and take into
 account that details can be changed by the issuer if the card is enrolled for
 [network tokenization][nwt].
 
-*   Contract details
+#### Contract details
 
 If you are unsure if the contract is ready, you can check the status with the
 setup team by [sending them an e-mail with your organization number included][e-mail].
 
-*   Test in production
+#### Test in production
 
 We recommend you to first test the integration and do transactions in a closed
 production environment before you go live.
 
-*   Settlement and reconciliation
+#### Settlement and reconciliation
 
 To see how your values might look in the reports you can have a look at our
 reports samples. [You find them in our Settlement & Reconciliation section][set-rec].
