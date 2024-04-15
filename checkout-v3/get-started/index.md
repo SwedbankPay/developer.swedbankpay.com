@@ -86,7 +86,7 @@ when we get there.
 
 [basic-implementation]: /assets/img/basic-implementation.svg
 [delete-token]: /checkout-v3/features/optional/delete-token/
-[e-mail]: support.psp@swedbankpay.se
+[e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [json]: https://www.json.org/
 [modules-sdks]: /checkout-v3/modules-sdks/
