@@ -5,11 +5,8 @@ description: |
   The latest updates about our Digital Payments releases will be
   published on this page.
 menu_order: 7
+release_notes: true
 ---
-
-{% include alert.html type="informative" icon="info" header="Version numbers"
-body="The version numbers used in headers on this page refers to the version of
-this very documentation, not to a version of any APIs described by it." %}
 
 ## 21 March 2024
 
@@ -52,7 +49,7 @@ that a token has been created.
 
 Big changes are coming up next time. Stay tuned!
 
-## 06 Jan 24
+## 6 February 2024
 
 ### Version 4.7.0
 
@@ -83,7 +80,7 @@ In addition to the usual handful of improvements and bug fixes, of course.
 
 Until next time!
 
-## 19 Dec 23
+## 19 December 2023
 
 ### Version 4.6.1
 
@@ -97,7 +94,7 @@ if you want to learn more about what it is.
 
 From all of us, to all of you: Merry Christmas!
 
-## 07 Nov 23
+## 7 November 2023
 
 ### Version 4.6.0
 
@@ -148,7 +145,7 @@ an easier time finding the right result in the correct section.
 
 Big things are coming up around the bend. Stay tuned!
 
-## 06 July 2023
+## 6 July 2023
 
 ### Version 4.3.3
 
@@ -232,7 +229,7 @@ implementation is still here, and for those of you with a Strong Consumer
 Authentication who want access to our safely stored card data,
 [Enterprise][checkout-v3-enterprise] is still available too.
 
-## 03 March 2023
+## 3 March 2023
 
 ### Version 4.0.0
 
@@ -314,7 +311,7 @@ instruments in both [status][status-models] and
 added MobilePay to [Request Delivery Information][request-delivery-information]
 and done away with some more bugs and typos.
 
-## 02 September 2022
+## 2 September 2022
 
 ### Version 3.1.2
 
@@ -328,7 +325,7 @@ navigation easier, added a section on
 [deleting payment tokens][delete-payment-tokens], along with the usual batch of
 assorted bug fixes and typos.
 
-## 01 July 2022
+## 1 July 2022
 
 ### Version 3.1.1
 
@@ -353,7 +350,7 @@ and integrations. There are a couple of other new additions as well:
   been added to instrument mode
 *   Fixed typos, minor bugs and code examples
 
-## 04 April 2022
+## 4 April 2022
 
 ### Version 3.0.3
 
@@ -423,7 +420,7 @@ new?
 *   Added important info about [MobilePay shoplogoUrl][mobilepay-seamless-view]
 *   Fixed minor bugs and code examples
 
-## 03 August 2021
+## 3 August 2021
 
 ### Version 2.2.2
 
@@ -442,7 +439,7 @@ new?
 *   Added [Delete Token section][card-delete-token] in Card's technical reference
 *   Fixed minor typos and bugs
 
-## 30 Apr 2021
+## 30 April 2021
 
 ### Version 2.2.0
 
@@ -451,14 +448,14 @@ new?
 *   Added [TRA exemption][tra-exemption] section
 *   Fixed a handful of typos and bugs
 
-## 28 Jan 2021
+## 28 January 2021
 
 ### Version 2.1.2
 
 *   Updated Theme version to 1.9.9
 *   Updated Design Guide Version to 5.0.1
 
-## 26 Jan 2021
+## 26 January 2021
 
 ### Version 2.1.0
 
@@ -473,7 +470,7 @@ new?
 *   Updated GitHub references for Mobile SDK
 *   Re-wrote [Prices][prices] section
 
-## 01 Dec 2020
+## 1 December 2020
 
 ### Version 2.0.2
 
@@ -483,7 +480,7 @@ new?
 *   Added paragraphs about different consumer flows in [Checkin][Checkin]
 *   Added link to gift card on the [front page][frontpage]
 
-## 12 Nov 2020
+## 12 November 2020
 
 ### Version 2.0.1
 
@@ -491,7 +488,7 @@ new?
 *   Split [MobilePay Capture][mobilepay-capture] to a separate page
 *   Code examples for digital products added in [Checkin][Checkin]
 
-## 11 Nov 2020
+## 11 November 2020
 
 ### Version 2.0.0
 
@@ -518,7 +515,7 @@ Other changes:
 *   Updated [callback][checkout-callback] documentation.
 *   Updated regex pattern for `orderItems.class`.
 
-## 04 Sep 2020
+## 4 September 2020
 
 ### Version 1.13.3
 
@@ -530,7 +527,7 @@ Other changes:
 *   Documented problems in [Trustly Payments][trustly-payments].
 *   Added an alert for two-phase payments in Capture pages.
 
-## 28 Aug 2020
+## 28 August 2020
 
 ### Version 1.13.2
 
@@ -544,7 +541,7 @@ Other changes:
 *   Added a list of accepted banks in [Trustly Payments][trustly-payments].
 *   Updated the `UpdateOrder` description in [Checkout][checkout].
 
-## 21 Aug 2020
+## 21 August 2020
 
 ### Version 1.13.1
 
@@ -554,7 +551,7 @@ Other changes:
 *   Updated [Test Data][test-data] for Vipps Payments.
 *   Added updated documentation on the `transaction` operation.
 
-## 17 Jul 2020
+## 17 July 2020
 
 ### Version 1.13.0
 
@@ -562,14 +559,14 @@ Other changes:
 *   Added tables for mapping API fields to settlement files in
     [Settlement and Reconciliation][settlement-reconcilitation].
 
-## 10 Jul 2020
+## 10 July 2020
 
 ### Version 1.12.1
 
 *   Corrected the documentation by removing `generatePaymentToken` and
     `paymentToken` from [Checkout][checkout].
 
-## 07 Jul 2020
+## 07 July 2020
 
 ### Version 1.12.0
 
@@ -589,7 +586,7 @@ Other changes:
 *   Small corrections to [Swish Payments][swish] documentation.
 *   Clarified the [`updateOrder`][update-order-checkout] documentation.
 
-## 04 Jun 2020
+## 4 June 2020
 
 ### Version 1.11.1
 
@@ -622,7 +619,7 @@ Other changes:
 *   Added a new section [Co-badge Card Choice for Dankort][co-badge-card] in
     [Card Payments][card-payment-url].
 
-## 07 May 2020
+## 7 May 2020
 
 ### Version 1.9.2
 
@@ -637,7 +634,7 @@ Other changes:
 *   The `language` field is now better described for all requests it's present in.
 *   All broken links should now be unbroken.
 
-## 22 Apr 2020
+## 22 April 2020
 
 ### Version 1.9.0
 
@@ -648,7 +645,7 @@ Other changes:
 *   Flags now also sport a new look: {% flag no %} {% flag se %} {% flag dk %}
     {% flag fi %} {% flag lt %} {% flag lv %} {% flag ee %}
 
-## 15 Apr 2020
+## 15 April 2020
 
 ### Version 1.8.3
 
@@ -668,7 +665,7 @@ Other changes:
 *   Updated the [main page][frontpage] to be more welcoming.
 *   Updated information on [Delegated Strong Customer Authentication][mac-checkout].
 
-## 31 Mar 2020
+## 31 March 2020
 
 ### Version 1.8.1
 
@@ -683,7 +680,7 @@ Other changes:
 *   Updated `payeeReference` to have an unique description for Payment Order and
     every Payment Instrument.
 
-## 18 Mar 2020
+## 18 March 2020
 
 ### Version 1.8.0
 
@@ -696,14 +693,14 @@ Other changes:
 
 This change contains build updates for the page. :octocat:
 
-## 04 Mar 2020
+## 04 March 2020
 
 ### Version 1.7.6
 
 *   Several links has been corrected. The chance of 404 is now much lower.
 *   Other small text changes and clarifications.
 
-## 03 Mar 2020
+## 03 March 2020
 
 ### Version 1.7.5
 
@@ -719,7 +716,7 @@ This change contains build updates for the page. :octocat:
 *   Described the M-Commerce flow for [Swish Direct][swish-direct-mcom].
 *   Alphabetize the terms in [Terminology][terminology].
 
-## 27 Feb 2020
+## 27 February 2020
 
 ### Version 1.7.3
 
@@ -731,7 +728,7 @@ This change contains build updates for the page. :octocat:
 *   Mobile Pay Online was previously only referred to as Mobile Pay, this has been
     corrected.
 
-## 7 Feb 2020
+## 7 February 2020
 
 ### Version 1.7.2
 
@@ -741,7 +738,7 @@ This change contains build updates for the page. :octocat:
 *   We have added card logos when selecting card in payment menu.
     See [updated screenshot of payment menu][checkout-payment-menu-frontend].
 
-## 6 Feb 2020
+## 6 February 2020
 
 ### Version 1.7.1
 
@@ -764,7 +761,7 @@ All sections have been released. :trophy:
     [Swish Seamless View][swish-seamless-view]. Properties added in `Swish`.
 *   Added section about migration key in Resources section.
 
-## 29 Jan 2020
+## 29 January 2020
 
 ### Version 1.6.3
 
@@ -785,7 +782,7 @@ All sections have been released. :trophy:
 *   `cardholder` added to [Card Payments Purchase requests][card-purchase].
 *   Various improvements and fixes.
 
-## 27 Jan 2020
+## 27 January 2020
 
 ### Version 1.6.0
 
@@ -798,7 +795,7 @@ All sections have been released. :trophy:
 *   Added descriptions for Payment States And Transaction States everywhere appropriate.
 *   Google Analytics has been added to Developer Portal.
 
-## 16 Jan 2020
+## 16 January 2020
 
 ### Version 1.5
 
@@ -809,7 +806,7 @@ All sections have been released. :trophy:
 *   The [Swish Payments][swish] and [Vipps Payments][vipps] sections are ready for
     review.
 
-## 09 Jan 2020
+## 9 January 2020
 
 ### Version 1.4
 
@@ -826,7 +823,7 @@ All sections have been released. :trophy:
 *   Added description for the `onBillingDetailsAvailable` event in the
     [Checkin Front End section][checkout-checkin-front-end].
 
-## 22 Dec 2019
+## 22 December 2019
 
 ### Update in checkin module
 
@@ -852,7 +849,7 @@ redirect>>doc:Main.ecommerce.payex-payment-instruments.swish-payments.swish-e-co
 model.
 {% endcomment %}
 
-## 01 Nov 2019
+## 1 November 2019
 
 ### Welcome, Swedbank Pay Developer Portal
 
@@ -904,7 +901,7 @@ updated documentation
 [[here>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]]
 {% endcomment %}
 
-## 01 Oct 2019
+## 1 October 2019
 
 ### Payment Url Credit Card
 
@@ -923,7 +920,7 @@ invoked after return of the payer, they will either be redirected to
 the `completeUrl` (event onPaymentCompleted) or if payment has failed, see an
 error-message and get the option to retry the payment.
 
-## 01 Aug 2019
+## 1 August 2019
 
 ### Order Items in payment orders
 
@@ -1008,7 +1005,6 @@ integration and the payer.
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
-[credit]: /old-implementations/payment-instruments-v1/card
 [custom-styling]: /checkout-v3/features/optional/custom-styling
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection

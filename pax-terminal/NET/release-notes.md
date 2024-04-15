@@ -8,15 +8,17 @@ menu_order: 1
 icon:
     content: feed
     outlined: true
-
+release_notes: true
 ---
-## March 6 2024
+## 21 March 2024
+
+### Version 5.0.0
 
 *   Updated command for avoiding privilege elevation.
 *   Use case for easier configuration of terminal and POS system.
 *   Update of [TransactionSetup][transactionsetup] and property [AcquirerData][acquirerdata].
 
-### .Net SDK 1.3.24066
+##### .Net SDK 1.3.24066
 
 *   New package ID. SwedbankPay.Pax.Sdk. Still the same namespaces and dll name.
 *   Fix for display messages from fuel app that lacks text id.
@@ -24,9 +26,9 @@ icon:
 *   Fixed bug for PrintRequest with DocumentQualifier other other than CashierReceipt or CustomerReceipt.
 *   Possibility for Net Framework 4.0. Now supports Netstandard2.0, net framework 4.5 and 4.0.
 
-## February 27 2024
+## 26 February 2024
 
-### .Net SDK 1.3.24047
+### Version 4.8.0
 
 *   PaymentRequestResult now populates ProductName and PAN even if PaymentInstrumentData is missing.
 *   Possibility to use OpenEx or OpenExAsync to set OperatorID and ShiftNumber that will be forwarded and seen in reports.
@@ -37,54 +39,51 @@ icon:
 *   Property type of TransactionSetup is always overridden and set to Refund if Refund or RefundAsync is called.
 *   Default currency fixed when using TransactionSetup
 
-## February 6 2024
+## 6 February 2024
+
+### Version 4.7.0
 
 *   Documentation updated to reflect SDK release.
 *   Text updated for [`TransactionSetup`][transactionsetup]
 *   Use case section, apm transaction, apm refund, cvm signtature and fuel card transaction and auto configuration of terminal IP in the POS.
 
-## January 25 2024
-
-### .Net SDK 1.3.24025
+##### .Net SDK 1.3.24025
 
 *   RequestToDisplay and UpdateTerminal have now corrected results.
 *   ReverseLast now automatically makes retries if the terminal responds busy.
 *   OnTerminalAddressObtainedEventCallback now with correct access modifier to be able to access Ipv4 and Port properties.
 
-## January 16 2024
-
-### .Net SDK 1.3.24016
+##### .Net SDK 1.3.24016
 
 *   CardAcquisitionReference is now a copy of POITransactionID. Earlier time was converted to local time and caused problem when an other timezone was used.
 *   [PaymentRequetsResult][paymentrequestresult] has now a lot of properties to make values easily available.
 
-## December 15 2023
+## 19 December 2023
 
-### .Net SDK version 1.3.23348
+### Version 4.6.1
+
+##### .Net SDK version 1.3.23348
 
 *   CVM signature transaction works just the same for Client Only mode as for default Client and Server mode.
 *   [`ConfirmationHandler`][confirmationhandler] callback is a must even for Client Only mode.
 *   [`EventCallback`][eventcallback] for `PrintRequestEventCallback` is a must even for Client Only mode.
 *   [Code Examples][codeexamples] updated.
 
-## December 11 2023
+##### .Net SDK Version 1.3
 
-### .Net SDK Version 1.3
+*   Extended interface with function [RequestToPrint][requesttoprint].
+*   Extended [TransactionSetup][transactionsetup] with a list of SaleItem to be used with fuel functionality.
+*   ReceiptBlob and ReceiptBlobNoHeader has been shortened and compressed.
 
-Extended interface with function [RequestToPrint][requesttoprint].
+## 7 November 2023
 
-Extended [TransactionSetup][transactionsetup] with a list of SaleItem to be used with fuel functionality.
+### Version 4.6.0
 
-ReceiptBlob and ReceiptBlobNoHeader has been shortened and compressed.
+##### .Net SDK Version 1.2
 
-## 03 November 2023
-
-### .Net SDK Version 1.2
-
-SDK for .Net has extended its interface with new methods for [GetPaymentInstrument][getpaymentinstrument],
+*   SDK for .Net has extended its interface with new methods for [GetPaymentInstrument][getpaymentinstrument],
 [Payment][payment] and [Refund][refund] for which an object with parameters is passed. This was made to be able set a transaction id from the sale system.
-
-ReceiptBlobNoHeader has been added to PaymentRequestResult.
+*   ReceiptBlobNoHeader has been added to PaymentRequestResult.
 
 [getpaymentinstrument]:/pax-terminal/NET/SwpTrmLib/Methods/handy/getpaymentinstrumentasync
 [payment]: /pax-terminal/NET/SwpTrmLib/Methods/essential/paymentasync
