@@ -40,6 +40,22 @@ this section. We recommend [getting started here][get-started].
 
 <div class="row mt-4">
     <div class="col-xl-6 col-lg-6 d-flex">
+       <a href="/checkout-v3/get-started/" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">One-Time Payments</span>
+            <span><p>Get things started with our basic implementation.</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+<div class="row mt-4">
+    <div class="col-xl-6 col-lg-6 d-flex">
        <a href="/checkout-v3/get-started/recurring" class="cards cards-primary">
          <span class="cards-icon">
             <i class="material-icons-outlined">
