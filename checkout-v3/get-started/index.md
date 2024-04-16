@@ -31,7 +31,7 @@ differences between the two alternatives.
 
 The **basic payment integration** consists of 4 main steps. **Creating** the
 payment, **displaying** the payment UI, **verifying** the payment status and
-**capturing** the funds. Don't hesitate with contacting us for further
+**post-purchase actions**. Don't hesitate with contacting us for further
 integration support.
 
 ![Implementation steps][basic-implementation]{:class="mt-4 mb-5"}
@@ -41,7 +41,7 @@ integration support.
 | Initiate a Payment | The first step is to initiate a payment. You have a selection of setups and use cases depending on your business model, like recurring and one-click payments - but for now we'll stick to the basic payment. |
 | Display UI         | Present a UI for your end user and customize for your needs. The main choice you have to make is between the seamless view or redirect integration. There are pros and cons to both. |
 | Validate Status    | Validate the status of the purchase in order to take the right action before acting on the payment response. |
-| Capture            |  Capture the funds from a successful payment. |
+| Post-Purchase actions |  After a successful purchase, you can perform actions like capturing the funds (Trustly and Swish do not require this), cancelling the transaction or do reversals. |
 
 ## Get Ready To Go Live
 
@@ -84,7 +84,7 @@ reports samples. [You find them in our Settlement & Reconciliation section][set-
 No need to worry about these steps just yet. We will walk you through everything
 when we get there.
 
-[basic-implementation]: /assets/img/basic-implementation.svg
+[basic-implementation]: /assets/img/devp-get-started.svg
 [delete-token]: /checkout-v3/features/optional/delete-token/
 [e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
