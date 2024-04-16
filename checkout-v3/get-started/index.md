@@ -84,7 +84,7 @@ reports samples. [You find them in our Settlement & Reconciliation section][set-
 No need to worry about these steps just yet. We will walk you through everything
 when we get there.
 
-[basic-implementation]: /assets/img/checkout/devp-get-started.svg
+[basic-implementation]: /assets/img/checkout/devp-get-started.png
 [delete-token]: /checkout-v3/features/optional/delete-token/
 [e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
