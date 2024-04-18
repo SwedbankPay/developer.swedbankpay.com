@@ -71,9 +71,6 @@ the `paymentOrderId`.
 
 {% if api_resource == "paymentorders" %}
 
-{:.code-view-header}
-**Payment Order Callback**
-
 {% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",

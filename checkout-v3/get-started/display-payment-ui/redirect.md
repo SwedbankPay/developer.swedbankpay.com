@@ -11,11 +11,7 @@ menu_order: 5
 Among the operations in the POST `paymentOrder`s response, you will find the
 `redirect-checkout`. This is the one you need to display the payment UI.
 
-{:.code-view-header}
-**Response**
-
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
     "operations": [
         {
@@ -25,8 +21,13 @@ Among the operations in the POST `paymentOrder`s response, you will find the
             "contentType": "text/html"
         },
     ]
-}
-```
+}{% endcapture %}
+
+ {% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## How Redirect Looks
 

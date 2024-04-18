@@ -614,32 +614,35 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
         "number": 123462,
         "initiatedBy" "Merchant"
       },
-            {
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyCapturedFailed",
         "instrument": "CreditCard",
         "number": 123463,
         "initiatedBy" "Merchant"
       },
-            {
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentReversedFailed",
         "instrument": "CreditCard",
         "number": 123464,
         "initiatedBy" "Merchant"
       },
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyReversedFailed",
         "instrument": "CreditCard",
         "number": 123465,
         "initiatedBy" "Merchant"
       },
-              "created": "2020-03-04T02:01:01.01Z",
+      {
+        "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentCancelledFailed",
         "instrument": "CreditCard",
         "number": 123466,
         "initiatedBy" "Merchant"
       },
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyCancelledFailed",
         "instrument": "CreditCard",
@@ -802,10 +805,6 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Apple Pay Response**
-
-```http
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
 api-supported-versions: 3.1/3.0/2.0{% endcapture %}

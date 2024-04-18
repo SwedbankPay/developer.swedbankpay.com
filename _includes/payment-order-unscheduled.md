@@ -325,7 +325,7 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
        ]
       }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response'
     header=response_header
     json= response_content

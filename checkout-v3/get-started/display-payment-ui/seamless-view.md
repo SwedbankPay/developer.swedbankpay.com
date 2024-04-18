@@ -11,11 +11,7 @@ menu_order: 6
 Among the operations in the POST `paymentOrders` response, you will find the
 `view-checkout`. This is the one you need to display the purchase module.
 
-{:.code-view-header}
-**Response**
-
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
     "operations": [
         {
@@ -25,8 +21,13 @@ Among the operations in the POST `paymentOrders` response, you will find the
             "contentType": "application/javascript"
         },
     ]
-}
-```
+}{% endcapture %}
+
+ {% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Load The Seamless View
 
