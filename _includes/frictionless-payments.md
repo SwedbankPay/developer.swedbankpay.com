@@ -26,8 +26,7 @@ the better.
 
 {% if api_resource == "creditcard" %}
 
-```json
-{
+{% capture request_content %}{
     "cardholder": {
         "firstName": "Olivia",
         "lastName": "Nyhuus",
@@ -65,13 +64,17 @@ the better.
                 "suspiciousAccountActivity": "01"
             }
         },
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
 
 {% else %}
 
-```json
-{
+{% capture request_content %}{
     "payer": {
         "email": "olivia.nyhuus@payex.com",
         "msisdn": "+4798765432",
@@ -107,8 +110,13 @@ the better.
                 "suspiciousAccountActivity": "01"
             }
         },
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -179,8 +187,7 @@ the better.
 
 ## Risk Indicator
 
-```json
-{
+{% capture request_content %}{
     "riskIndicator": {
         "deliveryEmailAddress": "olivia.nyhuus@payex.com",
         "deliveryTimeFrameIndicator": "01",
@@ -198,8 +205,13 @@ the better.
             "countryCode": "NO"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Risk Indicator Node'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 | Field | Type | Description |

@@ -10,27 +10,24 @@ The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
 `networkToken`, which **represents** the PAN, but is not a PAN in itself.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=2.0      // Version optional for 2.0
-```
+Content-Type: application/json;version=2.0      // Version optional for 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ### Card `Paid` Resource
 
-{:.code-view-header}
-**Card Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
@@ -84,23 +81,24 @@ api-supported-versions: 2.0
       "transactionInitiator": "CARDHOLDER",
       "bin": "492500"
     }
-  }
-```
+  }{% endcapture %}
+
+{% include code-example.html
+    title='Card Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Apple Pay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Apple Pay Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -125,23 +123,24 @@ api-supported-versions: 2.0
         "bin": "492500"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Apple Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### MobilePay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**MobilePay Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
@@ -167,23 +166,24 @@ api-supported-versions: 2.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='MobilePay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Vipps `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Vipps Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
@@ -206,23 +206,23 @@ api-supported-versions: 2.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Vipps Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Swish `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Swish Response**
+{% capture response_header %}Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
@@ -238,23 +238,23 @@ api-supported-versions: 2.0
       "misidn": "+46739000001"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Swish Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Invoice `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Invoice Response**
+{% capture response_header %}Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
@@ -268,23 +268,24 @@ api-supported-versions: 2.0
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Invoice Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Installment Account `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Installment Account Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
@@ -298,23 +299,24 @@ api-supported-versions: 2.0
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Installment Account Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Trustly `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Trustly Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
@@ -331,8 +333,13 @@ api-supported-versions: 2.0
       "trustlyOrderId": 1234567890
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Trustly Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

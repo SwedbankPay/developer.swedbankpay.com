@@ -36,15 +36,16 @@ needed when newer versions are released.
 
 ## Request Headers v3.1
 
-{:.code-view-header}
-**New Request Headers**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: api.payex.com
 Authorization: Bearer {{ your_token }}
-Content-Type: application/json;version=3.1
-```
+Content-Type: application/json;version=3.1{% endcapture %}
+
+{% include code-example.html
+    title='New Request Headers'
+    header=request_header
+    json= request_content
+    %}
 
 ## Order Items
 
@@ -83,7 +84,7 @@ Fields removed since v2 include: `currentPayment`,`instrument`, `payments` and
  {% endcapture %}
 
  {% include code-example.html
-    title='Response'
+    title='Response Fields Changes'
     header=response_header
     json= response_content
     %}
@@ -92,8 +93,7 @@ Instead, new fields including `history`, `failed`, `aborted`, `paid`, and
 others, have been introduced. An example of the complete array of selections is
 provided below.
 
- ```json
- {
+ {% capture response_content %}{
     "urls": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
     },
@@ -130,8 +130,13 @@ provided below.
     "metadata": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata"
     }
- }
- ```
+ } {% endcapture %}
+
+ {% include code-example.html
+    title='New Response Fields'
+    header=response_header
+    json= response_content
+    %}
 
 ### Endpoints
 
@@ -205,17 +210,18 @@ introduced to enhance our tracking and obtain more precise data regarding the
 integration types or implementation styles adopted by our customers. They do not
 directly affect your responsibilities as an integrator and can be disregarded.
 
-{:.code-view-header}
-**Response fields excerpt**
-
-```json
-{
+{% capture response_content %}{
 "implementation": "PaymentsOnly",
 "integration": "",
 "instrumentMode": false,
 "guestMode": false,
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response Fields Excerpt'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field    | Description & Value           |
@@ -283,11 +289,7 @@ more data in your responses, you can continue extending the output by adding a
 `?$expand=financialtransactions,paid` would give you both the node for the
 initial `Purchase` and the node for the Capture/Reversal operation.
 
-{:.code-view-header}
-**Response example from existing versions**
-
-```json
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/b2409f06-4944-4b2b-78d8-08dbf7d4b7e9",
     "capture": {
         "id": "/psp/creditcard/payments/b2409f06-4944-4b2b-78d8-08dbf7d4b7e9/captures/b15c1f9c-ad6b-4193-dabe-08dbf7d4b80a",
@@ -306,14 +308,15 @@ initial `Purchase` and the node for the Capture/Reversal operation.
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Response Example from v3.1 (Capture with no expansions)**
+{% include code-example.html
+    title='Response example from existing versions'
+    header=response_header
+    json= response_content
+    %}
 
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/a8d963ee-4749-4b3c-9f31-08dbf62d5f1c",
         "created": "2023-12-08T13:42:08.1297502Z",
@@ -404,14 +407,15 @@ initial `Purchase` and the node for the Capture/Reversal operation.
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Response Example from v3.1 (Capture with Paid and FinancialTransactions expanded)**
+{% include code-example.html
+    title='Response Example from v3.1 (Capture with no expansions)'
+    header=response_header
+    json= response_content
+    %}
 
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/d4c5684f-c2dc-4c18-680d-08dbf62de407",
         "created": "2023-12-08T14:06:29.0250114Z",
@@ -541,8 +545,13 @@ initial `Purchase` and the node for the Capture/Reversal operation.
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response Example from v3.1 (Capture with Paid and FinancialTransactions expanded)'
+    header=response_header
+    json= response_content
+    %}
 
 ## Callback Information
 
@@ -553,25 +562,22 @@ on the `paymentOrderId` provided. If information has been included in the
 reported, allowing you to easily identify the transaction associated with a
 Callback. Note that the `payment` and `transaction` fields have been removed.
 
-{:.code-view-header}
-**Callback Example v3.1**
-
-```json
-{
+{% capture response_content %}{
    "orderReference":"PO-638423890947905216",
    "paymentOrder":{
       "id":"/psp/paymentorders/a9bd5ea2-d2b0-48d1-59c8-08dc230b04ba",
       "instrument":"CreditCard",
       "number":40129161258
    }
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Callback Example Previous Versions**
+{% include code-example.html
+    title='Callback Example v3.1'
+    header=response_header
+    json= response_content
+    %}
 
-```json
-{
+{% capture response_content %}{
     "orderReference":"ABC123",
     "paymentOrder": {
         "id": "/psp/paymentorders/c3ac1392-35b0-43a6-8f27-08dbce43b47c",
@@ -585,8 +591,13 @@ Callback. Note that the `payment` and `transaction` fields have been removed.
         "id": "/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sale/ec2a9b09-601a-42ae-8e33-a5737e1cf177",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Callback Example Previous Versions'
+    header=response_header
+    json= response_content
+    %}
 
 ## Sources
 

@@ -20,22 +20,24 @@ in the request body:
 
 ## Abort PATCH Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
+{% capture request_content %}{
 {
   "paymentorder": {
     "operation": "Abort",
     "abortReason": "CancelledByConsumer"
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
@@ -62,15 +64,11 @@ request towards the `paymentorders` resource, as displayed above, with its
 
 {% if documentation_section contains "checkout-v3" %}
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/2c3f7a3e-65ca-4493-ac93-08d9dcb313fd",
         "created": "2022-01-24T10:54:05.6243371Z",
@@ -148,8 +146,13 @@ api-supported-versions: 3.1/3.0/2.0
           "contentType": "application/javascript"
         }{% endif %}
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -190,15 +193,11 @@ api-supported-versions: 3.1/3.0/2.0
 
 {% else %}
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2018-09-14T13:21:29.3182115Z",
@@ -243,7 +242,12 @@ api-supported-versions: 2.0
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}

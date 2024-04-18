@@ -80,11 +80,7 @@ The examples are abbreviated where needed.
 
 ### Payer Aware Menu and One-Click (for generating details)
 
-{:.code-view-header}
-**Payer Aware Menu and One-Click (for generating details)**
-
-```json
-{
+{% capture request_content %}{
    "paymentorder": {
    "operation": "Purchase",
    // ... other details
@@ -103,8 +99,13 @@ The examples are abbreviated where needed.
    "payerReference": "AB1234"
    }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payer Aware Menu and One-Click (for generating details)'
+    header=request_header
+    json= request_content
+    %}
 
 Here is an example image of what the menu looks like with two previously stored
 cards. <<Insert Image PAM1>>
@@ -114,11 +115,7 @@ cards. <<Insert Image PAM1>>
 
 ### One-Click for Future Transactions
 
-{:.code-view-header}
-**One-Click for Future Transactions**
-
-```json
-{
+{% capture request_content %}{
    "paymentorder": {
    "operation": "Purchase",
    // ... other details
@@ -131,8 +128,13 @@ cards. <<Insert Image PAM1>>
    "payerReference": "AB1234"
    }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click for Future Transactions'
+    header=request_header
+    json= request_content
+    %}
 
 Here is an example image of what it would look like when forcibly loading a
 specific set of details with “OneClick”. Insert <<OC1>>
@@ -161,15 +163,16 @@ Use the URL `/psp/paymentorders/paymenttokens/<TokenValue>`.
 
 Both scenarios generate the same response:
 
-{:.code-view-header}
-**Token Deletion Response**
-
-```json
-{
+{% capture response_content %}{
 "state": "Deleted",
 "comment": "Comment on why the deletion is happening"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Token Deletion Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Common causes that triggers the need for deletion
 

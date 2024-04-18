@@ -4,7 +4,7 @@ permalink: /:path/merchant-backend-sample-code/
 description: |
   You can use Swedbank Pay provided sample code to jump-start your
   **Swedbank Pay Mobile SDK** application.
-menu_order: 900
+menu_order: 1300
 ---
 
 You can find sample implementations of the Merchant Backend at [this Github
@@ -24,9 +24,10 @@ are, of course, devoid of any business logic. They should, nevertheless, provide
 a good starting point toward integration with your business systems.
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend"
-                         prev_title="Merchant Backend"
-                         next_href="/checkout-v3/modules-sdks/mobile-sdk/android"
-                         next_title="Android" %}
+                         prev_title="Back: Merchant Backend"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
+                         next_title="Next: Other Features" %}
+
 
 [backend-samples]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant
 [node-sample]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/main/examples/node.js/README.md

@@ -61,29 +61,22 @@ Do you want to try it out? Test cards and a guide can is in the
 
 The `GET` request to retrieve these should look similar to this.
 
-{:.code-view-header}
-**GET Tokens Request**
-
-```http
-GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0 {% endcapture %}
 
-{:.code-view-header}
-**GET Tokens Response**
+{% include code-example.html
+    title='GET Tokens Request'
+    header=request_header
+    json= request_content
+    %}
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
         "payerReference": "{payerReference}",
@@ -120,8 +113,13 @@ api-supported-versions: 3.1/3.0/2.0
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='GET Tokens Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped .mb-5}
 | Field                          | Type      | Description    |

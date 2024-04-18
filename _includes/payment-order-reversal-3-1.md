@@ -32,24 +32,25 @@ If we want to reverse a previously captured amount, we need to perform
 
 ## Reversal Request v3.1
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1
+Content-Type: application/json;version=3.1{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Reversal of captured transaction",
         "amount": 1500,
         "vatAmount": 375,
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -84,15 +85,11 @@ Content-Type: application/json;version=3.1
 
 If the reversal request succeeds, the response should be similar to the example below:
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 3.1
+api-supported-versions: 3.1{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": {
     "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d",
     "created": "2020-03-03T07:19:27.5636519Z",
@@ -154,8 +151,13 @@ api-supported-versions: 3.1
   },
   "operations": [
   ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

@@ -23,26 +23,24 @@ possible to perform in the current state of the payment.
 
 ## GET Payment Resource Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Payment Resource Response
 
-{:.code-view-header}
-**Response**
-
-```http
+{% capture response_header %}
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -116,8 +114,13 @@ Content-Type: application/json
         {% include utils/api-operation.md operation="failed-payment" href_tail="failed" %}
     {% endif %}
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                  | Type         | Description                                                                                                                                                                                                                                                                                                                                                |

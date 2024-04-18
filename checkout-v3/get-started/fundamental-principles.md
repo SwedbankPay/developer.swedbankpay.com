@@ -49,18 +49,19 @@ shouldn't either.
 
 All requests against the API Platform should have a few common headers:
 
-{:.code-view-header}
-**HTTP request**
-
-```http
-POST /some/resource HTTP/1.1
+{% capture request_header %}POST /some/resource HTTP/1.1
 Content-Type: application/json;version=3.1/3.0/2.0  charset=utf-8  // Version optional except for 3.1
 Authorization: "Bearer 123456781234123412341234567890AB"
 User-Agent: swedbankpay-sdk-dotnet/3.0.1
 Accept: application/problem+json; q=1.0, application/json; q=0.9
 Session-Id: 779da454399742248f2942bb064c4707
-Forwarded: for=82.115.151.177; host=example.com; proto=https
-```
+Forwarded: for=82.115.151.177; host=example.com; proto=https{% endcapture %}
+
+{% include code-example.html
+    title='HTTP Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Header              | Description                                                                                                                                                                                                                                                                    |
@@ -136,15 +137,11 @@ the operation to perform, you need to retrieve the resource with an HTTP `GET`
 request first and then find the operation in question within the `operations`
 field.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments HTTP/1.1
+{% capture request_header %}POST /psp/creditcard/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0  // Version optional except for 3.1
+Content-Type: application/json;version=3.1/3.0/2.0  // Version optional except for 3.1{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -161,18 +158,19 @@ Content-Type: application/json;version=3.1/3.0/2.0  // Version optional except f
         "userAgent": "Mozilla/5.0...",
         "language": "nb-NO",
      }
- }
-```
+ }{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -203,8 +201,13 @@ api-supported-versions: 3.1/3.0/2.0
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Uniform Responses
 
@@ -230,13 +233,14 @@ target resource including expanded properties.
 This example below add the `urls` and `authorizations` field inlines to the
 response, enabling you to access information from these sub-resources.
 
-{:.code-view-header}
-**HTTP request with expansion**
+{% capture request_header %}GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
+Host: {{ page.api_host }}{% endcapture %}
 
-```http
-GET /psp/creditcard/payments/{{ page.payment_id }}?$expand=urls,authorizations HTTP/1.1
-Host: {{ page.api_host }}
-```
+{% include code-example.html
+    title='HTTP Request with expansion'
+    header=request_header
+    json= request_content
+    %}
 
 To avoid unnecessary overhead, you should only expand the fields you need info
 about.

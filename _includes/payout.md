@@ -113,16 +113,12 @@ If something failed in the payout process this flow will happen.
 
 ## Verify Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
    "paymentorder": {
      "operation": "Verify",
      "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
@@ -161,8 +157,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
      }
    }
  }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -209,15 +210,11 @@ Note the new operation `verify-trustly`, which is available if it is activated
 in the merchant's contract and the payer's first and last name is added in the
 request.
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/b60d08b8-0509-4abf-a722-08db68bad644",
         "created": "2023-06-09T07:26:27.3013437Z",
@@ -303,8 +300,13 @@ api-supported-versions: 3.1/3.0/2.0
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -347,21 +349,25 @@ api-supported-versions: 3.1/3.0/2.0
 The PATCH request towards the `verify-trustly` operation, containing the bank
 account details.
 
-```http
-PATCH /psp/paymentorders HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "VerifyTrustly",
         "clearingHouse": "SWEDEN",
         "bankNumber": "6112",
         "accountNumber": "69706212"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -380,12 +386,11 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 Note that the status in the response has changed to `Paid`, with the correlating
 disappearance of `PATCH` operations.
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/<id>",
         "created": "2023-07-06T05:42:07.7531238Z",
@@ -453,8 +458,13 @@ api-supported-versions: 3.1/3.0/2.0
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -494,13 +504,12 @@ api-supported-versions: 3.1/3.0/2.0
 
 ## Payout Request
 
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "paymentorder": {
     "operation": "Payout",
     "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
@@ -523,8 +532,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
       "payerReference": "{{payerReference}}"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -553,12 +567,11 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 
 ## Payout Response
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/f4e47e61-37a5-4281-a5f3-08db68bc1d08",
         "created": "2023-06-09T07:35:35.1855792Z",
@@ -611,9 +624,13 @@ api-supported-versions: 3.1/3.0/2.0
         }
     },
     "operations": []
-}
+}{% endcapture %}
 
-```
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -657,11 +674,10 @@ A GET performed after the callback is received on a `paymentOrder` with status
 `Paid`. A field called `trustlyOrderId` will appear among the `details` in the
 `Paid` node. This can be used for support correspondance.
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/3c265183-e7ee-438b-a5f4-08db68bc1d08",
         "created": "2023-06-09T07:38:08.5041489Z",
@@ -733,8 +749,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         }
     },
     "operations": []
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

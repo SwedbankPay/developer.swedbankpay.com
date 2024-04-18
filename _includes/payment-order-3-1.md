@@ -104,48 +104,48 @@ api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
         "instrumentMode": false,
         "guestMode": false,
         "orderItems": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
         },
         "urls": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
         },
         "payeeInfo": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo"
         },
         "payer": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers"
         },
         "history": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/history"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/history"
         },
         "failed": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failed"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/failed"
         },
         "aborted": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/aborted"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/aborted"
         },
         "paid": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/paid"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/paid"
         },
         "cancelled": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/cancelled"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/cancelled"
         },
         "reversed": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversed"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversed"
         },
         "financialTransactions": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/financialtransactions"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/financialtransactions"
         },
         "failedAttempts": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
         },
         "postPurchaseFailedAttempts": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
         },
         "metadata": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata"
         }
-      },
+    },
     "operations": [
         {
           "method": "GET",
@@ -171,8 +171,9 @@ api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
           "method": "PATCH",
           "contentType": "application/json"
         }
-       ]
-      }{% endcapture %}
+    ]
+}
+  {% endcapture %}
 
 {% include code-example.html
     title='Response'

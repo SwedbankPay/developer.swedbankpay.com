@@ -12,15 +12,16 @@ you need to validate that the payment has the status `Paid` so you are able to
 capture funds.
 
 First of all, you need to find out if the transaction type needs to be captured
-or not. `Authorization`s need to be captured (2-phase transactions),
- `Sale`s do not (1-phase transactions).
+or not. An `Authorization` needs to be [captured][pp-capture] (most instruments
+generate these type of transactions), a `Sale` does not (Trustly and Swish
+transactions where the funds are captured instantly and automatically).
 
 ## Perform the GET
 
 You can do this by perfoming a `GET` on your payment.
 
-The status field should simply have the status `Paid`. As long as this is the case, you are good to go
-and proceed to doing the [capture][pp-capture].
+The status field should simply have the status `Paid`. As long as this is the
+case, you are good to go and proceed to doing the [capture][pp-capture].
 
 We also recommend adding an expansion of the `paid` node. Do this by adding
 `?$expand=paid` after the `paymentOrderId`. This way, you can retrieve more
@@ -30,25 +31,22 @@ towards the API.
 Not adding the expansion will result in the same response, apart from the paid
 node being collapsed.
 
-{:.code-view-header}
-**GET Request with expanded paid node**
-
-```http
-GET /psp/paymentorders/34761895-d1e4-412a-0a30-08dc43423140?$expand=paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/34761895-d1e4-412a-0a30-08dc43423140?$expand=paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**GET Response with expanded paid node**
+{% include code-example.html
+    title='GET Request with expanded paid node'
+    header=request_header
+    json= request_content
+    %}
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/34761895-d1e4-412a-0a30-08dc43423140",
         "created": "2024-03-13T12:39:58.0608661Z",
@@ -172,31 +170,33 @@ api-supported-versions: 3.1/3.0/2.0
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='GET Response with expanded paid node'
+    header=response_header
+    json= response_content
+    %}
 
 An alternative option to expanding the paid node is performing a
 [`GET` towards the `paid` resource][paid-resource-model].
 
-{:.code-view-header}
-**GET Request directly towards the paid resource**
-
-```http
-GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**GET Response directly towards the paid resource**
+{% include code-example.html
+    title='GET Request directly towards the paid resource'
+    header=request_header
+    json= request_content
+    %}
 
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paid": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
     "instrument": "Creditcard",
@@ -222,8 +222,13 @@ api-supported-versions: 3.1/3.0/2.0
       "transactionInitiator": "CARDHOLDER",
       "bin": "492500"
     }
-  }
-```
+  }{% endcapture %}
+
+{% include code-example.html
+    title='GET Response directly towards the paid resource'
+    header=response_header
+    json= response_content
+    %}
 
 ## Other Statuses
 
