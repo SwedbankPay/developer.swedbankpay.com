@@ -16,7 +16,7 @@ Re-working of the Modules & SDKs section is the star of this release. Intrigued?
 [Start off with the bare minimum implementation][bare-min]!
 
 Aside from that, this has been a maintenance release, but the release notes you
-are reading right now recieved a facelift. We have also added more information
+are reading right now received a facelift. We have also added more information
 about the [final steps before you go live][go-live]!
 
 ## 21 March 2024
