@@ -20,9 +20,6 @@ in the request body:
 
 ## Abort PATCH Request
 
-{:.code-view-header}
-**Request**
-
 {% capture request_header %}PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
@@ -66,9 +63,6 @@ request towards the `paymentorders` resource, as displayed above, with its
 {% endif %}
 
 {% if documentation_section contains "checkout-v3" %}
-
-{:.code-view-header}
-**Response**
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
@@ -198,9 +192,6 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 {% include accordion-table.html content=table %}
 
 {% else %}
-
-{:.code-view-header}
-**Response**
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0

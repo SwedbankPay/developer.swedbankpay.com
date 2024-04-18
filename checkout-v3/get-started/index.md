@@ -56,7 +56,7 @@ Before we do acceptance tests you need to make sure the following is in place:
 
 *   That you receive order confirmations/receipts by e-mail that contain order
 number, transaction number, price and the merchant/store's contact information.
-*   If you intend to use unscheduled[unscheduled] or recurring[recur] purchases,
+*   If you intend to use [unscheduled] or [recur] purchases,
   you need to be able to send requests for [deleting tokens][delete-token].
 *   Make sure that you can handle [network tokens][nwt] by using our
   [test cards][test-cards] for that specific case.

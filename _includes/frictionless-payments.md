@@ -66,6 +66,12 @@ the better.
         },
 }{% endcapture %}
 
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
+
 {% else %}
 
 {% capture request_content %}{
@@ -105,6 +111,12 @@ the better.
             }
         },
 }{% endcapture %}
+
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -194,6 +206,12 @@ the better.
         }
     }
 }{% endcapture %}
+
+{% include code-example.html
+    title='Risk Indicator Node'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 | Field | Type | Description |

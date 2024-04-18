@@ -16,11 +16,7 @@ usually to the field in the request that was missing or contained invalid data.
 
 The structure of a problem message will look like this:
 
-{:.code-view-header}
-**Problem Example**
-
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/<resource>/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
@@ -30,8 +26,13 @@ The structure of a problem message will look like this:
         "name": "CreditCardParameters.Issuer",
         "description": "minimum one issuer must be enabled"
     }]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Problem Example'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                 | Type      | Description                                                                                                                                                                                                                                         |
@@ -86,8 +87,7 @@ Examples of the error messages are presented below.
 
 `InputError` for a `RecurrenceToken`:
 
-```json
-{
+{% capture response_content %}{
    "type":"https://api.payex.com/psp/errordetail/paymentorders/inputerror",
    "title":"Error in input data",
    "status":404,
@@ -101,15 +101,19 @@ Examples of the error messages are presented below.
          "description":"The given RecurrenceToken does not exist."
       }
    ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='InputError for RecurrenceToken'
+    header=response_header
+    json= response_content
+    %}
 
 ### TokenInactive
 
 `TokenInactive` example with `UnscheduledToken`:
 
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive",
     "title": "Payment token is inactive",
     "status": 422,
@@ -123,13 +127,17 @@ Examples of the error messages are presented below.
            "description": "The given UnscheduledToken is inactive."
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='TokenInactive for UnscheduledToken'
+    header=response_header
+    json= response_content
+    %}
 
 `TokenInactive` example with a `RecurrenceToken`:
 
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive",
     "title": "Payment token is inactive",
     "status": 422,
@@ -143,8 +151,13 @@ Examples of the error messages are presented below.
            "description": "The given RecurrenceToken is inactive."
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='TokenInactive for RecurrenceToken'
+    header=response_header
+    json= response_content
+    %}
 
 If you have questions regarding the new error types, do not hesitate to contact
 us through the ordinary support channels.
@@ -156,8 +169,7 @@ determines whether or not to show the checkbox used to save payment details –
 the `DisableStoredPaymentDetails` parameter must be set to `true`. Otherwise you
 will get a validation error.
 
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/paymentorders/inputerror",
     "title": "Error in input data",
     "status": 400,
@@ -169,8 +181,13 @@ will get a validation error.
             "description": "EnablePaymentDetailsConsentCheckbox cannot be used without DisableStoredPaymentDetails."
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Consent Checkbox Problems'
+    header=response_header
+    json= response_content
+    %}
 
 ## Card Problems
 
@@ -269,11 +286,7 @@ takes place - this is where the new, clearer response messages will help.
 When it comes to Excessive Reattempts, the new response messages will be
 returned if the quota for the period gets to 5 attempts remaining, as follows:
 
-{:.code-view-header}
-**5 Attempts Remaining**
-
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/creditcard/suspensionwarning",
     "title": "SuspensionWarning. The card might be blocked.",
     "status": 403,
@@ -292,19 +305,20 @@ returned if the quota for the period gets to 5 attempts remaining, as follows:
             "description": "pospay-ecommerce-financial-service"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='5 Attempts Remaining'
+    header=response_header
+    json= response_content
+    %}
 
 Should more attempts be tried, and the transaction fail, the number of remaining
 attempts will update accordingly. Once the card is blocked, the following
 responses will be given, depending on if the card in question is Visa or
 MasterCard:
 
-{:.code-view-header}
-**MasterCard**
-
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/creditcard/dailylimitexceeded",
     "title": "Daily attempt limit is exceeded.",
     "status": 403,
@@ -318,14 +332,15 @@ MasterCard:
             "description": "pospay-ecommerce-financial-service"
         }
     ]
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Visa**
+{% include code-example.html
+    title='Attempt limit exceeded MasterCard'
+    header=response_header
+    json= response_content
+    %}
 
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/creditcard/monthlylimitexceeded",
     "title": "Monthly attempt limit is exceeded.",
     "status": 403,
@@ -339,16 +354,17 @@ MasterCard:
             "description": "pospay-ecommerce-financial-service"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Attempt limit exceeded Visa'
+    header=response_header
+    json= response_content
+    %}
 
 The new responses for "Do Not Retry" will be as follows:
 
-{:.code-view-header}
-**Blocked card, no further attempts allowed**
-
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererrordonotretry",
     "title": "Do not retry.",
     "status": 403,
@@ -364,17 +380,18 @@ The new responses for "Do Not Retry" will be as follows:
             "description": "pospay-ecommerce-financial-service"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Blocked card, no further attempts allowed'
+    header=response_header
+    json= response_content
+    %}
 
 Furthermore, a new response is added, being returned in cases where the
 transaction is declined, but might be accepted after modifications:
 
-{:.code-view-header}
-**Transaction declined, modifications required**
-
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererrormodificationsrequired",
     "title": "Modifications required.",
     "status": 403,
@@ -390,8 +407,13 @@ transaction is declined, but might be accepted after modifications:
             "description": "pospay-ecommerce-financial-service"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Transaction declined, modifications required'
+    header=response_header
+    json= response_content
+    %}
 
 ## Invoice Problems
 
@@ -428,22 +450,23 @@ Caused By:
 
 *   The payer's BankID is already in use
 
-{:.code-view-header}
-Example response bankidalreadyinuse
+{% capture response_header %}HTTP/1.1 409 Conflict
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 409 Conflict
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/bankidalreadyinuse",
     "title": "BankID Already in Use",
     "status": 409,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "The payer's BankID is already in use."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response bankidalreadyinuse'
+    header=response_header
+    json= response_content
+    %}
 
 ### `bankidcancelled`
 
@@ -451,22 +474,23 @@ Caused By:
 
 *   The payer cancelled BankID authorization.
 
-{:.code-view-header}
-Example response bankidcancelled
+{% capture response_header %}HTTP/1.1 409 Conflict
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 409 Conflict
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/bankidcancelled",
     "title": "BankID Authorization cancelled",
     "status": 409,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "The payer cancelled BankID authorization."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response bankidcancelled'
+    header=response_header
+    json= response_content
+    %}
 
 ### `bankiderror`
 
@@ -474,22 +498,23 @@ Caused By:
 
 *   Something went wrong with the payer's BankID authorization.
 
-{:.code-view-header}
-Example response bankiderror
+{% capture response_header %}HTTP/1.1 502 Bad Gateway
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 502 Bad Gateway
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/bankiderror",
     "title": "BankID error",
     "status": 502,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "Something went wrong with the payer's BankID authorization."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response bankiderror'
+    header=response_header
+    json= response_content
+    %}
 
 ### `configerror`
 
@@ -506,22 +531,23 @@ Caused By:
 *   Counterpart is not activated.
 *   Payee not enrolled.
 
-{:.code-view-header}
-Example response configerror
+{% capture response_header %}HTTP/1.1 403 Forbidden
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/configerror",
     "title": "Config error",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "Payee alias is missing or not correct."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response configerror'
+    header=response_header
+    json= response_content
+    %}
 
 ### `inputerror`
 
@@ -530,22 +556,23 @@ Caused By:
 *   MSISDN is invalid.
 *   Payer's MSISDN is not enrolled at Swish.
 
-{:.code-view-header}
-Example response inputerror
+{% capture response_header %}HTTP/1.1 400 Bad Request
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 400 Bad Request
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/inputerror",
     "title": "Input error",
     "status": 400,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "Msisdn is invalid."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response inputerror'
+    header=response_header
+    json= response_content
+    %}
 
 ### `paymentagelimitnotmet`
 
@@ -553,22 +580,23 @@ Caused By:
 
 *   The payer does not meet the payment's age limit.
 
-{:.code-view-header}
-Example response paymentagelimitnotmet
+{% capture response_header %}HTTP/1.1 403 Forbidden
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/paymentagelimitnotmet",
     "title": "Payment Age Limit Not Met",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "The payer does not meet the payment's age limit."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response paymentagelimitnotmet'
+    header=response_header
+    json= response_content
+    %}
 
 ### `socialsecuritynumbermismatch`
 
@@ -576,22 +604,23 @@ Caused By:
 
 *   The payer's social security number does not match with the one required by this payment.
 
-{:.code-view-header}
-Example response socialsecuritynumbermismatch
+{% capture response_header %}HTTP/1.1 403 Forbidden
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/socialsecuritynumbermismatch",
     "title": "Social Security Number Mismatch",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "The payer's social security number does not match with the one required by this payment."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response socialsecuritynumbermismatch'
+    header=response_header
+    json= response_content
+    %}
 
 ### `swishalreadyinuse`
 
@@ -599,22 +628,23 @@ Caused By:
 
 *   The payer's Swish is already in use.
 
-{:.code-view-header}
-Example response swishalreadyinuse
+{% capture response_header %}HTTP/1.1 403 Forbidden
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/swishalreadyinuse",
     "title": "Error in Swish",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "The payer's Swish is already in use."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response swishalreadyinuse'
+    header=response_header
+    json= response_content
+    %}
 
 ### `swishdeclined`
 
@@ -626,22 +656,23 @@ Caused By:
 *   Transaction declined. Could be that the payer has exceeded their swish limit or have insufficient founds.
 *   Payment request not cancellable.
 
-{:.code-view-header}
-Example response swishdeclined
+{% capture response_header %}HTTP/1.1 403 Forbidden
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/swishdeclined",
     "title": "Swish Declined",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "The MSISDN of the original payer seems to have changed owner."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response swishdeclined'
+    header=response_header
+    json= response_content
+    %}
 
 ### `swisherror`
 
@@ -650,22 +681,23 @@ Caused By:
 *   Bank system processing error.
 *   Swish timed out waiting for an answer from the banks after payment was started.
 
-{:.code-view-header}
-Example response swisherror
+{% capture response_header %}HTTP/1.1 502 Bad Gateway
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 502 Bad Gateway
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/swisherror",
     "title": "Error in Swish",
     "status": 502,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "Bank system processing error."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response swisherror'
+    header=response_header
+    json= response_content
+    %}
 
 ### `swishgatewaytimeout`
 
@@ -673,22 +705,23 @@ Caused By:
 
 *   During a create a sale call to e-com, Swish responded with 504 (Gateway Timeout).
 
-{:.code-view-header}
-Example response swishgatewaytimeout
+{% capture response_header %}HTTP/1.1 504 Gateway Timeout
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 504 Gateway Timeout
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/swishgatewaytimeout",
     "title": "Swish Gateway Timeout",
     "status": 504,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "Request to Swish timed out."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response swishgatewaytimeout'
+    header=response_header
+    json= response_content
+    %}
 
 ### `swishtimeout`
 
@@ -696,41 +729,43 @@ Caused By:
 
 *   Swish timed out before the payment was started.
 
-{:.code-view-header}
-Example response swishtimeout
+{% capture response_header %}HTTP/1.1 403 Forbidden
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/swishtimeout",
     "title": "Swish Timed Out",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "Swish timed out before the payment was started."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response swishtimeout'
+    header=response_header
+    json= response_content
+    %}
 
 ### `systemerror`
 
-{:.code-view-header}
-Example response systemerror
+{% capture response_header %}HTTP/1.1 500 Internal Server Error
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 500 Internal Server Error
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/systemerror",
     "title": "Error in System",
     "status": 500,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "A system error occurred. We are working on it."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response systemerror'
+    header=response_header
+    json= response_content
+    %}
 
 ### `usercancelled`
 
@@ -738,22 +773,23 @@ Caused By:
 
 *   The payer cancelled the payment in the Swish app.
 
-{:.code-view-header}
-Example response usercancelled
+{% capture response_header %}HTTP/1.1 403 Forbidden
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/usercancelled",
     "title": "User cancelled",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
     "detail": "The payer cancelled the payment in the Swish app."
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Example response usercancelled'
+    header=response_header
+    json= response_content
+    %}
 
 ## Trustly Problems
 

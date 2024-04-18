@@ -78,9 +78,6 @@ need to run the script to do the check.
 
 An example with invoice as the instrument of choice.
 
-{:.code-view-header}
-**Request**
-
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>

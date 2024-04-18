@@ -305,7 +305,7 @@ CContent-Type: application/json;version=3.1/3.0/2.0      // Version optional for
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
 api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{% capture request_content %}{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -392,7 +392,7 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
        ]
       }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response'
     header=response_header
     json= response_content
@@ -503,11 +503,11 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 
 ## GET Tokens Response
 
-{% capture request_header %}HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
 api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 
-{% capture request_content %}{
+{% capture response_content %}{
   "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
         "payerReference": "{payerReference}",
@@ -582,7 +582,7 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
     ]
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response'
     header=response_header
     json= response_content
@@ -670,7 +670,7 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
     }
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response'
     header=response_header
     json= response_content

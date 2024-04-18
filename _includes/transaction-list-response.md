@@ -69,7 +69,7 @@ Content-Type: application/json{% endcapture %}
     }
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response'
     header=response_header
     json= response_content
@@ -128,7 +128,7 @@ Content-Type: application/json{% endcapture %}
     }
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response'
     header=response_header
     json= response_content

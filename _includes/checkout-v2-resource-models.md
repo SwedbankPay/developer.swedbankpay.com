@@ -23,9 +23,6 @@ Content-Type: application/json;version=2.0      // Version optional for 2.0{% en
 
 ### Card `Paid` Resource
 
-{:.code-view-header}
-**Card Response**
-
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
 api-supported-versions: 2.0{% endcapture %}
@@ -283,9 +280,6 @@ api-supported-versions: 2.0{% endcapture %}
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
-
-{:.code-view-header}
-**Installment Account Response**
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0

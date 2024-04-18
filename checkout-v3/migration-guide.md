@@ -217,7 +217,7 @@ directly affect your responsibilities as an integrator and can be disregarded.
 "guestMode": false,
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response Fields Excerpt'
     header=response_header
     json= response_content
@@ -310,7 +310,7 @@ initial `Purchase` and the node for the Capture/Reversal operation.
     }
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response example from existing versions'
     header=response_header
     json= response_content
@@ -409,7 +409,7 @@ initial `Purchase` and the node for the Capture/Reversal operation.
     ]
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response Example from v3.1 (Capture with no expansions)'
     header=response_header
     json= response_content
@@ -547,7 +547,7 @@ initial `Purchase` and the node for the Capture/Reversal operation.
     ]
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Response Example from v3.1 (Capture with Paid and FinancialTransactions expanded)'
     header=response_header
     json= response_content
@@ -571,7 +571,7 @@ Callback. Note that the `payment` and `transaction` fields have been removed.
    }
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Callback Example v3.1'
     header=response_header
     json= response_content
@@ -593,7 +593,7 @@ Callback. Note that the `payment` and `transaction` fields have been removed.
     }
 }{% endcapture %}
 
-    {% include code-example.html
+{% include code-example.html
     title='Callback Example Previous Versions'
     header=response_header
     json= response_content

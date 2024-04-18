@@ -488,7 +488,7 @@ api-supported-versions: 2.0{% endcapture %}
 }{% endcapture %}
 
 {% include code-example.html
-    title='Recurrence Token  Response'
+    title='Recurrence Token Response'
     header=response_header
     json= response_content
     %}

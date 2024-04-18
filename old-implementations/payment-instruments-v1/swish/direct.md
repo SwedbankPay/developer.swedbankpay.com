@@ -38,15 +38,11 @@ A `Purchase` payment is created by performing the following request.
 
 ## Initial Direct Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/swish/payments HTTP/1.1
+{% capture request_header %}POST /psp/swish/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Sale",
@@ -91,8 +87,13 @@ Content-Type: application/json
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
 
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -192,21 +193,21 @@ value (the payer's mobile number) is required in this request.
 
 ## E-Commerce Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
+{% capture request_header %}POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "msisdn": "+46739000001"
     }
-}
+}{% endcapture %}
 
-```
+{% include code-example.html
+    title='E-commerce request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 | Field            | Type     | Required                                                                                          |
@@ -270,19 +271,20 @@ value (the payer's mobile number) is left out in this request. The
 
 ## M-Commerce Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
+{% capture request_header %}POST /psp/swish/payments/{{ page.payment_id }}/sales HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='M-Commerce Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Required                                                             |
@@ -295,26 +297,23 @@ Content-Type: application/json
 
 ## Step 3: GET The Payment Status
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='GET Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Payment Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -371,8 +370,13 @@ Content-Type: application/json
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='GET Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

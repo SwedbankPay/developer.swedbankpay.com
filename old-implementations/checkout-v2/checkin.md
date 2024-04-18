@@ -24,22 +24,23 @@ directly to step 3, which you will find on the next page." %}
 
 ## Checkin Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/consumers HTTP/1.1
+{% capture request_header %}POST /psp/consumers HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "operation": "initiate-consumer-session",
     "language": "sv-SE",
     "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"],
     "requireShippingAddress": true
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
@@ -53,11 +54,7 @@ Content-Type: application/json
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
-{:.code-view-header}
-**Response**
-
-```jsonc
-{
+{% capture response_content %}{
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
         {   // Deprecated operation. Do not use!
@@ -73,8 +70,13 @@ When the request has been sent, a response containing an array of operations tha
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                   | Type     | Description                                                                                                                                       |

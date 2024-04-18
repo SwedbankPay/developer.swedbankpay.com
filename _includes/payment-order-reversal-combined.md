@@ -23,12 +23,12 @@ If we want to reverse a previously captured amount, we need to perform
 
 ## Reversal Request
 
-{% capture response_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{% capture response_content %}{
+{% capture request_content %}{
     "transaction": {
         "description": "Reversal of captured transaction",
         "amount": 1500,
@@ -169,12 +169,12 @@ api-supported-versions: 3.0/2.0{% endcapture %}
 
 ## Reversal Request v3.1
 
-{% capture response_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.1{% endcapture %}
 
-{% capture response_content %}{
+{% capture request_content %}{
     "transaction": {
         "description": "Reversal of captured transaction",
         "amount": 1500,
