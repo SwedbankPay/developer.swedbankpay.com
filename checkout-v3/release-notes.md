@@ -8,6 +8,17 @@ menu_order: 7
 release_notes: true
 ---
 
+## 18 March 2024
+
+### Version 5.1.0
+
+Re-working of the Modules & SDKs section is the star of this release. Intrigued?
+[Start off with the bare minimum implementation][bare-min]!
+
+Aside from that, this has been a maintenance release, but the release notes you
+are reading right now recieved a facelift. We have also added more information
+about the [final steps before you go live][go-live]!
+
 ## 21 March 2024
 
 ### Version 5.0.0
@@ -967,6 +978,7 @@ integration and the payer.
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
+[bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [callback]: /checkout-v3/features/core/callback
 [callback-3-1]: /checkout-v3/features/core/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
@@ -1022,6 +1034,7 @@ integration and the payer.
 [frontpage]: https://developer.swedbankpay.com/
 [fundamental-principles]: /checkout-v3/get-started/fundamental-principles
 [get-started]: /checkout-v3/get-started
+[go-live]: /checkout-v3/get-started/#get-ready-to-go-live
 [google-pay]: /checkout-v3/payment-presentations#google-pay
 [home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
