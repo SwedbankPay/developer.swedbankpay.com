@@ -97,7 +97,7 @@ menu_order: 9
 
 [callback-url]:/checkout-v3/features/core/callback/
 [cancel-url]: /checkout-v3/get-started/post-purchase-3-1/#cancel-v31
-[checkout-url]: old-implementations/checkout-v2/
+[checkout-url]: old-implementations/checkout-v2
 [common-headers]: /checkout-v3/get-started/fundamental-principles#headers
 [fundamentals]: /old-implementations/payment-instruments-v1/#the-fundamentals
 [hateoas]: https://en.wikipedia.org/wiki/HATEOAS
