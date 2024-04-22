@@ -14,9 +14,9 @@ menu_order: 700
 {% assign capture_url="/old-implementations/payment-instruments-v1/invoice/capture" %}
 
 {% include alert.html type="warning" icon="report_problem" body="**Availability**:
-Note that this invoice integration is no longer available in Sweden. If you are
-a Swedish merchant and wish to offer invoice as a payment option, this has to be
-done through our payment order implementation." %}
+Note that this invoice integration is only available for MultiPay merchants. If you
+are a MultiPay merchant and wish to offer invoice as a payment option, this has to
+be done through our payment order implementation." %}
 
 ## Invoice Direct Implementation Flow
 
