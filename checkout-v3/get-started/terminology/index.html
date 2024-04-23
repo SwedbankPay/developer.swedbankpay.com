@@ -5518,11 +5518,11 @@
   <tbody>
     <tr>
       <td><strong>Callback</strong></td>
-      <td>If <code class="language-html highlighter-rouge">callbackURL</code> is set, a <a href="/old-implementations/payment-instruments-v1/card/features/core/callback">Callback</a> is triggered when a change or update from the back-end system is made on a payment or transaction. Swedbank Pay performs an async callback to inform the payee/merchant about this kind of update.</td>
+      <td>If <code class="language-html highlighter-rouge">callbackURL</code> is set, a <a href="/checkout-v3/features/core/callback/">Callback</a> is triggered when a change or update from the back-end system is made on a payment or transaction. Swedbank Pay performs an async callback to inform the payee/merchant about this kind of update.</td>
     </tr>
     <tr>
       <td><strong>Cancellation</strong></td>
-      <td>Used to <a href="/old-implementations/payment-instruments-v1/card/after-payment#cancellations">cancel</a> authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.</td>
+      <td>Used to <a href="/checkout-v3/get-started/post-purchase-3-1/#cancel-v31">cancel</a> authorized and not yet captured transactions. If a cancellation is performed after doing a part-capture, it will only affect the not yet captured authorization amount.</td>
     </tr>
     <tr>
       <td><strong>Capture</strong></td>
@@ -5530,7 +5530,7 @@
     </tr>
     <tr>
       <td><strong>Checkin</strong></td>
-      <td>Checkin is the first part of the Swedbank Pay <a href="/checkout-v3">Checkout</a> flow (prior to displaying the Payment Menu), where the payer is identified by email and mobile phone number.</td>
+      <td>Checkin is the first part of the Swedbank Pay <a href="/old-implementations/checkout-v2/">Checkout v2</a> flow (prior to displaying the Payment Menu), where the payer is identified by email and mobile phone number.</td>
     </tr>
     <tr>
       <td><strong>Consumer</strong></td>
@@ -5538,7 +5538,7 @@
     </tr>
     <tr>
       <td><strong>Consumers</strong></td>
-      <td>The Consumers resource stores information about the consumer of the sold services or goods. It is the fundament of Checkin in Swedbank Pay <a href="/checkout-v3">Checkout</a>.</td>
+      <td>The Consumers resource stores information about the consumer of the sold services or goods. It is the fundament of Checkin in Swedbank Pay <a href="/old-implementations/checkout-v2/">Checkout v2</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -5555,7 +5555,7 @@
   <tbody>
     <tr>
       <td><strong>Financing Consumer</strong></td>
-      <td>The <code class="language-html highlighter-rouge">FinancingConsumer</code> Invoice API  is the fundament for Swedbank Pay <a href="/old-implementations/payment-instruments-v1/invoice/">Invoice Payments</a> service. It is a service where Swedbank Pay helps improve cashflow by purchasing merchant invoices.</td>
+      <td>The <code class="language-html highlighter-rouge">FinancingConsumer</code> Invoice API is the fundament for Swedbank Pay <a href="/old-implementations/payment-instruments-v1/invoice/">Invoice Payments</a> service. It is a service where Swedbank Pay helps improve cashflow by purchasing merchant invoices.</td>
     </tr>
   </tbody>
 </table>
@@ -5589,7 +5589,7 @@
   <tbody>
     <tr>
       <td><strong>Intent</strong></td>
-      <td>An <code class="language-html highlighter-rouge">intent</code> is a payment parameter that determine the possible activity states available for a payment option (e.g. Purchase). Intents differ depening on payment instrument. Creating a payment within a <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">one-phase</a> payment flow (Swish, Direct debit) must have the intent to create a <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">Sale</a>. This is in contrast to a <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">two-phase</a> payment flow that have the intent to create an <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">Authorization</a>. Card payments also have specific intents that determine whether an <a href="/old-implementations/payment-instruments-v1/card/features/core/capture"><code class="language-html highlighter-rouge">AutoCapture</code></a> is implemented (the credit card is charged directly like one-phase transaction).</td>
+      <td>An <code class="language-html highlighter-rouge">intent</code> is a payment parameter that determines the possible activity states available for a payment option (e.g. Purchase). Intents differ depening on the payment instrument used. Creating a payment within a <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">one-phase</a> payment flow (Swish, Direct debit) must have the intent to create a <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">Sale</a>. This is in contrast to a <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">two-phase</a> payment flow that have the intent to create an <a href="/old-implementations/payment-instruments-v1/#the-fundamentals">Authorization</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -5627,7 +5627,7 @@
     </tr>
     <tr>
       <td><strong>Operation</strong></td>
-      <td>A  payment operation determines what kind of payment that should be implemented. Available payment operations vary, depending on payment instrument. The most common operation all instruments share is the Purchase operation. Card Payments have several others, such as <a href="/old-implementations/payment-instruments-v1/card/features/optional/verify">Verify</a> and <a href="/old-implementations/payment-instruments-v1/card/features/optional/recur">Recur</a>.</td>
+      <td>A  payment operation determines what kind of payment that should be implemented. Available payment operations vary, depending on payment instrument. The most common operation all instruments share is the Purchase operation. Card Payments have several others, such as <a href="/checkout-v3/features/optional/verify/">Verify</a> and <a href="/checkout-v3/features/optional/recur/">Recur</a>.</td>
     </tr>
     <tr>
       <td><strong>Operations</strong></td>
@@ -5664,7 +5664,7 @@
     </tr>
     <tr>
       <td><strong>Payment Menu</strong></td>
-      <td>A Seamless View - embedded on a website - showing available payment instruments during payment scenario. The Payment Menu is the second part of the Swedbank Pay <a href="/checkout-v3">Checkout</a> flow (after checkin).</td>
+      <td>A menu containing all the payment instruments you as a merchant can and want to offer to the payer. Shown on a redirect page or embedded on the merchant’s page (Seamless View)</td>
     </tr>
     <tr>
       <td><strong>Payment Orders</strong></td>
@@ -5785,7 +5785,7 @@
   <tbody>
     <tr>
       <td><strong>Verify</strong></td>
-      <td>The payment operation that initiates a <a href="/old-implementations/payment-instruments-v1/card/features/optional/verify">verification</a> payment process. It is a payment that lets you post verifications to confirm the validity of card information, without reserving or charging any amount. This option is used to generate a payment- or recurrence token, that can be used in a recurring payments scenarios or for one-clickpayments, without charging the card in the process.</td>
+      <td>The payment operation that initiates a <a href="/checkout-v3/features/optional/verify/">verification</a> payment process. It is a payment that lets you post verifications to confirm the validity of card information, without reserving or charging any amount. This option is used to generate a payment- or recurrence token, that can be used in a recurring payments scenarios or for one-clickpayments, without charging the card in the process.</td>
     </tr>
   </tbody>
 </table>

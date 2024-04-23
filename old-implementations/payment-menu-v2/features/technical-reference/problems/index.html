@@ -6627,24 +6627,21 @@ following URL structure:</p>
 <p class="code-view-header">
     Example response bankidalreadyinuse
     
-    &lt;button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/bankidalreadyinuse",
     "title": "BankID Already in Use",
     "status": 409,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer's BankID is already in use."
-}' onclick='javascript:navigator.clipboard.writeText(this.value)'&gt;<i class="at-clipboard small" aria-hidden="true"></i></p>
-<div role="tooltip">Copy json to clipboard</div>&lt;/button&gt;
+    "detail": "The payer´s BankID is already in use."
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
     
-
+</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
-2
 </pre></td>
-<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">409</span> <span class="ne">Conflict</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">409</span> <span class="ne">Conflict Content-Type: application/json</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
 
@@ -6664,7 +6661,7 @@ following URL structure:</p>
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BankID Already in Use"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">409</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The payer's BankID is already in use."</span><span class="w">
+    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The payer´s BankID is already in use."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -6744,17 +6741,16 @@ following URL structure:</p>
 <p class="code-view-header">
     Example response bankiderror
     
-    &lt;button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/bankiderror",
     "title": "BankID error",
     "status": 502,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "Something went wrong with the payer's BankID authorization."
-}' onclick='javascript:navigator.clipboard.writeText(this.value)'&gt;<i class="at-clipboard small" aria-hidden="true"></i></p>
-<div role="tooltip">Copy json to clipboard</div>&lt;/button&gt;
+    "detail": "Something went wrong with the payer´s BankID authorization."
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
     
-
+</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -6781,7 +6777,7 @@ following URL structure:</p>
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BankID error"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">502</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong with the payer's BankID authorization."</span><span class="w">
+    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong with the payer´s BankID authorization."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -6929,17 +6925,16 @@ following URL structure:</p>
 <p class="code-view-header">
     Example response paymentagelimitnotmet
     
-    &lt;button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/paymentagelimitnotmet",
     "title": "Payment Age Limit Not Met",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer does not meet the payment's age limit."
-}' onclick='javascript:navigator.clipboard.writeText(this.value)'&gt;<i class="at-clipboard small" aria-hidden="true"></i></p>
-<div role="tooltip">Copy json to clipboard</div>&lt;/button&gt;
+    "detail": "The payer does not meet the payment´s age limit."
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
     
-
+</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -6966,7 +6961,7 @@ following URL structure:</p>
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment Age Limit Not Met"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The payer does not meet the payment's age limit."</span><span class="w">
+    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The payer does not meet the payment´s age limit."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -6988,17 +6983,16 @@ following URL structure:</p>
 <p class="code-view-header">
     Example response socialsecuritynumbermismatch
     
-    &lt;button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/socialsecuritynumbermismatch",
     "title": "Social Security Number Mismatch",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer's social security number does not match with the one required by this payment."
-}' onclick='javascript:navigator.clipboard.writeText(this.value)'&gt;<i class="at-clipboard small" aria-hidden="true"></i></p>
-<div role="tooltip">Copy json to clipboard</div>&lt;/button&gt;
+    "detail": "The social security number of the payer does not match with the one required by this payment."
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
     
-
+</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -7025,7 +7019,7 @@ following URL structure:</p>
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Social Security Number Mismatch"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The payer's social security number does not match with the one required by this payment."</span><span class="w">
+    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The social security number of the payer does not match with the one required by this payment."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
@@ -7047,17 +7041,16 @@ following URL structure:</p>
 <p class="code-view-header">
     Example response swishalreadyinuse
     
-    &lt;button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
     "type": "https://api.payex.com/psp/errordetail/swishalreadyinuse",
     "title": "Error in Swish",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer's Swish is already in use."
-}' onclick='javascript:navigator.clipboard.writeText(this.value)'&gt;<i class="at-clipboard small" aria-hidden="true"></i></p>
-<div role="tooltip">Copy json to clipboard</div>&lt;/button&gt;
+    "detail": "The Swish account of the payer is already in use."
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
     
-
+</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
 <td class="code-view-numbers gl"><pre class="lineno">1
@@ -7084,7 +7077,7 @@ following URL structure:</p>
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Error in Swish"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
     </span><span class="nl">"instance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The payer's Swish is already in use."</span><span class="w">
+    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Swish account of the payer is already in use."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
