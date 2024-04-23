@@ -12,8 +12,7 @@ Caused By:
 
 *   The payer's BankID is already in use
 
-{% capture response_header %}HTTP/1.1 409 Conflict
-Content-Type: application/json{% endcapture %}
+{% capture response_header %}HTTP/1.1 409 Conflict Content-Type: application/json{% endcapture %}
 
 {% capture response_content %}{
     "sessionId": "570ad610-3bd5-43d2-a270-ca1510562972",
@@ -21,7 +20,7 @@ Content-Type: application/json{% endcapture %}
     "title": "BankID Already in Use",
     "status": 409,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer's BankID is already in use."
+    "detail": "The payer´s BankID is already in use."
 }{% endcapture %}
 
 {% include code-example.html
@@ -69,7 +68,7 @@ Content-Type: application/json{% endcapture %}
     "title": "BankID error",
     "status": 502,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "Something went wrong with the payer's BankID authorization."
+    "detail": "Something went wrong with the payer´s BankID authorization."
 }{% endcapture %}
 
 {% include code-example.html
@@ -151,7 +150,7 @@ Content-Type: application/json{% endcapture %}
     "title": "Payment Age Limit Not Met",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer does not meet the payment's age limit."
+    "detail": "The payer does not meet the payment´s age limit."
 }{% endcapture %}
 
 {% include code-example.html
@@ -175,7 +174,7 @@ Content-Type: application/json{% endcapture %}
     "title": "Social Security Number Mismatch",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer's social security number does not match with the one required by this payment."
+    "detail": "The payer´s social security number does not match with the one required by this payment."
 }{% endcapture %}
 
 {% include code-example.html
@@ -199,7 +198,7 @@ Content-Type: application/json{% endcapture %}
     "title": "Error in Swish",
     "status": 403,
     "instance": "https://api.payex.com/psp/swish/payments/0cf55e0f-9931-476b-249d-08d7a3ee4e14/sales",
-    "detail": "The payer's Swish is already in use."
+    "detail": "The payers Swish is already in use."
 }{% endcapture %}
 
 {% include code-example.html
