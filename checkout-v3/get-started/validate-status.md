@@ -34,7 +34,7 @@ node being collapsed.
 {% capture request_header %}GET /psp/paymentorders/34761895-d1e4-412a-0a30-08dc43423140?$expand=paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% include code-example.html
     title='GET Request with expanded paid node'
@@ -43,8 +43,8 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {
@@ -184,7 +184,7 @@ An alternative option to expanding the paid node is performing a
 {% capture request_header %}GET /psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% include code-example.html
     title='GET Request directly towards the paid resource'
@@ -193,8 +193,8 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
   "paid": {

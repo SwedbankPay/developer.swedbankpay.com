@@ -24,8 +24,8 @@ The created `{{ transaction }}` resource contains information about the
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",

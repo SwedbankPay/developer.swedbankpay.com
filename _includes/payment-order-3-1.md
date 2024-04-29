@@ -75,7 +75,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentorder": {

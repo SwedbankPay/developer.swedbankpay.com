@@ -29,16 +29,12 @@ will receive a response in which you can find the **JavaScript source** in the
 
 ## Seamless View Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/vipps/payments HTTP/1.1
+{% capture request_header %}POST /psp/vipps/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -78,8 +74,13 @@ Content-Type: application/json
             "msisdn": "+4798765432"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -122,14 +123,10 @@ Content-Type: application/json
 
 ## Seamless View Response
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json
 
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/vipps/payments/{{ page.payment_id }}",
         "number": 72100003079,
@@ -174,8 +171,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 The key information in the response is the `view-payment` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable

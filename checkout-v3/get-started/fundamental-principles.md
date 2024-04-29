@@ -50,7 +50,7 @@ shouldn't either.
 All requests against the API Platform should have a few common headers:
 
 {% capture request_header %}POST /some/resource HTTP/1.1
-Content-Type: application/json;version=3.1/3.0/2.0  charset=utf-8  // Version optional except for 3.1
+Content-Type: application/json;version=3.x/2.0  charset=utf-8  // Version optional except for 3.1
 Authorization: "Bearer 123456781234123412341234567890AB"
 User-Agent: swedbankpay-sdk-dotnet/3.0.1
 Accept: application/problem+json; q=1.0, application/json; q=0.9
@@ -139,7 +139,7 @@ field.
 
 {% capture request_header %}POST /psp/creditcard/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0  // Version optional except for 3.1{% endcapture %}
+Content-Type: application/json;version=3.x/2.0  // Version optional except for 3.1{% endcapture %}
 
 {% capture request_content %}{
     "payment": {
@@ -167,8 +167,8 @@ Content-Type: application/json;version=3.1/3.0/2.0  // Version optional except f
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "payment": {

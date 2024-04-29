@@ -4,6 +4,12 @@ permalink: /:path/terminology/
 menu_order: 9
 ---
 
+### 0-9
+
+{:.table .table-striped}
+| **3-D Secure 2.0 (3DS2)**       | The new authentication protocol for online card payments. The protocol is XML-based and designed to be an additional security layer for online credit and debit card transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **3.x**       | The umbrella term for all Digital Payments versions 3.0 and newer. If (v)3.x is used instead of a specific version (like v3.1), the feature, section or code example is applicable for all versions.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+
 ### A
 
 {:.table .table-striped}
@@ -89,11 +95,6 @@ menu_order: 9
 
 {:.table .table-striped}
 | **Verify**                      | The payment operation that initiates a [verification][verify-url] payment process. It is a payment that lets you post verifications to confirm the validity of card information, without reserving or charging any amount. This option is used to generate a payment- or recurrence token, that can be used in a recurring payments scenarios or for one-clickpayments, without charging the card in the process.                                                                                                                                                                                                                                                           |
-
-### 0-9
-
-{:.table .table-striped}
-| **3-D Secure 2.0 (3DS2)**       | The new authentication protocol for online card payments. The protocol is XML-based and designed to be an additional security layer for online credit and debit card transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 [callback-url]:/checkout-v3/features/core/callback/
 [cancel-url]: /checkout-v3/get-started/post-purchase-3-1/#cancel-v31
