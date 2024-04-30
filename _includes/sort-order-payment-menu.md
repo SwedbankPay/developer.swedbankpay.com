@@ -79,7 +79,6 @@ Content-Type: application/json;version=3.1,3.0{% endcapture %}
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": null,
         "expandFirstInstrument": true,
         "restrictedToInstruments": [
             "Swish",
