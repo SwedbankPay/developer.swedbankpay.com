@@ -72,6 +72,14 @@ Redirect flow. Adding `paymentUrl` input will generate the response meant for
 Seamless View, which does not include the `redirect-verification`. The request
 below is the Redirect option.
 
+## How It Looks
+
+You will redirect the payer to Swedbank Pay hosted pages to collect the card
+information.
+
+{:.text-center}
+![screenshot of the swedish card verification page][po-verify]
+
 ## Verify Request
 
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
