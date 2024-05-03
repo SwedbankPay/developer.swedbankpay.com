@@ -60,14 +60,6 @@ Swedbank Pay." %}
     a `unscheduledToken` that can be used for subsequent
     [unscheduled server-to-server based payments][unscheduled-mit].
 
-## How It Looks
-
-You will redirect the payer to Swedbank Pay hosted pages to collect
-the credit card information.
-
-{:.text-center}
-![screenshot of the swedish card verification page][swedish-verify]{:height="600px" width="475px"}
-
 ## API Requests
 
 The API requests are displayed in the Verification flow below. The options you can
