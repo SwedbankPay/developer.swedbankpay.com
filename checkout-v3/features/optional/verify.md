@@ -9,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include verify.md %}
+{% include payment-order-verify.md %}

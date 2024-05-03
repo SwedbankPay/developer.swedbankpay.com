@@ -286,4 +286,4 @@ sequenceDiagram
 [one-click-payments]: {{ documentation_section_url }}/features/optional/one-click-payments
 [unscheduled-mit]: {{ documentation_section_url }}/features/optional/unscheduled
 [redirect]: {{ documentation_section_url }}/redirect
-[swedish-verify]: /assets/img/payments/swedish-verify.png
+[swedish-verify]: /assets/img/po-verify.jpg
