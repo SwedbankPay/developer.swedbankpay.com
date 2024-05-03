@@ -123,7 +123,7 @@ Content-Type: application/json{% endcapture %}
 ## Verify Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json{% endcapture %} {% endif %}
+Content-Type: application/json{% endcapture %}
 
 {% capture response_content %}{
     "payment": {
