@@ -60,14 +60,6 @@ Swedbank Pay." %}
     a `unscheduledToken` that can be used for subsequent
     [unscheduled server-to-server based payments][unscheduled-mit].
 
-## How It Looks
-
-You will redirect the payer to Swedbank Pay hosted pages to collect
-the credit card information.
-
-{:.text-center}
-![screenshot of the swedish card verification page][swedish-verify]{:height="600px" width="475px"}
-
 ## API Requests
 
 The API requests are displayed in the Verification flow below. The options you can
@@ -80,35 +72,29 @@ Redirect flow. Adding `paymentUrl` input will generate the response meant for
 Seamless View, which does not include the `redirect-verification`. The request
 below is the Redirect option.
 
+## How It Looks
+
+You will redirect the payer to Swedbank Pay hosted pages to collect the card
+information.
+
+{:.text-center}
+![screenshot of the swedish card verification page][swedish-verify]
+
 ## Verify Request
-
-{% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
-
-{% capture request_header %}POST /psp/paymentorders HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
-
-{% else %}
 
 {% capture request_header %}POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json{% endcapture %}
-{% endif %}
 
-{% capture request_content %}{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
-    "paymentorder": { {% else %}
-    "payment": { {% endif %}
+{% capture request_content %}{
+    "payment": {
         "operation": "Verify",
         "currency": "NOK",
         "description": "Test Verification",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",  {% if documentation_section contains "checkout-v3" %}
-        "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
-        {% endif %} {% unless documentation_section contains "checkout" %}
-        "generatePaymentToken": true,{% endunless %} {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
-        "generateUnscheduledToken": true,{% endif %}
+        "language": "nb-NO",
+        "generatePaymentToken": true,
         "urls": {
             "hostUrls": ["https://example.com", "https://example.net"],
             "completeUrl": "https://example.com/payment-completed",
@@ -122,8 +108,7 @@ Content-Type: application/json{% endcapture %}
             "payeeName": "Merchant1",
             "productCategory": "A123",
             "orderReference": "or-12456",
-            "subsite": "MySubsite", {% if documentation_section contains "checkout-v3" %}
-            "siteId": "MySiteId", {% endif %}
+            "subsite": "MySubsite",
         },
         "payer": {
             "payerReference": "AB1234",
@@ -145,16 +130,11 @@ Content-Type: application/json{% endcapture %}
 
 ## Verify Response
 
-{% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.x/2.0
-api-supported-versions: 3.x/2.0{% endcapture %} {% else %}
-{% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json{% endcapture %} {% endif %}
+Content-Type: application/json{% endcapture %}
 
-{% capture response_content %}{ {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
-    "paymentorder": { {% else %}
-    "payment": { {% endif %}
+{% capture response_content %}{
+    "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 1234567890,
         "created": "2016-09-14T13:21:29.3182115Z",
@@ -286,4 +266,4 @@ sequenceDiagram
 [one-click-payments]: {{ documentation_section_url }}/features/optional/one-click-payments
 [unscheduled-mit]: {{ documentation_section_url }}/features/optional/unscheduled
 [redirect]: {{ documentation_section_url }}/redirect
-[swedish-verify]: /assets/img/payments/swedish-verify.png
+[swedish-verify]: /assets/img/po-verify.jpg
