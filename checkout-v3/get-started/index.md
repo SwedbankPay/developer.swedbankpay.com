@@ -23,7 +23,9 @@ To start integrating Swedbank Pay Digital Payments, you need the following:
 There are two versions of Digital Payments available in production at the
 moment: v3.0 and v3.1. Collectively we refer to them as **v3.x**. If we use v3.x
 instead of a specific version number, this means that the text paragraph,
-feature section or code example applies to all Digital Payments versions.
+feature section or code example applies to all Digital Payments versions. Unless
+stated otherwise by the presence of a separate v3.1 section, there are no
+differences between the two alternatives.
 
 If youre a new merchant currently getting started, you should implement v3.1.
 [If you are an existing merchant we recommend migrating to v3.1][migrate], but
