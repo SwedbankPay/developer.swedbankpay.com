@@ -51,3 +51,9 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         }
     }
 }{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
