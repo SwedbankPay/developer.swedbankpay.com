@@ -12,8 +12,9 @@ specific payment.
 
 To cancel a previously created payment, you must perform the `cancel` operation
 against the accompanying `href` returned in the `operations` list. You can only
-cancel a payment - or part of a payment - which has not been captured yet. If
-you cancel before any capture has been done, no captures can be performed later.
+cancel a payment - or part of a payment - which has not been captured yet. There
+must be funds left that are only authorized. If you cancel before any capture
+has been done, no captures can be performed later.
 
 {% else %}
 

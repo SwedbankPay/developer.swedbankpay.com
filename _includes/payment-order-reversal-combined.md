@@ -5,7 +5,8 @@
 
 ## Reversal
 
-This transaction is used when a captured payment needs to be reversed.
+This transaction is used when a `Capture` or `Sale` payment needs to be
+reversed.
 
 Please note that you have a maximum of 5 **consecutive** failed attempts at a
 reversal. The payment will be locked after this, and you need to contact us for
