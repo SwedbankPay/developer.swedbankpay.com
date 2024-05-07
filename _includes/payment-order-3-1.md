@@ -170,8 +170,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "contentType": "application/json"
         }
     ]
-}
-  {% endcapture %}
+}{% endcapture %}
 
 {% include code-example.html
     title='Response'
