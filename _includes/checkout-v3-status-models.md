@@ -748,7 +748,7 @@ api-supported-versions: 3.x{% endcapture %}
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{% capture response_header %}TTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.x
 api-supported-versions: 3.x{% endcapture %}
 
@@ -842,8 +842,7 @@ api-supported-versions: 3.x{% endcapture %}
     json= response_content
     %}
 
-Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
-responses:
+Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view responses:
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -881,6 +880,8 @@ responses:
 | {% f operations %}     | `array`      | {% include fields/operations.md %} As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
 {% endcapture %}
 {% include accordion-table.html content=table %}
+
+### Paid Examples With Connected Tokens
 
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.
