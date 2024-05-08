@@ -8,8 +8,8 @@
 A payment order response with the status `Aborted`.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {
@@ -110,8 +110,8 @@ responses:
 The `cancel` response is not yet converted to the new standard.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
     "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
@@ -164,8 +164,8 @@ api-supported-versions: 3.1/3.0{% endcapture %}
 The failed response is not yet converted to the new standard.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
     "payment": "/psp/paymentorders/payments/{{ page.payment_id }}",
@@ -212,8 +212,8 @@ api-supported-versions: 3.1/3.0{% endcapture %}
 ## Initialized
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {
@@ -357,8 +357,8 @@ while MobilePay does return this field, the value present is actually a
 ### Card `Paid` Resource
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {
@@ -492,8 +492,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -538,8 +538,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -581,8 +581,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -624,8 +624,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -672,8 +672,8 @@ more context.
 **Vipps Response**
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -715,8 +715,8 @@ Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -748,9 +748,9 @@ api-supported-versions: 3.1/3.0{% endcapture %}
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{% capture response_header %}TTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -781,8 +781,8 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -813,8 +813,8 @@ Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
@@ -842,8 +842,7 @@ api-supported-versions: 3.1/3.0{% endcapture %}
     json= response_content
     %}
 
-Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view
-responses:
+Response fields not covered in the [`Initialized`]({{ features_url }}/technical-reference/status-models#initialized) redirect or seamless view responses:
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -882,12 +881,14 @@ responses:
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
+### Paid Examples With Connected Tokens
+
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
         "paid": {
@@ -915,8 +916,8 @@ api-supported-versions: 3.1/3.0{% endcapture %}
     %}
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
 {% capture response_content %}{
         "paid": {

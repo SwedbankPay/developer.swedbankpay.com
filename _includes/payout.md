@@ -116,7 +116,7 @@ If something failed in the payout process this flow will happen.
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% capture request_content %}{
    "paymentorder": {
@@ -211,8 +211,8 @@ in the merchant's contract and the payer's first and last name is added in the
 request.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {
@@ -352,7 +352,7 @@ account details.
 {% capture request_header %}PATCH /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -387,8 +387,8 @@ Note that the status in the response has changed to `Paid`, with the correlating
 disappearance of `PATCH` operations.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {
@@ -507,7 +507,7 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% capture request_content %}{
   "paymentorder": {
@@ -568,8 +568,8 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 ## Payout Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {
@@ -675,7 +675,7 @@ A GET performed after the callback is received on a `paymentOrder` with status
 `Paid` node. This can be used for support correspondance.
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentOrder": {

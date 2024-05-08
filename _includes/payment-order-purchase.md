@@ -7,7 +7,7 @@
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
@@ -18,7 +18,6 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",{% if documentation_section contains "payment-menu" %}
-        "instrument": null,
         "generatePaymentToken": {{ operation_status_bool }},{% endif %}
         "generateRecurrenceToken": {{ operation_status_bool }},
         "generateUnscheduledToken": {{ operation_status_bool }},
@@ -94,8 +93,8 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 ## Payment Order Response
 
 {% capture response_header %}HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0{% endcapture %}
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentorder": {
@@ -190,9 +189,7 @@ api-supported-versions: 3.1/3.0/2.0{% endcapture %}
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount %}                | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                             |
-| {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f instrument %}               | `string`     | The payment instrument used. Selected by using the {% if documentation_section contains "payment-menu" %}[Instrument Mode]({{ features_url }}/optional/instrument-mode){% else %}Instrument Mode{% endif %}.                                                                                                   |
-{% if documentation_section contains "payment-menu" -%}
+| {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |{% if documentation_section contains "payment-menu" -%}
 |                  | {% f generatePaymentToken %}     | `bool`       | Determines if a payment token should be generated. A payment token is used to enable future [one-click payments]({{ features_url }}/optional/one-click-payments) – with the same token. Default value is `false`.                                               |
 {% endif -%}
 |                  | {% f generateRecurrenceToken %}  | `bool`       | Determines if a recurrence token should be generated. A recurrence token is primarily used to enable future [recurring payments]({{ features_url }}/optional/recur) – with the same token – through server-to-server calls. Default value is `false`.                                               |

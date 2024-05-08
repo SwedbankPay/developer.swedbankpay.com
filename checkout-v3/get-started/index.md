@@ -21,11 +21,16 @@ To start integrating Swedbank Pay Digital Payments, you need the following:
     the Merchant Portal.
 
 There are two versions of Digital Payments available in production at the
-moment. If you are a new merchant, you should implement v3.1. If you are an
-existing merchant, we recommend migrating to v3.1, but you are still able to use
-v3.0. Reach out to your technical contact person for guidance regarding this.
-Unless stated otherwise by the presence of a separate v3.1 page, there are no
+moment: v3.0 and v3.1. Collectively we refer to them as **v3.x**. If we use v3.x
+instead of a specific version number, this means that the text paragraph,
+feature section or code example applies to all Digital Payments versions. Unless
+stated otherwise by the presence of a separate v3.1 section, there are no
 differences between the two alternatives.
+
+If youre a new merchant currently getting started, you should implement v3.1.
+[If you are an existing merchant we recommend migrating to v3.1][migrate], but
+you are still able to use v3.0. Reach out to your technical contact person for
+guidance regarding this.
 
 ## The Basic Implementation
 
@@ -33,6 +38,14 @@ The **basic payment integration** consists of 4 main steps. **Creating** the
 payment, **displaying** the payment UI, **verifying** the payment status and
 **post-purchase actions**. Don't hesitate with contacting us for further
 integration support.
+
+Depending on the instrument used, the payments are either **one-phased** or
+**two-phased**. **Swish** and **Trustly** have one-phase payments, the rest of
+the instruments are two-phased. One-phase payments are completed and the funds
+are transferred in one operation. They will be tagged as `Sale` transactions.
+Two-phase payments need two operations (`Authorization` and `Capture`) before
+funds are transferred. Read more about differences in handling when you get to
+the [post-purchase section][post-purchase].
 
 ![Implementation steps][basic-implementation]{:class="mt-4 mb-5"}
 
@@ -89,8 +102,10 @@ when we get there.
 [e-mail]: mailto:support.psp@swedbankpay.se
 [https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [json]: https://www.json.org/
+[migrate]: /checkout-v3/migration-guide/
 [modules-sdks]: /checkout-v3/modules-sdks/
 [nwt]: /checkout-v3/features/optional/network-tokenization/
+[post-purchase]: /checkout-v3/get-started/post-purchase-3-1/
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [set-rec]: /checkout-v3/features/core/settlement-reconciliation/#report-samples
 [test-cards]: /checkout-v3/test-data/#network-tokenization

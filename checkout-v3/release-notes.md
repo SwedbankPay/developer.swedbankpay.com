@@ -8,6 +8,25 @@ menu_order: 7
 release_notes: true
 ---
 
+## 08 May 2024
+
+### Version 5.2.0
+
+The keen eye might spot the new term v3.x in Get Started and some of our code
+examples. We are using it as an umbrella term whenever we talk about all
+iterations of v3. Instances where we talk about a specific one are still tagged
+with the version in question.
+
+We are also going live with an optional feature called
+[Action Specific Text On Payment Button][astopb]. It is meant for scenarios
+where you need the payment button to say something else than "Pay". The
+alternative is currently limited to "Deposit", but other can be added going
+forward.
+
+Besides that we have been doing some small bugfixes and general maintenance.
+
+Until next time!
+
 ## 18 March 2024
 
 ### Version 5.1.0
@@ -977,6 +996,7 @@ integration and the payer.
 [android-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
+[astopb]: /checkout-v3/features/optional/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [callback]: /checkout-v3/features/core/callback

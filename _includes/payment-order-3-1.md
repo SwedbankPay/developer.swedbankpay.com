@@ -18,7 +18,6 @@ Content-Type: application/json;version=3.1{% endcapture %}
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": null,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
             "paymentUrl": "https://example.com/perform-payment", //Seamless View only
@@ -54,7 +53,6 @@ Content-Type: application/json;version=3.1{% endcapture %}
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| | {% f instrument %}                 | `string`     | Only used for instrument mode. Set the field to the payment instrument you wish to display. If no instrument is specified, the full payment menu will be displayed.                                                                                                                                                                                                                                                                           |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
@@ -75,7 +73,7 @@ Content-Type: application/json;version=3.1{% endcapture %}
 
 {% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
+api-supported-versions: 3.x/2.0{% endcapture %}
 
 {% capture response_content %}{
     "paymentorder": {
@@ -172,8 +170,7 @@ api-supported-versions: 2.0, 3.0, 3.1{% endcapture %}
           "contentType": "application/json"
         }
     ]
-}
-  {% endcapture %}
+}{% endcapture %}
 
 {% include code-example.html
     title='Response'

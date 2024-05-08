@@ -2,7 +2,7 @@
 title: Delete Token
 permalink: /:path/delete-token/
 description: How to delete tokens.
-menu_order: 1500
+menu_order: 1600
 icon:
   content: assignment
   outlined: true
@@ -16,31 +16,29 @@ icon:
 
 ## Delete payerOwnedToken Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.1/2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "state": "Deleted",
   "comment": "Comment stating why this is being deleted"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Delete payerownedToken Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.1
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
         "payerReference": "{payerReference}",
@@ -70,5 +68,10 @@ Content-Type: application/json
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}

@@ -10,15 +10,16 @@ specific payment.
 
 To cancel a previously created payment, you must perform the `cancel` operation
 against the accompanying `href` returned in the `operations` list. You can only
-cancel a payment - or part of a payment - which has not been captured yet. If
-you cancel before any capture has been done, no captures can be performed later.
+cancel a payment - or part of a payment - which has not been captured yet. There
+must be funds left that are only authorized. If you cancel before any capture
+has been done, no captures can be performed later.
 
 ## Cancel Request (All Versions)
 
 {% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
 {% capture request_content %}{
     "transaction": {

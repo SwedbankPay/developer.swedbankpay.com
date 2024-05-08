@@ -36,7 +36,6 @@ Content-Type: application/json;version=3.1
         "description": "Test App Purchase",
         "userAgent": "SDK-Test",
         "language": "sv-SE",
-        "instrument": null,
         "urls": {
             "hostUrls": [ "https://example.com" ],
             "paymentUrl": "examplepayment://payment/",
@@ -212,7 +211,7 @@ CocoaPods.
 
 The package repository URL for the SDK is
 [`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo].
-Add the `SwedbankPaySDK` library, there is no need to add the 
+Add the `SwedbankPaySDK` library, there is no need to add the
 `SwedbankPaySDKMerchantBackend` library for the bare minimum implementation.
 
 ### CocoaPods
@@ -281,7 +280,7 @@ class TestConfiguration: SwedbankPaySDKConfiguration {
                        completion: @escaping (Result<SwedbankPaySDK.ViewConsumerIdentificationInfo, Error>) -> Void) {
         completion(.failure(SwedbankPayConfigurationError.notImplemented))
     }
-    
+
     func postPaymentorders(paymentOrder: SwedbankPaySDK.PaymentOrder?,
                            userData: Any?,
                            consumerProfileRef: String?,
