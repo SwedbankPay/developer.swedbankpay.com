@@ -27,6 +27,7 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
+        "callToActionType": "Deposit", //Operation: "Purchase" only
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
@@ -34,7 +35,6 @@ Content-Type: application/json;version=3.x/2.0{% endcapture %}
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "callToActionType": "Deposit",
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
             "paymentUrl": "https://example.com/perform-payment", //Seamless View only

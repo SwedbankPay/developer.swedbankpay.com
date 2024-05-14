@@ -13,11 +13,11 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% capture request_content %}
 {
         "urls": {
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf",
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf",
             "logoUrl": "https://example.com/logo.png"
         }
     }

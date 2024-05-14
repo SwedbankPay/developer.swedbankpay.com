@@ -35,6 +35,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
+        "requestDeliveryInfo": true,
+        "restrictedToDeliveryInfoInstruments": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
@@ -42,8 +44,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "requestDeliveryInfo": true,
-        "restrictedToDeliveryInfoInstruments": true,
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
@@ -208,6 +208,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | Required         | Field     | Type         | Description   |
 | :--------------: | :-------- | :----------- | :------------ |
 | {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                              |
+| | {% f requestDeliveryInfo %}                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. It will be visible in a GET response after the payment has been completed. |
+| | {% f restrictedToDeliveryInfoInstruments %}                       | `bool` | Set to `true` if you want to restrict your payment menu to only include payment instruments which return delivery info.  |
 | {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                        |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                             |
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                       |
@@ -215,8 +217,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| | {% f requestDeliveryInfo %}                       | `bool` | Set to `true` if you want Swedbank Pay to return delivery information from the payment instruments which support this. It will be visible in a GET response after the payment has been completed. |
-| | {% f restrictedToDeliveryInfoInstruments %}                       | `bool` | Set to `true` if you want to restrict your payment menu to only include payment instruments which return delivery info.  |
 | {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |

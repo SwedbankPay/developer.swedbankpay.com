@@ -85,14 +85,14 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
+        "instrument": "Invoice-PayExFinancingSe",
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
-        "language": "sv-SE",
-        "instrument": "Invoice-PayExFinancingSe", {% if documentation_section contains "checkout-v3" %}
+        "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header {% endif %}
         "urls":
             "hostUrls": [ "https://example.com", "https://example.net" ],

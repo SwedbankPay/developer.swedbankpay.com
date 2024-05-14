@@ -16,6 +16,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
+        "requestTraExemption": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
@@ -25,7 +26,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         {% endif %}
-        "requestTraExemption": true,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -166,6 +166,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | Field | Type | Description |
 | :---- | :--- | :---------- |
 | {% icon check %} | {% f paymentOrder %}                | `object` | {% include fields/id.md resource="paymentorder" sub_resource="payer" %}                                             |
+| {% icon check %} | {% f requestTraExemption %}      | `bool`       | Set to `true` if the merchant requests a TRA exemption. |
 | {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                        |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                             |
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                       |
@@ -175,7 +176,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 | {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as CDigital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f requestTraExemption %}      | `bool`       | Set to `true` if the merchant requests a TRA exemption. |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
 |                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url.md %} | {% endif %}

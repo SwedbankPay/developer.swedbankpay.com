@@ -37,6 +37,12 @@ Content-Type: application/json{% endcapture %}
     "description": "Test Purchase",
     "userAgent": "Mozilla/5.0...",
     "language": "sv-SE",
+        "metadata": {
+        "key1": "value1",
+        "key2": 2,
+        "key3": 3.1,
+        "key4": false
+    },
     "urls": {
       "hostUrls": ["https://example.com"],
       "completeUrl": "https://example.com/payment-completed"
@@ -47,12 +53,6 @@ Content-Type: application/json{% endcapture %}
     },
     "payer": {
       "payerReference": "AB1234",
-    },
-    "metadata": {
-        "key1": "value1",
-        "key2": 2,
-        "key3": 3.1,
-        "key4": false
     },
     "prefillInfo": {
         "msisdn": "+4798765432"

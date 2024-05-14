@@ -33,9 +33,9 @@ Content-Type: application/json{% endcapture %}
 
 {% capture request_content %}{
     "{{api_resource_field_name}}": {
+        "generateMotoPayment": true,
         "operation": "Purchase",
         "intent": "Authorization",
-        "generateMotoPayment": true,
         "currency": "NOK",
         "prices": [{
                 "type": "CreditCard",
