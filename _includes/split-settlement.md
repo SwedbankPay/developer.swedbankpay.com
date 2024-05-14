@@ -61,12 +61,12 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "payeeInfo": {
+            "subsite": "MySubsite",
+            "siteId": "MySiteId",
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
-            "orderReference": "or-123456",
-            "subsite": "MySubsite",
-            "siteId": "MySiteId"
+            "orderReference": "or-123456"
         }
     }
 }{% endcapture %}

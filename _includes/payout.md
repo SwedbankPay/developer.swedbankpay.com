@@ -120,17 +120,17 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
    "paymentorder": {
+     "restrictedToPayoutInstruments": true,
+     "generateUnscheduledToken": true,
      "operation": "Verify",
      "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
      "currency": "SEK",
-     "restrictedToPayoutInstruments": true,
-     "generateUnscheduledToken": true,
      "description": "Bank account verification",
      "userAgent": "Mozilla/5.0...",
      "language": "sv-SE",
      "urls": {
-       "hostUrls": ["http://testmerchant.url"],
        "completeUrl": "http://complete.url",
+       "hostUrls": ["http://testmerchant.url"],
        "cancelUrl": "http://cancel.url"
      },
      "payeeInfo": {

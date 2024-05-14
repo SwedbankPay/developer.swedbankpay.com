@@ -46,6 +46,7 @@ Content-Type: application/json{% endcapture %}
 
 {% capture request_content %}{
     "{{ api_resource_field_name }}": {
+        "description": "Test Description",
         "operation": "Purchase",
         "intent": {% if api_resource == "trustly" or api_resource == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
         "currency": "{{ currency }}",{% if api_resource == "creditcard" %}
@@ -54,8 +55,7 @@ Content-Type: application/json{% endcapture %}
                 "amount": 1500,
                 "vatAmount": 0
             }
-        ],{% endif %}
-        "description": "Test Description",{% if documentation_section == "payment-menu" %}
+        ],{% endif %} {% if documentation_section == "payment-menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",

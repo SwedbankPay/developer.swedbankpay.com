@@ -49,12 +49,12 @@ Content-Type: application/json{% endcapture %}
 
 {% capture request_content %}{
     "payment": {
+        "generateTransactionOnFileToken": true,
         "operation": "Verify",
         "currency": "NOK",
         "description": "Create TransactionOnFileToken",
         "userAgent": "Mozilla/5.0...",
-        "language": "nb-NO",
-        "generateTransactionOnFileToken": true, {% if documentation_section contains "checkout-v3" %}
+        "language": "nb-NO", {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         {% endif %}
         "urls": {

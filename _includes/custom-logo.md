@@ -22,13 +22,13 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 {% capture request_content %}{
     "paymentorder": {
         "urls": {
+            "logoUrl": "https://example.com/logo.png",
             "hostUrls": [ "https://example.com", "https://example.net" ],
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled",
             "paymentUrl": "https://example.com/perform-payment",
             "callbackUrl": "https://api.example.com/payment-callback",
-            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf",
-            "logoUrl": "https://example.com/logo.png"
+            "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"
         }
     }
 }{% endcapture %}

@@ -32,12 +32,12 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
+        "generateAfdPayment": true,
+        "restrictedToAfdInstruments": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 10000,
         "vatAmount": 2500,
-        "generateAfdPayment": true,
-        "restrictedToAfdInstruments": true,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -52,12 +52,12 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
+            "mcc": 5542,
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
-            "orderReference": "or-123456",
-            "mcc": 5542
+            "orderReference": "or-123456"
         },
         "orderItems": null
     }

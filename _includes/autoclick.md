@@ -32,6 +32,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
+        "autoClick": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
@@ -39,7 +40,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "autoClick": true,
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
@@ -204,6 +204,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | Required         | Field     | Type         | Description   |
 | :--------------: | :-------- | :----------- | :------------ |
 | {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                              |
+|                  | {% f autoClick %}                | `bool`       | Set to `true` or `false`. Used to indicate if the payer should be automatically redirected from the payment window when selecting supported instruments. If set to `true`, the `termsOfServiceUrl` can't be included in the request.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                        |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                             |
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                       |
@@ -211,7 +212,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-|                  | {% f autoClick %}                | `bool`       | Set to `true` or `false`. Used to indicate if the payer should be automatically redirected from the payment window when selecting supported instruments. If set to `true`, the `termsOfServiceUrl` can't be included in the request.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
