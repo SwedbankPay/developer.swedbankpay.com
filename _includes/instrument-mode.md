@@ -429,7 +429,7 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
         ]{% endcapture %}
 
 {% include code-example.html
-    title='Available Instruments'
+    title='Available Methods'
     header=response_header
     json= response_content
     %}

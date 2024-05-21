@@ -847,7 +847,7 @@ All sections have been released. :trophy:
 *   Payment Orders now support `orderItems` in all operations.
 *   Added [Terminology page][terminology].
 *   Clarified what the `awaitingActivity` state means for different payment
-    instruments.
+    methods.
 *   Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
     section.
 *   Added description for the `onBillingDetailsAvailable` event in the

@@ -235,7 +235,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
     end
 ```
 
@@ -252,7 +252,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
     end
 ```
 
