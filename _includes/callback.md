@@ -54,8 +54,8 @@ three example scenarios of why this is important:
     *   1265 seconds
 *   A callback should return a `200 OK` response.
 
-The callback is sent from `91.132.170.1` in both the test and production
-environment.
+The callback is sent from either `51.107.183.58` or `91.132.170.1` in both the
+test and production environment.
 
 To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a `GET` request on the received URL and inspect the
