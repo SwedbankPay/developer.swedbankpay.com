@@ -229,7 +229,7 @@ The `onPaymentCreated` event is raised with the following event argument object:
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `bodyType` | `string` | The type of event that was raised.                                                                |
 | `id`         | `string` | {% include fields/id.md %}                                                                      |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected when initiating the payment. |
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                                          |
 
 ## `onPaymentFailed`
@@ -261,11 +261,11 @@ The `onPaymentFailed` event is raised with the following event argument object:
 
 ## `onPaymentMenuInstrumentSelected`
 
-This event triggers when a user actively changes payment instrument in the
+This event triggers when a user actively changes payment method in the
 Payment Menu.
 
 Subscribe to this event if actions, e.g. showing an information text, are
-required on your side if the payer changes payment instrument.
+required on your side if the payer changes payment method.
 
 If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
@@ -287,7 +287,7 @@ will be raised with the following event argument object:
 | :----------- | :------- | :-----------------------------------------------------------------------------  |
 | `bodyType` | `string` | The type of event that was raised.                                                |
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                          |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected by the user. |
 
 ## `onPaymentPending`
 
@@ -346,7 +346,7 @@ argument object:
 {% include events/on-payment-transaction-failed.md %}
 
 An error message will appear in the payment UI, and the payer will be able to
-try again or choose another payment instrument. The `onPaymentTransactionFailed`
+try again or choose another payment method. The `onPaymentTransactionFailed`
 event is raised with the following event argument object:
 
 {% capture response_content %}{

@@ -12,9 +12,9 @@ you need to validate that the payment has the status `Paid` so you are able to
 capture funds.
 
 First of all, you need to find out if the transaction type needs to be captured
-or not. An `Authorization` needs to be [captured][pp-capture] (most instruments
-generate these type of transactions), a `Sale` does not (Trustly and Swish
-transactions where the funds are captured instantly and automatically).
+or not. An `Authorization` needs to be [captured][pp-capture] (most payment
+methods generate these type of transactions), a `Sale` does not (Trustly and
+Swish transactions where the funds are captured instantly and automatically).
 
 ## Perform the GET
 

@@ -85,7 +85,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f paymentOrder, 0 %}   | `object`  | The payment order object.                                          |
 | {% f paid, 0 %}           | `object`  | The paid object.                                                   |
 | {% f id %}                | `string`  | {% include fields/id.md resource="paymentorder" %}                 |
-| {% f instrument %}        | `string`  | Payment instrument used in the cancelled payment.                  |
+| {% f instrument %}        | `string`  | Payment method used in the cancelled payment.                  |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md %}                                     |
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                            |
 | {% f amount %}            | `integer` | {% include fields/amount.md %}                                     |

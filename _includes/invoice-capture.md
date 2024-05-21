@@ -1,4 +1,4 @@
-Unlike the other payment instruments, performing an invoice capture won't move
+Unlike the other payment methods, performing an invoice capture won't move
 any funds in itself. It will generate the actual invoice and distribute it to
 the payer.
 

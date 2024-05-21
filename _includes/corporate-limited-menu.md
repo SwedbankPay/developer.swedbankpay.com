@@ -3,14 +3,14 @@
 
 ## Corporate Limited Menu
 
-Corporate Limited Menu allows you to limit what payment instruments shows up
-when your customers pays through the menu. Do note that the instrument in
-question needs to support corporate payment instruments **and** have the feature
+Corporate Limited Menu allows you to limit the payment methods that show up
+when your customers pays through the menu. Do note that the method in
+question needs to support corporate payment methods **and** have the feature
 enabled during the contract setup to be shown in the menu.
 
 If you don't invoke the restriction in your payment order request, every valid
-payment instrument will show up as usual in the payment menu. This is done by
-setting `corporateMode` to `true`. In this example the instrument is set to
+payment method will show up as usual in the payment menu. This is done by
+setting `corporateMode` to `true`. In this example the method is set to
 card.
 
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
@@ -54,8 +54,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 |     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f corporateMode %}            | `bool`     | Determines if the menu should only show instruments that supports corporate payment methods and has been enabled in your contracts.                                                                                                                                                                                                                                                                            |
-| {% icon check %} | {% f instrument %}               | `string`     | The payment instrument you want to restrict to in corporate mode. Selected by using the [Instrument Mode]({{ features_url }}/optional/instrument-mode).                                                                                             |
+| {% icon check %} | {% f corporateMode %}            | `bool`     | Determines if the menu should only show methods that supports corporate payment methods and has been enabled in your contracts.                                                                                                                                                                                                                                                                            |
+| {% icon check %} | {% f instrument %}               | `string`     | The payment methods you want to restrict to in corporate mode. Selected by using the [Instrument Mode]({{ features_url }}/optional/instrument-mode).                                                                                             |
 | {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |

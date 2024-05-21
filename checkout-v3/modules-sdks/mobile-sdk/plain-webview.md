@@ -119,8 +119,8 @@ Some pages use the DOM Storage API, which must be enabled separately on Android:
 With this setup, you can load to the web view the page that shows the Payment
 Menu or the Payment Seamless View, and see what happens. You should be able to
 see the Swedbank Pay payment interface, and in many cases also complete a
-payment. It is not unlikely, though, that some payment methods will not work as
-expected. Also, you will be more or less stuck after the payment is complete.
+payment. It is not unlikely, though, that some payment instruents will not work
+as expected. Also, you will be more or less stuck after the payment is complete.
 
 {:.code-view-header}
 **iOS**

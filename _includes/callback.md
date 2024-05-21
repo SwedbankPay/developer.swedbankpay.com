@@ -122,7 +122,7 @@ original `POST` when you created the `paymentOrder`.
 | {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
-| {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |
+| {% f instrument %}                | `string`     | The payment method used in the payment.                     |
 | {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
 {% endcapture %}
 {% include accordion-table.html content=table %}
@@ -141,7 +141,7 @@ original `POST` when you created the `paymentOrder`.
 }{% endcapture %}
 
 {% include code-example.html
-    title='Payment Instrument Callback'
+    title='Payment Method Callback'
     header=response_header
     json= response_content
     %}

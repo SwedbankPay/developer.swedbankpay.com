@@ -33,7 +33,7 @@ Among the operations in the POST `paymentOrder`s response, you will find the
 
 The redirect link opens the payment menu on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay.
+payment method and pay.
 
 {:.text-center}
 ![screenshot of the merchant managed implementation redirect payment menu][redirect-payments-only-menu]
@@ -118,7 +118,7 @@ Merchant -->>- Payer: Show Purchase complete
         Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Methods that support <br>Authorizations.
         end
 ```
 

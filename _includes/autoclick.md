@@ -6,16 +6,16 @@
 ## AutoClick
 
 AutoClick is a feature which automatically forwards the payer from the payment
-window when an instrument is selected, just as if they pressed the Pay button.
+window when a method is selected, just as if they pressed the Pay button.
 It is only available when using **Digital Payments**, for all wallets **except**
-**Apple Pay**. Support for more payment instruments will be added going forward.
+**Apple Pay**. Support for more payment methods will be added going forward.
 Apart from adding the field in your payment order request, no changes are
 required at your (the merchant's) end for AutoClick to work.
 
 There are a couple of limitations in place for this feature. First of all, it is
-restricted to payment instruments which require **no input** from the payer
-before pressing the Pay button. It will also be limited to instruments with
-**no terms and conditions**. This will exclude instruments like Invoice, as
+restricted to payment methods which require **no input** from the payer
+before pressing the Pay button. It will also be limited to methods with
+**no terms and conditions**. This will exclude methods like Invoice, as
 there are terms and conditions attached. As a consequence, activating AutoClick
 in a request which also contains a `termsOfServiceUrl` will result in an error
 message.
@@ -204,7 +204,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | Required         | Field     | Type         | Description   |
 | :--------------: | :-------- | :----------- | :------------ |
 | {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                              |
-|                  | {% f autoClick %}                | `bool`       | Set to `true` or `false`. Used to indicate if the payer should be automatically redirected from the payment window when selecting supported instruments. If set to `true`, the `termsOfServiceUrl` can't be included in the request.                                                                                                                                                                                                                                                                         |
+|                  | {% f autoClick %}                | `bool`       | Set to `true` or `false`. Used to indicate if the payer should be automatically redirected from the payment window when selecting supported methods. If set to `true`, the `termsOfServiceUrl` can't be included in the request.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                        |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                             |
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                       |
@@ -279,7 +279,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | {% icon check %} | {% f vatPercent, 2 %}              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
-|                  | {% f restrictedToInstruments %}  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
+|                  | {% f restrictedToInstruments %}  | `array`      | A list of the methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment methods. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain methods by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
@@ -400,10 +400,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | {% include fields/guest-mode.md %}                                                                                                                                                   |
 | {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                    |
 | {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            | {% if documentation_section contains "checkout-v3" %}

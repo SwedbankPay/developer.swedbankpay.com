@@ -7,7 +7,7 @@
 
 The payment order response with status `paid`, and the `paid` resource expanded.
 Please note that the main code example is of a card payment. We have included
-`paid` resources of the remaining instruments below the main code example.
+`paid` resources of the remaining methods below the main code example.
 Resource examples where details are empty indicate that no details are
 available.
 
@@ -417,10 +417,10 @@ api-supported-versions: 2.0{% endcapture %}
 | {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Enterprise implementation, this is triggered by not including a `payerReference` or `nationalIdentifier` in the original payment order request.                                                                                                                                                   |
 | {% f payer %}         | `string`     | The URL to the `payer` resource where information about the payer can be retrieved.                                                                                                                 |
 | {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
@@ -429,16 +429,16 @@ api-supported-versions: 2.0{% endcapture %}
 | {% f aborted %}     | `string`     | The URL to the `aborted` resource where information about the aborted transactions can be retrieved.                                                                                                                            |
 | {% f paid %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
 | {% f remainingCaptureAmount %}      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
 | {% f remainingCancellationAmount %}      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f details %}                   | `integer`    | Details connected to the payment. |
 | {% f nonPaymentToken, 2 %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |

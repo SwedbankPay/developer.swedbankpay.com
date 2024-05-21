@@ -2,7 +2,7 @@
 title: Direct
 redirect_from: /payments/swish/direct
 description: |
-  Swish is a one-phase payment instrument supported by the major Swedish banks.
+  Swish is a one-phase payment method supported by the major Swedish banks.
   In the Direct scenario, Swedbank Pay receives the Swish registered mobile
   number directly from the merchant UI. Swedbank Pay performs a payment that
   the payer confirms using their Swish mobile app.
@@ -25,7 +25,7 @@ menu_order: 900
 *   Make a `GET` request to check the payment status.
 
 {% include alert.html type="informative" icon="report_problem"
-body="Swish is a one-phase payment instrument that is based on sales
+body="Swish is a one-phase payment method that is based on sales
 transactions not involving `capture` or `cancellation` operations." %}
 
 {% include alert-callback-url.md %}

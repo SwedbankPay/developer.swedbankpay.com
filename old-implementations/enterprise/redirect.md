@@ -3,7 +3,7 @@ title: Redirect
 permalink: /:path/redirect/
 description: |
  Redirect is our simplest integration. The payer will be redirected to a secure
- Swedbank Pay hosted site and choose payment instrument. After the purchase,
+ Swedbank Pay hosted site and choose their payment method. After the purchase,
  the payer will be redirected back to your website.
 menu_order: 300
 ---
@@ -76,7 +76,7 @@ Among the operations in the POST `paymentOrders` response, you will find the
 
 The redirect link opens the payment menu on a new page with the payer
 information displayed above the menu. The payer can select their preferred
-payment instrument and pay.
+payment method and pay.
 
 {:.text-center}
 ![screenshot of the enterprise implementation redirect payment menu][redirect-enterprise-menu]

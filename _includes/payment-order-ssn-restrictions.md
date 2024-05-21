@@ -5,17 +5,17 @@
 ## Restrict Payments To A Social Security Number
 
 Swedbank Pay provides the possibility to restrict payments to a Social Security
-Number for payment instruments which support this. This can be used when you
+Number when the payment methods support this. This can be used when you
 want to make sure you only accept payments from an already identified
 individual.
 
 You do this by adding the field `restrictedToSocialSecurityNumber` in the
 `payer` field, in your payment order request, and setting it to `true`. This
-will leave out all instruments which do not support this feature.
+will leave out all methods which do not support this feature.
 
 It will then use the `socialSecurityNumber` located in the `nationalIdentifier`
 field (found within the `payer` field). The `nationalIdentifier` must be
-included to use this feature. Instruments supporting the feature will reject
+included to use this feature. Methods supporting the feature will reject
 payments that do not match the restriction.
 
 {% if documentation_section contains "old-implementations/enterprise" %} If you want to
@@ -24,9 +24,9 @@ checkout profile lookup, add the parameter `guestMode` in the
 `nationalIdentifier` field and set it to `true`. {% endif %}
 
 You are currently only able to restrict Swish and Trustly payments to a Social
-Security Number, but we will add support for more payment instruments going
+Security Number, but we will add support for more payment methods going
 forward. No changes are required at your (the merchant’s) end to be able to
-offer more instruments at a later time.
+offer more methods at a later time.
 
 ## Restrict To Social Security Number Request
 

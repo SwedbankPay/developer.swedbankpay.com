@@ -149,7 +149,7 @@ provided below.
 | History | Here, you can track every aspect of the transaction lifecycle. This includes all actions initiated by the Payer within our UI and your management of the transaction (Capture, Cancel, Reversal, etc.), from its initiation to completion. |
 | Failed    | MIT transactions, denoting "Merchant Initiated Transactions," are exclusively presented here if they result in a `Failed` status, along with the corresponding failure reason.     |
 | Aborted    | If the transaction is aborted on your end, you can find the details submitted with the request in this section. |
-| Paid    | In the event of a successful transaction, details about the utilized instrument, its associated references, and related information will be available here. As a point of reference, this serves as the replacement for `currentPayment`.     |
+| Paid    | In the event of a successful transaction, details about the utilized method, its associated references, and related information will be available here. As a point of reference, this serves as the replacement for `currentPayment`.     |
 | Cancelled    | Information will be available under this node exclusively when a PaymentOrder has been completely canceled and has received the status `Canceled`. |
 | FinancialTransactions    | All post-purchase actions and their references, such as captures and reversals, can be accessed here. This section also serves as the replacement for `currentPayment`.     |
 | FailedAttempts    | All instances of `PaymentOrder`s marked as `Failed` will be in this section. Currently, this pertains specifically to transactions utilizing S2S (server-to-server) functionality, with subscriptions (Recur & Unscheduled Purchase) serving as an example.    |
@@ -239,15 +239,15 @@ Further reading available in the [Events section][sv-events].
 | Event    | Description     |
 | :------ | :--------------- |
 | `onCheckoutLoaded`    | This event will trigger the first time the Checkout is loaded. Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. This is the initial height of the frame when loaded.     |
-| `onCheckoutResized`    | This event will trigger every time a UI element changes size.Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. The payment instruments require individual heights when rendering their content.     |
+| `onCheckoutResized`    | This event will trigger every time a UI element changes size.Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. The payment methods require individual heights when rendering their content.     |
 | `onError`    | This event will be triggered during terminal errors or if the configuration fails validation. Subscribe to this event if you want some action to occur on your site when an error happens during the payment.     |
 | `onOutOfViewRedirect`    | Triggered when a user is redirected to a separate web page, like 3-D Secure or BankID signing. Subscribe to this event if it is not possible to redirect the payer directly from within Swedbank Pay’s payment frame.     |
 | `onAborted`    | This will be triggered when the payer clicks the "Abort" button. This is only present in the Redirect-implementation and if you have integrated Seamless View (menu embedded), you will need to supply this button/action. When the payer presses your cancel button, we recommend sending an API request aborting the payment so it can’t be completed at a later time. When we receive the request, an abort event will be raised the next time the UI fetches information from the server. Because of that, you should also refresh the script after aborting, as this will trigger the event.     |
 | `onPaymentAttemptAborted`    | This event will trigger when an attempt has been aborted from an external party. One of these examples is from a card-issuers ACS service (3D-Secure verification). This does not mean the transaction in its entirety has failed. It is just the singular attempt that was aborted. More attempts are available to the payer.     |
-| `onPaymentAttemptStarted`    | Triggered when the payer has selected a payment instrument and actively attempts to perform a payment.     |
+| `onPaymentAttemptStarted`    | Triggered when the payer has selected a payment method and actively attempts to perform a payment.     |
 | `onPaid`    | This event triggers when the payer successfully completes their interaction with us. Subscribe to this event if actions are needed on you side other than the default handling of redirecting the payer to your `completeUrl`. Call GET on the paymentOrder to receive the actual payment status and take appropriate actions according to the information displayed here. |
 | `onPaymentAttemptFailed`  | Triggered when a payment has failed, disabling further attempts to perform a payment. |
-| `onInstrumentSelected`    | Triggered when a user actively changes payment instrument in the Payment Menu. |
+| `onInstrumentSelected`    | Triggered when a user actively changes payment method in the Payment Menu. |
 | `onTermsOfServiceRequested`    | Triggered when the user clicks on the “Display terms and conditions” link. Subscribe to this event if you do not want the default handling of the `termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl` in a new tab within the same browser by default.     |
 | `onEventNotification` | Triggered whenever any other public event is called. It does not prevent their handling. Subscribe to this event in order to log actions that are happening in the payment flow at Swedbank Pay.     |
 
@@ -281,7 +281,7 @@ the Purchase request. This means you are already familiar with the structure,
 but the difference now is that it also applies to the response for post-purchase
 actions.
 
-The new response will not naturally include the same instrument data as it did
+The new response will not naturally include the same method data as it did
 with v2. However, you can extend the information by adding
 `?$expand=financialtransactions` to the request path (URL). If you require even
 more data in your responses, you can continue extending the output by adding a

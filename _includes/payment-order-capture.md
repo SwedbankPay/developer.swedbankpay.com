@@ -13,9 +13,9 @@
 {% endif %}
 
 Captures are only possible when a payment has a successful authorize
-transaction, naturally excluding one-phase payment instruments like
+transaction, naturally excluding one-phase payment methods like
 [Swish][swish] and [Trustly][trustly]. They will be marked as a `Sale`
-transaction. Two-phase payment instruments like [Card][card] and [Vipps][vipps]
+transaction. Two-phase payment methods like [Card][card] and [Vipps][vipps]
 however, require a `Capture` to be completed.
 
 Please note that you have a maximum of 5 **consecutive** failed attempts at a
@@ -214,7 +214,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
     end
 ```
 
@@ -231,7 +231,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
     end
 ```
 

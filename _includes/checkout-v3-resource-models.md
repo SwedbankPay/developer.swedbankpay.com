@@ -107,15 +107,15 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f cancelled, 0 %}                | `object`     | The cancel object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f cancelReason %}             | `string`     | Why the payment was cancelled. |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
@@ -277,7 +277,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f failedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
 | {% f failedAttemptList %}  | `array`   | The array of failed attempts. |
 | {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f instrument, 2 %}             | `string`     | Payment instrument used in the failed payment. |
+| {% f instrument, 2 %}             | `string`     | Payment method used in the failed payment. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
 | {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
 | {% f operationalFee, 2 %}             | `bool`     | A field specific for Vipps. Set to `true` if an operational fee for receiving card information from Vipps has been generated. Set to `false` if no such fee has been generated. |
@@ -669,7 +669,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f historyList %}  | `array`   | The array of history objects. |
 | {% f created %}        | `string`     | The ISO-8601 date of when the history event was created.                                 |
 | {% f name %}              | `string`     | Name of the history event. See list below for information.     |
-| {% f instrument %}        | `string`     | The payment instrument used when the event occurred.       |
+| {% f instrument %}        | `string`     | The payment method used when the event occurred.       |
 | {% f number %}              | `integer`   | Payment number associated with the event.                 |
 | {% f prefill %}              | `bool`   | Indicates if payment info was prefilled or not.                 |
 {% endcapture %}
@@ -683,19 +683,19 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f CheckinInitiated, 0 %}        | Will be set when checkin is started, if checkin is activated for the merchant. The merchant must be configured with ProductPackage=Checkout                  |
 | {% f PayerDetailsRetrieved, 0 %}   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
 | {% f PayerCheckedIn, 0 %}      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
-| {% f PaymentInstrumentSet, 0 %}      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
+| {% f PaymentInstrumentSet, 0 %}      | If the `PaymentOrder` is initiated in Instrument Mode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the method used for that payment. The method set will be in the method parameter.                |
 | {% f PaymentLoaded, 0 %}       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
-| {% f PaymentInstrumentSelected, 0 %}       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
-| {% f PaymentAttemptStarted, 0 %}      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the instrument for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
-| {% f PaymentAttemptAborted, 0 %}      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
-| {% f PaymentAttemptFailed, 0 %}     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
-| {% f PaymentPaid, 0 %}      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
-| {% f PaymentCaptured, 0 %}      | Will occur when the merchant has captured the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| {% f PaymentPartiallyCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
-| {% f PaymentCancelled, 0 %}     | Will occur when the merchant has cancelled the full authorization amount. Both the number and instrument parameters will be available on this event.                  |
-| {% f PaymentPartiallyCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and instrument parameters will be available on this event.                 |
-| {% f PaymentReversed, 0 %}    | Will occur when the merchant reverses the full authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
-| {% f PaymentPartiallyReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and instrument parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentInstrumentSelected, 0 %}       | Will occur each time the payer expands an method in the payment menu. The method selected will be set in the method parameter.                 |
+| {% f PaymentAttemptStarted, 0 %}      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The method parameter will contain the method for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
+| {% f PaymentAttemptAborted, 0 %}      | Will occur if the payer aborts the payment attempt. Both the number and method parameters will be available on this event.                  |
+| {% f PaymentAttemptFailed, 0 %}     | Will occur if the payment failed. Both the number and method parameters will be available on this event.                  |
+| {% f PaymentPaid, 0 %}      | Will occur if the payment succeeds. Both the number and method parameters will be available on this event.                 |
+| {% f PaymentCaptured, 0 %}      | Will occur when the merchant has captured the full authorization amount. Both the number and method parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartiallyCaptured, 0 %}     | Will occur when the merchant has done a partial capture of authorization amount. Both the number and method parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.               |
+| {% f PaymentCancelled, 0 %}     | Will occur when the merchant has cancelled the full authorization amount. Both the number and method parameters will be available on this event.                  |
+| {% f PaymentPartiallyCancelled, 0 %}      | Will occur when the merchant has cancelled part of the authorization amount. Both the number and method parameters will be available on this event.                 |
+| {% f PaymentReversed, 0 %}    | Will occur when the merchant reverses the full authorization amount. Both the number and method parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
+| {% f PaymentPartiallyReversed, 0 %}    | Will occur when the merchant reverses a part of the authorization amount. Both the number and method parameters will be available on this event. The number of this event will point to a number in the `financialTransaction` field for easy linking.                  |
 | {% f PaymentCapturedFailed, 0 %}      | Will occur when the merchant has tried - but failed - to do a **full** capture of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.              |
 | {% f PaymentPartiallyCapturedFailed, 0 %}     | Will occur when the merchant has tried - but failed - to do a **partial** capture of the authorization amount. The number (nullable) of this event will point to a number in the `financialTransaction` node for easy linking.              |
 | {% f PaymentReversedFailed, 0 %}    | Will occur when the merchant has tried - but failed - to do a reversal of the **fully** captured authorization amount. The number parameter might be available on this event. If present, it will point to a number in the `financialTransaction` field for easy linking.   |
@@ -710,7 +710,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 The payment order response with `status` equal to `Paid`, and the `paid`
 resource expanded. Please note that the main code example is of a card payment.
 
-We have included `paid` resources of the remaining instruments below the main
+We have included `paid` resources of the remaining methods below the main
 code example. Resource examples where details are empty indicate that no details
 are available.
 
@@ -1156,15 +1156,15 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md resource="paymentorder" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f paymentTokenGenerated %}                | `bool`       | Set to `true` or `false`. Used to show if a payment token has been generated or not. Will be set to `true` if the checkbox enabled by `EnablePaymentDetailsConsentCheckbox` has been checked by the payer during a payment, otherwise `false`.                                           |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
@@ -1177,7 +1177,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f paymentAccountReference, 2 %} | `string`     | The result of an external tokenization. The value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, the `paymentAccountReference` will also populate the externalNonPaymentToken field. |
 | {% f cardType, 2 %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
 | {% f maskedPan, 2 %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
-| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment instrument is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
+| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment method is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
 | {% f expiryDate, 2 %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
 | {% f issuerAuthorizationApprovalCode, 2 %} | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
 | {% f acquirerTransactionType, 2 %} | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
@@ -1297,7 +1297,7 @@ corresponding `Paid` transaction. As several `Reversed` transactions can exist
 on a single payment, the number and payerReference will be from the latest
 `Reversed`.
 
-We have included `reversal` resources of the remaining instruments below the
+We have included `reversal` resources of the remaining methods below the
 main code example. Resource examples where details are empty indicate that no
 details are available.
 
@@ -1733,15 +1733,15 @@ api-supported-versions: 3.x{% endcapture %}
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f reversed, 0 %}                | `object`     | The reversed object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md resource="paymentorder" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
@@ -1753,7 +1753,7 @@ api-supported-versions: 3.x{% endcapture %}
 | {% f paymentAccountReference, 2 %} | `string`     | The result of an external tokenization. The value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, the `paymentAccountReference` will also populate the externalNonPaymentToken field. |
 | {% f cardType, 2 %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
 | {% f maskedPan, 2 %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
-| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment instrument is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
+| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment method is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
 | {% f expiryDate, 2 %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
 | {% f issuerAuthorizationApprovalCode, 2 %} | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
 | {% f acquirerTransactionType, 2 %} | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |

@@ -51,7 +51,7 @@ the payment.
 
 A new feature for those of you who want to [customize the order of your payment
 menu][sort-order] has also seen the light of day, together with the possibility
-to expand the top instrument. They can be used independently, but work great
+to expand the top method. They can be used independently, but work great
 together.
 
 We also did a handful of bug fixes and corrections to improve usability and
@@ -152,7 +152,7 @@ bottom of the front page will follow suit shortly.
 The biggest news is the arrival of the [Swedbank Pay Playground][spp], where you
 can experience our payment solutions both as a payer and – since we give you
 access to the toolbox – a merchant. Play around with amounts, different menu
-setups (full menu, selected instruments or a single instrument) and styling. It
+setups (full menu, selected methods or a single method) and styling. It
 is also a great opportunity to see the upcoming accessibility compliant UI. Read
 more about [accessibility changes here][wcag]. With that in mind, we have also
 written a section regarding [custom styling][custom-styling] of your payment UI.
@@ -196,7 +196,7 @@ changes are in name only, the structure stays the same.
 
 We have also added information regarding the
 [Eligibility Check][eligibility-check], and the availability of
-[invoice][invoice] for **Swedish** merchants, where the payment instrument
+[invoice][invoice] for **Swedish** merchants, where the payment method
 integrations have been removed. You have to go through
 [an implementation using payment order][checkout-v3] to offer this in Sweden.
 
@@ -242,7 +242,7 @@ Plus the usual handful of bug fixes and smaller changes.
 ### Version 4.2.0
 
 The keen observer might spot some changes in our menu. The Checkout v2, Payment
-Menu and Payment Instruments have been moved to
+Menu and Payment Methods have been moved to
 [Old Implementations][old-implementations]. You can still find everything you
 want and need, so no need to worry. A new [.NET SDK][pax-net-sdk] section has
 also been added, in addition to the usual bugs and small fixes.
@@ -265,7 +265,7 @@ Authentication who want access to our safely stored card data,
 
 We promised you something big, and here it is. [Click to Pay][click-to-pay] and
 [Google Pay&trade;][google-pay] have been added to our arsenal of payment
-instruments. Click on your instrument of choice to see what is needed for you to
+methods. Click on your method of choice to see what is needed for you to
 activate in your integration. We have also added information on how to activate
 [Apple Pay][apple-pay], which we recommend reading up on.
 
@@ -285,7 +285,7 @@ tasks and bug fixes.
 
 Bigger things are coming up around the bend, so we are stopping by with some
 smaller fixes and a [Digital Payments matrix][checkout-v3-matrix] giving you a
-better overview over which payment instruments v3 has to offer, and the
+better overview over which payment methods v3 has to offer, and the
 countries they are available.
 
 We'll be back soon!
@@ -336,7 +336,7 @@ bug fixes.
 ### Version 3.1.3
 
 Another small one. We've added Digital Payments `paid` responses for all
-instruments in both [status][status-models] and
+methods in both [status][status-models] and
 [resource-models][resource-models], finished up the headers which was missing,
 added MobilePay to [Request Delivery Information][request-delivery-information]
 and done away with some more bugs and typos.
@@ -375,7 +375,7 @@ and integrations. There are a couple of other new additions as well:
 
 *   Our [SDKs][sdk-modules] have been updated to support Digital Payments
 *   You can now [request delivery information][request-delivery-information] for
-  selected instruments
+  selected methods
 *   An eligibility check [eligibility check][eligibility-check] for wallets has
   been added to instrument mode
 *   Fixed typos, minor bugs and code examples
@@ -417,7 +417,7 @@ and integrations. There are a couple of other new additions as well:
 ### Version 3.0.0
 
 It's been a minute, but the day is finally here. We can proudly present Checkout
-version 3.0! The same range of payment instruments, checkin options and features
+version 3.0! The same range of payment methods, checkin options and features
 as always, but since different merchants have different needs, we've made it
 easier for you to get the checkout experience which fits you best. So, what's
 new?
@@ -561,7 +561,7 @@ Other changes:
 
 ### Version 1.13.2
 
-*   Added description on `metadata` for all payment instruments.
+*   Added description on `metadata` for all payment methods.
 *   Updated files in [Settlement & Reconciliation][settlement-reconcilitation].
 *   Added information on token deletion in [Card Payments][card] and [Invoice Payments][invoice].
 *   Updated the documentation on `paymentRestrictedToAgeLimit` and
@@ -702,13 +702,13 @@ Other changes:
 *   Documented allowed characters in `orderItem.class`.
 *   Added `receiptReference` in [Invoice Payments][invoice] and
     [Payment Order][payment-orders] in capture and reversal.
-*   Callback is now moved to Other features in all payments instruments.
+*   Callback is now moved to Other features in all payments methods.
 *   Clean up of [MobilePay][mobile-pay].
 *   Corrected the address of Leia Ahlström in [Test Data][test-data].
 *   Updated the documentation in [Card Payments][card-payment-url]
     to recommend using `shippingAddress`.
 *   Updated `payeeReference` to have an unique description for Payment Order and
-    every Payment Instrument.
+    every Payment Method.
 
 ## 18 March 2020
 
@@ -847,7 +847,7 @@ All sections have been released. :trophy:
 *   Payment Orders now support `orderItems` in all operations.
 *   Added [Terminology page][terminology].
 *   Clarified what the `awaitingActivity` state means for different payment
-    instruments.
+    methods.
 *   Removed erroneous `noCVC` in examples for [One-Click Card Payments][one-click]
     section.
 *   Added description for the `onBillingDetailsAvailable` event in the
@@ -925,7 +925,7 @@ documentation available? Check Jira-task DX-511.
 
 ### Payment order
 
-We have added support for restricting payment instruments available in payment
+We have added support for restricting payment methods available in payment
 menu. The input parameter is ##restrictedToInstruments## in Payment order. See
 updated documentation
 [[here>>doc:Main.ecommerce.technical-reference.payment-orders-resource.WebHome]]
@@ -980,13 +980,11 @@ invoked after return of the payer, they will either be redirected to the
 to retry the payment.
 
 If `paymentUrl` is not implemented, retry of payments will not be possible in
-either individual payment instruments such as
-[Vipps][vipps-payment-resource]
-or in [Checkout][payment-orders].
-It makes it more tedious to retry payment as the whole process including the
-creation of the payment or payment order needs to be performed again. With
-paymentUrl in place, the retry process becomes much more convenient for both the
-integration and the payer.
+either individual payment methods such as [Vipps][vipps-payment-resource]
+or in [Checkout][payment-orders]. It makes it more tedious to retry payment as
+the whole process including the creation of the payment or payment order needs
+to be performed again. With paymentUrl in place, the retry process becomes much
+more convenient for both the integration and the payer.
 
 [1cuc]: /checkout-v3/get-started/one-click
 [3-1]: /checkout-v3/get-started/payment-request-3-1

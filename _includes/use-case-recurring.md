@@ -1,8 +1,8 @@
 
-## Supported Payment Instruments
+## Supported Payment Methods
 
 Looking to get started with recurring services? They are currently supported
-in Digital Payments using these instruments:
+in Digital Payments using these methods:
 
 *   Card payments
 
@@ -145,7 +145,7 @@ interval). Modify the parameters in the `Purchase`/`Verify` request as follows:
 *   The `payerReference` in the `Payer` node needs to be consistent with the one
     used to create the token details in `Purchase`/`Verify`.
 
-## Removal of Instrument Details
+## Removal of Method Details
 
  When conditions like error codes or payer requests to remove details are met,
  you'll need to delete associated tokens. Here are two methods:
