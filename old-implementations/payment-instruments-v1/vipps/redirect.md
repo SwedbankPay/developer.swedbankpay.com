@@ -3,7 +3,7 @@ title: Redirect
 redirect_from: /payments/vipps/redirect
 description: |
   **Vipps** is a two-phase
-  payment instrument supported by the major Norwegian banks. In the redirect
+  payment method supported by the major Norwegian banks. In the redirect
   scenario, Swedbank Pay receives a mobile number (msisdn)
   from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
   that the payer must confirm through the Vipps mobile app.

@@ -16,7 +16,7 @@ false %}
 
 ## Payment Resource
 
-The `payment` resource is central to all payment instruments. All operations
+The `payment` resource is central to all payment methods. All operations
 that target the payment resource directly produce a response similar to the
 example seen below. The response given contains all operations that are
 possible to perform in the current state of the payment.

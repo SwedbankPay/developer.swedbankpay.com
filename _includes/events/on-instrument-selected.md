@@ -1,5 +1,5 @@
 {%- capture event -%}
-Triggered when a user actively changes payment instrument in the Payment Menu.
+Triggered when a user actively changes payment method in the Payment Menu.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

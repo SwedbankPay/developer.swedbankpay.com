@@ -248,9 +248,9 @@ Useful information regarding Trustly in our payment menu.
 ### Overlay
 
 When using a payment menu integration (including Instrument Mode), Trustly will
-now be opened in a modal. (This is unlike the Trustly instrument implementation
-where it opens inside the same frame). The modal will close once the interaction
-at Trustly is finished.
+now be opened in a modal. (This is unlike the Trustly payment method
+implementation where it opens inside the same frame). The modal will close once
+the interaction at Trustly is finished.
 
 ### Trustly Express
 

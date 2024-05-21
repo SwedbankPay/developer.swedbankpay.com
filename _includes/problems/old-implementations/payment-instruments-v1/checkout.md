@@ -73,7 +73,7 @@ token does not exist or is deleted.
 The following new `errorType` will be introduced (only for Payment Order):
 `https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive`
 
-In addition to the one currently in use for both Payment Instruments and Payment
+In addition to the one currently in use for both Payment Methods and Payment
 Order:
 `https://api.payex.com/psp/errordetail/paymentorders/inputerror`
 
@@ -243,7 +243,7 @@ the following URL structure:
 In accordance with directives from Visa and Mastercard, we will be implementing
 2 different types of limitations in the amount of successive reattempts of a
 previously failed transaction using either a `recurrence`- or `unscheduledToken`
-that can be done using card based payment instruments. This limitation has up
+that can be done using card based payment methods. This limitation has up
 until now been handled by Swedbank Pay Acquiring, but will now be handled
 earlier in the transaction process - enabling us to provide better and clearer
 response messages through the eCommerce-api.

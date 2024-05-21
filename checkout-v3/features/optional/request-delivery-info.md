@@ -2,7 +2,7 @@
 title: Request Delivery Information
 permalink: /:path/request-delivery-info/
 description: |
-  Request that payment instruments return delivery information.
+  Request that payment methods return delivery information.
 menu_order: 3300
 icon:
   content: local_shipping

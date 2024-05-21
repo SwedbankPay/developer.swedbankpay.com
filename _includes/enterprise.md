@@ -54,7 +54,7 @@ Content-Type: application/json{% endcapture %}
 |                  | {% f socialSecurityNumber, 3 %} | `string` | The payer's social security number. Must be part of what you get from your authentication process. |
 |                  | {% f countryCode, 3 %}          | `string` | The country code of the payer.                                                                     |
 
-When the payer is authenticated by the merchant, some payment instruments
+When the payer is authenticated by the merchant, some payment methods
 will allow a more frictionless payment process. Invoice One-Click Payments does
 not require the last 4/5 digits of the payer's social security number (SSN),
 for instance.

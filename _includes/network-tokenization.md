@@ -124,7 +124,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {:.table .table-striped .mb-5}
 | Field                          | Type      | Description    |
 | :----------------------------- | :-------- | :------------------- |
-| {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+| {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the payment method, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 | {% f expiryDate, 2 %}      | `string`  | The expiry date of the card currently connected to the network token.                                  |
 | {% f cardBrand, 2 %}                 | `string` | The brand of the card currently connected to the network token.                                          |
 | {% f lastFourPan, 2 %}               | `string`  | The last four digits of the PAN connected to the network token. |

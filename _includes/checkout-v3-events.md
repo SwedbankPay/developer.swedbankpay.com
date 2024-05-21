@@ -88,7 +88,7 @@ with the following event argument object:
 {% include events/on-checkout-resized.md %}
 
 Subscribe to this event if you need total control over the height of Swedbank
-Pay's payment frame. The payment instruments require individual heights when
+Pay's payment frame. The payment methods require individual heights when
 rendering their content. This event triggers each time the iframe needs resizing
 during a payment.
 
@@ -178,7 +178,7 @@ payment flow at Swedbank Pay.
 {% include events/on-instrument-selected.md %}
 
 Subscribe to this event if actions, e.g. showing an information text, are
-required on your side if the payer changes payment instrument.
+required on your side if the payer changes payment method.
 
 If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
@@ -200,7 +200,7 @@ will be raised with the following event argument object:
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                                    |
 | {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %}         |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected by the user. |
 
 ## `onOutOfViewOpen`
 
@@ -326,7 +326,7 @@ it if you want to know when a payment attempt fails, and further attempts can be
 made for the payment.
 
 An error message will appear in the payment UI, and the payer will be able to
-try again or choose another payment instrument. The `onPaymentAttemptFailed`
+try again or choose another payment method. The `onPaymentAttemptFailed`
 event is raised with the following event argument object:
 
 {% capture response_content %}{
@@ -351,7 +351,7 @@ event is raised with the following event argument object:
 ## `onPaymentAttemptStarted`
 
 This event mirrors `onPaymentCreated` from Checkout v2. Subscribe to it if you
-want to know when a payer has selected their payment instrument and actively
+want to know when a payer has selected their payment method and actively
 attempts to perform a payment.
 
 The `onPaymentAttemptStarted` event is raised with the following event argument
@@ -374,7 +374,7 @@ object:
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `event`       | `string` | The name of the event raised.                                                                  |
 | {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %}                       |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected when initiating the payment. |
 
 ## `onTermsOfServiceRequested`
 

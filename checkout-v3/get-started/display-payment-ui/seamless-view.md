@@ -94,7 +94,7 @@ request.send();
 ## How Seamless View Looks
 
 The payment menu should appear with the payer information displayed above the
-menu. The payer can select their preferred payment instrument and pay.
+menu. The payer can select their preferred payment method and pay.
 
 {:.text-center}
 ![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]
@@ -199,7 +199,7 @@ Merchant -->>- Payer: Show Purchase complete
         Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>PaymentInstruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
         end
 ```
 

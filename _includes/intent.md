@@ -29,7 +29,7 @@ process.
     need to do any more financial operations to fulfill the transaction.
 {% endif %}
 {% if sale %}
-*   **`Sale` (one-phase)**: The `sale` intent is used by the payment instruments
+*   **`Sale` (one-phase)**: The `sale` intent is used by the payment methods
     like Swish, where the funds are reserved and drawn from the payer's account
     immediately. This means you don't need to do any more financial operations
     to fulfill the transaction. The only available after payment operation is

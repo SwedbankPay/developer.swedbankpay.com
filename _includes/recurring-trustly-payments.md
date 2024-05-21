@@ -8,7 +8,7 @@
 
 Prior to making any server-to-server requests, you need to make sure the
 `directDebitEnabled` setting in your Trustly contract is set to `true`. Then you
-need to supply the payment instrument details and a payment token to Swedbank
+need to supply the payment method details and a payment token to Swedbank
 Pay by initial purchase or select account verification. Note that the `email`
 field must be set, as this is a required parameter. If the `email` is missing,
 Trustly will not be available for selection from the payments menu.
@@ -70,7 +70,7 @@ details [here][trustly-remove-payment-token].
 
 When you have a Recurrence token, you can use the same token in a subsequent
 `recurring payment` `POST`. This will be a server-to-server affair, as we have
-both payment instrument details and recurrence token from the initial payment.
+both payment method details and recurrence token from the initial payment.
 
 ## Verify
 

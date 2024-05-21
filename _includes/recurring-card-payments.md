@@ -9,7 +9,7 @@ subsequent payments are made through server-to-server requests. " %}
 ## Prerequisites
 
 Prior to making any server-to-server requests, you need to supply the payment
-instrument details and a payment token to Swedbank Pay by initial purchase.
+method details and a payment token to Swedbank Pay by initial purchase.
 
 *   Initiate a recurring payment flow and **charge the credit card**.
     This is done by creating a "Purchase Payment" and generating a
@@ -48,7 +48,7 @@ details [here][card-payments-remove-payment-token].
 
 When you have a Recurrence token stored away. You can use the same token in a
 subsequent [`recurring payment`][card-payment-recur] `POST`. This will be a
-server-to-server affair, as we have both payment instrument details and
+server-to-server affair, as we have both payment method details and
 recurrence token from the initial payment.
 
 Please note that you need to do a capture after sending the recur request.

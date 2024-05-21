@@ -11,14 +11,14 @@
 {% endunless %}
 
 With "Instrument Mode", the Payment Menu will display only one specific payment
-instrument instead of all those configured on your merchant account. The
+method instead of all those configured on your merchant account. The
 `PaymentOrder` resource works just like it otherwise would, allowing you to
-remain largely indifferent to the payment instrument in use. To use the feature
+remain largely indifferent to the payment method in use. To use the feature
 you need to add the `instrument` field in the request as shown in the example
 below.
 
 It is important to only create one `paymentOrder` for each purchase, even if the
-payer changes their mind and wants to use another payment instrument. This is
+payer changes their mind and wants to use another payment method. This is
 because we don't allow creating multiple `paymentOrder`s with the same
 `payeeReference`. If this happens, you should use the `PATCH` request below to
 reflect what the payer has chosen instead of creating a new `paymentOrder`. This
@@ -27,10 +27,10 @@ way, you can still use the same `payeeReference`.
 If you don't want to use Swedbank Pay's Payment Menu (e.g. building your own
 payment menu), or have multiple payment providers on your site, we strongly
 recommend that you implement this functionality. In this case you should use the
-`instrument` field to enforce which payment instrument to show. If you have an
+`instrument` field to enforce which payment method to show. If you have an
 agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
-payer chooses either of these instruments, you should add the `instrument`
-parameter with the specific payment instrument.
+payer chooses either of these methods, you should add the `instrument`
+parameter with the specific payment method.
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -39,9 +39,9 @@ parameter with the specific payment instrument.
 If you want to **build your own menu** and display **at least** one wallet like
 **Apple Pay**, **Click to Pay** or **Google Pay&trade;**, you need to do an
 eligibility check. This is to ensure that the wallet is supported on the payer's
-device or browser. The check helps you streamline the process, removing
-instruments that would give the payer an error message or not be displayed in
-the menu.
+device or browser. The check helps you streamline the process, removing payment
+methods that would give the payer an error message or not be displayed in the
+menu.
 
 ### Using The Script
 
@@ -76,7 +76,7 @@ need to run the script to do the check.
 
 ## Instrument Mode Request
 
-An example with invoice as the instrument of choice.
+An example with invoice as the payment method of choice.
 
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
@@ -379,7 +379,7 @@ Content-Type: application/json{% endcapture %}
 
 {% endif %}
 
-## PATCH Instrument Selection
+## PATCH Payment Method Selection
 
 {% if documentation_section contains "checkout-v3" %}
 
@@ -394,8 +394,8 @@ applied.
 
 {% endif %}
 
-To switch instrument after the `paymentOrder` has been created, you can use the
-following `PATCH` request, here with Swish as an example.
+To switch payment method after the `paymentOrder` has been created, you can use
+the following `PATCH` request, here with Swish as an example.
 
 {% capture request_header %}PATCH /psp/{{ include.api_resource }}/paymentorders/{{ page.payment_id }} HTTP/1.1
 Host: {{ page.api_host }}
@@ -415,9 +415,9 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
     json= request_content
     %}
 
-## Available Instruments
+## Available Payment Methods
 
-The valid instruments for the `paymentOrder` can be retrieved from the
+The valid methods for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a
 merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
 `availableInstruments` will look like this:

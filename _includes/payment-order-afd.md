@@ -18,7 +18,7 @@ this, it is required that the Merchant Category Code `mcc` is passed in the
 request under `PayeeInfo`. This feature is only supported with the `Purchase`
 operation. It does not support with [order items][order-items].
 
-By default the available instruments and card types will be limited to those
+By default the available payment methods and card types will be limited to those
 which support AFD payments. To enable other payment options for the payer, pass
 in `restrictedToAfdInstruments` with the value `false`.
 

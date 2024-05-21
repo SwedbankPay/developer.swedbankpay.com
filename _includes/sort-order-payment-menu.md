@@ -1,29 +1,29 @@
 By using the field `restrictedToInstruments`, you can customize in what order
-the payment instruments are listed in your payment UI, in addition to using it
-to restrict which instruments you want to display. This gives you, as a
-merchant, the opportunity to promote selected payment instruments, or tailor the
+the payment methods are listed in your payment UI, in addition to using it
+to restrict which methods you want to display. This gives you, as a
+merchant, the opportunity to promote selected payment methods, or tailor the
 payment UI specifically for your customers.
 
 If you detect that the customer is on a mobile, make their payment easier by
 having the digital wallets on top. On an Android phone? Lead with Google Pay. On
 an Apple device? Put Apple Pay first. Use the `Paid` resource to find what
-instrument the customer used to pay, and let it be the first option next time
+method the customer used to pay, and let it be the first option next time
 they visit you.
 
 ## Sort Or Restrict The Payment Menu Order
 
 Choosing the order is very easy. You simply add the `array` field
-`restrictedToInstruments`, and the order you enter the payment instruments is
+`restrictedToInstruments`, and the order you enter the payment methods is
 the order they will appear in the menu.
 
 Please remember that `restrictedToInstruments` both sorts and restricts. Only
-the payment instruments included in the `array` will appear, so it is crucial
-that you include all the instruments you want to offer.
+the payment methods included in the `array` will appear, so it is crucial
+that you include all the methods you want to offer.
 
 I.e. if you populate the field with ["Swish","CreditCard","Trustly"], Swish will
 appear as the first option, card as the second and Trustly third. In this
 example, only these three will be present in the payment UI, even if you have an
-active contract for a fourth payment instrument.
+active contract for a fourth payment method.
 
 If you do not include an `array` in your request, the payment UI will be
 presented in the default order.
@@ -31,11 +31,11 @@ presented in the default order.
 ## Input Values
 
 The complete list of possible values to include in `restrictedToInstruments` are
-the following. You can find the instruments activated for your merchant
+the following. You can find the methods activated for your merchant
 under `availableInstruments` in the initial `paymentOrder` response.
 
 {:.table .table-striped}
-| Payment Instrument    | Input             |
+| Payment Method    | Input             |
 | :------ | :--------------- |
 | Apple Pay | "ApplePay" |
 | Card     | "CreditCard"      |
@@ -49,11 +49,11 @@ under `availableInstruments` in the initial `paymentOrder` response.
 | Trustly | "Trustly" |
 | Vipps | "Vipps" |
 
-## Expand the First Instrument
+## Expand the First Payment Method
 
-A useful addition to sorting the order in the payment menu, is auto expanding
-the first instrument. This is done by adding the `boolean` field
-`expandFirstInstrument` and set it to `true`. The top instrument will be
+A useful addition to sorting the order in the payment menu, is auto-expanding
+the first method. This is done by adding the `boolean` field
+`expandFirstInstrument` and set it to `true`. The top method will be
 expanded when the payment UI is loaded. This is not mandatory, and can also be
 used as a stand-alone without sorting the order of the menu.
 

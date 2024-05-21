@@ -2,7 +2,7 @@
 title: Redirect
 redirect_from: /payments/mobile-pay/redirect
 description: |
-  **MobilePay Online** is a two-phase payment instrument which can be
+  **MobilePay Online** is a two-phase payment method which can be
   implemented by the supported redirect scenario.
   Swedbank Pay receives the MobilePay Online's details from the payer through
   Swedbank Pay Payments.

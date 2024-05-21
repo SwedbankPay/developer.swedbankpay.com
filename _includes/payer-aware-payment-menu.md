@@ -19,7 +19,7 @@ by default, asked if they want to store their payment details, so even with
 the details stored or not.
 
 {% include alert.html type="informative" icon="info" body="Please note that not
-all payment instruments provided by Swedbank Pay support Payer Awareness today."
+all payment methods provided by Swedbank Pay support Payer Awareness today."
 %}
 
 ## Trustly Express
@@ -39,14 +39,14 @@ find more information [here][trustly-presentation].
 ## BYO Payment Menu
 
 The payment UI is versatile and can be configured in such a way that it
-functions like a single payment instrument. In such configuration, it is easy to
+functions like a single payment method. In such configuration, it is easy to
 Bring Your Own Payment Menu, i.e. building a customized payment menu in your own
 user interface.
 
-## Add Stored Payment Instrument Details
+## Add Stored Payment Method Details
 
 When building a custom payment menu, features like adding new stored payment
-instrument details (i.e. "Add new card") is something that needs to be provided
+method details (i.e. "Add new card") is something that needs to be provided
 in your UI.
 
 This can be achieved by forcing the creation of a `paymentToken` by setting
@@ -225,7 +225,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 | {% icon check %} | {% f amount %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount %}               | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f description %}             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if include.documentation_section contains "payment-menu" %}
-| {% icon check %} | {% f instrument %}              | `string`     | The payment instrument used. Selected by using the [Instrument Mode][instrument-mode].                                                                                                                                                                                          | {% endif %}                                              |
+| {% icon check %} | {% f instrument %}              | `string`     | The payment method used. Selected by using the [Instrument Mode][instrument-mode].                                                                                                                                                                                          | {% endif %}                                              |
 |                  | {% f disableStoredPaymentDetails %} | `bool` | Set to `false` by default. Switching to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
 | {% icon check %} | {% f userAgent %}               | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 |                  | {% f generatePaymentToken %}     | `bool`       | Determines if a payment token should be generated. Default value is `false`.                                               |
@@ -293,7 +293,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 | {% icon check %} | {% f vatPercent, 2 %}              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
-|                  | {% f restrictedToInstruments %}  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
+|                  | {% f restrictedToInstruments %}  | `array`      | A list of the payment methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment methods. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain methods by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
@@ -415,10 +415,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
 | {% f initiatingSystemUserAgent %}      | `string`     | The `userAgent` of the system used when the merchant makes a call towards the resource.                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                | {% if documentation_section contains "checkout-v3" %}
 | {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 | {% else %}
 | {% f payer %}         | `id`     | The URL to the `payer` resource where information about the payer can be retrieved. | {% endif %}
@@ -597,10 +597,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f tokens %}                 | `integer` | A list of tokens connected to the payment.                                           |
 | {% f token, 2 %}               | `string`  | The token `guid`. |
 | {% f tokenType, 2 %}           | `string`  | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
-| {% f instrument %}             | `string`  | Payment instrument connected to the token. |
-| {% f instrumentDisplayName %}  | `string`  | Payment instrument connected to the token.|
+| {% f instrument %}             | `string`  | Payment method connected to the token. |
+| {% f instrumentDisplayName %}  | `string`  | Payment method connected to the token. |
 | {% f correlationId %}  | `string`  | A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to. |
-| {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+| {% f instrumentParameters %}   | `integer` | A list of additional information connected to the token. Depending on the payment method, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 | {% f operations %}             | `array`   | {% include fields/operations.md resource="token" %}                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
@@ -685,10 +685,10 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                           |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
 | {% f tokenType, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
-| {% f instrument %}             | `string`     | Payment instrument connected to the token. |
-| {% f instrumentDisplayName %}             | `string`     | Payment instrument connected to the token.|
+| {% f instrument %}             | `string`     | Payment methods connected to the token. |
+| {% f instrumentDisplayName %}             | `string`     | Payment method connected to the token.|
 | {% f correlationId %}  | `string`  | A unique ID used in the system. Makes it easier to see cards, accounts etc. the token is connected to. |
-| {% f instrumentParameters %}             | `integer`     | A list of additional information connected to the token. Depending on the instrument, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
+| {% f instrumentParameters %}             | `integer`     | A list of additional information connected to the token. Depending on the method, it can e.g. be `expiryDate`, `cardBrand`, `email`, `msisdn` or `zipCode`.|
 {% endcapture %}
 {% include accordion-table.html content=table %}
 

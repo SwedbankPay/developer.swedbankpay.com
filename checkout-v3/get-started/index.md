@@ -39,9 +39,9 @@ payment, **displaying** the payment UI, **verifying** the payment status and
 **post-purchase actions**. Don't hesitate with contacting us for further
 integration support.
 
-Depending on the instrument used, the payments are either **one-phased** or
+Depending on the payment method used, the payments are either **one-phased** or
 **two-phased**. **Swish** and **Trustly** have one-phase payments, the rest of
-the instruments are two-phased. One-phase payments are completed and the funds
+the methods are two-phased. One-phase payments are completed and the funds
 are transferred in one operation. They will be tagged as `Sale` transactions.
 Two-phase payments need two operations (`Authorization` and `Capture`) before
 funds are transferred. Read more about differences in handling when you get to

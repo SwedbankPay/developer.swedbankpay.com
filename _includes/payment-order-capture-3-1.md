@@ -5,9 +5,9 @@
 ## Capture v3.1
 
 Captures are only possible when a payment has a successful authorize
-transaction, naturally excluding one-phase payment instruments like
+transaction, naturally excluding one-phase payment methods like
 [Swish][swish] and [Trustly][trustly]. They will be marked as a `Sale`
-transaction. Two-phase payment instruments like [Card][card] and [Vipps][vipps]
+transaction. Two-phase payment methods like [Card][card] and [Vipps][vipps]
 however, require a `Capture` to be completed.
 
 Please note that you have a maximum of 5 **consecutive** failed attempts at a
@@ -198,10 +198,10 @@ api-supported-versions: 3.1{% endcapture %}
 | {% f description %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |

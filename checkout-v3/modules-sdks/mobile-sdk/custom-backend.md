@@ -7,7 +7,7 @@ menu_order: 900
 ---
 
 In this chapter we explore how to integrate the mobile SDK with a fully custom
-backend server. It is recommended that you also read through the chapters 
+backend server. It is recommended that you also read through the chapters
 covering the example Merchant Backend API and gain an understanding of how the
 SDK works with that as backend.
 
@@ -535,7 +535,7 @@ implementation, depending on your situation.
 
 The SDK includes a facility for updating a payment order after is has been
 created. The Merchant Backend Configuration uses this to allow setting the
-instrument of an instrument mode payment, but your custom Configuration can use
+method of an instrument mode payment, but your custom Configuration can use
 it for whatever purpose you need.
 
 <!--lint disable no-duplicate-headings-->

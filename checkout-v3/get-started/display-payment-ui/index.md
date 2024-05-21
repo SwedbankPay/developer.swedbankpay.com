@@ -9,12 +9,12 @@ menu_order: 6
 ## Display Payment UI
 
 There are a couple of decisions to be made when you are presenting your payment
-UI. You have the choice between a payment menu with all the payment instruments
-you want to offer, or with a single available payment instrument using
+UI. You have the choice between a payment menu with all the payment methods
+you want to offer, or with a single available payment method using
 instrument mode.
 
-Regardless of the number of instruments available to the payer, you also need to
-choose between `Redirect` and `Seamless View`.
+Regardless of the number of payment methods available to the payer, you also
+need to choose between `Redirect` and `Seamless View`.
 
 With `Redirect`, the payer is sent to a Swedbank Pay page where we handle the
 purchase process. The payer is redirected back to you when the purchase is
