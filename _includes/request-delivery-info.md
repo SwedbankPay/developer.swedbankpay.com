@@ -18,9 +18,9 @@ add the field `restrictedToDeliveryInfoInstruments` and setting it to `true`.
 This will leave out all methods which can't return delivery information.
 
 You are currently only able to request delivery information from **Apple Pay**,
-**Click to Pay**, **Google Pay&trade;** and **MobilePay**, but we will add
-support for more payment methods going forward. No changes are required at
-your (the merchant's) end to be able to offer more methods at a later time.
+**Click to Pay** and **Google Pay&trade;**, but we will add support for more
+payment methods going forward. No changes are required at your (the merchant's)
+end to be able to offer more methods at a later time.
 
 ## Request Delivery Info Request
 
