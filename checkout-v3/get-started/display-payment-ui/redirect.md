@@ -8,7 +8,7 @@ menu_order: 5
 
 ## Display Redirect
 
-Among the operations in the POST `paymentOrder`s response, you will find the
+Among the operations in the POST `paymentOrder`s response, you will find
 `redirect-checkout`. This is the one you need to display the payment UI.
 
 {% capture response_content %}{
@@ -31,9 +31,8 @@ Among the operations in the POST `paymentOrder`s response, you will find the
 
 ## How Redirect Looks
 
-The redirect link opens the payment menu on a new page with the payer
-information displayed above the menu. The payer can select their preferred
-payment method and pay.
+The redirect link opens the payment menu in a new page where the payer can
+select their preferred payment method and pay.
 
 {:.text-center}
 ![screenshot of the merchant managed implementation redirect payment menu][redirect-payments-only-menu]

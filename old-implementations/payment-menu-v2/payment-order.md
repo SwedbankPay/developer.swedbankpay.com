@@ -27,7 +27,7 @@ for Credit Card Payments" %}
 
 ### Response
 
-The response should look something like this (abbreviated for brevity):
+The response should include this (abbreviated for brevity):
 
 
 {% capture response_header %}HTTP/1.1 201 Created

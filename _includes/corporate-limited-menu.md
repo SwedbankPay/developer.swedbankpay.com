@@ -3,10 +3,10 @@
 
 ## Corporate Limited Menu
 
-Corporate Limited Menu allows you to limit the payment methods that show up
-when your customers pays through the menu. Do note that the method in
-question needs to support corporate payment methods **and** have the feature
-enabled during the contract setup to be shown in the menu.
+Corporate Limited Menu allows you to limit the payment methods available when
+your customers pays through the menu. Please note that the method in question needs
+to support corporate payment methods **and** have the feature enabled during the
+contract setup to be shown in the menu.
 
 If you don't invoke the restriction in your payment order request, every valid
 payment method will show up as usual in the payment menu. This is done by

@@ -4,7 +4,7 @@
 
 ## Restrict Payments To An Age Limit
 
-Swedbank Pay provides the possibility to restrict payments to an Age Limit from
+Swedbank Pay provides the possibility to restrict payments to an age limit with
 payment methods which support this. This can be used when you want to make
 sure you only accept payments from individuals over a certain age. You are
 currently only able to restrict Swish payments to an Age Limit, but we will add
@@ -16,7 +16,7 @@ your payment order request and setting it to the age limit you wish to restrict
 your payments to. This will leave out all methods which do not support this
 feature. For instance, set `restrictedToAgeLimit` to 20 if you only want to
 accept payments from individuals over the age 20. Methods supporting the
-feature will reject payments that do not match the restriction.
+feature will reject payments that do not meet the restriction.
 
 ## Restrict Payments To An Age Limit Request
 

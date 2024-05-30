@@ -8,10 +8,10 @@ authenticated by the merchant, the payer's identity can be included in the
 Payment Order request." %}
 
 **Delegated Strong Customer Authentication** (hereby abbreviated as "Delegated
-SCA") is performed as an alternative to `Checkin` when creating the
-Payment Order upon the initialization of the `Payment Menu`. You
-can only use Delegated SCA if you have an agreement with Swedbank Pay. The
-additional `nationalIdentifier` field described below should be added to the
+SCA") is performed as an alternative to `Checkin` when creating the Payment
+Order upon the initialization of the `Payment Menu`. You can only use Delegated
+SCA if you have an agreement with Swedbank Pay. The additional
+`nationalIdentifier` field described below should be added to the
 `paymentorder.payer` object already in the Payment Order creation request, as an
 alternative to `consumerProfileRef`.
 
@@ -59,9 +59,10 @@ will allow a more frictionless payment process. Invoice One-Click Payments does
 not require the last 4/5 digits of the payer's social security number (SSN),
 for instance.
 
-Below you can see an example of the payment window with and without Enterprise. In the
-first image, the SSN is removed altogether because the payer is authenticated by
-the merchant. In the bottom image, the last 4/5 digits of the SSN are required.
+Below you can see an example of the payment window with and without Enterprise.
+In the first image, the SSN is removed altogether because the payer is
+authenticated by the merchant. In the bottom image, the last 4/5 digits of the
+SSN are required.
 
 {:.text-center}
 ![One-Click Payments without SSN][enterprise-no-ssn]{:width="475" height="385"}

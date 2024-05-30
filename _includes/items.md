@@ -1,6 +1,6 @@
 ## Items
 
-The `items` field of the `paymentOrder` is an array containing items that will
+The `items` field of the `paymentOrder` is an `array` containing items that will
 affect how the payment is performed.
 
 {% include alert.html type="warning" icon="warning" header="MobilePay"
