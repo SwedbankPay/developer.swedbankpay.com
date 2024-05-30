@@ -49,21 +49,13 @@ under `availableInstruments` in the initial `paymentOrder` response.
 | Trustly | "Trustly" |
 | Vipps | "Vipps" |
 
-## Expand the First Payment Method
-
-A useful addition to sorting the order in the payment menu, is auto-expanding
-the first method. This is done by adding the `boolean` field
-`expandFirstInstrument` and set it to `true`. The top method will be
-expanded when the payment UI is loaded. This is not mandatory, and can also be
-used as a stand-alone without sorting the order of the menu.
-
 ## Request Example
 
-The request with both fields included should look like the example below.
+The request with `restrictedToInstruments` included should look like the example
+below.
 
-Neither `expandFirstInstrument` or `restrictedToInstruments` will be visible in
-the **response**, so we will not include it here. The response will look like
-a basic `paymentOrder` response.
+The field will not be visible in the **response**, so we will only include the
+request here. The response will look like a basic `paymentOrder` response.
 
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
@@ -72,7 +64,6 @@ Content-Type: application/json;version=3.1,3.0{% endcapture %}
 
 {% capture request_content %}{
     "paymentorder": {
-        "expandFirstInstrument": true,
         "restrictedToInstruments": [
             "Swish",
             "CreditCard",
