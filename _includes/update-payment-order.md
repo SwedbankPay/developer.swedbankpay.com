@@ -7,7 +7,8 @@ update the `orderItems` for the payment order. Should you need to update the
 with the updated `orderItems`." %}
 
 The `UpdateOrder` operation is used when there is a change in the amount, vat
-amount or there are added or removed order items in the payment order.
+amount or there are added or removed order items in the payment order. This
+feature is available in **Seamless View** only.
 
 {% include alert.html type="informative" icon="info" body="If you implement
 `UpdateOrder` you need to `refresh()` the Payment Menu frontend after you have

@@ -4,9 +4,11 @@
 ## Fees And Discounts
 
  If you want to add fees or discounts to your payment order, this can be done by
- include them as `orderItems` in your request. Use positive amounts for fees and
- negative amounts for discounts. Remember that the sum of the `orderItems` must
- match the total payment order amount.
+ include them as `orderItems` in your request. The feature is currently
+ available for **Invoice**, **Installment Account** and **Monthly Payments**.
+
+ Use positive amounts for fees and negative amounts for discounts. Remember
+ that the sum of the `orderItems` must match the total payment order amount.
 
  Restricting the fee or discount to certain payment methods is also possible.
  Simply add the `restrictedToInstruments` field and which method the fee or

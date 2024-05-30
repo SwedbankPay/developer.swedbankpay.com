@@ -257,10 +257,6 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "language": "sv-SE",
         "availableInstruments": [
           "CreditCard",
-          "Invoice-PayExFinancingSe",
-          "Invoice-PayMonthlyInvoiceSe",
-          "Swish",
-          "CreditAccount",
           "Trustly" ],
         "integration": "HostedView", //For Seamless View integrations
         "integration": "Redirect", //For Redirect integrations

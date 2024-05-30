@@ -19,8 +19,8 @@ by default, asked if they want to store their payment details, so even with
 the details stored or not.
 
 {% include alert.html type="informative" icon="info" body="Please note that not
-all payment methods provided by Swedbank Pay support Payer Awareness today."
-%}
+all payment methods provided by Swedbank Pay support Payer Awareness today. It
+is not available for Invoice, Installment Account or Monthly Payments." %}
 
 ## Trustly Express
 
