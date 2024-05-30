@@ -151,8 +151,8 @@ original `POST` when you created the `paymentOrder`.
 ## GET Response
 
 When performing an HTTP `GET` request towards the URL found in the
-`transaction.id` field of the callback, the response is going to look
-something like the abbreviated example provided below.
+`transaction.id` field of the callback, the response is going to include the
+abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
 

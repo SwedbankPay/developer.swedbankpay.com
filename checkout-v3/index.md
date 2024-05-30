@@ -91,7 +91,7 @@ this section. We recommend [getting started here][get-started].
 This implementation is available in Danish `da-DK`, English (US) `en-US`,
 Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
 contents of your payment UI from the following payment methods, somewhat
-depending on which countries you are operating in.
+depending on which countries you are operating.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
 body="Some of the digital wallets we offer require you to take additional steps

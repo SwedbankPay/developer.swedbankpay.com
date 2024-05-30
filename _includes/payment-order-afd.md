@@ -7,7 +7,7 @@
 
 {% include alert-agreement-required.md %}
 
-An Automated Fuel Dispenser (AFD) payment is a purchase where the user
+An Automated Fuel Dispenser (AFD) payment is a purchase where the merchant
 requests an authorization transaction for an automatic fuel dispenser. The
 request contains the maximum purchase amount, but the issuer can reply with a
 partial approval to lower the maximum purchase amount. This can be used to stop
@@ -16,10 +16,10 @@ the fuel dispension at the maximum price.
 The only supported use case is automated fuel dispensers. To be able to verify
 this, it is required that the Merchant Category Code `mcc` is passed in the
 request under `PayeeInfo`. This feature is only supported with the `Purchase`
-operation. It does not support with [order items][order-items].
+operation. It does not support [order items][order-items].
 
 By default the available payment methods and card types will be limited to those
-which support AFD payments. To enable other payment options for the payer, pass
+which support AFD payments. To enable other payment options for the payer, send
 in `restrictedToAfdInstruments` with the value `false`.
 
 See the abbreviated example below on how to implement AFD payments by setting

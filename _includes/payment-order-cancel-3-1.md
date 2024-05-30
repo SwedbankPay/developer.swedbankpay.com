@@ -176,7 +176,7 @@ api-supported-versions: 3.1{% endcapture %}
 Cancel can only be done on an authorized transaction. As a cancellation does not
 have an amount associated with it, it will release the entire reserved amount.
 If your intention is to make detailed handling, such as only capturing a partial
-amount of the transaction, you must start with the capture on the desired amount
+amount of the transaction, you must start with the capture of the desired amount
 before performing a cancel for the remaining reserved funds.
 
 ```mermaid

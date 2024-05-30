@@ -10,9 +10,9 @@ menu_order: 6
 
 ## Swedbank Pay Checkout Test Data
 
-During a Swedbank Pay Checkout implementation, you can use the test data related
-to the different payment methods listed below. To see Swedbank Pay Checkout
-in action, please visit the [Playground][playground].
+When implementing Digital Payments, you can use the test data related to the
+different payment methods listed below. To see Digital Payments in live action,
+please visit the [Playground][playground].
 
 To test a checked-in user in the Playground, please use the following test data:
 

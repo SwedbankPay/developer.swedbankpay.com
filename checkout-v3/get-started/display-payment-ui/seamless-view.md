@@ -93,8 +93,8 @@ request.send();
 
 ## How Seamless View Looks
 
-The payment menu should appear with the payer information displayed above the
-menu. The payer can select their preferred payment method and pay.
+The payment menu should appear in the iframe on your page, so the payer can
+select their preferred payment method and pay.
 
 {:.text-center}
 ![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]

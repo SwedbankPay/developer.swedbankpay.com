@@ -37,7 +37,7 @@ Remember to read up on our [URL resource][urls].
 
 ### Response
 
-The response back should look something like this (abbreviated for brevity):
+The response back should include this (abbreviated for brevity):
 
 {% capture response_header %}HTTP/1.1 201 Created
 Content-Type: application/json{% endcapture %}

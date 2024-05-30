@@ -26,8 +26,8 @@
 ## Description
 
 The `description` field is a 40 character length textual summary of the
-purchase. It is needed to specify what payer is actually purchasing. Below you
-will find an abbreviated Card Payments `Purchase` request.
+purchase. It is needed to specify what the payer is actually purchasing. You
+will find an abbreviated `Purchase` request below.
 
 As you can see the `description` field is set to be `Test Description`
 in the the code example.
