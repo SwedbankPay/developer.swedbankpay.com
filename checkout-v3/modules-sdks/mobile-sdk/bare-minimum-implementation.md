@@ -137,6 +137,18 @@ operation `href` in the `viewPaymentLink` parameter of `ViewPaymentOrderInfo`.
 ```kotlin
 class TestConfiguration : Configuration() {
 
+    val orderInfo: ViewPaymentOrderInfo
+        get() {
+            return ViewPaymentOrderInfo(
+                viewPaymentLink = "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
+                webViewBaseUrl = "https://example.com/",
+                completeUrl = "https://example.com/complete",
+                cancelUrl = "https://example.com/cancel",
+                paymentUrl = "examplepayment://payment/",
+                isV3 = true
+            )
+        }
+
     // This method is required but not used
     override suspend fun postConsumers(
         context: Context,
@@ -152,14 +164,7 @@ class TestConfiguration : Configuration() {
         userData: Any?,
         consumerProfileRef: String?
     ): ViewPaymentOrderInfo {
-        return ViewPaymentOrderInfo(
-            viewPaymentLink = "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
-            webViewBaseUrl = "https://example.com/",
-            completeUrl = "https://example.com/complete",
-            cancelUrl = "https://example.com/cancel",
-            paymentUrl = "examplepayment://payment/",
-            isV3 = true
-        )
+        return orderInfo
     }
 }
 ```
@@ -285,6 +290,17 @@ enum SwedbankPayConfigurationError: Error {
 }
 
 class TestConfiguration: SwedbankPaySDKConfiguration {
+    let orderInfo: SwedbankPaySDK.ViewPaymentOrderInfo
+    
+    init() {
+        orderInfo = SwedbankPaySDK.ViewPaymentOrderInfo(isV3: true,
+                                                        webViewBaseURL: URL(string: "https://example.com/"),
+                                                        viewPaymentLink: URL(string: "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959")!,
+                                                        completeUrl: URL(string: "https://example.com/complete")!,
+                                                        cancelUrl: URL(string: "https://example.com/cancel"),
+                                                        paymentUrl: URL(string: "examplepayment://payment/"),
+                                                        termsOfServiceUrl: URL(string: "https://example.com/tos"))
+    }
 
     // This delegate method is required but not used
     func postConsumers(consumer: SwedbankPaySDK.Consumer?,
@@ -298,16 +314,8 @@ class TestConfiguration: SwedbankPaySDKConfiguration {
                            consumerProfileRef: String?,
                            options: SwedbankPaySDK.VersionOptions,
                            completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void) {
-        let info = SwedbankPaySDK.ViewPaymentOrderInfo(isV3: true,
-                                                       webViewBaseURL: URL(string: "https://example.com/"),
-                                                       viewPaymentLink: URL(string: "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959")!,
-                                                       completeUrl: URL(string: "https://example.com/complete")!,
-                                                       cancelUrl: URL(string: "https://example.com/cancel"),
-                                                       paymentUrl: URL(string: "examplepayment://payment/"),
-                                                       termsOfServiceUrl: URL(string: "https://example.com/tos"))
-        completion(.success(info))
+        completion(.success(orderInfo))
     }
-
 }
 ```
 
