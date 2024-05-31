@@ -103,19 +103,28 @@ If you would like the implementation to have basic return URL functionality
 (that is, having the ability for external apps like Vipps and BankID to return
 back to your app automatically after they are done) you need to make sure that
 the payment URL will launch the app. A basic way to enable this is a custom URL
-scheme (`examplepayment://`). To make the your app launch for such URLs in the
-system, you need to add the following to your manifest file:
+scheme (`examplepayment://`).
 
-```xml
-<activity android:name=".MainActivity">
-    <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="examplepayment" android:host="path" />
-    </intent-filter>
-</activity>
+You can set this up using the template intent filter prepared in the SDK, that
+uses a [Gradle Manifest Placeholder][gradle-manifest-placeholders]. You do this
+by specifying your custom URL scheme in you `build.gradle` file:
+
+```groovy
+defaultConfig {
+    manifestPlaceholders = [swedbankPaymentUrlScheme:"examplepayment"]
+}
 ```
+
+Or in your `gradle.kts` file:
+
+```kotlin
+defaultConfig {
+    manifestPlaceholders["swedbankPaymentUrlScheme"] = "examplepayment"
+}
+```
+
+If you plan to use something other than `examplepayment://`, make sure to modify
+the manifest placeholder value accordingly.
 
 ## Android SDK Configuration
 
@@ -244,6 +253,9 @@ properties`, and add a property with the key
 You can also edit the `Info.plist` file directly, if you wish.
 
 ![Payment url scheme added in Info.plist editor][custom-scheme-2]
+
+If you plan to use something other than `examplepayment://`, make sure to modify
+the URL scheme value accordingly.
 
 To forward the custom-scheme payment urls to the SDK, implement the
 [`application(_:open:options:)`][uiappdelegate-openurl]{:target="_blank"} method
@@ -375,12 +387,6 @@ This causes several issues in a production environment:
 drawbacks, including prompting the user with an additional confirmation popup
 as well as being unable to verify URL ownership to your specific app (other
 apps can declare the same custom URL scheme outside of your control).
-*   On Android, the SDK expects the app to be launched by external apps using an
-`intent:` scheme URL. This ties into the intent filter contained in the SDK,
-that will bring the containing application to the foreground and reload the
-payment menu. Because we're using the simpler custom URL scheme in this
-implementation, the payment menu will not reload and this will result in some
-payment instruments not behaving correctly.
 *   There are a few, albeit rare, scenarios where the user can end up launching
 the Payment URL in the mobile browser on their phone. For URLs with custom
 schemes that's handled nicely, but for universal URLs, it's more problematic.
