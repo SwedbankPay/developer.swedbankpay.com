@@ -46,7 +46,7 @@ pod 'SwedbankPaySDK', '~> {{ page.mobile_sdk_ios_version }}'
 pod 'SwedbankPaySDKMerchantBackend', '~> {{ page.mobile_sdk_ios_version }}'
 ```
 
-## Url Scheme and Associated Domain
+## Custom URL Scheme and Associated Domain
 
 The [Payment Url][payment-url] handling in the iOS SDK uses
 [Universal Links][ios-universal-links]{:target="_blank"}, and additionally a
