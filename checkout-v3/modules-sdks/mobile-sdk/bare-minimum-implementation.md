@@ -407,6 +407,7 @@ the next chapter [Custom Backend][payemnt-url].
                          next_href="/checkout-v3/modules-sdks/mobile-sdk/custom-backend"
                          next_title="Next: Custom Backend" %}
 
+[gradle-manifest-placeholders]: https://developer.android.com/build/manage-manifests#inject_build_variables_into_the_manifest
 [sdk-package-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git
 [custom-scheme-1]: /assets/img/mobile-sdk/ios-custom-scheme-1.png
 [custom-scheme-2]: /assets/img/mobile-sdk/ios-custom-scheme-2.png
