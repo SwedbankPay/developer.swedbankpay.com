@@ -339,28 +339,35 @@ underlying API communication. This is most likely due to network errors, such as
 poor cell phone coverage. The SDK will automatically attempt retries of failing
 API calls up to a point, where it finally gives up and informs you via this
 value. The `error` parameter contains the underlying Swift `Error` object
-received from the system. The `retry` parameter is a closure on iSO and a
+received from the system. The `retry` parameter is a closure on iOS and a
 callback function on Android that you can call to retry the underlying API call.
 You should inform the user of the error and give the option to either abort the
 payment session or retry the call.
 * `ClientAppLaunchFailed` informs you that the SDK have attempted to launch an
 external app (such as Swish) and that it failed to do so. You should inform the
-user of the problem and 
+user of the problem and give them the option to either make a new attempt (with
+any available payment method) or to abort the whole payment session.
 * `InternalInconsistencyError` is the result of an logic inconsistency problem
 in the SDK. An example of this would be to call `abortPaymentSession()` before
 `startPaymentSession()`. If you receive this error during development, you
-should make sure that you follow the [usage][usage flow] correctly. If you get
+should make sure that you follow the [usage flow][usage] correctly. If you get
 this error in your production app, you should inform the user of a generic
 technical error and restart the checkout process.
 * `PaymentSessionEndReached` is the result of a native payment session that has
 reached a state that isn't supported by the SDK. Since payment orders can be
 consumed either on the web, as a web based mobile app payment or as an app
 native payment, you could theoretically modify the state of a payment order on
-two different devices, or start in one context and try to continue in another.
-If you get this error during development, you should make sure that you follow
-the [usage][usage flow] correctly, and that you are always starting native
-payment sessions on a newly created payment order that is only consumed in your
-app. If you get this error in your production app, you should inform the user of
+two different devices at the same time, or start on one device and try to
+continue on another.
+
+    If you get this error during development, you should make sure that you
+follow the [usage flow][usage] correctly, and that you are always starting
+native payment sessions on a newly created payment order that is only consumed
+in your app. You should also make sure that you've correctly configured the SDK
+with the same `completeURL`, `cancelURL` and `paymentURL` as you are creating
+the payment order with on your backend.
+
+    If you get this error in your production app, you should inform the user of
 a generic technical error and restart the checkout process.
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
