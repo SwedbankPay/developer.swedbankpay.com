@@ -1,9 +1,10 @@
 ---
-title: Expand First Method
+title: Expand The First Payment Method
 permalink: /:path/expand-method/
+redirect_from: /checkout-v3/features/optional/expand-method/
 description: |
   Auto-expand the first payment method in your menu.
-menu_order: 2000
+menu_order: 1700
 icon:
   content: unfold_more
   outlined: true
