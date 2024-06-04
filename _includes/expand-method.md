@@ -53,4 +53,4 @@ Content-Type: application/json;version=3.1,3.0{% endcapture %}
     json= request_content
     %}
 
-[cust-menu]: /checkout-v3/features/optional/sort-order-payment-menu/
+[cust-menu]: /checkout-v3/features/customize-ui/sort-order-payment-menu/

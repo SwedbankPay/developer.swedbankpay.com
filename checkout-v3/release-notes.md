@@ -1043,7 +1043,7 @@ more convenient for both the integration and the payer.
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/get-started/display-payment-ui/
 [dom-ver]: /checkout-v3/payment-presentations#domain-verification
-[eligibility-check]: /checkout-v3/features/optional/instrument-mode#eligibility-check
+[eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
 [mac]: /old-implementations/checkout-v2/features/optional/mac
 [fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
 [features]: /checkout-v3/features
@@ -1103,7 +1103,7 @@ more convenient for both the integration and the payer.
 [settlement-reconcilitation]: /old-implementations/payment-instruments-v1/card/features/core/settlement-reconciliation
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
 [sdk-modules]: /checkout-v3/modules-sdks
-[sort-order]: /checkout-v3/features/optional/sort-order-payment-menu
+[sort-order]: /checkout-v3/features/customize-ui/sort-order-payment-menu
 [split-settlement]: /checkout-v3/features/optional/split-settlement
 [spp]: https://playground.swedbankpay.com
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
