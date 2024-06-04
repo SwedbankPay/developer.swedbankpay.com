@@ -39,33 +39,26 @@ session APIs, querying and providing payment methods compatible with the mobile
 device, launches external apps (such as Swish local start) as well as providing
 detailed event logging to ease troubleshooting.
 
-As an overview, you can look at the follow flowchart of a native payment
-session:
+In a nutshell, the payment flow for Native Payments is very simple. A best case
+happy flow would look like this:
 
 ```mermaid
 sequenceDiagram
     participant App
     participant SDK
-    participant Ext as External App
 
-    App ->> SDK: startPaymentSession
-    SDK ->> App: availableInstrumentsFetched
-    App ->> SDK: makePaymentAttempt
-    opt Launch External Application
-        SDK ->> Ext: Start external application
-        Ext ->> SDK: Return from external application
-    end
-    opt On payment problems
-        SDK ->> App: sessionProblemOccurred
-    end
-    opt If aborted by customer
-        App ->> SDK: abortPaymentSession
-        SDK ->> App: paymentCanceled
-    end
-    opt On completed payment
-        SDK ->> App: paymentComplete
-    end
+    App ->> SDK: Initiate SDK Configuration
+    App ->> SDK: startPaymentSession()
+    App ->> App: Show loading indicator
+    SDK ->> App: availableInstrumentsFetched()
+    App ->> App: Present available payment methods to user
+    App ->> SDK: makePaymentAttempt()
+    App ->> App: Show loading indicator
+    SDK ->> App: paymentComplete()
 ```
+
+We will expand on this further with more [detailed usage flows][detailed-usage-flows]
+below.
 
 ## The Session URL
 
@@ -370,6 +363,179 @@ the payment order with on your backend.
     If you get this error in your production app, you should inform the user of
 a generic technical error and restart the checkout process.
 
+## Detailed usage flows
+
+To expand on the simple happy flow, there are a few more possible scenarios when
+making Native Payments. Below you can find a more complete flow with notes and
+multiple outcomes:
+
+```mermaid
+sequenceDiagram
+    %% box Merchant Native App
+        participant App
+        participant SDK
+    %% end
+    participant Ext as External App
+    participant Backend as Merchant Backend
+    participant SWP as Payment Order API
+
+    App ->> Backend: Initiate checkout
+    Backend ->> SWP: Create Payment Order ①
+    SWP ->> Backend: Payment Order information
+    Backend ->> App: Payment Order information
+    App ->> SDK: Initiate SDK Configuration ②
+    App ->> SDK: startPaymentSession() ③
+    App ->> App: Show loading indicator
+    SDK ->> App: availableInstrumentsFetched()
+    App ->> App: Present available payment methods to user
+    App ->> SDK: makePaymentAttempt()
+    App ->> App: Show loading indicator
+    opt
+        SDK ->> App: paymentComplete()
+        note over SDK, App: Very low friction payments can finish here
+    end
+    opt Payments in External App
+        SDK ->> Ext: Start external app
+        Ext ->> SDK: Return from external app
+        opt On iOS
+            App ->> SDK: SwedbankPaySDK.open(url:) ④
+        end
+    end
+    opt
+        SDK ->> App: paymentComplete()
+        note over SDK, App: Payments completed in external apps can finish here
+    end
+    opt On payment problems
+        SDK ->> App: sessionProblemOccurred() ⑤
+        App ->> App: Present problem description to user
+        note over SDK, App: User can either make a new payment attempt<br/>with any available instrument, or abort the session
+    end
+    opt On SDK problems
+        SDK ->> App: sdkProblemOccurred() ⑤
+        App ->> App: Present problem description to user
+        note over SDK, App: Depending on the SDK problem, the user can either retry, make a<br/>new payment attempt, or you need to restart the payment session.
+    end
+    opt If user aborts session
+        App ->> SDK: abortPaymentSession()
+        App ->> App: Show loading indicator
+        SDK ->> App: paymentCanceled()
+    end
+```
+
+* ① Just as with regular non-native payments in the Swedbank Pay Mobile SDK,
+there is no option to create payment orders directly. You need to create your
+payment orders with your own backend.
+* ② The SDK is configured as usual, with the regular required parameters such
+as `paymentURL`, `completeURL` and `cancelURL`.
+* ③ Starting a Native Session in the SDK requires a [Session URL][session-url].
+* ④ Just as with non-native payments, the `SwedbankPaySDK.open(url:)` method
+needs to be called from the App Delegate, see [iOS Setup][ios-bare-minimum-setup].
+This is not needed on Android.
+* ⑤ See [Problem handling][problem-handling] for different considerations and
+outcomes.
+
+### Alternative checkout flows
+
+Depending on the checkout flow in your app, there might be a need to implement
+the Native Payment feature slightly different.
+
+#### Payment menu fallback
+
+You might want to give the user an option to use the regular, web view based,
+payment menu in the SDK. One simple way to achieve this is to reuse the same
+payment order and present the regular SDK UI depending on the user choice:
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant SDK
+
+    App ->> SDK: Initiate SDK Configuration
+    note over App, SDK: Including viewPaymentLink
+    App ->> SDK: startPaymentSession()
+    App ->> App: Show loading indicator
+    SDK ->> App: availableInstrumentsFetched()
+    App ->> App: Present available payment methods to user
+    note over App: Including custom "More payment methods" option
+    opt If a native payment instrument is picked by user
+        App ->> SDK: makePaymentAttempt()
+        App ->> App: Show loading indicator
+        SDK ->> App: paymentComplete()
+    end
+    opt If "more payment methods" is picked by user
+        App ->> SDK: Present payment menu
+        note over App, SDK: Android: PaymentFragment<br/>iOS: SwedbankPaySDKController
+        SDK ->> App: paymentComplete()
+        note over App, SDK: Regular, non-native payment, callback
+    end
+```
+
+#### Present methods before payment order creation
+
+There might be scenarios where you want to presenting payment methods to your
+user before creating your payment order. This could be because you have payment
+methods not using Swedbank Pay, or because you need to create your payment order
+in different ways depending on the choice of payment method by the user. You can
+achieve this by simply presenting available payment methods to the user in your
+UI and saving the picked method to a local cache. When the SDK callback
+`availableInstrumentsFetched()` is called, you match the available instruments
+to the saved cache and makes a payment attempt on that instrument without right
+away.
+
+You can combine this with [Network Tokenization][network-tokenization] for
+credit card where you can fetch the users saved payment tokens before creating
+your payment order.
+
+```mermaid
+sequenceDiagram
+    participant App
+    participant SDK
+    participant Backend as Merchant Backend
+    participant SWP as Payment Order API
+    
+    opt If you want to present saved tokens
+        App ->> Backend: Fetch saved credit cards
+        Backend ->> SWP: Fetch Payer Owned Tokens
+        SWP ->> Backend: Payer Owned Tokens
+        Backend ->> App: Saved payment token list
+    end
+    App ->> App: Present available payment methods to user
+    App ->> App: Save payment method picked by user to local cache
+    App ->> Backend: Initiate checkout
+    Backend ->> SWP: Create Payment Order
+    SWP ->> Backend: Payment Order information
+    Backend ->> App: Payment Order information
+    App ->> SDK: Initiate SDK Configuration
+    opt If a native payment instrument is picked by user
+        App ->> SDK: startPaymentSession()
+        App ->> App: Show loading indicator
+        SDK ->> App: availableInstrumentsFetched()
+        App ->> App: Automatically choose instrument
+        note over App: Match previously picked payment method in<br/>local cache to list of available instruments,<br/>without user any user interaction
+        App ->> SDK: makePaymentAttempt()
+        App ->> App: Show loading indicator
+        SDK ->> App: paymentComplete()
+    end
+    opt If non-native instrument is picked by user
+        App ->> SDK: Present payment menu
+        note over App, SDK: Android: PaymentFragment<br/>iOS: SwedbankPaySDKController
+        SDK ->> App: paymentComplete()
+        note over App, SDK: Regular, non-native payment, callback
+    end
+```
+
+#### "New credit card" payment method
+
+In the scenario that you present custom payment methods outside the instruments
+in the `availableInstruments` array, you might want to give the user the option
+to pay with a new credit card. The Native Payments SDK gives no option for you
+to collect credit card details (such as card number, expiry date and
+verification code), so your only option is to present the regular web view based
+payment menu. You should preferably combine this with the option to create a
+instrument mode payment order and configure
+[Store details and toggle consent checkbox][one-click-consent-checkbox].
+
+
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
                          prev_title="Back: iOS"
                          next_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
@@ -381,3 +547,8 @@ a generic technical error and restart the checkout process.
 [ios-bare-minimum-configuration]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-configuration
 [problem-technical-reference]: /checkout-v3/features/technical-reference/problems/
 [usage]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage
+[detailed-usage-flows]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows
+[problem-handling]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling
+[session-url]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url
+[network-tokenization]: /checkout-v3/features/optional/network-tokenization/
+[one-click-consent-checkbox]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
