@@ -247,12 +247,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
-          "CreditCard",
-          "Invoice-PayExFinancingSe",
-          "Invoice-PayMonthlyInvoiceSe",
-          "Swish",
-          "CreditAccount",
-          "Trustly" ],{% if documentation_section contains "old-implementations/enterprise" %}
+          "CreditCard", ],{% if documentation_section contains "old-implementations/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
