@@ -107,7 +107,7 @@ when we get there.
 [nwt]: /checkout-v3/features/optional/network-tokenization/
 [post-purchase]: /checkout-v3/get-started/post-purchase-3-1/
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
-[set-rec]: /checkout-v3/features/core/settlement-reconciliation/#report-samples
+[set-rec]: /checkout-v3/features/balancing-the-books/settlement-reconciliation/#report-samples
 [test-cards]: /checkout-v3/test-data/#network-tokenization
 [unscheduled]: /checkout-v3/features/optional/unscheduled/
 [recur]: /checkout-v3/features/optional/recur/

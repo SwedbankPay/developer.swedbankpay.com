@@ -1,8 +1,8 @@
 ---
 title: Customize The UI
-description: All the payment UI customization options we offer
+description: All the payment UI customization options we offer.
 permalink: /:path/
-menu_order: 1200
+menu_order: 1300
 anchor_headings: false
 ---
 

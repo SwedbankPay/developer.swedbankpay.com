@@ -4,7 +4,7 @@ permalink: /:path/sort-order-payment-menu/
 redirect_from: /checkout-v3/features/optional/sort-oder-payment-menu/
 description: |
   Sort the order of and restrict your payment menu
-menu_order: 1600
+menu_order: 1700
 icon:
   content: format_list_numbered
   outlined: true

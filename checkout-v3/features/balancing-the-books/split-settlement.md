@@ -1,9 +1,10 @@
 ---
 title: Split Settlement
 permalink: /:path/split-settlement/
+redirect_from: /checkout-v3/features/optional/split-settlement/
 description: |
-  For merchants with several sub-merchants.
-menu_order: 3500
+ A split option for merchants with several sub-merchants.
+menu_order: 1300
 icon:
   content: call_split
   outlined: true
