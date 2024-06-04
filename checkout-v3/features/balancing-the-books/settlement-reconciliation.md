@@ -1,9 +1,10 @@
 ---
 title: Settlement & Reconciliation
 permalink: /:path/settlement-reconciliation/
+redirect_from: /checkout-v3/features/core/settlement-reconciliation/
 description: |
-  Balancing the books.
-menu_order: 1800
+  The settlement process and report examples.
+menu_order: 1200
 icon:
   content: description
   outlined: true

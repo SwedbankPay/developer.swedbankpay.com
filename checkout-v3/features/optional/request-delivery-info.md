@@ -3,7 +3,7 @@ title: Request Delivery Information
 permalink: /:path/request-delivery-info/
 description: |
   Request that payment methods return delivery information.
-menu_order: 3300
+menu_order: 3000
 icon:
   content: local_shipping
   outlined: true
