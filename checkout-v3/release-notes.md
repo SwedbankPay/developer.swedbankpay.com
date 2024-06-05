@@ -1069,7 +1069,7 @@ more convenient for both the integration and the payer.
 [mobilepay-capture]: /old-implementations/payment-instruments-v1/mobile-pay/capture
 [modules-sdks]: /checkout-v3/modules-sdks
 [moto-payment-card]: /old-implementations/payment-instruments-v1/card/features/optional/moto
-[nwt]: /checkout-v3/features/optional/network-tokenization
+[nwt]: /checkout-v3/features/customize-payments/network-tokenization
 [nwt-test]: /checkout-v3/test-data/#network-tokenization
 [old-implementations]: /old-implementations/
 [one-click]: /old-implementations/payment-instruments-v1/card/features/optional/one-click-payments
