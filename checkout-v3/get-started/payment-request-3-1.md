@@ -83,7 +83,7 @@ Read more about possible additions to the request in our
 [callback-31]: /checkout-v3/features/core/callback
 [features]: /checkout-v3/features/
 [fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
-[frictionless]: /checkout-v3/features/core/frictionless-payments
+[frictionless]: /checkout-v3/features/customize-payments/frictionless-payments
 [history]: /checkout-v3/features/technical-reference/resource-sub-models#history
 [order-items]: /checkout-v3/features/optional/order-items
 [post-31]: /checkout-v3/get-started/post-purchase-3-1

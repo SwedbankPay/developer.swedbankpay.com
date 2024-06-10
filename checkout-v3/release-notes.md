@@ -994,7 +994,7 @@ more convenient for both the integration and the payer.
 [android-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
 [apple-pay]: /checkout-v3/payment-presentations#apple-pay
-[astopb]: /checkout-v3/features/optional/action-specific-text-on-payment-button
+[astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [callback]: /checkout-v3/features/core/callback
@@ -1035,7 +1035,7 @@ more convenient for both the integration and the payer.
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
-[custom-styling]: /checkout-v3/features/optional/custom-styling
+[custom-styling]: /checkout-v3/features/customize-ui/custom-styling
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
@@ -1048,7 +1048,7 @@ more convenient for both the integration and the payer.
 [fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
 [features]: /checkout-v3/features
 [fppa]: /checkout-v3/features/technical-reference/resource-sub-models#failedpostpurchaseattempts
-[frictionless-payments]: /checkout-v3/features/core/frictionless-payments
+[frictionless-payments]: /checkout-v3/features/customize-payments/frictionless-payments
 [frontpage]: https://developer.swedbankpay.com/
 [fundamental-principles]: /checkout-v3/get-started/fundamental-principles
 [get-started]: /checkout-v3/get-started
@@ -1104,7 +1104,7 @@ more convenient for both the integration and the payer.
 [sdk-guidelines]: /checkout-v3/modules-sdks/development-guidelines
 [sdk-modules]: /checkout-v3/modules-sdks
 [sort-order]: /checkout-v3/features/customize-ui/sort-order-payment-menu
-[split-settlement]: /checkout-v3/features/optional/split-settlement
+[split-settlement]: /checkout-v3/features/balancing-the-books/split-settlement
 [spp]: https://playground.swedbankpay.com
 [ssn-restrictions]: /checkout-v3/features/optional/payer-restrictions
 [status-models]: /checkout-v3/features/technical-reference/status-models
@@ -1127,7 +1127,7 @@ more convenient for both the integration and the payer.
 [test-data]: /checkout-v3/test-data
 [token04]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
-[tos-url]: /checkout-v3/features/optional/tos
+[tos-url]: /checkout-v3/features/customize-ui/tos
 [trustly-pres]: /checkout-v3/payment-presentations#trustly
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra

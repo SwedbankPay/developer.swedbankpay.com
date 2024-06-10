@@ -298,6 +298,4 @@ Content-Type: application/json{% endcapture %}
 [card-payment-capture]: /old-implementations/payment-instruments-v1/card/capture
 [card-payment-cancel]: /old-implementations/payment-instruments-v1/card/after-payment#cancellations
 [card-payments-remove-payment-token]: {{ features_url }}/optional/delete-token
-[settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
-[settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [technical-reference-callback]: {{ features_url }}/core/callback

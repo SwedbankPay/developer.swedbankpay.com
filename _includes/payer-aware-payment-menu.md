@@ -61,12 +61,12 @@ this feature, it is important that you have asked the payer in advance if it is
 ok to store their payment details for later use.
 
 Most often you will use the `disableStoredPaymentDetails` feature in combination
-with the [Instrument Mode][instrument-mode] capability. If you build your own
-menu and want to show stored payment details, you will need to set the
-`disableStoredPaymentDetails` to `true`. It is important that you then store the
-`paymentToken` in your system or call Swedbank Pay with the `payerReference` to
-get all active payment tokens registered on that payer when building your
-menu.
+with the {% if documentation_section contains "checkout-v3" %} [Instrument Mode]({{ features_url }}/customize-ui/instrument-mode) {% else %} [3-D Secure 2]({{ features_url }}/optional/instrument-mode) {% endif %}
+capability. If you build your own menu and want to show stored payment details,
+you will need to set the `disableStoredPaymentDetails` to `true`. It is
+important that you then store the `paymentToken` in your system or call Swedbank
+Pay with the `payerReference` to get all active payment tokens registered on
+that payer when building your menu.
 
 ## GDPR
 
@@ -225,7 +225,7 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 | {% icon check %} | {% f amount %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount %}               | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f description %}             | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                     |{% if include.documentation_section contains "payment-menu" %}
-| {% icon check %} | {% f instrument %}              | `string`     | The payment method used. Selected by using the [Instrument Mode][instrument-mode].                                                                                                                                                                                          | {% endif %}                                              |
+| {% icon check %} | {% f instrument %}              | `string`     | The payment method used. Selected by using the {% if documentation_section contains "checkout-v3" %} [Instrument Mode]({{ features_url }}/customize-ui/instrument-mode) {% else %} [3-D Secure 2]({{ features_url }}/optional/instrument-mode) {% endif %} .                                                                                                                                                                                          | {% endif %}                                              |
 |                  | {% f disableStoredPaymentDetails %} | `bool` | Set to `false` by default. Switching to `true` will turn off all stored payment details for the current purchase. When you use this feature it is important that you have asked the payer in advance if it is ok to store their payment details for later use.                                                                                         |
 | {% icon check %} | {% f userAgent %}               | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 |                  | {% f generatePaymentToken %}     | `bool`       | Determines if a payment token should be generated. Default value is `false`.                                               |
@@ -251,10 +251,10 @@ CContent-Type: application/json;version=3.x/2.0      // Version optional for 3.0
 | | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 |  | {% f firstName, 2 %}                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
 |  | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
-|                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments).                                                                             |
-|                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/frictionless-payments).            |
+|                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for {% if documentation_section contains "checkout-v3" %} [frictionless 3-D Secure 2 flow]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments) {% endif %}.                                                                              |
+|                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to {% if documentation_section contains "checkout-v3" %} [3-D Secure 2]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [3-D Secure 2]({{ features_url }}/core/frictionless-payments) {% endif %}.            |
 |                  | {% f payerReference, 2 %}                     | `string`     | A reference used in the Enterprise and Payments Only implementations to recognize the payer when no SSN is stored.                                                                                                                                                                                                            |
-| | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2]({{ features_url }}/core/frictionless-payments).                                                                                                                                  |
+| | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. The field is related to {% if documentation_section contains "checkout-v3" %} [3-D Secure 2]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [3-D Secure 2]({{ features_url }}/core/frictionless-payments) {% endif %}.                                                                                                                                 |
 | | {% f firstName, 2 %}                   | `string` | The first name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
 | | {% f lastName, 2 %}                   | `string` | The last name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
 | | {% f streetAddress, 2 %}              | `string` | Payer's street address. Maximum 50 characters long.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -692,10 +692,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-[split-settlement]: {{ features_url }}/core/settlement-reconciliation#split-settlement
-[settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
 [delete-tokens]: {{ features_url }}/optional/delete-token
 [tokens]: {{ features_url }}/optional/payer-aware-payment-menu#tokens
 [verify]: {{ features_url }}/optional/verify
-[instrument-mode]: {{ features_url }}/optional/instrument-mode
 [trustly-presentation]: /checkout-v3/payment-presentations#trustly
