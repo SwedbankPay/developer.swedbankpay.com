@@ -37,15 +37,11 @@ payment information. This will generate a `payment` resource with a unique
 
 ## Seamless View Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/trustly/payments HTTP/1.1
+{% capture request_header %}POST /psp/trustly/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Sale",
@@ -82,8 +78,13 @@ Content-Type: application/json
             "lastName": "Nordmann"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -124,14 +125,10 @@ Content-Type: application/json
 
 ## Seamless View Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/trustly/payments/{{ page.payment_id }}",
         "number": 99590008046,
@@ -176,8 +173,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 The key information in the response is the `view-sale` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable

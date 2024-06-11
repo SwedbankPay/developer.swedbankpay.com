@@ -29,17 +29,12 @@ purchase to activate the token.
 
 The initial request should look like this:
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
@@ -144,8 +139,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             }
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -160,7 +160,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
 |                  | {% f generateRecurrenceToken %}| `boolean`     | `true` or `false`. Set to `true` if you want to generate an `recurrenceToken` for future recurring purchases.       |
-| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments v3.0. Mandatory for Digital Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
@@ -182,9 +182,9 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 | | {% f digitalProducts %}                       | `bool` | Set to `true` for merchants who only sell digital goods and only require `email` and/or `msisdn` as shipping details. Set to `false` if the merchant also sells physical goods. |
 | | {% f firstName, 2 %}                    | `string`     | The first name of the payer.                                                                                                                                                                                                                                                                              |
 |  | {% f lastName, 2 %}                    | `string`     | The last name of the payer.                                                                                                                                                                                                                                                                              |
-|                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments).                                                                             |
-|                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. The field is related to [3-D Secure 2]({{ features_url }}/core/frictionless-payments).            |
-| | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. The field is related to [3-D Secure 2]({{ features_url }}/core/frictionless-payments).                                                                                                                                  |
+|                  | {% f email, 2 %}                   | `string`     | The e-mail address of the payer. Will be used to prefill the Checkin as well as on the payer's profile, if not already set. Increases the chance for {% if documentation_section contains "checkout-v3" %} [frictionless 3-D Secure 2 flow]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [frictionless 3-D Secure 2 flow]({{ features_url }}/core/frictionless-payments) {% endif %}.                                                                              |
+|                  | {% f msisdn, 2 %}                  | `string`     | The mobile phone number of the Payer. Will be prefilled on Checkin page and used on the payer's profile, if not already set. The mobile number must have a country code prefix and be 8 to 15 digits in length. {% if documentation_section contains "checkout-v3" %} [3-D Secure 2]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [3-D Secure 2]({{ features_url }}/core/frictionless-payments) {% endif %}           |
+| | {% f shippingAddress %}            | `object` | The shipping address object related to the `payer`. The field is related to {% if documentation_section contains "checkout-v3" %} [3-D Secure 2]({{ features_url }}/customize-payments/frictionless-payments) {% else %} [3-D Secure 2]({{ features_url }}/core/frictionless-payments) {% endif %}                                                                                                                                 |
 | | {% f firstName, 2 %}                   | `string` | The first name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
 | | {% f lastName, 2 %}                   | `string` | The last name of the addressee – the receiver of the shipped goods.                                                                                                                                                                                                                                                                          |
 | | {% f streetAddress, 2 %}              | `string` | Payer's street address. Maximum 50 characters long.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -228,15 +228,11 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 
 ## Initial Recur Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -251,12 +247,7 @@ api-supported-versions: 3.1/3.0/2.0
         "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
         "language": "sv-SE",
         "availableInstruments": [
-          "CreditCard",
-          "Invoice-PayExFinancingSe",
-          "Invoice-PayMonthlyInvoiceSe",
-          "Swish",
-          "CreditAccount",
-          "Trustly" ],{% if documentation_section contains "old-implementations/enterprise" %}
+          "CreditCard", ],{% if documentation_section contains "old-implementations/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
@@ -318,10 +309,21 @@ api-supported-versions: 3.1/3.0/2.0
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
-        }
+        }{% if documentation_section contains "checkout-v3" %},
+        {
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
+          "rel": "abort-paymentattempt",
+          "method": "PATCH",
+          "contentType": "application/json"
+        }{% endif %}
        ]
-      }
-```
+      }{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -332,7 +334,7 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f created %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
 | {% f updated %}        | `string`     | The ISO-8601 date of when the payment order was updated.                                                                                                                                                                  |
 | {% f operation %}      | `string`     | `Purchase`                                                                                                                                             | {% if documentation_section contains "checkout-v3" %}
-| {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. [See the `Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. [See the `Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). [See the `Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). | {% else %}
+| {% f status %}          | `string`     | Indicates the payment order's current status. `Initialized` is returned when the payment is created and still ongoing. The request example above has this status. `Paid` is returned when the payer has completed the payment successfully. See the [`Paid` response]({{ features_url }}/technical-reference/status-models#paid). `Failed` is returned when a payment has failed. You will find an error message in [the `Failed` response]({{ features_url }}/technical-reference/status-models#failed). `Cancelled` is returned when an authorized amount has been fully cancelled. See the [`Cancelled` response]({{ features_url }}/technical-reference/status-models#cancelled). It will contain fields from both the cancelled description and paid section. `Aborted` is returned when the merchant has aborted the payment, or if the payer cancelled the payment in the redirect integration (on the redirect page). See the [`Aborted` response]({{ features_url }}/technical-reference/status-models#aborted). | {% else %}
 | {% f state %}          | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment order. Does not reflect the state of any ongoing payments initiated from the payment order. This field is only for status display purposes. | {% endif %}
 | {% f currency %}       | `string`     | The currency of the payment order.                                                                                                                                                                                        |
 | {% f amount %}         | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                 |
@@ -341,10 +343,10 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
 | {% f recurrenceToken %}     | `string`     | The generated recurrence token if `operation: recur` or `generaterecurrenceToken: true` was used.                                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |{% if documentation_section contains "checkout-v3" %}
 | {% f payer %}         | `id`     | The URL to the [`payer` resource]({{ features_url }}/technical-reference/resource-sub-models#payer) where information about the payer can be retrieved.                                                                                                                 | {% else %}
 | {% f payer %}         | `id`     | The URL to the `payer` resource where information about the payer can be retrieved. | {% endif %}
@@ -369,30 +371,30 @@ The token can be retrieved by performing a [`GET` towards
 `paid`][paid-resource-model]. It will be visible under `tokens` in the `paid`
 field.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 As an alternative, you can also retrieve it by using the expand option when you
 `GET` your payment. The `GET` request should look like the one below, with a
 `?$expand=paid` after the `paymentOrderId`. The response should match the
 initial payment response, but with an expanded `paid` field.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% else %}
 
@@ -401,15 +403,15 @@ You can retrieve it by using the expand option when you `GET` your payment. The
 `paymentOrderId`. The response should match the initial payment response, but
 with an expanded `paid` field.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% endif %}
 
@@ -443,16 +445,12 @@ needed.
 
 ## Recur Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Recur",
         "recurrenceToken": "{{ page.payment_id }}",
@@ -514,8 +512,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -530,7 +533,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 | {% icon check %} | {% f description %}          | `string`     | {% include fields/description.md %}         |
 | {% icon check %} | {% f userAgent, 2 %}           | `string`     | {% include fields/user-agent.md %}     |
 | {% icon check %} | {% f language, 2 %}            | `string`     | {% include fields/language.md %}       | {% if documentation_section contains "checkout-v3" %}
-| {% icon check %} | {% f productName %}                 | `string`     | Used to tag the payment as Digital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                |
+| {% icon check %} | {% f productName %}                 | `string`     | Used to tag the payment as Digital Payments v3.0. Mandatory for Digital Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                |
 |                  | {% f implementation %}       | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         | {% endif %}
 | {% icon check %} | {% f urls, 2 %}                | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                               |
 | | {% f callbackUrl, 2 %}         | `string`     | {% include fields/callback-url.md %} For recurring transactions, the callback will only be sent for Trustly transactions, not card.                    |
@@ -562,7 +565,7 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 | {% icon check %} | {% f vatPercent, 2 %}              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.               |
 | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                    |
 | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                 |
-|                  | {% f restrictedToInstruments %}  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment instruments. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain instruments by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
+|                  | {% f restrictedToInstruments %}  | `array`      | A list of the payment methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment methods. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain payment methods by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
@@ -574,5 +577,5 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
 [old-payment-order-cancel]: /old-implementations/checkout-v2/after-payment#cancel
 [old-payment-order-capture]: /old-implementations/checkout-v2/capture
-[payment-order-cancel]: /checkout-v3/post-purchase#cancel
-[payment-order-capture]: /checkout-v3/post-purchase#capture
+[payment-order-cancel]: /checkout-v3/get-started/post-purchase#cancel
+[payment-order-capture]: /checkout-v3/get-started/post-purchase#capture

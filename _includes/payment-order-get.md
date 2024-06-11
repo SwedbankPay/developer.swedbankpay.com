@@ -11,33 +11,29 @@
 {% assign product = product | strip %}
 
 The `paymentorders` resource is used when initiating a payment process through
-{{ product }}. The payment order is a container for the payment instrument
+{{ product }}. The payment order is a container for the payment method
 object selected by the payer. This will generate a payment that is accessed
 through the sub-resources `payments` and `currentPayment`.
 
 ## GET Payment Order Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
+{% capture request_content %}GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ## GET Payment Order Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2018-09-14T13:21:29.3182115Z",
@@ -88,8 +84,13 @@ api-supported-versions: 3.1/3.0/2.0
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

@@ -77,7 +77,7 @@ balance report summary is equivalent to the disbursement on the bank statement
 
 Provides a specification over sales for the given period. The sales total is
 specified per payment area (`CreditCard`, `Invoice`) and underlying payment
-instruments. Each sales row specify Quantity, Sum sales and Amount to pay out,
+methods. Each sales row specify Quantity, Sum sales and Amount to pay out,
 the last one is only eligble **if Swedbank Pay handles the Settlement process**.
 
 A summary of payments through the last date of the report is also provided.
@@ -86,7 +86,7 @@ A summary of payments through the last date of the report is also provided.
 
 Provides a specification of the fees in the given period. The fees total is
 specified per payment area (`CreditCard`, `Invoice`) and underlying payment
-instruments. Each fees row specify `Quantity` (sales), `Amount` (sales),
+methods. Each fees row specify `Quantity` (sales), `Amount` (sales),
 `Unit price`, `Provision` and `fee Amount`. **If you handle the settlement**
 **process yourself, you will receive a separate invoice for fees**.
 
@@ -94,7 +94,7 @@ instruments. Each fees row specify `Quantity` (sales), `Amount` (sales),
 
 The Transaction List (also called Sales Accounted Transactions) is provided in
 `.xlsx` and `.xml` formats and specifies all transactions for a specific period,
-including a summary of transactions grouped by payment instrument. Both formats
+including a summary of transactions grouped by payment method. Both formats
 contain the same information, but the xml file is meant for computer processing,
 while the excel workbook is meant for human interaction.
 
@@ -144,7 +144,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Swedbank Pay Account Number`   | `Decimal`  | The Account number given, shown in the Merchant Portal.                                                                                                    |
 | `Referenced Transaction Number` | `Decimal`  | Transaction number for the Authoriation transaction for a two-stage transaction or the number of the debit transaction if it is a credit transaction.     |
 | `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
-| `Brand`                         | `string`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
+| `Brand`                         | `string`   | No longer populated when using Digital Payments integrations.                                                                                    |
 | `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
 ## V2 Header Fields
@@ -189,7 +189,7 @@ As with the Balance Report there are two versions of the Transaction List, and
 | `Description`                   | `string`   | A textual description of the transaction, as sent by merchant to Swedbank Pay.                                                                            |
 | `ProductCategory`               | `string`   | A product number, as sent by merchant to Swedbank Pay.                                                                                                    |
 | `Sales Channel`                 | `string`   | The channel through which the transaction was sent to Swedbank Pay (e.g Transaction via eCommerce APIs).                                                  |
-| `Brand`                         | `string`   | If eligible, Branding information as sent by merchant to Swedbank Pay.                                                                                    |
+| `Brand`                         | `string`   | No longer populated when using Digital Payments integrations.                |
 | `Point Of Sale`                 | `string`   | If eligible, POS information as sent by merchant to Swedbank Pay.                                                                                         |
 
 ## Reconciliation
@@ -234,23 +234,26 @@ In the input data for making a capture, you will set the `payeeReference`. The
 unique value of this field is the same as the field called `OrderID` in the
 reconciliation file.
 
-```json
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1500,
         "vatAmount": 0,
         "description": "Test Reversal",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 When you receive the response from Swedbank Pay, the response will include
 `transaction.number`. This is the same as the field called `TransactionNo` in
 the reconciliation file.
 
-```json
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
@@ -270,8 +273,13 @@ the reconciliation file.
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 *   `payeeReference` sent to Swedbank Pay is equal to `OrderId` in the
     reconciliation file.
@@ -293,8 +301,8 @@ and `Reversal`.
 ## Report Samples
 
 The content of the files depends on the type of agreement you have made with
-Swedbank Pay. For some payment instruments, only option A is available, while
-for other payment instruments, only option B is available. The sample files can
+Swedbank Pay. For some payment methods, only option A is available, while
+for other payment methods, only option B is available. The sample files can
 be downloaded below. **Make sure that you choose the examples from your**
 **current version of the balance report (v1 or v2).**
 

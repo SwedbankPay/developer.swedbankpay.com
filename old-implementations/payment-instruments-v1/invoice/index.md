@@ -55,7 +55,7 @@ options:
 {:.text-center}
 ![screenshot of the first Invoice redirect page][fincon-invoice-redirect]{:height="725px" width="475px"}
 
-This payment instrument supports English (US) `en-US`, Norwegian `nb-NO` and
+This payment method supports English (US) `en-US`, Norwegian `nb-NO` and
 Swedish `sv-SE`.
 
 ## Invoice Flow

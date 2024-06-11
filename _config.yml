@@ -40,7 +40,7 @@ opengraph:
   image: /assets/img/swedbank-pay-developer-portal.png
 design_guide:
   base_url: https://design.swedbankpay.com
-  version: 10.9.1
+  version: 10.10.1
 search:
   enabled: true
   url: /search
@@ -69,3 +69,5 @@ defaults:
       front_end_url: https://ecom.externalintegration.payex.com
       consumer_ssn_se: 199710202392
       consumer_ssn_no: 26026708248
+      mobile_sdk_ios_version: 5.0.0
+      mobile_sdk_android_version: 5.0.0

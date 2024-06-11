@@ -4,28 +4,27 @@
 ## Fees And Discounts
 
  If you want to add fees or discounts to your payment order, this can be done by
- adding them as `orderItems` in your request. Use positive amounts for fees and
- negative amounts for discounts. Remember that the sum of the `orderItems` must
- match the total payment order amount.
+ include them as `orderItems` in your request. The feature is currently
+ available for **Invoice**, **Installment Account** and **Monthly Payments**.
 
- Restricting the fee or discount to certain instruments is also possible. Simply
- add the `restrictToInstruments` field and which instruments the fee or discount
- applies to. This is currently available for invoice only.
+ Use positive amounts for fees and negative amounts for discounts. Remember
+ that the sum of the `orderItems` must match the total payment order amount.
+
+ Restricting the fee or discount to certain payment methods is also possible.
+ Simply add the `restrictedToInstruments` field and which payment method the fee
+ or discount applies to. This is currently available for invoice only.
 
  The example below shows a fee which only applies to Swedish invoices. Other
- options for some of the fields are in the table at the bottom.
+ options for some of the fields are in the table below.
 
 ## Fee Request
 
- {:.code-view-header}
- **Request**
-
- ```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-{
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% capture request_content %}{
       "orderItems": [
              {
                  "reference": "I1",
@@ -44,8 +43,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
                  ]
              }
          ]
-}
- ```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -67,6 +71,6 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
  | {% icon check %} | {% f vatPercent, 2 %}              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
  | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
  | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
- |                  | {% f restrictedToInstruments %}  | `array`      | A list of the instruments you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. The fee or discount applies to all instruments if a restriction is not included. Use of this field requires an agreement with Swedbank Pay.                                    |
+ |                  | {% f restrictedToInstruments %}  | `array`      | A list of the payment methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. The fee or discount applies to all payment methods if a restriction is not included. Use of this field requires an agreement with Swedbank Pay.                                    |
 {% endcapture %}
 {% include accordion-table.html content=table %}

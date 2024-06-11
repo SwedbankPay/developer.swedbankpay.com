@@ -8,39 +8,39 @@ and that the payment is completed.
 
 A `paid-payment` operation looks like this:
 
-```json
-{
+{% capture response_content %}{
    "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
    "rel": "paid-payment",
    "method": "GET",
    "contentType": "application/json"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='`paid-payment` operation'
+    header=response_header
+    json= response_content
+    %}
 
 To inspect the paid payment, you need to perform an HTTP `GET` request
 towards the operation's `href` field. An example of the request and
 response is given below.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% if documentation_section == "card" %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "paid": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
@@ -88,19 +88,20 @@ Content-Type: application/json
             "transactionInitiator": "MERCHANT"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "paid": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/paid",
@@ -113,8 +114,13 @@ Content-Type: application/json
         "orderReference": "AB1234",
         "amount": 1500
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
@@ -153,14 +159,18 @@ can be created if the payment is in this state.
 
 A `failed-payment` operation looks like this:
 
-```json
-{
+{% capture response_content %}{
    "href": "{{ page.api_url }}/psp/{{ api_resource }}/payments/{{ page.payment_id }}/failed",
    "rel": "failed-payment",
    "method": "GET",
    "contentType": "application/problem+json"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='`failed-payment` operation'
+    header=response_header
+    json= response_content
+    %}
 
 To inspect why the payment failed, you need to perform an HTTP `GET` request
 towards the operation's `href` field.
@@ -171,24 +181,15 @@ error code.
 
 An example of the request and response is given below.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/failed HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/failed HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "problem": {
         "type": "{{ page.api_url }}/psp/errordetail/{{ api_resource }}/acquirererror",
         "title": "Operation failed",
@@ -201,9 +202,13 @@ Content-Type: application/json
             }
         ]
     }
-}
+}{% endcapture %}
 
-```
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Operation `aborted-payment`
 
@@ -213,40 +218,45 @@ before the payer fulfilled the payment process. You can see this under
 
 An `aborted-payment` operation looks like this:
 
-```json
-{
+{% capture response_content %}{
     "href": "{{ page.api_url }}/psp/creditcard/payments/<paymentId>/aborted",
     "rel": "aborted-payment",
     "method": "GET",
     "contentType": "application/json"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='`aborted-payment` operation'
+    header=response_header
+    json= response_content
+    %}
 
 To inspect why the payment was aborted, you need to perform an HTTP `GET`
 request towards the operation's `href` field. An example of the request and
 response is given below.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/aborted HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/aborted HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "aborted": {
         "abortReason": "Aborted by consumer"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}

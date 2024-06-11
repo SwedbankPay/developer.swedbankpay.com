@@ -1,6 +1,6 @@
 ---
 title: Instrument Mode
-description: The Payment Menu with one payment instrument
+description: The Payment UI with one payment method
 menu_order: 1900
 icon:
   content: looks_one

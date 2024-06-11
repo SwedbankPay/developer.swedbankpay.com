@@ -16,7 +16,7 @@ first step, to receive the state of the transaction. You will also be able to
 see the available operations after posting a payment.
 
 *   *Abort:* It is possible to abort the process if the payment has no successful
-  transactions. [See the Abort description here][abort].
+  transactions. See the [`Abort` description here][abort].
 *   If the payment shown above is done as a two phase (`Authorization`), you will
   need to implement the `Capture` and `Cancel` requests.
 *   For `reversals`, you will need to implement the [Reversal request][reversal].
@@ -32,22 +32,23 @@ and the authorization amount.
 
 ## Cancel Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}POST /psp/creditcard/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Test Cancellation",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                              |
@@ -61,14 +62,10 @@ Content-Type: application/json
 The `cancel` resource contains information about a cancellation transaction
 made against a payment.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "cancellation": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/cancellations/{{ page.transaction_id }}",
@@ -88,8 +85,13 @@ Content-Type: application/json
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -119,15 +121,15 @@ Content-Type: application/json
 The `cancellations` resource lists the cancellation transactions on a specific
 payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}GET /psp/creditcard/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="cancellation" %}
 
@@ -147,24 +149,25 @@ This transaction is used when a captured payment needs to be reversed.
 
 ## Reversal Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/creditcard/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1500,
         "vatAmount": 0,
         "description": "Test Reversal",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                              |
@@ -180,14 +183,10 @@ Content-Type: application/json
 The `reversal` resource contains information about the newly created reversal
 transaction.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "reversal": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/reversal/{{ page.transaction_id }}",
@@ -207,8 +206,13 @@ Content-Type: application/json
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -239,15 +243,15 @@ Content-Type: application/json
 The `reversals` resource lists the reversal transactions (one or more) on a
 specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}GET /psp/creditcard/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="reversal" %}
 
@@ -282,32 +286,29 @@ If you, for any reason, need to delete a paymentToken you use the
 
 ## Delete Token Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
   "state": "Deleted",
   "tokenType" : "PaymentToken",
   "comment": "Comment on why the deletion is happening"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Delete Token Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "instrumentData": {
         "id": "/psp/creditcard/payments/instrumentdata/{{ page.payment_token }}",
         "paymentToken": "{{ page.payment_token }}",
@@ -318,8 +319,13 @@ Content-Type: application/json
         "maskedPan": "123456xxxxxx1111",
         "expiryDate": "MM/YYYY"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% include iterator.html prev_href="/old-implementations/payment-instruments-v1/card/mobile-card-payments" prev_title="Mobile Card Payments"
 next_href="/old-implementations/payment-instruments-v1/card/features" next_title="Features" %}

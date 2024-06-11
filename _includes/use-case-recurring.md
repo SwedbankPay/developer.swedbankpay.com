@@ -1,10 +1,8 @@
 
-## Supported Payment Instruments
+## Supported Payment Methods
 
 Looking to get started with recurring services? They are currently supported
-in Digital Payments using these instruments:
-
-*   Card payments
+using card payments.
 
 ## Step 1: Create a Payment Order
 
@@ -33,16 +31,12 @@ Start with the [basic payment order request][basic-request] and modify it by
 including the parameter `generateUnscheduledToken` or `generateRecurrenceToken`:
 `true` | `false`. Include only the token(s) you intend to use.
 
-{:.code-view-header}
-**Payment Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
-{
+{% capture request_content %}{
 "paymentorder": {
 "operation": "Purchase",
 "currency": "SEK",
@@ -55,8 +49,13 @@ Content-Type: application/json;version=3.1/3.0/2.0
 "generateUnscheduledToken": "true | false",
 "generateRecurrenceToken": "true | false"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Verify
 
@@ -65,16 +64,12 @@ being the value of the `operation` parameter (should be `Verify`). Exclude
 `amount`, `vatAmount`, and the `orderItems` object since no monetary value is
 associated with this action.
 
-{:.code-view-header}
-**Verify Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0
+Content-Type: application/json;version=3.x/2.0{% endcapture %}
 
-{
+{% capture request_content %}{
 "paymentorder": {
 "operation": "Verify",
 "currency": "SEK",
@@ -85,23 +80,24 @@ Content-Type: application/json;version=3.1/3.0/2.0
 "generateUnscheduledToken": "true | false",
 "generateRecurrenceToken": "true | false"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Verify Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Post-Purchase / Post-Verify
 
 After the payer completes their interaction, retrieve the token in the `Paid`
 node by performing a `GET` call towards the [`Paid` URL][paid].
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
     "paid": {
     "id": "/psp/paymentorders/08349122-aa53-40e8-dd36-08dbbb319d19/paid",
     "instrument": "CreditCard", // Instrument used
@@ -120,9 +116,14 @@ api-supported-versions: 3.1/3.0/2.0
           "expiryDate": "12/2033"
         }
        // ... other details
-    }
-}
-```
+    ]
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Charging Your Customer
 
@@ -142,7 +143,7 @@ interval). Modify the parameters in the `Purchase`/`Verify` request as follows:
 *   The `payerReference` in the `Payer` node needs to be consistent with the one
     used to create the token details in `Purchase`/`Verify`.
 
-## Removal of Instrument Details
+## Removal of Payment Method Details
 
  When conditions like error codes or payer requests to remove details are met,
  you'll need to delete associated tokens. Here are two methods:
@@ -158,19 +159,20 @@ Use the URL `/psp/paymentorders/unscheduledTokens/<TokenValue>`.
 
 *   Both scenarios generate the same response.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
 "state": "Deleted",
 "comment": "Comment on why the deletion is happening"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Common causes that triggers the need for deletion
 
@@ -197,13 +199,13 @@ compiled relevant documentation below.
 
 *   Post-purchase: [Capture][capture], [Cancel][cancel], [Reversal][reversal].
 
-[basic-request]: /checkout-v3/payment-request-3-1/#create-payment-order
-[callback]: /checkout-v3/features/core/callback
-[cancel]: /checkout-v3/features/core/cancel
-[capture]: /checkout-v3/features/core/payment-order-capture
+[basic-request]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
+[callback]: /checkout-v3/features/payment-operations/callback
+[cancel]: /checkout-v3/features/payment-operations/cancel
+[capture]: /checkout-v3/features/payment-operations/payment-order-capture
 [delete-token]: /checkout-v3/features/optional/delete-token
 [paid]: https://api.externalintegration.payex.com/psp/paymentorders/<PaymentOrderIdHere>/paid
 [recur]: /checkout-v3/features/optional/recur
-[reversal]: /checkout-v3/features/core/reversal
+[reversal]: /checkout-v3/features/payment-operations/reversal
 [unscheduled]: /checkout-v3/features/optional/unscheduled
 [verify]: /checkout-v3/features/optional/verify

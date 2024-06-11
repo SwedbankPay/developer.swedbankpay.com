@@ -10,7 +10,7 @@ menu_order: 600
 ---
 
 Swish is the main Swedish payment app for mobile phones supported by all Swedish
-banks, making it one of the essential payment instruments for merchants
+banks, making it one of the essential payment methods for merchants
 operating in Sweden. According to Kantar Sifo, it is the preferred online
 payment method in the age group 18-40, and the payment method with the best
 conversion rates.
@@ -49,7 +49,7 @@ The Swish app will be launched automatically when you push the pay button.
 
 ## Payment Type
 
-Swish is one of the instruments using one-phase payments. The `sale` is done
+Swish is one of the payment methods using one-phase payments. The `sale` is done
 when the payer successfully confirms in the app, capturing the funds
 instantly. The `abort` operation is still available, but the `cancel` and
 `capture` operations are not. The `reversal`, if needed, is done by the
@@ -82,7 +82,7 @@ must be toggled on. The external integration demoshop used for testing is set up
 with the Merchant Swish Simulator, which enables you to test without using the
 Swish App.
 
-This payment instrument supports English (US) `en-US`, Norwegian `nb-NO` and
+This payment methods supports English (US) `en-US`, Norwegian `nb-NO` and
 Swedish `sv-SE`.
 
 {% include iterator.html next_href="direct" next_title="Direct" %}

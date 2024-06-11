@@ -17,26 +17,64 @@ a corporation etc) related to a specific payment.
 
 ## GET Request
 
-{:.code-view-header}
-**Request**
+{% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
 
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/payeeInfo HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
+
+{% else %}
+
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo HTTP/1.1
+Host: {{ page.api_host }}
+Authorization: Bearer <AccessToken>
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
+
+{% endif %}
 
 ## GET Response
 
-{:.code-view-header}
-**Response**
+{% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
+    "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
+    "payeeInfo": {
+        "id": "/psp/paymentorders/{{ page.payment_id }}/payeeInfo",
+        "payeeId": "{{ page.merchant_id }}",
+        "payeeReference": "EN1234",
+        "payeeName": "TestMerchant1",
+        "productCategory": "EF1234",
+        "orderReference": "or-123456"
+    }
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
+
+{% else %}
+
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
+
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "payeeInfo": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/payeeInfo",
@@ -46,8 +84,15 @@ Content-Type: application/json
         "productCategory": "EF1234",
         "orderReference": "or-123456"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
+
+{% endif %}
 
 {:.table .table-striped}
 | Field                     | Type                 | Description                                                                                                                                                                                                                                                                       |

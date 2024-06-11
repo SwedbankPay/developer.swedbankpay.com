@@ -8,7 +8,7 @@ description: |
   It is recommended to read through the earlier pages first.
   This page can them help you keep a picture of the whole system in mind,
   and serve as a quick reference to the different steps and components.
-menu_order: 1400
+menu_order: 1500
 ---
 
 ## Initialization
@@ -188,7 +188,7 @@ left to the backend; similarly the backend is probably interested in storing the
 `id` of the created Payment Order for capture and other possible operations.
 
 At this point the user is interacting with the payment menu; the next step
-depends on the exact payment method chosen.
+depends on the exact payment instrument chosen.
 
 ```mermaid
 sequenceDiagram
@@ -234,9 +234,9 @@ When an external application is launched, the flow signals the return to the
 payment menu by again opening `paymentUrl`. This time, however, we cannot
 intercept it. The system then handles opening that url the usual way. For
 maximum compatibility, `paymentUrl` is a regular https url. On iOS, `paymentUrl`
-is designed to be in format that is registered as a [Universal
-Link][ios-universal-links] to the app, which causes the system to open
-`paymentUrl` in the app. The example backend serves a
+is designed to be in format that is registered as a
+[Universal Link][ios-universal-links]{:target="_blank"} to the app, which causes
+the system to open `paymentUrl` in the app. The example backend serves a
 `/.well-known/apple-app-site-association` file that assigns the paths under
 `/sdk-callback/` to be Universal Links to the application set in the
 configuration. The SDK defaults to building `paymentUrl` under this path.
@@ -308,11 +308,11 @@ sequenceDiagram
 
 If the external flow ended with `paymentUrl` opened in the browser, we need a
 way to get back to the app. On Android, this is simple to accomplish by
-redirecting to an [Android Intent Uri][android-intent-scheme]; the SDK and
-backend work together to construct the Intent Uri to point to the correct app.
-This Intent will cause the app to be brought back into focus, and the
-PaymentFragment will recognize the `paymentUrl` and reload the payment menu. We
-still need to have an actual html page served at `paymentUrl`, though, as the
+redirecting to an [Android Intent Uri][android-intent-scheme]{:target="_blank"};
+the SDK and backend work together to construct the Intent Uri to point to the
+correct app. This Intent will cause the app to be brought back into focus, and
+the PaymentFragment will recognize the `paymentUrl` and reload the payment menu.
+We still need to have an actual html page served at `paymentUrl`, though, as the
 redirect may be blocked in some scenarios. If that happens, the page will also
 contain a link the user can tap on, which opens the same Intent Uri.
 
@@ -459,7 +459,7 @@ sequenceDiagram
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
                          prev_title="Back: Other Features"
                          next_href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview"
-                         next_title="Using a Web View Instead" %}
+                         next_title="Next: Plain Web View" %}
 
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

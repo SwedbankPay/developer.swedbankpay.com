@@ -9,7 +9,8 @@ menu_order: 900
 It is important that the projects governed by Swedbank Pay foster a
 collaborative, open, inclusive, positive and tolerant community. To underscore
 this, a `CODE_OF_CONDUCT.md` file from
-[Contributor Covenant][contributor-covenant] should be added to the project:
+[Contributor Covenant][contributor-covenant]{:target="_blank"} should be added
+to the project:
 
 ## Contributor Code of Conduct
 
@@ -55,8 +56,9 @@ appropriate to the circumstances. Maintainers are obligated to maintain
 confidentiality with regard to the reporter of an incident.
 
 This Code of Conduct is adapted from the
-[Contributor Covenant][contributor-covenant], version 1.3.0, available at
-[http://contributor-covenant.org/version/1/3/0/][version]
+[Contributor Covenant][contributor-covenant]{:target="_blank"}, version 1.3.0,
+available at
+[http://contributor-covenant.org/version/1/3/0/][version]{:target="_blank"}
 
 The Code of Conduct should then be referenced from the `CONTRIBUTING` file,
 for example with the following paragraphs:

@@ -6,8 +6,6 @@ description: |
   **Swedbank Pay Checkout** is a complete reimagination
   of the checkout experience, integrating seamlessly into the merchant website
   through highly customizable and flexible components.
-  Visit our [demoshop](https://ecom.externalintegration.payex.com/pspdemoshop)
-  and try out Swedbank Pay Checkout for yourself!
 menu_order: 4
 ---
 
@@ -211,7 +209,7 @@ TODO: Number each important step in the above diagram and create a numbered list
 
 After the payment is completed, you can **Capture** the payment. Capture should
 be done after the goods are shipped or if the purchased goods don't require
-shipping. Only payment instruments that support authorizations will expose the
+shipping. Only payment methods that support authorizations will expose the
 `create-paymentorder-capture` operation when they can be captured.
 
 ```plantuml
@@ -246,4 +244,4 @@ Norwegian `nb-NO` and Swedish `sv-SE`.
 
 [after-payment-capture]: /old-implementations/checkout-v2/capture
 [callback]: /old-implementations/checkout-v2/features/core/callback
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
+[https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol

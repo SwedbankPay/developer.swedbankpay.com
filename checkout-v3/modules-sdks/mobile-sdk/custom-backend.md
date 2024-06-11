@@ -1,28 +1,28 @@
 ---
-title: Mobile SDK – Custom Backend
+title: Custom Backend
 permalink: /:path/custom-backend/
 description: |
-  You can also build a fully custom backend for the **Swedbank Pay Mobile SDK**
-menu_order: 1200
+  Implementing a custom backend for the **Swedbank Pay Mobile SDK**
+menu_order: 900
 ---
 
 In this chapter we explore how to integrate the mobile SDK with a fully custom
-backend server. It is recommended that you first read through the previous
-chapters and gain an understanding of how the SDK works with a backend
-implementing the Merchant Backend API.
+backend server. It is recommended that you also read through the chapters
+covering the example Merchant Backend API and gain an understanding of how the
+SDK works with that as backend.
 
 ## Basic Backend Requirements
 
-To support the SDK, your backend must be capable of at least [creating a payment
-order][create-payment-order]. If you wish to use consumer identification, it
-must also be able to [start an identification
-session][initiate-consumer-session]. In addition to these, your backend must
-serve the appropriate html documents at urls used for the
-[`paymentUrl`][payment-url]; the content of these html documents will be
+To support the SDK, your backend must be capable of at least
+[creating a payment order][create-payment-order]. If you wish to use consumer
+identification, it must also be able to
+[start an identification session][initiate-consumer-session]. In addition to
+these, your backend should serve the appropriate html documents at urls used for
+the [`paymentUrl`][payment-url]; the content of these html documents will be
 discussed below, but it is noteworthy that they are different for payments from
 Android applications and those from iOS applications. Further, the urls used for
-as `paymentUrl` on iOS must be [configured as universal links for your iOS
-application][ios-aasa].
+as `paymentUrl` on iOS should be [configured as universal links for your iOS
+application][ios-aasa]{:target="_blank"}.
 
 ## Android Configuration
 
@@ -31,8 +31,8 @@ To bind the SDK to your custom backend, you must create a subclass of
 cannot use Kotlin, you can use the compatibility class
 `com.swedbankpay.mobilesdk.ConfigurationCompat`.
 
-Your subclass must provide implementations of `postConsumers` and
-`postPaymentorders`. These methods are named after the corresponding Swedbank
+Your subclass must provide implementations of `postPaymentorders` and
+`postConsumers`. These methods are named after the corresponding Swedbank
 Pay APIs they are intended to be forwarded to. If you do not intend to use
 consumer identification, you can have your `postConsumers` implementation throw
 an exception.
@@ -44,53 +44,55 @@ consumer reference will be passed in the `consumerProfileRef` argument of
 `postPaymentorders`. The exact implementation of these methods is outside the
 scope of this document.
 
-You must return a `ViewConsumerIdentificationInfo` and a `ViewPaymentOrderInfo`
-object respectively; please refer to their class documentation on how to
-populate them from your backend responses. Any exception you throw from these
-methods will in turn be reported from the `PaymentViewModel`. Whether a given
-exception is treated as a retryable condition is controlled by the
-`shouldRetryAfter<Operation>Exception` methods; by default they only consider
-`IllegalStateException` as fatal. Please refer to the `Configuration`
-documentation on all the features.
+You must return a `ViewPaymentOrderInfo` and optionally also a
+`ViewConsumerIdentificationInfo` object respectively; please refer to their
+class documentation on how to populate them from your backend responses. Any
+exception you throw from these methods will in turn be reported from the
+`PaymentViewModel`. Whether a given exception is treated as a retryable
+condition is controlled by the `shouldRetryAfter<Operation>Exception` methods;
+by default they only consider `IllegalStateException` as fatal. Please refer to
+the `Configuration` documentation on all the features.
 
 ```kotlin
-    class MyConfiguration : Configuration() {
-        suspend fun postConsumers(
-            context: Context,
-            consumer: Consumer?,
-            userData: Any?
-        ): ViewConsumerIdentificationInfo {
-            val viewConsumerIdentification = post("https://example.com/identify")
-            return ViewConsumerIdentificationInfo(
-                webViewBaseUrl = "https://example.com/",
-                viewConsumerIdentification = viewConsumerIdentification
-            )
-        }
-
-        suspend fun postPaymentorders(
-            context: Context,
-            paymentOrder: PaymentOrder?,
-            userData: Any?,
-            consumerProfileRef: String?
-        ): ViewPaymentOrderInfo {
-            val viewPaymentOrder = post("https://example.com/pay/android")
-            return ViewPaymentOrderInfo(
-                webViewBaseUrl = "https://example.com/",
-                viewPaymentOrder = viewPaymentOrder,
-                completeUrl = "https://example.com/complete",
-                cancelUrl = "https://example.com/cancel",
-                paymentUrl = "https://example.com/payment/android",
-                termsOfServiceUrl = "https://example.com/tos"
-            )
-        }
+class MyConfiguration : Configuration() {
+    override suspend fun postPaymentorders(
+        context: Context,
+        paymentOrder: PaymentOrder?,
+        userData: Any?,
+        consumerProfileRef: String?
+    ): ViewPaymentOrderInfo {
+        val viewPaymentOrder = post("https://example.com/pay/android")
+        return ViewPaymentOrderInfo(
+            viewPaymentLink = "https://example.com/",
+            viewPaymentOrder = viewPaymentOrder,
+            completeUrl = "https://example.com/complete",
+            cancelUrl = "https://example.com/cancel",
+            paymentUrl = "https://example.com/payment/android",
+            termsOfServiceUrl = "https://example.com/tos",
+            isV3 = true
+        )
     }
+
+    override suspend fun postConsumers(
+        context: Context,
+        consumer: Consumer?,
+        userData: Any?
+    ): ViewConsumerIdentificationInfo {
+        val viewConsumerIdentification = post("https://example.com/identify")
+        return ViewConsumerIdentificationInfo(
+            webViewBaseUrl = "https://example.com/",
+            viewConsumerIdentification = viewConsumerIdentification
+        )
+        // Or throw Exception() if not using consumer identification
+    }
+}
 ```
 
 ## iOS Configuration
 
 On iOS you must conform to the `SwedbankPaySDKConfiguration` protocol. Just like
-on Android, you must provide implementations for the `postConsumers` and
-`postPaymentorders` methods. The `consumer`, `paymentOrder`, and `userData`
+on Android, you must provide implementations for the `postPaymentorders` and
+`postConsumers` methods. The `consumer`, `paymentOrder`, and `userData`
 arguments to those methods will be the values you initialize your
 `SwedbankPaySDKController` with, and their meaning is up to you. The
 `postPaymentorders` method will optionally receive a `consumerProfileRef`
@@ -98,58 +100,55 @@ argument, if the consumer was identified before creating the payment order.
 
 The methods are asynchronous, and the result is reported by calling the
 `completion` callback with the result. Successful results have payloads of
-`SwedbankPaySDK.ViewConsumerIdentificationInfo` and
-`SwedbankPaySDK.ViewPaymentOrderInfo`, respectively; please refer to the type
-documentation on how to populate those types. The error of any failure result
-you report will be propagated back to your app in the `paymentFailed(error:)`
-delegate method. You must call the `completion` callback exactly once, multiple
-calls are a programing error.
+`SwedbankPaySDK.ViewPaymentOrderInfo` and
+`SwedbankPaySDK.ViewConsumerIdentificationInfo`, respectively; please refer to
+the type documentation on how to populate those types. If you do not intend to
+use consumer identification, your `postConsumers` should callback should be
+called with a failing result of `SwedbankPayConfigurationError.notImplemented`.
+The other errors of any failure result you report will be propagated back to
+your app in the `paymentFailed(error:)` delegate method. You must call the
+`completion` callback exactly once, multiple calls are a programming error.
 
 ```swift
-    struct MyConfiguration : SwedbankPaySDKConfiguration {
-        func postConsumers(
-            consumer: SwedbankPaySDK.Consumer?,
-            userData: Any?,
-            completion: @escaping (Result<SwedbankPaySDK.ViewConsumerIdentificationInfo, Error>) -> Void
-        ) {
-            post("https://example.com/identify") { result in
-                do {
-                    let viewConsumerIdentification = try result.get()
-                    let info = ViewConsumerIdentificationInfo(
-                        webViewBaseURL: "https://example.com/",
-                        viewConsumerIdentification: viewConsumerIdentification
-                    )
-                    completion(.success(info))
-                } catch let error {
-                    completion(.failure(error))
-                }
-            }
-        }
-
-        func postPaymentorders(
-            paymentOrder: SwedbankPaySDK.PaymentOrder?,
-            userData: Any?,
-            consumerProfileRef: String?,
-            completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void
-        ) {
-            post("https://example.com/pay/ios") { result in
-                do {
-                    let viewPaymentorder = try result.get()
-                    let info = ViewPaymentOrderInfo(
-                        webViewBaseURL: "https://example.com/",
-                        viewPaymentorder: viewPaymentorder,
-                        completeUrl: "https://example.com/complete",
-                        cancelUrl: "https://example.com/cancel",
-                        paymentUrl: "https://example.com/payment/ios",
-                        termsOfServiceUrl: "https://example.com/tos"
-                    )
-                    completion(.success(info))
-                } catch {
-                    completion(.failure(error))
-                }
+struct MyConfiguration : SwedbankPaySDKConfiguration {
+    func postPaymentorders(paymentOrder: SwedbankPaySDK.PaymentOrder?,
+                           userData: Any?,
+                           consumerProfileRef: String?,
+                           options: SwedbankPaySDK.VersionOptions,
+                           completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void) {
+        post(URL(string: "https://example.com/pay/ios")!) { result in
+            do {
+                let viewPaymentorder = try result.get()
+                let info = SwedbankPaySDK.ViewPaymentOrderInfo(isV3: true,
+                                                               webViewBaseURL: URL(string: "https://example.com/"),
+                                                               viewPaymentLink: viewPaymentorder,
+                                                               completeUrl: URL(string: "https://example.com/complete")!,
+                                                               cancelUrl: URL(string: "https://example.com/cancel"),
+                                                               paymentUrl: URL(string: "https://example.com/payment/ios"),
+                                                               termsOfServiceUrl: URL(string: "https://example.com/tos"))
+                completion(.success(info))
+            } catch {
+                completion(.failure(error))
             }
         }
     }
+
+    func postConsumers(consumer: SwedbankPaySDK.Consumer?,
+                       userData: Any?,
+                       completion: @escaping (Result<SwedbankPaySDK.ViewConsumerIdentificationInfo, Error>) -> Void) {
+        post(URL(string: "https://example.com/identify")!) { result in
+            do {
+                let viewConsumerIdentification = try result.get()
+                let info = SwedbankPaySDK.ViewConsumerIdentificationInfo(webViewBaseURL: URL(string: "https://example.com/"),
+                                                                         viewConsumerIdentification: viewConsumerIdentification)
+                completion(.success(info))
+            } catch let error {
+                completion(.failure(error))
+            }
+        }
+        // Or completion(.failure(SwedbankPayConfigurationError.notImplemented)) if not using consumer identification
+    }
+}
 ```
 
 ## Backend
@@ -317,11 +316,11 @@ action, if the Intent uri is equal to the `paymentUrl` of an ongoing payment (as
 reported by `ViewPaymentOrderInfo`), it will reload the payment menu of that
 payment. Therefore, if the `paymentUrl` is opened in the browser, that page must
 start an activity with such an Intent. This can be done by navigating to an
-[intent scheme url][android-intent-scheme]. Note that the rules for following
-intent-scheme navigations can sometimes cause redirects to those url not to
-work. To work around this, the `paymentUrl` must serve a proper html page, which
-attempts to immediately redirect to the intent-scheme url, but also has a link
-the user can tap on.
+[intent scheme url][android-intent-scheme]{:target="_blank"}. Note that the
+rules for following intent-scheme navigations can sometimes cause redirects to
+those url not to work. To work around this, the `paymentUrl` must serve a proper
+html page, which attempts to immediately redirect to the intent-scheme url, but
+also has a link the user can tap on.
 
 Refer to the intent scheme url documentation on how to form one. You should
 always include the package name so that your intent is not mistakenly routed to
@@ -457,8 +456,8 @@ under the control of your backend. The purpose of this is to allow for one final
 escape hatch, in case the universal link mechanism fails to work. If this url is
 yet again opened in the browser, the backend responds with a redirect to to a
 custom-scheme url. (This _should_ only happen if your universal links
-configuration is broken, or if iOS has somehow failed to load the [Apple
-App-Site Association file][ios-aasa].)
+configuration is broken, or if iOS has somehow failed to load the
+[Apple App-Site Association file][ios-aasa]{:target="_blank"}.)
 
 {:.code-view-header}
 **Request**
@@ -490,9 +489,9 @@ configuration.
 ## Apple App-Site Association
 
 As the iOS `paymentUrl` needs to be a universal link, the backend will also need
-an [Apple App-Site Association file][ios-aasa]. This must be served at
-`/.well-known/apple-app-site-association`, and it must associate any url used as
-a `paymentUrl` with the app.
+an [Apple App-Site Association file][ios-aasa]{:target="_blank"}. This must be
+served at `/.well-known/apple-app-site-association`, and it must associate any
+url used as a `paymentUrl` with the app.
 
 {:.code-view-header}
 **Request**
@@ -536,7 +535,7 @@ implementation, depending on your situation.
 
 The SDK includes a facility for updating a payment order after is has been
 created. The Merchant Backend Configuration uses this to allow setting the
-instrument of an instrument mode payment, but your custom Configuration can use
+method of an instrument mode payment, but your custom Configuration can use
 it for whatever purpose you need.
 
 <!--lint disable no-duplicate-headings-->
@@ -555,25 +554,26 @@ this is the first update, the original `postPaymentorders` call). The
 you.
 
 ```kotlin
-    class MyConfiguration : Configuration() {
-        override suspend fun updatePaymentOrder(
-            context: Context,
-            paymentOrder: PaymentOrder?,
-            userData: Any?,
-            viewPaymentOrderInfo: ViewPaymentOrderInfo,
-            updateInfo: Any?
-        ): ViewPaymentOrderInfo {
-            val viewPaymentOrder = post("https://example.com/payment/android/frobnicate")
-            return ViewPaymentOrderInfo(
-                webViewBaseUrl = "https://example.com/",
-                viewPaymentOrder = viewPaymentOrder,
-                completeUrl = "https://example.com/complete",
-                cancelUrl = "https://example.com/cancel",
-                paymentUrl = "https://example.com/payment/android",
-                termsOfServiceUrl = "https://example.com/tos"
-            )
-        }
+class MyConfiguration : Configuration() {
+    override suspend fun updatePaymentOrder(
+        context: Context,
+        paymentOrder: PaymentOrder?,
+        userData: Any?,
+        viewPaymentOrderInfo: ViewPaymentOrderInfo,
+        updateInfo: Any?
+    ): ViewPaymentOrderInfo {
+        val viewPaymentOrder = post("https://example.com/payment/android/frobnicate")
+        return ViewPaymentOrderInfo(
+            viewPaymentLink = "https://example.com/",
+            viewPaymentOrder = viewPaymentOrder,
+            completeUrl = "https://example.com/complete",
+            cancelUrl = "https://example.com/cancel",
+            paymentUrl = "https://example.com/payment/android",
+            termsOfServiceUrl = "https://example.com/tos",
+            isV3 = true
+        )
     }
+}
 ```
 
 To trigger an update, call `updatePaymentOrder` on the `PaymentViewModel` of the
@@ -581,7 +581,7 @@ active payment. The argument of that call will be passed to your
 `Configuration.updatePaymentOrder` as the `updateInfo` argument.
 
 ```kotlin
-    activity.paymentViewModel.updatePaymentOrder("frob")
+activity.paymentViewModel.updatePaymentOrder("frob")
 ```
 
 ## iOS
@@ -595,35 +595,32 @@ can be used to cancel the request if needed. If the request is cancelled, the
 `completion` callback should _not_ be called.
 
 ```swift
-    struct MyConfiguration : SwedbankPaySDKConfiguration {
-        func updatePaymentOrder(
-            paymentOrder: SwedbankPaySDK.PaymentOrder?,
-            userData: Any?,
-            viewPaymentOrderInfo: SwedbankPaySDK.ViewPaymentOrderInfo,
-            updateInfo: Any,
-            completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void
-        ) -> SwedbankPaySDKRequest? {
-            val request = post("https://example.com/payment/ios/frobnicate") { result in
-                do {
-                    let viewPaymentorder = try result.get()
-                    let info = ViewPaymentOrderInfo(
-                        webViewBaseURL: "https://example.com/",
-                        viewPaymentorder: viewPaymentorder,
-                        completeUrl: "https://example.com/complete",
-                        cancelUrl: "https://example.com/cancel",
-                        paymentUrl: "https://example.com/payment/ios",
-                        termsOfServiceUrl: "https://example.com/tos"
-                    )
-                    completion(.success(info))
-                } catch NetworkError.cancelled {
-                    // no callback
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            return request
+func updatePaymentOrder(paymentOrder: SwedbankPaySDK.PaymentOrder?,
+                        options: SwedbankPaySDK.VersionOptions,
+                        userData: Any?,
+                        viewPaymentOrderInfo: SwedbankPaySDK.ViewPaymentOrderInfo,
+                        updateInfo: Any,
+                        completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void) -> SwedbankPaySDKRequest? {
+    var request = post(URL(string: "https://example.com/payment/ios/frobnicate")!) { result in
+        do {
+            let viewPaymentorder = try result.get()
+            let info = SwedbankPaySDK.ViewPaymentOrderInfo(isV3: true,
+                                                           webViewBaseURL: URL(string: "https://example.com/"),
+                                                           viewPaymentLink: viewPaymentorder,
+                                                           completeUrl: URL(string: "https://example.com/complete")!,
+                                                           cancelUrl: URL(string: "https://example.com/cancel"),
+                                                           paymentUrl: URL(string: "https://example.com/payment/ios"),
+                                                           termsOfServiceUrl: URL(string: "https://example.com/tos"))
+            completion(.success(info))
+        } catch NetworkError.cancelled {
+            // no callback
+
+        } catch {
+            completion(.failure(error))
         }
     }
+    return request
+}
 ```
 
 To trigger an update, call `updatePaymentOrder` on the
@@ -631,9 +628,9 @@ To trigger an update, call `updatePaymentOrder` on the
 the `updateInfo` argument.
 
 ```swift
-    swedbankPayController.updatePaymentOrder(
-        updateInfo: "frob"
-    )
+swedbankPayController.updatePaymentOrder(
+    updateInfo: "frob"
+)
 ```
 
 ## Backend
@@ -666,9 +663,10 @@ Content-Type: text/plain
 Any exception you throw from your Configuration will be made available in
 `PaymentViewModel.exception` or `SwedbankPaySDKDelegate.paymentFailed(error:)`.
 You are therefore fully in control of the model you wish to use to report
-errors. We recommend adopting the [Problem Details for HTTP APIs][rfc-7807]
-convention for reporting errors from your backend. At the moment of writing, the
-Android SDK also contains a [utility][dokka-problem] for parsing RFC 7807
+errors. We recommend adopting the
+[Problem Details for HTTP APIs][rfc-7807]{:target="_blank"} convention for
+reporting errors from your backend. At the moment of writing, the Android SDK
+also contains a [utility][dokka-problem]{:target="_blank"} for parsing RFC 7807
 messages to help with this.
 
 ## iOS Payment Menu Redirect Handling
@@ -684,15 +682,13 @@ also modify this behavior by the `webRedirectBehavior` property of
 `SwedbankPaySDKController`.
 
 ```swift
-    struct MyConfiguration : SwedbankPaySDKConfiguration {
-        func decidePolicyForPaymentMenuRedirect(
-            navigationAction: WKNavigationAction,
-            completion: @escaping (SwedbankPaySDK.PaymentMenuRedirectPolicy) -> Void
-        ) {
-            // we like to live dangerously, allow everything
-            completion(.openInWebView)
-        }
+struct MyConfiguration : SwedbankPaySDKConfiguration {
+    func decidePolicyForPaymentMenuRedirect(navigationAction: WKNavigationAction,
+                                            completion: @escaping (SwedbankPaySDK.PaymentMenuRedirectPolicy) -> Void) {
+        // we like to live dangerously, allow everything
+        completion(.openInWebView)
     }
+}
 ```
 
 ## iOS Payment URL Matching
@@ -706,29 +702,29 @@ specify the allowed custom scheme, you can conform to
 `SwedbankPaySDKConfigurationWithCallbackScheme` instead.
 
 ```swift
-    struct MyConfiguration : SwedbankPaySDKConfiguration {
-        func url(_ url: URL, matchesPaymentUrl paymentUrl: URL) -> Bool {
-            // We trust universal links enough
-            // so we do not need the custom-scheme fallback
-            return url == paymentUrl
-        }
+struct MyConfiguration : SwedbankPaySDKConfiguration {
+    func url(_ url: URL, matchesPaymentUrl paymentUrl: URL) -> Bool {
+        // We trust universal links enough
+        // so we do not need the custom-scheme fallback
+        return url == paymentUrl
     }
+}
 ```
 
 ```swift
-    struct MyConfiguration : SwedbankPaySDKConfigurationWithCallbackScheme {
-        let callbackScheme = "com.example.app"
-    }
+struct MyConfiguration : SwedbankPaySDKConfigurationWithCallbackScheme {
+    let callbackScheme = "com.example.app"
+}
 ```
 
-{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
-                         prev_title="Back: iOS"
-                         next_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
-                         next_title="Next: Other Features" %}
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation"
+                         prev_title="Back: Bare Minimum Implementation"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/android"
+                         next_title="Next: Android" %}
 
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[payment-url]: /old-implementations/checkout-v2/features/technical-reference/payment-url
+[create-payment-order]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
+[payment-url]: /checkout-v3/features/technical-reference/payment-url
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
 [rfc-7807]: https://tools.ietf.org/html/rfc7807

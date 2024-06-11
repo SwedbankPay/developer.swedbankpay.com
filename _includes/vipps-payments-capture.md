@@ -16,24 +16,25 @@ account, you need to perform the `create-capture` operation.
 
 ## Capture Request
 
-{:.code-header}
-**Request**
-
-```http
-POST /psp/vipps/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/vipps/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1500,
         "vatAmount": 250,
         "payeeReference": "cpttimestamp",
         "description" : "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                                                   |
@@ -55,15 +56,15 @@ specific payment.
 
 ## Transaction List Request
 
-{:.code-header}
-**Request**
-
-```http
-GET /psp/vipps/vipps/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}GET /psp/vipps/vipps/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="capture" %}
 

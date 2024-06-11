@@ -16,24 +16,25 @@ need to perform the `create-capture` operation.
 
 ## Capture Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1500,
         "vatAmount": 250,
         "description": "Test Capture",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type          | Description                                                                                                   |
@@ -46,14 +47,10 @@ Content-Type: application/json
 
 ## Capture Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}",
     "capture": {
         "id": "/psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
@@ -72,8 +69,13 @@ Content-Type: application/json
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -104,15 +106,15 @@ Content-Type: application/json
 The `captures` resource list the capture transactions (one or more) on a
 specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}GET /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md api_resource=include.api_resource documentation_section=include.documentation_section transaction="capture" %}
 

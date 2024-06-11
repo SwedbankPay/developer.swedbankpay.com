@@ -24,7 +24,7 @@ three example scenarios of why this is important:
     merchant website, the `callbackUrl` is what ensures that you receive the
     information about what happened with the payment.
 
-## Good To Know About Callbacks
+## Technical Information
 
 *   When a change or update from the back-end system is made on a payment or
     transaction, Swedbank Pay will perform an asynchronous server-to-server
@@ -54,9 +54,6 @@ three example scenarios of why this is important:
     *   1265 seconds
 *   A callback should return a `200 OK` response.
 
-The callback is sent from `91.132.170.1` in both the test and production
-environment.
-
 To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a `GET` request on the received URL and inspect the
 response. The transaction type or any other information can not and should not
@@ -67,15 +64,121 @@ Menu v1), it is critical that you do **not** use the `paymentId` or
 `transactionId` when performing a `GET` to retrieve the payment's status. Use
 the `paymentOrderId`.
 
+### Callback IP Addresses
+
+The callbacks are currently sent from either `51.107.183.58` or `91.132.170.1`
+in both the test and production environment.
+
+{% include alert.html type="warning" icon="warning" body="Starting from March
+12th 2025, callbacks will be sent from one of the IP addresses in this interval,
+and we strongly advise you to whitelist them as soon as possible:
+
+`20.91.170.120–127` (`20.91.170.120/29`)." %}
+
+#### FAQ – Change of IP Addresses for Callbacks
+
+{% capture acc-1 %}
+{: .p .pl-3 .pr-3  }
+We will be updating the IP addresses from which callbacks for eCommerce payments
+are sent. This change will affect the external integration for both test and
+production environments.
+
+{: .p .pl-3 .pr-3  }
+The current IP addresses are `91.132.170.1` and `51.107.183.58`. The new IP range
+will be `20.91.170.120 – 127`, with the prefix (`20.91.170.120/29`).
+{% endcapture %}
+{% include accordion-table.html content=acc-1 header_expand_text='What is changing?' header_collapse_text='What is changing?' header_expand_css='font-weight-normal' %}
+{% capture acc-2 %}
+
+*   Update your firewall rules to allow incoming traffic from the new IP
+  addresses.
+
+*   Ensure these changes are made by March 12th, 2025, to avoid potential
+disruptions in the callback functionality.
+{% endcapture %}
+{% include accordion-table.html content=acc-2 header_expand_text='What do you need to do?' header_collapse_text='What do you need to do?' header_expand_css='font-weight-normal' %}
+{% capture acc-3 %}
+*   Date: March 12, 2025
+
+*   Time: 12:00 CET – 13:00 CET
+
+*   Grace period: See further details below.
+{% endcapture %}
+{% include accordion-table.html content=acc-3 header_expand_text='When will the change take place?' header_collapse_text='When will the change take place?' header_expand_css='font-weight-normal' %}
+{% capture acc-4 %}
+{: .p .pl-3 .pr-3  }
+We need to update and deploy new outbound IP addresses from our Azure Cloud
+environment. To ensure uninterrupted communication between our system and your
+systems, all merchants and partners must update their firewalls with the new IP
+range and prefix.
+
+{: .p .pl-3 .pr-3  }
+This applies to all merchants, regardless of integration method. No technical
+code changes are required, but firewall adjustments must be made in your
+infrastructure, typically handled by your IT or infrastructure providers.
+{% endcapture %}
+{% include accordion-table.html content=acc-4 header_expand_text='Why are we making this change?' header_collapse_text='Why are we making this change?' header_expand_css='font-weight-normal' %}
+{% capture acc-5 %}
+{: .p .pl-3 .pr-3  }
+By migrating callbacks to the Azure Cloud, we are enhancing our ability to scale
+and manage traffic dynamically.
+
+{: .p .pl-3 .pr-3  }
+This means:
+
+*   Improved operational stability – We can handle more concurrent callback
+requests without performance degradation.
+
+*   Faster recovery from technical issues or incidents – We can automatically
+redirect traffic in case of disruptions.
+
+*   Better monitoring and proactive issue resolution – We now have more tools to
+detect and address issues in real-time.
+{% endcapture %}
+{% include accordion-table.html content=acc-5 header_expand_text='How will this change affect the stability of callbacks?' header_collapse_text='How will this change affect the stability of callbacks?' header_expand_css='font-weight-normal' %}
+{% capture acc-6 %}
+{: .p .pl-3 .pr-3  }
+We understand that some merchants may not complete the update before March 12.
+Therefore, we will continue to run callbacks from the current solution during a
+grace period.
+
+{: .p .pl-3 .pr-3  }
+However, it is important to migrate as soon as possible, as we will gradually
+phase out the old solution to reduce system maintenance and complexity.
+
+{: .p .pl-3 .pr-3  }
+We will:
+
+*   Closely monitor traffic to ensure stable callbacks from the Azure Cloud.
+
+*   Actively monitor merchants and partners to ensure a smooth transition.
+{% endcapture %}
+{% include accordion-table.html content=acc-6 header_expand_text='What happens if we don’t make the change in time?' header_collapse_text='What happens if we don’t make the change in time?' header_expand_css='font-weight-normal' %}
+{% capture acc-7 %}
+{: .p .pl-3 .pr-3  }
+We recommend that merchants allow both the old and new IP addresses during the
+transition period. This ensures stable callback functionality, even if network
+issues arise during the migration.
+{% endcapture %}
+{% include accordion-table.html content=acc-7 header_expand_text='Recommendations during the grace period' header_collapse_text='Recommendations during the grace period' header_expand_css='font-weight-normal' %}
+{% capture acc-8 %}
+{: .p .pl-3 .pr-3  }
+Merchants must implement IP blocking (IP allowlisting). FQDN (domain name
+blocking) is not supported in this case, as we use fixed IP addresses.
+{% endcapture %}
+{% include accordion-table.html content=acc-8 header_expand_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_collapse_text='Do we need to implement IP blocking or FQDN blocking in our firewall?' header_expand_css='font-weight-normal' %}
+{% capture acc-9 %}
+{: .p .pl-3 .pr-3  }
+If you have any questions or need support during implementation, please contact
+your TOM/TAM or our support team.
+{% endcapture %}
+{% include accordion-table.html content=acc-9 header_expand_text='Who can we contact for assistance?' header_collapse_text='Who can we contact for assistance?' header_expand_css='font-weight-normal' %}
+
 ## Callback Example
 
 {% if api_resource == "paymentorders" %}
 
-{:.code-view-header}
-**Payment Order Callback**
-
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
@@ -88,8 +191,13 @@ the `paymentOrderId`.
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback'
+    header=response_header
+    json= response_content
+    %}
 
 ## Callback Example v3.1
 
@@ -99,19 +207,20 @@ node.
 This response format will only be triggered if you used `version=3.1` in the
 original `POST` when you created the `paymentOrder`.
 
-{:.code-view-header}
-**Payment Order Callback v3.1**
-
-```json
-{
+{% capture response_content %}{
     "orderReference": "549213",
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
         "number": 12345678
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback v3.1'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -120,17 +229,14 @@ original `POST` when you created the `paymentOrder`.
 | {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
-| {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |
+| {% f instrument %}                | `string`     | The payment method used in the payment.                     |
 | {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
 {% else %}
-{:.code-view-header}
-**Payment Instrument Callback**
 
-```json
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
@@ -139,16 +245,21 @@ original `POST` when you created the `paymentOrder`.
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Method Callback'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
 ## GET Response
 
 When performing an HTTP `GET` request towards the URL found in the
-`transaction.id` field of the callback, the response is going to look
-something like the abbreviated example provided below.
+`transaction.id` field of the callback, the response is going to include the
+abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
 
@@ -174,4 +285,4 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-[url-usage]: /checkout-v3/resources/fundamental-principles#url-usage
+[url-usage]: /checkout-v3/get-started/fundamental-principles#url-usage

@@ -10,7 +10,7 @@ menu_order: 500
 ---
 
 MobilePay is the main payment app in Denmark and one of the leading apps in
-Finland, making it one of the essential payment instruments for merchants
+Finland, making it one of the essential payment methods for merchants
 operating in these Nordic countries. More than 4.2 million Danes and Finns use
 the app and 140,000 stores are accepting payments. We offer it on
 our redirect and seamless view platforms.
@@ -43,7 +43,7 @@ products) have to make a [`Capture`][mobilepay-capture] or
 
 ## Payment Type
 
-MobilePay Online is one of the instruments using two-phase payments. The
+MobilePay Online is one of the payment methods using two-phase payments. The
 `authorization` is done when the payer successfully confirms in the app, and
 the `abort`, `cancel`, `capture` or `reversal` is done by the merchant at a
 later time. Read more about the [different operations][features] and the
@@ -56,24 +56,24 @@ later time. Read more about the [different operations][features] and the
 MobilePay Online transactions are handled, processed and settled as card
 transactions in our system. They are, however, tagged as MobilePay Online
 transactions and have their own acquirer agreement, so the two payment
-instruments are settled separately.
+methods are settled separately.
 
 ## 3-D Secure
 
 As MobilePay Online transactions are processed as card transactions, a 3-D
-Secure agreement is needed to complete the payment instrument setup. This
+Secure agreement is needed to complete the payment method setup. This
 information is provided to you by your acquirer when you set up your agreement
 with them. If you offer both Card Payments and MobilePay Online, you will need
-two separate 3-D Secure agreements, one for each payment instrument. Apart from
+two separate 3-D Secure agreements, one for each payment method. Apart from
 the agreement with the acquirer, no further 3-D Secure compliance is required
 from you as a merchant in this regard.
 
-Languages supported by this instrument are Danish `da-DK`, English (US) `en-US`
-and Finnish `fi-FI`.
+Languages supported by this payment method are Danish `da-DK`, English (US)
+`en-US` and Finnish `fi-FI`.
 
 ## Payment Availability
 
-Even though MobilePay Online supports several currencies, the payment instrument
+Even though MobilePay Online supports several currencies, the payment method
 itself is only available for payers in Denmark and Finland. This allows a shop
 in Norway to receive payments in NOK from a Danish payer if the shop supports
 shipping to Denmark, for instance.

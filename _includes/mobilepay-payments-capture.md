@@ -10,24 +10,25 @@ operation.
 
 ## Capture Request
 
-{:.code-header}
-**Request**
-
-```http
-POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/mobilepay/payments/{{ page.payment_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "amount": 1000,
         "vatAmount": 250,
         "payeeReference": 1234,
         "description" : "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                           |

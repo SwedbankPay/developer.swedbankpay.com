@@ -26,8 +26,8 @@
 ## Description
 
 The `description` field is a 40 character length textual summary of the
-purchase. It is needed to specify what payer is actually purchasing. Below you
-will find an abbreviated Card Payments `Purchase` request.
+purchase. It is needed to specify what the payer is actually purchasing. You
+will find an abbreviated `Purchase` request below.
 
 As you can see the `description` field is set to be `Test Description`
 in the the code example.
@@ -40,16 +40,13 @@ shown in the payment window, but it is still required in the initial request."
 
 ## Description Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+{% capture request_header %}POST /psp/{{ api_resource }}/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "{{ api_resource_field_name }}": {
+        "description": "Test Description",
         "operation": "Purchase",
         "intent": {% if api_resource == "trustly" or api_resource == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
         "currency": "{{ currency }}",{% if api_resource == "creditcard" %}
@@ -58,8 +55,7 @@ Content-Type: application/json
                 "amount": 1500,
                 "vatAmount": 0
             }
-        ],{% endif %}
-        "description": "Test Description",{% if documentation_section == "payment-menu" %}
+        ],{% endif %} {% if documentation_section == "payment-menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
@@ -67,8 +63,13 @@ Content-Type: application/json
         "urls":
             "hostUrls": ["https://example.com"]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## How It Looks
 

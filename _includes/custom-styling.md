@@ -11,9 +11,10 @@ below).
 
 ## Customizable Elements
 
-With the arrival of our [accessibility compliant payment UI][wcag-presentation],
-the elements you can adjust are related to the CTA button. Here's what you can
-do!
+With the arrival of our
+[accessibility compliant payment UI][wcag-presentation]{:target="_blank"},
+the elements you can adjust are related to the CTA button. Available changes
+are:
 
 ### The background color of the CTA button
 
@@ -49,7 +50,7 @@ You can make the adjustments you want in the `style` object and include it in
 the `style` node of the script that loads the UI.
 
 Do you want to see the changes live before you put them to use? Stop by the
-[Swedbank Pay Playground][playground] and give it a go!
+[Swedbank Pay Playground][playground]{:target="_blank"} and give it a go!
 
 {:.code-view-header}
 **Payment UI loading script**

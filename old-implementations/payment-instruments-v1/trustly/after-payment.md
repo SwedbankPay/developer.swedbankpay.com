@@ -29,16 +29,12 @@ follows:
 
 ## Reversal Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "Sale",
         "amount": 1500,
@@ -47,8 +43,13 @@ Content-Type: application/json
         "receiptReference": "ABC855",
         "description": "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                      | Type         | Description                                                                                                                                                                                                                                                                |
@@ -73,15 +74,15 @@ The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment. The URL will be found on a `payment` that has a
 successful `sale` operation.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}GET /psp/trustly/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="reversal" %}
 

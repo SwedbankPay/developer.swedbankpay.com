@@ -12,7 +12,7 @@ the first step, to receive the state of the transaction. You will also be able
 to see the available operations after posting a payment.
 
 *   **Abort:** It is possible to abort the process if the payment has no
-  successful transactions. [See the `abort` description](#abort).
+  successful transactions. See the [`Abort` description](#abort).
 *   An invoice authorization must be followed by a `capture` or
   `cancel` request.
 *   For reversals, you will need to implement the `reversal` request.
@@ -29,23 +29,24 @@ or partially captured invoice payment.
 
 ## Cancel Request
 
-{:.code-view-header}
-***Request***
-
-```http
-POST /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer",
         "payeeReference": "customer order reference-unique",
         "description": "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                                                              |
@@ -66,15 +67,15 @@ newly created `cancel` transaction.
 The `cancellations` resource lists the cancellation transaction made on a
 specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}GET /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="cancel" %}
 
@@ -104,16 +105,12 @@ refund the amount to the payer. To reverse a payment, perform the
 
 ## Reversal Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer",
         "amount": 1500,
@@ -122,8 +119,13 @@ Content-Type: application/json
         "receiptReference": "ABC855",
         "description": "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                      | Type         | Description                                                                                                                                                                                                                                                                |
@@ -147,15 +149,15 @@ The `reversal` resource will be returned, containing information about the newly
 The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment.
 
-{:.code-view-header}
-***Request***
-
-```http
-GET /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}GET /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="reversal" %}
 

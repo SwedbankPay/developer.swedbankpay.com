@@ -1,11 +1,21 @@
 {%- capture features_url -%}{%- include utils/documentation-section-url.md href='/features' -%}{%- endcapture -%}
 {%- capture cancel_url -%}
+    {%- if features_url contains "checkout-v3" -%}
+        {%- include utils/documentation-section-url.md
+        href='/features/payment-operations/cancel' -%}
+    {%- else -%}
     {%- include utils/documentation-section-url.md
         href='/features/core/cancel' -%}
+    {%- endif -%}
 {%- endcapture -%}
 {%- capture capture_url -%}
+    {%- if features_url contains "checkout-v3" -%}
+        {%- include utils/documentation-section-url.md
+        href='/features/payment-operations/' -%}
+    {%- else -%}
     {%- include utils/documentation-section-url.md
         href='/features/core/' -%}
+    {%- endif -%}
     {%- if features_url contains "payment-instruments" -%}
         capture
     {%- else -%}
@@ -14,7 +24,7 @@
 {%- endcapture -%}
 {%- capture text -%}
 The intent of the payment identifies how and when the charge will be
-effectuated. This determine the type transactions used during the payment
+effectuated. This determines the transactions types used during the payment
 process.
 
 `Authorization`. Reserves the amount, and is followed by a {% clink cancellation

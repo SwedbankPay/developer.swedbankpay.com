@@ -129,7 +129,7 @@ try {
 }
 ```
 
-Read more on [expanding properties here][expanding_properties].
+Read more on [expanding properties here][expanding-properties].
 
 ## Token Retrieval In Checkout V2
 
@@ -239,6 +239,6 @@ val paymentOrder = PaymentOrder(
 paymentOrder.disableStoredPaymentDetails = true
 ```
 
-[add-stored-details]: /old-implementations/payment-menu-v2/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
+[add-stored-details]: /checkout-v3/features/optional/payer-aware-payment-menu/#add-stored-payment-method-details
 [enterprise-payer-ref]: https://developer.swedbankpay.com/old-implementations/enterprise/features/optional/enterprise-payer-reference
-[expanding_properties]: https://developer.swedbankpay.com/checkout-v3/resources/fundamental-principles#expansion
+[expanding-properties]: https://developer.swedbankpay.com/checkout-v3/get-started/fundamental-principles#expansion

@@ -3,7 +3,7 @@ title: PayeeReference
 permalink: /:path/payee-reference/
 description: |
   The merchant's reference for a specific payment.
-menu_order: 1900
+menu_order: 2100
 icon:
   content: assignment_ind
   outlined: true

@@ -12,8 +12,9 @@ specific payment.
 
 To cancel a previously created payment, you must perform the `cancel` operation
 against the accompanying `href` returned in the `operations` list. You can only
-cancel a payment - or part of a payment - which has not been captured yet. If
-you cancel before any capture has been done, no captures can be performed later.
+cancel a payment - or part of a payment - which has not been captured yet. There
+must be funds left that are only authorized. If you cancel before any capture
+has been done, no captures can be performed later.
 
 {% else %}
 
@@ -27,22 +28,23 @@ no captures can be performed later.
 
 ## Cancel Request v3.1
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1
+Content-Type: application/json;version=3.1{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Test Cancellation",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                                    |
@@ -56,15 +58,11 @@ Content-Type: application/json;version=3.1
 If the cancel request succeeds, the response should be similar to the
 example below:
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 3.1
+api-supported-versions: 3.1{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": {
     "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d",
     "created": "2020-03-03T07:19:27.5636519Z",
@@ -124,8 +122,13 @@ api-supported-versions: 3.1
   },
   "operations": [
   ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -146,10 +149,10 @@ api-supported-versions: 3.1
 | {% f description %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
@@ -173,7 +176,7 @@ api-supported-versions: 3.1
 Cancel can only be done on an authorized transaction. As a cancellation does not
 have an amount associated with it, it will release the entire reserved amount.
 If your intention is to make detailed handling, such as only capturing a partial
-amount of the transaction, you must start with the capture on the desired amount
+amount of the transaction, you must start with the capture of the desired amount
 before performing a cancel for the remaining reserved funds.
 
 ```mermaid

@@ -25,27 +25,27 @@ specific payment.
 
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0     // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0     // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% endif %}
 

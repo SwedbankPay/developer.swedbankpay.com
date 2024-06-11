@@ -13,7 +13,7 @@
 
 For our Seamless Views, the field called `paymentUrl` will be used when the
 payer is redirected out of the Seamless View (the `iframe`). The payer is
-redirected out of frame when selecting payment instruments which trigger SCA.
+redirected out of frame when selecting payment methods which trigger SCA.
 This includes 3-D Secure card payments, installment account, invoice, MobilePay,
 monthly invoice payments, Trustly and Vipps.
 
@@ -39,12 +39,12 @@ both the integration and the payer.
 {% if full_reference %}
 
 `paymentUrl` is used by the Seamless View flow and **must** be used for
-WebView-based app implementations. Some payment instruments only work when
+WebView-based app implementations. Some payment methods only work when
 owning the full browser page (no use of `<iframe>`), this will be solved by
 doing a full browser (top frame) redirect out of the Seamless View. 3-D Secure
 requires this, for example.
 
-For mobile flows, some payment instruments work best when app-to-app switching
+For mobile flows, some payment methods work best when app-to-app switching
 is enabled and handled automatically (Swish, Vipps etc). To solve this, it is
 important that the third party app or site understand where to redirect the
 payer back to after the flow on their end is completed.
@@ -72,9 +72,10 @@ in {% if technical_reference_url contains "/checkout-v2" %}
 {% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
-should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]
-in the `paymentUrl` for handling automatic switching between your app and the
-payment app on the mobile device.
+should use a [custom scheme][custom-scheme]{:target="_blank"} or
+[Universal Link][universal-link]{:target="_blank"} in the `paymentUrl` for
+handling automatic switching between your app and the payment app on the mobile
+device.
 
 {% endif %}
 [custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app

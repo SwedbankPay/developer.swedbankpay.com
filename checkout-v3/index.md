@@ -7,41 +7,57 @@ description: |
 menu_order: 1
 ---
 
-Digital Payments is our easy and powerful e-commerce implementation, with a lot
-of flexibility for you as a merchant. You can choose if you want to display all
-the payment instruments enabled in your merchant setup, restrict the menu to a
-selection of instruments, or
-[display a single payment instrument][instrument-mode].
+<section class="panel panel-brand">
+ <header>
+ <h3 class="panel-title">Why Swedbank Pay?</h3>
+ <p class="panel-sub-title"></p>
+ </header>
+ <div class="panel-body">
+ <ul>
+ <li>Get all your payment needs from one provider</li>
+ <li>Manage all digital sales channels through one platform</li>
+ <li>Customize your payment menu</li>
+ <li>Ensure ease of use for everyone with the latest accessibility standards (WCAG)</li>
+ <li>Simplify your financial management with one payout and one report</li>
+ <li>Enjoy uninterrupted service</li>
+ <li>Get started quickly</li>
+ </ul>
+ </div>
+</section>
 
-There are two versions of Digital Payments available in production at the
-moment. If you are a new merchant, you should implement v3.1. If you are an
-existing merchant, we recommend migrating to v3.1, but you are still able to use
-v3.0. Reach out to your technical contact person for guidance regarding this.
-Unless stated otherwise by the presence of a separate v3.1 page, there are no
-differences between the two alternatives.
+There are three ways of implementing our digital payments, depending on what
+suits you best. The **native implementation**, which goes directly towards our
+APIs, **modules** (WooCommerce) or **SDKs** (*.NET* or *PHP* for web, *iOS* and
+*Android* for mobile apps).
 
-To meet accessibility requirements, we have re-worked our payment UI. Click here
-to [learn more about WCAG and the changes we have done][wcag-presentation]. The
-payment UI can be displayed as a redirect integration, where the payer is
-redirected to a page hosted by us, or seamless view, where the payment UI is
-embedded in an iframe in your shop. It is developed to be mobile first, but
-works great regardless of browser and device.
+The modules and SDKs have their [own section][modules-sdks], which is where you
+need to go if you are planning on using them. A bit less flexible than the
+native API option, but a lower threshold to get going.
 
-We have made it easier for you to retrieve payment data in a standardized format
-by using the [Paid resource][paid], which we highly recommend for smoother
-integration.
+If you are looking for the native implementation, we have everything you need in
+this section. We recommend [getting started here][get-started].
 
-With Digital Payments, you need to be able to collect, verify and store the
-payer data, including delivery address, and build your own checkout flow. We'll
-store the card data for you, but you own it. This means that you have to remove
-data in compliance with GDPR, but you won't have to worry about handling
-sensitive card info.
-
-## Use Cases
+### API Platform Use Cases
 
 <div class="row mt-4">
-    <div class="col-xl-6 col-lg-6 d-flex">
-       <a href="/checkout-v3/use-cases/recurring" class="cards cards-primary">
+    <div class="col-xl-4 col-lg-4 d-flex">
+       <a href="/checkout-v3/get-started/" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">One-Time Payments</span>
+            <span>
+               <p>Kick things off with our basic implementation for all payment methods.</p>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xl-4 col-lg-4 d-flex">
+       <a href="/checkout-v3/get-started/recurring" class="cards cards-primary">
          <span class="cards-icon">
             <i class="material-icons-outlined">
                 storefront
@@ -49,7 +65,30 @@ sensitive card info.
          </span>
          <span class="cards-content">
             <span class="h4">Recurring Payments</span>
-            <span><p>How to get started with recurring payments</p>
+            <span>
+               <p>Start getting that steady cash flow with our subscription services.</p>
+               <span class="badge badge-gray-light">Card</span>
+            </span>
+         </span>
+         <i class="material-icons">arrow_forward</i>
+      </a>
+    </div>
+    <div class="col-xl-4 col-lg-4 d-flex">
+       <a href="/checkout-v3/get-started/one-click" class="cards cards-primary">
+         <span class="cards-icon">
+            <i class="material-icons-outlined">
+                storefront
+            </i>
+         </span>
+         <span class="cards-content">
+            <span class="h4">One-Click Payments</span>
+            <span>
+               <p>Save your customer's details and make their checkout faster.</p>
+               <span class="badge badge-gray-light">Card</span>
+               <span class="badge badge-gray-light">Invoice</span>
+               <span class="badge badge-gray-light">Swish</span>
+               <span class="badge badge-gray-light">Trustly</span>
+               <span class="badge badge-gray-light">Vipps</span>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -57,54 +96,66 @@ sensitive card info.
     </div>
 </div>
 
-## Availability
+### Availability
 
 This implementation is available in Danish `da-DK`, English (US) `en-US`,
 Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
-contents of your payment UI from the following payment instruments, somewhat
-depending on which countries you are operating in.
+contents of your payment UI from the following payment methods, somewhat
+depending on which countries you are operating.
 
-{% include alert.html type="informative" icon="info" header="Digital Wallets"
-body="Some of the digital wallets we offer require you to take additional steps
-before we can activate them for you. Please follow the link(s) in the table
-below to read more." %}
+{% include alert.html type="informative" icon="info" header="Requirements and
+Recommendations" body="We have gathered useful integration recommendations for
+the specific payment methods. Some of the digital wallets - Apple Pay, Click to
+Pay and Google Pay&trade; - also require you to take additional steps before we
+can activate them for you. Please follow the link(s) in the table below to read
+more." %}
 
 {:.table .table-plain}
-|        | Payment Instrument | Region                                    |
+|        | Payment Method | Region                                    |
 | :--------------------------: | :--------------: | :---------------------------------------- |
 | ![Apple Pay][apple-pay-logo]     | [Apple Pay][apple-pay]           |  ![EarthIcon][earth-icon]    |
-| ![Card][card-icon]               | Card                             |  ![EarthIcon][earth-icon]    |
+| ![Card][card-icon]               | [Card][card]                     |  ![EarthIcon][earth-icon]    |
 | ![Click to Pay][c2p-logo]        | [Click to Pay][click-to-pay]     |  ![EarthIcon][earth-icon]    |
 | ![Google Pay][google-pay-logo]   | [Google Pay][google-pay]&trade;  |  ![EarthIcon][earth-icon]    |
-| ![MobilePay][mobilepay-logo]     | MobilePay                        | {% flag dk %} {% flag fi %}  |
+| ![MobilePay][mobilepay-logo]     | [MobilePay][mobilepay]           | {% flag dk %} {% flag fi %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Installment Account | {% flag se %} {% flag no %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Invoice             | {% flag no %} {% flag se %}  |
 | ![Swedbank Pay][swp-logo]        | Swedbank Pay Monthly Payments    | {% flag se %}                |
-| ![Swish][swish-logo]             | Swish                            | {% flag se %}                |
+| ![Swish][swish-logo]             | [Swish][swish]                   | {% flag se %}                |
 | ![Trustly][trustly-logo]         | [Trustly][trustly]               | {% flag se %} {% flag fi %}  |
-| ![Vipps][vipps-logo]             | Vipps                            | {% flag no %}                |
+| ![Vipps][vipps-logo]             | [Vipps][vipps]                   | {% flag no %}                |
 
-{% include iterator.html next_href="/checkout-v3/payment-request"
-                         next_title="Start Integrating v3.0" %}
-{% include iterator.html next_href="/checkout-v3/payment-request-3-1"
-                         next_title="Start Integrating v3.1" %}
-{% include iterator.html next_href="/checkout-v3/setup"
-                         next_title="Set Up A Test Account" %}
+#### Browser And Operative System Limitations
 
-[apple-pay]: /checkout-v3/payment-presentations#apple-pay
+We support all major browsers like (but not limited to) Edge, Firefox, Google
+Chrome and Safari. The same goes for mobile operative systems like Android or
+iOS.
+
+However, there are limitations for iOS versions older than 12.2 and all versions
+of Internet Explorer. Due to their age, they are unable to load our payment
+UI.
+
+Payers using these must update to a newer iOS or switch to a supported browser
+respectively. If their device is too old to update to a viable iOS, they need to
+use another device.
+
+[apple-pay]: /checkout-v3/apple-pay-presentation
 [apple-pay-logo]:/assets/img/applepay-logo.svg
-[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[card]: /checkout-v3/card-presentation
+[click-to-pay]: /checkout-v3/click-to-pay-presentation
 [c2p-logo]:/assets/img/clicktopay-logo.svg
 [card-icon]: /assets/img/new-card-icon.svg
 [earth-icon]: /assets/img/globe-icon.png
-[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay]: /checkout-v3/google-pay-presentation
 [google-pay-logo]: /assets/img/googlepay-logo.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
+[mobilepay]: /checkout-v3/mobilepay-presentation
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
-[trustly-logo]: /assets/img/icon-trustly-simple.svg
-[wcag-presentation]: https://www.swedbankpay.com/information/wcag
-[paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
-[trustly]: /checkout-v3/payment-presentations#trustly
-[instrument-mode]: /checkout-v3/features/optional/instrument-mode
+[trustly-logo]: /assets/img/icon-trustly-new.svg
+[trustly]: /checkout-v3/trustly-presentation
+[get-started]: /checkout-v3/get-started/
+[modules-sdks]: /checkout-v3/modules-sdks/
+[vipps]: /checkout-v3/vipps-presentation
+[swish]: /checkout-v3/swish-presentation

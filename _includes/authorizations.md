@@ -5,15 +5,15 @@
 The `authorizations` resource will list the authorization transactions
 made on a specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 {% include transaction-list-response.md transaction="authorization" %}
 
@@ -27,16 +27,12 @@ Note: The legal address must be the registered address of the payer." %}
 
 ## Authorization Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+{% capture request_header %}POST /psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer"
     },
@@ -63,8 +59,13 @@ Content-Type: application/json
         "city": "Saltnes",
         "countryCode": "no"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -99,14 +100,10 @@ Content-Type: application/json
 The `authorization` resource will be returned, containing information about
 the newly created authorization transaction.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "authorization": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id}}",
@@ -140,5 +137,10 @@ Content-Type: application/json
             ]
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}

@@ -7,33 +7,29 @@ it is where you enter the payment's amount. It consists of the payment's `id`
 and the `priceList`, which again contains the payment's `type`, `amount` and
 `vatAmount`.
 
- The `type` refers to the payment instrument, like `Swish`, `Trustly` or
+ The `type` refers to the payment method, like `Swish`, `Trustly` or
  `Creditcard`. Read more about the types below the code example and table. The
  `amount` refers to the **full** amount (incl. VAT) for the payment, and
  `vatAmount` indicates how much of the full amount which is VAT.
 
 ## GET Prices Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices/ HTTP/1.1
+{% capture request_content %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ## GET Prices Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture request_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "prices": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/prices",
@@ -50,8 +46,13 @@ Content-Type: application/json
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+    {% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                | Type      | Description                                                                                                                                                                                 |
@@ -66,8 +67,8 @@ Content-Type: application/json
 
 ## Prices Object Types
 
-Each payment instrument have one or more prices object types. Usually there is
-only one, whichs corresponds with the name of the payment instrument, like
+Each payment method have one or more prices object types. Usually there is
+only one, whichs corresponds with the name of the payment method, like
 `Vipps`, `Swish` or `Mobilepay`.
 
 The most common occurrence of several object types is for card payments. While it
@@ -91,10 +92,6 @@ types.
 | {% f MasterCard, 0 %}    | MasterCard                                 |
 | {% f Amex, 0 %}          | American Express                           |
 | {% f Dankort, 0 %}       | Dankort (only available with currency DKK) |
-| {% f Diners, 0 %}        | Diners Club                                |
-| {% f Finax, 0 %}         | Finax                                      |
-| {% f Jcb, 0 %}           | JCB                                        |
-| {% f IkanoFinansDK, 0 %} | Ikano Finans Denmark                       |
 | {% f Maestro, 0 %}       | MasterCard Maestro                         |
 
 {% when "invoice" %}

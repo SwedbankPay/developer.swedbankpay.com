@@ -7,7 +7,7 @@
 
 {% include alert-agreement-required.md %}
 
-An Automated Fuel Dispenser (AFD) payment is a purchase where the user
+An Automated Fuel Dispenser (AFD) payment is a purchase where the merchant
 requests an authorization transaction for an automatic fuel dispenser. The
 request contains the maximum purchase amount, but the issuer can reply with a
 partial approval to lower the maximum purchase amount. This can be used to stop
@@ -16,32 +16,28 @@ the fuel dispension at the maximum price.
 The only supported use case is automated fuel dispensers. To be able to verify
 this, it is required that the Merchant Category Code `mcc` is passed in the
 request under `PayeeInfo`. This feature is only supported with the `Purchase`
-operation. It does not support with [order items][order-items].
+operation. It does not support [order items][order-items].
 
-By default the available instruments and card types will be limited to those
-which support AFD payments. To enable other payment options for the payer, pass
+By default the available payment methods and card types will be limited to those
+which support AFD payments. To enable other payment options for the payer, send
 in `restrictedToAfdInstruments` with the value `false`.
 
 See the abbreviated example below on how to implement AFD payments by setting
 the `generateAfdPayment` to `true`.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
+        "generateAfdPayment": true,
+        "restrictedToAfdInstruments": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 10000,
         "vatAmount": 2500,
-        "generateAfdPayment": true,
-        "restrictedToAfdInstruments": true,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -56,17 +52,22 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
+            "mcc": 5542,
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
-            "orderReference": "or-123456",
-            "mcc": 5542
+            "orderReference": "or-123456"
         },
         "orderItems": null
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 Request fields not covered in the common Digital Payments [`Initialized`]({{
 features_url }}/technical-reference/status-models#initialized) redirect or
@@ -98,15 +99,11 @@ response provided below.
 
 {% endif %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -186,10 +183,21 @@ api-supported-versions: 3.1/3.0/2.0
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
-        }
+        }{% if documentation_section contains "checkout-v3" %},
+        {
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
+          "rel": "abort-paymentattempt",
+          "method": "PATCH",
+          "contentType": "application/json"
+        }{% endif %}
        ]
-      }
-```
+      }{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## When The Authorization Is Completed
 

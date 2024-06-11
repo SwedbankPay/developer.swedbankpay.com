@@ -3,7 +3,6 @@ title: Signature Approved Transaction
 description: |
   Eventhough we do not allow CVM Signature in Europe, we still have to accept those transactions made with cards from other parts of the world.
 permalink: /:path/cvm-signature/
-hide_from_sidebar: true
 icon:
     content: draw
     outlined: true

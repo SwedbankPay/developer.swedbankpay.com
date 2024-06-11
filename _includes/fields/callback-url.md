@@ -1,7 +1,12 @@
 {%- assign resource=include.resource | default: 'payment order' -%}
 {%- capture url -%}
+        {%- if features_url contains "checkout-v3" -%}
+        {%- include utils/documentation-section-url.md
+        href='/features/payment-operations/callback' -%}
+    {%- else -%}
     {%- include utils/documentation-section-url.md
         href='/features/core/callback' -%}
+    {%- endif -%}
 {%- endcapture -%}
 {%- capture text -%}
 The URL that Swedbank Pay will perform an HTTP `POST` against every time a

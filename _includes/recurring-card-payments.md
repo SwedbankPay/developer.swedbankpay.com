@@ -9,7 +9,7 @@ subsequent payments are made through server-to-server requests. " %}
 ## Prerequisites
 
 Prior to making any server-to-server requests, you need to supply the payment
-instrument details and a payment token to Swedbank Pay by initial purchase.
+method details and a payment token to Swedbank Pay by initial purchase.
 
 *   Initiate a recurring payment flow and **charge the credit card**.
     This is done by creating a "Purchase Payment" and generating a
@@ -20,12 +20,13 @@ instrument details and a payment token to Swedbank Pay by initial purchase.
 *   When posting a `Purchase` payment, you need to make sure that the field
     `generateRecurrenceToken` is set to `true`.
 
-{:.code-view-header}
-**Field**
+{% capture request_content %}"generateRecurrenceToken": true{% endcapture %}
 
-```json
-"generateRecurrenceToken": true
-```
+{% include code-example.html
+    title='Field'
+    header=request_header
+    json= request_content
+    %}
 
 ## Creating The Payment
 
@@ -47,7 +48,7 @@ details [here][card-payments-remove-payment-token].
 
 When you have a Recurrence token stored away. You can use the same token in a
 subsequent [`recurring payment`][card-payment-recur] `POST`. This will be a
-server-to-server affair, as we have both payment instrument details and
+server-to-server affair, as we have both payment method details and
 recurrence token from the initial payment.
 
 Please note that you need to do a capture after sending the recur request.
@@ -55,16 +56,12 @@ We have added a capture section at the end of this page for that reason.
 
 ## Recur Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ include.api_resource }}/payments HTTP/1.1
+{% capture request_header %}POST /psp/{{ include.api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Recur",
         "intent": "Authorization",
@@ -96,8 +93,13 @@ Content-Type: application/json
             "key4": false
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -180,16 +182,12 @@ always 0, this can cause issues for you in the future.
 Please note that all boolean credit card attributes involving rejection of
 certain card types are optional and set on contract level." %}
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments HTTP/1.1
+{% capture request_header %}POST /psp/creditcard/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Verify",
         "currency": "NOK",
@@ -224,17 +222,18 @@ Content-Type: application/json
         "rejectConsumerCards": false,
         "rejectCorporateCards": false
     }
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -281,8 +280,13 @@ Content-Type: application/json
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% include capture.md %}
 
@@ -294,6 +298,4 @@ Content-Type: application/json
 [card-payment-capture]: /old-implementations/payment-instruments-v1/card/capture
 [card-payment-cancel]: /old-implementations/payment-instruments-v1/card/after-payment#cancellations
 [card-payments-remove-payment-token]: {{ features_url }}/optional/delete-token
-[settlement-reconciliation]: {{ features_url }}/core/settlement-reconciliation
-[settlement-reconciliation-split]: {{ features_url }}/core/settlement-reconciliation#split-settlement
 [technical-reference-callback]: {{ features_url }}/core/callback

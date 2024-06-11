@@ -18,11 +18,11 @@ differences will be highlighted in the chapter on custom backends.
 
 The Android component of the Swedbank Pay Mobile SDK is distributed through
 Maven Central. It is split into two libraries in the
-[`com.swedbankpay.mobilesdk`][maven-group] group:
+[`com.swedbankpay.mobilesdk`][maven-group]{:target="_blank"} group:
 
-*   Core SDK: [`com.swedbankpay.mobilesdk:mobilesdk`][sdk-maven]
+*   Core SDK: [`com.swedbankpay.mobilesdk:mobilesdk`][sdk-maven]{:target="_blank"}
 *   Merchant Backend Utilities:
-    [`com.swedbankpay.mobilesdk:mobilesdk-merchantbackend`][merchantbackend-maven]
+    [`com.swedbankpay.mobilesdk:mobilesdk-merchantbackend`][merchantbackend-maven]{:target="_blank"}
 
 If you are not using the Merchant Backend API in your backend, you only need to
 use the first one. Otherwise, you should add both libraries to your project to
@@ -33,12 +33,44 @@ the `build.gradle` file:
 
 ```groovy
 dependencies {
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk:4.0.0'
-    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:4.0.0'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}'
+    implementation 'com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}'
+}
+```
+
+Or in your `gradle.kts` file:
+
+```kotlin
+dependencies {
+    implementation("com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}")
+    implementation("com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}")
 }
 ```
 
 Please refer to Maven Central for the latest versions of the libraries.
+
+## Custom URL Scheme
+
+The [Payment Url][paymenturl] handling in the Android SDK uses a custom URL
+scheme. You must therefore set this up using the template intent filter prepared
+in the SDK, that uses a
+[Gradle Manifest Placeholder][gradle-manifest-placeholders]. You do this by
+specifying your custom URL scheme in you `build.gradle` file (in this example
+we're preparing for a payment URL using `examplepayment://`):
+
+```groovy
+defaultConfig {
+    manifestPlaceholders = [swedbankPaymentUrlScheme:"examplepayment"]
+}
+```
+
+Or in your `gradle.kts` file:
+
+```kotlin
+defaultConfig {
+    manifestPlaceholders["swedbankPaymentUrlScheme"] = "examplepayment"
+}
+```
 
 ## Usage
 
@@ -126,19 +158,21 @@ sequenceDiagram
 ```
 
 The public API of the Android SDK is in the package
-[`com.swedbankpay.mobilesdk`][dokka-pkg]. The main component is
-[`PaymentFragment`][dokka-payfrag], a `Fragment` that handles a single payment
-order. To use a `PaymentFragment`, it must have a
-[`Configuration`][dokka-config]. In most cases it is enough to construct a
-single `Configuration` and set it as the [default][dokka-payfrag-defconf]. In
-more advanced cases you will need to subclass `PaymentFragment` and override
-[`getConfiguration`][dokka-payfrag-getconf].
+[`com.swedbankpay.mobilesdk`][dokka-pkg]{:target="_blank"}. The main component
+is [`PaymentFragment`][dokka-payfrag]{:target="_blank"}, a `Fragment` that
+handles a single payment order. To use a `PaymentFragment`, it must have a
+[`Configuration`][dokka-config]{:target="_blank"}. In most cases it is enough to
+construct a single `Configuration` and set it as the
+[default][dokka-payfrag-defconf]{:target="_blank"}. In more advanced cases you
+will need to subclass `PaymentFragment` and override
+[`getConfiguration`][dokka-payfrag-getconf]{:target="_blank"}.
 
 For using a backend implementing the Merchant Backend API, the SDK also provides
 utility classes in the package
-[`com.swedbankpay.mobilesdk.merchantbackend`][dokka-pkg-merch]. The examples on
-this page make use of these, including the `Configuration` implementation
-[`MerchantBackendConfiguration`][dokka-merchconfig].
+[`com.swedbankpay.mobilesdk.merchantbackend`][dokka-pkg-merch]{:target="_blank"}.
+The examples on this page make use of these, including the `Configuration`
+implementation
+[`MerchantBackendConfiguration`][dokka-merchconfig]{:target="_blank"}.
 
 ```kotlin
 val backendUrl = "https://example.com/swedbank-pay-mobile/"
@@ -148,13 +182,14 @@ val configuration = MerchantBackendConfiguration.Builder(backendUrl)
 PaymentFragment.defaultConfiguration = configuration
 ```
 
-To start a payment, you need a [`PaymentOrder`][dokka-paymentorder], and, unless
-making a guest payment, a [`Consumer`][dokka-consumer]. Using a `Consumer` makes
-future payments by the same payer easier.
+To start a payment, you need a
+[`PaymentOrder`][dokka-paymentorder]{:target="_blank"}, and, unless making a
+guest payment, a [`Consumer`][dokka-consumer]{:target="_blank"}. Using a
+`Consumer` makes future payments by the same payer easier.
 
-The semantics of `Consumer` properties are the same as the fields of the [`POST
-/psp/consumers`][checkin-consumer] request. There are default values for the
-`operation` and `language` properties
+The semantics of `Consumer` properties are the same as the fields of the
+[`POST/psp/consumers`][checkin-consumer] request. There are default values for
+the `operation` and `language` properties
 (`ConsumerOperation.INITIATE_CONSUMER_SESSION` and `Language.ENGLISH`,
 respectively).
 
@@ -168,13 +203,13 @@ val consumer = Consumer(
 Similarly, the semantics of `PaymentOrder` properties are the same as the fields
 of the [`POST /psp/paymentorders`][checkin-paymentorder] request. Sensible
 default values are provided for many of the properties. The `urls` property has
-no default per se, but there are [convenience
-constructors][dokka-paymentorderurls-init] available for it, and it is
-recommended that you use them. Assuming you have the Android Payment Url Helper
-endpoint set up with the specified static path relative to your backend url
-(i.e. `sdk-callback/android-intent`), then using the one of the
-`PaymentOrderUrls(context: Context, backendUrl: String)` variants will set the
-`paymentUrl` correctly.
+no default per se, but there are
+[convenience constructors][dokka-paymentorderurls-init]{:target="_blank"}
+available for it, and it is recommended that you use them. Assuming you have the
+Android Payment Url Helper endpoint set up with the specified static path
+relative to your backend url (i.e. `sdk-callback/android-intent`), then using
+the one of the `PaymentOrderUrls(context: Context, backendUrl: String)` variants
+will set the `paymentUrl` correctly.
 
 ```kotlin
 val paymentOrder = PaymentOrder(
@@ -221,12 +256,14 @@ val paymentOrder = PaymentOrder(
 
 To start a payment, create a `PaymentFragment` and set its arguments according
 to the payment. The
-[`PaymentFragment.ArgumentsBuilder`][dokka-payfrag-argbuilder] class is provided
-to help with creating the argument bundle. In most cases you only need to worry
-about the [`paymentOrder`][dokka-payfrag-argbuilder-paymentorder] property. The
-payment process starts as soon as the `PaymentFragment` is visible. Note that
-Digital Payments is currently opt-in, so that merchants can upgrade without too
-much breaking changes and start using the new Digital Payments when ready.
+[`PaymentFragment.ArgumentsBuilder`][dokka-payfrag-argbuilder]{:target="_blank"}
+class is provided to help with creating the argument bundle. In most cases you
+only need to worry about the
+[`paymentOrder`][dokka-payfrag-argbuilder-paymentorder]{:target="_blank"}
+property. The payment process starts as soon as the `PaymentFragment` is
+visible. Note that Digital Payments is currently opt-in, so that merchants can
+upgrade without too much breaking changes and start using the new Digital
+Payments when ready.
 
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
@@ -245,8 +282,8 @@ paymentFragment.arguments = arguments
 
 Note that the SDK only supports customer-checkin for version 2, and provides
 fallback for merchants in need of this. Then you need to supply a
-[`consumer`][dokka-payfrag-argbuilder-consumer] and the ckeckoutV3 setting
-becomes irrelevant.
+[`consumer`][dokka-payfrag-argbuilder-consumer]{:target="_blank"} and the
+Checkout v3 setting becomes irrelevant.
 
 ```kotlin
 val arguments = PaymentFragment.ArgumentsBuilder()
@@ -260,11 +297,15 @@ paymentFragment.arguments = arguments
 // Now handle the fragment the same way as previously.
 ```
 
-To observe the payment process, use the [`PaymentViewModel`][dokka-paymentvm]
-[of the containing `Activity`][dokka-activity-paymentvm]. When the
-`PaymentViewModel` [signals][dokka-paymentvm-livestate] that the payment process
-has reached a [final][dokka-paymentvm-state-isfinal] state, you should remove
-the `PaymentFragment` and inform the user of the result.
+To observe the payment process, use the
+[`PaymentViewModel`][dokka-paymentvm]{:target="_blank"}
+[of the containing `Activity`][dokka-activity-paymentvm]{:target="_blank"}.
+When the
+`PaymentViewModel` [signals][dokka-paymentvm-livestate]{:target="_blank"}
+that the payment process has reached a
+[final][dokka-paymentvm-state-isfinal]{:target="_blank"} state, you should
+remove the `PaymentFragment` and inform the user of the
+result.
 
 ```kotlin
 paymentViewModel.state.observe(this, Observer {
@@ -278,8 +319,8 @@ paymentViewModel.state.observe(this, Observer {
 
 Note that checking the payment status after completion is outside the scope of
 the Mobile SDK. Your backend should collect any information it needs to perform
-this check when it services the request to the [Payment Orders
-endpoint][backend-payment-orders] made by the `PaymentFragment`.
+this check when it services the request to the
+[Payment Orders endpoint][backend-payment-orders] made by the `PaymentFragment`.
 
 ## Errors
 
@@ -292,16 +333,16 @@ on the `PaymentViewModel`.
 When the state is `FAILURE` or `RETRYABLE_ERROR`, and the error condition was
 caused by an exception thrown from the `Configuration`, that exception is
 available in
-[`PaymentViewModel.richState.exception`][dokka-paymentvm-richstate-exception].
+[`PaymentViewModel.richState.exception`][dokka-paymentvm-richstate-exception]{:target="_blank"}.
 The exception will be of any type throw by your `Configuration`. When using
 `MerchantBackendConfiguration`, this means it will be an `IOException` if there
 was a problem communicating with the backend, and an `IllegalStateException` if
 you have made a programming error (consult the exception message). A particular
 `IOException` to check for is
-[`RequestProblemException`][dokka-problem-exception], which signals that the
-backend responded with a Problem message. Another one is
-[`UnexpectedResponseException`][dokka-unexpected-exception], which signals that
-the SDK did not understand the backend response.
+[`RequestProblemException`][dokka-problem-exception]{:target="_blank"}, which
+signals that the backend responded with a Problem message. Another one is
+[`UnexpectedResponseException`][dokka-unexpected-exception]{:target="_blank"},
+which signals that the SDK did not understand the backend response.
 
 ## Problems
 
@@ -317,26 +358,28 @@ Android SDK will parse any RFC 7807 problem, but it has specialized data types
 for known problem types, namely the [Common Problems][swedbankpay-problems] and
 the [Merchand Backend Problems][backend-problems].
 
-Problems are presented as a [class hierarchy][dokka-problem] representing
-different problem categories. All problems parsed from RFC 7807 messages are
-classified as either [`Client`][dokka-problem-client] or
-[`Server`][dokka-problem-server] problems. A `Client` problem is one caused by
-client behavior, and is to be fixed by changing the request made to the server.
-Generally, a `Client` problem is a programming error, with the possible
-exception of
-[`Problem.Client.MobileSDK.Unauthorized`][dokka-problem-client-mobilesdk-unauthorized].
+Problems are presented as a [class hierarchy][dokka-problem]{:target="_blank"}
+representing different problem categories. All problems parsed from RFC 7807
+messages are classified as either
+[`Client`][dokka-problem-client]{:target="_blank"} or
+[`Server`][dokka-problem-server]{:target="_blank"} problems. A `Client` problem
+is one caused by client behavior, and is to be fixed by changing the request
+made to the server. Generally, a `Client` problem is a programming error, with
+the possible exception of
+[`Problem.Client.MobileSDK.Unauthorized`][dokka-problem-client-mobilesdk-unauthorized]{:target="_blank"}.
 A `Server` problem is one caused by a malfunction or lack of service in the
 server evironment. A `Server` problem is fixed by correcting the behavior of
 the malfunctioning server, or simply trying again later.
 
 Further, both `Client` and `Server` problems are categorized as `MobileSDK`,
-`SwedbankPay`, or `Unknown`. `MobileSDK` problems are ones with [Merchant
-Backend problem types][backend-problems], while `SwedbankPay` problems have
-[Swedbank Pay API problem types][swedbankpay-problems]. `Unknown` problems are
-of types that the SDK has no knowledge of. There is also the interface
-[`SwedbankPayProblem`][dokka-swedbankpayproblem], which encompasses both
-[`Client`][dokka-problem-client-swedbankpay] and
-[`Server`][dokka-problem-server-swedbankpay] type `SwedbankPay` problems.
+`SwedbankPay`, or `Unknown`. `MobileSDK` problems are ones with
+[Merchant Backend problem types][backend-problems], while `SwedbankPay` problems
+have [Swedbank Pay API problem types][swedbankpay-problems]. `Unknown` problems
+are of types that the SDK has no knowledge of. There is also the interface
+[`SwedbankPayProblem`][dokka-swedbankpayproblem]{:target="_blank"}, which
+encompasses both [`Client`][dokka-problem-client-swedbankpay]{:target="_blank"}
+and [`Server`][dokka-problem-server-swedbankpay]{:target="_blank"} type
+`SwedbankPay` problems.
 
 ```kotlin
 paymentViewModel.richState.observe(this, Observer {
@@ -389,25 +432,16 @@ payment menu. This requires no additional setup.
 
 If a third party application is launched, it will signal the return to the
 payment menu by opening the payment url, using a standard `ACTION_VIEW`
-`Intent`. The payment url is built such that it uses the [Android Payment Url
-Helper][android-helper], which serves an html page that converts the url to an
-[intent url][android-intent-scheme] and redirects to it. The SDK has an intent
-filter for that intent, so the SDK will receive it, bringing the containing
-application to the foreground, and reloading the payment menu. If your Merchant
-Backend serves the Android Payment Url Helper endpoint at the specified path, no
-further setup is needed.
+`Intent`. The payment URL should use a custom URL scheme unique to the app. The
+SDK has a template intent filter that uses a
+[Gradle Manifest Placeholder][gradle-manifest-placeholders], so the SDK will
+receive it, bringing the containing application to the foreground, and reloading
+the payment menu.
 
-Note that there is an [argument][dokka-payfrag-argbuilder-usebrowser] for
-debugging purposes that cause third-party web pages to be opened in an external
-application. In that case the process continues analogously to the external
-application case. Using this argument should not be necessary, however. If you
-do find a case that does not work inside the PaymentFragment, but does work when
-using the browser for third-party sites, please file a bug on the Android SDK.
-
-{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code"
-                         prev_title="Merchant Backend Sample Code"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/custom-backend"
+                         prev_title="Back: Custom Backend"
                          next_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
-                         next_title="iOS" %}
+                         next_title="Next: iOS" %}
 
 [maven-group]: https://search.maven.org/search?q=g:com.swedbankpay.mobilesdk
 [sdk-maven]: https://search.maven.org/artifact/com.swedbankpay.mobilesdk/mobilesdk
@@ -435,13 +469,13 @@ using the browser for third-party sites, please file a bug on the Android SDK.
 [checkin-paymentorder]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
 [dokka-paymentorderurls-init]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/-payment-order-urls/-payment-order-urls.md
 [dokka-activity-paymentvm]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/payment-view-model.md
-[backend-payment-orders]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint
+[backend-payment-orders]: /old-implementations/mobile-sdk/merchant-backend#payment-orders-endpoint
 [dokka-problem-exception]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [dokka-problem-exception-problem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [dokka-unexpected-exception]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk/
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
-[backend-problems]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#problems
+[backend-problems]: /old-implementations/mobile-sdk/merchant-backend#problems
 [dokka-problem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/index.md
 [dokka-problem-client]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/index.md
 [dokka-problem-client-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-client/-swedbank-pay/index.md
@@ -449,6 +483,6 @@ using the browser for third-party sites, please file a bug on the Android SDK.
 [dokka-problem-server]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/index.md
 [dokka-problem-server-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md
 [dokka-swedbankpayproblem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md
-[paymenturl]: /old-implementations/checkout-v2/features/technical-reference/payment-url
-[android-helper]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#android-payment-url-helper
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[paymenturl]: /checkout-v3/features/technical-reference/payment-url
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
+[gradle-manifest-placeholders]: https://developer.android.com/build/manage-manifests#inject_build_variables_into_the_manifest
