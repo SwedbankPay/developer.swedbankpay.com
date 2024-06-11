@@ -1,4 +1,5 @@
 {%- capture documentation_section -%}{%- include utils/documentation-section.md -%}{%- endcapture -%}
+{% assign features_url = documentation_section | prepend: '/' | append: '/features' %}
 {%- capture logo_description -%}
     {%- if documentation_section contains "payment-menu" or documentation_section contains "checkout" -%}
     With permission and activation on your contract, sending in a `logoUrl` will
