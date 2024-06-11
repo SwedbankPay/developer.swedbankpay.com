@@ -104,7 +104,7 @@ when we get there.
 [json]: https://www.json.org/
 [migrate]: /checkout-v3/migration-guide/
 [modules-sdks]: /checkout-v3/modules-sdks/
-[nwt]: /checkout-v3/features/optional/network-tokenization/
+[nwt]: /checkout-v3/features/customize-payments/network-tokenization/
 [post-purchase]: /checkout-v3/get-started/post-purchase-3-1/
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [set-rec]: /checkout-v3/features/balancing-the-books/settlement-reconciliation/#report-samples
