@@ -9,9 +9,9 @@ following URL structure:
 #### Problem Types from Vipps (Init-call)
 
 {:.table .table-striped}
-| Type          | Status | Note       |
-| :------------ | :----- | :--------- |
-| `vipps_error` | `403`  | All errors |
+| Type             | Status | Note                              |
+| :--------------- | :----- | :-------------------------------- |
+| `vipps_error`    | `403`  | All errors                        |
 
 #### Problem Types from Vipps (Callback)
 

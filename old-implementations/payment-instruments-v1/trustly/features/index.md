@@ -5,5 +5,5 @@ card_overview: true
 description: |
   In this section, you can read more about the different features of Trustly.
 permalink: /:path/
-menu_order: 1100
+menu_order: 1200
 ---

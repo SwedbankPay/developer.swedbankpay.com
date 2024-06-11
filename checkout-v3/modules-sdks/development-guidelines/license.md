@@ -7,9 +7,10 @@ menu_order: 1200
 ## Licensing
 
 The licensing of Swedbank Pay's open source software should be one approved by
-the [Open Source Initiative][osi] and preferably one that is compatible with
-closed source, enterprise software. The [Apache 2.0 License][license] is
-therefore a good fit and should be chosen when possible:
+the [Open Source Initiative][osi]{:target="_blank"} and preferably one that is
+compatible with closed source, enterprise software. The
+[Apache 2.0 License][license]{:target="_blank"} is therefore a good fit and
+should be chosen when possible:
 
 ```license
                                  Apache License

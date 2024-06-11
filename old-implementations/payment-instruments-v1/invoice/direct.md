@@ -14,9 +14,9 @@ menu_order: 700
 {% assign capture_url="/old-implementations/payment-instruments-v1/invoice/capture" %}
 
 {% include alert.html type="warning" icon="report_problem" body="**Availability**:
-Note that this invoice integration is no longer available in Sweden. If you are
-a Swedish merchant and wish to offer invoice as a payment option, this has to be
-done through our payment order implementation." %}
+Note that this invoice integration is only available for MultiPay merchants. If you
+are a MultiPay merchant and wish to offer invoice as a payment option, this has to
+be done through our payment order implementation." %}
 
 ## Invoice Direct Implementation Flow
 
@@ -55,16 +55,12 @@ financing_consumer_url }}) value.
 
 ## Financing Consumer Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "FinancingConsumer",
         "intent": "Authorization",
@@ -101,8 +97,13 @@ Content-Type: application/json
     "invoice": {
         "invoiceType": "PayExFinancingSe"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -140,14 +141,10 @@ Content-Type: application/json
 
 ## Financing Consumer Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -222,8 +219,13 @@ Content-Type: application/json
             "method": "POST"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -256,33 +258,30 @@ Retrieve the payer's legal address, which is needed to do the next step.
 
 ## Approved Legal Address Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "addressee": {
         "socialSecurityNumber": "194810205957",
         "zipCode": "55560"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Approved Legal Address Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "approvedLegalAddress": {
         "id": "/psp/invoice/payments/{{ page.payment_id }}/approvedlegaladdress",
@@ -292,8 +291,13 @@ Content-Type: application/json
         "city": "Vaxholm",
         "countryCode": "SE"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Step 3: Complete The Payment
 
@@ -301,16 +305,12 @@ Add the legal address in your complete request.
 
 ## Complete Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer"
     },
@@ -328,19 +328,20 @@ Content-Type: application/json
         "city": "Vaxholm",
         "countryCode": "SE"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Complete Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "authorization": {
         "shippingAddress": {
@@ -365,8 +366,13 @@ Content-Type: application/json
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 The sequence diagram below shows a high level description of the invoice
 process, including the four requests you have to send to Swedbank Pay to create

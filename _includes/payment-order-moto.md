@@ -7,10 +7,11 @@
 
 {% include alert-agreement-required.md %}
 
-MOTO (Mail Order / Telephone Order) is a purchase where you, as a merchant,
-enter the payer's card details in order to make a payment. The payer provides
-the card details to the sales representative by telephone or in writing.
-The sales representative will then enter the details into the payment interface.
+Card-based home orders, also known as MOTO (Mail Order / Telephone Order), is a
+purchase where you, as a merchant, enter the payer's card details in order to
+make a payment. The payer provides the card details to the sales representative
+by telephone or in writing. The sales representative will then enter the details
+into the payment interface.
 
 Common use cases are travel or hotel bookings, where the payer calls the sales
 representative to make a booking. This feature is only supported with the
@@ -19,22 +20,18 @@ by setting the `generateMotoPayment` to `true`.
 
 ## MOTO Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
+        "generateMotoPayment": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "generateMotoPayment": true,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -135,8 +132,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             }
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 Request field not covered in the common Checkout redirect or seamless view
 table:
@@ -166,15 +168,11 @@ response provided below.
 
 ## MOTO Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -254,7 +252,18 @@ api-supported-versions: 3.1/3.0/2.0
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
-        }
+        }{% if documentation_section contains "checkout-v3" %},
+        {
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
+          "rel": "abort-paymentattempt",
+          "method": "PATCH",
+          "contentType": "application/json"
+        }{% endif %}
        ]
-      }
-```
+      }{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}

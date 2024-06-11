@@ -27,7 +27,7 @@ namespace SwpTrmLib.Nexo
 {:.table .table-striped}
 | :------------- | :-------------- |:--------------- |:---|
 | **Type** | **Name** | **Description** | |
-| UnitOfMeasure | Enumeration UnitOfMeasures |Litre or Kilogram | Mandatory |
+| UnitsOfMeasure | UnitOfMeasures |Litre or Kilogram | Mandatory |
 | Decimal | Quantity | | Mandatory |
 | string |ProductLabel |Name of product | Optional |
 | string |AdditionalProductInfo | | Optional |

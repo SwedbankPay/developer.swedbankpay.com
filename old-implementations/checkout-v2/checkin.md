@@ -24,22 +24,23 @@ directly to step 3, which you will find on the next page." %}
 
 ## Checkin Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/consumers HTTP/1.1
+{% capture request_header %}POST /psp/consumers HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "operation": "initiate-consumer-session",
     "language": "sv-SE",
     "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"],
     "requireShippingAddress": true
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
@@ -53,11 +54,7 @@ Content-Type: application/json
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
-{:.code-view-header}
-**Response**
-
-```jsonc
-{
+{% capture response_content %}{
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
         {   // Deprecated operation. Do not use!
@@ -73,8 +70,13 @@ When the request has been sent, a response containing an array of operations tha
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                   | Type     | Description                                                                                                                                       |
@@ -191,11 +193,52 @@ Note that we add the script at the end of the body. This ensures that
 every element (like the container `<div>` elements) has loaded in before we try to
 access them with our script." %}
 
+## Monitoring The Script URL
+
+With the [PCI-DSS v4][pci]{:target="_blank"} changes taking effect on March 31st
+2025, merchants are responsible for ensuring the integrity of the HTML script
+used in their integration, including monitoring what is loaded into or over it.
+Specifically, Seamless View merchants must verify that the script URL embedded
+in their iframe originates from Swedbank Pay or another trusted domain. It is
+important to note that Swedbank Pay’s PCI responsibility is strictly limited to
+the content within the payment iframe. For further details, refer to section
+4.6.3 in the linked document.
+
+To ensure compliance, we recommend implementing [Content Security Policy][csp]{:target="_blank"}
+rules to monitor and authorize scripts.
+
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While `https://*.payex.com` and
+`https://*.swedbankpay.com` cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. See the table below for more information.
+
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant's end. It will either happen within Swedbank Pay's domain or as a
+redirect, which will repeal the merchant's CSP.
+
+{% include alert.html type="success" icon="info" body="The list below includes
+important URLs, but may not be exhaustive. Merchants need to stay up to date in
+case of URL changes, or if you need to whitelist URLs not listed here." %}
+
+{:.table .table-striped}
+| URL    | Description             |
+| :------ | :--------------- |
+| https://*.cdn-apple.com | URL needed for Apple Pay.     |
+| https://*.google.com | URL needed for Google Pay.     |
+| https://*.gstatic.com | Domain used by Google that hosts images, CSS, and javascript code to reduce bandwidth usage online.     |
+| https://*.mastercard.com | URL needed for Click to Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbankpay.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.visa.com | URL needed for Click to Pay.     |
+
 ## How It Looks
 
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in. When everything has
-finished loading, you should see something like this:
+finished loading, you should see this:
 
 {:.text-center}
 ![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
@@ -299,3 +342,5 @@ and its duration.
 [data-protection]: /old-implementations/checkout-v2/data-protection#paymentorder-consumer-data
 [payment-menu]: /old-implementations/checkout-v2/payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
+[csp]: https://www.w3.org/TR/CSP2/

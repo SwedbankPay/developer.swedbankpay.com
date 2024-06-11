@@ -5,14 +5,14 @@ redirect_from: /old-implementations/payment-menu-v2/other-features
 description: |
   The **Swedbank Pay Payment Menu v2** integrates
   seamlessly into the merchant website, allowing the payer to choose between the
-  increasing number of payment instrument Swedbank Pay has on offer and
-  remembering which instrument they prefer and have paid with previously.
+  increasing number of payment methods Swedbank Pay has on offer and
+  remembering the one(s) they prefer and have paid with previously.
 permalink: /:path/
 menu_order: 6
 ---
 
 Swedbank Pay Payment Menu v2 allows your customers to pay with their favorite
-payment instruments in just a few simple steps.
+payment methods in just a few simple steps.
 
 ## Prerequisites
 
@@ -36,4 +36,4 @@ you have Swedbank Pay Payment Menu v2.
                          next_title="Payment Order" %}
 
 [after-payment-capture]: /old-implementations/payment-menu-v2/capture
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
+[https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol

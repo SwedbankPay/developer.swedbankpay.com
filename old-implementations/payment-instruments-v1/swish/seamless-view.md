@@ -43,15 +43,11 @@ a purchase. An example of an expanded `POST` request is available in the
 
 ## Seamless View Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/swish/payments HTTP/1.1
+{% capture request_header %}POST /psp/swish/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Sale",
@@ -96,8 +92,13 @@ Content-Type: application/json
         "paymentRestrictedToAgeLimit": 18,
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -116,7 +117,7 @@ Content-Type: application/json
 | {% icon check %} | {% f userAgent %}          | `string`      | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | {% icon check %} | {% f language %}           | `string`      | {% include fields/language.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | {% icon check %} | {% f urls %}               | `object`      | The `urls` resource lists urls that redirects users to relevant sites.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| {% icon check %} | {% f hostUrls, 2 %}          | `array`       | The array of URLs valid for embedding of Swedbank Pay Seamless Views. If not supplied, view-operation will not be available.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| {% icon check %} | {% f hostUrls, 2 %}          | `array`       | The array of valid host URLs.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | {% icon check %} | {% f completeUrl, 2 %}       | `string`      | {% include fields/complete-url.md resource="payment" %}                                                                                                                                                                                                                                                                        |
 |                  | {% f cancelUrl, 2 %}         | `string`      | The URL to redirect the payer to if the payment is cancelled. Only used in redirect scenarios. Can not be used simultaneously with `paymentUrl`; only cancelUrl or `paymentUrl` can be used, not both.                                                                                                                                                                                                                                                                                                                                                                     |
 |                  | {% f paymentUrl, 2 %}        | `string`      | {% include fields/payment-url.md %}                                                                                                                                                                                                                                                          |
@@ -143,14 +144,10 @@ Content-Type: application/json
 
 ## Seamless View Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -210,8 +207,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 The key information in the response is the `view-sales` operation. You will need
 to embed its `href` in a `<script>` element. The script will enable loading the

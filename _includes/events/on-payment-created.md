@@ -1,5 +1,5 @@
 {%- capture event -%}
-Triggered when the payer has selected a payment instrument and actively attempts
+Triggered when the payer has selected a payment method and actively attempts
 to perform a payment.
 {%- endcapture -%}
 {%- comment -%}

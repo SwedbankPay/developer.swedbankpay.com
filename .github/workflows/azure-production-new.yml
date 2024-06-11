@@ -19,11 +19,11 @@ jobs:
             --site-url=https://developer.swedbankpay.com
 
       - name: login
-        uses: azure/login@v1.6.1
+        uses: azure/login@v2.2.0
         with:
           creds: '{"clientId":"${{ secrets.SUBSCRIPTION_CLIENT_ID_PROD }}","clientSecret":"${{ secrets.SUBSCRIPTION_CLIENT_SECRET_PROD }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID_PROD }}","tenantId":"${{ secrets.TENANT_ID }}"}'
 
       - name: deploy
-        uses: azure/CLI@v1.0.9
+        uses: azure/CLI@v2.1.0
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name proddevelopersa1 --overwrite

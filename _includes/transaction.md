@@ -27,25 +27,21 @@ When a transaction is created it will have one of three states:
 
 {% if documentation_section contains "checkout" or "payment-menu" %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/currentpayment HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0     // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0     // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
     "transaction": {
         "id": "/psp/paymentorders/{{ page.payment_id }}/currentpayment/{{ page.transaction_id }}",
@@ -62,29 +58,30 @@ api-supported-versions: 3.1/3.0/2.0
         "isOperational": true,
         "operations": []
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "transaction": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/transactions/{{ page.transaction_id }}",
@@ -101,8 +98,13 @@ Content-Type: application/json
         "isOperational": true,
         "operations": []
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 

@@ -26,43 +26,40 @@ from a regular `GET` request.
 
 ## GET Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ## QUERY Request
 
-{:.code-view-header}
-**Request**
-
-```http
-QUERY /psp/paymentorders HTTP/1.1
+{% capture request_header %}QUERY /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "referenceCode": 1717224235360011
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET And QUERY Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -73,8 +70,13 @@ api-supported-versions: 3.1/3.0/2.0
     "referenceCode": "1717224235360011"
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                     | Type      | Description                                                        |
@@ -82,7 +84,7 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f paymentOrder, 0 %}   | `object`  | The payment order object.                                          |
 | {% f paid, 0 %}           | `object`  | The paid object.                                                   |
 | {% f id %}                | `string`  | {% include fields/id.md resource="paymentorder" %}                 |
-| {% f instrument %}        | `string`  | Payment instrument used in the cancelled payment.                  |
+| {% f instrument %}        | `string`  | Payment method used in the cancelled payment.                  |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md %}                                     |
 | {% f payeeReference, 2 %} | `string`  | {% include fields/payee-reference.md %}                            |
 | {% f amount %}            | `integer` | {% include fields/amount.md %}                                     |

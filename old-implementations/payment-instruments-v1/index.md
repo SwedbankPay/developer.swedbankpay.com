@@ -1,26 +1,26 @@
 ---
-section: Payment Instruments v1
+section: Payment Methods v1
 sidebar_icon: credit_card
 title: Introduction
 redirect_from: /payments/
 description: |
-  Payment Instruments v1 is our off-the-rack assortment of possibilities. Pick the one(s) you like.
-  You can pick and choose among them to tailor the instrument package best
+  Payment Methods v1 is our off-the-rack assortment of possibilities. Pick the
+  one(s) you like. You can pick and choose among them to tailor a package best
   suited for your business.
 permalink: /:path/
 menu_order: 5
 ---
 
-Is Card the only payment instrument you need? Go for Card only. Do you want Card
+Is Card the only payment method you need? Go for Card only. Do you want Card
 and Invoice? Implement Card and Invoice. Want them all? Have them all. Each
-payment instrument is set up with a separate contract and integration.
+payment method is set up with a separate contract and integration.
 
 Choose between our easy-to-use PCI compliant platforms Redirect or Seamless
-View. Our payment instruments and their platform availability are listed in the
+View. Our payment mehods and their platform availability are listed in the
 table below.
 
 {:.table .table-plain}
-|                              | Payment instrument              |  Seamless View   |     Redirect     |     Direct API     | Region                                    |
+|                              | Payment Method              |  Seamless View   |     Redirect     |     Direct API     | Region                                    |
 | :--------------------------: | :------------------------------ | :--------------: | :--------------: | :----------------: | :---------------------------------------- |
 |    {% icon credit_card %}    | [Card Payments][card]           | {% icon check %} | {% icon check %} |  | ![EarthIcon][earth-icon]                  |
 | {% icon insert_drive_file %} | [Swedbank Pay Invoice][invoice] | {% icon check %} | {% icon check %} |                    | {% flag no %} |
@@ -40,8 +40,8 @@ To start integrating Swedbank Pay Payments, you need the following:
 
 ## Platform Options
 
-Here are our three platform options at a glance. You can read more about the
-integration process by visiting the sections for each payment instrument.
+Here are the two platform options at a glance. You can read more about the
+integration process by visiting the sections for each payment method.
 
 ## Seamless View
 
@@ -61,7 +61,7 @@ payment page, and back to your page when the payment is completed.
                       icon="info"
                       body="All Payments APIs in the Swedbank Pay API Platform
                       share a common foundation with a similar payment process
-                      for all payment instruments, reducing complexity and
+                      for all payment methods, reducing complexity and
                       enabling a more straightforward integration." %}
 
 There are two main payment types, **two-phase** and **one-phase** payments. The
@@ -79,7 +79,7 @@ Payments, MobilePay payments and Invoice Payments. A
 capture of an invoice will *not* capture any funds, but trigger the invoice
 distribution and send it to the payer.
 
-The payment instruments that support two-phase payments are:
+The payment methods that support two-phase payments are:
 
 *   [Card][card]
 *   [Invoice][invoice]
@@ -90,7 +90,7 @@ The payment instruments that support two-phase payments are:
 
 There are two types of one-phase payments – `sale` and `autoCapture`.
 
-`sale` is used by payment instruments such as [Swish][swish].
+`sale` is used by payment methods such as [Swish][swish].
 These payments will have a `sale` transaction instead of the `authorization` and
 `capture`. The funds will be captured from the payer straight away.
 
@@ -106,7 +106,7 @@ As the funds are captured instantly, `cancel` is not available for either of the
 one-phase payments. `abort` and `reversal` can be performed the same way as with
 two-phase payments.
 
-The payment instruments that support one-phase payments are:
+The payment methods that support one-phase payments are:
 
 *   [Swish][swish]
 *   [Card][card]
@@ -142,11 +142,11 @@ Or:
 All actions after creating the payment can be done by using our APIs, or from
 our Merchant Portal tool. `abort` is only available when using APIs.
 
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
+[https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
-[trustly-logo]: /assets/img/icon-trustly-simple.svg
+[trustly-logo]: /assets/img/icon-trustly-new.svg
 [earth-icon]: /assets/img/globe-icon.png
 [card]: /old-implementations/payment-instruments-v1/card
 [invoice]: /old-implementations/payment-instruments-v1/invoice

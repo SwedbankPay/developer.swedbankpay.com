@@ -27,16 +27,13 @@ for Credit Card Payments" %}
 
 ### Response
 
-The response should look something like this (abbreviated for brevity):
+The response should include this (abbreviated for brevity):
 
-{:.code-view-header}
-**Response**
 
-```http
-HTTP/1.1 201 Created
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 201 Created
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
@@ -48,8 +45,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+ {% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |
@@ -64,7 +66,7 @@ in your system to look up status on the completed payment later.
 
 {% include alert.html type="informative" icon="info" header="URL Storage"
 body="The `id` of the Payment Order should be stored for later retrieval. [Read
-more about URL usage](/checkout-v3/resources/fundamental-principles#url-usage)." %}
+more about URL usage](/checkout-v3/get-started/fundamental-principles#url-usage)." %}
 
 Then find the `view-paymentorder` operation and embed its `href` in a `<script>`
 element. That script will then load the Seamless View for the Payment Menu. We
@@ -144,6 +146,47 @@ request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 // for your particular use-case.
 request.send(JSON.stringify({ amount: 1200 }));
 ```
+
+## Monitoring The Script URL
+
+With the [PCI-DSS v4][pci]{:target="_blank"} changes taking effect on March 31st
+2025, merchants are responsible for ensuring the integrity of the HTML script
+used in their integration, including monitoring what is loaded into or over it.
+Specifically, Seamless View merchants must verify that the script URL embedded
+in their iframe originates from Swedbank Pay or another trusted domain. It is
+important to note that Swedbank Pay’s PCI responsibility is strictly limited to
+the content within the payment iframe. For further details, refer to section
+4.6.3 in the linked document.
+
+To ensure compliance, we recommend implementing [Content Security Policy][csp]{:target="_blank"}
+rules to monitor and authorize scripts.
+
+Merchants must whitelist the following domains to restrict browser content
+retrieval to approved sources. While `https://*.payex.com` and
+`https://*.swedbankpay.com` cover most payment methods, digital wallets such as
+Apple Pay, Click to Pay, and Google Pay are delivered via Payair. Alongside the
+Payair URL, these wallets may also generate URLs from Apple, Google, MasterCard,
+and Visa. See the table below for more information.
+
+When it comes to ACS URLs, nothing is loaded from the ACS domain in the
+merchant's end. It will either happen within Swedbank Pay's domain or as a
+redirect, which will repeal the merchant's CSP.
+
+{% include alert.html type="success" icon="info" body="The list below includes
+important URLs, but may not be exhaustive. Merchants need to stay up to date in
+case of URL changes, or if you need to whitelist URLs not listed here." %}
+
+{:.table .table-striped}
+| URL    | Description             |
+| :------ | :--------------- |
+| https://*.cdn-apple.com | URL needed for Apple Pay.     |
+| https://*.google.com | URL needed for Google Pay.     |
+| https://*.gstatic.com | Domain used by Google that hosts images, CSS, and javascript code to reduce bandwidth usage online.     |
+| https://*.mastercard.com | URL needed for Click to Pay.     |
+| https://*.payair.com | URL for the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.payex.com    | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.swedbankpay.com | Universal URL for all payment methods except the digital wallets Apple Pay, Click to Pay and Google Pay.     |
+| https://*.visa.com | URL needed for Click to Pay.     |
 
 This should bring up the Payment Menu in a Seamless View. It should look like
 this, depending on whether the payer is identified (top) or a guest user
@@ -273,3 +316,5 @@ rect rgba(138, 205, 195, 0.1)
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
 [login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations
+[pci]: /assets/documents/PCI-DSS-v4-0-1-SAQ-A.pdf
+[csp]: https://www.w3.org/TR/CSP2/

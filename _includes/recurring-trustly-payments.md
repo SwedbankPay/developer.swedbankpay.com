@@ -8,7 +8,7 @@
 
 Prior to making any server-to-server requests, you need to make sure the
 `directDebitEnabled` setting in your Trustly contract is set to `true`. Then you
-need to supply the payment instrument details and a payment token to Swedbank
+need to supply the payment method details and a payment token to Swedbank
 Pay by initial purchase or select account verification. Note that the `email`
 field must be set, as this is a required parameter. If the `email` is missing,
 Trustly will not be available for selection from the payments menu.
@@ -32,22 +32,24 @@ you want to make an initial charge or not:
 *   When posting a `Purchase` payment, you need to make sure that the field
     `generateRecurrenceToken` is set to `true`.
 
-{:.code-view-header}
-**Field**
+{% capture request_content %}"generateRecurrenceToken": true{% endcapture %}
 
-```json
-"generateRecurrenceToken": true
-```
+{% include code-example.html
+    title='Generate Recurrence Token Field - Purchase'
+    header=request_header
+    json= request_content
+    %}
 
 *   When posting a `Verify` payment, you need to make sure that the the field
     `generateRecurrenceToken` is set to `true`.
 
-{:.code-view-header}
-**Field**
+{% capture request_content %}"generateRecurrenceToken": true{% endcapture %}
 
-```json
-"generateRecurrenceToken": true
-```
+{% include code-example.html
+    title='Generate Recurrence Token Field - Verify'
+    header=request_header
+    json= request_content
+    %}
 
 ## Creating The Payment
 
@@ -68,7 +70,7 @@ details [here][trustly-remove-payment-token].
 
 When you have a Recurrence token, you can use the same token in a subsequent
 `recurring payment` `POST`. This will be a server-to-server affair, as we have
-both payment instrument details and recurrence token from the initial payment.
+both payment method details and recurrence token from the initial payment.
 
 ## Verify
 
@@ -79,5 +81,5 @@ the payer right away.
 
 <!--lint disable final-definition -->
 
-[trustly-remove-payment-token]: /old-implementations/payment-menu-v2/features/optional/delete-token
-[trustly-paymentorder-create]: /old-implementations/payment-menu-v2/payment-order
+[trustly-remove-payment-token]: /checkout-v3/features/optional/delete-token
+[trustly-paymentorder-create]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order

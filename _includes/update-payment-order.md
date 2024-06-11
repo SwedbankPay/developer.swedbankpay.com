@@ -7,7 +7,8 @@ update the `orderItems` for the payment order. Should you need to update the
 with the updated `orderItems`." %}
 
 The `UpdateOrder` operation is used when there is a change in the amount, vat
-amount or there are added or removed order items in the payment order.
+amount or there are added or removed order items in the payment order. This
+feature is available in **Seamless View** only.
 
 {% include alert.html type="informative" icon="info" body="If you implement
 `UpdateOrder` you need to `refresh()` the Payment Menu frontend after you have
@@ -24,15 +25,11 @@ request towards the `paymentorders` resource. Even though the fields are the
 same, the `UpdateOrder` request will overwrite the fields that were sent in the
 initial `Purchase` request.
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "UpdateOrder",
         "amount": 1500,
@@ -70,8 +67,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -101,15 +103,11 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture request_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2018-09-14T13:21:29.3182115Z",
@@ -166,8 +164,13 @@ api-supported-versions: 3.1/3.0/2.0
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

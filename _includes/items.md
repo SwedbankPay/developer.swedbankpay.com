@@ -1,6 +1,7 @@
 ## Items
 
-The `items` field of the `paymentOrder` is an array containing items that will affect how the payment is performed.
+The `items` field of the `paymentOrder` is an `array` containing items that will
+affect how the payment is performed.
 
 {% include alert.html type="warning" icon="warning" header="MobilePay"
 body="Please note that by adding the `shoplogoUrl` field, the default logo-url configured during contract setup will be overridden for this transaction. If logo-url is missing in the contract setup, it must be provided as an input parameter." %}

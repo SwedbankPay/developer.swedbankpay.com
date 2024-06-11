@@ -7,7 +7,8 @@
 
 ## Reversal v3.1
 
-This transaction is used when a captured payment needs to be reversed.
+This transaction is used when a `Capture` or `Sale` payment needs to be
+reversed.
 
 Please note that you have a maximum of 5 **consecutive** failed attempts at a
 reversal. The payment will be locked after this, and you need to contact us for
@@ -32,24 +33,25 @@ If we want to reverse a previously captured amount, we need to perform
 
 ## Reversal Request v3.1
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1
+Content-Type: application/json;version=3.1{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Reversal of captured transaction",
         "amount": 1500,
         "vatAmount": 375,
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -84,15 +86,11 @@ Content-Type: application/json;version=3.1
 
 If the reversal request succeeds, the response should be similar to the example below:
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 3.1
+api-supported-versions: 3.1{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": {
     "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d",
     "created": "2020-03-03T07:19:27.5636519Z",
@@ -154,8 +152,13 @@ api-supported-versions: 3.1
   },
   "operations": [
   ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -170,16 +173,16 @@ api-supported-versions: 3.1
 | {% f currency %}            | `string`     | The currency of the payment order.            |
 | {% f amount %}           | `integer`    | {% include fields/amount.md %}                                                                                                                                                                         |
 | {% f vatAmount %}        | `integer`    | {% include fields/vat-amount.md %}                                                                                                                                                                      |
-| {% f remainingCaptureAmount %}      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
-| {% f remainingCancellationAmount %}      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| {% f remainingReversalAmount %}      | `integer`    | The remaining captured amount that is still available for reversal.                                                                                                                                                                             |
+| {% f remainingCaptureAmount %}      | `integer`    | The remaining authorized amount that is still possible to capture. Only present after a partial reversal.                                                                                                                                                                             |
+| {% f remainingCancellationAmount %}      | `integer`    | The remaining authorized amount that is still possible to cancel. Only present after a partial reversal.                                                                                                                                                                            |
+| {% f remainingReversalAmount %}      | `integer`    | The remaining captured amount that is still available for reversal. This field will not appear in the initial response if the payment method used was Swish. It will first appear if and when you do a GET on the payment.                                                                                                                                                   |
 | {% f description %}      | `string`     | {% include fields/description.md %}                                                                                                                                   |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |

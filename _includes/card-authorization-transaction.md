@@ -9,47 +9,44 @@ from the `payment` resource below. The example is abbreviated for brevity.
 
 ## GET Authorization Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/{{ api_resource }}/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ## GET Authorization Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "authorizations": {
             "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations"
-        },
+        }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Authorization Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+{% capture request_header %}POST /psp/creditcard/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "cardNumber": "4925000000000004",
         "cardExpiryMonth": "12",
@@ -58,19 +55,20 @@ Content-Type: application/json
         "cardholderName": "Olivia Nyhuus",
         "chosenCoBrand": "Visa"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Authorization Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "authorization": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
@@ -117,8 +115,13 @@ Content-Type: application/json
             ]
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                          | Type      | Description                                                                     |

@@ -4,32 +4,33 @@
 
 ## Aborted
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/aborted HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/aborted HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "aborted": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/aborted",
     "abortReason": "Payment aborted by payer"
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                    | Type         | Description                                                                                                                                                                                                               |
@@ -41,25 +42,21 @@ api-supported-versions: 3.1/3.0/2.0
 
 ## Cancelled
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/cancelled HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/cancelled HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "cancelled": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
@@ -92,8 +89,13 @@ api-supported-versions: 3.1/3.0/2.0
       "externalNonPaymentToken": "1234567890",
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -103,15 +105,15 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f cancelled, 0 %}                | `object`     | The cancel object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
 | {% f cancelReason %}             | `string`     | Why the payment was cancelled. |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any discounts or fees specific to a payment method. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                                                                                                                                                                                                                                                           |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
@@ -125,25 +127,21 @@ api-supported-versions: 3.1/3.0/2.0
 
 ## Failed
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/failed HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/failed HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "failed": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/failed",
@@ -160,8 +158,13 @@ api-supported-versions: 3.1/3.0/2.0
       ]
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -182,25 +185,21 @@ api-supported-versions: 3.1/3.0/2.0
 
 ## FailedAttempts
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/failedattempts HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/failedattempts HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "failedAttempts": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/failedattempts"
@@ -257,8 +256,13 @@ api-supported-versions: 3.1/3.0/2.0
       }
     ]
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -269,7 +273,7 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f failedAttempts, 0 %}                | `object`     | The failed attempt object.                     |
 | {% f failedAttemptList %}  | `array`   | The array of failed attempts. |
 | {% f created, 2 %}        | `string`     | The ISO-8601 date of when the payment order was created.                                                                                                                                                                  |
-| {% f instrument, 2 %}             | `string`     | Payment instrument used in the failed payment. |
+| {% f instrument, 2 %}             | `string`     | Payment method used in the failed payment. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
 | {% f status, 2 %}             | `string`     | The status of the payment attempt. `Failed` or `Aborted`. |
 | {% f operationalFee, 2 %}             | `bool`     | A field specific for Vipps. Set to `true` if an operational fee for receiving card information from Vipps has been generated. Set to `false` if no such fee has been generated. |
@@ -286,25 +290,21 @@ api-supported-versions: 3.1/3.0/2.0
 
 ## FailedPostPurchaseAttempts
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/failedpostpurchaseattempts HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/failedpostpurchaseattempts HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Accept: application/json;version=3.1/3.0
-```
+Accept: application/json;version=3.x{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.0, 3.1
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "postPurchaseFailedAttempts": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/postpurchasefailedattempts",
@@ -337,8 +337,13 @@ api-supported-versions: 3.0, 3.1
       }
     ]
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -365,25 +370,21 @@ api-supported-versions: 3.0, 3.1
 
 ## FinancialTransactions
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/financialtransactions HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/financialtransactions HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "financialTransactions" {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/financialtransactions",
@@ -435,8 +436,13 @@ api-supported-versions: 3.1/3.0/2.0
       }
     ]
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -466,25 +472,21 @@ We advise you to not build logic around the content of these fields. They are
 mainly for information purposes, and might be subject to name changes. If these
 should occur, updates will be available in the list below.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/history HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/history HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-**Response**
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "history": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/history",
@@ -605,32 +607,35 @@ api-supported-versions: 3.1/3.0/2.0
         "number": 123462,
         "initiatedBy" "Merchant"
       },
-            {
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyCapturedFailed",
         "instrument": "CreditCard",
         "number": 123463,
         "initiatedBy" "Merchant"
       },
-            {
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentReversedFailed",
         "instrument": "CreditCard",
         "number": 123464,
         "initiatedBy" "Merchant"
       },
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyReversedFailed",
         "instrument": "CreditCard",
         "number": 123465,
         "initiatedBy" "Merchant"
       },
-              "created": "2020-03-04T02:01:01.01Z",
+      {
+        "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentCancelledFailed",
         "instrument": "CreditCard",
         "number": 123466,
         "initiatedBy" "Merchant"
       },
+      {
         "created": "2020-03-04T02:01:01.01Z",
         "name": "PaymentPartiallyCancelledFailed",
         "instrument": "CreditCard",
@@ -639,8 +644,13 @@ api-supported-versions: 3.1/3.0/2.0
       }
     ]
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -652,7 +662,7 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f historyList %}  | `array`   | The array of history objects. |
 | {% f created %}        | `string`     | The ISO-8601 date of when the history event was created.                                 |
 | {% f name %}              | `string`     | Name of the history event. See list below for information.     |
-| {% f instrument %}        | `string`     | The payment instrument used when the event occurred.       |
+| {% f instrument %}        | `string`     | The payment method used when the event occurred.       |
 | {% f number %}              | `integer`   | Payment number associated with the event.                 |
 | {% f prefill %}              | `bool`   | Indicates if payment info was prefilled or not.                 |
 {% endcapture %}
@@ -666,10 +676,10 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f CheckinInitiated, 0 %}        | Will be set when checkin is started, if checkin is activated for the merchant. The merchant must be configured with ProductPackage=Checkout                  |
 | {% f PayerDetailsRetrieved, 0 %}   | Will be set if a consumer profile is found. The merchant must be configured with ProductPackage=Checkout                  |
 | {% f PayerCheckedIn, 0 %}      | Will be set when checkin is completed. The merchant must be configured with ProductPackage=Checkout                  |
-| {% f PaymentInstrumentSet, 0 %}      | If the `PaymentOrder` is initiated in InstrumentMode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the instrument used for that payment. The instrument set will be in the instrument parameter.                |
+| {% f PaymentInstrumentSet, 0 %}      | If the `PaymentOrder` is initiated in Instrument Mode, the first occurrence will be set to the value from the merchant´s POST statement. Following values will be set for each time the merchant to a PATCH to change the payment method used for that payment. The payment method set will be in the instrument parameter.                |
 | {% f PaymentLoaded, 0 %}       | Will be set the first time the payer loads the payment window. If this event hasn't occurred, the payment window hasn't been loaded.              |
-| {% f PaymentInstrumentSelected, 0 %}       | Will occur each time the payer expands an instrument in the payment menu. The instrument selected will be set in the instrument parameter.                 |
-| {% f PaymentAttemptStarted, 0 %}      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the instrument for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
+| {% f PaymentInstrumentSelected, 0 %}       | Will occur each time the payer expands a payment method in the payment UI. The payment method selected will be set in the instrument parameter.                 |
+| {% f PaymentAttemptStarted, 0 %}      | Will occur when the payer presses the first button in the payment process (either "pay" or "next" if the payment has multiple steps). The instrument parameter will contain the payment method for this attempt. The prefill will be true if the payment page was prefilled with payment information. The transaction number for this payment will be available in the number field.                |
 | {% f PaymentAttemptAborted, 0 %}      | Will occur if the payer aborts the payment attempt. Both the number and instrument parameters will be available on this event.                  |
 | {% f PaymentAttemptFailed, 0 %}     | Will occur if the payment failed. Both the number and instrument parameters will be available on this event.                  |
 | {% f PaymentPaid, 0 %}      | Will occur if the payment succeeds. Both the number and instrument parameters will be available on this event.                 |
@@ -693,35 +703,31 @@ api-supported-versions: 3.1/3.0/2.0
 The payment order response with `status` equal to `Paid`, and the `paid`
 resource expanded. Please note that the main code example is of a card payment.
 
-We have included `paid` resources of the remaining instruments below the main
-code example. Resource examples where details are empty indicate that no details
-are available.
+We have included `paid` resources of the remaining payment methods below the
+main code example. Resource examples where details are empty indicate that no
+details are available.
 
 The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
 `networkToken`, which **represents** the PAN, but is not a PAN in itself.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ### Card `Paid` Resource
 
-{:.code-view-header}
-**Card Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
@@ -734,6 +740,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "tokens": [
       {
         "type": "payment",
@@ -777,23 +784,24 @@ api-supported-versions: 3.1/3.0/2.0
       "transactionInitiator": "CARDHOLDER",
       "bin": "492500"
     }
-  }
-```
+  }{% endcapture %}
+
+  {% include code-example.html
+    title='Card Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Apple Pay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Apple Pay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -805,6 +813,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
         "cardBrand": "Visa",
         "cardType": "Credit",
@@ -819,23 +828,24 @@ api-supported-versions: 3.1/3.0/2.0
         "bin": "492500"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Apple Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Click to Pay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
- {:.code-view-header}
- **Click to Pay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
- ```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -843,6 +853,7 @@ api-supported-versions: 3.1/3.0/2.0
     "number": 80100001190,
     "payeeReference": "1662360210",
     "amount": 1500,
+    "paymentTokenGenerated": false,
     "details": {
       "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
       "externalNonPaymentToken": "1234567890",
@@ -860,23 +871,24 @@ api-supported-versions: 3.1/3.0/2.0
       "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Click to Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Google Pay&trade; `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
- {:.code-view-header}
- **Google Pay&trade; Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
- ```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -884,6 +896,7 @@ api-supported-versions: 3.1/3.0/2.0
     "number": 80100001190,
     "payeeReference": "1662360210",
     "amount": 1500,
+    "paymentTokenGenerated": false,
     "details": {
       "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
       "externalNonPaymentToken": "1234567890",
@@ -901,23 +914,24 @@ api-supported-versions: 3.1/3.0/2.0
       "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Google Pay&trade; Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### MobilePay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**MobilePay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
@@ -929,6 +943,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
@@ -943,23 +958,24 @@ api-supported-versions: 3.1/3.0/2.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='MobilePay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Vipps `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Vipps Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
@@ -971,6 +987,7 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
         "nonPaymentToken": "12345678-1234-1234-1234-1234567890AB",
         "externalNonPaymentToken": "1234567890",
@@ -983,23 +1000,24 @@ api-supported-versions: 3.1/3.0/2.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Vipps Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Swish `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Swish Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
@@ -1011,27 +1029,29 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
       "misidn": "+46739000001"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Swish Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Invoice `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Invoice Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
@@ -1043,25 +1063,27 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Invoice Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Installment Account `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Installment Account Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
@@ -1073,25 +1095,27 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Installment Account Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Trustly `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Trustly Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
@@ -1104,12 +1128,18 @@ api-supported-versions: 3.1/3.0/2.0
     "submittedAmount": 1500,
     "feeAmount": 0,
     "discountAmount": 0,
+    "paymentTokenGenerated": false,
     "details": {
       "trustlyOrderId": 123456789
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Trustly Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -1118,15 +1148,16 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md resource="paymentorder" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any discounts or fees specific to a payment method. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
+| {% f paymentTokenGenerated %}                | `bool`       | Set to `true` or `false`. Used to show if a payment token has been generated or not. Will be set to `true` if the checkbox enabled by `EnablePaymentDetailsConsentCheckbox` has been checked by the payer during a payment, otherwise `false`.                                           |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
@@ -1138,7 +1169,7 @@ api-supported-versions: 3.1/3.0/2.0
 | {% f paymentAccountReference, 2 %} | `string`     | The result of an external tokenization. The value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, the `paymentAccountReference` will also populate the externalNonPaymentToken field. |
 | {% f cardType, 2 %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
 | {% f maskedPan, 2 %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
-| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment instrument is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
+| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment method is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
 | {% f expiryDate, 2 %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
 | {% f issuerAuthorizationApprovalCode, 2 %} | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
 | {% f acquirerTransactionType, 2 %} | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |
@@ -1153,12 +1184,11 @@ api-supported-versions: 3.1/3.0/2.0
 
 ## Payer
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0/2.0
-api-supported-versions: 3.1/3.0/2.0
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentorder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "payer": {
     "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers",
@@ -1198,8 +1228,13 @@ api-supported-versions: 3.1/3.0/2.0
       "browserJavaEnabled": false
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -1254,7 +1289,7 @@ corresponding `Paid` transaction. As several `Reversed` transactions can exist
 on a single payment, the number and payerReference will be from the latest
 `Reversed`.
 
-We have included `reversal` resources of the remaining instruments below the
+We have included `reversal` resources of the remaining payment methods below the
 main code example. Resource examples where details are empty indicate that no
 details are available.
 
@@ -1262,27 +1297,23 @@ The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
 `networkToken`, which **represents** the PAN, but is not a PAN in itself.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/reversed HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/reversed HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0
-```
+Content-Type: application/json;version=3.x{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ### Card `Reversed` Resource
 
-{:.code-view-header}
-**Card Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "reversed": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/reversed",
@@ -1338,23 +1369,24 @@ api-supported-versions: 3.1/3.0
       "transactionInitiator": "CARDHOLDER",
       "bin": "492500"
     }
-  }
-```
+  }{% endcapture %}
+
+{% include code-example.html
+    title='Card Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Apple Pay `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
-{:.code-view-header}
-**Apple Pay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "reversed": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/reversed",
@@ -1380,23 +1412,24 @@ api-supported-versions: 3.1/3.0
         "bin": "492500"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Apple Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Click to Pay `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
- {:.code-view-header}
- **Click to Pay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
- ```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "reversed": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/reversed",
@@ -1421,23 +1454,24 @@ api-supported-versions: 3.1/3.0
       "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Click to Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Google Pay&trade; `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
- {:.code-view-header}
- **Google Pay&trade; Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
- ```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "reversed": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/reversed",
@@ -1462,23 +1496,24 @@ api-supported-versions: 3.1/3.0
       "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Google Pay&trade; Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### MobilePay `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
-{:.code-view-header}
-**MobilePay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "reversed": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/reversed",
@@ -1504,23 +1539,24 @@ api-supported-versions: 3.1/3.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='MobilePay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Vipps `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
-{:.code-view-header}
-**Vipps Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "reversed": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/reversed",
@@ -1544,23 +1580,24 @@ api-supported-versions: 3.1/3.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Vipps Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Swish `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
-{:.code-view-header}
-**Swish Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "reversed": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/reversed",
@@ -1576,23 +1613,24 @@ api-supported-versions: 3.1/3.0
       "misidn": "+46739000001"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Swish Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Invoice `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
-{:.code-view-header}
-**Invoice Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "reversed": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/reversed",
@@ -1606,23 +1644,24 @@ api-supported-versions: 3.1/3.0
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Invoice Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Installment Account `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
-{:.code-view-header}
-**Installment Account Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "reversed": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/reversed",
@@ -1636,23 +1675,24 @@ api-supported-versions: 3.1/3.0
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Installment Account Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Trustly `Reversed` Resource
 
 Please note that this is an abbreviated example. See the main `Reversed` example
 for more context.
 
-{:.code-view-header}
-**Trustly Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x
+api-supported-versions: 3.x{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=3.1/3.0
-api-supported-versions: 3.1/3.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "reversed": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/reversed",
@@ -1669,8 +1709,13 @@ api-supported-versions: 3.1/3.0
       "trustlyOrderId": 123456789
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Trustly Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -1679,15 +1724,15 @@ api-supported-versions: 3.1/3.0
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f reversed, 0 %}                | `object`     | The reversed object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md resource="paymentorder" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |
@@ -1699,7 +1744,7 @@ api-supported-versions: 3.1/3.0
 | {% f paymentAccountReference, 2 %} | `string`     | The result of an external tokenization. The value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, the `paymentAccountReference` will also populate the externalNonPaymentToken field. |
 | {% f cardType, 2 %}                | `string`  | `Credit Card` or `Debit Card`. Indicates the type of card used for the authorization.                                                                                                                                                                                                                |
 | {% f maskedPan, 2 %}               | `string`  | The masked PAN number of the card.                                                                                                                                                                                                                                                                   |
-| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment instrument is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
+| {% f maskedDPan, 2 %}               | `string`  | A masked version of a network token representing the card. It will only appear if the chosen payment method is tokenized and the card used is tokenized by Visa or MasterCard.                                                                                                                                                                                                                                                                  |
 | {% f expiryDate, 2 %}              | `string`  | The month and year of when the card expires.                                                                                                                                                                                                                                                         |
 | {% f issuerAuthorizationApprovalCode, 2 %} | `string`     | Payment reference code provided by the issuer.                                                                                                                                                                                                                                |
 | {% f acquirerTransactionType, 2 %} | `string`     | `3DSECURE` or `STANDARD`. Indicates the transaction type of the acquirer.                                                                                                                                                                                                                                 |

@@ -1,11 +1,11 @@
 {%- capture url -%}
     {%- include utils/documentation-section-url.md
-        href='/features/optional/split-settlement' -%}
+        href='/features/balancing-the-books/split-settlement' -%}
 {%- endcapture -%}
 {%- capture text -%}
-`siteId` is used for {% clink split settlement %}{{ url }}{% endclink %}
-transactions when you, as a merchant, need to specify towards AMEX which
-sub-merchant the transaction belongs to. Must be in the format of `A-Za-z0-9`.
+`siteId` is used for split settlement transactions when you, as a merchant, need
+to specify towards AMEX which sub-merchant the transaction belongs to. Must be
+in the format of `A-Za-z0-9`.
 {%- endcapture -%}
 {%- comment -%}
 The following chain of Liquid filters converts newlines to spaces and removes

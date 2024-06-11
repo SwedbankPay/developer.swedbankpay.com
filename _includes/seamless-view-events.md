@@ -27,17 +27,18 @@ menu. No action will be done if callback is not set. The
 `onApplicationConfigured` event is raised with the following event argument
 object:
 
-{:.code-view-header}
-**onApplicationConfigured event object**
-
-```json
-{
+{% capture response_content %}{
     "actionType": "OnApplicationConfigured",
     "bodyHeight": "[clientHeight of iframe content]",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "source": "PaymentMenuCore"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onApplicationConfigured event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field     | Type     | Description                                                          |
@@ -53,17 +54,18 @@ This event triggers during terminal errors or if the configuration fails
 validation. The `onError` event will be raised with the following event argument
 object:
 
-{:.code-view-header}
-**onError event object**
-
-```json
-{
+{% capture response_content %}{
     "bodyType": "OnError",
     "details": "English descriptive text of the error",
     "origin": "{{ api_resource }}",
     "paymentOrderId:": "/psp/paymentorders/{{ page.payment_id }}"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onError event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field       | Type     | Description                                                    |
@@ -84,16 +86,17 @@ within Swedbank Pay's payment frame.
 If no callback method is set, you will be redirected to the relevant url. It
 will be raised with the following event argument object:
 
-{:.code-view-header}
-**onExternalRedirect event object**
-
-```json
-{
+{% capture response_content %}{
     "actionType": "OnExternalRedirect",
     "paymentOrderId:": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/external"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onExternalRedirect event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
@@ -116,16 +119,17 @@ within the same browser.
 If no callback method is set, the url will be opened in a
 new tab. It will be raised with the following event argument object:
 
-{:.code-view-header}
-**onOutOfViewOpen event object**
-
-```json
-{
+{% capture response_content %}{
     "actionType": "OnOutOfViewOpen",
     "openUrl": "https://example.com/external",
     "paymentOrderId:": "/psp/paymentorders/{{ page.payment_id }}"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onOutOfViewOpen event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                           |
@@ -147,17 +151,18 @@ aborting, as this will trigger the event.
 
 It will be raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentCanceled event object**
-
-```json
-{
+{% capture response_content %}{
     "actionType": "OnPaymentCanceled",
     "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/cancelled"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentCanceled event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
@@ -179,17 +184,18 @@ actions according to it.
 
 It will be raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentCompleted event object**
-
-```json
-{
+{% capture response_content %}{
     "actionType": "OnPaymentCompleted",
     "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/success"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentCompleted event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                         |
@@ -205,24 +211,25 @@ It will be raised with the following event argument object:
 
 The `onPaymentCreated` event is raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentCreated event object**
-
-```json
-{
+{% capture response_content %}{
     "bodyType": "OnPaymentCreated",
     "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentCreated event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                                                     |
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `bodyType` | `string` | The type of event that was raised.                                                                |
 | `id`         | `string` | {% include fields/id.md %}                                                                      |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected when initiating the payment. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected when initiating the payment. |
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                                          |
 
 ## `onPaymentFailed`
@@ -231,17 +238,18 @@ The `onPaymentCreated` event is raised with the following event argument object:
 
 The `onPaymentFailed` event is raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentFailed event object**
-
-```json
-{
+{% capture response_content %}{
     "actionType": "OnPaymentFailed",
     "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "redirectUrl": "https://example.com/failed"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentFailed event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                  |
@@ -253,50 +261,51 @@ The `onPaymentFailed` event is raised with the following event argument object:
 
 ## `onPaymentMenuInstrumentSelected`
 
-This event triggers when a user actively changes payment instrument in the
+This event triggers when a user actively changes payment method in the
 Payment Menu.
 
 Subscribe to this event if actions, e.g. showing an information text, are
-required on your side if the payer changes payment instrument.
+required on your side if the payer changes payment method.
 
 If no callback method is set, no handling action will be done. It
 will be raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentMenuInstrumentSelected event object**
-
-```json
-{
+{% capture response_content %}{
     "bodyType": "OnPaymentMenuInstrumentSelected",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "instrument": "creditcard | vipps | swish | invoice"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentMenuInstrumentSelected event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                                                                     |
 | :----------- | :------- | :-----------------------------------------------------------------------------  |
 | `bodyType` | `string` | The type of event that was raised.                                                |
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                          |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The instrument selected by the user. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected by the user. |
 
 ## `onPaymentPending`
 
 {% include events/on-payment-pending.md %}
 
- Read more about
-these events below.
+Read more about these events below.
 
-{:.code-view-header}
-**onPaymentPending event object**
-
-```json
-{
+{% capture response_content %}{
     "bodyType": "OnPaymentPending",
     "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentPending event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field         | Type     | Description                                                     |
@@ -311,17 +320,18 @@ This event triggers when the user clicks on the "Display terms and conditions"
 link. The `onPaymentToS` event is raised with the following event
 argument object:
 
-{:.code-view-header}
-**onPaymentToS event object**
-
-```json
-{
+{% capture response_content %}{
     "actionType": "OnPaymentToS",
     "openUrl": "https://example.com/terms-of-service",
     "origin": "Merchant",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentToS event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field     | Type     | Description                                                                             |
@@ -336,20 +346,21 @@ argument object:
 {% include events/on-payment-transaction-failed.md %}
 
 An error message will appear in the payment UI, and the payer will be able to
-try again or choose another payment instrument. The `onPaymentTransactionFailed`
+try again or choose another payment method. The `onPaymentTransactionFailed`
 event is raised with the following event argument object:
 
-{:.code-view-header}
-**onPaymentTransactionFailed event object**
-
-```json
-{
+{% capture response_content %}{
     "bodyType": "OnPaymentTransactionFailed",
     "id": "/psp/{instrument}/payments/{{ page.payment_id }}",
     "paymentOrderId": "/psp/paymentorders/{{ page.payment_id }}",
     "details": "[HttpCode ProblemTitle]"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentTransactionFailed event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field     | Type     | Description                                         |

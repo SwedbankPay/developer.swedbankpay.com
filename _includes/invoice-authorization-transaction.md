@@ -3,16 +3,12 @@
 The `redirect-authorization` operation redirects the payer to Swedbank Pay
 Payments where the payment is authorized.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer"
     },
@@ -37,8 +33,13 @@ Content-Type: application/json
         "city": "Saltnes",
         "countryCode": "no"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -71,11 +72,7 @@ Content-Type: application/json
 
 ## Invoice Authorization Response
 
-{:.code-view-header}
-**Response**
-
-```json
-{
+{% capture response_content %}{
     "payment": "/psp/invoice/payments/{{ page.payment_id }}",
     "authorization": {
         "id": "/psp/invoice/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
@@ -116,8 +113,13 @@ Content-Type: application/json
             ]
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

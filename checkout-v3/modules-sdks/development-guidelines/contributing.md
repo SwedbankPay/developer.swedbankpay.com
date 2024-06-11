@@ -17,8 +17,8 @@ things you need to know.
 
 ## Getting Started
 
-*   Read and make sure you agree with the [Code of Conduct][coc].
-*   Make sure you have a [GitHub account][github].
+*   Read and make sure you agree with the [Code of Conduct][coc]{:target="_blank"}.
+*   Make sure you have a [GitHub account][github]{:target="_blank"}.
 *   Then, you have three options:
     1.  Submit a ticket for your issue, assuming one does not already exist.
         *   Clearly describe the issue including steps to reproduce when it is a
@@ -32,14 +32,16 @@ If you choose option 3 (forking the repository), then please read on.
 
 ## Making Changes
 
-*   Create a new [branch][branching] from where you want to base your work.
+*   Create a new [branch][branching]{:target="_blank"} from where you want to
+    base your work.
     *   This is usually the `master` or `develop` branch.
     *   Please avoid working directly on the `master` and `develop` branch.
-*   Make [commits][commit] of logical units in the new branch.
+*   Make [commits][commit]{:target="_blank"} of logical units in the new branch.
 *   Check for unnecessary space with `git diff --check` before committing.
 *   Make sure your [commit messages][commit-practice] are well written and in
     the proper format.
-*   [Push][push] the branch to your [forked repository (remote)][remote].
+*   [Push][push]{:target="_blank"} the branch to your
+    [forked repository (remote)][remote]{:target="_blank"}.
 *   Submit a pull request for the pushed branch.
 
 [coc]: /checkout-v3/modules-sdks/development-guidelines/code-of-conduct

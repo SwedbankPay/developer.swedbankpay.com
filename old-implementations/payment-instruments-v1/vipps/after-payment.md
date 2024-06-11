@@ -17,16 +17,12 @@ response that includes one or more expanded sub-resources inlined.
 
 ## Vipps Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/vipps/payments HTTP/1.1
+{% capture request_header %}POST /psp/vipps/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -65,8 +61,13 @@ Content-Type: application/json
             "msisdn": "+4793000001"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -84,7 +85,7 @@ Content-Type: application/json
 | {% icon check %}︎ | {% f userAgent %}          | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                         |
 | {% icon check %}︎ | {% f language %}           | `string`     | {% include fields/language.md %}                                                                                                                                                                                          |
 | {% icon check %}︎ | {% f urls %}               | `object`     | The object containing URLs relevant for the `payment`.                                                                                                                                                                                                    |
-| {% icon check %}︎ | {% f hostUrls, 2 %}          | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                       |
+| {% icon check %}︎ | {% f hostUrls, 2 %}          | `array`      | The array of valid host URLs.                                                                                                                                                                                 |
 | {% icon check %}︎ | {% f completeUrl, 2 %}       | `string`     | {% include fields/complete-url.md resource="payment" %} |
 |                  | {% f cancelUrl, 2 %}         | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment`.                                                                                                           |
 |                  | {% f paymentUrl, 2 %}        | `string`     | {% include fields/payment-url.md %}                                                                                                      |
@@ -107,14 +108,10 @@ Content-Type: application/json
 
 ## Vipps Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/vipps/payments/{{ page.payment_id }}",
         "number": 72100003079,
@@ -147,8 +144,13 @@ Content-Type: application/json
             "rel": "redirect-authorization"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Purchase
 
@@ -156,16 +158,17 @@ Posting a payment (operation `Purchase`) returns the options of aborting the
 payment altogether or creating an authorization transaction through the
 `redirect-authorization` hyperlink.
 
-{:.code-view-header}
-**Request**
-
-```json
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Operations
 
@@ -209,15 +212,15 @@ transactions made on a specific payment.
 
 ## GET Request Authorizations
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/vipps/payments/{{ page.payment_id }}/authorizations HTTP/1.1
+{% capture request_header %}GET /psp/vipps/payments/{{ page.payment_id }}/authorizations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ## GET Response Authorizations
 
@@ -230,15 +233,15 @@ specific payment.
 
 ## GET Request Cancel
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/vipps/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}GET /psp/vipps/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ## GET Response Cancel
 
@@ -254,22 +257,23 @@ payment.
 
 ## Cancel Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/vipps/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}POST /psp/vipps/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "payeeReference": "testabc",
         "description" : "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Cancel Response
 
@@ -282,15 +286,15 @@ on a specific payment.
 
 ## GET Request Reversal
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/vipps/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}GET /psp/vipps/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ## GET Response Reversal
 
@@ -303,24 +307,25 @@ available.
 
 ## Reversal Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/vipps/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/vipps/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_header %}{
     "transaction": {
         "amount": 1500,
         "vatAmount": 250,
         "payeeReference": "cpttimestamp",
         "description" : "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                    | Type         | Description                                                                      |
@@ -346,5 +351,5 @@ Content-Type: application/json
 [abort]: /old-implementations/payment-instruments-v1/vipps/after-payment#abort
 [cancel]: #cancellations
 [capture]: /old-implementations/payment-instruments-v1/vipps/features/core//capture
-[expand-parameter]: /checkout-v3/resources/fundamental-principles#expansion
+[expand-parameter]: /checkout-v3/get-started/fundamental-principles#expansion
 [reverse]: #reversals

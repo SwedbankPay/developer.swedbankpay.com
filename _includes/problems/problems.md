@@ -20,11 +20,7 @@ usually to the field in the request that was missing or contained invalid data.
 
 The structure of a problem message will look like this:
 
-{:.code-view-header}
-**Problem Example**
-
-```json
-{
+{% capture response_content %}{
     "type": "https://api.payex.com/psp/errordetail/<resource>/inputerror",
     "title": "There was an input error",
     "detail": "Please correct the errors and retry the request",
@@ -34,8 +30,13 @@ The structure of a problem message will look like this:
         "name": "CreditCardParameters.Issuer",
         "description": "minimum one issuer must be enabled"
     }]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Problem Example'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                 | Type      | Description                                                                                                                                                                                                                                         |

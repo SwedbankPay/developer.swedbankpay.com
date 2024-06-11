@@ -12,19 +12,19 @@
 
 {% endif %}
 
-Captures are only possible when a payment has a successful authorize
-transaction, naturally excluding one-phase payment instruments like
-[Swish][swish] and [Trustly][trustly]. Two-phase payment instruments like
-[Card][card] and [Vipps][vipps] however, require a `Capture` to be completed.
+Captures are only possible when a payment has a successful `Authorization`
+transaction, naturally excluding one-phase payment methods like Swish and
+Trustly. They will be marked as a `Sale` transaction. Two-phase payment methods
+like card and Vipps however, require a `Capture` to be completed.
 
 Please note that you have a maximum of 5 **consecutive** failed attempts at a
-capture. The payment will be locked after this, and you need to contact us for
-another attempt.
+capture. The payment will be locked after the fifth, and you need to contact us
+for further attempts.
 
-In addition to full captures, it is possible to do partial captures of a part of
-the authorized amount. You can do other captures on the same payment later, up
-to the total authorized amount. Useful for when you have to split orders into
-several shipments, for instance.
+In addition to full captures, it is possible to do partial captures of the
+authorized amount. You can do more captures on the same payment later, up to the
+total authorized amount. A useful tool for when you have to split orders into
+several shipments.
 
 First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
@@ -46,16 +46,12 @@ request and response below:
 
 ## Capture Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders/{{ page.payment_order_id }}/captures HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.0/2.0      // Version optional
+Content-Type: application/json;version=3.0/2.0      // Version optional{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Capturing the authorized payment",
         "amount": 1500,
@@ -95,8 +91,13 @@ Content-Type: application/json;version=3.0/2.0      // Version optional
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -146,15 +147,11 @@ Content-Type: application/json;version=3.0/2.0      // Version optional
 
 If the capture request succeeds, this should be the response:
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.0/2.0
-api-supported-versions: 3.0/2.0
+api-supported-versions: 3.0/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/{{ page.payment_id }}",
     "capture": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/captures/{{ page.transaction_id }}",
@@ -171,8 +168,13 @@ api-supported-versions: 3.0/2.0
             "receiptReference": "AB831"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -211,7 +213,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
     end
 ```
 
@@ -228,15 +230,10 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
     end
 ```
 
 {% endif %}
 
 <!--lint disable final-definition -->
-
-[card]: /old-implementations/payment-instruments-v1/card
-[vipps]: /old-implementations/payment-instruments-v1/vipps
-[swish]: /old-implementations/payment-instruments-v1/swish/
-[trustly]: /old-implementations/payment-instruments-v1/trustly/

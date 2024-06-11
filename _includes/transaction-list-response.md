@@ -18,14 +18,10 @@ towards the specific transaction's `id`.
 
 {% if documentation_section contains "checkout-v2" or "checkout-v3" or "payment-menu-v2" %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_id }}",
     "{{ plural }}": { {% if api_resource == "invoice" %}
         "receiptReference": "AH12355", {% endif %}
@@ -71,19 +67,20 @@ Content-Type: application/json
             }
         }]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
     "{{ plural }}": { {% if api_resource == "invoice" %}
         "receiptReference": "AH12355", {% endif %}
@@ -129,8 +126,13 @@ Content-Type: application/json
             }
         }]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 

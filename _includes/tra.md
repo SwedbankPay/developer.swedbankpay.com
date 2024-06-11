@@ -9,17 +9,14 @@
 
 ## Transaction Risk Analysis Exemption
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
+        "requestTraExemption": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
@@ -29,7 +26,6 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
         "language": "sv-SE", {% if documentation_section contains "checkout-v3" %}
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         {% endif %}
-        "requestTraExemption": true,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], {% if include.integration_mode=="seamless-view" %}
             "paymentUrl": "https://example.com/perform-payment", {% endif %}
@@ -157,14 +153,20 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             ]
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
 | Field | Type | Description |
 | :---- | :--- | :---------- |
 | {% icon check %} | {% f paymentOrder %}                | `object` | {% include fields/id.md resource="paymentorder" sub_resource="payer" %}                                             |
+| {% icon check %} | {% f requestTraExemption %}      | `bool`       | Set to `true` if the merchant requests a TRA exemption. |
 | {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                        |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                             |
 | {% icon check %} | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                       |
@@ -172,11 +174,10 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                               |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as CDigital Payments. Mandatory for Digital Payments, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                          |
-| {% icon check %} | {% f requestTraExemption %}      | `bool`       | Set to `true` if the merchant requests a TRA exemption. |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
+| {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of valid host URLs.                                                                                                                                                                                                                                    |{% if include.integration_mode=="seamless-view" %}
 |                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url.md %} | {% endif %}
 | {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
 |                  | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |

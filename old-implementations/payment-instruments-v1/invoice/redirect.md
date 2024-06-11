@@ -56,15 +56,11 @@ financing_consumer_url }}).
 
 ### Financing Consumer Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments HTTP/1.1
+{% capture request_content %}POST /psp/invoice/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "FinancingConsumer",
         "intent": "Authorization",
@@ -101,8 +97,13 @@ Content-Type: application/json
         "invoiceType": "PayExFinancingSe"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -141,14 +142,10 @@ Content-Type: application/json
 
 ## Financing Consumer Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -220,8 +217,13 @@ Content-Type: application/json
             "method": "POST"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Invoice Flow
 

@@ -2,7 +2,7 @@
 
 The payment order response with status `paid`, and the `paid` resource expanded.
 Please note that the main code example is of a **Card** payment. We have
-included `paid` resources of the remaining instruments below the main code
+included `paid` resources of the remaining methods below the main code
 example. Resource examples where details are empty indicate that no details are
 available.
 
@@ -10,27 +10,23 @@ The wallets Apple Pay and Vipps do not return `maskedPan`. Please note that
 while MobilePay does return this field, the value present is actually a
 `networkToken`, which **represents** the PAN, but is not a PAN in itself.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=2.0      // Version optional for 2.0
-```
+Content-Type: application/json;version=2.0      // Version optional for 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    %}
 
 ### Card `Paid` Resource
 
-{:.code-view-header}
-**Card Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c/paid",
@@ -84,23 +80,24 @@ api-supported-versions: 2.0
       "transactionInitiator": "CARDHOLDER",
       "bin": "492500"
     }
-  }
-```
+  }{% endcapture %}
+
+{% include code-example.html
+    title='Card Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Apple Pay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Apple Pay Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -125,23 +122,24 @@ api-supported-versions: 2.0
         "bin": "492500"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Apple Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### MobilePay `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**MobilePay Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
@@ -167,23 +165,24 @@ api-supported-versions: 2.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='MobilePay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Vipps `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Vipps Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
@@ -206,23 +205,23 @@ api-supported-versions: 2.0
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Vipps Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Swish `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Swish Response**
+{% capture response_header %}Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
@@ -238,23 +237,23 @@ api-supported-versions: 2.0
       "misidn": "+46739000001"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Swish Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Invoice `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Invoice Response**
+{% capture response_header %}Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
@@ -268,23 +267,24 @@ api-supported-versions: 2.0
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Invoice Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Installment Account `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Installment Account Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
@@ -298,23 +298,24 @@ api-supported-versions: 2.0
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Installment Account Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Trustly `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Trustly Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=2.0
-api-supported-versions: 2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
@@ -331,8 +332,13 @@ api-supported-versions: 2.0
       "trustlyOrderId": 1234567890
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Trustly Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -341,15 +347,15 @@ api-supported-versions: 2.0
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f paid, 0 %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer` | {% include fields/number.md resource="payment" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any discounts or fees specific to one payment method. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |
 | {% f type, 2 %}  | `string`   | {% f payment, 0 %}, `recurrence`, `transactionOnFile` or `unscheduled`. The different types of available tokens. |
 | {% f token, 2 %}  | `string`   | The token `guid`. |

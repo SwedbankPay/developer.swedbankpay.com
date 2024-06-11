@@ -2,7 +2,7 @@
 title: CompleteUrl
 permalink: /:path/complete-url/
 description: Where you go when the payment is completed.
-menu_order: 1400
+menu_order: 1600
 icon:
   content: link
   outlined: true

@@ -8,8 +8,7 @@ option, the field is still recommended as it are used for the product details on
 the customer's invoice. If they are not present, `orderItems` will be generated
 by using the `description` and `amount` fields from the `paymentOrder`.
 
-```json
-        "orderItems": [
+{% capture request_content %}"orderItems": [
             {
                 "reference": "P1",
                 "name": "Product1",
@@ -27,8 +26,13 @@ by using the `description` and `amount` fields from the `paymentOrder`.
                 "amount": 1500,
                 "vatAmount": 375
             }
-        ]
-```
+        ]{% endcapture %}
+
+{% include code-example.html
+    title='Request Excerpt'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -52,5 +56,3 @@ by using the `description` and `amount` fields from the `paymentOrder`.
 | {% icon check %} | {% f vatAmount, 2 %}          | `integer` | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                          |
 {% endcapture %}
 {% include accordion-table.html content=table %}
-
-[payment-order-capture]: /old-implementations/checkout-v2/capture

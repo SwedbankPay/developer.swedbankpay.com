@@ -8,7 +8,7 @@ unit of the selected currency. E.g.:
 **`10000`** = `100.00` {{ currency }},
 **`5000`** = `50.00` {{ currency }}. {% if documentation_section contains "checkout-v3" %}
 The amount displayed is the final amount the payer paid for their order,
-including any instrument specific discounts or fees. {% endif %}
+including any payment method specific discounts or fees. {% endif %}
 {%- endcapture -%}
 {%- comment -%}
 First convert newlines to '<br />', strip all newlines, split into an array
