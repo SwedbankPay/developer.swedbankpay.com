@@ -2,7 +2,7 @@ name: Deploy Ecom Developer Branch to Azure Stage
 
 on:
   push:
-    branches: ['develop-ecom']
+    branches: ['develop-sdk']
 
 jobs:
   deploy:
