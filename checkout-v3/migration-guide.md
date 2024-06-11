@@ -3,7 +3,7 @@ title: Migration Guide
 permalink: /:path/migration-guide/
 description: |
   How to migrate from Checkout v2 to Digital Payments v3.1
-menu_order: 1400
+menu_order: 5
 ---
 
 ## Introduction to v3.1
@@ -19,24 +19,14 @@ concessions when adding new features, as the base API remains consistent.
 
 ## Upgrade Process
 
-If you have already integrated with our Checkout v2 API, transitioning
-to v3.1 is a straightforward process. The URI and request body remain unchanged
-from Checkout v2, with the only required modification being the addition of
-`;version=3.1` in the HTTP request headers. This adjustment ensures that your
-payment order requests generate the new response scheme and functionality
-seamlessly.
+If you have already integrated with our Checkout v2 API, transitioning to v3.1
+is a straightforward process. The URI and request body remain unchanged from
+Checkout v2, with the only required modification being the addition of
+`;version=3.1` in the HTTP request headers (see the request example below). This
+adjustment ensures that your payment order requests generate the new response
+scheme and functionality seamlessly.
 
-{:.code-view-header}
-**New Request Headers**
-
-```http
-POST /psp/paymentorders HTTP/1.1
-Host: api.payex.com
-Authorization: Bearer {{ your_token }}
-Content-Type: application/json;version=3.1
-```
-
-The upgrade has backward compatibility, allowing you to generate v3.1 responses
+The upgrade has backwards compatibility, allowing you to generate v3.1 responses
 for transactions conducted through your v2 implementation. Instead of making a
 new integration each time, this eliminates the need to maintain legacy code,
 streamlining your system for a seamless transition. Additionally, this approach
@@ -44,124 +34,127 @@ establishes a foundation for future versions, enabling you - as the merchant -
 to designate the desired version and make adjustments to response processing as
 needed when newer versions are released.
 
+## Request Headers v3.1
+
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
+Host: api.payex.com
+Authorization: Bearer {{ your_token }}
+Content-Type: application/json;version=3.1{% endcapture %}
+
+{% include code-example.html
+    title='New Request Headers'
+    header=request_header
+    json= request_content
+    %}
+
+## Order Items
+
+Sending `orderItems` is no longer mandatory for your requests. If you prefer not
+to include this information in your transactions, feel free to omit them from
+your requests.
+
+However, if your selection of offering includes an invoice, it is highly
+recommended to provide `orderItems`. These fields are utilized to specify
+details about the purchased products.
+
+In the absence of this information, we will create the necessary order line
+using the details provided in the `description` parameter along with the value
+in the `amount` parameter.
+
 ## Response Fields Changes
 
-In Checkout v3.1, response fields have been restructured.
+In Digital Payments v3.1, response fields have been restructured.
 
 Fields removed since v2 include: `currentPayment`,`instrument`, `payments` and
 `state`.
 
- ```json
+{% capture response_content %}
     "paymentorder": {
-        "currentPayment": /* Removed in Checkout v3.1 */,
-        "instrument":  /* Removed in Checkout v3.1 */,
-        "payments": /* Removed in Checkout v3.1 */,
-        "settings": /* Removed in Checkout v3.1 */,
-        "state": /* Removed in Checkout v3.1 */,
-        "nonPaymentToken": /* Moved into the `paid` resource in Checkout v3.1 */,
-        "recurrenceToken": /* Moved into the `paid` resource in Checkout v3.1 */,
-        "unscheduledToken": /* Moved into the `paid` resource in Checkout v3.1 */,
-        "paymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */,
-        "externalNonPaymentToken”: /* Moved into the `paid` resource in Checkout v3.1 */,
-        "transactionsOnFileToken": /* Moved into the `paid` resource in Checkout v3.1 */,
- ```
+        "currentPayment": //Removed in Checkout v3.1
+        "instrument":  //Removed in Checkout v3.1
+        "payments": //Removed in Checkout v3.1
+        "settings": //Removed in Checkout v3.1
+        "state": //Removed in Checkout v3.1
+        "nonPaymentToken": //Moved to `paid` resource in Checkout v3.1
+        "recurrenceToken": //Moved to `paid` resource in Checkout v3.1
+        "unscheduledToken": //Moved to `paid` resource in Checkout v3.1
+        "paymentToken": //Moved to `paid` resource in Checkout v3.1
+        "externalNonPaymentToken": //Moved to `paid` resource in Checkout v3.1
+        "transactionsOnFileToken": //Moved to `paid` resource in Checkout v3.1
+ {% endcapture %}
+
+ {% include code-example.html
+    title='Response Fields Changes'
+    header=response_header
+    json= response_content
+    %}
 
 Instead, new fields including `history`, `failed`, `aborted`, `paid`, and
 others, have been introduced. An example of the complete array of selections is
 provided below.
 
- ```json
-        "urls": {
-        "id": "/psp/paymentorders/{{ page.payment_id }}/urls"
-        "payeeInfo": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/payeeinfo"
-        "payer": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/payers"
-        "history": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/history"
-        "failed": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/failed"
-        "aborted": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/aborted"
-        "paid": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/paid"
-        "cancelled": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/cancelled"
-        "financialTransactions": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/financialtransactions"
-        "failedAttempts": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/failedattempts"
-        "postPurchaseFailedAttempts": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/postpurchasefailedattempts"
-        "metadata": {
-            "id": "/psp/paymentorders/{{ page.payment_id }}/metadata"
- ```
+ {% capture response_content %}{
+    "urls": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
+    },
+    "payeeInfo": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo"
+    },
+    "payer": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers"
+    },
+    "history": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/history"
+    },
+    "failed": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failed"
+    },
+    "aborted": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/aborted"
+    },
+    "paid": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/paid"
+    },
+    "cancelled": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/cancelled"
+    },
+    "financialTransactions": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/financialtransactions"
+    },
+    "failedAttempts": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
+    },
+    "postPurchaseFailedAttempts": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
+    },
+    "metadata": {
+        "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata"
+    }
+ } {% endcapture %}
 
-### Endpoint Descriptions
+ {% include code-example.html
+    title='New Response Fields'
+    header=response_header
+    json= response_content
+    %}
 
-*   Urls
+### Endpoints
 
-This will provide a report indicating the URLs you have supplied for this
-`paymentOrder`.
-
-*   PayeeInfo
-
-This will provide a report detailing the account and Merchant references that
-were utilized.
-
-*   Payers
-
-If you have provided us with Payer data, it will be attached and stored here.
-HistoryHere, you can track every aspect of the transaction lifecycle. This
-includes all actions initiated by the Payer within our UI and your management of
-the transaction (Capture, Cancel, Reversal, etc.), from its initiation to
-completion.
-
-*   Failed
-
-MIT transactions, denoting "Merchant Initiated Transactions," are exclusively
-presented here if they result in a `Failed` status, along with the corresponding
-failure reason.
-
-*   Aborted
-
-If the transaction is aborted on your end, you can find the details submitted
-with the request in this section.
-
-*   Paid
-
-In the event of a successful transaction, details about the utilized instrument,
-its associated references, and related information will be available here. As a
-point of reference, this serves as the replacement for `currentPayment`.
-
-*   Cancelled
-
-Information will be available under this node exclusively when a PaymentOrder
-has been completely canceled and has received the status `Canceled`.
-
-*   FinancialTransactions
-
-All post-purchase actions and their references, such as captures and reversals,
-can be accessed here. This section also serves as the replacement for
-/`currentPayment`
-
-*   FailedAttempts
-
-All instances of `PaymentOrder`s marked as `Failed` will be in this section.
-Currently, this pertains specifically to transactions utilizing S2S
-(server-to-server) functionality, with subscriptions (Recur & Unscheduled
-Purchase) serving as an example.
-
-*   PostPurchaseFailedAttempts
-
-All failed attempts made by the `Payer` at a third-party will be documented in
-this section. For instance, if the Payer is denied due to reasons like
-"Insufficient funds," such instances will be recorded here.
-
-*   Metadata
-
-If you provide us with information in this object, the details will be reported
-back to you in this section.
+{:.table .table-striped}
+| Name    | Description             |
+| :------ | :--------------- |
+| Urls     | This will provide a report indicating the URLs you have supplied for this `paymentOrder`.      |
+| PayeeInfo    | This will provide a report detailing the account and Merchant references that were utilized.  |
+| Payers | If you have provided us with Payer data, it will be attached and stored here. |
+| History | Here, you can track every aspect of the transaction lifecycle. This includes all actions initiated by the Payer within our UI and your management of the transaction (Capture, Cancel, Reversal, etc.), from its initiation to completion. |
+| Failed    | MIT transactions, denoting "Merchant Initiated Transactions," are exclusively presented here if they result in a `Failed` status, along with the corresponding failure reason.     |
+| Aborted    | If the transaction is aborted on your end, you can find the details submitted with the request in this section. |
+| Paid    | In the event of a successful transaction, details about the utilized method, its associated references, and related information will be available here. As a point of reference, this serves as the replacement for `currentPayment`.     |
+| Cancelled    | Information will be available under this node exclusively when a PaymentOrder has been completely canceled and has received the status `Canceled`. |
+| FinancialTransactions    | All post-purchase actions and their references, such as captures and reversals, can be accessed here. This section also serves as the replacement for `currentPayment`.     |
+| FailedAttempts    | All instances of `PaymentOrder`s marked as `Failed` will be in this section. Currently, this pertains specifically to transactions utilizing S2S (server-to-server) functionality, with subscriptions (Recur & Unscheduled Purchase) serving as an example.    |
+| PostPurchaseFailedAttempts    | All failed attempts made by the `Payer` at a third-party will be documented in this section. For instance, if the Payer is denied due to reasons like "Insufficient funds," such instances will be recorded here.     |
+| Metadata    | If you provide us with information in this object, the details will be reported back to you in this section.     |
 
 ## Status Parameter
 
@@ -210,150 +203,59 @@ funds), the returned value will be `Cancelled`. However, if you have conducted
 any captures on the authorized funds before releasing the remaining amount, the
 returned value will be `Paid`.
 
-## Cosmetic changes in the response
+## Cosmetic Response Changes
 
-You will find the following fields present in your new response.
+You will find the following fields present in your new response. They have been
+introduced to enhance our tracking and obtain more precise data regarding the
+integration types or implementation styles adopted by our customers. They do not
+directly affect your responsibilities as an integrator and can be disregarded.
 
-{:.code-view-header}
-**Response fields excerpt**
-
-```json
+{% capture response_content %}{
 "implementation": "PaymentsOnly",
 "integration": "",
 "instrumentMode": false,
 "guestMode": false,
-```
+}{% endcapture %}
 
-To enhance our tracking and obtain more precise data regarding the integration
-types or implementation styles adopted by our customers, we have introduced
-these fields. They do not directly affect your responsibilities as an integrator
-and can be disregarded.
+{% include code-example.html
+    title='Response Fields Excerpt'
+    header=response_header
+    json= response_content
+    %}
 
-### A quick explanation of the fields and their values
+{:.table .table-striped}
+| Field    | Description & Value           |
+| :------ | :--------------- |
+| "implementation"    | `PaymentsOnly` will be the default returned value.          |
+| "integration"    | The value will be either `Redirect` or `HostedView` and will be revealed after the initial attempt.        |
+| "instrumentMode"    | The value displayed here will be either `true` or `false`, depending on whether the feature was utilized. It is important to note that this is a distinct feature from the regular menu, and in most cases, it will be returned as `false`.         |
+| "guestMode"    | By default, this value will be set to `true`. However, if you have implemented our "Payer Aware Menu" feature, the value will be returned as `false` for returning customers who have stored payment details with you.        |
 
-**"implementation"**
-
-`PaymentsOnly` will be the default returned value.
-
-**"integration"**
-
-The value will be either `Redirect` or `HostedView` and will be revealed after
-the initial attempt.
-
-**"instrumentMode"**
-
-The value displayed here will be either `true` or `false`, depending on whether
-the feature was utilized. It is important to note that this is a distinct
-feature from the regular menu, and in most cases, it will be returned as
-`false`.
-
-**“guestMode”**
-
-By default, this value will be set to `true`. However, if you have implemented
-our "Payer Aware Menu" feature, the value will be returned as `false` for
-returning customers who have stored payment details with you.
-
-## Order Items
-
-Sending `orderItems` is no longer mandatory for your requests. If you prefer not
-to include this information in your transactions, feel free to omit them from
-your requests.
-
-However, if your selection of offering includes an invoice, it is highly
-recommended to provide `orderItems`. These fields are utilized to specify
-details about the purchased products.
-
-In the absence of this information, we will create the necessary order line
-using the details provided in the `description` parameter along with the value
-in the `amount` parameter.
-
-## Events available in V3.1
+## Events available in v3.1
 
 Further reading available in the [Events section][sv-events].
 
-`onCheckoutLoaded`
+{:.table .table-striped}
+| Event    | Description     |
+| :------ | :--------------- |
+| `onCheckoutLoaded`    | This event will trigger the first time the Checkout is loaded. Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. This is the initial height of the frame when loaded.     |
+| `onCheckoutResized`    | This event will trigger every time a UI element changes size.Subscribe to this event if you need total control over the height of Swedbank Pay’s payment frame. The payment methods require individual heights when rendering their content.     |
+| `onError`    | This event will be triggered during terminal errors or if the configuration fails validation. Subscribe to this event if you want some action to occur on your site when an error happens during the payment.     |
+| `onOutOfViewRedirect`    | Triggered when a user is redirected to a separate web page, like 3-D Secure or BankID signing. Subscribe to this event if it is not possible to redirect the payer directly from within Swedbank Pay’s payment frame.     |
+| `onAborted`    | This will be triggered when the payer clicks the "Abort" button. This is only present in the Redirect-implementation and if you have integrated Seamless View (menu embedded), you will need to supply this button/action. When the payer presses your cancel button, we recommend sending an API request aborting the payment so it can’t be completed at a later time. When we receive the request, an abort event will be raised the next time the UI fetches information from the server. Because of that, you should also refresh the script after aborting, as this will trigger the event.     |
+| `onPaymentAttemptAborted`    | This event will trigger when an attempt has been aborted from an external party. One of these examples is from a card-issuers ACS service (3D-Secure verification). This does not mean the transaction in its entirety has failed. It is just the singular attempt that was aborted. More attempts are available to the payer.     |
+| `onPaymentAttemptStarted`    | Triggered when the payer has selected a payment method and actively attempts to perform a payment.     |
+| `onPaid`    | This event triggers when the payer successfully completes their interaction with us. Subscribe to this event if actions are needed on you side other than the default handling of redirecting the payer to your `completeUrl`. Call GET on the paymentOrder to receive the actual payment status and take appropriate actions according to the information displayed here. |
+| `onPaymentAttemptFailed`  | Triggered when a payment has failed, disabling further attempts to perform a payment. |
+| `onInstrumentSelected`    | Triggered when a user actively changes payment method in the Payment Menu. |
+| `onTermsOfServiceRequested`    | Triggered when the user clicks on the “Display terms and conditions” link. Subscribe to this event if you do not want the default handling of the `termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl` in a new tab within the same browser by default.     |
+| `onEventNotification` | Triggered whenever any other public event is called. It does not prevent their handling. Subscribe to this event in order to log actions that are happening in the payment flow at Swedbank Pay.     |
 
-This event will trigger the first time the Checkout is loaded. Subscribe to this
-event if you need total control over the height of Swedbank Pay’s payment frame.
-This is the initial height of the frame when loaded.
+### Events no longer needed and/or supported
 
-`onCheckoutResized`
-
-This event will trigger every time a UI element changes size.Subscribe to this
-event if you need total control over the height of Swedbank Pay’s payment frame.
-The payment instruments require individual heights when rendering their content.
-
-`onError`
-
-This event will be triggered during terminal errors or if the configuration
-fails validation. Subscribe to this event if you want some action to occur on
-your site when an error happens during the payment.
-
-`onOutOfViewRedirect`
-
-Triggered when a user is redirected to a separate web page, like 3-D Secure or
-BankID signing. Subscribe to this event if it is not possible to redirect the
-payer directly from within Swedbank Pay’s payment frame.
-
-`onAborted`
-
-This will be triggered when the payer clicks the "Abort" button. This is only
-present in the Redirect-implementation and if you have integrated Seamless View
-(menu embedded), you will need to supply this button/action. When the payer
-presses your cancel button, we recommend sending an API request aborting the
-payment so it can’t be completed at a later time. When we receive the request,
-an abort event will be raised the next time the UI fetches information from the
-server. Because of that, you should also refresh the script after aborting, as
-this will trigger the event.
-
-`onPaymentAttemptAborted`
-
-This event will trigger when an attempt has been aborted from an external party.
-One of these examples is from a card-issuers ACS service (3D-Secure
-verification). This does not mean the transaction in its entirety has failed. It
-is just the singular attempt that was aborted. More attempts are available to
-the payer.
-
-`onPaymentAttemptStarted`
-
-Triggered when the payer has selected a payment instrument and actively attempts
-to perform a payment.
-
-`onPaid`
-
-This event triggers when the payer successfully completes their interaction with
-us. Subscribe to this event if actions are needed on you side other than the
-default handling of redirecting the payer to your `completeUrl`. Call GET on the
-paymentOrder to receive the actual payment status and take appropriate actions
-according to the information displayed here.
-
-`onPaymentAttemptFailed`
-
-Triggered when a payment has failed, disabling further attempts to perform a
-payment.
-
-`onInstrumentSelected`
-
-Triggered when a user actively changes payment instrument in the Payment Menu.
-
-`onTermsOfServiceRequested`
-
-Triggered when the user clicks on the “Display terms and conditions” link.
-Subscribe to this event if you do not want the default handling of the
-`termsOfServiceUrl`. Swedbank Pay will open the `termsOfServiceUrl` in a new tab
-within the same browser by default.
-
-`onEventNotification`
-
-Triggered whenever any other public event is called. It does not prevent their
-handling. Subscribe to this event in order to log actions that are happening in
-the payment flow at Swedbank Pay.
-
-**Events no longer needed and/or supported are:**
-
-`onBillingDetailsAvailable` (Starter/Business)
-`onShippingDetailsAvailable` (Starter/Business)
-`Payer identification` (Checkin)
+*   `onBillingDetailsAvailable` (Starter/Business)
+*   `onShippingDetailsAvailable` (Starter/Business)
+*   `Payer identification` (Checkin)
 
 `Checkin` is no longer supported in its previous form. Payer identification now
 falls under the merchant's responsibility and is executed through the Payer
@@ -379,7 +281,7 @@ the Purchase request. This means you are already familiar with the structure,
 but the difference now is that it also applies to the response for post-purchase
 actions.
 
-The new response will not naturally include the same instrument data as it did
+The new response will not naturally include the same method data as it did
 with v2. However, you can extend the information by adding
 `?$expand=financialtransactions` to the request path (URL). If you require even
 more data in your responses, you can continue extending the output by adding a
@@ -387,11 +289,7 @@ more data in your responses, you can continue extending the output by adding a
 `?$expand=financialtransactions,paid` would give you both the node for the
 initial `Purchase` and the node for the Capture/Reversal operation.
 
-{:.code-view-header}
-**Response example from existing versions**
-
-```json
-{
+{% capture response_content %}{
     "payment": "/psp/creditcard/payments/b2409f06-4944-4b2b-78d8-08dbf7d4b7e9",
     "capture": {
         "id": "/psp/creditcard/payments/b2409f06-4944-4b2b-78d8-08dbf7d4b7e9/captures/b15c1f9c-ad6b-4193-dabe-08dbf7d4b80a",
@@ -410,14 +308,15 @@ initial `Purchase` and the node for the Capture/Reversal operation.
             "operations": []
         }
     }
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Response Example from v3.1 (Capture with no expansions)**
+{% include code-example.html
+    title='Response example from existing versions'
+    header=response_header
+    json= response_content
+    %}
 
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/a8d963ee-4749-4b3c-9f31-08dbf62d5f1c",
         "created": "2023-12-08T13:42:08.1297502Z",
@@ -508,14 +407,15 @@ initial `Purchase` and the node for the Capture/Reversal operation.
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Response Example from v3.1 (Capture with Paid and FinancialTransactions expanded)**
+{% include code-example.html
+    title='Response Example from v3.1 (Capture with no expansions)'
+    header=response_header
+    json= response_content
+    %}
 
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/d4c5684f-c2dc-4c18-680d-08dbf62de407",
         "created": "2023-12-08T14:06:29.0250114Z",
@@ -645,8 +545,13 @@ initial `Purchase` and the node for the Capture/Reversal operation.
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response Example from v3.1 (Capture with Paid and FinancialTransactions expanded)'
+    header=response_header
+    json= response_content
+    %}
 
 ## Callback Information
 
@@ -657,26 +562,23 @@ on the `paymentOrderId` provided. If information has been included in the
 reported, allowing you to easily identify the transaction associated with a
 Callback. Note that the `payment` and `transaction` fields have been removed.
 
-{:.code-view-header}
-**Callback Example v3.1**
-
-```json
-{
+{% capture response_content %}{
    "orderReference":"PO-638423890947905216",
    "paymentOrder":{
       "id":"/psp/paymentorders/a9bd5ea2-d2b0-48d1-59c8-08dc230b04ba",
       "instrument":"CreditCard",
       "number":40129161258
    }
-}
-```
+}{% endcapture %}
 
-{:.code-view-header}
-**Callback Example Previous Versions**
+{% include code-example.html
+    title='Callback Example v3.1'
+    header=response_header
+    json= response_content
+    %}
 
-```json
-{
-    “orderReference”:”ABC123”,
+{% capture response_content %}{
+    "orderReference":"ABC123",
     "paymentOrder": {
         "id": "/psp/paymentorders/c3ac1392-35b0-43a6-8f27-08dbce43b47c",
         "instrument": "paymentorders"
@@ -689,8 +591,13 @@ Callback. Note that the `payment` and `transaction` fields have been removed.
         "id": "/psp/swish/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/sale/ec2a9b09-601a-42ae-8e33-a5737e1cf177",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Callback Example Previous Versions'
+    header=response_header
+    json= response_content
+    %}
 
 ## Sources
 
@@ -707,8 +614,8 @@ relevant documentation below.
 
 [Seamless view events (Embedded menu)][sv-events]
 
-[3-1]: https://developer.swedbankpay.com/checkout-v3/payment-request-3-1
+[3-1]: https://developer.swedbankpay.com/checkout-v3/get-started/payment-request-3-1
 [callback]: https://developer.swedbankpay.com/checkout-v3/features/core/callbackhttps://developer.swedbankpay.com/checkout-v3/features/core/callback.html#callback-example-v31
 [papm]: https://developer.swedbankpay.com/checkout-v3/features/optional/payer-aware-payment-menu
-[post-purchase]: https://developer.swedbankpay.com/checkout-v3/post-purchase-3-1
+[post-purchase]: https://developer.swedbankpay.com/checkout-v3/get-started/post-purchase-3-1
 [sv-events]: https://developer.swedbankpay.com/checkout-v3/features/technical-reference/seamless-view-events

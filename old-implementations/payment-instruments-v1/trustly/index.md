@@ -32,7 +32,7 @@ to [Trustly's guidelines][trustly-guidelines].
 
 ## Payment Type
 
-Trustly is one of the instruments using one-phase payments. The `sale` is done
+Trustly is one of the methods using one-phase payments. The `sale` is done
 when the payer successfully confirms in the app, capturing the funds
 instantly. The `abort` operation is still available, but the `cancel` and
 `capture` operations are not. The `reversal`, if needed, is done by the

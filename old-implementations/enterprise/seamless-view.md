@@ -139,7 +139,7 @@ request.send();
 ## How It Looks
 
 The payment menu should appear with the payer information displayed above the
-menu. The payer can select their preferred payment instrument and pay.
+menu. The payer can select their preferred payment method and pay.
 
 {:.text-center}
 ![screenshot of the enterprise implementation seamless view payment menu][seamless-enterprise-menu]

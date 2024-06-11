@@ -37,16 +37,12 @@ Remember to read up on our [URL resource][urls].
 
 ### Response
 
-The response back should look something like this (abbreviated for brevity):
+The response back should include this (abbreviated for brevity):
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 201 Created
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 201 Created
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
@@ -58,8 +54,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+ {% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |

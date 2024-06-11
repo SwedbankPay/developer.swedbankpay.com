@@ -5,14 +5,14 @@ redirect_from: /checkout-v3/resources/test-data/
 description: |
   Testing, are we? Good! Here's some data you can
   use to test and verify your integration!
-menu_order: 11
+menu_order: 6
 ---
 
 ## Swedbank Pay Checkout Test Data
 
-During a Swedbank Pay Checkout implementation, you can use the test data related
-to the different payment instruments listed below. To see Swedbank Pay Checkout
-in action, please visit the [Playground][playground].
+When implementing Digital Payments, you can use the test data related to the
+different payment methods listed below. To see Digital Payments in live action,
+please visit the [Playground][playground].
 
 To test a checked-in user in the Playground, please use the following test data:
 
@@ -115,6 +115,10 @@ our internal acquirer (loopback).
 | Visa       | `4111112000004565` | 07/35  | Any   | Rejected during tokenization |
 | Visa       | `4111112000007899` | 12/35  | Any   | Rejected during tokenization |
 
+### Misc Cards
+
+A selection of cards not connected to Network Tokenization or 3D-Secure.
+
 ### Visa
 
 {:.table .table-striped}
@@ -151,9 +155,9 @@ our internal acquirer (loopback).
 ### Diners
 
 {:.table .table-striped}
-| Card number     | Expiry                  | CVC   |
-| :-------------- | :---------------------- | :---- |
-| `6148201829798` | After the current month | Any   |
+| Card number      | Expiry                  | CVC   |
+| :--------------  | :---------------------- | :---- |
+| `61482018297982` | After the current month | Any   |
 
 ### Maestro
 
@@ -185,13 +189,13 @@ our internal acquirer (loopback).
 | :----------------- | :----------------------- | :---- |
 | `6007220000000004` | After the current month  | Any   |
 
-### Failure Testing Cards
+## Failure Testing Cards
 
 There are two different ways of testing Card Payments error scenarios. You can
 test 3-D Secure errors using our 3-D Secure emulator, or you can use specific
 amounts set to trigger errors in our test environment.
 
-### Amount Error Testing Method
+### Magic Amounts (Error Testing Using Amounts)
 
 We have some preset amounts that will trigger error codes. While creating a
 payment (operation `purchase`), enter one of the amounts from the list below in
@@ -205,6 +209,7 @@ The amounts that can be used to trigger error codes
 {:.table .table-striped}
 | Amount   | Error Code                                | Description                              |
 | :------- | :---------------------------------------- | :--------------------------------------- |
+| `900305` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded |
 | `900313` | `REJECTED_BY_ACQUIRER_INVALID_AMOUNT`     | Invalid amount, response-code: 13        |
 | `900330` | `REJECTED_BY_ACQUIRER_FORMAT_ERROR`       | Format error, response-code: 30          |
 | `900334` | `REJECTED_BY_ACQUIRER_POSSIBLE_FRAUD`     | Possible fraud, response-code: 34        |
@@ -215,6 +220,14 @@ The amounts that can be used to trigger error codes
 | `900361` | `REJECTED_BY_ACQUIRER_INSUFFICIENT_FUNDS` | Insufficient funds, response-code: 61    |
 | `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62         |
 | `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91 |
+| `952400` | `DONOTRETRY`                              | Transaction declined, do not retry       |
+| `952501` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
+| `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded |
+
+The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
+`MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The
+`SuspensionWarning` response message appears when the two limit exceeds have
+5 attempts left (i.e. after 5 daily or 10 monthly attempts).
 
 ## Invoice Test Data
 
@@ -239,16 +252,6 @@ The amounts that can be used to trigger error codes
 | City    | 19792 Bro       | 17674 Järfälla          |
 | MSISDN  |                 | +46739000001            |
 | email   |                 | leia.ahlstrom@payex.com |
-
-### Invoice test data for Finland
-
-{:.table .table-striped}
-| Type    | Data             |
-| :------ | :--------------- |
-| SSN     | 100584-451P      |
-| Name    | Järvilehto Kimmo |
-| Address | Kiannonkatu 88   |
-| City    | 90500 Oulu       |
 
 ## Invoice Service Test Data
 

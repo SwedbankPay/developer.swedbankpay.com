@@ -1,10 +1,10 @@
 ## Co-badge Card Choice For Dankort
 
-Due to new [EU regulations from 2016-06-09][eu-regulation] regarding cards that
-have more than one payment application, we have developed support for the end
-users of Dankort to be able to choose their preferred payment application on the
-Swedbank Pay payment page. If you are a Dankort user, read more about this
-feature at [Dankort][dankort-eu].
+Due to [EU regulations from 2016-06-09][eu-regulation] regarding cards with more
+than one payment application, we have developed support for end users of
+Dankort to be able to choose their preferred payment application on the Swedbank
+Pay payment page. If you are a Dankort user, read more about this feature at
+[Dankort][dankort-eu].
 
 As a merchant you can set a priority selection of payment application by
 contacting [Swedbank Pay Support][swedbankpay-support]. The payer will always

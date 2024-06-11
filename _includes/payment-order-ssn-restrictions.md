@@ -5,17 +5,17 @@
 ## Restrict Payments To A Social Security Number
 
 Swedbank Pay provides the possibility to restrict payments to a Social Security
-Number for payment instruments which support this. This can be used when you
+Number when the payment methods support this. This can be used when you
 want to make sure you only accept payments from an already identified
 individual.
 
 You do this by adding the field `restrictedToSocialSecurityNumber` in the
 `payer` field, in your payment order request, and setting it to `true`. This
-will leave out all instruments which do not support this feature.
+will leave out all methods which do not support this feature.
 
 It will then use the `socialSecurityNumber` located in the `nationalIdentifier`
 field (found within the `payer` field). The `nationalIdentifier` must be
-included to use this feature. Instruments supporting the feature will reject
+included to use this feature. Methods supporting the feature will reject
 payments that do not match the restriction.
 
 {% if documentation_section contains "old-implementations/enterprise" %} If you want to
@@ -24,9 +24,9 @@ checkout profile lookup, add the parameter `guestMode` in the
 `nationalIdentifier` field and set it to `true`. {% endif %}
 
 You are currently only able to restrict Swish and Trustly payments to a Social
-Security Number, but we will add support for more payment instruments going
+Security Number, but we will add support for more payment methods going
 forward. No changes are required at your (the merchant’s) end to be able to
-offer more instruments at a later time.
+offer more methods at a later time.
 
 ## Restrict To Social Security Number Request
 
@@ -37,20 +37,16 @@ For an example of a payment order request, {% if documentation_section contains
 "old-implementations/enterprise" %} [click
 here.](/old-implementations/enterprise/redirect#payment-order-request) {% endif %} {% if
 documentation_section contains "checkout-v3/payments-only" %} [click
-here.](/checkout-v3/payment-request) {% endif %}
+here.](/checkout-v3/get-started/payment-request) {% endif %}
 The response will be similar to a standard payment order response, which is also
 documented on the page linked above.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 3.0 and 2.0
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
     "payer": {
             "digitalProducts": false,
@@ -67,8 +63,13 @@ Content-Type: application/json;version=3.1/3.0/2.0      // Version optional for 
             "payerReference": "AB1234"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}

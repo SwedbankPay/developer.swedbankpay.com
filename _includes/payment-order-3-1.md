@@ -4,16 +4,12 @@
 
 ## Payment Order Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/paymentorders HTTP/1.1
+{% capture request_header %}POST /psp/paymentorders HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json;version=3.1
+Content-Type: application/json;version=3.1{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "currency": "SEK",
@@ -22,7 +18,6 @@ Content-Type: application/json;version=3.1
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
-        "instrument": null,
         "urls": {
             "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
             "paymentUrl": "https://example.com/perform-payment", //Seamless View only
@@ -38,8 +33,13 @@ Content-Type: application/json;version=3.1
             "orderReference": "or-123456"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -53,11 +53,10 @@ Content-Type: application/json;version=3.1
 | {% icon check %} | {% f description %}              | `string`     | The description of the payment order.                                                                                                                                                                                                                                                                    |
 | {% icon check %} | {% f userAgent %}                | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f language %}                 | `string`     | The language of the payer.                                                                                                                                                                                                                                                                               |
-| | {% f instrument %}                 | `string`     | Only used for instrument mode. Set the field to the payment instrument you wish to display. If no instrument is specified, the full payment menu will be displayed.                                                                                                                                                                                                                                                                           |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
 | {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
-|                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url.md %} |
+|                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url-paymentorder.md %} |
 | {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
 | {% icon check %} | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
 | {% icon check %} | {% f callbackUrl, 2 %}             | `string`     | {% include fields/callback-url.md %}                                                                                                                                                                                              |
@@ -72,15 +71,11 @@ Content-Type: application/json;version=3.1
 
 ## Payment Order Response
 
-{:.code-view-header}
-**Response**
-
-```http
-HTTP/1.1 200 OK
+{% capture response_header %}HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8; version=3.1
-api-supported-versions: 2.0, 3.0, 3.1
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2020-06-22T10:56:56.2927632Z",
@@ -107,48 +102,48 @@ api-supported-versions: 2.0, 3.0, 3.1
         "instrumentMode": false,
         "guestMode": false,
         "orderItems": {
-        "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/orderitems"
         },
         "urls": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/urls"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/urls"
         },
         "payeeInfo": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payeeinfo"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/payeeinfo"
         },
         "payer": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/payers"
         },
         "history": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/history"
         },
         "failed": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failed"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/failed"
         },
         "aborted": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/aborted"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/aborted"
         },
         "paid": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/paid"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/paid"
         },
         "cancelled": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/cancelled"
         },
         "reversed": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/reversed"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/reversed"
         },
         "financialTransactions": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/financialtransactions"
         },
         "failedAttempts": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
         },
         "postPurchaseFailedAttempts": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/failedattempts"
         },
         "metadata": {
-        "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
+          "id": "/psp/paymentorders/{{ page.payment_order_id }}/metadata"
         }
-      },
+    },
     "operations": [
         {
           "method": "GET",
@@ -163,20 +158,25 @@ api-supported-versions: 2.0, 3.0, 3.1
           "contentType": "application/javascript"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
           "rel":"update-order",
           "method":"PATCH",
           "contentType":"application/json"
         },
         {
-          "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224",
+          "href": "https://api.payex.com/psp/paymentorders/{{ page.payment_order_id }}",
           "rel": "abort",
           "method": "PATCH",
           "contentType": "application/json"
         }
-       ]
-      }
-```
+    ]
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -194,10 +194,10 @@ api-supported-versions: 2.0, 3.0, 3.1
 | {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with Instrument Mode (only one payment instrument available).                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with Instrument Mode (only one payment method available).                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a `payerReference` in the original `paymentOrder` request.                                                                                                                                                |
 | {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
 | {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |

@@ -1,8 +1,8 @@
-### Payment Instrument Specific Problems
+### Payment Method Specific Problems
 
-Problem types for a specific payment instrument will have a URL in the format
+Problem types for a specific payment method will have a URL in the format
 `https://api.payex.com/psp/errordetail/<payment-instrument>/<error-type>`. You
-can read more about the payment instrument specific problem messages below:
+can read more about the payment method specific problem messages below:
 
 *   [Card Payments][card-problems]
 *   [Invoice Payments][invoice-problems]

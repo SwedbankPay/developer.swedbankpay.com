@@ -26,20 +26,16 @@ by setting the `generateMotoPayment` to `true`.
 
 ## MOTO Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ api_resource }}/payments HTTP/1.1
+{% capture request_header %}POST /psp/{{ api_resource }}/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "{{api_resource_field_name}}": {
+        "generateMotoPayment": true,
         "operation": "Purchase",
         "intent": "Authorization",
-        "generateMotoPayment": true,
         "currency": "NOK",
         "prices": [{
                 "type": "CreditCard",
@@ -65,8 +61,13 @@ Content-Type: application/json
             "subsite": "MySubsite"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## MOTO Response
 
@@ -75,14 +76,10 @@ To authorize the payment, find the operation with `rel` equal to
 employee to the provided `href` to fill out the payer’s card details. You will
 find an abbreviated example of the response provided below.
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "{{api_resource_field_name}}": {
         "id": "/psp/creditcard/payments/a205c77e-2f0a-4564-3e60-08d8d3ed4699",
         "number": 40106480687,
@@ -137,5 +134,10 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}

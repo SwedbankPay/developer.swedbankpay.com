@@ -7,10 +7,9 @@
 
 ## Frictionless Payments
 
-When dealing with card payments, 3-D Secure authentication of the cardholder is
-an essential topic. 3-D Secure 2 is an improved version of the old protocol, now
-allowing frictionless payments where transactions can be completed without
-input from the cardholder. To increase the chances of this, there are certain
+3-D Secure 2 is an improved version of the old protocol, now allowing
+frictionless payments where transactions can be completed without input from the
+cardholder. To increase the chances of a frictionless payment, there are certain
 fields that should be included in your request. The more information you add,
 the better.
 
@@ -26,8 +25,7 @@ the better.
 
 {% if api_resource == "creditcard" %}
 
-```json
-{
+{% capture request_content %}{
     "cardholder": {
         "firstName": "Olivia",
         "lastName": "Nyhuus",
@@ -65,16 +63,22 @@ the better.
                 "suspiciousAccountActivity": "01"
             }
         },
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
 
 {% else %}
 
-```json
-{
+{% capture request_content %}{
     "payer": {
         "email": "olivia.nyhuus@payex.com",
         "msisdn": "+4798765432",
+        "firstName": "Olivia",
+        "lastName": "Nyhuus",
         "workPhoneNumber" : "+4787654321",
         "homePhoneNumber" : "+4776543210",
         "shippingAddress": {
@@ -105,8 +109,13 @@ the better.
                 "suspiciousAccountActivity": "01"
             }
         },
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -152,7 +161,9 @@ the better.
 | :---- | :--- | :---------- |
 | {% f payer %}                       | `object` | The payer object.        |
 | {% f email %}                       | `string` | Payer's registered email address.                                                  |
-| {% f msisdn %}  | `string` | Payer's registered mobile phone number.                                                  |
+| {% f msisdn %}                      | `string` | Payer's registered mobile phone number.                                                  |
+| {% f firstname %}                   | `string` | Payers's first name. Please note that this is not the `addressee` or from `shippingAddress`, as they might not be the same as the payer.                 |
+| {% f lastname %}                    | `string` | Payers's last name. Please note that this is not the `addressee` or `lastName` from `shippingAddress`, as they might not be the same as the payer.                 |                   |
 | {% f homePhoneNumber %}             | `string` | Payer's registered home phone number.                                                               |
 | {% f workPhoneNumber %}             | `string` | Payer's registered work phone number.                                                                 |
 | {% f shippingAddress %}             | `object` | The shipping address object related to the `payer`.                                                         |
@@ -162,13 +173,20 @@ the better.
 | {% f zipCode, 2 %}                    | `string` | Payer's zip code.                                           |
 | {% f city, 2 %}                       | `string` | Payer's city of residence.                                                                            |
 | {% f countryCode, 2 %}                | `string` | Country Code for the country of residence.                                                                      |
+|   {% f billingAddress %}              | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
+|    {% f firstName %}            | `string`  | The payer's first name.                                                                                                                  |
+|    {% f lastName %}            | `string`  | The payer's last name.                                                                                                                  |
+|  ︎  {% f streetAddress %}        | `string`  | The payer'a street address. Maximum 50 characters long.                                                                                                   |
+|                    {% f coAddress %}            | `string`  | The payer's CO-address (if used).                                                                                                                                         |
+|   {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                  |
+|    {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
+|   {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
 {% endif %}
 
 ## Risk Indicator
 
-```json
-{
+{% capture request_content %}{
     "riskIndicator": {
         "deliveryEmailAddress": "olivia.nyhuus@payex.com",
         "deliveryTimeFrameIndicator": "01",
@@ -186,8 +204,13 @@ the better.
             "countryCode": "NO"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Risk Indicator Node'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 | Field | Type | Description |

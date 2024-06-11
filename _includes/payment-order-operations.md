@@ -5,17 +5,13 @@
 When a payment order resource is created and during its lifetime, it will have a
 set of operations that can be performed on it. The state of the payment order
 resource, what the access token is authorized to do, the chosen payment
-instrument and its transactional states, etc. determine the available operations
+method and its transactional states, etc. determine the available operations
 before the initial purchase. A list of possible operations and their explanation
 is given below.
 
 {% if documentation_section contains "checkout-v3" %}
 
-{:.code-view-header}
-**Operations**
-
-```js
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     },
@@ -63,16 +59,17 @@ is given below.
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Operations'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
-{:.code-view-header}
-**Operations**
-
-```js
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
     },
@@ -153,8 +150,13 @@ is given below.
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Operations'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 

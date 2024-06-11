@@ -12,8 +12,8 @@ below).
 ## Customizable Elements
 
 With the arrival of our [accessibility compliant payment UI][wcag-presentation],
-the elements you can adjust are related to the CTA button. Here's what you can
-do!
+the elements you can adjust are related to the CTA button. Available changes
+are:
 
 ### The background color of the CTA button
 

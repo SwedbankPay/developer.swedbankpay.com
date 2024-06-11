@@ -40,12 +40,12 @@ Use parameter of type `TransactionSetup` if a reference need to be set to track 
 **Example calling async function with a TransactionSetup object as parameter**
 
 ```c#
-  var r = await Pax?.PaymentAsync(new TransactionSetup() { 
+  var r = await Pax?.PaymentAsync(new TransactionSetup() {
     Amount = total,
     CashBack = cashBack,
     TransactionID = IdForThisTransaction
     });
-  if (r.ResponseResult == NexoResponseResult.Success) 
+  if (r.ResponseResult == NexoResponseResult.Success)
     { textBox1.AppendText("Approved" + Environment.NewLine); }
   else { textBox1.AppendText("Not Approved" + Environment.NewLine); }
 ```
@@ -218,49 +218,49 @@ The following shows the content of the FormattedReceipt array of the same result
 ### ReceiptBlob - Fast forward to well formatted approved receipt information
 
 ```text
-Test shop               
-Hälleskåran 29          
+Test shop
+Hälleskåran 29
 5050
  merchant-Base24-City
-Org nr: 5565671-6165    
-                        
+Org nr: 5565671-6165
+
 Butiksnr.:      10020001
 2023-12-06         08:39
-                        
+
 KÖP            125,00SEK
-                        
-************9659        
-Mastercard              
-Kontaktlös              
-K/1 3 00 902428         
+
+************9659
+Mastercard
+Kontaktlös
+K/1 3 00 902428
 Ref.nr:       8778880003
 AID:      A0000000041010
 TVR:          0000008001
-                        
-     SPARA KVITTOT      
-      KUNDENS EX.       
+
+     SPARA KVITTOT
+      KUNDENS EX.
 
 ```
 
 ### ReceiptBlobNoHeader - ReceiptBlob but no header
 
 ```text
-                        
+
 Butiksnr.:      10020001
 2023-12-06         08:39
-                        
+
 KÖP            125,00SEK
-                        
-************9659        
-Mastercard              
-Kontaktlös              
-K/1 3 00 902428         
+
+************9659
+Mastercard
+Kontaktlös
+K/1 3 00 902428
 Ref.nr:       8778880003
 AID:      A0000000041010
 TVR:          0000008001
-                        
-     SPARA KVITTOT      
-      KUNDENS EX.       
+
+     SPARA KVITTOT
+      KUNDENS EX.
 ```
 
 [transactionsetup]: /pax-terminal/NET/includes/transactionsetup

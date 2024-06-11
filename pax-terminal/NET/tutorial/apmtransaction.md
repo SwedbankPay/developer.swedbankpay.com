@@ -3,7 +3,6 @@ title: APM transaction
 description: |
     APM - Alternative Payment Method. Let the customer choose a different payment method than card but keep the same flow towards the sale system as for a card payment.
 permalink: /:path/apmtransaction/
-hide_from_sidebar: true
 icon:
   content: credit_card_off
   outlined: true

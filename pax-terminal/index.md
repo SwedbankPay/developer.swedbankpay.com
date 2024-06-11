@@ -3,7 +3,7 @@ section: Payment Terminals
 sidebar_icon: point_of_sale
 title: Introduction
 permalink: /:path/
-menu_order: 3
+menu_order: 2
 ---
 
 Swedbank Pay have designed the Swedbank Pay Payment Application solution using

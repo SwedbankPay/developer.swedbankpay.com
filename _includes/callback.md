@@ -54,8 +54,8 @@ three example scenarios of why this is important:
     *   1265 seconds
 *   A callback should return a `200 OK` response.
 
-The callback is sent from `91.132.170.1` in both the test and production
-environment.
+The callback is sent from either `51.107.183.58` or `91.132.170.1` in both the
+test and production environment.
 
 To understand the nature of the callback, the type of transaction, its status,
 etc., you need to perform a `GET` request on the received URL and inspect the
@@ -71,11 +71,7 @@ the `paymentOrderId`.
 
 {% if api_resource == "paymentorders" %}
 
-{:.code-view-header}
-**Payment Order Callback**
-
-```json
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
@@ -88,8 +84,13 @@ the `paymentOrderId`.
         "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback'
+    header=response_header
+    json= response_content
+    %}
 
 ## Callback Example v3.1
 
@@ -99,19 +100,20 @@ node.
 This response format will only be triggered if you used `version=3.1` in the
 original `POST` when you created the `paymentOrder`.
 
-{:.code-view-header}
-**Payment Order Callback v3.1**
-
-```json
-{
+{% capture response_content %}{
     "orderReference": "549213",
     "paymentOrder": {
         "id": "/psp/{{ api_resource }}/{{ page.payment_id }}",
         "instrument": "{{ api_resource }}"
         "number": 12345678
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Order Callback v3.1'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -120,17 +122,14 @@ original `POST` when you created the `paymentOrder`.
 | {% f orderReference, 0 %}                | `string`     | The order reference found in the merchant's systems.  If included in the request, the orderReference will appear in the callback.                     |
 | {% f paymentOrder, 0 %}           | `object`     | The payment order object.                      |
 | {% f id %}  | `string`   | {% include fields/id.md resource="paymentorder" %} |
-| {% f instrument %}                | `string`     | The payment instrument used in the payment.                     |
+| {% f instrument %}                | `string`     | The payment method used in the payment.                     |
 | {% f number %}                | `string`     | The attempt number which triggered the callback.                     |
 {% endcapture %}
 {% include accordion-table.html content=table %}
 
 {% else %}
-{:.code-view-header}
-**Payment Instrument Callback**
 
-```json
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}",
         "number": 222222222
@@ -139,16 +138,21 @@ original `POST` when you created the `paymentOrder`.
         "id": "/psp/{{ api_resource }}/payments/{{ page.payment_id }}/authorizations/{{ page.transaction_id }}",
         "number": 333333333
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payment Method Callback'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
 ## GET Response
 
 When performing an HTTP `GET` request towards the URL found in the
-`transaction.id` field of the callback, the response is going to look
-something like the abbreviated example provided below.
+`transaction.id` field of the callback, the response is going to include the
+abbreviated example provided below.
 
 {% include transaction-response.md transaction="authorization" %}
 
@@ -174,4 +178,4 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-[url-usage]: /checkout-v3/resources/fundamental-principles#url-usage
+[url-usage]: /checkout-v3/get-started/fundamental-principles#url-usage
