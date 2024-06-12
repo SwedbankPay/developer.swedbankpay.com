@@ -35,6 +35,9 @@ following URL structure:
 
 ### Invoice Without Assessment Flow
 
+Invoice transactions without SCA is only available in Norway, and only for
+merchants who have a special agreement with Swedbank Pay.
+
 {:.table .table-striped}
 | Type            | Status | Description                       |
 | :-------------- | :----: | :-------------------------------- |

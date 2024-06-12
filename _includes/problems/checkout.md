@@ -64,48 +64,7 @@ future.
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                 |
 
-## Credit Account Problems
-
-SUITABLE GENERIC TEXT HERE
-
-### Common Credit Account Problems
-
-{:.table .table-striped}
-| Type                 | Status | Description                  |
-| :------------------- | :----: | :--------------------------- |
-| `InputError`         | `400`  | Bad request.                 |
-| `Forbidden`          | `403`  | Forbidden.                   |
-| `NotFound`           | `404`  | Not found.                   |
-| `ConfigurationError` | `404`  | Forbidden.                   |
-| `SystemError`        | `500`  | Internal server error.       |
-| `ExternalError`      | `502`  | Bad gateway.                 |
-
-### Credit Account Error Type Mapping
-
-{:.table .table-striped}
-| Type            | Status | Description                       |
-| :-------------- | :----: | :-------------------------------- |
-| `CURRENCYNOTSUPPORTED`    | `400`  | The provided currency does not match the authorization currency.       |
-| `INVALIDAMOUNT`     | `400`  | The provided capture amount is invalid, likely larger than the remaining authorized amount.             |
-| `VALIDATION`     | `400`  | Validation error. The problem(s) should be described in the response.             |
-| `CREDITNOTAPPROVED` | `403`  | Credit check or extension of credit check was rejected.                  |
-| `AMOUNTEXCEEDSLIMIT`      | `403`  | Amount in the pre-authorization is no longer valid for this authorization.         |
-| `AUTHORIZATIONEXPIRED` | `403`  | The provided authorization is not open or has already expired  |
-| `INVALIDSTATE` | `403`  | the provided pre-authorization resource is in an invalid state for this payment method.             |
-| `MISSINGPREAUTHORIZATION`   | `403`  | The resource is missing. It may have been created on different ledger or have expired.   |
-| `INVALIDACCOUNTUSAGE` | `403`  | The provided pre-authorization is invalid for this kind of authorization.           |
-| `IDENTIFIERALREADYINUSE`   | `403`  | The Authorization ID provided is already used, provide a new one and try again.  |
-| `FORBIDDEN`    | `403`  | N/A. There is a conflict or the resource is unprocessable.      |
-| `NOTFOUND`     | `404`  | No authorization for the provided ID wad found on this ledger.             |
-| `UNKNOWN`     | `403`  | Unexpected error.            |
-| `CREDITNOTAPPROVED` | `403`  | Credit check for new account was denied.                 |
-| `SIGNINGFAILED`      | `403`  | Something went wrong during account onboarding or the user cancelled in BankID.       |
-| `CREDITNOTAPPROVED` | `403`  | Credit check for account limit upgrade was denied. |
-| `SIGNINGFAILED` | `403`  | Something went wrong during account limit upgrade or user cancelled in BankID.          |
-| `CREDITNOTAPPROVED`   | `403`  | Credit check denied.  |
-| `USERCANCELLED` | `403`  | User cancelled on Ledger & Factoring page.          |
-
-## Token Problems
+### Token Problems
 
 We will be making a change in the error messages that are given in response in
 the eCommerce API if the requested `Payment`/`One-Click`/`Recur`/`Unscheduled`
@@ -203,7 +162,7 @@ Examples of the error messages are presented below.
 If you have questions regarding the new error types, do not hesitate to contact
 us through the ordinary support channels.
 
-## Payment Details Problems
+### Payment Details Problems
 
 In order to use the new parameter `EnablePaymentDetailsConsentCheckbox` – which
 determines whether or not to show the checkbox used to save payment details –
@@ -456,6 +415,37 @@ transaction is declined, but might be accepted after modifications:
     json= response_content
     %}
 
+## Credit Account Problems
+
+There are a few problems specific to the `creditaccount` resource that you may
+want to guard against in your integrations. All invoice error types will have
+the following URL structure:
+
+`https://api.payex.com/psp/errordetail/creditaccount/<error-type>`
+
+{:.table .table-striped}
+| Type            | Status | Description                       |
+| :-------------- | :----: | :-------------------------------- |
+| `CURRENCYNOTSUPPORTED`    | `400`  | The provided currency does not match the authorization currency.       |
+| `INVALIDAMOUNT`     | `400`  | The provided capture amount is invalid, likely larger than the remaining authorized amount.             |
+| `VALIDATION`     | `400`  | Validation error. The problem(s) should be described in the response.             |
+| `CREDITNOTAPPROVED` | `403`  | Credit check or extension of credit check was rejected.                  |
+| `AMOUNTEXCEEDSLIMIT`      | `403`  | Amount in the pre-authorization is no longer valid for this authorization.         |
+| `AUTHORIZATIONEXPIRED` | `403`  | The provided authorization is not open or has already expired  |
+| `INVALIDSTATE` | `403`  | the provided pre-authorization resource is in an invalid state for this payment method.             |
+| `MISSINGPREAUTHORIZATION`   | `403`  | The resource is missing. It may have been created on different ledger or have expired.   |
+| `INVALIDACCOUNTUSAGE` | `403`  | The provided pre-authorization is invalid for this kind of authorization.           |
+| `IDENTIFIERALREADYINUSE`   | `403`  | The Authorization ID provided is already used, provide a new one and try again.  |
+| `FORBIDDEN`    | `403`  | There is a conflict or the resource is unprocessable.      |
+| `NOTFOUND`     | `404`  | No authorization for the provided ID wad found on this ledger.             |
+| `UNKNOWN`     | `403`  | Unexpected error.            |
+| `CREDITNOTAPPROVED` | `403`  | Credit check for new account was denied.                 |
+| `SIGNINGFAILED`      | `403`  | Something went wrong during account onboarding or the user cancelled in BankID.       |
+| `CREDITNOTAPPROVED` | `403`  | Credit check for account limit upgrade was denied. |
+| `SIGNINGFAILED` | `403`  | Something went wrong during account limit upgrade or user cancelled in BankID.          |
+| `CREDITNOTAPPROVED`   | `403`  | Credit check denied.  |
+| `USERCANCELLED` | `403`  | User cancelled on Ledger & Factoring page.          |
+
 ## Invoice Problems
 
 There are a few problems specific to the `invoice` resource that you may want to
@@ -492,6 +482,9 @@ following URL structure:
 | `ERROR` | `502`  | Unexpected error. |
 
 ### Invoice Without Assessment Flow
+
+Invoice transactions without SCA is only available in Norway, and only for
+merchants who have a special agreement with Swedbank Pay.
 
 {:.table .table-striped}
 | Type            | Status | Description                       |
