@@ -1,20 +1,10 @@
-## Credit Account Problems
+## Installment Account Problems
 
-SUITABLE GENERIC TEXT HERE
+There are a few problems specific to the `creditaccount` resource that you may
+want to guard against in your integrations. All invoice error types will have
+the following URL structure:
 
-### Common Credit Account Problems
-
-{:.table .table-striped}
-| Type                 | Status | Description                  |
-| :------------------- | :----: | :--------------------------- |
-| `InputError`         | `400`  | Bad request.                 |
-| `Forbidden`          | `403`  | Forbidden.                   |
-| `NotFound`           | `404`  | Not found.                   |
-| `ConfigurationError` | `404`  | Forbidden.                   |
-| `SystemError`        | `500`  | Internal server error.       |
-| `ExternalError`      | `502`  | Bad gateway.                 |
-
-### Credit Account Error Type Mapping
+`https://api.payex.com/psp/errordetail/creditaccount/<error-type>`
 
 {:.table .table-striped}
 | Type            | Status | Description                       |
@@ -29,7 +19,7 @@ SUITABLE GENERIC TEXT HERE
 | `MISSINGPREAUTHORIZATION`   | `403`  | The resource is missing. It may have been created on different ledger or have expired.   |
 | `INVALIDACCOUNTUSAGE` | `403`  | The provided pre-authorization is invalid for this kind of authorization.           |
 | `IDENTIFIERALREADYINUSE`   | `403`  | The Authorization ID provided is already used, provide a new one and try again.  |
-| `FORBIDDEN`    | `403`  | N/A. There is a conflict or the resource is unprocessable.      |
+| `FORBIDDEN`    | `403`  | There is a conflict or the resource is unprocessable.      |
 | `NOTFOUND`     | `404`  | No authorization for the provided ID wad found on this ledger.             |
 | `UNKNOWN`     | `403`  | Unexpected error.            |
 | `CREDITNOTAPPROVED` | `403`  | Credit check for new account was denied.                 |

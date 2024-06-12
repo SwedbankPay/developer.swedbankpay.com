@@ -415,7 +415,7 @@ transaction is declined, but might be accepted after modifications:
     json= response_content
     %}
 
-## Credit Account Problems
+## Installment Account Problems
 
 There are a few problems specific to the `creditaccount` resource that you may
 want to guard against in your integrations. All invoice error types will have
