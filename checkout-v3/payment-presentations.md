@@ -285,7 +285,7 @@ have two recommendations to make the experience as smooth as possible.
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-verification-file]: /assets/documents/apple-ecom
-[benevity-donation-setup]: https://www.benevity.org
+[benevity-donation-setup]: https://www.benevity.com
 [google-pay-profile]: https://pay.google.com/business/console/
 [google-pay-tos]: https://payments.developers.google.com/terms/sellertos
 [irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
