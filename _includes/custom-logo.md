@@ -6,6 +6,9 @@ If you have permission and the feature has been activated in your contract, you
 can replace the Swedbank Pay logo in the Payment Menu. See the **abbreviated**
 example below with `logoUrl` present in the `paymentOrder` request's `urls`.
 
+*   The logo URL ust be a picture with maximum 50px height and 400px width.
+    Requires HTTPS.
+
 *   If the configuration is activated and you add a `logoUrl`, the Swedbank Pay
     logo will be replaced and the text changed accordingly.
 

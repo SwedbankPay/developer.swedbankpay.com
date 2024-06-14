@@ -152,13 +152,6 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 | :----------------- | :---------------------- | :---- |
 | `3569990010082211` | After the current month | Any   |
 
-### Diners
-
-{:.table .table-striped}
-| Card number      | Expiry                  | CVC   |
-| :--------------  | :---------------------- | :---- |
-| `61482018297982` | After the current month | Any   |
-
 ### Maestro
 
 {:.table .table-striped}
