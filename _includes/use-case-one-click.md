@@ -2,7 +2,7 @@
 ## Supported Payment Methods
 
 Looking to get started with One-Click or "Payer Aware Menu" to reduce
-friction? These are the supported methods:
+friction? These are the supported payment methods:
 
 *   Cards: Masked PAN, Expiration Date and CVC
 *   Swish: MSIDSN – Only for eCom-flow
@@ -146,7 +146,7 @@ By following these steps and structures, you can seamlessly integrate our
 features “Payer Aware Menu” and “One-Click” to reduce friction and enhance the
 overall payment experience for your customers.
 
-## Removal of Method Details
+## Removal of Payment Method Details
 
 When certain conditions arise, such as encountering specific error codes or
 receiving requests from the payer to remove their details, it becomes necessary

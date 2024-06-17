@@ -4,8 +4,8 @@ sidebar_icon: credit_card
 title: Introduction
 redirect_from: /payments/
 description: |
-  Payment Methods v1 is our off-the-rack assortment of possibilities. Pick the one(s) you like.
-  You can pick and choose among them to tailor the method package best
+  Payment Methods v1 is our off-the-rack assortment of possibilities. Pick the
+  one(s) you like. You can pick and choose among them to tailor a package best
   suited for your business.
 permalink: /:path/
 menu_order: 5

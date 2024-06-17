@@ -1,14 +1,14 @@
 By using the field `restrictedToInstruments`, you can customize in what order
 the payment methods are listed in your payment UI, in addition to using it
-to restrict which methods you want to display. This gives you, as a
+to restrict which payment methods you want to display. This gives you, as a
 merchant, the opportunity to promote selected payment methods, or tailor the
 payment UI specifically for your customers.
 
 If you detect that the customer is on a mobile, make their payment easier by
 having the digital wallets on top. On an Android phone? Lead with Google Pay. On
 an Apple device? Put Apple Pay first. Use the `Paid` resource to find what
-method the customer used to pay, and let it be the first option next time
-they visit you.
+payment method the customer used to pay, and let it be the first option next
+time they visit you.
 
 ## Sort Or Restrict The Payment Menu Order
 
@@ -18,7 +18,7 @@ the order they will appear in the menu.
 
 Please remember that `restrictedToInstruments` both sorts and restricts. Only
 the payment methods included in the `array` will appear, so it is crucial
-that you include all the methods you want to offer.
+that you include all the payment methods you want to offer.
 
 I.e. if you populate the field with ["Swish","CreditCard","Trustly"], Swish will
 appear as the first option, card as the second and Trustly third. In this
@@ -31,7 +31,7 @@ presented in the default order.
 ## Input Values
 
 The complete list of possible values to include in `restrictedToInstruments` are
-the following. You can find the methods activated for your merchant
+the following. You can find the payment methods activated for your merchant
 under `availableInstruments` in the initial `paymentOrder` response.
 
 {:.table .table-striped}

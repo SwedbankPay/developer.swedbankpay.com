@@ -29,7 +29,7 @@ payment menu), or have multiple payment providers on your site, we strongly
 recommend that you implement this functionality. In this case you should use the
 `instrument` field to enforce which payment method to show. If you have an
 agreement with Swedbank Pay for both Card and Swish/Vipps processing, and the
-payer chooses either of these methods, you should add the `instrument`
+payer chooses either of these payment methods, you should add the `instrument`
 parameter with the specific payment method.
 
 {% if documentation_section contains "checkout-v3" %}
@@ -333,7 +333,7 @@ Content-Type: application/json{% endcapture %}
         },
         "items": [{
             "creditCard": {
-                "cardBrands": ["Visa", "MasterCard", "Amex", "Dankort", "Diners", "Finax", "Forbrugsforeningen", "Jcb", "IkanoFinansDk", "Lindex", "Maestro", "Ica"]
+                "cardBrands": ["Visa", "MasterCard", "Amex", "Dankort", "Forbrugsforeningen", "Jcb", "Maestro", "Ica"]
             }
         }]
     },
@@ -417,7 +417,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 ## Available Payment Methods
 
-The valid methods for the `paymentOrder` can be retrieved from the
+The valid payment methods for the `paymentOrder` can be retrieved from the
 `availableInstruments` parameter in the `paymentOrder` response. Using a
 merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
 `availableInstruments` will look like this:
@@ -429,7 +429,7 @@ merchant set up with contracts for `Creditcard`, `Swish` and `Invoice`,
         ]{% endcapture %}
 
 {% include code-example.html
-    title='Available Methods'
+    title='Available Payment Methods'
     header=response_header
     json= response_content
     %}

@@ -354,7 +354,7 @@ api-supported-versions: 2.0{% endcapture %}
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any discounts or fees specific to one payment method. The final payment order amount will be displayed in the `amount` field.                                            |
 | {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
 | {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |

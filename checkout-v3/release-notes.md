@@ -51,7 +51,7 @@ the payment.
 
 A new feature for those of you who want to [customize the order of your payment
 menu][sort-order] has also seen the light of day, together with the possibility
-to expand the top method. They can be used independently, but work great
+to expand the top payment method. They can be used independently, but work great
 together.
 
 We also did a handful of bug fixes and corrections to improve usability and
@@ -151,8 +151,8 @@ bottom of the front page will follow suit shortly.
 
 The biggest news is the arrival of the [Swedbank Pay Playground][spp], where you
 can experience our payment solutions both as a payer and – since we give you
-access to the toolbox – a merchant. Play around with amounts, different menu
-setups (full menu, selected methods or a single method) and styling. It
+access to the toolbox – a merchant. Play around with amounts, different UI
+setups (full menu, a selection or a single payment method) and styling. It
 is also a great opportunity to see the upcoming accessibility compliant UI. Read
 more about [accessibility changes here][wcag]. With that in mind, we have also
 written a section regarding [custom styling][custom-styling] of your payment UI.
@@ -265,7 +265,7 @@ Authentication who want access to our safely stored card data,
 
 We promised you something big, and here it is. [Click to Pay][click-to-pay] and
 [Google Pay&trade;][google-pay] have been added to our arsenal of payment
-methods. Click on your method of choice to see what is needed for you to
+methods. Click on your payment method of choice to see what is needed for you to
 activate in your integration. We have also added information on how to activate
 [Apple Pay][apple-pay], which we recommend reading up on.
 
@@ -375,7 +375,7 @@ and integrations. There are a couple of other new additions as well:
 
 *   Our [SDKs][sdk-modules] have been updated to support Digital Payments
 *   You can now [request delivery information][request-delivery-information] for
-  selected methods
+  selected payment methods
 *   An eligibility check [eligibility check][eligibility-check] for wallets has
   been added to instrument mode
 *   Fixed typos, minor bugs and code examples
@@ -702,7 +702,7 @@ Other changes:
 *   Documented allowed characters in `orderItem.class`.
 *   Added `receiptReference` in [Invoice Payments][invoice] and
     [Payment Order][payment-orders] in capture and reversal.
-*   Callback is now moved to Other features in all payments methods.
+*   Callback is now moved to Other features in all payment methods.
 *   Clean up of [MobilePay][mobile-pay].
 *   Corrected the address of Leia Ahlström in [Test Data][test-data].
 *   Updated the documentation in [Card Payments][card-payment-url]

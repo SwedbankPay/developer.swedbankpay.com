@@ -43,7 +43,7 @@ products) have to make a [`Capture`][mobilepay-capture] or
 
 ## Payment Type
 
-MobilePay Online is one of the methods using two-phase payments. The
+MobilePay Online is one of the payment methods using two-phase payments. The
 `authorization` is done when the payer successfully confirms in the app, and
 the `abort`, `cancel`, `capture` or `reversal` is done by the merchant at a
 later time. Read more about the [different operations][features] and the
@@ -68,8 +68,8 @@ two separate 3-D Secure agreements, one for each payment method. Apart from
 the agreement with the acquirer, no further 3-D Secure compliance is required
 from you as a merchant in this regard.
 
-Languages supported by this method are Danish `da-DK`, English (US) `en-US`
-and Finnish `fi-FI`.
+Languages supported by this payment method are Danish `da-DK`, English (US)
+`en-US` and Finnish `fi-FI`.
 
 ## Payment Availability
 

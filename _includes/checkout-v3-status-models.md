@@ -346,7 +346,7 @@ api-supported-versions: 3.x{% endcapture %}
 | {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of methods available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
 | {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
@@ -369,7 +369,7 @@ api-supported-versions: 3.x{% endcapture %}
 
 The payment order response with status `paid`, and the `paid` resource expanded.
 Please note that the main code example is of a card payment. We have included
-`paid` resources of the remaining methods below the main code example.
+`paid` resources of the remaining payment methods below the main code example.
 Resource examples where details are empty indicate that no details are
 available.
 
@@ -880,7 +880,7 @@ Response fields not covered in the [`Initialized`]({{ features_url }}/technical-
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any discounts or fees specific to a payment method. The final payment order amount will be displayed in the `amount` field.                                            |
 | {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
 | {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f paymentTokenGenerated %}                | `bool`       | Set to `true` or `false`. Used to show if a payment token has been generated or not. Will be set to `true` if the checkbox enabled by `EnablePaymentDetailsConsentCheckbox` has been checked by the payer during a payment, otherwise `false`.                                           |
@@ -989,7 +989,7 @@ corresponding `Paid` transaction. As several `Reversed` transactions can exist
 on a single payment, the number and payerReference will be from the latest
 `Reversed`.
 
-We have included `reversal` resources of the remaining methods below the
+We have included `reversal` resources of the remaining payment methods below the
 main code example. Resource examples where details are empty indicate that no
 details are available.
 
@@ -1431,7 +1431,7 @@ api-supported-versions: 3.x{% endcapture %}
 | {% f orderReference, 2 %}          | `string(50)` | The order reference should reflect the order reference found in the merchant's systems. |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a `capture` on this payment order. Swedbank Pay recommends using the different `operations` to figure out if a `capture` is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any method specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any discounts or fees specific to a payment method. The final payment order amount will be displayed in the `amount` field.                                            |
 | {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
 | {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f tokens %}                   | `integer`    | A list of tokens connected to the payment.                                    |

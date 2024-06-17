@@ -11,11 +11,11 @@ individual.
 
 You do this by adding the field `restrictedToSocialSecurityNumber` in the
 `payer` field, in your payment order request, and setting it to `true`. This
-will leave out all methods which do not support this feature.
+will leave out all payment methods which do not support this feature.
 
 It will then use the `socialSecurityNumber` located in the `nationalIdentifier`
 field (found within the `payer` field). The `nationalIdentifier` must be
-included to use this feature. Methods supporting the feature will reject
+included to use this feature. Payment methods supporting the feature will reject
 payments that do not match the restriction.
 
 {% if documentation_section contains "old-implementations/enterprise" %} If you want to
@@ -26,7 +26,7 @@ checkout profile lookup, add the parameter `guestMode` in the
 You are currently only able to restrict Swish and Trustly payments to a Social
 Security Number, but we will add support for more payment methods going
 forward. No changes are required at your (the merchant’s) end to be able to
-offer more methods at a later time.
+offer more payment methods at a later time.
 
 ## Restrict To Social Security Number Request
 

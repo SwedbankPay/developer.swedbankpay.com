@@ -11,8 +11,8 @@
  that the sum of the `orderItems` must match the total payment order amount.
 
  Restricting the fee or discount to certain payment methods is also possible.
- Simply add the `restrictedToInstruments` field and which method the fee or
- discount applies to. This is currently available for invoice only.
+ Simply add the `restrictedToInstruments` field and which payment method the fee
+ or discount applies to. This is currently available for invoice only.
 
  The example below shows a fee which only applies to Swedish invoices. Other
  options for some of the fields are in the table below.
@@ -71,6 +71,6 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
  | {% icon check %} | {% f vatPercent, 2 %}              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
  | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
  | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
- |                  | {% f restrictedToInstruments %}  | `array`      | A list of the methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. The fee or discount applies to all methods if a restriction is not included. Use of this field requires an agreement with Swedbank Pay.                                    |
+ |                  | {% f restrictedToInstruments %}  | `array`      | A list of the payment methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. The fee or discount applies to all payment methods if a restriction is not included. Use of this field requires an agreement with Swedbank Pay.                                    |
 {% endcapture %}
 {% include accordion-table.html content=table %}

@@ -260,8 +260,8 @@ Further reading available in the [Events section][sv-events].
 `Checkin` is no longer supported in its previous form. Payer identification now
 falls under the merchant's responsibility and is executed through the Payer
 Aware Payment Menu feature. While this feature retains the functionality of
-storing payment details for various methods, the primary responsibility for the
-identification process lies with you as the merchant.
+storing payment details for various payment methods, the primary responsibility
+for the identification process lies with you as the merchant.
 
 This identification is accomplished by assigning a value within the
 `payerReference` parameter, serving as a pseudo-"profile" unique to your

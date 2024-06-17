@@ -200,7 +200,7 @@ will be raised with the following event argument object:
 | :----------- | :------- | :--------------------------------------                               |
 | `event`     | `string` | The name of the event raised.                                                    |
 | {% f paymentOrder.id, 0 %}        | `string` | {% include fields/id.md resource="paymentOrder" %}         |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected by the user. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected by the user. |
 
 ## `onOutOfViewOpen`
 
@@ -374,7 +374,7 @@ object:
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `event`       | `string` | The name of the event raised.                                                                  |
 | {% f paymentOrder.id, 0 %}          | `string` | {% include fields/id.md resource="paymentOrder" %}                       |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected when initiating the payment. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected when initiating the payment. |
 
 ## `onTermsOfServiceRequested`
 
