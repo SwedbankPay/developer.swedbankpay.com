@@ -4,13 +4,13 @@
 ## Corporate Limited Menu
 
 Corporate Limited Menu allows you to limit the payment methods available when
-your customers pays through the menu. Please note that the method in question needs
-to support corporate payment methods **and** have the feature enabled during the
-contract setup to be shown in the menu.
+your customers pays through the menu. Please note that the payment method in
+question needs to support corporate payment methods **and** have the feature
+enabled during the contract setup to be shown in the menu.
 
 If you don't invoke the restriction in your payment order request, every valid
 payment method will show up as usual in the payment menu. This is done by
-setting `corporateMode` to `true`. In this example the method is set to
+setting `corporateMode` to `true`. In this example the payment method is set to
 card.
 
 {% capture request_header %}POST /psp/paymentorders HTTP/1.1
@@ -54,7 +54,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 |     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
 | :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
-| {% icon check %} | {% f corporateMode %}            | `bool`     | Determines if the menu should only show methods that supports corporate payment methods and has been enabled in your contracts.                                                                                                                                                                                                                                                                            |
+| {% icon check %} | {% f corporateMode %}            | `bool`     | Determines if the menu should only show payment methods that support corporate payment methods and has been enabled in your contracts.                                                                                                                                                                                                                                                                            |
 | {% icon check %} | {% f instrument %}               | `string`     | The payment methods you want to restrict to in corporate mode. Selected by using {% if documentation_section contains "checkout-v3" %} [Instrument Mode]({{ features_url }}/customize-ui/instrument-mode) {% else %} [3-D Secure 2]({{ features_url }}/optional/instrument-mode) {% endif %} .                                                                                             |
 | {% icon check %} | {% f operation %}                | `string`     | {% include fields/operation.md %}                                                                                                                                                                                                                                             |
 | {% icon check %} | {% f currency %}                 | `string`     | The currency of the payment.                                                                                                                                                                                                                                                                             |

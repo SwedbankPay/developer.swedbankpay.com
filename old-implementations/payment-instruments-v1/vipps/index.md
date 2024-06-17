@@ -35,10 +35,10 @@ the merchant's site.
 
 ### Payment Type
 
-Vipps is one of the methods using two-phase payments. The `authorization` is
-done when the payer successfully confirms in the app, and the `abort`,
-`cancel`, `capture` or `reversal` is done by the merchant at a later time. Read
-more about the [different operations][after-payment] and the [payment
+Vipps is one of the payment methods using two-phase payments. The
+`authorization` is done when the payer successfully confirms in the app, and the
+`abort`, `cancel`, `capture` or `reversal` is done by the merchant at a later
+time. Read more about the [different operations][after-payment] and the [payment
 resource][payment-resource].
 
 {% include alert-two-phase-payments.md %}

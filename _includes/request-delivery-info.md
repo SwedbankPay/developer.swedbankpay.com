@@ -15,12 +15,12 @@ perform a GET to see it.
 Only payment methods which support this will return delivery information. If you
 only want to show payment methods which support this in you menu, you can also
 add the field `restrictedToDeliveryInfoInstruments` and setting it to `true`.
-This will leave out all methods which can't return delivery information.
+This will leave out all payment methods which can't return delivery information.
 
 You are currently only able to request delivery information from **Apple Pay**,
 **Click to Pay** and **Google Pay&trade;**, but we will add support for more
 payment methods going forward. No changes are required at your (the merchant's)
-end to be able to offer more methods at a later time.
+end to be able to offer more payment methods at a later time.
 
 ## Request Delivery Info Request
 
@@ -283,7 +283,7 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 | {% icon check %} | {% f vatPercent, 2 %}              | `integer`    | The percent value of the VAT multiplied by 100, so `25%` becomes `2500`.                                                                                                                                                                                                                                 |
 | {% icon check %} | {% f amount, 2 %}                  | `integer`    | {% include fields/amount.md %}                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f vatAmount, 2 %}               | `integer`    | {% include fields/vat-amount.md %}                                                     |
-|                  | {% f restrictedToInstruments %}  | `array`      | A list of the methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment methods. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain methods by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
+|                  | {% f restrictedToInstruments %}  | `array`      | A list of the payment methods you wish to restrict the payment to. Currently `Invoice` only. `Invoice` supports the subtypes `PayExFinancingNo`, `PayExFinancingSe` and `PayMonthlyInvoiceSe`, separated by a dash, e.g.; `Invoice-PayExFinancingNo`. Default value is all supported payment methods. Use of this field requires an agreement with Swedbank Pay. You can restrict fees and/or discounts to certain payment methods by adding this field to the orderline you want to restrict. Use positive amounts to add fees and negative amounts to add discounts.                                                  |
 {% include risk-indicator-table.md %}
 {% endcapture %}
 {% include accordion-table.html content=table %}

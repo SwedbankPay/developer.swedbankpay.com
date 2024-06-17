@@ -229,7 +229,7 @@ The `onPaymentCreated` event is raised with the following event argument object:
 | :----------- | :------- | :---------------------------------------------------------------------------------------------- |
 | `bodyType` | `string` | The type of event that was raised.                                                                |
 | `id`         | `string` | {% include fields/id.md %}                                                                      |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected when initiating the payment. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected when initiating the payment. |
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                                          |
 
 ## `onPaymentFailed`
@@ -287,7 +287,7 @@ will be raised with the following event argument object:
 | :----------- | :------- | :-----------------------------------------------------------------------------  |
 | `bodyType` | `string` | The type of event that was raised.                                                |
 | `paymentOrderId` | `string` | {% include fields/id.md resource="paymentOrder" %}                          |
-| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The method selected by the user. |
+| `instrument` | `string` | `Creditcard`, `vipps`, `swish`, `invoice`. The payment method selected by the user. |
 
 ## `onPaymentPending`
 

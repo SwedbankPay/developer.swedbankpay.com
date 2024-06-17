@@ -3,9 +3,10 @@
 A useful feature when customizing your payment UI, is auto-expanding the first
 payment method in the menu. By doing this you can guide the payer towards a
 specific payment method. This is done by adding the `boolean` field
-`expandFirstInstrument` and set it to `true`. The first method will be expanded
-when the payment UI is loaded. This can be used as a stand-alone feature, but
-can favourably be paired with [customizing the order of the menu][cust-menu].
+`expandFirstInstrument` and set it to `true`. The first payment method will be
+expanded when the payment UI is loaded. This can be used as a stand-alone
+feature, but can favourably be paired with [customizing the order of the
+menu][cust-menu].
 
 ## Request Example
 

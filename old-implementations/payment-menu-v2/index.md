@@ -6,7 +6,7 @@ description: |
   The **Swedbank Pay Payment Menu v2** integrates
   seamlessly into the merchant website, allowing the payer to choose between the
   increasing number of payment methods Swedbank Pay has on offer and
-  remembering which method they prefer and have paid with previously.
+  remembering the one(s) they prefer and have paid with previously.
 permalink: /:path/
 menu_order: 6
 ---
