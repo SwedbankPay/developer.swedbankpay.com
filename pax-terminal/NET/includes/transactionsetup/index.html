@@ -251,7 +251,7 @@
     <tr>
       <td>string</td>
       <td>APMReference</td>
-      <td>Used only if refund of a transaction made using alternative payment method. The reference originates from the response of the APM transaction</td>
+      <td>Used only if refund of a transaction made using an alternative payment instrument. The reference originates from the response of the APM transaction</td>
       <td>Only for Refund of APM transaction</td>
     </tr>
     <tr>
@@ -307,7 +307,7 @@
 4
 5
 6
-</pre></td><td class="code-view-code"><pre>    
+</pre></td><td class="code-view-code"><pre>
     <span class="n">NexoPayementResult</span> <span class="n">r</span> <span class="p">=</span> <span class="k">await</span> <span class="n">PAX</span><span class="p">.</span><span class="nf">Payment</span><span class="p">(</span><span class="k">new</span> <span class="nf">TransactionSetup</span><span class="p">(){</span>
         <span class="n">Amount</span> <span class="p">=</span> <span class="m">70</span><span class="p">,</span>
         <span class="n">TransactionID</span> <span class="p">=</span> <span class="n">ATransactionIDFromSaleSystem</span>
