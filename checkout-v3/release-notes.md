@@ -1069,7 +1069,7 @@ more convenient for both the integration and the payer.
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [custom-styling]: /checkout-v3/features/customize-ui/custom-styling
 [cuspay]: /checkout-v3/features/customize-payments/
-[cus-ui]: checkout-v3/features/customize-ui/
+[cus-ui]: /checkout-v3/features/customize-ui/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
