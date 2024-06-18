@@ -7,10 +7,9 @@
 
 ## Frictionless Payments
 
-When dealing with card payments, 3-D Secure authentication of the cardholder is
-an essential topic. 3-D Secure 2 is an improved version of the old protocol, now
-allowing frictionless payments where transactions can be completed without
-input from the cardholder. To increase the chances of this, there are certain
+3-D Secure 2 is an improved version of the old protocol, now allowing
+frictionless payments where transactions can be completed without input from the
+cardholder. To increase the chances of a frictionless payment, there are certain
 fields that should be included in your request. The more information you add,
 the better.
 

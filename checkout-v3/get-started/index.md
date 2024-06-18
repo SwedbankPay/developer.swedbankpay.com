@@ -39,19 +39,19 @@ payment, **displaying** the payment UI, **verifying** the payment status and
 **post-purchase actions**. Don't hesitate with contacting us for further
 integration support.
 
-Depending on the instrument used, the payments are either **one-phased** or
-**two-phased**. **Swish** and **Trustly** have one-phase payments, the rest of
-the instruments are two-phased. One-phase payments are completed and the funds
-are transferred in one operation. They will be tagged as `Sale` transactions.
-Two-phase payments need two operations (`Authorization` and `Capture`) before
-funds are transferred. Read more about differences in handling when you get to
-the [post-purchase section][post-purchase].
+Depending on the payment method used, the payments are either **one-phase** or
+**two-phase** transactions. **Swish** and **Trustly** have one-phase payments,
+the rest of the payment methods are two-phased. One-phase payments are completed
+and the funds are transferred in one operation. They will be tagged as `Sale`
+transactions. Two-phase payments need two operations (`Authorization` and
+`Capture`) before funds are transferred. Read more about differences in handling
+when you get to the [post-purchase section][post-purchase].
 
 ![Implementation steps][basic-implementation]{:class="mt-4 mb-5"}
 
 {:.table .table-plain}
 | ----------: | ----------: |
-| Initiate a Payment | The first step is to initiate a payment. You have a selection of setups and use cases depending on your business model, like recurring and one-click payments - but for now we'll stick to the basic payment. |
+| Initiate a Payment | The first step is to initiate a payment. You have a selection of setups and use cases depending on your business model, like recurring and one-click payments - for now we'll stick to the basic payment. |
 | Display UI         | Present a UI for your end user and customize for your needs. The main choice you have to make is between the seamless view or redirect integration. There are pros and cons to both. |
 | Validate Status    | Validate the status of the purchase in order to take the right action before acting on the payment response. |
 | Post-Purchase actions |  After a successful purchase, you can perform actions like capturing the funds (Trustly and Swish do not require this), cancelling the transaction or do reversals. |
@@ -81,18 +81,18 @@ account that details can be changed by the issuer if the card is enrolled for
 
 #### Contract details
 
-If you are unsure if the contract is ready, you can check the status with the
+If you are unsure if the contract is ready, you can check the status with our
 setup team by [sending them an e-mail with your organization number included][e-mail].
 
 #### Test in production
 
-We recommend you to first test the integration and do transactions in a closed
-production environment before you go live.
+We recommend you to test the integration and do transactions in a **closed**
+**production environment** before you go live.
 
 #### Settlement and reconciliation
 
-To see how your values might look in the reports you can have a look at our
-reports samples. [You find them in our Settlement & Reconciliation section][set-rec].
+To see how your reports will look, you can check out our sample reports.
+[You'll find them in the Settlement & Reconciliation section][set-rec].
 
 No need to worry about these steps just yet. We will walk you through everything
 when we get there.
@@ -104,10 +104,10 @@ when we get there.
 [json]: https://www.json.org/
 [migrate]: /checkout-v3/migration-guide/
 [modules-sdks]: /checkout-v3/modules-sdks/
-[nwt]: /checkout-v3/features/optional/network-tokenization/
+[nwt]: /checkout-v3/features/customize-payments/network-tokenization/
 [post-purchase]: /checkout-v3/get-started/post-purchase-3-1/
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
-[set-rec]: /checkout-v3/features/core/settlement-reconciliation/#report-samples
+[set-rec]: /checkout-v3/features/balancing-the-books/settlement-reconciliation/#report-samples
 [test-cards]: /checkout-v3/test-data/#network-tokenization
 [unscheduled]: /checkout-v3/features/optional/unscheduled/
 [recur]: /checkout-v3/features/optional/recur/

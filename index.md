@@ -14,7 +14,7 @@ hide_from_sidebar: true
   <div class="row mt-4">
       <div class="{{ card_col_class }}">
           {% include card.html title='Digital Payments'
-              text='A guide through our digital payments'
+              text='A guide through our Digital Payments'
               icon_content='shopping_cart'
               icon_outlined=true
               to="/checkout-v3/"
@@ -22,7 +22,7 @@ hide_from_sidebar: true
       </div>
       <div class="{{ card_col_class }}">
           {% include card.html title='Payment Terminals'
-              text='A guide through our payment terminals'
+              text='A guide through our Payment Terminals'
               icon_content='point_of_sale'
               to='/pax-terminal/'
           %}
@@ -36,7 +36,7 @@ hide_from_sidebar: true
           title='Want to give Digital Payments a go?'
           no_icon=true
           button_content='Head to the playground'
-          text='Experience our brand new accessibility compliant payment UI in the Swedbank Pay Playground'
+          text='Experience our accessibility compliant payment UI in the Swedbank Pay Playground'
           button_type='secondary'
           button_alignment='align-self-start'
           card_container=true

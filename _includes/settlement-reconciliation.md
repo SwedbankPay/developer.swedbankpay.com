@@ -77,7 +77,7 @@ balance report summary is equivalent to the disbursement on the bank statement
 
 Provides a specification over sales for the given period. The sales total is
 specified per payment area (`CreditCard`, `Invoice`) and underlying payment
-instruments. Each sales row specify Quantity, Sum sales and Amount to pay out,
+methods. Each sales row specify Quantity, Sum sales and Amount to pay out,
 the last one is only eligble **if Swedbank Pay handles the Settlement process**.
 
 A summary of payments through the last date of the report is also provided.
@@ -86,7 +86,7 @@ A summary of payments through the last date of the report is also provided.
 
 Provides a specification of the fees in the given period. The fees total is
 specified per payment area (`CreditCard`, `Invoice`) and underlying payment
-instruments. Each fees row specify `Quantity` (sales), `Amount` (sales),
+methods. Each fees row specify `Quantity` (sales), `Amount` (sales),
 `Unit price`, `Provision` and `fee Amount`. **If you handle the settlement**
 **process yourself, you will receive a separate invoice for fees**.
 
@@ -94,7 +94,7 @@ instruments. Each fees row specify `Quantity` (sales), `Amount` (sales),
 
 The Transaction List (also called Sales Accounted Transactions) is provided in
 `.xlsx` and `.xml` formats and specifies all transactions for a specific period,
-including a summary of transactions grouped by payment instrument. Both formats
+including a summary of transactions grouped by payment method. Both formats
 contain the same information, but the xml file is meant for computer processing,
 while the excel workbook is meant for human interaction.
 
@@ -301,8 +301,8 @@ and `Reversal`.
 ## Report Samples
 
 The content of the files depends on the type of agreement you have made with
-Swedbank Pay. For some payment instruments, only option A is available, while
-for other payment instruments, only option B is available. The sample files can
+Swedbank Pay. For some payment methods, only option A is available, while
+for other payment methods, only option B is available. The sample files can
 be downloaded below. **Make sure that you choose the examples from your**
 **current version of the balance report (v1 or v2).**
 

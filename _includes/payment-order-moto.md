@@ -26,11 +26,11 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
+        "generateMotoPayment": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 1500,
         "vatAmount": 375,
-        "generateMotoPayment": true,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",

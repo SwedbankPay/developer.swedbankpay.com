@@ -11,7 +11,7 @@
 {% assign product = product | strip %}
 
 The `paymentorders` resource is used when initiating a payment process through
-{{ product }}. The payment order is a container for the payment instrument
+{{ product }}. The payment order is a container for the payment method
 object selected by the payer. This will generate a payment that is accessed
 through the sub-resources `payments` and `currentPayment`.
 

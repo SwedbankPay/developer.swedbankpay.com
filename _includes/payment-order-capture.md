@@ -12,20 +12,20 @@
 
 {% endif %}
 
-Captures are only possible when a payment has a successful authorize
-transaction, naturally excluding one-phase payment instruments like
+Captures are only possible when a payment has a successful `Authorization`
+transaction, naturally excluding one-phase payment methods like
 [Swish][swish] and [Trustly][trustly]. They will be marked as a `Sale`
-transaction. Two-phase payment instruments like [Card][card] and [Vipps][vipps]
+transaction. Two-phase payment methods like [Card][card] and [Vipps][vipps]
 however, require a `Capture` to be completed.
 
 Please note that you have a maximum of 5 **consecutive** failed attempts at a
-capture. The payment will be locked after this, and you need to contact us for
-another attempt.
+capture. The payment will be locked after the fifth, and you need to contact us
+for further attempts.
 
-In addition to full captures, it is possible to do partial captures of a part of
-the authorized amount. You can do other captures on the same payment later, up
-to the total authorized amount. Useful for when you have to split orders into
-several shipments, for instance.
+In addition to full captures, it is possible to do partial captures of the
+authorized amount. You can do more captures on the same payment later, up to the
+total authorized amount. A useful tool for when you have to split orders into
+several shipments.
 
 First off, you must request the order information from the server to get the
 request link. With this, you can request the capture with the amount to capture,
@@ -214,7 +214,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:create-paymentorder-capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
     end
 ```
 
@@ -231,7 +231,7 @@ sequenceDiagram
         Merchant ->>+ SwedbankPay: rel:capture
         deactivate Merchant
         SwedbankPay -->>- Merchant: Capture status
-        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>Payment Instruments that support <br>Authorizations.
+        note right of Merchant: Capture here only if the purchased<br/>goods don't require shipping.<br/>If shipping is required, perform capture<br/>after the goods have shipped.<br>Should only be used for <br>payment methods that support <br>Authorizations.
     end
 ```
 

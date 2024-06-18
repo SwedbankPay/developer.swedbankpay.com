@@ -34,9 +34,8 @@ sequenceDiagram
 ## `onConsumerIdentified`
 
 This event triggers when a consumer has performed Checkin and is identified,
-if the Payment Menu is not loaded and in the DOM.
-The `onConsumerIdentified` event is raised with the following event argument
-object:
+if the Payment Menu is not loaded and in the DOM. The `onConsumerIdentified`
+event is raised with the following event argument object:
 
 {% capture response_content %}{
   "actionType": "OnConsumerIdentified",

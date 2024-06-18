@@ -27,8 +27,8 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% unless token_field_name == "recurrenceToken" %}
 
-The example shows a token connected to a card. The instrument parameters and
-display name will vary depending on the instrument.
+The example shows a token connected to a card. The parameters and display name
+will vary depending on the payment method.
 
 {% endunless %}
 

@@ -209,7 +209,7 @@ TODO: Number each important step in the above diagram and create a numbered list
 
 After the payment is completed, you can **Capture** the payment. Capture should
 be done after the goods are shipped or if the purchased goods don't require
-shipping. Only payment instruments that support authorizations will expose the
+shipping. Only payment methods that support authorizations will expose the
 `create-paymentorder-capture` operation when they can be captured.
 
 ```plantuml

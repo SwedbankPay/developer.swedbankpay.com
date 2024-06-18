@@ -197,7 +197,7 @@ access them with our script." %}
 
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in. When everything has
-finished loading, you should see something like this:
+finished loading, you should see this:
 
 {:.text-center}
 ![Consumer UI Start Page][checkin-start]{:width="425" height="275"}

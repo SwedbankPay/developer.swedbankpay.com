@@ -64,7 +64,7 @@ future.
 | `notfound`           | `404`  | The requested resource could not be found, but may be available in the future. Subsequent requests are permissible.                                |
 | `systemerror`        | `500`  | A generic error message.                 |
 
-## Token Problems
+### Token Problems
 
 We will be making a change in the error messages that are given in response in
 the eCommerce API if the requested `Payment`/`One-Click`/`Recur`/`Unscheduled`
@@ -73,7 +73,7 @@ token does not exist or is deleted.
 The following new `errorType` will be introduced (only for Payment Order):
 `https://api.payex.com/psp/errordetail/paymentorders/paymenttokeninactive`
 
-In addition to the one currently in use for both Payment Instruments and Payment
+In addition to the one currently in use for both Payment Methods and Payment
 Order:
 `https://api.payex.com/psp/errordetail/paymentorders/inputerror`
 
@@ -162,7 +162,7 @@ Examples of the error messages are presented below.
 If you have questions regarding the new error types, do not hesitate to contact
 us through the ordinary support channels.
 
-## Payment Details Problems
+### Payment Details Problems
 
 In order to use the new parameter `EnablePaymentDetailsConsentCheckbox` – which
 determines whether or not to show the checkbox used to save payment details –
@@ -243,7 +243,7 @@ the following URL structure:
 In accordance with directives from Visa and Mastercard, we will be implementing
 2 different types of limitations in the amount of successive reattempts of a
 previously failed transaction using either a `recurrence`- or `unscheduledToken`
-that can be done using card based payment instruments. This limitation has up
+that can be done using card based payment methods. This limitation has up
 until now been handled by Swedbank Pay Acquiring, but will now be handled
 earlier in the transaction process - enabling us to provide better and clearer
 response messages through the eCommerce-api.
@@ -415,6 +415,37 @@ transaction is declined, but might be accepted after modifications:
     json= response_content
     %}
 
+## Installment Account Problems
+
+There are a few problems specific to the `creditaccount` resource that you may
+want to guard against in your integrations. All invoice error types will have
+the following URL structure:
+
+`https://api.payex.com/psp/errordetail/creditaccount/<error-type>`
+
+{:.table .table-striped}
+| Type            | Status | Description                       |
+| :-------------- | :----: | :-------------------------------- |
+| `CURRENCYNOTSUPPORTED`    | `400`  | The provided currency does not match the authorization currency.       |
+| `INVALIDAMOUNT`     | `400`  | The provided capture amount is invalid, likely larger than the remaining authorized amount.             |
+| `VALIDATION`     | `400`  | Validation error. The problem(s) should be described in the response.             |
+| `CREDITNOTAPPROVED` | `403`  | Credit check or extension of credit check was rejected.                  |
+| `AMOUNTEXCEEDSLIMIT`      | `403`  | Amount in the pre-authorization is no longer valid for this authorization.         |
+| `AUTHORIZATIONEXPIRED` | `403`  | The provided authorization is not open or has already expired  |
+| `INVALIDSTATE` | `403`  | the provided pre-authorization resource is in an invalid state for this payment method.             |
+| `MISSINGPREAUTHORIZATION`   | `403`  | The resource is missing. It may have been created on different ledger or have expired.   |
+| `INVALIDACCOUNTUSAGE` | `403`  | The provided pre-authorization is invalid for this kind of authorization.           |
+| `IDENTIFIERALREADYINUSE`   | `403`  | The Authorization ID provided is already used, provide a new one and try again.  |
+| `FORBIDDEN`    | `403`  | There is a conflict or the resource is unprocessable.      |
+| `NOTFOUND`     | `404`  | No authorization for the provided ID wad found on this ledger.             |
+| `UNKNOWN`     | `403`  | Unexpected error.            |
+| `CREDITNOTAPPROVED` | `403`  | Credit check for new account was denied.                 |
+| `SIGNINGFAILED`      | `403`  | Something went wrong during account onboarding or the user cancelled in BankID.       |
+| `CREDITNOTAPPROVED` | `403`  | Credit check for account limit upgrade was denied. |
+| `SIGNINGFAILED` | `403`  | Something went wrong during account limit upgrade or user cancelled in BankID.          |
+| `CREDITNOTAPPROVED`   | `403`  | Credit check denied.  |
+| `USERCANCELLED` | `403`  | User cancelled on Ledger & Factoring page.          |
+
 ## Invoice Problems
 
 There are a few problems specific to the `invoice` resource that you may want to
@@ -422,6 +453,35 @@ guard against in your integrations. All invoice error types will have the
 following URL structure:
 
 `https://api.payex.com/psp/errordetail/invoice/<error-type>`
+
+### Invoice With New Assessment Flow
+
+{:.table .table-striped}
+| Type            | Status | Description                       |
+| :-------------- | :----: | :-------------------------------- |
+| `InputError`    | `400`  | Occurs if the input validation fails. The problem field will specify which parameter failed the validation.      |
+| `Forbidden`     | `403`  | Invalid authentication status for the requested method.              |
+| `Forbidden`     | `403`  | The authentication's time limit has expired.             |
+| `CreditNotApproved` | `403`  | Credit check or extension of credit check was rejected.                  |
+| `NotFound`      | `404`  | The requested resource was not found.         |
+| `SystemError` | `500`  | Unexpected error. The logs might provide further problem details. |
+| `SystemError` | `500`  | The requested method is not implemented fully by code, or not configured for the resource. The problem body will specify which.            |
+| `SystemError`   | `500`  | State of the resource is invalid for further progress.  |
+
+### Invoice Authentication Status Mapping - Assessment Flow
+
+{:.table .table-striped}
+| Type            | Status | Description                       |
+| :-------------- | :----: | :-------------------------------- |
+| `ABORTEDIDENTIFICATION`    | `403`  | Authentication aborted in BankID-app.       |
+| `USERPREABORTED`    | `403`  | User aborted before starting signing or authentication.       |
+| `USERABORTED`    | `403`  | Signing or authentication aborted from web.   |
+| `TIMEOUTIDENTIFICATION`     | `403`  | User haven't completed authentication in time.          |
+| `NATIONALIDENTIFIERMISMATCH` | `403`  | The Social Security Number provided in purchase did not match the Social Security Number from the BankID.                   |
+| `FAILED` | `403`  | Unclassified failure.                 |
+| `ERROR` | `502`  | Unexpected error. |
+
+### Invoice Without Assessment Flow
 
 {:.table .table-striped}
 | Type            | Status | Description                       |
@@ -811,14 +871,14 @@ following URL structure:
 
 `https://api.payex.com/psp/errordetail/vipps/<error-type>`
 
-#### Problem Types from Vipps (Init-call)
+### Problem Types from Vipps (Init-call)
 
 {:.table .table-striped}
 | Type             | Status | Note                              |
 | :--------------- | :----- | :-------------------------------- |
 | `vipps_error`    | `403`  | All errors                        |
 
-#### Problem Types from Vipps (Callback)
+### Problem Types from Vipps (Callback)
 
 {:.table .table-striped}
 | Type             | Status | Note                              |

@@ -2,7 +2,7 @@
 title: Redirect
 redirect_from: /payments/swish/redirect
 description: |
-  Swish is a one-phase payment instrument supported by the
+  Swish is a one-phase payment method supported by the
   major Swedish banks. **Swish Payments Redirect** is where Swedbank
   Pay performs a payment that the payer confirms in the Swish mobile app.
   The payer initiates the payment by supplying the Swish registered mobile
@@ -30,7 +30,7 @@ menu_order: 700
 The payer is redirected to Swedbank Pay hosted pages and prompted
 to insert their phone number to initiate the sales transaction.
 
-Swish is a one-phase payment instrument that is based on sales transactions
+Swish is a one-phase payment method that is based on sales transactions
 **not** involving `capture` or `cancellation` operations.
 
 {:.text-center}

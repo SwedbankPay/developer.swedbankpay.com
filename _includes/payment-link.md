@@ -4,7 +4,7 @@
 ## Introduction
 
 Payment Link is available for Digital Payments, Checkout v2, Payment Menu v1 and
-the payment instruments listed below, using the redirect platform and Swedbank
+the payment methods listed below, using the redirect platform and Swedbank
 Pay hosted payment page.
 
 *   [Checkout 3.1][checkout-v31]
@@ -32,7 +32,7 @@ recommendations in the next section.**" %}
 
 When the payer clicks on the Payment Link, the Swedbank Pay payment page will
 open, letting them enter the payment details (varies depending on
-payment instrument) in a secure Swedbank Pay hosted environment.
+payment method) in a secure Swedbank Pay hosted environment.
 {% if show_3d_secure %}
 When paying with card, and if required, Swedbank Pay will handle 3-D
 Secure authentication.
@@ -73,9 +73,9 @@ receipt when the payment is done.
 
 ## API Requests
 
-The API requests depend on the payment instrument you are using when
+The API requests depend on the payment method you are using when
 implementing the Payment Link scenario, see [purchase flow][purchase-flow].
-One-phase payment instruments will not implement `capture`, `cancellation` or
+One-phase payment methods will not implement `capture`, `cancellation` or
 `reversal`.
 The options you can choose from when creating a payment with key `operation`
 set to `Purchase` are listed below.
@@ -91,7 +91,7 @@ page similar to the examples below, where payment information can be entered.
 ## Options
 
 All valid options when posting a payment with operation `Purchase`, are
-described in each payment instrument's respective API reference. Please see the
+described in each payment method's respective API reference. Please see the
 general sequence diagrams for more information about one-phase (e.g.
 [Swish][swish] and [Trustly][trustly]) and two-phase (e.g. [Card][card],
 [MobilePay Online][mobilepay] and [Vipps][vipps]) payments.
@@ -100,7 +100,7 @@ general sequence diagrams for more information about one-phase (e.g.
 
 ## Authorization
 
-When using two-phase payment instruments you reserve the amount with an
+When using two-phase payment methods you reserve the amount with an
 authorization, and you will have to specify that the _intent_ of the _purchase_
 is `Authorize`. The amount will be reserved but not charged. You have to make a
 `Capture` or `Cancel` request later (i.e. when you are ready to ship the

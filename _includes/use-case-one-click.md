@@ -1,8 +1,8 @@
 
-## Supported Payment Instruments
+## Supported Payment Methods
 
 Looking to get started with One-Click or "Payer Aware Menu" to reduce
-friction? These are the supported instruments:
+friction? These are the supported payment methods:
 
 *   Cards: Masked PAN, Expiration Date and CVC
 *   Swish: MSIDSN – Only for eCom-flow
@@ -24,7 +24,7 @@ designated reference you have given us inside the `payerReference` field. For
 “One-Click”, you will sort the information on your end and present their details
 inside our interface. It is most suitable for scenarios where you have the need
 to force a set of details to be used, or when you have built your own menu
-displaying payment instruments.
+displaying payment methods.
 
 ## Payer Aware Menu
 
@@ -146,7 +146,7 @@ By following these steps and structures, you can seamlessly integrate our
 features “Payer Aware Menu” and “One-Click” to reduce friction and enhance the
 overall payment experience for your customers.
 
-## Removal of Instrument Details
+## Removal of Payment Method Details
 
 When certain conditions arise, such as encountering specific error codes or
 receiving requests from the payer to remove their details, it becomes necessary

@@ -77,5 +77,5 @@ Read more about possible additions to the request in our
 
 [abort-feature]: /checkout-v3/features/core/abort
 [features]: /checkout-v3/features/
-[frictionless]: /checkout-v3/features/core/frictionless-payments
+[frictionless]: /checkout-v3/features/customize-payments/frictionless-payments
 [order-items]: /checkout-v3/features/optional/order-items

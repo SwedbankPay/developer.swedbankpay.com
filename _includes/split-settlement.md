@@ -39,7 +39,7 @@ charities.
 1.  We set up the sub-merchant subsite number in our system.
 2.  You add the number in the request's subsite field when you create the
     payment for the goods or service.
-3.  The customer selects a payment instrument and completes the payment.
+3.  The customer selects a payment method and completes the payment.
 4.  The payment goes into a client funds account.
 5.  Swedbank Pay matches the transaction with the sub-merchant using the subsite
     number.
@@ -61,12 +61,12 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "payeeInfo": {
+            "subsite": "MySubsite",
+            "siteId": "MySiteId",
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
-            "orderReference": "or-123456",
-            "subsite": "MySubsite",
-            "siteId": "MySiteId"
+            "orderReference": "or-123456"
         }
     }
 }{% endcapture %}
@@ -91,18 +91,18 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 Connecting sub-merchants to Swedbank Pay through the super merchant instead of
 having separate setups has a lot of pros:
 
-*   You only need one agreement for each payment instrument (credit card, Vipps,
+*   You only need one agreement for each payment method (credit card, Vipps,
     Swish, MobilePay Online, invoice) and payment gateway.
 *   You only need one acquiring agreement.
 *   You only need one Vipps or Swish certificate.
-*   You can add more payment instruments easily, as it only has to be done once.
+*   You can add more payment methods easily, as it only has to be done once.
 *   New sub-merchants can be set up quickly, as the only thing needed is a KYC
     form and a subsite number. This shortens the setup time to a matter of hours
     for both you and us.
 *   The automatic settlement split and deduction of fees and revenue cuts
     minimizes the work for your accounting department, as you won't have to
     invoice your sub-merchants.
-*   The subsite split is available for all payment instruments we offer on
+*   The subsite split is available for all payment methods we offer on
     our eCom platform.
 
 ## Split Settlement Admin Functions

@@ -9,7 +9,7 @@ menu_order: 800
 ---
 
 Vipps is the main Norwegian payment app for mobile phones supported by the major
-Norwegian banks, making it one of the essential payment instruments for
+Norwegian banks, making it one of the essential payment methods for
 merchants operating in Norway. We offer it on our redirect and seamless view
 platforms.
 
@@ -35,10 +35,10 @@ the merchant's site.
 
 ### Payment Type
 
-Vipps is one of the instruments using two-phase payments. The `authorization` is
-done when the payer successfully confirms in the app, and the `abort`,
-`cancel`, `capture` or `reversal` is done by the merchant at a later time. Read
-more about the [different operations][after-payment] and the [payment
+Vipps is one of the payment methods using two-phase payments. The
+`authorization` is done when the payer successfully confirms in the app, and the
+`abort`, `cancel`, `capture` or `reversal` is done by the merchant at a later
+time. Read more about the [different operations][after-payment] and the [payment
 resource][payment-resource].
 
 {% include alert-two-phase-payments.md %}
@@ -47,15 +47,15 @@ resource][payment-resource].
 
 Vipps transactions are handled, processed and settled as card transactions in
 our system. They are, however, tagged as Vipps transactions and have their own
-acquirer agreement, so the two payment instruments are settled separately.
+acquirer agreement, so the two payment methods are settled separately.
 
 ### 3-D Secure
 
 As Vipps transactions are processed as card transactions, a 3-D Secure agreement
-is needed to complete the payment instrument setup. This information is provided
+is needed to complete the payment method setup. This information is provided
 to you by your acquirer when you set up your agreement with them. If you offer
 both Card Payments and Vipps, you will need two separate 3-D Secure agreements,
-one for each payment instrument. Apart from the agreement with the acquirer, no
+one for each payment method. Apart from the agreement with the acquirer, no
 further 3-D Secure compliance is required from you as a merchant in this regard.
 
 ### Demoshop
@@ -64,7 +64,7 @@ Vipps is unfortunately not available in our demoshop at the moment, but it will
 be shortly. The demoshop will use a fakeservice which enables you to test a
 successful purchase without using the Vipps app.
 
-This payment instrument supports English (US) `en-US`, Norwegian `nb-NO` and
+This payment method supports English (US) `en-US`, Norwegian `nb-NO` and
 Swedish `sv-SE`.
 
 {% include iterator.html next_href="redirect" next_title="Redirect" %}

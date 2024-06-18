@@ -7,7 +7,7 @@ it is where you enter the payment's amount. It consists of the payment's `id`
 and the `priceList`, which again contains the payment's `type`, `amount` and
 `vatAmount`.
 
- The `type` refers to the payment instrument, like `Swish`, `Trustly` or
+ The `type` refers to the payment method, like `Swish`, `Trustly` or
  `Creditcard`. Read more about the types below the code example and table. The
  `amount` refers to the **full** amount (incl. VAT) for the payment, and
  `vatAmount` indicates how much of the full amount which is VAT.
@@ -68,8 +68,8 @@ Content-Type: application/json{% endcapture %}
 
 ## Prices Object Types
 
-Each payment instrument have one or more prices object types. Usually there is
-only one, whichs corresponds with the name of the payment instrument, like
+Each payment method have one or more prices object types. Usually there is
+only one, whichs corresponds with the name of the payment method, like
 `Vipps`, `Swish` or `Mobilepay`.
 
 The most common occurrence of several object types is for card payments. While it
@@ -93,10 +93,7 @@ types.
 | {% f MasterCard, 0 %}    | MasterCard                                 |
 | {% f Amex, 0 %}          | American Express                           |
 | {% f Dankort, 0 %}       | Dankort (only available with currency DKK) |
-| {% f Diners, 0 %}        | Diners Club                                |
-| {% f Finax, 0 %}         | Finax                                      |
 | {% f Jcb, 0 %}           | JCB                                        |
-| {% f IkanoFinansDK, 0 %} | Ikano Finans Denmark                       |
 | {% f Maestro, 0 %}       | MasterCard Maestro                         |
 
 {% when "invoice" %}

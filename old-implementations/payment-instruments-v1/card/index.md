@@ -72,7 +72,7 @@ Our `payment` example below uses the [`Purchase`][purchase] operation.
 
 {% include intent.md autocapture=true %}
 
-This payment instrument supports Danish `da-DK`, German `de-DE`, Estonian
+This payment method supports Danish `da-DK`, German `de-DE`, Estonian
 `ee-EE`, English (US) `en-US`, Spanish `es-ES`, Finnish `fi-FI`, French `fr-FR`,
 Lithuanian `lt-LT`, Latvian `lv-LV`, Norwegian `nb-NO`, Russian `ru-RU` and
 Swedish `sv-SE`.

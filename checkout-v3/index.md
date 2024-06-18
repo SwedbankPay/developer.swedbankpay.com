@@ -90,8 +90,8 @@ this section. We recommend [getting started here][get-started].
 
 This implementation is available in Danish `da-DK`, English (US) `en-US`,
 Finnish `fi-FI`, Norwegian `nb-NO`, and Swedish `sv-SE`. You can choose the
-contents of your payment UI from the following payment instruments, somewhat
-depending on which countries you are operating in.
+contents of your payment UI from the following payment methods, somewhat
+depending on which countries you are operating.
 
 {% include alert.html type="informative" icon="info" header="Digital Wallets"
 body="Some of the digital wallets we offer require you to take additional steps
@@ -99,7 +99,7 @@ before we can activate them for you. Please follow the link(s) in the table
 below to read more." %}
 
 {:.table .table-plain}
-|        | Payment Instrument | Region                                    |
+|        | Payment Method | Region                                    |
 | :--------------------------: | :--------------: | :---------------------------------------- |
 | ![Apple Pay][apple-pay-logo]     | [Apple Pay][apple-pay]           |  ![EarthIcon][earth-icon]    |
 | ![Card][card-icon]               | Card                             |  ![EarthIcon][earth-icon]    |

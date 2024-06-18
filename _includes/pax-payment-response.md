@@ -54,7 +54,7 @@
 | POITransactionID | 3 | TransactionID | ID of transaction set by the terminal. This is seen in PosPay reports as well as on Merchant Portal. The complete element is needed if the transaction needs to be reversed. |
 | | | TimeStamp | Timestamp set by terminal when the transaction is started. Note that the format is UTC. |
 | PaymentResult | 2 | PaymentType | Values: `Normal` for purchase and `Refund` for refund. |
-| PaymentInstrumentData | 3 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment method made via the terminal. |
+| PaymentInstrumentData | 3 | PaymentInstrumentType | Values: `Card` for any transaction made by the terminal with a card or any consumer device. `Mobile` for an alternative payment instrument made via the terminal. |
 | CardData | 4 | PaymentBrand | Comma separated string where the first part is card type. `01`-payment card. `02`-Combined payment and Loyalty, `03`-Loyalty, `04`-Neither. May be used instead of 03 for controlling the dialog in the terminal. Second part is the product name. |
 | | | MaskedPAN | |
 | | | EntryMode | `ICC`, `Contactless`, `Magstripe`. |

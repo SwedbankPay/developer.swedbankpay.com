@@ -188,7 +188,7 @@ left to the backend; similarly the backend is probably interested in storing the
 `id` of the created Payment Order for capture and other possible operations.
 
 At this point the user is interacting with the payment menu; the next step
-depends on the exact payment method chosen.
+depends on the exact payment instrument chosen.
 
 ```mermaid
 sequenceDiagram

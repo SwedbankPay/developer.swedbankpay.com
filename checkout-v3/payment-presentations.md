@@ -248,9 +248,9 @@ Useful information regarding Trustly in our payment menu.
 ### Overlay
 
 When using a payment menu integration (including Instrument Mode), Trustly will
-now be opened in a modal. (This is unlike the Trustly instrument implementation
-where it opens inside the same frame). The modal will close once the interaction
-at Trustly is finished.
+now be opened in a modal. (This is unlike the Trustly payment method
+implementation where it opens inside the same frame). The modal will close once
+the interaction at Trustly is finished.
 
 ### Trustly Express
 
@@ -285,7 +285,7 @@ have two recommendations to make the experience as smooth as possible.
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-verification-file]: /assets/documents/apple-ecom
-[benevity-donation-setup]: https://www.benevity.org
+[benevity-donation-setup]: https://www.benevity.com
 [google-pay-profile]: https://pay.google.com/business/console/
 [google-pay-tos]: https://payments.developers.google.com/terms/sellertos
 [irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest

@@ -7,7 +7,7 @@
 
 {% include alert-agreement-required.md %}
 
-An Automated Fuel Dispenser (AFD) payment is a purchase where the user
+An Automated Fuel Dispenser (AFD) payment is a purchase where the merchant
 requests an authorization transaction for an automatic fuel dispenser. The
 request contains the maximum purchase amount, but the issuer can reply with a
 partial approval to lower the maximum purchase amount. This can be used to stop
@@ -16,10 +16,10 @@ the fuel dispension at the maximum price.
 The only supported use case is automated fuel dispensers. To be able to verify
 this, it is required that the Merchant Category Code `mcc` is passed in the
 request under `PayeeInfo`. This feature is only supported with the `Purchase`
-operation. It does not support with [order items][order-items].
+operation. It does not support [order items][order-items].
 
-By default the available instruments and card types will be limited to those
-which support AFD payments. To enable other payment options for the payer, pass
+By default the available payment methods and card types will be limited to those
+which support AFD payments. To enable other payment options for the payer, send
 in `restrictedToAfdInstruments` with the value `false`.
 
 See the abbreviated example below on how to implement AFD payments by setting
@@ -32,12 +32,12 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 
 {% capture request_content %}{
     "paymentorder": {
+        "generateAfdPayment": true,
+        "restrictedToAfdInstruments": true,
         "operation": "Purchase",
         "currency": "SEK",
         "amount": 10000,
         "vatAmount": 2500,
-        "generateAfdPayment": true,
-        "restrictedToAfdInstruments": true,
         "description": "Test Purchase",
         "userAgent": "Mozilla/5.0...",
         "language": "sv-SE",
@@ -52,12 +52,12 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
             "logoUrl": "https://example.com/logo.png" {% endif %}
         },
         "payeeInfo": {
+            "mcc": 5542,
             "payeeId": "{{ page.merchant_id }}",
             "payeeReference": "AB832",
             "payeeName": "Merchant1",
             "productCategory": "A123",
-            "orderReference": "or-123456",
-            "mcc": 5542
+            "orderReference": "or-123456"
         },
         "orderItems": null
     }

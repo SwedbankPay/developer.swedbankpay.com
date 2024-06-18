@@ -1,8 +1,9 @@
 ---
 title: Instrument Mode
 permalink: /:path/instrument-mode/
-description: The Payment Menu with one payment instrument
-menu_order: 2200
+redirect_from: /checkout-v3/features/optional/instrument-mode/
+description: The Payment UI with one payment method
+menu_order: 2000
 icon:
   content: looks_one
   outlined: true

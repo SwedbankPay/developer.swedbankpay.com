@@ -52,7 +52,7 @@ documentation_section=include.documentation_section transaction="cancel" %}
 ### Cancel Sequence Diagram
 
 Cancel can only be done on a authorized transaction.
-If you do cancel after doing a part-capture you will cancel the different
+If you do cancel after doing a part-capture you will cancel the difference
 between the capture amount and the authorization amount.
 
 ```mermaid

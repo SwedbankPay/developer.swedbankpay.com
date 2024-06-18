@@ -26,8 +26,8 @@
 ## Description
 
 The `description` field is a 40 character length textual summary of the
-purchase. It is needed to specify what payer is actually purchasing. Below you
-will find an abbreviated Card Payments `Purchase` request.
+purchase. It is needed to specify what the payer is actually purchasing. You
+will find an abbreviated `Purchase` request below.
 
 As you can see the `description` field is set to be `Test Description`
 in the the code example.
@@ -46,6 +46,7 @@ Content-Type: application/json{% endcapture %}
 
 {% capture request_content %}{
     "{{ api_resource_field_name }}": {
+        "description": "Test Description",
         "operation": "Purchase",
         "intent": {% if api_resource == "trustly" or api_resource == "swish" %} "Sale",{% else %} "Authorization", {% endif %}
         "currency": "{{ currency }}",{% if api_resource == "creditcard" %}
@@ -54,8 +55,7 @@ Content-Type: application/json{% endcapture %}
                 "amount": 1500,
                 "vatAmount": 0
             }
-        ],{% endif %}
-        "description": "Test Description",{% if documentation_section == "payment-menu" %}
+        ],{% endif %} {% if documentation_section == "payment-menu" %}
         "generatePaymentToken": false,{% endif %}
         "generateRecurrenceToken": false,
         "userAgent": "Mozilla/5.0...",
