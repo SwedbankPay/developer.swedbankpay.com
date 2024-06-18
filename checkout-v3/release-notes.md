@@ -8,6 +8,37 @@ menu_order: 7
 release_notes: true
 ---
 
+## 18 June 2024
+
+### Version 5.3.0
+
+Our last release before the summer break is here, and we have quite the list of
+changes for you.
+
+We have started restructuring the feature section to make it easier to navigate.
+A handful of new sections have been added, named [Balancing The Books][btb],
+[Customize Payments][cuspay] and [Customize The UI][cus-ui]. Worried about your
+bookmarks? We've got you covered!
+
+New error messages for [invoice][error-invoice] and [installment account][inacc]
+payments went live just now, and we have them at a plate for you. Just follow
+the respective links.
+
+In all feature sections, the relevant field(s) have been moved to the top of of
+the code example.
+
+[Auto-expand first payment method][expand-first] has gotten it's own section.
+
+Status and [Status Response Models][stat-resp] have been merged to one section.
+
+We have added a new IP-address for [callbacks][callback].
+
+Last but not least, we have done the regular batch of fixing typos and small
+bugs, and if you wonder where the payment instruments have gone? The have been
+renamed to payment methods. Still all there, just a familiar name.
+
+From all of us, to all of you: Have a great summer!
+
 ## 08 May 2024
 
 ### Version 5.2.0
@@ -997,6 +1028,7 @@ more convenient for both the integration and the payer.
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
+[btb]: /checkout-v3/features/balancing-the-books/
 [callback]: /checkout-v3/features/core/callback
 [callback-3-1]: /checkout-v3/features/core/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
@@ -1036,6 +1068,8 @@ more convenient for both the integration and the payer.
 [core-features]: /old-implementations/checkout-v2/features/core/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [custom-styling]: /checkout-v3/features/customize-ui/custom-styling
+[cuspay]: /checkout-v3/features/customize-payments/
+[cus-ui]: /checkout-v3/features/customize-ui/
 [integrated-commerce]: /checkout-v3/features/optional/integrated-commerce
 [data-protection]: /old-implementations/checkout-v2/data-protection
 [delete-payment-tokens]: /checkout-v3/features/optional/delete-token#delete-paymenttoken-request
@@ -1044,6 +1078,8 @@ more convenient for both the integration and the payer.
 [display-ui]: /checkout-v3/get-started/display-payment-ui/
 [dom-ver]: /checkout-v3/payment-presentations#domain-verification
 [eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
+[error-invoice]: /checkout-v3/features/technical-reference/problems/#invoice-problems
+[expand-first]: /checkout-v3/features/customize-ui/expand-method/
 [mac]: /old-implementations/checkout-v2/features/optional/mac
 [fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
 [features]: /checkout-v3/features
@@ -1056,6 +1092,7 @@ more convenient for both the integration and the payer.
 [google-pay]: /checkout-v3/payment-presentations#google-pay
 [home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
+[inacc]: /checkout-v3/features/technical-reference/problems/#installment-account-problems
 [invoice-direct]: /old-implementations/payment-instruments-v1/invoice/direct
 [invoice]: /old-implementations/payment-instruments-v1/invoice
 [int-com]: /checkout-v3/features/optional/integrated-commerce
@@ -1120,6 +1157,7 @@ more convenient for both the integration and the payer.
 [seamless-view-events]: /checkout-v3/features/technical-reference/seamless-view-events
 [seamless-view-events-onaborted]: /checkout-v3/features/technical-reference/seamless-view-events#onaborted
 [seamless-view-events-card]: /old-implementations/payment-instruments-v1/card/features/technical-reference/seamless-view-events
+[stat-resp]: /checkout-v3/features/technical-reference/status-models/
 [swish]: /old-implementations/payment-instruments-v1/swish
 [swish-abort]: /old-implementations/payment-instruments-v1/swish/after-payment#abort
 [technical-reference]: /old-implementations/checkout-v2/features/technical-reference/
