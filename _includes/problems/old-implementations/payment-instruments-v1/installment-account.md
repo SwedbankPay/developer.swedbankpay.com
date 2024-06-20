@@ -6,12 +6,12 @@ the following URL structure:
 
 `https://api.payex.com/psp/errordetail/creditaccount/<error-type>`
 
-
 {:.table .table-striped}
 | Type            | Status | Description                       |
 | :-------------- | :----: | :-------------------------------- |
 | `CURRENCYNOTSUPPORTED`    | `400`  | The provided currency does not match the authorization currency.       |
 | `INVALIDAMOUNT`     | `400`  | The provided capture amount is invalid, likely larger than the remaining authorized amount.             |
+| `FAILEDAMOUNT`     | `400`  | The authorized amount exceeds the valid maximum amount or subceeds the valid minimum amount.             |
 | `VALIDATION`     | `400`  | Validation error. The problem(s) should be described in the response.             |
 | `CREDITNOTAPPROVED` | `403`  | Credit check or extension of credit check was rejected.                  |
 | `AMOUNTEXCEEDSLIMIT`      | `403`  | Amount in the pre-authorization is no longer valid for this authorization.         |
