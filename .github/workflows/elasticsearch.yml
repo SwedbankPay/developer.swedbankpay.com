@@ -17,17 +17,24 @@ jobs:
       with:
         ruby-version: 2.7
 
-    - name: Install required gems
-      run: |
-        gem install nokogiri elasticsearch
-
     - name: Build Jekyll site
       run: |
         bundle install
         bundle exec jekyll build
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+      
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install beautifulsoup4 elasticsearch openai
+
     - name: Index Processed HTML files to Elasticsearch
-      run: ruby .github/scripts/index_to_es.rb
+      run: python .github/scripts/index_to_es.py
       env:
         ELASTICSEARCH_URL: https://${{ secrets.ELASTICSEARCH_HOST }}
         ELASTICSEARCH_API_KEY: ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}
+        OPENAI_EMBEDDING_API_KEY: ${{ secrets.OPENAI_EMBEDDING_API_KEY }}

@@ -5,7 +5,7 @@ require 'json'
 # Elasticsearch Configuration
 es_host = ENV['ELASTICSEARCH_URL']
 es_api_key = ENV['ELASTICSEARCH_API_KEY']
-index_name = 'data-ecom.developer-5' # or another name if you prefer
+index_name = 'data-ecom.developer-6' # or another name if you prefer
 
 # Setup Elasticsearch client
 client = Elasticsearch::Client.new(
