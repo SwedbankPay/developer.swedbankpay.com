@@ -48,14 +48,13 @@ for html_file in glob('./_site/checkout-v3/**/*.html'):
     #if content is longer than 10000 characters, split it into chunks based on 15000 characters and then find nearest whitespace to split the content
     if len(content) > 20000:
         print(f"Content is too long, splitting into chunks...")
-        chunks = [content[i:i+20000]
-        doc_id = f"/{html_file}_{i}"
-        for i in range(0, len(content), 20000)]
+        chunks = [content[i:i+20000] for i in range(0, len(content), 20000)]
     else:
         chunks = [content]
         doc_id = html_file
-    for chunk in chunks:
+    for i, chunk in enumerate(chunks):
         embedding = get_embedding(chunk)
+        doc_id = f"{html_file}_{i}"
 
         document = {
             'id': doc_id,
