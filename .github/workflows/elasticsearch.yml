@@ -15,11 +15,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0
-        
-    - name: Install required gems
-      run: |
-        gem install nokogiri elasticsearch
+        ruby-version: 2.7
 
     - name: Build Jekyll site
       run: |
