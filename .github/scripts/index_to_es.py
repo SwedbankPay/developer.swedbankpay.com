@@ -1,6 +1,5 @@
 import os
-import json
-from glob import glob
+from pathlib import Path
 from bs4 import BeautifulSoup
 from elasticsearch import Elasticsearch
 import openai
@@ -37,8 +36,9 @@ def extract_content_from_html(html_content):
     content = ' '.join(soup.stripped_strings)
     return content
 
-# Iterate over generated HTML files and index them
-for html_file in glob('./_site/checkout-v3/**/*.html'):
+# Iterate over generated HTML files and index 
+html_files = Path('./_site/checkout-v3').rglob('*.html')
+for html_file in html_files:
     print(f"Indexing {html_file}...")
     with open(html_file, 'r', encoding='utf-8') as file:
         doc_content = file.read()
@@ -64,6 +64,6 @@ for html_file in glob('./_site/checkout-v3/**/*.html'):
             'embedding': embedding
         }
         client.index(index=index_name, id=document['id'], body=document)
-        print(f"Indexed {document['url']}")
+        print(f"Indexed {document['id']}")
 
 print("Indexing completed.")
