@@ -30,7 +30,7 @@ except Exception as e:
 
 def get_embedding(text, model="text-embedding-3-small"):
    text = text.replace("\n", " ")
-   return client.embeddings.create(input = [text], model=model).data[0].embedding
+   return openai.embeddings.create(input = [text], model=model).data[0].embedding
 
 def extract_content_from_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
