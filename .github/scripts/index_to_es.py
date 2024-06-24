@@ -28,13 +28,9 @@ except Exception as e:
     else:
         raise
 
-def get_embeddings(text):
-    response = openai.Embedding.create(
-        model="text-embedding-3-small",
-        input=[text]
-    )
-    embeddings = response['data'][0]['embedding']
-    return embeddings
+def get_embedding(text, model="text-embedding-3-small"):
+   text = text.replace("\n", " ")
+   return client.embeddings.create(input = [text], model=model).data[0].embedding
 
 def extract_content_from_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -48,7 +44,7 @@ for html_file in glob('./_site/checkout-v3/**/*.html'):
     title = BeautifulSoup(doc_content, 'html.parser').title.string if BeautifulSoup(doc_content, 'html.parser').title else "Unknown Title"
     content = extract_content_from_html(doc_content)
 
-    embedding = get_embeddings(content)
+    embedding = get_embedding(content)
 
     document = {
         'id': html_file,
