@@ -17,6 +17,10 @@ jobs:
       with:
         ruby-version: 2.7
 
+    - name: Install required gems
+      run: |
+        gem install nokogiri elasticsearch
+
     - name: Build Jekyll site
       run: |
         bundle install
