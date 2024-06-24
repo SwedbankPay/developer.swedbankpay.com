@@ -51,15 +51,11 @@ invoice information. This will generate a payment object with a unique
 
 ## Seamless View Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "FinancingConsumer",
         "intent": "Authorization",
@@ -98,8 +94,13 @@ Content-Type: application/json
     "invoice": {
         "invoiceType": "PayExFinancingSe"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -137,14 +138,10 @@ Content-Type: application/json
 
 ## Seamless View Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/invoice/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -208,8 +205,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 The key information in the response is the `view-authorization` operation. You
 will need to embed its `href` in a `<script>` element. The script will enable
@@ -308,7 +310,7 @@ sequenceDiagram
 Note that the invoice will not be created/distributed before you have
 made a `capture` request." %}
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="direct" next_title="Direct" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/invoice/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/invoice/direct" next_title="Direct" %}
 
 [invoice-payment]: /assets/img/checkout/invoice-seamless-view.png

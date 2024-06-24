@@ -1,5 +1,6 @@
 ---
 title: Payment Order
+permalink: /:path/payment-order/
 description: |
   **Payment Order** lets the payer complete their purchase.
 menu_order: 300
@@ -26,16 +27,13 @@ for Credit Card Payments" %}
 
 ### Response
 
-The response should look something like this (abbreviated for brevity):
+The response should include this (abbreviated for brevity):
 
-{:.code-view-header}
-**Response**
 
-```http
-HTTP/1.1 201 Created
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 201 Created
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
@@ -47,8 +45,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+ {% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |
@@ -63,7 +66,7 @@ in your system to look up status on the completed payment later.
 
 {% include alert.html type="informative" icon="info" header="URL Storage"
 body="The `id` of the Payment Order should be stored for later retrieval. [Read
-more about URL usage](/checkout-v3/resources/fundamental-principles#url-usage)." %}
+more about URL usage](/checkout-v3/get-started/fundamental-principles#url-usage)." %}
 
 Then find the `view-paymentorder` operation and embed its `href` in a `<script>`
 element. That script will then load the Seamless View for the Payment Menu. We
@@ -264,9 +267,9 @@ rect rgba(138, 205, 195, 0.1)
             end
 ```
 
-{% include iterator.html prev_href="index"
+{% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="capture"
+                         next_href="/old-implementations/payment-menu-v2/capture"
                          next_title="Capture" %}
 
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png

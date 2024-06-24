@@ -3,7 +3,7 @@
         href='/features/technical-reference/status' -%}
 {%- endcapture -%}
 {%- capture text -%}
-`Initialized`, `Paid`, `Failed`, `Cancelled`, or `Aborted`. Indicates the
+`Initialized`, `Paid`, `Failed`, `Reversed` `Cancelled`, or `Aborted`. Indicates the
 {% clink payment order's current status %}{{ url }}{% endclink %}.
 {%- endcapture -%}
 {%- comment -%}

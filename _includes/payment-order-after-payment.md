@@ -2,12 +2,11 @@
 
 ## Operations
 
-Most payment instruments are two-phase payments –
-in which a successful payment order will result in an authorized transaction –
-that must be followed up by a capture or cancellation transaction in a later
-stage. One-phase payments like Swish are settled directly without the option to
-capture or cancel. For a full list of the available operations, see the
-[techincal reference][operations].
+Most payment methods are two-phase payments – in which a successful payment
+order will result in an authorized transaction – that must be followed by a
+capture or cancellation transaction later on. One-phase payments like Swish are
+settled directly without the option to capture or cancel. For a full list of the
+available operations, see the [techincal reference][operations].
 
 {:.table .table-striped}
 | Operation                      | Description                                                                                                                                                                                                                                                                    |
@@ -21,13 +20,16 @@ capture or cancel. For a full list of the available operations, see the
 To identify the operations that are available we need to do a `GET` request
 against the URL of `paymentorder.id`:
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Response
 
@@ -35,14 +37,11 @@ The (abbreviated) response containing an `updateorder`, `capture`,
 `cancellation`, and `reversal` operation should look similar to the response
 below:
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
@@ -72,8 +71,13 @@ Content-Type: application/json
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |

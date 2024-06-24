@@ -7,20 +7,22 @@ menu_order: 800
 ## Introduction
 
 *   When properly set up in your merchant/webshop site and the payer starts the
-    purchase process, you need to make a `POST` request towards Swedbank Pay with
-    your Purchase information. This will generate a `payment` resource with a unique
-    `id`. You will receive a **redirect URL** to a Swedbank Pay payment
+    purchase process, you need to make a `POST` request towards Swedbank Pay
+    with your Purchase information. This will generate a `payment` resource with
+    a unique `id`. You will receive a **redirect URL** to a Swedbank Pay payment
     page (`redirect-sale` operation).
 *   You need to redirect the payer's browser to that specified URL so that the
     payer can enter the payment details in a secure Swedbank Pay environment.
 *   Swedbank Pay will redirect the payer's browser to one of two specified URLs,
     depending on whether the payment session is followed through completely.
-    Please note that both a successful and rejected payment
-    reach completion.
+    Please note that both a successful and rejected payment reach completion.
 *   When you detect that the payer reach your `completeUrl`, you need to do a
     `GET` request to receive the state of the transaction, containing the
     `id` URL generated in the first step, to receive the state of the
     transaction.
+*   The Trustly window will open inside the same frame, even for the redirect
+    integration. This means that you wont have to think about your payer being
+    redirected to another site, and hense no need to redirect them back.
 
 ## Step 1: Create A Payment
 
@@ -33,15 +35,11 @@ Pay.
 
 ## Redirect Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/trustly/payments HTTP/1.1
+{% capture request_header %}POST /psp/trustly/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Sale",
@@ -79,8 +77,13 @@ Content-Type: application/json
             "lastName": "Nordmann"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -121,14 +124,10 @@ Content-Type: application/json
 
 ## Redirect Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/trustly/payments/{{ page.payment_id }}",
         "number": 99590008046,
@@ -167,8 +166,13 @@ Content-Type: application/json
             "rel": "redirect-sale"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Redirect Sequence Diagram
 

@@ -2,15 +2,12 @@
 
 A `FinancingConsumer` payment is an invoice.
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-{
+Content-Type: application/json{% endcapture %}
+
+{% capture request_content %}{
     "payment": {
         "operation": "FinancingConsumer",
         "intent": "<intent>",
@@ -47,8 +44,13 @@ Content-Type: application/json
     "invoice": {
         "invoiceType": "PayExFinancingNo"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## API requests
 
@@ -64,5 +66,5 @@ set to value `FinancingConsumer` are listed below.
 | `currency`    | `NOK`                | `EUR`                 | `SEK`                |
 | `invoiceType` | `PayExFinancingNO`   | `PayExFinancingFI`    | `PayExFinancingSE`   |
 
-*   An invoice payment is always two-phased based -  you create an Authorize
+*   An invoice payment is always two-phase based -  you create an Authorize
   transaction that is followed by a Capture or Cancel request.

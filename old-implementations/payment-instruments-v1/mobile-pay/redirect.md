@@ -2,7 +2,7 @@
 title: Redirect
 redirect_from: /payments/mobile-pay/redirect
 description: |
-  **MobilePay Online** is a two-phase payment instrument which can be
+  **MobilePay Online** is a two-phase payment method which can be
   implemented by the supported redirect scenario.
   Swedbank Pay receives the MobilePay Online's details from the payer through
   Swedbank Pay Payments.
@@ -41,15 +41,11 @@ payment with a unique `id`. See the `POST`request example below.
 
 ## Redirect Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/mobilepay/payments HTTP/1.1
+{% capture request_header %}POST /psp/mobilepay/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -89,8 +85,13 @@ Content-Type: application/json
     "mobilepay": {
         "shoplogoUrl": "https://example.com/shop-logo.png"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -130,14 +131,10 @@ Content-Type: application/json
 
 ## Redirect Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "prices": {
             "id": "/psp/mobilepay/payments/{{ page.payment_id }}/prices"
@@ -181,8 +178,13 @@ Content-Type: application/json
             "rel": "redirect-authorization"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## How It Looks
 
@@ -202,26 +204,23 @@ the payment received in the first step, which will return the purchase result.
 
 ## GET Transaction Status Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/mobilepay/payments/{{ page.payment_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/mobilepay/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Transaction Status Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/mobilepay/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -305,8 +304,13 @@ Content-Type: application/json
             "contentType": "application/problem+json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -324,7 +328,7 @@ Content-Type: application/json
 | {% f userAgent %}      | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                                             |
 | {% f language %}       | `string`     | {% include fields/language.md api_resource="mobile-pay" %}                                                                                                                                                                                                                                                                                      |
 | {% f urls %}           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
-| {% f payeeInfo %}      | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
+| {% f payeeInfo %}      | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
 | {% f payers %}         | `string`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
 | {% f operations, 0 %}  | `array`      | {% include fields/operations.md resource="payment" %}                                                                                                                                                                                                                                                                                                                |
 | {% f method, 2 %}      | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |

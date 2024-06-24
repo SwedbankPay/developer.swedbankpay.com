@@ -29,23 +29,24 @@ or partially captured invoice payment.
 
 ## Cancel Request
 
-{:.code-view-header}
-***Request***
-
-```http
-POST /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer",
         "payeeReference": "customer order reference-unique",
         "description": "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Parameter name               | Datatype     | Value (with description)                                                                                                                                                                                                              |
@@ -66,15 +67,16 @@ newly created `cancel` transaction.
 The `cancellations` resource lists the cancellation transaction made on a
 specific payment.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}GET /psp/invoice/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% include transaction-list-response.md transaction="cancel" %}
 
@@ -104,16 +106,12 @@ refund the amount to the payer. To reverse a payment, perform the
 
 ## Reversal Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}POST /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "activity": "FinancingConsumer",
         "amount": 1500,
@@ -122,8 +120,13 @@ Content-Type: application/json
         "receiptReference": "ABC855",
         "description": "description for transaction"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                      | Type         | Description                                                                                                                                                                                                                                                                |
@@ -147,15 +150,16 @@ The `reversal` resource will be returned, containing information about the newly
 The `reversals` resource will list the reversal transactions
 (one or more) on a specific payment.
 
-{:.code-view-header}
-***Request***
-
-```http
-GET /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
+{% capture request_header %}GET /psp/invoice/payments/{{ page.payment_id }}/reversals HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% include transaction-list-response.md transaction="reversal" %}
 
@@ -176,7 +180,7 @@ sequenceDiagram
     deactivate SwedbankPay
 ```
 
-{% include iterator.html prev_href="capture" prev_title="Capture"
-next_href="features" next_title="Features" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/invoice/capture" prev_title="Capture"
+next_href="/old-implementations/payment-instruments-v1/invoice/features" next_title="Features" %}
 
 [callback-request]: /old-implementations/payment-instruments-v1/invoice/features/core/callback

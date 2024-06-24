@@ -16,34 +16,36 @@ UIViewController on iOS) that you can integrate in your mobile application in
 the usual fashion. To work, these components need data from the Swedbank Pay
 APIs, which you must retrieve through your own servers. At the core, the
 libraries are agnostic as to how the communication between your app and your
-servers happens, but an implementation is provided for a server that implements
-what we call the Merchant Backend API. The Merchant Backend API is designed to
-transparently reflect the Swedbank Pay API, and the data types used to configure
-the mobile libraries allow you to organically discover the capabilities of the
-system.
+servers happens, but an example implementation is provided for a server that
+implements what we call the Merchant Backend API. The Merchant Backend API is
+designed to transparently reflect the Swedbank Pay API, and the data types used
+to configure the mobile libraries allow you to organically discover the
+capabilities of the system.
 
-The SDK is designed to integrate the Swedbank Pay UI inside your application's
-native UI. It generates any html pages required to show the Swedbank Pay UI
-internally; it does not support using a Checkout or Payments web page that you
-host yourself. If doing the latter fits your case better, you can show your web
-page in a Web View instead. In that case, you may benefit from the [collection
-of information about showing Checkout or Payments in a Web View][plain-webview].
+The SDK is designed to integrate the Swedbank Pay Seamless View Payment UI
+inside your application's native UI. It generates any html pages required to
+show the Swedbank Pay UI internally; it does not support using a Checkout or
+Payments web page that you host yourself. If doing the latter fits your case
+better, you can show your web page in a Web View instead. In that case, you may
+benefit from the [collection of information about showing Checkout or Payments
+in a Web View][plain-webview].
 
 ## Prerequisites
 
 To start integrating the Swedbank Pay Mobile SDK, you need the following:
 
-*   An [HTTPS][https] enabled web server.
 *   An agreement that includes [Swedbank Pay Digital Payments][checkout],
     specifically [Enterprise][checkout-enterprise] or [Payments
     Only][checkout-payments-only].
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
     the Merchant Portal. Please observe that the Swedbank Pay Digital Payments
     implementations currently available encompasses the **`paymentmenu`** scope.
+*   Optionally, a [HTTPS][https] enabled web server.
 
 It is important to secure all communication between your app and your servers.
-If you wish to use the Merchant Backend API to communicate between your app and
-your server, an example implementation is provided for Node.js and for Java.
+If you wish to use the example Merchant Backend API to communicate between your
+app and your server, an example implementation is provided for Node.js and for
+Java.
 
 ## Introduction
 
@@ -63,16 +65,12 @@ The [Post-Purchase][post-purchase-capture] part is the same as when using
 Checkout on a web page, and is thus intentionally left out of the scope of the
 SDK.
 
-See below for a sequence diagram of a payment made using the Mobile SDK. This is
-a high-level diagram. More detailed views highlighting platform differences will
-follow for each step.
-
 {% include iterator.html next_href="configuration"
                          next_title="Next: Configuration" %}
 
 [plain-webview]: /checkout-v3/modules-sdks/mobile-sdk/plain-webview
 [checkout]: /checkout-v3
-[checkout-enterprise]: /checkout-v3/enterprise
+[checkout-enterprise]: /old-implementations/enterprise
 [checkout-payments-only]: /checkout-v3
-[https]: /checkout-v3/resources/fundamental-principles#connection-and-protocol
-[post-purchase-capture]: /checkout-v3/post-purchase#capture
+[https]: /checkout-v3/get-started/fundamental-principles#connection-and-protocol
+[post-purchase-capture]: /checkout-v3/get-started/post-purchase#capture

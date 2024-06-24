@@ -7,10 +7,9 @@
 
 ## Frictionless Payments
 
-When dealing with card payments, 3-D Secure authentication of the cardholder is
-an essential topic. 3-D Secure 2 is an improved version of the old protocol, now
-allowing frictionless payments where transactions can be completed without
-input from the cardholder. To increase the chances of this, there are certain
+3-D Secure 2 is an improved version of the old protocol, now allowing
+frictionless payments where transactions can be completed without input from the
+cardholder. To increase the chances of a frictionless payment, there are certain
 fields that should be included in your request. The more information you add,
 the better.
 
@@ -26,8 +25,7 @@ the better.
 
 {% if api_resource == "creditcard" %}
 
-```json
-{
+{% capture request_content %}{
     "cardholder": {
         "firstName": "Olivia",
         "lastName": "Nyhuus",
@@ -65,16 +63,22 @@ the better.
                 "suspiciousAccountActivity": "01"
             }
         },
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
 
 {% else %}
 
-```json
-{
+{% capture request_content %}{
     "payer": {
         "email": "olivia.nyhuus@payex.com",
         "msisdn": "+4798765432",
+        "firstName": "Olivia",
+        "lastName": "Nyhuus",
         "workPhoneNumber" : "+4787654321",
         "homePhoneNumber" : "+4776543210",
         "shippingAddress": {
@@ -105,8 +109,13 @@ the better.
                 "suspiciousAccountActivity": "01"
             }
         },
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Payer Node'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -129,21 +138,21 @@ the better.
 | {% f zipCode, 2 %}                    | `string` | Cardholder's zip code.                                           |
 | {% f city, 2 %}                       | `string` | Cardholder's city of residence.                                                                            |
 | {% f countryCode, 2 %}                | `string` | Country Code for the country of residence.                                                                      |
-|  | {% f billingAddress %}              | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
-|   | {% f firstName %}            | `string`  | The first name of the payer.                                                                                                                  |
-|   | {% f lastName %}            | `string`  | The last name of the payer.                                                                                                                  |
-|  ︎ | {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
-|                   | {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
-|  | {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                  |
-|   | {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
-|  | {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
-| | {% f accountInfo %}            | `object` | Object related to the `payer` containing info about the payer's account.               |
-| | {% f accountAgeIndicator, 2 %} | `string` | Indicates the age of the payer's account. <br>`01` (No account, guest checkout) <br>`02` (Created during this transaction) <br>`03` (Less than 30 days old) <br>`04` (30 to 60 days old) <br>`05` (More than 60 days old)             |
-| | {% f accountChangeIndicator, 2 %} | `string` | Indicates when the last account changes occurred. <br>`01` (Changed during this transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
-| | {% f accountChangePwdIndicator, 2 %} | `string` | Indicates when the account's password was last changed. <br>`01` (No changes) <br>`02` (Changed during this transaction) <br>`03` (Less than 30 days ago) <br>`04` (30 to 60 days ago) <br>`05` (More than 60 days old) |
-| | {% f shippingAddressUsageIndicator, 2 %} | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
-| | {% f shippingNameIndicator, 2 %} | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
-| | {% f suspiciousAccountActivity, 2 %} | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
+|   {% f billingAddress %}              | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
+|    {% f firstName %}            | `string`  | The first name of the payer.                                                                                                                  |
+|    {% f lastName %}            | `string`  | The last name of the payer.                                                                                                                  |
+|  ︎  {% f streetAddress %}        | `string`  | The street address of the payer. Maximum 50 characters long.                                                                                                   |
+|                    {% f coAddress %}            | `string`  | The CO-address (if used)                                                                                                                                         |
+|   {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                  |
+|    {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
+|   {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
+|  {% f accountInfo %}            | `object` | Object related to the `payer` containing info about the payer's account.               |
+|  {% f accountAgeIndicator, 2 %} | `string` | Indicates the age of the payer's account. <br>`01` (No account, guest checkout) <br>`02` (Created during this transaction) <br>`03` (Less than 30 days old) <br>`04` (30 to 60 days old) <br>`05` (More than 60 days old)             |
+|  {% f accountChangeIndicator, 2 %} | `string` | Indicates when the last account changes occurred. <br>`01` (Changed during this transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
+|  {% f accountChangePwdIndicator, 2 %} | `string` | Indicates when the account's password was last changed. <br>`01` (No changes) <br>`02` (Changed during this transaction) <br>`03` (Less than 30 days ago) <br>`04` (30 to 60 days ago) <br>`05` (More than 60 days old) |
+| {% f shippingAddressUsageIndicator, 2 %} | `string` | Indicates when the payer's shipping address was last used. <br>`01`(This transaction) <br>`02` (Less than 30 days ago) <br>`03` (30 to 60 days ago) <br>`04` (More than 60 days ago) |
+| {% f shippingNameIndicator, 2 %} | `string` | Indicates if the account name matches the shipping name. <br>`01` (Account name identical to shipping name) <br>`02` (Account name different from shipping name) |
+| {% f suspiciousAccountActivity, 2 %} | `string` | Indicates if there have been any suspicious activities linked to this account. <br>`01` (No suspicious activity has been observed) <br>`02` (Suspicious activity has been observed) |
 
 {% else %}
 
@@ -152,7 +161,9 @@ the better.
 | :---- | :--- | :---------- |
 | {% f payer %}                       | `object` | The payer object.        |
 | {% f email %}                       | `string` | Payer's registered email address.                                                  |
-| {% f msisdn %}  | `string` | Payer's registered mobile phone number.                                                  |
+| {% f msisdn %}                      | `string` | Payer's registered mobile phone number.                                                  |
+| {% f firstname %}                   | `string` | Payers's first name. Please note that this is not the `addressee` or from `shippingAddress`, as they might not be the same as the payer.                 |
+| {% f lastname %}                    | `string` | Payers's last name. Please note that this is not the `addressee` or `lastName` from `shippingAddress`, as they might not be the same as the payer.                 |                   |
 | {% f homePhoneNumber %}             | `string` | Payer's registered home phone number.                                                               |
 | {% f workPhoneNumber %}             | `string` | Payer's registered work phone number.                                                                 |
 | {% f shippingAddress %}             | `object` | The shipping address object related to the `payer`.                                                         |
@@ -162,13 +173,20 @@ the better.
 | {% f zipCode, 2 %}                    | `string` | Payer's zip code.                                           |
 | {% f city, 2 %}                       | `string` | Payer's city of residence.                                                                            |
 | {% f countryCode, 2 %}                | `string` | Country Code for the country of residence.                                                                      |
+|   {% f billingAddress %}              | `object`  | The billing address object containing information about the payer's billing address.                                                                            |
+|    {% f firstName %}            | `string`  | The payer's first name.                                                                                                                  |
+|    {% f lastName %}            | `string`  | The payer's last name.                                                                                                                  |
+|  ︎  {% f streetAddress %}        | `string`  | The payer'a street address. Maximum 50 characters long.                                                                                                   |
+|                    {% f coAddress %}            | `string`  | The payer's CO-address (if used).                                                                                                                                         |
+|   {% f zipCode %}              | `string`  | The postal number (ZIP code) of the payer.                                                                                                  |
+|    {% f city %}                 | `string`  | The city of the payer.                                                                                                                                        |
+|   {% f countryCode %}          | `string`  | `SE`, `NO`, or `FI`.                                                                                                                                             |
 
 {% endif %}
 
 ## Risk Indicator
 
-```json
-{
+{% capture request_content %}{
     "riskIndicator": {
         "deliveryEmailAddress": "olivia.nyhuus@payex.com",
         "deliveryTimeFrameIndicator": "01",
@@ -186,8 +204,13 @@ the better.
             "countryCode": "NO"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Risk Indicator Node'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 | Field | Type | Description |

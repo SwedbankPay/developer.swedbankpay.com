@@ -77,14 +77,12 @@ paymentOrder.payer = PaymentOrderPayer(
 
 ## Token Retrieval Digital Payments
 
-Retrieve the token by expanding the "paid" property of a previous successful
-payment. To see this in action, the example merchant backend has an endpoint
-called "/expand" that takes a "resource" (in this case the paymentId), and an
-array of properties to expand. You get a payment order back, and in the expanded
-paid property there is a "tokens" array (if the customer agreed to let you store
-the information). A good practice is to only do this on the backend and serve
-the token as part of user's info, to have the token available at the next
-purchase.
+Retrieve the token by expanding the `paid` property of a previous successful
+payment. You do this with a GET request where you add `?$expand=paid` after the
+`paymentOrderId`. You get a payment order back, and in the expanded paid
+property there is a "tokens" array (if the customer agreed to let you store the
+information). A good practice is to only do this on the backend and serve the
+token as part of user's info, to have the token available at the next purchase.
 
 {:.code-view-header}
 **iOS**
@@ -241,6 +239,6 @@ val paymentOrder = PaymentOrder(
 paymentOrder.disableStoredPaymentDetails = true
 ```
 
-[add-stored-details]: /old-implementations/payment-menu-v2/features/optional/payer-aware-payment-menu#add-stored-payment-instrument-details
-[enterprise-payer-ref]: https://developer.swedbankpay.com/checkout-v3/enterprise/features/optional/enterprise-payer-reference
-[expanding_properties]: https://developer.swedbankpay.com/checkout-v3/resources/fundamental-principles#expansion
+[add-stored-details]: /old-implementations/payment-menu-v2/features/optional/payer-aware-payment-menu#add-stored-payment-method-details
+[enterprise-payer-ref]: https://developer.swedbankpay.com/old-implementations/enterprise/features/optional/enterprise-payer-reference
+[expanding_properties]: https://developer.swedbankpay.com/checkout-v3/get-started/fundamental-principles#expansion

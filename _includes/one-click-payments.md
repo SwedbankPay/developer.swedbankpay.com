@@ -19,46 +19,57 @@
 ## One-Click Payments
 
 {% include jumbotron.html body="One-Click Payments utilize a previously
-generated payment token to prefill payment details for credit card or
-invoice payments pages - which means that the payer don't need to enter
-these details for every purchase." %}
+generated payment token to prefill payment details for credit card payments
+pages - which means that the payer don't need to enter these details for every
+purchase." %}
 
 ## Introduction
 
 {% if documentation_section contains "checkout-v3" %}
 
-For card and invoice payments, the payment flow and implementation varies from
+For card and Trustly payments, the payment flow and implementation varies from
 your default only being the use of a `paymentToken`. The details in this section
 describe explicitly the parameters that must be set to enable one-click
 purchases.
 
 {% else %}
 
-For [card][card] and [invoice][invoice] payments, the payment flow and
-implementation varies from your default only being the use of a `paymentToken`.
-The details in this section describe explicitly the parameters that must be set
-to enable one-click purchases.
+For [card][card] payments, the payment flow and implementation varies from your
+default only being the use of a `paymentToken`. The details in this section
+describe explicitly the parameters that must be set to enable one-click
+purchases.
 
 {% endif %}
 
-### API Requests To Generate The Payment Token
+## API Requests To Generate The Payment Token
 
 When making the initial purchase request, you need to generate a `paymentToken`.
 You can do this by setting the `generatePaymentToken` field in the request's
 payment object to `true` (see example below) when doing a card purchase, or
 setting the initial operation to [`Verify`][verify].
 
-{:.code-view-header}
-**generatePaymentToken field**
-
-```json
-{
+{% capture request_content %}{
     "generatePaymentToken": true,
     "payer": {
     "payerReference": "AB1234",
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='generatePaymentToken field'
+    header=request_header
+    json= request_content
+    %}
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
+| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  | {% f generatePaymentToken, 0 %}                     | `bool`     | Determines if a payment token should be generated. Default value is `false`.                                                                                                                                                                                                                                             |
+| | {% f payer, 0 %}                | `object`     | The payer object                                                                                                                                                                                                                                           |
+| | {% f payerReference, 0 %}                 | `string`     | A reference used to recognize the payer when no SSN is stored.                                                                                                                                                                                                                                                                            |
+{% endcapture %}
+{% include accordion-table.html content=table %}
 
 ## Finding The `paymentToken` Value
 
@@ -70,22 +81,15 @@ payment resource (expanding either the authorizations or verifications
 sub-resource), after the payer successfully has completed the purchase. The two
 examples are provided below.
 
-{:.code-view-header}
-**Request Towards Authorizations Resource**
-
-```http
-GET  {{ verification_url }} HTTP/1.1
+{% capture request_header %}GET  {{ verification_url }} HTTP/1.1
 Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-```
+Authorization: Bearer <AccessToken>{% endcapture %}
 
-{:.code-view-header}
-**Request Towards Verifications Resource**
-
-```http
-GET {{ authorization_url }} HTTP/1.1
-Authorization: Bearer <AccessToken>
-```
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% else %}
 
@@ -93,24 +97,30 @@ When the initial purchase is successful, a `paymentToken` is linked to
 the payment. You can return the value by performing a `GET` request towards the
 payment resource with the `payerReference` included.
 
-{:.code-view-header}
-**Request Towards The Payment Resource**
-
-```http
-GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/payerownedtokens/{{ page.payment_token }} HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Get Request Payment Resource'
+    header=request_header
+    json= request_content
+    %}
 
 You can also perform a GET request towards the `id` of a Payment Order and find
 the paymentToken in its linked [`paid` resource][paid-resource].
 
-{:.code-view-header}
-**Request Towards The Paid Resource**
-
-```http
-GET /psp/paymentorders/{{ page.payment_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_id }}/paid HTTP/1.1
+Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='GET Request Paid Resource'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -126,10 +136,10 @@ returns to your system, you can use the `paymentToken`, using already stored
 payment data, to initiate one-click payments.
 
 You will need to make a standard purchase, following the sequence as specified
-in the Redirect or Seamless View scenarios for [credit card][card] and
-[financing invoice][invoice]. When creating the first `POST` request you insert
-the `paymentToken` field. This must be the `paymentToken` you received in the
-initial purchase, where you specified the `generatePaymentToken` to `true`.
+in the Redirect or Seamless View scenarios for [credit card][card]. When
+creating the first `POST` request you insert the `paymentToken` field. This must
+be the `paymentToken` you received in the initial purchase, where you specified
+the `generatePaymentToken` to `true`.
 
 You can add the field `noCvc` set to `false` in the `creditcard` object to make
 the CVC field present. This feature needs to be enabled in your contract.
@@ -138,22 +148,18 @@ Otherwise it will be `true`.
 {% if documentation_section contains "payment-instruments" %}
 
 See the Features section for how to create a [card][create-card-payment]
-and [invoice][create-invoice-payment] payment.
+payment.
 
 ## One-Click Request
 
 Abbreviated code example:
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -162,8 +168,13 @@ Content-Type: application/json
     "creditCard": {
         "noCvc": true
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -179,64 +190,32 @@ Content-Type: application/json
 
 {% endunless %}
 
-When a known payer returns to your system, you can use your `payerReference` to
-initiate one-click payments. Either by using the `payerReference` and setting
-`generatePaymentToken` to `true`, or by using `payerReference` and including a
-`paymentToken` in the `paymentToken` field. The `payerReference` is not
-generated by Swedbank Pay, but a reference set by you to identify your customer
-and their returning payments. An example could be to use internal customer
-numbers.
+When a known payer returns, you can display their details by initiating the
+transaction with the parameter `paymentToken` and its associated value. Please
+note that the value in `payerReference` needs to be identical to the value given
+when the token was generated. We highly recommend that you use a value that
+represents the customer in your system, so it's easier to keep track. An example
+could be an alpha-numerical value like "ABC123".
 
-Using `payerReference` and `generatePaymentToken: true` will display all (max 3)
-cards connected to the payerReference.
-
-If you wish to display one specific card only, you can remove
-`generatePaymentToken` and add the field `paymentToken` in it's place. This must
-be the paymentToken generated in the initial purchase.
+For card payments, using `payerReference` and `generatePaymentToken: true` will
+display all (max 3) cards connected to the payerReference. If you wish to
+display one specific card only, you can remove `generatePaymentToken` and add
+the field `paymentToken` in it's place. This must be the paymentToken generated
+in the initial purchase.
 
 {% if documentation_section contains "payment-instruments" %}
 
 You can add the field `noCvc` set to `true` in the `creditcard` object,
 containing card specific feature fields. This disables the CVC field.
 
-## One-Click Request Displaying All Cards
-
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
-Host: {{ page.api_host }}
-Authorization: Bearer <AccessToken>
-Content-Type: application/json
-
-{
-    "payment": {
-        "operation": "Purchase",
-        "intent": "Authorization",
-        "generatepaymentToken": "true"
-    },
-    "payer": {
-        "payerReference": "AB1234",
-    },
-    "creditCard": {
-        "noCvc": true
-    }
-}
-```
-
 ## One-Click Request Displaying A Specific Card
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -248,23 +227,24 @@ Content-Type: application/json
     "creditCard": {
         "noCvc": true
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request Displaying A Specific Card'
+    header=request_header
+    json= request_content
+    %}
 
 {% else %}
 
 ## One-Click Request Displaying All Cards
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "generatepaymentToken": "true"
@@ -272,21 +252,22 @@ Content-Type: application/json
     "payer": {
         "payerReference": "AB1234",
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request Displaying All Cards'
+    header=request_header
+    json= request_content
+    %}
 
 ## One-Click Request Displaying A Specific Card
 
-{:.code-view-header}
-**Request**
-
-```http
-POST {{ purchase_url }} HTTP/1.1
+{% capture request_header %}POST {{ purchase_url }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
     "paymentorder": {
         "operation": "Purchase",
         "paymentToken": "{{ page.payment_token }}"
@@ -294,8 +275,13 @@ Content-Type: application/json
     "payer": {
         "payerReference": "AB1234",
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='One-Click Request Displaying A Specific Card'
+    header=request_header
+    json= request_content
+    %}
 
 {% endif %}
 
@@ -331,14 +317,74 @@ Content-Type: application/json
 
 {% endif %}
 
+{% if documentation_section contains "checkout-v3" %}
+
+## Disable Store Details and Toggle Consent Checkbox
+
+This is a feature intended for instrument mode and or custom menus.
+
+If you have built your own interface to display previously stored details and
+generate transactions using them ("One-Click Request Displaying A Specific
+Card"), you will also  have the need to include an option for them to store new
+details. This can be performed using either a `Purchase` or `Verify` operation.
+
+For `Purchase` operations aiming to store new details simultaneously, you will
+need to utilize the `disableStoredPaymentDetails` parameter. This is because the
+payer has already made the decision not to use any stored details in your
+interface. By including this parameter, you effectively eliminate the need for
+confirmation in our UI, due to how the combination of `generatePaymentToken` and
+`payerReference` works in our API.
+
+By employing this parameter, you as the Merchant will assume the responsibility
+of colllecting the payer's consent for purpose of storing their details. If you
+do not want this responsibility and would like for us to help you out, you can
+combine `disableStoredPaymentDetails` along with
+`enablePaymentDetailsConsentCheckbox` and flag them both as `true`. That will
+enable our handler for collecting consent from the payer for you inside our
+Swedbank Pay UI. When the choice has been made and transaction is completed, we
+will relay that information to you. We will do this by setting the flag
+`paymentTokenGenerated` in the subsequent `GET` call towards the `PaymentOrder`
+to either `true` or `false`.
+
+`Verify` operations do not require the use of these additional parameters, as
+they do not display any previously stored details based on your supplied
+reference, thereby avoiding redundancy. Including them in a `Verify` will result
+in a validation error.
+
+{% capture request_content %}{
+ "paymentorder": {
+    "enablePaymentDetailsConsentCheckbox": true,
+    "disableStoredPaymentDetails": true,
+  }
+}{% endcapture %}
+
+{% include code-example.html
+    title='generatePaymentToken field'
+    header=request_header
+    json= request_content
+    %}
+
+{% capture table %}
+{:.table .table-striped .mb-5}
+|     Required     | Field                              | Type         | Description                                                                                                                                                                                                                                                                                              |
+| :--------------: | :--------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {% icon check %} | {% f paymentOrder, 0 %}                     | `object`     | The payment order object.                                                                                                                                                                                                                                                                                |
+|  | {% f EnablePaymentDetailsConsentCheckbox %}                     | `bool`     | Set to `true` or `false`. Used to determine if the checkbox used to save payment details is shown or not. Will only work if the parameter `disableStoredPaymentDetails` is set to `true`.                                                                                                                                                                                                                                                                                 |
+|  | {% f disableStoredPaymentDetails %}                     | `bool`     | Set to `true` or `false`. Must be set to `true` for `enablePaymentDetailsConsentCheckbox` to work.                                                                                                                                                                                                                                           |
+
+{% endcapture %}
+{% include accordion-table.html content=table %}
+
+{% endif %}
+
+## How It Looks
+
 {% include alert.html type="informative" icon="info" body="
 When redirecting to Swedbank Pay the payment page will be
 prefilled with the payer's card details. See example below." %}
 
-## How It Looks
-
 {:.text-center}
-![One click payment page][one-click-image]{:height="510px" width="475px"}
+![One click payment page][one-click-image]
 
 ## Delete Payment Token
 
@@ -365,20 +411,21 @@ should look like this:
 
 ## Delete Payment Token Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "state": "Deleted",
   "comment": "Comment stating why this is being deleted"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% comment %}
 TODO: Remove pipes from the above code example and add a field table
@@ -387,14 +434,11 @@ TODO: Remove pipes from the above code example and add a field table
 
 ## Delete Payment Token Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "payerOwnedTokens": {
         "id": "/psp/paymentorders/payerownedtokens/{payerReference}",
         "payerReference": "{payerReference}",
@@ -402,19 +446,9 @@ Content-Type: application/json
             {
                 "tokenType": "Payment",
                 "token": "{paymentToken}",
-                "instrument": "Invoice-payexfinancingno",
-                "instrumentDisplayName": "260267*****",
-                "instrumentParameters": {
-                    "email": "hei@hei.no",
-                    "msisdn": "+4798765432",
-                    "zipCode": "1642"
-                }
-            },
-            {
-                "tokenType": "Payment",
-                "token": "{paymentToken}",
                 "instrument": "CreditCard",
                 "instrumentDisplayName": "492500******0004",
+                "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
                 "instrumentParameters": {
                     "expiryDate": "12/2020",
                     "cardBrand": "Visa"
@@ -422,53 +456,62 @@ Content-Type: application/json
             }
         ]
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Deleting Single Tokens
 
 {% if documentation_section contains "checkout" %}
 
 For single token deletions, the request and response should look like this. In
-this example, the token is connected to a card. If it was a token connected to
-an invoice, the `instrumentDisplayName` would be the payer's date of birth.
+this example, the token is connected to a card. For Trustly transactions, it
+will be a masked account number.
 
 ## Delete Single Token Request For Checkout Integrations
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/paymentorders/paymenttokens/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}PATCH /psp/paymentorders/paymenttokens/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json;version=3.x/2.0 // Version optional for 3.0 and 2.0{% endcapture %}
 
-{
+{% capture request_content %}{
   "state": "Deleted",
   "comment": "Comment stating why this is being deleted"
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Delete Single Token Response For Checkout Integrations
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.1
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "paymentToken": "{{paymentToken}}",
     "instrument": "CreditCard",
     "instrumentDisplayName": "492500******0004",
+    "correlationId": "e2f06785-805d-4605-bf40-426a725d313d",
     "instrumentParameters": {
         "expiryDate": "12/2022",
         "cardBrand": "Visa"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% else %}
 
@@ -477,35 +520,29 @@ this example, the token is a payment token and is connected to a card.
 
 ## Delete Single Token Request
 
-{:.code-view-header}
-**Request**
-
-```http
-PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
+{% capture request_header %}PATCH /psp/creditcard/payments/instrumentData/{{ page.payment_token }} HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
-{
+{% capture request_content %}{
   "state": "Deleted",
   "comment": "Comment on why the deletion is happening",
   "tokenType" : "PaymentToken"
+}{% endcapture %}
 
-}
-}
-```
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Delete Single Token Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "instrumentData": {
     "id": "/psp/creditcard/payments/instrumentdata/12345678-1234-1234-1234-123456789000",
     "paymentToken": "12345678-1234-1234-1234-123456789000",
@@ -517,17 +554,20 @@ Content-Type: application/json
     "expiryDate": "MM/YYYY",
     "tokenType" : "PaymentToken"
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% endif %}
 
 <!--lint disable final-definition -->
 
 [card]: /old-implementations/payment-instruments-v1/card
-[invoice]: /old-implementations/payment-instruments-v1/invoice
-[one-click-image]: /assets/img/checkout/one-click.png
+[one-click-image]: /assets/img/checkout/new-one-click.png
 [create-card-payment]: /old-implementations/payment-instruments-v1/card/features/technical-reference/create-payment
-[create-invoice-payment]: /old-implementations/payment-instruments-v1/invoice/features/technical-reference/create-payment
 [paid-resource]: /checkout-v3/features/technical-reference/status-models#paid
-[verify]: /old-implementations/payment-instruments-v1/card/features/optional/verify
+[verify]: /checkout-v3/features/optional/verify

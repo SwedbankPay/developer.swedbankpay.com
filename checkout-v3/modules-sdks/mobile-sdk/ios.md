@@ -1,5 +1,6 @@
 ---
 title: iOS
+permalink: /:path/ios/
 menu_order: 1100
 ---
 
@@ -37,11 +38,11 @@ for the Merchant Backend utilities.
 Add the relevant dependencies in your `Podfile`:
 
 ```ruby
-pod 'SwedbankPaySDK', '~> 3.0'
+pod 'SwedbankPaySDK', '~> {{ page.mobile_sdk_ios_version }}'
 ```
 
 ```ruby
-pod 'SwedbankPaySDKMerchantBackend', '~> 3.0'
+pod 'SwedbankPaySDKMerchantBackend', '~> {{ page.mobile_sdk_ios_version }}'
 ```
 
 ## Url Scheme and Associated Domain
@@ -619,10 +620,10 @@ sequenceDiagram
     SDK ->> SDK: Reload payment menu
 ```
 
-{% include iterator.html prev_href="android"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/android"
                          prev_title="Back: Android"
-                         next_href="custom-backend"
-                         next_title="Next: Custom Backend" %}
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend"
+                         next_title="Next: Merchant Backend" %}
 
 [xcode-swiftpm]: https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app
 [sdk-package-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git
@@ -634,17 +635,17 @@ sequenceDiagram
 [assoc-domains-entitlement]: /assets/img/mobile-sdk/ios-assoc-domain.png
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
-[ios-universal-links-routing]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753
-[ios-paymenturl-helper]: merchant-backend#ios-payment-url-helper
+[ios-universal-links-routing]: https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content#Support-universal-links
+[ios-paymenturl-helper]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#ios-payment-url-helper
 [uiappdelegate-continueuseractivity]: https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623072-application
 [uiappdelegate-openurl]: https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application
-[backend-aasa]: merchant-backend#apple-app-site-association
+[backend-aasa]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#apple-app-site-association
 [xcode-add-cap]: https://help.apple.com/xcode/mac/current/#/dev88ff319e7
-[xcode-add-assoc-domain]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001207
+[xcode-add-assoc-domain]: https://developer.apple.com/documentation/xcode/supporting-associated-domains#Add-the-associated-domain-file-to-your-website
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
-[backend-problems]: merchant-backend#problems
+[backend-problems]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#problems
 [checkin-consumer]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkin-paymentorder]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[backend-payment-orders]: merchant-backend#payment-orders-endpoint
+[backend-payment-orders]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint
 [ios-payment-url]: /checkout-v3/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications

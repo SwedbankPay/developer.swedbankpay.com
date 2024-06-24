@@ -1,5 +1,6 @@
 ---
 title: Capture
+permalink: /:path/payment-order-capture/
 description: |
   Capturing the authorized funds.
 menu_order: 1600
@@ -8,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include payment-order-capture.md %}
+{% include payment-order-capture-combined.md %}

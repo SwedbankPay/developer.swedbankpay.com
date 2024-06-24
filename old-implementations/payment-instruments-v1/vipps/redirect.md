@@ -3,7 +3,7 @@ title: Redirect
 redirect_from: /payments/vipps/redirect
 description: |
   **Vipps** is a two-phase
-  payment instrument supported by the major Norwegian banks. In the redirect
+  payment method supported by the major Norwegian banks. In the redirect
   scenario, Swedbank Pay receives a mobile number (msisdn)
   from the payer through Swedbank Pay Payments. Swedbank Pay performs a payment
   that the payer must confirm through the Vipps mobile app.
@@ -44,15 +44,11 @@ information.
 
 ## Redirect Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/vipps/payments HTTP/1.1
+{% capture request_header %}POST /psp/vipps/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -88,19 +84,20 @@ Content-Type: application/json
             "msisdn": "+4792345678"
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Redirect Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/vipps/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -141,8 +138,13 @@ Content-Type: application/json
             "rel": "redirect-authorization"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -197,26 +199,23 @@ purchase.
 
 ## GET Transaction State Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/vipps/payments/{{ page.payment_id }}/ HTTP/1.1
+{% capture request_header %}GET /psp/vipps/payments/{{ page.payment_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Transaction State Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/vipps/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -288,8 +287,13 @@ Content-Type: application/json
             "contentType": "application/problem+json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -308,7 +312,7 @@ Content-Type: application/json
 | {% f userAgent %}      | `string`     | {% include fields/user-agent.md %}                                                                                                                                                                                                                                                                                             |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                                                                                                                                                           |
 | {% f urls %}           | `string`     | The URL to the  urls  resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
-| {% f payeeInfo %}      | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
+| {% f payeeInfo %}      | `object`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
 | {% f operations, 0 %}  | `array`      | {% include fields/operations.md resource="payment" %}                                                                                                                                                                                                                                                                                                                |
 | {% f method, 2 %}      | `string`     | The HTTP method to use when performing the operation.                                                                                                                                                                                                                                                                                                      |
 | {% f href, 2 %}        | `string`     | The target URL to perform the operation against.                                                                                                                                                                                                                                                                                                           |

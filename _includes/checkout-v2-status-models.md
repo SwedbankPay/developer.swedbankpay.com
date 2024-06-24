@@ -7,7 +7,7 @@
 
 The payment order response with status `paid`, and the `paid` resource expanded.
 Please note that the main code example is of a card payment. We have included
-`paid` resources of the remaining instruments below the main code example.
+`paid` resources of the remaining methods below the main code example.
 Resource examples where details are empty indicate that no details are
 available.
 
@@ -17,14 +17,11 @@ while MobilePay does return this field, the value present is actually a
 
 ### Card `Paid` Resource
 
-{:.code-view-header}
-**Card Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentOrder": {
         "id": "/psp/paymentorders/ca59fa8a-3423-40e5-0f77-08d9d133750b",
         "created": "2022-01-07T07:58:26.1300282Z",
@@ -50,7 +47,7 @@ Content-Type: application/json
             "Swish",
             "CreditAccount",
             "Trustly"
-        ],{% if documentation_section contains "checkout-v3/enterprise" %}
+        ],{% if documentation_section contains "old-implementations/enterprise" %}
         "implementation": "Enterprise", {% endif %} {% if documentation_section contains "checkout-v3/payments-only" %}
         "implementation": "PaymentsOnly", {% endif %} {% if include.integration_mode=="seamless-view" %}
         "integration": "HostedView", {% endif %} {% if include.integration_mode=="redirect" %}
@@ -139,22 +136,24 @@ Content-Type: application/json
           "contentType": "application/javascript"
         }{% endif %}
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Card Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Apple Pay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Apple Pay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_consent %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
   "paid": {
     "id": "/psp/paymentorders/1f8d409e-8d8c-4ba1-a3ab-08da8caf7918/paid",
@@ -181,22 +180,24 @@ Content-Type: application/json
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Apple Pay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### MobilePay `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**MobilePay Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_consent %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/efdcbf77-9a62-426b-a3b1-08da8caf7918/paid",
@@ -222,22 +223,24 @@ Content-Type: application/json
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='MobilePay Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Vipps `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Vipps Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/a463b145-3278-4aa0-c4db-08da8f1813a2/paid",
@@ -261,22 +264,24 @@ Content-Type: application/json
         "bin": "489537"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Vipps Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Swish `paid` Resource
 
 Please note that this is an abbreviated example. See the main `paid` example for
 more context.
 
-{:.code-view-header}
-**Swish Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "paid": {
     "id": "/psp/paymentorders/b0410cd0-61df-4548-a3ad-08da8caf7918/paid",
@@ -292,22 +297,24 @@ Content-Type: application/json
         "misidn": "+46739000001"
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Swish Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Invoice `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{:.code-view-header}
-**Invoice Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/05a356df-05e2-49e6-8858-08da8cb4d651/paid",
@@ -321,22 +328,24 @@ Content-Type: application/json
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Invoice Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Installment Account `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{:.code-view-header}
-**Installment Account Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/39eef759-a619-4c91-885b-08da8cb4d651/paid",
@@ -350,22 +359,24 @@ Content-Type: application/json
     "discountAmount": 0,
     "details": {}
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Installment Account Response'
+    header=response_header
+    json= response_content
+    %}
 
 ### Trustly `Paid` Resource
 
 Please note that this is an abbreviated example. See the main `Paid` example for
 more context.
 
-{:.code-view-header}
-**Trustly Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "paymentOrder": "/psp/paymentorders/5adc265f-f87f-4313-577e-08d3dca1a26c",
 "paid": {
     "id": "/psp/paymentorders/bf660901-93d0-4245-4e6b-08da8f165366/paid",
@@ -382,8 +393,13 @@ Content-Type: application/json
       "trustlyOrderId": 1234567890
     }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Trustly Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -401,10 +417,10 @@ Content-Type: application/json
 | {% f description %}    | `string(40)` | {% include fields/description.md %}                                                                                                                        |
 | {% f initiatingSystemUserAgent %}      | `string`     | {% include fields/initiating-system-user-agent.md %}                                                                                                                                                          |
 | {% f language %}       | `string`     | {% include fields/language.md %}                                                                                                                                                  |
-| {% f availableInstruments %}       | `string`     | A list of instruments available for this payment.                                                                                                                                                   |
+| {% f availableInstruments %}       | `string`     | A list of payment methods available for this payment.                                                                                                                                                   |
 | {% f implementation %}       | `string`     | The merchant's Digital Payments implementation type. `Enterprise` or `PaymentsOnly`. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.                                                                                                   |
 | {% f integration %}       | `string`     | The merchant's Digital Payments integration type. `HostedView` (Seamless View) or `Redirect`. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don't build logic around this field's response. It is mainly for information purposes, as the integration types might be subject to name changes. If this should happen, updated information will be available in this table.                           |
-| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment instrument available.                                                                                    |
+| {% f instrumentMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payment is initialized with only one payment method available.                                                                                    |
 | {% f guestMode %}       | `bool`     | Set to `true` or `false`. Indicates if the payer chose to pay as a guest or not. When using the Enterprise implementation, this is triggered by not including a `payerReference` or `nationalIdentifier` in the original payment order request.                                                                                                                                                   |
 | {% f payer %}         | `string`     | The URL to the `payer` resource where information about the payer can be retrieved.                                                                                                                 |
 | {% f orderItems %}     | `string`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                            |
@@ -413,16 +429,16 @@ Content-Type: application/json
 | {% f aborted %}     | `string`     | The URL to the `aborted` resource where information about the aborted transactions can be retrieved.                                                                                                                            |
 | {% f paid %}                | `object`     | The paid object.                     |
 | {% f id %}             | `string`     | {% include fields/id.md resource="paymentorder" %}  |
-| {% f instrument %}             | `string`     | The payment instrument used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
+| {% f instrument %}             | `string`     | The payment method used in the fulfillment of the payment. Do not use this field for code validation purposes. To determine if a `capture` is needed, we recommend using `operations` or the `transactionType` field. |
 | {% f number, 2 %}         | `integer`  | {% include fields/number.md resource="paymentorder" %} |
 | {% f payeeReference, 2 %}          | `string` | {% include fields/payee-reference.md %} |
 | {% f transactionType, 2 %}          | `string` | This will either be set to `Authorization` or `Sale`. Can be used to understand if there is a need for doing a capture on this payment order. Swedbank Pay recommends using the different operations to figure out if a capture is needed. |
 | {% f amount %}                   | `integer`    | {% include fields/amount.md %}                                            |
 | {% f remainingCaptureAmount %}      | `integer`    | The remaining authorized amount that is still possible to capture.                                                                                                                                                                             |
 | {% f remainingCancellationAmount %}      | `integer`    | The remaining authorized amount that is still possible to cancel.                                                                                                                                                                             |
-| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any instrument specific discounts or fees. The final payment order amount will be displayed in the `amount` field.                                            |
-| {% f feeAmount %}                   | `integer`    | If the payment instrument used had a unique fee, it will be displayed in this field.                                            |
-| {% f discountAmount %}                   | `integer`    | If the payment instrument used had a unique discount, it will be displayed in this field.                                                |
+| {% f submittedAmount %}                   | `integer`    | This field will display the initial payment order amount, not including any discounts or fees specific to a payment method. The final payment order amount will be displayed in the `amount` field.                                            |
+| {% f feeAmount %}                   | `integer`    | If the payment method used had a unique fee, it will be displayed in this field.                                            |
+| {% f discountAmount %}                   | `integer`    | If the payment method used had a unique discount, it will be displayed in this field.                                                |
 | {% f details %}                   | `integer`    | Details connected to the payment. |
 | {% f nonPaymentToken, 2 %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | {% f externalNonPaymentToken, 2 %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
@@ -437,10 +453,10 @@ Content-Type: application/json
 | {% f transactionInitatior, 2 %} | `string`     | The party which initiated the transaction. `MERCHANT` or `CARDHOLDER`.                                                                                                                                                                                                                                              |
 | {% f bin, 2 %} | `string`     | The first six digits of the maskedPan.                                                                                                                                                                                                                                              |
 | {% f msisdn, 2 %} | `string`     | The msisdn used in the purchase. Only available when paid with Swish.                                                                                                                                                                                                                                              |
-| {% f cancelled %}     | `string`     | The URL to the `cancelled` resource where information about the cancelled transactions can be retrieved.                                                                                                                            |
-| {% f financialTransactions %}     | `string`     | The URL to the `financialTransactions` resource where information about the financial transactions can be retrieved.                                                                                                                            |
-| {% f failedAttempts %}     | `string`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
-| {% f metadata %}     | `string`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
+| {% f cancelled %}     | `id`     | The URL to the `cancelled` resource where information about the cancelled transactions can be retrieved.                                                                                                                            |
+| {% f financialTransactions %}     | `id`     | The URL to the `financialTransactions` resource where information about the financial transactions can be retrieved.                                                                                                                            |
+| {% f failedAttempts %}     | `id`     | The URL to the `failedAttempts` resource where information about the failed attempts can be retrieved.                                                                                                                            |
+| {% f metadata %}     | `id`     | The URL to the `metadata` resource where information about the metadata can be retrieved.                                                                                                                            |
 | {% f operations %}     | `array`      | {% include fields/operations.md %} As this is a paid payment, the available operations are `capture`, `cancel` and `redirect-checkout` or `view-checkout`, depending on the integration. [See Operations for details]({{ features_url }}/technical-reference/operations)
 {% endcapture %}
 {% include accordion-table.html content=table %}
@@ -448,11 +464,11 @@ Content-Type: application/json
 If there e.g. is a recurrence or an unscheduled (below) token connected to the
 payment, it will appear like this.
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
 
-{
+{% capture response_content %}{
         "paid": {
             "id": "/psp/paymentorders/91c3ca0d-3710-40f0-0f78-08d9d133750b/paid",
             "instrument": "CreditCard",
@@ -469,14 +485,19 @@ Content-Type: application/json
             ],
             "details": {}
         }
-}
-```
+}{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
+{% include code-example.html
+    title='Recurrence Token Response'
+    header=response_header
+    json= response_content
+    %}
 
-{
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=2.0
+api-supported-versions: 2.0{% endcapture %}
+
+{% capture response_content %}{
         "paid": {
             "id": "/psp/paymentorders/9f786139-3537-4a8b-0f79-08d9d133750b/paid",
             "instrument": "CreditCard",
@@ -493,8 +514,13 @@ Content-Type: application/json
             ],
             "details": {}
         }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Unscheduled Token Response'
+    header=response_header
+    json= response_content
+    %}
 
 Response fields introduced in this section:
 

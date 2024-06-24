@@ -1,10 +1,11 @@
 ---
 title: Merchant Backend V3
+permalink: /:path/merchant-backend/
 description: |
   To use the **Swedbank Pay Mobile SDK**, you must have a backend server
-  that communicates with your Configuration. The fastest way to start
-  developing is to use the Merchant Backend API.
-menu_order: 800
+  that communicates with your Configuration. One way to start developing
+  is to use the Merchant Backend API.
+menu_order: 1200
 ---
 
 The Merchant Backend API serves as a simple starting point, and an illustrative
@@ -685,20 +686,20 @@ Your implementation is encouraged to define its own problem types for any
 domain-specific errors; you should namespace those problem types under a domain
 name under your control – usually the host name of the Merchant Backend.
 
-{% include iterator.html prev_href="./"
-                         prev_title="Introduction"
-                         next_href="merchant-backend-sample-code"
-                         next_title="Merchant Backend Sample Code" %}
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
+                         prev_title="Back: iOS"
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend-sample-code"
+                         next_title="Next: Merchant Backend Sample Code" %}
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
 [payment-url]: /old-implementations/payment-menu-v2/features/technical-reference/payment-url
-[create-payment-order]: /checkout-v3/payment-request
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[create-payment-order]: /checkout-v3/get-started/payment-request
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
-[ios-universal-links-routing]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content#3001753
-[ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
+[ios-universal-links-routing]: https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content#Support-universal-links
+[ios-aasa]: https://developer.apple.com/documentation/xcode/supporting-associated-domains#Add-the-associated-domain-file-to-your-website
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
 [instrument-mode]: /old-implementations/payment-menu-v2/features/optional/instrument-mode

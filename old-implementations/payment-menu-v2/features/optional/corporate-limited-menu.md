@@ -1,8 +1,8 @@
 ---
 title: Corporate Limited Menu
-description: Limit the selectable instruments to those that support
-    corporate payment methods.
-menu_order: 1300
+permalink: /:path/corporate-limited-menu/
+description: Limit the menu to what is supported by corporate payment methods.
+menu_order: 1400
 icon:
   content: link
   outlined: true

@@ -7,7 +7,7 @@ description: |
   We have multiple Open Source-based SDKs and Modules to use with
   Swedbank Pay APIs.
 permalink: /:path/
-menu_order: 7
+menu_order: 4
 ---
 
 Swedbank Pay offers APIs, SDKs, libraries, modules, extensions and plugins as
@@ -43,19 +43,15 @@ how it tastes.
 ## Official Modules
 
 **Modules, extensions and plugins** are typically used as a way to extend
-webshop platforms such as [WooCommerce][woocommerce] and
-[Magento][magento]{:data-proofer-ignore=''} with functionality that isn't
-provided in the core platform. Such functionality may be to allow visitors of
-your website to pay with a payment provider such as Swedbank Pay.
-
-{% include alert-unsupported.md type='modules' %}
+webshop platforms such as [WooCommerce][woocommerce]{:data-proofer-ignore=''}
+with functionality that isn't provided in the core platform. Such functionality
+may be to allow visitors of your website to pay with a payment provider such as
+Swedbank Pay.
 
 {:.table .table-striped}
 |            Platform          | Module                                                           | Repository                                    |
 | :--------------------------: | :--------------------------------------------------------------- | :-------------------------------------------- |
-| ![Episerver][episerver-icon] | [Swedbank Pay **Checkout** for Episerver][episerver-link]        | [`…episerver-checkout`][episerver-repo]       |
-|   ![WooCommerce][woo-icon]   | [Swedbank Pay **Checkout** for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
-|   ![WooCommerce][woo-icon]   | [Swedbank Pay **Payments** for WooCommerce][woo-payments-link]   | [`…woocommerce-payments`][woo-payments-repo]  |
+|   ![WooCommerce][woo-icon]   | [Swedbank Pay Payment Menu for WooCommerce][woo-checkout-link]   | [`…woocommerce-checkout`][woo-checkout-repo]  |
 
 ## Official SDKs
 
@@ -76,7 +72,6 @@ SDKs are often used as a building block to construct a *Module*.
 |     ![iOS][ios-icon]     | [Swedbank Pay SDK for iOS][ios-link]         | [`…sdk-ios`][ios-repo]         |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK for .NET][dotnet-link]     | [`…sdk-dotnet`][dotnet-repo]   |
 |     ![PHP][php-icon]     | [Swedbank Pay SDK for PHP][php-link]         | [`…sdk-php`][php-repo]         |
-|      ![JS][js-icon]      | [Swedban k Pay SDK for JavaScript][js-link]  | [`…sdk-js`][js-repo]           |
 
 ## Official Libraries
 
@@ -88,7 +83,6 @@ SDKs are often used as a building block to construct a *Module*.
 {:.table .table-striped}
 |            Platform      | Library                                                     | Repository                            |
 | :----------------------: | :---------------------------------------------------------- | :------------------------------------ |
-| ![Magento][magento-icon] | [Swedbank Pay Core plugin for Magento 2][magento-core-link] | [`…magento2-core`][magento-core-repo] |
 | ![WooCommerce][woo-icon] | [Swedbank Pay Core plugin for WooCommerce][woo-core-link]   | [`…woocommerce-core`][woo-core-repo]  |
 |   ![.NET][dotnet-icon]   | [Swedbank Pay SDK Extensions for .NET][dotnet-link]         | [`…sdk-dotnet`][dotnet-repo]          |
 
@@ -117,11 +111,9 @@ SDKs are often used as a building block to construct a *Module*.
 [php-icon]: /assets/img/logos/php.svg
 [php-link]: https://packagist.org/packages/swedbank-pay/swedbank-pay-sdk-php
 [php-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-php
-[woo-checkout-link]: https://wordpress.org/plugins/swedbank-pay-checkout/
-[woo-checkout-repo]: https://github.com/SwedbankPay/swedbank-pay-woocommerce-checkout
+[woo-checkout-link]: https://wordpress.org/plugins/swedbank-pay-payment-menu/
+[woo-checkout-repo]: https://github.com/SwedbankPay/swedbank-pay-woocommerce-paymentmenu
 [woo-core-link]: https://packagist.org/packages/swedbank-pay/swedbank-pay-woocommerce-core
 [woo-core-repo]: https://github.com/SwedbankPay/swedbank-pay-woocommerce-core
 [woo-icon]: /assets/img/logos/woocommerce.svg
-[woo-payments-link]: https://wordpress.org/plugins/swedbank-pay-payments/
-[woo-payments-repo]: https://github.com/SwedbankPay/swedbank-pay-woocommerce-payments
 [woocommerce]: https://woocommerce.com/

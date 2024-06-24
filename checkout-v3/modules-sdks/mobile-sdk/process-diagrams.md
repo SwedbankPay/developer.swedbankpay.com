@@ -1,5 +1,6 @@
 ---
 title: Process Diagrams
+permalink: /:path/process-diagrams/
 description: |
   The previous pages have dealt with each component. This page contains
   flowcharts that illustrate the entire process, taking into account all the
@@ -7,7 +8,7 @@ description: |
   It is recommended to read through the earlier pages first.
   This page can them help you keep a picture of the whole system in mind,
   and serve as a quick reference to the different steps and components.
-menu_order: 1400
+menu_order: 1500
 ---
 
 ## Initialization
@@ -187,7 +188,7 @@ left to the backend; similarly the backend is probably interested in storing the
 `id` of the created Payment Order for capture and other possible operations.
 
 At this point the user is interacting with the payment menu; the next step
-depends on the exact payment method chosen.
+depends on the exact payment instrument chosen.
 
 ```mermaid
 sequenceDiagram
@@ -455,10 +456,10 @@ sequenceDiagram
     App ->> User: Report payment result
 ```
 
-{% include iterator.html prev_href="other-features"
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
                          prev_title="Back: Other Features"
-                         next_href="plain-webview"
-                         next_title="Using a Web View Instead" %}
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/plain-webview"
+                         next_title="Next: Plain Web View" %}
 
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content

@@ -22,7 +22,6 @@ periodicity and/or amount varies.
 Please note that you need to do a capture after sending the unscheduled request.
 We have added a capture section at the end of this page for that reason.
 
-
 ## Generating The Token
 
 First, you need an initial transaction where the `unscheduledToken` is generated
@@ -37,15 +36,11 @@ tokens.
 
 The initial request should look like this:
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments HTTP/1.1
+{% capture request_header %}POST /psp/creditcard/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Authorization",
@@ -151,8 +146,13 @@ Content-Type: application/json
         "rejectCorporateCards": false,
         "no3DSecure": false
     }{% endif %}
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -179,7 +179,7 @@ Content-Type: application/json
 |                  | {% f callbackUrl, 2 %}            | `string`      | {% include fields/callback-url.md resource="payment" %}                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |                  | {% f logoUrl, 2 %}                | `string`      | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |                  | {% f termsOfServiceUrl, 2 %}      | `string`      | {% include fields/terms-of-service-url.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| {% icon check %} | {% f payeeInfo %}               | `string`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f payeeInfo %}               | `object`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | {% f payeeId, 2 %}                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | {% f payeeReference, 2 %}         | `string` | {% include fields/payee-reference.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |                  | {% f payeeName, 2 %}              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -189,7 +189,7 @@ Content-Type: application/json
 |                  | {% f payer %}                   | `string`     | The `payer` object, containing information about the payer.                                                                                                                                                                                                                                          |
 |                  | {% f payerReference, 2 %}         | `string`     | {% include fields/payer-reference.md %}                                                                                                                                                                                                                                                           |
 |                  | {% f metadata %}                | `object`      | {% include fields/metadata.md documentation_section="card" %}                                                                                                                                                                                                                                                                                                                                                                                      |
-|                  | {% f cardholder %}              | `object`      | Optional. Cardholder object that can hold information about a buyer (private or company). The information added increases the chance for frictionless flow and is related to {%- if include.documentation_section == 'card' -%}[3-D Secure 2.0][3ds2]{% else %} 3-D Secure 2.0{% endif %}..                                                                                                                                                                                                                                                                                                                                                                                      |
+|                  | {% f cardholder %}              | `object`      | Optional. Cardholder object that can hold information about a buyer (private or company). The information added increases the chance for frictionless flow and is related to 3-D Secure 2.0..                                                                                                                                                                                                                                                                                                                                                                                      |
 |                  | {% f firstName, 2 %}              | `string`      | Optional (increased chance for frictionless flow if set). If buyer is a company, use only `firstName`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |                  | {% f lastName, 2 %}               | `string`      | Optional (increased chance for frictionless flow if set). If buyer is a company, use only `firstName`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |                  | {% f email, 2 %}                  | `string`      | Optional (increased chance for frictionless flow if set)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
@@ -225,7 +225,7 @@ Content-Type: application/json
 |                  | {% f shippingNameIndicator, 3 %}         | `string`      | Optional (increased chance for frictionless flow if set).<br> <br>Indicates if the Cardholder Name on the account is identical to the shipping Name used for this transaction.<br>`01` (Account name identical to shipping name)<br>`02` (Account name different than shipping name)<br>                                                                                                                                                                                                                                                                                          |
 |                  | {% f suspiciousAccountActivity, 3 %}     | `string`      | Optional (increased chance for frictionless flow if set).<br> <br>Indicates whether merchant has experienced suspicious activity (including previous fraud) on the cardholder account.<br>`01` (No suspicious activity has been observed)<br>`02` (Suspicious activity has been observed)<br>                                                                                                                                                                                                                                                                                     |
 |                  | {% f addressMatchIndicator, 3 %}         | `boolean`     | Optional (increased chance for frictionless flow if set)<br> <br> Allows the 3-D Secure Requestor to indicate to the ACS whether the cardholder’s billing and shipping address are the same.                                                                                                                                                                                                                                                                                                                                                                                      |
-|                  | {% f riskIndicator, 2 %}                  | `object`      | This **optional** object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to prompt for {%- if include.documentation_section == 'card' -%}[3-D Secure 2.0 authentication][3ds2]{% else %} 3-D Secure 2.0 authentication{% endif %} of the payer when they are authenticating the purchase.                                                                                                                                                                                                                                                                                                                              |
+|                  | {% f riskIndicator, 2 %}                  | `object`      | This **optional** object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of having to prompt for 3-D Secure 2.0 authentication of the payer when they are authenticating the purchase.                                                                                                                                                                                                                                                                                                                              |
 {% endif -%}
 {%- include risk-indicator-table.md -%}
 {% if full_reference -%}
@@ -242,14 +242,10 @@ Content-Type: application/json
 
 ## Initial Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/creditcard/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -313,8 +309,13 @@ Content-Type: application/json
             "contentType": "application/json"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -323,7 +324,7 @@ Content-Type: application/json
 | {% f payment, 0 %}                         | `object`     | The `payment` object contains information about the specific payment.                                                                                                                                                                                                                                                                                      |
 | {% f id %}                      | `string`     | {% include fields/id.md %}                                                                                                                                                                                                                                                                                                                      |
 | {% f number %}                  | `integer`    | {% include fields/number.md resource="payment" %}                                                                                                                                                           |
-| {% f instrument %}     | `string`     | The payment instrument used in the payment.                                                                                                           |
+| {% f instrument %}     | `string`     | The payment method used in the payment.                                                                                                           |
 | {% f created %}                 | `string`     | The ISO-8601 date of when the payment was created.                                                                                                                                                                                                                                                                                                         |
 | {% f updated %}                 | `string`     | The ISO-8601 date of when the payment was updated.                                                                                                                                                                                                                                                                                                         |
 | {% f state %}                   | `string`     | `Ready`, `Pending`, `Failed` or `Aborted`. Indicates the state of the payment, not the state of any transactions performed on the payment. To find the state of the payment's transactions (such as a successful authorization), see the `transactions` resource or the different specialized type-specific resources such as `authorizations` or `sales`. |
@@ -339,17 +340,17 @@ Content-Type: application/json
 | {% f language %}                | `string`     | {% include fields/language.md %}                                                                                                                                                                                                                                                                                      | {% if documentation_section contains "payment-menu" or documentation_section contains "checkout" %}
 | {% f unscheduledToken %}     | `string`     | The generated unscheduled token, if `operation: Verify`, `operation: UnscheduledPurchase` or `generateUnscheduledToken: true` was used.                                                                                                                                                                  | {% else %}
 | {% f paymentToken %}     | `string`     | The generated payment token, if `operation: Verify`, `operation: UnscheduledPurchase` or `generatePaymentToken: true` was used.                                                                                                                                                                  | {% endif %}
-| {% f prices %}                  | `string`     | The URL to the `prices` resource where all URLs related to the payment can be retrieved.                                                               |
-| {% f transactions %}                  | `string`     | The URL to the `transactions` resource where the information about the payer can be retrieved.                                                        |
-| {% f authorizations %}                  | `string`     | The URL to the `authorizations` resource where the information about the payer can be retrieved.                                                        |
-| {% f captures %}                  | `string`     | The URL to the `captures` resource where the information about the payer can be retrieved.                                                        |
-| {% f reversals %}                  | `string`     | The URL to the `reversals` resource where the information about the payer can be retrieved.                                                        |
-| {% f cancellations %}                  | `string`     | The URL to the `cancellations` resource where the information about the payer can be retrieved.                                                        |
-| {% f urls %}                    | `string`     | The URL to the `urls` resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
-| {% f payeeInfo %}               | `string`     | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                 |
-| {% f payers %}                  | `string`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
+| {% f prices %}                  | `id`     | The URL to the `prices` resource where all URLs related to the payment can be retrieved.                                                               |
+| {% f transactions %}                  | `id`     | The URL to the `transactions` resource where the information about the payer can be retrieved.                                                        |
+| {% f authorizations %}                  | `id`     | The URL to the `authorizations` resource where the information about the payer can be retrieved.                                                        |
+| {% f captures %}                  | `id`     | The URL to the `captures` resource where the information about the payer can be retrieved.                                                        |
+| {% f reversals %}                  | `id`     | The URL to the `reversals` resource where the information about the payer can be retrieved.                                                        |
+| {% f cancellations %}                  | `id`     | The URL to the `cancellations` resource where the information about the payer can be retrieved.                                                        |
+| {% f urls %}                    | `id`     | The URL to the `urls` resource where all URLs related to the payment can be retrieved.                                                                                                                                                                                                                                                                     |
+| {% f payeeInfo %}               | `id`     | The URL to the `payeeInfo` resource where information related to the payee can be retrieved.                                                                                                                                                                                                                                          |
+| {% f payers %}                  | `id`     | The URL to the `payer` resource where the information about the payer can be retrieved.                                                        |
 
-| {% f settings %}                  | `string`     | The URL to the `settings` resource where the information about the payer can be retrieved.                                                        |
+| {% f settings %}                  | `id`     | The URL to the `settings` resource where the information about the payer can be retrieved.                                                        |
 | {% f operations %}     | `array`      | {% include fields/operations.md resource="payment" %}                                                                                              |
 {% endcapture %}
 {% include accordion-table.html content=table %}
@@ -362,15 +363,16 @@ The token can be retrieved by performing a [`GET` towards
 `paid`][paid-resource-model]. It will be visible under `tokens`in the `paid`
 field.
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 As an alternative, you can also retrieve it by using the expand option when you
 `GET` your payment. The `GET` request should look like the one below, with a
@@ -386,15 +388,16 @@ initial payment response, but with an expanded `paid` field.
 
 {% endif %}
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/creditcard/payments/{{ page.payment_order_id }}/?$expand=paid HTTP/1.1
+{% capture request_header %}GET /psp/creditcard/payments/{{ page.payment_order_id }}/?$expand=paid HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## Performing The Unscheduled Purchase
 
@@ -404,20 +407,16 @@ look like this:
 
 ## Unscheduled Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/creditcard/payments HTTP/1.1
+{% capture request_header %}POST /psp/creditcard/payments HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "UnscheduledPurchase",
         "intent": "Authorization",
-        "unscheduledToken": "{{ page.payment_id }}",
+        "paymentToken": "{{ page.payment_id }}",
         "currency": "NOK",
         "amount": 1500,
         "vatAmount": 0,
@@ -445,8 +444,13 @@ Content-Type: application/json
             "payerReference": "AB1234",
         }
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -455,7 +459,7 @@ Content-Type: application/json
 | {% icon check %} | {% f payment, 0 %}                         | `object`      | The payment object                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | {% icon check %} | {% f operation %}               | `string`      | For unscheduled purchases, this needs to be `unscheduledPurchase`. |
 | {% icon check %} | {% f intent %}                  | `string`      | `Authorization`.|
-| {% icon check %} | {% f unscheduledToken %}     | `string`     | The unscheduledToken generated in the initial purchase, if `operation: Verify` or `generateUnscheduledToken: true` was used.                                                                                                                                                                  |
+| {% icon check %} | {% f paymentToken %}     | `string`     | The paymentToken generated in the initial purchase, if `operation: Verify` or `generatePaymentToken: true` was used.                                                                                                                                                                  |
 | {% icon check %} | {% f currency %}                | `string`      | NOK, SEK, DKK, USD or EUR.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | {% icon check %} | {% f amount, 2 %}                 | `integer`     | {% include fields/amount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | {% icon check %} | {% f vatAmount, 2 %}              | `integer`     | {% include fields/vat-amount.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -470,7 +474,7 @@ Content-Type: application/json
 |                  | {% f callbackUrl, 2 %}            | `string`      | {% include fields/callback-url.md resource="payment" %}                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |                  | {% f logoUrl, 2 %}                | `string`      | {% include fields/logo-url.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |                  | {% f termsOfServiceUrl, 2 %}      | `string`      | {% include fields/terms-of-service-url.md %}                                                                                          |
-| {% icon check %} | {% f payeeInfo %}               | `string`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| {% icon check %} | {% f payeeInfo %}               | `object`      | {% include fields/payee-info.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | {% icon check %} | {% f payeeId, 2 %}                | `string`      | This is the unique id that identifies this payee (like merchant) set by Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | {% icon check %} | {% f payeeReference, 2 %}         | `string` | {% include fields/payee-reference.md %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |                  | {% f payeeName, 2 %}              | `string`      | The payee name (like merchant name) that will be displayed when redirected to Swedbank Pay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -484,14 +488,10 @@ Content-Type: application/json
 
 ## Unscheduled Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
   "payment": {
     "id": "/psp/creditcard/payments/5adc265f-f87f-4313-577e-08d3dca1a26c",
     "number": 1234567890,
@@ -509,7 +509,7 @@ Content-Type: application/json
     "initiatingSystemUserAgent": "swedbankpay-sdk-dotnet/3.0.1",
     "userAgent": "Mozilla/5.0...",
     "language": "nb-NO",
-    "unscheduledToken": "{{ page.payment_id }}",
+    "paymentToken": "{{ page.payment_id }}",
     "prices": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/prices" },
     "transactions": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/transactions" },
     "authorizations": { "id": "/psp/creditcard/payments/{{ page.payment_id }}/authorizations" },
@@ -520,8 +520,13 @@ Content-Type: application/json
     "payeeInfo" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payeeInfo" },
     "payers" : { "id": "/psp/creditcard/payments/{{ page.payment_id }}/payers" }
   }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 See the table in the initial purchase response for descriptions.
 
@@ -529,6 +534,5 @@ See the table in the initial purchase response for descriptions.
 
 [delete-token]: {{ features_url }}/optional/delete-token
 [paid-resource-model]: {{ features_url }}/technical-reference/resource-sub-models#paid
-[3ds2]: {{ features_url }}/core/frictionless-payments
 [one-click-payments]: {{ features_url }}/optional/one-click-payments
 [verify]: {{ features_url }}/optional/verify

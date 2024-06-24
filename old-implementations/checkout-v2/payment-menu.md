@@ -1,5 +1,6 @@
 ---
 title: Payment Menu
+permalink: /:path/payment-menu/
 redirect_from: /checkout/payment-menu
 description: |
   **Payment Menu** begins where **Checkin** left off,
@@ -36,16 +37,12 @@ Remember to read up on our [URL resource][urls].
 
 ### Response
 
-The response back should look something like this (abbreviated for brevity):
+The response back should include this (abbreviated for brevity):
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 201 Created
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 201 Created
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}"
     },
@@ -57,8 +54,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+ {% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field          | Type     | Description                                                                        |
@@ -293,12 +295,12 @@ rect rgba(138, 205, 195, 0.1)
 Now that you have completed the Payment Menu integration, you can move on to
 finalizing the payment in the [After Payment section][after-payment].
 
-{% include iterator.html prev_href="checkin"
+{% include iterator.html prev_href="/old-implementations/checkout-v2/checkin"
                          prev_title="Checkin"
-                         next_href="capture"
+                         next_href="/old-implementations/checkout-v2/capture"
                          next_title="Capture" %}
 
-[after-payment]: after-payment
+[after-payment]: /old-implementations/checkout-v2/after-payment
 [guest-payment-menu-image]: /assets/img/checkout/guest-payment-menu.png
 [swedish-login-payment-menu-image]: /assets/img/checkout/swedish-logged-in-payment-menu.png
 [operations]: /old-implementations/checkout-v2/features/technical-reference/operations

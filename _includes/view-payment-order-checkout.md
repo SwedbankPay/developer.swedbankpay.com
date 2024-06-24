@@ -4,8 +4,7 @@ The `view-paymentmenu` operation contains the URL of the JavaScript that needs
 to be set as a `script` element's `src` attribute, either client-side through
 JavaScript or server-side in HTML as shown below.
 
-```html
-<!DOCTYPE html>
+{% capture response_content %}<!DOCTYPE html>
 <html>
     <head>
         <title>Swedbank Pay Checkout is Awesome!</title>
@@ -38,5 +37,10 @@ JavaScript or server-side in HTML as shown below.
             }).open();
         </script>
     </body>
-</html>
-```
+</html>{% endcapture %}
+
+{% include code-example.html
+    title='View Payment Menu'
+    header=response_header
+    json= response_content
+    %}

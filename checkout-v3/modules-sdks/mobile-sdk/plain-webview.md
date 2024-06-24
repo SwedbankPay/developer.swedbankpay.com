@@ -1,5 +1,6 @@
 ---
-title: Plain Webview
+title: Plain Web View
+permalink: /:path/plain-webview/
 description: |
   The **Swedbank Pay Mobile SDK** aims to provide an easy way of integrating
   Swedbank Pay Checkout into a mobile application.
@@ -8,7 +9,7 @@ description: |
   Experience from developing the SDK may still be valuable for integrators
   wishing to show Payments pages in a Web View inside a mobile application.
   This page serves as a repository of that experience.
-menu_order: 1500
+menu_order: 1600
 ---
 
 {% capture disclaimer %}
@@ -50,10 +51,10 @@ your existing web page using Checkout or Payments, and expect to embed it inside
 your mobile application using a web view.
 
 Indeed, on a high level this is what the SDK mobile client components do, in
-addition to providing native Swift and Kotlin APIs to the servie. The SDK
+addition to providing native Swift and Kotlin APIs to the service. The SDK
 internally generates a web page that shows the Checkout payment menu, so the
 developer need not concern themselves with html or other web-specific
-technologies. An exisiting web implementation would not really benefit from the
+technologies. An existing web implementation would not really benefit from the
 extra discoverability and quality-of-life improvements of a mobile-native API,
 so the SDK's value proposition seems to be little benefit for substantial
 reimplementation work.
@@ -118,8 +119,8 @@ Some pages use the DOM Storage API, which must be enabled separately on Android:
 With this setup, you can load to the web view the page that shows the Payment
 Menu or the Payment Seamless View, and see what happens. You should be able to
 see the Swedbank Pay payment interface, and in many cases also complete a
-payment. It is not unlikely, though, that some payment methods will not work as
-expected. Also, you will be more or less stuck after the payment is complete.
+payment. It is not unlikely, though, that some payment instruents will not work
+as expected. Also, you will be more or less stuck after the payment is complete.
 
 {:.code-view-header}
 **iOS**
@@ -354,7 +355,7 @@ eventually execute code like
 
 ## External Applications
 
-Before starting to implement lauching external applications, you should try to
+Before starting to implement launching external applications, you should try to
 get at least one card payment working. With completion observing in place, you
 should be able to complete a payment flow, at least using the External
 Integration environment and its test cards.
@@ -376,7 +377,7 @@ this is a deliberate privacy measure. What can be done, and what also happens to
 be exactly what we want to do, is to attempt to open a url and receive a
 callback telling us whether it succeeded. Nowadays, the recommended way of
 opening external applications is to use Universal Links, anyway, which are, on
-the surface, indistiguishable from web links.
+the surface, indistinguishable from web links.
 
 {:.code-view-header}
 **iOS**
@@ -655,12 +656,13 @@ be opened in your app. This is what the SDK does.
 The SDK does this by having `paymentUrl` return an html page that immediately
 redirects. In some cases the redirect will be blocked, so the page also contains
 a link to the same url, so the user can manually follow the redirect. Now, as
-here we seem to want to have `paymentUrl` be the url loaded in the WebView, this
-does not work out-of-the-box. One option is to override `shouldInterceptRequest`
-in your `WebViewClient`, and special-case the loading of `paymentUrl`. Another
-solution could be loading `paymentUrl` normally, but adding a script to the page
-that checks for a JavaScript interface you provide in the WebView, and it is not
-there, then it would issue the redirect to the intent url.
+here we seem to want to have `paymentUrl` be the url loaded in the Web View,
+this does not work out-of-the-box. One option is to override
+`shouldInterceptRequest` in your `WebViewClient`, and special-case the loading
+of `paymentUrl`. Another solution could be loading `paymentUrl` normally, but
+adding a script to the page that checks for a JavaScript interface you provide
+in the WebView, and it is not there, then it would issue the redirect to the
+intent url.
 
 For reference, the way the SDK handles `paymentUrl`s on Android looks like this
 from the perspective of the backend:
@@ -733,12 +735,12 @@ cases. This acerbates the need for fallback mechanisms.
 The iOS (and possibly Android) SDKs will contain a list of known-good 3DS pages.
 Feel free to use this as a resource in your own implementation.
 
-{% include iterator.html prev_href="process-diagrams"
-                         prev_title="Process Diagrams" %}
+{% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/process-diagrams"
+                         prev_title="Back: Process Diagrams" %}
 
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
 [sdk-paymenturl]: /checkout-v3/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
-[android-autoverify]: https://developer.android.com/training/app-links/verify-site-associations
-[android-intent-scheme]: https://developer.chrome.com/multidevice/android/intents
+[android-autoverify]: https://developer.android.com/training/app-links/verify-android-applinks
+[android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [android-package-visibility]: https://developer.android.com/training/package-visibility
 [android-flag-non-browser]: https://developer.android.com/reference/android/content/Intent#FLAG_ACTIVITY_REQUIRE_NON_BROWSER

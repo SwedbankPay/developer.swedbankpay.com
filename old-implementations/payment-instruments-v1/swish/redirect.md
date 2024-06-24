@@ -2,7 +2,7 @@
 title: Redirect
 redirect_from: /payments/swish/redirect
 description: |
-  Swish is a one-phase payment instrument supported by the
+  Swish is a one-phase payment method supported by the
   major Swedish banks. **Swish Payments Redirect** is where Swedbank
   Pay performs a payment that the payer confirms in the Swish mobile app.
   The payer initiates the payment by supplying the Swish registered mobile
@@ -30,7 +30,7 @@ menu_order: 700
 The payer is redirected to Swedbank Pay hosted pages and prompted
 to insert their phone number to initiate the sales transaction.
 
-Swish is a one-phase payment instrument that is based on sales transactions
+Swish is a one-phase payment method that is based on sales transactions
 **not** involving `capture` or `cancellation` operations.
 
 {:.text-center}
@@ -47,15 +47,11 @@ The `Purchase` example shown below.
 
 ## Redirect Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/swish/payments HTTP/1.1
+{% capture request_header %}POST /psp/swish/payments HTTP/1.1
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "payment": {
         "operation": "Purchase",
         "intent": "Sale",
@@ -98,8 +94,13 @@ Content-Type: application/json
         "paymentRestrictedToAgeLimit": 18,
         "paymentRestrictedToSocialSecurityNumber": "{{ page.consumer_ssn_se }}"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -143,14 +144,10 @@ Content-Type: application/json
 
 ## Redirect Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "payment": {
         "id": "/psp/swish/payments/{{ page.payment_id }}",
         "number": 1234567890,
@@ -196,8 +193,13 @@ Content-Type: application/json
             "rel": "update-payment-abort"
         },
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 ## Redirect Sequence Diagram
 

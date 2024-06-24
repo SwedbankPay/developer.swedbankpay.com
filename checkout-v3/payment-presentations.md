@@ -1,9 +1,10 @@
 ---
-title: Digital Wallets
+title: Payment Presentations
+permalink: /:path/payment-presentations/
 hide_from_sidebar: true
 description: |
-  **An overview of the Digital Wallets we offer, and a list of additional steps
-  you must complete to activate them.**
+  **An overview of what the payment menu has to offer, and additional steps
+  you may have to complete to activate them.**
 menu_order: 400
 ---
 
@@ -16,32 +17,49 @@ rates and new user adoption that comes with it.
 
 ### Domain Verification
 
-**Redirect** integrations does not require a domain verification, as it will
-be hosted on Swedbank Pay's domain.
+To ensure that we can enable Apple Pay for you, there are a few steps you need
+to take. If you're using a Redirect integration, you are all set and can skip
+this step. If you're using a Seamless View integration, you need to do the
+following:
 
-For **Seamless View** integrations, Apple needs to verify also your domain as a
-part of Swedbank Pay's set up process. To do this, you need to host a
-verification file on the following web path:
+1.  Download the [domain file][payex-domain-file] (right click and "Save as").
+    -   Make sure you do not change, edit or manipulate the file in any way,
+    shape or form.
+    -   The file should have **NO EXTENSION**, meaning there should not be any
+    ".txt", ".doc", ".mp4" or any other extension to the file.
 
-`https://example.com/.well-known/apple-developer-merchantid-domain-association`
+2.  Upload the file to the following web path:
+    `https://[DOMAIN-NAME]/.well-known/apple-developer-merchantid-domain-association`
+    -   Replace `[DOMAIN-NAME]` with your own domain.
+    -   If your website is https://example.com, then the site would be
+    `https://example.com/.well-known/apple-developer-merchantid-domain-association`
+    -   If you want to activate Apple Pay on multiple domains, for example
+    `https://ecom.payex.com` and `https://developer.swedbankpay.com`, you need
+    to upload the file to all of the unique domains.
 
-To make sure your file looks correct, you can copy
-[our domain file][payex-domain-file] which is already present on our server.
+3.  Verify that the file has been uploaded correctly by opening the site. You
+    should see a series of letters and numbers.
+    -   You can compare it to our own verification file, found on
+    [this site][swp-file-site].
+    -   If done correctly, they should look identical.
 
-The verification file consists of a hex string which contains a JSON. Opening it
-is OK, but make sure that you **upload it exactly as it is**. We recommend
-opening it as a text file or something similar, and **not** e.g. in Word or an
-editor, as it could result in unwanted formatting changes if you save it. The
-file does not, and should not, have a file extension.
+If you're using our **iOS SDK**, make sure that the `webViewBaseURL` is set to
+the same domain as where you host the file. If you're presenting Seamless View
+payments in a custom **plain web view** implementation in your iOS application,
+you need to make sure that the provided `baseURL` in the call to
+`loadHTMLString(_:baseURL:)` is set to the same domain as where you host the
+file. If not, it may fail to validate, making it so payments with Apple Pay
+may not function. You also need to make sure that Apple Pay scripts are allowed
+to be loaded and executed in the web view (relevant if you're implementing
+`WKNavigationDelegate` and your own
+`webView(_:decidePolicyFor:decisionHandler:)` implementation).
 
-To help you validate that your file looks correct, you can
-[compare it to this][payex-domain-file], which is already present on our server.
-
-**If you are using our iOS SDK**, you need to ensure that the **WebViewBaseURL**
-is set to the exact same domain as where you host the file. Otherwise, it will
-not validate.
-
-This file must be in place before we can activate Apple Pay for you.
+Once the previous steps have been completed, get in touch with us to activate
+Apple Pay. The verification file is a hex string that contains a **JSON**. If
+the file is modified or the file is saved in a different format, this may cause
+the validation to fail. If you have further questions about how to upload the
+file and make it available, contact your domain administrator or provider for
+further instructions and assistance.
 
 ### Accepting Donations
 
@@ -223,8 +241,41 @@ PCI environment for processing. Within the PCI environment, a tokenized
 representation of the card is created, which is then used outside of the PCI
 environment to ensure the customers details are kept safe.
 
+## Trustly
+
+Useful information regarding Trustly in our payment menu.
+
+### Overlay
+
+When using a payment menu integration (including Instrument Mode), Trustly will
+now be opened in a modal. (This is unlike the Trustly payment method
+implementation where it opens inside the same frame). The modal will close once
+the interaction at Trustly is finished.
+
+### Trustly Express
+
+As a part of our Trustly offering, Trustly Express provides an even swifter
+payment process.
+
+Trustly Express is supported by a range of European banks, and the following
+in Sweden and Finland.
+
+**Sweden**: Danske Bank, Handelsbanken, Länsförsäkringar and Nordea.
+
+**Finland**: Danske Bank, Handelsbanken, Nordea, OmaSP, OP, POP Pankki,
+S-Pankki, Säästöpankki and Ålandsbanken.
+
+While it works mostly the same way as the [payer aware payment menu][papm], we
+have two recommendations to make the experience as smooth as possible.
+
+-   Include the first and last name of the payer in the `payer`
+  object.
+
+-   Add the payer's SSN. If you provide it in the `payerReference` field, the
+  SSN has to be hashed.
+
 {% include iterator.html prev_href="/checkout-v3/"
-                         prev_title="Back to Get Started" %}
+                         prev_title="Back to Introduction" %}
 
 [acceptable-use-policy]: https://payments.developers.google.com/terms/aup
 [android-googlepay-brand-guidelines]: https://developers.google.com/pay/api/android/guides/brand-guidelines
@@ -234,13 +285,16 @@ environment to ensure the customers details are kept safe.
 [apple-pay-tc-sign-sweden]: https://signup.swedbankpay.com/se/applepay
 [apple-pay-tc-sign-norway]: https://signup.swedbankpay.com/no/applepay
 [apple-pay-verification-file]: /assets/documents/apple-ecom
-[benevity-donation-setup]: https://www.benevity.org
+[benevity-donation-setup]: https://www.benevity.com
 [google-pay-profile]: https://pay.google.com/business/console/
 [google-pay-tos]: https://payments.developers.google.com/terms/sellertos
 [irtp-request]: https://developers.google.com/pay/api/web/reference/request-objects#IsReadyToPayRequest
 [payex-domain-file]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
 [pd-request]: https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest
+[papm]: /checkout-v3/features/optional/payer-aware-payment-menu
+[restrict]: /checkout-v3/features/optional/payer-restrictions
 [req-con-address]: /checkout-v3/features/optional/request-delivery-info
+[swp-file-site]: https://ecom.payex.com/.well-known/apple-developer-merchantid-domain-association
 [web-googlepay-brand-guidelines]: https://developers.google.com/pay/api/web/guides/brand-guidelines
 [web-googlepay-checklist]: https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist
 [web-googlepay-devdoc]: https://developers.google.com/pay/api/web/

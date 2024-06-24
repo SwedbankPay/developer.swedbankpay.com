@@ -1,5 +1,6 @@
 ---
 title: Capture
+permalink: /:path/capture/
 redirect_from: /checkout/capture
 menu_order: 500
 ---
@@ -14,7 +15,7 @@ cancellation and reversal operations described below.
 
 {% include authorizations-timeout.md %}
 
-{% include iterator.html prev_href="payment-menu"
+{% include iterator.html prev_href="/old-implementations/checkout-v2/payment-menu"
                          prev_title="Payment Menu"
-                         next_href="after-payment"
+                         next_href="/old-implementations/checkout-v2/after-payment"
                          next_title="After Payment" %}

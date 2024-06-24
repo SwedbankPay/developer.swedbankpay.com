@@ -19,22 +19,23 @@ You can only cancel a payment - or part of payment - not yet captured.
 
 ## Cancel Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/cancellations HTTP/1.1
+{% capture request_header %}POST /psp/{{ include.api_resource }}/payments/{{ page.payment_id }}/cancellations HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "transaction": {
         "description": "Test Cancellation",
         "payeeReference": "ABC123"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped .mb-5}
 | {% icon check %}︎ | Field                    | Type         | Description                                                                           |
@@ -51,7 +52,7 @@ documentation_section=include.documentation_section transaction="cancel" %}
 ### Cancel Sequence Diagram
 
 Cancel can only be done on a authorized transaction.
-If you do cancel after doing a part-capture you will cancel the different
+If you do cancel after doing a part-capture you will cancel the difference
 between the capture amount and the authorization amount.
 
 ```mermaid

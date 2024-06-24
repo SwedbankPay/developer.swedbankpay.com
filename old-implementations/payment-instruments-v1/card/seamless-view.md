@@ -116,12 +116,16 @@ is raised with the following event argument object:
 {:.code-view-header}
 **onPaymentCreated event object**
 
-```json
-{
+{% capture response_content %}{
     "id": "/psp/creditcard/payments/{{ page.payment_id }}",
     "instrument": "creditcard",
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='onPaymentCreated event object'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field        | Type     | Description                           |
@@ -211,8 +215,8 @@ card payment:
   that both successful and rejected payments reach completion, in contrast to a
   cancelled payment.
 
-{% include iterator.html prev_href="redirect" prev_title="Redirect"
-next_href="capture" next_title="Capture" %}
+{% include iterator.html prev_href="/old-implementations/payment-instruments-v1/card/redirect" prev_title="Redirect"
+next_href="/old-implementations/payment-instruments-v1/card/capture" next_title="Capture" %}
 
 [purchase]: /old-implementations/payment-instruments-v1/card/features/core/purchase
 [seamless-view-card]: /assets/img/payments/seamless-view-card.png

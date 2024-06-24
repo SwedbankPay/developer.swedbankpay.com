@@ -11,32 +11,30 @@
 {% assign product = product | strip %}
 
 The `paymentorders` resource is used when initiating a payment process through
-{{ product }}. The payment order is a container for the payment instrument
+{{ product }}. The payment order is a container for the payment method
 object selected by the payer. This will generate a payment that is accessed
 through the sub-resources `payments` and `currentPayment`.
 
 ## GET Payment Order Request
 
-{:.code-view-header}
-**Request**
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
+{% capture request_content %}GET /psp/paymentorders/{{ page.payment_order_id }}/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 ## GET Payment Order Response
 
-{:.code-view-header}
-**Response**
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
+{% capture response_content %}{
     "paymentorder": {
         "id": "/psp/paymentorders/{{ page.payment_order_id }}",
         "created": "2018-09-14T13:21:29.3182115Z",
@@ -87,8 +85,13 @@ Content-Type: application/json
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {% capture table %}
 {:.table .table-striped .mb-5}
@@ -112,13 +115,13 @@ Content-Type: application/json
 | {% f transactionOnFileToken %}     | `string`     | The created transactionOnFileToken, if `operation: Verify` and `generateTransactionOnFileToken: true` was used.                                                                                                                                                                  |
 | {% f nonPaymentToken %}         | `string`     | The result of our own card tokenization. Activated in POS for the merchant or merchant group.                                                                                                                                                                                                     |
 | {% f externalNonPaymentToken %} | `string`     | The result of an external tokenization. This value will vary depending on card types, acquirers, customers, etc. For Mass Transit merchants, transactions redeemed by Visa will be populated with PAR. For Mastercard and Amex, it will be our own token. |
-| {% f urls %}           | `string`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
-| {% f payeeInfo %}      | `string`     | {% include fields/payee-info.md %}                                                                                                          |
-| {% f payers %}         | `string`     | The URL to the `payer` resource where information about the payer can be retrieved.                                                                                                                |
-| {% f orderItems %}     | `string`     | {% include fields/metadata.md %}                                                                                                                            |
-| {% f metadata %}       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
-| {% f payments %}       | `string`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
-| {% f currentPayment %} | `string`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
+| {% f urls %}           | `id`     | The URL to the `urls` resource where all URLs related to the payment order can be retrieved.                                                                                                                              |
+| {% f payeeInfo %}      | `id`     | The URL to the `payeeInfo` resource where information related to the payee can be retrieved.                                                                                                      |
+| {% f payers %}         | `id`     | The URL to the `payer` resource where information about the payer can be retrieved.                                                                                                                |
+| {% f orderItems %}     | `id`     | The URL to the `orderItems` resource where information about the order items can be retrieved.                                                                                                                       |
+| {% f metadata %}       | `id`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
+| {% f payments %}       | `id`     | The URL to the `payments` resource where information about all underlying payments can be retrieved.                                                                                                                      |
+| {% f currentPayment %} | `id`     | The URL to the `currentPayment` resource where information about the current – and sole active – payment can be retrieved.                                                                                                |
 | {% f operations %}     | `array`      | {% include fields/operations.md %}                                                                                             |
 {% endcapture %}
 {% include accordion-table.html content=table %}

@@ -1,5 +1,6 @@
 ---
 title: Reversal
+permalink: /:path/reversal/
 description: |
   How to reverse a payment.
 menu_order: 1700
@@ -8,4 +9,4 @@ icon:
   outlined: true
 ---
 
-{% include payment-order-reversal.md %}
+{% include payment-order-reversal-combined.md %}

@@ -27,23 +27,22 @@ instrument Vipps or in the 3-D Secure verification for Credit Card Payments" %}
 It is possible to perform a `GET` request on the `urls` resource to retrieve its
 contents.
 
-{:.code-view-header}
-Request
-
-```http
-GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
+{% capture request_header %}GET /psp/paymentorders/{{ page.payment_order_id }}/urls/ HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
-```
+Content-Type: application/json;version=3.x/2.0     // Version optional for 3.0 and 2.0{% endcapture %}
 
-{:.code-view-header}
-Response
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-{
+{% capture response_header %}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8; version=3.x/2.0
+api-supported-versions: 3.x/2.0{% endcapture %}
+
+{% capture response_content %}{
     "paymentorder": "/psp/paymentorders/{{ page.payment_order_id }}",
     "urls": {
         "id": "/psp/payments/{{ page.payment_order_id }}/urls",
@@ -55,8 +54,13 @@ Content-Type: application/json
         "logoUrl": "http://merchant.com/path/to/logo.png",
         "termsOfServiceUrl": "https://example.com/termsandconditions.pdf"
     }
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                     | Type     | Description                                                                                                                                                                                                                                                                                              |

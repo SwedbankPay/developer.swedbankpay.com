@@ -1,5 +1,6 @@
 ---
 title: Checkout – Checkin
+permalink: /:path/checkin/
 redirect_from: /checkout/checkin
 description: |
   Swedbank Pay Checkout consists of two parts:
@@ -23,22 +24,23 @@ directly to step 3, which you will find on the next page." %}
 
 ## Checkin Request
 
-{:.code-view-header}
-**Request**
-
-```http
-POST /psp/consumers HTTP/1.1
+{% capture request_header %}POST /psp/consumers HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
-Content-Type: application/json
+Content-Type: application/json{% endcapture %}
 
-{
+{% capture request_content %}{
     "operation": "initiate-consumer-session",
     "language": "sv-SE",
     "shippingAddressRestrictedToCountryCodes" : ["NO", "SE", "DK"],
     "requireShippingAddress": true
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Request'
+    header=request_header
+    json= request_content
+    %}
 
 {:.table .table-striped}
 |     Required     | Field                                     | Type     | Description                                                                                                                            |
@@ -52,11 +54,7 @@ Content-Type: application/json
 
 When the request has been sent, a response containing an array of operations that can be acted upon will be returned:
 
-{:.code-view-header}
-**Response**
-
-```jsonc
-{
+{% capture response_content %}{
     "token": "7e380fbb3196ea76cc45814c1d99d59b66db918ce2131b61f585645eff364871",
     "operations": [
         {   // Deprecated operation. Do not use!
@@ -72,8 +70,13 @@ When the request has been sent, a response containing an array of operations tha
             "contentType": "application/javascript"
         }
     ]
-}
-```
+}{% endcapture %}
+
+{% include code-example.html
+    title='Response'
+    header=response_header
+    json= response_content
+    %}
 
 {:.table .table-striped}
 | Field                   | Type     | Description                                                                                                                                       |
@@ -194,7 +197,7 @@ access them with our script." %}
 
 With the scripts loading in after the entire page is loaded, we can access the
 `<div>` container that the Checkin will be hosted in. When everything has
-finished loading, you should see something like this:
+finished loading, you should see this:
 
 {:.text-center}
 ![Consumer UI Start Page][checkin-start]{:width="425" height="275"}
@@ -287,7 +290,7 @@ and its duration.
 
 {% include iterator.html prev_href="./"
                          prev_title="Introduction"
-                         next_href="payment-menu"
+                         next_href="/old-implementations/checkout-v2/payment-menu"
                          next_title="Payment Menu" %}
 
 [checkin-address]: /assets/img/checkout/checkin-address.png
@@ -295,6 +298,6 @@ and its duration.
 [checkin-options]: /assets/img/checkout/checkin-options.png
 [checkin-ssn]: /assets/img/checkout/checkin-ssn.png
 [checkin-events]: /old-implementations/checkout-v2/features/technical-reference/checkin-events
-[data-protection]: /checkout-v3/resources/data-protection#paymentorder-consumer-data
-[payment-menu]: payment-menu
+[data-protection]: /old-implementations/checkout-v2/data-protection#paymentorder-consumer-data
+[payment-menu]: /old-implementations/checkout-v2/payment-menu
 [iso-3166]: https://www.iso.org/iso-3166-country-codes.html
