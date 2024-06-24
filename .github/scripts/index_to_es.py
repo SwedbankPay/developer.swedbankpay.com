@@ -8,7 +8,7 @@ import openai
 # Elasticsearch Configuration
 es_host = os.getenv('ELASTICSEARCH_URL')
 es_api_key = os.getenv('ELASTICSEARCH_API_KEY')
-index_name = 'data-ecom.developer-6' # or another name if you prefer
+index_name = 'data-ecom.developer-6'  # or another name if you prefer
 
 # OpenAI Configuration
 openai.api_key = os.getenv('OPENAI_EMBEDDING_API_KEY')
@@ -31,7 +31,7 @@ except Exception as e:
 def get_embeddings(text):
     response = openai.Embedding.create(
         model="text-embedding-3-small",
-        input=text
+        input=[text]
     )
     embeddings = response['data'][0]['embedding']
     return embeddings
