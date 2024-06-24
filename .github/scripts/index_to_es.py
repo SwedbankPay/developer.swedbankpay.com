@@ -46,20 +46,25 @@ for html_file in glob('./_site/checkout-v3/**/*.html'):
     content = extract_content_from_html(doc_content)
 
     #if content is longer than 10000 characters, split it into chunks based on 15000 characters and then find nearest whitespace to split the content
-    if len(content) > 15000:
-        chunks = [content[i:i+15000] for i in range(0, len(content), 15000)]
+    if len(content) > 20000:
+        print(f"Content is too long, splitting into chunks...")
+        chunks = [content[i:i+20000]
+        doc_id = f"/{html_file}_{i}"
+        for i in range(0, len(content), 20000)]
     else:
         chunks = [content]
+        doc_id = html_file
     for chunk in chunks:
         embedding = get_embedding(chunk)
 
         document = {
-            'id': html_file,
+            'id': doc_id,
             'url': f"/{html_file.replace('./_site/', '')}",
             'title': title,
             'text': chunk,
             'embedding': embedding
         }
         client.index(index=index_name, id=document['id'], body=document)
+        print(f"Indexed {document['url']}")
 
 print("Indexing completed.")
