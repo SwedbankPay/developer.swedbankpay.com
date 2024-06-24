@@ -39,19 +39,15 @@ def extract_content_from_html(html_content):
 
 # Iterate over generated HTML files and index them
 for html_file in glob('./_site/checkout-v3/**/*.html'):
+    print(f"Indexing {html_file}...")
     with open(html_file, 'r', encoding='utf-8') as file:
         doc_content = file.read()
     title = BeautifulSoup(doc_content, 'html.parser').title.string if BeautifulSoup(doc_content, 'html.parser').title else "Unknown Title"
     content = extract_content_from_html(doc_content)
 
     #if content is longer than 10000 characters, split it into chunks based on 15000 characters and then find nearest whitespace to split the content
-    if len(content) > 10000:
+    if len(content) > 15000:
         chunks = [content[i:i+15000] for i in range(0, len(content), 15000)]
-        for i, chunk in enumerate(chunks):
-            if i < len(chunks) - 1:
-                chunks[i] = chunk[:chunk.rfind(' ')]
-            else:
-                chunks[i] = chunk
     else:
         chunks = [content]
     for chunk in chunks:
