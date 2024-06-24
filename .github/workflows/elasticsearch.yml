@@ -15,8 +15,8 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.9
-
+        ruby-version: 2.7
+        
     - name: Install required gems
       run: |
         gem install nokogiri elasticsearch
@@ -36,8 +36,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install beautifulsoup4 elasticsearch openai
 
-    - name: Index Processed HTML files to Elasticsearch
+    - name: Index Processed HTML files to Elasticsearch using ruby
       run: ruby .github/scripts/index_to_es.rb
       env:
         ELASTICSEARCH_URL: https://${{ secrets.ELASTICSEARCH_HOST }}
         ELASTICSEARCH_API_KEY: ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}
+
+    #- name: Index Processed HTML files to Elasticsearch
+      #run: python .github/scripts/index_to_es.py
+      #env:
+        #ELASTICSEARCH_URL: https://${{ secrets.ELASTICSEARCH_HOST }}
+        #ELASTICSEARCH_API_KEY: ${{ secrets.ELASTICSEARCH_CLOUD_API_KEY_DEV }}
+        #OPENAI_EMBEDDING_API_KEY: ${{ secrets.OPENAI_EMBEDDING_API_KEY }}
