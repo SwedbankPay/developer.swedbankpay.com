@@ -58,7 +58,7 @@ for html_file in html_files:
 
         document = {
             'id': doc_id,
-            'url': f"/{html_file.replace('./_site/', '')}",
+            'url': f"/{html_file.relative_to('./_site')}",
             'title': title,
             'text': chunk,
             'embedding': embedding
