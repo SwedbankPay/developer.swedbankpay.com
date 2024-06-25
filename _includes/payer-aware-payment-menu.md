@@ -447,9 +447,6 @@ Remember to also set `disableStoredPaymentDetails` to `true`.
 This option will not work with `Verify`, and will result in a validation error
 if you try.
 
-{:.code-view-header}
-**Payment Details Consent Checkbox**
-
 {% capture request_content %}{
  "paymentorder": {
     "enablePaymentDetailsConsentCheckbox": true,
@@ -489,7 +486,7 @@ single token][delete-tokens] if you wish to do that.
 Querying with a `GET` request will give you a response containing all tokens and
 the operation(s) available for them.
 
-{% capture request_header %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
+{% capture request_content %}GET /psp/paymentorders/payerownedtokens/<payerReference> HTTP/1.1
 Host: {{ page.api_host }}
 Authorization: Bearer <AccessToken>
 Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0{% endcapture %}
