@@ -744,7 +744,6 @@
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/one-click-payments/#one-click-request-displaying-all-cards">One-Click Request Displaying All Cards</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/one-click-payments/#one-click-request-displaying-a-specific-card">One-Click Request Displaying A Specific Card</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox">Disable Store Details and Toggle Consent Checkbox</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/optional/one-click-payments/#how-it-looks">How It Looks</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/one-click-payments/#delete-payment-token">Delete Payment Token</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/one-click-payments/#delete-payment-token-request">Delete Payment Token Request</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/one-click-payments/#delete-payment-token-response">Delete Payment Token Response</a></li>
@@ -2536,7 +2535,6 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/features/optional/one-click-payments#returning-purchases">Returning Purchases</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/features/optional/one-click-payments#one-click-request-displaying-all-cards">One-Click Request Displaying All Cards</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/features/optional/one-click-payments#one-click-request-displaying-a-specific-card">One-Click Request Displaying A Specific Card</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/features/optional/one-click-payments#how-it-looks">How It Looks</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/features/optional/one-click-payments#delete-payment-token">Delete Payment Token</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/features/optional/one-click-payments#delete-payment-token-request">Delete Payment Token Request</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/card/features/optional/one-click-payments#delete-payment-token-response">Delete Payment Token Response</a></li>
@@ -3082,7 +3080,6 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/invoice/features/optional/one-click-payments#returning-purchases">Returning Purchases</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/invoice/features/optional/one-click-payments#one-click-request-displaying-all-cards">One-Click Request Displaying All Cards</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/invoice/features/optional/one-click-payments#one-click-request-displaying-a-specific-card">One-Click Request Displaying A Specific Card</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/invoice/features/optional/one-click-payments#how-it-looks">How It Looks</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/invoice/features/optional/one-click-payments#delete-payment-token">Delete Payment Token</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/invoice/features/optional/one-click-payments#delete-payment-token-request">Delete Payment Token Request</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-instruments-v1/invoice/features/optional/one-click-payments#delete-payment-token-response">Delete Payment Token Response</a></li>
@@ -5170,7 +5167,6 @@
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/optional/one-click-payments/#returning-purchases">Returning Purchases</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/optional/one-click-payments/#one-click-request-displaying-all-cards">One-Click Request Displaying All Cards</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/optional/one-click-payments/#one-click-request-displaying-a-specific-card">One-Click Request Displaying A Specific Card</a></li>
-<li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/optional/one-click-payments/#how-it-looks">How It Looks</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/optional/one-click-payments/#delete-payment-token">Delete Payment Token</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/optional/one-click-payments/#delete-payment-token-request">Delete Payment Token Request</a></li>
 <li class="nav-leaf"><a href="/old-implementations/payment-menu-v2/features/optional/one-click-payments/#delete-payment-token-response">Delete Payment Token Response</a></li>
@@ -7212,12 +7208,7 @@ single token</a> if you wish to do that.</p>
 the operation(s) available for them.</p>
 
 <p class="code-view-header">
-    Request
-    
-    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value="GET /psp/paymentorders/payerownedtokens/&lt;payerReference&gt; HTTP/1.1
-Host: api.externalintegration.payex.com
-Authorization: Bearer &lt;AccessToken&gt;
-Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0" onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
+    GET Tokens Request
     
 </p>
 
@@ -7227,24 +7218,11 @@ Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/paymentorders/payerownedtokens/&lt;payerReference&gt;</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
-<span class="na">CContent-Type</span><span class="p">:</span> <span class="s">application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0 </span>
 </pre></td>
-</tr></tbody></table></code></pre></div></div>
-
-<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
-<td class="code-view-numbers gl"><pre class="lineno">1
-2
-3
-4
-</pre></td>
-<td class="code-view-code"><pre><span class="err">GET</span><span class="w"> </span><span class="err">/psp/paymentorders/payerownedtokens/&lt;payerReference&gt;</span><span class="w"> </span><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w">
-</span><span class="na">Host</span><span class="p">:</span><span class="w"> </span><span class="err">api.externalintegration.payex.com</span><span class="w">
-</span><span class="na">Authorization</span><span class="p">:</span><span class="w"> </span><span class="err">Bearer</span><span class="w"> </span><span class="err">&lt;AccessToken&gt;</span><span class="w">
-</span><span class="err">Content-</span><span class="na">Type</span><span class="p">:</span><span class="w"> </span><span class="err">application/json;version=</span><span class="mi">3</span><span class="err">.x/</span><span class="mf">2.0</span><span class="w">      </span><span class="c1">// Version optional for 3.0 and 2.0</span><span class="w">
-</span></pre></td>
 </tr></tbody></table></code></pre></div></div>
     
       <h2 id="get-tokens-response">
