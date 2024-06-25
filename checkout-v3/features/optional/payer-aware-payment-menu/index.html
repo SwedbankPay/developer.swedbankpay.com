@@ -7102,8 +7102,6 @@ Remember to also set <code class="language-html highlighter-rouge">disableStored
 <p>This option will not work with <code class="language-html highlighter-rouge">Verify</code>, and will result in a validation error
 if you try.</p>
 
-<p class="code-view-header"><strong>Payment Details Consent Checkbox</strong></p>
-
 <p class="code-view-header">
     Payment Details Consent Checkbox
     
@@ -7216,12 +7214,10 @@ the operation(s) available for them.</p>
 <p class="code-view-header">
     Request
     
-    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
- "paymentorder": {
-    "enablePaymentDetailsConsentCheckbox": true,
-    "disableStoredPaymentDetails": true,
-  }
-}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value="GET /psp/paymentorders/payerownedtokens/&lt;payerReference&gt; HTTP/1.1
+Host: api.externalintegration.payex.com
+Authorization: Bearer &lt;AccessToken&gt;
+Content-Type: application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0" onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
     
 </p>
 
@@ -7231,10 +7227,10 @@ the operation(s) available for them.</p>
 3
 4
 </pre></td>
-<td class="code-view-code"><pre><span class="nf">GET</span> <span class="nn">/psp/paymentorders/payerownedtokens/&lt;payerReference&gt;</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0</span>
+<span class="na">CContent-Type</span><span class="p">:</span> <span class="s">application/json;version=3.x/2.0      // Version optional for 3.0 and 2.0</span>
 </pre></td>
 </tr></tbody></table></code></pre></div></div>
 
@@ -7243,15 +7239,11 @@ the operation(s) available for them.</p>
 2
 3
 4
-5
-6
 </pre></td>
-<td class="code-view-code"><pre><span class="p">{</span><span class="w">
- </span><span class="nl">"paymentorder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"enablePaymentDetailsConsentCheckbox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"disableStoredPaymentDetails"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<td class="code-view-code"><pre><span class="err">GET</span><span class="w"> </span><span class="err">/psp/paymentorders/payerownedtokens/&lt;payerReference&gt;</span><span class="w"> </span><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w">
+</span><span class="na">Host</span><span class="p">:</span><span class="w"> </span><span class="err">api.externalintegration.payex.com</span><span class="w">
+</span><span class="na">Authorization</span><span class="p">:</span><span class="w"> </span><span class="err">Bearer</span><span class="w"> </span><span class="err">&lt;AccessToken&gt;</span><span class="w">
+</span><span class="err">Content-</span><span class="na">Type</span><span class="p">:</span><span class="w"> </span><span class="err">application/json;version=</span><span class="mi">3</span><span class="err">.x/</span><span class="mf">2.0</span><span class="w">      </span><span class="c1">// Version optional for 3.0 and 2.0</span><span class="w">
 </span></pre></td>
 </tr></tbody></table></code></pre></div></div>
     
