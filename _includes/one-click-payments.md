@@ -377,15 +377,6 @@ in a validation error.
 
 {% endif %}
 
-## How It Looks
-
-{% include alert.html type="informative" icon="info" body="
-When redirecting to Swedbank Pay the payment page will be
-prefilled with the payer's card details. See example below." %}
-
-{:.text-center}
-![One click payment page][one-click-image]
-
 ## Delete Payment Token
 
 If you need to delete a `paymentToken`, you have two options. The first is by

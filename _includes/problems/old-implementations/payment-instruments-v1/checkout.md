@@ -261,9 +261,6 @@ card brand:
 *   MasterCard - 10 failed payment attempts allowed during a period of **24 hours**.
 *   Visa - 15 failed payment attempts allowed during a period of **30 days**.
 
-Note that all of the attempts has to get a failed response to be added to the
-limit quota - if a transaction goes through successfully, the quota will reset.
-
 The other limitation that will be implemented is in the case that Visa or
 Mastercard gives such a response that is flagged as "Do Not Retry" in accordance
 to Visa and MasterCard regulations. This response is given in the cases that
