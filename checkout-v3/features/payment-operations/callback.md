@@ -1,6 +1,7 @@
 ---
 title: Callback
 permalink: /:path/callback/
+redirect_from: /checkout-v3/features/core/callback/
 description: |
   Receive asynchronous, server-to-server updates from Swedbank Pay when
   transactions are performed on a payment.

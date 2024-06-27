@@ -1,11 +1,21 @@
 {%- capture features_url -%}{%- include utils/documentation-section-url.md href='/features' -%}{%- endcapture -%}
 {%- capture cancel_url -%}
+    {%- if features_url contains "checkout-v3" -%}
+        {%- include utils/documentation-section-url.md
+        href='/features/payment-operations/cancel' -%}
+    {%- else -%}
     {%- include utils/documentation-section-url.md
         href='/features/core/cancel' -%}
+    {%- endif -%}
 {%- endcapture -%}
 {%- capture capture_url -%}
+    {%- if features_url contains "checkout-v3" -%}
+        {%- include utils/documentation-section-url.md
+        href='/features/payment-operations/' -%}
+    {%- else -%}
     {%- include utils/documentation-section-url.md
         href='/features/core/' -%}
+    {%- endif -%}
     {%- if features_url contains "payment-instruments" -%}
         capture
     {%- else -%}

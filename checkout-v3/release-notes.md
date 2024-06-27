@@ -418,7 +418,7 @@ and integrations. There are a couple of other new additions as well:
 *   Added a new [card error code][card-error-codes] and restructured the tables.
 *   Fleshed out the [Unscheduled Purchase][unscheduled-mit] section.
 *   Fleshed out the [Recur][recur] section.
-*   Moved the [callback][callback] section to core features.
+*   Moved the [callback][callback] section to Payment Operations.
 *   Typos and minor bug fixes in code examples and tables.
 
 ## 16 March 2022
@@ -1029,8 +1029,8 @@ more convenient for both the integration and the payer.
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [btb]: /checkout-v3/features/balancing-the-books/
-[callback]: /checkout-v3/features/core/callback
-[callback-3-1]: /checkout-v3/features/core/callback#callback-example-v31
+[callback]: /checkout-v3/features/payment-operations/callback
+[callback-3-1]: /checkout-v3/features/payment-operations/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
 [card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
 [card-payment-url]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-url

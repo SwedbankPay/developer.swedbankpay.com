@@ -131,4 +131,4 @@ Merchant -->>- Payer: Show Purchase complete
                          next_title="Post-Purchase v3.1" %}
 
 [redirect-payments-only-menu]: /assets/img/redirect-wcag.png
-[payments-callback]: /checkout-v3/features/core/callback
+[payments-callback]: /checkout-v3/features/payment-operations/callback
