@@ -202,12 +202,12 @@ compiled relevant documentation below.
 *   Post-purchase: [Capture][capture], [Cancel][cancel], [Reversal][reversal].
 
 [basic-request]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
-[callback]: /checkout-v3/features/core/callback
-[cancel]: /checkout-v3/features/core/cancel
-[capture]: /checkout-v3/features/core/payment-order-capture
+[callback]: /checkout-v3/features/payment-operations/callback
+[cancel]: /checkout-v3/features/payment-operations/cancel
+[capture]: /checkout-v3/features/payment-operations/payment-order-capture
 [delete-token]: /checkout-v3/features/optional/delete-token
 [paid]: https://api.externalintegration.payex.com/psp/paymentorders/<PaymentOrderIdHere>/paid
 [recur]: /checkout-v3/features/optional/recur
-[reversal]: /checkout-v3/features/core/reversal
+[reversal]: /checkout-v3/features/payment-operations/reversal
 [unscheduled]: /checkout-v3/features/optional/unscheduled
 [verify]: /checkout-v3/features/optional/verify
