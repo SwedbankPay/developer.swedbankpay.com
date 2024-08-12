@@ -288,20 +288,14 @@ returned if the quota for the period gets to 5 attempts remaining, as follows:
     "title": "SuspensionWarning. The card might be blocked.",
     "status": 403,
     "detail": "5 attempts left before the card is blocked.",
-    "problems": [{
-            "name": "ExternalResponse",
-            "description": "Forbidden-AuthenticationRequired"
-        }, {
-            "name": "SuspensionWarning",
-            "description": "5 attempts left before the card is blocked."
-        }, {
-            "name": "AUTHENTICATION_REQUIRED",
-            "description": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5"
-        }, {
-            "name": "Component",
-            "description": "pospay-ecommerce-financial-service"
-        }
-    ]
+    "suspension": {
+            "attempts": 12,
+            "remaining": 3,
+            "product": "VISA",
+            "acquirerCode": O5",
+            "acquirerDetail": AUTHENTICATION_REQUIRED",
+            "state": "WARNING"
+    }
 }{% endcapture %}
 
 {% include code-example.html
