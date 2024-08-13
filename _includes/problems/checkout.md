@@ -292,8 +292,8 @@ returned if the quota for the period gets to 5 attempts remaining, as follows:
             "attempts": 12,
             "remaining": 3,
             "product": "VISA",
-            "acquirerCode": O5",
-            "acquirerDetail": AUTHENTICATION_REQUIRED",
+            "acquirerCode": "O5",
+            "acquirerDetail": "AUTHENTICATION_REQUIRED",
             "state": "WARNING"
     }
 }{% endcapture %}
