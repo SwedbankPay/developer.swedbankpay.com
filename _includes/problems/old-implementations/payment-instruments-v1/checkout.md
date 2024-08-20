@@ -284,7 +284,7 @@ When it comes to Excessive Reattempts, the new response messages will be
 returned if the quota for the period gets to 5 attempts remaining, as follows:
 
 {% capture response_content %}{
-    "type": "https://api.payex.com/psp/errordetail/creditcard/suspensionwarning",
+    "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
     "title": "SuspensionWarning. The card might be blocked.",
     "status": 403,
     "detail": "5 attempts left before the card is blocked.",
@@ -383,21 +383,16 @@ Furthermore, a new response is added, being returned in cases where the
 transaction is declined, but might be accepted after modifications:
 
 {% capture response_content %}{
-    "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererrormodificationsrequired",
-    "title": "Modifications required.",
+    "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
+    "title": "AUTHENTICATION_REQUIRED",
     "status": 403,
-    "detail": "The attempt is rejected. Modifications required.",
-    "problems": [{
-            "name": "ExternalResponse",
-            "description": "Forbidden-AcquirerErrorModificationsRequired"
-        }, {
-            "name": "REJECTED_BY_ACQUIRER_MODIFICATIONS_REQUIRED",
-            "description": "TOKEN04.ERR_FLG received in response, response-code: 05"
-        }, {
-            "name": "Component",
-            "description": "pospay-ecommerce-financial-service"
-        }
-    ]
+    "detail": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5, hostId: 20, hostName: PayEx Test",
+    "modification": {
+        "required": "YES",
+        "reason": "AUTHENTICATION_REQUIRED",
+        "acquirerCode": "O5",
+        "acquirerDetail": "AUTHENTICATION_REQUIRED"
+    }
 }{% endcapture %}
 
 {% include code-example.html
