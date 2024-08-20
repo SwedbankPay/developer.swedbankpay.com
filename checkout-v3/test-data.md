@@ -213,7 +213,7 @@ The amounts that can be used to trigger error codes
 | `900362` | `REJECTED_BY_ACQUIRER`                    | Unknown error, response-code: 62                |
 | `900391` | `ACQUIRER_HOST_OFFLINE`                   | Acquirer host offline, response-code: 91        |
 | `952400` | `DONOTRETRY`                              | Transaction declined, do not retry              |
-| `952501` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
+| `952507` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
 | `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded       |
 | `900305` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded     |
 
