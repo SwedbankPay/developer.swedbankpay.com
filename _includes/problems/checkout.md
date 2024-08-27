@@ -259,6 +259,7 @@ method within a specified period The limitation in question varies based on the
 card brand:
 
 *   MasterCard - 10 failed payment attempts allowed during a period of **24 hours**.
+*   MasterCard - 35 failed payment attempts allowed during a period of **30 days**.
 *   Visa - 15 failed payment attempts allowed during a period of **30 days**.
 
 The other limitation that will be implemented is in the case that Visa or
@@ -267,8 +268,8 @@ to Visa and MasterCard regulations. This response is given in the cases that
 they deem the transaction to never be possible to be valid - as an example, if
 the card no longer exists, and thus there is no point in retrying.
 
-In these cases, the card will be blocked immediately and no further attempts are
-allowed.
+In these cases, the card will be blocked immediately and no further attempts
+allowed. This block will be active for **30 days** for both Visa and MasterCard.
 
 Both of these limitations are based on the combination of the acquiring
 agreement that the transaction was initiated from, and the PAN of the card that
