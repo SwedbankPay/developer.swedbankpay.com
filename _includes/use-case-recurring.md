@@ -2,9 +2,7 @@
 ## Supported Payment Methods
 
 Looking to get started with recurring services? They are currently supported
-in Digital Payments using these payment methods:
-
-*   Card payments
+using card payments.
 
 ## Step 1: Create a Payment Order
 
