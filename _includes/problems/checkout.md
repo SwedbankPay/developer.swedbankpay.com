@@ -281,6 +281,10 @@ the new one will be as well (until the period resets). This marks the importance
 of having such a logic in place that limits reattempts before the block actually
 takes place - this is where the new, clearer response messages will help.
 
+**Please note that the limitations of excessive reattempts are present in both**
+**test and productions environments.** We recommend having two test cards
+available if you are testing this functionality.
+
 When it comes to Excessive Reattempts, the new response messages will be
 returned if the quota for the period gets to 5 attempts remaining, as follows:
 
