@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/SwedbankPay/developer.swedbankpay.com",
   "dependencies": {
-    "npm": "^10.8.1"
+    "npm": "^10.8.3"
   },
   "devDependencies": {
     "braces": "^3.0.3",
@@ -96,6 +96,6 @@
     "typographic-em-dashes": "^1.0.2",
     "typographic-en-dashes": "^1.0.1",
     "typographic-single-spaces": "^1.0.2",
-    "unified": "^11.0.4"
+    "unified": "^11.0.5"
   }
 }

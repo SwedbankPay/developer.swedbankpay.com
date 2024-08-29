@@ -1,7 +1,7 @@
 ---
 title: Terminology
 permalink: /:path/terminology/
-menu_order: 9
+menu_order: 12
 ---
 
 ### 0-9
@@ -96,7 +96,7 @@ menu_order: 9
 {:.table .table-striped}
 | **Verify**                      | The payment operation that initiates a [verification][verify-url] payment process. It is a payment that lets you post verifications to confirm the validity of card information, without reserving or charging any amount. This option is used to generate a payment- or recurrence token, that can be used in a recurring payments scenarios or for one-clickpayments, without charging the card in the process.                                                                                                                                                                                                                                                           |
 
-[callback-url]:/checkout-v3/features/core/callback/
+[callback-url]:/checkout-v3/features/payment-operations/callback/
 [cancel-url]: /checkout-v3/get-started/post-purchase-3-1/#cancel-v31
 [checkout-url]: /old-implementations/checkout-v2/
 [common-headers]: /checkout-v3/get-started/fundamental-principles#headers

@@ -8,6 +8,34 @@ menu_order: 7
 release_notes: true
 ---
 
+## 29 August 2024
+
+### Version 5.3.1
+
+We are closing of August with a mellow, small release after being gone for
+summer, before gearing up for fall.
+
+The Features restructuring continues with Core Features being renamed to
+[Payment Operations][pay-op], and moving [Corporate Payment Menu][cpm] to
+Customize the Payment UI.
+
+We have added the [recurring][ruc] and [one-click][1cuc] use cases to the
+sidebar for easier access.
+
+As a part of our project to have error messages with better human readable
+information, the [Excessive Reattempts][ex-re] responses for
+`Modifications Required` and `Suspension Warning` got a facelift. The type and
+title field has been changed to `authenticationrequired`, and the `problems`
+node has been replaced by a `modification` and `suspension` node respectively,
+filled with information directly from POS.
+
+The [magic amount][magic-amount] for triggering the `modifications required`
+error has been changed to `952507`.
+
+We have also added info about a newly implemented MasterCard reattempt rule. In
+addition to a PAN being blocked after 10 attempts in 24 hours, there is also a
+limit of 35 failed attempts in 30 days.
+
 ## 18 June 2024
 
 ### Version 5.3.0
@@ -418,7 +446,7 @@ and integrations. There are a couple of other new additions as well:
 *   Added a new [card error code][card-error-codes] and restructured the tables.
 *   Fleshed out the [Unscheduled Purchase][unscheduled-mit] section.
 *   Fleshed out the [Recur][recur] section.
-*   Moved the [callback][callback] section to core features.
+*   Moved the [callback][callback] section to Payment Operations.
 *   Typos and minor bug fixes in code examples and tables.
 
 ## 16 March 2022
@@ -1029,8 +1057,8 @@ more convenient for both the integration and the payer.
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
 [btb]: /checkout-v3/features/balancing-the-books/
-[callback]: /checkout-v3/features/core/callback
-[callback-3-1]: /checkout-v3/features/core/callback#callback-example-v31
+[callback]: /checkout-v3/features/payment-operations/callback
+[callback-3-1]: /checkout-v3/features/payment-operations/callback#callback-example-v31
 [card-delete-token]: /old-implementations/payment-instruments-v1/card/features/optional/delete-token
 [card-error-codes]: /old-implementations/payment-instruments-v1/card/features/technical-reference/problems
 [card-payment-url]: /old-implementations/payment-instruments-v1/card/features/technical-reference/payment-url
@@ -1066,6 +1094,7 @@ more convenient for both the integration and the payer.
 [contact-us]: /#front-page-contact-partners
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
 [core-features]: /old-implementations/checkout-v2/features/core/
+[cpm]: /checkout-v3/features/customize-ui/corporate-limited-menu/
 [credit-card-abort]: /old-implementations/payment-instruments-v1/card/after-payment#abort
 [custom-styling]: /checkout-v3/features/customize-ui/custom-styling
 [cuspay]: /checkout-v3/features/customize-payments/
@@ -1080,6 +1109,7 @@ more convenient for both the integration and the payer.
 [eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
 [error-invoice]: /checkout-v3/features/technical-reference/problems/#invoice-problems
 [expand-first]: /checkout-v3/features/customize-ui/expand-method/
+[ex-re]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [mac]: /old-implementations/checkout-v2/features/optional/mac
 [fa]: /checkout-v3/features/technical-reference/resource-sub-models#failedattempts
 [features]: /checkout-v3/features
@@ -1099,6 +1129,7 @@ more convenient for both the integration and the payer.
 [ios-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#ios
 [ios-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/ios
 [mac-checkout]: /old-implementations/checkout-v2/features/optional/mac
+[magic-amount]: /checkout-v3/test-data/#magic-amounts-error-testing-using-amounts
 [mig-guide]: /checkout-v3/migration-guide/
 [mobile-card-payments]: /old-implementations/payment-instruments-v1/card/mobile-card-payments
 [mobile-pay]: /old-implementations/payment-instruments-v1/mobile-pay
@@ -1123,6 +1154,7 @@ more convenient for both the integration and the payer.
 [payout]: /checkout-v3/features/optional/payout
 [payout-patch]: /checkout-v3/features/optional/payout#patch-verify-request
 [partners]: /#front-page-contact-partners
+[pay-op]: /checkout-v3/features/payment-operations/
 [pax-net-sdk]: https://developer.stage.swedbankpay.com/pax-terminal/NET/
 [pax-terminal]: /pax-terminal/
 [pp-3-1]: /checkout-v3/get-started/post-purchase-3-1

@@ -259,6 +259,7 @@ method within a specified period The limitation in question varies based on the
 card brand:
 
 *   MasterCard - 10 failed payment attempts allowed during a period of **24 hours**.
+*   MasterCard - 35 failed payment attempts allowed during a period of **30 days**.
 *   Visa - 15 failed payment attempts allowed during a period of **30 days**.
 
 The other limitation that will be implemented is in the case that Visa or
@@ -267,8 +268,8 @@ to Visa and MasterCard regulations. This response is given in the cases that
 they deem the transaction to never be possible to be valid - as an example, if
 the card no longer exists, and thus there is no point in retrying.
 
-In these cases, the card will be blocked immediately and no further attempts are
-allowed.
+In these cases, the card will be blocked immediately and no further attempts
+allowed. This block will be active for **30 days** for both Visa and MasterCard.
 
 Both of these limitations are based on the combination of the acquiring
 agreement that the transaction was initiated from, and the PAN of the card that
@@ -280,28 +281,26 @@ the new one will be as well (until the period resets). This marks the importance
 of having such a logic in place that limits reattempts before the block actually
 takes place - this is where the new, clearer response messages will help.
 
+**Please note that the limitations of excessive reattempts are present in both**
+**test and productions environments.** We recommend having two test cards
+available if you are testing this functionality.
+
 When it comes to Excessive Reattempts, the new response messages will be
 returned if the quota for the period gets to 5 attempts remaining, as follows:
 
 {% capture response_content %}{
-    "type": "https://api.payex.com/psp/errordetail/creditcard/suspensionwarning",
+    "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
     "title": "SuspensionWarning. The card might be blocked.",
     "status": 403,
     "detail": "5 attempts left before the card is blocked.",
-    "problems": [{
-            "name": "ExternalResponse",
-            "description": "Forbidden-AuthenticationRequired"
-        }, {
-            "name": "SuspensionWarning",
-            "description": "5 attempts left before the card is blocked."
-        }, {
-            "name": "AUTHENTICATION_REQUIRED",
-            "description": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5"
-        }, {
-            "name": "Component",
-            "description": "pospay-ecommerce-financial-service"
-        }
-    ]
+    "suspension": {
+            "attempts": 12,
+            "remaining": 3,
+            "product": "VISA",
+            "acquirerCode": "O5",
+            "acquirerDetail": "AUTHENTICATION_REQUIRED",
+            "state": "WARNING"
+    }
 }{% endcapture %}
 
 {% include code-example.html
@@ -389,21 +388,16 @@ Furthermore, a new response is added, being returned in cases where the
 transaction is declined, but might be accepted after modifications:
 
 {% capture response_content %}{
-    "type": "https://api.payex.com/psp/errordetail/creditcard/acquirererrormodificationsrequired",
-    "title": "Modifications required.",
+    "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
+    "title": "AUTHENTICATION_REQUIRED",
     "status": 403,
-    "detail": "The attempt is rejected. Modifications required.",
-    "problems": [{
-            "name": "ExternalResponse",
-            "description": "Forbidden-AcquirerErrorModificationsRequired"
-        }, {
-            "name": "REJECTED_BY_ACQUIRER_MODIFICATIONS_REQUIRED",
-            "description": "TOKEN04.ERR_FLG received in response, response-code: 05"
-        }, {
-            "name": "Component",
-            "description": "pospay-ecommerce-financial-service"
-        }
-    ]
+    "detail": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5, hostId: 20, hostName: PayEx Test",
+    "modification": {
+        "required": "YES",
+        "reason": "AUTHENTICATION_REQUIRED",
+        "acquirerCode": "O5",
+        "acquirerDetail": "AUTHENTICATION_REQUIRED"
+    }
 }{% endcapture %}
 
 {% include code-example.html

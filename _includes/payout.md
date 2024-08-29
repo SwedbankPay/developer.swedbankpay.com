@@ -3,6 +3,8 @@
 {% capture features_url %}{% include utils/documentation-section-url.md href='/features' %}{% endcapture %}
 {% assign operation_status_bool = include.operation_status_bool | default: "false" %}
 
+{% include alert-agreement-required.md %}
+
 ## Introduction
 
 At the moment, our payout offering consists of Trustly Payout only, but this
