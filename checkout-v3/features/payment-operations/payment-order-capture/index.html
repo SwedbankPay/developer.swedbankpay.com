@@ -6,20 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="theme-color" content="#000">
-        <meta name="application-name" content="Digital Payments – Core Features">
+        <meta name="application-name" content="Digital Payments – Capture">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-title" content="Digital Payments – Core Features">
+        <meta name="apple-mobile-web-app-title" content="Digital Payments – Capture">
         <meta name="msapplication-TileColor" content="#000">
         <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
         <meta property="og:type" value="website">
-        <meta property="og:url" value="https://developer.swedbankpay.com/checkout-v3/features/core/">
-        <meta property="og:title" value="Digital Payments – Core Features">
-        <meta name="title" content="Digital Payments – Core Features">
+        <meta property="og:url" value="https://developer.swedbankpay.com/checkout-v3/features/payment-operations/payment-order-capture/">
+        <meta property="og:title" value="Digital Payments – Capture">
+        <meta name="title" content="Digital Payments – Capture">
         <meta property="og:description" value="Swedbank Pay Developer Portal">
         <meta name="description" content="Swedbank Pay Developer Portal">
         <meta property="og:image" value="/assets/img/swedbank-pay-developer-portal.png">
-        <title>Digital Payments – Core Features</title>
+        <title>Digital Payments – Capture</title>
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/10.10.1/styles/swedbankpay.css">
         <link rel="stylesheet" href="https://design.swedbankpay.com/v/10.10.1/styles/documentation-swedbankpay.css">
         <link rel="stylesheet" href="/assets/css/style.css">
@@ -30,7 +30,7 @@
         <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Core Features">
+<meta name="apple-mobile-web-app-title" content="Capture">
 <link rel="apple-touch-icon" sizes="57x57" href="https://design.swedbankpay.com/v/10.10.1/icons/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="https://design.swedbankpay.com/v/10.10.1/icons/apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="https://design.swedbankpay.com/v/10.10.1/icons/apple-touch-icon-72x72.png">
@@ -244,6 +244,36 @@
       </ul>
         </li>
 <li class=" group">
+          <a href="/checkout-v3/get-started/recurring/">Use Case Recurring</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#supported-payment-methods">Supported Payment Methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#step-1-create-a-payment-order">Step 1: Create a Payment Order</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#step-2-choose-recurring-model-and-token">Step 2: Choose Recurring Model and Token</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#purchase-example">Purchase Example</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#verify">Verify</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#post-purchase--post-verify">Post-Purchase / Post-Verify</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#charging-your-customer">Charging Your Customer</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#removal-of-payment-method-details">Removal of Payment Method Details</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/recurring/#sources">Sources</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/get-started/one-click/">Use Case One Click</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/get-started/one-click/#supported-payment-methods">Supported Payment Methods</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/one-click/#introduction">Introduction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/one-click/#payer-aware-menu">Payer Aware Menu</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/one-click/#one-click">One-Click</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/one-click/#example-request-structures">Example Request Structures</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/one-click/#removal-of-payment-method-details">Removal of Payment Method Details</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/get-started/one-click/#common-causes-that-triggers-the-need-for-deletion">Common causes that triggers the need for deletion</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
           <a href="/checkout-v3/get-started/terminology/">Terminology</a>
           
         </li>
@@ -319,85 +349,6 @@
         </li>
       </ul>
         </li>
-<li class=" leaf active">
-          <a href="/checkout-v3/features/core/">Core Features</a>
-          <ul class="">
-          <a href="/checkout-v3/features/core/.." title="test4" class="previous-nav">
-                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
-                <span>Back to Features</span>
-              </a>
-              <header>Core Features</header>
-          
-          <li class=" group">
-          <a href="/checkout-v3/features/core/abort/">Abort</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/core/abort/#abort">Abort</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/abort/#abort-patch-request">Abort PATCH Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/abort/#abort-patch-response">Abort PATCH Response</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/core/callback/">Callback</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/core/callback/#why-is-the-callback-important">Why Is The Callback Important?</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/callback/#good-to-know-about-callbacks">Good To Know About Callbacks</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/callback/#callback-example">Callback Example</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/callback/#callback-example-v31">Callback Example v3.1</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/callback/#get-response">GET Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/callback/#capture-response">Capture Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/callback/#sequence-diagram">Sequence Diagram</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/core/cancel/">Cancel</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/core/cancel/#cancel">Cancel</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/cancel/#create-cancel-transaction">Create Cancel Transaction</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/cancel/#cancel-request-all-versions">Cancel Request (All Versions)</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/cancel/#cancel-response">Cancel Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/cancel/#cancel-response-v31">Cancel Response v3.1</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/cancel/#cancel-sequence-diagram">Cancel Sequence Diagram</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/core/payment-order-capture/">Capture</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/core/payment-order-capture/#capture">Capture</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/payment-order-capture/#create-capture-transaction">Create Capture Transaction</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/payment-order-capture/#capture-request">Capture Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/payment-order-capture/#capture-response">Capture Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/payment-order-capture/#capture-request-v31">Capture Request v3.1</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/payment-order-capture/#capture-response-v31">Capture Response v3.1</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/payment-order-capture/#capture-sequence-diagram">Capture Sequence Diagram</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/core/reversal/">Reversal</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/core/reversal/#reversal">Reversal</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/reversal/#create-reversal-transaction">Create Reversal Transaction</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/reversal/#reversal-request">Reversal Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/reversal/#reversal-response">Reversal Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/reversal/#reversal-request-v31">Reversal Request v3.1</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/core/reversal/#reversal-response-v31">Reversal Response v3.1</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/core/update/">Update Payment Order</a>
-          
-        </li>
-      </ul>
-        </li>
 <li class=" leaf">
           <a href="/checkout-v3/features/customize-payments/">Customize Payments</a>
           <ul class="">
@@ -452,6 +403,14 @@
           <ul class="">
           
           <li class="nav-leaf"><a href="/checkout-v3/features/customize-ui/action-specific-text-on-payment-button/#code-example">Code Example</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/customize-ui/corporate-limited-menu/">Corporate Limited Menu</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/customize-ui/corporate-limited-menu/#corporate-limited-menu">Corporate Limited Menu</a></li>
           
       </ul>
         </li>
@@ -511,159 +470,6 @@
       </ul>
         </li>
 <li class=" leaf">
-          <a href="/checkout-v3/features/technical-reference/">Technical Reference</a>
-          <ul class="">
-          <a href="/checkout-v3/features/technical-reference/.." title="test4" class="previous-nav">
-                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
-                <span>Back to Features</span>
-              </a>
-              <header>Technical Reference</header>
-          
-          <li class=" group">
-          <a href="/checkout-v3/features/technical-reference/complete-url/">CompleteUrl</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/complete-url/#completeurl">CompleteUrl</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/description/">Description</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/description/#description">Description</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/description/#description-request">Description Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/description/#how-it-looks">How It Looks</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/metadata/">Metadata</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#metadata">Metadata</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#metadata-request">Metadata Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#get-request">GET Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#get-response">GET Response</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/operations/">Operations</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/operations/#operations">Operations</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/payee-info/">PayeeInfo</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#payeeinfo">PayeeInfo</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#get-request">GET Request</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#get-response">GET Response</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#payee-reference">Payee Reference</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/payee-reference/">PayeeReference</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-reference/#payee-reference">Payee Reference</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/payment-url/">PaymentUrl</a>
-          
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/problems/">Problems</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#problems">Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#common-problems">Common Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#card-problems">Card Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#swish-problems">Swish Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#trustly-problems">Trustly Problems</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#vipps-problems">Vipps Problems</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/resource-sub-models/">Resource Models</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#aborted">Aborted</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#cancelled">Cancelled</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#failed">Failed</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#failedattempts">FailedAttempts</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#failedpostpurchaseattempts">FailedPostPurchaseAttempts</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#financialtransactions">FinancialTransactions</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#history">History</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#paid">Paid</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#payer">Payer</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#reversed">Reversed</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/seamless-view-events/">Seamless View Events</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#payment-menu-events">Payment Menu Events</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onaborted">onAborted</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oncheckoutloaded">onCheckoutLoaded</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oncheckoutresized">onCheckoutResized</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onerror">onError</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oneventnotification">onEventNotification</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oninstrumentselected">onInstrumentSelected</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onoutofviewopen">onOutOfViewOpen</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onoutofviewredirect">onOutOfViewRedirect</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaid">onPaid</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaymentattemptaborted">onPaymentAttemptAborted</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaymentattemptfailed">onPaymentAttemptFailed</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaymentattemptstarted">onPaymentAttemptStarted</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#ontermsofservicerequested">onTermsOfServiceRequested</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/status-models/">Status Response Models</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#aborted">Aborted</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#cancelled">Cancelled</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#failed">Failed</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#initialized">Initialized</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#paid">Paid</a></li>
-<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#reversed">Reversed</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/urls/">Urls</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/urls/#urls">URLs</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/technical-reference/user-agent/">User Agent</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/user-agent/#user-agent">User-Agent</a></li>
-          
-      </ul>
-        </li>
-      </ul>
-        </li>
-<li class=" leaf">
           <a href="/checkout-v3/features/optional/">Optional Features</a>
           <ul class="">
           <a href="/checkout-v3/features/optional/.." title="test4" class="previous-nav">
@@ -691,14 +497,6 @@
           
           <li class="nav-leaf"><a href="/checkout-v3/features/optional/age-restrictions/#restrict-payments-to-an-age-limit">Restrict Payments To An Age Limit</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/age-restrictions/#restrict-payments-to-an-age-limit-request">Restrict Payments To An Age Limit Request</a></li>
-          
-      </ul>
-        </li>
-<li class=" group">
-          <a href="/checkout-v3/features/optional/corporate-limited-menu/">Corporate Limited Menu</a>
-          <ul class="">
-          
-          <li class="nav-leaf"><a href="/checkout-v3/features/optional/corporate-limited-menu/#corporate-limited-menu">Corporate Limited Menu</a></li>
           
       </ul>
         </li>
@@ -901,6 +699,238 @@
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/verify/#verify-request">Verify Request</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/verify/#verify-response">Verify Response</a></li>
 <li class="nav-leaf"><a href="/checkout-v3/features/optional/verify/#verification-flow">Verification Flow</a></li>
+          
+      </ul>
+        </li>
+      </ul>
+        </li>
+<li class=" leaf active">
+          <a href="/checkout-v3/features/payment-operations/">Payment Operations</a>
+          <ul class="">
+          <a href="/checkout-v3/features/payment-operations/.." title="test4" class="previous-nav">
+                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
+                <span>Back to Features</span>
+              </a>
+              <header>Payment Operations</header>
+          
+          <li class=" group">
+          <a href="/checkout-v3/features/payment-operations/abort/">Abort</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/abort/#abort">Abort</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/abort/#abort-patch-request">Abort PATCH Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/abort/#abort-patch-response">Abort PATCH Response</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/payment-operations/callback/">Callback</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/callback/#why-is-the-callback-important">Why Is The Callback Important?</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/callback/#good-to-know-about-callbacks">Good To Know About Callbacks</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/callback/#callback-example">Callback Example</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/callback/#callback-example-v31">Callback Example v3.1</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/callback/#get-response">GET Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/callback/#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/callback/#sequence-diagram">Sequence Diagram</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/payment-operations/cancel/">Cancel</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/cancel/#cancel">Cancel</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/cancel/#create-cancel-transaction">Create Cancel Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/cancel/#cancel-request-all-versions">Cancel Request (All Versions)</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/cancel/#cancel-response">Cancel Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/cancel/#cancel-response-v31">Cancel Response v3.1</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/cancel/#cancel-sequence-diagram">Cancel Sequence Diagram</a></li>
+          
+      </ul>
+        </li>
+<li class=" group active">
+          <a href="/checkout-v3/features/payment-operations/payment-order-capture/">Capture</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/payment-order-capture/#capture">Capture</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/payment-order-capture/#create-capture-transaction">Create Capture Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/payment-order-capture/#capture-request">Capture Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/payment-order-capture/#capture-response">Capture Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/payment-order-capture/#capture-request-v31">Capture Request v3.1</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/payment-order-capture/#capture-response-v31">Capture Response v3.1</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/payment-order-capture/#capture-sequence-diagram">Capture Sequence Diagram</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/payment-operations/reversal/">Reversal</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/reversal/#reversal">Reversal</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/reversal/#create-reversal-transaction">Create Reversal Transaction</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/reversal/#reversal-request">Reversal Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/reversal/#reversal-response">Reversal Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/reversal/#reversal-request-v31">Reversal Request v3.1</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/payment-operations/reversal/#reversal-response-v31">Reversal Response v3.1</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/payment-operations/update/">Update Payment Order</a>
+          
+        </li>
+      </ul>
+        </li>
+<li class=" leaf">
+          <a href="/checkout-v3/features/technical-reference/">Technical Reference</a>
+          <ul class="">
+          <a href="/checkout-v3/features/technical-reference/.." title="test4" class="previous-nav">
+                <i class="material-icons" aria-hidden="true">arrow_back_ios</i>
+                <span>Back to Features</span>
+              </a>
+              <header>Technical Reference</header>
+          
+          <li class=" group">
+          <a href="/checkout-v3/features/technical-reference/complete-url/">CompleteUrl</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/complete-url/#completeurl">CompleteUrl</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/description/">Description</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/description/#description">Description</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/description/#description-request">Description Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/description/#how-it-looks">How It Looks</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/metadata/">Metadata</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#metadata">Metadata</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#metadata-request">Metadata Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#get-request">GET Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/metadata/#get-response">GET Response</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/operations/">Operations</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/operations/#operations">Operations</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/payee-info/">PayeeInfo</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#payeeinfo">PayeeInfo</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#get-request">GET Request</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#get-response">GET Response</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-info/#payee-reference">Payee Reference</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/payee-reference/">PayeeReference</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/payee-reference/#payee-reference">Payee Reference</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/payment-url/">PaymentUrl</a>
+          
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/problems/">Problems</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#problems">Problems</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#common-problems">Common Problems</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#card-problems">Card Problems</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#installment-account-problems">Installment Account Problems</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#invoice-problems">Invoice Problems</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#swish-problems">Swish Problems</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#trustly-problems">Trustly Problems</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/problems/#vipps-problems">Vipps Problems</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/resource-sub-models/">Resource Models</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#aborted">Aborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#cancelled">Cancelled</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#failed">Failed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#failedattempts">FailedAttempts</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#failedpostpurchaseattempts">FailedPostPurchaseAttempts</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#financialtransactions">FinancialTransactions</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#history">History</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#paid">Paid</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#payer">Payer</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/resource-sub-models/#reversed">Reversed</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/seamless-view-events/">Seamless View Events</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#payment-menu-events">Payment Menu Events</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onaborted">onAborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oncheckoutloaded">onCheckoutLoaded</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oncheckoutresized">onCheckoutResized</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onerror">onError</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oneventnotification">onEventNotification</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#oninstrumentselected">onInstrumentSelected</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onoutofviewopen">onOutOfViewOpen</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onoutofviewredirect">onOutOfViewRedirect</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaid">onPaid</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaymentattemptaborted">onPaymentAttemptAborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaymentattemptfailed">onPaymentAttemptFailed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#onpaymentattemptstarted">onPaymentAttemptStarted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/seamless-view-events/#ontermsofservicerequested">onTermsOfServiceRequested</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/status-models/">Status Response Models</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#aborted">Aborted</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#cancelled">Cancelled</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#failed">Failed</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#initialized">Initialized</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#paid">Paid</a></li>
+<li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/status-models/#reversed">Reversed</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/urls/">Urls</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/urls/#urls">URLs</a></li>
+          
+      </ul>
+        </li>
+<li class=" group">
+          <a href="/checkout-v3/features/technical-reference/user-agent/">User Agent</a>
+          <ul class="">
+          
+          <li class="nav-leaf"><a href="/checkout-v3/features/technical-reference/user-agent/#user-agent">User-Agent</a></li>
           
       </ul>
         </li>
@@ -5515,21 +5545,20 @@
                 <h4>Digital Payments</h4>
             
 
-            <h1>Core Features</h1>
+            <h1>Capture</h1>
 
             
             <p></p>
-<p>This section details the features that are essential for the payment
-process.</p>
+<p>Capturing the authorized funds.</p>
 
             
         </div>
 
         
 
-<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout-v3/features/core/index.md" id="github" target="_blank" rel="noopener noreferrer" title="Edit 'Core Features' on GitHub">
+<a href="https://github.com/SwedbankPay/developer.swedbankpay.com/tree/develop/checkout-v3/features/payment-operations/payment-order-capture.md" id="github" target="_blank" rel="noopener noreferrer" title="Edit 'Capture' on GitHub">
     <svg aria-labelledby="simpleicons-github-icon" role="img" width="40" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <title id="simpleicons-github-icon">Edit "Core Features" on GitHub</title>
+        <title id="simpleicons-github-icon">Edit "Capture" on GitHub</title>
         <path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
     </svg>
 </a>
@@ -5542,342 +5571,1393 @@ process.</p>
 <div class="doc-container normal-padding max-width">
     <article>
         
-            <h2 id="core-features">
+            <h2 id="capture">
         
         
-          Core Features <a href="#core-features" class="header-anchor"></a>
+          Capture <a href="#capture" class="header-anchor"></a>
         
         
       </h2>
 
-<div class="row card-list">
+<p>Captures are only possible when a payment has a successful <code class="language-html highlighter-rouge">Authorization</code>
+transaction, naturally excluding one-phase payment methods like
+<a href="/old-implementations/payment-instruments-v1/swish/">Swish</a> and <a href="/old-implementations/payment-instruments-v1/trustly/">Trustly</a>. They will be marked as a <code class="language-html highlighter-rouge">Sale</code>
+transaction. Two-phase payment methods like <a href="/old-implementations/payment-instruments-v1/card">Card</a> and <a href="/old-implementations/payment-instruments-v1/vipps">Vipps</a>
+however, require a <code class="language-html highlighter-rouge">Capture</code> to be completed.</p>
+
+<p>Please note that you have a maximum of 5 <strong>consecutive</strong> failed attempts at a
+capture. The payment will be locked after the fifth, and you need to contact us
+for further attempts.</p>
+
+<p>In addition to full captures, it is possible to do partial captures of the
+authorized amount. You can do more captures on the same payment later, up to the
+total authorized amount. A useful tool for when you have to split orders into
+several shipments.</p>
+
+<p>First off, you must request the order information from the server to get the
+request link. With this, you can request the capture with the amount to capture,
+and get the status back.</p>
     
+      <h2 id="create-capture-transaction">
         
         
-
+          Create Capture Transaction <a href="#create-capture-transaction" class="header-anchor"></a>
         
         
-        
-        
-        
-        
-        
+      </h2>
 
-        <div class="col-lg-4">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/checkout-v3/features/core/abort/" class="cards cards-primary">
+<p>To capture the authorized payment, you need to perform a <code class="language-html highlighter-rouge">capture</code> against the
+accompanying <code class="language-html highlighter-rouge">href</code> returned in the <code class="language-html highlighter-rouge">operations</code> list. See the abbreviated
+request and response below:</p>
     
+      <h2 id="capture-request">
+        
+        
+          Capture Request <a href="#capture-request" class="header-anchor"></a>
+        
+        
+      </h2>
 
+<p class="code-view-header">
+    Request
     
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    "transaction": {
+        "description": "Capturing the authorized payment",
+        "amount": 1500,
+        "vatAmount": 375,
+        "payeeReference": "AB832",
+        "receiptReference": "AB831",
+        "orderItems": [
+            {
+                "reference": "P1",
+                "name": "Product1",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "itemUrl": "https://example.com/products/123",
+                "imageUrl": "https://example.com/product123.jpg",
+                "description": "Product 1 description",
+                "discountDescription": "Volume discount",
+                "quantity": 4,
+                "quantityUnit": "pcs",
+                "unitPrice": 300,
+                "discountPrice": 200,
+                "vatPercent": 2500,
+                "amount": 1000,
+                "vatAmount": 250
+            },
+            {
+                "reference": "P2",
+                "name": "Product2",
+                "type": "PRODUCT",
+                "class": "ProductGroup1",
+                "description": "Product 2 description",
+                "quantity": 1,
+                "quantityUnit": "pcs",
+                "unitPrice": 500,
+                "vatPercent": 2500,
+                "amount": 500,
+                "vatAmount": 125
+            }
+        ]
+    }
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
     
-    <div class="cards-icon">
-        <i class="material-icons material-icons-outlined" aria-hidden="true">pan_tool</i>
+</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/captures</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;version=3.0/2.0      // Version optional</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td>
+<td class="code-view-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capturing the authorized payment"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB832"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB831"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRODUCT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProductGroup1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"itemUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/products/123"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/product123.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1 description"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"discountDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volume discount"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantityUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pcs"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"discountPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vatPercent"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRODUCT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"class"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProductGroup1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 2 description"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"quantityUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pcs"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vatPercent"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show fields</span>
+        <span class="mr-3 hide">Hide fields</span>
+    </button>
+    <div class="accordion-body" id="exp-1">
+        
+<table class="table table-striped mb-5">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The transaction object.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The description of the capture transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The amount displayed is the final amount the payer paid for their order, including any payment method specific discounts or fees.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">payeeReference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. Set per operation to     ensure an exactly-once delivery of a transactional operation. Length and     content validation depends on whether the <code class="language-html highlighter-rouge">transaction.number</code> or the     <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer. <strong>If Swedbank Pay handles the</strong>     <strong>settlement</strong>, the <code class="language-html highlighter-rouge">transaction.number</code> is sent and the <code class="language-html highlighter-rouge">payeeReference</code>     must be in the format of <code class="language-html highlighter-rouge">A-Za-z0-9</code> and     <code class="language-html highlighter-rouge">string(30)</code>. <strong>If you handle the settlement</strong>,     Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> and it will be limited to the     format of <code class="language-html highlighter-rouge">string(12)</code>. All characters <strong>must be digits</strong>.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">receiptReference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
+      <td style="text-align: left">A unique reference to the transaction, provided by the merchant. Can be used as an invoice or receipt number as a supplement to <code class="language-html highlighter-rouge">payeeReference</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">orderItems</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of items being purchased with the order. Note that authorization <code class="language-html highlighter-rouge">orderItems</code> will not be printed on invoices, so lines meant for print must be added in the Capture request. The authorization <code class="language-html highlighter-rouge">orderItems</code> will, however, be used in the Merchant Portal when captures or reversals are performed, and might be shown other places later. It is required to use this field to be able to send Capture <code class="language-html highlighter-rouge">orderItems</code>. <code class="language-html highlighter-rouge">Capture</code> requests should only contain items meant to be captured from the order.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">reference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A reference that identifies the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">name</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">type</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">enum</code></td>
+      <td style="text-align: left">
+<code class="language-html highlighter-rouge">PRODUCT</code>, <code class="language-html highlighter-rouge">SERVICE</code>, <code class="language-html highlighter-rouge">SHIPPING_FEE</code>, <code class="language-html highlighter-rouge">PAYMENT_FEE</code>, <code class="language-html highlighter-rouge">DISCOUNT</code>, <code class="language-html highlighter-rouge">VALUE_CODE</code> or <code class="language-html highlighter-rouge">OTHER</code>. The type of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">class</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code class="language-html highlighter-rouge">MobilePhone</code>. Note that <code class="language-html highlighter-rouge">class</code> cannot contain spaces and must follow the regex pattern <code class="language-html highlighter-rouge">[\w-]*</code>. Swedbank Pay may use this field for statistics.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">itemUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to a page that can display the purchased item, product or similar.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">imageUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to an image of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountDescription</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the possible discount.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantity</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left">The 4 decimal precision quantity of order items being purchased.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantityUnit</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The unit of the quantity, such as <code class="language-html highlighter-rouge">pcs</code>, <code class="language-html highlighter-rouge">grams</code>, or similar. This is used for your own book keeping.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">unitPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The price per unit of order item, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatPercent</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The percent value of the VAT multiplied by 100, so <code class="language-html highlighter-rouge">25%</code> becomes <code class="language-html highlighter-rouge">2500</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 SEK</code> and <code class="language-html highlighter-rouge">5000</code> equals <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 SEK</code> and <code class="language-html highlighter-rouge">5000</code> equals <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">reference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A reference that identifies the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">name</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">type</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">enum</code></td>
+      <td style="text-align: left">
+<code class="language-html highlighter-rouge">PRODUCT</code>, <code class="language-html highlighter-rouge">SERVICE</code>, <code class="language-html highlighter-rouge">SHIPPING_FEE</code>, <code class="language-html highlighter-rouge">PAYMENT_FEE</code>, <code class="language-html highlighter-rouge">DISCOUNT</code>, <code class="language-html highlighter-rouge">VALUE_CODE</code> or <code class="language-html highlighter-rouge">OTHER</code>. The type of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">class</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code class="language-html highlighter-rouge">MobilePhone</code>. Note that <code class="language-html highlighter-rouge">class</code> cannot contain spaces and must follow the regex pattern <code class="language-html highlighter-rouge">[\w-]*</code>. Swedbank Pay may use this field for statistics.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">itemUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to a page that can display the purchased item, such as a product page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">imageUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to an image of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountDescription</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the possible discount.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantity</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left">The 4 decimal precision quantity of order items being purchased.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantityUnit</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The unit of the quantity, such as <code class="language-html highlighter-rouge">pcs</code>, <code class="language-html highlighter-rouge">grams</code>, or similar.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">unitPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The price per unit of order item, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatPercent</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The percent value of the VAT multiplied by 100, so <code class="language-html highlighter-rouge">25%</code> becomes <code class="language-html highlighter-rouge">2500</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 NOK</code> and <code class="language-html highlighter-rouge">500</code>0 equals <code class="language-html highlighter-rouge">50.00 NOK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 NOK</code> and <code class="language-html highlighter-rouge">500</code>0 equals <code class="language-html highlighter-rouge">50.00 NOK</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
     </div>
-    
-    
-
-    <div class="cards-content">
-        <span class="h4">Abort</span>
-        <span><p>Aborting a created payment.</p>
-</span>
-    </div>
-    
-    <i class="material-icons">arrow_forward</i>
-    
-</a>
-
-        </div>
-    
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
-        <div class="col-lg-4">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/checkout-v3/features/core/callback/" class="cards cards-primary">
-    
-
-    
-    
-    <div class="cards-icon">
-        <i class="material-icons material-icons-outlined" aria-hidden="true">low_priority</i>
-    </div>
-    
-    
-
-    <div class="cards-content">
-        <span class="h4">Callback</span>
-        <span><p>Receive asynchronous, server-to-server updates from Swedbank Pay when
-transactions are performed on a payment.</p>
-</span>
-    </div>
-    
-    <i class="material-icons">arrow_forward</i>
-    
-</a>
-
-        </div>
-    
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
-        <div class="col-lg-4">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/checkout-v3/features/core/cancel/" class="cards cards-primary">
-    
-
-    
-    
-    <div class="cards-icon">
-        <i class="material-icons material-icons-outlined" aria-hidden="true">pan_tool</i>
-    </div>
-    
-    
-
-    <div class="cards-content">
-        <span class="h4">Cancel</span>
-        <span><p>Canceling the authorization and releasing the funds.</p>
-</span>
-    </div>
-    
-    <i class="material-icons">arrow_forward</i>
-    
-</a>
-
-        </div>
-    
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
-        <div class="col-lg-4">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/checkout-v3/features/core/payment-order-capture/" class="cards cards-primary">
-    
-
-    
-    
-    <div class="cards-icon">
-        <i class="material-icons material-icons-outlined" aria-hidden="true">compare_arrows</i>
-    </div>
-    
-    
-
-    <div class="cards-content">
-        <span class="h4">Capture</span>
-        <span><p>Capturing the authorized funds.</p>
-</span>
-    </div>
-    
-    <i class="material-icons">arrow_forward</i>
-    
-</a>
-
-        </div>
-    
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
-        <div class="col-lg-4">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/checkout-v3/features/core/reversal/" class="cards cards-primary">
-    
-
-    
-    
-    <div class="cards-icon">
-        <i class="material-icons material-icons-outlined" aria-hidden="true">keyboard_return</i>
-    </div>
-    
-    
-
-    <div class="cards-content">
-        <span class="h4">Reversal</span>
-        <span><p>How to reverse a payment.</p>
-</span>
-    </div>
-    
-    <i class="material-icons">arrow_forward</i>
-    
-</a>
-
-        </div>
-    
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
-        <div class="col-lg-4">
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<a href="/checkout-v3/features/core/update/" class="cards cards-primary">
-    
-
-    
-    
-    <div class="cards-icon">
-        <i class="material-icons material-icons-outlined" aria-hidden="true">cached</i>
-    </div>
-    
-    
-
-    <div class="cards-content">
-        <span class="h4">Update Payment Order</span>
-        <span><p>Updating the payment order</p>
-</span>
-    </div>
-    
-    <i class="material-icons">arrow_forward</i>
-    
-</a>
-
-        </div>
-    
 </div>
+    
+      <h2 id="capture-response">
+        
+        
+          Capture Response <a href="#capture-response" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>If the capture request succeeds, this should be the response:</p>
+
+<p class="code-view-header">
+    Response
+    
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    "payment": "/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1",
+    "capture": {
+        "id": "/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177",
+        "transaction": {
+            "id": "/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177",
+            "created": "2020-06-22T10:56:56.2927632Z",
+            "updated": "2020-06-22T10:56:56.4035291Z",
+            "type": "Capture",
+            "state": "Completed",
+            "amount": 1500,
+            "vatAmount": 375,
+            "description": "Capturing the authorized payment",
+            "payeeReference": "AB832",
+            "receiptReference": "AB831"
+        }
+    }
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
+    
+</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json; charset=utf-8; version=3.0/2.0</span>
+<span class="na">api-supported-versions</span><span class="p">:</span> <span class="s">3.0/2.0</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+<td class="code-view-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"payment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capture"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/captures/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/creditcard/payments/7e6cdfc3-1276-44e9-9992-7cf4419750e1/transactions/ec2a9b09-601a-42ae-8e33-a5737e1cf177"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.2927632Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T10:56:56.4035291Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capture"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Completed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capturing the authorized payment"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB832"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB831"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show fields</span>
+        <span class="mr-3 hide">Hide fields</span>
+    </button>
+    <div class="accordion-body" id="exp-1">
+        
+<table class="table table-striped mb-5">
+  <thead>
+    <tr>
+      <th style="text-align: left">Property</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-0"><code class="language-json highlighter-rouge">payment</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URL of the payment this capture transaction belongs to.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-0"><code class="language-json highlighter-rouge">capture</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The capture object, containing the information about the capture transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">id</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URL of the created capture transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">transaction</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The object representation of the generic <code>transaction</code> resource, containing information about the current transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">id</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URL of the current <code class="language-html highlighter-rouge">transaction</code> resource.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">created</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was created.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">updated</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was updated.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">type</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Indicates the transaction type.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">state</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Indicates the state of the transaction, usually <code class="language-html highlighter-rouge">initialized</code>, <code class="language-html highlighter-rouge">completed</code> or <code class="language-html highlighter-rouge">failed</code>. If a partial  has been done and further transactions are possible, the state will be <code class="language-html highlighter-rouge">awaitingActivity</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">number</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The transaction <code class="language-html highlighter-rouge">number</code>, useful when there’s need to reference the transaction in human communication. Not usable for programmatic identification of the transaction, where <code class="language-html highlighter-rouge">id</code> should be used instead.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The amount displayed is the final amount the payer paid for their order, including any payment method specific discounts or fees.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A 40 character length textual <a href="/checkout-v3/features/technical-reference/description">description</a> of the purchase.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">payeeReference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. Set per operation to     ensure an exactly-once delivery of a transactional operation. Length and     content validation depends on whether the <code class="language-html highlighter-rouge">transaction.number</code> or the     <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer. <strong>If Swedbank Pay handles the</strong>     <strong>settlement</strong>, the <code class="language-html highlighter-rouge">transaction.number</code> is sent and the <code class="language-html highlighter-rouge">payeeReference</code>     must be in the format of <code class="language-html highlighter-rouge">A-Za-z0-9</code> and     <code class="language-html highlighter-rouge">string(30)</code>. <strong>If you handle the settlement</strong>,     Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> and it will be limited to the     format of <code class="language-html highlighter-rouge">string(12)</code>. All characters <strong>must be digits</strong>.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">receiptReference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. It is set per operation to ensure an exactly-once delivery of a transactional operation.  It is used to supplement <code class="language-html highlighter-rouge">payeeReference</code> as an additional receipt number.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+</div>
+    
+      <h2 id="capture-request-v31">
+        
+        
+          Capture Request v3.1 <a href="#capture-request-v31" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p class="code-view-header">
+    Request
+    
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+    "transaction": {
+        "description": "Capturing the authorized payment",
+        "amount": 1500,
+        "vatAmount": 375,
+        "payeeReference": "AB832",
+        "receiptReference": "AB831"
+    }
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
+    
+</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code-view-code"><pre><span class="nf">POST</span> <span class="nn">/psp/paymentorders/09ccd29a-7c4f-4752-9396-12100cbfecce/captures</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.externalintegration.payex.com</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer &lt;AccessToken&gt;</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;version=3.1</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="code-view-code"><pre><span class="p">{</span><span class="w">
+    </span><span class="nl">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Capturing the authorized payment"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payeeReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB832"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"receiptReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB831"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show fields</span>
+        <span class="mr-3 hide">Hide fields</span>
+    </button>
+    <div class="accordion-body" id="exp-1">
+        
+<table class="table table-striped mb-5">
+  <thead>
+    <tr>
+      <th style="text-align: center">Required</th>
+      <th style="text-align: left">Field</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">transaction</code></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">object</code></td>
+      <td style="text-align: left">The transaction object.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The description of the capture transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The amount displayed is the final amount the payer paid for their order, including any payment method specific discounts or fees.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">payeeReference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A unique reference from the merchant system. Set per operation to     ensure an exactly-once delivery of a transactional operation. Length and     content validation depends on whether the <code class="language-html highlighter-rouge">transaction.number</code> or the     <code class="language-html highlighter-rouge">payeeReference</code> is sent to the acquirer. <strong>If Swedbank Pay handles the</strong>     <strong>settlement</strong>, the <code class="language-html highlighter-rouge">transaction.number</code> is sent and the <code class="language-html highlighter-rouge">payeeReference</code>     must be in the format of <code class="language-html highlighter-rouge">A-Za-z0-9</code> and     <code class="language-html highlighter-rouge">string(30)</code>. <strong>If you handle the settlement</strong>,     Swedbank Pay will send the <code class="language-html highlighter-rouge">payeeReference</code> and it will be limited to the     format of <code class="language-html highlighter-rouge">string(12)</code>. All characters <strong>must be digits</strong>.               In Invoice Payments <code class="language-html highlighter-rouge">payeeReference</code> is used as an invoice/receipt         number, if the <code class="language-html highlighter-rouge">receiptReference</code> is not defined.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">receiptReference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string(30)</code></td>
+      <td style="text-align: left">A unique reference to the transaction, provided by the merchant. Can be used as an invoice or receipt number as a supplement to <code class="language-html highlighter-rouge">payeeReference</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">orderItems</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of items being purchased with the order. Note that authorization <code class="language-html highlighter-rouge">orderItems</code> will not be printed on invoices, so lines meant for print must be added in the Capture request. The authorization <code class="language-html highlighter-rouge">orderItems</code> will, however, be used in the Merchant Portal when captures or reversals are performed, and might be shown other places later. It is required to use this field to be able to send Capture <code class="language-html highlighter-rouge">orderItems</code>. <code class="language-html highlighter-rouge">Capture</code> requests should only contain items meant to be captured from the order.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">reference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A reference that identifies the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">name</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">type</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">enum</code></td>
+      <td style="text-align: left">
+<code class="language-html highlighter-rouge">PRODUCT</code>, <code class="language-html highlighter-rouge">SERVICE</code>, <code class="language-html highlighter-rouge">SHIPPING_FEE</code>, <code class="language-html highlighter-rouge">PAYMENT_FEE</code>, <code class="language-html highlighter-rouge">DISCOUNT</code>, <code class="language-html highlighter-rouge">VALUE_CODE</code> or <code class="language-html highlighter-rouge">OTHER</code>. The type of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">class</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code class="language-html highlighter-rouge">MobilePhone</code>. Note that <code class="language-html highlighter-rouge">class</code> cannot contain spaces and must follow the regex pattern <code class="language-html highlighter-rouge">[\w-]*</code>. Swedbank Pay may use this field for statistics.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">itemUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to a page that can display the purchased item, product or similar.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">imageUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to an image of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountDescription</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the possible discount.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantity</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left">The 4 decimal precision quantity of order items being purchased.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantityUnit</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The unit of the quantity, such as <code class="language-html highlighter-rouge">pcs</code>, <code class="language-html highlighter-rouge">grams</code>, or similar. This is used for your own book keeping.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">unitPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The price per unit of order item, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatPercent</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The percent value of the VAT multiplied by 100, so <code class="language-html highlighter-rouge">25%</code> becomes <code class="language-html highlighter-rouge">2500</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 SEK</code> and <code class="language-html highlighter-rouge">5000</code> equals <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 SEK</code> and <code class="language-html highlighter-rouge">5000</code> equals <code class="language-html highlighter-rouge">50.00 SEK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">reference</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A reference that identifies the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">name</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The name of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">type</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">enum</code></td>
+      <td style="text-align: left">
+<code class="language-html highlighter-rouge">PRODUCT</code>, <code class="language-html highlighter-rouge">SERVICE</code>, <code class="language-html highlighter-rouge">SHIPPING_FEE</code>, <code class="language-html highlighter-rouge">PAYMENT_FEE</code>, <code class="language-html highlighter-rouge">DISCOUNT</code>, <code class="language-html highlighter-rouge">VALUE_CODE</code> or <code class="language-html highlighter-rouge">OTHER</code>. The type of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">class</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The classification of the order item. Can be used for assigning the order item to a specific product category, such as <code class="language-html highlighter-rouge">MobilePhone</code>. Note that <code class="language-html highlighter-rouge">class</code> cannot contain spaces and must follow the regex pattern <code class="language-html highlighter-rouge">[\w-]*</code>. Swedbank Pay may use this field for statistics.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">itemUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to a page that can display the purchased item, such as a product page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">imageUrl</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The URL to an image of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the order item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountDescription</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The human readable description of the possible discount.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantity</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">number</code></td>
+      <td style="text-align: left">The 4 decimal precision quantity of order items being purchased.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">quantityUnit</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The unit of the quantity, such as <code class="language-html highlighter-rouge">pcs</code>, <code class="language-html highlighter-rouge">grams</code>, or similar.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">unitPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The price per unit of order item, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">︎︎︎</td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">discountPrice</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">If the order item is purchased at a discounted price. This field should contain that price, including VAT.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatPercent</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The percent value of the VAT multiplied by 100, so <code class="language-html highlighter-rouge">25%</code> becomes <code class="language-html highlighter-rouge">2500</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount including VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 NOK</code> and <code class="language-html highlighter-rouge">500</code>0 equals <code class="language-html highlighter-rouge">50.00 NOK</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><i class="material-icons">check</i></td>
+      <td style="text-align: left"><span class="field-level field-level-2"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The total amount of VAT to be paid for the specified quantity of this order item, in the lowest monetary unit of the currency. E.g. <code class="language-html highlighter-rouge">10000</code> equals <code class="language-html highlighter-rouge">100.00 NOK</code> and <code class="language-html highlighter-rouge">500</code>0 equals <code class="language-html highlighter-rouge">50.00 NOK</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+</div>
+    
+      <h2 id="capture-response-v31">
+        
+        
+          Capture Response v3.1 <a href="#capture-response-v31" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<p>If the capture request succeeds, this should be the response:</p>
+
+<p class="code-view-header">
+    Response
+    
+    <button aria-describedby="tooltipCopy" class="code-view-copy tooltip" aria-label="Copy json to clipboard" value='{
+  "paymentOrder": {
+    "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d",
+    "created": "2020-03-03T07:19:27.5636519Z",
+    "updated": "2020-03-03T07:21:00.5605905Z",
+    "operation": "Purchase",
+    "status": "Paid",
+    "currency": "SEK",
+    "amount": 1500,
+    "vatAmount": 375,
+    "remainingCaptureAmount": 0, // Only present after a partial capture
+    "remainingCancellationAmount": 0, // Only present after a partial capture
+    "remainingReversalAmount": 1500,
+    "description": "Test Purchase",
+    "initiatingSystemUserAgent": "&lt;should be set by the system calling POST:/psp/paymentorders&gt;",
+    "language": "sv-SE",
+    "availableInstruments": [ "CreditCard", "Invoice-PayExFinancingSe", "Invoice-PayMonthlyInvoiceSe", "Swish", "CreditAccount", "Trustly" ],
+    "implementation": "PaymentsOnly",
+    "integration": "HostedView|Redirect",
+    "instrumentMode": false,
+    "guestMode": true,
+    "orderItems": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/orderitems"
+    },
+    "urls": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/urls"
+    },
+    "payeeInfo": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payeeInfo"
+    },
+    "payer": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers"
+    },
+    "history": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"
+    },
+    "failed": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failed"
+    },
+    "aborted": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/aborted"
+    },
+    "paid": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/paid"
+    },
+    "cancelled": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"
+    },
+    "financialTransactions": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"
+    },
+    "failedAttempts": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"
+    },
+    "postPurchaseFailedAttempts": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/postpurchasefailedattempts"
+    },
+    "metadata": {
+      "id": "/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"
+    }
+  },
+  "operations": [
+    {
+      "href": "https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals",
+      "rel": "reversal",
+      "method": "POST",
+      "contentType": "application/json"
+    },
+  ]
+}' onclick="javascript:navigator.clipboard.writeText(this.value)"><i class="at-clipboard small" aria-hidden="true"></i><div role="tooltip">Copy json to clipboard</div></button>
+    
+</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="code-view-code"><pre><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json; charset=utf-8; version=3.1</span>
+<span class="na">api-supported-versions</span><span class="p">:</span> <span class="s">3.1</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="code-view"><code><table class="code-view-table"><tbody><tr>
+<td class="code-view-numbers gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+</pre></td>
+<td class="code-view-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"paymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-03T07:19:27.5636519Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-03T07:21:00.5605905Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paid"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vatAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">375</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"remainingCaptureAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Only present after a partial capture</span><span class="w">
+    </span><span class="nl">"remainingCancellationAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="c1">// Only present after a partial capture</span><span class="w">
+    </span><span class="nl">"remainingReversalAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Purchase"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"initiatingSystemUserAgent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;should be set by the system calling POST:/psp/paymentorders&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sv-SE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"availableInstruments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"CreditCard"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Invoice-PayExFinancingSe"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Invoice-PayMonthlyInvoiceSe"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Swish"</span><span class="p">,</span><span class="w"> </span><span class="s2">"CreditAccount"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Trustly"</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"implementation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PaymentsOnly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"integration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HostedView|Redirect"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instrumentMode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"guestMode"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderItems"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/orderitems"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/urls"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payeeInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payeeInfo"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/payers"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"history"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/history"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failed"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"aborted"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/aborted"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/paid"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/cancelled"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"financialTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/financialtransactions"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"failedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/failedattempts"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"postPurchaseFailedAttempts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/postpurchasefailedattempts"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/psp/paymentorders/8be318c1-1caa-4db1-e2c6-08d7bf41224d/metadata"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.payex.com/psp/paymentorders/222a50ca-b268-4b32-16fa-08d6d3b73224/reversals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reversal"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="accordion">
+    <button type="button" class="accordion-header" aria-expanded="false" aria-controls="exp-1">
+        <span class="mr-3 show">Show fields</span>
+        <span class="mr-3 hide">Hide fields</span>
+    </button>
+    <div class="accordion-body" id="exp-1">
+        
+<table class="table table-striped mb-5">
+  <thead>
+    <tr>
+      <th style="text-align: left">Property</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-0"><code class="language-json highlighter-rouge">paymentOrder</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URL of the payment order this capture transaction belongs to.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">id</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The relative URL of the created capture transaction.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">created</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was created.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">updated</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The ISO-8601 date and time of when the transaction was updated.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">operation</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">Determines the initial operation, defining the type of payment order created.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">status</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">
+<code class="language-html highlighter-rouge">Initialized</code>, <code class="language-html highlighter-rouge">Paid</code>, <code class="language-html highlighter-rouge">Failed</code>, <code class="language-html highlighter-rouge">Reversed</code> <code class="language-html highlighter-rouge">Cancelled</code>, or <code class="language-html highlighter-rouge">Aborted</code>. Indicates the payment order’s current status.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">currency</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The currency of the payment order.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">amount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The transaction amount (including VAT, if any) entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The amount displayed is the final amount the payer paid for their order, including any payment method specific discounts or fees.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">vatAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The payment’s VAT (Value Added Tax) <code class="language-html highlighter-rouge">amount</code>, entered in the lowest monetary unit of the selected currency. E.g.: <strong><code class="language-html highlighter-rouge">10000</code></strong> = <code class="language-html highlighter-rouge">100.00</code> SEK, <strong><code class="language-html highlighter-rouge">5000</code></strong> = <code class="language-html highlighter-rouge">50.00</code> SEK.  The <code class="language-html highlighter-rouge">vatAmount</code> entered will not affect the <code class="language-html highlighter-rouge">amount</code> shown on the payment page, which only shows the total <code class="language-html highlighter-rouge">amount</code>. This field is used to specify how much of the total <code class="language-html highlighter-rouge">amount</code> the VAT will be. Set to <code class="language-html highlighter-rouge">0</code> (zero) if there is no VAT <code class="language-html highlighter-rouge">amount</code> charged.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">remainingCaptureAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The remaining authorized amount that is still possible to capture.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">remainingCancellationAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The remaining authorized amount that is still possible to cancel.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">remainingReversalAmount</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">integer</code></td>
+      <td style="text-align: left">The remaining captured amount that is still available for reversal.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">description</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A 40 character length textual <a href="/checkout-v3/features/technical-reference/description">description</a> of the purchase.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">initiatingSystemUserAgent</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The <a href="/checkout-v3/features/technical-reference/user-agent">user agent</a> of the HTTP client making the request, reflecting the value sent in the <code class="language-html highlighter-rouge">User-Agent</code> header with the initial <code class="language-html highlighter-rouge">POST</code> request which created the Payment Order.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">language</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">
+<code class="language-html highlighter-rouge">sv-SE</code>, <code class="language-html highlighter-rouge">nb-NO</code>, <code class="language-html highlighter-rouge">da-DK</code>, <code class="language-html highlighter-rouge">en-US</code> or <code class="language-html highlighter-rouge">fi-FI</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">availableInstruments</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">A list of payment methods available for this payment.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">implementation</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The merchant’s Digital Payments implementation type. <code class="language-html highlighter-rouge">Enterprise</code> or <code class="language-html highlighter-rouge">PaymentsOnly</code>. We ask that you don’t build logic around this field’s response. It is mainly for information purposes, as the implementation types might be subject to name changes. If this should happen, updated information will be available in this table.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">integration</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">string</code></td>
+      <td style="text-align: left">The merchant’s Digital Payments integration type. <code class="language-html highlighter-rouge">HostedView</code> (Seamless View) or <code class="language-html highlighter-rouge">Redirect</code>. This field will not be populated until the payer has opened the payment UI, and the client script has identified if Swedbank Pay or another URI is hosting the container with the payment iframe. We ask that you don’t build logic around this field’s response. It is mainly for information purposes. as the integration types might be subject to name changes, If this should happen, updated information will be available in this table.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">instrumentMode</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
+      <td style="text-align: left">Set to <code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Indicates if the payment is initialized with only one payment method available.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">guestMode</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">bool</code></td>
+      <td style="text-align: left">Set to <code class="language-html highlighter-rouge">true</code> or <code class="language-html highlighter-rouge">false</code>. Indicates if the payer chose to pay as a guest or not. When using the Payments Only implementation, this is triggered by not including a <code class="language-html highlighter-rouge">payerReference</code> in the original <code class="language-html highlighter-rouge">paymentOrder</code> request.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">orderItems</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">orderItems</code> resource where information about the order items can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">urls</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">urls</code> resource where all URLs related to the payment order can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">payeeInfo</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">payeeInfo</code> resource where information related to the payee can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">payer</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <a href="/checkout-v3/features/technical-reference/resource-sub-models#payer"><code class="language-html highlighter-rouge">payer</code> resource</a> where information about the payer can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">history</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">history</code> resource where information about the payment’s history can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">failed</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">failed</code> resource where information about the failed transactions can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">aborted</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">aborted</code> resource where information about the aborted transactions can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">paid</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">paid</code> resource where information about the paid transactions can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">cancelled</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">cancelled</code> resource where information about the cancelled transactions can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">financialTransactions</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">financialTransactions</code> resource where information about the financial transactions can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">failedAttempts</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">failedAttempts</code> resource where information about the failed attempts can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">postPurchaseFailedAttempts</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">postPurchaseFailedAttempts</code> resource where information about the failed capture, cancel or reversal attempts can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">metadata</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">id</code></td>
+      <td style="text-align: left">The URL to the <code class="language-html highlighter-rouge">metadata</code> resource where information about the metadata can be retrieved.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><span class="field-level field-level-1"><code class="language-json highlighter-rouge">operations</code></span></td>
+      <td style="text-align: left"><code class="language-html highlighter-rouge">array</code></td>
+      <td style="text-align: left">The array of <a href="/checkout-v3/features/technical-reference/operations">operations</a> that are possible to perform on the payment order in its current state. <a href="/checkout-v3/features/technical-reference/operations">See Operations for details</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+</div>
+    
+      <h2 id="capture-sequence-diagram">
+        
+        
+          Capture Sequence Diagram <a href="#capture-sequence-diagram" class="header-anchor"></a>
+        
+        
+      </h2>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Merchant
+    participant SwedbankPay as Swedbank Pay
+
+    rect rgba(81,43,43,0.1)
+        activate Merchant
+        note left of Payer: Capture
+        Merchant -&gt;&gt;+ SwedbankPay: rel:capture
+        deactivate Merchant
+        SwedbankPay --&gt;&gt;- Merchant: Capture status
+        note right of Merchant: Capture here only if the purchased&lt;br/&gt;goods don't require shipping.&lt;br/&gt;If shipping is required, perform capture&lt;br/&gt;after the goods have shipped.&lt;br&gt;Should only be used for &lt;br&gt;Payment Methods that support &lt;br&gt;Authorizations.
+    end
+</code></pre>
         
     </article>
 </div>
