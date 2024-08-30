@@ -260,9 +260,9 @@ payment process.
 Trustly Express is supported by a range of European banks, and the following
 in Sweden and Finland.
 
-**Sweden**: Danske Bank, Handelsbanken, Länsförsäkringar and Nordea.
+**Sweden**: Handelsbanken, Länsförsäkringar and Nordea.
 
-**Finland**: Danske Bank, Handelsbanken, Nordea, OmaSP, OP, POP Pankki,
+**Finland**: Handelsbanken, Nordea, OmaSP, OP, POP Pankki,
 S-Pankki, Säästöpankki and Ålandsbanken.
 
 While it works mostly the same way as the [payer aware payment menu][papm], we
