@@ -193,7 +193,7 @@ for the given operation.
 | `reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                     |
 | `redirect-checkout`           | Contains the URL used to redirect the payer to the Swedbank Pay Payments containing the Payment Menu.                                                      |
 | `view-checkout`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
-| `view-paymentsession`               | Containts the `href` used by merchants to launch our new SDK.                                                                                                                                                             |
+| `view-paymentsession`               | Contains the `href` used by merchants to launch our new SDK.                                                                                                                                                             |
 
 {% else %}
 
