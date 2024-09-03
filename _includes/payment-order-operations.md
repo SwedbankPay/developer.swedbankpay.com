@@ -57,6 +57,12 @@ is given below.
             "href": "https://ecom.externalintegration.payex.com/checkout/core/js/px.checkout.client.js?token=073115b6226e834dd9b1665771bae76223b4488429729155587de689555c5539&culture=sv-SE&_tc_tid=30f2168171e142d38bcd4af2c3721959",
             "rel": "view-checkout",
             "contentType": "application/javascript"
+        },
+        {
+            "method": "GET",
+            "href": "https://api.externalintegration.payex.com/psp/paymentsessions/b0bb522437a5c9fa3783f7ba30680bef0c32b3de0fafe568bec6dbadfa7da8cf?_tc_tid=d49b520fa0314bcca78c75806dee8a17",
+            "rel": "view-paymentsession",
+            "contentType": "application/json"
         }
     ]
 }{% endcapture %}
@@ -187,6 +193,7 @@ for the given operation.
 | `reversal`    | Used to reverse a payment. It is only possible to reverse a payment that has been captured and not yet reversed.                                                     |
 | `redirect-checkout`           | Contains the URL used to redirect the payer to the Swedbank Pay Payments containing the Payment Menu.                                                      |
 | `view-checkout`               | Contains the JavaScript `href` that is used to embed the Payment Menu UI directly on the webshop/merchant site.                                                                                                                                                                |
+| `view-paymentsession`               | Containts the `href` used by merchants to launch our new SDK.                                                                                                                                                             |
 
 {% else %}
 
