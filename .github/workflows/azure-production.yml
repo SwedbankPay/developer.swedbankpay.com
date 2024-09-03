@@ -24,6 +24,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS_PROD }}
 
       - name: deploy
-        uses: azure/CLI@v2.0.0
+        uses: azure/CLI@v2.1.0
         with:
           inlineScript: az storage blob upload-batch -s _site -d "\$web" --account-name blobdevportalprod --overwrite
