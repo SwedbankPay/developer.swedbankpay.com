@@ -293,6 +293,17 @@ returned if the quota for the period gets to 5 attempts remaining, as follows:
     "title": "SuspensionWarning. The card might be blocked.",
     "status": 403,
     "detail": "5 attempts left before the card is blocked.",
+    "problems": [{
+            "name": "ExternalResponse",
+            "description": "Forbidden-AuthenticationRequired"
+        }, {
+            "name": "AUTHENTICATION_REQUIRED",
+            "description": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5, hostId: 20, hostName: PayEx Test"
+        }, {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ],
     "suspension": {
             "attempts": 12,
             "remaining": 3,
@@ -388,16 +399,24 @@ Furthermore, a new response is added, being returned in cases where the
 transaction is declined, but might be accepted after modifications:
 
 {% capture response_content %}{
-    "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
-    "title": "AUTHENTICATION_REQUIRED",
-    "status": 403,
-    "detail": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5, hostId: 20, hostName: PayEx Test",
-    "modification": {
-        "required": "YES",
-        "reason": "AUTHENTICATION_REQUIRED",
-        "acquirerCode": "O5",
-        "acquirerDetail": "AUTHENTICATION_REQUIRED"
-    }
+    "type": "https://api.payex.com/psp/errordetail/creditcard/authenticationrequired",
+    "title": "AUTHENTICATION_REQUIRED",
+    "status": 403,
+    "detail": "Acquirer soft-decline, 3-D Secure authentication required, response-code: O5,   hostId: 20, hostName: PayEx Test - ModificationsRequired",
+    "problems": [{
+            "name": "AUTHENTICATION_REQUIRED",
+            "description": "Acquirer soft-decline, 3-D Secure authentication required,   response-code: O5, hostId: 20, hostName: PayEx Test"
+        }, {
+            "name": "Component",
+            "description": "pospay-ecommerce-financial-service"
+        }
+    ],
+    "modification": {
+        "required": "YES",
+        "reason": "AUTHENTICATION_REQUIRED",
+        "acquirerCode": "O5",
+        "acquirerDetail": "AUTHENTICATION_REQUIRED"
+    }
 }{% endcapture %}
 
 {% include code-example.html
