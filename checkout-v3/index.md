@@ -48,7 +48,9 @@ this section. We recommend [getting started here][get-started].
          </span>
          <span class="cards-content">
             <span class="h4">One-Time Payments</span>
-            <span><p>Get things started with our basic implementation.</p>
+            <span>
+               <p>Get things started with our basic implementation.</p>
+               <span class="badge badge-gray-light">All payment methods</span>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -63,7 +65,9 @@ this section. We recommend [getting started here][get-started].
          </span>
          <span class="cards-content">
             <span class="h4">Recurring Payments</span>
-            <span><p>Start getting that steady cash flow with our subscription services.</p>
+            <span>
+               <p>Start getting that steady cash flow with our subscription services.</p>
+               <span class="badge badge-gray-light">Card</span>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -78,7 +82,13 @@ this section. We recommend [getting started here][get-started].
          </span>
          <span class="cards-content">
             <span class="h4">One-Click Payments</span>
-            <span><p>Save your customer's details and make their checkout faster.</p>
+            <span>
+               <p>Save your customer's details and make their checkout faster.</p>
+               <span class="badge badge-gray-light">Card</span>
+               <span class="badge badge-gray-light">Invoice</span>
+               <span class="badge badge-gray-light">Swish</span>
+               <span class="badge badge-gray-light">Trustly</span>
+               <span class="badge badge-gray-light">Vipps</span>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
@@ -126,8 +136,6 @@ below to read more." %}
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [trustly-logo]: /assets/img/icon-trustly-simple.svg
-[wcag-presentation]: https://www.swedbankpay.com/information/wcag
-[paid]: /checkout-v3/features/technical-reference/resource-sub-models#paid
 [trustly]: /checkout-v3/payment-presentations#trustly
 [get-started]: /checkout-v3/get-started/
 [modules-sdks]: /checkout-v3/modules-sdks/

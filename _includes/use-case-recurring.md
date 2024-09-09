@@ -116,7 +116,7 @@ api-supported-versions: 3.x/2.0{% endcapture %}
           "expiryDate": "12/2033"
         }
        // ... other details
-    }
+    ]
 }{% endcapture %}
 
 {% include code-example.html
