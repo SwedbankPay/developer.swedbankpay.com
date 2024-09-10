@@ -50,7 +50,6 @@ this section. We recommend [getting started here][get-started].
             <span class="h4">One-Time Payments</span>
             <span>
                <p>Get things started with our basic implementation.</p>
-               <span class="badge badge-gray-light">All payment methods</span>
             </span>
          </span>
          <i class="material-icons">arrow_forward</i>
