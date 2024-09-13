@@ -56,7 +56,7 @@ Content-Type: application/json;version=3.1
 
 After the payment order is created, you can fetch it to get the available
 operations. The operation you're interested in for the sake of the bare minimum
-implementation is the `view-checkout`.
+implementation is the `view-paymentsession`.
 
 ```json
 {
@@ -64,10 +64,10 @@ implementation is the `view-checkout`.
   "operations": [
     {
       "method": "GET",
-      "href": "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
-      "rel": "view-checkout",
-      "contentType": "application/javascript"
-    },
+      "href": "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959",
+      "rel": "view-paymentsession",
+      "contentType": "application/json"
+    }
     ...
   ]
 }
@@ -126,85 +126,37 @@ defaultConfig {
 If you plan to use something other than `examplepayment://`, make sure to modify
 the manifest placeholder value accordingly.
 
-## Android SDK Configuration
+## Android SDK Payment Session
 
-Next, you provide the configuration for the payment UI. We don't use consumer
-identification for the bare minimum implementation, so that method is
-implemented but does not return any data. The payment order returned have
-URLs matching the payment order you created earlier. Provide the `view-checkout`
-operation `href` in the `viewPaymentLink` parameter of `ViewPaymentOrderInfo`.
+Next, you provide the Session URL and initiate a fetch of the payment session.
+This will automatically configure the SDK with the URLs provided when creating
+the payment order. You need to provide the `view-paymentsession` operation
+`href` in the `sessionURL` parameter of `fetchPaymentSession()`.
 
 ```kotlin
-class TestConfiguration : Configuration() {
+// TODO: Add
+```
 
-    val orderInfo: ViewPaymentOrderInfo
-        get() {
-            return ViewPaymentOrderInfo(
-                viewPaymentLink = "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959",
-                webViewBaseUrl = "https://example.com/",
-                completeUrl = "https://example.com/complete",
-                cancelUrl = "https://example.com/cancel",
-                paymentUrl = "examplepayment://payment/",
-                isV3 = true
-            )
-        }
+You have to wait until the payment session is fetched by the SDK, and can then
+continue with either making payment attempts for native payment instruments, or
+request a web view based payment flow. For the bare minimum implementation,
+we're only looking at the web view based payment flow, and you can therefore
+ignore the `availableInstruments` parameter.
 
-    // This method is required but not used
-    override suspend fun postConsumers(
-        context: Context,
-        consumer: Consumer?,
-        userData: Any?
-    ): ViewConsumerIdentificationInfo {
-        throw Exception()
-    }
-
-    override suspend fun postPaymentorders(
-        context: Context,
-        paymentOrder: PaymentOrder?,
-        userData: Any?,
-        consumerProfileRef: String?
-    ): ViewPaymentOrderInfo {
-        return orderInfo
-    }
-}
+```kotlin
+// TODO: Add
 ```
 
 ## Android Present Payment
-
-You are now ready to present the payment UI. First, you set our configuration as
-the global `defaultConfiguration` for `PaymentFragment` in your app:
-
-```kotlin
-val configuration = TestConfiguration()
-PaymentFragment.defaultConfiguration = configuration
-```
-
-After this, you simply create a `PaymentFragment` instance and present it in a
-way that works in your application (in this example, we're accessing the
-Appcompat `FragmentManager` via `supportFragmentManager`, meaning this code is
-implemented in an `Activity` of the app):
-
-```kotlin
-val arguments = PaymentFragment.ArgumentsBuilder()
-    .checkoutV3(true)
-    .build()
-
-val paymentFragment = PaymentFragment()
-paymentFragment.arguments = arguments
-
-val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
-supportFragmentManager.beginTransaction()
-    .add(containerViewId, paymentFragment)
-    .commit()
-```
 
 You want to listen to some basic state updates from the payment UI and dismiss
 the view when it's finished. You do this by accessing the `paymentViewModel`
 that is available on all Activities. In the following example, we observe the
 `state` variable in the same Activity as above, and remove the payment fragment
-from the screen after the payment is finalized (again, this is done with
-`supportFragmentManager`, you can modify this depending on how you presented the
-fragment):
+from the screen after the payment is finalized. We will be using Appcompat
+`FragmentManager` via `supportFragmentManager` to present the payment fragment
+in the implementation further down, so we're removing the payment view in a
+fragment transaction to close it:
 
 ```kotlin
 paymentViewModel.state.observe(this, Observer {
@@ -215,6 +167,27 @@ paymentViewModel.state.observe(this, Observer {
     }
 })
 ```
+
+You are now ready to present the payment UI. You can ask the payment session
+class to create a `PaymentFragment` for web view based payments:
+
+```kotlin
+// TODO: Add
+```
+
+After getting back the `PaymentFragment` instance , you can present it in a way
+that works in your application (again, in this example we're accessing the
+Appcompat `FragmentManager` via `supportFragmentManager`, meaning this code is
+implemented in an `Activity` of the app):
+
+```kotlin
+val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
+supportFragmentManager.beginTransaction()
+    .add(containerViewId, paymentFragment)
+    .commit()
+```
+
+
 
 ## iOS
 
@@ -273,49 +246,49 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 }
 ```
 
-## iOS SDK Configuration
+## iOS SDK Payment Session
 
-Next, you provide the configuration for the payment UI. We don't use consumer
-identification for the bare minimum implementation, so that method is
-implemented but does not return any data. The payment order returned have
-URLs matching the payment order you created earlier. Provide the `view-checkout`
-operation `href` in the `viewPaymentLink` parameter of `ViewPaymentOrderInfo`.
-
-Provide the `view-checkout` operation `href` in the `viewPaymentLink` parameter
-of `ViewPaymentOrderInfo`;
+You need to listen to some state updates from the Payment session. You do this
+by implementing the `SwedbankPaySDKPaymentSessionDelegate` protocol. In the
+following example, we implement the delegate protocol and the three required
+methods.
 
 ```swift
-enum SwedbankPayConfigurationError: Error {
-    case notImplemented
+func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
+    print("Available Instruments Fetched")
 }
 
-class TestConfiguration: SwedbankPaySDKConfiguration {
-    let orderInfo: SwedbankPaySDK.ViewPaymentOrderInfo
-    
-    init() {
-        orderInfo = SwedbankPaySDK.ViewPaymentOrderInfo(isV3: true,
-                                                        webViewBaseURL: URL(string: "https://example.com/"),
-                                                        viewPaymentLink: URL(string: "{{ page.front_end_url }}/payment/core/js/px.payment.client.js?token={{ page.payment_token }}&culture=nb-NO&_tc_tid=30f2168171e142d38bcd4af2c3721959")!,
-                                                        completeUrl: URL(string: "https://example.com/complete")!,
-                                                        cancelUrl: URL(string: "https://example.com/cancel"),
-                                                        paymentUrl: URL(string: "examplepayment://payment/"),
-                                                        termsOfServiceUrl: URL(string: "https://example.com/tos"))
-    }
+func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {
+    print("Native Session Problem Occurred")
+}
 
-    // This delegate method is required but not used
-    func postConsumers(consumer: SwedbankPaySDK.Consumer?,
-                       userData: Any?,
-                       completion: @escaping (Result<SwedbankPaySDK.ViewConsumerIdentificationInfo, Error>) -> Void) {
-        completion(.failure(SwedbankPayConfigurationError.notImplemented))
-    }
+func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
+    print("SDK Problem Occurred")
+}
+```
 
-    func postPaymentorders(paymentOrder: SwedbankPaySDK.PaymentOrder?,
-                           userData: Any?,
-                           consumerProfileRef: String?,
-                           options: SwedbankPaySDK.VersionOptions,
-                           completion: @escaping (Result<SwedbankPaySDK.ViewPaymentOrderInfo, Error>) -> Void) {
-        completion(.success(orderInfo))
-    }
+Next, you provide the Session URL and initiate a fetch of the payment session.
+This will automatically configure the SDK with the URLs provided when creating
+the payment order. You need to provide the `view-paymentsession` operation
+`href` in the `sessionURL` parameter of `fetchPaymentSession()`.
+
+```swift
+let paymentSession = SwedbankPaySDK.SwedbankPayPaymentSession()
+
+paymentSession.delegate = self
+
+paymentSession.fetchPaymentSession(sessionURL: URL(string: "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")!)
+```
+
+You have to wait until the payment session is fetched by the SDK, and can then
+continue with either making payment attempts for native payment instruments, or
+request a web view based payment flow. For the bare minimum implementation,
+we're only looking at the web view based payment flow, and you can therefore
+ignore the `availableInstruments` parameter.
+
+```swift
+func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
+    // No need to look at availableInstruments, continue with showing the payment menu
 }
 ```
 
@@ -331,12 +304,12 @@ implementation further down, so we can use `dismiss()` to close it:
 ```swift
 func paymentComplete() {
     dismiss(animated: true)
-    print("Payment Complete")
+    print("Payment Failed")
 }
 
 func paymentCanceled() {
     dismiss(animated: true)
-    print("Payment Canceled")
+    print("Payment Failed")
 }
 
 func paymentFailed(error: Error) {
@@ -345,23 +318,22 @@ func paymentFailed(error: Error) {
 }
 ```
 
-You are now ready to present the payment UI. Simply create a
-`SwedbankPaySDKController`, provide the configuration, assign the `delegate`
-and present it in a way that works in your application (again, in the example
-we're presenting the view modally in a separate View Controller):
+You are now ready to present the payment UI. You can ask the payment session
+class to create a `SwedbankPaySDKController` for web view based payments. After
+getting back the `SwedbankPaySDKController` instance , you can present it in a
+way that works in your application (again, in the example we're presenting the
+view modally in a separate View Controller):
 
 ```swift
-let configuration = TestConfiguration()
-let paymentController = SwedbankPaySDKController(configuration: configuration,
-                                                 withCheckin: false,
-                                                 consumer: nil,
-                                                 paymentOrder: nil,
-                                                 userData: nil)
-
+let paymentController = paymentSession.createSwedbankPaySDKController()
 paymentController.delegate = self
 
 present(paymentController, animated: true)
 ```
+
+You can now finish the payment in the web based Swedbank Pay Menu, and when the
+payment is complete, you will be called with the `paymentComplete()` delegate
+method and the payment menu will close.
 
 ## Limitations of the minimal implementation
 
@@ -369,14 +341,11 @@ While you can use the steps above to present a payment UI in your apps with very
 little work, there are several limitations to the implementation that you should
 consider before choosing how to implement the full payment in your apps.
 
-### Dynamic configuration
+### Dynamic Session URL
 
-For simplicity, we've hardcoded all URLs needed to initiliaze the configuration.
-In an actual application, you instead need to fetch one ore more URLs from your
-backend and supply it to the payment UI. The obvious URL that is required to be
-dynamic is the payment order specific `viewPaymentLink`, but also URLs such as
-`paymentUrl` should ideally be dynamic (depending on mobile platform and even
-the payment order, more on this below).
+For simplicity, we've hardcoded the Session URL needed to fetch the payment
+session in the SDK. In an actual application, you instead need to fetch this URL
+from your own backend and supply it to the SDK.
 
 ### Cancelling payment
 

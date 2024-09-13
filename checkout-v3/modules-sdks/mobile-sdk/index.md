@@ -4,9 +4,7 @@ title: Introduction
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
   Digital Payments to your Android and iOS applications.
-  The Mobile SDK consists of three components: An Android library, an iOS
-  library, and a backend component with example implementations in Node.js
-  and Java.
+  The Mobile SDK consists an Android and an iOS library.
 permalink: /:path/
 menu_order: 600
 ---

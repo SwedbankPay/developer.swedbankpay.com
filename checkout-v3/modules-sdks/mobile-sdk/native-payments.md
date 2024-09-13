@@ -49,12 +49,16 @@ sequenceDiagram
 
     App ->> SDK: Initiate SDK Configuration
     App ->> SDK: startPaymentSession()
+    activate SDK
     App ->> App: Show loading indicator
     SDK ->> App: availableInstrumentsFetched()
+    deactivate SDK
     App ->> App: Present available payment methods to user
     App ->> SDK: makePaymentAttempt()
+    activate SDK
     App ->> App: Show loading indicator
     SDK ->> App: paymentComplete()
+    deactivate SDK
 ```
 
 We will expand on this further with more [detailed usage flows][detailed-usage-flows]
@@ -148,6 +152,15 @@ It is advisable to present a loading indicator at this stage. As a next step,
 you can expect the `AvailableInstrumentsFetched` state to be called with the
 payment methods available to use.
 
+```kotlin
+NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is NativePaymentState.AvailableInstrumentsFetched -> {
+            // TODO: Present `paymentState.availableInstruments` list to user
+        }
+...
+```
+
 After receiving the available payment methods and presenting these to the user
 in your own app UI, the user is able to pick the method to use. You then call
 `makePaymentAttempt()` and provide a `PaymentAttemptInstrument` configured for
@@ -163,12 +176,36 @@ You should once again show indication of loading in the app. Calling the method
 with these parameters will start a Swish payment attempt and automatically
 launch the Swish app. After the user is sent back to your app, you will receive
 `PaymentComplete` or `SessionProblemOccurred` depending on the
-result of the payment attempt. If there was a problem, you should inform the
-user and give them the ability to either make a new attempt (with any available
-payment method) or to abort the whole payment session.
+result of the payment attempt.
+
+```kotlin
+NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is NativePaymentState.PaymentComplete -> {
+            // TODO: Continue checkout flow
+        }
+
+        is NativePaymentState.SessionProblemOccurred -> {
+            // TODO: Inform user of problem details for `paymentState.problem.type`, give option to make new payment attempt or cancel
+        }
+...
+```
+
+If there was a problem, you should inform the user and give them the ability to
+either make a new attempt (with any available payment method) or to abort the
+whole payment session.
 
 ```kotlin
 nativePayment.abortPaymentSession()
+```
+
+```kotlin
+NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is NativePaymentState.PaymentCanceled -> {
+            // TODO: Return to cart
+        }
+...
 ```
 
 ### Payment methods
@@ -207,13 +244,13 @@ Implementation chapter.
 
 You need to listen to some state updates from the Native Payment session,
 updating your UI and informing the user according to the events. You do this
-by implementing the `SwedbankPaySDKNativePaymentDelegate` protocol. In the
-following example, we implement the delegate protocol and the five required
+by implementing the `SwedbankPaySDKPaymentSessionDelegate` protocol. In the
+following example, we implement the delegate protocol and the eight required
 methods. Note that the actions to perform in these callbacks are completely
 dependent on the checkout user experience of your application.
 
 ```swift
-func availableInstrumentsFetched(_ availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
+func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
     print("Available Instruments Fetched")
 }
 
@@ -221,67 +258,102 @@ func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {
     print("Native Session Problem Occurred")
 }
 
-func sdkProblemOccurred(problem: SwedbankPaySDK.NativePaymentProblem) {
+func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
     print("SDK Problem Occurred")
 }
 
-func paymentComplete() {
-    print("Payment Complete")
+func paymentSessionComplete() {
+    print("Payment Session Complete")
 }
 
-func paymentCanceled() {
-    print("Payment Canceled")
+func paymentSessionCanceled() {
+    print("Payment Session Canceled")
+}
+
+func show3DSecureViewController(viewController: UIViewController) {
+    print("Show 3D Secure View Controller")
+}
+
+func dismiss3DSecureViewController() {
+    print("Dismiss 3D Secure View Controller")
+}
+
+func paymentSession3DSecureViewControllerLoadFailed(error: Error, retry: @escaping ()->Void) {
+    print("3D Secure View Controller Load Failed")
 }
 ```
 
 The main component for Native Payments in the iOS SDK is the class
-`SwedbankPaySDK.NativePayment`, a helper class that makes it possible to start
-and interact with a native payment session. To start a native payment session,
-simply create a `SwedbankPaySDK.NativePayment`, set a `delegate` and call the
-`startPaymentSession(sessionURL:)` method. Provide the `view-paymentsession`
-operation `href` in the `sessionURL` parameter.
+`SwedbankPaySDK.SwedbankPayPaymentSession`, a helper class that makes it
+possible to start and interact with a native payment session. To start a native
+payment session, simply create a `SwedbankPaySDK.SwedbankPayPaymentSession`, set
+a `delegate` and call the `fetchPaymentSession(sessionURL:)` method. Provide the
+`view-paymentsession` operation `href` in the `sessionURL` parameter.
 
 ```swift
-let configuration = TestConfiguration()
-let nativePayment = SwedbankPaySDK.NativePayment(orderInfo: configuration.orderInfo)
+let paymentSession = SwedbankPaySDK.SwedbankPayPaymentSession()
 
-nativePayment.delegate = self
+paymentSession.delegate = self
 
-nativePayment.startPaymentSession(sessionURL: URL(string: "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")!)
+paymentSession.fetchPaymentSession(sessionURL: URL(string: "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")!)
 ```
 
 This will fetch the session information and initiate the Native Payment routine.
 It is advisable to present a loading indicator at this stage. As a next step,
-you can expect the `availableInstrumentsFetched(_:)` delegate method to be
+you can expect the `paymentSessionFetched(_:)` delegate method to be
 called with the payment methods available to use.
+
+```swift
+func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
+    // TODO: Present `availableInstruments` array to user
+}
+```
 
 After receiving the available payment methods and presenting these to the user
 in your own app UI, the user is able to pick the method to use. You then call
-`makePaymentAttempt(instrument:)` and provide a
+`makeNativePaymentAttempt(instrument:)` and provide a
 `SwedbankPaySDK.PaymentAttemptInstrument` configured for the users choice. In
 the following example, we assume the user wish to do a local Swish payment on
 the same device.
 
 ```swift
-nativePayment.makePaymentAttempt(with: .swish(msisdn: nil))
+paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
 ```
 
-You should once again show indication of loading in the app. Calling the moethod
+You should once again show indication of loading in the app. Calling the method
 with these parameters will start a Swish payment attempt and automatically
 launch the Swish app. After the user is sent back to your app, you will receive
 `paymentComplete()` or `sessionProblemOccurred(problem:)` depending on the
-result of the payment attempt. If there was a problem, you should inform the
-user and give them the ability to either make a new attempt (with any available
-payment method) or to abort the whole payment session.
+result of the payment attempt.
 
 ```swift
-nativePayment.abortPaymentSession()
+func paymentSessionComplete() {
+    // TODO: Continue checkout flow
+}
+
+func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {
+    // TODO: Inform user of problem details for `problem.type`, give option to make new payment attempt or cancel
+}
+```
+
+If there was a problem, you should inform the user and give them the ability to
+either make a new attempt (with any available payment method) or to abort the
+whole payment session.
+
+```swift
+paymentSession.abortPaymentSession()
+```
+
+```swift
+func paymentSessionCanceled() {
+    // TODO: Return to cart
+}
 ```
 
 ### Payment methods
 
 The `availableInstruments` array provided in the
-`availableInstrumentsFetched(_:)` delegate method is an array of
+`paymentSessionFetched(_:)` delegate method is an array of
 `SwedbankPaySDK.AvailableInstrument` with information of payment methods that
 can be used for native payments. These instrument object also contain saved
 payment method data. This could be saved payment cards or known MSISDN for the
@@ -295,15 +367,15 @@ The Swish payment method is represented as an available instrument through
 
 To make a Swish payment attempt, you use
 `SwedbankPaySDK.PaymentAttemptInstrument.swish(msisdn:)` where `msisdn` can be
-set to `nil` to start Swish locally on the users device, or set to an MSISDN
-for the Swish payment to be started on another device.
+set to `nil` to start the Swish app locally on the users device, or set to an
+MSISDN for the Swish payment to be started on another device.
 
 ```swift
 // Local start of the Swish app on the users device
-nativePayment.makePaymentAttempt(with: .swish(msisdn: nil))
+paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
 
 // Start on another device using a specific MSISDN
-nativePayment.makePaymentAttempt(with: .swish(msisdn: "+46739000001"))
+paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: "+46739000001"))
 ```
 
 ## Problem handling
@@ -371,67 +443,76 @@ multiple outcomes:
 
 ```mermaid
 sequenceDiagram
-    %% box Merchant Native App
-        participant App
-        participant SDK
-    %% end
+    participant App
+    participant SDK
     participant Ext as External App
     participant Backend as Merchant Backend
     participant SWP as Payment Order API
 
     App ->> Backend: Initiate checkout
+    activate Backend
     Backend ->> SWP: Create Payment Order ①
+    deactivate Backend
+    activate SWP
     SWP ->> Backend: Payment Order information
+    deactivate SWP
+    activate Backend
     Backend ->> App: Payment Order information
-    App ->> SDK: Initiate SDK Configuration ②
-    App ->> SDK: startPaymentSession() ③
+    deactivate Backend
+    App ->> SDK: fetchPaymentSession() ②
+    activate SDK
     App ->> App: Show loading indicator
-    SDK ->> App: availableInstrumentsFetched()
+    SDK ->> App: paymentSessionFetched()
+    deactivate SDK
     App ->> App: Present available payment methods to user
-    App ->> SDK: makePaymentAttempt()
+    App ->> SDK: makeNativePaymentAttempt()
+    activate SDK
     App ->> App: Show loading indicator
-    opt
-        SDK ->> App: paymentComplete()
+    opt Low friction Complete
+        SDK ->> App: paymentSessionComplete()
         note over SDK, App: Very low friction payments can finish here
     end
     opt Payments in External App
         SDK ->> Ext: Start external app
+        deactivate SDK
+        activate Ext
         Ext ->> SDK: Return from external app
+        deactivate Ext
+        activate SDK
         opt On iOS
-            App ->> SDK: SwedbankPaySDK.open(url:) ④
+            App ->> SDK: SwedbankPaySDK.open(url:) ③
         end
     end
-    opt
-        SDK ->> App: paymentComplete()
+    opt External App Complete
+        SDK ->> App: paymentSessionComplete()
         note over SDK, App: Payments completed in external apps can finish here
     end
     opt On payment problems
-        SDK ->> App: sessionProblemOccurred() ⑤
+        SDK ->> App: sessionProblemOccurred() ④
         App ->> App: Present problem description to user
         note over SDK, App: User can either make a new payment attempt<br/>with any available instrument, or abort the session
     end
     opt On SDK problems
-        SDK ->> App: sdkProblemOccurred() ⑤
+        SDK ->> App: sdkProblemOccurred() ④
         App ->> App: Present problem description to user
-        note over SDK, App: Depending on the SDK problem, the user can either retry, make a<br/>new payment attempt, or you need to restart the payment session.
+        note over SDK, App: Depending on the SDK problem, the user can either<br/>retry, make a new payment attempt, or you need to<br/>restart the payment session.
     end
     opt If user aborts session
         App ->> SDK: abortPaymentSession()
         App ->> App: Show loading indicator
-        SDK ->> App: paymentCanceled()
+        SDK ->> App: paymentSessionCanceled()
+        deactivate SDK
     end
 ```
 
 * ① Just as with regular non-native payments in the Swedbank Pay Mobile SDK,
 there is no option to create payment orders directly. You need to create your
 payment orders with your own backend.
-* ② The SDK is configured as usual, with the regular required parameters such
-as `paymentURL`, `completeURL` and `cancelURL`.
-* ③ Starting a Native Session in the SDK requires a [Session URL][session-url].
-* ④ Just as with non-native payments, the `SwedbankPaySDK.open(url:)` method
+* ② Starting a Native Session in the SDK requires a [Session URL][session-url].
+* ③ Just as with non-native payments, the `SwedbankPaySDK.open(url:)` method
 needs to be called from the App Delegate, see [iOS Setup][ios-bare-minimum-setup].
 This is not needed on Android.
-* ⑤ See [Problem handling][problem-handling] for different considerations and
+* ④ See [Problem handling][problem-handling] for different considerations and
 outcomes.
 
 ### Alternative checkout flows
@@ -450,22 +531,26 @@ sequenceDiagram
     participant App
     participant SDK
 
-    App ->> SDK: Initiate SDK Configuration
-    note over App, SDK: Including viewPaymentLink
-    App ->> SDK: startPaymentSession()
+    App ->> SDK: fetchPaymentSession()
+    activate SDK
     App ->> App: Show loading indicator
-    SDK ->> App: availableInstrumentsFetched()
+    SDK ->> App: paymentSessionFetched()
+    deactivate SDK
     App ->> App: Present available payment methods to user
-    note over App: Including custom "More payment methods" option
+    note over App: Including custom option<br/>"More payment methods"
     opt If a native payment instrument is picked by user
-        App ->> SDK: makePaymentAttempt()
+        App ->> SDK: makeNativePaymentAttempt()
+        activate SDK
         App ->> App: Show loading indicator
         SDK ->> App: paymentComplete()
+        deactivate SDK
     end
-    opt If "more payment methods" is picked by user
-        App ->> SDK: Present payment menu
-        note over App, SDK: Android: PaymentFragment<br/>iOS: SwedbankPaySDKController
+    opt If "More payment methods" is picked by user
+        App ->> SDK: Create payment menu
+        activate SDK
+        note over App, SDK: Android: createPaymentFragment()<br/>PaymentFragment<br/><br/>iOS: createSwedbankPaySDKController()<br/>SwedbankPaySDKController
         SDK ->> App: paymentComplete()
+        deactivate SDK
         note over App, SDK: Regular, non-native payment, callback
     end
 ```
@@ -482,7 +567,7 @@ UI and saving the picked method to a local cache. When the SDK callback
 to the saved cache and makes a payment attempt on that instrument without right
 away.
 
-You can combine this with [Network Tokenization][network-tokenization] for
+You can combine this with [One-Click Payment tokens][one-click-payments] for
 credit card where you can fetch the users saved payment tokens before creating
 your payment order.
 
@@ -495,31 +580,48 @@ sequenceDiagram
     
     opt If you want to present saved tokens
         App ->> Backend: Fetch saved credit cards
+        activate Backend
         Backend ->> SWP: Fetch Payer Owned Tokens
+        deactivate Backend
+        activate SWP
         SWP ->> Backend: Payer Owned Tokens
+        deactivate SWP
+        activate Backend
         Backend ->> App: Saved payment token list
+        deactivate Backend
     end
     App ->> App: Present available payment methods to user
     App ->> App: Save payment method picked by user to local cache
     App ->> Backend: Initiate checkout
+    activate Backend
     Backend ->> SWP: Create Payment Order
+    deactivate Backend
+    activate SWP
     SWP ->> Backend: Payment Order information
+    deactivate SWP
+    activate Backend
     Backend ->> App: Payment Order information
-    App ->> SDK: Initiate SDK Configuration
+    deactivate Backend
     opt If a native payment instrument is picked by user
-        App ->> SDK: startPaymentSession()
+        App ->> SDK: fetchPaymentSession()
+        activate SDK
         App ->> App: Show loading indicator
-        SDK ->> App: availableInstrumentsFetched()
+        SDK ->> App: paymentSessionFetched()
+        deactivate SDK
         App ->> App: Automatically choose instrument
-        note over App: Match previously picked payment method in<br/>local cache to list of available instruments,<br/>without user any user interaction
-        App ->> SDK: makePaymentAttempt()
+        note over App: Match previously picked payment<br/>method in local cache to list of<br/>available instruments, without user<br/>any user interaction
+        App ->> SDK: makeNativePaymentAttempt()
+        activate SDK
         App ->> App: Show loading indicator
-        SDK ->> App: paymentComplete()
+        SDK ->> App: paymentSessionComplete()
+        deactivate SDK
     end
     opt If non-native instrument is picked by user
         App ->> SDK: Present payment menu
+        activate SDK
         note over App, SDK: Android: PaymentFragment<br/>iOS: SwedbankPaySDKController
         SDK ->> App: paymentComplete()
+        deactivate SDK
         note over App, SDK: Regular, non-native payment, callback
     end
 ```
@@ -550,5 +652,5 @@ instrument mode payment order and configure
 [detailed-usage-flows]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows
 [problem-handling]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling
 [session-url]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url
-[network-tokenization]: /checkout-v3/features/optional/network-tokenization/
+[one-click-payments]: /checkout-v3/features/optional/one-click-payments/
 [one-click-consent-checkbox]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
