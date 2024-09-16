@@ -27,16 +27,16 @@ inside your application's native UI. It generates any html pages required to
 show the Swedbank Pay UI internally; it does not support using a Checkout or
 Payments web page that you host yourself. If doing the latter fits your case
 better, you can show your web page in a Web View instead. In that case, you may
-benefit from the [collection of information about showing Checkout or Payments
-in a Web View][plain-webview].
+benefit from the
+[collection of information about showing Checkout or Payments in a Web View][plain-webview].
 
 ## Prerequisites
 
 To start integrating the Swedbank Pay Mobile SDK, you need the following:
 
 *   An agreement that includes [Swedbank Pay Digital Payments][checkout],
-    specifically [Enterprise][checkout-enterprise] or [Payments
-    Only][checkout-payments-only].
+    specifically [Enterprise][checkout-enterprise] or
+    [Payments Only][checkout-payments-only].
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
     the Merchant Portal. Please observe that the Swedbank Pay Digital Payments
     implementations currently available encompasses the **`paymentmenu`** scope.

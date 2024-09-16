@@ -65,9 +65,10 @@ protocol. The protocol has two required methods:
 ## Android
 
 The Configuration is a subclass of the abstract class
-[`Configuration`][dokka-config]. The class has two abstract methods. These
-methods are suspending (asynchronous) Kotlin methods; a compatibility class is
-provided if you need to implement your Configuration in Java instead.
+[`Configuration`][dokka-config]{:target="_blank"}. The class has two abstract
+methods. These methods are suspending (asynchronous) Kotlin methods; a
+compatibility class is provided if you need to implement your Configuration in
+Java instead.
 
 ```kotlin
     class MyConfiguration : Configuration() {

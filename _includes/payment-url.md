@@ -72,9 +72,10 @@ in {% if technical_reference_url contains "/checkout-v2" %}
 {% endif %}
 
 When implementing the Seamless View flow into a WebView in your mobile app, you
-should use a [custom scheme][custom-scheme] or [Universal Link][universal-link]
-in the `paymentUrl` for handling automatic switching between your app and the
-payment app on the mobile device.
+should use a [custom scheme][custom-scheme]{:target="_blank"} or
+[Universal Link][universal-link]{:target="_blank"} in the `paymentUrl` for
+handling automatic switching between your app and the payment app on the mobile
+device.
 
 {% endif %}
 [custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app

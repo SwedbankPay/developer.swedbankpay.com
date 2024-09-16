@@ -234,9 +234,9 @@ When an external application is launched, the flow signals the return to the
 payment menu by again opening `paymentUrl`. This time, however, we cannot
 intercept it. The system then handles opening that url the usual way. For
 maximum compatibility, `paymentUrl` is a regular https url. On iOS, `paymentUrl`
-is designed to be in format that is registered as a [Universal
-Link][ios-universal-links] to the app, which causes the system to open
-`paymentUrl` in the app. The example backend serves a
+is designed to be in format that is registered as a
+[Universal Link][ios-universal-links]{:target="_blank"} to the app, which causes
+the system to open `paymentUrl` in the app. The example backend serves a
 `/.well-known/apple-app-site-association` file that assigns the paths under
 `/sdk-callback/` to be Universal Links to the application set in the
 configuration. The SDK defaults to building `paymentUrl` under this path.
@@ -308,11 +308,11 @@ sequenceDiagram
 
 If the external flow ended with `paymentUrl` opened in the browser, we need a
 way to get back to the app. On Android, this is simple to accomplish by
-redirecting to an [Android Intent Uri][android-intent-scheme]; the SDK and
-backend work together to construct the Intent Uri to point to the correct app.
-This Intent will cause the app to be brought back into focus, and the
-PaymentFragment will recognize the `paymentUrl` and reload the payment menu. We
-still need to have an actual html page served at `paymentUrl`, though, as the
+redirecting to an [Android Intent Uri][android-intent-scheme]{:target="_blank"};
+the SDK and backend work together to construct the Intent Uri to point to the
+correct app. This Intent will cause the app to be brought back into focus, and
+the PaymentFragment will recognize the `paymentUrl` and reload the payment menu.
+We still need to have an actual html page served at `paymentUrl`, though, as the
 redirect may be blocked in some scenarios. If that happens, the page will also
 contain a link the user can tap on, which opens the same Intent Uri.
 

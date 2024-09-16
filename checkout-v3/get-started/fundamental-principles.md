@@ -9,11 +9,12 @@ description: |
 
 ## Foundation
 
-The **Swedbank Pay API Platform** is built using the [REST architectural
-style][rest] and the request and responses come in the [JSON] format. The API
-has predictable, resource-oriented URLs and use default HTTP features, like HTTP
-authentication (using OAuth 2), HTTP methods and headers. These techniques are
-widely used and understood by most HTTP client libraries.
+The **Swedbank Pay API Platform** is built using the
+[REST architectural style][rest]{:target="_blank"} and the request and responses
+come in the [JSON] format. The API has predictable, resource-oriented URLs and
+use default HTTP features, like HTTP authentication (using OAuth 2), HTTP
+methods and headers. These techniques are widely used and understood by most
+HTTP client libraries.
 
 ## Connection and Protocol
 
@@ -24,16 +25,17 @@ connecting to Swedbank Pay's APIs. This is most likely due to the connection
 being made from the client with TLS 1.0 or even SSL, which are all insecure and
 deprecated. If such is the case, ensure that you are able to connect over a
 TLS 1.2 connection by reading information regarding your programming languages
-and environments ([Java][java-tls], [PHP Curl][php-curl-tls],
-[PHP Zend][php-zend-tls], [Ruby][ruby-tls], [Python][python-tls],
-[Node.js Request][node-tls]).
+and environments ([Java][java-tls]{:target="_blank"},
+[PHP Curl][php-curl-tls]{:target="_blank"}, [PHP Zend][php-zend-tls],{:target="_blank"}
+[Ruby][ruby-tls]{:target="_blank"}, [Python][python-tls]{:target="_blank"},
+[Node.js Request][node-tls]{:target="_blank"}).
 
-You can inspect [Swedbank Pay's TLS and cipher suite][ssllabs] support at
-SSL Labs. Support for HTTP/2 in our APIs is being investigated.
+You can inspect [Swedbank Pay's TLS and cipher suite][ssllabs]{:target="_blank"}
+support at SSL Labs. Support for HTTP/2 in our APIs is being investigated.
 
 ## Postel's Robustness Principle
 
-We encourage you to keep [Postel's robustness principle][robustness-principle]
+We encourage you to keep [Postel's robustness principle][robustness-principle]{:target="_blank"}
 in mind. Build your integration in a way that is resilient to change, wherever
 it may come. Don't confine yourself to the limits of our current documentation
 examples. A `string` looking like a `guid` must still be handled and stored like
@@ -91,8 +93,8 @@ different operations in the client, this task is moved to the server. The client
 simply follows links and performs operations provided by the API, given the
 current state of the resource. The server controls the state and lets the client
 know through hypermedia what's possible in the current state of the resource. To
-get an [introduction to **hypermedia**, please watch this 20 minute
-video][the-rest-and-then-some].
+get an
+[introduction to **hypermedia**, please watch this 20 minute video][the-rest-and-then-some]{:target="_blank"}.
 
 {% include alert.html type="warning" icon="warning" header="Don't build URLs"
 body=" It is very important that only the base URLs of Swedbank Pay's APIs are
@@ -252,20 +254,20 @@ manner across the entire API Platform.
 
 ### Currency
 
-All currencies are expressed according to the [ISO 4217][iso-4217] standard,
-e.g `SEK`, `EUR`, `NOK`.
+All currencies are expressed according to the
+[ISO 4217][iso-4217]{:target="_blank"} standard, e.g `SEK`, `EUR`, `NOK`.
 
 ### Dates
 
-All dates are expressed according to the [ISO 8601][iso-8601] standard that
-combine dates, time and timezone data into a string, e.g.
+All dates are expressed according to the [ISO 8601][iso-8601]{:target="_blank"}
+standard that combine dates, time and timezone data into a string, e.g.
 `2018-09-14T13:21:57.6627579Z`.
 
 ### Locale
 
-When defining locale, we use the combination of [language][iso-639-1]
-and [country codes][iso-3166]. Our payment menu UI is currently limited to
-`nb-NO`, `sv-SE`, `da-DK` `fi-FI` and `en-US`.
+When defining locale, we use the combination of [language][iso-639-1]{:target="_blank"}
+and [country codes][iso-3166]{:target="_blank"}. Our payment menu UI is
+currently limited to `nb-NO`, `sv-SE`, `da-DK` `fi-FI` and `en-US`.
 
 ### Monetary Amounts
 

@@ -48,9 +48,9 @@ menu.
 Swedbank Pay provides a script to do this check, with the URL
 `ecom.<environment>.payex.com/checkout/core/integration.` Environments
 available for you are `externalintegration` and `production`, and you can switch
-integration between `checkout` and `paymentmenu`. Follow these links for [test
-environment][test-env] and [production environment][prod-env] **Checkout**
-scripts.
+integration between `checkout` and `paymentmenu`. Follow these links for
+[test environment][test-env]{:target="_blank"} and
+[production environment][prod-env]{:target="_blank"} **Checkout** scripts.
 
 Add the script tag to your website and perform the javascript call
 `await payex.getAcceptedWallets()`. We will return a string array with the

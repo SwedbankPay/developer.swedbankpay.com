@@ -1,9 +1,9 @@
 ## User-Agent
 
-The term [user agent][user-agent] is used for both the web browser used by the
-payer as well as the system making HTTP requests towards Swedbank Pay's APIs.
-The difference between these two and how they relate to each other is
-illustrated in the below sequence diagram:
+The term [user agent][user-agent]{:target="_blank"} is used for both the web
+browser used by the payer as well as the system making HTTP requests towards
+Swedbank Pay's APIs. The difference between these two and how they relate to
+each other is illustrated in the below sequence diagram:
 
 ```plantuml
 @startuml "User Agents"

@@ -22,7 +22,8 @@ to take. If you're using a Redirect integration, you are all set and can skip
 this step. If you're using a Seamless View integration, you need to do the
 following:
 
-1.  Download the [domain file][payex-domain-file] (right click and "Save as").
+1.  Download the [domain file][payex-domain-file]{:target="_blank"}
+   (right click and "Save as").
     -   Make sure you do not change, edit or manipulate the file in any way,
     shape or form.
     -   The file should have **NO EXTENSION**, meaning there should not be any
@@ -40,7 +41,7 @@ following:
 3.  Verify that the file has been uploaded correctly by opening the site. You
     should see a series of letters and numbers.
     -   You can compare it to our own verification file, found on
-    [this site][swp-file-site].
+    [this site][swp-file-site]{:target="_blank"}.
     -   If done correctly, they should look identical.
 
 If you're using our **iOS SDK**, make sure that the `webViewBaseURL` is set to
@@ -65,7 +66,7 @@ further instructions and assistance.
 
 Apple Pay provides nonprofit organizations a simple and secure way to accept
 donations. To register your nonprofit organization for Apple Pay, please visit
-[Benevity][benevity-donation-setup].
+[Benevity][benevity-donation-setup]{:target="_blank"}.
 
 You’ll be asked to provide basic information about your organization. Note that
 the **Apple Developer Team ID** is an **optional** field, so this is not needed.
@@ -88,7 +89,8 @@ Guidelines.
 
 Unless you have already accepted as part of signing your agreement with
 Swedbank Pay, we can provide the following links for digital signature in
-[Sweden][apple-pay-tc-sign-sweden] and [Norway][apple-pay-tc-sign-norway].
+[Sweden][apple-pay-tc-sign-sweden]{:target="_blank"} and
+[Norway][apple-pay-tc-sign-norway]{:target="_blank"}.
 
 If you are unable to sign the Apple Pay Web Terms and Conditions in Swedish or
 Norwegian digitally, please use the
@@ -134,7 +136,7 @@ Account and check out almost instantly across apps and sites.
 ### Merchant ID
 
 You need to sign up for a **Google Developer Account** and
-[create a **business profile** and **payment profile**][google-pay-profile].
+[create a **business profile** and **payment profile**][google-pay-profile]{:target="_blank"}.
 
 After creating the business profile, you will be able to see your Merchant ID on
 the top right corner of the page. We need that ID in order to activate Google
@@ -142,8 +144,8 @@ Pay for you.
 
 However, be sure to register your domain/package and submit screenshots of your
 integration for approval. Login to
-[Google Pay&trade; & Wallet Console][google-pay-profile], go to the
-**Google Pay&trade; API tab** and upload the screenshots and submit your
+[Google Pay&trade; & Wallet Console][google-pay-profile]{:target="_blank"}, go
+to the **Google Pay&trade; API tab** and upload the screenshots and submit your
 integration for approval. The screenshots should be of the entire buyflow
 process (ex: add to cart, checkout, payment, confirmation - if available). Your
 **Merchant ID** will only work in production environment once Google complete
@@ -158,15 +160,17 @@ agreement with Swedbank Pay, you can e-mail us it at
 
 **Which Google Pay&trade; documentation and guidelines should you use if you**
 **are an android merchant?**
-[Google Pay Android Developer Documentation][android-googlepay-devdoc],
-[Google Pay Android Integration Checklist][android-googlepay-checklist] and the
+[Google Pay Android Developer Documentation][android-googlepay-devdoc]{:target="_blank"},
+[Google Pay Android Integration Checklist][android-googlepay-checklist]{:target="_blank"}
+and the
 [Google Pay Android Brand Guidelines][android-googlepay-brand-guidelines].
 
 **Which Google Pay&trade; documentation and guidelines should you use if you**
 **are a web merchant?**
-[Google Pay Web Developer Documentation][web-googlepay-devdoc],
-[Google Pay Web Integration Checklist][web-googlepay-checklist] and the
-[Google Pay Web Brand Guidelines][web-googlepay-brand-guidelines].
+[Google Pay Web Developer Documentation][web-googlepay-devdoc]{:target="_blank"},
+[Google Pay Web Integration Checklist][web-googlepay-checklist]{:target="_blank"}
+and the
+[Google Pay Web Brand Guidelines][web-googlepay-brand-guidelines].{:target="_blank"}
 
 **Do you as a merchant need to take additional steps with regards to the**
 **Google Pay&trade; payment button or other hosted components to your website?**
@@ -177,8 +181,9 @@ option to pay with Google Pay&trade; should appear in your implementation, as
 long as your payer's device supports Google Pay&trade;.
 
 Please remember that you do must adhere to Google Pay&trade; API's
-[Acceptable Use Policy][acceptable-use-policy] and accept the terms defined in
-the Google Pay&trade; API's [Terms of Service][google-pay-tos].
+[Acceptable Use Policy][acceptable-use-policy]{:target="_blank"} and accept the
+terms defined in the Google Pay&trade; API's
+[Terms of Service][google-pay-tos]{:target="_blank"}.
 
 **If our SDK generates an [IsReadyToPayRequest][irtp-request] or a**
 **[PaymentDataRequest][pd-request] on behalf of you as a merchant, do you need**
@@ -191,8 +196,9 @@ option to pay with Google Pay&trade; should appear in your implementation, as
 long as your payer's device supports Google Pay&trade;.
 
 Please remember that you do must adhere to Google Pay&trade; API's
-[Acceptable Use Policy][acceptable-use-policy] and accept the terms defined in
-the Google Pay&trade; API's [Terms of Service][google-pay-tos].
+[Acceptable Use Policy][acceptable-use-policy]{:target="_blank"} and accept the
+terms defined in the Google Pay&trade; API's
+[Terms of Service][google-pay-tos]{:target="_blank"}.
 
 ### Implementation Details
 
