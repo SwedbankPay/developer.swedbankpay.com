@@ -210,7 +210,7 @@ CocoaPods.
 ### Swift Package Manager
 
 The package repository URL for the SDK is
-[`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo].
+[`https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git`][sdk-package-repo]{:target="_blank"}.
 Add the `SwedbankPaySDK` library, there is no need to add the
 `SwedbankPaySDKMerchantBackend` library for the bare minimum implementation.
 
@@ -246,9 +246,9 @@ You can also edit the `Info.plist` file directly, if you wish.
 ![Payment url scheme added in Info.plist editor][custom-scheme-2]
 
 To forward the custom-scheme payment urls to the SDK, implement the
-[`application(_:open:options:)`][uiappdelegate-openurl] method in your
-application delegate, and call `SwedbankPaySDK.open(url: url)` to let the SDK
-handle the url.
+[`application(_:open:options:)`][uiappdelegate-openurl]{:target="_blank"} method
+in your application delegate, and call `SwedbankPaySDK.open(url: url)` to let
+the SDK handle the url.
 
 ```swift
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -371,17 +371,17 @@ backend.
 In this minimal implementation, we used custom URL scheme for the payment URL.
 This causes several issues in a production environment:
 
-* On iOS, using custom URL schemes instead of Universal Links comes with several
+*   On iOS, using custom URL schemes instead of Universal Links comes with several
 drawbacks, including prompting the user with an additional confirmation popup
 as well as being unable to verify URL ownership to your specific app (other
 apps can declare the same custom URL scheme outside of your control).
-* On Android, the SDK expects the app to be launched by external apps using an
+*   On Android, the SDK expects the app to be launched by external apps using an
 `intent:` scheme URL. This ties into the intent filter contained in the SDK,
 that will bring the containing application to the foreground and reload the
 payment menu. Because we're using the simpler custom URL scheme in this
 implementation, the payment menu will not reload and this will result in some
 payment instruments not behaving correctly.
-* There are a few, albeit rare, scenarios where the user can end up launching
+*   There are a few, albeit rare, scenarios where the user can end up launching
 the Payment URL in the mobile browser on their phone. For URLs with custom
 schemes that's handled nicely, but for universal URLs, it's more problematic.
 This means that browsing to the payment URL ideally should return a view that

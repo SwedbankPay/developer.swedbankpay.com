@@ -25,14 +25,14 @@ Here is a list of common gotchas. Please read through the whole document, though
 *   On Android, you need to set `webView.settings.domStorageEnabled = true`
     (used by some 3D-Secure pages)
 *   Web Views will not launch apps by themselves. You _must_ intercept
-    navigations and launch apps yourself. See [External
-    Applications](#external-applications) for details.
+    navigations and launch apps yourself. See
+    [External Applications](#external-applications) for details.
 *   On Android, `@JavascriptInterface` methods only take primitive arguments.
     You will need to `JSON.stringify` any complex arguments.
 *   Some 3D-Secure pages will not work if you open them in a Web View. This
     appears to be related to them launching an external application, which, in
-    turn, opens a url in the browser app. See [Dealing with Picky Web
-    Pages](#dealing-with-picky-web-pages) for strategies.
+    turn, opens a url in the browser app. See
+    [Dealing with Picky Web Pages](#dealing-with-picky-web-pages) for strategies.
 *   Some pages make use of Javascript dialogs. Web Views do not display these on
     their own; you must add support by your `WebCromeClient` or `WKUIDelegate`.
 *   On Android, remember to call `webView.onResume()` and `webView.onPause()`.
@@ -460,11 +460,13 @@ there is little your app can do beyond notifying the user about the missing app.
 When the `WebView` navigates to an http(s) url, your app should not simply start
 an Activity with the url, as that would usually mean opening the url in the
 browser. Instead, the Activity should only be started if it is not a browser.
-Since Android 11 there is an `Intent` [flag][android-flag-non-browser] that does
-exactly that. On earlier versions, your app must first query the system about
-which app would be launched. Because of [privacy
-enhancements][android-package-visibility] in Android 11, it is not possible to
-use this method on Android 11; you must use the non-browser flag instead.
+Since Android 11 there is an `Intent`
+[flag][android-flag-non-browser]{:target="_blank"} that does exactly that. On
+earlier versions, your app must first query the system about which app would be
+launched. Because of
+[privacy enhancements][android-package-visibility]{:target="_blank"} in Android
+11, it is not possible to use this method on Android 11; you must use the
+non-browser flag instead.
 
 {:.code-view-header}
 **Android**
@@ -570,14 +572,14 @@ It is somewhat of a Quick and Dirty solution. We do not recommend this approach.
 
 ## iOS: Make paymentUrl A Universal Link
 
-On iOS, the recommended way of assigning urls to apps is to use [Universal
-Links][ios-universal-links]. This fits our use-case quite well, and indeed it is
-what the SDK is designed to do too. When an external app executes the
-`UIApplication.shared.open("https://example.com/perform-payment")`, then,
-assuming Universal Links are configured correctly, that url will not be opened
-in Safari, but will instead be opened in the application. You must then examine
-the url, determine that it is a `paymentUrl` from your app, and reload the
-`paymentUrl` in your web view. The payment process should then continue
+On iOS, the recommended way of assigning urls to apps is to use
+[Universal Links][ios-universal-links]{:target="_blank"}. This fits our use-case
+quite well, and indeed it is what the SDK is designed to do too. When an
+external app executes the `UIApplication.shared.open("https://example.com/perform-payment")`,
+then, assuming Universal Links are configured correctly, that url will not be
+opened in Safari, but will instead be opened in the application. You must then
+examine the url, determine that it is a `paymentUrl` from your app, and reload
+the `paymentUrl` in your web view. The payment process should then continue
 normally. Make sure that any navigation listeners and JavaScript hooks are in
 place before loading the `paymentUrl`.
 
@@ -633,11 +635,12 @@ here, and it is anyway a bad user experience.
 
 ## Autoverify To The Rescue?
 
-Since Android 6.0 it has been possible to use a [mechanism][android-autoverify]
-very similar to Apple's Universal Links to "strongly" assing http(s) urls to
-applications. This works by adding an `android:autoVerify="true"` attribute to
-the intent filter, plus a `.well-known/assetlinks.json` file to the server. This
-could solve the problems above, but it has its own issues, namely:
+Since Android 6.0 it has been possible to use a
+[mechanism][android-autoverify]{:target="_blank"} very similar to Apple's
+Universal Links to "strongly" assing http(s) urls to applications. This works by
+adding an `android:autoVerify="true"` attribute to the intent filter, plus a
+`.well-known/assetlinks.json` file to the server. This could solve the problems
+above, but it has its own issues, namely:
 
 *   Requires Android 6.0
 *   Is really quite cumbersome to setup
@@ -647,11 +650,12 @@ The SDK does not use this method.
 ## Android: Have PaymentUrl Redirect To An Intent Url
 
 Another option on Android is to allow the https `paymentUrl` to be opened in
-Chrome normally, but have that url redirect to an [intent
-url][android-intent-scheme]. That intent url can be made specific to your
-application, making it so that unless the user has installed an application with
-the same package id (from a non-Google-Play source, presumably), it will always
-be opened in your app. This is what the SDK does.
+Chrome normally, but have that url redirect to an
+[intent url][android-intent-scheme]{:target="_blank"}. That intent url can be
+made specific to your application, making it so that unless the user has
+installed an application with the same package id (from a non-Google-Play
+source, presumably), it will always be opened in your app. This is what the SDK
+does.
 
 The SDK does this by having `paymentUrl` return an html page that immediately
 redirects. In some cases the redirect will be blocked, so the page also contains

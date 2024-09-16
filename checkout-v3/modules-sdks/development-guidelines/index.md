@@ -51,9 +51,9 @@ Code quality of course depends on a lot of other factors too, such as:
     written in.
 *   Adhering to established style guides.
 *   Good understanding of
-    [The Principles of Object Oriented Design][principles-of-object-oriented-design].
+    [The Principles of Object Oriented Design][principles-of-object-oriented-design]{:target="_blank"}.
 *   A good domain architecture, modeled after
-    [Domain Driven Design][domain-driven-design].
+    [Domain Driven Design][domain-driven-design]{:target="_blank"}.
 
 ### Accessibility
 
@@ -93,28 +93,29 @@ be perceived as accessible:
         on a developer machine without installing any external services, tools
         or libraries, unless they are handled by a package manager like NuGet.
     3.  Contributed code should be checked by a
-        [continuous integration][continuous-integration] server that labels the
-        status of pull request accordingly. If a test fails, the contributor
-        should be alerted of its failure through GitHub’s interface.
+        [continuous integration][continuous-integration]{:target="_blank"}
+        server that labels the status of pull request accordingly. If a test
+        fails, the contributor should be alerted of its failure through GitHub’s
+        interface.
 6.  All code contributions should be run through a public continuous integration
     server so build failures are visible to the contributor such that it can be
     fixed without any project manager’s involvement.
 7.  The development and branching process should preferably be based on an
-    existing scheme such as [GitFlow][gitflow] or GitHub Flow.
+    existing scheme such as [GitFlow][gitflow]{:target="_blank"} or GitHub Flow.
 8.  All development should be done in public.
     1.  Code should be pushed to GitHub regularly, so it’s possible to see
         progress.
-    2.  For incomplete features and bugfixes, [GitFlow][gitflow] with branch
-        prefixes such as `feature/` and `hotfix/` should be used
+    2.  For incomplete features and bugfixes, [GitFlow][gitflow]{:target="_blank"}
+        with branch prefixes such as `feature/` and `hotfix/` should be used
     3.  All code in development should be pushed as often as possible.
 
 ### Security
 
 All source code should be written in a secure way so it avoids the problems
-enumerated in [OWASP Top 10][owasp-top-10] and [SANS 25][sans-25]. It should
-preferably exist a test for each of these problems such that it is continually
-verified that the code does not contain any of these problems now or in the
-future.
+enumerated in [OWASP Top 10][owasp-top-10]{:target="_blank"} and
+[SANS 25][sans-25]{:target="_blank"}. It should preferably exist a test for each
+of these problems such that it is continually verified that the code does not
+contain any of these problems now or in the future.
 
 No source code should contain secrets, passwords or otherwise sensitive
 information. If such code is committed by accident, history should be
@@ -123,7 +124,8 @@ rewritten through interactive rebasing as soon as possible and force-pushed.
 ## Licensing
 
 All of Swedbank Pay' open source software should be licensed under a liberal and
-enterprise, closed source-compatible [software license][software-license].
+enterprise, closed source-compatible
+[software license][software-license]{:target="_blank"}.
 
 ## Copyright
 
@@ -154,11 +156,12 @@ They will be described in the following chapters.
 ### Versioning
 
 To release software, it needs to be versioned. Swedbank Pay's open source
-packages should be versioned according to [semantic
-versioning][semantic-versioning]. This means that whenever backward
-compatibility is broken, the major version should be incremented. When a new
-feature is added, the minor version should be incremented and when bug fixes and
-other minor changes are introduced, the revision number should be incremented.
+packages should be versioned according to
+[semantic versioning][semantic-versioning]{:target="_blank"}. This means that
+whenever backward compatibility is broken, the major version should be
+incremented. When a new feature is added, the minor version should be
+incremented and when bug fixes and other minor changes are introduced, the
+revision number should be incremented.
 
 A version of the software should correspond to a commit in the Git repository.
 This commit should be tagged with the version number it represents and the
@@ -171,14 +174,14 @@ representing that version should be tagged in Git with the value `1.2.5`
 and the commit should exist in the master branch.
 
 To help with automating versioning in .NET based projects,
-[GitVersion][git-version] can be used. For most uses,
-[GitVersionTask][gitversion-task] performs the job perfectly.
-It understands [GitFlow][gitflow] and increments the version number
-automatically based on which branch the code being built exists on.
+[GitVersion][git-version]{:target="_blank"} can be used. For most uses,
+[GitVersionTask][gitversion-task]{:target="_blank"} performs the job perfectly.
+It understands [GitFlow][gitflow]{:target="_blank"} and increments the version
+number automatically based on which branch the code being built exists on.
 
 ### Branching strategy
 
-To make versioning easier, the Git repository should follow [GitFlow][gitflow],
+To make versioning easier, the Git repository should follow [GitFlow][gitflow]{:target="_blank"},
 GitHub Flow or derivates, so released and stable code is kept in
  the master branch, while unstable and pre-released code
   — if such is required — is kept in the develop branch.
@@ -193,8 +196,9 @@ prefixes `feature`, `hotfix/`, etc.
 Software written for an environment that has a marketplace or other
 official storefront for applications
 (or “modules”, “extensions” and what have you) such as
-[Apple’s App Store][apple-app-store] or [Google Play][google-play],
-should try to publish the released software in these marketplaces.
+[Apple’s App Store][apple-app-store]{:target="_blank"} or
+[Google Play][google-play]{:target="_blank"}, should try to publish the released
+software in these marketplaces.
 
 Releases should correspond to a tagged version number and a Release
 for the version should be created on GitHub. The GitHub Release should
@@ -203,7 +207,7 @@ possibly by referring to blog entries or similar that describes them in more
 detail.
 
 To help with writing release notes, projects can use the tool
-[GitReleaseNotes][git-release-notes].
+[GitReleaseNotes][git-release-notes]{:target="_blank"}.
 
 [apple-app-store]: https://appstore.com
 [code-of-conduct]: /checkout-v3/modules-sdks/development-guidelines/code-of-conduct

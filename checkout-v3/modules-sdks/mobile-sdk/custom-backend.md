@@ -13,16 +13,16 @@ SDK works with that as backend.
 
 ## Basic Backend Requirements
 
-To support the SDK, your backend must be capable of at least [creating a payment
-order][create-payment-order]. If you wish to use consumer identification, it
-must also be able to [start an identification
-session][initiate-consumer-session]. In addition to these, your backend should
-serve the appropriate html documents at urls used for the
-[`paymentUrl`][payment-url]; the content of these html documents will be
+To support the SDK, your backend must be capable of at least
+[creating a payment order][create-payment-order]. If you wish to use consumer
+identification, it must also be able to
+[start an identification session][initiate-consumer-session]. In addition to
+these, your backend should serve the appropriate html documents at urls used for
+the [`paymentUrl`][payment-url]; the content of these html documents will be
 discussed below, but it is noteworthy that they are different for payments from
 Android applications and those from iOS applications. Further, the urls used for
 as `paymentUrl` on iOS should be [configured as universal links for your iOS
-application][ios-aasa].
+application][ios-aasa]{:target="_blank"}.
 
 ## Android Configuration
 
@@ -316,11 +316,11 @@ action, if the Intent uri is equal to the `paymentUrl` of an ongoing payment (as
 reported by `ViewPaymentOrderInfo`), it will reload the payment menu of that
 payment. Therefore, if the `paymentUrl` is opened in the browser, that page must
 start an activity with such an Intent. This can be done by navigating to an
-[intent scheme url][android-intent-scheme]. Note that the rules for following
-intent-scheme navigations can sometimes cause redirects to those url not to
-work. To work around this, the `paymentUrl` must serve a proper html page, which
-attempts to immediately redirect to the intent-scheme url, but also has a link
-the user can tap on.
+[intent scheme url][android-intent-scheme]{:target="_blank"}. Note that the
+rules for following intent-scheme navigations can sometimes cause redirects to
+those url not to work. To work around this, the `paymentUrl` must serve a proper
+html page, which attempts to immediately redirect to the intent-scheme url, but
+also has a link the user can tap on.
 
 Refer to the intent scheme url documentation on how to form one. You should
 always include the package name so that your intent is not mistakenly routed to
@@ -456,8 +456,8 @@ under the control of your backend. The purpose of this is to allow for one final
 escape hatch, in case the universal link mechanism fails to work. If this url is
 yet again opened in the browser, the backend responds with a redirect to to a
 custom-scheme url. (This _should_ only happen if your universal links
-configuration is broken, or if iOS has somehow failed to load the [Apple
-App-Site Association file][ios-aasa].)
+configuration is broken, or if iOS has somehow failed to load the
+[Apple App-Site Association file][ios-aasa]{:target="_blank"}.)
 
 {:.code-view-header}
 **Request**
@@ -489,9 +489,9 @@ configuration.
 ## Apple App-Site Association
 
 As the iOS `paymentUrl` needs to be a universal link, the backend will also need
-an [Apple App-Site Association file][ios-aasa]. This must be served at
-`/.well-known/apple-app-site-association`, and it must associate any url used as
-a `paymentUrl` with the app.
+an [Apple App-Site Association file][ios-aasa]{:target="_blank"}. This must be
+served at `/.well-known/apple-app-site-association`, and it must associate any
+url used as a `paymentUrl` with the app.
 
 {:.code-view-header}
 **Request**
@@ -663,9 +663,10 @@ Content-Type: text/plain
 Any exception you throw from your Configuration will be made available in
 `PaymentViewModel.exception` or `SwedbankPaySDKDelegate.paymentFailed(error:)`.
 You are therefore fully in control of the model you wish to use to report
-errors. We recommend adopting the [Problem Details for HTTP APIs][rfc-7807]
-convention for reporting errors from your backend. At the moment of writing, the
-Android SDK also contains a [utility][dokka-problem] for parsing RFC 7807
+errors. We recommend adopting the
+[Problem Details for HTTP APIs][rfc-7807]{:target="_blank"} convention for
+reporting errors from your backend. At the moment of writing, the Android SDK
+also contains a [utility][dokka-problem]{:target="_blank"} for parsing RFC 7807
 messages to help with this.
 
 ## iOS Payment Menu Redirect Handling

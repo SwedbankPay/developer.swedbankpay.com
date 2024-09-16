@@ -7,11 +7,12 @@ description: |
 menu_order: 1300
 ---
 
-You can find sample implementations of the Merchant Backend at [this Github
-repository][backend-samples]. Currently there are available the following:
+You can find sample implementations of the Merchant Backend at
+[this Github repository][backend-samples]{:target="_blank"}. Currently there are
+available the following:
 
-*   [node.js][node-sample]
-*   [Java][java-sample]
+*   [node.js][node-sample]{:target="_blank"}
+*   [Java][java-sample]{:target="_blank"}
 
 Please refer to the sample code documentation for instructions for running a
 local development server, and/or deploying to selected cloud services. Do note
@@ -27,7 +28,6 @@ a good starting point toward integration with your business systems.
                          prev_title="Back: Merchant Backend"
                          next_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
                          next_title="Next: Other Features" %}
-
 
 [backend-samples]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant
 [node-sample]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/tree/main/examples/node.js/README.md
