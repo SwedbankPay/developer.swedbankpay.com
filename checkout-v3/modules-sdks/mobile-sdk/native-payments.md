@@ -48,16 +48,16 @@ sequenceDiagram
     participant SDK
 
     App ->> SDK: Initiate SDK Configuration
-    App ->> SDK: startPaymentSession()
+    App ->> SDK: fetchPaymentSession()
     activate SDK
     App ->> App: Show loading indicator
-    SDK ->> App: availableInstrumentsFetched()
+    SDK ->> App: paymentSessionFetched()
     deactivate SDK
     App ->> App: Present available payment methods to user
-    App ->> SDK: makePaymentAttempt()
+    App ->> SDK: makeNativePaymentAttempt()
     activate SDK
     App ->> App: Show loading indicator
-    SDK ->> App: paymentComplete()
+    SDK ->> App: paymentSessionComplete()
     deactivate SDK
 ```
 
@@ -66,11 +66,10 @@ below.
 
 ## The Session URL
 
-When implementing regular Payment Menu based payments (contained in a web view),
-we're using the using the `view-checkout` operation `href` of a payment order
-(configuring the SDK via the `viewPaymentLink` parameter of
-`ViewPaymentOrderInfo`). For native payments, we also need the `href` for the
-`view-paymentsession` operation.
+For native payments, we need the `href` for the `view-paymentsession` operation
+of a payment order. If you have already implemented web view based payments, you
+will find the Session URL next to the previously used `view-checkout` operation
+`href` of a payment order.
 
 ```json
 {
@@ -106,31 +105,7 @@ to perform in these callbacks are completely dependent on the checkout user
 experience of your application.
 
 ```kotlin
-NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
-    when (paymentState) {
-        is NativePaymentState.AvailableInstrumentsFetched -> {
-            Log.d("SwedbankPay", "Available Instruments Fetched")
-        }
-
-        is NativePaymentState.PaymentComplete -> {
-            Log.d("SwedbankPay", "Payment Complete")
-        }
-
-        is NativePaymentState.PaymentCanceled -> {
-            Log.d("SwedbankPay", "Payment Canceled")
-        }
-
-        is NativePaymentState.SessionProblemOccurred -> {
-            Log.d("SwedbankPay", "Native Session Problem Occurred")
-        }
-
-        is NativePaymentState.SdkProblemOccurred -> {
-            Log.d("SwedbankPay", "SDK Problem Occurred")
-        }
-
-        else -> {}
-    }
-}
+// TODO: Add
 ```
 
 The main component for Native Payments in the Android SDK is the class
@@ -242,12 +217,12 @@ You can achieve this by following the steps [iOS Setup][ios-bare-minimum-setup]
 and [iOS SDK Configuration][ios-bare-minimum-configuration] of the Bare Minimum
 Implementation chapter.
 
-You need to listen to some state updates from the Native Payment session,
-updating your UI and informing the user according to the events. You do this
-by implementing the `SwedbankPaySDKPaymentSessionDelegate` protocol. In the
-following example, we implement the delegate protocol and the eight required
-methods. Note that the actions to perform in these callbacks are completely
-dependent on the checkout user experience of your application.
+You need to listen to some state updates from the Payment session, updating your
+UI and informing the user according to the events. You do this by implementing
+the `SwedbankPaySDKPaymentSessionDelegate` protocol. In the following example,
+we implement the delegate protocol and the eight required methods. Note that the
+actions to perform in these callbacks are completely dependent on the checkout
+user experience of your application.
 
 ```swift
 func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstrument]) {
@@ -378,6 +353,12 @@ paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
 paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: "+46739000001"))
 ```
 
+When requesting local start, the SDK will automatically launch the Swish app on
+the local device. If an error occurred when starting the app, the SDK will call
+the `sdkProblemOccurred(problem:)` delegate method, and provide the
+`SwedbankPaySDK.PaymentSessionProblem.clientAppLaunchFailed` problem as
+parameter.
+
 ## Problem handling
 
 There are two categories of problems that can occur during a payment session,
@@ -395,8 +376,8 @@ Local SDK problems are either inconsistency errors or communication errors
 occurring inside the SDK. These problems are communicated via the
 `sdkProblemOccurred(problem:)` delegate method on iOS and via the 
 `SdkProblemOccurred` state on Android. The `problem` parameters is
-a `SwedbankPaySDK.NativePaymentProblem` enum value on iOS and a
-`NativePaymentProblem` class on Andorid. The different SDK problems should be
+a `SwedbankPaySDK.PaymentSessionProblem` enum value on iOS and a
+`PaymentSessionProblem` class on Andorid. The different SDK problems should be
 handled in the following ways:
 
 * `PaymentSessionAPIRequestFailed` indicates a problem with the

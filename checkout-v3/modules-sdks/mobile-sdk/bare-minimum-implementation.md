@@ -134,29 +134,71 @@ the payment order. You need to provide the `view-paymentsession` operation
 `href` in the `sessionURL` parameter of `fetchPaymentSession()`.
 
 ```kotlin
-// TODO: Add
+val paymentSession = PaymentSession()
+
+paymentSession.fetchPaymentSession(sessionURL = "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")
 ```
 
 You have to wait until the payment session is fetched by the SDK, and can then
 continue with either making payment attempts for native payment instruments, or
-request a web view based payment flow. For the bare minimum implementation,
-we're only looking at the web view based payment flow, and you can therefore
-ignore the `availableInstruments` parameter.
+request a web view based payment flow.
+
+You need to listen to some state updates from the Payment session. You do this
+by observing `PaymentSession.paymentSessionState`. In the following example, we
+implement observers for the four required states.
 
 ```kotlin
-// TODO: Add
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is PaymentSessionState.PaymentSessionFetched -> {
+            Log.d("SwedbankPay", "Payment Session Fetched")
+        }
+
+        is PaymentSessionState.PaymentFragmentCreated -> {
+            Log.d("SwedbankPay", "Payment Fragment Created")
+        }
+
+        is PaymentSessionState.SessionProblemOccurred -> {
+            Log.d("SwedbankPay", "Payment Session Problem Occurred")
+        }
+
+        is PaymentSessionState.SdkProblemOccurred -> {
+            Log.d("SwedbankPay", "SDK Problem Occurred")
+        }
+
+        else -> {}
+    }
+}
 ```
 
 ## Android Present Payment
+
+You are now ready to present the payment UI. You can ask the payment session
+class to create a `PaymentFragment` for web view based payments:
+
+```kotlin
+paymentSession.createPaymentFragment()
+```
+
+After getting back the `PaymentFragment` instance , you can present it in a way
+that works in your application. In this example we will be using Appcompat
+`FragmentManager` via `supportFragmentManager` to present the payment fragment,
+meaning this code is implemented in an `Activity` of the app.
+
+```kotlin
+val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
+supportFragmentManager.beginTransaction()
+    .add(containerViewId, paymentFragment)
+    .commit()
+```
 
 You want to listen to some basic state updates from the payment UI and dismiss
 the view when it's finished. You do this by accessing the `paymentViewModel`
 that is available on all Activities. In the following example, we observe the
 `state` variable in the same Activity as above, and remove the payment fragment
-from the screen after the payment is finalized. We will be using Appcompat
-`FragmentManager` via `supportFragmentManager` to present the payment fragment
-in the implementation further down, so we're removing the payment view in a
-fragment transaction to close it:
+from the screen after the payment is finalized (again, in this example we’re
+accessing the Appcompat FragmentManager via supportFragmentManager, so we're
+removing the payment view in a fragment transaction to close it:
 
 ```kotlin
 paymentViewModel.state.observe(this, Observer {
@@ -168,25 +210,63 @@ paymentViewModel.state.observe(this, Observer {
 })
 ```
 
-You are now ready to present the payment UI. You can ask the payment session
-class to create a `PaymentFragment` for web view based payments:
+## Android Complete Code
 
 ```kotlin
-// TODO: Add
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val paymentSession = PaymentSession()
+
+        paymentSession.fetchPaymentSession(sessionURL = "{{ page.front_end_url }}/psp/paymentsessions/{{ page.payment_token }}?_tc_tid=30f2168171e142d38bcd4af2c3721959")
+
+        PaymentSession.paymentSessionState.observe(this) { paymentState ->
+            when (paymentState) {
+                is PaymentSessionState.PaymentSessionFetched -> {
+                    Log.d("SwedbankPay", "Payment Session Fetched")
+
+                    // Reqeust a web based payment fragment instance
+                    paymentSession.createPaymentFragment()
+                }
+
+                is PaymentSessionState.PaymentFragmentCreated -> {
+                    Log.d("SwedbankPay", "Payment Fragment Created")
+
+                    // Present payment fragment to user
+                    val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
+                    supportFragmentManager.beginTransaction()
+                        .add(containerViewId, paymentState.fragment, "paymentFragment")
+                        .commit()
+                }
+
+                is PaymentSessionState.SessionProblemOccurred -> {
+                    Log.d("SwedbankPay", "Payment Session Problem Occurred")
+                }
+
+                is PaymentSessionState.SdkProblemOccurred -> {
+                    Log.d("SwedbankPay", "SDK Problem Occurred")
+                }
+
+                else -> {}
+            }
+        }
+
+        paymentViewModel.state.observe(this) {
+            // Dismiss payment fragment for user
+            if (it.isFinal) {
+                val paymentFragment = supportFragmentManager.findFragmentByTag("paymentFragment")
+                if (paymentFragment != null) {
+                    supportFragmentManager.beginTransaction().remove(paymentFragment).commit()
+                }
+            }
+        }
+    }
+
+}
 ```
-
-After getting back the `PaymentFragment` instance , you can present it in a way
-that works in your application (again, in this example we're accessing the
-Appcompat `FragmentManager` via `supportFragmentManager`, meaning this code is
-implemented in an `Activity` of the app):
-
-```kotlin
-val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
-supportFragmentManager.beginTransaction()
-    .add(containerViewId, paymentFragment)
-    .commit()
-```
-
 
 
 ## iOS
