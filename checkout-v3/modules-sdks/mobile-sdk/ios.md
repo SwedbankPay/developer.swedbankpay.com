@@ -633,7 +633,7 @@ sequenceDiagram
 [sdk-package-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git
 [sdk-pod]: https://cocoapods.org/pods/SwedbankPaySDK
 [cocoapods]: https://cocoapods.org/
-[payment-url]: /old-implementations/checkout-v2/features/technical-reference/payment-url
+[payment-url]: /checkout-v3/features/technical-reference/payment-url
 [custom-scheme-1]: /assets/img/mobile-sdk/ios-custom-scheme-1.png
 [custom-scheme-2]: /assets/img/mobile-sdk/ios-custom-scheme-2.png
 [assoc-domains-entitlement]: /assets/img/mobile-sdk/ios-assoc-domain.png

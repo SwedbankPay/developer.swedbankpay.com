@@ -5,10 +5,9 @@
 ## Capture v3.1
 
 Captures are only possible when a payment has a successful `Authorization`
-transaction, naturally excluding one-phase payment methods like
-[Swish][swish] and [Trustly][trustly]. They will be marked as a `Sale`
-transaction. Two-phase payment methods like [Card][card] and [Vipps][vipps]
-however, require a `Capture` to be completed.
+transaction, naturally excluding one-phase payment methods like Swish and
+Trustly. They will be marked as a `Sale` transaction. Two-phase payment methods
+like card and Vipps however, require a `Capture` to be completed.
 
 Please note that you have a maximum of 5 **consecutive** failed attempts at a
 capture. The payment will be locked after the fifth, and you need to contact us
@@ -259,8 +258,3 @@ sequenceDiagram
 {% endif %}
 
 <!--lint disable final-definition -->
-
-[card]: /old-implementations/payment-instruments-v1/card
-[vipps]: /old-implementations/payment-instruments-v1/vipps
-[swish]: /old-implementations/payment-instruments-v1/swish/
-[trustly]: /old-implementations/payment-instruments-v1/trustly/

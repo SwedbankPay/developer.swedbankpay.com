@@ -48,4 +48,4 @@ Content-Type: application/json{% endcapture %}
 
 [purchase]: {{ features_url }}/core/purchase
 [recur]: /old-implementations/payment-instruments-v1/card/features/optional/recur
-[verify]: /old-implementations/payment-instruments-v1/card/features//optional/verify
+[verify]: /old-implementations/payment-instruments-v1/card/features/optional/verify
