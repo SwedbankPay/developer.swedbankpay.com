@@ -802,9 +802,9 @@ Your implementation is encouraged to define its own problem types for any domain
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml
 [swagger-editor]: https://editor.swagger.io/?url=https://raw.githubusercontent.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/main/documentation/swedbankpaysdk_openapi.yaml
-[payment-url]: /old-implementations/payment-menu-v2/features/technical-reference/payment-url
+[payment-url]: /checkout-v3/features/technical-reference/payment-url
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
-[create-payment-order]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
+[create-payment-order]: /checkout-v3/get-started/payment-request-3-1/#create-payment-order
 [android-intent-scheme]: https://developer.chrome.com/docs/android/intents
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
@@ -812,4 +812,4 @@ Your implementation is encouraged to define its own problem types for any domain
 [ios-aasa]: https://developer.apple.com/documentation/safariservices/supporting_associated_domains_in_your_app#3001215
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
-[instrument-mode]: /old-implementations/payment-menu-v2/features/optional/instrument-mode
+[instrument-mode]: /checkout-v3/features/customize-ui/instrument-mode/

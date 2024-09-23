@@ -225,7 +225,7 @@ sequenceDiagram
     URL when the payer has completed the payment.
     [See the Callback API description here][technical-reference-callback].
 
-[abort]: /old-implementations/payment-instruments-v1/card/features/core/abort-reference
+[abort]: /checkout-v3/features/payment-operations/abort
 [card-payment]: /assets/img/payments/card-payment.png
 [card]: /old-implementations/payment-instruments-v1/card
 [checkout-v2]: /old-implementations/checkout-v2/

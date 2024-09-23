@@ -462,6 +462,6 @@ using the browser for third-party sites, please file a bug on the Android SDK.
 [dokka-problem-server]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/index.md
 [dokka-problem-server-swedbankpay]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-merchant-backend-problem/-server/-swedbank-pay/index.md
 [dokka-swedbankpayproblem]: https://github.com/SwedbankPay/swedbank-pay-sdk-android/blob/dev/sdk/dokka_github/sdk/com.swedbankpay.mobilesdk.merchantbackend/-swedbank-pay-problem/index.md
-[paymenturl]: /old-implementations/checkout-v2/features/technical-reference/payment-url
+[paymenturl]: /checkout-v3/features/technical-reference/payment-url
 [android-helper]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#android-payment-url-helper
 [android-intent-scheme]: https://developer.chrome.com/docs/android/intents
