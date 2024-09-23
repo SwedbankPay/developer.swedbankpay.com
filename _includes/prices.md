@@ -93,7 +93,6 @@ types.
 | {% f MasterCard, 0 %}    | MasterCard                                 |
 | {% f Amex, 0 %}          | American Express                           |
 | {% f Dankort, 0 %}       | Dankort (only available with currency DKK) |
-| {% f Jcb, 0 %}           | JCB                                        |
 | {% f Maestro, 0 %}       | MasterCard Maestro                         |
 
 {% when "invoice" %}
