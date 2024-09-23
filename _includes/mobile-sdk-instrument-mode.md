@@ -132,4 +132,4 @@ func updatePaymentOrderFailed(updateInfo: Any, error: Error) {
 }
 ```
 
-[instrument-mode]: /checkout-v3/features/customize-the-ui/instrument-mode
+[instrument-mode]: /checkout-v3/features/customize-ui/instrument-mode
