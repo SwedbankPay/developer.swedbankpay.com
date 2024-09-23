@@ -145,13 +145,6 @@ A selection of cards not connected to Network Tokenization or 3D-Secure.
 | :---------------- | :---------------------- | :------------  | :---------------- |
 | `377601000000000` | After the current month | Any (4 digits) | Amex & loopback   |
 
-### JCB
-
-{:.table .table-striped}
-| Card number        | Expiry                  | CVC   |
-| :----------------- | :---------------------- | :---- |
-| `3569990010082211` | After the current month | Any   |
-
 ### Maestro
 
 {:.table .table-striped}

@@ -333,7 +333,7 @@ Content-Type: application/json{% endcapture %}
         },
         "items": [{
             "creditCard": {
-                "cardBrands": ["Visa", "MasterCard", "Amex", "Dankort", "Forbrugsforeningen", "Jcb", "Maestro", "Ica"]
+                "cardBrands": ["Visa", "MasterCard", "Amex", "Dankort", "Forbrugsforeningen", "Maestro", "Ica"]
             }
         }]
     },
