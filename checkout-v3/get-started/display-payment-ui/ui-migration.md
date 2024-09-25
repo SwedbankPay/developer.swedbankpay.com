@@ -12,7 +12,7 @@ will give you, as a merchant, more responsibilities than using our
 [Redirect][redirect] integration. This is because Seamless View is hosted by
 you. As the Redirect page is hosted by us, we also handle the responsibilities.
 
-To read more about how PCI-DSS affects you, we have further reading avaliable
+To learn more about how PCI-DSS affects you, we have further reading avaliable
 in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 [Norwegian][no]{:target="_blank"} and [Swedish][se]{:target="_blank"}.
 
