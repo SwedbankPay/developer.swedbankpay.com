@@ -230,7 +230,7 @@ func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstru
 }
 
 func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {
-    print("Native Session Problem Occurred")
+    print("Session Problem Occurred")
 }
 
 func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
@@ -243,6 +243,10 @@ func paymentSessionComplete() {
 
 func paymentSessionCanceled() {
     print("Payment Session Canceled")
+}
+
+func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+    print("Show Swedbank Pay SDK Controller")
 }
 
 func show3DSecureViewController(viewController: UIViewController) {
@@ -307,7 +311,7 @@ func paymentSessionComplete() {
 }
 
 func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {
-    // TODO: Inform user of problem details for `problem.type`, give option to make new payment attempt or cancel
+    // TODO: Inform user of problem details for `problem`, give option to make new payment attempt or cancel
 }
 ```
 
@@ -346,10 +350,10 @@ set to `nil` to start the Swish app locally on the users device, or set to an
 MSISDN for the Swish payment to be started on another device.
 
 ```swift
-// Local start of the Swish app on the users device
+// Start Swish payment with local start of the Swish app on the users device
 paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
 
-// Start on another device using a specific MSISDN
+// Start Swish payment with the Swish app on another device using a specific MSISDN
 paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: "+46739000001"))
 ```
 
@@ -358,6 +362,155 @@ the local device. If an error occurred when starting the app, the SDK will call
 the `sdkProblemOccurred(problem:)` delegate method, and provide the
 `SwedbankPaySDK.PaymentSessionProblem.clientAppLaunchFailed` problem as
 parameter.
+
+### Saved Payment Cards
+
+If you have created your payment order as
+[payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
+the payment session might contain previously saved payment cars belonging to the
+user. The saved payment cards payment method is represented as an available
+instrument through `SwedbankPaySDK.AvailableInstrument.creditCard(prefills:)`.
+The `prefills` contains `CreditCardMethodPrefillModel` that represents the users
+saved cards. You should present these saved cards to the user, so that they can
+pick what card to pay with.
+
+To make a saved payment card payment, you use
+`SwedbankPaySDK.PaymentAttemptInstrument.creditCard(prefill:)` where `prefill`
+must be set to the prefill card picked by the user.
+
+```swift
+// Start saved payment card paymnent
+paymentSession.makeNativePaymentAttempt(with: .creditCard(prefill: pickedCard))
+```
+
+After starting a saved credit card payment, there is a possibility that the user
+will have to identify themselves in a SCA (Strong Customer Authentication) 3D
+Secure process. Since 3D Secure is partly handled by the card issuers, and the
+actual UI and UX of the process varies, the user completes the process in a web
+view provided by the SDK.
+
+Your app will be informed by the SCA process via the
+`show3DSecureViewController(viewController:)` delegate method. In the example
+code below, we simply present the 3D Secure web view controller modally, but you
+can choose freely how to present the view.
+
+```swift
+func show3DSecureViewController(viewController: UIViewController) {
+    present(viewController, animated: true)
+    print("Show 3D Secure View Controller")
+}
+```
+
+When the SCA process has completed, the `dismiss3DSecureViewController()`
+delegate method is called, informing your app that the view can be closed. Since
+we presented the view controller modally in this example, we can simply dismiss
+it.
+
+```swift
+func dismiss3DSecureViewController() {
+    dismiss(animated: true)
+    print("Dismiss 3D Secure View Controller")
+}
+```
+
+We also need to be on the lookout for problems loading the 3D Secure view (for
+example due to poor internet connectivity). If the web view fails to load the 3D
+Secure content, the
+`paymentSession3DSecureViewControllerLoadFailed(error:retry:)` delegate method
+will be called. The `retry` parameter is a closure that you can call to retry
+the underlying web view request. You should inform the user of the error and
+give the option to either abort the payment session or retry the request.
+
+```swift
+func paymentSession3DSecureViewControllerLoadFailed(error: Error, retry: @escaping ()->Void) {
+    // TODO: Inform user of an error loading the 3D Secure view and provide the option to retry or cancel
+    print("3D Secure View Controller Load Failed")
+}
+```
+
+### New Payment Card
+
+Apart from saved payment cards, you can also give the user the option to enter
+new payment card details to perform the payment. There are several scenarios
+where this is relevant:
+* When you want to give a user (with or without existing saved payment cards)
+the option to perform the payment with a "New Payment Card", and give them the
+option to save the new card for future payments.
+* For [verify][verify-payments] payment orders.
+* If you haven't created your payment order as
+[payer aware][payer-aware-payment-menu] and want to offer payment card "guest"
+payments, without the option to save the card for future payments.
+
+The new payment card payment method is represented as an available instrument
+through `SwedbankPaySDK.AvailableInstrument.newCreditCard()`, and to make a new
+payment card payment, you use
+`SwedbankPaySDK.PaymentAttemptInstrument.newCreditCard(enabledPaymentDetailsConsentCheckbox:)`.
+The `enabledPaymentDetailsConsentCheckbox` parameter controls if the consent
+checkbox for storing the card for future payments is shown or not. If you
+specify `false` in this parameter, it is up to you to collect consent from the
+user directly in your app. Hiding the consent checkbox places the responsibility
+on you to specify if the payment should generate a card payment token or not,
+you can read more about
+[Store details and toggle consent checkbox][one-click-consent-checkbox]
+
+```swift
+// Start new payment card paymnent, showing the consent checkbox
+paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: true))
+
+// Start new payment card paymnent, hiding the consent checkbox and using the Payment Order `generatePaymentToken` parameter instead
+paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: false))
+```
+
+To simplify PCI-DSS compliance, the collection of payment card details is
+managed completely by the Swedbank Pay Mobile SDK. At this time, this is done
+with a web view, where the same UI as the regular web based payment menu is
+used. After making a payment attempt with
+`SwedbankPaySDK.PaymentAttemptInstrument.newCreditCard()`, you will receive the
+`showSwedbankPaySDKController(viewController:)` delegate method, and is
+responsible for presenting it to the user. In this example, we'll simply present
+the view controller modally. Don't forget to dismiss it when the payment ends.
+
+```swift
+func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+    present(viewController, animated: true)
+    print("Show Swedbank Pay SDK Controller")
+}
+
+func paymentSessionComplete() {
+    dismiss(animated: true)
+    print("Payment Session Complete")
+}
+
+func paymentSessionCanceled() {
+    dismiss(animated: true)
+    print("Payment Session Canceled")
+}
+```
+
+Note that if a SCA 3D Secure process is required, it will be completed directly
+inside the `SwedbankPaySDKController`. So the 3D Secure view controller delegate
+methods will not be called, as they are when making payment attempts with saved
+credit cards.
+
+### Apple Pay
+
+The Apple Pay payment method is represented as an available instrument through
+`SwedbankPaySDK.AvailableInstrument.applePay`.
+
+To make an Apple Pay payment attempt, you use
+`SwedbankPaySDK.PaymentAttemptInstrument.applePay(merchantIdentifier:)`. The
+`merchantIdentifier` should be specified to the Apple Pay Merchant Identifier
+for your payment (typically your application bundle identifier prefixed with
+`"merchant."`). Note, that in an upcoming version of the Swedbank Pay iOS Mobile
+SDK, this value will be automatically grabbed from the payment session.
+
+```swift
+// Start Apple Pay payment
+paymentSession.makeNativePaymentAttempt(with: .applePay(merchantIdentifier: "merchant.com.swedbankpay.exampleapp"))
+```
+
+The Apple Pay interface will automatically be shown over your application UI,
+where the user can choose payment card.
 
 ## Problem handling
 
@@ -607,17 +760,6 @@ sequenceDiagram
     end
 ```
 
-#### "New credit card" payment method
-
-In the scenario that you present custom payment methods outside the instruments
-in the `availableInstruments` array, you might want to give the user the option
-to pay with a new credit card. The Native Payments SDK gives no option for you
-to collect credit card details (such as card number, expiry date and
-verification code), so your only option is to present the regular web view based
-payment menu. You should preferably combine this with the option to create a
-instrument mode payment order and configure
-[Store details and toggle consent checkbox][one-click-consent-checkbox].
-
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
                          prev_title="Back: iOS"
@@ -635,3 +777,5 @@ instrument mode payment order and configure
 [session-url]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url
 [one-click-payments]: /checkout-v3/features/optional/one-click-payments/
 [one-click-consent-checkbox]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
+[payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
+[verify-payments]: /checkout-v3/features/optional/verify

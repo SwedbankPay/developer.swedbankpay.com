@@ -330,7 +330,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 You need to listen to some state updates from the Payment session. You do this
 by implementing the `SwedbankPaySDKPaymentSessionDelegate` protocol. In the
-following example, we implement the delegate protocol and the three required
+following example, we implement the delegate protocol and the required
 methods.
 
 ```swift
@@ -339,11 +339,31 @@ func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstru
 }
 
 func sessionProblemOccurred(problem: SwedbankPaySDK.ProblemDetails) {
-    print("Native Session Problem Occurred")
+    print("Session Problem Occurred")
 }
 
 func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
     print("SDK Problem Occurred")
+}
+
+func paymentSessionComplete() {
+    print("Payment Session Complete")
+}
+
+func paymentSessionCanceled() {
+    print("Payment Session Canceled")
+}
+
+func show3DSecureViewController(viewController: UIViewController) {
+    print("Show 3D Secure View Controller")
+}
+
+func dismiss3DSecureViewController() {
+    print("Dismiss 3D Secure View Controller")
+}
+
+func paymentSession3DSecureViewControllerLoadFailed(error: Error, retry: @escaping ()->Void) {
+    print("3D Secure View Controller Load Failed")
 }
 ```
 
@@ -375,40 +395,40 @@ func paymentSessionFetched(availableInstruments: [SwedbankPaySDK.AvailableInstru
 ## iOS Present Payment
 
 You want to listen to some basic state updates from the payment UI and dismiss
-the view when it's finished. You do this by implementing the
-`SwedbankPaySDKDelegate` protocol. In the following example, we implement
-the delegate protocol and the following three delegate methods in a view
-controller. We will be presenting the payment view controller modally in the
-implementation further down, so we can use `dismiss()` to close it:
+the view when it's finished. We will be presenting the payment view controller
+modally in the implementation further down, so we can use `dismiss()` to close
+it:
 
 ```swift
-func paymentComplete() {
+func paymentSessionComplete() {
     dismiss(animated: true)
-    print("Payment Failed")
+    print("Payment Session Complete")
 }
 
-func paymentCanceled() {
+func paymentSessionCanceled() {
     dismiss(animated: true)
-    print("Payment Failed")
-}
-
-func paymentFailed(error: Error) {
-    dismiss(animated: true)
-    print("Payment Failed")
+    print("Payment Session Canceled")
 }
 ```
 
 You are now ready to present the payment UI. You can ask the payment session
-class to create a `SwedbankPaySDKController` for web view based payments. After
-getting back the `SwedbankPaySDKController` instance , you can present it in a
-way that works in your application (again, in the example we're presenting the
-view modally in a separate View Controller):
+class to create a `SwedbankPaySDKController` for web view based payments.
 
 ```swift
-let paymentController = paymentSession.createSwedbankPaySDKController()
-paymentController.delegate = self
+paymentSession.createSwedbankPaySDKController()
+```
 
-present(paymentController, animated: true)
+The `SwedbankPaySDKController` instance is returned via the
+`showSwedbankPaySDKController(viewController:)` delegate method. After getting
+back the `SwedbankPaySDKController` instance , you can present it in a way that
+works in your application (again, in the example we're presenting the view
+controller modally):
+
+```swift
+func showSwedbankPaySDKController(viewController: SwedbankPaySDK.SwedbankPaySDKController) {
+    present(viewController, animated: true)
+    print("Show Swedbank Pay SDK Controller")
+}
 ```
 
 You can now finish the payment in the web based Swedbank Pay Menu, and when the
