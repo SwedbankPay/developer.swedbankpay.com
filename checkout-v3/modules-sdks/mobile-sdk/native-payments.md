@@ -25,9 +25,9 @@ Currently, the following payment methods are supported by the Native Payments
 feature:
 
 * Swish
-* _Payment cards – Under development_
-* _Apple Pay – Under development_
-* _Google Pay – Under development_
+* Credit cards
+* Apple Pay
+* Google Pay
 
 ## Usage
 
@@ -105,7 +105,27 @@ to perform in these callbacks are completely dependent on the checkout user
 experience of your application.
 
 ```kotlin
-// TODO: Add
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is PaymentSessionState.PaymentSessionFetched -> {
+            Log.d("SwedbankPay", "Payment Session Fetched")
+        }
+
+        is PaymentSessionState.PaymentFragmentCreated -> {
+            Log.d("SwedbankPay", "Payment Fragment Created")
+        }
+
+        is PaymentSessionState.SessionProblemOccurred -> {
+            Log.d("SwedbankPay", "Payment Session Problem Occurred")
+        }
+
+        is PaymentSessionState.SdkProblemOccurred -> {
+            Log.d("SwedbankPay", "SDK Problem Occurred")
+        }
+
+        else -> {}
+    }
+}
 ```
 
 The main component for Native Payments in the Android SDK is the class
@@ -183,15 +203,15 @@ NativePayment.nativePaymentState.observe(viewLifecycleOwner) { paymentState ->
 ...
 ```
 
-### Payment methods
+## Android Payment methods
 
 The `AvailableInstrumentsFetched` state contains a list of `AvailableInstrument`
 on the `availableInstruments` parameter. This list of payment methods that
 can be used for native payments. These instrument object also contain saved
-payment method data. This could be saved payment cards or known MSISDN for the
+payment method data. This could be saved credit cards or known MSISDN for the
 user.
 
-### Swish
+## Swish
 
 The Swish payment method is represented as an available instrument through
 `AvailableInstrument.Swish(prefills)`. The `prefills` contains `SwishPrefill`
@@ -208,6 +228,112 @@ nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(loc
 
 // Start on another device using a specific MSISDN
 nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(msisdn = "+46739000001"))
+```
+
+## Saved Credit Cards
+
+If you have created your payment order as
+[payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
+the payment session might contain previously saved payment cars belonging to the
+user. The saved credit cards payment method is represented as an available
+instrument through `AvailableInstrument.CreditCard(prefills)`.
+The `prefills` contains `CreditCardPrefill` that represents the users
+saved cards. You should present these saved cards to the user, so that they can
+pick what card to pay with.
+
+To make a saved credit card payment, you use
+`PaymentAttemptInstrument.CreditCard` and provide `prefill` for the credit
+card picked by the user.
+
+```kotlin
+// Start saved credit card paymnent
+nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.CreditCard(prefill = pickedCard))
+```
+
+After starting a saved credit card payment, there is a possibility that the user
+will have to identify themselves in a SCA (Strong Customer Authentication) 3D
+Secure process. Since 3D Secure is partly handled by the card issuers, and the
+actual UI and UX of the process varies, the user completes the process in a web
+view provided by the SDK.
+
+Your app will be informed by the SCA process by receiving the
+`Show3dSecureFragment` payment state. In this example we will be
+using Appcompat `FragmentManager` via `supportFragmentManager` to present the
+3D Secure web view fragment, meaning this code is implemented in an `Activity`
+of the app.
+
+```kotlin
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is PaymentSessionState.Show3dSecureFragment -> {
+            val containerViewId = R.id.sdk_3d_secure_fragment // Specify a container ID for the fragment
+            supportFragmentManager.beginTransaction()
+                .add(containerViewId, paymentState.fragment, "3dSecureFragment")
+                .commit() 
+            Log.d("SwedbankPay", "Show 3D Secure Fragment")
+        }
+
+        else -> {}
+    }
+}
+```
+
+When the SCA process has completed, you will recieve the
+`Dismiss3dSecureFragment` payment state, informing your app that
+the view can be closed. In the following example, we remove the web view
+fragment from the screen after the SCA process is finalized (again, in this
+example we’re accessing the Appcompat FragmentManager via
+supportFragmentManager, so we're removing the payment view in a fragment
+transaction to close it.
+
+```kotlin
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is PaymentSessionState.Dismiss3dSecureFragment -> {
+            val paymentFragment = supportFragmentManager.findFragmentByTag("3dSecureFragment")
+            if (paymentFragment != null) {
+                supportFragmentManager.beginTransaction()
+                    .remove(paymentFragment)
+                    .commit()
+            }
+            Log.d("SwedbankPay", "Dismiss 3D Secure Fragment")
+        }
+
+        else -> {}
+    }
+}
+```
+
+We also need to be on the lookout for problems loading the 3D Secure view (for
+example due to poor internet connectivity). If the web view fails to load the 3D
+Secure content, you will receive the `SdkProblemOccurred` payment state where
+the `problem` parameter will be
+`PaymentSessionProblem.PaymentSession3DSecureFragmentLoadFailed`. The `retry`
+parameter is a callback function that you can call
+to retry the  underlying web view request. You should inform the user of the
+error and give the option to either abort the payment session or retry the
+request.
+
+```kotlin
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is PaymentSessionState.SdkProblemOccurred -> {
+            when (paymentState.problem) {
+                is PaymentSessionProblem.PaymentSession3DSecureFragmentLoadFailed -> {
+                   val error = (paymentState.problem as PaymentSessionProblem.PaymentSession3DSecureFragmentLoadFailed).error
+                   val retry = (paymentState.problem as PaymentSessionProblem.PaymentSession3DSecureFragmentLoadFailed).retry
+
+                   // TODO: Inform user of an error loading the 3D Secure view and provide the option to retry or cancel
+                   Log.d("SwedbankPay", "3D Secure Fragment Load Failed")
+                }
+
+                else -> {}
+            }
+        }
+
+        else -> {}
+    }
+}
 ```
 
 ## iOS
@@ -329,16 +455,16 @@ func paymentSessionCanceled() {
 }
 ```
 
-### Payment methods
+## iOS Payment methods
 
 The `availableInstruments` array provided in the
 `paymentSessionFetched(_:)` delegate method is an array of
 `SwedbankPaySDK.AvailableInstrument` with information of payment methods that
 can be used for native payments. These instrument object also contain saved
-payment method data. This could be saved payment cards or known MSISDN for the
+payment method data. This could be saved credit cards or known MSISDN for the
 user.
 
-### Swish
+## Swish
 
 The Swish payment method is represented as an available instrument through
 `SwedbankPaySDK.AvailableInstrument.swish(prefills:)`. The `prefills` contains
@@ -363,23 +489,23 @@ the `sdkProblemOccurred(problem:)` delegate method, and provide the
 `SwedbankPaySDK.PaymentSessionProblem.clientAppLaunchFailed` problem as
 parameter.
 
-### Saved Payment Cards
+## Saved Credit Cards
 
 If you have created your payment order as
 [payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
 the payment session might contain previously saved payment cars belonging to the
-user. The saved payment cards payment method is represented as an available
+user. The saved credit cards payment method is represented as an available
 instrument through `SwedbankPaySDK.AvailableInstrument.creditCard(prefills:)`.
 The `prefills` contains `CreditCardMethodPrefillModel` that represents the users
 saved cards. You should present these saved cards to the user, so that they can
 pick what card to pay with.
 
-To make a saved payment card payment, you use
+To make a saved credit card payment, you use
 `SwedbankPaySDK.PaymentAttemptInstrument.creditCard(prefill:)` where `prefill`
-must be set to the prefill card picked by the user.
+must be set to the credit card picked by the user.
 
 ```swift
-// Start saved payment card paymnent
+// Start saved credit card paymnent
 paymentSession.makeNativePaymentAttempt(with: .creditCard(prefill: pickedCard))
 ```
 
@@ -428,22 +554,22 @@ func paymentSession3DSecureViewControllerLoadFailed(error: Error, retry: @escapi
 }
 ```
 
-### New Payment Card
+## New Credit Card
 
-Apart from saved payment cards, you can also give the user the option to enter
-new payment card details to perform the payment. There are several scenarios
+Apart from saved credit cards, you can also give the user the option to enter
+new credit card details to perform the payment. There are several scenarios
 where this is relevant:
-* When you want to give a user (with or without existing saved payment cards)
-the option to perform the payment with a "New Payment Card", and give them the
+* When you want to give a user (with or without existing saved credit cards)
+the option to perform the payment with a "New Credit Card", and give them the
 option to save the new card for future payments.
 * For [verify][verify-payments] payment orders.
 * If you haven't created your payment order as
-[payer aware][payer-aware-payment-menu] and want to offer payment card "guest"
+[payer aware][payer-aware-payment-menu] and want to offer credit card "guest"
 payments, without the option to save the card for future payments.
 
-The new payment card payment method is represented as an available instrument
+The new credit card payment method is represented as an available instrument
 through `SwedbankPaySDK.AvailableInstrument.newCreditCard()`, and to make a new
-payment card payment, you use
+credit card payment, you use
 `SwedbankPaySDK.PaymentAttemptInstrument.newCreditCard(enabledPaymentDetailsConsentCheckbox:)`.
 The `enabledPaymentDetailsConsentCheckbox` parameter controls if the consent
 checkbox for storing the card for future payments is shown or not. If you
@@ -451,17 +577,17 @@ specify `false` in this parameter, it is up to you to collect consent from the
 user directly in your app. Hiding the consent checkbox places the responsibility
 on you to specify if the payment should generate a card payment token or not,
 you can read more about
-[Store details and toggle consent checkbox][one-click-consent-checkbox]
+[Store details and toggle consent checkbox][one-click-consent-checkbox].
 
 ```swift
-// Start new payment card paymnent, showing the consent checkbox
+// Start new credit card paymnent, showing the consent checkbox
 paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: true))
 
-// Start new payment card paymnent, hiding the consent checkbox and using the Payment Order `generatePaymentToken` parameter instead
+// Start new credit card paymnent, hiding the consent checkbox and using the Payment Order `generatePaymentToken` parameter instead
 paymentSession.makeNativePaymentAttempt(with: .newCreditCard(enabledPaymentDetailsConsentCheckbox: false))
 ```
 
-To simplify PCI-DSS compliance, the collection of payment card details is
+To simplify PCI-DSS compliance, the collection of credit card details is
 managed completely by the Swedbank Pay Mobile SDK. At this time, this is done
 with a web view, where the same UI as the regular web based payment menu is
 used. After making a payment attempt with
@@ -492,7 +618,7 @@ inside the `SwedbankPaySDKController`. So the 3D Secure view controller delegate
 methods will not be called, as they are when making payment attempts with saved
 credit cards.
 
-### Apple Pay
+## Apple Pay
 
 The Apple Pay payment method is represented as an available instrument through
 `SwedbankPaySDK.AvailableInstrument.applePay`.
@@ -510,7 +636,7 @@ paymentSession.makeNativePaymentAttempt(with: .applePay(merchantIdentifier: "mer
 ```
 
 The Apple Pay interface will automatically be shown over your application UI,
-where the user can choose payment card.
+where the user can choose credit card.
 
 ## Problem handling
 
