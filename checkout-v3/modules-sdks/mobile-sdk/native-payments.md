@@ -234,7 +234,7 @@ nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(msi
 
 If you have created your payment order as
 [payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
-the payment session might contain previously saved payment cars belonging to the
+the payment session might contain previously saved payment cards belonging to the
 user. The saved credit cards payment method is represented as an available
 instrument through `AvailableInstrument.CreditCard(prefills)`.
 The `prefills` contains `CreditCardPrefill` that represents the users
@@ -382,10 +382,6 @@ func show3DSecureViewController(viewController: UIViewController) {
 func dismiss3DSecureViewController() {
     print("Dismiss 3D Secure View Controller")
 }
-
-func paymentSession3DSecureViewControllerLoadFailed(error: Error, retry: @escaping ()->Void) {
-    print("3D Secure View Controller Load Failed")
-}
 ```
 
 The main component for Native Payments in the iOS SDK is the class
@@ -493,7 +489,7 @@ parameter.
 
 If you have created your payment order as
 [payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
-the payment session might contain previously saved payment cars belonging to the
+the payment session might contain previously saved payment cards belonging to the
 user. The saved credit cards payment method is represented as an available
 instrument through `SwedbankPaySDK.AvailableInstrument.creditCard(prefills:)`.
 The `prefills` contains `CreditCardMethodPrefillModel` that represents the users
@@ -541,16 +537,20 @@ func dismiss3DSecureViewController() {
 
 We also need to be on the lookout for problems loading the 3D Secure view (for
 example due to poor internet connectivity). If the web view fails to load the 3D
-Secure content, the
-`paymentSession3DSecureViewControllerLoadFailed(error:retry:)` delegate method
-will be called. The `retry` parameter is a closure that you can call to retry
+Secure content, the `sdkProblemOccurred(problem:)` delegate method will be
+called. In this case, the `problem` parameter will be of the type
+`PaymentSession3DSecureFragmentLoadFailed`. The problem instance will in turn
+contain an `error` parameter that indicates the underlying loading error. There
+is also a `retry` parameter, in the form of a closure that you can call to retry
 the underlying web view request. You should inform the user of the error and
 give the option to either abort the payment session or retry the request.
 
 ```swift
-func paymentSession3DSecureViewControllerLoadFailed(error: Error, retry: @escaping ()->Void) {
-    // TODO: Inform user of an error loading the 3D Secure view and provide the option to retry or cancel
-    print("3D Secure View Controller Load Failed")
+func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
+    if case .paymentSession3DSecureViewControllerLoadFailed(let error, let retry) = problem {
+        // TODO: Inform user of an error loading the 3D Secure view and provide the option to retry or cancel
+        print("3D Secure View Controller Load Failed")
+    }
 }
 ```
 
@@ -823,9 +823,9 @@ methods not using Swedbank Pay, or because you need to create your payment order
 in different ways depending on the choice of payment method by the user. You can
 achieve this by simply presenting available payment methods to the user in your
 UI and saving the picked method to a local cache. When the SDK callback
-`availableInstrumentsFetched()` is called, you match the available instruments
-to the saved cache and makes a payment attempt on that instrument without right
-away.
+`paymentSessionFetched()` is called, you match the available instruments
+to the saved cache and make a payment attempt on that instrument, without any
+user interaction.
 
 You can combine this with [One-Click Payment tokens][one-click-payments] for
 credit card where you can fetch the users saved payment tokens before creating
@@ -869,7 +869,7 @@ sequenceDiagram
         SDK ->> App: paymentSessionFetched()
         deactivate SDK
         App ->> App: Automatically choose instrument
-        note over App: Match previously picked payment<br/>method in local cache to list of<br/>available instruments, without user<br/>any user interaction
+        note over App: Match previously picked payment<br/>method in local cache to list of<br/>available instruments, without<br/>any user interaction
         App ->> SDK: makeNativePaymentAttempt()
         activate SDK
         App ->> App: Show loading indicator
@@ -889,8 +889,8 @@ sequenceDiagram
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
                          prev_title="Back: iOS"
-                         next_href="/checkout-v3/modules-sdks/mobile-sdk/other-features"
-                         next_title="Next: Other Features" %}
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/features"
+                         next_title="Next: Features" %}
 
 [android-bare-minimum-setup]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-setup
 [android-bare-minimum-configuration]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-configuration
