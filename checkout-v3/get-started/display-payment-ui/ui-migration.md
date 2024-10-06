@@ -6,13 +6,15 @@ description: |
 menu_order: 7
 ---
 
-Due to changes in [PCI-DSS requirements][pci]{:target="_blank"} coming with v4
-in March 2025, using [Seamless View][seamless-view] to display the payment UI
-will give you, as a merchant, more responsibilities than using our
-[Redirect][redirect] integration. This is because Seamless View is hosted by
-you. As the Redirect page is hosted by us, we also handle the responsibilities.
+As parts of the PCI-DSS best practice becomes requirements with
+[PCI-DSS v4][pci] coming in March 2025, using the [Seamless View][seamless-view]
+integration to display the payment UI will give merchants more responsibilities
+than they currently have. This is because Seamless View is hosted by you. As the
+[Redirect][redirect] integration is hosted by Swedbank Pay, we also handle these
+responsibilities. The two main points affecting you in this context is **6.4.3**
+and **11.6.1** in the PCI-DSS link above.
 
-To learn more about how PCI-DSS affects you, we have further reading avaliable
+To learn more about how PCI-DSS affects you, we also have reading available
 in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 [Norwegian][no]{:target="_blank"} and [Swedish][se]{:target="_blank"}.
 
@@ -24,8 +26,11 @@ you need to do:
 
 In the operations node of the [payment response][post-response], right next to
 `view-checkout` which you should currently be using, you'll find
-`redirect-checkout`. The corresponding `href` contains a url which leads to the
-Redirect UI. All you need to do is send the payer to this address.
+`redirect-checkout`. The corresponding `href` contains a url which leads to a
+Swedbank Pay domain where the payment UI will be displayed and processed. All
+you need to do is direct the Payer to this url and wait until one of the
+functions are called (`completeUrl`, `cancelUrl` or `callbackUrl`) to proceed
+with the payment process.
 
 {% capture response_content %}{
     "operations": [
@@ -52,28 +57,29 @@ Seamless View.
 #### Change URLs
 
 Finally, you need to do some changes to the `urls` node in your
-[payment request][post-request]. The `hostUrls` and `paymentUrl` fields are
-specific to Seamless View and can be **removed**.
+[payment request][post-request]. The `paymentUrl` field is specific to Seamless
+View and can be **removed**.
 
 The url you need to **add** is the `cancelUrl`, so we know where to redirect the
 payer if they chose to cancel, or you chose to abort the payment.
 
-If you have permission to [add your own logo][custom-logo], a `logoUrl` is also
-needed. If no `logoUrl` is added or no agreement is in place to have your own
-logo, Swedbank Pay's logo will be shown by default.
+While you need permission to [add your own logo][custom-logo] when using
+Seamless View, no such agreement is needed for Redirect. If you want to add one,
+you also need to include a `logoUrl`. Follow the guidelines in the section
+linked above. If no `logoUrl` is added, Swedbank Pay's logo will be shown by
+default.
 
-The `completeUrl` and `callbackUrl` is universal and most be included regardless
-of your UI choice.
+The `completeUrl`, `hostUrls` and `callbackUrl` is universal and must be
+included regardless of your UI choice.
 
 {% capture request_content %}{
         "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment"
         }
 }{% endcapture %}
 
 {% include code-example.html
-    title='Seamless View Specific URLs'
+    title='Seamless View Specific URL'
     header=request_header
     json= request_content
     %}

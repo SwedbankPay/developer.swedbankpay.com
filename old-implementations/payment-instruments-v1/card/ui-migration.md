@@ -3,14 +3,14 @@ title: Change UI Option
 permalink: /:path/ui-migration/
 description: |
     Walking you through switching from Seamless View to Redirect
-menu_order: 11
+menu_order: 600
 ---
 
 As parts of the PCI-DSS best practice becomes requirements with
 [PCI-DSS v4][pci] coming in March 2025, using the [Seamless View][seamless-view]
 integration to display the payment UI will give merchants more responsibilities
 than they currently have. This is because Seamless View is hosted by you. As the
-Redirect integration is hosted by Swedbank Pay, we also handle these
+[Redirect][redirect] integration is hosted by Swedbank Pay, we also handle these
 responsibilities. The two main points affecting you in this context is **6.4.3**
 and **11.6.1** in the PCI-DSS link above.
 
@@ -20,18 +20,18 @@ in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 
 If you currently have a Seamless View integration and don't want the impending
 responsibilities, switcing to Redirect is a very manageable task. While you can
-make the change and keep on using Payment Menu v2, we **strongly recommend**
-switching to the newest version of [Digital Payments][dp] when you are already
-making changes to your integration. We have written a [migration guide][mp] to
-help you.
+make the change and keep on using your payment method integration(s), we
+**strongly recommend** switching to [Digital Payments][dp] when you are already
+making changes to your integration.
 
-If you choose to stay on Payment Menu v2, here's what you need to do:
+If you choose to continue using payment method integrations, here's what you
+need to do:
 
 #### Use Redirect Operation
 
 In the operations node of the [payment response][post-response], right next to
-`view-paymentorder` which you should currently be using, you'll find
-`redirect-paymentorder`. The corresponding `href` contains a url which leads to
+`view-authorization` which you should currently be using, you'll find
+`redirect-authorization`. The corresponding `href` contains a url which leads to
 a Swedbank Pay domain where the payment UI will be displayed and processed. All
 you need to do is direct the Payer to this url and wait until one of the
 functions are called (`completeUrl`, `cancelUrl` or `callbackUrl`) to proceed
@@ -49,7 +49,7 @@ with the payment process.
 }{% endcapture %}
 
  {% include code-example.html
-    title='Redirect-Paymentorder Operation'
+    title='Redirect-Authorization Operation'
     header=response_header
     json= response_content
     %}
@@ -68,11 +68,10 @@ View and can be **removed**.
 The url you need to **add** is the `cancelUrl`, so we know where to redirect the
 payer if they chose to cancel, or you chose to abort the payment.
 
-While you need permission to [add your own logo][custom-logo] when using
-Seamless View, no such agreement is needed for Redirect. If you want to add one,
-you also need to include a `logoUrl`. Follow the guidelines in the section
-linked above. If no `logoUrl` is added, Swedbank Pay's logo will be shown by
-default.
+While you need permission to add your own logo when usingSeamless View, no such
+agreement is needed for Redirect. If you want to add one, you also need to
+include a `logoUrl`. Follow the guidelines in the section linked above. If no
+`logoUrl` is added, Swedbank Pay's logo will be shown by default.
 
 The `completeUrl`, `hostUrls` and `callbackUrl` is universal and must be
 included regardless of your UI choice.
@@ -102,13 +101,12 @@ included regardless of your UI choice.
     json= request_content
     %}
 
-[custom-logo]: /old-implementations/payment-menu-v2/features/optional/custom-logo
 [dp]: /checkout-v3/
-[mp]: /checkout-v3/migration-guide/
 [pci]: https://www.swedbankpay.se/globalassets/global-documents/risk-and-security/pci-dss-v4-0-saq-a-r2.pdf
-[post-response]: /old-implementations/payment-menu-v2/payment-order/#payment-order-response
-[post-request]: /old-implementations/payment-menu-v2/payment-order/#payment-order-request
-[seamless-view]: /old-implementations/payment-menu-v2/payment-order/#step-2-display-the-payment-menu
+[post-response]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-response
+[post-request]: /old-implementations/payment-instruments-v1/card/redirect#card-payment-request
+[seamless-view]: /old-implementations/payment-instruments-v1/card/seamless-view
+[redirect]: /old-implementations/payment-instruments-v1/card/redirect
 [da]: https://www.swedbankpay.dk/risiko-og-sikkerhed/pci-sadan-bliver-du-pavirketswe
 [fi]: https://www.swedbankpay.fi/riskit-ja-turvallisuus/nain-pci-vaikuttaa-sinuun
 [no]: https://www.swedbankpay.no/risiko-og-sikkerhet/pci-slik-pavirkes-dus
