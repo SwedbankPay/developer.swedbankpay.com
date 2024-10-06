@@ -14,7 +14,7 @@ than they currently have. This is because Seamless View is hosted by you. As the
 responsibilities. The two main points affecting you in this context is **6.4.3**
 and **11.6.1** in the PCI-DSS link above.
 
-To learn more about how PCI-DSS affects you, we also have reading avaliable
+To learn more about how PCI-DSS affects you, we also have reading available
 in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 [Norwegian][no]{:target="_blank"} and [Swedish][se]{:target="_blank"}.
 

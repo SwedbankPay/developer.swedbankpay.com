@@ -3,7 +3,7 @@ title: Change UI Option
 permalink: /:path/ui-migration/
 description: |
     Walking you through switching from Seamless View to Redirect
-menu_order: 11
+menu_order: 600
 ---
 
 As parts of the PCI-DSS best practice becomes requirements with
@@ -14,7 +14,7 @@ than they currently have. This is because Seamless View is hosted by you. As the
 responsibilities. The two main points affecting you in this context is **6.4.3**
 and **11.6.1** in the PCI-DSS link above.
 
-To learn more about how PCI-DSS affects you, we also have reading avaliable
+To learn more about how PCI-DSS affects you, we also have reading available
 in [Danish][da]{:target="_blank"}, [Finnish][fi]{:target="_blank"},
 [Norwegian][no]{:target="_blank"} and [Swedish][se]{:target="_blank"}.
 
