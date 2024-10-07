@@ -2,6 +2,10 @@
 
 ## Custom Logo
 
+{% include alert.html type="warning" icon="warning" body="If you have integrated
+Seamless View as your payment UI, you need a specific agreement with Swedbank
+Pay to use this feature. No agreement is needed if you are using Redirect." %}
+
 If you have permission and the feature has been activated in your contract, you
 can replace the Swedbank Pay logo in the Payment Menu. See the **abbreviated**
 example below with `logoUrl` present in the `paymentOrder` request's `urls`.
