@@ -234,6 +234,18 @@ paymentSession.makeNativePaymentAttempt(instrument = PaymentAttemptInstrument.Sw
 paymentSession.makeNativePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(msisdn =  "+46739000001"))
 ```
 
+If you are starting the payment on another device, you need to specify the
+MSISDN starting with `+` and include the country code. The string must not
+contain any whitespace. If you choose to let your users specify their MSISDN
+without country code (and instead have a leading zero), it's up to you to modify
+the MSISDN string before making the native Swish payment attempt.
+
+When requesting local start, the SDK will automatically launch the Swish app on
+the local device. If an error occurred when starting the app, your app will be
+informed by the problem by receiving the `SdkProblemOccurred` payment state,
+where the `problem` parameter will be
+`PaymentSessionProblem.ClientAppLaunchFailed`.
+
 ## Saved Credit Cards
 
 If you have created your payment order as
@@ -580,6 +592,12 @@ paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: nil))
 // Start Swish payment with the Swish app on another device using a specific MSISDN
 paymentSession.makeNativePaymentAttempt(with: .swish(msisdn: "+46739000001"))
 ```
+
+If you are starting the payment on another device, you need to specify the
+MSISDN starting with `+` and include the country code. The string must not
+contain any whitespace. If you choose to let your users specify their MSISDN
+without country code (and instead have a leading zero), it's up to you to modify
+the MSISDN string before making the native Swish payment attempt.
 
 When requesting local start, the SDK will automatically launch the Swish app on
 the local device. If an error occurred when starting the app, the SDK will call
