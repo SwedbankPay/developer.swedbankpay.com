@@ -100,9 +100,9 @@ Minimum Implementation chapter.
 You need to listen to some state updates from the Native Payment session,
 updating your UI and informing the user according to the events. You do this
 by observing the `NativePayment.nativePaymentState` LiveData. In the
-following example, we implement the five payment states. Note that the actions
-to perform in these callbacks are completely dependent on the checkout user
-experience of your application.
+following example, we implement the five base payment states. Note that the
+actions to perform in these callbacks are completely dependent on the checkout
+user experience of your application.
 
 ```kotlin
 PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
@@ -111,8 +111,12 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
             Log.d("SwedbankPay", "Payment Session Fetched")
         }
 
-        is PaymentSessionState.PaymentFragmentCreated -> {
-            Log.d("SwedbankPay", "Payment Fragment Created")
+        is PaymentSessionState.PaymentSessionComplete -> {
+            Log.d("SwedbankPay", "Payment Session Complete")
+        }
+
+        is PaymentSessionState.PaymentSessionCanceled -> {
+            Log.d("SwedbankPay", "Payment Session Canceled")
         }
 
         is PaymentSessionState.SessionProblemOccurred -> {
@@ -224,10 +228,10 @@ started on another device.
 
 ```kotlin
 // Local start of the Swish app on the users device
-nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(localStartContext = context))
+paymentSession.makeNativePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(localStartContext = context))
 
 // Start on another device using a specific MSISDN
-nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(msisdn = "+46739000001"))
+paymentSession.makeNativePaymentAttempt(instrument = PaymentAttemptInstrument.Swish(msisdn =  "+46739000001"))
 ```
 
 ## Saved Credit Cards
@@ -247,7 +251,7 @@ card picked by the user.
 
 ```kotlin
 // Start saved credit card paymnent
-nativePayment.makePaymentAttempt(instrument = PaymentAttemptInstrument.CreditCard(prefill = pickedCard))
+paymentSession.makeNativePaymentAttempt(PaymentAttemptInstrument.CreditCard(prefill = pickedCard, localStartContext = context))
 ```
 
 After starting a saved credit card payment, there is a possibility that the user
@@ -257,7 +261,7 @@ actual UI and UX of the process varies, the user completes the process in a web
 view provided by the SDK.
 
 Your app will be informed by the SCA process by receiving the
-`Show3dSecureFragment` payment state. In this example we will be
+`Show3DSecureFragment` payment state. In this example we will be
 using Appcompat `FragmentManager` via `supportFragmentManager` to present the
 3D Secure web view fragment, meaning this code is implemented in an `Activity`
 of the app.
@@ -265,10 +269,10 @@ of the app.
 ```kotlin
 PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
     when (paymentState) {
-        is PaymentSessionState.Show3dSecureFragment -> {
+        is PaymentSessionState.Show3DSecureFragment -> {
             val containerViewId = R.id.sdk_3d_secure_fragment // Specify a container ID for the fragment
             supportFragmentManager.beginTransaction()
-                .add(containerViewId, paymentState.fragment, "3dSecureFragment")
+                .add(containerViewId, paymentState.fragment, "3DSecureFragment")
                 .commit() 
             Log.d("SwedbankPay", "Show 3D Secure Fragment")
         }
@@ -279,7 +283,7 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
 ```
 
 When the SCA process has completed, you will recieve the
-`Dismiss3dSecureFragment` payment state, informing your app that
+`Dismiss3DSecureFragment` payment state, informing your app that
 the view can be closed. In the following example, we remove the web view
 fragment from the screen after the SCA process is finalized (again, in this
 example we’re accessing the Appcompat FragmentManager via
@@ -289,8 +293,8 @@ transaction to close it.
 ```kotlin
 PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
     when (paymentState) {
-        is PaymentSessionState.Dismiss3dSecureFragment -> {
-            val paymentFragment = supportFragmentManager.findFragmentByTag("3dSecureFragment")
+        is PaymentSessionState.Dismiss3DSecureFragment -> {
+            val paymentFragment = supportFragmentManager.findFragmentByTag("3DSecureFragment")
             if (paymentFragment != null) {
                 supportFragmentManager.beginTransaction()
                     .remove(paymentFragment)
@@ -335,6 +339,104 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
     }
 }
 ```
+
+## New Credit Card
+
+Apart from saved credit cards, you can also give the user the option to enter
+new credit card details to perform the payment. There are several scenarios
+where this is relevant:
+* When you want to give a user (with or without existing saved credit cards)
+the option to perform the payment with a "New Credit Card", and give them the
+option to save the new card for future payments.
+* For [verify][verify-payments] payment orders.
+* If you haven't created your payment order as
+[payer aware][payer-aware-payment-menu] and want to offer credit card "guest"
+payments, without the option to save the card for future payments.
+
+The new credit card payment method is represented as an available instrument
+through `AvailableInstrument.NewCreditCard`, and to make a new
+credit card payment, you use `PaymentAttemptInstrument.NewCreditCard`.
+You also provide `enabledPaymentDetailsConsentCheckbox` parameter controls if
+the consent checkbox for storing the card for future payments is shown or not.
+If you specify `false` in this parameter, it is up to you to collect consent
+from the user directly in your app. Hiding the consent checkbox places the
+responsibility on you to specify if the payment should generate a card payment
+token or not, you can read more about
+[Store details and toggle consent checkbox][one-click-consent-checkbox].
+
+```kotlin
+// Start new credit card paymnent, showing the consent checkbox
+paymentSession.makeNativePaymentAttempt(PaymentAttemptInstrument.NewCreditCard(enabledPaymentDetailsConsentCheckbox = true))
+
+// Start new credit card paymnent, hiding the consent checkbox and using the Payment Order `generatePaymentToken` parameter instead
+paymentSession.makeNativePaymentAttempt(PaymentAttemptInstrument.NewCreditCard(enabledPaymentDetailsConsentCheckbox = false))
+```
+
+To simplify PCI-DSS compliance, the collection of credit card details is
+managed completely by the Swedbank Pay Mobile SDK. At this time, this is done
+with a web view, where the same UI as the regular web based payment menu is
+used. After making a payment attempt with `AvailableInstrument.NewCreditCard`,
+you will receive the `ShowPaymentFragment` state, and you are responsible for
+presenting it to the user. In this example we will be using Appcompat
+`FragmentManager` via `supportFragmentManager` to present the payment fragment,
+meaning this code is implemented in an `Activity` of the app. Don't forget to
+dismiss the payment fragment when the payment ends.
+
+```kotlin
+PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
+    when (paymentState) {
+        is PaymentSessionState.ShowPaymentFragment -> {
+            val containerViewId = R.id.sdk_payment_fragment // Specify a container ID for the fragment
+            supportFragmentManager.beginTransaction()
+                .add(containerViewId, paymentState.fragment, "PaymentFragment")
+                .commit() 
+            Log.d("SwedbankPay", "Show Payment Fragment")
+        }
+
+        is PaymentSessionState.PaymentSessionComplete,
+        is PaymentSessionState.PaymentSessionCanceled -> {
+            val paymentFragment = supportFragmentManager.findFragmentByTag("PaymentFragment")
+            if (paymentFragment != null) {
+                supportFragmentManager.beginTransaction()
+                    .remove(paymentFragment)
+                    .commit()
+            }
+            Log.d("SwedbankPay", "Payment Session Complete / Canceled")
+        }
+
+        else -> {}
+    }
+}
+```
+
+Note that if a SCA 3D Secure process is required, it will be completed directly
+inside the `PaymentFragment`. So the 3D Secure fragment states will not be sent,
+as they are when making payment attempts with saved credit cards.
+
+## Google Pay
+
+The Google Pay payment method is represented as an available instrument through
+`AvailableInstrument.GooglePay`.
+
+To make an Google Pay payment attempt, you use
+`PaymentAttemptInstrument.GooglePay`. You need to specify `activity` as a
+parameter, that represents the activity where the Google Pay payment overlay UI
+should be shown.
+
+```kotlin
+// Start Google Pay payment
+paymentSession.makeNativePaymentAttempt(instrument = PaymentAttemptInstrument.GooglePay(activity = activity))
+```
+
+The Google Pay interface will automatically be shown over your application UI,
+where the user can choose credit card.
+
+One important note is that after starting a Google Pay payment, there is a
+possibility that the user will have to identify themselves in a SCA (Strong
+Customer Authentication) 3D Secure process. This means that you have to be ready
+to possibly show a web view fragment containing the 3D Secure process. For SCA
+on Google Pay payments, the process in the SDK is identical to when paying with
+[Saved Credit Cards][android-saved-credit-cards].
 
 ## iOS
 
@@ -898,6 +1000,7 @@ sequenceDiagram
 [ios-bare-minimum-configuration]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-configuration
 [problem-technical-reference]: /checkout-v3/features/technical-reference/problems/
 [usage]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage
+[android-saved-credit-cards]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards
 [detailed-usage-flows]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#detailed-usage-flows
 [problem-handling]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#problem-handling
 [session-url]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#the-session-url
