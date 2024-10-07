@@ -694,7 +694,7 @@ managed completely by the Swedbank Pay Mobile SDK. At this time, this is done
 with a web view, where the same UI as the regular web based payment menu is
 used. After making a payment attempt with
 `SwedbankPaySDK.PaymentAttemptInstrument.newCreditCard()`, you will receive the
-`showSwedbankPaySDKController(viewController:)` delegate method, and is
+`showSwedbankPaySDKController(viewController:)` delegate method, and you are
 responsible for presenting it to the user. In this example, we'll simply present
 the view controller modally. Don't forget to dismiss it when the payment ends.
 
@@ -727,10 +727,11 @@ The Apple Pay payment method is represented as an available instrument through
 
 To make an Apple Pay payment attempt, you use
 `SwedbankPaySDK.PaymentAttemptInstrument.applePay(merchantIdentifier:)`. The
-`merchantIdentifier` should be specified to the Apple Pay Merchant Identifier
-for your payment (typically your application bundle identifier prefixed with
-`"merchant."`). Note, that in an upcoming version of the Swedbank Pay iOS Mobile
-SDK, this value will be automatically grabbed from the payment session.
+`merchantIdentifier` parameter should be specified to the Apple Pay Merchant
+Identifier for your payment (typically your application bundle identifier
+prefixed with `"merchant."`). Note, that in an upcoming version of the Swedbank
+Pay iOS Mobile SDK, this value will be automatically grabbed from the payment
+session.
 
 ```swift
 // Start Apple Pay payment
