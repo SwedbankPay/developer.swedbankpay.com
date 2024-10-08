@@ -1052,7 +1052,7 @@ more convenient for both the integration and the payer.
 [age-restrictions]: /checkout-v3/features/optional/age-restrictions
 [android-configuration]: /checkout-v3/modules-sdks/mobile-sdk/configuration#android
 [android-sdk-documentation]: /checkout-v3/modules-sdks/mobile-sdk/android
-[apple-pay]: /checkout-v3/payment-presentations#apple-pay
+[apple-pay]: /checkout-v3/apple-pay-presentation
 [astopb]: /checkout-v3/features/customize-ui/action-specific-text-on-payment-button
 [authorization-timeouts]: /old-implementations/checkout-v2/capture
 [bare-min]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/
@@ -1089,7 +1089,7 @@ more convenient for both the integration and the payer.
 [checkout-v3]: /checkout-v3
 [checkout-v3-payments-only-redirect-request]: /checkout-v3/get-started/payment-request
 [checkout-v3-payments-only-seamless]: /checkout-v3/get-started/display-payment-ui/seamless-view
-[click-to-pay]: /checkout-v3/payment-presentations#click-to-pay
+[click-to-pay]: /checkout-v3/click-to-pay-presentation
 [consent-box]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [contact-us]: /#front-page-contact-partners
 [co-badge-card]: /old-implementations/payment-instruments-v1/card/features/optional/cobadge-dankort#co-badge-card-choice-for-dankort
@@ -1105,7 +1105,7 @@ more convenient for both the integration and the payer.
 [demoshop]: https://ecom.externalintegration.payex.com/pspdemoshop
 [design-guide]: https://design.swedbankpay.com/
 [display-ui]: /checkout-v3/get-started/display-payment-ui/
-[dom-ver]: /checkout-v3/payment-presentations#domain-verification
+[dom-ver]: /checkout-v3/apple-pay-presentation#domain-verification
 [eligibility-check]: /checkout-v3/features/customize-ui/instrument-mode#eligibility-check
 [error-invoice]: /checkout-v3/features/technical-reference/problems/#invoice-problems
 [expand-first]: /checkout-v3/features/customize-ui/expand-method/
@@ -1119,7 +1119,7 @@ more convenient for both the integration and the payer.
 [fundamental-principles]: /checkout-v3/get-started/fundamental-principles
 [get-started]: /checkout-v3/get-started
 [go-live]: /checkout-v3/get-started/#get-ready-to-go-live
-[google-pay]: /checkout-v3/payment-presentations#google-pay
+[google-pay]: /checkout-v3/google-pay-presentation
 [home-technical-information]: /checkout-v3/get-started/fundamental-principles
 [initiate-consumer-session]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [inacc]: /checkout-v3/features/technical-reference/problems/#installment-account-problems

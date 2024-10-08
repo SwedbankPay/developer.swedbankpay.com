@@ -1,6 +1,6 @@
 ---
 title: Google Pay&trade;
-permalink: /:path/google-pay-presentations/
+permalink: /:path/google-pay-presentation/
 hide_from_sidebar: true
 description: |
   What is Google Pay, and what has to be done before you can offer it as a
