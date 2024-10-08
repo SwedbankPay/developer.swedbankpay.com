@@ -942,9 +942,9 @@ model.
 
 ### Welcome, Swedbank Pay Developer Portal
 
-PayEx' Commerce offerings are being rebranded to **Swedbank Pay**   and as a
+PayEx' Commerce offerings are being rebranded to **Swedbank Pay** and as a
 result of that rebranding, PayEx Checkout is now known as Swedbank Pay Checkout
-and its documentation can be found on [here][checkout].
+and its documentation can be found [here][checkout].
 
 {% comment %}
 
@@ -1198,7 +1198,7 @@ more convenient for both the integration and the payer.
 [token04]: /checkout-v3/features/technical-reference/problems/#creditcard-payments-mit---do-not-try-again--excessive-reattempts
 [token-problems]: /checkout-v3/features/technical-reference/problems/#token-problems
 [tos-url]: /checkout-v3/features/customize-ui/tos
-[trustly-pres]: /checkout-v3/payment-presentations#trustly
+[trustly-pres]: /checkout-v3/trustly-presentation
 [transaction-on-file]: /old-implementations/payment-instruments-v1/card/features/optional/transaction-on-file
 [tra-exemption]: /old-implementations/checkout-v2/features/optional/tra
 [trustly-payments]: /old-implementations/payment-instruments-v1/trustly
