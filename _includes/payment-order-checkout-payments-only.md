@@ -20,12 +20,12 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
         "language": "sv-SE",
         "productName": "Checkout3", // Removed in 3.1, can be excluded in 3.0 if version is added in header
         "urls": {
-            "hostUrls": [ "https://example.com", "https://example.net" ], //Seamless View only
+            "hostUrls": [ "https://example.com", "https://example.net" ],
             "paymentUrl": "https://example.com/perform-payment", //Seamless View only
             "completeUrl": "https://example.com/payment-completed",
             "cancelUrl": "https://example.com/payment-cancelled", //Redirect only
             "callbackUrl": "https://api.example.com/payment-callback",
-            "logoUrl": "https://example.com/logo.png" //Redirect only
+            "logoUrl": "https://example.com/logo.png"
         },
         "payeeInfo": {
             "payeeId": "{{ page.merchant_id }}",
@@ -57,7 +57,7 @@ Content-Type: application/json;version=3.0     // Version optional{% endcapture 
 | {% icon check %} | {% f productName %}              | `string`     | Used to tag the payment as Digital Payments v3.0. Mandatory for Digital Payments v3.0, either in this field or the header, as you won't get the operations in the response without submitting this field.                                                                                                                                                                                                                                                                              |
 |                  | {% f implementation %}           | `string`     | Indicates which implementation to use.                                                                                                                                                                                                                                                                         |
 | {% icon check %} | {% f urls %}                     | `object`     | The `urls` object, containing the URLs relevant for the payment order.                                                                                                                                                                                                                                   |
-| {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of URLs valid for embedding of Swedbank Pay Seamless Views.                                                                                                                                                                                                                                    |
+| {% icon check %} | {% f hostUrls, 2 %}                | `array`      | The array of valid host URLs.                                                                                                                                                                                                                                    |
 |                  | {% f paymentUrl, 2 %}              | `string`     | {% include fields/payment-url-paymentorder.md %} |
 | {% icon check %} | {% f completeUrl, 2 %}             | `string`     | {% include fields/complete-url.md %} |
 | {% icon check %} | {% f cancelUrl, 2 %}               | `string`     | The URL to redirect the payer to if the payment is cancelled, either by the payer or by the merchant trough an `abort` request of the `payment` or `paymentorder`.                                                                                                                                        |
