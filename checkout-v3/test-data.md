@@ -208,7 +208,7 @@ The amounts that can be used to trigger error codes
 | `952400` | `DONOTRETRY`                              | Transaction declined, do not retry              |
 | `952507` | `MODIFICATIONSREQUIRED`                   | Transaction is declined and needs modifications |
 | `952100` | `DAILYLIMITEXCEEDED`                      | The daily attempt limit has been exceeded       |
-| `900305` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded     |
+| `952100` | `MONTHLYLIMITEXCEEDED`                    | The monthly attempt limit has been exceeded     |
 
 The `DAILYLIMITEXCEEDED` must be performed 10 times to be triggered, and the
 `MONTHLYLIMITEXCEEDED` has to be performed 15 times to be triggered. The
