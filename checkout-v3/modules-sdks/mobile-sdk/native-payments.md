@@ -286,7 +286,7 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
 }
 ```
 
-When the SCA process has completed, you will recieve the
+When the SCA process has completed, you will receive the
 `Dismiss3DSecureFragment` payment state, informing your app that
 the view can be closed. In the following example, we remove the web view
 fragment from the screen after the SCA process is finalized (again, in this
@@ -794,7 +794,7 @@ occurring inside the SDK. These problems are communicated via the
 `sdkProblemOccurred(problem:)` delegate method on iOS and via the 
 `SdkProblemOccurred` state on Android. The `problem` parameters is
 a `SwedbankPaySDK.PaymentSessionProblem` enum value on iOS and a
-`PaymentSessionProblem` class on Andorid. The different SDK problems should be
+`PaymentSessionProblem` class on Android. The different SDK problems should be
 handled in the following ways:
 
 *   `PaymentSessionAPIRequestFailed` indicates a problem with the
