@@ -4,9 +4,7 @@ title: Introduction
 description: |
   **Swedbank Pay Mobile SDK** provides an easy way of integrating Swedbank Pay
   Digital Payments to your Android and iOS applications.
-  The Mobile SDK consists of three components: An Android library, an iOS
-  library, and a backend component with example implementations in Node.js
-  and Java.
+  The Mobile SDK consists an Android and an iOS library.
 permalink: /:path/
 menu_order: 600
 ---
@@ -40,12 +38,6 @@ To start integrating the Swedbank Pay Mobile SDK, you need the following:
 *   Obtained credentials (merchant Access Token) from Swedbank Pay through
     the Merchant Portal. Please observe that the Swedbank Pay Digital Payments
     implementations currently available encompasses the **`paymentmenu`** scope.
-*   Optionally, a [HTTPS][https] enabled web server.
-
-It is important to secure all communication between your app and your servers.
-If you wish to use the example Merchant Backend API to communicate between your
-app and your server, an example implementation is provided for Node.js and for
-Java.
 
 ## Introduction
 

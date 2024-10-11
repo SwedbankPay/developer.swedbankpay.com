@@ -132,7 +132,7 @@ This can be accomplished by having `paymentUrl` return a redirect response; the
 details of that redirect will be discussed in the platform-specific pages. It is
 recommended that `paymentUrl` be unique to each payment order that you create.
 
-The next chapter will go over a custom backend implementation. It will also
+The upcoming chapters will go over a custom backend implementation. It will also
 detail how `paymentUrl` should be handled.
 
 {% include iterator.html prev_href="./"

@@ -46,7 +46,7 @@ pod 'SwedbankPaySDK', '~> {{ page.mobile_sdk_ios_version }}'
 pod 'SwedbankPaySDKMerchantBackend', '~> {{ page.mobile_sdk_ios_version }}'
 ```
 
-## Url Scheme and Associated Domain
+## Custom URL Scheme and Associated Domain
 
 The [Payment Url][payment-url] handling in the iOS SDK uses
 [Universal Links][ios-universal-links]{:target="_blank"}, and additionally a
@@ -626,8 +626,8 @@ sequenceDiagram
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/android"
                          prev_title="Back: Android"
-                         next_href="/checkout-v3/modules-sdks/mobile-sdk/merchant-backend"
-                         next_title="Next: Merchant Backend" %}
+                         next_href="/checkout-v3/modules-sdks/mobile-sdk/native-payments"
+                         next_title="Next: Native Payments" %}
 
 [xcode-swiftpm]: https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app
 [sdk-package-repo]: https://github.com/SwedbankPay/swedbank-pay-sdk-ios.git

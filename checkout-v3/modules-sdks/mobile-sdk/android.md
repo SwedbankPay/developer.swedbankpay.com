@@ -38,7 +38,39 @@ dependencies {
 }
 ```
 
+Or in your `gradle.kts` file:
+
+```kotlin
+dependencies {
+    implementation("com.swedbankpay.mobilesdk:mobilesdk:{{ page.mobile_sdk_android_version }}")
+    implementation("com.swedbankpay.mobilesdk:mobilesdk-merchantbackend:{{ page.mobile_sdk_android_version }}")
+}
+```
+
 Please refer to Maven Central for the latest versions of the libraries.
+
+## Custom URL Scheme
+
+The [Payment Url][paymenturl] handling in the Android SDK uses a custom URL
+scheme. You must therefore set this up using the template intent filter prepared
+in the SDK, that uses a
+[Gradle Manifest Placeholder][gradle-manifest-placeholders]. You do this by
+specifying your custom URL scheme in you `build.gradle` file (in this example
+we're preparing for a payment URL using `examplepayment://`):
+
+```groovy
+defaultConfig {
+    manifestPlaceholders = [swedbankPaymentUrlScheme:"examplepayment"]
+}
+```
+
+Or in your `gradle.kts` file:
+
+```kotlin
+defaultConfig {
+    manifestPlaceholders["swedbankPaymentUrlScheme"] = "examplepayment"
+}
+```
 
 ## Usage
 
@@ -400,22 +432,11 @@ payment menu. This requires no additional setup.
 
 If a third party application is launched, it will signal the return to the
 payment menu by opening the payment url, using a standard `ACTION_VIEW`
-`Intent`. The payment url is built such that it uses the
-[Android Payment Url Helper][android-helper]{:target="_blank"}, which serves an
-html page that converts the url to an
-[intent url][android-intent-scheme]{:target="_blank"} and redirects to it. The
-SDK has an intent filter for that intent, so the SDK will receive it, bringing
-the containing application to the foreground, and reloading the payment menu. If
-your Merchant Backend serves the Android Payment Url Helper endpoint at the
-specified path, no further setup is needed.
-
-Note that there is an
-[argument][dokka-payfrag-argbuilder-usebrowser]{:target="_blank"} for
-debugging purposes that cause third-party web pages to be opened in an external
-application. In that case the process continues analogously to the external
-application case. Using this argument should not be necessary, however. If you
-do find a case that does not work inside the PaymentFragment, but does work when
-using the browser for third-party sites, please file a bug on the Android SDK.
+`Intent`. The payment URL should use a custom URL scheme unique to the app. The
+SDK has a template intent filter that uses a
+[Gradle Manifest Placeholder][gradle-manifest-placeholders], so the SDK will
+receive it, bringing the containing application to the foreground, and reloading
+the payment menu.
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/custom-backend"
                          prev_title="Back: Custom Backend"
@@ -465,3 +486,4 @@ using the browser for third-party sites, please file a bug on the Android SDK.
 [paymenturl]: /checkout-v3/features/technical-reference/payment-url
 [android-helper]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#android-payment-url-helper
 [android-intent-scheme]: https://developer.chrome.com/docs/android/intents
+[gradle-manifest-placeholders]: https://developer.android.com/build/manage-manifests#inject_build_variables_into_the_manifest
