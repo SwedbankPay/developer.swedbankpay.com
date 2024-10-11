@@ -13,21 +13,13 @@ your own app UI. The Native Payments feature does not provide any interface
 components, but instead gives you the full ability to control the look and feel
 of your checkout, seamless and quick payments.
 
-{% capture disclaimer %}
-Native Payments are under ongoing development and are not feature complete yet.
-We're currently adding new payment methods compatible with the feature.
-{% endcapture %}
-
-{% include alert.html type="warning" icon="warning" header="Under development"
-body=disclaimer %}
-
 Currently, the following payment methods are supported by the Native Payments
 feature:
 
-* Swish
-* Credit cards
-* Apple Pay
-* Google Pay
+*   Swish
+*   Credit cards
+*   Apple Pay
+*   Google Pay
 
 ## Usage
 
@@ -357,11 +349,11 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
 Apart from saved credit cards, you can also give the user the option to enter
 new credit card details to perform the payment. There are several scenarios
 where this is relevant:
-* When you want to give a user (with or without existing saved credit cards)
+*   When you want to give a user (with or without existing saved credit cards)
 the option to perform the payment with a "New Credit Card", and give them the
 option to save the new card for future payments.
-* For [verify][verify-payments] payment orders.
-* If you haven't created your payment order as
+*   For [verify][verify-payments] payment orders.
+*   If you haven't created your payment order as
 [payer aware][payer-aware-payment-menu] and want to offer credit card "guest"
 payments, without the option to save the card for future payments.
 
@@ -429,6 +421,15 @@ as they are when making payment attempts with saved credit cards.
 
 The Google Pay payment method is represented as an available instrument through
 `AvailableInstrument.GooglePay`.
+
+Before making Google Pay payments, you need to enable the Android Wallet API in
+your `AndroidManifest.xml` file.
+
+```xml
+<meta-data
+    android:name="com.google.android.gms.wallet.api.enabled"
+    android:value="true" />
+````
 
 To make an Google Pay payment attempt, you use
 `PaymentAttemptInstrument.GooglePay`. You need to specify `activity` as a
@@ -679,11 +680,11 @@ func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
 Apart from saved credit cards, you can also give the user the option to enter
 new credit card details to perform the payment. There are several scenarios
 where this is relevant:
-* When you want to give a user (with or without existing saved credit cards)
+*   When you want to give a user (with or without existing saved credit cards)
 the option to perform the payment with a "New Credit Card", and give them the
 option to save the new card for future payments.
-* For [verify][verify-payments] payment orders.
-* If you haven't created your payment order as
+*   For [verify][verify-payments] payment orders.
+*   If you haven't created your payment order as
 [payer aware][payer-aware-payment-menu] and want to offer credit card "guest"
 payments, without the option to save the card for future payments.
 
@@ -743,11 +744,27 @@ credit cards.
 The Apple Pay payment method is represented as an available instrument through
 `SwedbankPaySDK.AvailableInstrument.applePay`.
 
+Before making Apple Pay payments, you need to set up an Apple Pay Merchant ID
+and connect it to your application. You should follow
+[Apples documentation][apple-pay-setup]{:target="_blank"} for this, but the base
+steps are as follows:
+
+1.  Create a Merchant Identifier in the Certificates, Identifiers & Profiles
+part of the Apple developer portal. This will generally be a reverse URL
+identifier, for example `merchant.com.swedbankpay.exampleapp`. Note that you
+need separate merchant IDs for testing and production (one Apple Pay Merchant ID
+for every Swedbank Pay Merchant you want to use).
+2.  Upload the payment processing certificate signing request to Apple and
+download the certificate issued by Apple. You need to contact Swedbank Pay for
+further instructions and the files needed.
+3.  Enable the Apple Pay capability in Xcode and add your Apple Pay Merchant
+IDs. Note, that when updating app capabilities, there might be a need to
+generate new provisioning profiles for your app signing process.
+
 To make an Apple Pay payment attempt, you use
 `SwedbankPaySDK.PaymentAttemptInstrument.applePay(merchantIdentifier:)`. The
 `merchantIdentifier` parameter should be specified to the Apple Pay Merchant
-Identifier for your payment (typically your application bundle identifier
-prefixed with `"merchant."`). Note, that in an upcoming version of the Swedbank
+ID to use for the payment. Note, that in an upcoming version of the Swedbank
 Pay iOS Mobile SDK, this value will be automatically grabbed from the payment
 session.
 
@@ -780,7 +797,7 @@ a `SwedbankPaySDK.PaymentSessionProblem` enum value on iOS and a
 `PaymentSessionProblem` class on Andorid. The different SDK problems should be
 handled in the following ways:
 
-* `PaymentSessionAPIRequestFailed` indicates a problem with the
+*   `PaymentSessionAPIRequestFailed` indicates a problem with the
 underlying API communication. This is most likely due to network errors, such as
 poor cell phone coverage. The SDK will automatically attempt retries of failing
 API calls up to a point, where it finally gives up and informs you via this
@@ -789,18 +806,18 @@ received from the system. The `retry` parameter is a closure on iOS and a
 callback function on Android that you can call to retry the underlying API call.
 You should inform the user of the error and give the option to either abort the
 payment session or retry the call.
-* `ClientAppLaunchFailed` informs you that the SDK have attempted to launch an
+*   `ClientAppLaunchFailed` informs you that the SDK have attempted to launch an
 external app (such as Swish) and that it failed to do so. You should inform the
 user of the problem and give them the option to either make a new attempt (with
 any available payment method) or to abort the whole payment session.
-* `InternalInconsistencyError` is the result of an logic inconsistency problem
+*   `InternalInconsistencyError` is the result of an logic inconsistency problem
 in the SDK. An example of this would be to call `abortPaymentSession()` before
 `startPaymentSession()`. If you receive this error during development, you
 should make sure that you follow the [usage flow][usage] correctly. If you get
 this error in your production app, you should inform the user of a generic
 technical error and restart the checkout process.
-* `PaymentSessionEndReached` is the result of a native payment session that has
-reached a state that isn't supported by the SDK. Since payment orders can be
+*   `PaymentSessionEndReached` is the result of a native payment session that
+has reached a state that isn't supported by the SDK. Since payment orders can be
 consumed either on the web, as a web based mobile app payment or as an app
 native payment, you could theoretically modify the state of a payment order on
 two different devices at the same time, or start on one device and try to
@@ -886,14 +903,14 @@ sequenceDiagram
     end
 ```
 
-* ① Just as with regular non-native payments in the Swedbank Pay Mobile SDK,
+*   ① Just as with regular non-native payments in the Swedbank Pay Mobile SDK,
 there is no option to create payment orders directly. You need to create your
 payment orders with your own backend.
-* ② Starting a Native Session in the SDK requires a [Session URL][session-url].
-* ③ Just as with non-native payments, the `SwedbankPaySDK.open(url:)` method
+*   ② Starting a Native Session in the SDK requires a [Session URL][session-url].
+*   ③ Just as with non-native payments, the `SwedbankPaySDK.open(url:)` method
 needs to be called from the App Delegate, see [iOS Setup][ios-bare-minimum-setup].
 This is not needed on Android.
-* ④ See [Problem handling][problem-handling] for different considerations and
+*   ④ See [Problem handling][problem-handling] for different considerations and
 outcomes.
 
 ### Alternative checkout flows
@@ -918,7 +935,7 @@ sequenceDiagram
     SDK ->> App: paymentSessionFetched()
     deactivate SDK
     App ->> App: Present available payment methods to user
-    note over App: Including custom option<br/>"More payment methods"
+    note over App: Include custom option<br/>"More payment methods"
     opt If a native payment instrument is picked by user
         App ->> SDK: makeNativePaymentAttempt()
         activate SDK
@@ -926,13 +943,15 @@ sequenceDiagram
         SDK ->> App: paymentComplete()
         deactivate SDK
     end
-    opt If "More payment methods" is picked by user
+    opt If "More payment methods" option is picked by user
         App ->> SDK: Create payment menu
         activate SDK
-        note over App, SDK: Android: createPaymentFragment()<br/>PaymentFragment<br/><br/>iOS: createSwedbankPaySDKController()<br/>SwedbankPaySDKController
+        note over App, SDK: Android: createPaymentFragment()<br/>iOS: createSwedbankPaySDKController()
+        SDK ->> App: Show payment menu
+        note over App, SDK: Android: ShowPaymentFragment<br/>iOS: showSwedbankPaySDKController()
+        App ->> App: Present web based payment menu
         SDK ->> App: paymentComplete()
         deactivate SDK
-        note over App, SDK: Regular, non-native payment, callback
     end
 ```
 
@@ -983,28 +1002,18 @@ sequenceDiagram
     activate Backend
     Backend ->> App: Payment Order information
     deactivate Backend
-    opt If a native payment instrument is picked by user
-        App ->> SDK: fetchPaymentSession()
-        activate SDK
-        App ->> App: Show loading indicator
-        SDK ->> App: paymentSessionFetched()
-        deactivate SDK
-        App ->> App: Automatically choose instrument
-        note over App: Match previously picked payment<br/>method in local cache to list of<br/>available instruments, without<br/>any user interaction
-        App ->> SDK: makeNativePaymentAttempt()
-        activate SDK
-        App ->> App: Show loading indicator
-        SDK ->> App: paymentSessionComplete()
-        deactivate SDK
-    end
-    opt If non-native instrument is picked by user
-        App ->> SDK: Present payment menu
-        activate SDK
-        note over App, SDK: Android: PaymentFragment<br/>iOS: SwedbankPaySDKController
-        SDK ->> App: paymentComplete()
-        deactivate SDK
-        note over App, SDK: Regular, non-native payment, callback
-    end
+    App ->> SDK: fetchPaymentSession()
+    activate SDK
+    App ->> App: Show loading indicator
+    SDK ->> App: paymentSessionFetched()
+    deactivate SDK
+    note over App: Match previously picked payment<br/>method in local cache to list of<br/>available instruments, without<br/>any user interaction
+    App ->> App: Automatically choose instrument
+    App ->> SDK: makeNativePaymentAttempt()
+    activate SDK
+    App ->> App: Show loading indicator
+    SDK ->> App: paymentSessionComplete()
+    deactivate SDK
 ```
 
 
@@ -1027,3 +1036,4 @@ sequenceDiagram
 [one-click-consent-checkbox]: /checkout-v3/features/optional/one-click-payments/#disable-store-details-and-toggle-consent-checkbox
 [payer-aware-payment-menu]: /checkout-v3/features/optional/payer-aware-payment-menu
 [verify-payments]: /checkout-v3/features/optional/verify
+[apple-pay-setup]: https://developer.apple.com/documentation/passkit_apple_pay_and_wallet/apple_pay/setting_up_apple_pay
