@@ -86,7 +86,7 @@ below.
 For this documentation, we're assuming a basic setup is done for the Android
 SDK. You can achieve this by following the steps 
 [Android Setup][android-bare-minimum-setup] and
-[Android SDK Configuration][android-bare-minimum-configuration] of the Bare
+[Android SDK Payment Session][android-bare-minimum-payment-session] of the Bare
 Minimum Implementation chapter.
 
 You need to listen to some state updates from the Native Payment session,
@@ -455,8 +455,8 @@ on Google Pay payments, the process in the SDK is identical to when paying with
 
 For this documentation, we're assuming a basic setup is done for the iOS SDK.
 You can achieve this by following the steps [iOS Setup][ios-bare-minimum-setup]
-and [iOS SDK Configuration][ios-bare-minimum-configuration] of the Bare Minimum
-Implementation chapter.
+and [iOS SDK Payment Session][ios-bare-minimum-payment-session] of the Bare
+Minimum Implementation chapter.
 
 You need to listen to some state updates from the Payment session, updating your
 UI and informing the user according to the events. You do this by implementing
@@ -1023,9 +1023,9 @@ sequenceDiagram
                          next_title="Next: Features" %}
 
 [android-bare-minimum-setup]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-setup
-[android-bare-minimum-configuration]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-configuration
+[android-bare-minimum-payment-session]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#android-sdk-payment-session
 [ios-bare-minimum-setup]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-setup
-[ios-bare-minimum-configuration]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-configuration
+[ios-bare-minimum-payment-session]: /checkout-v3/modules-sdks/mobile-sdk/bare-minimum-implementation/#ios-sdk-payment-session
 [problem-technical-reference]: /checkout-v3/features/technical-reference/problems/
 [usage]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#usage
 [android-saved-credit-cards]: /checkout-v3/modules-sdks/mobile-sdk/native-payments/#saved-credit-cards
