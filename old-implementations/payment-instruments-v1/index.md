@@ -146,7 +146,7 @@ our Merchant Portal tool. `abort` is only available when using APIs.
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
 [mobilepay-logo]: /assets/img/icon-mobilepay-simple.svg
-[trustly-logo]: /assets/img/icon-trustly-simple.svg
+[trustly-logo]: /assets/img/icon-trustly-new.svg
 [earth-icon]: /assets/img/globe-icon.png
 [card]: /old-implementations/payment-instruments-v1/card
 [invoice]: /old-implementations/payment-instruments-v1/invoice
