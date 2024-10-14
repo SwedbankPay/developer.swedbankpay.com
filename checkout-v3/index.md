@@ -134,7 +134,7 @@ below to read more." %}
 [vipps-logo]: /assets/img/icon-vipps-simple.svg
 [swp-logo]: /assets/img/swedbank-pay-vertical-black.svg
 [swish-logo]: /assets/img/icon-swish-simple.svg
-[trustly-logo]: /assets/img/icon-trustly-simple.svg
+[trustly-logo]: /assets/img/icon-trustly-new.svg
 [trustly]: /checkout-v3/trustly-presentation
 [get-started]: /checkout-v3/get-started/
 [modules-sdks]: /checkout-v3/modules-sdks/
