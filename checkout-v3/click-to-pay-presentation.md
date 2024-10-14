@@ -8,8 +8,6 @@ description: |
 menu_order: 600
 ---
 
-## Click to Pay
-
 Click to Pay makes it easy for payers to check out, no matter what online
 payment channel they choose. All cards are stored in a portable profile they can
 be used securely whenever the Click to Pay icon is present. Built on EMV
