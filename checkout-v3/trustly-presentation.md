@@ -8,10 +8,6 @@ description: |
 menu_order: 400
 ---
 
-## Trustly
-
-Useful information regarding Trustly in our payment menu.
-
 ### Overlay
 
 When using a payment menu integration (including Instrument Mode), Trustly will

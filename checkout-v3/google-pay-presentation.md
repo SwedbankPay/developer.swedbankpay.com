@@ -8,8 +8,6 @@ description: |
 menu_order: 500
 ---
 
-## Google Pay&trade;
-
 {% include alert.html type="informative" icon="info" header="Google Pay&trade;
 in apps" body="We do not currently support launching Google Pay&trade; within an
 in-app solution. If you want to implement Google Pay&trade; in your web-view

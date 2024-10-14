@@ -8,8 +8,6 @@ description: |
 menu_order: 700
 ---
 
-## Apple Pay
-
 Apple Pay provides an easy and secure way to make payments. By using Face ID,
 Touch ID, or double-clicking their Apple Watch, payers can quickly and securely
 check out. Payers love the simplicity, and you’ll love the increased conversion
