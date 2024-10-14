@@ -53,8 +53,8 @@ sequenceDiagram
     deactivate SDK
 ```
 
-We will expand on this further with more [detailed usage flows][detailed-usage-flows]
-below.
+We will expand on this further with more
+[detailed usage flows][detailed-usage-flows] below.
 
 ## The Session URL
 
@@ -84,7 +84,7 @@ below.
 ## Android
 
 For this documentation, we're assuming a basic setup is done for the Android
-SDK. You can achieve this by following the steps 
+SDK. You can achieve this by following the steps
 [Android Setup][android-bare-minimum-setup] and
 [Android SDK Payment Session][android-bare-minimum-payment-session] of the Bare
 Minimum Implementation chapter.
@@ -242,8 +242,8 @@ where the `problem` parameter will be
 
 If you have created your payment order as
 [payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
-the payment session might contain previously saved payment cards belonging to the
-user. The saved credit cards payment method is represented as an available
+the payment session might contain previously saved payment cards belonging to
+the user. The saved credit cards payment method is represented as an available
 instrument through `AvailableInstrument.CreditCard(prefills)`.
 The `prefills` contains `CreditCardPrefill` that represents the users
 saved cards. You should present these saved cards to the user, so that they can
@@ -349,13 +349,14 @@ PaymentSession.paymentSessionState.observe(viewLifecycleOwner) { paymentState ->
 Apart from saved credit cards, you can also give the user the option to enter
 new credit card details to perform the payment. There are several scenarios
 where this is relevant:
+
 *   When you want to give a user (with or without existing saved credit cards)
-the option to perform the payment with a "New Credit Card", and give them the
-option to save the new card for future payments.
+    the option to perform the payment with a "New Credit Card", and give them
+    the option to save the new card for future payments.
 *   For [verify][verify-payments] payment orders.
 *   If you haven't created your payment order as
-[payer aware][payer-aware-payment-menu] and want to offer credit card "guest"
-payments, without the option to save the card for future payments.
+    [payer aware][payer-aware-payment-menu] and want to offer credit card
+    "guest" payments, without the option to save the card for future payments.
 
 The new credit card payment method is represented as an available instrument
 through `AvailableInstrument.NewCreditCard`, and to make a new
@@ -610,8 +611,8 @@ parameter.
 
 If you have created your payment order as
 [payer aware][payer-aware-payment-menu] by providing a `payerReference` value,
-the payment session might contain previously saved payment cards belonging to the
-user. The saved credit cards payment method is represented as an available
+the payment session might contain previously saved payment cards belonging to
+the user. The saved credit cards payment method is represented as an available
 instrument through `SwedbankPaySDK.AvailableInstrument.creditCard(prefills:)`.
 The `prefills` contains `CreditCardMethodPrefillModel` that represents the users
 saved cards. You should present these saved cards to the user, so that they can
@@ -680,13 +681,14 @@ func sdkProblemOccurred(problem: SwedbankPaySDK.PaymentSessionProblem) {
 Apart from saved credit cards, you can also give the user the option to enter
 new credit card details to perform the payment. There are several scenarios
 where this is relevant:
+
 *   When you want to give a user (with or without existing saved credit cards)
-the option to perform the payment with a "New Credit Card", and give them the
-option to save the new card for future payments.
+    the option to perform the payment with a "New Credit Card", and give them
+    the option to save the new card for future payments.
 *   For [verify][verify-payments] payment orders.
 *   If you haven't created your payment order as
-[payer aware][payer-aware-payment-menu] and want to offer credit card "guest"
-payments, without the option to save the card for future payments.
+    [payer aware][payer-aware-payment-menu] and want to offer credit card
+    "guest" payments, without the option to save the card for future payments.
 
 The new credit card payment method is represented as an available instrument
 through `SwedbankPaySDK.AvailableInstrument.newCreditCard()`, and to make a new
@@ -750,16 +752,16 @@ and connect it to your application. You should follow
 steps are as follows:
 
 1.  Create a Merchant Identifier in the Certificates, Identifiers & Profiles
-part of the Apple developer portal. This will generally be a reverse URL
-identifier, for example `merchant.com.swedbankpay.exampleapp`. Note that you
-need separate merchant IDs for testing and production (one Apple Pay Merchant ID
-for every Swedbank Pay Merchant you want to use).
+    part of the Apple developer portal. This will generally be a reverse URL
+    identifier, for example `merchant.com.swedbankpay.exampleapp`. Note that you
+    need separate merchant IDs for testing and production (one Apple Pay
+    Merchant ID for every Swedbank Pay Merchant you want to use).
 2.  Upload the payment processing certificate signing request to Apple and
-download the certificate issued by Apple. You need to contact Swedbank Pay for
-further instructions and the files needed.
+    download the certificate issued by Apple. You need to contact Swedbank Pay
+    for further instructions and the files needed.
 3.  Enable the Apple Pay capability in Xcode and add your Apple Pay Merchant
-IDs. Note, that when updating app capabilities, there might be a need to
-generate new provisioning profiles for your app signing process.
+    IDs. Note, that when updating app capabilities, there might be a need to
+    generate new provisioning profiles for your app signing process.
 
 To make an Apple Pay payment attempt, you use
 `SwedbankPaySDK.PaymentAttemptInstrument.applePay(merchantIdentifier:)`. The
@@ -791,37 +793,38 @@ problem information, consisting of `type`, `title`, `status` and `detail`.
 
 Local SDK problems are either inconsistency errors or communication errors
 occurring inside the SDK. These problems are communicated via the
-`sdkProblemOccurred(problem:)` delegate method on iOS and via the 
+`sdkProblemOccurred(problem:)` delegate method on iOS and via the
 `SdkProblemOccurred` state on Android. The `problem` parameters is
 a `SwedbankPaySDK.PaymentSessionProblem` enum value on iOS and a
 `PaymentSessionProblem` class on Android. The different SDK problems should be
 handled in the following ways:
 
-*   `PaymentSessionAPIRequestFailed` indicates a problem with the
-underlying API communication. This is most likely due to network errors, such as
-poor cell phone coverage. The SDK will automatically attempt retries of failing
-API calls up to a point, where it finally gives up and informs you via this
-value. The `error` parameter contains the underlying Swift `Error` object
-received from the system. The `retry` parameter is a closure on iOS and a
-callback function on Android that you can call to retry the underlying API call.
-You should inform the user of the error and give the option to either abort the
-payment session or retry the call.
+*   `PaymentSessionAPIRequestFailed` indicates a problem with the underlying API
+    communication. This is most likely due to network errors, such as poor cell
+    phone coverage. The SDK will automatically attempt retries of failing API
+    calls up to a point, where it finally gives up and informs you via this
+    value. The `error` parameter contains the underlying Swift `Error` object
+    received from the system. The `retry` parameter is a closure on iOS and a
+    callback function on Android that you can call to retry the underlying API
+    call. You should inform the user of the error and give the option to either
+    abort the payment session or retry the call.
 *   `ClientAppLaunchFailed` informs you that the SDK have attempted to launch an
-external app (such as Swish) and that it failed to do so. You should inform the
-user of the problem and give them the option to either make a new attempt (with
-any available payment method) or to abort the whole payment session.
+    external app (such as Swish) and that it failed to do so. You should inform
+    the user of the problem and give them the option to either make a new
+    attempt (with any available payment method) or to abort the whole payment
+    session.
 *   `InternalInconsistencyError` is the result of an logic inconsistency problem
-in the SDK. An example of this would be to call `abortPaymentSession()` before
-`startPaymentSession()`. If you receive this error during development, you
-should make sure that you follow the [usage flow][usage] correctly. If you get
-this error in your production app, you should inform the user of a generic
-technical error and restart the checkout process.
+    in the SDK. An example of this would be to call `abortPaymentSession()`
+    before `startPaymentSession()`. If you receive this error during
+    development, you should make sure that you follow the [usage flow][usage]
+    correctly. If you get this error in your production app, you should inform
+    the user of a generic technical error and restart the checkout process.
 *   `PaymentSessionEndReached` is the result of a native payment session that
-has reached a state that isn't supported by the SDK. Since payment orders can be
-consumed either on the web, as a web based mobile app payment or as an app
-native payment, you could theoretically modify the state of a payment order on
-two different devices at the same time, or start on one device and try to
-continue on another.
+    has reached a state that isn't supported by the SDK. Since payment orders
+    can be consumed either on the web, as a web based mobile app payment or as
+    an app native payment, you could theoretically modify the state of a payment
+    order on two different devices at the same time, or start on one device and
+    try to continue on another.
 
     If you get this error during development, you should make sure that you
 follow the [usage flow][usage] correctly, and that you are always starting
@@ -904,14 +907,15 @@ sequenceDiagram
 ```
 
 *   ① Just as with regular non-native payments in the Swedbank Pay Mobile SDK,
-there is no option to create payment orders directly. You need to create your
-payment orders with your own backend.
-*   ② Starting a Native Session in the SDK requires a [Session URL][session-url].
+    there is no option to create payment orders directly. You need to create
+    your payment orders with your own backend.
+*   ② Starting a Native Session in the SDK requires a
+    [Session URL][session-url].
 *   ③ Just as with non-native payments, the `SwedbankPaySDK.open(url:)` method
-needs to be called from the App Delegate, see [iOS Setup][ios-bare-minimum-setup].
-This is not needed on Android.
+    needs to be called from the App Delegate, see
+    [iOS Setup][ios-bare-minimum-setup]. This is not needed on Android.
 *   ④ See [Problem handling][problem-handling] for different considerations and
-outcomes.
+    outcomes.
 
 ### Alternative checkout flows
 
@@ -1015,7 +1019,6 @@ sequenceDiagram
     SDK ->> App: paymentSessionComplete()
     deactivate SDK
 ```
-
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/ios"
                          prev_title="Back: iOS"

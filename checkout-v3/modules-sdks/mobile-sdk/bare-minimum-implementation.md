@@ -73,7 +73,8 @@ implementation is the `view-paymentsession`.
 }
 ```
 
-The `href` from the operation is then used in the Android and iOS implementations below.
+The `href` from the operation is then used in the Android and iOS
+implementations below.
 
 ## Android
 
@@ -268,7 +269,6 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-
 ## iOS
 
 Integrate the SDK in your application by either using Swift Package Manager or
@@ -460,16 +460,17 @@ backend.
 In this minimal implementation, we used custom URL scheme for the payment URL.
 This causes several issues in a production environment:
 
-*   On iOS, using custom URL schemes instead of Universal Links comes with several
-drawbacks, including prompting the user with an additional confirmation popup
-as well as being unable to verify URL ownership to your specific app (other
-apps can declare the same custom URL scheme outside of your control).
+*   On iOS, using custom URL schemes instead of Universal Links comes with
+    several drawbacks, including prompting the user with an additional
+    confirmation popup as well as being unable to verify URL ownership to your
+    specific app (other apps can declare the same custom URL scheme outside of
+    your control).
 *   There are a few, albeit rare, scenarios where the user can end up launching
-the Payment URL in the mobile browser on their phone. For URLs with custom
-schemes that's handled nicely, but for universal URLs, it's more problematic.
-This means that browsing to the payment URL ideally should return a view that
-redirects the user to the app. We provide example on how to implement this in
-the next chapter [Custom Backend][payemnt-url].
+    the Payment URL in the mobile browser on their phone. For URLs with custom
+    schemes that's handled nicely, but for universal URLs, it's more
+    problematic. This means that browsing to the payment URL ideally should
+    return a view that redirects the user to the app. We provide example on how
+    to implement this in the next chapter [Custom Backend][payemnt-url].
 
 {% include iterator.html prev_href="/checkout-v3/modules-sdks/mobile-sdk/configuration"
                          prev_title="Back: Configuration"
