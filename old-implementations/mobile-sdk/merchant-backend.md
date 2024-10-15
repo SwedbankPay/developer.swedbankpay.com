@@ -687,7 +687,7 @@ Your implementation is encouraged to define its own problem types for any
 domain-specific errors; you should namespace those problem types under a domain
 name under your control – usually the host name of the Merchant Backend.
 
-{% include iterator.html next_href="old-implementations/mobile-sdk/merchant-backend-sample-code/"
+{% include iterator.html next_href="/old-implementations/mobile-sdk/merchant-backend-sample-code"
                          next_title="Next: Merchant Backend Sample Code" %}
 
 [swagger]: https://github.com/SwedbankPay/swedbank-pay-sdk-mobile-example-merchant/blob/main/documentation/swedbankpaysdk_openapi.yaml

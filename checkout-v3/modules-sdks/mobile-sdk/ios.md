@@ -474,8 +474,8 @@ will never actually request the payment url, but will instead open the
 application, giving it the universal link in its Application Delegate's
 [`application(_:continue:restorationHandler:)`][uiappdelegate-continueuseractivity]
 method. Recall that we enabled universal links for the backend url's domain
-[in the installation instructions](#url-scheme-and-associated-domain). Note that
-thevmerchant backend must also be properly configured to
+[in the installation instructions](#custom-url-scheme-and-associated-domain).
+Note that thevmerchant backend must also be properly configured to
 [enable universal links][backend-aasa].
 
 The application delegate is, of course, squarely in the domain of the
@@ -640,16 +640,16 @@ sequenceDiagram
 [ios-custom-scheme]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app
 [ios-universal-links]: https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content
 [ios-universal-links-routing]: https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content#Support-universal-links
-[ios-paymenturl-helper]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#ios-payment-url-helper
+[ios-paymenturl-helper]: /old-implementations/mobile-sdk/merchant-backend#ios-payment-url-helper
 [uiappdelegate-continueuseractivity]: https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623072-application
 [uiappdelegate-openurl]: https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application
-[backend-aasa]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#apple-app-site-association
+[backend-aasa]: /old-implementations/mobile-sdk/merchant-backend#apple-app-site-association
 [xcode-add-cap]: https://help.apple.com/xcode/mac/current/#/dev88ff319e7
 [xcode-add-assoc-domain]: https://developer.apple.com/documentation/xcode/supporting-associated-domains#Add-the-associated-domain-file-to-your-website
 [rfc-7807]: https://tools.ietf.org/html/rfc7807
 [swedbankpay-problems]: /checkout-v3/features/technical-reference/problems
-[backend-problems]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#problems
+[backend-problems]: /old-implementations/mobile-sdk/merchant-backend#problems
 [checkin-consumer]: /old-implementations/checkout-v2/checkin#step-1-initiate-session-for-consumer-identification
 [checkin-paymentorder]: /old-implementations/checkout-v2/payment-menu#step-3-create-payment-order
-[backend-payment-orders]: /checkout-v3/modules-sdks/mobile-sdk/merchant-backend#payment-orders-endpoint
+[backend-payment-orders]: /old-implementations/mobile-sdk/merchant-backend#payment-orders-endpoint
 [ios-payment-url]: /checkout-v3/modules-sdks/mobile-sdk/ios#payment-url-and-external-applications
